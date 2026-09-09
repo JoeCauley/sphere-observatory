@@ -1,0 +1,70 @@
+/* Collection study v1. Prescribed engineering, not an orbital simulation. */
+(function(root){
+'use strict';const M=root.SphereMath,TAU=2*Math.PI;
+const routes=[
+ {name:'Verdant belt',normal:[0,1,0],radius:.62,count:8,hours:24,width:.155,sectors:24,phase:0},
+ {name:'Opaline belt',normal:M.norm([.48,.84,.25]),radius:.74,count:6,hours:36,width:.12,sectors:18,phase:.33},
+ {name:'Amber belt',normal:M.norm([-.55,.65,.52]),radius:.86,count:4,hours:60,width:.09,sectors:12,phase:.71}
+];
+for(const r of routes){r.right=M.norm(M.cross(r.normal,[0,0,1]));r.up=M.cross(r.normal,r.right);}
+const palette=[[.015,.12,.065],[.02,.15,.18],[.115,.04,.15],[.22,.10,.025],[.16,.045,.055],[.23,.28,.16],[.025,.065,.18],[.13,.20,.21]];
+const woundSpecs=[[12,-12,.32,.035,24],[-25,61,.43,.044,-32],[39,132,.27,.026,60],[-48,-115,.38,.055,12],[23,-156,.22,.027,-50],[60,5,.20,.02,38]];
+const wounds=woundSpecs.map(([lat,lon,length,width,turn])=>{const axis=M.axis(lat,lon),b=M.basis(axis);const tangent=M.rotate(b.r,axis,M.radians(turn));return {axis,tangent,length,width};});
+const defaults={collection:false,era:'after',routeShades:true,routeGuides:false,multipleWounds:true,starStation:true,regionOrder:1,colorRichness:.8,cycleScale:1,shineField:true,shadeShape:'disk',shadeTrim:.65,antialias:0,shadowSamples:7,stationSamples:64};
+const frac=x=>x-Math.floor(x),mix=(a,b,t)=>a.map((v,i)=>v*(1-t)+b[i]*t);
+function frame(q,r){return {lat:Math.asin(M.clamp(M.dot(q,r.normal),-1,1)),lon:Math.atan2(M.dot(q,r.up),M.dot(q,r.right))};}
+function region(q,s){let best=10,band=-1,lon=0;routes.forEach((r,i)=>{const f=frame(q,r),v=Math.abs(f.lat)/r.width;if(v<best){best=v;band=i;lon=f.lon;}});
+ const r=routes[band],cell=Math.floor((lon/TAU+.5)*r.sectors),id=((cell+band*3+Math.floor(s.seed))%8+8)%8;
+ const c=palette[id],metal=[.018,.023,.028],t=M.clamp((1.15-best)/.25,0,1)*s.regionOrder;
+ const coloured=mix([.12,.13,.13],c,s.colorRichness);
+ return {color:mix(metal,coloured,t),band,cell,weight:t};
+}
+function woundDistance(q,w){const a=Math.atan2(M.dot(q,w.tangent),M.dot(q,w.axis)),up=M.cross(w.axis,w.tangent),b=Math.asin(M.clamp(M.dot(q,up),-1,1));const jag=1+.13*Math.sin(a*71)+.055*Math.sin(a*193);return Math.hypot(a/w.length,b/(w.width*jag));}
+function missing(q,s){return s.collection&&s.era==='after'&&s.multipleWounds&&wounds.some(w=>woundDistance(q,w)<1);}
+let cachedKey='',cachedPlates=[];
+function plates(s){const key=[s.time,s.cycleScale,s.era,s.routeShades,s.shadeShape,s.shadeTrim].join('|');if(key===cachedKey)return cachedPlates;cachedKey=key;cachedPlates=[];if(!s.routeShades)return cachedPlates;
+ routes.forEach((r,b)=>{for(let j=0;j<r.count;j++){
+  const destroyed=s.era==='after'&&(j===b+1||j===r.count-2);const fragmented=s.era==='after'&&(j===0||j===r.count-1);
+  const a=TAU*(j/r.count+s.time/(r.hours*3600*r.count*s.cycleScale)+r.phase);
+  const n=M.add(M.mul(r.right,Math.cos(a)),M.mul(r.up,Math.sin(a))),center=M.mul(n,r.radius),size=r.radius*Math.tan(Math.PI/(2*r.count));
+  if(!destroyed)cachedPlates.push({center,normal:n,right:r.normal,up:M.cross(n,r.normal),size,damage:fragmented?1:0,id:b*8+j,band:b,shape:s.shadeShape||'disk',trim:s.shadeTrim??.65});
+ }});return cachedPlates;
+}
+function diskContains(x,y,p){if(p.shape==='trimmed'&&Math.abs(x)>p.size*p.trim)return false;if(p.shape==='square'?Math.max(Math.abs(x),Math.abs(y))>p.size:x*x+y*y>p.size*p.size)return false;if(!p.damage)return true;const u=x/p.size,v=y/p.size;
+ return !(u>.12&&v>-.2)&&Math.abs(u+.3+.16*Math.sin(v*9))>.018&&Math.abs(v+.18+.11*Math.sin(u*10))>.012;
+}
+function diskDistance(p,d,pl){
+ if((pl.shape==='cap'||pl.shape==='trimmed')){
+  const r=M.length(pl.center),b=M.dot(p,d),disc=r*r-M.dot(M.cross(p,d),M.cross(p,d));if(disc<0)return Infinity;const root=Math.sqrt(disc);
+  for(const t of [-b-root,-b+root]){if(t<=1e-10)continue;const q=M.mul(M.add(p,M.mul(d,t)),1/r),f=M.dot(q,pl.normal);if(f<=0)continue;if(diskContains(r*M.dot(q,pl.right)/f,r*M.dot(q,pl.up)/f,pl))return t;}return Infinity;
+ }
+ const denom=M.dot(d,pl.normal);if(Math.abs(denom)<1e-12)return Infinity;const t=M.dot(M.sub(pl.center,p),pl.normal)/denom;if(t<=1e-10)return Infinity;const h=M.sub(M.add(p,M.mul(d,t)),pl.center);return diskContains(M.dot(h,pl.right),M.dot(h,pl.up),pl)?t:Infinity;
+}
+function ringDistance(p,d,s){if(!s.starStation)return Infinity;let tmin=Infinity;const star=s.starRadius/s.radius;
+ for(let k=0;k<2;k++){const n=M.norm(k?[.6,.25,1]:[.2,1,.3]),den=M.dot(d,n);if(Math.abs(den)<1e-12)continue;const t=-M.dot(p,n)/den;if(t<=0)continue;const h=M.add(p,M.mul(d,t)),rr=M.length(h),rad=star*(k?5.2:3.2),b=M.basis(n),a=Math.atan2(M.dot(h,b.u),M.dot(h,b.r));if(s.era==='after'&&Math.sin(a*3+k)>.75)continue;
+ if(Math.abs(rr-rad)<star*.14||(rr>star*1.5&&rr<rad&&Math.abs(Math.sin(a*8))<.022))tmin=Math.min(t,tmin);
+ }return tmin;
+}
+function trace(p,d,s){if(!s.collection)return original.trace(p,d,s);const pn=M.mul(p,1/s.radius);let t=M.sphereDistance(pn,d,[0,0,0],s.starRadius/s.radius),kind='Star';
+ for(const pl of plates(s)){const hit=diskDistance(pn,d,pl);if(hit<t){t=hit;kind='Shade';}}
+ const station=ringDistance(pn,d,s);if(station<t){t=station;kind='Stellar station';}
+ const shell=M.shellDistance(p,d,s.radius)/s.radius,q=M.norm(M.add(pn,M.mul(d,shell)));if(shell<t&&!missing(q,s)){t=shell;kind='Inner surface';}
+ if(!Number.isFinite(t))return {kind:'Open space',distance:Infinity,point:null};return {kind,distance:t*s.radius,point:M.add(p,M.mul(d,t*s.radius))};
+}
+function visibility(p,s,samples=32,ignoreId=-1){if(!s.collection)return original.sunVisibility(p,s,samples);const pn=M.mul(p,1/s.radius),b=M.basis(M.mul(p,-1)),rad=Math.tan(Math.asin(s.starRadius/M.length(p)));let lit=0;const pp=plates(s).filter(pl=>pl.id!==ignoreId);
+ for(let i=0;i<samples;i++){const a=i*2.39996323,r=Math.sqrt((i+.5)/samples)*rad,d=M.norm(M.add(b.f,M.add(M.mul(b.r,r*Math.cos(a)),M.mul(b.u,r*Math.sin(a)))));const st=M.sphereDistance(pn,d,[0,0,0],s.starRadius/s.radius);if(pp.every(pl=>diskDistance(pn,d,pl)>=st)&&ringDistance(pn,d,s)>=st)lit++;}return lit/samples;
+}
+let shineKey='',shine=[0,0,0];
+function cavity(s){const key=[s.era,s.seed,s.regionOrder,s.colorRichness,s.multipleWounds,s.routeShades,s.starStation,s.stationSamples,s.cycleScale,s.time,s.luminosity,s.radius,s.starRadius,s.shadeShape,s.shadeTrim].join('|');if(key===shineKey)return shine;shineKey=key;shine=[0,0,0];const N=192;
+ for(let i=0;i<N;i++){const y=1-2*(i+.5)/N,a=i*2.39996323,q=[Math.sqrt(1-y*y)*Math.cos(a),y,Math.sqrt(1-y*y)*Math.sin(a)];if(missing(q,s))continue;let col=region(q,s).color;if(s.era==='after'){const scar=Math.max(...wounds.map(w=>Math.exp(-Math.max(0,woundDistance(q,w)-1)*2)));col=mix(col,[.04,.031,.026],scar*.85*(s.multipleWounds?1:0));}
+ const light=visibility(M.mul(q,s.radius),s,s.starStation?(s.stationSamples||64):1)*s.luminosity*(M.AU/s.radius)**2;shine=M.add(shine,M.mul(col,light/N));}return shine;
+}
+const original={defaultState:M.defaultState,validate:M.validate,trace:M.trace,sunVisibility:M.sunVisibility,inBreach:M.inBreach};
+M.defaultState=()=>({...original.defaultState(),...defaults});
+M.validate=input=>{const s=original.validate(input);Object.assign(s,defaults);for(const k of ['collection','routeShades','routeGuides','multipleWounds','starStation','shineField'])if(k in input){if(typeof input[k]!=='boolean')throw Error('Invalid '+k);s[k]=input[k];}
+ if('era' in input){if(!['before','after'].includes(input.era))throw Error('Invalid era');s.era=input.era;}
+ if('shadeShape' in input){if(!['disk','square','cap','trimmed'].includes(input.shadeShape))throw Error('Invalid shade shape');s.shadeShape=input.shadeShape;}
+ for(const [k,lo,hi] of [['shadeTrim',.25,1],['regionOrder',0,1],['colorRichness',0,1],['cycleScale',.25,4]])if(k in input){if(!Number.isFinite(input[k])||input[k]<lo||input[k]>hi)throw Error('Invalid '+k);s[k]=input[k];}for(const [k,allowed] of [['antialias',[0,2,3]],['shadowSamples',[7,19]],['stationSamples',[19,64,128,256]]])if(k in input){if(!allowed.includes(input[k]))throw Error('Invalid '+k);s[k]=input[k];}return s;};
+M.trace=trace;M.sunVisibility=visibility;M.inBreach=(q,s)=>s.collection?missing(M.norm(q),s):original.inBreach(q,s);
+root.SphereCollection={routes,wounds,plates,missing,woundDistance,diskDistance,ringDistance,region,cavity,defaults,visibility};
+})(typeof window==='undefined'?globalThis:window);

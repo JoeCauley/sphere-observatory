@@ -1,0 +1,14 @@
+{
+  "name": "sphere-observatory",
+  "version": "0.8.0",
+  "private": true,
+  "description": "Local WebGL Dyson shell visualization and measurement instrument",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "node serve.cjs",
+    "test": "node tests/geometry.cjs && node tests/survey.cjs && node tests/collection.cjs && node tests/shades.cjs && node tests/station-convergence.cjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

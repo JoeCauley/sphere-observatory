@@ -1,0 +1,10 @@
+const assert=require('node:assert/strict'),M=require('../math.js'),S=require('../survey.js');
+const box=[[-1,-1],[1,-1],[1,1],[-1,1]];
+const state=M.defaultState();state.breachEnabled=false;state.shadeEnabled=false;state.starRadius=0;state.position=[0,0,0];state.radius=1000;state.projection='panorama';
+let a=S.integrate(state,2,box,256);assert.ok(Math.abs(a.area/(4*Math.PI*1e6)-1)<.00002);console.log('PASS Complete panorama integrates to 4πR²');
+state.projection='perspective';state.fov=90;a=S.integrate(state,1,box,256);assert.ok(Math.abs(a.area/(2*Math.PI/3*1e6)-1)<.00002);console.log('PASS 90-degree square at centre covers one-sixth of sphere');
+const wide=M.defaultState();wide.shadeEnabled=false;wide.breachEnabled=false;wide.fov=140;a=S.integrate(wide,16/9,box,256);assert.ok(Math.abs(a.area/(4*Math.PI*wide.radius**2)-.10786889318974552)<.000002);console.log('PASS Half-radius wide view reproduces independent 10.7869% area calculation');
+const hole=M.defaultState();hole.position=M.mul(M.axis(hole.breachLat,hole.breachLon),hole.radius*.5);hole.forward=M.norm(hole.position);hole.fov=10;hole.shadeEnabled=false;a=S.measure(hole,1,box);assert.equal(a.area,0);assert.ok(a.gross>0);console.log('PASS Opening excluded while gross footprint is retained');
+const low=M.defaultState();low.shadeEnabled=false;low.breachEnabled=false;low.position=[0,0,low.radius-1];low.forward=[0,0,1];low.fov=90;a=S.integrate(low,1,box,256);assert.ok(Math.abs(a.area-4)<.0001);console.log('PASS At one km, the local 90-degree footprint is approximately 4 km²');
+const thin=S.measure(low,1,[[0,-1],[.00001,-1],[.00001,1],[0,1]]);assert.ok(thin.samples<=32768);console.log('PASS Thin selection has bounded work');
+assert.equal(S.inside(0,0,box),true);assert.equal(S.inside(2,0,box),false);console.log('7 area-measurement checks passed.');

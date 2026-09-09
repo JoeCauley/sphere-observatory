@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="dark"><title>The Sphere · Observatory</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header class="topbar"><div class="brand"><span class="orb" aria-hidden="true"></span><div>THE SPHERE <span class="brand-sub">OBSERVATORY</span></div></div><div class="version"><span class="status-dot"></span> LOCAL INSTRUMENT <span class="divider">/</span> v0.8</div><button id="helpButton" class="quiet">Guide & assumptions</button></header>
+<main>
+ <aside id="controls">
+  <div class="intro"><span class="eyebrow">A WORLD AROUND A STAR</span><h1>Find your perspective.</h1><p>A measurable place. An impossible scale.</p></div>
+  <div class="tabs" role="tablist" aria-label="Control sections"><button class="active" role="tab" aria-selected="true" data-tab="scene">World</button><button role="tab" aria-selected="false" data-tab="camera">Camera</button><button role="tab" aria-selected="false" data-tab="lighting">Light</button><button role="tab" aria-selected="false" data-tab="photo">Capture</button></div>
+  <section id="scene" class="tab-panel">
+   <label class="field">Sphere radius <span>million km</span><input id="radius" type="number" value="149.5978707" min="10" max="1000" step="1"></label>
+   <div class="two"><label class="field">Star radius <span>km</span><input id="starRadius" type="number" min="10000" max="2000000" step="1000"></label><label class="field">Luminosity <span>× Sun</span><input id="luminosity" type="number" min="0.001" max="100" step="0.1"></label></div>
+   <p id="starScale" class="micro"></p>
+   <details open><summary>Opening to space <label class="toggle" title="Enable breach"><input id="breachEnabled" type="checkbox" checked aria-label="Enable breach"><span></span></label></summary>
+    <label class="field">Opening diameter <span>million km, along shell</span><input id="breachDiameter" type="number" min="0.001" max="150" step="1"></label>
+    <div class="two"><label class="field">Latitude <span>°</span><input id="breachLat" type="number" min="-90" max="90" step="1"></label><label class="field">Longitude <span>°</span><input id="breachLon" type="number" min="-180" max="180" step="1"></label></div>
+    <label class="field">Fractured edge <output id="breachRoughnessValue"></output><input id="breachRoughness" type="range" min="0" max="1" step="0.01"></label>
+    <p class="micro">Diameter is nominal when the edge is fractured. The area tool measures the actual remaining surface.</p>
+   </details>
+   <details><summary>Moving sunshade <label class="toggle" title="Enable shade"><input id="shadeEnabled" type="checkbox" checked aria-label="Enable shade"><span></span></label></summary>
+    <div class="two"><label class="field">Altitude <span>km</span><input id="shadeAltitude" type="number" min="1000" max="10000000" step="1000"></label><label class="field">Diameter <span>km</span><input id="shadeDiameter" type="number" min="100" max="20000000" step="1000"></label></div>
+    <label class="field">Starting offset <output id="shadeOffsetValue"></output><input id="shadeOffset" type="range" min="-3" max="3" step="0.01"></label>
+    <label class="field">Edge damage <output id="shadeDamageValue"></output><input id="shadeDamage" type="range" min="0" max="1" step="0.01"></label>
+    <label class="field">Travel speed <span>km/s</span><input id="shadeSpeed" type="number" min="-100" max="100" step="0.1"></label>
+    <p class="micro">A straight, actively controlled pass across the +Z region. No orbital dynamics assumed.</p>
+   </details>
+   <details><summary>Light & surface</summary>
+    <label class="field">Surface interpretation<select id="surfaceStyle"><option value="atlas">Regional atlas · graded detail</option><option value="legacy">Original v0.1 material</option></select></label>
+    <label class="field">Estimated shellshine <output id="shellshineValue"></output><input id="shellshine" type="range" min="0" max="0.5" step="0.005"></label>
+    <label class="field">Approximate local atmosphere <output id="atmosphereValue"></output><input id="atmosphere" type="range" min="0" max="1" step="0.05"></label>
+    <label class="field">Surface pattern seed<input id="seed" type="number" min="0" max="1000" step="1"></label>
+    <label class="check"><input id="starfield" type="checkbox"> Illustrative external stars</label>
+    <p class="micro">Atmosphere is a simple local scattering approximation. Collection ShellShine uses sampled region colours and direct light. Its strength is adjustable; global multiple scattering remains unsolved.</p>
+   </details>
+  </section>
+  <section id="camera" class="tab-panel" hidden>
+   <div class="two"><label class="field">Latitude <span>°</span><input id="cameraLat" type="number" min="-90" max="90" step="0.01"></label><label class="field">Longitude <span>°</span><input id="cameraLon" type="number" min="-180" max="180" step="0.01"></label></div>
+   <label class="field">Altitude above inner surface <span>km</span><input id="cameraAltitude" type="number" min="1" step="1000"></label>
+   <button id="moveCamera" class="secondary full">Move to coordinates</button>
+   <div class="two buttons"><button id="faceSurface" class="secondary">Face surface</button><button id="faceStar" class="secondary">Face star</button></div>
+   <details open><summary>Rotate the camera</summary>
+    <label class="field">Turn per click<select id="rotationStep"><option value="1">1° · precise</option><option value="5" selected>5° · gentle</option><option value="15">15°</option><option value="90">90° · quarter turn</option></select></label>
+    <div class="two buttons"><button class="secondary" data-turn="yaw" data-sign="1">Look left</button><button class="secondary" data-turn="yaw" data-sign="-1">Look right</button></div>
+    <div class="two buttons"><button class="secondary" data-turn="pitch" data-sign="1">Look up</button><button class="secondary" data-turn="pitch" data-sign="-1">Look down</button></div>
+    <div class="two buttons"><button class="secondary" data-turn="roll" data-sign="-1">Roll left ↶</button><button class="secondary" data-turn="roll" data-sign="1">Roll right ↷</button></div>
+    <button id="levelCamera" class="secondary full">Level to nearby surface</button>
+    <p class="micro">Rotate in place, including tilting the horizon. Your location stays fixed. Levelling uses the local inner surface; straight up or down has no unique horizon.</p>
+   </details>
+   <label class="field">Horizontal field of view <output id="fovValue"></output><input id="fov" type="range" min="10" max="150" step="1"></label>
+   <label class="field">Flight speed <span>km/s</span><select id="speed"><option value="10">10 · Fine adjustment</option><option value="1000">1,000 · Above the surface</option><option value="100000">100,000 · Regional travel</option><option value="1000000">1,000,000 · Across the cavity</option><option value="10000000">10,000,000 · Survey</option></select></label>
+   <label class="field">Projection<select id="projection"><option value="perspective">Perspective · photographic</option><option value="panorama">360° × 180° · unwrapped</option></select></label>
+   <label class="field">Display<select id="viewMode"><option value="material">Material & illumination</option><option value="distance">Distance colours · diagnostic</option></select></label>
+   <label class="field">Preview frame limit<select id="previewFps"><option value="15">15 fps · gentle</option><option value="30" selected>30 fps · balanced</option><option value="60">60 fps · smooth</option></select></label><p class="micro">Live previews use at most 2.07 million pixels. Still views stop rendering; hidden tabs pause. Photographs and video keep their export resolution. This limits workload, not hardware watts.</p>
+   <label class="field">Preview detail<select id="quality"><option value="0.5">Light · lower GPU use</option><option value="0.8">Balanced</option><option value="1">High detail · within preview budget</option></select></label>
+   <label class="check"><input id="grid" type="checkbox"> Show 15° shell reference grid</label>
+   <button id="inspectBelow" class="secondary full">Inspect the surface below</button>
+   <p class="micro">Drag to look. W A S D to fly, Q / E down / up. Shift moves 5× faster. Scroll adjusts speed. Looking up sees the distant opposite surface; inspect below to see nearby detail.</p>
+  </section>
+  <section id="lighting" class="tab-panel" hidden><h3>Light & image quality</h3><p class="micro">Changes stay with you as you move between viewpoints.</p><p id="lightPipeline" class="micro"></p></section>
+  <section id="photo" class="tab-panel" hidden>
+   <label class="field">Exposure compensation <output id="exposureValue"></output><input id="exposure" type="range" min="-10" max="12" step="0.1"></label>
+   <p class="micro">Fixed exposure. No automatic brightening of night. Exposure is relative to this renderer, not a calibrated camera EV.</p>
+   <label class="field">Export dimensions<select id="exportSize"><option value="3840">4K · 3840 × 2160</option><option value="1920">HD · 1920 × 1080</option><option value="7680">8K · 7680 × 4320</option></select></label>
+   <button id="capture" class="primary full">Take photograph <span>↗</span></button>
+   <p class="micro">One ZIP: clean PNG + complete scene settings. Panoramas export at 2:1. No AI image generation or cloud processing.</p>
+   <div class="rule"></div>
+   <label class="field">Motion study<select id="clipShot"><option value="dawn">First light · 12 seconds</option><option value="shade">Under the shade · 12 seconds</option><option value="current">This viewpoint · 12 seconds</option></select></label>
+   <button id="recordClip" class="secondary full">Record 4K SDR clip</button>
+   <button id="cancelClip" class="quiet full" hidden>Cancel recording</button>
+   <p class="micro">Real-time local capture, 24 fps target. Keep the tab visible. Uses your chosen surface style. The clip and its shot settings download together; no generated frames.</p>
+   <div class="rule"></div>
+   <label class="field">Viewpoint name<input id="bookmarkName" type="text" maxlength="70" placeholder="e.g. Pale Reach · first light"></label>
+   <button id="saveBookmark" class="secondary full">Save this viewpoint</button>
+   <div id="bookmarks" class="bookmarks"></div>
+   <div class="two buttons"><button id="saveScene" class="secondary">Export scene</button><button id="loadScene" class="secondary">Import scene</button></div>
+   <input type="file" id="sceneFile" accept=".json,application/json" hidden>
+  </section>
+  <div class="panel-foot"><span>551 million Earth surfaces</span><span id="wholeArea">1 AU radius</span></div>
+ </aside>
+ <div id="viewport" tabindex="0" aria-label="Interactive Sphere view. Drag to look; W A S D to fly.">
+  <canvas id="view"></canvas>
+  <div class="view-top"><div><span class="eyebrow">LIVE VIEW</span><h2 id="viewTitle">The interior</h2><div id="viewContext" class="view-context"></div></div><div class="view-actions"><button id="measureButton" class="measure-button" title="Measure visible surface area">Measure area</button><button id="togglePanel" title="Hide controls">◧</button><button id="fullscreen" title="Full screen">⛶</button></div></div>
+  <svg id="surveyOverlay" aria-hidden="true"><path id="surveyPath"></path></svg>
+  <div id="surveyControls" hidden><select id="surveyShape" aria-label="Area selection shape"><option value="box">Drag a rectangle</option><option value="lasso">Trace a freehand outline</option></select><button id="clearSurvey">Clear</button><button id="exportSurvey" disabled>Save measurement</button><p id="surveyResult">Drag over the surface to measure. Shades, star and open space are excluded.</p></div>
+  <div id="surfaceLegend"><span class="legend-item habitat">Habitat archipelagos</span><span class="legend-item intact">Intact structure</span><span class="legend-item fused">Fused country</span><span class="legend-item scoured">Scoured structure</span></div>
+  <div class="reticle" aria-hidden="true"></div>
+  <div class="target-readout"><span id="targetName">Inner surface</span><strong id="targetDistance">—</strong></div>
+  <div class="view-bottom"><div class="telemetry"><div><span>ALTITUDE</span><strong id="altitudeReadout">—</strong></div><div><span>STAR DIAMETER</span><strong id="starReadout">—</strong></div><div><span>DIRECT STAR VISIBLE</span><strong id="sunReadout">—</strong></div><div><span>FLIGHT SPEED</span><strong id="speedReadout">—</strong></div></div>
+   <div class="journeys" aria-label="Camera destinations; world settings are preserved"><button class="selected" data-preset="interior"><small>01</small> The interior</button><button data-preset="breach"><small>02</small> The breach</button><button data-preset="shade"><small>03</small> Under the shade</button><button data-preset="dawn"><small>04</small> First light</button></div>
+   <div class="view-footer"><span><b>ANALYTIC GEOMETRY</b> · APPROXIMATE LIGHT TRANSPORT</span><span id="performance">Starting renderer…</span></div>
+  </div>
+  <div id="error" hidden role="alert"></div>
+ </div>
+</main>
+<footer class="timeline"><button id="play" class="play" title="Run shade motion">▶</button><button id="resetTime" class="quiet" title="Reset simulation time">↺</button><span class="time-label">SHADE PASS</span><strong id="timeReadout">00:00:00</strong><input id="timeSlider" type="range" min="-36000" max="36000" step="1" value="0" aria-label="Simulation time in seconds"><label>Time rate <select id="timeRate"><option value="1">1×</option><option value="60" selected>60×</option><option value="600">600×</option><option value="3600">3600×</option></select></label><span id="stateIndicator">PAUSED</span></footer>
+<div id="toast" role="status"></div>
+<dialog id="guide"><button id="closeGuide" class="close" aria-label="Close guide">×</button><span class="eyebrow">THE SPHERE · OBSERVATORY / 0.8</span><h2>A place to test what the sky can be.</h2><p>Fly through a mathematical Dyson shell. Set a viewpoint, move the shade, and save a photograph whose conditions you can reproduce.</p><h3>Start here</h3><p>Choose a camera destination; world, time, exposure, lens and quality settings are preserved. Camera → Complete scene studies explicitly loads staged conditions. Drag the image to look around. Use W A S D to fly and Q / E to move down / up; hold Shift for faster travel. The mouse wheel changes speed. Use the Camera panel to jump to exact coordinates. The centre marker reports the first object in that direction.</p><h3>Find the nearby ground</h3><p>Altitude measures the ground below you, not the world in your view. Camera → Inspect surface below points at your local surface. The live view reports the approximate footprint of a pixel near its centre. Regional atlas adds filtered, world-anchored detail as it becomes visible; Original v0.1 material preserves the first visual treatment.</p><h3>Measure an area</h3><p>Choose Measure area, then drag a rectangle or trace a freehand outline. The result integrates the visible curved shell and excludes openings, shades and the star. One Earth surface includes all land and ocean (about 510 million km²). Sampling difference compares two resolutions; it is not a guaranteed error bound. Save measurement keeps your outline, camera and result.</p><h3>Make a motion study</h3><p>Capture → Record 4K SDR clip captures a 12-second local video and its settings. First light stages an accelerated eclipse-edge transition; Under the shade adds a slow look and moving plate. Your chosen surface style is retained. Keep this tab visible while recording. Frame timing depends on your browser and GPU.</p><h3>What is measured</h3><p>The shell and stellar disk are analytic spheres. The breach is a circular cap with an optional fractured boundary; diameter is nominal when fractured. The shade is a thin disk with an optional notch, moving along a straight, actively controlled path. Camera positions use double precision; rendering uses normalized, camera-relative calculations. The star's apparent size and visible fraction are measured independently on the CPU.</p><h3>What is approximate</h3><p>Surface patterns are illustrative reflectance maps, not generated habitable terrain. In Collection study, ShellShine estimates a coloured first bounce from 192 sampled surface regions. It is not a converged multiple-bounce solution. Original studies retain uniform fill. The optional atmosphere is a simple local scattering approximation, not a climate or radiative-transfer model. External stars are a deterministic illustrative field, not a catalogue. Photograph exposure and tone mapping are artistic, not calibrated photometry. Shadows near a shade edge use finite sampling.</p><h3>Physical boundaries</h3><p>Artificial gravity, shell support, atmospheric containment, and shade propulsion are assumed. Flight is a free camera, not orbital mechanics. This version keeps the camera inside the shell and outside the star; a breach provides a view outward. Thin-shell and no-refraction approximations apply. Low-altitude material views remain a smooth mathematical surface; surface walking is outside scope.</p><h3>Your data stays here</h3><p>No network requests, telemetry, subscriptions, or runtime AI. Bookmarks live in this browser. Export a scene or photograph ZIP to keep a portable copy. Imported files are validated. All source code ships with this app.</p><p class="micro">Geometry references: <a href="https://www.pbr-book.org/4ed/Shapes/Spheres" target="_blank" rel="noopener">PBRT · spheres</a> · <a href="https://science.nasa.gov/eclipses/geometry/" target="_blank" rel="noopener">NASA · eclipses</a></p></dialog>
+<script src="math.js"></script><script src="collection.js"></script><script src="survey.js"></script><script src="shaders.js"></script><script src="collection-shader.js"></script><script src="renderer.js"></script><script src="app.js"></script><script src="enhancements.js"></script><script src="collection-ui.js"></script>
+</body></html>

@@ -1,0 +1,5 @@
+const M=require('../math.js');require('../collection.js');const C=globalThis.SphereCollection,assert=require('node:assert/strict');
+const sums={19:0,64:0,128:0,256:0},max={19:0,64:0,128:0,256:0};let probes=0,partial=0;
+for(const era of ['before','after']){const s={...M.defaultState(),collection:true,era,routeShades:false,starStation:true};for(let i=0;i<160;i++){const y=1-2*(i+.5)/160,a=i*2.39996323,p=M.mul([Math.sqrt(1-y*y)*Math.cos(a),y,Math.sqrt(1-y*y)*Math.sin(a)],s.radius),ref=C.visibility(p,s,8192);if(ref<1&&ref>0)partial++;for(const n of [19,64,128,256]){const err=Math.abs(C.visibility(p,s,n)-ref);sums[n]+=err;max[n]=Math.max(max[n],err);}probes++;}}
+for(const n of [19,64,128,256])sums[n]/=probes;console.log({probes,partial,meanAbsoluteError:sums,maxError:max});assert(sums[64]<sums[19]);assert(sums[128]<sums[64]);assert(sums[256]<sums[128]);
+for(const n of [19,64,128,256])assert.equal(M.validate({...M.defaultState(),stationSamples:n}).stationSamples,n);assert.throws(()=>M.validate({...M.defaultState(),stationSamples:63}));

@@ -1,0 +1,87 @@
+{
+  "format": "sphere-observatory",
+  "version": 1,
+  "created": "2026-09-09T00:44:27.795Z",
+  "state": {
+    "version": 1,
+    "radius": 149597870.7,
+    "starRadius": 695700,
+    "luminosity": 1,
+    "position": [
+      11259402.616665607,
+      -20095340.95802367,
+      108784601.56050208
+    ],
+    "forward": [
+      0.6284077673542031,
+      -0.7776099237764396,
+      0.020651498088652742
+    ],
+    "up": [
+      -0.0407742137695713,
+      -0.006415728320079856,
+      0.9991477878280051
+    ],
+    "fov": 100,
+    "breachEnabled": true,
+    "breachLat": 12,
+    "breachLon": -12,
+    "breachDiameter": 35000000,
+    "breachRoughness": 0,
+    "surfaceStyle": "atlas",
+    "shadeEnabled": true,
+    "shadeAltitude": 100000,
+    "shadeDiameter": 100000,
+    "shadeOffset": 0,
+    "shadeSpeed": 2,
+    "shadeDamage": 0,
+    "time": 28800,
+    "playing": false,
+    "timeRate": 60,
+    "exposure": -0.15,
+    "shellshine": 0.22,
+    "atmosphere": 0,
+    "grid": false,
+    "viewMode": "material",
+    "projection": "perspective",
+    "speed": 100000,
+    "quality": 1,
+    "seed": 23,
+    "starfield": true,
+    "collection": true,
+    "era": "before",
+    "routeShades": true,
+    "routeGuides": false,
+    "multipleWounds": true,
+    "starStation": true,
+    "regionOrder": 1,
+    "colorRichness": 0.8,
+    "cycleScale": 1,
+    "shineField": true,
+    "shadeShape": "trimmed",
+    "shadeTrim": 0.65,
+    "antialias": 3,
+    "shadowSamples": 7
+  },
+  "application": "The Sphere Observatory 0.7",
+  "units": "kilometres, seconds, degrees; luminosity in solar units",
+  "assumptions": {
+    "collection": "Optional Collection study v1: three prescribed shade routes, 18 intact/12 surviving shades with selectable planar disk, square, curved spherical-cap or trimmed-cap geometry, six analytic elliptical wounds, two stellar-service rings. Layout is provisional. ShellShine uses 192 equal-area samples of macro albedo and direct light, one diffuse bounce with adjustable strength. Direct shade-to-shade occlusion uses a selectable seven or nineteen shared stellar samples with receiver self-exclusion. Trimmed caps have planar side cuts parallel to travel; the width is adjustable. On supported GPUs, linear half-float radiance is filtered before exposure and SDR tone mapping. Unsupported GPUs retain display-colour supersampling. Construction texture pitches are fixed in kilometres and filtered with footprint. Surface detail, haze, shade penumbrae and damage are approximate. No mirror delivery, concealment, ablation, orbital evolution or light travel time is simulated.",
+    "geometry": "Analytic inner sphere and star; spherical-cap breach with optional defined fractured edge; thin planar shade with optional circular notch. CPU double precision; normalized GPU highp float with stable near-shell root and camera-relative shade coordinates.",
+    "lighting": "Direct stellar illumination with sampled shade penumbra. Original studies use uniform fill; Collection study uses a sampled macro-albedo first-bounce estimate with user strength. Approximate local atmospheric scattering only. No solved global multiple scattering or calibrated photometry.",
+    "surface": "Deterministic regional atlas with filtered, world-anchored detail bands (or legacy albedo) on a smooth shell; no local relief, populated worlds or detailed terrain.",
+    "dynamics": "Free camera; prescribed straight shade pass. Artificial gravity, support, containment and propulsion assumed. No orbit, climate or material-strength model.",
+    "stars": "External stars are illustrative and fixed, not an astronomical catalogue."
+  },
+  "image": {
+    "render": {
+      "width": 1920,
+      "height": 1080,
+      "internalWidth": 1920,
+      "internalHeight": 1080,
+      "antialias": "edge filter",
+      "lightPipeline": "linear-half-float",
+      "exportFrame": false
+    }
+  }
+}
