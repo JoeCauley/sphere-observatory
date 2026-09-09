@@ -10,7 +10,7 @@ Current version: **0.8**. This is a working visualization prototype, not a finis
 
 ## Run locally
 
-Download this repository as a ZIP and extract it. Open **index.html** in desktop Chrome or Edge. On Windows, **Launch Observatory.cmd** opens it for you. Hardware acceleration and WebGL 2 are required.
+Download this repository as a ZIP and extract it. On Windows, double-click **Launch Observatory.cmd**. It starts one managed localhost server and opens the Observatory in Chrome or Edge. When finished, double-click **Stop Observatory.cmd**; the stop action is safe to repeat. Hardware acceleration and WebGL 2 are required.
 
 Alternatively, with Node.js 20 or later:
 
@@ -19,6 +19,14 @@ npm start
 ```
 
 Open **http://127.0.0.1:8766/**. If the port is occupied, use `node serve.cjs 8767`. Stop the server with Ctrl+C. It listens only on localhost.
+
+For a durable command-line workflow, use `npm run start:managed` and stop it with `npm run stop`. The managed stop command cleans the recorded PID and any orphaned `serve.cjs` process whose script path is this repository, without matching unrelated Node services. If a terminal or browser is closed unexpectedly, run the stop command before launching again.
+
+Opening `index.html` directly still works for a quick file-mode preview, but it does not start a server and is not the recommended performance-test workflow.
+
+### Performance prerequisite
+
+The browser must use hardware WebGL. In Chrome, open **Settings → System**, turn on **Use graphics acceleration when available**, then fully restart Chrome before launching Observatory. A quick diagnostic is `chrome://gpu`: WebGL should use a hardware ANGLE backend; if it reports `d3d11-warp-webgl`, rendering has fallen back to the CPU and performance will be poor. This setting is browser/machine state rather than application state, so it cannot be carried by GitHub; keep this prerequisite with the run instructions.
 
 **No build step or runtime package installation.** No account, API key, cloud service, telemetry or runtime image generation. Testing has primarily used Windows, Edge and an RTX 5080; performance on other systems may differ substantially.
 

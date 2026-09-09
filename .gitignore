@@ -4,3 +4,4 @@ tests/artifacts/
 .DS_Store
 .env
 .env.*
+.observatory-server.pid

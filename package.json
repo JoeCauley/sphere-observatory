@@ -6,6 +6,8 @@
   "license": "UNLICENSED",
   "scripts": {
     "start": "node serve.cjs",
+    "start:managed": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/start-observatory.ps1",
+    "stop": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/stop-observatory.ps1",
     "test": "node tests/geometry.cjs && node tests/survey.cjs && node tests/collection.cjs && node tests/shades.cjs && node tests/station-convergence.cjs"
   },
   "engines": {
