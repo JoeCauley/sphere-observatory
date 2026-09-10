@@ -1,0 +1,23 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Observatory renderer benchmark</title>
+<style>body{background:#111b23;color:#d9e5df;font:14px monospace}canvas{width:960px;max-width:100%}button{padding:12px}pre{white-space:pre-wrap}</style>
+<h1>Observatory renderer benchmark</h1><p>Fixed-size warm frames with GPU timer queries. This measures frame cost, not presentation cadence. Normal rendering never waits for GPU completion.</p>
+<label>Output resolution <select id="resolution"><option value="1280">1280 × 720 (baseline)</option><option value="3840">3840 × 2160</option></select></label><button id="run">Run benchmark</button><pre id="results">Ready</pre><canvas id="view"></canvas>
+<script src="../math.js"></script><script src="../collection.js"></script><script src="../biomes.js"></script><script src="../hero-textures.js"></script><script src="../shaders.js"></script><script src="../collection-shader.js"></script><script src="../biome-shader.js"></script><script src="../preview-light.js"></script><script src="../renderer.js"></script>
+<script>
+const renderer=new SphereRenderer(document.querySelector('canvas'));
+document.querySelector('#run').onclick=async()=>{
+ const width=Number(document.querySelector('#resolution').value),height=width*9/16;const output={device:renderer.device,cases:[]};document.querySelector('#run').disabled=true;
+ for(const name of ['vista','surface','winter','station']){
+  const M=SphereMath,s={...M.defaultState(),collection:true,shadeShape:'trimmed',antialias:3,stationSamples:64,timeRate:600,atmosphere:1,playing:true};
+  s.position=(name==='surface'||name==='winter')?[0,0,s.radius-1]:name==='station'?M.mul(M.norm([.7,.8,1]),s.starRadius*20):M.mul(M.axis(28,-60),s.radius*.08);
+  s.forward=(name==='surface'||name==='winter')?M.norm([0,.25,1]):name==='station'?M.mul(M.norm(s.position),-1):M.norm([.25,-.15,1]);s.up=M.basis(s.forward).u;
+  s.biome=name==='surface'?0:name==='winter'?3:-1;
+  const cpu=[],total=[];
+  await renderer.prepare(s);await new Promise(resolve=>setTimeout(resolve,700));
+  for(let i=0;i<40;i++){s.time=3600+i*10;await new Promise(resolve=>setTimeout(resolve,16));const t=performance.now();renderer.draw(s,width,height);const submitted=performance.now();renderer.gl.finish();if(i>9){cpu.push(submitted-t);total.push(performance.now()-t);}}
+  const stats=a=>{a.sort((x,y)=>x-y);return {median:+a[Math.floor(a.length/2)].toFixed(2),p95:+a[Math.floor(a.length*.95)].toFixed(2)}};
+  output.cases.push({name,cpuMs:stats(cpu),flushRoundTripMs:stats(total),error:renderer.error(),render:renderer.renderInfo});document.querySelector('#results').textContent=JSON.stringify(output,null,2);
+ }
+ document.querySelector('#run').disabled=false;
+};
+</script></html>

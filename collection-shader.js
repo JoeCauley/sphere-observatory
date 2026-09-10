@@ -30,6 +30,7 @@ float collectionLightExcept(vec3 q,int receiver){
   vec3 to=uDisks[i].xyz-q;float bound=uDisks[i].w*(uShadeShape==1?1.415:1.01),along=dot(to,sd);
   if(along+bound<0.||along-bound>dist||length(cross(to,sd))>bound+uStar*1.5)continue;candidates|=1<<i;
  }
+ if(candidates==0&&uStation==0)return 1.;
  int count=uStation==1?max(uShadowSamples,uStationSamples):uShadowSamples;float visible=0.;
  for(int k=0;k<256;k++){if(k>=count)break;float a=float(k)*2.39996323,r=sqrt((float(k)+.5)/float(count))*stellarSlope;vec3 d=normalize(sd+(right*cos(a)+up*sin(a))*r);
   float starB=dot(q,d),starDisc=uStar*uStar-dot(cross(q,d),cross(q,d)),starT=-starB-sqrt(max(0.,starDisc));bool blocked=false;
@@ -71,7 +72,7 @@ vec3 collectionMaterial(vec3 q,vec3 delta,float footprint){
  float contour=abs(sin(best*12.+n*2.));col*=1.-(1.-weight)*smoothstep(.96,.995,contour)*.08;
  // Fine detail uses the existing stable anchor system, never a new world seed.
  const float scales[7]=float[7](100000.,10000.,1000.,100.,10.,1.,.1);
- for(int k=0;k<7;k++){float size=scales[k],fade=1.-smoothstep(.045,.22,footprint/size);if(fade>.002){vec3 p=uAnchor[k+1]+delta/size;float grain=tnoise(p+vec3(uSeed*.17))+tnoise(p*2.)*.35;col*=mix(1.,.65+.65*grain,fade*.5);}}
+ for(int k=0;k<2;k++){float size=scales[k],fade=1.-smoothstep(.045,.22,footprint/size);if(fade>.002){vec3 p=uAnchor[k+1]+delta/size;float grain=tnoise(p+vec3(uSeed*.17))+tnoise(p*2.)*.35;col*=mix(1.,.65+.65*grain,fade*.5);}}
  float clouds=smoothstep(.64,.78,cloud)*weight*.10;col=mix(col,vec3(.45,.48,.44),clouds);
  if(uAfter==1&&uManyWounds==1){float w=woundField(q),scar=exp(-max(0.,w-1.)*2.);col=mix(col,vec3(.04,.031,.026)*(.6+n),scar*.85);float rim=exp(-abs(w-1.)*25.);col=mix(col,vec3(.24,.14,.065),rim*.7);}
  if(uGuide==1){for(int i=0;i<3;i++){float lat=abs(asin(clamp(dot(q,uBelts[i].xyz),-1.,1.)));float width=max(fwidth(lat)*1.2,.0003);float line=1.-smoothstep(width,width*2.,abs(lat-uBelts[i].w));col=mix(col,collectionPalette(float(i)*2.+1.),line*.75);}}
@@ -93,13 +94,13 @@ src=src.replace('else if(kind==1){',`else if(kind==4){vec3 h=camera()+d*obj;floa
  if(uMode==3){fragColor=vec4(vec3(sunlight),1.);return;}
  col=shadeMaterial(shadeCoordinates(hit,diskIndex))*(fill+cosine*sunlight*uLuminosity/max(.001,dot(hit,hit)));}
  else if(kind==1){`);
-src=src.replace('float vis=lightFraction(uN);vec3 scatter=vec3(.10,.20,.38)*(vis*uLuminosity+uShine*1.5);','float vis=uCollection==1?collectionLight(uN):lightFraction(uN);vec3 scatter=vec3(.10,.20,.38)*(vis*uLuminosity+fill*1.5);');
+src=src.replace('vec3 scatter=vec3(.10,.20,.38)*(vis*uLuminosity+uShine*1.5);','vec3 scatter=vec3(.10,.20,.38)*(vis*uLuminosity+fill*1.5);');
 src=src.replace('float(kind)/3.','float(kind)/(uCollection==1?4.:3.)');
 src=src.replace('if(uMode==2)', 'if(uMode==5){fragColor=vec4(vec3(kind==0?collectionLight(normalize(camera()+d*obj)):0.),1.);return;}if(uMode==4){fragColor=vec4(vec3(kind==1?1.:0.),1.);return;}if(uMode==2)');
 SphereShaders.fragment=src;
-SphereCollection.upload=function(gl,uniforms,s){const C=SphereCollection,f=(k,x)=>gl.uniform1f(uniforms[k],x),i=(k,x)=>gl.uniform1i(uniforms[k],+x),v=(k,x)=>gl.uniform3fv(uniforms[k],x);
+SphereCollection.upload=function(gl,uniforms,s,indirect){const C=SphereCollection,f=(k,x)=>gl.uniform1f(uniforms[k],x),i=(k,x)=>gl.uniform1i(uniforms[k],+x),v=(k,x)=>gl.uniform3fv(uniforms[k],x);
  f('uShadeTrim',s.shadeTrim??.65);i('uShadowSamples',s.shadowSamples||7);i('uStationSamples',s.stationSamples||64);i('uShadeShape',s.shadeShape==='trimmed'?3:s.shadeShape==='cap'?2:s.shadeShape==='square'?1:0);i('uCollection',s.collection);i('uAfter',s.era==='after');i('uManyWounds',s.multipleWounds);i('uRoutes',s.routeShades);i('uStation',s.starStation);i('uShineField',s.shineField);i('uGuide',s.routeGuides);f('uOrder',s.regionOrder);f('uRichness',s.colorRichness);
  if(!s.collection)return;const pp=C.plates(s),pack=(name,values,size)=>{while(values.length<size)values.push(0);gl.uniform4fv(uniforms[name+'[0]'],values);};i('uPlateCount',pp.length);pack('uDisks',pp.flatMap(p=>[...p.center,p.size]),72);pack('uDiskNormals',pp.flatMap(p=>[...p.normal,p.damage]),72);pack('uDiskRights',pp.flatMap(p=>[...p.right,p.id]),72);
- pack('uWounds',C.wounds.flatMap(w=>[...w.axis,w.width]),24);pack('uWoundTangents',C.wounds.flatMap(w=>[...w.tangent,w.length]),24);pack('uBelts',C.routes.flatMap(r=>[...r.normal,r.width]),12);pack('uBeltRights',C.routes.flatMap(r=>[...r.right,r.sectors]),12);v('uCavity',s.shineField?C.cavity(s):[0,0,0]);
+ pack('uWounds',C.wounds.flatMap(w=>[...w.axis,w.width]),24);pack('uWoundTangents',C.wounds.flatMap(w=>[...w.tangent,w.length]),24);pack('uBelts',C.routes.flatMap(r=>[...r.normal,r.width]),12);pack('uBeltRights',C.routes.flatMap(r=>[...r.right,r.sectors]),12);v('uCavity',s.shineField?(indirect||C.cavity(s)):[0,0,0]);
 };
 })();

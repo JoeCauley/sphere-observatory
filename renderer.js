@@ -4,7 +4,7 @@
   constructor(canvas){
    this.canvas=canvas;this.gl=canvas.getContext('webgl2',{antialias:false,alpha:false,preserveDrawingBuffer:true,powerPreference:'high-performance'});
    if(!this.gl)throw Error('WebGL 2 is unavailable. Open this app in Chrome or Edge with hardware acceleration enabled.');
-   const gl=this.gl;
+   const gl=this.gl;this.maxSize=gl.getParameter(gl.MAX_RENDERBUFFER_SIZE);this.previewLight=window.SpherePreviewLight?new SpherePreviewLight():null;this.biomes=window.SphereBiomes?new SphereBiomes.Textures(gl):null;this.heroes=window.SphereBiomes?.HeroTextures?new SphereBiomes.HeroTextures(gl):null;this.timer=gl.getExtension('EXT_disjoint_timer_query_webgl2');this.queries=[];this.gpuMs=null;this.atmosphereCache={};
    const compile=(type,src)=>{const sh=gl.createShader(type);gl.shaderSource(sh,src);gl.compileShader(sh);if(!gl.getShaderParameter(sh,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(sh));return sh;};
    this.program=gl.createProgram();gl.attachShader(this.program,compile(gl.VERTEX_SHADER,SphereShaders.vertex));gl.attachShader(this.program,compile(gl.FRAGMENT_SHADER,SphereShaders.fragment));gl.linkProgram(this.program);
    if(!gl.getProgramParameter(this.program,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(this.program));
@@ -41,9 +41,10 @@ void main(){vec3 center=mapped(texture(source,vUV).rgb);if(edgeAA==0){fragColor=
    this.resolveSource=gl.getUniformLocation(this.resolve,'source');this.resolveExposure=gl.getUniformLocation(this.resolve,'exposure');this.resolveEdge=gl.getUniformLocation(this.resolve,'edgeAA');
    const debug=gl.getExtension('WEBGL_debug_renderer_info');this.device=debug?gl.getParameter(debug.UNMASKED_RENDERER_WEBGL):gl.getParameter(gl.RENDERER);
   }
-  draw(s,width,height,{exportFrame=false}={}){
-   const gl=this.gl;if(this.canvas.width!==width||this.canvas.height!==height){this.canvas.width=width;this.canvas.height=height;}
-   const diagnostic=['objectid','lightid','surfaceLight','distance'].includes(s.viewMode),budget=exportFrame?3840*2160*4:1920*1080,maxSize=gl.getParameter(gl.MAX_RENDERBUFFER_SIZE);
+  draw(s,width,height,{exportFrame=false,adaptiveScale=1}={}){
+   const gl=this.gl;const started=performance.now();this.pollTimers();let timerQuery=null;if(this.timer&&!exportFrame&&this.queries.length<4){timerQuery=gl.createQuery();gl.beginQuery(this.timer.TIME_ELAPSED_EXT,timerQuery);}
+   if(this.canvas.width!==width||this.canvas.height!==height){this.canvas.width=width;this.canvas.height=height;}
+   const diagnostic=['objectid','lightid','surfaceLight','distance'].includes(s.viewMode),budget=exportFrame?3840*2160*4:1920*1080*adaptiveScale*adaptiveScale,maxSize=this.maxSize;
    const factor=s.antialias>=2&&!diagnostic?Math.max(1,Math.min(2,Math.sqrt(budget/(width*height)),maxSize/width,maxSize/height)):1;
    const rw=Math.floor(width*factor),rh=Math.floor(height*factor),smooth=rw>width||rh>height;
    const linear=this.linearSupported&&(!s.viewMode||s.viewMode==='material');
@@ -51,7 +52,7 @@ void main(){vec3 center=mapped(texture(source,vUV).rgb);if(edgeAA==0){fragColor=
     if(!this.lightBuffer){this.lightBuffer=gl.createFramebuffer();this.lightTexture=gl.createTexture();}
     gl.bindFramebuffer(gl.FRAMEBUFFER,this.lightBuffer);gl.activeTexture(gl.TEXTURE1);gl.bindTexture(gl.TEXTURE_2D,this.lightTexture);
     if(this.lightWidth!==rw||this.lightHeight!==rh){gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA16F,rw,rh,0,gl.RGBA,gl.HALF_FLOAT,null);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);gl.framebufferTexture2D(gl.FRAMEBUFFER,gl.COLOR_ATTACHMENT0,gl.TEXTURE_2D,this.lightTexture,0);
-     if(gl.checkFramebufferStatus(gl.FRAMEBUFFER)!==gl.FRAMEBUFFER_COMPLETE){this.linearSupported=false;gl.bindFramebuffer(gl.FRAMEBUFFER,null);return this.draw(s,width,height,{exportFrame});}this.lightWidth=rw;this.lightHeight=rh;
+     if(gl.checkFramebufferStatus(gl.FRAMEBUFFER)!==gl.FRAMEBUFFER_COMPLETE){this.linearSupported=false;gl.bindFramebuffer(gl.FRAMEBUFFER,null);if(timerQuery){gl.endQuery(this.timer.TIME_ELAPSED_EXT);gl.deleteQuery(timerQuery);}return this.draw(s,width,height,{exportFrame,adaptiveScale});}this.lightWidth=rw;this.lightHeight=rh;
     }
    }else if(smooth){
     if(!this.aaBuffer){this.aaBuffer=gl.createFramebuffer();this.aaColor=gl.createRenderbuffer();}
@@ -62,6 +63,17 @@ void main(){vec3 center=mapped(texture(source,vUV).rgb);if(edgeAA==0){fragColor=
    gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,this.texture);gl.viewport(0,0,rw,rh);gl.useProgram(this.program);gl.uniform1i(this.uniforms.uLinearOutput,linear?1:0);
    const f=(n,v)=>gl.uniform1f(this.uniforms[n],v),i=(n,v)=>gl.uniform1i(this.uniforms[n],v),v=(n,a)=>gl.uniform3fv(this.uniforms[n],a);
    const b=M.basis(s.forward,s.up),plate=M.shade(s),radius=M.length(s.position),n=M.norm(s.position);
+   if(this.biomes){const B=SphereBiomes,alt=s.radius-radius;i('uBiomeOverride',s.biome??-1);i('uTextureDetail',s.textureDetail!==false?1:0);i('uBiomeAtm',s.biomeAtmosphere!==false?1:0);gl.uniform3fv(this.uniforms['uBiomeAnchor[0]'],B.anchors(n,s.radius));
+    if(s.textureDetail!==false&&alt<2400){const hit=M.trace(s.position,s.forward,s);const id=B.region(hit.point?M.norm(hit.point):n,s);for(const index of [id,(id+1)%10,B.region(n,s),s.era==='after'?4:5])this.biomes.request(index);}
+    this.biomes.upload();this.biomes.bind(this.uniforms,exportFrame);
+    if(this.heroes){i('uSurfaceRelief',s.surfaceRelief!==false?1:0);v('uHeroAnchor',B.heroAnchors(n,s.radius));
+     if(s.textureDetail!==false&&alt<2400){const hit=M.trace(s.position,s.forward,s),id=B.region(hit.point?M.norm(hit.point):n,s);for(const index of [id,(id+1)%10,B.region(n,s)])this.heroes.request(index);}
+     this.heroes.upload();this.heroes.bind(this.uniforms,exportFrame);
+    }
+   }
+   const atmKey=[n.join(','),s.time,s.radius,s.starRadius,s.collection,s.shadeEnabled,s.shadeAltitude,s.shadeDiameter,s.shadeOffset,s.shadeDamage,s.shadeSpeed,s.era,s.routeShades,s.starStation,s.cycleScale,s.shadeShape,s.shadeTrim,s.stationSamples].join('|');
+   if(s.atmosphere>0&&s.radius-radius<160){if(this.atmosphereCache.key!==atmKey){this.atmosphereCache={key:atmKey,value:M.sunVisibility(M.mul(n,s.radius),s,s.stationSamples||64)};}f('uAtmosphereLight',this.atmosphereCache.value);}else f('uAtmosphereLight',1);
+   const indirect=s.collection&&s.shineField?(exportFrame||!this.previewLight?SphereCollection.cavity(s):this.previewLight.sample(s)):[0,0,0];
    gl.uniform2f(this.uniforms.uResolution,width,height);v('uN',n);v('uForward',b.f);v('uRight',b.r);v('uUp',b.u);
    const anchor=[];for(const scale of [1000000,100000,10000,1000,100,10,1,.1,.01,.001])for(const value of n)anchor.push(((value*s.radius/scale)%256+256)%256);gl.uniform3fv(this.uniforms['uAnchor[0]'],anchor);
    f('uBreachRoughness',s.breachRoughness||0);i('uStyle',s.surfaceStyle==='legacy'?0:1);
@@ -69,11 +81,24 @@ void main(){vec3 center=mapped(texture(source,vUV).rgb);if(edgeAA==0){fragColor=
    v('uBreachAxis',M.axis(s.breachLat,s.breachLon));f('uBreachChord',2*Math.sin(s.breachDiameter/(4*s.radius)));i('uBreach',+s.breachEnabled);
    v('uPlateRelative',M.mul(M.sub(plate.center,s.position),1/s.radius));v('uPlateWorld',M.mul(plate.center,1/s.radius));f('uPlateRadius',plate.radius/s.radius);f('uDamage',s.shadeDamage);i('uShade',+s.shadeEnabled);
    i('uGrid',+s.grid);i('uMode',s.viewMode==='surfaceLight'?5:s.viewMode==='coverageid'?4:s.viewMode==='lightid'?3:s.viewMode==='objectid'?2:s.viewMode==='distance'?1:0);i('uPanorama',s.projection==='panorama'?1:0);i('uStars',+s.starfield);i('uStarTex',0);
-   if(window.SphereCollection)SphereCollection.upload(gl,this.uniforms,s);
+   if(window.SphereCollection)SphereCollection.upload(gl,this.uniforms,s,indirect);
    gl.drawArrays(gl.TRIANGLES,0,3);
    if(linear){gl.bindFramebuffer(gl.FRAMEBUFFER,null);gl.viewport(0,0,width,height);gl.useProgram(this.resolve);gl.activeTexture(gl.TEXTURE1);gl.bindTexture(gl.TEXTURE_2D,this.lightTexture);gl.uniform1i(this.resolveSource,1);gl.uniform1f(this.resolveExposure,s.exposure);gl.uniform1i(this.resolveEdge,s.antialias===3?1:0);gl.drawArrays(gl.TRIANGLES,0,3);gl.activeTexture(gl.TEXTURE0);}
    else if(smooth){gl.bindFramebuffer(gl.READ_FRAMEBUFFER,this.aaBuffer);gl.bindFramebuffer(gl.DRAW_FRAMEBUFFER,null);gl.blitFramebuffer(0,0,rw,rh,0,0,width,height,gl.COLOR_BUFFER_BIT,gl.LINEAR);gl.bindFramebuffer(gl.FRAMEBUFFER,null);}
+   if(timerQuery){gl.endQuery(this.timer.TIME_ELAPSED_EXT);this.queries.push(timerQuery);}
+   this.cpuMs=performance.now()-started;this.renderInfo.cpuMs=this.cpuMs;this.renderInfo.gpuMs=this.gpuMs;
+   this.renderInfo.indirectLight=exportFrame?'exact frame':this.previewLight?.worker?'worker, at most 10 Hz':'cached CPU';
+   this.renderInfo.indirectSampleTime=exportFrame?s.time:this.previewLight?.sampleTime;
+   if(this.heroes)this.renderInfo.heroTextures={ready:this.heroes.status.filter(x=>x==='ready').length,total:10,gpuMiB:this.heroes.allocated?79.96:0,tileKm:SphereBiomes.heroScale};
+   if(this.biomes)this.renderInfo.textures={ready:this.biomes.status.filter(x=>x==='ready').length,total:10,gpuMiB:40,scalesKm:SphereBiomes.scales};
   }
+  pollTimers(){const gl=this.gl;if(!this.timer)return;const disjoint=gl.getParameter(this.timer.GPU_DISJOINT_EXT);
+   while(this.queries.length){const q=this.queries[0];if(!disjoint&&!gl.getQueryParameter(q,gl.QUERY_RESULT_AVAILABLE))break;this.queries.shift();if(!disjoint)this.gpuMs=gl.getQueryParameter(q,gl.QUERY_RESULT)/1e6;gl.deleteQuery(q);}
+   if(disjoint)this.gpuMs=null;
+  }
+  dispose(){this.previewLight?.dispose();this.heroes?.dispose();for(const q of this.queries)this.gl.deleteQuery(q);this.queries=[];}
+  async prepare(s){if(this.biomes&&s.textureDetail!==false&&s.radius-M.length(s.position)<2400){await this.biomes.prepare();if(this.heroes&&s.radius-M.length(s.position)<2400)await this.heroes.prepare();}}
+  get needsFrame(){return !!(this.biomes&&(this.biomes.fading||this.biomes.pending.length||this.heroes?.fading||this.heroes?.pending.length));}
   error(){return this.gl.getError();}
  }
  window.SphereRenderer=Renderer;

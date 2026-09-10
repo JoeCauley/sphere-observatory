@@ -39,7 +39,7 @@
   const disabled=[...document.querySelectorAll('button,input,select')].filter(e=>e.id!=='cancelClip');const oldDisabled=disabled.map(e=>e.disabled);disabled.forEach(e=>e.disabled=true);$('cancelClip').hidden=false;
   let recorder,stream,chunks=[],frames=0,wall=0;
   try{
-   A.renderer.draw(shot(name,start,0),width,height,{exportFrame:true});stream=canvas.captureStream(0);const track=stream.getVideoTracks()[0];if(!track.requestFrame)throw Error('Manual video capture is unavailable in this browser.');
+   await A.renderer.prepare(start);A.renderer.draw(shot(name,start,0),width,height,{exportFrame:true});stream=canvas.captureStream(0);const track=stream.getVideoTracks()[0];if(!track.requestFrame)throw Error('Manual video capture is unavailable in this browser.');
    recorder=new MediaRecorder(stream,{mimeType:mime,videoBitsPerSecond:40000000});recorder.ondataavailable=e=>{if(e.data.size)chunks.push(e.data);};
    const stopped=new Promise((resolve,reject)=>{recorder.onstop=resolve;recorder.onerror=e=>reject(e.error||Error('Video encoder failed'));});
    recorder.start();const begin=performance.now(),total=Math.round(seconds*fps);

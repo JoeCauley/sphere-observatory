@@ -9,6 +9,7 @@ uniform vec2 uResolution;
 uniform int uLinearOutput;
 uniform vec3 uN,uForward,uRight,uUp,uBreachAxis,uPlateRelative,uPlateWorld;
 uniform vec3 uAnchor[10];
+uniform float uAtmosphereLight;
 uniform float uH,uRadius,uStar,uLuminosity,uFov,uExposure,uShine,uAtm,uSeed;
 uniform float uBreachChord,uPlateRadius,uDamage;
 uniform float uBreachRoughness;
@@ -69,7 +70,7 @@ vec3 atlasMaterial(vec3 q,vec3 delta,float footprint){
  col=mix(col,col*1.4,fused*smoothstep(.90,.99,folds));
  vec3 tri=pow(abs(q),vec3(8.));tri/=max(.001,tri.x+tri.y+tri.z);
  const float sizes[10]=float[10](1000000.,100000.,10000.,1000.,100.,10.,1.,.1,.01,.001);
- for(int i=0;i<10;i++){
+ for(int i=0;i<3;i++){
   float scale=sizes[i],fade=1.-smoothstep(.045,.22,footprint/scale);
   if(fade>.002){
    vec3 p=uAnchor[i]+delta/scale;
@@ -123,6 +124,6 @@ void main(){
  else{col=stars(d);}
  if(uMode==1){if(kind==3)col=vec3(0.);else{float v=clamp(log(1.+obj*1e6)/log(2000001.),0.,1.);col=mix(vec3(.05,.6,.51),vec3(.25,.12,.45),v);}}
  // Deliberately approximate local atmospheric transfer; no global multiple scattering.
- if(uAtm>0. && uMode==0){float hKm=uH*uRadius;float density=exp(-hKm/8.);float mu=max(.025,-dot(d,uN));float optical=uAtm*density/mu;vec3 tr=exp(-vec3(.12,.23,.48)*optical);float vis=lightFraction(uN);vec3 scatter=vec3(.10,.20,.38)*(vis*uLuminosity+uShine*1.5);col=col*tr+scatter*(1.-tr);}
+ if(uAtm>0. && uMode==0 && uH*uRadius<160.){float hKm=uH*uRadius;float density=exp(-hKm/8.);float mu=-dot(d,uN);float segment=min(obj*uRadius,2000.);float column=abs(mu)<.001?density*segment/8.:density*(1.-exp(clamp(-mu*segment/8.,-30.,20.)))/mu;float optical=uAtm*max(0.,column);vec3 tr=exp(-vec3(.12,.23,.48)*optical);float vis=uAtmosphereLight;vec3 scatter=vec3(.10,.20,.38)*(vis*uLuminosity+uShine*1.5);col=col*tr+scatter*(1.-tr);}
  fragColor=vec4(uLinearOutput==1?clamp(col,vec3(0.),vec3(60000.)):tone(col),1.);
 }`};

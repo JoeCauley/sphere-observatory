@@ -6,7 +6,7 @@ A local WebGL 2 instrument inspired by **The Sphere** worldbuilding project. The
 
 ![Designed regions on the inner surface](examples/collection.png)
 
-Current version: **0.8**. This is a working visualization prototype, not a finished game or a complete physics simulator.
+Current version: **0.9**. This is a working visualization prototype, not a finished game or a complete physics simulator.
 
 ## Run locally
 
@@ -22,7 +22,7 @@ Open **http://127.0.0.1:8766/**. If the port is occupied, use `node serve.cjs 87
 
 For a durable command-line workflow, use `npm run start:managed` and stop it with `npm run stop`. The managed stop command cleans the recorded PID and any orphaned `serve.cjs` process whose script path is this repository, without matching unrelated Node services. If a terminal or browser is closed unexpectedly, run the stop command before launching again.
 
-Opening `index.html` directly still works for a quick file-mode preview, but it does not start a server and is not the recommended performance-test workflow.
+Use localhost for the full experience. Opening `index.html` directly can restrict worker and texture access in some browsers; the renderer falls back to procedural materials and cached CPU lighting.
 
 ### Performance prerequisite
 
@@ -30,16 +30,24 @@ The browser must use hardware WebGL. In Chrome, open **Settings → System**, tu
 
 **No build step or runtime package installation.** No account, API key, cloud service, telemetry or runtime image generation. Testing has primarily used Windows, Edge and an RTX 5080; performance on other systems may differ substantially.
 
+## New in v0.9
+
+Ten hero biome landscapes with bump shading, larger non-mirrored surface detail, regional atmosphere colours, and a redesigned exploration workflow. Live indirect lighting runs off the main thread; adaptive preview supports up to 4K output. See surface lands under the crosshair, and nearby arrivals level within 1,000 km.
+
+![Ultra Desert at one kilometre](examples/hero-review/attempt3/ultra-desert-grazing.png)
+
+[Before/after screenshots](examples/hero-review/) · [Performance and implementation](docs/Observatory-Hero-Textures-10.md) · [Independent visual review](docs/texture-critic-review.md)
+
 ## First exploration
 
-1. Choose a destination under **Camera**. Destinations move and rotate the camera while preserving world, time, lens and lighting settings.
+1. Use the bottom **Overview / Surface / Shade fleet / Wounds / Star** destinations. They preserve world, time and lighting while choosing a useful camera, lens and flight speed.
 2. Use **World → Before / After the attack** to compare the same location and time. Regions & shade engineering controls the layout and fleet.
-3. Use **Camera → Complete scene studies** for explicitly staged conditions, including original First Light and an eclipsed shade.
+3. **See surface** lands 3 km above the region under your crosshair; **Return to view** restores the original camera. **Explore → Explore a biome** offers ten named destinations at 1,000 / 100 / 10 / 1 km. Staged lighting studies are separately labelled because they replace scene conditions.
 4. Adjust exposure and sampling under **Light**. Save images and complete scenes under **Capture**.
 
-Drag to look. **W/A/S/D** fly, **Q/E** move down/up, **Shift** accelerates, and the wheel changes speed. **Space** starts or pauses shade motion. **H** hides view overlays. Camera controls also provide discrete yaw, pitch and roll.
+Drag to look. **W/A/S/D** fly, **Q/E** move down/up, and **Z/X** turn left/right. **Shift** accelerates, and the wheel changes speed. **Space** starts or pauses shade motion. **H** hides view overlays. Camera destinations within 1,000 km of the inner surface automatically level to the local surface.
 
-Altitude describes the nearest surface below you. Looking into the sky can mean looking hundreds of millions of kilometres across the cavity. **Inspect the surface below** turns toward nearby material.
+Altitude describes the nearest surface below you. Looking into the sky can mean looking hundreds of millions of kilometres across the cavity. **Explore → Exact position & direction → Look straight down** turns toward nearby material.
 
 ## Features
 
@@ -48,7 +56,7 @@ Altitude describes the nearest surface below you. Looking into the sky can mean 
 - Planar, square, curved-cap and trimmed-cap shade designs with kilometre-based construction detail.
 - Three prescribed routes containing 8, 6 and 4 intact shades. Successive passages are 24, 36 and 60 hours apart; full circuits take 8, 9 and 10 days.
 - Shadows integrated over the stellar disk, with overlapping station and shade blockers.
-- Approximate coloured ShellShine, atmosphere and procedural surface materials.
+- Approximate coloured ShellShine, atmosphere enabled by default with regional colours, and ten biome hero landscapes with continuous mip detail and optional bump shading.
 - Curved-surface area measurement in square kilometres and **Earth surfaces**, including freehand outlines.
 - HD/4K/8K PNG photographs with scene JSON, panoramas, bookmarks and local SDR motion studies.
 
@@ -58,7 +66,7 @@ These images come from the renderer. Import companion JSON files from [examples]
 
 ## Quality and workload
 
-Preview rays are capped at approximately 2.07 million pixels, with selectable 15/30/60 fps ceilings. Still views stop rendering and hidden tabs pause. These are workload controls, not watt limits or guaranteed frame rates.
+Live preview output supports up to 4K (8.29 million pixels), with selectable 15/30/60 fps ceilings; new installs default to 60 fps. Adaptive resolution reduces live pixel count when GPU time exceeds the frame budget, then recovers detail when there is headroom. Supersampling has a separate 2.07-million-pixel budget and never enlarges a 4K output. Still views stop rendering and hidden tabs pause. These are workload controls, not watt limits or guaranteed frame rates.
 
 Antialiasing offers supersampling alone or additional contrast-edge filtering. At the full preview ray budget there is no supersampling headroom; the optional edge filter still operates on supported GPUs and can soften fine details. Material rendering uses a half-float light buffer when available, with a compatibility fallback. Output is **SDR**.
 
@@ -96,6 +104,9 @@ node tests/edge-filter-browser.cjs
 
 The station test reports finite-precision discrepancies and checks a one-source-ray-plus-quantization bound. Edge filtering records both squared and absolute errors because smoothing does not improve every metric.
 
+- [Hero landscapes, relief and the three-pass review](docs/Observatory-Hero-Textures-10.md)
+- [Independent visual scores](docs/texture-critic-review.md)
+- [Performance, biome LOD and navigation](docs/Observatory-Performance-Biomes-09.md)
 - [Collection layout](docs/Observatory-Collection-Study-01.md)
 - [Shade design and clearance](docs/Observatory-Shade-Standard-01.md)
 - [Linear lighting and UI](docs/Observatory-Visual-Quality-06.md)

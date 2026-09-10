@@ -38,13 +38,13 @@ function era(value){change(s=>s.era=value);$('viewTitle').textContent=value==='b
 $('eraBefore').onclick=()=>era('before');$('eraAfter').onclick=()=>era('after');
 for(const k of ['shadeTrim','antialias','shadowSamples','stationSamples','shadeShape','regionOrder','colorRichness','cycleScale','routeShades','multipleWounds','starStation','shineField','routeGuides'])$(k).addEventListener($(k).type==='range'?'input':'change',()=>change(s=>s[k]=$(k).type==='checkbox'?$(k).checked:k==='shadeShape'?$(k).value:Number($(k).value)));
 $('advanceCycle').onclick=()=>change(s=>s.time+=21600);
-function view(name,{stage=false}={}){const prior=A.getState();change(s=>{s.collection=true;s.playing=false;s.atmosphere=0;s.exposure=-.15;s.shellshine=.22;s.fov=95;s.speed=1000000;s.projection='perspective';s.viewMode='material';
+function view(name,{stage=false}={}){const prior=A.getState();change(s=>{s.collection=true;s.playing=false;s.atmosphere=1;s.exposure=-.15;s.shellshine=.22;s.fov=95;s.speed=1000000;s.projection='perspective';s.viewMode='material';
  if(name==='vista'){s.position=M.mul(M.axis(28,-60),s.radius*.08);s.forward=M.norm([.25,-.15,1]);}
  if(name==='wounds'){const w=SphereCollection.wounds[0];s.position=M.mul(w.axis,s.radius*.55);s.forward=w.axis;s.fov=88;}
  if(name==='shades'){const r=SphereCollection.routes[0];s.position=M.mul(M.norm([.7,.11,.7]),s.radius*.9);s.forward=M.norm(M.sub(M.mul(r.right,s.radius*.62),s.position));s.fov=78;s.speed=100000;}
  if(name==='station'){s.position=M.mul(M.norm([.7,.8,1]),s.starRadius*20);s.forward=M.mul(M.norm(s.position),-1);s.fov=42;s.exposure=-4;s.speed=1000;}
  if(name==='eclipse'){s.era='before';s.routeShades=true;s.time=8*3600;const pl=SphereCollection.plates(s).find(p=>p.id===16);s.position=M.mul(M.add(M.mul(pl.normal,.70),M.mul(pl.right,.25)),s.radius);s.forward=M.norm(M.sub(M.mul(pl.center,s.radius),s.position));s.fov=100;s.speed=100000;s.up=M.basis(s.forward,pl.right).u;}
- if(name!=='eclipse')s.up=M.basis(s.forward,[0,1,0]).u;if(!stage){const pose={position:s.position,forward:s.forward,up:s.up};Object.assign(s,prior,pose);}}, {enable:stage});$('viewTitle').textContent={vista:'Across the collection',wounds:'The long wounds',shades:'Among the shades',station:'The stellar conservatory',eclipse:'A shade eclipsed · intact fleet'}[name];document.querySelectorAll('[data-preset]').forEach(el=>el.classList.remove('selected'));}
+ if(name!=='eclipse')s.up=M.basis(s.forward,[0,1,0]).u;if(!stage){const pose={position:s.position,forward:s.forward,up:s.up};Object.assign(s,prior,pose);}if(s.radius-M.length(s.position)<=1000)s.up=M.basis(s.forward,M.mul(M.norm(s.position),-1)).u;}, {enable:stage});$('viewTitle').textContent={vista:'Across the collection',wounds:'The long wounds',shades:'Among the shades',station:'The stellar conservatory',eclipse:'A shade eclipsed · intact fleet'}[name];document.querySelectorAll('[data-preset]').forEach(el=>el.classList.remove('selected'));}
 $('collectionVista').onclick=()=>view('vista');$('collectionWounds').onclick=()=>view('wounds');$('collectionShades').onclick=()=>view('shades');$('collectionStation').onclick=()=>view('station');
  $('collectionEclipse').onclick=()=>view('eclipse',{stage:true});
 $('legacyStudy').onclick=()=>{A.preset('dawn',{stage:true});sync();};
@@ -64,7 +64,7 @@ const mode=document.createElement('label');mode.className='field';mode.innerHTML
 $('worldModel').onchange=()=>{const s=A.getState();s.collection=$('worldModel').value==='collection';A.setState(s);sync();};
 window.addEventListener('sphere-state-synced',()=>{$('worldModel').value=A.getState().collection?'collection':'legacy';});
 // Cooperative ownership across v0.3 tabs. Still views are idle; a newly used tab owns animation.
-const channel=typeof BroadcastChannel!=='undefined'?new BroadcastChannel('sphere-preview-owner-v3'):null;
+const channel=window.top===window&&typeof BroadcastChannel!=='undefined'?new BroadcastChannel('sphere-preview-owner-v3'):null;
 channel?.addEventListener('message',()=>{window.spherePreviewSuspended=true;});
 function claim(){window.spherePreviewSuspended=false;channel?.postMessage('claim');A.draw();}
 window.addEventListener('pointerdown',claim);document.addEventListener('visibilitychange',()=>{if(!document.hidden)claim();});

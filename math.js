@@ -12,7 +12,7 @@
   function latlon(v) {const n=norm(v);return [degrees(Math.asin(clamp(n[1],-1,1))),degrees(Math.atan2(n[0],n[2]))];}
   function rotate(v,a,t) {a=norm(a);return add(add(mul(v,Math.cos(t)),mul(cross(a,v),Math.sin(t))),mul(a,dot(a,v)*(1-Math.cos(t))));}
   function basis(forward, up=[0,1,0]) {
-    const f=norm(forward); if(Math.abs(dot(f,norm(up)))>.999) up=[1,0,0];
+    const f=norm(forward); if(Math.abs(dot(f,norm(up)))>.999) up=Math.abs(f[0])<.9?[1,0,0]:[0,1,0];
     const r=norm(cross(f,up)); return {f,r,u:norm(cross(r,f))};
   }
   // Stable inside-shell root, retaining small altitude separately from large radius.
@@ -80,9 +80,9 @@
     position:[0,0,AU*.5],forward:[0,0,1],up:[0,1,0],fov:100,
     breachEnabled:true,breachLat:12,breachLon:-12,breachDiameter:35000000,breachRoughness:0,surfaceStyle:'atlas',
     shadeEnabled:true,shadeAltitude:100000,shadeDiameter:100000,shadeOffset:0,shadeSpeed:2,shadeDamage:0,
-    time:0,playing:false,timeRate:60,exposure:.4,shellshine:.06,atmosphere:0,
+    time:0,playing:false,timeRate:60,exposure:.4,shellshine:.06,atmosphere:1,
     grid:false,viewMode:'material',projection:'perspective',speed:1000000,
-    quality:.8,seed:23,starfield:true
+    quality:1,seed:23,starfield:true
   };}
   const numeric={radius:[1e7,1e9],starRadius:[10000,2e6],luminosity:[.001,100],fov:[10,150],breachLat:[-90,90],breachLon:[-180,180],breachDiameter:[1000,1.5e8],breachRoughness:[0,1],shadeAltitude:[1000,1e7],shadeDiameter:[100,2e7],shadeOffset:[-20,20],shadeSpeed:[-100,100],shadeDamage:[0,1],time:[-1e9,1e9],timeRate:[.1,3600],exposure:[-10,12],shellshine:[0,.5],atmosphere:[0,1],speed:[1,3e7],quality:[.35,1],seed:[0,1000]};
   function validate(input) {
