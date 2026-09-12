@@ -88,9 +88,9 @@
   function validate(input) {
     if(!input||typeof input!=='object'||Array.isArray(input))throw Error('This is not a Sphere scene file.');
     const s=defaultState();
-    for(const [k,[lo,hi]] of Object.entries(numeric))if(k in input){if(!Number.isFinite(input[k])||input[k]<lo||input[k]>hi)throw Error('Invalid value for '+k);s[k]=input[k];}
+    for(const [k,[lo,hi]] of Object.entries(numeric))if(k in input){if(!Number.isFinite(input[k])||input[k]<(k==='speed'&&input.layoutVersion===2?.001:lo)||input[k]>hi)throw Error('Invalid value for '+k);s[k]=input[k];}
     for(const k of ['position','forward','up'])if(k in input){if(!Array.isArray(input[k])||input[k].length!==3||!input[k].every(Number.isFinite))throw Error('Invalid camera '+k);s[k]=[...input[k]];}
-    if(length(s.position)>=s.radius-0.5||length(s.position)<=s.starRadius*1.01)throw Error('Camera must be inside the shell and outside the star.');
+    if(length(s.position)>=(input.layoutVersion===2?s.radius*2:s.radius-0.5)||length(s.position)<=s.starRadius*1.01)throw Error(input.layoutVersion===2?'Camera must remain outside the star and within two shell radii.':'Camera must be inside the shell and outside the star.');
     if(s.shadeAltitude>=s.radius-s.starRadius)throw Error('Shade altitude places it inside the star.');
     if(s.breachDiameter>PI*s.radius)throw Error('Breach is larger than the shell permits.');
     if(length(s.forward)<.1||length(s.up)<.1)throw Error('Camera orientation is missing.');

@@ -1,0 +1,172 @@
+{
+  "mode": "built-in imagegen",
+  "generatedDate": "2026-09-11",
+  "description": "Ten original biome-specific shattered shell ground albedos. Damage blending is anchored to Wound distance in the renderer.",
+  "images": [
+    {
+      "id": "dark-age-forest",
+      "source": "C:\\Users\\Joe\\.codex\\generated_images\\01a08d78-78ae-7100-99be-e299d8a47652\\exec-b8afe9ed-b4d6-4802-9106-cb6e55a425a2.png",
+      "path": "assets/wound-edges/dark-age-forest.png",
+      "prompt": "Use case: stylized-concept. Asset type: original high-resolution Wound-edge ground albedo texture for The Sphere Observatory. Create ONE square 2048x2048 image, a seamlessable orthographic straight-down material covering a 2.5 kilometre patch of the shattered inner surface of an ancient artificial world. Ruined engineered shell is the dominant substrate: fractured construction slabs, collapsed service grids, exposed foundation layers, torn metal, fine angular rubble and local debris. This is the ground adjoining a catastrophic Wound, not a picture of a cliff or a horizon. Fill the entire square with tangible ground; no cutaway, no sky, no space, no hole or black void at an image edge. Many irregularly distributed fine details, broad subdued variations, no central focal object, no repeated lattice or perfect symmetry. Uniform flat diffuse illumination suitable for an albedo map, no directional cast shadows, no gloss highlights, no fog, no text, no borders, no labels. Retain rich photorealistic detail without baked lighting. Biome-specific design: Dark Age Forest. Muted pine-green moss in crevices, broken root networks, windthrown ancient conifer trunks, deep brown forest soil between grey shattered slabs, crushed dark canopy remnants. The old construction remains clearly dominant and readable. Vegetation is sparse and battered, not an intact forest.",
+      "width": 1254,
+      "height": 1254,
+      "meanLinear": [
+        0.0879325,
+        0.0799839,
+        0.0633625
+      ],
+      "greenPixelFraction": 0.00372587623909709,
+      "bytes": 3702205,
+      "sha256": "05d89a979e60351f9f8b62d38467e3523fc1bc6e5c317179d69ea2cbf3d06b99"
+    },
+    {
+      "id": "super-jungle",
+      "source": "C:\\Users\\Joe\\.codex\\generated_images\\01a08d78-78ae-7100-99be-e299d8a47652\\exec-ceeabb1e-e45f-4e6c-9d4a-9109db5d1b90.png",
+      "path": "assets/wound-edges/super-jungle.png",
+      "prompt": "Use case: stylized-concept. Asset type: original high-resolution Wound-edge ground albedo texture for The Sphere Observatory. Create ONE square 2048x2048 image, a seamlessable orthographic straight-down material covering a 2.5 kilometre patch of the shattered inner surface of an ancient artificial world. Ruined engineered shell is the dominant substrate: fractured construction slabs, collapsed service grids, exposed foundation layers, torn metal, fine angular rubble and local debris. This is the ground adjoining a catastrophic Wound, not a picture of a cliff or a horizon. Fill the entire square with tangible ground; no cutaway, no sky, no space, no hole or black void at an image edge. Many irregularly distributed fine details, broad subdued variations, no central focal object, no repeated lattice or perfect symmetry. Uniform flat diffuse illumination suitable for an albedo map, no directional cast shadows, no gloss highlights, no fog, no text, no borders, no labels. Retain rich photorealistic detail without baked lighting. Biome-specific design: Super Jungle. Distinct collapsed terraces and buckled ancient platforms entwined by broken jade and emerald roots, scattered gigantic fern fragments, dark wet loam, crushed jungle biomass lodged against grey broken machinery. Strongly different ruin arrangement from a conifer forest. Dense biological debris but exposed ruined shell still dominates. Restrained natural green tones.",
+      "width": 1254,
+      "height": 1254,
+      "meanLinear": [
+        0.07882,
+        0.0769532,
+        0.0525908
+      ],
+      "greenPixelFraction": 0.03955063096337334,
+      "bytes": 3737610,
+      "sha256": "50df483c221efb486fe9c445443ecae5fa052ac4265a5324cd9692c75fcd8ac9"
+    },
+    {
+      "id": "ultra-desert",
+      "source": "C:\\Users\\Joe\\.codex\\generated_images\\01a08d78-78ae-7100-99be-e299d8a47652\\exec-d0f996ad-1fac-4686-a314-c5a747099156.png",
+      "path": "assets/wound-edges/ultra-desert.png",
+      "prompt": "Use case: stylized-concept. Asset type: original high-resolution Wound-edge ground albedo texture for The Sphere Observatory. Create ONE square 2048x2048 image, a seamlessable orthographic straight-down material covering a 2.5 kilometre patch of the shattered inner surface of an ancient artificial world. Ruined engineered shell is the dominant substrate: fractured construction slabs, collapsed service grids, exposed foundation layers, torn metal, fine angular rubble and local debris. This is the ground adjoining a catastrophic Wound, not a picture of a cliff or a horizon. Fill the entire square with tangible ground; no cutaway, no sky, no space, no hole or black void at an image edge. Many irregularly distributed fine details, broad subdued variations, no central focal object, no repeated lattice or perfect symmetry. Uniform flat diffuse illumination suitable for an albedo map, no directional cast shadows, no gloss highlights, no fog, no text, no borders, no labels. Retain rich photorealistic detail without baked lighting. Biome-specific design: Ultra Desert. Completely lifeless broken dark foundation plates and collapsed angular service trenches buried unevenly by tawny sand drifts, ochre dust, pale salt and angular desert stones. Asymmetric dunes collect against wrecked structures. Sand warm but not orange neon. Absolutely no green, no moss, no foliage, no plants, no living roots.",
+      "width": 1254,
+      "height": 1254,
+      "meanLinear": [
+        0.272146,
+        0.172813,
+        0.1008225
+      ],
+      "greenPixelFraction": 0,
+      "bytes": 3457063,
+      "sha256": "04e3b19af042e69845a241ae8a25f1668326fb2d532bc460775c052b291ab45b"
+    },
+    {
+      "id": "winter-hell",
+      "source": "C:\\Users\\Joe\\.codex\\generated_images\\01a08d78-78ae-7100-99be-e299d8a47652\\exec-5b35ecd6-982d-4a23-aff2-980c4304bd71.png",
+      "path": "assets/wound-edges/winter-hell.png",
+      "prompt": "Use case: stylized-concept. Asset type: original high-resolution Wound-edge ground albedo texture for The Sphere Observatory. Create ONE square 2048x2048 image, a seamlessable orthographic straight-down material covering a 2.5 kilometre patch of the shattered inner surface of an ancient artificial world. Ruined engineered shell is the dominant substrate: fractured construction slabs, collapsed service grids, exposed foundation layers, torn metal, fine angular rubble and local debris. This is the ground adjoining a catastrophic Wound, not a picture of a cliff or a horizon. Fill the entire square with tangible ground; no cutaway, no sky, no space, no hole or black void at an image edge. Many irregularly distributed fine details, broad subdued variations, no central focal object, no repeated lattice or perfect symmetry. Uniform flat diffuse illumination suitable for an albedo map, no directional cast shadows, no gloss highlights, no fog, no text, no borders, no labels. Retain rich photorealistic detail without baked lighting. Biome-specific design: Winter Hell. Lifeless frost-white broken shell foundations, angular blue-grey ice rubble and pressure ridges, windpacked snow caught in collapsed service channels. Fine exposed graphite metal, pale frozen dust and ice-split construction seams, desaturated icy blue shadows within material only. No greenery, no plants, no earth-brown fertile soil, no warm sand. Complex irregular fractured ground, not an intact smooth snow field.",
+      "width": 1254,
+      "height": 1254,
+      "meanLinear": [
+        0.3083736,
+        0.35433,
+        0.4262165
+      ],
+      "greenPixelFraction": 0,
+      "bytes": 3692533,
+      "sha256": "026ec73026e111eacfb49fe134b980b6d7367657995bdf9bdefc7387aa16524b"
+    },
+    {
+      "id": "ruined-shell",
+      "source": "C:\\Users\\Joe\\.codex\\generated_images\\01a08d78-78ae-7100-99be-e299d8a47652\\exec-45ea3986-7bc9-4b6d-8cc7-fbc3f59098e2.png",
+      "path": "assets/wound-edges/ruined-shell.png",
+      "prompt": "Use case: stylized-concept. Asset type: original high-resolution Wound-edge ground albedo texture for The Sphere Observatory. Create ONE square 2048x2048 image, a seamlessable orthographic straight-down material covering a 2.5 kilometre patch of the shattered inner surface of an ancient artificial world. Ruined engineered shell is the dominant substrate: fractured construction slabs, collapsed service grids, exposed foundation layers, torn metal, fine angular rubble and local debris. This is the ground adjoining a catastrophic Wound, not a picture of a cliff or a horizon. Fill the entire square with tangible ground; no cutaway, no sky, no space, no hole or black void at an image edge. Many irregularly distributed fine details, broad subdued variations, no central focal object, no repeated lattice or perfect symmetry. Uniform flat diffuse illumination suitable for an albedo map, no directional cast shadows, no gloss highlights, no fog, no text, no borders, no labels. Retain rich photorealistic detail without baked lighting. Biome-specific design: The Ruin. Neutral ash-grey and warm charcoal collapsed megastructure with massive layers of broken engineered foundations, exposed grids of service cavities, tangled snapped conduits, crushed plates and concrete dust. Dry barren rubble throughout. Different sized islands of buckled plating and distributed destruction. ABSOLUTELY no green patches, moss, grass, vines, foliage or any vegetation. No colored glow. An exceptionally detailed dead ancient artificial landscape.",
+      "width": 1254,
+      "height": 1254,
+      "meanLinear": [
+        0.1258312,
+        0.1139518,
+        0.1043117
+      ],
+      "greenPixelFraction": 0.0000012718471544963613,
+      "bytes": 3709472,
+      "sha256": "614175a67695d3f8ce0ec18dd242b4b7564628f21d75bbad3124c879829a3220"
+    },
+    {
+      "id": "machine-expanse",
+      "source": "C:\\Users\\Joe\\.codex\\generated_images\\01a08d78-78ae-7100-99be-e299d8a47652\\exec-9592497c-61e9-4842-9447-7a0e83c78854.png",
+      "path": "assets/wound-edges/machine-expanse.png",
+      "prompt": "Use case: stylized-concept. Asset type: original high-resolution Wound-edge ground albedo texture for The Sphere Observatory. Create ONE square 2048x2048 image, a seamlessable orthographic straight-down material covering a 2.5 kilometre patch of the shattered inner surface of an ancient artificial world. Ruined engineered shell is the dominant substrate: fractured construction slabs, collapsed service grids, exposed foundation layers, torn metal, fine angular rubble and local debris. This is the ground adjoining a catastrophic Wound, not a picture of a cliff or a horizon. Fill the entire square with tangible ground; no cutaway, no sky, no space, no hole or black void at an image edge. Many irregularly distributed fine details, broad subdued variations, no central focal object, no repeated lattice or perfect symmetry. Uniform flat diffuse illumination suitable for an albedo map, no directional cast shadows, no gloss highlights, no fog, no text, no borders, no labels. Retain rich photorealistic detail without baked lighting. Biome-specific design: Machine Expanse. Dead dark steel and slate-grey industrial shell rupture. Shattered dense fabrication foundations, cracked ceramic armoured floors, severed copper bus bars, collapsed conduits, disordered micro-machinery wreckage, snapped structural ribs. More manufactured angular components than rock, unusually dense fine functional mechanical details. Restrained copper and graphite accents. NO plants, moss, grass, organic soil, neon glow, or green pixels.",
+      "width": 1254,
+      "height": 1254,
+      "meanLinear": [
+        0.0979859,
+        0.0912297,
+        0.0852073
+      ],
+      "greenPixelFraction": 0.000004451465040737264,
+      "bytes": 3715203,
+      "sha256": "69def826c862002258c91d47525400b71ce95d4f140bedbc4da7ef2bbc5be43c"
+    },
+    {
+      "id": "rust-marsh",
+      "source": "C:\\Users\\Joe\\.codex\\generated_images\\01a08d78-78ae-7100-99be-e299d8a47652\\exec-e1b420d1-99fc-4dcf-ab0b-feb9054cf070.png",
+      "path": "assets/wound-edges/rust-marsh.png",
+      "prompt": "Use case: stylized-concept. Asset type: original high-resolution Wound-edge ground albedo texture for The Sphere Observatory. Create ONE square 2048x2048 image, a seamlessable orthographic straight-down material covering a 2.5 kilometre patch of the shattered inner surface of an ancient artificial world. Ruined engineered shell is the dominant substrate: fractured construction slabs, collapsed service grids, exposed foundation layers, torn metal, fine angular rubble and local debris. This is the ground adjoining a catastrophic Wound, not a picture of a cliff or a horizon. Fill the entire square with tangible ground; no cutaway, no sky, no space, no hole or black void at an image edge. Many irregularly distributed fine details, broad subdued variations, no central focal object, no repeated lattice or perfect symmetry. Uniform flat diffuse illumination suitable for an albedo map, no directional cast shadows, no gloss highlights, no fog, no text, no borders, no labels. Retain rich photorealistic detail without baked lighting. Biome-specific design: Rustwater Marsh. Shattered shell substrate with deeply corroded orange-brown iron channels, dark peat mud, drained shallow rust-coloured pools leaving ochre mineral tide stains on fractured grey slabs, bent reed stubble and scattered dead black roots. Disrupted wetland mechanics and collapsed culverts clearly visible amid angular rubble. NO lush green plants, forests, intact marsh or large reflective water surface. Restrained rusty orange, charcoal and brown; unique asymmetric drained channels.",
+      "width": 1254,
+      "height": 1254,
+      "meanLinear": [
+        0.1357987,
+        0.0912006,
+        0.0612558
+      ],
+      "greenPixelFraction": 0.0000012718471544963613,
+      "bytes": 3719766,
+      "sha256": "9d97bcd3fc2e4297a0d3739e0d026e8182a39c8756ae52d63a89a52ac862432a"
+    },
+    {
+      "id": "chalk-archipelago",
+      "source": "C:\\Users\\Joe\\.codex\\generated_images\\01a08d78-78ae-7100-99be-e299d8a47652\\exec-59b03952-5d1f-45c1-8f3d-cd29be7767d8.png",
+      "path": "assets/wound-edges/chalk-archipelago.png",
+      "prompt": "Use case: stylized-concept. Asset type: original high-resolution Wound-edge ground albedo texture for The Sphere Observatory. Create ONE square 2048x2048 image, a seamlessable orthographic straight-down material covering a 2.5 kilometre patch of the shattered inner surface of an ancient artificial world. Ruined engineered shell is the dominant substrate: fractured construction slabs, collapsed service grids, exposed foundation layers, torn metal, fine angular rubble and local debris. This is the ground adjoining a catastrophic Wound, not a picture of a cliff or a horizon. Fill the entire square with tangible ground; no cutaway, no sky, no space, no hole or black void at an image edge. Many irregularly distributed fine details, broad subdued variations, no central focal object, no repeated lattice or perfect symmetry. Uniform flat diffuse illumination suitable for an albedo map, no directional cast shadows, no gloss highlights, no fog, no text, no borders, no labels. Retain rich photorealistic detail without baked lighting. Biome-specific design: Chalk Archipelago. Broken pale limestone-white and cream artificial shoreline foundations, fractured porous chalk shelves on engineered grey substructure, white mineral dust, crushed chalk gravel, drained sea channels stained muted teal, scattered pale coralline crust. Sparse shallow turquoise mineral deposits in cracks, no large body of water. Lifeless broken coast, no green grass, moss or plants. Distinct pale plates with exposed ancient service voids and snapped conduits.",
+      "width": 1254,
+      "height": 1254,
+      "meanLinear": [
+        0.4244428,
+        0.4054941,
+        0.3718626
+      ],
+      "greenPixelFraction": 0.0003408550374050248,
+      "bytes": 3563314,
+      "sha256": "b0f807161d2605de17ac2a81e07951e593e88e9cfcbc11b554156721ac9f783d"
+    },
+    {
+      "id": "mycelium-sea",
+      "source": "C:\\Users\\Joe\\.codex\\generated_images\\01a08d78-78ae-7100-99be-e299d8a47652\\exec-67bd98c5-e9d6-4d0c-b522-f159b4a5971f.png",
+      "path": "assets/wound-edges/mycelium-sea.png",
+      "prompt": "Use case: precise-object-edit. Asset type: biome-specific Wound-edge albedo. Image 1 is the EDIT TARGET: the shattered shell ground texture with fungal remains. Image 2 is a COLOUR AND BIOLOGY REFERENCE ONLY: the intact Mycelium Sea biome. Change only the fungal organic remains in Image 1 to match the cyan-teal, pale mint fibrous networks and crushed blue-teal disc-shaped fungal crowns in Image 2. Remove the predominantly mauve-purple cast of the fungus; small isolated lilac flecks may remain. Keep Image 1's exact shattered grey foundation layout, scale, detailed fine rubble, buried service conduits, orthographic overhead composition, flat diffuse illumination and catastrophic damage. Do not copy the intact landscape from Image 2. The outcome remains dominated by exposed ruined grey construction interwoven with severely damaged cyan-teal fungal remnants. No grass or forest vegetation, no neon glow, no text, no border, no horizon. One square albedo image at the same resolution as Image 1.",
+      "inputs": [
+        "C:\\Users\\Joe\\.codex\\generated_images\\01a08d78-78ae-7100-99be-e299d8a47652\\exec-f8b4c2bc-60dc-4d5e-972c-4fe0e0939767.png",
+        "I:\\Sphere\\repositories\\sphere-observatory\\assets\\biomes\\hero\\mycelium-sea.png"
+      ],
+      "initialPrompt": "Use case: stylized-concept. Asset type: original high-resolution Wound-edge ground albedo texture for The Sphere Observatory. Create ONE square 2048x2048 image, a seamlessable orthographic straight-down material covering a 2.5 kilometre patch of the shattered inner surface of an ancient artificial world. Ruined engineered shell is the dominant substrate: fractured construction slabs, collapsed service grids, exposed foundation layers, torn metal, fine angular rubble and local debris. This is the ground adjoining a catastrophic Wound, not a picture of a cliff or a horizon. Fill the entire square with tangible ground; no cutaway, no sky, no space, no hole or black void at an image edge. Many irregularly distributed fine details, broad subdued variations, no central focal object, no repeated lattice or perfect symmetry. Uniform flat diffuse illumination suitable for an albedo map, no directional cast shadows, no gloss highlights, no fog, no text, no borders, no labels. Retain rich photorealistic detail without baked lighting. Biome-specific design: Mycelium Sea. Shattered ancient grey shell foundations threaded through by torn pale-lavender and bone-white fungal rhizomorph mats, collapsed fibrous spore shelves and mauve organic detritus in deep fractured service channels. Alien fungal biome devastated at a megastructure rupture: exposed grey ruined construction is dominant. Desaturated bruised purple, cream and charcoal, no emerald green, no grass, no flowers, no mushrooms viewed from the side. Dense tiny irregular fibrous detail from directly overhead, no glowing neon.",
+      "width": 1254,
+      "height": 1254,
+      "meanLinear": [
+        0.1242854,
+        0.1353919,
+        0.131049
+      ],
+      "greenPixelFraction": 0.0069061300489152416,
+      "bytes": 3713190,
+      "sha256": "d60fc9dfc8cbecb3c453fd9b6eb66821a39dd4881373cb511cf69e895d686ed6"
+    },
+    {
+      "id": "violet-labyrinth",
+      "source": "C:\\Users\\Joe\\.codex\\generated_images\\01a08d78-78ae-7100-99be-e299d8a47652\\exec-e7b6a72e-6dd6-467d-a6a0-c62769d5e1b4.png",
+      "path": "assets/wound-edges/violet-labyrinth.png",
+      "prompt": "Use case: stylized-concept. Asset type: original high-resolution Wound-edge ground albedo texture for The Sphere Observatory. Create ONE square 2048x2048 image, a seamlessable orthographic straight-down material covering a 2.5 kilometre patch of the shattered inner surface of an ancient artificial world. Ruined engineered shell is the dominant substrate: fractured construction slabs, collapsed service grids, exposed foundation layers, torn metal, fine angular rubble and local debris. This is the ground adjoining a catastrophic Wound, not a picture of a cliff or a horizon. Fill the entire square with tangible ground; no cutaway, no sky, no space, no hole or black void at an image edge. Many irregularly distributed fine details, broad subdued variations, no central focal object, no repeated lattice or perfect symmetry. Uniform flat diffuse illumination suitable for an albedo map, no directional cast shadows, no gloss highlights, no fog, no text, no borders, no labels. Retain rich photorealistic detail without baked lighting. Biome-specific design: Violet Labyrinth. Destroyed alien violet crystalline maze on a ruined engineered shell. Broad broken charcoal construction foundations, intricate fractured violet-black glassy ridges and lavender mineral crystal shards scattered into exposed service trenches, dusty pale violet powder on buckled plates. Distinct interlocking angular maze fragments are interrupted by catastrophic damage, never an intact decorative pattern. Muted amethyst, plum, charcoal and pale mineral grey. Absolutely no green, plants, moss, organic roots, cyan water or neon lighting.",
+      "width": 1254,
+      "height": 1254,
+      "meanLinear": [
+        0.1290659,
+        0.1011284,
+        0.130596
+      ],
+      "greenPixelFraction": 0,
+      "bytes": 3704811,
+      "sha256": "3955b70ec6fc66090e215b9d89c3027a71e06f21a330f2025612466e42f0190c"
+    }
+  ]
+}

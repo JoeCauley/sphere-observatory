@@ -4,9 +4,37 @@
 
 A local WebGL 2 instrument inspired by **The Sphere** worldbuilding project. The shell has a radius of 149,597,870.7 km around a Sun-sized star: approximately **551 million Earth surface areas** on the inside.
 
-![Designed regions on the inner surface](examples/collection.png)
+![A wide view from the polar entry station, with the habitat bands overhead](examples/v1.4/polar-station.png)
 
-Current version: **0.9**. This is a working visualization prototype, not a finished game or a complete physics simulator.
+*From the polar station. An unretouched capture from Observatory v1.4; [open this scene](examples/v1.4/polar-station.json) in the app to explore it.*
+
+Download the [v1.4.0 release](https://github.com/JoeCauley/sphere-observatory/releases/tag/v1.4.0). See [release notes](docs/releases/v1.4.0.md), the [new screenshot gallery](examples/v1.4/) and the [next development plan](docs/Observatory-Next-Leap.md).
+
+This is a working visualization prototype, not a finished game or a complete physics simulator.
+
+## Inside the current build
+
+![Clouds above the layered edge of a Wound, opening into space](examples/v1.4/wound-edge.png)
+
+*At the edge of a world: local clouds, exposed shell strata and the open breach.*
+
+| The broken Shade | Walking the Mycelium Sea |
+|---|---|
+| ![Textured Shade skin with exposed structural ribs](examples/v1.4/shade-structure.png) | ![A walking field site beneath the curved inner shell](examples/v1.4/mycelium.png) |
+
+The [full gallery](examples/v1.4/) also includes a cloud sea and exterior wreckage. Every image has an importable scene file; these are renderer captures, with no compositing or retouching.
+
+Version 1.4 improves Wound haze and adds subpixel sampling along analytic Shade outlines and cracks. **Smooth edges** enables it under Light or in the fullscreen Flight console. World, lighting, weather, camera and simulation time now save automatically in this browser and reopen paused, together with preview and capture preferences. See [air and silhouette notes](docs/Observatory-Polish-14.md), including the remaining intermittent first-use 4K export issue.
+
+Wounds now have **ten unique biome-specific edge textures**. Damage builds across 240 km of surviving ground into the matching shattered material at the lip, with corresponding upper-wall deposits. The transition follows the actual Wound boundary and stays fixed as the camera moves. See [artwork, prompts and material details](assets/wound-edges/README.md).
+
+Shade material filtering follows each surface's projected footprint across cracks and silhouettes. Fine finishes settle into a stable distant material, and broad district boundaries are filtered separately. See [Shade material sampling](docs/Observatory-Shade-Filtering-14.md).
+
+Version 1.3 added shared roughness, metalness and normal detail on Shade skin and Wound structures, plus local self-shadowing. Use **Light → Surface materials & shadows** or **Flight console** to compare Detailed/Simple materials and Off/Balanced/Fine shadows. See [materials and shadow notes](docs/Observatory-Materials-13.md).
+
+Version 1.2 added continuous Wound and Shade inspection geometry, distance-based detail streaming, a camera that follows the inspected Shade, and a fullscreen flight console. Press **L** to toggle level lock within 1 km. See [continuity and navigation notes](docs/Observatory-Continuity-12.md).
+
+Future work is saved in the [Observatory queue](docs/Observatory-Queue.md). The [inner shell research](docs/Observatory-Shell-Design-Research.md) compares three proposed layouts using NASA life-support and thermal principles, local watersheds and the existing waist and poles.
 
 ## Run locally
 
@@ -30,7 +58,23 @@ The browser must use hardware WebGL. In Chrome, open **Settings → System**, tu
 
 **No build step or runtime package installation.** No account, API key, cloud service, telemetry or runtime image generation. Testing has primarily used Windows, Edge and an RTX 5080; performance on other systems may differ substantially.
 
-## New in v0.9
+## New in v1.1
+
+The Shade fleet now follows the three habitat ribbons and rotates with the waist. Cross-track dimensions stay within each ribbon; radial levels retain clearance. Free flight stops at solid shell, Shades and local geometry, glides along ground, and passes through Wounds.
+
+Clouds use a continuous 3D density field with self-shadow sampling and depth-aware reconstruction. **Light → Local weather** offers three cloud detail levels and independent **Cavity haze**. Prominent exterior wrecks are now detailed geometry with parallax; the low-resolution environment paintings remain archived and are no longer stretched across the sky.
+
+[Graphics pass, validation and limits](docs/Observatory-Graphics-11.md).
+
+## Previous v1.0 work
+
+A designed habitat waist, three supporting machinery families and two polar entry complexes replace the intersecting belts in new scenes. The Ruin's colour and reflected light now derive from its actual imagery. Eight new original images cover machinery, both Shade faces and three wreckage environments.
+
+**Explore → Field expeditions** opens ten walkable biome samples, entry courts, layered Wound edges, damaged Shade service sections and exterior wreckage with automated fleets. **Light → Local weather** adds biome-specific clouds, fog, dust and spores. Local geometry participates in depth, ray picking, shadows and photographs, including panoramas. The in-app guide distinguishes maintained Shade routes from passive orbits and reports light travel time.
+
+Walk with W/A/S/D, Shift to run and Space to jump. These are bounded 2.4-km procedural samples. Earlier scenes retain their legacy layout and material shader. [Implementation, controls and physical limits](docs/Observatory-Evolution-10.md).
+
+## Previous v0.9 work
 
 Ten hero biome landscapes with bump shading, larger non-mirrored surface detail, regional atmosphere colours, and a redesigned exploration workflow. Live indirect lighting runs off the main thread; adaptive preview supports up to 4K output. See surface lands under the crosshair, and nearby arrivals level within 1,000 km.
 
@@ -78,7 +122,7 @@ Start with defaults. Reduce preview detail or use 19 station rays if interaction
 
 **Geometric scale is the foundation; the entire world is not physically solved.**
 
-CPU geometry uses double precision; GPU calculations use normalized floating point with finite precision limits. Surface patterns are illustrative materials on a smooth shell, not resolved terrain or ecosystems. Wounds have no resolved deck thickness.
+CPU geometry uses double precision; GPU calculations use normalized floating point with finite precision limits. Most surface patterns are illustrative materials on a smooth shell, not resolved terrain or ecosystems. Local Wound geometry resolves the authored shell thickness and structural strata; the new ground albedos do not add physical terrain displacement.
 
 Shade motion is prescribed, not gravitational orbital motion. Gravity, shell support, heat disposal, propulsion and atmosphere retention are assumed. Light travel time, climate, material strength, evolving debris and station thermal emission are not simulated. The stellar disk has uniform brightness rather than limb darkening. Atmosphere and ShellShine are approximations, not converged global transport.
 
@@ -96,10 +140,14 @@ Browser tests additionally require a locally installed Playwright package and a 
 
 ```sh
 node tests/collection-browser.cjs
+node tests/evolution-browser.cjs
 node tests/shade-light-browser.cjs
 node tests/station-browser.cjs
 node tests/visual-quality-browser.cjs
 node tests/edge-filter-browser.cjs
+node tests/release-browser.cjs
+node tests/polish-capture-browser.cjs
+node tests/shade-material-browser.cjs
 ```
 
 The station test reports finite-precision discrepancies and checks a one-source-ray-plus-quantization bound. Edge filtering records both squared and absolute errors because smoothing does not improve every metric.

@@ -1,0 +1,14 @@
+const {chromium}=require(process.env.SPHERE_PLAYWRIGHT||'playwright'),fs=require('node:fs'),path=require('node:path');
+(async()=>{const browser=await chromium.launch({headless:true,...(process.env.SPHERE_BROWSER?{executablePath:process.env.SPHERE_BROWSER}:{})});try{
+ const page=await browser.newPage({viewport:{width:1600,height:1000}}),errors=[];page.on('pageerror',e=>errors.push(e.message));page.setDefaultTimeout(120000);
+ await page.goto(process.env.SPHERE_URL||'http://127.0.0.1:8766/',{waitUntil:'domcontentloaded',timeout:120000});await page.waitForFunction(()=>window.SphereEvolution);console.log('Startup ms',await page.evaluate(()=>performance.getEntriesByType('navigation')[0].domContentLoadedEventEnd));await page.evaluate(()=>SphereApp.setBusy(true));const dir=path.resolve('work/screenshots/materials-4k');fs.mkdirSync(dir,{recursive:true});const results=[];
+ for(const id of ['shade-0','rim','shade-under','rim-close']){
+  const r=await page.evaluate(async id=>{const A=SphereApp,M=SphereMath,R=A.renderer;SphereEvolution.visit(id.startsWith('rim')?'rim':'shade-0');const s=A.getState();s.richMaterials=true;s.localShadows=2;s.antialias=3;
+   if(id==='shade-under'){const f=SphereSites.shadeSection(s);s.position=f.world([-.23,-.18,.34]);s.forward=M.norm(M.sub(f.world([.3,-.04,0]),s.position));s.up=f.basis[1];s.exposure=1.;}
+   if(id==='rim-close'){const f=SphereWorld.rimFrame(s),edge=SphereEdges.rimPoint(s,0,Math.PI/2,2.3);s.position=M.add(edge,M.mul(f.inland,-.16));s.forward=M.norm(M.add(f.inland,M.mul(f.tangent,.45)));s.up=M.mul(f.point,-1);s.fov=76;s.exposure=2.;}
+   await R.prepare(s);R.draw(s,3840,2160,{exportFrame:true});R.gl.finish();const start=performance.now();R.draw(s,3840,2160,{exportFrame:true});R.gl.finish();const image=R.canvas.toDataURL('image/png');return {id,state:s,info:R.renderInfo,image,captureAndEncodingMs:performance.now()-start,gl:R.error()};
+  },id);fs.writeFileSync(path.join(dir,id+'.png'),Buffer.from(r.image.split(',')[1],'base64'));delete r.image;results.push(r);console.log(JSON.stringify(r));if(r.gl)throw Error('WebGL capture error');
+ }
+ await page.evaluate(()=>{SphereEvolution.visit('shade-0');SphereApp.setBusy(false);});await page.click('#fullscreen');await page.click('#flightConsoleButton');await page.selectOption('#consoleShadows','2');await page.selectOption('#consoleMaterials','0');if(await page.evaluate(()=>SphereApp.getState().richMaterials))throw Error('Fullscreen material control failed');await page.selectOption('#consoleMaterials','1');await page.evaluate(()=>SphereApp.setBusy(true));await page.screenshot({path:path.join(dir,'fullscreen-controls.png')});
+ fs.writeFileSync(path.join(dir,'verification.json'),JSON.stringify({results,errors},null,2));if(errors.length)throw Error(errors.join('\n'));
+ }finally{await browser.close();}})().catch(e=>{console.error(e);process.exitCode=1;});

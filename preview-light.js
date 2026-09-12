@@ -1,6 +1,6 @@
 (function(root){
 'use strict';
-const keys=['era','seed','regionOrder','colorRichness','multipleWounds','routeShades','starStation','stationSamples','cycleScale','luminosity','radius','starRadius','shadeShape','shadeTrim','biome'];
+const keys=['era','seed','regionOrder','colorRichness','multipleWounds','routeShades','starStation','stationSamples','cycleScale','luminosity','radius','starRadius','shadeShape','shadeTrim','biome','layoutVersion','axisLat','axisLon','waistWidth','transitionKm'];
 const workerURL=new URL('shine-worker.js',document.currentScript.src);
 class PreviewLight {
  constructor(){this.key='';this.color=null;this.target=null;this.pending=false;this.lastSent=-Infinity;this.lastTime=null;this.sampleTime=null;

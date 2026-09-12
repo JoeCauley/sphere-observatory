@@ -1,6 +1,6 @@
 {
   "name": "sphere-observatory",
-  "version": "0.9.0",
+  "version": "1.4.0",
   "private": true,
   "description": "Local WebGL Dyson shell visualization and measurement instrument",
   "license": "UNLICENSED",
@@ -8,7 +8,7 @@
     "start": "node serve.cjs",
     "start:managed": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/start-observatory.ps1",
     "stop": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/stop-observatory.ps1",
-    "test": "node tests/geometry.cjs && node tests/survey.cjs && node tests/collection.cjs && node tests/shades.cjs && node tests/station-convergence.cjs && node tests/performance.cjs"
+    "test": "node tests/geometry.cjs && node tests/survey.cjs && node tests/collection.cjs && node tests/shades.cjs && node tests/station-convergence.cjs && node tests/performance.cjs && node tests/evolution.cjs && node tests/focus.cjs && node tests/continuity.cjs && node tests/materials.cjs && node tests/session-state.cjs && node tests/wound-materials.cjs"
   },
   "engines": {
     "node": ">=20"

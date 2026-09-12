@@ -1,0 +1,77 @@
+[
+  {
+    "id": "thermal-fields",
+    "source": "C:\\Users\\Joe\\.codex\\generated_images\\01a08d78-78ae-7100-99be-e299d8a47652\\exec-73e90421-bd4b-4c22-97f8-c7729bc53a40.png",
+    "file": "assets/engineering/thermal-fields.png",
+    "prompt": "Square seamlessable orthographic top-down albedo material, immense engineered Dyson sphere thermal routing fields: charcoal ceramic collector grids, dark grey heat-exchanger islands, copper-bronze transfer conduits, broad purposeful parallel trunks and intricate subsidiary service arrays. No sky, no stars, no perspective, no baked hard sunlight, no text, no borders. Physically plausible subdued diffuse base colors. A 6 kilometre district seen vertically overhead with dense nested machinery, original design. Photorealistic game material. Square 2048x2048.",
+    "generator": "OpenAI imagegen",
+    "created": "2026-09-10",
+    "license": "Original artwork generated for The Observatory; no star-agent content used."
+  },
+  {
+    "id": "circulation-fields",
+    "source": "C:\\Users\\Joe\\.codex\\generated_images\\01a08d78-78ae-7100-99be-e299d8a47652\\exec-80ad6d1a-897d-4f30-bce5-21faea7f0a72.png",
+    "file": "assets/engineering/circulation-fields.png",
+    "prompt": "Square orthographic straight-down albedo game material of an original Dyson sphere atmospheric and water processing district covering 6 kilometres: immense dark teal reservoirs, pale grey processing grids, silver pipes and rectangular filtration gardens, purposefully connected curved canals and parallel conduits, fine service detail. Uniform diffuse illumination, subdued realistic base colors, no strong shadows, no sky, no perspective, no labels or borders. Edge density consistent for tiling. Square 2048x2048.",
+    "generator": "OpenAI imagegen",
+    "created": "2026-09-10",
+    "license": "Original artwork generated for The Observatory; no star-agent content used."
+  },
+  {
+    "id": "fabrication-fields",
+    "source": "C:\\Users\\Joe\\.codex\\generated_images\\01a08d78-78ae-7100-99be-e299d8a47652\\exec-2ae87da7-d357-44d0-af3a-fdba2ecca1f5.png",
+    "file": "assets/engineering/fabrication-fields.png",
+    "prompt": "Square orthographic straight-down albedo game material of an original Dyson sphere fabrication and repair district covering 6 kilometres: interlocking dark steel foundry roofs, immense industrial rectangular assembly yards, maintenance bays, sparse amber conduits, ash-grey plates and precise structural channels. Industrial repeating hierarchy but varied districts. Uniform diffuse lighting, no sky or perspective, no readable text, no border or labels, no glowing lava. Photorealistic dense restrained gunmetal surfaces. Square 2048x2048.",
+    "generator": "OpenAI imagegen",
+    "created": "2026-09-10",
+    "license": "Original artwork generated for The Observatory; no star-agent content used."
+  },
+  {
+    "id": "shade-sunward",
+    "source": "C:\\Users\\Joe\\.codex\\generated_images\\01a08d78-78ae-7100-99be-e299d8a47652\\exec-5d39b525-9c3e-4d09-b467-424bfe86c34c.png",
+    "file": "assets/engineering/shade-sunward.png",
+    "prompt": "Square orthographic straight-down albedo game material of the star-facing side of an original immense engineered sunshade. A 6 kilometre array of graphite ceramic hexagonal absorber fields subdivided into dense tiny tiles, silver expansion joints, braided copper energy conduits, narrow black service trenches, very restrained bronze inspection structures. Coherent manufactured design, uniform diffuse illumination, realistic dark base color without hard shadows. No sky, no perspective, no labels, text or border. Square 2048x2048.",
+    "generator": "OpenAI imagegen",
+    "created": "2026-09-10",
+    "license": "Original artwork generated for The Observatory; no star-agent content used."
+  },
+  {
+    "id": "shade-shellward",
+    "source": "C:\\Users\\Joe\\.codex\\generated_images\\01a08d78-78ae-7100-99be-e299d8a47652\\exec-81100aa0-90c8-49aa-af95-77ee35562ca5.png",
+    "file": "assets/engineering/shade-shellward.png",
+    "prompt": "Square orthographic straight-down albedo game material of the shell-facing service side of an original immense engineered sunshade: interlocking grey titanium service plates, dense nested rectilinear maintenance networks, dark recessed machinery, sparse muted amber signal conduits, structural ribs and access squares. A 6 kilometre district with intricate mechanically organized detail. Uniform diffuse lighting, no strong cast shadows, sky, perspective, text, labels or border. Photorealistic subdued base colors. Square 2048x2048.",
+    "generator": "OpenAI imagegen",
+    "created": "2026-09-10",
+    "license": "Original artwork generated for The Observatory; no star-agent content used."
+  },
+  {
+    "id": "breach-spill",
+    "source": "C:\\Users\\Joe\\.codex\\generated_images\\01a08d78-78ae-7100-99be-e299d8a47652\\exec-3dde22d3-269f-4c8f-9a2e-5232ee7d3754.png",
+    "file": "assets/space/breach-spill.png",
+    "prompt": "A photorealistic science fiction environment panorama for an original Dyson sphere world. Wide 2:1 equirectangular space background, black vacuum, an immense distant swath of cold wreckage made of destroyed inhabited megastructure: broken grey and oxidized copper shell plates, hollow trusses, severed conduits and fragmented habitat blocks, viewed from within a sparse ancient debris belt. Many distant small fragments, a few distant colossal slabs with recognizable artificial structure. Restrained neutral starlight, deep blacks, no bright central sun, no planets, no foreground ground, no text, no logos. Main wreckage arranged broadly around the equatorial middle with sparse black space above and below; left and right edges visually continuous. Original assets only, no franchise ships. 2048x1024.",
+    "generator": "OpenAI imagegen",
+    "created": "2026-09-10",
+    "license": "Original artwork generated for The Observatory; no star-agent content used.",
+    "usage": "Archived concept artwork since Observatory 1.1; the runtime exterior uses original procedural geometry and filtered distant silhouettes."
+  },
+  {
+    "id": "ancient-graveyard",
+    "source": "C:\\Users\\Joe\\.codex\\generated_images\\01a08d78-78ae-7100-99be-e299d8a47652\\exec-9ed850fb-a9be-445b-9341-22f8ddf83448.png",
+    "file": "assets/space/ancient-graveyard.png",
+    "prompt": "Photorealistic original science fiction space environment panorama, wide 2:1 equirectangular background. Ancient graveyard beyond a broken Dyson sphere: distant dispersed angular megastructure fragments and several immense long-dead automated spacecraft, dark angular original ships with skeletal spines, cold grey pitted hulls and bronze aged panels. Dense distant population recedes into black vacuum; dramatic scale from many tiny distant fragments, sparse nearby space. Soft subdued stellar lighting, no atmosphere or nebula, no large sun, no planets, no ground, no text. Main content across middle latitudes, subtle edge continuity for wrapping. No recognizable franchise designs. 2048x1024.",
+    "generator": "OpenAI imagegen",
+    "created": "2026-09-10",
+    "license": "Original artwork generated for The Observatory; no star-agent content used.",
+    "usage": "Archived concept artwork since Observatory 1.1; the runtime exterior uses original procedural geometry and filtered distant silhouettes."
+  },
+  {
+    "id": "contested-approach",
+    "source": "C:\\Users\\Joe\\.codex\\generated_images\\01a08d78-78ae-7100-99be-e299d8a47652\\exec-8c09bc3f-d7c0-47bd-b45e-4535fba3440b.png",
+    "file": "assets/space/contested-approach.png",
+    "prompt": "Photorealistic original science fiction space environment panorama, wide 2:1 equirectangular background. Far beyond an ancient Dyson sphere wound, distant automated fleets still fighting an eternal war: many tiny original angular warships and repair tenders among ancient grey plate-and-truss wreckage, a few sparse distant amber-white battle flashes, fragmented derelicts, enormous scale and black vacuum. Fleets occupy loose distant formations across the middle band, upper and lower portions mostly black with faint stars, subtle left/right edge continuity. No visible continuous laser beams, no bright central sun, no planet, no ground, no text or recognizable franchise ships. 2048x1024.",
+    "generator": "OpenAI imagegen",
+    "created": "2026-09-10",
+    "license": "Original artwork generated for The Observatory; no star-agent content used.",
+    "usage": "Archived concept artwork since Observatory 1.1; the runtime exterior uses original procedural geometry and filtered distant silhouettes."
+  }
+]

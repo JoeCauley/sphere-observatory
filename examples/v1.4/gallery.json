@@ -1,0 +1,36 @@
+{
+  "version": "1.4.0",
+  "method": "Unretouched Observatory renders at 1920 × 1080, internally supersampled at 3840 × 2160",
+  "shots": [
+    {
+      "id": "polar-station",
+      "title": "From the polar station",
+      "bytes": 4132223
+    },
+    {
+      "id": "wound-edge",
+      "title": "At the edge of a world",
+      "bytes": 3039181
+    },
+    {
+      "id": "shade-structure",
+      "title": "The broken Shade",
+      "bytes": 3749167
+    },
+    {
+      "id": "cloudscape",
+      "title": "Above the cloud sea",
+      "bytes": 3676581
+    },
+    {
+      "id": "mycelium",
+      "title": "Walking the Mycelium Sea",
+      "bytes": 3348732
+    },
+    {
+      "id": "wreckage",
+      "title": "The ancient graveyard",
+      "bytes": 1547920
+    }
+  ]
+}

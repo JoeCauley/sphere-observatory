@@ -4,6 +4,7 @@ uniform int uCollection,uAfter,uManyWounds,uRoutes,uStation,uShineField,uGuide,u
 uniform float uOrder,uRichness,uShadeTrim;
 uniform vec3 uCavity;
 uniform vec4 uDisks[18],uDiskNormals[18],uDiskRights[18];
+uniform float uDiskAcross[18];
 uniform vec4 uWounds[6],uWoundTangents[6];
 uniform vec4 uBelts[3],uBeltRights[3];
 `;
@@ -11,7 +12,7 @@ const functions=`
 float woundMetric(vec3 q,int i){vec3 axis=uWounds[i].xyz,tanv=uWoundTangents[i].xyz;float a=atan(dot(q,tanv),dot(q,axis)),b=asin(clamp(dot(q,cross(axis,tanv)),-1.,1.));float jag=1.+.13*sin(a*71.)+.055*sin(a*193.);return length(vec2(a/uWoundTangents[i].w,b/(uWounds[i].w*jag)));}
 float woundField(vec3 q){float v=100.;for(int i=0;i<6;i++)v=min(v,woundMetric(q,i));return v;}
 bool collectionHole(vec3 q){return uAfter==1&&uManyWounds==1&&woundField(q)<1.;}
-bool diskSolid(vec2 p,int i){if(uShadeShape==3&&abs(p.x)>uShadeTrim)return false;if(uShadeShape==1?max(abs(p.x),abs(p.y))>1.:dot(p,p)>1.)return false;if(uDiskNormals[i].w<.5)return true;return !(p.x>.12&&p.y>-.2)&&abs(p.x+.3+.16*sin(p.y*9.))>.018&&abs(p.y+.18+.11*sin(p.x*10.))>.012;}
+bool diskSolid(vec2 p,int i){p.x/=max(.001,uDiskAcross[i]);if(uShadeShape==3&&abs(p.x)>uShadeTrim)return false;if(uShadeShape==1?max(abs(p.x),abs(p.y))>1.:dot(p,p)>1.)return false;if(uDiskNormals[i].w<.5)return true;return !(p.x>.12&&p.y>-.2)&&abs(p.x+.3+.16*sin(p.y*9.))>.018&&abs(p.y+.18+.11*sin(p.x*10.))>.012;}
 float diskHit(vec3 origin,vec3 d,int i){
  vec3 n=uDiskNormals[i].xyz,right=uDiskRights[i].xyz,up=cross(n,right);
  if(uShadeShape>=2){float r=length(uDisks[i].xyz),b=dot(origin,d),disc=r*r-dot(cross(origin,d),cross(origin,d));if(disc<0.)return 1e20;float root=sqrt(disc);
@@ -100,7 +101,7 @@ src=src.replace('if(uMode==2)', 'if(uMode==5){fragColor=vec4(vec3(kind==0?collec
 SphereShaders.fragment=src;
 SphereCollection.upload=function(gl,uniforms,s,indirect){const C=SphereCollection,f=(k,x)=>gl.uniform1f(uniforms[k],x),i=(k,x)=>gl.uniform1i(uniforms[k],+x),v=(k,x)=>gl.uniform3fv(uniforms[k],x);
  f('uShadeTrim',s.shadeTrim??.65);i('uShadowSamples',s.shadowSamples||7);i('uStationSamples',s.stationSamples||64);i('uShadeShape',s.shadeShape==='trimmed'?3:s.shadeShape==='cap'?2:s.shadeShape==='square'?1:0);i('uCollection',s.collection);i('uAfter',s.era==='after');i('uManyWounds',s.multipleWounds);i('uRoutes',s.routeShades);i('uStation',s.starStation);i('uShineField',s.shineField);i('uGuide',s.routeGuides);f('uOrder',s.regionOrder);f('uRichness',s.colorRichness);
- if(!s.collection)return;const pp=C.plates(s),pack=(name,values,size)=>{while(values.length<size)values.push(0);gl.uniform4fv(uniforms[name+'[0]'],values);};i('uPlateCount',pp.length);pack('uDisks',pp.flatMap(p=>[...p.center,p.size]),72);pack('uDiskNormals',pp.flatMap(p=>[...p.normal,p.damage]),72);pack('uDiskRights',pp.flatMap(p=>[...p.right,p.id]),72);
+ if(!s.collection)return;const pp=C.plates(s),pack=(name,values,size)=>{while(values.length<size)values.push(0);gl.uniform4fv(uniforms[name+'[0]'],values);};i('uPlateCount',pp.length);pack('uDisks',pp.flatMap(p=>[...p.center,p.size]),72);pack('uDiskNormals',pp.flatMap(p=>[...p.normal,p.damage]),72);pack('uDiskRights',pp.flatMap(p=>[...p.right,p.id]),72);const across=new Float32Array(18);pp.forEach((p,i)=>across[i]=p.across||1);gl.uniform1fv(uniforms['uDiskAcross[0]'],across);
  pack('uWounds',C.wounds.flatMap(w=>[...w.axis,w.width]),24);pack('uWoundTangents',C.wounds.flatMap(w=>[...w.tangent,w.length]),24);pack('uBelts',C.routes.flatMap(r=>[...r.normal,r.width]),12);pack('uBeltRights',C.routes.flatMap(r=>[...r.right,r.sectors]),12);v('uCavity',s.shineField?(indirect||C.cavity(s)):[0,0,0]);
 };
 })();
