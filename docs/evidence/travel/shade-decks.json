@@ -1,0 +1,161 @@
+{
+  "records": [
+    {
+      "side": "top",
+      "local": [
+        0.29999999653052584,
+        0.014001005376192735,
+        0.09999997750460847
+      ],
+      "time": 7.661999999999827,
+      "playing": true,
+      "attachment": 0,
+      "contact": "Shade · exposed service structure",
+      "contactDistance": 9.96905176326758e-7,
+      "render": {
+        "width": 1600,
+        "height": 900,
+        "internalWidth": 1600,
+        "internalHeight": 900,
+        "antialias": "none",
+        "lightPipeline": "linear-half-float",
+        "exportFrame": true,
+        "silhouetteSamples": 0,
+        "silhouetteMaskMiB": 0,
+        "structureShadows": {
+          "enabled": true,
+          "quality": 1,
+          "resolution": 2048,
+          "cascades": 2,
+          "nearWidthKm": 1,
+          "farWidthKm": 8,
+          "nearTexelMetres": 0.48828125,
+          "submittedTriangles": 36800,
+          "cached": false,
+          "depthStorageMiB": 32
+        },
+        "geometry": {
+          "groups": 136,
+          "triangles": 90304,
+          "localShadow": true,
+          "materials": "roughness / metalness / normal"
+        },
+        "weather": "Cavity dust",
+        "volume": {
+          "steps": 112,
+          "width": 800,
+          "height": 450,
+          "depthAware": true,
+          "cavityHaze": 0.28
+        },
+        "cpuMs": 221.90000000596046,
+        "gpuMs": 4.230144,
+        "indirectLight": "exact frame",
+        "indirectSampleTime": 7.661999999999827,
+        "heroTextures": {
+          "ready": 0,
+          "total": 10,
+          "gpuMiB": 0,
+          "tileKm": 2.5
+        },
+        "woundTextures": {
+          "ready": 0,
+          "total": 10,
+          "gpuMiB": 0,
+          "tileKm": 0.64,
+          "damageBandKm": 240
+        },
+        "textures": {
+          "ready": 0,
+          "total": 10,
+          "gpuMiB": 40,
+          "scalesKm": [
+            256,
+            16,
+            1
+          ]
+        }
+      },
+      "gl": 0
+    },
+    {
+      "side": "bottom",
+      "local": [
+        0.30012571611017774,
+        -0.1519984224688213,
+        0.09999999986989955
+      ],
+      "time": 59.55600000107253,
+      "playing": true,
+      "attachment": 0,
+      "contact": "Shade · exposed service structure",
+      "contactDistance": 0.000001008008528291613,
+      "render": {
+        "width": 1600,
+        "height": 900,
+        "internalWidth": 1600,
+        "internalHeight": 900,
+        "antialias": "none",
+        "lightPipeline": "linear-half-float",
+        "exportFrame": true,
+        "silhouetteSamples": 0,
+        "silhouetteMaskMiB": 0,
+        "structureShadows": {
+          "enabled": true,
+          "quality": 1,
+          "resolution": 2048,
+          "cascades": 2,
+          "nearWidthKm": 1,
+          "farWidthKm": 8,
+          "nearTexelMetres": 0.48828125,
+          "submittedTriangles": 36800,
+          "cached": false,
+          "depthStorageMiB": 32
+        },
+        "geometry": {
+          "groups": 136,
+          "triangles": 90304,
+          "localShadow": true,
+          "materials": "roughness / metalness / normal"
+        },
+        "weather": "Cavity dust",
+        "volume": {
+          "steps": 112,
+          "width": 800,
+          "height": 450,
+          "depthAware": true,
+          "cavityHaze": 0.28
+        },
+        "cpuMs": 24.5,
+        "gpuMs": 1.59296,
+        "indirectLight": "exact frame",
+        "indirectSampleTime": 59.55600000107253,
+        "heroTextures": {
+          "ready": 0,
+          "total": 10,
+          "gpuMiB": 0,
+          "tileKm": 2.5
+        },
+        "woundTextures": {
+          "ready": 0,
+          "total": 10,
+          "gpuMiB": 0,
+          "tileKm": 0.64,
+          "damageBandKm": 240
+        },
+        "textures": {
+          "ready": 0,
+          "total": 10,
+          "gpuMiB": 40,
+          "scalesKm": [
+            256,
+            16,
+            1
+          ]
+        }
+      },
+      "gl": 0
+    }
+  ],
+  "errors": []
+}

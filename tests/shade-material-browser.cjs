@@ -6,7 +6,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('n
  try{
   const page=await browser.newPage();page.setDefaultTimeout(180000);const errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto(process.env.SPHERE_URL||'http://127.0.0.1:8766/',{waitUntil:'domcontentloaded'});
-  await page.waitForFunction(()=>window.SphereEvolution);await page.evaluate(()=>SphereApp.setBusy(true));
+  await page.waitForFunction(()=>window.SphereLoading?.ready&&window.SphereEvolution);await page.evaluate(()=>SphereApp.setBusy(true));
   const result=await page.evaluate(()=>{
    const R=SphereApp.renderer,gl=R.gl,M=SphereMath,source=SphereShaders.geometryFragment;
    const shared=source.slice(0,source.lastIndexOf('void main(){'));

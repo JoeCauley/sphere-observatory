@@ -4,6 +4,7 @@
 window.SphereLegacyShaders={...SphereShaders};
 const constants=`
 uniform int uLayout,uWorldTexturesReady,uSpaceEnvironment,uWreckage;
+uniform float uEngineeringReady[5];
 uniform vec3 uWorldAxis,uWorldRight,uWorldUp,uEngineeringAnchor;
 uniform vec2 uShadeUVAnchor[18];uniform vec3 uShadeUVRight[18],uShadeUVUp[18];
 vec3 shadeRayDx=vec3(0.),shadeRayDy=vec3(0.);
@@ -132,7 +133,7 @@ vec3 worldDetail(int id,vec3 q,vec3 delta,float footprint,float distanceKm){
   // Hierarchical service districts, then real six-kilometre engineering artwork.
   for(int tier=0;tier<3;tier++){float scale=tier==0?1000000.:tier==1?100000.:10000.;vec3 p=uAnchor[tier]+delta/scale;float fw=footprint/scale;float district=tri.x*panelLine(p.yz,fw)+tri.y*panelLine(p.xz,fw)+tri.z*panelLine(p.xy,fw);float block=tnoise(floor(p));col*=mix(1.,(.70+.6*block)*(1.-district*.40),1.-smoothstep(.1,.45,fw));}
   if(id==15){float polar=acos(clamp(abs(dot(q,uWorldAxis)),0.,1.))*uRadius;float facility=1.-smoothstep(320000.,350000.,polar);float rings=constructionRib(polar,35000.,footprint),gate=1.-smoothstep(8000.,10000.,polar);col=mix(col,vec3(.14,.18,.19)*(1.-rings*.70),facility);col=mix(col,vec3(.035,.05,.055),gate);}
-  if(uTextureDetail==1&&uWorldTexturesReady==1){float ef=(1.-smoothstep(1500.,6000.,distanceKm))*(1.-smoothstep(.1,.5,footprint/6.));if(ef>.001){vec3 ep=uEngineeringAnchor+delta/6.;int layer=id==15?4:id-10;vec3 tex=sampleSurface(uEngineering,float(layer),ep,tri,dx/6.,dy/6.,false);col=mix(col,tex,ef);}}
+  if(uTextureDetail==1&&uWorldTexturesReady==1){float ef=(1.-smoothstep(1500.,6000.,distanceKm))*(1.-smoothstep(.1,.5,footprint/6.));if(ef>.001){vec3 ep=uEngineeringAnchor+delta/6.;int layer=id==15?4:id-10;vec3 tex=sampleSurface(uEngineering,float(layer),ep,tri,dx/6.,dy/6.,false);col=mix(col,tex,ef*uEngineeringReady[layer]);}}
  }
  // Sub-metre to hundred-metre roughness detail has physical pitches and neutral colour.
  float detailFade=1.-smoothstep(.001,.006,footprint);if(detailFade>.001&&uSurfaceRelief==1){vec3 p=uAnchor[8]+delta/.01;float grain=tnoise(p)*.65+tnoise(p*4.)*.35;col*=mix(1.,.82+.36*grain,detailFade);surfaceBumpLight=.91+.09*grain;}
@@ -197,7 +198,7 @@ vec3 shadeSkinGrad(vec2 uv,int layer,float distanceKm,vec2 gx,vec2 gy){
  float fw=shadeFilterWidth(uv,gx,gy),kmFootprint=fw*1.2;
  vec2 km=uv*1.2;vec3 base=layer==3?vec3(.041,.047,.050):vec3(.085,.097,.104),col=base;
  if(uWorldTexturesReady==1&&uTextureDetail==1){float fade=(1.-smoothstep(.12,.7,fw))*(1.-smoothstep(6000.,20000.,distanceKm));
-  if(fade>.001){vec3 tex=stochasticTile(uEngineering,uv,float(layer),gx,gy);col=mix(col,mix(base,tex*.80,.56),fade);}
+  if(fade>.001){vec3 tex=stochasticTile(uEngineering,uv,float(layer),gx,gy);col=mix(col,mix(base,tex*.80,.56),fade*uEngineeringReady[layer]);}
  }
  float service=max(constructionRib(km.x,.1,kmFootprint),constructionRib(km.y,.1,kmFootprint));
  float cells=max(constructionRib(km.x,.005,kmFootprint),constructionRib(km.y,.02,kmFootprint));

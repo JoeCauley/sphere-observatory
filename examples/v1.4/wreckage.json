@@ -1,7 +1,7 @@
 {
   "format": "sphere-observatory",
   "version": 1,
-  "created": "2026-09-12T02:29:50.618Z",
+  "created": "2026-09-13T02:53:35.863Z",
   "state": {
     "version": 1,
     "radius": 149597870.7,
@@ -68,6 +68,9 @@
     "biomeAtmosphere": true,
     "surfaceRelief": true,
     "layoutVersion": 2,
+    "provinceRevision": 0,
+    "provinceSeed": 713,
+    "provinceAnchor": null,
     "axisLat": 63,
     "axisLon": -28,
     "waistWidth": 20,
@@ -88,6 +91,13 @@
       0.17661808265005385,
       0.9655958670293696
     ],
+    "siteRevision": 0,
+    "siteElevation": 0,
+    "autoWalk": true,
+    "autoSpeed": true,
+    "placeScene": "day",
+    "placeWeather": "mixed",
+    "walkSurface": false,
     "walkMode": false,
     "walkPosition": null,
     "walkVelocity": 0,
@@ -128,25 +138,31 @@
         "localShadow": true,
         "materials": "roughness / metalness / normal"
       },
-      "cpuMs": 1.0999999940395355,
-      "gpuMs": 9.61296,
+      "cpuMs": 3.5,
+      "gpuMs": 26.335616,
       "indirectLight": "exact frame",
       "indirectSampleTime": 983,
       "heroTextures": {
-        "ready": 10,
+        "ready": 8,
         "total": 10,
         "gpuMiB": 79.96,
         "tileKm": 2.5
       },
       "woundTextures": {
-        "ready": 10,
+        "ready": 1,
         "total": 10,
         "gpuMiB": 79.96,
         "tileKm": 0.64,
         "damageBandKm": 240
       },
+      "assets": {
+        "total": 7,
+        "ready": 7,
+        "failed": [],
+        "missing": []
+      },
       "textures": {
-        "ready": 10,
+        "ready": 3,
         "total": 10,
         "gpuMiB": 40,
         "scalesKm": [
@@ -163,6 +179,8 @@
     "lighting": "Finite stellar disk occlusion, image-derived 192-region first bounce, two camera-local directional shadow regions with approximate finite-star filtering, shared roughness/metalness/normal materials on Shade skin and Wound structures, and depth-clipped volumetric clouds with self-shadow sampling and optional tenuous cavity dust. ShellShine supplies a coarse environment reflection approximation; no reflection capture or converged global multiple scattering. No photometric calibration.",
     "surface": "Version 2: one oriented habitat waist, supporting machinery and two polar entries. Far reflectance is the linear-sRGB mean of original biome images. Nearby colour comes from those images. Bounded 2.4-km sites add deterministic terrain and objects. The rest of the shell remains analytic.",
     "dynamics": "Inspection cameras follow the selected Shade frame through simulation and scrubbing; detach allows independent flight. Level lock removes roll within 1 km without changing pitch. Shade routes follow the habitat ribbons on actively maintained small circles. Artificial local 9.81 m/s² walking gravity and atmospheric containment are assumptions. Shade periods are authored, not Keplerian. Exterior fleets follow illustrative deterministic motion; warfare is not simulated. Instantaneous light; no retarded transport.",
-    "stars": "Illustrative distant stars and filtered debris silhouettes; nearby original wreckage geometry supplies parallax and detailed silhouettes. The earlier low-resolution illustration plates are archived. No astronomical catalogue or inherited external game assets."
+    "stars": "Illustrative distant stars and filtered debris silhouettes; nearby original wreckage geometry supplies parallax and detailed silhouettes. The earlier low-resolution illustration plates are archived. No astronomical catalogue or inherited external game assets.",
+    "watershed": "Optional Watershed province revision 1, seed and unit-vector anchor saved independently of shell layout 2. A 640-km deterministic catchment graph supplies terrain, receiving basins and smoothed river ribbons. Curved water-garden structures are shared rendered/collision geometry. Water is a static surface, not a hydrodynamic simulation. Local canopy and a six-metre terrace inspection are included; this is not a new walking level.",
+    "assets": "Image maps are selected from the current viewing frustum and their distance bands, uploaded before revealing a new view, and reused from cache. Distant views use the numeric world palette. Texture arrays reserve bounded GPU capacity on first use; loading is selective by image, not a GPU paging system. A failed image can be retried or bypassed with the simpler surface."
   }
 }

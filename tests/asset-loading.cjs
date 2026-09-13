@@ -1,0 +1,11 @@
+const assert=require('node:assert/strict'),M=require('../math.js');require('../collection.js');require('../biomes.js');require('../world-palette.js');require('../world.js');require('../watershed-network.js');require('../field-sites.js');require('../watershed-province.js');require('../asset-plan.js');
+const T=SphereAssets,W=SphereWorld,base={...M.defaultState(),collection:true,geometryDetail:false},keys=['biomes','heroes','worldTextures','woundTextures'];
+const empty=plan=>keys.every(key=>plan[key].length===0);assert(empty(T.plan(base)));
+for(let id=0;id<10;id++){const q=W.locateBiome(id,base),s={...base,routeShades:false,position:M.mul(q,base.radius-.01),forward:q,up:M.basis(q).u},near=T.plan(s);assert.deepEqual(near.biomes,[id]);assert.deepEqual(near.heroes,[id]);assert.deepEqual(near.worldTextures,[]);assert(empty(T.plan({...s,textureDetail:false})));
+ const middle=T.plan({...s,position:M.mul(q,s.radius-1000)});assert.deepEqual(middle.biomes,[]);assert.deepEqual(middle.heroes,[id]);assert(empty(T.plan({...s,position:M.mul(q,s.radius-30000)})));}
+const s={...base,routeShades:true},p=SphereCollection.plates(s).find(p=>!p.damage);for(const side of [-1,1]){const near=T.plan({...s,position:M.add(M.mul(p.center,s.radius),M.mul(p.normal,side*.05)),forward:M.mul(p.normal,-side),up:p.up,shadeAttachment:null});assert.deepEqual(near.worldTextures,[3,4]);assert.deepEqual(near.heroes,[]);}
+const province=SphereWatershed.activate(base);assert.equal(SphereWatershed.visible(province),false);SphereSites.geometry(province);assert.equal(SphereWatershed.info.provinces,0,'A saved distant province is not built during startup');
+const renderer={modernProgram:{},weather:{farProgram:{},dustProgram:{}}};assert(T.pipelineReady(renderer,base,T.plan(base)));
+const local={...base,position:[0,0,base.radius-30]};assert(!T.pipelineReady(renderer,local,T.plan(local)),'First local weather prepares its shader');renderer.weather.program={};assert(T.pipelineReady(renderer,local,T.plan(local)));
+for(const state of [{...base,position:[0,0,0]},{...base,siteId:'biome-8',siteAnchor:W.locateBiome(8,base)},province])assert(T.pipelineReady(renderer,state,T.plan(state)),'A new combination of already prepared components needs no wait screen');
+console.log('PASS no distant image requests, selected biome distance bands, two-sided Shade artwork and deferred distant province');

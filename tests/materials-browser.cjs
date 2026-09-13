@@ -1,7 +1,7 @@
 const {chromium}=require(process.env.SPHERE_PLAYWRIGHT||'playwright'),fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
 (async()=>{const browser=await chromium.launch({headless:true,...(process.env.SPHERE_BROWSER?{executablePath:process.env.SPHERE_BROWSER}:{})});try{
  const page=await browser.newPage({viewport:{width:1600,height:1000}}),errors=[];page.on('pageerror',e=>{errors.push(e.message);console.error(e.message);});page.on('console',m=>{if(m.type()==='error'){errors.push(m.text());console.error(m.text());}});page.setDefaultTimeout(120000);
- await page.goto(process.env.SPHERE_URL||'http://127.0.0.1:8766/',{waitUntil:'domcontentloaded',timeout:120000});await page.waitForFunction(()=>window.SphereEvolution);await page.evaluate(()=>SphereApp.setBusy(true));
+ await page.goto(process.env.SPHERE_URL||'http://127.0.0.1:8766/',{waitUntil:'domcontentloaded',timeout:120000});await page.waitForFunction(()=>window.SphereLoading?.ready&&window.SphereEvolution);await page.evaluate(()=>SphereApp.setBusy(true));
  const dir=path.resolve('work/screenshots/materials');fs.mkdirSync(dir,{recursive:true});const captures=[];
  for(const id of ['shade-0','rim','shade-under','rim-grazing','rim-close']){
   const r=await page.evaluate(async id=>{const A=SphereApp,M=SphereMath,R=A.renderer;SphereEvolution.visit(id.startsWith('rim')?'rim':'shade-0');const s=A.getState();s.antialias=2;s.atmosphere=0;s.cavityHaze=0;

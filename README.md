@@ -4,13 +4,26 @@
 
 A local WebGL 2 instrument inspired by **The Sphere** worldbuilding project. The shell has a radius of 149,597,870.7 km around a Sun-sized star: approximately **551 million Earth surface areas** on the inside.
 
-![A wide view from the polar entry station, with the habitat bands overhead](examples/v1.4/polar-station.png)
+![A low flight across the Ultra Desert](examples/v1.4/ultra-desert.png)
 
-*From the polar station. An unretouched capture from Observatory v1.4; [open this scene](examples/v1.4/polar-station.json) in the app to explore it.*
+*Across the Ultra Desert. A newly retaken, unretouched capture from the current build; [open this scene](examples/v1.4/ultra-desert.json) in the app to explore it.*
 
 Download the [v1.4.0 release](https://github.com/JoeCauley/sphere-observatory/releases/tag/v1.4.0). See [release notes](docs/releases/v1.4.0.md), the [new screenshot gallery](examples/v1.4/) and the [next development plan](docs/Observatory-Next-Leap.md).
 
 This is a working visualization prototype, not a finished game or a complete physics simulator.
+
+## Current development build
+
+The published **v1.4.0 release remains the baseline**. The checkout currently contains the next, unreleased travel and world-detail pass. Its scope and retained validation are recorded in the [roadmap and handoff](docs/Observatory-Roadmap.md).
+
+- **Useful arrivals at the Wounds.** *See surface* now distinguishes selected ground, a close inspection of a Wound's fractured wall, and the near-rim adjoining biome. Each of the six Wounds also has its own Breach spill destination. The return action restores the exact prior view. [Arrival notes and visual checks](docs/Observatory-Arrival-Fix-Atlas-Study.md)
+- **Responsive structural detail.** Nearby Wound and Shade geometry is planned and built off the main thread, then admitted in bounded uploads. Coarse, collidable coverage remains until replacement detail is ready; captures retain their deterministic complete-geometry path. [Streaming measurements and limits](docs/Observatory-Next-Leap-Session-01.md)
+- **Places and continuous travel.** Explore has category browsing, Ground / Beneath the Clouds / Atmosphere choices, lighting and weather options, click-to-pin travel (or **G**) and an independent return history. **Space + E** gives a controlled lift-off, automatic speed responds to clearance, and a sustained flight can pass through the star and descend to a walking patch on the far shell. [Travel guide](docs/Observatory-Places-Travel.md)
+- **Walking and collision improvements.** Descent below 100 m over solid ground settles into a local 2.4 km walking patch. Raised Shade decks have dependable nearby contact while their visual detail loads; openings remain passable. Play/pause persists through navigation, saved views and capture. [Biome Pack programme and present limits](docs/Observatory-Biome-Packs.md)
+- **A real first province.** Watershed province adds stable geography, waterways, river gardens, terrain-aware landings and close-range landscape detail. The [atlas study](atlas-study.html) makes the next wide-area shell treatment reviewable before it replaces the interim atlas. [Province design](docs/Observatory-Watershed-Province.md)
+- **Layered weather and selective loading.** Local air transitions into regional distant weather—low banks, middle fields and a high veil—with evolving patterns, regional colour and filtered distance detail. Only the artwork needed for the current view is prepared behind a loading screen; the overview begins without image collections. Measurements persist while the simulation runs and camera rays stay consistent across preview resizing.
+
+The current bounds are deliberate: walking regions do not yet stream into one another, the full nine-variation Biome Pack family, Shade walking environments and persistent Hero Zones are still queued. This is a working visualization prototype, not a finished game or a complete physics simulator.
 
 ## Inside the current build
 
@@ -62,7 +75,7 @@ The browser must use hardware WebGL. In Chrome, open **Settings → System**, tu
 
 The Shade fleet now follows the three habitat ribbons and rotates with the waist. Cross-track dimensions stay within each ribbon; radial levels retain clearance. Free flight stops at solid shell, Shades and local geometry, glides along ground, and passes through Wounds.
 
-Clouds use a continuous 3D density field with self-shadow sampling and depth-aware reconstruction. **Light → Local weather** offers three cloud detail levels and independent **Cavity haze**. Prominent exterior wrecks are now detailed geometry with parallax; the low-resolution environment paintings remain archived and are no longer stretched across the sky.
+Clouds use a continuous 3D density field with self-shadow sampling and depth-aware reconstruction. Distant weather now has low banks, middle fields and a thin upper veil, with regional colours, slowly evolving masks and finer, fainter detail over longer sight lines. Cavity haze dims distant clouds along with the shell. **Light → Local weather** offers three cloud detail levels and independent **Cavity haze**. Prominent exterior wrecks are now detailed geometry with parallax; the low-resolution environment paintings remain archived and are no longer stretched across the sky.
 
 [Graphics pass, validation and limits](docs/Observatory-Graphics-11.md).
 

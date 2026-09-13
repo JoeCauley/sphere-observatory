@@ -1,0 +1,159 @@
+{
+  "arrivals": [],
+  "exports": [
+    {
+      "projection": "perspective",
+      "same": true,
+      "bytes": 10603658,
+      "image": {
+        "width": 3840,
+        "height": 2160,
+        "render": {
+          "width": 3840,
+          "height": 2160,
+          "internalWidth": 3840,
+          "internalHeight": 2160,
+          "antialias": "none",
+          "lightPipeline": "linear-half-float",
+          "exportFrame": true,
+          "silhouetteSamples": 0,
+          "silhouetteMaskMiB": 0,
+          "structureShadows": {
+            "enabled": true,
+            "quality": 1,
+            "resolution": 2048,
+            "cascades": 2,
+            "nearWidthKm": 1,
+            "farWidthKm": 8,
+            "nearTexelMetres": 0.48828125,
+            "submittedTriangles": 0,
+            "cached": true,
+            "depthStorageMiB": 32
+          },
+          "geometry": {
+            "groups": 7,
+            "triangles": 308565,
+            "localShadow": true,
+            "materials": "simple"
+          },
+          "weather": "Forest cumulus",
+          "volume": {
+            "steps": 112,
+            "width": 1920,
+            "height": 1080,
+            "depthAware": true,
+            "cavityHaze": 0.28
+          },
+          "cpuMs": 210.80000001192093,
+          "gpuMs": 9.719232,
+          "indirectLight": "exact frame",
+          "indirectSampleTime": 0,
+          "heroTextures": {
+            "ready": 10,
+            "total": 10,
+            "gpuMiB": 79.96,
+            "tileKm": 2.5
+          },
+          "woundTextures": {
+            "ready": 10,
+            "total": 10,
+            "gpuMiB": 79.96,
+            "tileKm": 0.64,
+            "damageBandKm": 240
+          },
+          "textures": {
+            "ready": 10,
+            "total": 10,
+            "gpuMiB": 40,
+            "scalesKm": [
+              256,
+              16,
+              1
+            ]
+          }
+        },
+        "projection": "perspective",
+        "horizontalFieldOfView": 62
+      }
+    },
+    {
+      "projection": "panorama",
+      "same": true,
+      "bytes": 8322477,
+      "image": {
+        "width": 3840,
+        "height": 1920,
+        "render": {
+          "width": 3840,
+          "height": 1920,
+          "internalWidth": 960,
+          "internalHeight": 960,
+          "antialias": "none",
+          "lightPipeline": "linear-half-float",
+          "exportFrame": true,
+          "silhouetteSamples": 0,
+          "silhouetteMaskMiB": 0,
+          "structureShadows": {
+            "enabled": true,
+            "quality": 1,
+            "resolution": 2048,
+            "cascades": 2,
+            "nearWidthKm": 1,
+            "farWidthKm": 8,
+            "nearTexelMetres": 0.48828125,
+            "submittedTriangles": 266262,
+            "cached": false,
+            "depthStorageMiB": 32
+          },
+          "geometry": {
+            "groups": 7,
+            "triangles": 308565,
+            "localShadow": true,
+            "materials": "simple"
+          },
+          "weather": "Forest cumulus",
+          "volume": {
+            "steps": 112,
+            "width": 480,
+            "height": 480,
+            "depthAware": true,
+            "cavityHaze": 0.28
+          },
+          "cpuMs": 19.200000017881393,
+          "gpuMs": 9.719232,
+          "indirectLight": "exact frame",
+          "indirectSampleTime": 0,
+          "heroTextures": {
+            "ready": 10,
+            "total": 10,
+            "gpuMiB": 79.96,
+            "tileKm": 2.5
+          },
+          "woundTextures": {
+            "ready": 10,
+            "total": 10,
+            "gpuMiB": 79.96,
+            "tileKm": 0.64,
+            "damageBandKm": 240
+          },
+          "textures": {
+            "ready": 10,
+            "total": 10,
+            "gpuMiB": 40,
+            "scalesKm": [
+              256,
+              16,
+              1
+            ]
+          },
+          "panoramaFaces": 6,
+          "faceResolution": 960
+        },
+        "projection": "panorama",
+        "horizontalFieldOfView": 360
+      }
+    }
+  ],
+  "error": 0,
+  "errors": []
+}

@@ -2,7 +2,15 @@
 
 Planned 11 September 2026 · baseline: Observatory v1.4.0
 
-This is the plan for a future development pass. Publishing v1.4.0 does not implement or automatically schedule it. The [queue](Observatory-Queue.md) retains the user's requests and the distinction between approved project work and questions about game levels.
+**For the next session, use the [updated roadmap and handoff](Observatory-Roadmap.md).**
+It records the completed travel/weather work and supersedes this original
+sequence where status differs. The complex walking benchmark and Biome Pack
+programme were subsequently approved; their earlier feasibility-only wording
+below is historical.
+
+12 September: the [first-session implementation and measurements](Observatory-Next-Leap-Session-01.md) cover corrected arrivals and the initial streaming prototype. The [follow-up correction and atlas comparison](Observatory-Arrival-Fix-Atlas-Study.md) fix the distant arrival exposed by the user's screenshot and provide the three matched cartographic candidates. The approved [Watershed province 1](Observatory-Watershed-Province.md) is now implemented in the live renderer. Broader atlas expansion and later renderer milestones remain planned.
+
+The later [Biome Pack and continuous-exploration programme](Observatory-Biome-Packs.md) records the newly approved art, traversal and persistent-level work, plus the latest travel fixes. The tables below retain the original Next Leap milestones. Publishing v1.4.0 does not implement or automatically schedule it. The [queue](Observatory-Queue.md) retains the user's requests and the status of each approved stage.
 
 The next leap should make a place remain convincing from the whole Sphere down to low flight. Water, machinery, habitat and damage should have readable relationships; approaching them should reveal detail without obvious construction pauses or seams. Keep the arbitrary habitat waist, its three aligned Shade tracks, supporting machinery regions and two opposed polar entries.
 
