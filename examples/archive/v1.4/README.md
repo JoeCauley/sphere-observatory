@@ -54,4 +54,4 @@ With the app served locally and Playwright configured as described in the main R
 node tools/capture-release.cjs
 ```
 
-Pass a shot ID to recreate only that view, for example `node tools/capture-release.cjs polar-station`. The script uses committed scene fixtures, writes the PNG and scene pairs here, and updates [gallery metadata](gallery.json).
+Pass a shot ID to recreate only that view, for example `node tools/capture-release.cjs polar-station`. The script uses committed scene fixtures, writes new PNG and scene pairs to `work/screenshots/legacy-release` so this archive stays unchanged, and writes new gallery metadata there.
