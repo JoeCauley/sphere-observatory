@@ -1,0 +1,26 @@
+[
+  {
+    "run": "first-development-run",
+    "projection": "panorama",
+    "changedPixels": 3,
+    "maximumChannelDifference": 1,
+    "bounds": [
+      3041,
+      690,
+      3272,
+      770
+    ]
+  },
+  {
+    "run": "baseline-capture",
+    "projection": "perspective",
+    "changedPixels": 74648,
+    "maximumChannelDifference": 13,
+    "bounds": [
+      0,
+      0,
+      3839,
+      2159
+    ]
+  }
+]

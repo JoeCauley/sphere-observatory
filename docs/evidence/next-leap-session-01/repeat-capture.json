@@ -1,0 +1,322 @@
+{
+  "arrivals": [
+    {
+      "index": 0,
+      "kind": "breach",
+      "title": "Wound 1 Â· breach inspection",
+      "near": 0,
+      "altitude": 10471850.948999971,
+      "solid": false,
+      "returnError": 0
+    },
+    {
+      "index": 0,
+      "kind": "edge",
+      "title": "Thermal routing fields Â· Wound 1 edge",
+      "near": 0,
+      "altitude": 3,
+      "solid": true,
+      "returnError": 0
+    },
+    {
+      "index": 0,
+      "kind": "ground",
+      "title": "Thermal routing fields Â· selected surface",
+      "near": 0,
+      "altitude": 3,
+      "solid": true,
+      "returnError": 0
+    },
+    {
+      "index": 1,
+      "kind": "breach",
+      "title": "Wound 2 Â· breach inspection",
+      "near": 1,
+      "altitude": 13164612.621600002,
+      "solid": false,
+      "returnError": 0
+    },
+    {
+      "index": 1,
+      "kind": "edge",
+      "title": "Fabrication and repair Â· Wound 2 edge",
+      "near": 1,
+      "altitude": 3,
+      "solid": true,
+      "returnError": 0
+    },
+    {
+      "index": 1,
+      "kind": "ground",
+      "title": "Fabrication and repair Â· selected surface",
+      "near": 1,
+      "altitude": 3,
+      "solid": true,
+      "returnError": 0
+    },
+    {
+      "index": 2,
+      "kind": "breach",
+      "title": "Wound 3 Â· breach inspection",
+      "near": 2,
+      "altitude": 7779089.2764,
+      "solid": false,
+      "returnError": 0
+    },
+    {
+      "index": 2,
+      "kind": "edge",
+      "title": "Ultra Desert Â· Wound 3 edge",
+      "near": 2,
+      "altitude": 3,
+      "solid": true,
+      "returnError": 0
+    },
+    {
+      "index": 2,
+      "kind": "ground",
+      "title": "Ultra Desert Â· selected surface",
+      "near": 2,
+      "altitude": 2.9999999701976776,
+      "solid": true,
+      "returnError": 0
+    },
+    {
+      "index": 3,
+      "kind": "breach",
+      "title": "Wound 4 Â· breach inspection",
+      "near": 3,
+      "altitude": 16455765.776999995,
+      "solid": false,
+      "returnError": 0
+    },
+    {
+      "index": 3,
+      "kind": "edge",
+      "title": "Fabrication and repair Â· Wound 4 edge",
+      "near": 3,
+      "altitude": 3,
+      "solid": true,
+      "returnError": 0
+    },
+    {
+      "index": 3,
+      "kind": "ground",
+      "title": "Fabrication and repair Â· selected surface",
+      "near": 3,
+      "altitude": 3,
+      "solid": true,
+      "returnError": 0
+    },
+    {
+      "index": 4,
+      "kind": "breach",
+      "title": "Wound 5 Â· breach inspection",
+      "near": 4,
+      "altitude": 8078285.017800003,
+      "solid": false,
+      "returnError": 0
+    },
+    {
+      "index": 4,
+      "kind": "edge",
+      "title": "Machine Expanse Â· Wound 5 edge",
+      "near": 4,
+      "altitude": 3.0000000298023224,
+      "solid": true,
+      "returnError": 0
+    },
+    {
+      "index": 4,
+      "kind": "ground",
+      "title": "Machine Expanse Â· selected surface",
+      "near": 4,
+      "altitude": 3,
+      "solid": true,
+      "returnError": 0
+    },
+    {
+      "index": 5,
+      "kind": "breach",
+      "title": "Wound 6 Â· breach inspection",
+      "near": 5,
+      "altitude": 5983914.828000009,
+      "solid": false,
+      "returnError": 0
+    },
+    {
+      "index": 5,
+      "kind": "edge",
+      "title": "Thermal routing fields Â· Wound 6 edge",
+      "near": 5,
+      "altitude": 3,
+      "solid": true,
+      "returnError": 0
+    },
+    {
+      "index": 5,
+      "kind": "ground",
+      "title": "Thermal routing fields Â· selected surface",
+      "near": 5,
+      "altitude": 3,
+      "solid": true,
+      "returnError": 0
+    }
+  ],
+  "exports": [
+    {
+      "projection": "perspective",
+      "same": true,
+      "bytes": 9990066,
+      "image": {
+        "width": 3840,
+        "height": 2160,
+        "render": {
+          "width": 3840,
+          "height": 2160,
+          "internalWidth": 7680,
+          "internalHeight": 4320,
+          "antialias": "supersampled + edge filter",
+          "lightPipeline": "linear-half-float",
+          "exportFrame": true,
+          "silhouetteSamples": 8,
+          "silhouetteMaskMiB": 31.640625,
+          "structureShadows": {
+            "enabled": true,
+            "quality": 1,
+            "resolution": 2048,
+            "cascades": 2,
+            "nearWidthKm": 16,
+            "farWidthKm": 128,
+            "nearTexelMetres": 7.8125,
+            "submittedTriangles": 0,
+            "cached": true,
+            "depthStorageMiB": 32
+          },
+          "geometry": {
+            "groups": 412,
+            "triangles": 44672,
+            "localShadow": true,
+            "materials": "roughness / metalness / normal"
+          },
+          "weather": "Condensation plumes",
+          "volume": {
+            "steps": 128,
+            "width": 1920,
+            "height": 1080,
+            "depthAware": true,
+            "cavityHaze": 0.28
+          },
+          "cpuMs": 211.40000000596046,
+          "gpuMs": 9.705024,
+          "indirectLight": "exact frame",
+          "indirectSampleTime": 983,
+          "heroTextures": {
+            "ready": 10,
+            "total": 10,
+            "gpuMiB": 79.96,
+            "tileKm": 2.5
+          },
+          "woundTextures": {
+            "ready": 10,
+            "total": 10,
+            "gpuMiB": 79.96,
+            "tileKm": 0.64,
+            "damageBandKm": 240
+          },
+          "textures": {
+            "ready": 10,
+            "total": 10,
+            "gpuMiB": 40,
+            "scalesKm": [
+              256,
+              16,
+              1
+            ]
+          }
+        },
+        "projection": "perspective",
+        "horizontalFieldOfView": 89
+      }
+    },
+    {
+      "projection": "panorama",
+      "same": true,
+      "bytes": 7787723,
+      "image": {
+        "width": 3840,
+        "height": 1920,
+        "render": {
+          "width": 3840,
+          "height": 1920,
+          "internalWidth": 1920,
+          "internalHeight": 1920,
+          "antialias": "supersampled + edge filter",
+          "lightPipeline": "linear-half-float",
+          "exportFrame": true,
+          "silhouetteSamples": 8,
+          "silhouetteMaskMiB": 3.515625,
+          "structureShadows": {
+            "enabled": true,
+            "quality": 1,
+            "resolution": 2048,
+            "cascades": 2,
+            "nearWidthKm": 16,
+            "farWidthKm": 128,
+            "nearTexelMetres": 7.8125,
+            "submittedTriangles": 15488,
+            "cached": false,
+            "depthStorageMiB": 32
+          },
+          "geometry": {
+            "groups": 156,
+            "triangles": 15616,
+            "localShadow": true,
+            "materials": "roughness / metalness / normal"
+          },
+          "weather": "Condensation plumes",
+          "volume": {
+            "steps": 128,
+            "width": 960,
+            "height": 960,
+            "depthAware": true,
+            "cavityHaze": 0.28
+          },
+          "cpuMs": 22.400000005960464,
+          "gpuMs": 9.705024,
+          "indirectLight": "exact frame",
+          "indirectSampleTime": 983,
+          "heroTextures": {
+            "ready": 10,
+            "total": 10,
+            "gpuMiB": 79.96,
+            "tileKm": 2.5
+          },
+          "woundTextures": {
+            "ready": 10,
+            "total": 10,
+            "gpuMiB": 79.96,
+            "tileKm": 0.64,
+            "damageBandKm": 240
+          },
+          "textures": {
+            "ready": 10,
+            "total": 10,
+            "gpuMiB": 40,
+            "scalesKm": [
+              256,
+              16,
+              1
+            ]
+          },
+          "panoramaFaces": 6,
+          "faceResolution": 960
+        },
+        "projection": "panorama",
+        "horizontalFieldOfView": 360
+      }
+    }
+  ],
+  "error": 0,
+  "errors": []
+}

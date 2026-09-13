@@ -8,7 +8,7 @@
     "start": "node serve.cjs",
     "start:managed": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/start-observatory.ps1",
     "stop": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/stop-observatory.ps1",
-    "test": "node tests/geometry.cjs && node tests/survey.cjs && node tests/collection.cjs && node tests/shades.cjs && node tests/station-convergence.cjs && node tests/performance.cjs && node tests/evolution.cjs && node tests/focus.cjs && node tests/continuity.cjs && node tests/materials.cjs && node tests/session-state.cjs && node tests/wound-materials.cjs"
+    "test": "node tests/geometry.cjs && node tests/survey.cjs && node tests/collection.cjs && node tests/shades.cjs && node tests/station-convergence.cjs && node tests/performance.cjs && node tests/evolution.cjs && node tests/focus.cjs && node tests/continuity.cjs && node tests/materials.cjs && node tests/session-state.cjs && node tests/wound-materials.cjs && node tests/surface-arrival.cjs && node tests/streaming.cjs && node tests/atlas-study.cjs && node tests/watershed.cjs && node tests/travel.cjs && node tests/places-flight.cjs && node tests/pointer-navigation.cjs && node tests/asset-loading.cjs"
   },
   "engines": {
     "node": ">=20"

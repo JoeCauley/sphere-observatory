@@ -57,7 +57,7 @@ function ringDistance(p,d,s){if(!s.starStation)return Infinity;let tmin=Infinity
 // Surface receivers can round a few ulps beyond R at astronomical coordinates.
 // A 1 cm tolerance prevents the shell from falsely occluding its own surface.
 function outsideShell(p,s){return s.layoutVersion===2&&M.length(p)>s.radius+Math.max(.00001,s.radius*Number.EPSILON*16);}
-function trace(p,d,s){if(!s.collection)return original.trace(p,d,s);const pn=M.mul(p,1/s.radius);let t=M.sphereDistance(pn,d,[0,0,0],s.starRadius/s.radius),kind='Star';
+function trace(p,d,s){if(!s.collection)return original.trace(p,d,s);const pn=M.mul(p,1/s.radius);let t=M.length(p)<=s.starRadius?Infinity:M.sphereDistance(pn,d,[0,0,0],s.starRadius/s.radius),kind='Star';
  for(const pl of plates(s)){const hit=diskDistance(pn,d,pl);if(hit<t){t=hit;kind='Shade';}}
  const station=ringDistance(pn,d,s);if(station<t){t=station;kind='Stellar station';}
  const outside=outsideShell(p,s);let shell=(outside?M.sphereDistance(p,d,[0,0,0],s.radius):M.shellDistance(p,d,s.radius))/s.radius,q=M.norm(M.add(pn,M.mul(d,shell)));
@@ -66,7 +66,7 @@ function trace(p,d,s){if(!s.collection)return original.trace(p,d,s);const pn=M.m
  if(!Number.isFinite(t))return {kind:'Open space',distance:Infinity,point:null};return {kind,distance:t*s.radius,point:M.add(p,M.mul(d,t*s.radius))};
 }
 const sourceSamples=new Map();
-function visibility(p,s,samples=32,ignoreId=-1){if(!s.collection)return original.sunVisibility(p,s,samples);const pn=M.mul(p,1/s.radius),b=M.basis(M.mul(p,-1)),rad=Math.tan(Math.asin(s.starRadius/M.length(p))),dist=M.length(pn);let lit=0;
+function visibility(p,s,samples=32,ignoreId=-1){if(M.length(p)<=s.starRadius)return 1;if(!s.collection)return original.sunVisibility(p,s,samples);const pn=M.mul(p,1/s.radius),b=M.basis(M.mul(p,-1)),rad=Math.tan(Math.asin(s.starRadius/M.length(p))),dist=M.length(pn);let lit=0;
  // Conservative bounding spheres reject shades outside the entire source cone.
  const pp=plates(s).filter(pl=>{if(pl.id===ignoreId)return false;const to=M.sub(pl.center,pn),bound=pl.size*(pl.shape==='square'?Math.SQRT2:1.01),along=M.dot(to,b.f);return along+bound>0&&along-bound<dist&&M.length(M.cross(to,b.f))<=bound+rad*Math.max(0,along+bound);});
  const outside=outsideShell(p,s);

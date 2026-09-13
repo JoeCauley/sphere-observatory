@@ -1,8 +1,14 @@
-# Observatory v1.4 gallery
+# Observatory current-build gallery
 
-Six original, unretouched captures from the released renderer. The PNGs are 1920 × 1080, rendered internally at 3840 × 2160 with the app's supersampling and edge filtering. Exposure, lens and atmosphere were chosen in the Observatory; no external compositing, sharpening or image generation was used for these screenshots.
+Seven original, unretouched captures from the current renderer. The PNGs are 1920 × 1080, rendered internally at 3840 × 2160 with the app's supersampling and edge filtering. Exposure, lens and atmosphere were chosen in the Observatory; no external compositing, sharpening or image generation was used for these screenshots.
 
-Download a companion scene JSON and use **Capture → Import scene** to explore its viewpoint. Reproducing the image requires v1.4 and its texture assets; browser and GPU differences can affect exact pixels. The walking and entry environments are prototype field sites.
+Download a companion scene JSON and use **Capture → Import scene** to explore its viewpoint. Reproducing the image requires the current source and its texture assets; browser and GPU differences can affect exact pixels. The walking and entry environments are prototype field sites.
+
+## Across the Ultra Desert
+
+![Low flight across the Ultra Desert](ultra-desert.png)
+
+The retaken hero view: a one-kilometre flight above the desert's salt hollows, wind-worked dunes and exposed rock. [Scene](ultra-desert.json).
 
 ## From the polar station
 

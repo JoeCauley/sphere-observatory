@@ -1,0 +1,658 @@
+{
+  "records": [
+    {
+      "name": "province",
+      "state": {
+        "version": 1,
+        "radius": 149597870.7,
+        "starRadius": 695700,
+        "luminosity": 1,
+        "position": [
+          149448029.24009928,
+          -4970791.852636272,
+          4446525.438651329
+        ],
+        "forward": [
+          0.9939569171695749,
+          -0.10571221945267055,
+          0.029573188349341063
+        ],
+        "up": [
+          -0.10566546013686381,
+          -0.9943967652091344,
+          -0.0031438631767965295
+        ],
+        "fov": 62,
+        "breachEnabled": true,
+        "breachLat": 12,
+        "breachLon": -12,
+        "breachDiameter": 35000000,
+        "breachRoughness": 0,
+        "surfaceStyle": "atlas",
+        "shadeEnabled": true,
+        "shadeAltitude": 100000,
+        "shadeDiameter": 100000,
+        "shadeOffset": 0,
+        "shadeSpeed": 2,
+        "shadeDamage": 0,
+        "time": 0,
+        "playing": false,
+        "timeRate": 60,
+        "exposure": 0.4,
+        "shellshine": 0.06,
+        "atmosphere": 1,
+        "grid": false,
+        "viewMode": "material",
+        "projection": "perspective",
+        "speed": 100,
+        "quality": 1,
+        "seed": 23,
+        "starfield": true,
+        "collection": true,
+        "era": "after",
+        "routeShades": true,
+        "routeGuides": false,
+        "multipleWounds": true,
+        "starStation": true,
+        "regionOrder": 1,
+        "colorRichness": 0.8,
+        "cycleScale": 1,
+        "shineField": true,
+        "shadeShape": "disk",
+        "shadeTrim": 0.65,
+        "antialias": 0,
+        "shadowSamples": 7,
+        "stationSamples": 64,
+        "biome": -1,
+        "textureDetail": true,
+        "biomeAtmosphere": true,
+        "surfaceRelief": true,
+        "layoutVersion": 2,
+        "provinceRevision": 1,
+        "provinceSeed": 713,
+        "provinceAnchor": [
+          0.9990056996801094,
+          -0.033228470003808824,
+          0.029723404715151572
+        ],
+        "axisLat": 63,
+        "axisLon": -28,
+        "waistWidth": 20,
+        "transitionKm": 60000,
+        "shellThickness": 12,
+        "geometryDetail": true,
+        "richMaterials": true,
+        "localShadows": 1,
+        "wreckage": true,
+        "clouds": true,
+        "weatherStrength": 0.55,
+        "weatherQuality": 1,
+        "cavityHaze": 0.28,
+        "spaceEnvironment": 0,
+        "siteId": "",
+        "siteAnchor": null,
+        "walkMode": false,
+        "walkPosition": null,
+        "walkVelocity": 0,
+        "shadeAttachment": null,
+        "surfaceLock": false
+      },
+      "hit": {
+        "kind": "Watershed · land and water",
+        "distance": 1101.7448402107868
+      },
+      "sample": {
+        "revision": 1,
+        "seed": 713,
+        "x": 5.190218765188658e-10,
+        "z": 9.21466573741502e-10,
+        "originalBiome": 0,
+        "terrainKm": 1.1634607170368356,
+        "water": {
+          "river": false,
+          "basin": false,
+          "distance": 11.95929747260398,
+          "flow": 1004
+        },
+        "service": null,
+        "damage": 0,
+        "missing": false
+      },
+      "groups": [
+        {
+          "name": "Watershed · land and water",
+          "triangles": 98410
+        },
+        {
+          "name": "Watershed · Reserve storage",
+          "triangles": 35201
+        },
+        {
+          "name": "Watershed · Fabrication",
+          "triangles": 35225
+        },
+        {
+          "name": "Watershed · Water recovery",
+          "triangles": 34721
+        },
+        {
+          "name": "Watershed · Thermal transfer",
+          "triangles": 35083
+        },
+        {
+          "name": "Watershed · Water recovery",
+          "triangles": 34721
+        },
+        {
+          "name": "Watershed · Reserve storage",
+          "triangles": 35204
+        }
+      ],
+      "roundTrip": true,
+      "returned": true,
+      "gl": 0
+    },
+    {
+      "name": "approach",
+      "state": {
+        "version": 1,
+        "radius": 149597870.7,
+        "starRadius": 695700,
+        "luminosity": 1,
+        "position": [
+          149449075.69820264,
+          -4970984.076395831,
+          4446532.002105693
+        ],
+        "forward": [
+          0.8084242303186806,
+          -0.5881085969526901,
+          0.02405290053168195
+        ],
+        "up": [
+          -0.5878484549695386,
+          -0.8087819719740789,
+          -0.017490448812049333
+        ],
+        "fov": 62,
+        "breachEnabled": true,
+        "breachLat": 12,
+        "breachLon": -12,
+        "breachDiameter": 35000000,
+        "breachRoughness": 0,
+        "surfaceStyle": "atlas",
+        "shadeEnabled": true,
+        "shadeAltitude": 100000,
+        "shadeDiameter": 100000,
+        "shadeOffset": 0,
+        "shadeSpeed": 2,
+        "shadeDamage": 0,
+        "time": 0,
+        "playing": false,
+        "timeRate": 60,
+        "exposure": 0.4,
+        "shellshine": 0.06,
+        "atmosphere": 1,
+        "grid": false,
+        "viewMode": "material",
+        "projection": "perspective",
+        "speed": 5,
+        "quality": 1,
+        "seed": 23,
+        "starfield": true,
+        "collection": true,
+        "era": "after",
+        "routeShades": true,
+        "routeGuides": false,
+        "multipleWounds": true,
+        "starStation": true,
+        "regionOrder": 1,
+        "colorRichness": 0.8,
+        "cycleScale": 1,
+        "shineField": true,
+        "shadeShape": "disk",
+        "shadeTrim": 0.65,
+        "antialias": 0,
+        "shadowSamples": 7,
+        "stationSamples": 64,
+        "biome": -1,
+        "textureDetail": true,
+        "biomeAtmosphere": true,
+        "surfaceRelief": true,
+        "layoutVersion": 2,
+        "provinceRevision": 1,
+        "provinceSeed": 713,
+        "provinceAnchor": [
+          0.9990056996801094,
+          -0.033228470003808824,
+          0.029723404715151572
+        ],
+        "axisLat": 63,
+        "axisLon": -28,
+        "waistWidth": 20,
+        "transitionKm": 60000,
+        "shellThickness": 12,
+        "geometryDetail": true,
+        "richMaterials": true,
+        "localShadows": 1,
+        "wreckage": true,
+        "clouds": true,
+        "weatherStrength": 0.55,
+        "weatherQuality": 1,
+        "cavityHaze": 0.28,
+        "spaceEnvironment": 0,
+        "siteId": "",
+        "siteAnchor": null,
+        "walkMode": false,
+        "walkPosition": null,
+        "walkVelocity": 0,
+        "shadeAttachment": null,
+        "surfaceLock": false
+      },
+      "hit": {
+        "kind": "Watershed · Water recovery",
+        "distance": 56.96783237326495
+      },
+      "sample": {
+        "revision": 1,
+        "seed": 713,
+        "x": 24.560940276614332,
+        "z": -109.30867574332434,
+        "originalBiome": 0,
+        "terrainKm": 0.7694977255085773,
+        "water": {
+          "river": false,
+          "basin": false,
+          "distance": 1.141474560772973,
+          "flow": 10136
+        },
+        "service": "Water recovery",
+        "damage": 0,
+        "missing": false
+      },
+      "groups": [
+        {
+          "name": "Watershed · land and water",
+          "triangles": 98410
+        },
+        {
+          "name": "Watershed · Reserve storage",
+          "triangles": 35201
+        },
+        {
+          "name": "Watershed · Fabrication",
+          "triangles": 35225
+        },
+        {
+          "name": "Watershed · Water recovery",
+          "triangles": 34721
+        },
+        {
+          "name": "Watershed · Thermal transfer",
+          "triangles": 35083
+        },
+        {
+          "name": "Watershed · Water recovery",
+          "triangles": 34721
+        },
+        {
+          "name": "Watershed · Reserve storage",
+          "triangles": 35204
+        }
+      ],
+      "roundTrip": true,
+      "returned": true,
+      "gl": 0
+    },
+    {
+      "name": "garden",
+      "state": {
+        "version": 1,
+        "radius": 149597870.7,
+        "starRadius": 695700,
+        "luminosity": 1,
+        "position": [
+          149449120.86837798,
+          -4971017.155925625,
+          4446532.209995044
+        ],
+        "forward": [
+          0.6033687895426595,
+          -0.2997180839513896,
+          0.7389960581480348
+        ],
+        "up": [
+          -0.7972051705301926,
+          -0.20316677497428645,
+          0.5684955387920598
+        ],
+        "fov": 62,
+        "breachEnabled": true,
+        "breachLat": 12,
+        "breachLon": -12,
+        "breachDiameter": 35000000,
+        "breachRoughness": 0,
+        "surfaceStyle": "atlas",
+        "shadeEnabled": true,
+        "shadeAltitude": 100000,
+        "shadeDiameter": 100000,
+        "shadeOffset": 0,
+        "shadeSpeed": 2,
+        "shadeDamage": 0,
+        "time": 0,
+        "playing": false,
+        "timeRate": 60,
+        "exposure": 0.4,
+        "shellshine": 0.06,
+        "atmosphere": 1,
+        "grid": false,
+        "viewMode": "material",
+        "projection": "perspective",
+        "speed": 0.02,
+        "quality": 1,
+        "seed": 23,
+        "starfield": true,
+        "collection": true,
+        "era": "after",
+        "routeShades": true,
+        "routeGuides": false,
+        "multipleWounds": true,
+        "starStation": true,
+        "regionOrder": 1,
+        "colorRichness": 0.8,
+        "cycleScale": 1,
+        "shineField": true,
+        "shadeShape": "disk",
+        "shadeTrim": 0.65,
+        "antialias": 0,
+        "shadowSamples": 7,
+        "stationSamples": 64,
+        "biome": -1,
+        "textureDetail": true,
+        "biomeAtmosphere": true,
+        "surfaceRelief": true,
+        "layoutVersion": 2,
+        "provinceRevision": 1,
+        "provinceSeed": 713,
+        "provinceAnchor": [
+          0.9990056996801094,
+          -0.033228470003808824,
+          0.029723404715151572
+        ],
+        "axisLat": 63,
+        "axisLon": -28,
+        "waistWidth": 20,
+        "transitionKm": 60000,
+        "shellThickness": 12,
+        "geometryDetail": true,
+        "richMaterials": true,
+        "localShadows": 1,
+        "wreckage": true,
+        "clouds": true,
+        "weatherStrength": 0.55,
+        "weatherQuality": 1,
+        "cavityHaze": 0.28,
+        "spaceEnvironment": 0,
+        "siteId": "",
+        "siteAnchor": null,
+        "walkMode": false,
+        "walkPosition": null,
+        "walkVelocity": 0,
+        "shadeAttachment": null,
+        "surfaceLock": false
+      },
+      "hit": {
+        "kind": "Watershed · Water recovery",
+        "distance": 1.55009909670707
+      },
+      "sample": {
+        "revision": 1,
+        "seed": 713,
+        "x": 24.579293034456132,
+        "z": -109.34781711355276,
+        "originalBiome": 0,
+        "terrainKm": 0.7693752921282672,
+        "water": {
+          "river": false,
+          "basin": false,
+          "distance": 1.1145458217145805,
+          "flow": 10136
+        },
+        "service": "Water recovery",
+        "damage": 0,
+        "missing": false
+      },
+      "groups": [
+        {
+          "name": "Watershed · land and water",
+          "triangles": 98410
+        },
+        {
+          "name": "Watershed · Reserve storage",
+          "triangles": 35201
+        },
+        {
+          "name": "Watershed · Fabrication",
+          "triangles": 35225
+        },
+        {
+          "name": "Watershed · Water recovery",
+          "triangles": 34721
+        },
+        {
+          "name": "Watershed · Thermal transfer",
+          "triangles": 35083
+        },
+        {
+          "name": "Watershed · Water recovery",
+          "triangles": 34721
+        },
+        {
+          "name": "Watershed · Reserve storage",
+          "triangles": 35204
+        }
+      ],
+      "roundTrip": true,
+      "returned": true,
+      "gl": 0
+    },
+    {
+      "name": "terrace",
+      "state": {
+        "version": 1,
+        "radius": 149597870.7,
+        "starRadius": 695700,
+        "luminosity": 1,
+        "position": [
+          149449121.78802064,
+          -4971017.783153409,
+          4446533.060086226
+        ],
+        "forward": [
+          0.050220741083043856,
+          0.44328263367375753,
+          0.8949739570782645
+        ],
+        "up": [
+          -0.997812135503168,
+          0.06084874492358375,
+          0.025852900878468147
+        ],
+        "fov": 62,
+        "breachEnabled": true,
+        "breachLat": 12,
+        "breachLon": -12,
+        "breachDiameter": 35000000,
+        "breachRoughness": 0,
+        "surfaceStyle": "atlas",
+        "shadeEnabled": true,
+        "shadeAltitude": 100000,
+        "shadeDiameter": 100000,
+        "shadeOffset": 0,
+        "shadeSpeed": 2,
+        "shadeDamage": 0,
+        "time": 0,
+        "playing": false,
+        "timeRate": 60,
+        "exposure": 0.4,
+        "shellshine": 0.06,
+        "atmosphere": 1,
+        "grid": false,
+        "viewMode": "material",
+        "projection": "perspective",
+        "speed": 0.002,
+        "quality": 1,
+        "seed": 23,
+        "starfield": true,
+        "collection": true,
+        "era": "after",
+        "routeShades": true,
+        "routeGuides": false,
+        "multipleWounds": true,
+        "starStation": true,
+        "regionOrder": 1,
+        "colorRichness": 0.8,
+        "cycleScale": 1,
+        "shineField": true,
+        "shadeShape": "disk",
+        "shadeTrim": 0.65,
+        "antialias": 0,
+        "shadowSamples": 7,
+        "stationSamples": 64,
+        "biome": -1,
+        "textureDetail": true,
+        "biomeAtmosphere": true,
+        "surfaceRelief": true,
+        "layoutVersion": 2,
+        "provinceRevision": 1,
+        "provinceSeed": 713,
+        "provinceAnchor": [
+          0.9990056996801094,
+          -0.033228470003808824,
+          0.029723404715151572
+        ],
+        "axisLat": 63,
+        "axisLon": -28,
+        "waistWidth": 20,
+        "transitionKm": 60000,
+        "shellThickness": 12,
+        "geometryDetail": true,
+        "richMaterials": true,
+        "localShadows": 1,
+        "wreckage": true,
+        "clouds": true,
+        "weatherStrength": 0.55,
+        "weatherQuality": 1,
+        "cavityHaze": 0.28,
+        "spaceEnvironment": 0,
+        "siteId": "",
+        "siteAnchor": null,
+        "walkMode": false,
+        "walkPosition": null,
+        "walkVelocity": 0,
+        "shadeAttachment": null,
+        "surfaceLock": false
+      },
+      "hit": {
+        "kind": "Watershed · Water recovery",
+        "distance": 0.3062420354377473
+      },
+      "sample": {
+        "revision": 1,
+        "seed": 713,
+        "x": 24.60062318049639,
+        "z": -109.37471524525915,
+        "originalBiome": 0,
+        "terrainKm": 0.769289903528308,
+        "water": {
+          "river": false,
+          "basin": false,
+          "distance": 1.100000000527955,
+          "flow": 10136
+        },
+        "service": "Water recovery",
+        "damage": 0,
+        "missing": false
+      },
+      "groups": [
+        {
+          "name": "Watershed · land and water",
+          "triangles": 98410
+        },
+        {
+          "name": "Watershed · Reserve storage",
+          "triangles": 35201
+        },
+        {
+          "name": "Watershed · Fabrication",
+          "triangles": 35225
+        },
+        {
+          "name": "Watershed · Water recovery",
+          "triangles": 34721
+        },
+        {
+          "name": "Watershed · Thermal transfer",
+          "triangles": 35083
+        },
+        {
+          "name": "Watershed · Water recovery",
+          "triangles": 34721
+        },
+        {
+          "name": "Watershed · Reserve storage",
+          "triangles": 35204
+        }
+      ],
+      "roundTrip": true,
+      "returned": true,
+      "gl": 0
+    }
+  ],
+  "depth": {
+    "results": [
+      {
+        "name": "province",
+        "probes": 2357,
+        "mismatch": 0,
+        "maxError": 2.999109882106943e-7,
+        "subpixel": 49,
+        "failures": []
+      },
+      {
+        "name": "approach",
+        "probes": 9216,
+        "mismatch": 0,
+        "maxError": 0.000008031120640156209,
+        "subpixel": 4320,
+        "failures": []
+      },
+      {
+        "name": "garden",
+        "probes": 9216,
+        "mismatch": 0,
+        "maxError": 0.00013195090929326442,
+        "subpixel": 6570,
+        "failures": []
+      },
+      {
+        "name": "terrace",
+        "probes": 6150,
+        "mismatch": 0,
+        "maxError": 0.1150673720360224,
+        "subpixel": 1262,
+        "failures": []
+      }
+    ],
+    "gl": 0,
+    "residency": {
+      "provinces": 1,
+      "pending": 0,
+      "meshes": 7,
+      "triangles": 308565,
+      "vertexMiB": 38.84370803833008,
+      "packedCollisionMiB": 26.20311737060547
+    }
+  },
+  "errors": []
+}

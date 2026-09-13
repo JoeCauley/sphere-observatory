@@ -1,0 +1,820 @@
+{
+  "playback": [
+    {
+      "name": "launch",
+      "playing": false
+    },
+    {
+      "name": "first play",
+      "playing": true
+    },
+    {
+      "name": "destination overview",
+      "playing": true
+    },
+    {
+      "name": "destination shades",
+      "playing": true
+    },
+    {
+      "name": "destination wounds",
+      "playing": true
+    },
+    {
+      "name": "destination station",
+      "playing": true
+    },
+    {
+      "name": "staged interior",
+      "playing": true,
+      "expected": true
+    },
+    {
+      "name": "staged breach",
+      "playing": true,
+      "expected": true
+    },
+    {
+      "name": "staged shade",
+      "playing": true,
+      "expected": true
+    },
+    {
+      "name": "staged dawn",
+      "playing": true,
+      "expected": true
+    },
+    {
+      "name": "biome",
+      "playing": true,
+      "expected": true
+    },
+    {
+      "name": "walk",
+      "playing": true,
+      "expected": true
+    },
+    {
+      "name": "leave walk",
+      "playing": true,
+      "expected": true
+    },
+    {
+      "name": "return",
+      "playing": true,
+      "expected": true
+    },
+    {
+      "name": "reset time",
+      "playing": true,
+      "expected": true
+    },
+    {
+      "name": "scrub",
+      "playing": true,
+      "expected": true
+    },
+    {
+      "name": "console reset",
+      "playing": true,
+      "expected": true
+    },
+    {
+      "name": "console scrub",
+      "playing": true,
+      "expected": true
+    },
+    {
+      "name": "bookmark",
+      "playing": true,
+      "expected": true
+    },
+    {
+      "name": "scene update",
+      "playing": true,
+      "expected": true
+    },
+    {
+      "name": "destination overview",
+      "playing": false,
+      "expected": false
+    },
+    {
+      "name": "destination shades",
+      "playing": false,
+      "expected": false
+    },
+    {
+      "name": "destination wounds",
+      "playing": false,
+      "expected": false
+    },
+    {
+      "name": "destination station",
+      "playing": false,
+      "expected": false
+    },
+    {
+      "name": "staged interior",
+      "playing": false,
+      "expected": false
+    },
+    {
+      "name": "staged breach",
+      "playing": false,
+      "expected": false
+    },
+    {
+      "name": "staged shade",
+      "playing": false,
+      "expected": false
+    },
+    {
+      "name": "staged dawn",
+      "playing": false,
+      "expected": false
+    },
+    {
+      "name": "biome",
+      "playing": false,
+      "expected": false
+    },
+    {
+      "name": "walk",
+      "playing": false,
+      "expected": false
+    },
+    {
+      "name": "leave walk",
+      "playing": false,
+      "expected": false
+    },
+    {
+      "name": "return",
+      "playing": false,
+      "expected": false
+    },
+    {
+      "name": "reset time",
+      "playing": false,
+      "expected": false
+    },
+    {
+      "name": "scrub",
+      "playing": false,
+      "expected": false
+    },
+    {
+      "name": "console reset",
+      "playing": false,
+      "expected": false
+    },
+    {
+      "name": "console scrub",
+      "playing": false,
+      "expected": false
+    },
+    {
+      "name": "bookmark",
+      "playing": false,
+      "expected": false
+    },
+    {
+      "name": "scene update",
+      "playing": false,
+      "expected": false
+    }
+  ],
+  "arrivals": [
+    {
+      "index": 0,
+      "edge": false,
+      "id": "exterior-0",
+      "anchorError": 2.7755575615628914e-17,
+      "playing": true,
+      "returned": 0,
+      "hit": "Breach spill",
+      "distance": 42.13321657103091
+    },
+    {
+      "index": 0,
+      "edge": true,
+      "id": "rim",
+      "anchorError": 2.0053761393286575e-8,
+      "playing": true,
+      "returned": 0,
+      "hit": "Open space",
+      "distance": null
+    },
+    {
+      "index": 1,
+      "edge": false,
+      "id": "exterior-0",
+      "anchorError": 5.551115123125783e-17,
+      "playing": true,
+      "returned": 0,
+      "hit": "Breach spill",
+      "distance": 42.13321650739178
+    },
+    {
+      "index": 1,
+      "edge": true,
+      "id": "rim",
+      "anchorError": 2.0053761403752772e-8,
+      "playing": true,
+      "returned": 0,
+      "hit": "Open space",
+      "distance": null
+    },
+    {
+      "index": 2,
+      "edge": false,
+      "id": "exterior-0",
+      "anchorError": 1.5700924586837752e-16,
+      "playing": true,
+      "returned": 0,
+      "hit": "Breach spill",
+      "distance": 42.13321652826513
+    },
+    {
+      "index": 2,
+      "edge": true,
+      "id": "rim",
+      "anchorError": 2.0053761254544576e-8,
+      "playing": true,
+      "returned": 0,
+      "hit": "Open space",
+      "distance": null
+    },
+    {
+      "index": 3,
+      "edge": false,
+      "id": "exterior-0",
+      "anchorError": 0,
+      "playing": true,
+      "returned": 0,
+      "hit": "Breach spill",
+      "distance": 42.13321654374726
+    },
+    {
+      "index": 3,
+      "edge": true,
+      "id": "rim",
+      "anchorError": 2.005376135734294e-8,
+      "playing": true,
+      "returned": 0,
+      "hit": "Open space",
+      "distance": null
+    },
+    {
+      "index": 4,
+      "edge": false,
+      "id": "exterior-0",
+      "anchorError": 5.551115123125783e-17,
+      "playing": true,
+      "returned": 0,
+      "hit": "Breach spill",
+      "distance": 42.133216499793235
+    },
+    {
+      "index": 4,
+      "edge": true,
+      "id": "rim",
+      "anchorError": 2.0053761303137907e-8,
+      "playing": true,
+      "returned": 0,
+      "hit": "Open space",
+      "distance": null
+    },
+    {
+      "index": 5,
+      "edge": false,
+      "id": "exterior-0",
+      "anchorError": 5.551115123125783e-17,
+      "playing": true,
+      "returned": 0,
+      "hit": "Breach spill",
+      "distance": 42.13321656880976
+    },
+    {
+      "index": 5,
+      "edge": true,
+      "id": "rim",
+      "anchorError": 2.0053761359005196e-8,
+      "playing": true,
+      "returned": 0,
+      "hit": "Open space",
+      "distance": null
+    }
+  ],
+  "descent": {
+    "state": {
+      "version": 1,
+      "radius": 149597870.7,
+      "starRadius": 695700,
+      "luminosity": 1,
+      "position": [
+        147391762.84030303,
+        -13301270.239135899,
+        21869317.003354684
+      ],
+      "forward": [
+        0.14248800033405037,
+        0.989570713730987,
+        0.021141719105807318
+      ],
+      "up": [
+        -0.9788544997405128,
+        0.14404791746479775,
+        -0.1452379627088082
+      ],
+      "fov": 100,
+      "breachEnabled": true,
+      "breachLat": 12,
+      "breachLon": -12,
+      "breachDiameter": 35000000,
+      "breachRoughness": 0,
+      "surfaceStyle": "atlas",
+      "shadeEnabled": true,
+      "shadeAltitude": 100000,
+      "shadeDiameter": 100000,
+      "shadeOffset": 0,
+      "shadeSpeed": 2,
+      "shadeDamage": 0,
+      "time": 181.04999999964215,
+      "playing": true,
+      "timeRate": 60,
+      "exposure": 0.4,
+      "shellshine": 0.06,
+      "atmosphere": 1,
+      "grid": false,
+      "viewMode": "material",
+      "projection": "perspective",
+      "speed": 10000,
+      "quality": 1,
+      "seed": 23,
+      "starfield": true,
+      "collection": true,
+      "era": "after",
+      "routeShades": false,
+      "routeGuides": false,
+      "multipleWounds": true,
+      "starStation": false,
+      "regionOrder": 1,
+      "colorRichness": 0.8,
+      "cycleScale": 1,
+      "shineField": true,
+      "shadeShape": "disk",
+      "shadeTrim": 0.65,
+      "antialias": 0,
+      "shadowSamples": 7,
+      "stationSamples": 64,
+      "biome": -1,
+      "textureDetail": true,
+      "biomeAtmosphere": true,
+      "surfaceRelief": true,
+      "layoutVersion": 2,
+      "provinceRevision": 1,
+      "provinceSeed": 713,
+      "provinceAnchor": [
+        0.9852530874849991,
+        -0.08891350044289917,
+        0.14618735595210341
+      ],
+      "axisLat": 63,
+      "axisLon": -28,
+      "waistWidth": 20,
+      "transitionKm": 60000,
+      "shellThickness": 12,
+      "geometryDetail": true,
+      "richMaterials": true,
+      "localShadows": 1,
+      "wreckage": true,
+      "clouds": true,
+      "weatherStrength": 0.55,
+      "weatherQuality": 1,
+      "cavityHaze": 0.28,
+      "spaceEnvironment": 0,
+      "siteId": "biome-0",
+      "siteAnchor": [
+        0.9852530874849992,
+        -0.08891350044289918,
+        0.14618735595210341
+      ],
+      "siteRevision": 1,
+      "siteElevation": 1.1634607170287161,
+      "autoWalk": true,
+      "walkSurface": true,
+      "walkMode": true,
+      "walkPosition": [
+        -3.826705648538042e-9,
+        0.0017765651477457123,
+        -1.9745567373004314e-9
+      ],
+      "walkVelocity": 0,
+      "shadeAttachment": null,
+      "surfaceLock": true
+    },
+    "support": 0.0017765935619839406,
+    "address": [
+      4.152175012150928e-9,
+      6.163384783661533e-10
+    ],
+    "label": "Dark Age Forest · ON FOOT · 1.7 m eye height",
+    "chip": true,
+    "autoWalk": true
+  },
+  "walking": {
+    "error": 0,
+    "state": {
+      "version": 1,
+      "radius": 149597870.7,
+      "starRadius": 695700,
+      "luminosity": 1,
+      "position": [
+        147391762.84030303,
+        -13301270.239135899,
+        21869317.003354684
+      ],
+      "forward": [
+        0.14248800033405037,
+        0.989570713730987,
+        0.021141719105807318
+      ],
+      "up": [
+        -0.9788544997405129,
+        0.14404791746479778,
+        -0.1452379627088082
+      ],
+      "fov": 100,
+      "breachEnabled": true,
+      "breachLat": 12,
+      "breachLon": -12,
+      "breachDiameter": 35000000,
+      "breachRoughness": 0,
+      "surfaceStyle": "atlas",
+      "shadeEnabled": true,
+      "shadeAltitude": 100000,
+      "shadeDiameter": 100000,
+      "shadeOffset": 0,
+      "shadeSpeed": 2,
+      "shadeDamage": 0,
+      "time": 181.04999999964215,
+      "playing": true,
+      "timeRate": 60,
+      "exposure": 0.4,
+      "shellshine": 0.06,
+      "atmosphere": 1,
+      "grid": false,
+      "viewMode": "material",
+      "projection": "perspective",
+      "speed": 10000,
+      "quality": 1,
+      "seed": 23,
+      "starfield": true,
+      "collection": true,
+      "era": "after",
+      "routeShades": false,
+      "routeGuides": false,
+      "multipleWounds": true,
+      "starStation": false,
+      "regionOrder": 1,
+      "colorRichness": 0.8,
+      "cycleScale": 1,
+      "shineField": true,
+      "shadeShape": "disk",
+      "shadeTrim": 0.65,
+      "antialias": 0,
+      "shadowSamples": 7,
+      "stationSamples": 64,
+      "biome": -1,
+      "textureDetail": true,
+      "biomeAtmosphere": true,
+      "surfaceRelief": true,
+      "layoutVersion": 2,
+      "provinceRevision": 1,
+      "provinceSeed": 713,
+      "provinceAnchor": [
+        0.9852530874849991,
+        -0.08891350044289917,
+        0.14618735595210341
+      ],
+      "axisLat": 63,
+      "axisLon": -28,
+      "waistWidth": 20,
+      "transitionKm": 60000,
+      "shellThickness": 12,
+      "geometryDetail": true,
+      "richMaterials": true,
+      "localShadows": 1,
+      "wreckage": true,
+      "clouds": true,
+      "weatherStrength": 0.55,
+      "weatherQuality": 1,
+      "cavityHaze": 0.28,
+      "spaceEnvironment": 0,
+      "siteId": "biome-0",
+      "siteAnchor": [
+        0.9852530874849992,
+        -0.08891350044289918,
+        0.14618735595210341
+      ],
+      "siteRevision": 1,
+      "siteElevation": 1.1634607170287161,
+      "autoWalk": true,
+      "walkSurface": true,
+      "walkMode": true,
+      "walkPosition": [
+        -3.826705648538042e-9,
+        0.0017765651477457123,
+        -1.9745567373004314e-9
+      ],
+      "walkVelocity": 0,
+      "shadeAttachment": null,
+      "surfaceLock": true
+    }
+  },
+  "terrace": {
+    "error": 0,
+    "state": {
+      "version": 1,
+      "radius": 149597870.7,
+      "starRadius": 695700,
+      "luminosity": 1,
+      "position": [
+        149449121.79229638,
+        -4971017.78329563,
+        4446533.060213441
+      ],
+      "forward": [
+        0.04309750724312454,
+        0.4437056542457978,
+        0.8951356865077703
+      ],
+      "up": [
+        -0.9981451725384198,
+        0.05768323383641524,
+        0.019464302515675803
+      ],
+      "fov": 62,
+      "breachEnabled": true,
+      "breachLat": 12,
+      "breachLon": -12,
+      "breachDiameter": 35000000,
+      "breachRoughness": 0,
+      "surfaceStyle": "atlas",
+      "shadeEnabled": true,
+      "shadeAltitude": 100000,
+      "shadeDiameter": 100000,
+      "shadeOffset": 0,
+      "shadeSpeed": 2,
+      "shadeDamage": 0,
+      "time": 0,
+      "playing": true,
+      "timeRate": 60,
+      "exposure": 0.4,
+      "shellshine": 0.06,
+      "atmosphere": 1,
+      "grid": false,
+      "viewMode": "material",
+      "projection": "perspective",
+      "speed": 0.002,
+      "quality": 1,
+      "seed": 23,
+      "starfield": true,
+      "collection": true,
+      "era": "after",
+      "routeShades": true,
+      "routeGuides": false,
+      "multipleWounds": true,
+      "starStation": true,
+      "regionOrder": 1,
+      "colorRichness": 0.8,
+      "cycleScale": 1,
+      "shineField": true,
+      "shadeShape": "disk",
+      "shadeTrim": 0.65,
+      "antialias": 0,
+      "shadowSamples": 7,
+      "stationSamples": 64,
+      "biome": -1,
+      "textureDetail": true,
+      "biomeAtmosphere": true,
+      "surfaceRelief": true,
+      "layoutVersion": 2,
+      "provinceRevision": 1,
+      "provinceSeed": 713,
+      "provinceAnchor": [
+        0.9990056996801094,
+        -0.033228470003808824,
+        0.029723404715151572
+      ],
+      "axisLat": 63,
+      "axisLon": -28,
+      "waistWidth": 20,
+      "transitionKm": 60000,
+      "shellThickness": 12,
+      "geometryDetail": true,
+      "richMaterials": true,
+      "localShadows": 1,
+      "wreckage": true,
+      "clouds": true,
+      "weatherStrength": 0.55,
+      "weatherQuality": 1,
+      "cavityHaze": 0.28,
+      "spaceEnvironment": 0,
+      "siteId": "biome-0",
+      "siteAnchor": [
+        0.9990056803110563,
+        -0.033229201636537115,
+        0.029723237792041068
+      ],
+      "siteRevision": 1,
+      "siteElevation": 0.7686997811602563,
+      "autoWalk": true,
+      "walkSurface": true,
+      "walkMode": true,
+      "walkPosition": [
+        -1.4376722533814001e-10,
+        0.03153843437153042,
+        -5.870715563590297e-10
+      ],
+      "walkVelocity": 0,
+      "shadeAttachment": null,
+      "surfaceLock": true
+    }
+  },
+  "spill": {
+    "error": 0,
+    "state": {
+      "version": 1,
+      "radius": 149597870.7,
+      "starRadius": 695700,
+      "luminosity": 1,
+      "position": [
+        -30423976.46361573,
+        31103662.106610175,
+        143133555.7207904
+      ],
+      "forward": [
+        -0.3263583515113296,
+        0.943780440033825,
+        -0.052618508230156
+      ],
+      "up": [
+        0.13722539202204376,
+        -0.0077713756440817156,
+        -0.9905093626538797
+      ],
+      "fov": 78,
+      "breachEnabled": true,
+      "breachLat": 12,
+      "breachLon": -12,
+      "breachDiameter": 35000000,
+      "breachRoughness": 0,
+      "surfaceStyle": "atlas",
+      "shadeEnabled": true,
+      "shadeAltitude": 100000,
+      "shadeDiameter": 100000,
+      "shadeOffset": 0,
+      "shadeSpeed": 2,
+      "shadeDamage": 0,
+      "time": 0,
+      "playing": true,
+      "timeRate": 60,
+      "exposure": 1.5,
+      "shellshine": 0.06,
+      "atmosphere": 1,
+      "grid": false,
+      "viewMode": "material",
+      "projection": "perspective",
+      "speed": 10,
+      "quality": 1,
+      "seed": 23,
+      "starfield": true,
+      "collection": true,
+      "era": "after",
+      "routeShades": true,
+      "routeGuides": false,
+      "multipleWounds": true,
+      "starStation": true,
+      "regionOrder": 1,
+      "colorRichness": 0.8,
+      "cycleScale": 1,
+      "shineField": true,
+      "shadeShape": "disk",
+      "shadeTrim": 0.65,
+      "antialias": 0,
+      "shadowSamples": 7,
+      "stationSamples": 64,
+      "biome": -1,
+      "textureDetail": true,
+      "biomeAtmosphere": true,
+      "surfaceRelief": true,
+      "layoutVersion": 2,
+      "provinceRevision": 0,
+      "provinceSeed": 713,
+      "provinceAnchor": null,
+      "axisLat": 63,
+      "axisLon": -28,
+      "waistWidth": 20,
+      "transitionKm": 60000,
+      "shellThickness": 12,
+      "geometryDetail": true,
+      "richMaterials": true,
+      "localShadows": 1,
+      "wreckage": true,
+      "clouds": true,
+      "weatherStrength": 0.55,
+      "weatherQuality": 1,
+      "cavityHaze": 0.28,
+      "spaceEnvironment": 0,
+      "siteId": "exterior-0",
+      "siteAnchor": [
+        -0.2033683215379001,
+        0.20791169081775931,
+        0.9567727288213005
+      ],
+      "siteRevision": 0,
+      "siteElevation": 0,
+      "autoWalk": true,
+      "walkSurface": false,
+      "walkMode": false,
+      "walkPosition": null,
+      "walkVelocity": 0,
+      "shadeAttachment": null,
+      "surfaceLock": true
+    }
+  },
+  "capture": {
+    "width": 3840,
+    "height": 2160,
+    "render": {
+      "width": 3840,
+      "height": 2160,
+      "internalWidth": 3840,
+      "internalHeight": 2160,
+      "antialias": "none",
+      "lightPipeline": "linear-half-float",
+      "exportFrame": true,
+      "silhouetteSamples": 0,
+      "silhouetteMaskMiB": 0,
+      "structureShadows": {
+        "enabled": true,
+        "quality": 1,
+        "resolution": 2048,
+        "cascades": 2,
+        "nearWidthKm": 1,
+        "farWidthKm": 8,
+        "nearTexelMetres": 0.48828125,
+        "submittedTriangles": 0,
+        "cached": true,
+        "depthStorageMiB": 32
+      },
+      "geometry": {
+        "groups": 8,
+        "triangles": 314965,
+        "localShadow": true,
+        "materials": "simple"
+      },
+      "weather": "Forest cumulus",
+      "volume": {
+        "steps": 112,
+        "width": 1920,
+        "height": 1080,
+        "depthAware": true,
+        "cavityHaze": 0.28
+      },
+      "cpuMs": 1,
+      "gpuMs": 2.405248,
+      "indirectLight": "exact frame",
+      "indirectSampleTime": 181.04999999964215,
+      "heroTextures": {
+        "ready": 10,
+        "total": 10,
+        "gpuMiB": 79.96,
+        "tileKm": 2.5
+      },
+      "woundTextures": {
+        "ready": 10,
+        "total": 10,
+        "gpuMiB": 79.96,
+        "tileKm": 0.64,
+        "damageBandKm": 240
+      },
+      "textures": {
+        "ready": 10,
+        "total": 10,
+        "gpuMiB": 40,
+        "scalesKm": [
+          256,
+          16,
+          1
+        ]
+      }
+    },
+    "projection": "perspective",
+    "horizontalFieldOfView": 100
+  },
+  "errors": []
+}

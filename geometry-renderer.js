@@ -23,18 +23,21 @@ vec3 fieldGround(int id,vec3 p,float footprint){vec3 col=WORLD_ALBEDO[id];float 
  if(id==5){vec2 tile=p.xz/.012;float seams=panelLine(tile,max(.0001,footprint/.012));col*=1.-seams*.65;}
  if(id==8||id==9){float veins=pow(1.-abs(noise(p*400.)*2.-1.),16.);col+=WORLD_ALBEDO[id]*veins*.5*small;}
  return col;}
-void main(){float distanceKm=length(vRelative);if(uDetailFeature>0.){float coverage=smoothstep(.45,1.2,uDetailFeature*uPixelFocal/max(.00001,distanceKm));if(fract(dot(gl_FragCoord.xy,vec2(.754877666,.569840296)))>coverage)discard;}gl_FragDepth=clamp(log2(1.+distanceKm)/log2(1.+4.*uRadius),0.,1.);if(uMode==2){fragColor=vec4(0.,.75,0.,1.);return;}if(uMode==4||uMode==5){fragColor=vec4(0,0,0,1);return;}vec3 n=normalize(vNormal);if(dot(n,vRelative)>0.)n=-n;vec3 q=normalize(camera()+vRelative/uRadius),delta=vRelative-uN*(uH*uRadius),col=vAlbedo;
+void main(){if(vMaterial== -5.){float coverage=1.-smoothstep(258.,319.5,max(abs(vLocal.x),abs(vLocal.z)));if(fract(dot(gl_FragCoord.xy,vec2(.754877666,.569840296)))>coverage)discard;}float distanceKm=length(vRelative);if(uDetailFeature>0.){float coverage=smoothstep(.45,1.2,uDetailFeature*uPixelFocal/max(.00001,distanceKm));if(fract(dot(gl_FragCoord.xy,vec2(.754877666,.569840296)))>coverage)discard;}gl_FragDepth=clamp(log2(1.+distanceKm)/log2(1.+4.*uRadius),0.,1.);if(uMode==2){fragColor=vec4(0.,.75,0.,1.);return;}if(uMode==4||uMode==5){fragColor=vec4(0,0,0,1);return;}vec3 n=normalize(vNormal);if(dot(n,vRelative)>0.)n=-n;vec3 q=normalize(camera()+vRelative/uRadius),delta=vRelative-uN*(uH*uRadius),col=vAlbedo;
  if(vMaterial>=20.){int id=int(vMaterial)-20;if(uTextureDetail==1&&uHeroReady[id]>.001){vec3 tri=pow(abs(vLocalNormal),vec3(8.));tri/=max(.00001,tri.x+tri.y+tri.z);col=mix(col,sampleSurface(uHeroTex,float(id),vLocal/2.5,tri,dFdx(vLocal)/2.5,dFdy(vLocal)/2.5,false),uHeroReady[id]);}}
  else if(vMaterial== -4.){float fw=max(length(dFdx(vLocal)),length(dFdy(vLocal)));vec3 weights=pow(abs(vLocalNormal),vec3(8.));weights/=max(.00001,weights.x+weights.y+weights.z);float seams=weights.x*panelLine(vLocal.yz/.12,fw/.12)+weights.y*panelLine(vLocal.xz/.12,fw/.12)+weights.z*panelLine(vLocal.xy/.12,fw/.12);col*=.72+.48*noise(vLocal*2.);col*=1.-seams*.55;float fine=weights.x*panelLine(vLocal.yz/.008,fw/.008)+weights.y*panelLine(vLocal.xz/.008,fw/.008)+weights.z*panelLine(vLocal.xy/.008,fw/.008);col*=1.-fine*.2;}
  else if(vMaterial>=13.&&vMaterial<=14.&&uMaterialPlate>=0){vec2 uv=uShadeUVAnchor[uMaterialPlate]+vec2(dot(vRelative,uShadeUVRight[uMaterialPlate]),dot(vRelative,uShadeUVUp[uMaterialPlate]))/1.2;col=shadeSkin(uv,int(vMaterial)-10,distanceKm);}
- else if(vMaterial>=13.&&uWorldTexturesReady==1&&uTextureDetail==1){vec3 tri=pow(abs(vLocalNormal),vec3(8.));tri/=max(.00001,tri.x+tri.y+tri.z);col=sampleSurface(uEngineering,vMaterial-10.,vLocal/6.,tri,dFdx(vLocal)/6.,dFdy(vLocal)/6.,false);}
+ else if(vMaterial>=13.&&uWorldTexturesReady==1&&uTextureDetail==1){vec3 tri=pow(abs(vLocalNormal),vec3(8.));tri/=max(.00001,tri.x+tri.y+tri.z);int layer=vMaterial==15.?4:int(vMaterial)-10;col=mix(col,sampleSurface(uEngineering,float(layer),vLocal/6.,tri,dFdx(vLocal)/6.,dFdy(vLocal)/6.,false),uEngineeringReady[layer]);}
  else if(vMaterial>=0.){float footprint=max(length(dFdx(delta)),length(dFdy(delta)));col=worldDetail(int(vMaterial),q,delta,footprint,distanceKm);if(vMaterial<10.&&distanceKm<.12)col=mix(col,fieldGround(int(vMaterial),vLocal,footprint),1.-smoothstep(.05,.12,distanceKm));}
+ if(vMaterial== -5.){float broad=noise(vLocal*.018)*.7+noise(vLocal*.061)*.3,groves=noise(vLocal*.9)*.6+noise(vLocal*2.7)*.4;col*=mix(.60,1.75,smoothstep(.30,.76,broad))*(.75+.5*groves);float blend=1.-smoothstep(250.,319.5,max(abs(vLocal.x),abs(vLocal.z)));if(blend<.999){float footprint=max(length(dFdx(delta)),length(dFdy(delta)));col=mix(surfaceMaterial(q,delta,footprint,distanceKm),col,blend);}}
+ if(vMaterial== -5.&&distanceKm<.12){float footprint=max(length(dFdx(vLocal)),length(dFdy(vLocal)));col=mix(col,fieldGround(int(worldRegion(q).x),vLocal,footprint),1.-smoothstep(.05,.12,distanceKm));}
+ if(vMaterial== -7.){float fw=max(length(dFdx(vLocal)),length(dFdy(vLocal))),radial=length(vLocal.xz);float joint=constructionRib(radial,.012,fw);col*=1.-joint*.12;col*=.94+.12*noise(vLocal*320.);}
  if(vMaterial== -3.){vec3 p=vec3(dot(vRelative,uMaterialX),dot(vRelative,uMaterialY),dot(vRelative,uMaterialZ))+uMaterialOffset;float fw=max(length(dFdx(p)),length(dFdy(p)));
   float ribs=constructionRib(p.x,.18,fw),seams=constructionRib(p.y,.065,fw);
   float grain=noise(p*vec3(1.8,5.,1.8))*.6+noise(p*vec3(12.,2.,12.))*.4;col*=.76+.46*grain;
   col*=1.-ribs*.25-seams*.15;
   float veins=pow(1.-abs(noise(p*vec3(3.,.4,3.))*2.-1.),12.);col=mix(col,col*vec3(1.22,.98,.76),veins*.26);
-  if(uWorldTexturesReady==1&&uTextureDetail==1){vec2 uv=p.xy/1.2;vec3 tex=stochasticTile(uEngineering,uv,2.,dFdx(uv),dFdy(uv));col*=mix(vec3(1.),clamp(tex/vec3(.071,.075,.075),vec3(.65),vec3(1.45)),.25*(1.-smoothstep(.05,.20,fw)));}
+  if(uWorldTexturesReady==1&&uTextureDetail==1){vec2 uv=p.xy/1.2;vec3 tex=stochasticTile(uEngineering,uv,2.,dFdx(uv),dFdy(uv));col*=mix(vec3(1.),clamp(tex/vec3(.071,.075,.075),vec3(.65),vec3(1.45)),.25*uEngineeringReady[2]*(1.-smoothstep(.05,.20,fw)));}
   // Carry the matching ground deposit over the first forty metres of the lip,
   // then reveal the existing exposed structural strata. Rationalized radial
   // depth avoids subtracting two AU-sized floats and follows the curved wall.
@@ -47,6 +50,7 @@ void main(){float distanceKm=length(vRelative);if(uDetailFeature>0.){float cover
  float micro=noise(vLocal*400.)*.6+noise(vLocal*1700.)*.4,footprint=max(length(dFdx(vLocal)),length(dFdy(vLocal)));if(uStructureMaterial==0)col*=mix(1.,.90+.20*micro,1.-smoothstep(.001,.005,footprint));
  vec3 light=-q;float cosine=max(0.,dot(n,light)),shadow=structureShadow(vRelative,n);vec3 view=-normalize(vRelative),halfway=normalize(light+view);float spec=pow(max(0.,dot(n,halfway)),32.)*.018;
  vec3 radiance=col*(uSiteFill*(.45+.55*max(0.,dot(n,-uN)))+uSiteLight*uLuminosity/max(.01,dot(camera()+vRelative/uRadius,camera()+vRelative/uRadius))*cosine*shadow)+vec3(spec*uSiteLight*shadow)+col*vEmission;
+ if(vMaterial== -6.){float fresnel=pow(1.-max(0.,dot(n,view)),5.);float ripple=noise(vLocal*18.)*.6+noise(vLocal*57.)*.4;vec3 reflected=mix(vec3(.11,.19,.19),uSiteFill*2.,.45);radiance=mix(radiance,reflected,.18+.65*fresnel)+vec3(pow(max(0.,dot(n,halfway)),180.)*.16*uSiteLight*shadow)*( .65+.35*ripple);}
  if(uStructureMaterial==1&&uRichMaterials==1){
   vec3 p=vec3(dot(vRelative,uMaterialX),dot(vRelative,uMaterialY),dot(vRelative,uMaterialZ))+uMaterialOffset;
   vec3 tri=pow(abs(vec3(dot(n,uMaterialX),dot(n,uMaterialY),dot(n,uMaterialZ))),vec3(8.));tri/=max(.00001,tri.x+tri.y+tri.z);
@@ -59,10 +63,12 @@ void main(){float distanceKm=length(vRelative);if(uDetailFeature>0.){float cover
  fragColor=vec4(uLinearOutput==1?clamp(radiance,vec3(0.),vec3(60000.)):tone(radiance),1.);}
 `);
  }
- upload(mesh){if(this.meshes.has(mesh))return this.meshes.get(mesh);const gl=this.gl,vao=gl.createVertexArray(),buffer=gl.createBuffer();gl.bindVertexArray(vao);gl.bindBuffer(gl.ARRAY_BUFFER,buffer);gl.bufferData(gl.ARRAY_BUFFER,mesh.vertices,gl.STATIC_DRAW);for(const [loc,size,offset]of[[0,3,0],[1,3,3],[2,3,6],[3,1,9],[4,1,10]]){gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,size,gl.FLOAT,false,44,offset*4);}gl.bindVertexArray(null);const result={vao,buffer};this.meshes.set(mesh,result);return result;}
+ allocate(mesh){const gl=this.gl,vao=gl.createVertexArray(),buffer=gl.createBuffer();gl.bindVertexArray(vao);gl.bindBuffer(gl.ARRAY_BUFFER,buffer);gl.bufferData(gl.ARRAY_BUFFER,mesh.vertices.byteLength,gl.STATIC_DRAW);for(const [loc,size,offset]of[[0,3,0],[1,3,3],[2,3,6],[3,1,9],[4,1,10]]){gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,size,gl.FLOAT,false,44,offset*4);}gl.bindVertexArray(null);const result={vao,buffer,offset:0};this.meshes.set(mesh,result);return result;}
+ stage(mesh,budget=4){const gl=this.gl,start=performance.now(),record=this.meshes.get(mesh)||this.allocate(mesh);gl.bindBuffer(gl.ARRAY_BUFFER,record.buffer);while(record.offset<mesh.vertices.byteLength){const end=Math.min(mesh.vertices.byteLength,record.offset+65536);gl.bufferSubData(gl.ARRAY_BUFFER,record.offset,new Uint8Array(mesh.vertices.buffer,mesh.vertices.byteOffset+record.offset,end-record.offset));record.offset=end;if(performance.now()-start>=budget)break;}return record.offset===mesh.vertices.byteLength;}
+ upload(mesh){const record=this.meshes.get(mesh);if(record&&record.offset===mesh.vertices.byteLength)return record;this.stage(mesh,Infinity);return this.meshes.get(mesh);}
  draw(s,renderer,linear,width,height){const groups=s.geometryDetail&&s.layoutVersion===2&&s.collection&&s.projection!=='panorama'?SphereSites.geometry(s):[],gl=this.gl;
   // Release retired chunks even when the camera leaves the detail region entirely.
-  for(const [m,b]of this.meshes)if(!groups.includes(m)){gl.deleteVertexArray(b.vao);gl.deleteBuffer(b.buffer);this.meshes.delete(m);}
+  for(const [m,b]of this.meshes)if(!groups.includes(m)&&!window.SphereEdgeStreaming?.has(m)&&!window.SphereWatershed?.has(m)){gl.deleteVertexArray(b.vao);gl.deleteBuffer(b.buffer);this.meshes.delete(m);}
   if(!groups.length)return;
   gl.enable(gl.DEPTH_TEST);gl.depthFunc(gl.LEQUAL);gl.depthMask(true);gl.disable(gl.CULL_FACE);
   gl.viewport(0,0,width,height);gl.useProgram(this.main.p);

@@ -35,7 +35,7 @@ class WoundTextures{
   }catch(e){this.status[id]='failed';console.warn('Wound texture unavailable:',B.catalog[id].name,e.message);}gl.activeTexture(gl.TEXTURE0);this.next();
  }
  bind(u,exact=false){this.fading=false;const now=performance.now();for(let id=0;id<10;id++)if(this.status[id]==='ready'){this.ready[id]=exact?1:Math.min(1,(now-this.loadedAt[id])/650);if(this.ready[id]<1)this.fading=true;}const gl=this.gl;gl.activeTexture(gl.TEXTURE14);gl.bindTexture(gl.TEXTURE_2D_ARRAY,this.texture);gl.uniform1i(u.uWoundTex,14);gl.uniform1fv(u['uWoundReady[0]'],this.ready);gl.activeTexture(gl.TEXTURE0);}
- async prepare(){for(let id=0;id<10;id++)this.request(id);const start=performance.now();while(this.loading||this.queue.length||this.pending.length){this.upload();if(performance.now()-start>60000)throw Error('Wound artwork is still loading. Try again shortly.');await new Promise(resolve=>setTimeout(resolve,20));}const failed=this.status.indexOf('failed');if(failed>=0)throw Error('Missing Wound texture: '+B.catalog[failed].name);}
+ prepare(ids=[],options={}){return window.SphereAssets.prepareMaps(this,ids,'Wound artwork',options);}
  dispose(){this.disposed=true;this.queue=[];this.pending=[];this.gl.deleteTexture(this.texture);}
  get info(){return {ready:this.status.filter(x=>x==='ready').length,total:10,gpuMiB:this.allocated?79.96:0,tileKm:W.woundTileKm,damageBandKm:W.woundBandKm};}
 }

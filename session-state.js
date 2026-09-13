@@ -10,7 +10,7 @@ function decode(raw){if(typeof raw!=='string'||raw.length>1000000)throw Error('I
 function encode(state,ui={}){const clean=M.validate(state);clean.playing=false;clean.walkVelocity=0;return JSON.stringify({format:'sphere-session',version:1,state:clean,ui});}
 root.SphereSessionCodec={key,decode,encode};
 if(!root.document||!root.SphereApp)return;
-const A=root.SphereApp,$=id=>document.getElementById(id),preferences=['previewFps','adaptivePreview','exportSize','clipShot','biomeDestination','biomeAltitude','fieldDestination','rotationStep'];
+const A=root.SphereApp,$=id=>document.getElementById(id),preferences=['previewFps','adaptivePreview','exportSize','clipShot','biomeDestination','biomeAltitude','fieldDestination','rotationStep','placeCategory','placeDestination','placeAltitude'];
 const status=document.createElement('p');status.id='sessionStatus';status.className='micro';status.textContent='Settings and your viewpoint save automatically in this browser. Reopens paused.';
 $('lightPipeline').after(status);
 let ready=false,restored=false,timer=null,lastWritten='',storageError=false;
@@ -28,7 +28,7 @@ function applyUI(ui){for(const id of preferences){const el=$(id),value=ui.values
  if(typeof ui.panelHidden==='boolean')document.body.classList.toggle('panel-hidden',ui.panelHidden);
  for(const el of document.querySelectorAll('.tab-panel details')){const open=ui.details?.[detailKey(el)];if(typeof open==='boolean')el.open=open;}
 }
-function flush(){clearTimeout(timer);timer=null;if(!ready||A.busy||root.spherePreviewSuspended)return false;
+function flush(){clearTimeout(timer);timer=null;if(!ready||(A.busy&&!root.SphereLoading?.active)||root.spherePreviewSuspended)return false;
  try{const next=encode(A.getState(),uiState());if(next!==lastWritten){localStorage.setItem(key,next);lastWritten=next;}
   if(storageError){status.textContent='Settings and your viewpoint save automatically in this browser. Reopens paused.';storageError=false;}return true;
  }catch{status.textContent='This browser could not save the session. Export a scene from Capture to keep your settings.';storageError=true;return false;}

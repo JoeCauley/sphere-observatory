@@ -1,7 +1,7 @@
 const {chromium}=require(process.env.SPHERE_PLAYWRIGHT||'playwright'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 (async()=>{const browser=await chromium.launch({headless:true,executablePath:process.env.SPHERE_BROWSER});try{
  const page=await browser.newPage({viewport:{width:1440,height:900}});page.setDefaultTimeout(120000);const errors=[];page.on('pageerror',e=>errors.push(e.message));
- await page.goto(process.env.SPHERE_URL||'http://127.0.0.1:8766/',{waitUntil:'domcontentloaded'});await page.waitForFunction(()=>window.SphereEvolution);await page.evaluate(()=>SphereApp.setBusy(true));console.log('Ready');
+ await page.goto(process.env.SPHERE_URL||'http://127.0.0.1:8766/',{waitUntil:'domcontentloaded'});await page.waitForFunction(()=>window.SphereLoading?.ready&&window.SphereEvolution);await page.evaluate(()=>SphereApp.setBusy(true));console.log('Ready');
  const volume=await page.evaluate(()=>{
   const R=SphereApp.renderer,gl=R.gl,source=SphereVolume.march.slice(0,SphereVolume.march.indexOf('void main(){'))+`void main(){vec3 d=normalize(vec3((vUV.x*2.-1.)*.28,(vUV.y*2.-1.)*.09,1.));scattering=vec4(airDepth(d,0.,1400.),d);transmission=vec4(0.);}`;
   const fixture=SphereGLProgram(gl,SphereShaders.vertex,source),w=64,h=32,fbo=gl.createFramebuffer(),texture=gl.createTexture();gl.bindFramebuffer(gl.FRAMEBUFFER,fbo);gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,texture);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA32F,w,h,0,gl.RGBA,gl.FLOAT,null);gl.framebufferTexture2D(gl.FRAMEBUFFER,gl.COLOR_ATTACHMENT0,gl.TEXTURE_2D,texture,0);gl.viewport(0,0,w,h);gl.disable(gl.DEPTH_TEST);gl.disable(gl.BLEND);gl.useProgram(fixture.p);const u=fixture.u;gl.uniform3f(u.cameraUp,0,1,0);gl.uniform1f(u.amount,1);

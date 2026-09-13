@@ -30,13 +30,14 @@ const assetRoot=new URL('assets/biomes/',document.currentScript.src);
 class Textures {
  constructor(gl){this.gl=gl;this.ready=new Float32Array(10);this.loadedAt=new Float64Array(10);this.status=Array(10).fill('unloaded');this.queue=[];this.loading=false;this.pending=[];
   this.texture=gl.createTexture();gl.activeTexture(gl.TEXTURE2);gl.bindTexture(gl.TEXTURE_2D_ARRAY,this.texture);
-  gl.texStorage3D(gl.TEXTURE_2D_ARRAY,10,gl.SRGB8_ALPHA8,512,512,30);
-  gl.texParameteri(gl.TEXTURE_2D_ARRAY,gl.TEXTURE_MIN_FILTER,gl.LINEAR_MIPMAP_LINEAR);gl.texParameteri(gl.TEXTURE_2D_ARRAY,gl.TEXTURE_MAG_FILTER,gl.LINEAR);
+  gl.texStorage3D(gl.TEXTURE_2D_ARRAY,1,gl.SRGB8_ALPHA8,1,1,30);this.allocated=false;
+  gl.texParameteri(gl.TEXTURE_2D_ARRAY,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D_ARRAY,gl.TEXTURE_MAG_FILTER,gl.LINEAR);
   gl.texParameteri(gl.TEXTURE_2D_ARRAY,gl.TEXTURE_WRAP_S,gl.MIRRORED_REPEAT);gl.texParameteri(gl.TEXTURE_2D_ARRAY,gl.TEXTURE_WRAP_T,gl.MIRRORED_REPEAT);
   const ext=gl.getExtension('EXT_texture_filter_anisotropic');if(ext)gl.texParameterf(gl.TEXTURE_2D_ARRAY,ext.TEXTURE_MAX_ANISOTROPY_EXT,Math.min(4,gl.getParameter(ext.MAX_TEXTURE_MAX_ANISOTROPY_EXT)));
   gl.activeTexture(gl.TEXTURE0);
  }
- request(id){if(id<0||id>=10||this.status[id]!=='unloaded')return;this.status[id]='queued';this.queue.push(id);this.next();}
+ allocate(){if(this.allocated)return;this.allocated=true;const gl=this.gl;gl.deleteTexture(this.texture);this.texture=gl.createTexture();gl.activeTexture(gl.TEXTURE2);gl.bindTexture(gl.TEXTURE_2D_ARRAY,this.texture);gl.texStorage3D(gl.TEXTURE_2D_ARRAY,10,gl.SRGB8_ALPHA8,512,512,30);gl.texParameteri(gl.TEXTURE_2D_ARRAY,gl.TEXTURE_MIN_FILTER,gl.LINEAR_MIPMAP_LINEAR);gl.texParameteri(gl.TEXTURE_2D_ARRAY,gl.TEXTURE_MAG_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D_ARRAY,gl.TEXTURE_WRAP_S,gl.MIRRORED_REPEAT);gl.texParameteri(gl.TEXTURE_2D_ARRAY,gl.TEXTURE_WRAP_T,gl.MIRRORED_REPEAT);const ext=gl.getExtension('EXT_texture_filter_anisotropic');if(ext)gl.texParameterf(gl.TEXTURE_2D_ARRAY,ext.TEXTURE_MAX_ANISOTROPY_EXT,Math.min(4,gl.getParameter(ext.MAX_TEXTURE_MAX_ANISOTROPY_EXT)));gl.activeTexture(gl.TEXTURE0);}
+ request(id){if(id<0||id>=10||this.status[id]!=='unloaded')return;this.allocate();this.status[id]='queued';this.queue.push(id);this.next();}
  next(){if(this.loading||!this.queue.length)return;const id=this.queue.shift();this.loading=true;this.status[id]='loading';const img=new Image();
   img.onload=()=>{this.pending.push({id,img});this.status[id]='decoded';this.loading=false;this.next();root.dispatchEvent(new Event('sphere-texture-ready'));};
   img.onerror=()=>{this.status[id]='failed';this.loading=false;this.next();root.dispatchEvent(new Event('sphere-texture-ready'));};img.src=new URL(catalog[id].id+'.png',assetRoot).href;
@@ -55,8 +56,8 @@ class Textures {
  }
  bind(uniforms,exact=false){const now=performance.now();this.fading=false;for(let id=0;id<10;id++)if(this.status[id]==='ready'){this.ready[id]=exact?1:clamp((now-this.loadedAt[id])/350);if(this.ready[id]<1)this.fading=true;}
   const gl=this.gl;gl.activeTexture(gl.TEXTURE2);gl.bindTexture(gl.TEXTURE_2D_ARRAY,this.texture);gl.uniform1i(uniforms.uBiomeTex,2);gl.uniform1fv(uniforms['uBiomeReady[0]'],this.ready);gl.activeTexture(gl.TEXTURE0);}
- async prepare(){for(let i=0;i<10;i++)this.request(i);const start=performance.now();while(this.loading||this.queue.length){if(performance.now()-start>15000)throw Error('Surface textures are still loading. Try the photograph again.');await new Promise(r=>setTimeout(r,20));}
-  while(this.pending.length)this.upload();const failed=this.status.findIndex(s=>s==='failed');if(failed>=0)throw Error('Missing biome texture: '+catalog[failed].name);}
+ prepare(ids=[],options={}){return root.SphereAssets.prepareMaps(this,ids,'Surface detail',options);}
+ dispose(){this.gl.deleteTexture(this.texture);}
 }
 root.SphereBiomes.Textures=Textures;
 })(typeof window==='undefined'?globalThis:window);

@@ -18,7 +18,7 @@ const root=path.resolve(__dirname,'..'),url=process.env.SPHERE_URL||'http://127.
   page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
   page.on('response',r=>{if(r.status()>=400)errors.push(r.status()+' '+r.url());});
   const response=await page.goto(url,{waitUntil:'domcontentloaded'});assert.equal(response.status(),200);
-  await page.waitForFunction(()=>window.SphereSession&&window.SphereEvolution);
+  await page.waitForFunction(()=>window.SphereLoading?.ready&&window.SphereSession&&window.SphereEvolution);
   await page.evaluate(()=>SphereApp.setBusy(true));
   const version=await page.evaluate(async()=>{const r=await fetch('package.json');return (await r.json()).version;});
   assert.equal(version,JSON.parse(fs.readFileSync(path.join(root,'package.json'),'utf8')).version);
@@ -35,7 +35,9 @@ const root=path.resolve(__dirname,'..'),url=process.env.SPHERE_URL||'http://127.
    },id);
    assert.equal(result.error,0,id);assert(result.mean>1,id+' rendered black');assert(result.groups>0,id+' missing geometry');
    assert(result.worldReady,id+' missing world textures');
-   if(id==='rim')assert(result.woundTextures.every(x=>x==='ready'),'Missing Wound texture');
+   // Current-view residency loads the adjoining Wound artwork, not every
+   // biome's edge map; the manifest check above verifies the complete set.
+   if(id==='rim')assert(result.woundTextures.some(x=>x==='ready'),'Missing selected Wound texture');
    if(id==='biome-0')assert(result.walk,'Walking site did not activate');
    if(id==='shade-0')assert.equal(result.attachment,0);
    console.log(id,JSON.stringify({mean:result.mean,groups:result.groups,gl:result.error}));captures.push(result);

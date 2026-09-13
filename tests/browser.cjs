@@ -8,7 +8,7 @@ const root=path.resolve(__dirname,'..');let browser;
  browser=await chromium.launch({...(process.env.SPHERE_BROWSER?{executablePath:process.env.SPHERE_BROWSER}:{}),headless:true,args:['--enable-webgl','--ignore-gpu-blocklist']});
  const context=await browser.newContext({viewport:{width:1600,height:1000},deviceScaleFactor:1,acceptDownloads:true});
  const page=await context.newPage(),errors=[],network=[];page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>{if(/^https?:/.test(r.url()))network.push(r.url());});
- await page.goto(pathToFileURL(path.join(root,'index.html')).href);await page.waitForFunction(()=>!!window.SphereApp);await page.waitForTimeout(300);
+ await page.goto(pathToFileURL(path.join(root,'index.html')).href);await page.waitForFunction(()=>window.SphereLoading?.ready&&window.SphereApp);await page.waitForTimeout(300);
  console.log('GPU:',await page.evaluate(()=>SphereApp.renderer.device));
  assert.equal(await page.locator('#error').isVisible(),false);assert.equal(await page.evaluate(()=>SphereApp.renderer.error()),0);
  console.log('PASS Offline file launch and shader compilation');

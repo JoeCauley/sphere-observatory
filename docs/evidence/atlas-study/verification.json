@@ -1,0 +1,110 @@
+{
+  "cases": [
+    {
+      "location": "industrial",
+      "layer": "water"
+    },
+    {
+      "location": "industrial",
+      "layer": "service"
+    },
+    {
+      "location": "industrial",
+      "layer": "damage"
+    },
+    {
+      "location": "industrial",
+      "layer": "composite"
+    },
+    {
+      "location": "boundary",
+      "layer": "water"
+    },
+    {
+      "location": "boundary",
+      "layer": "service"
+    },
+    {
+      "location": "boundary",
+      "layer": "damage"
+    },
+    {
+      "location": "boundary",
+      "layer": "composite"
+    },
+    {
+      "location": "wound-a",
+      "layer": "water"
+    },
+    {
+      "location": "wound-a",
+      "layer": "service"
+    },
+    {
+      "location": "wound-a",
+      "layer": "damage"
+    },
+    {
+      "location": "wound-a",
+      "layer": "composite"
+    },
+    {
+      "location": "wound-b",
+      "layer": "water"
+    },
+    {
+      "location": "wound-b",
+      "layer": "service"
+    },
+    {
+      "location": "wound-b",
+      "layer": "damage"
+    },
+    {
+      "location": "wound-b",
+      "layer": "composite"
+    },
+    {
+      "location": "forest",
+      "layer": "water"
+    },
+    {
+      "location": "forest",
+      "layer": "service"
+    },
+    {
+      "location": "forest",
+      "layer": "damage"
+    },
+    {
+      "location": "forest",
+      "layer": "composite"
+    }
+  ],
+  "settings": {
+    "format": "sphere-atlas-design-study",
+    "revision": 1,
+    "seed": 713,
+    "region": "forest",
+    "layer": "composite",
+    "radiusKm": 149597870.7,
+    "axis": {
+      "latitude": 63,
+      "longitude": -28
+    },
+    "anchor": [
+      0.9990056996801094,
+      -0.033228470003808824,
+      0.029723404715151572
+    ],
+    "candidateIds": [
+      "current",
+      "watershed",
+      "compartment",
+      "backbone"
+    ],
+    "provinceExtentKm": 640,
+    "districtExtentKm": 96
+  },
+  "errors": []
+}

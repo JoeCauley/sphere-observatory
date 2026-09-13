@@ -21,7 +21,7 @@ function files(bytes){
   const page=await browser.newPage({acceptDownloads:true}),errors=[];
   page.setDefaultTimeout(180000);page.on('pageerror',e=>errors.push(e.message));
   await page.goto(process.env.SPHERE_URL||'http://127.0.0.1:8766/',{waitUntil:'domcontentloaded'});
-  await page.waitForFunction(()=>window.SphereSession);
+  await page.waitForFunction(()=>window.SphereLoading?.ready&&window.SphereSession);
   const state=JSON.parse(fs.readFileSync(path.join(__dirname,'fixtures/polish-scenes.json'),'utf8')).find(x=>x.id==='rim-air').state;
   await page.evaluate(s=>{SphereApp.setBusy(true);SphereApp.setState(s);document.getElementById('exportSize').value='3840';},state);
   const outputs=[];

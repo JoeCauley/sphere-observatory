@@ -38,7 +38,7 @@ function era(value){change(s=>s.era=value);$('viewTitle').textContent=value==='b
 $('eraBefore').onclick=()=>era('before');$('eraAfter').onclick=()=>era('after');
 for(const k of ['shadeTrim','antialias','shadowSamples','stationSamples','shadeShape','regionOrder','colorRichness','cycleScale','routeShades','multipleWounds','starStation','shineField','routeGuides'])$(k).addEventListener($(k).type==='range'?'input':'change',()=>change(s=>s[k]=$(k).type==='checkbox'?$(k).checked:k==='shadeShape'?$(k).value:Number($(k).value)));
 $('advanceCycle').onclick=()=>change(s=>s.time+=21600);
-function view(name,{stage=false}={}){const prior=A.getState();change(s=>{s.collection=true;s.playing=false;s.atmosphere=1;s.exposure=-.15;s.shellshine=.22;s.fov=95;s.speed=1000000;s.projection='perspective';s.viewMode='material';
+function view(name,{stage=false}={}){const prior=A.getState();change(s=>{s.collection=true;s.atmosphere=1;s.exposure=-.15;s.shellshine=.22;s.fov=95;s.speed=1000000;s.projection='perspective';s.viewMode='material';
  if(name==='vista'){s.position=M.mul(M.axis(28,-60),s.radius*.08);s.forward=M.norm([.25,-.15,1]);}
  if(name==='wounds'){const w=SphereCollection.wounds[0];s.position=M.mul(w.axis,s.radius*.55);s.forward=w.axis;s.fov=88;}
  if(name==='shades'){const pl=SphereCollection.plates(s)[0],n=pl?.normal||SphereCollection.routes[0].right;s.position=M.mul(M.norm(M.add(n,M.mul(pl?.up||[0,1,0],.30))),s.radius*.9);s.forward=M.norm(M.sub(M.mul(n,s.radius*.62),s.position));s.fov=78;s.speed=100000;}

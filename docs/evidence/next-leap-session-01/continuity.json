@@ -1,0 +1,102 @@
+{
+  "rays": {
+    "probes": 432000,
+    "mismatch": 0,
+    "failures": [],
+    "gl": 0
+  },
+  "shadeRays": {
+    "probes": 73728,
+    "mismatch": 0,
+    "failures": [],
+    "gl": 0
+  },
+  "attachment": {
+    "before": {
+      "position": [
+        -74095083.49689145,
+        -21174560.51587115,
+        -51616326.49770122
+      ],
+      "time": 0,
+      "local": [
+        -2448437.76295877,
+        -32322.832326285832,
+        -0.7799578710692003
+      ]
+    },
+    "after": {
+      "position": [
+        -74247829.75075789,
+        -21341057.42238029,
+        -51327454.81675501
+      ],
+      "time": 450,
+      "local": [
+        -2448437.762958793,
+        -32322.832326346717,
+        -0.7799578823614866
+      ]
+    },
+    "scrubbed": {
+      "position": [
+        -77172642.68276203,
+        -24869408.587109268,
+        -45039808.06414523
+      ],
+      "time": 10000,
+      "local": [
+        -2448437.762958792,
+        -32322.832326344156,
+        -0.7799578822450712
+      ]
+    },
+    "detachedAfter": {
+      "position": [
+        -77172642.68276203,
+        -24869408.587109268,
+        -45039808.06414523
+      ],
+      "time": 10269.940000000002,
+      "local": null
+    }
+  },
+  "travel": [
+    {
+      "distance": 0,
+      "groups": 159,
+      "triangles": 90672,
+      "readinessMs": 2149.7999999821186,
+      "synchronousCacheAtTestTime": 833
+    },
+    {
+      "distance": 2,
+      "groups": 159,
+      "triangles": 90672,
+      "readinessMs": 16.700000017881393,
+      "synchronousCacheAtTestTime": 833
+    },
+    {
+      "distance": 20,
+      "groups": 159,
+      "triangles": 105360,
+      "readinessMs": 266.59999999403954,
+      "synchronousCacheAtTestTime": 833
+    },
+    {
+      "distance": 100,
+      "groups": 159,
+      "triangles": 90672,
+      "readinessMs": 749.9000000059605,
+      "synchronousCacheAtTestTime": 833
+    },
+    {
+      "distance": 500,
+      "groups": 159,
+      "triangles": 90672,
+      "readinessMs": 2100,
+      "synchronousCacheAtTestTime": 833
+    }
+  ],
+  "errors": []
+}

@@ -52,7 +52,7 @@
     return length(delta) < 2*Math.sin(s.breachDiameter/(4*s.radius))*edge;
   }
   function trace(p,d,s) {
-    let distance=sphereDistance(p,d,[0,0,0],s.starRadius),kind='Star';
+    let distance=s.layoutVersion===2&&length(p)<=s.starRadius?Infinity:sphereDistance(p,d,[0,0,0],s.starRadius),kind='Star';
     const sh=s.shadeEnabled?plateDistance(p,d,shade(s)):Infinity;
     if(sh<distance){distance=sh;kind='Shade';}
     const shell=shellDistance(p,d,s.radius),point=add(p,mul(d,shell));
@@ -61,6 +61,7 @@
     return {kind,distance,point:add(p,mul(d,distance))};
   }
   function sunVisibility(p,s,samples=256) {
+    if(length(p)<=s.starRadius)return 1;
     if(!s.shadeEnabled)return 1;
     const st=basis(mul(p,-1)),dist=length(p),rad=Math.tan(Math.asin(s.starRadius/dist)),pl=shade(s);
     let visible=0;
@@ -90,7 +91,7 @@
     const s=defaultState();
     for(const [k,[lo,hi]] of Object.entries(numeric))if(k in input){if(!Number.isFinite(input[k])||input[k]<(k==='speed'&&input.layoutVersion===2?.001:lo)||input[k]>hi)throw Error('Invalid value for '+k);s[k]=input[k];}
     for(const k of ['position','forward','up'])if(k in input){if(!Array.isArray(input[k])||input[k].length!==3||!input[k].every(Number.isFinite))throw Error('Invalid camera '+k);s[k]=[...input[k]];}
-    if(length(s.position)>=(input.layoutVersion===2?s.radius*2:s.radius-0.5)||length(s.position)<=s.starRadius*1.01)throw Error(input.layoutVersion===2?'Camera must remain outside the star and within two shell radii.':'Camera must be inside the shell and outside the star.');
+    if(length(s.position)>=(input.layoutVersion===2?s.radius*2:s.radius-0.5)||(input.layoutVersion!==2&&length(s.position)<=s.starRadius*1.01))throw Error(input.layoutVersion===2?'Camera must remain within two shell radii.':'Camera must be inside the shell and outside the star.');
     if(s.shadeAltitude>=s.radius-s.starRadius)throw Error('Shade altitude places it inside the star.');
     if(s.breachDiameter>PI*s.radius)throw Error('Breach is larger than the shell permits.');
     if(length(s.forward)<.1||length(s.up)<.1)throw Error('Camera orientation is missing.');
