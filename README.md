@@ -1,185 +1,118 @@
 # The Sphere Observatory
 
-**Fly inside a Dyson shell at Earth's orbital radius. Explore its light, measure its scale, and save reproducible photographs.**
+**A world around a star. A physically accurate foundation for limitless storytelling and exploration.**
 
-A local WebGL 2 instrument inspired by **The Sphere** worldbuilding project. The shell has a radius of 149,597,870.7 km around a Sun-sized star: approximately **551 million Earth surface areas** on the inside.
+The Sphere Observatory is a working, locally run exploration app for **The Sphere**: an inhabited Dyson shell enclosing a Sun-sized star at the radius of Earth's orbit. Fly across its immense interior, descend through clouds into unfamiliar landscapes, inspect a broken megastructure, and save a photograph of a place you can return to.
 
-![A low flight across the Ultra Desert](examples/v1.4/ultra-desert.png)
+The ambition is to make an extraordinary fictional world hold together. What would the sky look like from its inner surface? How would continent-dwarfing Shades change the light? What could someone see from the edge of a breach opening into space? Stories should be able to grow from consistent places, distances and physical consequences. The Observatory is where we build and test that foundation.
 
-*Across the Ultra Desert. A newly retaken, unretouched capture from the current build; [open this scene](examples/v1.4/ultra-desert.json) in the app to explore it.*
+![The stellar-scale interior of The Sphere](examples/observatory/interior.jpg)
 
-Download the [v1.4.0 release](https://github.com/JoeCauley/sphere-observatory/releases/tag/v1.4.0). See [release notes](docs/releases/v1.4.0.md), the [new screenshot gallery](examples/v1.4/) and the [next development plan](docs/Observatory-Next-Leap.md).
+*The stellar conservatory: a close view of the central star and its damaged service rings, with the far shell behind them. [Restore this viewpoint](examples/observatory/interior.json).*
 
-This is a working visualization prototype, not a finished game or a complete physics simulator.
+**Working prototype, actively developed.** Geometry, exploration, measurement and reproducible captures work today. Full physical accuracy is the goal; lighting, weather and engineering still have explicit approximations and unsolved parts. The gallery shows the current source build. [v1.4.0](https://github.com/JoeCauley/sphere-observatory/releases/tag/v1.4.0) is the latest tagged release; download the current repository for subsequent travel, weather and Watershed work.
 
-## Current development build
+## A scale worth stopping to imagine
 
-The published **v1.4.0 release remains the baseline**. The checkout currently contains the next, unreleased travel and world-detail pass. Its scope and retained validation are recorded in the [roadmap and handoff](docs/Observatory-Roadmap.md).
+| At the default scale | Dimension |
+|---|---:|
+| Star to inner shell | **149,597,870.7 km — one astronomical unit** |
+| Across the entire cavity | **299.2 million km** |
+| Around the shell on a great circle | **940 million km** |
+| Total inner spherical surface | **281 quadrillion km²** |
+| Equivalent Earth surfaces, including land and oceans | **551 million** |
+| Central star | **1,391,400 km across** |
+| Light crossing the cavity's diameter | **16 minutes 38 seconds** |
 
-- **Useful arrivals at the Wounds.** *See surface* now distinguishes selected ground, a close inspection of a Wound's fractured wall, and the near-rim adjoining biome. Each of the six Wounds also has its own Breach spill destination. The return action restores the exact prior view. [Arrival notes and visual checks](docs/Observatory-Arrival-Fix-Atlas-Study.md)
-- **Responsive structural detail.** Nearby Wound and Shade geometry is planned and built off the main thread, then admitted in bounded uploads. Coarse, collidable coverage remains until replacement detail is ready; captures retain their deterministic complete-geometry path. [Streaming measurements and limits](docs/Observatory-Next-Leap-Session-01.md)
-- **Places and continuous travel.** Explore has category browsing, Ground / Beneath the Clouds / Atmosphere choices, lighting and weather options, click-to-pin travel (or **G**) and an independent return history. **Space + E** gives a controlled lift-off, automatic speed responds to clearance, and a sustained flight can pass through the star and descend to a walking patch on the far shell. [Travel guide](docs/Observatory-Places-Travel.md)
-- **Walking and collision improvements.** Descent below 100 m over solid ground settles into a local 2.4 km walking patch. Raised Shade decks have dependable nearby contact while their visual detail loads; openings remain passable. Play/pause persists through navigation, saved views and capture. [Biome Pack programme and present limits](docs/Observatory-Biome-Packs.md)
-- **A real first province.** Watershed province adds stable geography, waterways, river gardens, terrain-aware landings and close-range landscape detail. The [atlas study](atlas-study.html) makes the next wide-area shell treatment reviewable before it replaces the interim atlas. [Province design](docs/Observatory-Watershed-Province.md)
-- **Layered weather and selective loading.** Local air transitions into regional distant weather—low banks, middle fields and a high veil—with evolving patterns, regional colour and filtered distance detail. Only the artwork needed for the current view is prepared behind a loading screen; the overview begins without image collections. Measurements persist while the simulation runs and camera rays stay consistent across preview resizing.
+These are dimensions of the mathematical world, not a claim that every square metre contains finished terrain. The surface comparison uses Earth's mean radius of 6,371 km and the full sphere before subtracting Wounds. Light-crossing time is a scale reference; delayed light propagation is not yet simulated.
 
-The current bounds are deliberate: walking regions do not yet stream into one another, the full nine-variation Biome Pack family, Shade walking environments and persistent Hero Zones are still queued. This is a working visualization prototype, not a finished game or a complete physics simulator.
+The app bridges that world with a **640 km Watershed province**, kilometre-scale walking samples, local buildings and metre-scale material detail. At a low altitude, the surface beneath you may be close enough to walk on while the surface in your sky is hundreds of millions of kilometres away. Making those scales agree is central to the project.
 
-## Inside the current build
+![A wide view across the shell, its habitat waist and Shade fleet](examples/observatory/cavity.jpg)
 
-![Clouds above the layered edge of a Wound, opening into space](examples/v1.4/wound-edge.png)
+*Across the interior: distant Shades, enormous Wounds and the habitat waist. [Scene and 4K photograph](examples/observatory/README.md#across-the-interior).*
 
-*At the edge of a world: local clouds, exposed shell strata and the open breach.*
+## One world, many kinds of exploration
 
-| The broken Shade | Walking the Mycelium Sea |
+**The interior and its history.** Explore a designed habitat waist, ten biome families, supporting Builder regions and two polar entry complexes. Switch between before and after the attack while retaining camera and time. Six immense **Wounds** open through the shell; the damaged world retains broken Shades, exposed structural layers and an exterior graveyard. These are authored historical states, not a simulated destruction event.
+
+**Light and the Shade fleet.** Eighteen intact Shades occupy three maintained routes. Their successive passages occur at 24, 36 and 60 hours; complete circuits take 8, 9 and 10 days. A finite stellar disk produces eclipses and sampled penumbrae, with overlapping Shade and stellar-station shadows. Reflected **ShellShine**, local atmosphere and layered clouds help explore what an enclosed world's light could look like.
+
+![Clouds and surviving ground at a Wound](examples/observatory/wound.jpg)
+
+*A Wound turns the edge of the landscape into the edge of the world. [Scene](examples/observatory/wound.json).*
+
+**Places at human scale.** Visit ten bounded biome field sites, polar courts, Shade service structures and the Watershed's river gardens. The first province connects a stable catchment landscape with rivers, terraces, planted courts and Builder architecture. Nearby terrain and structures participate in picking, collision, shadows and photographs.
+
+![The Watershed river garden](examples/observatory/river-garden.jpg)
+
+*The same project that models an astronomical-unit shell also makes room for a river garden. [Scene](examples/observatory/river-garden.json).*
+
+**Travel, look and measure.** Walk, lift off, fly through the cavity and descend onto the far shell. Use Places, exact coordinates or a point selected in the view; retrace your arrivals with return history. Measure a visible curved-surface outline in square kilometres or Earth surfaces. Measurements exclude openings and foreground objects and can be saved with their scenes.
+
+**Keep your discoveries.** Export HD, 4K or supported 8K PNG photographs, 360° panoramas and local SDR motion studies. Each photograph can carry the camera, world settings, seed, simulation time and rendering metadata in an importable scene JSON. Bookmarks and automatic session restoration make returning easy; exported scenes provide a portable record.
+
+| On the moving megastructure | Beneath the distant shell |
 |---|---|
-| ![Textured Shade skin with exposed structural ribs](examples/v1.4/shade-structure.png) | ![A walking field site beneath the curved inner shell](examples/v1.4/mycelium.png) |
+| ![A broken Shade and its structural detail](examples/observatory/shade.jpg) | ![Clouds within the Sphere](examples/observatory/clouds.jpg) |
 
-The [full gallery](examples/v1.4/) also includes a cloud sea and exterior wreckage. Every image has an importable scene file; these are renderer captures, with no compositing or retouching.
+**[Explore the new gallery and its saved scenes](examples/observatory/)** · [Previous photographs and README](examples/archive/README.md)
 
-Version 1.4 improves Wound haze and adds subpixel sampling along analytic Shade outlines and cracks. **Smooth edges** enables it under Light or in the fullscreen Flight console. World, lighting, weather, camera and simulation time now save automatically in this browser and reopen paused, together with preview and capture preferences. See [air and silhouette notes](docs/Observatory-Polish-14.md), including the remaining intermittent first-use 4K export issue.
+These are photographs from the running renderer, without external compositing or retouching. The README uses smaller display copies; the gallery links the unchanged 4K originals. Some in-app material artwork was created with AI assistance; the screenshots themselves are rendered scenes, and the app performs no runtime image generation.
 
-Wounds now have **ten unique biome-specific edge textures**. Damage builds across 240 km of surviving ground into the matching shattered material at the lip, with corresponding upper-wall deposits. The transition follows the actual Wound boundary and stays fixed as the camera moves. See [artwork, prompts and material details](assets/wound-edges/README.md).
+## What physically grounded means here
 
-Shade material filtering follows each surface's projected footprint across cracks and silhouettes. Fine finishes settle into a stable distant material, and broad district boundaries are filtered separately. See [Shade material sampling](docs/Observatory-Shade-Filtering-14.md).
+The goal is a foundation that can support open-ended stories and exploration: a place should keep its identity as you approach, its dimensions should survive measurement, and its light and motion should follow declared models. More detail should reveal the same world.
 
-Version 1.3 added shared roughness, metalness and normal detail on Shade skin and Wound structures, plus local self-shadowing. Use **Light → Surface materials & shadows** or **Flight console** to compare Detailed/Simple materials and Off/Balanced/Fine shadows. See [materials and shadow notes](docs/Observatory-Materials-13.md).
+| Implemented foundation | Present boundary |
+|---|---|
+| Analytic shell and star, measured camera geometry, occlusion and apparent sizes | GPU precision and pixel resolution remain finite |
+| Shared geometry for visible local structures, picking and collision | Most of the shell remains an analytic surface with illustrative materials |
+| Finite-source eclipse sampling and overlapping blockers | Stellar brightness is uniform; shadow integration is sampled |
+| Coloured first-bounce ShellShine, atmosphere and volumetric weather | Approximate light transport; no converged global illumination, climate or radiative equilibrium |
+| Moving Shades and before/after world states | Prescribed maintained routes; no orbital solution or evolving debris dynamics |
+| Saved world addresses, province seed and camera state | Local walking patches are bounded, currently 2.4 km across; they do not yet stream into one continuous walking world |
 
-Version 1.2 added continuous Wound and Shade inspection geometry, distance-based detail streaming, a camera that follows the inspected Shade, and a fullscreen flight console. Press **L** to toggle level lock within 1 km. See [continuity and navigation notes](docs/Observatory-Continuity-12.md).
+Artificial gravity, shell support, material strength, atmosphere retention, propulsion and heat disposal remain stipulated engineering. Free flight can exceed light speed and pass through the star; it is an exploration camera. Exposure is artistic rather than calibrated photometry. The [retained validation evidence](docs/evidence/) and technical studies record what individual checks actually establish.
 
-Future work is saved in the [Observatory queue](docs/Observatory-Queue.md). The [inner shell research](docs/Observatory-Shell-Design-Research.md) compares three proposed layouts using NASA life-support and thermal principles, local watersheds and the existing waist and poles.
+Next comes stable geography across scales, adjoining Watershed neighbourhoods, walking terrain streamed between them, environments on both Shade faces and persistent authored places. **The destination is a coherent, physically accurate world in which limitless stories and journeys can take place.** See the [current roadmap](docs/Observatory-Roadmap.md), [Biome Pack programme](docs/Observatory-Biome-Packs.md) and [Watershed design](docs/Observatory-Watershed-Province.md).
 
-## Run locally
+## Run the Observatory
 
-Download this repository as a ZIP and extract it. On Windows, double-click **Launch Observatory.cmd**. It starts one managed localhost server and opens the Observatory in Chrome or Edge. When finished, double-click **Stop Observatory.cmd**; the stop action is safe to repeat. Hardware acceleration and WebGL 2 are required.
+Download this repository as a ZIP and extract it. On Windows, double-click **Launch Observatory.cmd** to start the local server and open Chrome or Edge. Double-click **Stop Observatory.cmd** when finished.
 
-Alternatively, with Node.js 20 or later:
+Alternatively, with Node.js 20 or later, run from the extracted folder:
 
 ```sh
 npm start
 ```
 
-Open **http://127.0.0.1:8766/**. If the port is occupied, use `node serve.cjs 8767`. Stop the server with Ctrl+C. It listens only on localhost.
+Open [localhost:8766](http://127.0.0.1:8766/). Stop with Ctrl+C. If the port is occupied, use `node serve.cjs 8767` and open that port instead. A managed Windows server is also available through `npm run start:managed` and `npm run stop`.
 
-For a durable command-line workflow, use `npm run start:managed` and stop it with `npm run stop`. The managed stop command cleans the recorded PID and any orphaned `serve.cjs` process whose script path is this repository, without matching unrelated Node services. If a terminal or browser is closed unexpectedly, run the stop command before launching again.
+**Hardware-accelerated WebGL 2 is required.** Enable your browser's graphics acceleration and restart it if necessary. Testing has primarily used Windows, Edge and an RTX 5080. Start with the default quality; reduce preview detail or shadow samples if needed. Adaptive resolution and 15/30/60 fps ceilings manage preview work, with up to 4K preview output and higher-resolution still captures. They do not guarantee a frame rate on every machine.
 
-Use localhost for the full experience. Opening `index.html` directly can restrict worker and texture access in some browsers; the renderer falls back to procedural materials and cached CPU lighting.
+There is **no build step or runtime package installation**, account, API key, telemetry or cloud dependency. Use the localhost server so workers and texture loading function correctly. Settings remain in this browser; export scenes to keep them independently.
 
-### Performance prerequisite
+### First journey
 
-The browser must use hardware WebGL. In Chrome, open **Settings → System**, turn on **Use graphics acceleration when available**, then fully restart Chrome before launching Observatory. A quick diagnostic is `chrome://gpu`: WebGL should use a hardware ANGLE backend; if it reports `d3d11-warp-webgl`, rendering has fallen back to the CPU and performance will be poor. This setting is browser/machine state rather than application state, so it cannot be carried by GitHub; keep this prerequisite with the run instructions.
+1. Open **Explore → Places**, choose a destination, arrival height, scene and weather, then visit it. Try the Watershed river gardens or a Wound's Breach spill.
+2. Drag to look. **W/A/S/D** move, **Q/E** descend/climb, **Z/X** turn and **Shift** accelerates. Automatic flight speed responds to clearance; scrolling selects manual speed.
+3. On foot, **Space** jumps and **Space + E** lifts off. In flight, **Space** controls simulation play/pause. Descending below about 100 m over solid ground eases into a local walking patch.
+4. Point and press **G**, or click to mark a destination and choose **Go to pointer**. Use **Return to previous** to retrace arrivals. **H** toggles view overlays.
+5. Try **World → Before / After the attack**, adjust **Light**, then use **Capture** to save a photograph or import one of the gallery's scene files.
 
-**No build step or runtime package installation.** No account, API key, cloud service, telemetry or runtime image generation. Testing has primarily used Windows, Edge and an RTX 5080; performance on other systems may differ substantially.
+## Development and further reading
 
-## New in v1.1
+This repository contains the runnable browser Observatory. The broader [Sphere project](https://github.com/JoeCauley/Sphere) holds the adopted requirements and separate Unreal application direction; this prototype does not establish that application's acceptance.
 
-The Shade fleet now follows the three habitat ribbons and rotates with the waist. Cross-track dimensions stay within each ribbon; radial levels retain clearance. Free flight stops at solid shell, Shades and local geometry, glides along ground, and passes through Wounds.
+Run the dependency-free numerical checks with `npm test`. Browser checks additionally use Playwright and a Chromium-family browser. Set `SPHERE_PLAYWRIGHT` to its module path and `SPHERE_BROWSER` to the browser executable, then run relevant `tests/*-browser.cjs` checks sequentially against the local app; tests supporting an alternate server accept `SPHERE_URL`. The [roadmap](docs/Observatory-Roadmap.md) identifies checks for each area. The intermittent first-use 4K capture discrepancy remains an open investigation.
 
-Clouds use a continuous 3D density field with self-shadow sampling and depth-aware reconstruction. Distant weather now has low banks, middle fields and a thin upper veil, with regional colours, slowly evolving masks and finer, fainter detail over longer sight lines. Cavity haze dims distant clouds along with the shell. **Light → Local weather** offers three cloud detail levels and independent **Cavity haze**. Prominent exterior wrecks are now detailed geometry with parallax; the low-resolution environment paintings remain archived and are no longer stretched across the sky.
+- [Places and continuous travel](docs/Observatory-Places-Travel.md)
+- [Lighting, materials and shadows](docs/Observatory-Materials-13.md)
+- [Shade routes, geometry and clearance](docs/Observatory-Shade-Standard-01.md)
+- [Related projects and what Sphere is pursuing](docs/Related-Projects.md)
+- [Tagged v1.4.0 release notes](docs/releases/v1.4.0.md)
 
-[Graphics pass, validation and limits](docs/Observatory-Graphics-11.md).
+Created by **Joe Cauley**, with AI-assisted development. Scientific corrections, reproducible rendering reports and hardware/browser results are welcome; include a saved scene when possible.
 
-## Previous v1.0 work
-
-A designed habitat waist, three supporting machinery families and two polar entry complexes replace the intersecting belts in new scenes. The Ruin's colour and reflected light now derive from its actual imagery. Eight new original images cover machinery, both Shade faces and three wreckage environments.
-
-**Explore → Field expeditions** opens ten walkable biome samples, entry courts, layered Wound edges, damaged Shade service sections and exterior wreckage with automated fleets. **Light → Local weather** adds biome-specific clouds, fog, dust and spores. Local geometry participates in depth, ray picking, shadows and photographs, including panoramas. The in-app guide distinguishes maintained Shade routes from passive orbits and reports light travel time.
-
-Walk with W/A/S/D, Shift to run and Space to jump. These are bounded 2.4-km procedural samples. Earlier scenes retain their legacy layout and material shader. [Implementation, controls and physical limits](docs/Observatory-Evolution-10.md).
-
-## Previous v0.9 work
-
-Ten hero biome landscapes with bump shading, larger non-mirrored surface detail, regional atmosphere colours, and a redesigned exploration workflow. Live indirect lighting runs off the main thread; adaptive preview supports up to 4K output. See surface lands under the crosshair, and nearby arrivals level within 1,000 km.
-
-![Ultra Desert at one kilometre](examples/hero-review/attempt3/ultra-desert-grazing.png)
-
-[Before/after screenshots](examples/hero-review/) · [Performance and implementation](docs/Observatory-Hero-Textures-10.md) · [Independent visual review](docs/texture-critic-review.md)
-
-## First exploration
-
-1. Use the bottom **Overview / Surface / Shade fleet / Wounds / Star** destinations. They preserve world, time and lighting while choosing a useful camera, lens and flight speed.
-2. Use **World → Before / After the attack** to compare the same location and time. Regions & shade engineering controls the layout and fleet.
-3. **See surface** lands 3 km above the region under your crosshair; **Return to view** restores the original camera. **Explore → Explore a biome** offers ten named destinations at 1,000 / 100 / 10 / 1 km. Staged lighting studies are separately labelled because they replace scene conditions.
-4. Adjust exposure and sampling under **Light**. Save images and complete scenes under **Capture**.
-
-Drag to look. **W/A/S/D** fly, **Q/E** move down/up, and **Z/X** turn left/right. **Shift** accelerates, and the wheel changes speed. **Space** starts or pauses shade motion. **H** hides view overlays. Camera destinations within 1,000 km of the inner surface automatically level to the local surface.
-
-Altitude describes the nearest surface below you. Looking into the sky can mean looking hundreds of millions of kilometres across the cavity. **Explore → Exact position & direction → Look straight down** turns toward nearby material.
-
-## Features
-
-- Analytic shell, stellar disk and shade intersections at a one-AU scale.
-- Before/after views of designed region belts, six wounds, service rings and a shade fleet.
-- Planar, square, curved-cap and trimmed-cap shade designs with kilometre-based construction detail.
-- Three prescribed routes containing 8, 6 and 4 intact shades. Successive passages are 24, 36 and 60 hours apart; full circuits take 8, 9 and 10 days.
-- Shadows integrated over the stellar disk, with overlapping station and shade blockers.
-- Approximate coloured ShellShine, atmosphere enabled by default with regional colours, and ten biome hero landscapes with continuous mip detail and optional bump shading.
-- Curved-surface area measurement in square kilometres and **Earth surfaces**, including freehand outlines.
-- HD/4K/8K PNG photographs with scene JSON, panoramas, bookmarks and local SDR motion studies.
-
-![A trimmed shade and its shadow](examples/shade-eclipse.png)
-
-These images come from the renderer. Import companion JSON files from [examples](examples/) using **Capture → Import scene**.
-
-## Quality and workload
-
-Live preview output supports up to 4K (8.29 million pixels), with selectable 15/30/60 fps ceilings; new installs default to 60 fps. Adaptive resolution reduces live pixel count when GPU time exceeds the frame budget, then recovers detail when there is headroom. Supersampling has a separate 2.07-million-pixel budget and never enlarges a 4K output. Still views stop rendering and hidden tabs pause. These are workload controls, not watt limits or guaranteed frame rates.
-
-Antialiasing offers supersampling alone or additional contrast-edge filtering. At the full preview ray budget there is no supersampling headroom; the optional edge filter still operates on supported GPUs and can soften fine details. Material rendering uses a half-float light buffer when available, with a compatibility fallback. Output is **SDR**.
-
-Station shadow integration defaults to **64 rays**, with 19/128/256 available. Higher values reduce false bands and cost GPU work. The original 7/19 setting applies with the station disabled. A 4K photograph can render internally at 7680 × 4320; metadata records the actual pipeline and dimensions.
-
-Start with defaults. Reduce preview detail or use 19 station rays if interaction is slow. Video recording is real-time and may miss its target frame rate at demanding settings.
-
-## Scientific boundaries
-
-**Geometric scale is the foundation; the entire world is not physically solved.**
-
-CPU geometry uses double precision; GPU calculations use normalized floating point with finite precision limits. Most surface patterns are illustrative materials on a smooth shell, not resolved terrain or ecosystems. Local Wound geometry resolves the authored shell thickness and structural strata; the new ground albedos do not add physical terrain displacement.
-
-Shade motion is prescribed, not gravitational orbital motion. Gravity, shell support, heat disposal, propulsion and atmosphere retention are assumed. Light travel time, climate, material strength, evolving debris and station thermal emission are not simulated. The stellar disk has uniform brightness rather than limb darkening. Atmosphere and ShellShine are approximations, not converged global transport.
-
-Sampling artifacts remain. In the station study, mean error against 8,192 CPU rays fell from 1.17 percentage points at 19 rays to 0.44 at 128. Six of 10,710 GPU/CPU probes differed by one ray at 128 samples. This is tested evidence, not universal accuracy certification.
-
-## Tests and notes
-
-Run dependency-free numerical checks:
-
-```sh
-npm test
-```
-
-Browser tests additionally require a locally installed Playwright package and a Chromium-family browser. These are development dependencies only. Set `SPHERE_PLAYWRIGHT` to the package's absolute path if it is not resolvable as `playwright`, and `SPHERE_BROWSER` to the browser executable. HTTP tests default to port 8766 and accept `SPHERE_URL`; some original tests load the HTML file directly. Run browser tests sequentially to avoid GPU contention.
-
-```sh
-node tests/collection-browser.cjs
-node tests/evolution-browser.cjs
-node tests/shade-light-browser.cjs
-node tests/station-browser.cjs
-node tests/visual-quality-browser.cjs
-node tests/edge-filter-browser.cjs
-node tests/release-browser.cjs
-node tests/polish-capture-browser.cjs
-node tests/shade-material-browser.cjs
-```
-
-The station test reports finite-precision discrepancies and checks a one-source-ray-plus-quantization bound. Edge filtering records both squared and absolute errors because smoothing does not improve every metric.
-
-- [Hero landscapes, relief and the three-pass review](docs/Observatory-Hero-Textures-10.md)
-- [Independent visual scores](docs/texture-critic-review.md)
-- [Performance, biome LOD and navigation](docs/Observatory-Performance-Biomes-09.md)
-- [Collection layout](docs/Observatory-Collection-Study-01.md)
-- [Shade design and clearance](docs/Observatory-Shade-Standard-01.md)
-- [Linear lighting and UI](docs/Observatory-Visual-Quality-06.md)
-- [Edge-filter tradeoffs](docs/Observatory-Visual-Quality-07.md)
-- [Station integration results](docs/Observatory-Station-Light-08.md)
-
-Historical notes describe their named version; this README describes the current release.
-
-## Project
-
-Created by Joe Cauley with AI-assisted development. Scientific corrections, reproducible rendering issues and hardware/browser test results are welcome. A scene JSON helps reproduce an issue.
-
-## License
-
-No reuse license has been selected for this initial public release. Public visibility does not itself grant a software license.
+No reuse license has been selected. Public repository access does not itself grant a software license.

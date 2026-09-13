@@ -10,7 +10,7 @@ const fs=require('node:fs'),path=require('node:path'),assert=require('node:asser
   // it has settled can combine an old loading plan with a new camera state.
   await page.waitForFunction(()=>window.SphereLoading?.ready&&window.SphereEvolution);
   await page.evaluate(()=>SphereApp.setBusy(true));
-  const dir=path.join(__dirname,'../examples/v1.4');fs.mkdirSync(dir,{recursive:true});
+  const dir=path.join(__dirname,'../work/screenshots/legacy-release');fs.mkdirSync(dir,{recursive:true});
   const base=JSON.parse(fs.readFileSync(path.join(__dirname,'../tests/fixtures/polish-scenes.json'),'utf8')).find(x=>x.id==='rim-air').state;
   const shots=[['ultra-desert','Across the Ultra Desert'],['polar-station','From the polar station'],['wound-edge','At the edge of a world'],['shade-structure','The broken Shade'],['cloudscape','Above the cloud sea'],['mycelium','Walking the Mycelium Sea'],['wreckage','The ancient graveyard']];
   const selected=new Set(process.argv.slice(2));
