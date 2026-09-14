@@ -117,10 +117,10 @@ function garden(s,p,station){
 function activate(s){const result={...s,layoutVersion:2,collection:true,provinceRevision:1,provinceSeed:s.provinceSeed??713,provinceAnchor:s.provinceAnchor||W.locateBiome(0,{...s,layoutVersion:2,collection:true})};const clean=M.validate(result);clean.playing=!!s.playing;return clean;}
 function view(input,name='approach'){
  const s=activate(input),p=model(s.provinceSeed),station=p.focus,groups=geometry(s),district=groups.find(m=>m.station?.[0]===station.x&&m.station?.[1]===station.z)||groups[1];
- Object.assign(s,{siteId:'',siteAnchor:null,siteRevision:0,siteElevation:0,walkSurface:false,walkMode:false,walkPosition:null,shadeAttachment:null,geometryDetail:true,biome:-1,projection:'perspective',fov:62,speed:1,surfaceLock:false});
+ Object.assign(s,{siteId:'',siteAnchor:null,siteRevision:0,siteElevation:0,walkSurface:false,walkMode:false,walkPosition:null,shadeAttachment:null,geometryDetail:true,biome:-1,projection:'perspective',speed:1,surfaceLock:false});
  if(name==='terrace'){s.position=district.world(district.arrivalLocal);s.forward=M.norm(M.sub(district.world(district.lookLocal),s.position));s.up=district.basis[1];s.speed=.002;}
  else if(name==='garden'){s.position=district.world([.82,p.height(station.x,station.z)+1,.9]);s.forward=M.norm(M.sub(district.world([0,p.height(station.x,station.z),0]),s.position));s.up=district.basis[1];s.speed=.02;}
- else {const focus=name==='province'?[0,0]:[station.x,station.z],altitude=name==='province'?1100:48,offset=name==='province'?80:32,target=M.mul(direction(...focus,s),s.radius-p.height(...focus));s.position=M.mul(direction(focus[0],focus[1]+offset,s),s.radius-altitude);s.forward=M.norm(M.sub(target,s.position));s.up=M.mul(s.provinceAnchor,-1);s.speed=name==='province'?100:5;}
+ else {const regional=['province','region','neighbourhood'].includes(name),focus=regional?[0,0]:[station.x,station.z],altitude=name==='neighbourhood'?40000:name==='region'?10000:name==='province'?1100:48,offset=regional?80:32,target=M.mul(direction(...focus,s),s.radius-p.height(...focus));s.position=M.mul(direction(focus[0],focus[1]+offset,s),s.radius-altitude);s.forward=M.norm(M.sub(target,s.position));s.up=M.mul(s.provinceAnchor,-1);s.speed=name==='province'?100:5;}
  s.up=M.basis(s.forward,s.up).u;const clean=M.validate(s);clean.playing=!!input.playing;return clean;
 }
 function visible(s){return enabled(s)&&M.length(M.sub(s.position,M.mul(s.provinceAnchor,s.radius)))<2000000;}

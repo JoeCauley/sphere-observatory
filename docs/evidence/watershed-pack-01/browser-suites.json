@@ -1,0 +1,87 @@
+{
+  "suites": [
+    {
+      "name": "neighbourhood-browser",
+      "exitCode": 0,
+      "elapsedMs": 123056,
+      "error": null
+    },
+    {
+      "name": "neighbourhood-views",
+      "exitCode": 0,
+      "elapsedMs": 110124,
+      "error": null
+    },
+    {
+      "name": "watershed-browser",
+      "exitCode": 0,
+      "elapsedMs": 114719,
+      "error": null
+    },
+    {
+      "name": "watershed-entry-browser",
+      "exitCode": 0,
+      "elapsedMs": 118005,
+      "error": null
+    },
+    {
+      "name": "continuous-flight-browser",
+      "exitCode": 0,
+      "elapsedMs": 191584,
+      "error": null
+    },
+    {
+      "name": "places-browser",
+      "exitCode": 0,
+      "elapsedMs": 110517,
+      "error": null
+    },
+    {
+      "name": "pointer-browser",
+      "exitCode": 0,
+      "elapsedMs": 108416,
+      "error": null
+    },
+    {
+      "name": "measure-browser",
+      "exitCode": 0,
+      "elapsedMs": 52140,
+      "error": null
+    },
+    {
+      "name": "asset-loading-browser",
+      "exitCode": 0,
+      "elapsedMs": 76213,
+      "error": null
+    },
+    {
+      "name": "shade-deck-browser",
+      "exitCode": 0,
+      "elapsedMs": 73132,
+      "error": null
+    },
+    {
+      "name": "weather-depth-browser",
+      "exitCode": 0,
+      "elapsedMs": 47504,
+      "error": null
+    },
+    {
+      "name": "ascent-browser",
+      "exitCode": 0,
+      "elapsedMs": 46245,
+      "error": null
+    },
+    {
+      "name": "atmosphere-release-browser",
+      "exitCode": 0,
+      "elapsedMs": 46256,
+      "error": null
+    }
+  ],
+  "finalReruns": [
+    "neighbourhood-browser",
+    "neighbourhood-views"
+  ],
+  "finalRerunsPassed": true
+}

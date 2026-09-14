@@ -78,10 +78,10 @@
   }
   function defaultState() {return {
     version:1,radius:AU,starRadius:SUN,luminosity:1,
-    position:[0,0,AU*.5],forward:[0,0,1],up:[0,1,0],fov:100,
+    position:[0,0,AU*.5],forward:[0,0,1],up:[0,1,0],fov:80,
     breachEnabled:true,breachLat:12,breachLon:-12,breachDiameter:35000000,breachRoughness:0,surfaceStyle:'atlas',
     shadeEnabled:true,shadeAltitude:100000,shadeDiameter:100000,shadeOffset:0,shadeSpeed:2,shadeDamage:0,
-    time:0,playing:false,timeRate:60,exposure:.4,shellshine:.06,atmosphere:1,
+    time:0,playing:false,timeRate:60,exposure:.2,shellshine:.06,atmosphere:1,
     grid:false,viewMode:'material',projection:'perspective',speed:1000000,
     quality:1,seed:23,starfield:true
   };}

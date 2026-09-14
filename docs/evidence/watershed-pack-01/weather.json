@@ -1,0 +1,92 @@
+{
+  "report": {
+    "stats": [
+      {
+        "name": "before-cavity",
+        "opacity": 0.32925338117269753,
+        "opaque": 0.004703703703703704
+      },
+      {
+        "altitude": 256267,
+        "opacity": 0.36398602119664125,
+        "opaque": 0.05283873456790123,
+        "error": 0
+      },
+      {
+        "altitude": 3712000,
+        "opacity": 0.30997270245358594,
+        "opaque": 0.020102623456790123,
+        "error": 0
+      },
+      {
+        "altitude": 29483000,
+        "opacity": 0.2851748871982696,
+        "opaque": 0,
+        "error": 0
+      },
+      {
+        "altitude": 70000000,
+        "opacity": 0.2869342427828799,
+        "opaque": 0,
+        "error": 0
+      }
+    ],
+    "frozen": {
+      "max": 0,
+      "mean": 0
+    },
+    "oneSecond": {
+      "max": 0.00634765625,
+      "mean": 0.000006016635894775391
+    },
+    "twoHours": {
+      "max": 0.7584228515625,
+      "mean": 0.02576898753643036
+    },
+    "fades": [
+      {
+        "distance": 3000000,
+        "opacity": 0.15160858072959987
+      },
+      {
+        "distance": 30000000,
+        "opacity": 0.13386096772702855
+      },
+      {
+        "distance": 120000000,
+        "opacity": 0.04106740838895166
+      }
+    ],
+    "layers": [
+      {
+        "layer": 0,
+        "opacity": 0.07783584681919643,
+        "error": 0
+      },
+      {
+        "layer": 1,
+        "opacity": 0.11026867536272321,
+        "error": 0
+      },
+      {
+        "layer": 2,
+        "opacity": 0.011056337193080357,
+        "error": 0
+      }
+    ],
+    "seams": [
+      0,
+      0,
+      0
+    ],
+    "performance": {
+      "gpuMedianMs": 6.102592,
+      "gpu95Ms": 6.232128,
+      "weatherPixels": 518359,
+      "device": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+    },
+    "panoramaFrozen": true,
+    "error": 0
+  },
+  "errors": []
+}

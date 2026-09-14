@@ -53,7 +53,9 @@ assert.equal(P.atmosphereKm,384400*2/3);
   if(id.startsWith('wound'))assert.equal(next.siteId,'exterior-0');
   else if(height==='ground'&&!id.startsWith('shade'))assert(next.walkMode);
   else if(!id.startsWith('shade'))assert(Math.abs(next.radius-M.length(next.position)-(height==='atmosphere'?P.atmosphereKm:P.cloudAltitude(id==='biome-0'?0:id==='biome-2'?2:5)))<.0001);
+  assert.equal(next.fov,base.fov);assert.equal(next.exposure,base.exposure);assert.equal(next.autoSpeed,true);
   visits++;
  }
+ const custom=await P.destination({...base,fov:93,exposure:.7,autoSpeed:false},'biome-2','ground');assert.equal(custom.fov,93);assert.equal(custom.exposure,.7);assert.equal(custom.autoSpeed,false);
  console.log('PASS auto/manual speed, symmetric gradient, takeoff, '+(frames*.05).toFixed(1)+' s cavity crossing, saved preferences, catalogue and '+visits+' Place arrivals');
 })().catch(e=>{console.error(e);process.exitCode=1;});

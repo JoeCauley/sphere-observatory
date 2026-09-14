@@ -12,6 +12,18 @@ The ambition is to make an extraordinary fictional world hold together. What wou
 
 **Working prototype, actively developed.** Geometry, exploration, measurement and reproducible captures work today. Full physical accuracy is the goal; lighting, weather and engineering still have explicit approximations and unsolved parts. The gallery shows the current source build. [v1.4.0](https://github.com/JoeCauley/sphere-observatory/releases/tag/v1.4.0) is the latest tagged release; download the current repository for subsequent travel, weather and Watershed work.
 
+## New in the current build
+
+- **A larger Watershed to explore.** The Watershed pack connects the original river garden to an irregular neighbourhood of receiving reaches and open country. Enter through **Explore → Places**, or try the 40,000 km and 10,000 km views in Explore. [Pack details](docs/Observatory-Watershed-Pack-01.md).
+- **Smoother journeys from clouds to ground.** Cloud sampling follows the rendered detail level, and local terrain blends into the distant shell as its relief becomes too small to see. Province surfaces retain opaque depth and geographic material blending; Wound edges retain their watertight seams. Cloud scale and travel controls are preserved, with edge speed independent of where you look.
+- **Automatic intact and broken Shade edges.** Approach a nearby Shade without selecting a site to reveal finished intact edges or broken layers, recessed backing and braces. The structures follow the moving Shade and cover perimeters, corners, fractures and holes.
+- **Connected walking terrain.** New landings prepare adjoining terrain as you walk, with shared borders and stable object positions. Walking can continue beyond the old sample boundaries while preserving the original arrival address. The river garden and existing revision-1 geography remain intact.
+- **More reliable repeat captures.** Still and panorama exports complete their rendering before encoding. Cold/repeat captures, ascent/descent returns and cloud transitions now pass the recorded regression checks.
+
+New scenes enable automatic Shade edges and connected terrain. To opt in from an older saved scene, use **World → Shell geography → Shade edge detail** and **Camera → Field expeditions → Terrain for new landings**. Existing saved field sites keep their original terrain and addresses.
+
+The current build passed **28 numerical suites and 17 browser suites**, including a walk through 22 terrain joins and back, ascent/descent, and paired 4K captures. Cold shader preparation can still take time; finished environments across both Shade faces and authored terrain across the whole Sphere remain future work. [Changes, compatibility and verification](docs/Observatory-Continuity-03.md).
+
 ## A scale worth stopping to imagine
 
 | At the default scale | Dimension |
@@ -26,7 +38,7 @@ The ambition is to make an extraordinary fictional world hold together. What wou
 
 These are dimensions of the mathematical world, not a claim that every square metre contains finished terrain. The surface comparison uses Earth's mean radius of 6,371 km and the full sphere before subtracting Wounds. Light-crossing time is a scale reference; delayed light propagation is not yet simulated.
 
-The app bridges that world with a **640 km Watershed province**, kilometre-scale walking samples, local buildings and metre-scale material detail. At a low altitude, the surface beneath you may be close enough to walk on while the surface in your sky is hundreds of millions of kilometres away. Making those scales agree is central to the project.
+The app bridges that world with a **640 km Watershed province**, connected kilometre-scale walking chunks, local buildings and metre-scale material detail. At a low altitude, the surface beneath you may be close enough to walk on while the surface in your sky is hundreds of millions of kilometres away. Making those scales agree is central to the project.
 
 ![A wide view across the shell, its habitat waist and Shade fleet](examples/observatory/cavity.jpg)
 
@@ -42,7 +54,7 @@ The app bridges that world with a **640 km Watershed province**, kilometre-scale
 
 *A Wound turns the edge of the landscape into the edge of the world. [Scene](examples/observatory/wound.json).*
 
-**Places at human scale.** Visit ten bounded biome field sites, polar courts, Shade service structures and the Watershed's river gardens. The first province connects a stable catchment landscape with rivers, terraces, planted courts and Builder architecture. Nearby terrain and structures participate in picking, collision, shadows and photographs.
+**Places at human scale.** Visit ten biome field sites with connected walking terrain, polar courts, Shade edge structures and the Watershed's river gardens. The first province connects a stable catchment landscape with rivers, terraces, planted courts and Builder architecture. Nearby terrain and structures participate in picking, collision, shadows and photographs.
 
 ![The Watershed river garden](examples/observatory/river-garden.jpg)
 
@@ -71,11 +83,11 @@ The goal is a foundation that can support open-ended stories and exploration: a 
 | Finite-source eclipse sampling and overlapping blockers | Stellar brightness is uniform; shadow integration is sampled |
 | Coloured first-bounce ShellShine, atmosphere and volumetric weather | Approximate light transport; no converged global illumination, climate or radiative equilibrium |
 | Moving Shades and before/after world states | Prescribed maintained routes; no orbital solution or evolving debris dynamics |
-| Saved world addresses, province seed and camera state | Local walking patches are bounded, currently 2.4 km across; they do not yet stream into one continuous walking world |
+| Saved world addresses, province seed and camera state | New terrain streams through a bounded connected neighbourhood; legacy scenes retain their original patches. Whole-Sphere authored terrain and finished Shade-face environments remain future work |
 
 Artificial gravity, shell support, material strength, atmosphere retention, propulsion and heat disposal remain stipulated engineering. Free flight can exceed light speed and pass through the star; it is an exploration camera. Exposure is artistic rather than calibrated photometry. The [retained validation evidence](docs/evidence/) and technical studies record what individual checks actually establish.
 
-Next comes stable geography across scales, adjoining Watershed neighbourhoods, walking terrain streamed between them, environments on both Shade faces and persistent authored places. **The destination is a coherent, physically accurate world in which limitless stories and journeys can take place.** See the [current roadmap](docs/Observatory-Roadmap.md), [Biome Pack programme](docs/Observatory-Biome-Packs.md) and [Watershed design](docs/Observatory-Watershed-Province.md).
+Next comes stable geography across scales, adjoining Watershed neighbourhoods, richer connected terrain between them, environments across both Shade faces and persistent authored places. **The destination is a coherent, physically accurate world in which limitless stories and journeys can take place.** See the [current roadmap](docs/Observatory-Roadmap.md), [Biome Pack programme](docs/Observatory-Biome-Packs.md) and [Watershed design](docs/Observatory-Watershed-Province.md).
 
 ## Run the Observatory
 
@@ -97,7 +109,7 @@ There is **no build step or runtime package installation**, account, API key, te
 
 1. Open **Explore → Places**, choose a destination, arrival height, scene and weather, then visit it. Try the Watershed river gardens or a Wound's Breach spill.
 2. Drag to look. **W/A/S/D** move, **Q/E** descend/climb, **Z/X** turn and **Shift** accelerates. Automatic flight speed responds to clearance; scrolling selects manual speed.
-3. On foot, **Space** jumps and **Space + E** lifts off. In flight, **Space** controls simulation play/pause. Descending below about 100 m over solid ground eases into a local walking patch.
+3. On foot, **Space** jumps and **Space + E** lifts off. In flight, **Space** controls simulation play/pause. Descending below about 100 m over solid ground eases into prepared walking terrain.
 4. Point and press **G**, or click to mark a destination and choose **Go to pointer**. Use **Return to previous** to retrace arrivals. **H** toggles view overlays.
 5. Try **World → Before / After the attack**, adjust **Light**, then use **Capture** to save a photograph or import one of the gallery's scene files.
 
@@ -105,7 +117,7 @@ There is **no build step or runtime package installation**, account, API key, te
 
 This repository contains the runnable browser Observatory. The broader [Sphere project](https://github.com/JoeCauley/Sphere) holds the adopted requirements and separate Unreal application direction; this prototype does not establish that application's acceptance.
 
-Run the dependency-free numerical checks with `npm test`. Browser checks additionally use Playwright and a Chromium-family browser. Set `SPHERE_PLAYWRIGHT` to its module path and `SPHERE_BROWSER` to the browser executable, then run relevant `tests/*-browser.cjs` checks sequentially against the local app; tests supporting an alternate server accept `SPHERE_URL`. The [roadmap](docs/Observatory-Roadmap.md) identifies checks for each area. The intermittent first-use 4K capture discrepancy remains an open investigation.
+Run the dependency-free numerical checks with `npm test`. Browser checks additionally use Playwright and a Chromium-family browser. Set `SPHERE_PLAYWRIGHT` to its module path and `SPHERE_BROWSER` to the browser executable, then run relevant `tests/*-browser.cjs` checks sequentially against the local app; tests supporting an alternate server accept `SPHERE_URL`. The [roadmap](docs/Observatory-Roadmap.md) identifies checks for each area. Current transition, capture and walking evidence is recorded in [Continuity 3](docs/Observatory-Continuity-03.md).
 
 - [Places and continuous travel](docs/Observatory-Places-Travel.md)
 - [Lighting, materials and shadows](docs/Observatory-Materials-13.md)

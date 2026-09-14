@@ -4,7 +4,11 @@
   constructor(canvas){
    this.canvas=canvas;this.gl=canvas.getContext('webgl2',{antialias:false,alpha:false,preserveDrawingBuffer:true,powerPreference:'high-performance'});
    if(!this.gl)throw Error('WebGL 2 is unavailable. Open this app in Chrome or Edge with hardware acceleration enabled.');
-   const gl=this.gl;this.maxSize=gl.getParameter(gl.MAX_RENDERBUFFER_SIZE);this.previewLight=window.SpherePreviewLight?new SpherePreviewLight():null;this.biomes=window.SphereBiomes?new SphereBiomes.Textures(gl):null;this.heroes=window.SphereBiomes?.HeroTextures?new SphereBiomes.HeroTextures(gl):null;this.timer=gl.getExtension('EXT_disjoint_timer_query_webgl2');this.queries=[];this.gpuMs=null;this.atmosphereCache={};
+   const gl=this.gl;
+   // Own the final quantization: driver dithering introduced intermittent
+   // one-level differences when revisiting identical paused weather frames.
+   gl.disable(gl.DITHER);
+   this.maxSize=gl.getParameter(gl.MAX_RENDERBUFFER_SIZE);this.previewLight=window.SpherePreviewLight?new SpherePreviewLight():null;this.biomes=window.SphereBiomes?new SphereBiomes.Textures(gl):null;this.heroes=window.SphereBiomes?.HeroTextures?new SphereBiomes.HeroTextures(gl):null;this.timer=gl.getExtension('EXT_disjoint_timer_query_webgl2');this.queries=[];this.gpuMs=null;this.atmosphereCache={};
    const compile=(type,src)=>{const sh=gl.createShader(type);gl.shaderSource(sh,src);gl.compileShader(sh);if(!gl.getShaderParameter(sh,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(sh));return sh;};
    this.program=gl.createProgram();gl.attachShader(this.program,compile(gl.VERTEX_SHADER,SphereShaders.vertex));gl.attachShader(this.program,compile(gl.FRAGMENT_SHADER,SphereShaders.fragment));gl.linkProgram(this.program);
    if(!gl.getProgramParameter(this.program,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(this.program));
@@ -47,7 +51,7 @@ void main(){vec3 center=mapped(texture(source,vUV).rgb);if(edgeAA==0){fragColor=
    SphereEdges.setView(width,{deterministic:exportFrame});
    if(!exportFrame&&window.SphereEdgeStreaming){
     if(!s.geometryDetail||s.layoutVersion!==2||!s.collection)SphereEdgeStreaming.cancel();
-    else if(SphereEdgeStreaming.needsFrame){this.geometry??=new SphereGeometryRenderer(this.gl);SphereEdgeStreaming.pump(mesh=>this.geometry.stage(mesh,SphereEdgeStreaming.uploadBudgetMs));}
+    else if(SphereEdgeStreaming.needsFrame){this.geometry??=new SphereGeometryRenderer(this.gl);SphereEdgeStreaming.pump((mesh,budget)=>this.geometry.stage(mesh,budget));}
    }
    if(!facePass&&s.projection==='panorama'&&s.layoutVersion===2&&s.collection&&s.geometryDetail&&window.SpherePanorama&&SphereSites.geometry(s).length){this.panorama??=new SpherePanorama(this.gl);this.pollTimers();const result=this.panorama.draw(this,s,width,height,{exportFrame,adaptiveScale});this.preparedViews.add(SphereAssets.pipelineKey(s,SphereAssets.plan(s,width/height)));return result;}
    if(window.SpherePlaces)s=SpherePlaces.renderState(s);
@@ -119,6 +123,9 @@ void main(){vec3 center=mapped(texture(source,vUV).rgb);if(edgeAA==0){fragColor=
    if(linear){const image=this.weather?this.weather.draw(s,this,rw,rh):this.lightTexture;gl.bindFramebuffer(gl.FRAMEBUFFER,null);gl.viewport(0,0,width,height);gl.useProgram(this.resolve);gl.activeTexture(gl.TEXTURE1);gl.bindTexture(gl.TEXTURE_2D,image);gl.uniform1i(this.resolveSource,1);gl.uniform1f(this.resolveExposure,s.exposure);gl.uniform1i(this.resolveEdge,s.antialias===3?1:0);gl.drawArrays(gl.TRIANGLES,0,3);gl.activeTexture(gl.TEXTURE0);}
    else if(smooth){gl.bindFramebuffer(gl.READ_FRAMEBUFFER,this.aaBuffer);gl.bindFramebuffer(gl.DRAW_FRAMEBUFFER,null);gl.blitFramebuffer(0,0,rw,rh,0,0,width,height,gl.COLOR_BUFFER_BIT,gl.LINEAR);gl.bindFramebuffer(gl.FRAMEBUFFER,null);}
    if(timerQuery){gl.endQuery(this.timer.TIME_ELAPSED_EXT);this.queries.push(timerQuery);}
+   // Export callers immediately read the canvas (toBlob/toDataURL). Complete
+   // the GPU resolve before handing the frame to the browser's image encoder.
+   if(exportFrame)gl.finish();
    this.cpuMs=performance.now()-started;this.renderInfo.cpuMs=this.cpuMs;this.renderInfo.gpuMs=this.gpuMs;
    this.renderInfo.indirectLight=exportFrame?'exact frame':this.previewLight?.worker?'worker, at most 10 Hz':'cached CPU';
    this.renderInfo.indirectSampleTime=exportFrame?s.time:this.previewLight?.sampleTime;
@@ -131,10 +138,21 @@ void main(){vec3 center=mapped(texture(source,vUV).rgb);if(edgeAA==0){fragColor=
    while(this.queries.length){const q=this.queries[0];if(!disjoint&&!gl.getQueryParameter(q,gl.QUERY_RESULT_AVAILABLE))break;this.queries.shift();if(!disjoint)this.gpuMs=gl.getQueryParameter(q,gl.QUERY_RESULT)/1e6;gl.deleteQuery(q);}
    if(disjoint)this.gpuMs=null;
   }
-  dispose(){if(this.silhouetteMask)this.gl.deleteTexture(this.silhouetteMask);this.previewLight?.dispose();this.biomes?.dispose();this.heroes?.dispose();this.worldTextures?.dispose();this.woundTextures?.dispose();this.finishes?.dispose();this.localShadows?.dispose();this.geometry?.dispose();window.SphereEdgeStreaming?.dispose();this.weather?.dispose();this.panorama?.dispose();for(const q of this.queries)this.gl.deleteQuery(q);this.queries=[];}
+  dispose(){if(this.silhouetteMask)this.gl.deleteTexture(this.silhouetteMask);this.previewLight?.dispose();this.biomes?.dispose();this.heroes?.dispose();this.worldTextures?.dispose();this.woundTextures?.dispose();this.finishes?.dispose();this.localShadows?.dispose();this.geometry?.dispose();window.SphereEdgeStreaming?.dispose();window.SphereGround?.dispose();this.weather?.dispose();this.panorama?.dispose();for(const q of this.queries)this.gl.deleteQuery(q);this.queries=[];}
   async prepare(s,{aspect=this.canvas.clientWidth/Math.max(1,this.canvas.clientHeight)||16/9,onProgress,signal}={}){
+   if(window.SphereGround?.enabled(s)){
+    onProgress?.({phase:'Preparing connected ground'});this.geometry??=new SphereGeometryRenderer(this.gl);
+    while(!SphereGround.ready(s)){if(signal?.aborted)throw new DOMException('View changed','AbortError');SphereGround.neighbourhood(s);SphereEdgeStreaming.pump((mesh,budget)=>this.geometry.stage(mesh,budget));await new Promise(requestAnimationFrame);}
+   }
    const plan=SphereAssets.plan(s,aspect),progress=()=>onProgress?.({phase:'Preparing the artwork',...SphereAssets.status(this,plan)});
-   if(plan.province){onProgress?.({phase:'Building the river gardens'});await SphereWatershed.prepare(s);}
+   if(plan.province){
+    onProgress?.({phase:'Building the river gardens'});const groups=await SphereWatershed.prepare(s);
+    if(signal?.aborted)throw new DOMException('View changed','AbortError');
+    // Compilation and every province upload belong to preparation, including
+    // a first-ever visit. The first visible frame must not allocate them all.
+    if(!this.geometry){onProgress?.({phase:'Preparing the landscape renderer'});await new Promise(r=>requestAnimationFrame(r));if(signal?.aborted)throw new DOMException('View changed','AbortError');this.geometry=new SphereGeometryRenderer(this.gl);}
+    for(const mesh of groups)while(!this.geometry.stage(mesh,4)){if(signal?.aborted)throw new DOMException('View changed','AbortError');await new Promise(r=>requestAnimationFrame(r));}
+   }
    if(signal?.aborted)throw new DOMException('View changed','AbortError');progress();
    const results=await Promise.allSettled(['biomes','heroes','worldTextures','woundTextures'].map(key=>this[key]?.prepare(plan[key],{signal,onProgress:progress})));
    const failure=results.find(r=>r.status==='rejected');if(failure){failure.reason.artwork=true;throw failure.reason;}

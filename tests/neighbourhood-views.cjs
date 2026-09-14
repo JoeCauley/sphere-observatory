@@ -1,0 +1,14 @@
+const {chromium}=require(process.env.SPHERE_PLAYWRIGHT||'playwright'),fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
+(async()=>{const browser=await chromium.launch({headless:true,executablePath:process.env.SPHERE_BROWSER});try{
+ const page=await browser.newPage({viewport:{width:1440,height:960}}),errors=[],baseline=process.env.SPHERE_PACK_BASELINE==='1',dir=path.resolve('work/screenshots/neighbourhood',baseline?'baseline':'current');fs.mkdirSync(dir,{recursive:true});page.setDefaultTimeout(240000);page.on('pageerror',e=>errors.push(e.message));
+ await page.goto('http://127.0.0.1:8766/',{waitUntil:'domcontentloaded'});await page.waitForFunction(()=>window.SphereLoading?.ready);await page.evaluate(()=>SphereApp.setBusy(true));console.log('Matched views ready');
+ const anchor=await page.evaluate(()=>SphereWatershed.activate({...SphereMath.defaultState(),collection:true,era:'after',time:4882600}).provinceAnchor);
+ const records=[];
+ for(const era of ['before','after'])for(const view of (process.env.SPHERE_PACK_CLEAR==='1'?['40000-clear','10000-clear','1100-clear','48-clear','0.2-clear']:['40000','10000','1100','70-down','70-along','1','ground',...(baseline?[]:['40000-clear','10000-clear','1100-clear','48-clear','0.2-clear'])])){
+  const r=await page.evaluate(async ({era,view,baseline,anchor})=>{const M=SphereMath,P=SphereWatershed,R=SphereApp.renderer;let s=P.activate({...M.defaultState(),collection:true,era,time:4882600,playing:false,...(baseline?{}:{provinceAnchor:anchor})});if(!baseline&&window.SpherePacks)s=SpherePacks.activate(s);await P.prepare(s);s=P.view(s,view==='ground'?'terrace':'garden');
+   if(view!=='ground'&&view!=='1'){const p=P.model(s.provinceSeed).focus,h=parseFloat(view)+(view.startsWith('0.2')?P.model(s.provinceSeed).height(p.x,p.z):0),q=P.direction(p.x,p.z,s),f=P.frame(s);s.position=M.mul(q,s.radius-h);s.forward=view.endsWith('along')?M.norm(M.add(f.basis[2],M.mul(q,.10))):q;s.up=M.basis(s.forward,f.basis[2]).u;}
+   if(view.endsWith('clear')){s.clouds=false;s.atmosphere=0;s.cavityHaze=0;}s.fov=76;SphereApp.setState(s);const start=performance.now();await R.prepare(s);const preparationMs=performance.now()-start;R.draw(s,1440,900,{exportFrame:true});R.draw(s,1440,900,{exportFrame:true});return {state:s,preparationMs,info:R.renderInfo,residency:P.info,error:R.error(),png:R.canvas.toDataURL()};
+  },{era,view,baseline,anchor});fs.writeFileSync(path.join(dir,era+'-'+view+'.png'),Buffer.from(r.png.split(',')[1],'base64'));delete r.png;records.push({era,view,...r});fs.writeFileSync(path.join(dir,process.env.SPHERE_PACK_CLEAR==='1'?'clear-views.json':'views.json'),JSON.stringify({records,errors},null,2));assert.equal(r.error,0);console.log(era,view,Math.round(r.preparationMs)+' ms');
+ }
+ assert.deepEqual(errors,[]);
+}finally{await browser.close();}})().catch(e=>{console.error(e);process.exitCode=1;});

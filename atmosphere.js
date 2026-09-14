@@ -36,7 +36,7 @@ class Atmosphere{
  draw(s,renderer,width,height){
   const altitude=s.radius-M.length(s.position);if(s.layoutVersion!==2||!s.collection||(s.cavityHaze<=0&&(s.atmosphere<=0||altitude<0)))return renderer.lightTexture;
   const gl=this.gl,n=M.norm(s.position),wound=SphereWorld.woundMetric(n,s);let rim=null,amount=s.atmosphere;
-  if(wound.index>=0&&Math.abs(wound.km)<3000&&altitude>=0&&altitude<160){const key=[s.position.map(x=>Math.round(x)),s.radius].join('|');if(this.rimKey!==key){const near=SphereWorld.nearestRim(n,s);this.rim=SphereWorld.rimFrame(s,near.index,near.t);this.rimKey=key;}rim=this.rim;}
+  if(wound.index>=0&&Math.abs(wound.km)<3000&&altitude>=0&&altitude<160){const key=[s.position,s.radius,s.era,s.multipleWounds].join('|');if(this.rimKey!==key){const near=SphereWorld.nearestRim(n,s);this.rim={...SphereWorld.rimFrame(s,near.index,near.t),index:near.index};this.rimKey=key;}rim=this.rim;}
   const quality=s.weatherQuality??1,exporting=renderer.renderInfo.exportFrame,steps=exporting?Math.max(112,[48,80,128][quality]):[48,80,128][quality];
   const scale=Math.min(.5,Math.sqrt((exporting?1920*1080:1280*720)/(width*height))),vw=Math.max(1,Math.ceil(width*scale)),vh=Math.max(1,Math.ceil(height*scale));
   const air=amount>0&&altitude>=0,local=air&&altitude<160;if(air){if(local)this.program??=SphereGLProgram(gl,SphereShaders.vertex,SphereVolume.march);else this.farProgram??=SphereGLProgram(gl,SphereShaders.vertex,SphereVolume.far);this.noise();this.climate(s);}const program=air?(local?this.program:this.farProgram):this.dustProgram,u=program.u;
@@ -44,7 +44,10 @@ class Atmosphere{
   gl.bindFramebuffer(gl.FRAMEBUFFER,this.volumeFbo);if(this.vw!==vw||this.vh!==vh){this.buffer(this.volumeLight,11,vw,vh,gl.NEAREST);this.buffer(this.volumeTrans,12,vw,vh,gl.NEAREST);gl.framebufferTexture2D(gl.FRAMEBUFFER,gl.COLOR_ATTACHMENT0,gl.TEXTURE_2D,this.volumeLight,0);gl.framebufferTexture2D(gl.FRAMEBUFFER,gl.COLOR_ATTACHMENT1,gl.TEXTURE_2D,this.volumeTrans,0);gl.drawBuffers([gl.COLOR_ATTACHMENT0,gl.COLOR_ATTACHMENT1]);if(gl.checkFramebufferStatus(gl.FRAMEBUFFER)!==gl.FRAMEBUFFER_COMPLETE)throw Error('Atmosphere volume buffer unavailable');this.vw=vw;this.vh=vh;}
   gl.viewport(0,0,vw,vh);gl.useProgram(program.p);gl.activeTexture(gl.TEXTURE6);gl.bindTexture(gl.TEXTURE_2D,renderer.depthTexture);gl.uniform1i(u.sceneDepth,6);gl.uniform1i(u.densityVolume,10);
   const b=M.basis(s.forward,s.up),id=SphereBiomes.region(n,s),p=profiles[id],rgb=SphereBiomes.catalog[id].haze,f=(k,v)=>gl.uniform1f(u[k],v),v=(k,a)=>gl.uniform3fv(u[k],a);
+  gl.uniform2f(u.volumeResolution,vw,vh);
   gl.uniform1i(u.localAir,rim||!SphereCollection.missing(n,s)?1:0);gl.uniform1i(u.clipRim,rim?1:0);if(rim)gl.uniform4fv(u.rimPlane,[...rim.inland,M.dot(M.sub(s.position,M.mul(rim.point,s.radius)),rim.inland)]);
+  if(rim){const w=SphereCollection.wounds[rim.index],north=M.cross(w.axis,w.tangent),A=M.dot(rim.point,w.axis),B=M.dot(rim.point,w.tangent),U=M.dot(rim.point,north);
+   v('rimAxis',w.axis);v('rimTangent',w.tangent);v('rimNorth',north);v('rimOrigin',M.sub(M.mul(rim.point,s.radius),s.position));v('rimAnchor',[A,B,U]);gl.uniform4fv(u.rimShape,[Math.atan2(B,A),Math.asin(U),w.length,w.width]);}
   // The depth texture uses the internal raster size, but its rays use the
   // output camera aspect. Fractional preview supersampling rounds each raster
   // dimension separately; that ratio is not the camera's ratio.

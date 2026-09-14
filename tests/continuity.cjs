@@ -1,6 +1,6 @@
 const assert=require('node:assert/strict'),M=require('../math.js');
 require('../collection.js');require('../biomes.js');require('../world-palette.js');require('../world.js');require('../field-sites.js');require('../inspection-camera.js');
-const W=SphereWorld,E=SphereEdges,I=SphereInspection,C=SphereCollection,S=SphereSites,base={...M.defaultState(),collection:true,routeShades:true};
+const W=SphereWorld,E=SphereEdges,I=SphereInspection,C=SphereCollection,S=SphereSites,base={...M.defaultState(),shadeGeometryRevision:1,collection:true,routeShades:true};
 let transported=0,edgeProbes=0;
 for(const shape of ['disk','square','cap','trimmed'])for(const id of [0,7,8]){
  const s={...base,shadeShape:shape,siteId:'shade-'+id,shadeAttachment:id},p=C.plates(s).find(p=>p.id===id);s.siteAnchor=p.normal;const frame=S.shadeSection(s);s.position=frame.world([-.3,.2,.75]);s.forward=M.norm(M.sub(frame.world([.5,0,0]),s.position));s.up=M.basis(s.forward,frame.basis[1]).u;

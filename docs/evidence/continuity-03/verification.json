@@ -1,0 +1,219 @@
+{
+  "schema": 1,
+  "verifiedAt": "2026-09-14T00:48:25.138916+00:00",
+  "scope": "Local continuity C/D and requested connected walking E; not whole-Sphere acceptance",
+  "numerical": {
+    "status": "PASS",
+    "suites": 28,
+    "commands": [
+      "node tests/geometry.cjs",
+      "node tests/survey.cjs",
+      "node tests/collection.cjs",
+      "node tests/shades.cjs",
+      "node tests/station-convergence.cjs",
+      "node tests/performance.cjs",
+      "node tests/evolution.cjs",
+      "node tests/focus.cjs",
+      "node tests/continuity.cjs",
+      "node tests/materials.cjs",
+      "node tests/session-state.cjs",
+      "node tests/wound-materials.cjs",
+      "node tests/wound-ground.cjs",
+      "node tests/surface-arrival.cjs",
+      "node tests/streaming.cjs",
+      "node tests/atlas-study.cjs",
+      "node tests/watershed.cjs",
+      "node tests/neighbourhood.cjs",
+      "node tests/travel.cjs",
+      "node tests/places-flight.cjs",
+      "node tests/edge-speed.cjs",
+      "node tests/pointer-navigation.cjs",
+      "node tests/asset-loading.cjs",
+      "node tests/surface-transition.cjs",
+      "node tests/shade-edges.cjs",
+      "node tests/shade-footprint.cjs",
+      "node tests/ground-chunks.cjs",
+      "node tests/ground-addresses.cjs"
+    ],
+    "log": "work/screenshots/continuity-03/regressions/numerical-delivery.log"
+  },
+  "browser": {
+    "status": "PASS",
+    "suites": 17,
+    "checks": [
+      {
+        "file": "tests/wound-ground-browser.cjs",
+        "exitCode": 0,
+        "elapsedMs": 9795,
+        "report": "work/screenshots/continuity-03/regressions/capture-fence.json"
+      },
+      {
+        "file": "tests/ascent-motion-browser.cjs",
+        "exitCode": 0,
+        "elapsedMs": 23653,
+        "report": "work/screenshots/continuity-03/regressions/delivery-checks.json"
+      },
+      {
+        "file": "tests/neighbourhood-browser.cjs",
+        "exitCode": 0,
+        "elapsedMs": 88494,
+        "report": "work/screenshots/continuity-03/regressions/panorama-final.json"
+      },
+      {
+        "file": "tests/connected-walk-browser.cjs",
+        "exitCode": 0,
+        "elapsedMs": 102172,
+        "report": "work/screenshots/continuity-03/regressions/delivery-checks.json"
+      },
+      {
+        "file": "tests/ground-chunks-browser.cjs",
+        "exitCode": 0,
+        "elapsedMs": 18965,
+        "report": "work/screenshots/continuity-03/regressions/delivery-checks.json"
+      },
+      {
+        "file": "tests/shade-edges-browser.cjs",
+        "exitCode": 0,
+        "elapsedMs": 30671,
+        "report": "work/screenshots/continuity-03/regressions/browser-final.json"
+      },
+      {
+        "file": "tests/watershed-browser.cjs",
+        "exitCode": 0,
+        "elapsedMs": 5146,
+        "report": "work/screenshots/continuity-03/regressions/browser-final.json"
+      },
+      {
+        "file": "tests/surface-weather-browser.cjs",
+        "exitCode": 0,
+        "elapsedMs": 28663,
+        "report": "work/screenshots/continuity-03/regressions/browser-final.json"
+      },
+      {
+        "file": "tests/continuous-flight-browser.cjs",
+        "exitCode": 0,
+        "elapsedMs": 87581,
+        "report": "work/screenshots/continuity-03/regressions/browser-gates.json"
+      },
+      {
+        "file": "tests/places-browser.cjs",
+        "exitCode": 0,
+        "elapsedMs": 9042,
+        "report": "work/screenshots/continuity-03/regressions/browser-gates.json"
+      },
+      {
+        "file": "tests/pointer-browser.cjs",
+        "exitCode": 0,
+        "elapsedMs": 4711,
+        "report": "work/screenshots/continuity-03/regressions/browser-gates.json"
+      },
+      {
+        "file": "tests/measure-browser.cjs",
+        "exitCode": 0,
+        "elapsedMs": 5039,
+        "report": "work/screenshots/continuity-03/regressions/browser-gates.json"
+      },
+      {
+        "file": "tests/asset-loading-browser.cjs",
+        "exitCode": 0,
+        "elapsedMs": 14234,
+        "report": "work/screenshots/continuity-03/regressions/browser-gates.json"
+      },
+      {
+        "file": "tests/shade-deck-browser.cjs",
+        "exitCode": 0,
+        "elapsedMs": 2395,
+        "report": "work/screenshots/continuity-03/regressions/browser-gates.json"
+      },
+      {
+        "file": "tests/weather-depth-browser.cjs",
+        "exitCode": 0,
+        "report": "work/screenshots/continuity-03/regressions/weather-depth.log"
+      },
+      {
+        "file": "tests/ascent-browser.cjs",
+        "exitCode": 0,
+        "report": "work/screenshots/continuity-03/regressions/ascent.log"
+      },
+      {
+        "file": "tests/atmosphere-release-browser.cjs",
+        "exitCode": 0,
+        "report": "work/screenshots/continuity-03/regressions/atmosphere-release.log"
+      }
+    ]
+  },
+  "motion": {
+    "frames": 130,
+    "uniqueSourceViews": 65,
+    "returnMismatch": 0,
+    "firstColdFrameMs": 5526.599999964237,
+    "video": "work/screenshots/continuity-03/ascent-descent.webm",
+    "sequentialDecode": {
+      "source": "I:\\Sphere\\repositories\\sphere-observatory\\work\\screenshots\\continuity-03\\ascent-descent.webm",
+      "frames": 130,
+      "uniqueDecodedFrames": 130,
+      "lastTimestampSeconds": 15.444
+    }
+  },
+  "weather": {
+    "routes": 6,
+    "maxReverseChannelDifference": 0,
+    "maxSwitchMean": 9.106072984749455e-06,
+    "maxFractionalPairMean": 6.526319275503009e-05
+  },
+  "walking": {
+    "rebases": 1,
+    "stalled": 1,
+    "steps": 3736,
+    "returnDistance": 0.02473862485989713,
+    "anchorUnchanged": true,
+    "info": {
+      "chunks": 25,
+      "cache": 92,
+      "bytes": 65285776,
+      "pendingBytes": 0,
+      "budget": 67108864,
+      "buildMs": 25.69999998807907,
+      "queue": 0,
+      "waits": 0
+    },
+    "timings": {
+      "median": 0.10000002384185791,
+      "p95": 0.30000001192092896,
+      "max": 0.699999988079071
+    },
+    "joins": 22
+  },
+  "preserved": [
+    "Wound top/end profiles",
+    "revision-1 Watershed and garden",
+    "saved arrival and pack addresses",
+    "cloud feature scale and phase",
+    "gaze-independent travel and explicit lens/exposure/speed preferences"
+  ],
+  "limits": [
+    "Cold shader preparation remains slow; first-frame timing includes it.",
+    "Bounded route, corner, pole and rebase probes are not every possible global journey.",
+    "The local Shade edge section does not establish a thick whole plate or a finished face environment."
+  ],
+  "sha256": {
+    "atmosphere.js": "851369c5a2801ff0a613ffaebb3c0c42ec0783039770d0f2f4b6a40e822be9ac",
+    "volume.js": "37e73fa791423429d69732def27d23b7e64b98a5bc0998b64bd11e3d06c18f07",
+    "renderer.js": "3d37d4336be5a4bb417feef54185fe2d63f57bc9398f01d816a88d1bea26e600",
+    "panorama.js": "510ffa65b2d49789bf32f98057885a7e3fe8b0781370d8aaab50728731851873",
+    "local-shadows.js": "ca43f608f75197fdc9c35f88dcfce72af3a15245d81d5f511cfc1655de65b2f9",
+    "geometry-renderer.js": "0d37ccf33ffa9f13c2bf33f2c9c1bd0bc3e8b0121f7c147e62b3a4615e53367f",
+    "field-sites.js": "d74b128814aa419b25415bf2e2186fb7929de32581b17542dae279d0719ef07a",
+    "surface-walk.js": "37a7edccec8f74ee19288398e033fb99ea936750756968fca9bb5e6beb492660",
+    "edge-stream.js": "2d0d5a6a0604a8fa0a82b9665d6b72e76d82e8101a8f34a291031eacb2f6f294",
+    "edge-streaming.js": "7196eff7ee4e024ba52abac2fa486237cc026ec3a2355380f0722241c56345d9",
+    "edge-worker.js": "cbc6ddf93462e85cdfd5d0a772dfa46bf69f34a3947d8a3be710f5908921ba12",
+    "shade-edges.js": "f22884dce605d6aa10cb760fd7b6607db2b9aa17caa20ca3efa1b51968d6208b",
+    "ground-chunks.js": "6957d85e1169a76ba59156052d4c30135048933429e6b1b7d6389f94733b8622",
+    "ground-worker.js": "1c78984724a3cabc77f3d9e3ed57deae21dab398ad5507deb94af534dc044ddd",
+    "world.js": "f763a721ff76c16678e05d196bab56823121175b4b14b88482e7ddc9cc6822c4",
+    "evolution-ui.js": "7ea60818a022c228d358954624b57bbe7b8b45fdd265fadfb26b04a7d8444f45",
+    "bootstrap.js": "4b4b1c1dac33ba94ef2c0b5eccd426dc0d1f0f27f8747b7c8f0f4375dce2f151",
+    "loading-screen.js": "413455cf85c1b9d47e507e191fdafaaf44fda5d8d3d3de789c57efea9ef665b9"
+  }
+}
