@@ -1,0 +1,25 @@
+{
+  "date": "2026-09-13",
+  "baseline": "f4d71ad37cb3b7ec1961469a2175c8e1797cf318",
+  "branch": "codex/watershed-neighbourhood",
+  "node": "v24.18.0",
+  "numerical": {
+    "command": "npm test",
+    "suites": 21,
+    "status": "passed",
+    "note": "The pack numerical suite was rerun after final graph edits."
+  },
+  "sources": {
+    "biome-packs.js": "ed069716978990e622820d97f7a1adfd0b6409c4225b3fcda66c053702747f30",
+    "watershed-neighbourhood.js": "46e8b1415bdcf876d72f78037aaa4387bc4808f4e6b5df8b93b96c53f37b77b2",
+    "neighbourhood-shader.js": "fdb783bf28787a1c1586020d1eddcb69c89b406f66ef755f8199dc6b3a8797a2",
+    "world.js": "3c48ad436fe3da957a390d4b9cdabf780dfae995afd1d2b0570ca32d4e4e940d",
+    "watershed-province.js": "6c89abc8a485c653ca2a16f9ded37edcfc21e94fa9a64369c46494ba1a2b3c56",
+    "renderer.js": "bebdfd3f82b4d61b43b880b54e83551c4bb1d16b23a48efcbdfbb4d79e654162",
+    "geometry-renderer.js": "a22c79fd2b1073b48654a595279a36fd42e33e865117175039050c9dea98d2a2",
+    "places.js": "1e7370721ff942ce379fbdb647085f19ef99a77f20777d6147f7ad226fbac21a",
+    "field-sites.js": "017b05d6ab853ab35a7457c41ce4bc51c7a1643c71786eda1a1c0d95cb6e97b9",
+    "bootstrap.js": "24c79ec6c76b7d395e0493928d66a5e01d8a405d29d1c3a5f84b663f50aa9beb",
+    "watershed-ui.js": "b343f35783feb320b29314dc130dc4e95decd9b1a3eb301b3373262c23f1cc64"
+  }
+}

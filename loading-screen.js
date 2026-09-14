@@ -4,7 +4,7 @@
 let started=false,active=false,ticket=0,controller=null,promise=null,lastError=null,queued=false,priorFocus=null;
 const paint=()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
 const aspect=()=>{const r=$('viewport').getBoundingClientRect();return r.width/Math.max(1,r.height);};
-function needs(s){const p=T.plan(s,aspect());return T.status(R,p).missing.length>0||(p.province&&!SphereWatershed.ready(s))||!T.pipelineReady(R,s,p);}
+function needs(s){const p=T.plan(s,aspect());return (s.walkMode&&window.SphereGround?.enabled(s)&&!SphereGround.available(s))||T.status(R,p).missing.length>0||(p.province&&!SphereWatershed.ready(s))||!T.pipelineReady(R,s,p);}
 function show(){if(overlay.hidden)priorFocus=document.activeElement;overlay.hidden=false;overlay.setAttribute('aria-busy','true');$('loadingTitle').textContent=started?'Preparing your view':'Opening the Observatory';$('loadingProgress').hidden=false;$('loadingProgress').removeAttribute('value');$('loadingActions').hidden=true;}
 function progress({phase,ready,total}){$('loadingStatus').textContent=phase+(total?' · '+ready+' of '+total+' ready':'');if(total){$('loadingProgress').max=total;$('loadingProgress').value=ready;}else $('loadingProgress').removeAttribute('value');}
 async function ensureCurrent({initial=false,force=false}={}){

@@ -2,6 +2,7 @@
 (function(root){
 'use strict';
 const M=root.SphereMath,C=root.SphereCollection,B=root.SphereBiomes,TAU=2*Math.PI;
+const Packs=root.SpherePacks||(typeof require==='function'?require('./biome-packs.js'):null);
 const smooth=(a,b,x)=>{const t=M.clamp((x-a)/(b-a),0,1);return t*t*(3-2*t);};
 const mix=(a,b,t)=>a.map((x,i)=>x*(1-t)+b[i]*t);
 const fractions=[0,.085,.18,.235,.35,.43,.56,.64,.74,.86,1];
@@ -24,7 +25,7 @@ function woundDistance(q,s){
   distance=Math.min(distance,(f>.44?(Math.sqrt(f+1)-1)*w.width:f/Math.max(1e-12,woundGradient(a,b,w)))*s.radius);
  }return distance;
 }
-const defaults={layoutVersion:2,provinceRevision:0,provinceSeed:713,provinceAnchor:null,axisLat:63,axisLon:-28,waistWidth:20,transitionKm:60000,shellThickness:12,geometryDetail:true,richMaterials:true,localShadows:1,wreckage:true,clouds:true,weatherStrength:.55,weatherQuality:1,cavityHaze:.28,spaceEnvironment:0,siteId:'',siteAnchor:null,siteRevision:0,siteElevation:0,autoWalk:true,autoSpeed:true,placeScene:'day',placeWeather:'mixed',walkSurface:false,walkMode:false,walkPosition:null,walkVelocity:0,shadeAttachment:null,surfaceLock:true};
+const defaults={terrainAnchor:null,terrainRevision:2,shadeGeometryRevision:2,packAddress:null,layoutVersion:2,provinceRevision:0,provinceSeed:713,provinceAnchor:null,axisLat:63,axisLon:-28,waistWidth:20,transitionKm:60000,shellThickness:12,geometryDetail:true,richMaterials:true,localShadows:1,wreckage:true,clouds:true,weatherStrength:.55,weatherQuality:1,cavityHaze:.28,spaceEnvironment:0,siteId:'',siteAnchor:null,siteRevision:0,siteElevation:0,autoWalk:true,autoSpeed:true,placeScene:'day',placeWeather:'mixed',walkSurface:false,walkMode:false,walkPosition:null,walkVelocity:0,shadeAttachment:null,surfaceLock:true};
 const oldDefault=M.defaultState,oldValidate=M.validate,oldRegion=B.region,oldCollectionRegion=C.region,oldCavity=C.cavity;
 M.defaultState=()=>({...oldDefault(),...defaults});
 M.validate=input=>{
@@ -39,17 +40,24 @@ M.validate=input=>{
  s.provinceAnchor=input.provinceAnchor??null;
  if(s.provinceAnchor!==null){if(!Array.isArray(s.provinceAnchor)||s.provinceAnchor.length!==3||!s.provinceAnchor.every(Number.isFinite)||Math.abs(M.length(s.provinceAnchor)-1)>1e-10)throw Error('Invalid province anchor');s.provinceAnchor=s.provinceAnchor.slice();}
  if(s.provinceRevision&&(!s.provinceAnchor||s.layoutVersion!==2||!s.collection))throw Error('The Watershed province requires its saved anchor and designed shell');
+ s.packAddress=Packs.validate(input.packAddress,s);
  for(const [k,lo,hi] of [['axisLat',-90,90],['axisLon',-180,180],['waistWidth',10,38],['transitionKm',100,500000],['shellThickness',.1,1000],['weatherStrength',0,1],['weatherQuality',0,2],['localShadows',0,2],['cavityHaze',0,1],['spaceEnvironment',0,2]])if(k in input){if(!Number.isFinite(input[k])||input[k]<lo||input[k]>hi||(['spaceEnvironment','weatherQuality','localShadows'].includes(k)&&!Number.isInteger(input[k])))throw Error('Invalid '+k);s[k]=input[k];}
  for(const k of ['geometryDetail','richMaterials','wreckage','clouds','walkMode','surfaceLock','autoWalk','autoSpeed','walkSurface'])if(k in input){if(typeof input[k]!=='boolean')throw Error('Invalid '+k);s[k]=input[k];}
  for(const [key,choices] of [['placeScene',['first-light','darkness','day','dark']],['placeWeather',['clear','mixed','cover','precipitation','storm']]])if(key in input){if(!choices.includes(input[key]))throw Error('Invalid '+key);s[key]=input[key];}
+ s.shadeGeometryRevision=input.shadeGeometryRevision??1;
+ if(![1,2].includes(s.shadeGeometryRevision))throw Error('Unsupported Shade geometry revision');
+ s.terrainRevision=input.terrainRevision??1;
+ if(![1,2].includes(s.terrainRevision))throw Error('Unsupported terrain revision');
  s.siteRevision=input.siteRevision??0;s.siteElevation=input.siteElevation??0;
- if(![0,1].includes(s.siteRevision)||!Number.isFinite(s.siteElevation)||s.siteElevation<0||s.siteElevation>10)throw Error('Invalid walking patch');
+ if(![0,1,2].includes(s.siteRevision)||!Number.isFinite(s.siteElevation)||s.siteElevation<0||s.siteElevation>10)throw Error('Invalid walking patch');
  s.siteId=input.siteId??'';if(typeof s.siteId!=='string'||!/^$|^(biome-[0-9]|rim|shade-[0-9]{1,2}|port-[01]|exterior-[012])$/.test(s.siteId))throw Error('Invalid field site');
- for(const k of ['siteAnchor','walkPosition'])if(input[k]!=null){if(!Array.isArray(input[k])||input[k].length!==3||!input[k].every(Number.isFinite))throw Error('Invalid '+k);s[k]=input[k].slice();}
+ for(const k of ['siteAnchor','terrainAnchor','walkPosition'])if(input[k]!=null){if(!Array.isArray(input[k])||input[k].length!==3||!input[k].every(Number.isFinite))throw Error('Invalid '+k);s[k]=input[k].slice();}
+ if(s.terrainAnchor&&Math.abs(M.length(s.terrainAnchor)-1)>1e-10)throw Error('Invalid terrain anchor');
  if(s.siteAnchor&&Math.abs(M.length(s.siteAnchor)-1)>1e-10)throw Error('Invalid site anchor');
  if(s.siteId&&!s.siteAnchor)throw Error('A field site requires its saved anchor');
- if(s.walkPosition&&(Math.abs(s.walkPosition[0])>1.2||Math.abs(s.walkPosition[2])>1.2||s.walkPosition[1]<(s.siteRevision===1?-5:0)||s.walkPosition[1]>(s.siteRevision===1?5:1)))throw Error('Walking position is outside this site');
- if(s.siteRevision===1&&!/^(biome|port)-/.test(s.siteId)){s.siteRevision=0;s.siteElevation=0;}
+ if(s.siteRevision===2&&s.walkPosition&&s.walkPosition.some(v=>Math.abs(v)>100))throw Error('Walking coordinates require a nearby terrain frame');
+ if(s.siteRevision!==2&&s.walkPosition&&(Math.abs(s.walkPosition[0])>1.2||Math.abs(s.walkPosition[2])>1.2||s.walkPosition[1]<(s.siteRevision===1?-5:0)||s.walkPosition[1]>(s.siteRevision===1?5:1)))throw Error('Walking position is outside this site');
+ if(s.siteRevision>=1&&!/^(biome|port)-/.test(s.siteId)){s.siteRevision=0;s.siteElevation=0;}
  if(s.walkSurface&&!s.walkMode)s.walkSurface=false;
  if(s.walkMode&&(!s.siteAnchor||!s.walkPosition||!s.siteId))throw Error('Walking requires a field site');
  if(s.walkMode&&!/^(biome|port)-/.test(s.siteId))throw Error('This destination does not support walking');

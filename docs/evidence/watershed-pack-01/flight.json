@@ -1,0 +1,26 @@
+{
+  "target": "Ultra Desert",
+  "landed": true,
+  "seconds": 76.82789999997615,
+  "samples": 4374,
+  "playingThroughout": true,
+  "busySamples": 29,
+  "frameIntervalMs": {
+    "median": 16.699999988077252,
+    "p95": 17.600000023840323,
+    "max": 222.19999998807793
+  },
+  "finalPackAddress": {
+    "schema": 1,
+    "packId": "watershed",
+    "geographyRevision": 1,
+    "artRevision": 1,
+    "seed": 713,
+    "anchor": [
+      0.9990056996801094,
+      -0.033228470003808824,
+      0.029723404715151572
+    ]
+  },
+  "errors": []
+}

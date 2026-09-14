@@ -8,7 +8,7 @@ const meshes=new Map(),frames=new Map(),levels=new Map();let cachedVertices=0;
 function setView(w,{deterministic=false}={}){w=Math.max(320,Math.min(16384,w));if(width!==w||captureMode!==deterministic){width=w;captureMode=deterministic;revision++;}}
 function focal(s){return width/(2*Math.tan(M.radians(s.fov)*.5));}
 function readableRange(size,s,pixels=.45){return size*focal(s)/pixels;}
-function remember(key,build,priority=0){if(resolver)return resolver(key,build,priority);let mesh=meshes.get(key);if(!mesh){mesh=build();mesh.streamKey=key;meshes.set(key,mesh);cachedVertices+=mesh.count;}else{meshes.delete(key);meshes.set(key,mesh);}while(meshes.size>1200||cachedVertices>3000000){const oldest=meshes.keys().next().value;cachedVertices-=meshes.get(oldest).count;meshes.delete(oldest);}return mesh;}
+function remember(key,build,priority=0,critical=false,rimInterval=null){build.critical=critical;build.rimInterval=rimInterval;if(resolver)return resolver(key,build,priority);let mesh=meshes.get(key);if(!mesh){mesh=build();mesh.streamKey=key;meshes.set(key,mesh);cachedVertices+=mesh.count;}else{meshes.delete(key);meshes.set(key,mesh);}while(meshes.size>1200||cachedVertices>3000000){const oldest=meshes.keys().next().value;cachedVertices-=meshes.get(oldest).count;meshes.delete(oldest);}return mesh;}
 function distanceToSegment(p,a,b){const v=sub(b,a),t=M.clamp(dot(sub(p,a),v)/Math.max(1e-20,dot(v,v)),0,1);return len(sub(p,add(a,mul(v,t))));}
 function rimContext(s){
  if(s.layoutVersion!==2||!s.collection||s.era!=='after'||!s.multipleWounds)return null;
@@ -31,6 +31,15 @@ function rimMargin(local,ctx,s){
  return (2*ctx.a*da+da*da)/ctx.w.length**2+(2*v*dv+dv*dv)/ctx.w.width**2;
 }
 const strata=[0,.025,.08,.18,.34,.52,.71,.87,1],rock=[[.14,.126,.098],[.08,.085,.087],[.055,.065,.069],[.10,.084,.06],[.042,.050,.055],[.10,.106,.11],[.055,.065,.071],[.105,.108,.105]];
+function rimCut(s){
+ // Workers receive the exact main-thread end profiles; they must not resample
+ // the terrain with a different set of optional province modules loaded.
+ if(Object.hasOwn(s,'_groundRimCut'))return s._groundRimCut;
+ if(s.siteRevision===2&&root.SphereGround)return Math.abs(s.radius-len(s.position))<S.localRange(s)?root.SphereGround.rimCut(s):null;
+ if(!s.siteAnchor||! /^(biome|port)-/.test(s.siteId)||len(sub(s.position,mul(s.siteAnchor,s.radius-(s.siteElevation||0))))>=S.localRange(s))return null;
+ const mesh=S.site(s),rim=mesh?.ground?.rim;
+ return rim?{key:rim.key,index:rim.index,cuts:rim.cuts,ends:rim.ends,origin:mesh.origin,basis:mesh.basis}:null;
+}
 function rimPoint(s,index,t,depth){
  const f=W.rimFrame(s,index,t),arc=s.radius*.13;
  // Alternating recesses produce sloping torn faces; the top is precisely the shell boundary.
@@ -39,8 +48,9 @@ function rimPoint(s,index,t,depth){
 }
 function rimMeshes(s){
  const ctx=rimContext(s);if(!ctx)return [];
- const out=[],fp=focal(s),range=readableRange(s.shellThickness,s),config=JSON.stringify([ctx.index,s.radius,s.shellThickness,s.seed]);
+ const out=[],fp=focal(s),range=readableRange(s.shellThickness,s),candidate=rimCut(s),cut=candidate?.index===ctx.index?candidate:null,config=JSON.stringify([ctx.index,s.radius,s.shellThickness,s.seed,...(cut?[cut.key]:[])]);
  function visit(a,b,key,depth){
+  if(cut?.cuts.some(([lo,hi])=>a>=lo&&b<=hi))return;
   const pa=mul(W.boundaryPoint(ctx.index,a),s.radius),pb=mul(W.boundaryPoint(ctx.index,b),s.radius),m=(a+b)/2,pm=mul(W.boundaryPoint(ctx.index,m),s.radius);
   const error=len(sub(pm,mul(add(pa,pb),.5))),distance=Math.max(.01,distanceToSegment(s.position,pa,pb)-error-s.shellThickness),span=len(sub(pa,pb));
   if(distance>range*1.12)return;
@@ -50,12 +60,14 @@ function rimMeshes(s){
    visit(a,m,key+'0',depth+1);visit(m,b,key+'1',depth+1);return;
   }
   const mesh=remember('rim:'+config+':'+key,()=>{
-   const f=W.rimFrame(s,ctx.index,m),mesh=new S.Mesh(mul(f.point,s.radius),[f.tangent,mul(f.point,-1),f.inland],'Wound · fractured shell edge');
-   for(let j=0;j<4;j++){const t0=a+(b-a)*j/4,t1=a+(b-a)*(j+1)/4;
-    for(let k=0;k<strata.length-1;k++)mesh.quad(...[[t0,strata[k]],[t1,strata[k]],[t1,strata[k+1]],[t0,strata[k+1]]].map(([t,d])=>mesh.local(rimPoint(s,ctx.index,t,d*s.shellThickness))),rock[k],-3);
+   const f=W.rimFrame(s,ctx.index,m),touches=cut&&cut.ends.some(e=>e.t>=a&&e.t<=b),mesh=new S.Mesh(touches?cut.origin:mul(f.point,s.radius),touches?cut.basis:[f.tangent,mul(f.point,-1),f.inland],'Wound · fractured shell edge');
+   const ticks=[...Array.from({length:5},(_,j)=>a+(b-a)*j/4),...(cut?cut.cuts.flat().filter(t=>t>a&&t<b):[])].sort((a,b)=>a-b);
+   const point=(t,k)=>{const end=touches&&cut.ends.find(e=>Math.abs(e.t-t)<1e-14);return end?end.profile[k]:mesh.local(rimPoint(s,ctx.index,t,strata[k]*s.shellThickness));};
+   for(let j=0;j<ticks.length-1;j++){const t0=ticks[j],t1=ticks[j+1];if(t1-t0<1e-15||cut?.cuts.some(([lo,hi])=>(t0+t1)/2>=lo&&(t0+t1)/2<=hi))continue;
+    for(let k=0;k<strata.length-1;k++)mesh.quad(point(t0,k),point(t1,k),point(t1,k+1),point(t0,k+1),rock[k],-3);
    }
    mesh.detailFeature=s.shellThickness;mesh.rim={index:ctx.index,t:m,span:span/2,a,b};const w=C.wounds[ctx.index];mesh.materialFrame=[w.tangent,mul(w.axis,-1),cross(w.tangent,mul(w.axis,-1))];return mesh.finish({deferBVH:true});
-  },distance);if(mesh)out.push(mesh);
+  },distance,!!cut&&cut.ends.some(e=>e.t>=a&&e.t<=b),[ctx.index,a,b]);if(mesh)out.push(mesh);
  }
  // Fixed dyadic addresses retain buffers and seed placement as the camera travels.
  for(let j=0;j<256;j++)visit(j*TAU/256,(j+1)*TAU/256,String(j)+':',0);
@@ -93,6 +105,7 @@ function shadeContext(s){
  return {...f,plate:p,position:pos,origin:plateVector(f.origin,p),canonicalOrigin:f.origin,basis:f.basis.map(v=>plateVector(v,p)),r};
 }
 function shadeMeshes(s){
+ if(s.shadeGeometryRevision===2&&root.SphereShadeEdges)return root.SphereShadeEdges.meshes(s,{coarse:coarseMode,fine:forceFine});
  const ctx=shadeContext(s);if(!ctx)return [];const p=ctx.plate,fp=focal(s),out=[],range=readableRange(.18,s),cam=ctx.position;
  const config=JSON.stringify([p.id,s.era,s.radius,s.seed,p.shape,p.across,s.shadeTrim]);
  const step=3.2/(p.size*s.radius),centre=Math.floor(ctx.v/step),canonical=canonicalFrame(s,p,ctx.v),slope=len(sub(canonicalPoint(s,p,crack(ctx.v+step),ctx.v+step),canonical.origin))/3.2;
@@ -139,6 +152,9 @@ function plan(s,w,{coarse=false,deterministic=false,fine=false}={}){
 }
 const contactCache=new Map();
 function shadeContactMeshes(s,position,direction,distance){
+ // Revision 2 has no raised invisible deck. Contact uses the same admitted
+ // geometry as drawing, with the unchanged analytic skin as cold fallback.
+ if(s.shadeGeometryRevision===2)return [];
  const p=plateFor(s);if(!p)return [];
  // Collision cannot wait for a preview upload. The raised top deck is only
  // twelve metres above the analytic skin: a flight step can cross it before
@@ -151,5 +167,7 @@ function shadeContactMeshes(s,position,direction,distance){
  }
  const result=[];for(const [key,build]of jobs){let mesh=meshes.get(key)||contactCache.get(key);if(!mesh){mesh=build();contactCache.set(key,mesh);}result.push(transformMesh(mesh,p));}while(contactCache.size>12)contactCache.delete(contactCache.keys().next().value);return result;
 }
-root.SphereEdges={plan,shadeContactMeshes,transformMesh,setView,focal,readableRange,rimContext,rimMargin,rimPoint,rimMeshes,shadeSection,shadeContext,shadeMeshes,plateFor,canonicalPoint,canonicalFrame,plateVector,crack,get revision(){return revision+(root.SphereEdgeStreaming?.revision||0);},get viewWidth(){return width;},get deterministic(){return captureMode;},get cacheSize(){return meshes.size;},get cacheVertexMiB(){return cachedVertices*44/1048576;}};
+root.SphereEdges={remember,plan,shadeContactMeshes,transformMesh,setView,focal,readableRange,rimContext,rimMargin,rimPoint,rimMeshes,rimCut,rimStrata:strata,rimColours:rock,shadeSection,shadeContext,shadeMeshes,plateFor,canonicalPoint,canonicalFrame,plateVector,crack,get revision(){return revision+(root.SphereEdgeStreaming?.revision||0);},get viewWidth(){return width;},get deterministic(){return captureMode;},get cacheSize(){return meshes.size;},get cacheVertexMiB(){return cachedVertices*44/1048576;}};
 })(typeof window==='undefined'?globalThis:window);
+
+if(typeof module!=='undefined'&&module.exports)require('./shade-edges.js');

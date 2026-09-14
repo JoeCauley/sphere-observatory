@@ -1,6 +1,6 @@
 const assert=require('node:assert/strict'),M=require('../math.js');
 require('../collection.js');require('../biomes.js');require('../world-palette.js');require('../world.js');require('../field-sites.js');
-const E=SphereEdges,S=SphereSites,s={...M.defaultState(),collection:true,siteId:'shade-0'};
+const E=SphereEdges,S=SphereSites,s={...M.defaultState(),shadeGeometryRevision:1,collection:true,siteId:'shade-0'};
 s.siteAnchor=SphereCollection.plates(s)[0].normal;s.position=S.shadeSection(s).world([-.3,.2,.75]);E.setView(1280);
 const fine=E.plan(s,1280),coarse=E.plan(s,1280,{coarse:true}),key=[...fine.keys()].find(k=>k.endsWith(':near')),far=key.replace(/:near$/,':far');
 assert(coarse.has(far));const mesh=fine.get(key)(),packed=S.packBVH(mesh.triangles);
@@ -20,3 +20,16 @@ const upgraded=stream.geometry(s);assert(upgraded.some(m=>m.streamKey===key));as
 const moved={...s,position:S.shadeSection(s).world([-.3,.2,500])};stream.geometry(moved);const cancelled=stream.info.cancelled;deliver(key,fine.get(key));assert.equal(stream.info.cancelled,cancelled+1);assert.equal(stream.info.ready,0,'Obsolete responses cannot enter residency');
 stream.cancel();assert.equal(stream.info.queue,0);assert(!stream.needsFrame);stream.dispose();
 console.log(`PASS ${rays} worker BVH rays (${hits} hits), geometry byte parity, coarse replacement, partial-upload collision exclusion, stale response cancellation and queue clearing.`);
+
+// A delayed worker still needs both local Wound wall ends sealed. Resource
+// pressure may drop distant work, but cannot evict these tiny active profiles.
+const ground={...M.defaultState(),shadeGeometryRevision:1,collection:true,siteId:'biome-5',siteRevision:1,siteElevation:0,routeShades:false},frame=SphereWorld.rimFrame(ground,0,.7);
+ground.siteAnchor=M.norm(M.add(frame.point,M.mul(frame.inland,.02/ground.radius)));ground.position=M.mul(ground.siteAnchor,ground.radius-.04);E.setView(1280);
+const guards=stream.geometry(ground);assert(guards.length>=2&&guards.length<=4);assert(guards.every(m=>m.count<1000),'Cold seam neighbours are small bounded meshes');
+request=instance.messages.at(-1);const cut=E.rimCut(ground);assert.deepEqual(request.state._groundRimCut,cut,'Worker receives the exact main-thread profiles');
+const rimJobs=new Map([...E.plan(ground,1280,{coarse:true}),...E.plan(ground,1280)]),heavyKey=request.keys.find(key=>key.startsWith('rim:')),heavy=rimJobs.get(heavyKey)();heavy.bvh=S.packBVH(heavy.triangles);delete heavy.triangles;heavy.streamKey=heavyKey;
+heavy.count=3000001;instance.onmessage({data:{generation:request.generation,key:heavyKey,mesh:heavy,buildMs:1}});stream.pump(()=>true);
+const pressured=stream.geometry(ground);for(const guard of guards)assert(pressured.includes(guard),'Active seam guards survive the hard vertex cap');assert(stream.info.budgetLimited>0);
+const departed={...ground,position:M.mul(ground.siteAnchor,ground.radius-S.localRange(ground)-1)},restored=stream.geometry(departed);assert.equal(E.rimCut(departed),null);
+assert(restored.some(m=>m.rim&&cut.cuts.some(([a,b])=>m.rim.a<=a&&m.rim.b>=b)),'Leaving the patch fills its old cut interval before the worker replies');
+stream.cancel();stream.dispose();console.log('PASS cold Wound seam guards, exact worker profiles and protected ends under vertex-budget pressure.');

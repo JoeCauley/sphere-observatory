@@ -22,10 +22,29 @@ precision highp float;precision highp sampler3D;
 in vec2 vUV;layout(location=0)out vec4 scattering;layout(location=1)out vec4 transmission;
 uniform sampler2D sceneDepth;uniform sampler3D densityVolume;
 uniform vec3 cameraUp,forward,right,up,phase,cloudTint,hazeTint,fill;
-uniform vec2 resolution;uniform vec4 rimPlane;
+uniform vec2 resolution,volumeResolution;uniform vec4 rimPlane;
+uniform vec3 rimAxis,rimTangent,rimNorth,rimOrigin,rimAnchor;
+uniform vec4 rimShape;
 uniform float radius,height,fov,rayAspect,amount,weather,direct,low,high,cloudScale,cloudDensity,cavityHaze,stellarPower;
 uniform int panorama,clouds,spores,clipRim,steps,localAir;
-float containedAir(vec3 p){return clipRim==1?smoothstep(0.,.02,dot(p,rimPlane.xyz)+rimPlane.w):1.;}
+// Match the geographic shader's small-angle precision on ANGLE/D3D11.
+float rimSin(float x){float t=x*x;return abs(x)<.01?x*(1.-t/6.+t*t/120.):sin(x);}
+float rimAngle(float y,float x){float r=y/max(x,1e-20),t=r*r;return x>0.&&abs(r)<.01?r*(1.-t/3.+t*t/5.):atan(y,x);}
+float containedAir(vec3 p){if(clipRim==0)return 1.;
+ // Angular increments around the exact contour preserve small clearances at
+ // AU origins and follow the curved bank over the whole atmospheric ray.
+ vec3 d=(p-rimOrigin)/radius;
+ float A=rimAnchor.x,B=rimAnchor.y,U=rimAnchor.z;
+ float da=dot(d,rimAxis),db=dot(d,rimTangent),du=dot(d,rimNorth);
+ float angle=rimAngle(A*db-B*da,A*(A+da)+B*(B+db));
+ float c=length(vec2(A,B)),nextC=length(vec2(A+da,B+db)),dc=(2.*A*da+da*da+2.*B*db+db*db)/(nextC+c);
+ float latitude=rimAngle(c*du-U*dc,c*nextC+U*(U+du));
+ float a=rimShape.x,b=rimShape.y,j=1.+.13*sin(a*71.)+.055*sin(a*193.);
+ float dj=.26*cos(a*71.+angle*35.5)*rimSin(angle*35.5)+.11*cos(a*193.+angle*96.5)*rimSin(angle*96.5);
+ float v=b/j,dv=(latitude*j-b*dj)/(j*(j+dj));
+ float metric=(2.*a*angle+angle*angle)/(rimShape.z*rimShape.z)+(2.*v*dv+dv*dv)/(rimShape.w*rimShape.w);
+ return smoothstep(0.,.02,metric*radius*min(rimShape.z,rimShape.w)*.5);
+}
 float altitude(vec3 p){float h=dot(p,cameraUp),r=radius-height;
  // Rationalized radius difference keeps metre-scale heights at AU coordinates.
  float dr2=dot(p,p)-2.*r*h;return height-dr2/(sqrt(max(0.,r*r+dr2))+r);
@@ -59,12 +78,8 @@ vec4 heightBand(vec3 d,float bottom,float top,float limit){vec2 outer=heightRoot
  if(inner.y<=a||inner.x>=b)return vec4(a,b,0.,0.);
  return vec4(a,max(a,min(b,inner.x)),max(a,min(b,inner.y)),b);
 }
-vec2 containedRange(vec3 d,vec2 range){if(clipRim==0)return range;
- float slope=dot(d,rimPlane.xyz);if(abs(slope)<1e-10)return rimPlane.w>=0.?range:vec2(0.);
- float t=-rimPlane.w/slope;if(slope>0.)range.x=max(range.x,t);else range.y=min(range.y,t);
- return vec2(range.x,max(range.x,range.y));
-}
-float airDensity(vec3 d,float t){return exp(-max(0.,altitude(d*t))/7.);}
+vec2 containedRange(vec3 d,vec2 range){return range;}
+float airDensity(vec3 d,float t){return exp(-max(0.,altitude(d*t))/7.)*containedAir(d*t);}
 float airColumn(vec3 d,float a,float b){float middle=(a+b)*.5,halfLength=(b-a)*.5,total=0.;
  const vec4 nodes=vec4(.1834346425,.5255324099,.7966664774,.9602898565),weights=vec4(.3626837834,.3137066459,.2223810345,.1012285363);
  for(int i=0;i<4;i++){float offset=nodes[i]*halfLength;total+=weights[i]*(airDensity(d,middle-offset)+airDensity(d,middle+offset));}
@@ -86,13 +101,13 @@ void main(){vec3 d=ray();float depth=texture(sceneDepth,vUV).r,hit=depth>=.99999
    airSegment(sum,tr,d,cursor,start,airLight);
    float dt=(end-start)/float(steps),jitter=hash(gl_FragCoord.xy),phaseLight=.46+.54*pow(max(0.,mu),8.);
    float lod=max(0.,log2(max(.001,dt/cloudScale)*4.)-.7);
-   float pixelAngle=panorama==1?6.28318530718/resolution.x:2.*tan(fov*.5)/resolution.x;
+   float pixelAngle=panorama==1?6.28318530718/volumeResolution.x:2.*tan(fov*.5)/volumeResolution.x;
    for(int i=0;i<144;i++){if(i>=steps||max(tr.r,max(tr.g,tr.b))<.007)break;
     float t=start+(float(i)+jitter)*dt;vec3 p=d*t;
     // Cloud billows must respect the lateral pixel footprint, not just the
     // raymarch step. The latter stays tiny even when a pixel spans kilometres.
     float pixelLod=log2(max(.001,t*pixelAngle*2./max(.02,abs(mu)))*4./cloudScale);
-    float h=altitude(p),rho=density(p,max(lod,pixelLod))*(1.-smoothstep(start+reach*.72,start+reach,t));
+    float sampleLod=max(lod,pixelLod),h=altitude(p),rho=density(p,sampleLod)*(1.-smoothstep(start+reach*.72,start+reach,t));
     float cloudTau=rho*dt*.78*amount;
     // The whole step lies inside the clipped air interval. Integrating it is
     // continuous as the boundary moves; no samples switch a kilometre of air on.
@@ -100,7 +115,7 @@ void main(){vec3 d=ray();float depth=texture(sceneDepth,vUV).r,hit=depth>=.99999
     float airTau=(airDensity(d,middle-offset)+airDensity(d,middle+offset))*.5*dt*amount/110.;
     vec3 tau=vec3(cloudTau)+vec3(.52,.74,1.)*airTau;
     if(max(tau.r,max(tau.g,tau.b))<.00001)continue;
-    float shadow=0.;if(rho>.015){float lengthToTop=max(.1,high-h),lightStep=lengthToTop/4.;for(int j=0;j<4;j++)shadow+=density(p+cameraUp*(float(j)+.5)*lightStep,1.)*lightStep;}
+    float shadow=0.;if(rho>.015){float lengthToTop=max(.1,high-h),lightStep=lengthToTop/4.;float shadowLod=max(sampleLod,max(1.,log2(max(.001,lightStep/cloudScale)*4.)-.7));for(int j=0;j<4;j++)shadow+=density(p+cameraUp*(float(j)+.5)*lightStep,shadowLod)*lightStep;}
     float sun=exp(-shadow*1.05*amount),multiple=.14*(1.-exp(-rho*max(0.,high-h)*.8));
     vec3 light=cloudTint*(direct*(phaseLight*sun+multiple)+fill*1.8);
     if(spores==1)light+=cloudTint*.012*weather;
@@ -230,7 +245,7 @@ vec3 distantClouds(vec3 d,float hit,out vec3 trans){
  // the star must not receive clouds from the intact sphere behind that object.
  if(hit>1e19||t<=0.||ground<=0.||hit<t-tolerance||abs(hit-ground)>tolerance)return vec3(0.);
  vec3 p=d*t;
- float pixelAngle=panorama==1?6.28318530718/resolution.x:2.*tan(fov*.5)/resolution.x;
+ float pixelAngle=panorama==1?6.28318530718/volumeResolution.x:2.*tan(fov*.5)/volumeResolution.x;
  float footprint=max(.001,t*pixelAngle*2./slant),remoteness=smoothstep(2000000.,100000000.,t);
  vec4 climate=climateAt(normal,footprint);float coverage=mix(climate.a,weather,localWeather);
  float scaleFade=mix(1.,.14,smoothstep(1500000.,radius*.82,t));

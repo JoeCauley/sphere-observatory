@@ -92,7 +92,7 @@ proven with that scene.
 
 ## Proposed pack contract
 
-This describes the next schema; it has not been added to the live scene format.
+The first Watershed entry and schema-1 saved address are implemented in [Watershed pack 1](Observatory-Watershed-Pack-01.md). The remaining rows describe the larger contract; nine variants, global streaming, Shade families and Hero overrides remain future work.
 
 | Part | Contents |
 |---|---|

@@ -1,6 +1,6 @@
 /* A chunk at a time, with transferable geometry and backpressure from GPU admission. */
 'use strict';
-importScripts('math.js','collection.js','biomes.js','world-palette.js','world.js','field-sites.js','edge-stream.js');
+importScripts('math.js','collection.js','biomes.js','world-palette.js','biome-packs.js','world.js','field-sites.js','edge-stream.js','shade-edges.js');
 let queue=[],generation=0,waiting=false;
 onmessage=({data})=>{
  if(data.type==='plan'){

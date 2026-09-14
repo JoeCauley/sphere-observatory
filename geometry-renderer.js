@@ -14,7 +14,7 @@ class GeometryRenderer{
   const fragment=SphereShaders.geometryFragment||SphereShaders.fragment,shared=fragment.slice(0,fragment.lastIndexOf('void main(){')).replace('in vec2 vUV;','');
   this.main=program(gl,vertex,shared+`
 in vec3 vRelative,vNormal,vAlbedo,vLocal,vLocalNormal;flat in float vMaterial,vEmission;
-uniform float uSiteLight,uDetailFeature,uPixelFocal;uniform int uMaterialPlate,uStructureMaterial;uniform vec3 uMaterialOffset,uMaterialX,uMaterialY,uMaterialZ;uniform vec3 uSiteFill;
+uniform float uSiteLight,uDetailFeature,uPixelFocal,uGroundPatchRadius;uniform int uMaterialPlate,uStructureMaterial,uConnectedGround;uniform vec3 uMaterialOffset,uMaterialX,uMaterialY,uMaterialZ;uniform vec3 uSiteFill;
 vec3 fieldGround(int id,vec3 p,float footprint){vec3 col=WORLD_ALBEDO[id];float n=noise(p*35.)*.60+noise(p*110.)*.4;
  if(id==0||id==1)col=mix(vec3(.032,.024,.013),col*.85,n);
  else if(id==4)col=mix(col*.55,col*1.45,n);
@@ -23,14 +23,23 @@ vec3 fieldGround(int id,vec3 p,float footprint){vec3 col=WORLD_ALBEDO[id];float 
  if(id==5){vec2 tile=p.xz/.012;float seams=panelLine(tile,max(.0001,footprint/.012));col*=1.-seams*.65;}
  if(id==8||id==9){float veins=pow(1.-abs(noise(p*400.)*2.-1.),16.);col+=WORLD_ALBEDO[id]*veins*.5*small;}
  return col;}
-void main(){if(vMaterial== -5.){float coverage=1.-smoothstep(258.,319.5,max(abs(vLocal.x),abs(vLocal.z)));if(fract(dot(gl_FragCoord.xy,vec2(.754877666,.569840296)))>coverage)discard;}float distanceKm=length(vRelative);if(uDetailFeature>0.){float coverage=smoothstep(.45,1.2,uDetailFeature*uPixelFocal/max(.00001,distanceKm));if(fract(dot(gl_FragCoord.xy,vec2(.754877666,.569840296)))>coverage)discard;}gl_FragDepth=clamp(log2(1.+distanceKm)/log2(1.+4.*uRadius),0.,1.);if(uMode==2){fragColor=vec4(0.,.75,0.,1.);return;}if(uMode==4||uMode==5){fragColor=vec4(0,0,0,1);return;}vec3 n=normalize(vNormal);if(dot(n,vRelative)>0.)n=-n;vec3 q=normalize(camera()+vRelative/uRadius),delta=vRelative-uN*(uH*uRadius),col=vAlbedo;
+// Province heights already meet the shell at 320 km. Keep one opaque depth
+// owner through the material blend; stippled holes expose a different depth
+// and break both collision agreement and the weather's receiving surface.
+void main(){float distanceKm=length(vRelative);if(uDetailFeature>0.){float coverage=smoothstep(.45,1.2,uDetailFeature*uPixelFocal/max(.00001,distanceKm));if(fract(dot(gl_FragCoord.xy,vec2(.754877666,.569840296)))>coverage)discard;}gl_FragDepth=clamp(log2(1.+distanceKm)/log2(1.+4.*uRadius),0.,1.);if(uMode==2){fragColor=vec4(0.,.75,0.,1.);return;}if(uMode==4||uMode==5){fragColor=vec4(0,0,0,1);return;}vec3 n=normalize(vNormal);if(dot(n,vRelative)>0.)n=-n;vec3 q=normalize(camera()+vRelative/uRadius),delta=vRelative-uN*(uH*uRadius),col=vAlbedo;
  if(vMaterial>=20.){int id=int(vMaterial)-20;if(uTextureDetail==1&&uHeroReady[id]>.001){vec3 tri=pow(abs(vLocalNormal),vec3(8.));tri/=max(.00001,tri.x+tri.y+tri.z);col=mix(col,sampleSurface(uHeroTex,float(id),vLocal/2.5,tri,dFdx(vLocal)/2.5,dFdy(vLocal)/2.5,false),uHeroReady[id]);}}
  else if(vMaterial== -4.){float fw=max(length(dFdx(vLocal)),length(dFdy(vLocal)));vec3 weights=pow(abs(vLocalNormal),vec3(8.));weights/=max(.00001,weights.x+weights.y+weights.z);float seams=weights.x*panelLine(vLocal.yz/.12,fw/.12)+weights.y*panelLine(vLocal.xz/.12,fw/.12)+weights.z*panelLine(vLocal.xy/.12,fw/.12);col*=.72+.48*noise(vLocal*2.);col*=1.-seams*.55;float fine=weights.x*panelLine(vLocal.yz/.008,fw/.008)+weights.y*panelLine(vLocal.xz/.008,fw/.008)+weights.z*panelLine(vLocal.xy/.008,fw/.008);col*=1.-fine*.2;}
  else if(vMaterial>=13.&&vMaterial<=14.&&uMaterialPlate>=0){vec2 uv=uShadeUVAnchor[uMaterialPlate]+vec2(dot(vRelative,uShadeUVRight[uMaterialPlate]),dot(vRelative,uShadeUVUp[uMaterialPlate]))/1.2;col=shadeSkin(uv,int(vMaterial)-10,distanceKm);}
  else if(vMaterial>=13.&&uWorldTexturesReady==1&&uTextureDetail==1){vec3 tri=pow(abs(vLocalNormal),vec3(8.));tri/=max(.00001,tri.x+tri.y+tri.z);int layer=vMaterial==15.?4:int(vMaterial)-10;col=mix(col,sampleSurface(uEngineering,float(layer),vLocal/6.,tri,dFdx(vLocal)/6.,dFdy(vLocal)/6.,false),uEngineeringReady[layer]);}
- else if(vMaterial>=0.){float footprint=max(length(dFdx(delta)),length(dFdy(delta)));col=worldDetail(int(vMaterial),q,delta,footprint,distanceKm);if(vMaterial<10.&&distanceKm<.12)col=mix(col,fieldGround(int(vMaterial),vLocal,footprint),1.-smoothstep(.05,.12,distanceKm));}
- if(vMaterial== -5.){float broad=noise(vLocal*.018)*.7+noise(vLocal*.061)*.3,groves=noise(vLocal*.9)*.6+noise(vLocal*2.7)*.4;col*=mix(.60,1.75,smoothstep(.30,.76,broad))*(.75+.5*groves);float blend=1.-smoothstep(250.,319.5,max(abs(vLocal.x),abs(vLocal.z)));if(blend<.999){float footprint=max(length(dFdx(delta)),length(dFdy(delta)));col=mix(surfaceMaterial(q,delta,footprint,distanceKm),col,blend);}}
- if(vMaterial== -5.&&distanceKm<.12){float footprint=max(length(dFdx(vLocal)),length(dFdy(vLocal)));col=mix(col,fieldGround(int(worldRegion(q).x),vLocal,footprint),1.-smoothstep(.05,.12,distanceKm));}
+ else if(vMaterial>=0.){float footprint=max(length(dFdx(delta)),length(dFdy(delta)));col=worldDetail(int(vMaterial),q,delta,footprint,distanceKm);if(uPackEnabled==1)col=packMaterial(col,delta,footprint);if(vMaterial<10.&&distanceKm<.12&&uPackEnabled==0)col=mix(col,fieldGround(int(vMaterial),vLocal,footprint),1.-smoothstep(.05,.12,distanceKm));}
+ // Evaluate the geographic material once for all transition owners. Repeating
+ // this large graph in three branches needlessly multiplies cold compilation.
+ float geographicBlend=uConnectedGround==1&&vMaterial>=0.&&vMaterial<10.?1.:0.;
+ if(uGroundPatchRadius>0.&&vMaterial>=0.&&vMaterial<20.)geographicBlend=smoothstep(uGroundPatchRadius*.733333333,uGroundPatchRadius,max(abs(vLocal.x),abs(vLocal.z)));
+ if(vMaterial== -5.){float broad=noise(vLocal*.018)*.7+noise(vLocal*.061)*.3,groves=noise(vLocal*.9)*.6+noise(vLocal*2.7)*.4;col*=mix(.60,1.75,smoothstep(.30,.76,broad))*(.75+.5*groves);geographicBlend=smoothstep(250.,319.5,max(abs(vLocal.x),abs(vLocal.z)));if(geographicBlend<=.001)geographicBlend=0.;}
+ if(geographicBlend>0.){float footprint=max(length(dFdx(delta)),length(dFdy(delta)));col=mix(col,surfaceMaterial(q,delta,footprint,distanceKm),geographicBlend);}
+ if(vMaterial== -5.&&uPackEnabled==1){float footprint=max(length(dFdx(delta)),length(dFdy(delta)));col=packMaterial(col,delta,footprint);}
+ if(vMaterial== -5.&&distanceKm<.12&&uPackEnabled==0){float footprint=max(length(dFdx(vLocal)),length(dFdy(vLocal)));col=mix(col,fieldGround(int(worldRegion(q).x),vLocal,footprint),1.-smoothstep(.05,.12,distanceKm));}
  if(vMaterial== -7.){float fw=max(length(dFdx(vLocal)),length(dFdy(vLocal))),radial=length(vLocal.xz);float joint=constructionRib(radial,.012,fw);col*=1.-joint*.12;col*=.94+.12*noise(vLocal*320.);}
  if(vMaterial== -3.){vec3 p=vec3(dot(vRelative,uMaterialX),dot(vRelative,uMaterialY),dot(vRelative,uMaterialZ))+uMaterialOffset;float fw=max(length(dFdx(p)),length(dFdy(p)));
   float ribs=constructionRib(p.x,.18,fw),seams=constructionRib(p.y,.065,fw);
@@ -48,9 +57,9 @@ void main(){if(vMaterial== -5.){float coverage=1.-smoothstep(258.,319.5,max(abs(
  }
 
  float micro=noise(vLocal*400.)*.6+noise(vLocal*1700.)*.4,footprint=max(length(dFdx(vLocal)),length(dFdy(vLocal)));if(uStructureMaterial==0)col*=mix(1.,.90+.20*micro,1.-smoothstep(.001,.005,footprint));
- vec3 light=-q;float cosine=max(0.,dot(n,light)),shadow=structureShadow(vRelative,n);vec3 view=-normalize(vRelative),halfway=normalize(light+view);float spec=pow(max(0.,dot(n,halfway)),32.)*.018;
+ vec3 light=-q;float cosine=max(0.,dot(n,light)),shadow=structureShadow(vRelative,n);vec3 view=-normalize(vRelative),halfway=normalize(light+view);float spec=pow(max(0.,dot(n,halfway)),32.)*.018;if(uPackEnabled==1&&(vMaterial== -5.||(vMaterial>=0.&&vMaterial<10.)))spec=0.;
  vec3 radiance=col*(uSiteFill*(.45+.55*max(0.,dot(n,-uN)))+uSiteLight*uLuminosity/max(.01,dot(camera()+vRelative/uRadius,camera()+vRelative/uRadius))*cosine*shadow)+vec3(spec*uSiteLight*shadow)+col*vEmission;
- if(vMaterial== -6.){float fresnel=pow(1.-max(0.,dot(n,view)),5.);float ripple=noise(vLocal*18.)*.6+noise(vLocal*57.)*.4;vec3 reflected=mix(vec3(.11,.19,.19),uSiteFill*2.,.45);radiance=mix(radiance,reflected,.18+.65*fresnel)+vec3(pow(max(0.,dot(n,halfway)),180.)*.16*uSiteLight*shadow)*( .65+.35*ripple);}
+ if(vMaterial== -6.&&(uPackEnabled==0||distanceKm<20.)){float fresnel=pow(1.-max(0.,dot(n,view)),5.);float ripple=noise(vLocal*18.)*.6+noise(vLocal*57.)*.4;vec3 reflected=mix(vec3(.11,.19,.19),uSiteFill*2.,.45);radiance=mix(radiance,reflected,.18+.65*fresnel)+vec3(pow(max(0.,dot(n,halfway)),180.)*.16*uSiteLight*shadow)*( .65+.35*ripple);}
  if(uStructureMaterial==1&&uRichMaterials==1){
   vec3 p=vec3(dot(vRelative,uMaterialX),dot(vRelative,uMaterialY),dot(vRelative,uMaterialZ))+uMaterialOffset;
   vec3 tri=pow(abs(vec3(dot(n,uMaterialX),dot(n,uMaterialY),dot(n,uMaterialZ))),vec3(8.));tri/=max(.00001,tri.x+tri.y+tri.z);
@@ -68,7 +77,7 @@ void main(){if(vMaterial== -5.){float coverage=1.-smoothstep(258.,319.5,max(abs(
  upload(mesh){const record=this.meshes.get(mesh);if(record&&record.offset===mesh.vertices.byteLength)return record;this.stage(mesh,Infinity);return this.meshes.get(mesh);}
  draw(s,renderer,linear,width,height){const groups=s.geometryDetail&&s.layoutVersion===2&&s.collection&&s.projection!=='panorama'?SphereSites.geometry(s):[],gl=this.gl;
   // Release retired chunks even when the camera leaves the detail region entirely.
-  for(const [m,b]of this.meshes)if(!groups.includes(m)&&!window.SphereEdgeStreaming?.has(m)&&!window.SphereWatershed?.has(m)){gl.deleteVertexArray(b.vao);gl.deleteBuffer(b.buffer);this.meshes.delete(m);}
+  for(const [m,b]of this.meshes)if(!groups.includes(m)&&!window.SphereEdgeStreaming?.has(m)&&!window.SphereWatershed?.has(m)&&!window.SphereGround?.has(m)){gl.deleteVertexArray(b.vao);gl.deleteBuffer(b.buffer);this.meshes.delete(m);}
   if(!groups.length)return;
   gl.enable(gl.DEPTH_TEST);gl.depthFunc(gl.LEQUAL);gl.depthMask(true);gl.disable(gl.CULL_FACE);
   gl.viewport(0,0,width,height);gl.useProgram(this.main.p);
@@ -79,7 +88,7 @@ void main(){if(vMaterial== -5.){float coverage=1.-smoothstep(258.,319.5,max(abs(
   const lights=new Map();let triangles=0;for(const mesh of groups){const buffer=this.upload(mesh);gl.bindVertexArray(buffer.vao);gl.uniform3fv(u.uOriginRelative,M.sub(mesh.origin,s.position));gl.uniform3fv(u.uMeshX,mesh.basis[0]);gl.uniform3fv(u.uMeshY,mesh.basis[1]);gl.uniform3fv(u.uMeshZ,mesh.basis[2]);gl.uniform1i(u.uStructureMaterial,mesh.plate||mesh.name.startsWith('Wound')?1:0);
    const lightKey=mesh.plate?'shade-'+mesh.plate.id:mesh.name.startsWith('Wound')?'rim':mesh;
    if(!lights.has(lightKey)){const lightPoint=M.add(mesh.origin,M.mul(mesh.basis[1],.01));lights.set(lightKey,SphereCollection.visibility(lightPoint,s,s.stationSamples||64,mesh.plate?.id??-1));}const direct=lights.get(lightKey);
-   gl.uniform1f(u.uDetailFeature,mesh.detailFeature||0);gl.uniform1f(u.uPixelFocal,SphereEdges.focal(s));const materialFrame=mesh.materialFrame||(mesh.plate?[mesh.plate.right,mesh.plate.normal,mesh.plate.up]:mesh.basis);gl.uniform3fv(u.uMaterialOffset,materialFrame.map(b=>((M.dot(s.position,b)%76.8)+76.8)%76.8));gl.uniform3fv(u.uMaterialX,materialFrame[0]);gl.uniform3fv(u.uMaterialY,materialFrame[1]);gl.uniform3fv(u.uMaterialZ,materialFrame[2]);gl.uniform1i(u.uMaterialPlate,mesh.plate?SphereCollection.plates(s).findIndex(p=>p.id===mesh.plate.id):-1);
+   gl.uniform1i(u.uConnectedGround,mesh.chunk?1:0);gl.uniform1f(u.uGroundPatchRadius,mesh.ground&&!mesh.chunk?SphereSites.SITE_RADIUS:0);gl.uniform1f(u.uDetailFeature,mesh.detailFeature||0);gl.uniform1f(u.uPixelFocal,SphereEdges.focal(s));const materialFrame=mesh.materialFrame||(mesh.plate?[mesh.plate.right,mesh.plate.normal,mesh.plate.up]:mesh.basis);gl.uniform3fv(u.uMaterialOffset,materialFrame.map(b=>((M.dot(s.position,b)%76.8)+76.8)%76.8));gl.uniform3fv(u.uMaterialX,materialFrame[0]);gl.uniform3fv(u.uMaterialY,materialFrame[1]);gl.uniform3fv(u.uMaterialZ,materialFrame[2]);gl.uniform1i(u.uMaterialPlate,mesh.plate?SphereCollection.plates(s).findIndex(p=>p.id===mesh.plate.id):-1);
    gl.uniform1f(u.uSiteLight,direct);gl.uniform3fv(u.uSiteFill,renderer.frameFill.map(v=>v*(s.siteId.startsWith('exterior-')?.375:1)));gl.drawArrays(gl.TRIANGLES,0,mesh.count);triangles+=mesh.count/3;}
   gl.bindVertexArray(null);gl.activeTexture(gl.TEXTURE0);renderer.renderInfo.geometry={groups:groups.length,triangles,localShadow:renderer.localShadows.quality>0,materials:s.richMaterials!==false&&groups.some(m=>m.plate||m.name.startsWith('Wound'))?'roughness / metalness / normal':'simple'};
  }

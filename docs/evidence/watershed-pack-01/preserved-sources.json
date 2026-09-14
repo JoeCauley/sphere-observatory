@@ -1,0 +1,27 @@
+[
+  {
+    "path": "volume.js",
+    "unchanged": true,
+    "sha256": "82588422ba42e9e2f97ebfd5c8d42bf54231aa6af2df71aaea80da63b1b516db"
+  },
+  {
+    "path": "atmosphere.js",
+    "unchanged": true,
+    "sha256": "3994ed143bf0d19c104e4c917095b280523f8e168484d4d1ba2e66166b258c6c"
+  },
+  {
+    "path": "travel-control.js",
+    "unchanged": true,
+    "sha256": "e42230a5b5c9d371ca2b05caf402aad31cb58bd6d3a5901d3353dbd2a5eb9c86"
+  },
+  {
+    "path": "pointer-navigation.js",
+    "unchanged": true,
+    "sha256": "59eeabf4042d1fbe01fcc6d779de04131ee06c363c456abff51358a5dec4e70b"
+  },
+  {
+    "path": "navigation-history.js",
+    "unchanged": true,
+    "sha256": "43ca6046fb79a6b75bf9768ac34447b63a60e7e93312d07a80dfddc6ef77fc27"
+  }
+]

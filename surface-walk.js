@@ -1,5 +1,5 @@
-/* First flight-to-walk handoff. Patches remain bounded; world streaming is a
- * separate versioned extension. All distances are kilometres and coordinates
+/* Flight-to-walk handoff. Legacy patches retain their bounds; revision 2 uses
+ * pinned connected support. All distances are kilometres and coordinates
  * stay in doubles. This controller queries the actual rendered triangles. */
 (function(root){
 'use strict';
@@ -8,7 +8,7 @@ const TRIGGER=.1,REARM=.2,EYE=S.EYE,SKIN=.00028,HEAD=.00015,STEP=.00045;
 let suppressed=null,approach=null,jumpHeld=false;
 function elevation(s,p){
  const q=M.norm(p),province=root.SphereWatershed?.sample(q,s);let h=province?.terrainKm||0;
- if(/^(biome|port)-/.test(s.siteId)&&s.siteAnchor&&M.dot(q,s.siteAnchor)>0){const mesh=S.site(s),local=mesh.local(p);if(Math.max(Math.abs(local[0]),Math.abs(local[2]))<1.08)h=Math.max(h,(s.siteElevation||0)+S.ground(mesh,local[0],local[2]));}
+ if(/^(biome|port)-/.test(s.siteId)&&s.siteAnchor&&M.dot(q,s.siteAnchor)>0){const mesh=S.site(s),local=mesh.local(p);if(s.siteRevision===2||Math.max(Math.abs(local[0]),Math.abs(local[2]))<1.08)h=Math.max(h,(s.siteRevision===2?0:s.siteElevation||0)+S.ground(mesh,local[0],local[2]));}
  return h;
 }
 function clearance(s,p){return s.radius-M.length(p)-elevation(s,p);}
@@ -33,10 +33,10 @@ function patch(s,position){
  // Opposite shell points share tangent-plane x/z coordinates. Reuse requires
  // proximity in all three dimensions, otherwise a diametric flight can attach
  // the far-side arrival to a patch nearly two radii behind the camera.
- if(old){const local=old.local(position);if(Math.abs(local[1])<20&&Math.max(Math.abs(local[0]),Math.abs(local[2]))<.9)return old;}
+ if(old){const local=old.local(position);if(Math.abs(local[1])<20&&(s.siteRevision===2?Math.max(Math.abs(local[0]),Math.abs(local[2]))<20:Math.max(Math.abs(local[0]),Math.abs(local[2]))<.9)){if(s.siteRevision===2){s.terrainAnchor??=s.siteAnchor;s.siteAnchor=M.norm(position);}return old;}}
  const q=M.norm(position),region=W.sample(q,s),province=root.SphereWatershed?.sample(q,s);
  s.siteId=region.id===15?'port-'+(M.dot(q,W.frame(s).axis)>0?'0':'1'):'biome-'+region.biome;
- s.siteAnchor=q;s.siteRevision=1;s.siteElevation=province?.terrainKm||0;s.geometryDetail=true;
+ s.siteAnchor=q;s.siteRevision=s.terrainRevision??1;s.terrainAnchor=s.siteRevision===2?q:null;s.siteElevation=province?.terrainKm||0;s.geometryDetail=true;
  return S.site(s);
 }
 function enter(s,position){
@@ -52,6 +52,9 @@ function enter(s,position){
  return s;
 }
 function move(s,d,distance){
+ // Prepare a fixed geographic neighbourhood during the final approach, before
+ // the 100 m handoff. Old terrain revisions keep their saved local patches.
+ if(s.terrainRevision===2&&s.geometryDetail&&M.dot(s.position,d)>0&&s.siteRevision!==1&&!s.walkMode&&s.shadeAttachment===null&&s.radius-M.length(s.position)<5&&s.radius-M.length(s.position)>=0&&!M.inBreach(M.norm(s.position),s)){patch(s,s.position);root.SphereGround?.request(s);}
  const start=s.position.slice(),result=F.move(s,d,distance);
  if(s.walkMode||s.autoWalk===false||s.layoutVersion!==2||!s.collection||!s.geometryDetail||s.shadeAttachment!==null)return result;
  // Test the original flight segment before collision adds a tangential glide.
@@ -83,7 +86,9 @@ function obstructed(s,mesh,p,delta){
  return false;
 }
 function step(s,keys,dt){
+ if(s.siteRevision===2)root.SphereGround.rebaseWalking(s);
  const mesh=S.site(s);if(!mesh?.ground||!s.walkPosition)return false;
+ if(s.siteRevision===2&&!root.SphereGround.support(s,s.walkPosition[0],s.walkPosition[2]))return false;
  const p=s.walkPosition.slice(),up=mesh.basis[1];let changed=false;
  if(approach&&M.length(M.sub(approach.anchor,s.siteAnchor))<1e-12){
   approach.time+=dt;const t=M.clamp(approach.time/2.4,0,1),ease=t*t*(3-2*t),floor=floorAt(s,mesh,[p[0],approach.startY,p[2]],.001);
@@ -95,8 +100,9 @@ function step(s,keys,dt){
   const projected=M.sub(s.forward,M.mul(up,M.dot(s.forward,up))),f=M.length(projected)>.001?M.norm(projected):mesh.basis[2],right=M.norm(M.cross(f,up));let v=[0,0,0];
   for(const [key,dir]of [['KeyW',f],['KeyS',M.mul(f,-1)],['KeyA',M.mul(right,-1)],['KeyD',right]])if(keys.has(key))v=M.add(v,dir);
   if(M.length(v)>0){v=M.mul(M.norm(v),(keys.has('ShiftLeft')||keys.has('ShiftRight')?.006:.0028)*dt);
-   for(const axis of [0,2]){const next=p.slice(),offset=M.dot(v,mesh.basis[axis]);next[axis]=M.clamp(next[axis]+offset,-1.08,1.08);const floor=floorAt(s,mesh,next),delta=M.mul(mesh.basis[axis],next[axis]-p[axis]);
-    if(Number.isFinite(floor)&&floor<=p[1]+STEP+.00003&&!obstructed(s,mesh,p,delta)){p[axis]=next[axis];if(floor>p[1])p[1]=floor;changed=true;}
+   for(const axis of [0,2]){const next=p.slice(),offset=M.dot(v,mesh.basis[axis]);next[axis]=s.siteRevision===2?next[axis]+offset:M.clamp(next[axis]+offset,-1.08,1.08);if(s.siteRevision===2&&!root.SphereGround.support(s,next[0],next[2]))continue;const floor=floorAt(s,mesh,next),delta=M.mul(mesh.basis[axis],next[axis]-p[axis]);
+    const drop=!Number.isFinite(floor)&&(mesh.ground.rim||s.siteRevision===2)&&M.inBreach(M.norm(mesh.world(next)),s);
+    if((drop||(Number.isFinite(floor)&&floor<=p[1]+STEP+.00003))&&!obstructed(s,mesh,p,delta)){p[axis]=next[axis];if(floor>p[1])p[1]=floor;changed=true;}
    }
   }
   const floor=floorAt(s,mesh,p),onGround=Number.isFinite(floor)&&p[1]<=floor+.00003;
@@ -106,7 +112,11 @@ function step(s,keys,dt){
   if(Number.isFinite(floor)&&nextY<=floor){nextY=floor;s.walkVelocity=0;}
   changed=changed||Math.abs(nextY-p[1])>1e-10;p[1]=nextY;
  }
- s.walkPosition=p;s.position=mesh.world(p);s.up=M.basis(s.forward,up).u;return changed;
+ s.walkPosition=p;s.position=mesh.world(p);s.up=M.basis(s.forward,up).u;
+ // A physical opening is not a streaming frontier. After falling clear of the
+ // inner surface, hand control back to flight before leaving saved walk bounds.
+ if((mesh.ground.rim||s.siteRevision===2)&&s.radius-M.length(s.position)<-.1)release(s);
+ return changed;
 }
 root.SphereLanding={move,enter,release,step,probe,clearance,elevation,heightAboveGround,triggerKm:TRIGGER,rearmKm:REARM};
 })(typeof window==='undefined'?globalThis:window);

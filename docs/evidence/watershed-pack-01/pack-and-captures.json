@@ -1,0 +1,508 @@
+{
+  "coldStartupMs": 43365,
+  "audit": {
+    "state": {
+      "version": 1,
+      "radius": 149597870.7,
+      "starRadius": 695700,
+      "luminosity": 1,
+      "position": [
+        149448029.24009928,
+        -4970791.852636272,
+        4446525.438651329
+      ],
+      "forward": [
+        0.9939569171695749,
+        -0.10571221945267055,
+        0.029573188349341063
+      ],
+      "up": [
+        -0.10566546013686381,
+        -0.9943967652091343,
+        -0.003143863176796529
+      ],
+      "fov": 62,
+      "breachEnabled": true,
+      "breachLat": 12,
+      "breachLon": -12,
+      "breachDiameter": 35000000,
+      "breachRoughness": 0,
+      "surfaceStyle": "atlas",
+      "shadeEnabled": true,
+      "shadeAltitude": 100000,
+      "shadeDiameter": 100000,
+      "shadeOffset": 0,
+      "shadeSpeed": 2,
+      "shadeDamage": 0,
+      "time": 0,
+      "playing": false,
+      "timeRate": 60,
+      "exposure": 0.4,
+      "shellshine": 0.06,
+      "atmosphere": 0,
+      "grid": false,
+      "viewMode": "material",
+      "projection": "perspective",
+      "speed": 100,
+      "quality": 1,
+      "seed": 23,
+      "starfield": true,
+      "collection": true,
+      "era": "after",
+      "routeShades": true,
+      "routeGuides": false,
+      "multipleWounds": true,
+      "starStation": true,
+      "regionOrder": 1,
+      "colorRichness": 0.8,
+      "cycleScale": 1,
+      "shineField": true,
+      "shadeShape": "disk",
+      "shadeTrim": 0.65,
+      "antialias": 0,
+      "shadowSamples": 7,
+      "stationSamples": 64,
+      "biome": -1,
+      "textureDetail": true,
+      "biomeAtmosphere": true,
+      "surfaceRelief": true,
+      "packAddress": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 1,
+        "seed": 713,
+        "anchor": [
+          0.9990056996801094,
+          -0.033228470003808824,
+          0.029723404715151572
+        ]
+      },
+      "layoutVersion": 2,
+      "provinceRevision": 1,
+      "provinceSeed": 713,
+      "provinceAnchor": [
+        0.9990056996801094,
+        -0.033228470003808824,
+        0.029723404715151572
+      ],
+      "axisLat": 63,
+      "axisLon": -28,
+      "waistWidth": 20,
+      "transitionKm": 60000,
+      "shellThickness": 12,
+      "geometryDetail": true,
+      "richMaterials": true,
+      "localShadows": 1,
+      "wreckage": true,
+      "clouds": false,
+      "weatherStrength": 0.55,
+      "weatherQuality": 1,
+      "cavityHaze": 0,
+      "spaceEnvironment": 0,
+      "siteId": "",
+      "siteAnchor": null,
+      "siteRevision": 0,
+      "siteElevation": 0,
+      "autoWalk": true,
+      "autoSpeed": true,
+      "placeScene": "day",
+      "placeWeather": "mixed",
+      "walkSurface": false,
+      "walkMode": false,
+      "walkPosition": null,
+      "walkVelocity": 0,
+      "shadeAttachment": null,
+      "surfaceLock": false
+    },
+    "coldProvinceMs": 1633.5,
+    "uploadMs": 28066.900000035763,
+    "cachedPrepareMs": 8.900000035762787,
+    "probes": 228,
+    "failures": [],
+    "traversal": [
+      {
+        "x": 1100,
+        "z": 400,
+        "height": 0.00171998143196106,
+        "hit": "Inner surface",
+        "playing": true,
+        "speed": 0.017,
+        "autoSpeed": false,
+        "addressEqual": true
+      },
+      {
+        "x": 1400,
+        "z": 550,
+        "height": 0.0017200112342834473,
+        "hit": "Inner surface",
+        "playing": true,
+        "speed": 0.017,
+        "autoSpeed": false,
+        "addressEqual": true
+      },
+      {
+        "x": 1800,
+        "z": 700,
+        "height": 0.0017199814319610596,
+        "hit": "Inner surface",
+        "playing": true,
+        "speed": 0.017,
+        "autoSpeed": false,
+        "addressEqual": true
+      },
+      {
+        "x": 2400,
+        "z": 1300,
+        "height": 0.001720011234283447,
+        "hit": "Inner surface",
+        "playing": true,
+        "speed": 0.017,
+        "autoSpeed": false,
+        "addressEqual": true
+      }
+    ],
+    "repeated": [
+      {
+        "seed": 714,
+        "ms": 1764.4000000357628,
+        "province": {
+          "provinces": 2,
+          "pending": 0,
+          "meshes": 15,
+          "triangles": 646758,
+          "vertexMiB": 81.4171371459961,
+          "packedCollisionMiB": 55.451751708984375
+        },
+        "pack": {
+          "addresses": 2,
+          "segments": 136,
+          "graphBytes": 43616,
+          "textureBytes": 0
+        }
+      },
+      {
+        "seed": 715,
+        "ms": 1884.199999988079,
+        "province": {
+          "provinces": 2,
+          "pending": 0,
+          "meshes": 17,
+          "triangles": 718949,
+          "vertexMiB": 90.50490188598633,
+          "packedCollisionMiB": 61.97075653076172
+        },
+        "pack": {
+          "addresses": 2,
+          "segments": 138,
+          "graphBytes": 44256,
+          "textureBytes": 0
+        }
+      },
+      {
+        "seed": 713,
+        "ms": 1650,
+        "province": {
+          "provinces": 2,
+          "pending": 0,
+          "meshes": 16,
+          "triangles": 689321,
+          "vertexMiB": 86.77518081665039,
+          "packedCollisionMiB": 58.92523956298828
+        },
+        "pack": {
+          "addresses": 2,
+          "segments": 154,
+          "graphBytes": 49376,
+          "textureBytes": 0
+        }
+      },
+      {
+        "seed": 714,
+        "ms": 1746.5,
+        "province": {
+          "provinces": 2,
+          "pending": 0,
+          "meshes": 15,
+          "triangles": 646758,
+          "vertexMiB": 81.4171371459961,
+          "packedCollisionMiB": 55.451751708984375
+        },
+        "pack": {
+          "addresses": 2,
+          "segments": 136,
+          "graphBytes": 43616,
+          "textureBytes": 0
+        }
+      },
+      {
+        "seed": 713,
+        "ms": 0,
+        "province": {
+          "provinces": 2,
+          "pending": 0,
+          "meshes": 15,
+          "triangles": 646758,
+          "vertexMiB": 81.4171371459961,
+          "packedCollisionMiB": 55.451751708984375
+        },
+        "pack": {
+          "addresses": 2,
+          "segments": 136,
+          "graphBytes": 43616,
+          "textureBytes": 0
+        }
+      }
+    ],
+    "landAgreement": {
+      "pixels": 74284,
+      "mean": 0.00012567911949300345,
+      "max": 0.29411764705882354
+    },
+    "reducedBudget": {
+      "width": 720,
+      "height": 450
+    },
+    "frames": {
+      "firstDrawMs": 15.600000023841858,
+      "warmMax": 1.300000011920929,
+      "rafMedian": 16.69999999999709,
+      "rafP95": 16.90000000000873,
+      "rafMax": 1999.8999999999942,
+      "median": 0.8999999761581421,
+      "p95": 1.199999988079071,
+      "max": 15.600000023841858,
+      "gpuMedian": 2.033984
+    },
+    "province": {
+      "provinces": 2,
+      "pending": 0,
+      "meshes": 15,
+      "triangles": 646758,
+      "vertexMiB": 81.4171371459961,
+      "packedCollisionMiB": 55.451751708984375
+    },
+    "pack": {
+      "addresses": 2,
+      "segments": 136,
+      "graphBytes": 43616,
+      "textureBytes": 0
+    },
+    "gpuGeometry": {
+      "meshes": 7,
+      "vertexMiB": 38.84370803833008,
+      "pendingUploadBytes": 0
+    },
+    "render": {
+      "width": 1600,
+      "height": 900,
+      "internalWidth": 1600,
+      "internalHeight": 900,
+      "antialias": "none",
+      "lightPipeline": "linear-half-float",
+      "exportFrame": true,
+      "silhouetteSamples": 0,
+      "silhouetteMaskMiB": 0,
+      "structureShadows": {
+        "enabled": false
+      },
+      "geometry": {
+        "groups": 7,
+        "triangles": 308565,
+        "localShadow": false,
+        "materials": "simple"
+      },
+      "cpuMs": 7.599999964237213,
+      "gpuMs": 0.83424,
+      "indirectLight": "exact frame",
+      "indirectSampleTime": 0,
+      "heroTextures": {
+        "ready": 1,
+        "total": 10,
+        "gpuMiB": 79.96,
+        "tileKm": 2.5
+      },
+      "woundTextures": {
+        "ready": 0,
+        "total": 10,
+        "gpuMiB": 0,
+        "tileKm": 0.64,
+        "damageBandKm": 240
+      },
+      "assets": {
+        "total": 1,
+        "ready": 1,
+        "failed": [],
+        "missing": []
+      },
+      "textures": {
+        "ready": 0,
+        "total": 10,
+        "gpuMiB": 0,
+        "scalesKm": [
+          256,
+          16,
+          1
+        ]
+      }
+    },
+    "error": 0
+  },
+  "captures": [
+    {
+      "projection": "perspective",
+      "equal": true,
+      "bytes": 2289134,
+      "image": {
+        "width": 3840,
+        "height": 2160,
+        "render": {
+          "width": 3840,
+          "height": 2160,
+          "internalWidth": 3840,
+          "internalHeight": 2160,
+          "antialias": "none",
+          "lightPipeline": "linear-half-float",
+          "exportFrame": true,
+          "silhouetteSamples": 0,
+          "silhouetteMaskMiB": 0,
+          "structureShadows": {
+            "enabled": false
+          },
+          "geometry": {
+            "groups": 7,
+            "triangles": 308565,
+            "localShadow": false,
+            "materials": "simple"
+          },
+          "cpuMs": 0.8999999761581421,
+          "gpuMs": 0.83424,
+          "indirectLight": "exact frame",
+          "indirectSampleTime": 0,
+          "heroTextures": {
+            "ready": 1,
+            "total": 10,
+            "gpuMiB": 79.96,
+            "tileKm": 2.5
+          },
+          "woundTextures": {
+            "ready": 0,
+            "total": 10,
+            "gpuMiB": 0,
+            "tileKm": 0.64,
+            "damageBandKm": 240
+          },
+          "assets": {
+            "total": 1,
+            "ready": 1,
+            "failed": [],
+            "missing": []
+          },
+          "textures": {
+            "ready": 0,
+            "total": 10,
+            "gpuMiB": 0,
+            "scalesKm": [
+              256,
+              16,
+              1
+            ]
+          }
+        },
+        "projection": "perspective",
+        "horizontalFieldOfView": 62
+      },
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 1,
+        "seed": 713,
+        "anchor": [
+          0.9990056996801094,
+          -0.033228470003808824,
+          0.029723404715151572
+        ]
+      }
+    },
+    {
+      "projection": "panorama",
+      "equal": true,
+      "bytes": 7407222,
+      "image": {
+        "width": 3840,
+        "height": 1920,
+        "render": {
+          "width": 3840,
+          "height": 1920,
+          "internalWidth": 960,
+          "internalHeight": 960,
+          "antialias": "none",
+          "lightPipeline": "linear-half-float",
+          "exportFrame": true,
+          "silhouetteSamples": 0,
+          "silhouetteMaskMiB": 0,
+          "structureShadows": {
+            "enabled": false
+          },
+          "geometry": {
+            "groups": 7,
+            "triangles": 308565,
+            "localShadow": false,
+            "materials": "simple"
+          },
+          "cpuMs": 15.399999976158142,
+          "gpuMs": 0.83424,
+          "indirectLight": "exact frame",
+          "indirectSampleTime": 0,
+          "heroTextures": {
+            "ready": 1,
+            "total": 10,
+            "gpuMiB": 79.96,
+            "tileKm": 2.5
+          },
+          "woundTextures": {
+            "ready": 0,
+            "total": 10,
+            "gpuMiB": 0,
+            "tileKm": 0.64,
+            "damageBandKm": 240
+          },
+          "assets": {
+            "total": 1,
+            "ready": 1,
+            "failed": [],
+            "missing": []
+          },
+          "textures": {
+            "ready": 0,
+            "total": 10,
+            "gpuMiB": 0,
+            "scalesKm": [
+              256,
+              16,
+              1
+            ]
+          },
+          "panoramaFaces": 6,
+          "faceResolution": 960
+        },
+        "projection": "panorama",
+        "horizontalFieldOfView": 360
+      },
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 1,
+        "seed": 713,
+        "anchor": [
+          0.9990056996801094,
+          -0.033228470003808824,
+          0.029723404715151572
+        ]
+      }
+    }
+  ],
+  "errors": []
+}

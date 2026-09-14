@@ -41,7 +41,10 @@ class LocalShadows{
   if(gl.checkFramebufferStatus(gl.FRAMEBUFFER)!==gl.FRAMEBUFFER_COMPLETE)throw Error('Structure shadow framebuffer unavailable');
   const key=JSON.stringify([quality,resolution,plan.ray,plan.right,plan.cascades.map(c=>[c.centre,c.extent,c.casters.map(m=>[m.streamKey||m.name,m.count,m.origin,m.basis])]),plan.depth]);
   let triangles=0;
-  if(key!==this.key){
+  // A photograph owns a fresh shadow pass. Switching from
+  // a freshly rendered map to the cached pass produced small differences in
+  // otherwise identical paused exports. Preview still reuses unchanged maps.
+  if(exportFrame||key!==this.key){
    gl.enable(gl.DEPTH_TEST);gl.depthFunc(gl.LESS);gl.depthMask(true);gl.disable(gl.CULL_FACE);gl.disable(gl.BLEND);gl.disable(gl.SCISSOR_TEST);gl.clearDepth(1);gl.clear(gl.DEPTH_BUFFER_BIT);gl.useProgram(this.program.p);
    const u=this.program.u,axes=[plan.right,plan.up,plan.ray];
    for(let i=0;i<2;i++){const cascade=plan.cascades[i];gl.viewport(i*resolution,0,resolution,resolution);gl.uniform2f(u.uExtent,cascade.extent,plan.depth);

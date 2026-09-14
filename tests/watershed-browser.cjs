@@ -29,6 +29,12 @@ void main(){fragColor=vec4(texelFetch(depths,ivec2(gl_FragCoord.xy),0).r,0.,0.,1
     const meshes=P.geometry(s).filter(m=>m.name===hit.kind),mesh=meshes.sort((a,b)=>M.length(M.sub(a.origin,hit.point))-M.length(M.sub(b.origin,hit.point)))[0],bound=mesh?Math.max(1,...mesh.local(s.position).map(Math.abs),...mesh.bvh.min.map(Math.abs),...mesh.bvh.max.map(Math.abs)):320;
     const contact={};if(mesh)SphereSites.rayBVH(mesh.local(s.position),mesh.basis.map(b=>M.dot(d,b)),mesh.bvh,hit.distance+.001,contact);const cosine=contact.normal?Math.max(.0001,Math.abs(M.dot(contact.normal,mesh.basis.map(b=>M.dot(d,b))))):1;
     const tolerance=2e-7+(.0001+8*2**-23*bound)/(cosine*(1+hit.distance)*Math.log(1+4*s.radius));
+    // A narrow reveal between two faces can lie inside the raster footprint
+    // while all four corners hit its foreground. Sample that interior only
+    // for unresolved pixels; do not widen the spatial or depth tolerance.
+    if(gpu<lo-tolerance||gpu>hi+tolerance)for(let sy=-3;sy<=3;sy++)for(let sx=-3;sx<=3;sx++){
+     const ray=M.ray((x+.5+sx*offset/4)/w*2-1,(y+.5+sy*offset/4)/h*2-1,w/h,s.fov,b),hit=SphereSites.trace(s.position,ray,s,M.trace),depth=Math.log2(1+hit.distance)/Math.log2(1+4*s.radius);lo=Math.min(lo,depth);hi=Math.max(hi,depth);
+    }
     if(gpu<lo-tolerance||gpu>hi+tolerance){mismatch++;if(failures.length<5)failures.push({x,y,kind:hit.kind,distance:hit.distance,error,lo,hi,gpu});}else subpixel++;
    }}
    results.push({name,probes,mismatch,maxError,subpixel,failures});

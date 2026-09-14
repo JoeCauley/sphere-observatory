@@ -1,7 +1,7 @@
 const assert=require('node:assert/strict'),M=require('../math.js');
 require('../collection.js');require('../biomes.js');require('../world-palette.js');require('../world.js');require('../field-sites.js');require('../watershed-network.js');require('../watershed-province.js');require('../wreckage.js');require('../flight.js');require('../surface-walk.js');require('../surface-arrival.js');require('../session-state.js');
 const S=SphereSites,C=SphereCollection,W=SphereWorld,P=SphereWatershed,L=SphereLanding,F=SphereFlight,E=SphereEdges;
-const base={...M.defaultState(),collection:true,routeShades:false,starStation:false,playing:true};
+const base={...M.defaultState(),shadeGeometryRevision:1,collection:true,routeShades:false,starStation:false,playing:true};
 let centres=0,landings=0,contacts=0;
 for(let i=0;i<6;i++)for(const outside of [false,true]){
  const q=C.wounds[i].axis,s={...base,position:M.mul(q,base.radius+(outside?100:-100)),forward:M.mul(q,outside?-1:1)},arrival=SphereArrival.select(s);
@@ -78,5 +78,5 @@ try{
  let maxEye=0;for(let i=0;i<120;i++){S.step(state,new Set(i===0?['Space']:[]),1/60);maxEye=Math.max(maxEye,state.walkPosition[1]);}
  assert(maxEye>.0018&&maxEye<.002,'A jump must not pass through the 2 m ceiling');assert(Math.abs(state.walkPosition[1]-S.EYE)<.00008);
 }finally{S.geometry=oldGeometry;}
-for(const invalid of [{siteRevision:2},{siteElevation:NaN},{autoWalk:1},{walkSurface:'true'}])assert.throws(()=>M.validate({...base,...invalid}));
+for(const invalid of [{siteRevision:3},{siteElevation:NaN},{autoWalk:1},{walkSurface:'true'}])assert.throws(()=>M.validate({...base,...invalid}));
 console.log(`PASS ${centres} Breach spill arrivals, ${landings} anchored descents, garden support, walking/jump/restore, steps/walls/ceilings, flight hysteresis, open water/Wounds, ${contacts} two-sided Shade contacts and cold deck collision.`);
