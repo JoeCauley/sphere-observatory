@@ -4,7 +4,7 @@ const P=SphereWatershed,N=SphereNeighbourhood,K=SpherePacks,base={...M.defaultSt
 assert.equal(legacy.packAddress,null);assert.equal(M.validate({...legacy,packAddress:undefined}).packAddress,null);
 assert.deepEqual(P.geometry(s),P.geometry(legacy),'Pack must reuse the exact core meshes');
 assert.deepEqual(M.validate(M.sceneRecord(s).state),s);assert.deepEqual(SphereSessionCodec.decode(SphereSessionCodec.encode(s,{})).state.packAddress,s.packAddress);
-for(const patch of [{schema:2},{packId:'unknown'},{geographyRevision:2},{artRevision:2},{seed:714},{anchor:[1,0,0]}])assert.throws(()=>M.validate({...s,packAddress:{...s.packAddress,...patch}}));
+for(const patch of [{schema:2},{packId:'unknown'},{geographyRevision:2},{artRevision:3},{seed:714},{anchor:[1,0,0]}])assert.throws(()=>M.validate({...s,packAddress:{...s.packAddress,...patch}}));
 for(const q of [s.provinceAnchor,P.direction(100,100,s)])assert.deepEqual(P.sample(q,s),P.sample(q,legacy));
 for(const patch of [{time:1234567},{era:'before'},{axisLat:-20,axisLon:179}])assert.deepEqual(K.activate({...s,...patch}).packAddress,s.packAddress,'A saved pack address survives clock, era and atlas orientation changes');
 let joins=0,segments=0;

@@ -29,22 +29,31 @@ function routeFrame(s,band,angle){const r=routes[band];if(s.layoutVersion!==2||!
  // leave a margin at both ribbon edges, including at the longitudinal corners.
  return {normal,right:M.norm(M.sub(f.axis,M.mul(normal,sl))),across:Math.min(1,Math.tan(M.radians(s.waistWidth)/3*.88)/Math.tan(Math.PI/(2*r.count))),latitude};
 }
-function plates(s){const key=[s.time,s.cycleScale,s.era,s.routeShades,s.shadeShape,s.shadeTrim,s.biome,s.layoutVersion,s.axisLat,s.axisLon,s.waistWidth].join('|');if(key===cachedKey)return cachedPlates;cachedKey=key;cachedPlates=[];if(!s.routeShades)return cachedPlates;
+function plates(s){const key=[s.radius,s.shadeGeometryRevision,s.time,s.cycleScale,s.era,s.routeShades,s.shadeShape,s.shadeTrim,s.biome,s.layoutVersion,s.axisLat,s.axisLon,s.waistWidth].join('|');if(key===cachedKey)return cachedPlates;cachedKey=key;cachedPlates=[];if(!s.routeShades)return cachedPlates;
  routes.forEach((r,b)=>{for(let j=0;j<r.count;j++){
   const destroyed=s.era==='after'&&(j===b+1||j===r.count-2);const fragmented=s.era==='after'&&(j===0||j===r.count-1);
   const a=TAU*(j/r.count+s.time/(r.hours*3600*r.count*s.cycleScale)+r.phase);
   const frame=routeFrame(s,b,a),n=frame.normal,center=M.mul(n,r.radius),size=r.radius*Math.tan(Math.PI/(2*r.count));
-  if(!destroyed)cachedPlates.push({center,normal:n,right:frame.right,up:M.cross(n,frame.right),across:frame.across,latitude:frame.latitude,size,damage:fragmented?1:0,id:b*8+j,band:b,shape:s.shadeShape||'disk',trim:s.shadeTrim??.65,layoutVersion:s.layoutVersion||1});
+  if(!destroyed)cachedPlates.push({center,normal:n,right:frame.right,up:M.cross(n,frame.right),across:frame.across,latitude:frame.latitude,size,thickness:s.layoutVersion===2&&s.shadeGeometryRevision>=3?.18/s.radius:0,damage:fragmented?1:0,id:b*8+j,band:b,shape:s.shadeShape||'disk',trim:s.shadeTrim??.65,layoutVersion:s.layoutVersion||1});
  }});return cachedPlates;
 }
 function diskContains(x,y,p){x/=p.across||1;if(p.shape==='trimmed'&&Math.abs(x)>p.size*p.trim)return false;if(p.shape==='square'?Math.max(Math.abs(x),Math.abs(y))>p.size:x*x+y*y>p.size*p.size)return false;if(!p.damage)return true;const u=x/p.size,v=y/p.size;
  if(p.layoutVersion===2&&root.SphereWorld)return root.SphereWorld.shadeSolid(u,v,p.id);
  return !(u>.12&&v>-.2)&&Math.abs(u+.3+.16*Math.sin(v*9))>.018&&Math.abs(v+.18+.11*Math.sin(u*10))>.012;
 }
-function diskDistance(p,d,pl){const epsilon=pl.layoutVersion===2?1e-13:1e-10;
+function diskDistance(p,d,pl){
+ if(pl.thickness){const skin={...pl,thickness:0},near=diskSkinDistance(p,d,skin),r=M.length(pl.center),outer=r+pl.thickness;
+  // Gnomonic dimensions grow with radius so both faces have exactly the same
+  // angular footprint. Edge walls join the two faces along those radial lines.
+  const back=pl.shape==='cap'||pl.shape==='trimmed'?{...skin,center:M.mul(pl.normal,outer),size:pl.size*outer/r}:{...skin,center:M.add(pl.center,M.mul(pl.normal,pl.thickness))};
+  return Math.min(near,diskSkinDistance(p,d,back));
+ }
+ return diskSkinDistance(p,d,pl);
+}
+function diskSkinDistance(p,d,pl){const epsilon=pl.layoutVersion===2?1e-13:1e-10;
  if((pl.shape==='cap'||pl.shape==='trimmed')){
-  const r=M.length(pl.center),b=M.dot(p,d),disc=r*r-M.dot(M.cross(p,d),M.cross(p,d));if(disc<0)return Infinity;const root=Math.sqrt(disc);
-  for(const t of [-b-root,-b+root]){if(t<=epsilon)continue;const q=M.mul(M.add(p,M.mul(d,t)),1/r),f=M.dot(q,pl.normal);if(f<=0)continue;if(diskContains(r*M.dot(q,pl.right)/f,r*M.dot(q,pl.up)/f,pl))return t;}return Infinity;
+  const r=M.length(pl.center),b=M.dot(p,d),height=M.length(p)-r,c=height*(2*r+height),disc=b*b-c;if(disc<0)return Infinity;const root=Math.sqrt(disc),q=-b-(b>=0?1:-1)*root,roots=q===0?[0]:[q,c/q].sort((a,b)=>a-b);
+  for(const t of roots){if(t<=epsilon)continue;const q=M.mul(M.add(p,M.mul(d,t)),1/r),f=M.dot(q,pl.normal);if(f<=0)continue;if(diskContains(r*M.dot(q,pl.right)/f,r*M.dot(q,pl.up)/f,pl))return t;}return Infinity;
  }
  const denom=M.dot(d,pl.normal);if(Math.abs(denom)<1e-12)return Infinity;const t=M.dot(M.sub(pl.center,p),pl.normal)/denom;if(t<=epsilon)return Infinity;const h=M.sub(M.add(p,M.mul(d,t)),pl.center);return diskContains(M.dot(h,pl.right),M.dot(h,pl.up),pl)?t:Infinity;
 }
@@ -72,7 +81,7 @@ function visibility(p,s,samples=32,ignoreId=-1){if(M.length(p)<=s.starRadius)ret
  const outside=outsideShell(p,s);
  if(!pp.length&&!s.starStation&&!outside)return 1;
  if(!sourceSamples.has(samples)){const points=[];for(let i=0;i<samples;i++){const a=i*2.39996323,r=Math.sqrt((i+.5)/samples);points.push([r*Math.cos(a),r*Math.sin(a)]);}sourceSamples.set(samples,points);}
- for(const [sx,sy] of sourceSamples.get(samples)){const x=sx*rad,y=sy*rad,dx=b.f[0]+b.r[0]*x+b.u[0]*y,dy=b.f[1]+b.r[1]*x+b.u[1]*y,dz=b.f[2]+b.r[2]*x+b.u[2]*y,inv=1/Math.hypot(dx,dy,dz),d=[dx*inv,dy*inv,dz*inv];const st=M.sphereDistance(pn,d,[0,0,0],s.starRadius/s.radius);const shell=outside?M.sphereDistance(p,d,[0,0,0],s.radius):Infinity;const shellClear=!outside||!Number.isFinite(shell)||missing(M.norm(M.add(p,M.mul(d,shell))),s);if(shellClear&&pp.every(pl=>diskDistance(pn,d,pl)>=st)&&ringDistance(pn,d,s)>=st)lit++;}return lit/samples;
+ for(const [sx,sy] of sourceSamples.get(samples)){const x=sx*rad,y=sy*rad,dx=b.f[0]+b.r[0]*x+b.u[0]*y,dy=b.f[1]+b.r[1]*x+b.u[1]*y,dz=b.f[2]+b.r[2]*x+b.u[2]*y,inv=1/Math.hypot(dx,dy,dz),d=[dx*inv,dy*inv,dz*inv];const st=M.sphereDistance(pn,d,[0,0,0],s.starRadius/s.radius);const shell=outside?M.sphereDistance(p,d,[0,0,0],s.radius):Infinity;const shellClear=!outside||!Number.isFinite(shell)||missing(M.norm(M.add(p,M.mul(d,shell))),s);if(shellClear&&pp.every(pl=>diskSkinDistance(pn,d,pl)>=st)&&ringDistance(pn,d,s)>=st)lit++;}return lit/samples;
 }
 let shineKey='',shine=[0,0,0];
 function cavity(s){const key=[s.era,s.seed,s.regionOrder,s.colorRichness,s.multipleWounds,s.routeShades,s.starStation,s.stationSamples,s.cycleScale,s.time,s.luminosity,s.radius,s.starRadius,s.shadeShape,s.shadeTrim,s.biome].join('|');if(key===shineKey)return shine;shineKey=key;shine=[0,0,0];const N=192;

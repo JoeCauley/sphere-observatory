@@ -75,9 +75,9 @@ the equality assertion. A passing retry is not recorded as a fix. The older
 cold 4K issue may be related, but that has not been established.
 
 Local views and complete scene JSON are under `work/screenshots/wound-ground/`.
-Inspect [the varied terrain lip](../work/screenshots/wound-ground/varied-edge.png),
-[the machinery edge](../work/screenshots/wound-ground/machine-edge.png) and
-[the view from below](../work/screenshots/wound-ground/below-lip.png).
+Inspect [the varied terrain lip](../examples/archive/pre-v1.5/docs/evidence/wound-ground/varied-edge.png),
+[the machinery edge](../examples/archive/pre-v1.5/docs/evidence/wound-ground/machine-edge.png) and
+[the view from below](../examples/archive/pre-v1.5/docs/evidence/wound-ground/below-lip.png).
 The browser report is `work/screenshots/wound-ground/verification.json`;
 sequential regression results are under
 `work/screenshots/neighbourhood/regressions/`. These generated files are local,

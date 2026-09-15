@@ -28,7 +28,7 @@ for(const shape of ['disk','square','cap','trimmed'])for(const era of ['before',
   else interval=[0,1.1];assert(interval,'A solid-to-void fixture bank must exist');
   let [a,b]=interval;for(let i=0;i<50;i++){const mid=(a+b)/2;if(solid(mid))a=mid;else b=mid;}const uv=[(a+b)/2,v];
   const at=E.plateVector(E.canonicalPoint(s,p,...uv),p),n=shape==='cap'||shape==='trimmed'?M.norm(at):p.normal;
-  const tangent=M.norm(M.sub(p.right,M.mul(n,M.dot(p.right,n))));const values=[];for(const offset of [-.02,0,.02]){s.position=M.add(M.add(at,M.mul(n,side*.04)),M.mul(tangent,offset));const hit=T.shadeClearance(s,p);assert(hit.distance>=.03999&&hit.distance<.06,JSON.stringify({shape,era,id:p.id,side,offset,hit}));values.push(hit.distance);shadeProbes++;}
+  const tangent=M.norm(M.sub(p.right,M.mul(n,M.dot(p.right,n))));const values=[];for(const offset of [-.02,0,.02]){s.position=M.add(M.add(at,M.mul(n,side*.04+(side>0?(p.thickness||0)*s.radius:0))),M.mul(tangent,offset));const hit=T.shadeClearance(s,p);assert(hit.distance>=.03999&&hit.distance<.06,JSON.stringify({shape,era,id:p.id,side,offset,hit}));values.push(hit.distance);shadeProbes++;}
   assert(Math.max(...values)-Math.min(...values)<.006,'Crossing a bank keeps the perpendicular gradient');
  }
 }
@@ -36,7 +36,7 @@ for(const shape of ['disk','square','cap','trimmed'])for(const era of ['before',
 // lateral clearance inside actual authored holes, without selecting a Shade.
 let voidSamples=0,solidSamples=0;
 for(const shape of ['disk','square','cap','trimmed']){const s={...base,routeShades:true,shadeShape:shape,era:'after'};for(const p of C.plates(s).filter(p=>p.damage))for(let j=-6;j<=6;j++)for(let i=-6;i<=6;i++){
- const u=i*.1,v=j*.1,at=E.plateVector(E.canonicalPoint(s,p,u,v),p),n=shape==='cap'||shape==='trimmed'?M.norm(at):p.normal;s.position=M.add(at,M.mul(n,.04));const hit=T.shadeClearance(s,p),solid=C.diskContains(u*p.size*p.across,v*p.size,p);
+ const u=i*.1,v=j*.1,at=E.plateVector(E.canonicalPoint(s,p,u,v),p),n=shape==='cap'||shape==='trimmed'?M.norm(at):p.normal;s.position=M.add(at,M.mul(n,.04+(p.thickness||0)*s.radius));const hit=T.shadeClearance(s,p),solid=C.diskContains(u*p.size*p.across,v*p.size,p);
  if(solid){assert(Math.abs(hit.distance-.04)<.000002);solidSamples++;}else{assert(hit.distance>.041);voidSamples++;}
 }}
 assert(voidSamples>200&&solidSamples>200);

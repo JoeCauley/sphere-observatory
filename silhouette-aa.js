@@ -32,13 +32,14 @@ void probeShadeBoundary(vec3 d,float t,vec3 hit,vec2 uv,int i){
  float face=uShadeShape>=2?max(.001,dot(normal,uDiskNormals[i].xyz)):1.;
  vec2 p=uv/vec2(max(.001,uDiskAcross[i]),1.);
  float footprint=t*pixelCone*max(1.,length(p))/(max(.000001,abs(dot(d,normal)))*face*uDisks[i].w*min(1.,uDiskAcross[i]));
- if(abs(shadeBoundaryMargin(p,i,footprint))<=footprint) silhouetteDistance=min(silhouetteDistance,t);
+ float margin=i==uPreciseShade&&preciseShadeMargin<1e19?preciseShadeMargin:abs(shadeBoundaryMargin(p,i,footprint));
+ if(margin<=footprint) silhouetteDistance=min(silhouetteDistance,t);
 }
 `;
 SphereShaders.geometryFragment=SphereShaders.fragment;
 let source=SphereShaders.fragment.replace('out vec4 fragColor;','layout(location=0)out vec4 fragColor;');
-source=source.replace('float primaryDiskHit(vec3 d,int i){',declarations+'\nfloat primaryDiskHit(vec3 d,int i){');
-source=source.replace('if(primaryShadeSolid(uv,i,d*(t*uRadius)-uInspectRelative))return t;','probeShadeBoundary(d,t,hit,uv,i);if(primaryShadeSolid(uv,i,d*(t*uRadius)-uInspectRelative))return t;');
+source=source.replace('float primaryDiskLayerHit(vec3 d,int i,float depth){',declarations+'\nfloat primaryDiskLayerHit(vec3 d,int i,float depth){');
+source=source.replace('if(cameraShadeSolid(uv,i,d*(t*uRadius)))return t;','bool solid=cameraShadeSolid(uv,i,d*(t*uRadius));probeShadeBoundary(d,t,hit,uv,i);if(solid)return t;');
 source=source.replace('void main(){',`void main(){
  silhouetteMask=vec4(0.);probingSilhouette=uSilhouetteSamples>1&&uMode==0&&uAAPass==0;silhouetteDistance=1e20;
  if(uAAPass>0){

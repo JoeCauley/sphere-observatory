@@ -1,0 +1,289 @@
+[
+  {
+    "from": "examples/observatory/cavity.jpg",
+    "to": "examples/archive/pre-v1.5/observatory/cavity.jpg",
+    "sha256": "733fcb40e6ed78bf98b972d0f1a7bb27c35586e5bc898be6d4cbe4077f72c9bd",
+    "archivedSha256": "733fcb40e6ed78bf98b972d0f1a7bb27c35586e5bc898be6d4cbe4077f72c9bd",
+    "linksRelocated": false
+  },
+  {
+    "from": "examples/observatory/cavity.json",
+    "to": "examples/archive/pre-v1.5/observatory/cavity.json",
+    "sha256": "636cd61f27ec535347f2777dcc4b8b8874f8b7bf55b0f50b16adf136187556b3",
+    "archivedSha256": "636cd61f27ec535347f2777dcc4b8b8874f8b7bf55b0f50b16adf136187556b3",
+    "linksRelocated": false
+  },
+  {
+    "from": "examples/observatory/cavity.png",
+    "to": "examples/archive/pre-v1.5/observatory/cavity.png",
+    "sha256": "14c0cffda2163fcb427eafab69824d5f0ac25f6a2c4f0aa2f834cd5190e5a843",
+    "archivedSha256": "14c0cffda2163fcb427eafab69824d5f0ac25f6a2c4f0aa2f834cd5190e5a843",
+    "linksRelocated": false
+  },
+  {
+    "from": "examples/observatory/clouds.jpg",
+    "to": "examples/archive/pre-v1.5/observatory/clouds.jpg",
+    "sha256": "c7183440752ccfb00db6beb220c6988aaee2d7c3ed2eeaa12d283956b736b1f2",
+    "archivedSha256": "c7183440752ccfb00db6beb220c6988aaee2d7c3ed2eeaa12d283956b736b1f2",
+    "linksRelocated": false
+  },
+  {
+    "from": "examples/observatory/clouds.json",
+    "to": "examples/archive/pre-v1.5/observatory/clouds.json",
+    "sha256": "0a4b95acd9321d86e74f65aaea3bcea86fbcce65a3ef080776d5581b205f376d",
+    "archivedSha256": "0a4b95acd9321d86e74f65aaea3bcea86fbcce65a3ef080776d5581b205f376d",
+    "linksRelocated": false
+  },
+  {
+    "from": "examples/observatory/clouds.png",
+    "to": "examples/archive/pre-v1.5/observatory/clouds.png",
+    "sha256": "0db27b1440c600a9253c803b0e735bf1a8197acf593cd822a3a74886e9394f2a",
+    "archivedSha256": "0db27b1440c600a9253c803b0e735bf1a8197acf593cd822a3a74886e9394f2a",
+    "linksRelocated": false
+  },
+  {
+    "from": "examples/observatory/gallery.json",
+    "to": "examples/archive/pre-v1.5/observatory/gallery.json",
+    "sha256": "53b519c12c4542226358346704589d0ce483a6e224523398e59314ea09ec2c6a",
+    "archivedSha256": "53b519c12c4542226358346704589d0ce483a6e224523398e59314ea09ec2c6a",
+    "linksRelocated": false
+  },
+  {
+    "from": "examples/observatory/interior.jpg",
+    "to": "examples/archive/pre-v1.5/observatory/interior.jpg",
+    "sha256": "8be8f98e09744788ce866585829b6f650d09c5754ff018f6e7b526bb0b743d80",
+    "archivedSha256": "8be8f98e09744788ce866585829b6f650d09c5754ff018f6e7b526bb0b743d80",
+    "linksRelocated": false
+  },
+  {
+    "from": "examples/observatory/interior.json",
+    "to": "examples/archive/pre-v1.5/observatory/interior.json",
+    "sha256": "78be4e5c64ae91a4d39f147339759764f146ac6cc65daad1158b2abbdfb3c3b4",
+    "archivedSha256": "78be4e5c64ae91a4d39f147339759764f146ac6cc65daad1158b2abbdfb3c3b4",
+    "linksRelocated": false
+  },
+  {
+    "from": "examples/observatory/interior.png",
+    "to": "examples/archive/pre-v1.5/observatory/interior.png",
+    "sha256": "118dae43ea83b1d0ae56e05b46af70c613acce889c223d8ac058c9fe2dbd6a29",
+    "archivedSha256": "118dae43ea83b1d0ae56e05b46af70c613acce889c223d8ac058c9fe2dbd6a29",
+    "linksRelocated": false
+  },
+  {
+    "from": "examples/observatory/README.md",
+    "to": "examples/archive/pre-v1.5/observatory/README.md",
+    "sha256": "d0d38308ae32d782f68b359300067c8090dc3db5973ed1e4772585858b804f60",
+    "archivedSha256": "1e368e8465742c4963bb80c2d7798ea6aa53555f6796839debae89b7cedd98c8",
+    "linksRelocated": true
+  },
+  {
+    "from": "examples/observatory/river-garden.jpg",
+    "to": "examples/archive/pre-v1.5/observatory/river-garden.jpg",
+    "sha256": "0c85c7ca43244b89948b849f1ac6f5a9af6eef5d3ecb0945b92adc3d79f05945",
+    "archivedSha256": "0c85c7ca43244b89948b849f1ac6f5a9af6eef5d3ecb0945b92adc3d79f05945",
+    "linksRelocated": false
+  },
+  {
+    "from": "examples/observatory/river-garden.json",
+    "to": "examples/archive/pre-v1.5/observatory/river-garden.json",
+    "sha256": "07222a4fd1e312e4b701e7fe6dd35b367f7cb2cf5d43a3321f600ddc629277dd",
+    "archivedSha256": "07222a4fd1e312e4b701e7fe6dd35b367f7cb2cf5d43a3321f600ddc629277dd",
+    "linksRelocated": false
+  },
+  {
+    "from": "examples/observatory/river-garden.png",
+    "to": "examples/archive/pre-v1.5/observatory/river-garden.png",
+    "sha256": "e89fdf3e826d67f48df753fab3112b9afa1389771ad609a9e93b39e6f149d54e",
+    "archivedSha256": "e89fdf3e826d67f48df753fab3112b9afa1389771ad609a9e93b39e6f149d54e",
+    "linksRelocated": false
+  },
+  {
+    "from": "examples/observatory/shade.jpg",
+    "to": "examples/archive/pre-v1.5/observatory/shade.jpg",
+    "sha256": "bfad57088f11312601fdfa5d88d279e73a0c42b5cf315fc10a1e326855ee44ce",
+    "archivedSha256": "bfad57088f11312601fdfa5d88d279e73a0c42b5cf315fc10a1e326855ee44ce",
+    "linksRelocated": false
+  },
+  {
+    "from": "examples/observatory/shade.json",
+    "to": "examples/archive/pre-v1.5/observatory/shade.json",
+    "sha256": "35ca7cecd25125eaafd8f12bab1538ffa9df502ada4c576a1f4bf61c0084e09d",
+    "archivedSha256": "35ca7cecd25125eaafd8f12bab1538ffa9df502ada4c576a1f4bf61c0084e09d",
+    "linksRelocated": false
+  },
+  {
+    "from": "examples/observatory/shade.png",
+    "to": "examples/archive/pre-v1.5/observatory/shade.png",
+    "sha256": "6a87b84d70bfa180e11458dc664b4719fa0db68feaa7671457b71572fc60e9d2",
+    "archivedSha256": "6a87b84d70bfa180e11458dc664b4719fa0db68feaa7671457b71572fc60e9d2",
+    "linksRelocated": false
+  },
+  {
+    "from": "examples/observatory/watershed.jpg",
+    "to": "examples/archive/pre-v1.5/observatory/watershed.jpg",
+    "sha256": "9b2ec8d379a7da744ecf2842c6570e1963f43082491a21e93ba5a894a573ebd6",
+    "archivedSha256": "9b2ec8d379a7da744ecf2842c6570e1963f43082491a21e93ba5a894a573ebd6",
+    "linksRelocated": false
+  },
+  {
+    "from": "examples/observatory/watershed.json",
+    "to": "examples/archive/pre-v1.5/observatory/watershed.json",
+    "sha256": "41bf5aca53f0bc9ce59886fc375e775fb32f990d508f3e7073295e37fdf93648",
+    "archivedSha256": "41bf5aca53f0bc9ce59886fc375e775fb32f990d508f3e7073295e37fdf93648",
+    "linksRelocated": false
+  },
+  {
+    "from": "examples/observatory/watershed.png",
+    "to": "examples/archive/pre-v1.5/observatory/watershed.png",
+    "sha256": "735456b038a29cefe180f79d485cfc446770e52a01b8d7f9493ba87004777138",
+    "archivedSha256": "735456b038a29cefe180f79d485cfc446770e52a01b8d7f9493ba87004777138",
+    "linksRelocated": false
+  },
+  {
+    "from": "examples/observatory/wound.jpg",
+    "to": "examples/archive/pre-v1.5/observatory/wound.jpg",
+    "sha256": "fc0f5afc22968a219aa17957d76b6a2d503b3330d69fb9c6e382e4cf7e74c92f",
+    "archivedSha256": "fc0f5afc22968a219aa17957d76b6a2d503b3330d69fb9c6e382e4cf7e74c92f",
+    "linksRelocated": false
+  },
+  {
+    "from": "examples/observatory/wound.json",
+    "to": "examples/archive/pre-v1.5/observatory/wound.json",
+    "sha256": "bb2b4c8a0298e93c360afdb72cbb7eea2c98683a328463b4450dca8fdb02f635",
+    "archivedSha256": "bb2b4c8a0298e93c360afdb72cbb7eea2c98683a328463b4450dca8fdb02f635",
+    "linksRelocated": false
+  },
+  {
+    "from": "examples/observatory/wound.png",
+    "to": "examples/archive/pre-v1.5/observatory/wound.png",
+    "sha256": "3a227ef60b67c8527b459cd760227e11f9836faa45568d7e4d6128949698ed41",
+    "archivedSha256": "3a227ef60b67c8527b459cd760227e11f9836faa45568d7e4d6128949698ed41",
+    "linksRelocated": false
+  },
+  {
+    "from": "docs/evidence/ground-material-01/2-r1-after.png",
+    "to": "examples/archive/pre-v1.5/docs/evidence/ground-material-01/2-r1-after.png",
+    "sha256": "de133c897a1ede8232f948bb6f8165fa1221cbeface15d6e1c52ab92ae2b1ca0",
+    "archivedSha256": "de133c897a1ede8232f948bb6f8165fa1221cbeface15d6e1c52ab92ae2b1ca0",
+    "linksRelocated": false
+  },
+  {
+    "from": "docs/evidence/ground-material-01/2-r1-before.png",
+    "to": "examples/archive/pre-v1.5/docs/evidence/ground-material-01/2-r1-before.png",
+    "sha256": "fb9c00534393d08bb72b30e1742c0f1449b2d4965cf2f20d27fb0a9035ec70c4",
+    "archivedSha256": "fb9c00534393d08bb72b30e1742c0f1449b2d4965cf2f20d27fb0a9035ec70c4",
+    "linksRelocated": false
+  },
+  {
+    "from": "docs/evidence/ground-material-01/3-r1-after.png",
+    "to": "examples/archive/pre-v1.5/docs/evidence/ground-material-01/3-r1-after.png",
+    "sha256": "b0c0bc3dfb10c90c79002babbb40924e09c6d104fc409b8378a58e20245a7931",
+    "archivedSha256": "b0c0bc3dfb10c90c79002babbb40924e09c6d104fc409b8378a58e20245a7931",
+    "linksRelocated": false
+  },
+  {
+    "from": "docs/evidence/ground-material-01/5-r1-after.png",
+    "to": "examples/archive/pre-v1.5/docs/evidence/ground-material-01/5-r1-after.png",
+    "sha256": "2e4652435218afac361714135d9fe7c0b9a1e5e75e084e41a1d522f8f41ca795",
+    "archivedSha256": "2e4652435218afac361714135d9fe7c0b9a1e5e75e084e41a1d522f8f41ca795",
+    "linksRelocated": false
+  },
+  {
+    "from": "docs/evidence/shade-body-03/cap-intact-underside.png",
+    "to": "examples/archive/pre-v1.5/docs/evidence/shade-body-03/cap-intact-underside.png",
+    "sha256": "b474312c8955cf2dac42de475af4b995873ecb8231a3129463c8c3ede7a5027f",
+    "archivedSha256": "b474312c8955cf2dac42de475af4b995873ecb8231a3129463c8c3ede7a5027f",
+    "linksRelocated": false
+  },
+  {
+    "from": "docs/evidence/shade-body-03/cap-intact.png",
+    "to": "examples/archive/pre-v1.5/docs/evidence/shade-body-03/cap-intact.png",
+    "sha256": "6127116311248ac989f7cb263838cb999b473103497bafc91dcf83ef061c6645",
+    "archivedSha256": "6127116311248ac989f7cb263838cb999b473103497bafc91dcf83ef061c6645",
+    "linksRelocated": false
+  },
+  {
+    "from": "docs/evidence/shade-body-03/trimmed-broken-underside.png",
+    "to": "examples/archive/pre-v1.5/docs/evidence/shade-body-03/trimmed-broken-underside.png",
+    "sha256": "4de4c09f0243f4e77ae0fbd6ac0139297360c5cffc0a09dbeaa0464e4f54d6a0",
+    "archivedSha256": "4de4c09f0243f4e77ae0fbd6ac0139297360c5cffc0a09dbeaa0464e4f54d6a0",
+    "linksRelocated": false
+  },
+  {
+    "from": "docs/evidence/shade-body-03/trimmed-broken.png",
+    "to": "examples/archive/pre-v1.5/docs/evidence/shade-body-03/trimmed-broken.png",
+    "sha256": "312d900557e0224a1a1c2014fe0c86d7c0103921e5022ce7f4c66e5998cffd9b",
+    "archivedSha256": "312d900557e0224a1a1c2014fe0c86d7c0103921e5022ce7f4c66e5998cffd9b",
+    "linksRelocated": false
+  },
+  {
+    "from": "docs/evidence/watershed-trio-01/lake-art1.png",
+    "to": "examples/archive/pre-v1.5/docs/evidence/watershed-trio-01/lake-art1.png",
+    "sha256": "0b0e47a62c0fcbb5ccd667ab1c16f80a7d2ef6ce6f32df7d516d8e829158bc95",
+    "archivedSha256": "0b0e47a62c0fcbb5ccd667ab1c16f80a7d2ef6ce6f32df7d516d8e829158bc95",
+    "linksRelocated": false
+  },
+  {
+    "from": "docs/evidence/watershed-trio-01/lake-art2.png",
+    "to": "examples/archive/pre-v1.5/docs/evidence/watershed-trio-01/lake-art2.png",
+    "sha256": "b72d13405e25f7e0ab815ae5190aa93e4a19ef8aba1b0362a525ef6bc8803550",
+    "archivedSha256": "b72d13405e25f7e0ab815ae5190aa93e4a19ef8aba1b0362a525ef6bc8803550",
+    "linksRelocated": false
+  },
+  {
+    "from": "docs/evidence/watershed-trio-01/lake-art2.json",
+    "to": "examples/archive/pre-v1.5/docs/evidence/watershed-trio-01/lake-art2.json",
+    "sha256": "31c9c46c8409a0034222315318c268ce8658a1d0e98c66bc7c5585b7a3d4cbd7",
+    "archivedSha256": "31c9c46c8409a0034222315318c268ce8658a1d0e98c66bc7c5585b7a3d4cbd7",
+    "linksRelocated": false
+  },
+  {
+    "from": "docs/evidence/watershed-trio-01/meadow-art2.png",
+    "to": "examples/archive/pre-v1.5/docs/evidence/watershed-trio-01/meadow-art2.png",
+    "sha256": "1454ba282b37c77f25b7093339cb3f64b1327b988bc44d3bbff7ff8fe3d21144",
+    "archivedSha256": "1454ba282b37c77f25b7093339cb3f64b1327b988bc44d3bbff7ff8fe3d21144",
+    "linksRelocated": false
+  },
+  {
+    "from": "docs/evidence/watershed-trio-01/meadow-art2.json",
+    "to": "examples/archive/pre-v1.5/docs/evidence/watershed-trio-01/meadow-art2.json",
+    "sha256": "6496bf32ac0369106b04b1e37268d7595ad0f7d57e08aa9b5463627be41b1fbd",
+    "archivedSha256": "6496bf32ac0369106b04b1e37268d7595ad0f7d57e08aa9b5463627be41b1fbd",
+    "linksRelocated": false
+  },
+  {
+    "from": "docs/evidence/watershed-trio-01/reach-art2.png",
+    "to": "examples/archive/pre-v1.5/docs/evidence/watershed-trio-01/reach-art2.png",
+    "sha256": "29debac31423c7c95121475917b1edd69a2307c8cb7770c9654941ae68ca7418",
+    "archivedSha256": "29debac31423c7c95121475917b1edd69a2307c8cb7770c9654941ae68ca7418",
+    "linksRelocated": false
+  },
+  {
+    "from": "docs/evidence/watershed-trio-01/reach-art2.json",
+    "to": "examples/archive/pre-v1.5/docs/evidence/watershed-trio-01/reach-art2.json",
+    "sha256": "ec5b0b6bb98358b333ccc294be7311993a3b10816bbf5314473f0f5745683c6b",
+    "archivedSha256": "ec5b0b6bb98358b333ccc294be7311993a3b10816bbf5314473f0f5745683c6b",
+    "linksRelocated": false
+  },
+  {
+    "from": "work/screenshots/wound-ground/varied-edge.png",
+    "to": "examples/archive/pre-v1.5/docs/evidence/wound-ground/varied-edge.png",
+    "sha256": "f040a53f240a8b60ee8638333ff28788d2bd71abefd57c9c611d4fa8aa9c582c",
+    "archivedSha256": "f040a53f240a8b60ee8638333ff28788d2bd71abefd57c9c611d4fa8aa9c582c",
+    "linksRelocated": false
+  },
+  {
+    "from": "work/screenshots/wound-ground/machine-edge.png",
+    "to": "examples/archive/pre-v1.5/docs/evidence/wound-ground/machine-edge.png",
+    "sha256": "a2bce03a866f57b0289efbbd41dc2930f50babe0c720a19d65bc90f636134bda",
+    "archivedSha256": "a2bce03a866f57b0289efbbd41dc2930f50babe0c720a19d65bc90f636134bda",
+    "linksRelocated": false
+  },
+  {
+    "from": "work/screenshots/wound-ground/below-lip.png",
+    "to": "examples/archive/pre-v1.5/docs/evidence/wound-ground/below-lip.png",
+    "sha256": "e6f5b586868f418244a6168d34f5efdbb62185fca057a64834a58f9f524ccbf0",
+    "archivedSha256": "e6f5b586868f418244a6168d34f5efdbb62185fca057a64834a58f9f524ccbf0",
+    "linksRelocated": false
+  }
+]

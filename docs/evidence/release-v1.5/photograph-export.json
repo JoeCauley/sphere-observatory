@@ -1,0 +1,83 @@
+{
+  "repeatMatches": true,
+  "bytes": 9621033,
+  "image": {
+    "width": 3840,
+    "height": 2160,
+    "render": {
+      "width": 3840,
+      "height": 2160,
+      "internalWidth": 7680,
+      "internalHeight": 4320,
+      "antialias": "supersampled + edge filter",
+      "lightPipeline": "linear-half-float",
+      "exportFrame": true,
+      "silhouetteSamples": 8,
+      "silhouetteMaskMiB": 31.640625,
+      "structureShadows": {
+        "enabled": true,
+        "quality": 1,
+        "resolution": 2048,
+        "cascades": 2,
+        "nearWidthKm": 16,
+        "farWidthKm": 128,
+        "nearTexelMetres": 7.8125,
+        "submittedTriangles": 25344,
+        "cached": false,
+        "depthStorageMiB": 32
+      },
+      "geometry": {
+        "groups": 412,
+        "triangles": 44672,
+        "localShadow": true,
+        "materials": "roughness / metalness / normal"
+      },
+      "weather": "Condensation plumes",
+      "volume": {
+        "steps": 128,
+        "width": 1920,
+        "height": 1080,
+        "depthAware": true,
+        "cavityHaze": 0.28,
+        "weatherLayers": 3
+      },
+      "cpuMs": 67.60000002384186,
+      "gpuMs": 26.764672,
+      "indirectLight": "exact frame",
+      "indirectSampleTime": 983,
+      "heroTextures": {
+        "ready": 0,
+        "total": 10,
+        "gpuMiB": 0,
+        "tileKm": 2.5
+      },
+      "woundTextures": {
+        "ready": 1,
+        "total": 10,
+        "gpuMiB": 79.96,
+        "tileKm": 0.64,
+        "damageBandKm": 240
+      },
+      "assets": {
+        "total": 3,
+        "ready": 3,
+        "failed": [],
+        "missing": []
+      },
+      "textures": {
+        "ready": 0,
+        "total": 10,
+        "gpuMiB": 0,
+        "scalesKm": [
+          256,
+          16,
+          1
+        ]
+      }
+    },
+    "projection": "perspective",
+    "horizontalFieldOfView": 89
+  },
+  "error": 0,
+  "errors": []
+}

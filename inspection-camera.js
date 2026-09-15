@@ -13,7 +13,8 @@ function setTime(s,time){const previous={...s};s.time=time;if(s.shadeAttachment!
 function surface(s){
  const p=plate(s);if(p){const r=M.length(p.center)*s.radius,curved=p.shape==='cap'||p.shape==='trimmed',q=curved?M.norm(s.position):p.normal;
   const h=curved?r-M.length(s.position):-M.dot(M.sub(s.position,M.mul(p.center,s.radius)),p.normal);
-  return {up:M.mul(q,h>=0?-1:1),altitude:Math.abs(h),name:'Shade '+p.id};
+  const thickness=(p.thickness||0)*s.radius;
+  return {up:M.mul(q,h>=-thickness*.5?-1:1),altitude:h>=0?h:Math.max(0,-h-thickness),name:'Shade '+p.id};
  }
  const h=s.radius-M.length(s.position);return {up:M.mul(M.norm(s.position),h>=0?-1:1),altitude:Math.abs(h),name:h>=0?'inner surface':'outer surface'};
 }

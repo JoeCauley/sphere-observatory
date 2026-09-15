@@ -1,0 +1,60 @@
+{
+  "recordedUtc": "2026-09-15T00:29:58.306524+00:00",
+  "status": "PASS",
+  "cases": 8,
+  "stateSwitches": 24,
+  "command": "node tests/ground-material-browser.cjs",
+  "scope": "Controlled original-default replay and actual GPU uniform checks; four biomes, terrain revisions 1 and 2. Visual inspection confirms the unrelated garden rim is removed. No geometry or collision edits.",
+  "members": [
+    {
+      "path": "geometry-renderer.js",
+      "bytes": 15676,
+      "sha256": "35314696c0927e30a8aabf940f526e5f72bb700f038a0ea2ca667505f51b25aa"
+    },
+    {
+      "path": "tests/ground-material-browser.cjs",
+      "bytes": 3710,
+      "sha256": "305508451bb89f1a0cff03feea890c1fb9424d2e6db4698dfb292cae25e55ff6"
+    },
+    {
+      "path": "docs/evidence/ground-material-01/2-r1-after.png",
+      "bytes": 1655285,
+      "sha256": "de133c897a1ede8232f948bb6f8165fa1221cbeface15d6e1c52ab92ae2b1ca0"
+    },
+    {
+      "path": "docs/evidence/ground-material-01/2-r1-before.png",
+      "bytes": 1638305,
+      "sha256": "fb9c00534393d08bb72b30e1742c0f1449b2d4965cf2f20d27fb0a9035ec70c4"
+    },
+    {
+      "path": "docs/evidence/ground-material-01/2-r1-scene.json",
+      "bytes": 2555,
+      "sha256": "71b037f1c4b5580e84e0a181e4c511a2f877ee3eb8a1b6e0b79f070f22799d96"
+    },
+    {
+      "path": "docs/evidence/ground-material-01/3-r1-after.png",
+      "bytes": 1563667,
+      "sha256": "b0c0bc3dfb10c90c79002babbb40924e09c6d104fc409b8378a58e20245a7931"
+    },
+    {
+      "path": "docs/evidence/ground-material-01/3-r1-scene.json",
+      "bytes": 2557,
+      "sha256": "c01a79b32bbbe24ba4e768293ba84c9cdca6fdcc4f997f01cf7667bf37e0761b"
+    },
+    {
+      "path": "docs/evidence/ground-material-01/5-r1-after.png",
+      "bytes": 1792364,
+      "sha256": "2e4652435218afac361714135d9fe7c0b9a1e5e75e084e41a1d522f8f41ca795"
+    },
+    {
+      "path": "docs/evidence/ground-material-01/5-r1-scene.json",
+      "bytes": 2545,
+      "sha256": "286da12504cb8cd5cf7cc86cc270ee64fd924d684d4a572d94401421b00965cc"
+    },
+    {
+      "path": "docs/evidence/ground-material-01/report.json",
+      "bytes": 3759,
+      "sha256": "bf1a4dd25f1b1b4d9a90c153938a1c0b9fde3a943900c3bfee02a98ba1fab80c"
+    }
+  ]
+}

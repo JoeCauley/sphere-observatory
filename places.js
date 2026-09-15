@@ -15,7 +15,7 @@ function catalogue(s){return [
  ...root.SpherePacks.catalogue(s),
  ...['Thermal routing','Air & water exchange','Fabrication fields'].map((name,i)=>({id:'works-'+i,name,category:'machinery',description:['Quiet ceramic heat fields, woven channels and long service aisles.','Condensation works and branching air and water networks.','An immense fabric of assembly districts and service structures.'][i],biome:5,walk:true})),
  ...['A','B'].map((name,i)=>({id:'port-'+i,name:'Polar entry '+name,category:'poles',description:'A monumental gateway at the end of the shell axis, surrounded by service courts.',biome:5,walk:true})),
- ...root.SphereCollection.plates({...s,routeShades:true}).map(p=>({id:'shade-'+p.id,name:'Shade '+p.id+' · '+(p.damage?'broken edge':'service skin'),category:'shades',description:'A moving sunshade, with a solid service skin and exposed structure. Close flight follows its motion.',biome:5,walk:false})),
+ ...root.SphereCollection.plates({...s,routeShades:true}).map(p=>({id:'shade-'+p.id,name:'Shade '+p.id+' · '+(p.damage?'broken edge':s.shadeGeometryRevision>=3?'intact edge':'service skin'),category:'shades',description:p.damage?'A fractured sunshade. Long through-openings expose its layered body and service structure. Close flight follows its motion.':'A moving sunshade with a continuous body and a finished perimeter. Close flight follows its motion.',biome:5,walk:false})),
  ...root.SphereCollection.wounds.map((w,i)=>({id:'wound-'+i,name:'Wound '+(i+1)+' · Breach spill',category:'wounds',description:'Pass through the opening into a field of torn shell remnants. The nearby spill is anchored to this Wound.',biome:4,walk:false}))
  ];}
 function cloudAltitude(biome){const p=root.SphereWeatherProfiles[biome];return Math.max(.012,p.low-Math.min(.12,p.low*.28));}
@@ -32,6 +32,12 @@ async function destination(input,id,altitude='ground',scene='day',weather='mixed
   s=root.SpherePacks.activate(s);await root.SphereWatershed.prepare(s);const terrace=root.SphereWatershed.view(s,'terrace');
   q=M.norm(terrace.position);ground=s.radius-M.length(terrace.position)-.026;
   if(altitude==='ground'){s={...terrace,autoSpeed:input.autoSpeed,speed:input.speed};root.SphereLanding.enter(s,s.position);return conditions(s,scene,weather);}
+ }else if(entry.composition){
+  s=root.SpherePacks.activate(s);s.packAddress.artRevision=2;
+  if(altitude==='regional')return conditions(root.SphereNeighbourhood.view(s,entry.composition),scene,weather);
+  const district=root.SphereNeighbourhood.model(s.provinceSeed).compositions.find(c=>c.id===entry.composition);
+  q=root.SphereWatershed.direction(...district.bank,s);
+  if(root.SphereNeighbourhood.sample(q,s).water||root.SphereCollection.missing(q,s))throw Error('This composition has no dry arrival in the current world.');
  }else if(id.startsWith('wound-')){
   s.era='after';s.multipleWounds=true;const axis=root.SphereCollection.wounds[Number(id.slice(6))].axis;
   Object.assign(s,root.SphereArrival.spill(s,axis));s.speed=input.speed;return conditions(s,scene,weather);

@@ -1,0 +1,71 @@
+{
+  "date": "2026-09-14",
+  "implementation": "Shade geometry revision 3",
+  "numerical": {
+    "status": "PASS",
+    "command": "npm test",
+    "suites": 31,
+    "finalFocusedReruns": [
+      "tests/shade-body.cjs",
+      "tests/shade-seams.cjs",
+      "tests/shade-edges.cjs",
+      "tests/session-state.cjs",
+      "tests/asset-loading.cjs"
+    ]
+  },
+  "body": {
+    "status": "PASS",
+    "faces": 48,
+    "coldCollisionApproaches": 8,
+    "lodVertices": 43200,
+    "joins": 120,
+    "cornerProfiles": 48,
+    "maxEndpointGapMm": 0.14874653130189688,
+    "maxFaceErrorMm": 0.06675720215509884
+  },
+  "browser": {
+    "status": "PASS",
+    "fixtures": 8,
+    "texturedViews": 16,
+    "coldBackgroundLeaks": 0,
+    "sideBackgroundLeaks": 0,
+    "cornerFixtures": 8,
+    "coldEnvelopeMs": [
+      137.19999998807907,
+      350.4000000357628
+    ]
+  },
+  "coverage": {
+    "status": "PASS",
+    "mode": "SPHERE_COVERAGE_ONLY=1",
+    "scenes": 41,
+    "pixels": 944640,
+    "mismatches": 0
+  },
+  "openDiagnostic": {
+    "status": "FAIL",
+    "name": "Strict cold capture repeatability",
+    "observedChangedPixels": 2,
+    "maxChannelDifference": 1,
+    "description": "Default boundary suite stopped at the first cap image repeat assertion. Coverage-only and body tests do not certify cold/repeat equality. Renderer warm-up/tolerances were not changed."
+  },
+  "sourceHashes": {
+    "asset-plan.js": "589541f9117d1be311dc0d8f408d8f700c1ed06c647e54fd75aae2b83c80c7b6",
+    "collection.js": "97d2d03ba46c0c9473dbd209d7c8a82eb8ed856b843361eb02d6a6bcc870823f",
+    "edge-stream.js": "70e62f25e09af71e8a8d96708606f8a7e6c487607440c543fef154bd497ee257",
+    "evolution-ui.js": "6d9ba912b589353c1cbc44088a0c062184be090a25c41c9db54cdb2e88a0e7c7",
+    "inspection-camera.js": "b4d8824c7cfb19b968a64658eb568e6ff49516c860c22e775408a04a78d6998c",
+    "places.js": "99f267badb1c904b4815240689397fb9e4d4e1460c74adab4148cc24cd59af5d",
+    "session-state.js": "f338626d7a7e22f9f786fa018e1cd9a77dd7e1bad4eee0722943487916c1a62f",
+    "shade-edges.js": "f14cc4204ec9300a3e99fcefa3340d14f9a214f46ddd77462b4ca0a76e04e21c",
+    "silhouette-aa.js": "e26ff0ab4e51b76b2ed6927a44aefe08f1613308d39044ba34c8a1557fe67dde",
+    "travel-control.js": "34272238a4d9201f476a0adcdbf2dd67e660c7ee65c7f12a054a4f2b2b276f75",
+    "world-shader.js": "10142fd678d0b0b92ba1e05c3be33f69ce8f8894be7dad375222d41878228aa1",
+    "world-textures.js": "8028373e39c9756063a0956c7539b1f0aa2d0f1b779841f7e5abea0393e24012",
+    "world.js": "6d117fd7c25e058c2983bfc5faa49dc24f842913ce306472215d859eb50f33cd",
+    "tests/shade-body.cjs": "3fdcc176835123fbdc99a16c44f5088ef8148aec16399151ec4a7bb187e1e292",
+    "tests/shade-seams.cjs": "18584fa429f9fcd2f21977259607f4747f43197dc38951b8c002df3e4b19b03f",
+    "tests/shade-body-browser.cjs": "32aba79f6c5c57cb164fc79ab5e0a8ef58474c54de0ea9e357754462d496e4c4",
+    "tests/shade-boundary-browser.cjs": "b41435405726b3e0aee9c41f5ad5de59a63187f4878bddc8874db1e8f0dc6487"
+  }
+}

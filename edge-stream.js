@@ -98,14 +98,14 @@ function canonicalFrame(s,p,v=0){
  const x=inland[0]>0?inland:mul(inland,-1);return {origin,basis:[x,up,norm(cross(x,up))],v,u};
 }
 function transformMesh(mesh,p){mesh.origin=plateVector(mesh.canonicalOrigin,p);mesh.basis=mesh.canonicalBasis.map(v=>plateVector(v,p));mesh.plate=p;return mesh;}
-function shadeSection(s){const p=plateFor(s);if(!p)return null;const f=canonicalFrame(s,p,0),mesh=new S.Mesh(plateVector(f.origin,p),f.basis.map(v=>plateVector(v,p)),'Shade · exposed service structure');mesh.plate=p;return mesh;}
+function shadeSection(s){const p=plateFor(s);if(!p)return null;const f=s.shadeGeometryRevision>=3?root.SphereShadeEdges.arrivalFrame(s,p):canonicalFrame(s,p,0),mesh=new S.Mesh(plateVector(f.origin,p),f.basis.map(v=>plateVector(v,p)),'Shade · exposed service structure');mesh.plate=p;return mesh;}
 function shadeContext(s){
  const p=plateFor(s);if(!p)return null;const pos=[dot(s.position,p.right),dot(s.position,p.normal),dot(s.position,p.up)],r=len(p.center)*s.radius;
  const v=(p.shape==='cap'||p.shape==='trimmed'?pos[2]*r/pos[1]:pos[2])/(p.size*s.radius),f=canonicalFrame(s,p,M.clamp(v,-.85,.85));
  return {...f,plate:p,position:pos,origin:plateVector(f.origin,p),canonicalOrigin:f.origin,basis:f.basis.map(v=>plateVector(v,p)),r};
 }
 function shadeMeshes(s){
- if(s.shadeGeometryRevision===2&&root.SphereShadeEdges)return root.SphereShadeEdges.meshes(s,{coarse:coarseMode,fine:forceFine});
+ if(s.shadeGeometryRevision>=2&&root.SphereShadeEdges)return root.SphereShadeEdges.meshes(s,{coarse:coarseMode,fine:forceFine});
  const ctx=shadeContext(s);if(!ctx)return [];const p=ctx.plate,fp=focal(s),out=[],range=readableRange(.18,s),cam=ctx.position;
  const config=JSON.stringify([p.id,s.era,s.radius,s.seed,p.shape,p.across,s.shadeTrim]);
  const step=3.2/(p.size*s.radius),centre=Math.floor(ctx.v/step),canonical=canonicalFrame(s,p,ctx.v),slope=len(sub(canonicalPoint(s,p,crack(ctx.v+step),ctx.v+step),canonical.origin))/3.2;
@@ -154,7 +154,7 @@ const contactCache=new Map();
 function shadeContactMeshes(s,position,direction,distance){
  // Revision 2 has no raised invisible deck. Contact uses the same admitted
  // geometry as drawing, with the unchanged analytic skin as cold fallback.
- if(s.shadeGeometryRevision===2)return [];
+ if(s.shadeGeometryRevision>=2)return [];
  const p=plateFor(s);if(!p)return [];
  // Collision cannot wait for a preview upload. The raised top deck is only
  // twelve metres above the analytic skin: a flight step can cross it before

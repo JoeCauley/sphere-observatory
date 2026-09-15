@@ -1,27 +1,112 @@
 {
-  "capturedAt": "2026-09-13T03:20:03.684Z",
-  "sourceCommit": "5b01e859bfefa812f50c6c051875da0eb949b2b5",
+  "capturedAt": "2026-09-15T01:17:55.430Z",
+  "version": "1.5.0",
+  "sourceContentSha256": "2ee8017eebac4980d05f3a0649128e096ee9cec791bb2fb3990b36e2b0d4e5ec",
+  "sourceFiles": [
+    "app.js",
+    "asset-plan.js",
+    "atlas-study-model.js",
+    "atlas-study.css",
+    "atlas-study.html",
+    "atlas-study.js",
+    "atmosphere.js",
+    "biome-packs.js",
+    "biome-shader.js",
+    "biome-ui.js",
+    "biomes.js",
+    "bootstrap.js",
+    "collection-shader.js",
+    "collection-ui.js",
+    "collection.js",
+    "edge-stream.js",
+    "edge-streaming.js",
+    "edge-worker.js",
+    "enhancements.js",
+    "evolution-ui.js",
+    "field-sites.js",
+    "flight-console.js",
+    "flight.js",
+    "geometry-renderer.js",
+    "ground-chunks.js",
+    "ground-worker.js",
+    "hero-textures.js",
+    "index.html",
+    "inspection-camera.js",
+    "loading-screen.css",
+    "loading-screen.js",
+    "local-shadows.js",
+    "math.js",
+    "navigation-history.js",
+    "neighbourhood-shader.js",
+    "package.json",
+    "panorama.js",
+    "places-ui.js",
+    "places.js",
+    "pointer-navigation.js",
+    "preview-light.js",
+    "preview-quality.js",
+    "renderer.js",
+    "session-state.js",
+    "shade-edges.js",
+    "shaders.js",
+    "shine-worker.js",
+    "silhouette-aa.js",
+    "style.css",
+    "surface-arrival.js",
+    "surface-lighting.js",
+    "surface-walk.js",
+    "survey.js",
+    "travel-control.js",
+    "ui-layout.js",
+    "volume.js",
+    "watershed-neighbourhood.js",
+    "watershed-network.js",
+    "watershed-province.js",
+    "watershed-ui.js",
+    "watershed-worker.js",
+    "world-palette.js",
+    "world-shader.js",
+    "world-textures.js",
+    "world.js",
+    "wound-textures.js",
+    "wreckage.js"
+  ],
   "width": 3840,
   "height": 2160,
   "method": "Native app renderer, prepared assets, three to eight paused frames; last two must match. All adjacent-frame comparisons retained. No external image retouching.",
   "shots": [
     {
-      "id": "interior",
-      "title": "The stellar conservatory",
+      "id": "hero",
+      "title": "The Sphere from the polar court",
       "coldMatches": true,
       "warmMatches": true,
       "frameMatches": [
         true,
+        false,
         true
       ],
       "error": 0,
       "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-      "bytes": 12505899,
-      "sha256": "118dae43ea83b1d0ae56e05b46af70c613acce889c223d8ac058c9fe2dbd6a29"
+      "bytes": 14929770,
+      "sha256": "e378911de2da7db2c96a9aef0950ffd09b180ebafeba2b08d118129d1e8b569c"
     },
     {
-      "id": "cavity",
-      "title": "Across the interior",
+      "id": "ultra-desert",
+      "title": "Ultra Desert",
+      "coldMatches": false,
+      "warmMatches": true,
+      "frameMatches": [
+        false,
+        true
+      ],
+      "error": 0,
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "bytes": 11806442,
+      "sha256": "1c9b62d2378cdfc8256bdd7c4013c1fbec731c32d239ce4b5854c6dc301c3c3e"
+    },
+    {
+      "id": "winter-hell",
+      "title": "Winter Hell",
       "coldMatches": true,
       "warmMatches": true,
       "frameMatches": [
@@ -30,8 +115,162 @@
       ],
       "error": 0,
       "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-      "bytes": 15489269,
-      "sha256": "14c0cffda2163fcb427eafab69824d5f0ac25f6a2c4f0aa2f834cd5190e5a843"
+      "bytes": 9830046,
+      "sha256": "723925222070c2a2fc34ede504f40f581937ca626de62ddbdf57998920ef3e44"
+    },
+    {
+      "id": "watershed-40000",
+      "title": "Connected catchments \u00c2\u00b7 40,000 km",
+      "coldMatches": true,
+      "warmMatches": true,
+      "frameMatches": [
+        true,
+        true
+      ],
+      "error": 0,
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "bytes": 6209307,
+      "sha256": "e93d8888050dbe423c1f330af57862cd82f4dc6391ece18ea957164f92c4bc7f"
+    },
+    {
+      "id": "watershed-10000",
+      "title": "Receiving reaches \u00c2\u00b7 10,000 km",
+      "coldMatches": true,
+      "warmMatches": true,
+      "frameMatches": [
+        true,
+        true
+      ],
+      "error": 0,
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "bytes": 2066458,
+      "sha256": "3544306a8779ffd59b199c281bdcedd14f5f3b30c017efc65eef571d14cfc494"
+    },
+    {
+      "id": "watershed-1100",
+      "title": "The province \u00c2\u00b7 1,100 km",
+      "coldMatches": true,
+      "warmMatches": true,
+      "frameMatches": [
+        true,
+        true
+      ],
+      "error": 0,
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "bytes": 2791714,
+      "sha256": "c35c3ab26776ea1e6a8850ae103d33724fefca6386dd8ff7813a00e80db40673"
+    },
+    {
+      "id": "watershed-48",
+      "title": "River country \u00c2\u00b7 48 km",
+      "coldMatches": true,
+      "warmMatches": true,
+      "frameMatches": [
+        true,
+        true
+      ],
+      "error": 0,
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "bytes": 446565,
+      "sha256": "e28f6d66d649dd95aa8d19be38c692af1e7cc3f7254f4c0829d0554104cb659b"
+    },
+    {
+      "id": "watershed-1",
+      "title": "The water garden \u00c2\u00b7 1 km",
+      "coldMatches": true,
+      "warmMatches": true,
+      "frameMatches": [
+        true,
+        true
+      ],
+      "error": 0,
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "bytes": 12334941,
+      "sha256": "1e4fd380eccdfb867e9a242a488fe80460a56b8b034f3e3ec6ad9c2f951646f6"
+    },
+    {
+      "id": "terrace",
+      "title": "The open terrace \u00c2\u00b7 6 m above its floor",
+      "coldMatches": true,
+      "warmMatches": true,
+      "frameMatches": [
+        true,
+        true
+      ],
+      "error": 0,
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "bytes": 5141516,
+      "sha256": "de0db7ec9d9854bfd4f6936467f0d8b3b820b9e073779721f9cf2a06e310c9d4"
+    },
+    {
+      "id": "lake",
+      "title": "The receiving lake",
+      "coldMatches": true,
+      "warmMatches": true,
+      "frameMatches": [
+        true,
+        true
+      ],
+      "error": 0,
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "bytes": 9909198,
+      "sha256": "74c275d85b1d5594dadfb3ed9d25f59cffa3131ee6489376621f5117469f93a7"
+    },
+    {
+      "id": "reach",
+      "title": "The quiet reach",
+      "coldMatches": true,
+      "warmMatches": true,
+      "frameMatches": [
+        true,
+        true
+      ],
+      "error": 0,
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "bytes": 11531260,
+      "sha256": "d216d848dfd2b32f39bcf4e2bc62d4f0d79c6fd4049feccbbcc4b7a8ead2729a"
+    },
+    {
+      "id": "meadow",
+      "title": "The open meadow",
+      "coldMatches": true,
+      "warmMatches": true,
+      "frameMatches": [
+        true,
+        true
+      ],
+      "error": 0,
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "bytes": 11520567,
+      "sha256": "89a60b184b1353ef03b5a77bcdcddcd04fc209292703bf58848ea159a388064a"
+    },
+    {
+      "id": "shade-intact",
+      "title": "The finished Shade perimeter",
+      "coldMatches": true,
+      "warmMatches": true,
+      "frameMatches": [
+        true,
+        true
+      ],
+      "error": 0,
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "bytes": 10266783,
+      "sha256": "a138ee4600eb3bfa7128e021d3e2cb2681b3094e1f9a72951dad91a39ff055b0"
+    },
+    {
+      "id": "shade-broken",
+      "title": "The broken Shade edge",
+      "coldMatches": true,
+      "warmMatches": true,
+      "frameMatches": [
+        true,
+        true
+      ],
+      "error": 0,
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "bytes": 8082182,
+      "sha256": "28b148c1f351bfc8590f8fb3bd287f80854ed0ce747ea1ec926a4d84e7e1f22c"
     },
     {
       "id": "wound",
@@ -44,12 +283,12 @@
       ],
       "error": 0,
       "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-      "bytes": 13281572,
-      "sha256": "3a227ef60b67c8527b459cd760227e11f9836faa45568d7e4d6128949698ed41"
+      "bytes": 14972550,
+      "sha256": "b51ab3ecdfb2b304ae2b880d1dc2f44f1c1b5aa1f66321c96e8e0cf136011fb4"
     },
     {
-      "id": "river-garden",
-      "title": "The open river-garden terrace",
+      "id": "interior",
+      "title": "The stellar conservatory",
       "coldMatches": true,
       "warmMatches": true,
       "frameMatches": [
@@ -58,51 +297,24 @@
       ],
       "error": 0,
       "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-      "bytes": 7868758,
-      "sha256": "e89fdf3e826d67f48df753fab3112b9afa1389771ad609a9e93b39e6f149d54e"
-    },
-    {
-      "id": "watershed",
-      "title": "A garden beside the river",
-      "coldMatches": true,
-      "warmMatches": true,
-      "frameMatches": [
-        true,
-        true
-      ],
-      "error": 0,
-      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-      "bytes": 10688768,
-      "sha256": "735456b038a29cefe180f79d485cfc446770e52a01b8d7f9493ba87004777138"
-    },
-    {
-      "id": "shade",
-      "title": "The broken Shade",
-      "coldMatches": true,
-      "warmMatches": true,
-      "frameMatches": [
-        true,
-        true
-      ],
-      "error": 0,
-      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-      "bytes": 13912808,
-      "sha256": "6a87b84d70bfa180e11458dc664b4719fa0db68feaa7671457b71572fc60e9d2"
+      "bytes": 12498941,
+      "sha256": "499beaf425d9153d39901dbf071b5b6e686404868394285d941081ce6bedd40a"
     },
     {
       "id": "clouds",
-      "title": "Above the cloud sea",
-      "coldMatches": true,
+      "title": "Above the Super Jungle",
+      "coldMatches": false,
       "warmMatches": true,
       "frameMatches": [
-        true,
+        false,
         true
       ],
       "error": 0,
       "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-      "bytes": 17284963,
-      "sha256": "0db27b1440c600a9253c803b0e735bf1a8197acf593cd822a3a74886e9394f2a"
+      "bytes": 16452636,
+      "sha256": "3b26df7483dc0c16c695fbd2a6d3e876d289ba416c600223572fc56e534af8e4"
     }
   ],
-  "errors": []
+  "errors": [],
+  "sourceHashEncoding": "UTF-8 text with LF line endings; sorted file name plus NUL then file content"
 }

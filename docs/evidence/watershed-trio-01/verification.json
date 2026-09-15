@@ -1,0 +1,168 @@
+{
+  "status": "PASS",
+  "recordedUtc": "2026-09-15T00:36:38.024288+00:00",
+  "baseCommit": "b80bd725a8963584eb61ef4dce2c90884e2a9d3b",
+  "nodeVersion": "v24.18.0",
+  "scope": "Local Observatory roadmap item 6 regional trio plus user-reported walking material correction. Existing local Shade changes preserved. No release, commit or push.",
+  "numerical": {
+    "command": "npm test",
+    "suites": 32,
+    "status": "PASS",
+    "focusedFinalCommand": "node tests/watershed-trio.cjs"
+  },
+  "browser": [
+    {
+      "command": "node tests/ground-material-browser.cjs",
+      "status": "PASS",
+      "cases": 8,
+      "stateSwitches": 24,
+      "evidence": "../ground-material-01/report.json"
+    },
+    {
+      "command": "node tests/watershed-trio-browser.cjs",
+      "status": "PASS",
+      "gpuBlendProbes": 483,
+      "altitudeViews": 42,
+      "walks": 6,
+      "startupMs": 75631,
+      "evidence": "report.json"
+    },
+    {
+      "command": "node tests/watershed-trio-ui-browser.cjs",
+      "status": "PASS",
+      "selections": 6,
+      "evidence": "ui-report.json"
+    },
+    {
+      "command": "node tests/neighbourhood-browser.cjs",
+      "status": "PASS",
+      "gpuWaterProbes": 228,
+      "perspective4kEqual": true,
+      "panoramaEqual": true,
+      "evidence": "neighbourhood-report.json"
+    }
+  ],
+  "limits": "Regional material compositions; no new shore/vegetation meshes or nine finished environments. This neighbourhood capture pass does not close the separate Shade cold-4K diagnostic.",
+  "members": [
+    {
+      "path": "biome-packs.js",
+      "bytes": 3001,
+      "sha256": "f75a9317f135c1bbcb15c25c6d0f93b9c199f05764bf05692588086bc9a7e728"
+    },
+    {
+      "path": "watershed-neighbourhood.js",
+      "bytes": 7454,
+      "sha256": "a6a96069998ffc6fd84d984d9d9c29cb2007208dad70bd1367acc5a54881b62c"
+    },
+    {
+      "path": "neighbourhood-shader.js",
+      "bytes": 5889,
+      "sha256": "7db84e0ff24cc1765636a08d433780b3b5316d2ffbc48be67598c258f3f87f37"
+    },
+    {
+      "path": "geometry-renderer.js",
+      "bytes": 15676,
+      "sha256": "35314696c0927e30a8aabf940f526e5f72bb700f038a0ea2ca667505f51b25aa"
+    },
+    {
+      "path": "places.js",
+      "bytes": 6376,
+      "sha256": "a8a145da95fc598e78ec1328db9acca2defe1e35ad21646a1eabc9c39fcf07a9"
+    },
+    {
+      "path": "places-ui.js",
+      "bytes": 14901,
+      "sha256": "00899fa00758537013d0242c705a155d8f7e9c9e6888829eb73f165e07db23be"
+    },
+    {
+      "path": "watershed-ui.js",
+      "bytes": 4418,
+      "sha256": "c971eba26d76be413bc2719357deef57717087853fc899c4ff5b537e456e7592"
+    },
+    {
+      "path": "package.json",
+      "bytes": 1483,
+      "sha256": "c5714ea12656b8575bf1ab22ec3386f441a4973d6a00b237465bcde3fac8f8cc"
+    },
+    {
+      "path": "tests/neighbourhood.cjs",
+      "bytes": 3972,
+      "sha256": "6faff419adf0508479445e5ce7e058058307ce570f365771691c115840cab156"
+    },
+    {
+      "path": "tests/watershed-trio.cjs",
+      "bytes": 3884,
+      "sha256": "149fc63f46e596013f7c2c78f9cb4239b92cc53a7fc80628af82d9d1394015eb"
+    },
+    {
+      "path": "tests/watershed-trio-browser.cjs",
+      "bytes": 8326,
+      "sha256": "88271a42534cc721e292f271faf05a15b8b66b06ee5da7fbc5138ca6e07eac43"
+    },
+    {
+      "path": "tests/watershed-trio-ui-browser.cjs",
+      "bytes": 3842,
+      "sha256": "088414cfa28372d7207e3b4a47b946d6e3c492fd2ddb8e83a88ed186d11595f6"
+    },
+    {
+      "path": "tests/ground-material-browser.cjs",
+      "bytes": 3710,
+      "sha256": "305508451bb89f1a0cff03feea890c1fb9424d2e6db4698dfb292cae25e55ff6"
+    },
+    {
+      "path": "tests/neighbourhood-browser.cjs",
+      "bytes": 9770,
+      "sha256": "9e4f836873ff817611a69fecf6d572e779fd44829a80c8c79bfa817016b1a74a"
+    },
+    {
+      "path": "docs/evidence/watershed-trio-01/lake-art1.png",
+      "bytes": 426660,
+      "sha256": "0b0e47a62c0fcbb5ccd667ab1c16f80a7d2ef6ce6f32df7d516d8e829158bc95"
+    },
+    {
+      "path": "docs/evidence/watershed-trio-01/lake-art2.json",
+      "bytes": 2787,
+      "sha256": "31c9c46c8409a0034222315318c268ce8658a1d0e98c66bc7c5585b7a3d4cbd7"
+    },
+    {
+      "path": "docs/evidence/watershed-trio-01/lake-art2.png",
+      "bytes": 767297,
+      "sha256": "b72d13405e25f7e0ab815ae5190aa93e4a19ef8aba1b0362a525ef6bc8803550"
+    },
+    {
+      "path": "docs/evidence/watershed-trio-01/meadow-art2.json",
+      "bytes": 2788,
+      "sha256": "6496bf32ac0369106b04b1e37268d7595ad0f7d57e08aa9b5463627be41b1fbd"
+    },
+    {
+      "path": "docs/evidence/watershed-trio-01/meadow-art2.png",
+      "bytes": 885480,
+      "sha256": "1454ba282b37c77f25b7093339cb3f64b1327b988bc44d3bbff7ff8fe3d21144"
+    },
+    {
+      "path": "docs/evidence/watershed-trio-01/neighbourhood-report.json",
+      "bytes": 12241,
+      "sha256": "7a797a7ed4abcae336f15281cd07f0d1560b4728b7f4ab07c9c9abcd4d88f61a"
+    },
+    {
+      "path": "docs/evidence/watershed-trio-01/reach-art2.json",
+      "bytes": 2788,
+      "sha256": "ec5b0b6bb98358b333ccc294be7311993a3b10816bbf5314473f0f5745683c6b"
+    },
+    {
+      "path": "docs/evidence/watershed-trio-01/reach-art2.png",
+      "bytes": 978780,
+      "sha256": "29debac31423c7c95121475917b1edd69a2307c8cb7770c9654941ae68ca7418"
+    },
+    {
+      "path": "docs/evidence/watershed-trio-01/report.json",
+      "bytes": 25446,
+      "sha256": "0e36cc9e8fc21bc3c8f10b112ce654f7dad28dfb12fb4c57b0ece8f28f8ab83c"
+    },
+    {
+      "path": "docs/evidence/watershed-trio-01/ui-report.json",
+      "bytes": 1970,
+      "sha256": "ecf0f6978d3f38bc49d647e10956ec4ffd9b199830d9e3b26d26741931df2200"
+    }
+  ]
+}
