@@ -1,6 +1,6 @@
 # Observatory roadmap and next-session handoff
 
-Updated 13 September 2026 · local development after v1.4.0
+Updated 14 September 2026 · joined Watershed regional compositions
 
 This is the current continuation plan. Use it ahead of the older Next Leap
 sequence when priorities or status differ. The first Watershed pack milestone
@@ -14,6 +14,16 @@ view-independent edge clearance, the 80° / 0.2-stop defaults and an opaque
 Watershed border with local ground material blending. [Continuity step 3](Observatory-Continuity-03.md) adds cloud sampling and curved containment, automatic intact/broken Shade approaches and versioned connected walking. Its evidence and limits supersede the earlier continuation notes. This document does not schedule a run or create a new task.
 
 ## Direction
+
+The [14 September renderer consultancy review](Observatory-Renderer-Review-2026-09-14.md)
+checks this roadmap against the current code and evaluates Claude's WebGPU and
+tri-hybrid proposals. Retain WebGL2 and the geography-first delivery sequence.
+Consider one relightable geographic proxy alongside the next Watershed work,
+with explicit appearance/view validity and measured quality, cost and residency.
+Defer a second live backend, generic representation router and Gaussian splats
+until a bounded experiment earns them. Lighting studies preserve the user's
+clock; they do not lock it. ShellShine already supplies a coarse first bounce.
+The supplied synthetic benchmark does not establish an API migration decision.
 
 **The Builders would prioritize the art of it.** Carry the river garden's
 elegance into the larger world: shaped water, planted courts, generous space,
@@ -36,8 +46,8 @@ land. Weather should help reveal distance; it must not hide a regular atlas.
 | Navigation | One-way Go to pointer, marked destinations, return history, central Breach spill arrivals and exits through the opening to visible far destinations | Broader route and moving-target regression coverage as geography expands |
 | Flight and walking | Auto by default, gaze-independent nearest-triangle/Wound/Shade clearance with bounded acceleration, 80° lens and 0.2 stops; Space + E lift-off, smooth landing, opposite-shell flight; local Wound ground/props clipped, terrain-following wall shares top/end seam vertices and collision, real lip permits a fall to flight | New landings use nine fine and sixteen coarse connected cells with pinned support and rebasing; original revision-0/1 patches retain their saved bounds. Full mixed shell/Shade journeys remain a broader programme |
 | Time and tools | Play/Pause persists through navigation; measurements survive clock ticks and tool close/reopen | Keep these behaviours during new streaming and UI work |
-| Watershed | Pack `watershed`, geography/art 1, saved schema-1 address, seed 713; 76 curved graph edges join all 22 original outlets to an irregular neighbourhood | Regional water/routes remain analytic surface representations; nine variants and global walking continuity remain queued |
-| Shades | Revision 2 automatically discovers intact perimeters, fracture banks and holes on all four shapes; 180 m edge sections, exposed braces, parent-local residency and collision | Finished environments across both faces remain separate work; revision 1 retains its selected service strip |
+| Watershed | Pack `watershed`, geography 1 / new art 2, saved schema-1 address, seed 713; original garden and 76 curved edges retained; receiving lake, quiet reach and meadow share overlapping regional materials | Art-1 scenes retain their appearance; local planting/shore geometry, nine finished variants and global walking continuity remain queued |
+| Shades | Revision 3 adds two continuous faces 180 m apart, finished intact perimeters, closed fracture profiles, shared curved LOD seams and immediate coarse coverage; all four shapes discover edges without selection | Complete face environments/interiors remain separate work; portable revision-1/2 scenes retain their geometry, while pre-update browser exploration upgrades once |
 | Weather | Three curved layers, regional tint/coverage, independent scene-clock masks, smaller/fainter distant detail, filtered noise and broad Shade shadows | Illustrative lighting; fine cloud shadows and art variation can improve; local Wound containment now follows the shared curved contour |
 | Latest size adjustment | All local cloud features and six distant wavelengths are **two-thirds of their previous size**: a one-third reduction | Layer heights, motion periods, atmosphere reach and the existing distance fade retain their settings |
 | Loading | Two pack graphs and two prepared provinces; preparation includes compilation/uploads; local Wound end profiles have protected coarse neighbours and same-frame coverage on patch departure | Cold startup/preparation and an observed 2 s frame interval remain; individual GPU texture layers are not generally paged |
@@ -100,6 +110,40 @@ allocation was added.
 
 ## Current bounded delivery and next work
 
+[Ground material correction 1](Observatory-Ground-Material-01.md) fixes the
+reported shared green border on unrelated walking biomes. The mesh pass now
+receives its own biome/era/Wound settings, matching the geographic shell.
+This also corrects the material selection on connected terrain; preserve
+the four-biome before/after and state-switch checks when changing materials.
+
+[Watershed trio 1](Observatory-Watershed-Trio-01.md) implements the next bounded
+slice of item 6: three joined regional material compositions with explicit
+saved art revision 2, dry Places arrivals and regional inspection views.
+The original garden, river graph, heights and art-1 scenes remain available.
+Woodland/reeds are regional surface patterns; local authored geometry is a
+later step. Continue with one receiving-lake shore and matching planting,
+promenade and collision before extending that local detail to the other two.
+
+[Continuous Shade bodies 3](Observatory-Shade-Body-03.md) completes the next
+bounded step of item 4. Both faces now retain volume through automatic intact
+and broken approaches. Exact curve endpoints, circular wrap, flush corner
+profiles and shared coarse/fine boundary vertices protect the near seams.
+Intact Places arrive at the real perimeter; the unexplained middle-of-surface
+opening came from the old selected strip. Damaged through-fractures remain
+intentional. Carry the body, texture, cold-coverage and curved-corner tests into
+the next environment work. Cold envelope construction still costs roughly
+0.14–0.35 s in the final browser fixtures; it is not a 60 Hz cold-flight claim.
+
+[Shade boundary correction 1](Observatory-Shade-Boundary-01.md) addresses the
+reported texture/edge obstruction before further content work. Camera-relative
+signed margins make the visible skin agree with the existing CPU footprint;
+linear-radiance Shade mips and matching distant means remove a separate material
+brightness discontinuity. This is a follow-up to item 4, not a completed family
+of Shade environments. Preserve its textured boundary and capture checks.
+Its cold 4K repeat diagnostic remains open (also reproduced on the unmodified
+baseline); exact first-capture equality is not certified. Keep that follow-up
+separate from the completed skin-coverage and material correction.
+
 [Continuity 3](Observatory-Continuity-03.md) records stage C sampling and
 transition changes, stage D automatic edges, and connected walking from stage E.
 Use its exact evidence and compatibility rules rather than the earlier request
@@ -111,10 +155,10 @@ arrival address unchanged. Cold worker delay, coarse/fine borders and bounded
 reservations have separate checks. Revision-1 photographs keep their old terrain
 and selected Shade strip; new landings use the selected terrain revision.
 
-Continue with the joined receiving lake, quiet reach and open meadow after
-reviewing that evidence. Keep geometry, collision, materials and atmosphere tied
-to the same geographic boundaries. Global route coverage and finished Shade-face
-environments remain distinct milestones beyond these local tests.
+The joined lake/reach/meadow regional slice now has its own implementation and
+evidence above. Keep geometry, collision, materials and atmosphere tied to the
+same geographic boundaries as local detail is added. Global route coverage and
+finished Shade-face environments remain distinct milestones.
 
 ## Ordered improvement work
 
@@ -122,10 +166,10 @@ environments remain distinct milestones beyond these local tests.
 |---|---|---|
 | 1 | Versioned geography and first pack | Bounded milestone complete; see the verified neighbourhood and its representation limits above |
 | 2 | Clip Wound landing ground and match seams | First local patch implementation complete: shared terrain-following top vertices, full rim end profiles, clipped support/props and protected loading/departure coverage; retain the six-Wound checks as other terrain representations expand |
-| 3 | Connect ground-to-atmosphere representations | Diagnose/remove the Watershed dotted band and atmospheric artefacts; shared water, terrain, routes and landmarks survive clear/cloudy ascent and descent with no square cutoff, stretch or jump |
-| 4 | Discover and prepare intact / damaged Shade edges | Approach without selecting a Shade; both faces, all supported shapes and damage boundaries; prepare before readable silhouette change/contact using relative motion and output pixel error |
-| 5 | Stream walking terrain across boundaries | Walk across at least ten patch joins and return; pin support during preparation/origin changes; rapid reversals cause no gaps, duplicate objects, hidden walls or growing queues |
-| 6 | Nine artistic variations for the first pack | Start with a joined lake/reach/meadow trio; nine distinguishable compositions ultimately share valid water/route/height boundaries, rotations and repeatable coordinate-seeded selection |
+| 3 | Extend ground-to-atmosphere continuity | Bounded stage C complete: opaque province depth, shared material ownership, cloud sampling and curved Wound containment. Carry the clear/cloudy ascent/descent checks into each new artistic boundary; remaining atlas and geographic expansion must preserve water, routes and landmarks |
+| 4 | Extend automatic intact / damaged Shade approaches | Revision 3 adds continuous 180 m bodies, finished intact edges, closed broken profiles and curved/wrapped seam checks. Preserve both-face CPU/GPU coverage, actual artwork on outside approaches, immediate coarse coverage, parent-relative preparation and output-pixel criteria as environments expand |
+| 5 | Extend connected walking coverage | Bounded revision-2 controller route complete: 22 joins, rebase and return with pinned support. Extend to new terrain/art boundaries, rapid reversals and mixed shell/Shade journeys without gaps, duplicate objects, hidden walls or growing queues |
+| 6 | Nine artistic variations for the first pack | Joined lake/reach/meadow regional materials implemented as art 2; next prove one local receiving-lake shore. Nine finished environments and compatible rotated terrain/asset variants remain queued |
 | 7 | Build the complex geometry benchmark | An approximately 300 × 300 m Watershed garden/service district with stairs, ramps, curved bridge, underpass, raised courts, low clearances, rubble and stacked floors; collision agrees with visible geometry |
 | 8 | Complete Shade environment families | Middle of Shade beyond sight of an edge plus intact/broken edge environments; walk on both faces in the moving parent frame, cross detail boundaries, lift off, pause/scrub and restore a saved position |
 | 9 | Add one persistent Hero Zone | A named authored level at a stable shell or Shade address; approach landmark, local layout and saved state agree after reload and neighbouring procedural updates |
@@ -169,9 +213,11 @@ the deferred expansion of the graveyard fleet.
   approach using parent-relative motion, output resolution and loading latency.
   Do not allow a budget eviction to remove the current floor.
 - **Capture reliability:** retain the strict cold/warm equality checks, image
-  pairs and scene metadata. Isolate the earlier first-use 4K mismatch rather
-  than treating a passing retry as its resolution. Pack resources must be ready
-  before fixed-scene photographs and all six panorama faces are drawn.
+  pairs and scene metadata. Continuity 3 fixed the reproduced first-use mismatch
+  with completed GPU resolve and exact-scene shadow passes; retain the original
+  cold/repeat reproducer and independent-context checks as regression gates.
+  Pack resources must be ready before fixed-scene photographs and all six
+  panorama faces are drawn.
 - **Controls and navigation:** preserve user-owned Play/Pause, Space + E,
   auto/manual speed, one-way pointer travel, history and measurements. Keep
   Places useful as the catalogue grows. Landing should work at the selected
@@ -237,10 +283,14 @@ reproduce them with the tests when continuing from a different checkout.
 ## Handoff details
 
 - Repository: `I:/Sphere/repositories/sphere-observatory`.
-- Current branch: `codex/watershed-neighbourhood`, created from the current
-  `f4d71ad` checkout without discarding work. This milestone is in local modified
-  and untracked files; it has not been committed, pushed or released. Preserve
-  it when continuing. `I:/Sphere` is a separate parent repository.
+- Current branch: `codex/watershed-neighbourhood`. The continuity milestone is
+  committed as `b80bd72` (13 September), following `f4d71ad`. At the start of
+  the 14 September review, tracked files were clean and `work/` was untracked.
+  The renderer review, roadmap corrections, Shade boundary correction and
+  continuous Shade body revision 3 are subsequent local edits. Watershed trio 1
+  and ground material correction 1 are later local additions in this checkout. Remote publication was not checked; no commit, push or
+  release was performed by it. Preserve the local evidence when continuing.
+  `I:/Sphere` is a separate parent repository.
 - Live app: <http://127.0.0.1:8766/?province=watershed>. Refresh to load edits.
 - Local runtime: `C:/Program Files/nodejs/node.exe`. Browser checks use
   `SPHERE_PLAYWRIGHT` and `SPHERE_BROWSER`; the current installed browser is
@@ -264,8 +314,8 @@ Supporting detail: [Places and travel](Observatory-Places-Travel.md),
 [historical queue](Observatory-Queue.md) and
 [original Next Leap plan](Observatory-Next-Leap.md).
 
-Suggested next-session request: “Review Continuity 3 and its final evidence,
-then continue the joined receiving lake, quiet reach and open meadow. Preserve
-the revision-1 river garden and addresses, Wound seams, cloud scale, automatic
-Shade approaches, connected support and travel behaviour. Repeat altitude and
-walking checks on each new artistic boundary.”
+Suggested next-session request: “Review Watershed trio 1 and its evidence, then
+design and implement one bounded receiving-lake shore with planted geometry and
+a promenade. Keep its regional shoreline, material, visible ground and collision
+registered through descent. Preserve the revision-1 garden and saved art-1
+scenes, Wound seams, cloud scale, Shade bodies, connected support and travel.”

@@ -1,0 +1,222 @@
+{
+  "status": "PASS",
+  "cases": [
+    {
+      "id": 3,
+      "revision": 1,
+      "bindings": {
+        "biome": -1,
+        "after": 1,
+        "manyWounds": 0
+      },
+      "transitions": [
+        {
+          "biome": 3,
+          "after": 1,
+          "manyWounds": 1
+        },
+        {
+          "biome": -1,
+          "after": 0,
+          "manyWounds": 0
+        },
+        {
+          "biome": -1,
+          "after": 1,
+          "manyWounds": 1
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "id": 3,
+      "revision": 2,
+      "bindings": {
+        "biome": -1,
+        "after": 1,
+        "manyWounds": 0
+      },
+      "transitions": [
+        {
+          "biome": 3,
+          "after": 1,
+          "manyWounds": 1
+        },
+        {
+          "biome": -1,
+          "after": 0,
+          "manyWounds": 0
+        },
+        {
+          "biome": -1,
+          "after": 1,
+          "manyWounds": 1
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "id": 2,
+      "revision": 1,
+      "bindings": {
+        "biome": -1,
+        "after": 1,
+        "manyWounds": 0
+      },
+      "transitions": [
+        {
+          "biome": 2,
+          "after": 1,
+          "manyWounds": 1
+        },
+        {
+          "biome": -1,
+          "after": 0,
+          "manyWounds": 0
+        },
+        {
+          "biome": -1,
+          "after": 1,
+          "manyWounds": 1
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "id": 2,
+      "revision": 2,
+      "bindings": {
+        "biome": -1,
+        "after": 1,
+        "manyWounds": 0
+      },
+      "transitions": [
+        {
+          "biome": 2,
+          "after": 1,
+          "manyWounds": 1
+        },
+        {
+          "biome": -1,
+          "after": 0,
+          "manyWounds": 0
+        },
+        {
+          "biome": -1,
+          "after": 1,
+          "manyWounds": 1
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "id": 5,
+      "revision": 1,
+      "bindings": {
+        "biome": -1,
+        "after": 1,
+        "manyWounds": 0
+      },
+      "transitions": [
+        {
+          "biome": 5,
+          "after": 1,
+          "manyWounds": 1
+        },
+        {
+          "biome": -1,
+          "after": 0,
+          "manyWounds": 0
+        },
+        {
+          "biome": -1,
+          "after": 1,
+          "manyWounds": 1
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "id": 5,
+      "revision": 2,
+      "bindings": {
+        "biome": -1,
+        "after": 1,
+        "manyWounds": 0
+      },
+      "transitions": [
+        {
+          "biome": 5,
+          "after": 1,
+          "manyWounds": 1
+        },
+        {
+          "biome": -1,
+          "after": 0,
+          "manyWounds": 0
+        },
+        {
+          "biome": -1,
+          "after": 1,
+          "manyWounds": 1
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "id": 4,
+      "revision": 1,
+      "bindings": {
+        "biome": -1,
+        "after": 1,
+        "manyWounds": 0
+      },
+      "transitions": [
+        {
+          "biome": 4,
+          "after": 1,
+          "manyWounds": 1
+        },
+        {
+          "biome": -1,
+          "after": 0,
+          "manyWounds": 0
+        },
+        {
+          "biome": -1,
+          "after": 1,
+          "manyWounds": 1
+        }
+      ],
+      "gl": 0
+    },
+    {
+      "id": 4,
+      "revision": 2,
+      "bindings": {
+        "biome": -1,
+        "after": 1,
+        "manyWounds": 0
+      },
+      "transitions": [
+        {
+          "biome": 4,
+          "after": 1,
+          "manyWounds": 1
+        },
+        {
+          "biome": -1,
+          "after": 0,
+          "manyWounds": 0
+        },
+        {
+          "biome": -1,
+          "after": 1,
+          "manyWounds": 1
+        }
+      ],
+      "gl": 0
+    }
+  ],
+  "errors": []
+}

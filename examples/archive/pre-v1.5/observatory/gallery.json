@@ -1,0 +1,108 @@
+{
+  "capturedAt": "2026-09-13T03:20:03.684Z",
+  "sourceCommit": "5b01e859bfefa812f50c6c051875da0eb949b2b5",
+  "width": 3840,
+  "height": 2160,
+  "method": "Native app renderer, prepared assets, three to eight paused frames; last two must match. All adjacent-frame comparisons retained. No external image retouching.",
+  "shots": [
+    {
+      "id": "interior",
+      "title": "The stellar conservatory",
+      "coldMatches": true,
+      "warmMatches": true,
+      "frameMatches": [
+        true,
+        true
+      ],
+      "error": 0,
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "bytes": 12505899,
+      "sha256": "118dae43ea83b1d0ae56e05b46af70c613acce889c223d8ac058c9fe2dbd6a29"
+    },
+    {
+      "id": "cavity",
+      "title": "Across the interior",
+      "coldMatches": true,
+      "warmMatches": true,
+      "frameMatches": [
+        true,
+        true
+      ],
+      "error": 0,
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "bytes": 15489269,
+      "sha256": "14c0cffda2163fcb427eafab69824d5f0ac25f6a2c4f0aa2f834cd5190e5a843"
+    },
+    {
+      "id": "wound",
+      "title": "At the edge of a world",
+      "coldMatches": true,
+      "warmMatches": true,
+      "frameMatches": [
+        true,
+        true
+      ],
+      "error": 0,
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "bytes": 13281572,
+      "sha256": "3a227ef60b67c8527b459cd760227e11f9836faa45568d7e4d6128949698ed41"
+    },
+    {
+      "id": "river-garden",
+      "title": "The open river-garden terrace",
+      "coldMatches": true,
+      "warmMatches": true,
+      "frameMatches": [
+        true,
+        true
+      ],
+      "error": 0,
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "bytes": 7868758,
+      "sha256": "e89fdf3e826d67f48df753fab3112b9afa1389771ad609a9e93b39e6f149d54e"
+    },
+    {
+      "id": "watershed",
+      "title": "A garden beside the river",
+      "coldMatches": true,
+      "warmMatches": true,
+      "frameMatches": [
+        true,
+        true
+      ],
+      "error": 0,
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "bytes": 10688768,
+      "sha256": "735456b038a29cefe180f79d485cfc446770e52a01b8d7f9493ba87004777138"
+    },
+    {
+      "id": "shade",
+      "title": "The broken Shade",
+      "coldMatches": true,
+      "warmMatches": true,
+      "frameMatches": [
+        true,
+        true
+      ],
+      "error": 0,
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "bytes": 13912808,
+      "sha256": "6a87b84d70bfa180e11458dc664b4719fa0db68feaa7671457b71572fc60e9d2"
+    },
+    {
+      "id": "clouds",
+      "title": "Above the cloud sea",
+      "coldMatches": true,
+      "warmMatches": true,
+      "frameMatches": [
+        true,
+        true
+      ],
+      "error": 0,
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "bytes": 17284963,
+      "sha256": "0db27b1440c600a9253c803b0e735bf1a8197acf593cd822a3a74886e9394f2a"
+    }
+  ],
+  "errors": []
+}

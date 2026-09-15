@@ -1,0 +1,72 @@
+
+> sphere-observatory@1.4.0 test
+> node tests/geometry.cjs && node tests/survey.cjs && node tests/collection.cjs && node tests/shades.cjs && node tests/station-convergence.cjs && node tests/performance.cjs && node tests/evolution.cjs && node tests/focus.cjs && node tests/continuity.cjs && node tests/materials.cjs && node tests/shade-mips.cjs && node tests/session-state.cjs && node tests/wound-materials.cjs && node tests/wound-ground.cjs && node tests/surface-arrival.cjs && node tests/streaming.cjs && node tests/atlas-study.cjs && node tests/watershed.cjs && node tests/neighbourhood.cjs && node tests/watershed-trio.cjs && node tests/travel.cjs && node tests/places-flight.cjs && node tests/edge-speed.cjs && node tests/pointer-navigation.cjs && node tests/asset-loading.cjs && node tests/surface-transition.cjs && node tests/shade-edges.cjs && node tests/shade-footprint.cjs && node tests/shade-body.cjs && node tests/shade-seams.cjs && node tests/ground-chunks.cjs && node tests/ground-addresses.cjs
+
+PASS Half-radius inward and outward distances
+PASS One-km clearance survives near-shell cancellation
+PASS Random ray hits lie on the shell
+PASS Star apparent diameter matches solar geometry
+PASS Breach cap has the specified great-circle diameter
+PASS A breach really opens to space
+PASS The central star occludes the far wall
+PASS Shade blocks, exposes, and partially exposes the finite star
+PASS No false shade when it is behind the observer
+PASS Planar disk notch and ray parallel to plane
+PASS Perspective edge angle equals half horizontal FOV
+PASS Camera basis remains orthonormal after rotations
+PASS Scene settings round-trip and reject invalid camera data
+13 geometry checks passed.
+PASS Complete panorama integrates to 4πR²
+PASS 90-degree square at centre covers one-sixth of sphere
+PASS Half-radius wide view reproduces independent 10.7869% area calculation
+PASS Opening excluded while gross footprint is retained
+PASS At one km, the local 90-degree footprint is approximately 4 km²
+PASS Thin selection has bounded work
+7 area-measurement checks passed.
+PASS collection round-trip, counts, six real openings, surviving identity, route periods, stable regions, light response and validation
+PASS trimmed side cuts, retained leading/trailing ends, settings validation;  all-phase conservative clearance for four shapes, square corners, cap rays, known eclipses and clear intervals, shape round-trip
+{
+  probes: 320,
+  partial: 280,
+  meanAbsoluteError: {
+    '19': 0.011664199829101581,
+    '64': 0.007950973510742188,
+    '128': 0.004362869262695313,
+    '256': 0.0030246734619140624
+  },
+  maxError: {
+    '19': 0.07291452508223684,
+    '64': 0.045654296875,
+    '128': 0.0318603515625,
+    '256': 0.0150146484375
+  }
+}
+PASS conservative source-cone culling matches all-blocker reference: 384 probes
+PASS ten biome states, input validation, continuous distance/footprint LOD, metre-stable anchors, adaptive recovery and vertical bases
+PASS v2 and legacy state validation, oriented waist and opposing ports, all ten destinations, 360 exact rim probes, sub-metre nearest rims, three damage families, exterior shell occlusion, 110 terrain rays, walk/jump/restore and physical units.
+PASS 17496 Shade footprint probes, full-cycle route clearance, swept shell collision in both directions, Wound passage and far-wall collision, local terrain landing.
+PASS 84 moving-frame transports, 360 close boundary probes, deterministic stream retention, resolution-dependent LOD, scene restore, detach, level lock and vertical stability.
+PASS 18 local shadow transforms across radii/orientations, caster inclusion, bounded range, quality validation and material scene restoration.
+PASS Shade linear-radiance mip means, bright subpixel coverage, deterministic output and unchanged input
+PASS versioned session round trip, paused restoration, unchanged source, invalid/corrupt/oversized record rejection.
+PASS 7200 biome/damage probes across six Wounds and three radii, monotonic damage, undamaged eras, fixed world coordinates and coordinate poles; max local distance error 0.7953878118926809 km.
+PASS 90 Wound fixtures, 42954 exact uploaded seam vertices, 1080 support probes, 57924 prop corners; max contour chord error 0.0968 mm, triangle intrusion 0.0000 mm; varying lip heights, coarse/fine and worker parity, era/cache changes and walking off the lip.
+PASS 1476 arrivals across six Wounds, three radii, tips, banks, threshold sides, exterior/interior selections, and 36 biome transitions.
+PASS 1184 worker BVH rays (969 hits), geometry byte parity, coarse replacement, partial-upload collision exclusion, stale response cancellation and queue clearing.
+PASS cold Wound seam guards, exact worker profiles and protected ends under vertex-budget pressure.
+PASS 147456 drainage cells: strict downhill routing, conserved catchment area, deterministic seeds, shared zoom footprints and unchanged scene layout.
+PASS Watershed revision migration, invalid-state rejection, 12 world addresses, six deterministic catchments, 340 shared collision rays, four arrivals, terrace flight contact, worker/capture byte parity, joined river banks and independent damage.
+PASS pack migration, exact core reuse, saved addresses, 134 original outlets, 492 graph edges, connected drainage/routes, polar and longitude addresses, deterministic eviction and water traversal
+PASS Watershed trio: 19635 geographic blends, 1456 overlaps, dry arrivals, real walking, exact core geometry, legacy art, clock and saved addresses
+PASS 12 Breach spill arrivals, 9 anchored descents, garden support, walking/jump/restore, steps/walls/ceilings, flight hysteresis, open water/Wounds, 4320 two-sided Shade contacts and cold deck collision.
+PASS auto/manual speed, symmetric gradient, takeoff, 65.2 s cavity crossing, saved preferences, catalogue and 27 Place arrivals
+{"status":"PASS","woundProbes":270,"shadeProbes":720,"voidSamples":1212,"solidSamples":2168,"lipTriangleDistances":[0.004602505424558531,0.004058617657913908,0.003999967136588566,0.004439270419821542,0.020077556735782976],"warmNearestMs":{"median":0.029200000000003,"p95":0.106899999999996,"max":0.3727000000000089}}
+PASS ten marked regions; six Wound entries and exits to far shell, star, Shades and open space; solid exterior; both faces of four moving Shade shapes; visible terrain
+PASS no distant image requests, selected biome distance bands, two-sided Shade artwork and deferred distant province
+{"status":"PASS","probes":21774,"maxNormal":9.037626289101727e-16}
+{"status":"PASS","approaches":116,"curves":1808,"triangles":2267200,"buildMs":{"median":18.71740000000011,"p95":59.52260000000024,"max":63.96140000000014}}
+{"status":"PASS","triangles":140816,"outside":0}
+{"status":"PASS","faces":48,"arrivals":8,"coldEdges":8,"coldEnvelopeMs":{"max":103.52859999999998,"mean":78.636825}}
+{"status":"PASS","lodVertices":43200,"joins":120,"corners":48,"maxGapMm":0.14874653130189688,"maxFaceErrorMm":0.06675720215509884}
+{"status":"PASS","joins":24,"residency":{"chunks":25,"cache":89,"bytes":66893292,"pendingBytes":0,"budget":67108864,"buildMs":0,"queue":0,"waits":0},"syncBuildMs":{"max":1573.7388}}
+{"status":"PASS","probes":10,"maxRebaseErrorMetres":0.00002008438704237392,"borderVertices":780,"propVertices":120,"maxPropErrorMetres":0.0002326873025446395}

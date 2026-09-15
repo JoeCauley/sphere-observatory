@@ -4,10 +4,22 @@
 const key='sphere-session-v1',M=root.SphereMath;
 function decode(raw){if(typeof raw!=='string'||raw.length>1000000)throw Error('Invalid saved session');const record=JSON.parse(raw);
  if(!record||record.format!=='sphere-session'||record.version!==1)throw Error('Unsupported saved session');
- const state=M.validate(record.state);state.playing=false;state.walkVelocity=0;
+ const state=M.validate(record.state);
+ // Upgrade the resumable exploration once. Portable scene imports still keep
+ // their explicit geometry revision; subsequent saved choices are respected.
+ if(record.shadeBodyVersion!==3&&state.shadeGeometryRevision<3&&state.layoutVersion===2&&state.collection){state.shadeGeometryRevision=3;
+  // A shell-facing camera in an old zero-thickness scene may now be inside the
+  // body. Preserve its old clearance by moving only that trapped camera out.
+  for(const p of root.SphereCollection.plates(state)){const radius=M.length(p.center)*state.radius,curved=p.shape==='cap'||p.shape==='trimmed',along=M.dot(state.position,p.normal),height=curved?M.length(state.position)-radius:along-radius;
+   if(height<=0||height>=.182||along<=0)continue;const factor=curved?radius/along:1;
+   if(!root.SphereCollection.diskContains(M.dot(state.position,p.right)*factor/state.radius,M.dot(state.position,p.up)*factor/state.radius,p))continue;
+   state.position=M.add(state.position,M.mul(curved?M.norm(state.position):p.normal,.18));break;
+  }
+ }
+ state.playing=false;state.walkVelocity=0;
  return {state,ui:record.ui&&typeof record.ui==='object'&&!Array.isArray(record.ui)?record.ui:{}};
 }
-function encode(state,ui={}){const clean=M.validate(state);clean.playing=false;clean.walkVelocity=0;return JSON.stringify({format:'sphere-session',version:1,state:clean,ui});}
+function encode(state,ui={}){const clean=M.validate(state);clean.playing=false;clean.walkVelocity=0;return JSON.stringify({format:'sphere-session',version:1,shadeBodyVersion:3,state:clean,ui});}
 root.SphereSessionCodec={key,decode,encode};
 if(!root.document||!root.SphereApp)return;
 const A=root.SphereApp,$=id=>document.getElementById(id),preferences=['previewFps','adaptivePreview','exportSize','clipShot','biomeDestination','biomeAltitude','fieldDestination','rotationStep','placeCategory','placeDestination','placeAltitude'];

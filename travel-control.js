@@ -42,7 +42,8 @@ function shadeClearance(s,p){
  // through the bounded footprint and observer to retain a safe lower bound.
  if(curved)gap/=1+(Math.max(Math.hypot(u*ax,v*ay),Math.hypot(ax,ay))/radius)**2;
  const height=curved?M.length(s.position)-radius:along-radius,n=curved?M.norm(s.position):p.normal;
- return {distance:Math.hypot(height,gap),normal:M.mul(n,height<0?-1:1)};
+ const thickness=(p.thickness||0)*s.radius,clearance=height<0?-height:Math.max(0,height-thickness);
+ return {distance:Math.hypot(clearance,gap),normal:M.mul(n,height<thickness*.5?-1:1)};
 }
 function surroundings(s,d){
  const q=M.norm(s.position),altitude=s.radius-M.length(s.position),inside=altitude>=0;

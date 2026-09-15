@@ -10,10 +10,16 @@ function plan(s,aspect=16/9){
  if(s.textureDetail!==false){
   const b=M.basis(s.forward,s.up),nx=s.projection==='panorama'?16:5,ny=s.projection==='panorama'?9:5;
   // A nearby Shade can be millions of kilometres above the shell.
-  const closeShell=Math.abs(s.radius-M.length(s.position))<21000,pn=M.mul(s.position,1/s.radius),closeShade=s.collection&&C.plates(s).some(p=>Math.min(C.diskDistance(pn,(p.shape==='cap'||p.shape==='trimmed')?M.norm(s.position):p.normal,p),C.diskDistance(pn,M.mul((p.shape==='cap'||p.shape==='trimmed')?M.norm(s.position):p.normal,-1),p))*s.radius<21000);
+  const closeShell=Math.abs(s.radius-M.length(s.position))<21000,closeShade=s.collection&&C.plates(s).some(p=>{
+   // A perpendicular probe misses when approaching from outside the perimeter
+   // or through a fracture. Include a conservative neighbourhood of the whole
+   // footprint, then use view rays to choose the actual requested artwork.
+   const r=M.length(p.center)*s.radius,z=M.dot(s.position,p.normal),curved=p.shape==='cap'||p.shape==='trimmed',height=Math.abs((curved?M.length(s.position):z)-r);if(z<=0||height>21000)return false;
+   const factor=curved?r/z:1;return Math.abs(M.dot(s.position,p.right)*factor)<p.size*(p.across||1)*s.radius+21000&&Math.abs(M.dot(s.position,p.up)*factor)<p.size*s.radius+21000;
+  });
   if(closeShell||closeShade||Number.isInteger(s.shadeAttachment)){for(let y=0;y<ny;y++)for(let x=0;x<nx;x++){
    const d=M.ray(x/(nx-1)*2-1,y/(ny-1)*2-1,aspect,s.fov,b,s.projection==='panorama'),hit=M.trace(s.position,d,s);nearest=Math.min(nearest,hit.distance);
-   if(hit.kind==='Shade'&&hit.distance<21000){sets.worldTextures.add(3);sets.worldTextures.add(4);}
+   if(hit.kind.startsWith('Shade')&&hit.distance<21000){sets.worldTextures.add(3);sets.worldTextures.add(4);}
    if(hit.kind==='Inner surface'&&hit.point&&hit.distance<6000){const q=M.norm(hit.point);if(modern&&s.biome<0){const r=W.sample(q,s);add(r.a,hit.distance);if(r.blend>.001)add(r.b,hit.distance);}else add(B.region(q,s),hit.distance);}
   }}
   if(modern&&exterior){for(const id of [0,3,4,5,7])sets.heroes.add(id);sets.worldTextures.add(2);}

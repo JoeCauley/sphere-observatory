@@ -2,7 +2,11 @@
 const {chromium}=require(process.env.SPHERE_PLAYWRIGHT||'playwright');
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),crypto=require('node:crypto');
 const dir=path.resolve(__dirname,'../examples/observatory');
-const shots=[['interior','The stellar conservatory'],['cavity','Across the interior'],['wound','At the edge of a world'],['river-garden','The open river-garden terrace'],['watershed','A garden beside the river'],['shade','The broken Shade'],['clouds','Above the cloud sea']];
+const shots=JSON.parse(fs.readFileSync(path.join(dir,'shots.json'),'utf8'));
+const root=path.resolve(__dirname,'..');
+const sourceFiles=fs.readdirSync(root).filter(f=>/\.(js|html|css)$/.test(f)||f==='package.json').sort();
+const sourceHash=crypto.createHash('sha256');for(const file of sourceFiles){sourceHash.update(file+'\0');sourceHash.update(fs.readFileSync(path.join(root,file),'utf8').replace(/\r\n/g,'\n'));}
+const sourceContentSha256=sourceHash.digest('hex');
 (async()=>{
  const selected=new Set(process.argv.slice(2));for(const id of selected)assert(shots.some(s=>s[0]===id),'Unknown shot: '+id);
  const browser=await chromium.launch({headless:true,executablePath:process.env.SPHERE_BROWSER});
@@ -25,7 +29,7 @@ const shots=[['interior','The stellar conservatory'],['cavity','Across the inter
    fs.writeFileSync(path.join(dir,id+'.png'),png);fs.writeFileSync(path.join(dir,id+'.json'),JSON.stringify(result.scene,null,2)+'\n');delete result.image;delete result.scene;
    diagnostics.push({id,title,...result,bytes:png.length,sha256:crypto.createHash('sha256').update(png).digest('hex')});console.log(id,JSON.stringify(diagnostics.at(-1)));
    const auditFile=path.join(dir,'gallery.json'),prior=fs.existsSync(auditFile)?JSON.parse(fs.readFileSync(auditFile)).shots:[],merged=new Map(prior.map(x=>[x.id,x]));for(const item of diagnostics)merged.set(item.id,item);
-   fs.writeFileSync(auditFile,JSON.stringify({capturedAt:new Date().toISOString(),sourceCommit:process.env.SPHERE_SOURCE_COMMIT||null,width:3840,height:2160,method:'Native app renderer, prepared assets, three to eight paused frames; last two must match. All adjacent-frame comparisons retained. No external image retouching.',shots:shots.map(([id])=>merged.get(id)).filter(Boolean),errors},null,2)+'\n');
+   fs.writeFileSync(auditFile,JSON.stringify({capturedAt:new Date().toISOString(),version:require('../package.json').version,sourceContentSha256,sourceHashEncoding:'UTF-8 text with LF line endings; sorted file name plus NUL then file content',sourceFiles,width:3840,height:2160,method:'Native app renderer, prepared assets, three to eight paused frames; last two must match. All adjacent-frame comparisons retained. No external image retouching.',shots:shots.map(([id])=>merged.get(id)).filter(Boolean),errors},null,2)+'\n');
   }
   assert.deepEqual(errors,[]);
  }finally{await browser.close();}

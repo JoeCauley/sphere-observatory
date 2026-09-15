@@ -1,0 +1,19 @@
+const {chromium}=require(process.env.SPHERE_PLAYWRIGHT||'playwright'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
+(async()=>{const browser=await chromium.launch({headless:true,executablePath:process.env.SPHERE_BROWSER});try{
+ const page=await browser.newPage({viewport:{width:1440,height:1000}}),errors=[],dir=path.resolve('work/screenshots/watershed-trio');fs.mkdirSync(dir,{recursive:true});page.setDefaultTimeout(240000);page.on('pageerror',e=>errors.push(e.message));
+ await page.goto(process.env.SPHERE_URL||'http://127.0.0.1:8766/',{waitUntil:'domcontentloaded'});await page.waitForFunction(()=>window.SphereLoading?.ready);await page.evaluate(()=>SphereApp.setBusy(true));await page.locator('[data-tab=camera]').click();
+ const base=await page.evaluate(()=>{const s=SpherePacks.activate({...SphereApp.getState(),playing:false,autoSpeed:false,speed:.017,clouds:false,atmosphere:0,cavityHaze:0});s.packAddress.artRevision=1;SphereApp.setState(s);return SphereApp.getState();});
+ page.setDefaultTimeout(60000);console.log('Trio UI ready');await page.locator('[data-category=watersheds]').click();await page.locator('[name=placeWeather][value=clear]').check();const visits=[];
+ for(const id of ['lake','reach','meadow']){
+  await page.locator('#placeDestination').selectOption('watershed-'+id);await page.locator('[data-arrival=regional]').click();await page.locator('#visitPlace').click();await page.waitForFunction(()=>!document.getElementById('visitPlace').disabled&&SphereApp.getState().packAddress.artRevision===2);console.log('Regional view',id);
+  const s=await page.evaluate(()=>SphereApp.getState());assert.equal(s.packAddress.artRevision,2);assert.deepEqual(s.packAddress.anchor,base.packAddress.anchor);assert.equal(s.time,base.time);assert.equal(s.speed,base.speed);assert.equal(s.playing,false);assert.equal(s.walkMode,false);visits.push({id,address:s.packAddress});
+  await page.locator('#browseBiomes').click();assert.deepEqual(await page.evaluate(()=>SphereApp.getState()),base);
+ }
+ await page.locator('[data-category=watersheds]').click();
+ for(const id of ['lake','reach','meadow']){
+  await page.locator('#placeDestination').selectOption('watershed-'+id);await page.locator('[data-arrival=ground]').click();await page.locator('[name=placeWeather][value=clear]').check();await page.locator('#visitPlace').click();await page.waitForFunction(()=>SphereLoading.ready&&SphereApp.getState().walkMode);await page.evaluate(()=>SphereApp.setBusy(true));
+  const s=await page.evaluate(()=>SphereApp.getState());assert.equal(s.packAddress.artRevision,2);assert.equal(s.time,base.time);assert.equal(s.speed,base.speed);assert.equal(s.playing,false);assert.equal(s.autoSpeed,false);visits.push({id:'place-'+id,address:s.packAddress});
+ }
+ await page.locator('#placeDestination').selectOption('watershed-lake');await page.locator('[data-arrival=regional]').click();await page.locator('#visitPlace').click();await page.waitForFunction(()=>!document.getElementById('visitPlace').disabled&&!SphereApp.getState().walkMode);await page.evaluate(async()=>{const R=SphereApp.renderer,s=SphereApp.getState();await R.prepare(s);R.draw(s,1100,800,{exportFrame:true});R.gl.finish();});
+ await page.screenshot({path:path.join(dir,'ui.png')});await page.locator('[data-category=biomes]').click();assert.equal(await page.locator('[data-arrival=regional]').isVisible(),false);assert.equal(await page.locator('#placeAltitude').inputValue(),'ground');assert.deepEqual(errors,[]);fs.writeFileSync(path.join(dir,'ui-report.json'),JSON.stringify({status:'PASS',visits,errors},null,2));console.log('PASS three real regional selections, exact art-1 returns, three Places landings and retained clock/speed');
+}finally{await browser.close();}})().catch(e=>{console.error(e);process.exitCode=1;});

@@ -1,0 +1,88 @@
+{
+  "version": "1.5.0",
+  "verifiedAt": "2026-09-15T01:21:40.662749+00:00",
+  "sourceContentSha256": "2ee8017eebac4980d05f3a0649128e096ee9cec791bb2fb3990b36e2b0d4e5ec",
+  "numerical": {
+    "command": "npm test",
+    "exitCode": 0,
+    "suites": 32
+  },
+  "browser": [
+    {
+      "file": "tests/ground-material-browser.cjs",
+      "exitCode": 0,
+      "elapsedMs": 153415
+    },
+    {
+      "file": "tests/watershed-trio-ui-browser.cjs",
+      "exitCode": 0,
+      "elapsedMs": 3368
+    },
+    {
+      "file": "tests/shade-body-browser.cjs",
+      "exitCode": 0,
+      "elapsedMs": 6494
+    },
+    {
+      "file": "tests/watershed-trio-browser.cjs",
+      "exitCode": 0,
+      "elapsedMs": 128473
+    },
+    {
+      "file": "tests/shade-boundary-browser.cjs",
+      "exitCode": 0,
+      "elapsedMs": 9914
+    },
+    {
+      "file": "tests/shade-material-browser.cjs",
+      "exitCode": 0,
+      "elapsedMs": 1031
+    },
+    {
+      "file": "tests/shade-edges-browser.cjs",
+      "exitCode": 0,
+      "elapsedMs": 8347
+    },
+    {
+      "file": "tests/shade-deck-browser.cjs",
+      "exitCode": 0,
+      "elapsedMs": 2501
+    },
+    {
+      "file": "tests/polish-capture-browser.cjs",
+      "exitCode": 0,
+      "elapsedMs": 2324
+    }
+  ],
+  "boundaryCoverageMode": "SPHERE_COVERAGE_ONLY=1; coverage-only does not certify cold-capture equality",
+  "photographs": {
+    "count": 17,
+    "dimensions": [
+      3840,
+      2160
+    ],
+    "finalPairsMatch": true,
+    "intermediateDifferences": [
+      "hero",
+      "ultra-desert",
+      "clouds"
+    ],
+    "graphicsErrors": 0,
+    "pageErrors": [],
+    "referenceCamera": "Exact position, forward, up, lens, time and seed from archived polar-station scene; current Shade geometry 3"
+  },
+  "archive": {
+    "publicImagesPreserved": 29,
+    "localWorkingImagesArchived": 645,
+    "imageHashesVerified": true,
+    "runtimeAssetsRetained": true
+  },
+  "readme": {
+    "imageCount": 17,
+    "allImagesLoad": true,
+    "desktopOverflow": false,
+    "mobileOverflow": false,
+    "checkedLocalLinks": "PASS"
+  },
+  "knownLimit": "Strict cold-capture repeatability remains open; no general fix claimed."
+}

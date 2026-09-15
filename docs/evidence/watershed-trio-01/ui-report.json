@@ -1,0 +1,96 @@
+{
+  "status": "PASS",
+  "visits": [
+    {
+      "id": "lake",
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9990056996801094,
+          -0.033228470003808824,
+          0.029723404715151572
+        ]
+      }
+    },
+    {
+      "id": "reach",
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9990056996801094,
+          -0.033228470003808824,
+          0.029723404715151572
+        ]
+      }
+    },
+    {
+      "id": "meadow",
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9990056996801094,
+          -0.033228470003808824,
+          0.029723404715151572
+        ]
+      }
+    },
+    {
+      "id": "place-lake",
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9990056996801094,
+          -0.033228470003808824,
+          0.029723404715151572
+        ]
+      }
+    },
+    {
+      "id": "place-reach",
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9990056996801094,
+          -0.033228470003808824,
+          0.029723404715151572
+        ]
+      }
+    },
+    {
+      "id": "place-meadow",
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9990056996801094,
+          -0.033228470003808824,
+          0.029723404715151572
+        ]
+      }
+    }
+  ],
+  "errors": []
+}

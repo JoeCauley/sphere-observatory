@@ -1,0 +1,877 @@
+{
+  "schema": 1,
+  "verifiedAt": "2026-09-14T22:19:44.159Z",
+  "baseCommit": "b80bd72",
+  "scope": "Shade primary-boundary precision and radiance-preserving material reduction; no whole-Sphere or performance acceptance",
+  "numerical": {
+    "status": "PASS",
+    "command": "npm test",
+    "suites": 29
+  },
+  "browser": [
+    {
+      "file": "tests/shade-boundary-browser.cjs",
+      "exitCode": 0,
+      "elapsedMs": 58648
+    },
+    {
+      "file": "tests/shade-material-browser.cjs",
+      "exitCode": 0,
+      "elapsedMs": 963
+    },
+    {
+      "file": "tests/shade-edges-browser.cjs",
+      "exitCode": 0,
+      "elapsedMs": 58637
+    },
+    {
+      "file": "tests/shade-deck-browser.cjs",
+      "exitCode": 0,
+      "elapsedMs": 2443
+    }
+  ],
+  "boundary": {
+    "status": "PASS",
+    "scenes": 41,
+    "pixels": 944640,
+    "mismatches": 0,
+    "interiorMismatches": 0,
+    "cases": [
+      {
+        "shape": "disk",
+        "id": 9,
+        "side": 1,
+        "name": "perimeter",
+        "mismatch": 0,
+        "interior": 0,
+        "pixels": 23040,
+        "repeat": null,
+        "error": 0
+      },
+      {
+        "shape": "disk",
+        "id": 9,
+        "side": -1,
+        "name": "perimeter",
+        "mismatch": 0,
+        "interior": 0,
+        "pixels": 23040,
+        "repeat": null,
+        "error": 0
+      },
+      {
+        "shape": "disk",
+        "id": 0,
+        "side": 1,
+        "name": "long-1",
+        "mismatch": 0,
+        "interior": 0,
+        "pixels": 23040,
+        "repeat": null,
+        "error": 0
+      },
+      {
+        "shape": "disk",
+        "id": 0,
+        "side": -1,
+        "name": "long-1",
+        "mismatch": 0,
+        "interior": 0,
+        "pixels": 23040,
+        "repeat": null,
+        "error": 0
+      },
+      {
+        "shape": "disk",
+        "id": 7,
+        "side": 1,
+        "name": "loss-bank",
+        "mismatch": 0,
+        "interior": 0,
+        "pixels": 23040,
+        "repeat": null,
+        "error": 0
+      },
+      {
+        "shape": "disk",
+        "id": 7,
+        "side": -1,
+        "name": "loss-bank",
+        "mismatch": 0,
+        "interior": 0,
+        "pixels": 23040,
+        "repeat": null,
+        "error": 0
+      },
+      {
+        "shape": "disk",
+        "id": 8,
+        "side": 1,
+        "name": "cross-1",
+        "mismatch": 0,
+        "interior": 0,
+        "pixels": 23040,
+        "repeat": null,
+        "error": 0
+      },
+      {
+        "shape": "disk",
+        "id": 8,
+        "side": -1,
+        "name": "cross-1",
+        "mismatch": 0,
+        "interior": 0,
+        "pixels": 23040,
+        "repeat": null,
+        "error": 0
+      },
+      {
+        "shape": "square",
+        "id": 9,
+        "side": 1,
+        "name": "east",
+        "mismatch": 0,
+        "interior": 0,
+        "pixels": 23040,
+        "repeat": null,
+        "error": 0
+      },
+      {
+        "shape": "square",
+        "id": 9,
+        "side": -1,
+        "name": "east",
+        "mismatch": 0,
+        "interior": 0,
+        "pixels": 23040,
+        "repeat": null,
+        "error": 0
+      },
+      {
+        "shape": "square",
+        "id": 0,
+        "side": 1,
+        "name": "long-1",
+        "mismatch": 0,
+        "interior": 0,
+        "pixels": 23040,
+        "repeat": null,
+        "error": 0
+      },
+      {
+        "shape": "square",
+        "id": 0,
+        "side": -1,
+        "name": "long-1",
+        "mismatch": 0,
+        "interior": 0,
+        "pixels": 23040,
+        "repeat": null,
+        "error": 0
+      },
+      {
+        "shape": "square",
+        "id": 7,
+        "side": 1,
+        "name": "loss-bank",
+        "mismatch": 0,
+        "interior": 0,
+        "pixels": 23040,
+        "repeat": null,
+        "error": 0
+      },
+      {
+        "shape": "square",
+        "id": 7,
+        "side": -1,
+        "name": "loss-bank",
+        "mismatch": 0,
+        "interior": 0,
+        "pixels": 23040,
+        "repeat": null,
+        "error": 0
+      },
+      {
+        "shape": "square",
+        "id": 8,
+        "side": 1,
+        "name": "cross-1",
+        "mismatch": 0,
+        "interior": 0,
+        "pixels": 23040,
+        "repeat": null,
+        "error": 0
+      },
+      {
+        "shape": "square",
+        "id": 8,
+        "side": -1,
+        "name": "cross-1",
+        "mismatch": 0,
+        "interior": 0,
+        "pixels": 23040,
+        "repeat": null,
+        "error": 0
+      },
+      {
+        "shape": "cap",
+        "id": 9,
+        "side": 1,
+        "name": "perimeter",
+        "mismatch": 0,
+        "interior": 0,
+        "pixels": 23040,
+        "repeat": true,
+        "error": 0
+      },
+      {
+        "shape": "cap",
+        "id": 9,
+        "side": -1,
+        "name": "perimeter",
+        "mismatch": 0,
+        "interior": 0,
+        "pixels": 23040,
+        "repeat": null,
+        "error": 0
+      },
+      {
+        "shape": "cap",
+        "id": 0,
+        "side": 1,
+        "name": "long-1",
+        "mismatch": 0,
+        "interior": 0,
+        "pixels": 23040,
+        "repeat": true,
+        "error": 0
+      },
+      {
+        "shape": "cap",
+        "id": 0,
+        "side": -1,
+        "name": "long-1",
+        "mismatch": 0,
+        "interior": 0,
+        "pixels": 23040,
+        "repeat": null,
+        "error": 0
+      },
+      {
+        "shape": "cap",
+        "id": 7,
+        "side": 1,
+        "name": "loss-bank",
+        "mismatch": 0,
+        "interior": 0,
+        "pixels": 23040,
+        "repeat": true,
+        "error": 0
+      },
+      {
+        "shape": "cap",
+        "id": 7,
+        "side": -1,
+        "name": "loss-bank",
+        "mismatch": 0,
+        "interior": 0,
+        "pixels": 23040,
+        "repeat": null,
+        "error": 0
+      },
+      {
+        "shape": "cap",
+        "id": 8,
+        "side": 1,
+        "name": "cross-1",
+        "mismatch": 0,
+        "interior": 0,
+        "pixels": 23040,
+        "repeat": true,
+        "error": 0
+      },
+      {
+        "shape": "cap",
+        "id": 8,
+        "side": -1,
+        "name": "cross-1",
+        "mismatch": 0,
+        "interior": 0,
+        "pixels": 23040,
+        "repeat": null,
+        "error": 0
+      },
+      {
+        "shape": "trimmed",
+        "id": 9,
+        "side": 1,
+        "name": "east-trim",
+        "mismatch": 0,
+        "interior": 0,
+        "pixels": 23040,
+        "repeat": null,
+        "error": 0
+      },
+      {
+        "shape": "trimmed",
+        "id": 9,
+        "side": -1,
+        "name": "east-trim",
+        "mismatch": 0,
+        "interior": 0,
+        "pixels": 23040,
+        "repeat": null,
+        "error": 0
+      },
+      {
+        "shape": "trimmed",
+        "id": 0,
+        "side": 1,
+        "name": "long-1",
+        "mismatch": 0,
+        "interior": 0,
+        "pixels": 23040,
+        "repeat": null,
+        "error": 0
+      },
+      {
+        "shape": "trimmed",
+        "id": 0,
+        "side": -1,
+        "name": "long-1",
+        "mismatch": 0,
+        "interior": 0,
+        "pixels": 23040,
+        "repeat": null,
+        "error": 0
+      },
+      {
+        "shape": "trimmed",
+        "id": 7,
+        "side": 1,
+        "name": "loss-bank",
+        "mismatch": 0,
+        "interior": 0,
+        "pixels": 23040,
+        "repeat": null,
+        "error": 0
+      },
+      {
+        "shape": "trimmed",
+        "id": 7,
+        "side": -1,
+        "name": "loss-bank",
+        "mismatch": 0,
+        "interior": 0,
+        "pixels": 23040,
+        "repeat": null,
+        "error": 0
+      },
+      {
+        "shape": "trimmed",
+        "id": 8,
+        "side": 1,
+        "name": "cross-1",
+        "mismatch": 0,
+        "interior": 0,
+        "pixels": 23040,
+        "repeat": null,
+        "error": 0
+      },
+      {
+        "shape": "trimmed",
+        "id": 8,
+        "side": -1,
+        "name": "cross-1",
+        "mismatch": 0,
+        "interior": 0,
+        "pixels": 23040,
+        "repeat": null,
+        "error": 0
+      },
+      {
+        "shape": "disk",
+        "id": 7,
+        "side": 1,
+        "name": "hole-14-0-e",
+        "mismatch": 0,
+        "interior": 0,
+        "pixels": 23040,
+        "repeat": null,
+        "error": 0
+      },
+      {
+        "shape": "disk",
+        "id": 7,
+        "side": -1,
+        "name": "hole-14-0-e",
+        "mismatch": 0,
+        "interior": 0,
+        "pixels": 23040,
+        "repeat": null,
+        "error": 0
+      },
+      {
+        "shape": "square",
+        "id": 7,
+        "side": 1,
+        "name": "hole-14-0-s",
+        "mismatch": 0,
+        "interior": 0,
+        "pixels": 23040,
+        "repeat": null,
+        "error": 0
+      },
+      {
+        "shape": "square",
+        "id": 7,
+        "side": -1,
+        "name": "hole-14-0-s",
+        "mismatch": 0,
+        "interior": 0,
+        "pixels": 23040,
+        "repeat": null,
+        "error": 0
+      },
+      {
+        "shape": "cap",
+        "id": 7,
+        "side": 1,
+        "name": "hole-14-0-e",
+        "mismatch": 0,
+        "interior": 0,
+        "pixels": 23040,
+        "repeat": true,
+        "error": 0
+      },
+      {
+        "shape": "cap",
+        "id": 7,
+        "side": -1,
+        "name": "hole-14-0-e",
+        "mismatch": 0,
+        "interior": 0,
+        "pixels": 23040,
+        "repeat": null,
+        "error": 0
+      },
+      {
+        "shape": "trimmed",
+        "id": 7,
+        "side": 1,
+        "name": "hole-14-0-e",
+        "mismatch": 0,
+        "interior": 0,
+        "pixels": 23040,
+        "repeat": null,
+        "error": 0
+      },
+      {
+        "shape": "trimmed",
+        "id": 7,
+        "side": -1,
+        "name": "hole-14-0-e",
+        "mismatch": 0,
+        "interior": 0,
+        "pixels": 23040,
+        "repeat": null,
+        "error": 0
+      },
+      {
+        "shape": "cap",
+        "id": 7,
+        "side": 1,
+        "name": "long-1",
+        "mismatch": 0,
+        "interior": 0,
+        "pixels": 23040,
+        "repeat": true,
+        "error": 0
+      }
+    ]
+  },
+  "reproduction": {
+    "pixels": 294912,
+    "before": {
+      "mismatches": 25087,
+      "interior": 24125
+    },
+    "after": {
+      "mismatches": 0,
+      "interior": 0
+    },
+    "note": "Controlled cap7 long-1 reproduction, 5.2 km above and 6 km inward; screenshot camera was not exactly reconstructed. Before image already includes the independent material-mean correction.",
+    "beforeImage": "work/screenshots/shade-boundary/broken-before-precision.png",
+    "afterImage": "work/screenshots/shade-boundary/broken-aa3.png"
+  },
+  "material": {
+    "aggregate": [
+      {
+        "layer": 3,
+        "ready": 0,
+        "distance": 5.2,
+        "error": 9.652614263444548e-10
+      },
+      {
+        "layer": 3,
+        "ready": 0,
+        "distance": 6000,
+        "error": 9.652614263444548e-10
+      },
+      {
+        "layer": 3,
+        "ready": 0,
+        "distance": 12000,
+        "error": 9.652614263444548e-10
+      },
+      {
+        "layer": 3,
+        "ready": 0,
+        "distance": 20000,
+        "error": 9.652614263444548e-10
+      },
+      {
+        "layer": 3,
+        "ready": 0,
+        "distance": 40000,
+        "error": 9.652614263444548e-10
+      },
+      {
+        "layer": 3,
+        "ready": 1,
+        "distance": 5.2,
+        "error": 9.652614263444548e-10
+      },
+      {
+        "layer": 3,
+        "ready": 1,
+        "distance": 6000,
+        "error": 9.652614263444548e-10
+      },
+      {
+        "layer": 3,
+        "ready": 1,
+        "distance": 12000,
+        "error": 9.652614263444548e-10
+      },
+      {
+        "layer": 3,
+        "ready": 1,
+        "distance": 20000,
+        "error": 9.652614263444548e-10
+      },
+      {
+        "layer": 3,
+        "ready": 1,
+        "distance": 40000,
+        "error": 9.652614263444548e-10
+      },
+      {
+        "layer": 3,
+        "mipError": 0.0006633400917053223,
+        "cacheMeanError": 0
+      },
+      {
+        "layer": 4,
+        "ready": 0,
+        "distance": 5.2,
+        "error": 6.67507915608212e-9
+      },
+      {
+        "layer": 4,
+        "ready": 0,
+        "distance": 6000,
+        "error": 6.67507915608212e-9
+      },
+      {
+        "layer": 4,
+        "ready": 0,
+        "distance": 12000,
+        "error": 6.67507915608212e-9
+      },
+      {
+        "layer": 4,
+        "ready": 0,
+        "distance": 20000,
+        "error": 6.67507915608212e-9
+      },
+      {
+        "layer": 4,
+        "ready": 0,
+        "distance": 40000,
+        "error": 6.67507915608212e-9
+      },
+      {
+        "layer": 4,
+        "ready": 1,
+        "distance": 5.2,
+        "error": 6.67507915608212e-9
+      },
+      {
+        "layer": 4,
+        "ready": 1,
+        "distance": 6000,
+        "error": 6.67507915608212e-9
+      },
+      {
+        "layer": 4,
+        "ready": 1,
+        "distance": 12000,
+        "error": 6.67507915608212e-9
+      },
+      {
+        "layer": 4,
+        "ready": 1,
+        "distance": 20000,
+        "error": 6.67507915608212e-9
+      },
+      {
+        "layer": 4,
+        "ready": 1,
+        "distance": 40000,
+        "error": 6.67507915608212e-9
+      },
+      {
+        "layer": 4,
+        "mipError": 0.0015800446271896362,
+        "cacheMeanError": 0
+      }
+    ],
+    "mixedObjectMaxError": 0,
+    "finiteDifferenceRelativeError": 6.535173665836038e-8,
+    "error": 0
+  },
+  "captures": {
+    "device": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "records": [
+      {
+        "name": "photo",
+        "width": 3840,
+        "height": 2160,
+        "equal": false,
+        "difference": {
+          "changed": 64848,
+          "max": 11,
+          "total": 73149,
+          "bounds": [
+            0,
+            0,
+            3839,
+            2159
+          ]
+        },
+        "render": {
+          "width": 3840,
+          "height": 2160,
+          "internalWidth": 7680,
+          "internalHeight": 4320,
+          "antialias": "supersampled + edge filter",
+          "lightPipeline": "linear-half-float",
+          "exportFrame": true,
+          "silhouetteSamples": 8,
+          "silhouetteMaskMiB": 31.640625,
+          "structureShadows": {
+            "enabled": true,
+            "quality": 1,
+            "resolution": 2048,
+            "cascades": 2,
+            "nearWidthKm": 1,
+            "farWidthKm": 8,
+            "nearTexelMetres": 0.48828125,
+            "submittedTriangles": 2400,
+            "cached": false,
+            "depthStorageMiB": 32
+          },
+          "geometry": {
+            "groups": 693,
+            "triangles": 33504,
+            "localShadow": true,
+            "materials": "roughness / metalness / normal"
+          },
+          "cpuMs": 6.100000023841858,
+          "gpuMs": 12.73376,
+          "indirectLight": "exact frame",
+          "indirectSampleTime": 91451,
+          "heroTextures": {
+            "ready": 0,
+            "total": 10,
+            "gpuMiB": 0,
+            "tileKm": 2.5
+          },
+          "woundTextures": {
+            "ready": 0,
+            "total": 10,
+            "gpuMiB": 0,
+            "tileKm": 0.64,
+            "damageBandKm": 240
+          },
+          "assets": {
+            "total": 0,
+            "ready": 0,
+            "failed": [],
+            "missing": []
+          },
+          "textures": {
+            "ready": 0,
+            "total": 10,
+            "gpuMiB": 0,
+            "scalesKm": [
+              256,
+              16,
+              1
+            ]
+          }
+        },
+        "groups": 693,
+        "error": 0
+      },
+      {
+        "name": "panorama",
+        "width": 1920,
+        "height": 960,
+        "equal": true,
+        "difference": null,
+        "render": {
+          "width": 1920,
+          "height": 960,
+          "internalWidth": 960,
+          "internalHeight": 960,
+          "antialias": "supersampled + edge filter",
+          "lightPipeline": "linear-half-float",
+          "exportFrame": true,
+          "silhouetteSamples": 8,
+          "silhouetteMaskMiB": 0.87890625,
+          "structureShadows": {
+            "enabled": true,
+            "quality": 1,
+            "resolution": 2048,
+            "cascades": 2,
+            "nearWidthKm": 1,
+            "farWidthKm": 8,
+            "nearTexelMetres": 0.48828125,
+            "submittedTriangles": 2400,
+            "cached": false,
+            "depthStorageMiB": 32
+          },
+          "geometry": {
+            "groups": 77,
+            "triangles": 3672,
+            "localShadow": true,
+            "materials": "roughness / metalness / normal"
+          },
+          "cpuMs": 10.199999988079071,
+          "gpuMs": 12.73376,
+          "indirectLight": "exact frame",
+          "indirectSampleTime": 91451,
+          "heroTextures": {
+            "ready": 0,
+            "total": 10,
+            "gpuMiB": 0,
+            "tileKm": 2.5
+          },
+          "woundTextures": {
+            "ready": 0,
+            "total": 10,
+            "gpuMiB": 0,
+            "tileKm": 0.64,
+            "damageBandKm": 240
+          },
+          "assets": {
+            "total": 0,
+            "ready": 0,
+            "failed": [],
+            "missing": []
+          },
+          "textures": {
+            "ready": 0,
+            "total": 10,
+            "gpuMiB": 0,
+            "scalesKm": [
+              256,
+              16,
+              1
+            ]
+          },
+          "panoramaFaces": 6,
+          "faceResolution": 480
+        },
+        "groups": 91,
+        "error": 0
+      }
+    ],
+    "changedWithParentTime": true,
+    "savedSceneReturnIdentical": true,
+    "error": 0,
+    "rawRecord": "work/screenshots/shade-boundary-01/capture-verification.json",
+    "exactColdPhotoStatus": "OPEN: failed on both current and unmodified baseline",
+    "baseline": {
+      "commit": "b80bd72",
+      "device": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "records": [
+        {
+          "name": "photo",
+          "equal": false,
+          "difference": {
+            "changed": 5164,
+            "max": 4,
+            "total": 5434,
+            "bounds": [
+              1,
+              2,
+              3839,
+              2159
+            ]
+          }
+        },
+        {
+          "name": "panorama",
+          "equal": true,
+          "difference": null
+        }
+      ],
+      "savedSceneReturnIdentical": true,
+      "rawRecord": "work/screenshots/shade-capture-baseline/capture-verification.json"
+    },
+    "note": "renderInfo GPU timings can be stale in export frames and are not performance measurements."
+  },
+  "preservedContinuityHashes": {
+    "atmosphere.js": true,
+    "volume.js": true,
+    "renderer.js": true,
+    "panorama.js": true,
+    "local-shadows.js": true,
+    "geometry-renderer.js": true,
+    "field-sites.js": true,
+    "surface-walk.js": true,
+    "edge-stream.js": true,
+    "edge-streaming.js": true,
+    "edge-worker.js": true,
+    "shade-edges.js": true,
+    "ground-chunks.js": true,
+    "ground-worker.js": true,
+    "world.js": true,
+    "evolution-ui.js": true,
+    "bootstrap.js": true,
+    "loading-screen.js": true
+  },
+  "sha256": {
+    "world-shader.js": "9bff401c0de686beddc7bc566b997fc5430acd4335e874c69950a21c9927f642",
+    "world-textures.js": "8028373e39c9756063a0956c7539b1f0aa2d0f1b779841f7e5abea0393e24012",
+    "silhouette-aa.js": "044e3b08621bbdc331a789b9717b418026ba1694daa9a59e7574910a2edf4b19",
+    "package.json": "b062271d3d08b637e532df6d88afe83be6ef4ffeaae288f259e9b2c0738f7e04",
+    "tests/shade-mips.cjs": "93f6668c3edc4e1107f5ee1b6bed6986a865d246cb31fa0b68cfe94055ccf84c",
+    "tests/shade-boundary-browser.cjs": "6bcf3553ad509c7888cdb4553b14368aae11dff19fe7c5d406c607a43282286c",
+    "tests/shade-material-browser.cjs": "99e53321f647c4157d328e257badeb08f131809cfc671aa9f1e675f4b7a9eb62",
+    "tests/shade-edges-browser.cjs": "9938e6b92cba4480acdc1ff0a64ae0c689d45b09e4a4ba4ad7676e658ef75eae",
+    "tests/shade-deck-browser.cjs": "16fed833915e0a93e3437b3ea1250a614e25adf7abab1082d28277f39b1f2c5b",
+    "tools/inspect-shade-captures.cjs": "6c5deb780b8e78cbdfda614c97c4555d043c8c2edf7e2a285971aba339866a0b"
+  },
+  "localArtifacts": [
+    "work/screenshots/shade-boundary-01/verification.json",
+    "work/screenshots/shade-material/verification.json",
+    "work/screenshots/shade-edges/verification.json",
+    "work/screenshots/travel/shade-verification.json",
+    "work/screenshots/shade-boundary-01/structure-photo.png",
+    "work/screenshots/shade-boundary-01/structure-panorama.png"
+  ]
+}

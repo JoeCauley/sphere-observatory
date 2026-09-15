@@ -1,0 +1,1146 @@
+{
+  "audit": {
+    "state": {
+      "version": 1,
+      "radius": 149597870.7,
+      "starRadius": 695700,
+      "luminosity": 1,
+      "position": [
+        0,
+        0,
+        74798935.35
+      ],
+      "forward": [
+        0,
+        0,
+        1
+      ],
+      "up": [
+        0,
+        1,
+        0
+      ],
+      "fov": 80,
+      "breachEnabled": true,
+      "breachLat": 12,
+      "breachLon": -12,
+      "breachDiameter": 35000000,
+      "breachRoughness": 0,
+      "surfaceStyle": "atlas",
+      "shadeEnabled": true,
+      "shadeAltitude": 100000,
+      "shadeDiameter": 100000,
+      "shadeOffset": 0,
+      "shadeSpeed": 2,
+      "shadeDamage": 0,
+      "time": 12345,
+      "playing": false,
+      "timeRate": 60,
+      "exposure": 0.2,
+      "shellshine": 0.06,
+      "atmosphere": 0,
+      "grid": false,
+      "viewMode": "material",
+      "projection": "perspective",
+      "speed": 1000000,
+      "quality": 1,
+      "seed": 23,
+      "starfield": true,
+      "collection": true,
+      "era": "after",
+      "routeShades": false,
+      "routeGuides": false,
+      "multipleWounds": false,
+      "starStation": false,
+      "regionOrder": 1,
+      "colorRichness": 0.8,
+      "cycleScale": 1,
+      "shineField": true,
+      "shadeShape": "disk",
+      "shadeTrim": 0.65,
+      "antialias": 0,
+      "shadowSamples": 7,
+      "stationSamples": 64,
+      "biome": -1,
+      "textureDetail": true,
+      "biomeAtmosphere": true,
+      "surfaceRelief": true,
+      "terrainAnchor": null,
+      "terrainRevision": 2,
+      "shadeGeometryRevision": 3,
+      "packAddress": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9852530874849991,
+          -0.08891350044289917,
+          0.14618735595210341
+        ]
+      },
+      "layoutVersion": 2,
+      "provinceRevision": 1,
+      "provinceSeed": 713,
+      "provinceAnchor": [
+        0.9852530874849991,
+        -0.08891350044289917,
+        0.14618735595210341
+      ],
+      "axisLat": 63,
+      "axisLon": -28,
+      "waistWidth": 20,
+      "transitionKm": 60000,
+      "shellThickness": 12,
+      "geometryDetail": true,
+      "richMaterials": true,
+      "localShadows": 1,
+      "wreckage": true,
+      "clouds": false,
+      "weatherStrength": 0.55,
+      "weatherQuality": 1,
+      "cavityHaze": 0,
+      "spaceEnvironment": 0,
+      "siteId": "",
+      "siteAnchor": null,
+      "siteRevision": 0,
+      "siteElevation": 0,
+      "autoWalk": true,
+      "autoSpeed": true,
+      "placeScene": "day",
+      "placeWeather": "mixed",
+      "walkSurface": false,
+      "walkMode": false,
+      "walkPosition": null,
+      "walkVelocity": 0,
+      "shadeAttachment": null,
+      "surfaceLock": true
+    },
+    "preparationMs": 0,
+    "probes": 483,
+    "maxError": 0.0021041179371541086,
+    "failures": [],
+    "gl": 0
+  },
+  "images": [
+    {
+      "name": "lake-40000-clear",
+      "hit": {
+        "kind": "Inner surface",
+        "distance": 40000.00000000002
+      },
+      "error": 0,
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9852530874849991,
+          -0.08891350044289917,
+          0.14618735595210341
+        ]
+      }
+    },
+    {
+      "name": "lake-40000-clouds",
+      "hit": {
+        "kind": "Inner surface",
+        "distance": 40000.00000000002
+      },
+      "error": 0,
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9852530874849991,
+          -0.08891350044289917,
+          0.14618735595210341
+        ]
+      }
+    },
+    {
+      "name": "lake-10000-clear",
+      "hit": {
+        "kind": "Inner surface",
+        "distance": 10000.000000029802
+      },
+      "error": 0,
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9852530874849991,
+          -0.08891350044289917,
+          0.14618735595210341
+        ]
+      }
+    },
+    {
+      "name": "lake-10000-clouds",
+      "hit": {
+        "kind": "Inner surface",
+        "distance": 10000.000000029802
+      },
+      "error": 0,
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9852530874849991,
+          -0.08891350044289917,
+          0.14618735595210341
+        ]
+      }
+    },
+    {
+      "name": "lake-1100-clear",
+      "hit": {
+        "kind": "Inner surface",
+        "distance": 1100
+      },
+      "error": 0,
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9852530874849991,
+          -0.08891350044289917,
+          0.14618735595210341
+        ]
+      }
+    },
+    {
+      "name": "lake-1100-clouds",
+      "hit": {
+        "kind": "Inner surface",
+        "distance": 1100
+      },
+      "error": 0,
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9852530874849991,
+          -0.08891350044289917,
+          0.14618735595210341
+        ]
+      }
+    },
+    {
+      "name": "lake-48-clear",
+      "hit": {
+        "kind": "Inner surface",
+        "distance": 48.00000002980232
+      },
+      "error": 0,
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9852530874849991,
+          -0.08891350044289917,
+          0.14618735595210341
+        ]
+      }
+    },
+    {
+      "name": "lake-48-clouds",
+      "hit": {
+        "kind": "Inner surface",
+        "distance": 48.00000002980232
+      },
+      "error": 0,
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9852530874849991,
+          -0.08891350044289917,
+          0.14618735595210341
+        ]
+      }
+    },
+    {
+      "name": "lake-1-clear",
+      "hit": {
+        "kind": "Inner surface",
+        "distance": 5.099019087532356
+      },
+      "error": 0,
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9852530874849991,
+          -0.08891350044289917,
+          0.14618735595210341
+        ]
+      }
+    },
+    {
+      "name": "lake-1-clouds",
+      "hit": {
+        "kind": "Inner surface",
+        "distance": 5.099019087532356
+      },
+      "error": 0,
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9852530874849991,
+          -0.08891350044289917,
+          0.14618735595210341
+        ]
+      }
+    },
+    {
+      "name": "lake-0.1-clear",
+      "hit": {
+        "kind": "Inner surface",
+        "distance": 0.5099019167061494
+      },
+      "error": 0,
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9852530874849991,
+          -0.08891350044289917,
+          0.14618735595210341
+        ]
+      }
+    },
+    {
+      "name": "lake-0.1-clouds",
+      "hit": {
+        "kind": "Inner surface",
+        "distance": 0.5099019167061494
+      },
+      "error": 0,
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9852530874849991,
+          -0.08891350044289917,
+          0.14618735595210341
+        ]
+      }
+    },
+    {
+      "name": "lake-0.0017-clear",
+      "hit": {
+        "kind": "Inner surface",
+        "distance": 0.008668555888297218
+      },
+      "error": 0,
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9852530874849991,
+          -0.08891350044289917,
+          0.14618735595210341
+        ]
+      }
+    },
+    {
+      "name": "lake-0.0017-clouds",
+      "hit": {
+        "kind": "Inner surface",
+        "distance": 0.008668555888297218
+      },
+      "error": 0,
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9852530874849991,
+          -0.08891350044289917,
+          0.14618735595210341
+        ]
+      }
+    },
+    {
+      "name": "reach-40000-clear",
+      "hit": {
+        "kind": "Inner surface",
+        "distance": 40000.0000000298
+      },
+      "error": 0,
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9852530874849991,
+          -0.08891350044289917,
+          0.14618735595210341
+        ]
+      }
+    },
+    {
+      "name": "reach-40000-clouds",
+      "hit": {
+        "kind": "Inner surface",
+        "distance": 40000.0000000298
+      },
+      "error": 0,
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9852530874849991,
+          -0.08891350044289917,
+          0.14618735595210341
+        ]
+      }
+    },
+    {
+      "name": "reach-10000-clear",
+      "hit": {
+        "kind": "Inner surface",
+        "distance": 10000.000000029806
+      },
+      "error": 0,
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9852530874849991,
+          -0.08891350044289917,
+          0.14618735595210341
+        ]
+      }
+    },
+    {
+      "name": "reach-10000-clouds",
+      "hit": {
+        "kind": "Inner surface",
+        "distance": 10000.000000029806
+      },
+      "error": 0,
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9852530874849991,
+          -0.08891350044289917,
+          0.14618735595210341
+        ]
+      }
+    },
+    {
+      "name": "reach-1100-clear",
+      "hit": {
+        "kind": "Inner surface",
+        "distance": 1100.0000000298028
+      },
+      "error": 0,
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9852530874849991,
+          -0.08891350044289917,
+          0.14618735595210341
+        ]
+      }
+    },
+    {
+      "name": "reach-1100-clouds",
+      "hit": {
+        "kind": "Inner surface",
+        "distance": 1100.0000000298028
+      },
+      "error": 0,
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9852530874849991,
+          -0.08891350044289917,
+          0.14618735595210341
+        ]
+      }
+    },
+    {
+      "name": "reach-48-clear",
+      "hit": {
+        "kind": "Inner surface",
+        "distance": 48.00000000000001
+      },
+      "error": 0,
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9852530874849991,
+          -0.08891350044289917,
+          0.14618735595210341
+        ]
+      }
+    },
+    {
+      "name": "reach-48-clouds",
+      "hit": {
+        "kind": "Inner surface",
+        "distance": 48.00000000000001
+      },
+      "error": 0,
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9852530874849991,
+          -0.08891350044289917,
+          0.14618735595210341
+        ]
+      }
+    },
+    {
+      "name": "reach-1-clear",
+      "hit": {
+        "kind": "Inner surface",
+        "distance": 5.099019239494955
+      },
+      "error": 0,
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9852530874849991,
+          -0.08891350044289917,
+          0.14618735595210341
+        ]
+      }
+    },
+    {
+      "name": "reach-1-clouds",
+      "hit": {
+        "kind": "Inner surface",
+        "distance": 5.099019239494955
+      },
+      "error": 0,
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9852530874849991,
+          -0.08891350044289917,
+          0.14618735595210341
+        ]
+      }
+    },
+    {
+      "name": "reach-0.1-clear",
+      "hit": {
+        "kind": "Inner surface",
+        "distance": 0.5099019167061494
+      },
+      "error": 0,
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9852530874849991,
+          -0.08891350044289917,
+          0.14618735595210341
+        ]
+      }
+    },
+    {
+      "name": "reach-0.1-clouds",
+      "hit": {
+        "kind": "Inner surface",
+        "distance": 0.5099019167061494
+      },
+      "error": 0,
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9852530874849991,
+          -0.08891350044289917,
+          0.14618735595210341
+        ]
+      }
+    },
+    {
+      "name": "reach-0.0017-clear",
+      "hit": {
+        "kind": "Inner surface",
+        "distance": 0.00866855588829722
+      },
+      "error": 0,
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9852530874849991,
+          -0.08891350044289917,
+          0.14618735595210341
+        ]
+      }
+    },
+    {
+      "name": "reach-0.0017-clouds",
+      "hit": {
+        "kind": "Inner surface",
+        "distance": 0.00866855588829722
+      },
+      "error": 0,
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9852530874849991,
+          -0.08891350044289917,
+          0.14618735595210341
+        ]
+      }
+    },
+    {
+      "name": "meadow-40000-clear",
+      "hit": {
+        "kind": "Inner surface",
+        "distance": 39999.9999999702
+      },
+      "error": 0,
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9852530874849991,
+          -0.08891350044289917,
+          0.14618735595210341
+        ]
+      }
+    },
+    {
+      "name": "meadow-40000-clouds",
+      "hit": {
+        "kind": "Inner surface",
+        "distance": 39999.9999999702
+      },
+      "error": 0,
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9852530874849991,
+          -0.08891350044289917,
+          0.14618735595210341
+        ]
+      }
+    },
+    {
+      "name": "meadow-10000-clear",
+      "hit": {
+        "kind": "Inner surface",
+        "distance": 10000
+      },
+      "error": 0,
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9852530874849991,
+          -0.08891350044289917,
+          0.14618735595210341
+        ]
+      }
+    },
+    {
+      "name": "meadow-10000-clouds",
+      "hit": {
+        "kind": "Inner surface",
+        "distance": 10000
+      },
+      "error": 0,
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9852530874849991,
+          -0.08891350044289917,
+          0.14618735595210341
+        ]
+      }
+    },
+    {
+      "name": "meadow-1100-clear",
+      "hit": {
+        "kind": "Inner surface",
+        "distance": 1099.9999999999998
+      },
+      "error": 0,
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9852530874849991,
+          -0.08891350044289917,
+          0.14618735595210341
+        ]
+      }
+    },
+    {
+      "name": "meadow-1100-clouds",
+      "hit": {
+        "kind": "Inner surface",
+        "distance": 1099.9999999999998
+      },
+      "error": 0,
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9852530874849991,
+          -0.08891350044289917,
+          0.14618735595210341
+        ]
+      }
+    },
+    {
+      "name": "meadow-48-clear",
+      "hit": {
+        "kind": "Inner surface",
+        "distance": 47.999999999999986
+      },
+      "error": 0,
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9852530874849991,
+          -0.08891350044289917,
+          0.14618735595210341
+        ]
+      }
+    },
+    {
+      "name": "meadow-48-clouds",
+      "hit": {
+        "kind": "Inner surface",
+        "distance": 47.999999999999986
+      },
+      "error": 0,
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9852530874849991,
+          -0.08891350044289917,
+          0.14618735595210341
+        ]
+      }
+    },
+    {
+      "name": "meadow-1-clear",
+      "hit": {
+        "kind": "Inner surface",
+        "distance": 5.099018935569756
+      },
+      "error": 0,
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9852530874849991,
+          -0.08891350044289917,
+          0.14618735595210341
+        ]
+      }
+    },
+    {
+      "name": "meadow-1-clouds",
+      "hit": {
+        "kind": "Inner surface",
+        "distance": 5.099018935569756
+      },
+      "error": 0,
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9852530874849991,
+          -0.08891350044289917,
+          0.14618735595210341
+        ]
+      }
+    },
+    {
+      "name": "meadow-0.1-clear",
+      "hit": {
+        "kind": "Inner surface",
+        "distance": 0.5099019167061493
+      },
+      "error": 0,
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9852530874849991,
+          -0.08891350044289917,
+          0.14618735595210341
+        ]
+      }
+    },
+    {
+      "name": "meadow-0.1-clouds",
+      "hit": {
+        "kind": "Inner surface",
+        "distance": 0.5099019167061493
+      },
+      "error": 0,
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9852530874849991,
+          -0.08891350044289917,
+          0.14618735595210341
+        ]
+      }
+    },
+    {
+      "name": "meadow-0.0017-clear",
+      "hit": {
+        "kind": "Inner surface",
+        "distance": 0.008668403925673855
+      },
+      "error": 0,
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9852530874849991,
+          -0.08891350044289917,
+          0.14618735595210341
+        ]
+      }
+    },
+    {
+      "name": "meadow-0.0017-clouds",
+      "hit": {
+        "kind": "Inner surface",
+        "distance": 0.008668403925673855
+      },
+      "error": 0,
+      "address": {
+        "schema": 1,
+        "packId": "watershed",
+        "geographyRevision": 1,
+        "artRevision": 2,
+        "seed": 713,
+        "anchor": [
+          0.9852530874849991,
+          -0.08891350044289917,
+          0.14618735595210341
+        ]
+      }
+    }
+  ],
+  "timings": [
+    {
+      "id": "lake",
+      "art": 1,
+      "ms": 41
+    },
+    {
+      "id": "lake",
+      "art": 2,
+      "ms": 14.900000035762787
+    },
+    {
+      "id": "reach",
+      "art": 1,
+      "ms": 14.299999952316284
+    },
+    {
+      "id": "reach",
+      "art": 2,
+      "ms": 16.299999952316284
+    },
+    {
+      "id": "meadow",
+      "art": 1,
+      "ms": 12.800000011920929
+    },
+    {
+      "id": "meadow",
+      "art": 2,
+      "ms": 16.599999964237213
+    }
+  ],
+  "traversal": {
+    "results": [
+      {
+        "id": "lake",
+        "walk": true,
+        "metres": 13.999998063332955,
+        "height": 0.0017200112342834473,
+        "playing": true,
+        "time": 12345,
+        "speed": 0.017,
+        "address": {
+          "schema": 1,
+          "packId": "watershed",
+          "geographyRevision": 1,
+          "artRevision": 2,
+          "seed": 713,
+          "anchor": [
+            0.9852530874849991,
+            -0.08891350044289917,
+            0.14618735595210341
+          ]
+        }
+      },
+      {
+        "id": "reach",
+        "walk": true,
+        "metres": 14.00000233885814,
+        "height": 0.00171998143196106,
+        "playing": true,
+        "time": 12345,
+        "speed": 0.017,
+        "address": {
+          "schema": 1,
+          "packId": "watershed",
+          "geographyRevision": 1,
+          "artRevision": 2,
+          "seed": 713,
+          "anchor": [
+            0.9852530874849991,
+            -0.08891350044289917,
+            0.14618735595210341
+          ]
+        }
+      },
+      {
+        "id": "meadow",
+        "walk": true,
+        "metres": 13.999999435797596,
+        "height": 0.00171998143196106,
+        "playing": true,
+        "time": 12345,
+        "speed": 0.017,
+        "address": {
+          "schema": 1,
+          "packId": "watershed",
+          "geographyRevision": 1,
+          "artRevision": 2,
+          "seed": 713,
+          "anchor": [
+            0.9852530874849991,
+            -0.08891350044289917,
+            0.14618735595210341
+          ]
+        }
+      },
+      {
+        "id": "lake-boundary",
+        "walk": true,
+        "maxHeightError": 0.000020011234283447577,
+        "minWeight": 0,
+        "maxWeight": 1.040600938750913e-11,
+        "address": {
+          "schema": 1,
+          "packId": "watershed",
+          "geographyRevision": 1,
+          "artRevision": 2,
+          "seed": 713,
+          "anchor": [
+            0.9852530874849991,
+            -0.08891350044289917,
+            0.14618735595210341
+          ]
+        }
+      },
+      {
+        "id": "reach-boundary",
+        "walk": true,
+        "maxHeightError": 0.000020041036605835056,
+        "minWeight": 0,
+        "maxWeight": 7.967071446949113e-12,
+        "address": {
+          "schema": 1,
+          "packId": "watershed",
+          "geographyRevision": 1,
+          "artRevision": 2,
+          "seed": 713,
+          "anchor": [
+            0.9852530874849991,
+            -0.08891350044289917,
+            0.14618735595210341
+          ]
+        }
+      },
+      {
+        "id": "meadow-boundary",
+        "walk": true,
+        "maxHeightError": 0.000020070838928222317,
+        "minWeight": 0,
+        "maxWeight": 7.34245997330456e-12,
+        "address": {
+          "schema": 1,
+          "packId": "watershed",
+          "geographyRevision": 1,
+          "artRevision": 2,
+          "seed": 713,
+          "anchor": [
+            0.9852530874849991,
+            -0.08891350044289917,
+            0.14618735595210341
+          ]
+        }
+      }
+    ],
+    "frames": {
+      "median": 0.699999988079071,
+      "p95": 1.199999988079071,
+      "max": 5.199999988079071
+    },
+    "pack": {
+      "addresses": 1,
+      "segments": 76,
+      "graphBytes": 24560,
+      "textureBytes": 0
+    },
+    "province": {
+      "provinces": 1,
+      "pending": 0,
+      "meshes": 7,
+      "triangles": 308565,
+      "vertexMiB": 38.84370803833008,
+      "packedCollisionMiB": 26.20311737060547
+    },
+    "pendingUploads": 0,
+    "gl": 0
+  },
+  "errors": []
+}

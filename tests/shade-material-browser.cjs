@@ -7,13 +7,16 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('n
   const page=await browser.newPage();page.setDefaultTimeout(180000);const errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto(process.env.SPHERE_URL||'http://127.0.0.1:8766/',{waitUntil:'domcontentloaded'});
   await page.waitForFunction(()=>window.SphereLoading?.ready&&window.SphereEvolution);await page.evaluate(()=>SphereApp.setBusy(true));
-  const result=await page.evaluate(()=>{
+  const result=await page.evaluate(async()=>{
    const R=SphereApp.renderer,gl=R.gl,M=SphereMath,source=SphereShaders.geometryFragment;
+   const cachedMeans=Array.from(R.worldTextures.means);await R.worldTextures.prepare([3,4]);
    const shared=source.slice(0,source.lastIndexOf('void main(){'));
    const fixture=SphereGLProgram(gl,SphereShaders.vertex,shared+`
-uniform int fixtureMode,fixtureMask;uniform float fixtureHeight;
+uniform int fixtureMode,fixtureMask,fixtureLayer;uniform float fixtureHeight;
 uniform vec3 fixtureNormal,probeRay,probeStep;uniform float probeDistance;
 void main(){
+ if(fixtureMode==4){fragColor=vec4(shadeSkinGrad(vec2(17.3,41.7),fixtureLayer,fixtureHeight,vec2(2.,0.),vec2(0.,2.)),1.);return;}
+ if(fixtureMode==5){fragColor=vec4(textureLod(uEngineering,vec3(.5,.5,float(fixtureLayer)),10.).rgb,1.);return;}
  if(fixtureMode==3){fragColor=vec4(shadeSurfaceDelta(probeRay,fixtureNormal,probeDistance,probeStep),1.);return;}
  vec3 d=normalize(vec3((vUV*2.-1.)*.015,1.));shadeCameraFootprint(d,vUV*2.-1.);
  if(fixtureMode==2){
@@ -31,11 +34,23 @@ void main(){
    assertFramebuffer();function assertFramebuffer(){if(gl.checkFramebufferStatus(gl.FRAMEBUFFER)!==gl.FRAMEBUFFER_COMPLETE)throw Error('Float material fixture is incomplete');}
    gl.viewport(0,0,w,h);gl.disable(gl.DEPTH_TEST);gl.disable(gl.BLEND);gl.useProgram(fixture.p);
    const u=fixture.u;R.finishes.prepare();R.finishes.bind(u,{richMaterials:true});
-   gl.uniform1i(u.uTextureDetail,1);gl.uniform1i(u.uSurfaceRelief,1);gl.uniform1i(u.uWorldTexturesReady,0);
+   gl.uniform1i(u.uTextureDetail,1);gl.uniform1i(u.uSurfaceRelief,1);R.worldTextures.bind(u);
    gl.uniform3f(u.uForward,0,0,1);gl.uniform3f(u.uRight,1,0,0);gl.uniform3f(u.uUp,0,1,0);gl.uniform1f(u.uFov,2*Math.atan(.015));gl.uniform2f(u.uResolution,w,w);gl.uniform2f(u.uRasterSize,w,h);
    const read=()=>{gl.drawArrays(gl.TRIANGLES,0,3);const p=new Float32Array(w*h*4);gl.readPixels(0,0,w,h,gl.RGBA,gl.FLOAT,p);if(!p.every(Number.isFinite))throw Error('Nonfinite material output');return p;};
-   const masks=[];let probeMaxRelative=0,probes=0,rawError=0,filteredError=0;
+   const masks=[],aggregate=[];let probeMaxRelative=0,probes=0,rawError=0,filteredError=0;
    try{
+    // The same distant albedo before/after image readiness and across the old
+    // distance cutoff. The real uploaded final mip must preserve source energy.
+    for(const layer of [3,4]){
+     gl.uniform1i(u.fixtureLayer,layer);gl.uniform1i(u.fixtureMode,5);const mip=read().slice(0,3),mean=Array.from(R.worldTextures.means.slice(layer*3,layer*3+3));
+     const base=layer===3?[.041,.047,.050]:[.085,.097,.104],expected=mean.map((v,c)=>(base[c]*.44+v*.80*.56)*.9904);
+     for(const ready of [0,1])for(const distance of [5.2,6000,12000,20000,40000]){
+      gl.uniform1i(u.uWorldTexturesReady,ready);gl.uniform1i(u.fixtureMode,4);gl.uniform1f(u.fixtureHeight,distance);const actual=read().slice(0,3);
+      aggregate.push({layer,ready,distance,error:Math.max(...actual.map((v,c)=>Math.abs(v-expected[c])))});
+     }
+     aggregate.push({layer,mipError:Math.max(...mip.map((v,c)=>Math.abs(v-mean[c]))),cacheMeanError:Math.max(...mean.map((v,c)=>Math.abs(v-cachedMeans[layer*3+c])))});
+    }
+    R.worldTextures.bind(u);
     for(const normal of [M.norm([.2,.15,-1]),M.norm([.9,.1,-.04])]){
      const right=M.norm(M.cross(normal,[0,1,0])),up=M.cross(right,normal);
      gl.uniform3fv(u.fixtureNormal,normal);gl.uniform3fv(u['uShadeUVRight[0]'],right);gl.uniform3fv(u['uShadeUVUp[0]'],up);
@@ -57,12 +72,13 @@ void main(){
     }
     gl.uniform1i(u.fixtureMode,2);const district=read();
     for(let i=0;i<district.length;i+=4){filteredError+=(district[i]-district[i+1])**2;rawError+=(district[i+2]-district[i+1])**2;}
-    return {masks,probes,probeMaxRelative,district:{pixels:w*h,referenceSamples:w*h*1024,rawSquared:rawError,filteredSquared:filteredError},error:gl.getError()};
+    return {aggregate,masks,probes,probeMaxRelative,district:{pixels:w*h,referenceSamples:w*h*1024,rawSquared:rawError,filteredSquared:filteredError},error:gl.getError()};
    }finally{gl.bindFramebuffer(gl.FRAMEBUFFER,null);gl.deleteFramebuffer(fbo);gl.deleteTexture(texture);gl.deleteProgram(fixture.p);}
   });
   const dir=path.join(__dirname,'../work/screenshots/shade-material');fs.mkdirSync(dir,{recursive:true});fs.writeFileSync(path.join(dir,'verification.json'),JSON.stringify(result,null,2));
   assert.equal(result.error,0);assert(result.probeMaxRelative<.00002,JSON.stringify(result));
   for(const r of result.masks){assert(r.maxError<1e-6,JSON.stringify(r));assert(r.flatError<1e-6,JSON.stringify(r));}
+  for(const r of result.aggregate){if('error' in r)assert(r.error<1e-6,JSON.stringify(r));else{assert(r.mipError<.002,JSON.stringify(r));assert(r.cacheMeanError<2e-7,JSON.stringify(r));}}
   assert(result.district.filteredSquared<result.district.rawSquared*.05,JSON.stringify(result.district));assert.deepEqual(errors,[]);
   console.log('PASS Shade material at mixed-object pixels, stable distant finish, finite-difference footprints and filtered districts',JSON.stringify(result));
  }finally{await browser.close();}

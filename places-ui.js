@@ -16,8 +16,9 @@ const panel=document.createElement('details');panel.id='places';panel.open=true;
   <button type="button" data-arrival="ground"><span>Ground level</span><small id="groundArrivalNote">On foot</small></button>
   <button type="button" data-arrival="clouds"><span>Beneath the Clouds</span><small id="cloudArrivalNote"></small></button>
   <button type="button" data-arrival="atmosphere"><span>Atmosphere</span><small>256,267 km · the cloud tapestry</small></button>
+  <button type="button" data-arrival="regional" hidden><span>Landscape view</span><small>9,000 km · the connected composition</small></button>
  </fieldset>
- <select id="placeAltitude" aria-label="Saved arrival height" hidden><option value="ground">Ground level</option><option value="clouds">Beneath the Clouds</option><option value="atmosphere">Atmosphere</option></select>
+ <select id="placeAltitude" aria-label="Saved arrival height" hidden><option value="ground">Ground level</option><option value="clouds">Beneath the Clouds</option><option value="atmosphere">Atmosphere</option><option value="regional">Landscape view</option></select>
  <div class="place-conditions">
   <fieldset><legend>Scene</legend>${[['first-light','First Light'],['darkness','Darkness Arrives'],['day','Day'],['dark','Dark']].map(([id,name])=>`<label class="check"><input type="checkbox" name="placeScene" value="${id}" ${id==='day'?'checked':''}>${name}</label>`).join('')}</fieldset>
   <fieldset><legend>Weather</legend>${[['clear','Clear'],['mixed','Mixed'],['cover','Cover'],['precipitation','Precipitation'],['storm','Storm']].map(([id,name])=>`<label class="check"><input type="checkbox" name="placeWeather" value="${id}" ${id==='mixed'?'checked':''}>${name}</label>`).join('')}</fieldset>
@@ -40,7 +41,7 @@ const style=document.createElement('style');style.textContent=`
  .place-conditions{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:22px 0 10px}.place-conditions .check{font-size:11px;display:flex;align-items:center;gap:7px;line-height:1.4;margin:0 0 12px}.place-conditions input{margin:0;accent-color:#d1b17e;width:13px;height:13px;flex-shrink:0}
  #visitPlace{width:100%;padding:13px;background:#c5a679;color:#132026;font-weight:600;border:1px solid #dfc295;border-radius:3px}#visitPlace:disabled{opacity:.55}.conditions-note{line-height:1.5}
  #exactPosition .camera-basics{margin-top:15px}.pointer-aim{position:absolute;width:14px;height:14px;border:1px solid #e1c38bcc;border-radius:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:3;box-shadow:0 0 6px #0008}.pointer-aim[hidden]{display:none}
- #seeSurface{white-space:nowrap}#browseBiomes:disabled{opacity:.38}#placeCategory[hidden],#placeAltitude[hidden]{display:none}
+ #seeSurface{white-space:nowrap}#browseBiomes:disabled{opacity:.38}#placeCategory[hidden],#placeAltitude[hidden],.arrival-choices button[hidden]{display:none}
  `;document.head.append(style);
 let category='biomes',chosenScene=A.getState().placeScene,chosenWeather=A.getState().placeWeather,token=0;
 for(const family of [...new Set(P.categories.map(c=>c.family))]){const label=document.createElement('span');label.className='place-family';label.textContent=family;$('placeCategories').append(label);for(const c of P.categories.filter(c=>c.family===family)){const b=document.createElement('button');b.textContent=c.name;b.dataset.category=c.id;b.onclick=()=>{$('placeCategory').value=c.id;$('placeCategory').dispatchEvent(new Event('change',{bubbles:true}));};$('placeCategories').append(b);}}
@@ -48,7 +49,7 @@ function populate(keep=false){category=$('placeCategory').value;const previous=$
 function describe(){const entry=P.catalogue(A.getState()).find(p=>p.id===$('placeDestination').value);if(!entry)return;$('placeDescription').textContent=entry.description;
  $('groundArrivalNote').textContent=entry.walk?'On foot · 1.7 m eye height':category==='shades'?'35 m above the service skin · close flight':'Inside the nearby spill · free flight';
  $('cloudArrivalNote').textContent=category==='shades'?'700 m above the service skin':Math.round(P.cloudAltitude(entry.biome)*1000).toLocaleString()+' m · below the cloud base';
- for(const b of panel.querySelectorAll('[data-arrival]')){b.disabled=category==='wounds'&&b.dataset.arrival!=='ground';if(b.disabled&&$('placeAltitude').value===b.dataset.arrival)$('placeAltitude').value='ground';}
+ for(const b of panel.querySelectorAll('[data-arrival]')){b.hidden=b.dataset.arrival==='regional'&&!entry.composition;b.disabled=b.hidden||(category==='wounds'&&b.dataset.arrival!=='ground');if(b.disabled&&$('placeAltitude').value===b.dataset.arrival)$('placeAltitude').value='ground';}
  arrival();$('placeVisitStatus').textContent='';
 }
 function arrival(){for(const b of panel.querySelectorAll('[data-arrival]'))b.setAttribute('aria-pressed',String(b.dataset.arrival===$('placeAltitude').value));}

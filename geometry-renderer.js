@@ -83,6 +83,11 @@ void main(){float distanceKm=length(vRelative);if(uDetailFeature>0.){float cover
   gl.viewport(0,0,width,height);gl.useProgram(this.main.p);
   const u=this.main.u,f=(k,v)=>gl.uniform1f(u[k],v),i=(k,v)=>gl.uniform1i(u[k],v),v=(k,a)=>gl.uniform3fv(u[k],a),n=M.norm(s.position),b=M.basis(s.forward,s.up);
   v('uN',n);v('uForward',b.f);v('uRight',b.r);v('uUp',b.u);f('uH',(s.radius-M.length(s.position))/s.radius);f('uRadius',s.radius);f('uFov',M.radians(s.fov));f('uLuminosity',s.luminosity*(M.AU/s.radius)**2);f('uExposure',s.exposure);f('uSeed',s.seed);gl.uniform2f(u.uResolution,width,height);i('uLinearOutput',linear?1:0);i('uTextureDetail',s.textureDetail?1:0);i('uSurfaceRelief',s.surfaceRelief?1:0);i('uMode',s.viewMode==='objectid'?2:s.viewMode==='distance'?1:0);
+  // Uniforms belong to each program. The shell's biome/era bindings do not
+  // carry over to this mesh pass: an unset override is zero (river garden),
+  // which painted every field-patch border with that same unrelated material.
+  i('uBiomeOverride',s.biome??-1);i('uGrid',+s.grid);
+  SphereCollection.upload(gl,u,s,[0,0,0]); // Mesh lighting uses uSiteLight/uSiteFill below.
   gl.uniform3fv(u['uAnchor[0]'],[1000000,100000,10000,1000,100,10,1,.1,.01,.001].flatMap(scale=>n.map(x=>((x*s.radius/scale)%256+256)%256)));v('uHeroAnchor',SphereBiomes.heroAnchors(n,s.radius));gl.uniform3fv(u['uBiomeAnchor[0]'],SphereBiomes.anchors(n,s.radius));renderer.biomes?.bind(u,true);renderer.heroes?.bind(u,true);renderer.worldTextures?.bind(u);SphereWorld.upload(gl,u,s);
   renderer.woundTextures?.bind(u,true);renderer.finishes.bind(u,s);renderer.localShadows.bind(u,s);
   const lights=new Map();let triangles=0;for(const mesh of groups){const buffer=this.upload(mesh);gl.bindVertexArray(buffer.vao);gl.uniform3fv(u.uOriginRelative,M.sub(mesh.origin,s.position));gl.uniform3fv(u.uMeshX,mesh.basis[0]);gl.uniform3fv(u.uMeshY,mesh.basis[1]);gl.uniform3fv(u.uMeshZ,mesh.basis[2]);gl.uniform1i(u.uStructureMaterial,mesh.plate||mesh.name.startsWith('Wound')?1:0);

@@ -25,7 +25,7 @@ function woundDistance(q,s){
   distance=Math.min(distance,(f>.44?(Math.sqrt(f+1)-1)*w.width:f/Math.max(1e-12,woundGradient(a,b,w)))*s.radius);
  }return distance;
 }
-const defaults={terrainAnchor:null,terrainRevision:2,shadeGeometryRevision:2,packAddress:null,layoutVersion:2,provinceRevision:0,provinceSeed:713,provinceAnchor:null,axisLat:63,axisLon:-28,waistWidth:20,transitionKm:60000,shellThickness:12,geometryDetail:true,richMaterials:true,localShadows:1,wreckage:true,clouds:true,weatherStrength:.55,weatherQuality:1,cavityHaze:.28,spaceEnvironment:0,siteId:'',siteAnchor:null,siteRevision:0,siteElevation:0,autoWalk:true,autoSpeed:true,placeScene:'day',placeWeather:'mixed',walkSurface:false,walkMode:false,walkPosition:null,walkVelocity:0,shadeAttachment:null,surfaceLock:true};
+const defaults={terrainAnchor:null,terrainRevision:2,shadeGeometryRevision:3,packAddress:null,layoutVersion:2,provinceRevision:0,provinceSeed:713,provinceAnchor:null,axisLat:63,axisLon:-28,waistWidth:20,transitionKm:60000,shellThickness:12,geometryDetail:true,richMaterials:true,localShadows:1,wreckage:true,clouds:true,weatherStrength:.55,weatherQuality:1,cavityHaze:.28,spaceEnvironment:0,siteId:'',siteAnchor:null,siteRevision:0,siteElevation:0,autoWalk:true,autoSpeed:true,placeScene:'day',placeWeather:'mixed',walkSurface:false,walkMode:false,walkPosition:null,walkVelocity:0,shadeAttachment:null,surfaceLock:true};
 const oldDefault=M.defaultState,oldValidate=M.validate,oldRegion=B.region,oldCollectionRegion=C.region,oldCavity=C.cavity;
 M.defaultState=()=>({...oldDefault(),...defaults});
 M.validate=input=>{
@@ -45,7 +45,7 @@ M.validate=input=>{
  for(const k of ['geometryDetail','richMaterials','wreckage','clouds','walkMode','surfaceLock','autoWalk','autoSpeed','walkSurface'])if(k in input){if(typeof input[k]!=='boolean')throw Error('Invalid '+k);s[k]=input[k];}
  for(const [key,choices] of [['placeScene',['first-light','darkness','day','dark']],['placeWeather',['clear','mixed','cover','precipitation','storm']]])if(key in input){if(!choices.includes(input[key]))throw Error('Invalid '+key);s[key]=input[key];}
  s.shadeGeometryRevision=input.shadeGeometryRevision??1;
- if(![1,2].includes(s.shadeGeometryRevision))throw Error('Unsupported Shade geometry revision');
+ if(![1,2,3].includes(s.shadeGeometryRevision))throw Error('Unsupported Shade geometry revision');
  s.terrainRevision=input.terrainRevision??1;
  if(![1,2].includes(s.terrainRevision))throw Error('Unsupported terrain revision');
  s.siteRevision=input.siteRevision??0;s.siteElevation=input.siteElevation??0;
