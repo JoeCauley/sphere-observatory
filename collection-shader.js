@@ -1,4 +1,5 @@
 (function(){
+const patch=SphereShaderSections.section('Collection geometry');
 const declarations=`
 uniform int uCollection,uAfter,uManyWounds,uRoutes,uStation,uShineField,uGuide,uPlateCount,uShadeShape,uShadowSamples,uStationSamples;
 uniform float uOrder,uRichness,uShadeTrim;
@@ -81,23 +82,24 @@ vec3 collectionMaterial(vec3 q,vec3 delta,float footprint){
  return max(col,vec3(.002));
 }
 `;
-let src=SphereShaders.fragment.replace('const float PI=',declarations+'\nconst float PI=');
-src=src.replace('void main(){',functions+'\nvoid main(){');
-src=src.replace('bool hole=missing(q);','bool hole=uCollection==1?collectionHole(q):missing(q);');
-src=src.replace('float tp=plateRelative(d,uPlateRelative),tstar=starHit(d);','int diskIndex=-1;float tp=uCollection==1?1e20:plateRelative(d,uPlateRelative),tstar=starHit(d);if(uCollection==1){for(int i=0;i<18;i++){if(i>=uPlateCount)break;float t=diskHit(camera(),d,i);if(t<tp){tp=t;diskIndex=i;}}}');
-src=src.replace('if(tp<obj){obj=tp;kind=1;}','if(tp<obj){obj=tp;kind=1;}if(uCollection==1){float station=stationHit(camera(),d);if(station<obj){obj=station;kind=4;}}');
-src=src.replace('vec3 col;','vec3 col;vec3 fill=uCollection==1&&uShineField==1?uCavity*(uShine*4.):vec3(uShine);');
-src=src.replace("col=(uStyle==1?atlasMaterial(q,delta,footprint):shellMaterial(q))*(lightFraction(q)*uLuminosity+uShine);","col=(uCollection==1?collectionMaterial(q,delta,footprint):(uStyle==1?atlasMaterial(q,delta,footprint):shellMaterial(q)))*((uCollection==1?collectionLight(q):lightFraction(q))*uLuminosity+fill);");
-src=src.replace('else if(kind==1){',`else if(kind==4){vec3 h=camera()+d*obj;float lighting=uLuminosity/max(.00001,dot(h,h));float a=atan(h.x,h.z);float modules=.3+.7*smoothstep(.18,.28,abs(sin(a*96.)));col=vec3(.10,.12,.14)*lighting*.008*modules+fill*.15;}
+SphereShaderSections.register('collection-shader.js declarations',declarations);SphereShaderSections.register('collection-shader.js functions',functions);
+let src=patch(SphereShaders.fragment,'const float PI=',declarations+'\nconst float PI=');
+src=patch(src,'void main(){',functions+'\nvoid main(){');
+src=patch(src,'bool hole=missing(q);','bool hole=uCollection==1?collectionHole(q):missing(q);');
+src=patch(src,'float tp=plateRelative(d,uPlateRelative),tstar=starHit(d);','int diskIndex=-1;float tp=uCollection==1?1e20:plateRelative(d,uPlateRelative),tstar=starHit(d);if(uCollection==1){for(int i=0;i<18;i++){if(i>=uPlateCount)break;float t=diskHit(camera(),d,i);if(t<tp){tp=t;diskIndex=i;}}}');
+src=patch(src,'if(tp<obj){obj=tp;kind=1;}','if(tp<obj){obj=tp;kind=1;}if(uCollection==1){float station=stationHit(camera(),d);if(station<obj){obj=station;kind=4;}}');
+src=patch(src,'vec3 col;','vec3 col;vec3 fill=uCollection==1&&uShineField==1?uCavity*(uShine*4.):vec3(uShine);');
+src=patch(src,"col=(uStyle==1?atlasMaterial(q,delta,footprint):shellMaterial(q))*(lightFraction(q)*uLuminosity+uShine);","col=(uCollection==1?collectionMaterial(q,delta,footprint):(uStyle==1?atlasMaterial(q,delta,footprint):shellMaterial(q)))*((uCollection==1?collectionLight(q):lightFraction(q))*uLuminosity+fill);");
+src=patch(src,'else if(kind==1){',`else if(kind==4){vec3 h=camera()+d*obj;float lighting=uLuminosity/max(.00001,dot(h,h));float a=atan(h.x,h.z);float modules=.3+.7*smoothstep(.18,.28,abs(sin(a*96.)));col=vec3(.10,.12,.14)*lighting*.008*modules+fill*.15;}
  else if(kind==1&&uCollection==1){vec3 hit=camera()+d*tp;vec3 normal=uShadeShape>=2?normalize(hit):uDiskNormals[diskIndex].xyz;
  float cosine=dot(d,normal)>0.?max(0.,dot(normal,normalize(hit))):0.;
  float sunlight=cosine>0.?collectionLightExcept(hit,diskIndex):0.;
  if(uMode==3){fragColor=vec4(vec3(sunlight),1.);return;}
  col=shadeMaterial(shadeCoordinates(hit,diskIndex))*(fill+cosine*sunlight*uLuminosity/max(.001,dot(hit,hit)));}
  else if(kind==1){`);
-src=src.replace('vec3 scatter=vec3(.10,.20,.38)*(vis*uLuminosity+uShine*1.5);','vec3 scatter=vec3(.10,.20,.38)*(vis*uLuminosity+fill*1.5);');
-src=src.replace('float(kind)/3.','float(kind)/(uCollection==1?4.:3.)');
-src=src.replace('if(uMode==2)', 'if(uMode==5){fragColor=vec4(vec3(kind==0?collectionLight(normalize(camera()+d*obj)):0.),1.);return;}if(uMode==4){fragColor=vec4(vec3(kind==1?1.:0.),1.);return;}if(uMode==2)');
+src=patch(src,'vec3 scatter=vec3(.10,.20,.38)*(vis*uLuminosity+uShine*1.5);','vec3 scatter=vec3(.10,.20,.38)*(vis*uLuminosity+fill*1.5);');
+src=patch(src,'float(kind)/3.','float(kind)/(uCollection==1?4.:3.)');
+src=patch(src,'if(uMode==2)', 'if(uMode==5){fragColor=vec4(vec3(kind==0?collectionLight(normalize(camera()+d*obj)):0.),1.);return;}if(uMode==4){fragColor=vec4(vec3(kind==1?1.:0.),1.);return;}if(uMode==2)');
 SphereShaders.fragment=src;
 SphereCollection.upload=function(gl,uniforms,s,indirect){const C=SphereCollection,f=(k,x)=>gl.uniform1f(uniforms[k],x),i=(k,x)=>gl.uniform1i(uniforms[k],+x),v=(k,x)=>gl.uniform3fv(uniforms[k],x);
  f('uShadeTrim',s.shadeTrim??.65);i('uShadowSamples',s.shadowSamples||7);i('uStationSamples',s.stationSamples||64);i('uShadeShape',s.shadeShape==='trimmed'?3:s.shadeShape==='cap'?2:s.shadeShape==='square'?1:0);i('uCollection',s.collection);i('uAfter',s.era==='after');i('uManyWounds',s.multipleWounds);i('uRoutes',s.routeShades);i('uStation',s.starStation);i('uShineField',s.shineField);i('uGuide',s.routeGuides);f('uOrder',s.regionOrder);f('uRichness',s.colorRichness);

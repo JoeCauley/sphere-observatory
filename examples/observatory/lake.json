@@ -1,7 +1,7 @@
 {
   "format": "sphere-observatory",
   "version": 1,
-  "created": "2026-09-15T01:17:44.011Z",
+  "created": "2026-09-16T01:16:23.307Z",
   "state": {
     "version": 1,
     "radius": 149597870.7,
@@ -13,16 +13,16 @@
       4419716.96521961
     ],
     "forward": [
-      0.8544893038718845,
-      -0.459165022396885,
-      -0.24293108441656966
+      0.852475007634156,
+      -0.4773225527541435,
+      -0.2131889818715166
     ],
     "up": [
-      -0.5177026441172302,
+      -0.5177026441172301,
       -0.7141929163767795,
-      -0.47107584365074284
+      -0.47107584365074273
     ],
-    "fov": 72,
+    "fov": 74.52,
     "breachEnabled": true,
     "breachLat": 12,
     "breachLon": -12,
@@ -119,7 +119,28 @@
     "shadeAttachment": null,
     "surfaceLock": false
   },
-  "application": "The Sphere Observatory — current source build",
+  "application": "The Sphere Observatory 1.6.0",
+  "build": {
+    "version": "1.6.0",
+    "commit": "5cdb0985691a99b2068ce4c01e7157b6cab7677a",
+    "sourceSha256": "8cabd50378b228bb67b640fe8289e626aa8ef7a84646fad9d1b5c54e80a8d0b5",
+    "status": "local-modified",
+    "release": false,
+    "assets": [
+      {
+        "path": "assets/wound-edges/manifest.json",
+        "sha256": "ea2c769ce86b82699e2bb745d521678a716ed106bdab755e726f11e2c32a03fe"
+      }
+    ],
+    "assetSetSha256": "45f67a383ac6ec295844b3bc6ddc40e9a1d661f354d7f406bf82e6519410a91d",
+    "assetCount": 45
+  },
+  "location": {
+    "id": "watershed-lake",
+    "title": "Receiving lake",
+    "region": "Watershed",
+    "frame": "shell"
+  },
   "title": "The receiving lake",
   "units": "kilometres, seconds, degrees",
   "image": {
@@ -139,8 +160,11 @@
         "enabled": false
       },
       "geometry": {
-        "groups": 7,
-        "triangles": 308565,
+        "groups": 0,
+        "residentGroups": 7,
+        "culledGroups": 7,
+        "lightSamples": 0,
+        "triangles": 0,
         "localShadow": false,
         "materials": "simple"
       },
@@ -153,20 +177,27 @@
         "cavityHaze": 0.04,
         "weatherLayers": 3
       },
-      "cpuMs": 1,
-      "gpuMs": 25.975456,
+      "cpuMs": 0.699999988079071,
+      "gpuMs": 11.57232,
+      "fullDrawCpuMs": 0.699999988079071,
+      "geometryWork": {
+        "allocatedBytes": 102760680,
+        "uploadedBytes": 102760680,
+        "synchronousUploads": 177,
+        "synchronousUploadMs": 3.2000001072883606
+      },
       "indirectLight": "exact frame",
       "indirectSampleTime": 0,
       "heroTextures": {
-        "ready": 3,
+        "ready": 4,
         "total": 10,
         "gpuMiB": 79.96,
         "tileKm": 2.5
       },
       "woundTextures": {
-        "ready": 0,
+        "ready": 1,
         "total": 10,
-        "gpuMiB": 0,
+        "gpuMiB": 79.96,
         "tileKm": 0.64,
         "damageBandKm": 240
       },
@@ -177,7 +208,7 @@
         "missing": []
       },
       "textures": {
-        "ready": 3,
+        "ready": 4,
         "total": 10,
         "gpuMiB": 40,
         "scalesKm": [

@@ -1,0 +1,126 @@
+{
+  "baseline": {
+    "commit": "5cdb0985691a99b2068ce4c01e7157b6cab7677a",
+    "branch": "main",
+    "version": "1.5.0",
+    "numericalSuites": 32,
+    "passed": true
+  },
+  "integration": {
+    "branch": "codex/sphere-integration",
+    "numericalSuites": 34,
+    "passed": true,
+    "syntax": "all application JavaScript files passed",
+    "whitespace": "git diff --check passed",
+    "browserGates": [
+      {
+        "file": "tests/integration-browser.cjs",
+        "exitCode": 0,
+        "elapsedMs": 137571
+      },
+      {
+        "file": "tests/integration-export-browser.cjs",
+        "exitCode": 0,
+        "elapsedMs": 55233
+      }
+    ],
+    "currentBuild": {
+      "version": "1.5.0",
+      "commit": "5cdb0985691a99b2068ce4c01e7157b6cab7677a",
+      "sourceSha256": "496d898c710040252c1f3029c28aef569f9b3dd915eeb6f7c24737c0d89668c7",
+      "status": "local-modified",
+      "release": false,
+      "assets": [
+        {
+          "path": "assets/wound-edges/manifest.json",
+          "sha256": "ea2c769ce86b82699e2bb745d521678a716ed106bdab755e726f11e2c32a03fe"
+        }
+      ],
+      "assetSetSha256": "45f67a383ac6ec295844b3bc6ddc40e9a1d661f354d7f406bf82e6519410a91d",
+      "assetCount": 45
+    }
+  },
+  "observedJourney": [
+    {
+      "id": "biome-0",
+      "arrival": "ground",
+      "ms": 37192
+    },
+    {
+      "id": "watershed-lake",
+      "arrival": "ground",
+      "ms": 2162
+    },
+    {
+      "id": "shade-0",
+      "arrival": "ground",
+      "ms": 295
+    },
+    {
+      "id": "biome-3",
+      "arrival": "clouds",
+      "ms": 660
+    },
+    {
+      "id": "watershed",
+      "arrival": "neighbourhood",
+      "ms": 35
+    },
+    {
+      "id": "watershed",
+      "arrival": "region",
+      "ms": 33
+    },
+    {
+      "id": "watershed",
+      "arrival": "province",
+      "ms": 35
+    },
+    {
+      "id": "watershed",
+      "arrival": "approach",
+      "ms": 34
+    },
+    {
+      "id": "watershed",
+      "arrival": "garden",
+      "ms": 33
+    },
+    {
+      "id": "watershed",
+      "arrival": "terrace",
+      "ms": 34
+    },
+    {
+      "id": "watershed",
+      "arrival": "ground",
+      "ms": 482
+    }
+  ],
+  "exportChecks": {
+    "photograph": true,
+    "panorama": true,
+    "playback": true,
+    "provenance": true,
+    "compiledVariants": [
+      {
+        "name": "legacy",
+        "linked": true
+      },
+      {
+        "name": "modern",
+        "linked": true
+      },
+      {
+        "name": "geometry-primary",
+        "linked": true
+      }
+    ]
+  },
+  "limits": [
+    "Full performance/readiness acceptance remains",
+    "Cold PNG replay unresolved",
+    "Receiving-lake traversal environment not added",
+    "Connected polar and Shade-face walking remain later milestones"
+  ]
+}

@@ -38,7 +38,13 @@ function shellFrame(q){const up=mul(q,-1),east=M.basis(up).r;return [east,up,cro
 function woundGround(mesh,s){
  if(!s.collection||s.era!=='after'||!s.multipleWounds)return null;
  const bounds=mesh.ground?.bounds,centre=bounds?[(bounds[0]+bounds[2])/2,0,(bounds[1]+bounds[3])/2]:[0,0,0],span=bounds?Math.hypot(bounds[2]-bounds[0],bounds[3]-bounds[1])/2:SITE_RADIUS*Math.SQRT2;
- const near=W.nearestRim(norm(mesh.world(centre)),s);if(near.distance>span+.01)return null;
+ const direction=norm(mesh.world(centre)),near=W.nearestRim(direction,s);
+ if(near.distance>span+.01){
+  // A section away from the contour can be wholly missing, not just wholly
+  // intact. Keep an empty clipper for void so callers emit neither a floor
+  // nor support/props there (including the outer connected-terrain ring).
+  return C.missing(direction,s)?{empty:true,triangle(){},finish(){return null;},margin:()=>-1}:null;
+ }
  const w=C.wounds[near.index],up=cross(w.axis,w.tangent),segments=[],intersections=new Map(),parameters=new WeakMap();
  const margin=p=>C.woundDistance(norm(mesh.world(p)),w)-1;
  const parameter=q=>{const a=Math.atan2(dot(q,w.tangent),dot(q,w.axis)),b=Math.asin(M.clamp(dot(q,up),-1,1)),j=1+.13*Math.sin(a*71)+.055*Math.sin(a*193);let t=Math.atan2(b/(w.width*j),a/w.length);while(t-near.t>Math.PI)t-=Math.PI*2;while(t-near.t< -Math.PI)t+=Math.PI*2;return t;};

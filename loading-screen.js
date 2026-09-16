@@ -8,7 +8,7 @@ function needs(s){const p=T.plan(s,aspect());return (s.walkMode&&window.SphereGr
 function show(){if(overlay.hidden)priorFocus=document.activeElement;overlay.hidden=false;overlay.setAttribute('aria-busy','true');$('loadingTitle').textContent=started?'Preparing your view':'Opening the Observatory';$('loadingProgress').hidden=false;$('loadingProgress').removeAttribute('value');$('loadingActions').hidden=true;}
 function progress({phase,ready,total}){$('loadingStatus').textContent=phase+(total?' · '+ready+' of '+total+' ready':'');if(total){$('loadingProgress').max=total;$('loadingProgress').value=ready;}else $('loadingProgress').removeAttribute('value');}
 async function ensureCurrent({initial=false,force=false}={}){
- if(!started&&!initial)return;if(A.busy&&!active&&!initial)return;if(!force&&!initial&&!needs(A.getState()))return;
+ if(A.travelHeld||window.SphereJourney?.travel.active)return;if(!started&&!initial)return;if(A.busy&&!active&&!initial)return;if(!force&&!initial&&!needs(A.getState()))return;
  controller?.abort();controller=new AbortController();const signal=controller.signal,id=++ticket;active=true;lastError=null;A.setBusy(true,{keepKeys:true});show();
  promise=(async()=>{try{
   await paint();const s=A.getState(),ratio=aspect(),plan=await R.prepare(s,{aspect:ratio,signal,onProgress:data=>{if(id===ticket)progress(data);}});

@@ -1,6 +1,6 @@
 /* Shared graph uniforms; analytic shell fallback is available before any image load. */
 (function(){
-'use strict';const P=SphereNeighbourhood,M=SphereMath;
+'use strict';const patch=SphereShaderSections.section('Watershed appearance');const P=SphereNeighbourhood,M=SphereMath;
 const declarations=`
 uniform int uPackEnabled,uPackEdges,uPackArtRevision;
 uniform vec3 uPackX,uPackZ,uPackNormal,uPackBase;
@@ -64,7 +64,10 @@ vec3 packMaterial(vec3 original,vec3 delta,float footprint){
  return mix(original,land,coverage);
 }
 `;
-SphereShaders.fragment=SphereShaders.fragment.replace('uniform float uWaist,uTransition;',declarations+'\nuniform float uWaist,uTransition;').replace('vec3 surfaceMaterial(vec3 q,vec3 delta,float footprint,float distanceKm){',material+'\nvec3 surfaceMaterial(vec3 q,vec3 delta,float footprint,float distanceKm){').replace('float damage=woundDamage(q,delta);','col=packMaterial(col,delta,footprint);\n float damage=woundDamage(q,delta);');
+SphereShaderSections.register('Watershed declarations',declarations);SphereShaderSections.register('Watershed material',material);
+let source=patch(SphereShaders.fragment,'uniform float uWaist,uTransition;',declarations+'\nuniform float uWaist,uTransition;');
+source=patch(source,'vec3 surfaceMaterial(vec3 q,vec3 delta,float footprint,float distanceKm){',material+'\nvec3 surfaceMaterial(vec3 q,vec3 delta,float footprint,float distanceKm){');
+SphereShaders.fragment=patch(source,'float damage=woundDamage(q,delta);','col=packMaterial(col,delta,footprint);\n float damage=woundDamage(q,delta);');
 P.shader={declarations,material};
 const upload=SphereWorld.upload;
 SphereWorld.upload=(gl,u,s)=>{upload(gl,u,s);const enabled=SpherePacks.enabled(s);gl.uniform1i(u.uPackEnabled,enabled?1:0);if(!enabled)return;

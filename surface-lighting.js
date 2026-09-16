@@ -2,7 +2,7 @@
  * Finishes are original periodic data maps: tangent slopes, roughness, metalness.
  * All lengths below are kilometres. No lighting is painted into these maps. */
 (function(){
-'use strict';
+'use strict';const patch=SphereShaderSections.section('Local surface lighting');
 const glsl=`
 uniform int uRichMaterials,uLocalShadowQuality;
 uniform highp sampler2DArray uFinish;
@@ -105,11 +105,11 @@ vec3 shadeLighting(vec3 colour,vec3 relative,vec3 outward,vec3 view,int index,in
 }
 `;
 let source=SphereShaders.fragment;
-source=source.replace('void main(){',glsl+'\nvoid main(){');
+source=patch(source,'void main(){',glsl+'\nvoid main(){');
 const old='col=shadeSurface(hit,d,diskIndex,tp*uRadius)*(fill+cosine*sunlight*uLuminosity/max(.001,dot(hit,hit)));';
 if(!source.includes(old))throw Error('Shade material integration changed');
-source=source.replace(old,'col=shadeLighting(shadeSurface(hit,d,diskIndex,tp*uRadius),d*(tp*uRadius),normal,-d,diskIndex,dot(d,normal)>0.?3:4,fill,sunlight*uLuminosity/max(.001,dot(hit,hit)));');
-source=source.replace('uLuminosity*surfaceBumpLight+fill','uLuminosity*surfaceBumpLight*structureShadow(d*(ts*uRadius),-q)+fill');
+source=patch(source,old,'col=shadeLighting(shadeSurface(hit,d,diskIndex,tp*uRadius),d*(tp*uRadius),normal,-d,diskIndex,dot(d,normal)>0.?3:4,fill,sunlight*uLuminosity/max(.001,dot(hit,hit)));');
+source=patch(source,'uLuminosity*surfaceBumpLight+fill','uLuminosity*surfaceBumpLight*structureShadow(d*(ts*uRadius),-q)+fill');
 SphereShaders.fragment=source;
 
 function makeMaps(size=256){

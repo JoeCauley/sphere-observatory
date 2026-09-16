@@ -1,0 +1,96 @@
+{
+  "results": [
+    {
+      "id": "biome-0",
+      "arrival": "ground",
+      "ms": 37192
+    },
+    {
+      "id": "watershed-lake",
+      "arrival": "ground",
+      "ms": 2162
+    },
+    {
+      "id": "shade-0",
+      "arrival": "ground",
+      "ms": 295
+    },
+    {
+      "id": "biome-3",
+      "arrival": "clouds",
+      "ms": 660
+    },
+    {
+      "id": "watershed",
+      "arrival": "neighbourhood",
+      "ms": 35
+    },
+    {
+      "id": "watershed",
+      "arrival": "region",
+      "ms": 33
+    },
+    {
+      "id": "watershed",
+      "arrival": "province",
+      "ms": 35
+    },
+    {
+      "id": "watershed",
+      "arrival": "approach",
+      "ms": 34
+    },
+    {
+      "id": "watershed",
+      "arrival": "garden",
+      "ms": 33
+    },
+    {
+      "id": "watershed",
+      "arrival": "terrace",
+      "ms": 34
+    },
+    {
+      "id": "watershed",
+      "arrival": "ground",
+      "ms": 482
+    }
+  ],
+  "errors": [],
+  "diagnostic": {
+    "device": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "timing": {
+      "frames": 94,
+      "medianMs": 16.699999999999818,
+      "p95Ms": 16.800000000000182,
+      "maxMs": 16.90000000000009,
+      "droppedMovementSeconds": 0
+    },
+    "ground": {
+      "chunks": 25,
+      "cache": 34,
+      "bytes": 0,
+      "pendingBytes": 0,
+      "budget": 67108864,
+      "buildMs": 0.10000002384185791,
+      "queue": 10,
+      "waits": 0
+    },
+    "build": {
+      "version": "1.5.0",
+      "commit": "5cdb0985691a99b2068ce4c01e7157b6cab7677a",
+      "sourceSha256": "d7f51dfc3cea4c3f9ebe411fe7b48990f8c794f7dc92418ecbb00cc396974a78",
+      "status": "local-modified",
+      "release": false,
+      "assets": [
+        {
+          "path": "assets/wound-edges/manifest.json",
+          "sha256": "ea2c769ce86b82699e2bb745d521678a716ed106bdab755e726f11e2c32a03fe"
+        }
+      ],
+      "assetSetSha256": "45f67a383ac6ec295844b3bc6ddc40e9a1d661f354d7f406bf82e6519410a91d",
+      "assetCount": 45
+    },
+    "history": 11
+  }
+}

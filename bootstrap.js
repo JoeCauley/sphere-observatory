@@ -2,9 +2,11 @@
  * and ordered so their globals and document.currentScript asset paths are stable. */
 (async()=>{
 const scriptBase=new URL('.',document.currentScript.src);
-const scripts=['math','collection','biomes','hero-textures','world-palette','biome-packs','world','watershed-network','field-sites','watershed-province','watershed-neighbourhood','edge-stream','shade-edges','ground-chunks','edge-streaming','inspection-camera','wreckage','flight','surface-walk','travel-control','places','survey','shaders','collection-shader','biome-shader','world-shader','neighbourhood-shader','asset-plan','world-textures','wound-textures','surface-lighting','silhouette-aa','preview-light','geometry-renderer','local-shadows','volume','atmosphere','panorama','renderer','preview-quality','app','navigation-history','enhancements','collection-ui','biome-ui','ui-layout','surface-arrival','pointer-navigation','evolution-ui','watershed-ui','flight-console','places-ui','session-state','loading-screen'];
+const scripts=['math','collection','biomes','hero-textures','world-palette','biome-packs','world','watershed-network','field-sites','watershed-province','watershed-neighbourhood','edge-stream','shade-edges','ground-chunks','edge-streaming','inspection-camera','wreckage','flight','surface-walk','travel-control','places','survey','shaders','shader-sections','collection-shader','biome-shader','world-shader','neighbourhood-shader','asset-plan','world-textures','wound-textures','surface-lighting','silhouette-aa','station-shader-performance','preview-light','geometry-renderer','local-shadows','volume','atmosphere','panorama','renderer','preview-quality','simulation-timing','app','travel-transaction','location-identity','navigation-history','enhancements','collection-ui','biome-ui','ui-layout','surface-arrival','pointer-navigation','evolution-ui','watershed-ui','flight-console','places-ui','integration-ui','session-state','loading-screen'];
 const paint=()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
 try{
+ window.SphereBuild={version:'1.6.0',status:'unverified-local',release:false};
+ try{const response=await fetch(new URL('build-info.json',scriptBase));if(response.ok)window.SphereBuild=await response.json();}catch{}
  await paint();
  for(const name of scripts){
   if(name==='app'){document.getElementById('loadingStatus').textContent='Preparing the renderer. The first opening can take a little longer.';await paint();}

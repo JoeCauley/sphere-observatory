@@ -1,7 +1,7 @@
 {
   "format": "sphere-observatory",
   "version": 1,
-  "created": "2026-09-15T01:17:47.716Z",
+  "created": "2026-09-16T01:16:26.270Z",
   "state": {
     "version": 1,
     "radius": 149597870.7,
@@ -13,16 +13,16 @@
       -58236565.26923138
     ],
     "forward": [
-      0.5182019742685193,
-      -0.8548917819354747,
-      -0.025035076261072757
+      0.4872434226414204,
+      -0.8709106275289855,
+      -0.06409778428107268
     ],
     "up": [
-      -0.6304146788154521,
+      -0.6304146788154524,
       -0.4015866648082717,
-      0.6643082743592609
+      0.6643082743592607
     ],
-    "fov": 75,
+    "fov": 77.625,
     "breachEnabled": true,
     "breachLat": 12,
     "breachLon": -12,
@@ -104,7 +104,28 @@
     "shadeAttachment": null,
     "surfaceLock": true
   },
-  "application": "The Sphere Observatory — current source build",
+  "application": "The Sphere Observatory 1.6.0",
+  "build": {
+    "version": "1.6.0",
+    "commit": "5cdb0985691a99b2068ce4c01e7157b6cab7677a",
+    "sourceSha256": "8cabd50378b228bb67b640fe8289e626aa8ef7a84646fad9d1b5c54e80a8d0b5",
+    "status": "local-modified",
+    "release": false,
+    "assets": [
+      {
+        "path": "assets/wound-edges/manifest.json",
+        "sha256": "ea2c769ce86b82699e2bb745d521678a716ed106bdab755e726f11e2c32a03fe"
+      }
+    ],
+    "assetSetSha256": "45f67a383ac6ec295844b3bc6ddc40e9a1d661f354d7f406bf82e6519410a91d",
+    "assetCount": 45
+  },
+  "location": {
+    "id": "survey",
+    "title": "Across the collection",
+    "region": "Free flight",
+    "frame": "shell"
+  },
   "title": "The finished Shade perimeter",
   "units": "kilometres, seconds, degrees",
   "image": {
@@ -133,25 +154,35 @@
         "depthStorageMiB": 32
       },
       "geometry": {
-        "groups": 755,
-        "triangles": 128672,
+        "groups": 3,
+        "residentGroups": 719,
+        "culledGroups": 716,
+        "lightSamples": 1,
+        "triangles": 1056,
         "localShadow": true,
         "materials": "roughness / metalness / normal"
       },
-      "cpuMs": 4.300000011920929,
-      "gpuMs": 25.975456,
+      "cpuMs": 3,
+      "gpuMs": 11.57232,
+      "fullDrawCpuMs": 3,
+      "geometryWork": {
+        "allocatedBytes": 102993000,
+        "uploadedBytes": 102993000,
+        "synchronousUploads": 182,
+        "synchronousUploadMs": 3.2000001072883606
+      },
       "indirectLight": "exact frame",
       "indirectSampleTime": 134199,
       "heroTextures": {
-        "ready": 3,
+        "ready": 4,
         "total": 10,
         "gpuMiB": 79.96,
         "tileKm": 2.5
       },
       "woundTextures": {
-        "ready": 0,
+        "ready": 1,
         "total": 10,
-        "gpuMiB": 0,
+        "gpuMiB": 79.96,
         "tileKm": 0.64,
         "damageBandKm": 240
       },
@@ -162,7 +193,7 @@
         "missing": []
       },
       "textures": {
-        "ready": 3,
+        "ready": 4,
         "total": 10,
         "gpuMiB": 40,
         "scalesKm": [

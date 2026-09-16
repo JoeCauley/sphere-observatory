@@ -1,6 +1,6 @@
 /* Geography generated from the same province tables as the CPU. Legacy remains intact. */
 (function(){
-'use strict';const W=SphereWorld;
+'use strict';const patch=SphereShaderSections.section('World geography');const W=SphereWorld;
 window.SphereLegacyShaders={...SphereShaders};
 const constants=`
 uniform int uLayout,uWorldTexturesReady,uSpaceEnvironment,uWreckage;
@@ -278,43 +278,44 @@ vec3 exteriorSky(vec3 d){vec3 col=stars(d);if(uLayout!=2||uAfter==0||uWreckage==
  return col;
 }
 `;
+SphereShaderSections.register('World constants',constants);SphereShaderSections.register('World geography functions',functions);
 let src=SphereShaders.fragment;
 // Wound silhouettes need the same range-reduced inverse trig as province
 // boundaries. Native ANGLE asin/atan can shift a thin opening by a whole pixel.
-src=src.replace('float a=atan(dot(q,tanv),dot(q,axis)),b=asin(clamp(dot(q,cross(axis,tanv)),-1.,1.));','float a=worldAtan2(dot(q,tanv),dot(q,axis)),b=worldAsin(dot(q,cross(axis,tanv)));');
+src=patch(src,'float a=atan(dot(q,tanv),dot(q,axis)),b=asin(clamp(dot(q,cross(axis,tanv)),-1.,1.));','float a=worldAtan2(dot(q,tanv),dot(q,axis)),b=worldAsin(dot(q,cross(axis,tanv)));');
 const damageGLSL=W.shadeSolidBody.replace('const family=id%3;','int family=id%3;').replace('const edge=','float edge=').replaceAll('===','==').replaceAll('Math.sin','sin').replaceAll('Math.abs','abs').replaceAll('Math.floor','floor').replace('const x=','float x=').replace(/,y=/g,',y=').replace('(x*13+y*7+id*11)%37','mod(x*13.+y*7.+float(id)*11.,37.)').replaceAll('*18','*18.').replaceAll('*17','*17.').replaceAll('*53','*53.').replaceAll('*12','*12.').replaceAll('*31','*31.').replaceAll('*11','*11.').replaceAll('*41','*41.').replaceAll('*57','*57.').replaceAll('(u+1)','(u+1.)').replaceAll('(v+1)','(v+1.)').replace('==0&&','==0.&&');
-src=src.replace('bool diskSolid(vec2 p,int i){','bool detailedShadeSolid(float u,float v,int id){'+damageGLSL.replace('family==0.','family==0').replaceAll('11..','11.').replace('37.)==0','37.)==0.')+'}\nbool diskSolid(vec2 p,int i){');
+src=patch(src,'bool diskSolid(vec2 p,int i){','bool detailedShadeSolid(float u,float v,int id){'+damageGLSL.replace('family==0.','family==0').replaceAll('11..','11.').replace('37.)==0','37.)==0.')+'}\nbool diskSolid(vec2 p,int i){');
 const restGLSL=damageGLSL.replace(/if\(abs\(u\+\.27[^\n]+\n/,'');
-src=src.replace('bool diskSolid(vec2 p,int i){','bool detailedShadeRest(float u,float v,int id){'+restGLSL.replace('family==0.','family==0').replaceAll('11..','11.').replace('37.)==0','37.)==0.')+'}\nbool diskSolid(vec2 p,int i){');
-src=src.replace('if(uDiskNormals[i].w<.5)return true;','if(uDiskNormals[i].w<.5)return true;if(uLayout==2)return detailedShadeSolid(p.x,p.y,int(uDiskRights[i].w));');
-src=src.replace('const float PI=',constants+'\nconst float PI=');
-src=src.replace('vec3 biomeRegion(vec3 q){','vec3 legacyBiomeRegion(vec3 q){');
-src=src.replace(/vec3 biomeHaze\(vec3 q\)\{[^}]+\}/,'');
-src=src.replace('vec3 surfaceMaterial(vec3 q,vec3 delta,float footprint,float distanceKm){','vec3 legacySurfaceMaterial(vec3 q,vec3 delta,float footprint,float distanceKm){');
+src=patch(src,'bool diskSolid(vec2 p,int i){','bool detailedShadeRest(float u,float v,int id){'+restGLSL.replace('family==0.','family==0').replaceAll('11..','11.').replace('37.)==0','37.)==0.')+'}\nbool diskSolid(vec2 p,int i){');
+src=patch(src,'if(uDiskNormals[i].w<.5)return true;','if(uDiskNormals[i].w<.5)return true;if(uLayout==2)return detailedShadeSolid(p.x,p.y,int(uDiskRights[i].w));');
+src=patch(src,'const float PI=',constants+'\nconst float PI=');
+src=patch(src,'vec3 biomeRegion(vec3 q){','vec3 legacyBiomeRegion(vec3 q){');
+src=patch(src,/vec3 biomeHaze\(vec3 q\)\{[^}]+\}/,'');
+src=patch(src,'vec3 surfaceMaterial(vec3 q,vec3 delta,float footprint,float distanceKm){','vec3 legacySurfaceMaterial(vec3 q,vec3 delta,float footprint,float distanceKm){');
 // Legacy material calls the legacy region; declarations above main avoid forward calls.
 src=src.replaceAll('vec3 region=biomeRegion(q);','vec3 region=legacyBiomeRegion(q);');
-src=src.replace('void main(){',functions+'\nvoid main(){');
+src=patch(src,'void main(){',functions+'\nvoid main(){');
 // Camera-ray derivatives are continuous and evaluated before object selection.
-src=src.replace('float ts=shellHit(d);','shadeCameraFootprint(d,xy);\n float ts=shellHit(d);');
-src=src.replace('col=shadeMaterial(shadeCoordinates(hit,diskIndex))','col=shadeSurface(hit,d,diskIndex,tp*uRadius)');
-src=src.replace('float t=diskHit(camera(),d,i);','float t=primaryDiskHit(d,i);');
-src=src.replace('else{col=stars(d);}','else{col=exteriorSky(d);}');
+src=patch(src,'float ts=shellHit(d);','shadeCameraFootprint(d,xy);\n float ts=shellHit(d);');
+src=patch(src,'col=shadeMaterial(shadeCoordinates(hit,diskIndex))','col=shadeSurface(hit,d,diskIndex,tp*uRadius)');
+src=patch(src,'float t=diskHit(camera(),d,i);','float t=primaryDiskHit(d,i);');
+src=patch(src,'else{col=stars(d);}','else{col=exteriorSky(d);}');
 // The exterior skin cannot receive direct light from the star behind an opaque shell.
-src=src.replace('if(uMode==1){','if(kind==0&&uH<0.&&dot(d,q)<0.)col=WORLD_ALBEDO[12]*.0008;\n if(uMode==1){');
-src=src.replace('if(uAtm>0. && uMode==0 && uH*uRadius<160.)','if(uLayout!=2 && uAtm>0. && uMode==0 && uH*uRadius<160.)');
+src=patch(src,'if(uMode==1){','if(kind==0&&uH<0.&&dot(d,q)<0.)col=WORLD_ALBEDO[12]*.0008;\n if(uMode==1){');
+src=patch(src,'if(uAtm>0. && uMode==0 && uH*uRadius<160.)','if(uLayout!=2 && uAtm>0. && uMode==0 && uH*uRadius<160.)');
 // All surfaces share logarithmic distance depth with the camera-relative mesh pass.
-src=src.replace('if(uMode==5){','gl_FragDepth=obj>1e19?1.:clamp(log2(1.+max(0.,obj*uRadius))/log2(1.+4.*uRadius),0.,1.);\n if(uMode==5){');
-src=src.replace('bool hole=uCollection==1?collectionHole(q):missing(q);',`bool hole=ts>1e19||(uCollection==1?primaryShellHole(d,ts,q):missing(q));
+src=patch(src,'if(uMode==5){','gl_FragDepth=obj>1e19?1.:clamp(log2(1.+max(0.,obj*uRadius))/log2(1.+4.*uRadius),0.,1.);\n if(uMode==5){');
+src=patch(src,'bool hole=uCollection==1?collectionHole(q):missing(q);',`bool hole=ts>1e19||(uCollection==1?primaryShellHole(d,ts,q):missing(q));
  if(uH<0.&&ts<1e19&&hole){float b=(1.-uH)*dot(uN,d),c=-uH*(2.-uH);ts=-b+sqrt(max(0.,b*b-c));q=normalize(camera()+d*ts);hole=primaryShellHole(d,ts,q);}`);
-src=src.replace(/float shellHit\(vec3 d\)\{[^}]+\}/,`float shellHit(vec3 d){float b=(1.-uH)*dot(uN,d),c=-uH*(2.-uH),disc=b*b-c;if(disc<0.)return 1e20;float root=sqrt(disc);if(uLayout==2&&uH<0.){float near=-b-root,far=-b+root;return near>0.?near:far>0.?far:1e20;}float t=b>0.?(-c)/(b+root):-b+root;return t>0.?t:1e20;}`);
-src=src.replace('if(uMode==5){','if(uMode==6){vec3 r=worldRegion(q);fragColor=vec4(r.x/15.,r.y/15.,r.z,1.);return;}if(uMode==5){');
+src=patch(src,/float shellHit\(vec3 d\)\{[^}]+\}/,`float shellHit(vec3 d){float b=(1.-uH)*dot(uN,d),c=-uH*(2.-uH),disc=b*b-c;if(disc<0.)return 1e20;float root=sqrt(disc);if(uLayout==2&&uH<0.){float near=-b-root,far=-b+root;return near>0.?near:far>0.?far:1e20;}float t=b>0.?(-c)/(b+root):-b+root;return t>0.?t:1e20;}`);
+src=patch(src,'if(uMode==5){','if(uMode==6){vec3 r=worldRegion(q);fragColor=vec4(r.x/15.,r.y/15.,r.z,1.);return;}if(uMode==5){');
 SphereShaders.fragment=src;
 // Compile each layout independently: carrying both large material graphs in one program
 // makes some ANGLE drivers spend tens of seconds optimizing dead branches at startup.
 function removeFunction(source,name){const re=new RegExp('(?:float|bool|vec[234]) '+name+'\\('),match=re.exec(source);if(!match)return source;let start=source.indexOf('{',match.index),end=start+1,depth=1;while(depth&&end<source.length){if(source[end]==='{')depth++;else if(source[end]==='}')depth--;end++;}return source.slice(0,match.index)+source.slice(end);}
-src=src.replace('if(uLayout!=2||uCollection!=1)return legacySurfaceMaterial(q,delta,footprint,distanceKm);','').replace('return uLayout==2&&uCollection==1?worldRegion(q):legacyBiomeRegion(q);','return worldRegion(q);').replace('if(uLayout!=2)return shadeMaterial(km);','');
+src=patch(src,'if(uLayout!=2||uCollection!=1)return legacySurfaceMaterial(q,delta,footprint,distanceKm);','').replace('return uLayout==2&&uCollection==1?worldRegion(q):legacyBiomeRegion(q);','return worldRegion(q);').replace('if(uLayout!=2)return shadeMaterial(km);','');
 for(const name of ['legacySurfaceMaterial','legacyBiomeRegion','collectionMaterial','collectionPalette','atlasMaterial','shellMaterial','shadeMaterial'])src=removeFunction(src,name);
-src=src.replace('uniform int uLayout,uWorldTexturesReady','const int uLayout=2;\nuniform int uWorldTexturesReady').replace('uniform int uCollection,uAfter','const int uCollection=1;\nuniform int uAfter');
+src=patch(src,'uniform int uLayout,uWorldTexturesReady','const int uLayout=2;\nuniform int uWorldTexturesReady').replace('uniform int uCollection,uAfter','const int uCollection=1;\nuniform int uAfter');
 SphereShaders.fragment=src;
 W.upload=function(gl,u,s){const f=W.frame(s);gl.uniform1i(u.uLayout,s.collection?(s.layoutVersion||1):1);gl.uniform3fv(u.uWorldAxis,f.axis);gl.uniform3fv(u.uWorldRight,f.right);gl.uniform3fv(u.uWorldUp,f.up);gl.uniform1f(u.uWaist,SphereMath.radians(s.waistWidth||20));gl.uniform1f(u.uTransition,s.transitionKm||60000);gl.uniform1i(u.uSpaceEnvironment,s.spaceEnvironment||0);gl.uniform1i(u.uWreckage,s.wreckage!==false?1:0);const n=SphereMath.norm(s.position);gl.uniform3fv(u.uEngineeringAnchor,n.map(v=>((v*s.radius/6)%64+64)%64));
  const M=SphereMath,anchors=[],right=[],up=[],precision=[],camLength=M.length(s.position);let footprint=null;const plates=SphereCollection.plates(s);for(const plate of plates){const r=M.length(plate.center)*s.radius,a=M.dot(n,plate.right),b=M.dot(n,plate.up),c=M.dot(n,plate.normal);let x,y,dx=plate.right,dy=plate.up;

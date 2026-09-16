@@ -1,6 +1,8 @@
 # Observatory roadmap and next-session handoff
 
-Updated 14 September 2026 · joined Watershed regional compositions
+Updated 15 September 2026 · travel and interface integration
+
+Current implementation and remaining gates: [Integration status](Integration-2026-09-15.md). The older continuation narrative below describes the reviewed v1.5.0 baseline; it is retained as historical context.
 
 This is the current continuation plan. Use it ahead of the older Next Leap
 sequence when priorities or status differ. The first Watershed pack milestone

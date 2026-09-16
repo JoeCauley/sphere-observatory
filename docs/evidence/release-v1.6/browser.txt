@@ -1,0 +1,15 @@
+Ready with real loop
+Arrived biome-0 ground 2194
+Arrived watershed-lake ground 2220
+Failed Return and retry retained history
+Arrived shade-0 ground 312
+Arrived biome-3 clouds 625
+Arrived watershed neighbourhood 33
+Arrived watershed region 37
+Arrived watershed province 36
+Arrived watershed approach 37
+Arrived watershed garden 37
+Arrived watershed terrace 37
+Arrived watershed ground 521
+Journey survives reload
+PASS visible journey, marks, six scales, Return failure/retry, live settings, era cancellation, reload, responsive layouts, capture cancellation/failure

@@ -1,0 +1,4 @@
+Export gate ready
+Photo and panorama exported with build, identity and playback preserved
+Supported shader variants compile
+PASS capture provenance, shader variants, keyboard tabs, quiet recovery, effective zoom and control inventory

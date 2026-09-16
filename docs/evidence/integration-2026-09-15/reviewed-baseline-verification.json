@@ -1,0 +1,26 @@
+{
+  "date": "2026-09-15",
+  "repository": "I:/Sphere/repositories/sphere-observatory",
+  "commit": "5cdb0985691a99b2068ce4c01e7157b6cab7677a",
+  "branch": "main",
+  "version": "1.5.0",
+  "initialApplicationWorktree": "clean",
+  "numerical": {"command": "npm test", "suites": 32, "exitCode": 0, "result": "PASS"},
+  "servedApp": {
+    "url": "http://127.0.0.1:8766/app.js",
+    "sha256": "14224E76F77E556EF65F8CC38B88513C3C6FA290E32557ED5F1B4E2E10EA570A",
+    "matchesLocalAppJs": true
+  },
+  "focusedProbe": "probe-results.json",
+  "browser": {
+    "result": "INCOMPLETE",
+    "detail": "In-app browser reached startup/resource preparation; tab closed before completed visual inspection.",
+    "fullSuiteRerun": false
+  },
+  "limitations": [
+    "Original 444-case matrix was not supplied or rerun.",
+    "Interactive UI mockup was not present in the supplied ZIP.",
+    "No full visual, responsive, browser journey or hardware-performance certification.",
+    "This is a planning review; application changes remain to be implemented."
+  ]
+}

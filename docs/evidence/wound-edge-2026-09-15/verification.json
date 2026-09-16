@@ -1,0 +1,62 @@
+{
+  "results": [
+    {
+      "name": "lip",
+      "status": "arrived",
+      "bad": 0,
+      "triangles": 69417,
+      "empty": 6,
+      "groups": 25,
+      "residency": {
+        "chunks": 25,
+        "cache": 25,
+        "bytes": 18064588,
+        "pendingBytes": 0,
+        "budget": 67108864,
+        "buildMs": 29.30000001192093,
+        "queue": 0,
+        "waits": 0
+      },
+      "gl": 0
+    },
+    {
+      "name": "over-opening",
+      "status": "arrived",
+      "bad": 0,
+      "triangles": 41714,
+      "empty": 10,
+      "groups": 25,
+      "residency": {
+        "chunks": 25,
+        "cache": 44,
+        "bytes": 22953244,
+        "pendingBytes": 0,
+        "budget": 67108864,
+        "buildMs": 16.80000001192093,
+        "queue": 0,
+        "waits": 0
+      },
+      "gl": 0
+    },
+    {
+      "name": "return-to-lip",
+      "status": "arrived",
+      "bad": 0,
+      "triangles": 69417,
+      "empty": 6,
+      "groups": 25,
+      "residency": {
+        "chunks": 25,
+        "cache": 44,
+        "bytes": 22953244,
+        "pendingBytes": 0,
+        "budget": 67108864,
+        "buildMs": 16.80000001192093,
+        "queue": 0,
+        "waits": 0
+      },
+      "gl": 0
+    }
+  ],
+  "errors": []
+}

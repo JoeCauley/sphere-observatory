@@ -1,7 +1,7 @@
 {
   "format": "sphere-observatory",
   "version": 1,
-  "created": "2026-09-15T01:17:50.940Z",
+  "created": "2026-09-16T01:16:28.699Z",
   "state": {
     "version": 1,
     "radius": 149597870.7,
@@ -13,16 +13,16 @@
       144458748.5819546
     ],
     "forward": [
-      0.7764722086612988,
-      0.13800232999881276,
-      0.6148546707080812
+      0.7768744252380918,
+      0.0864025005299963,
+      0.6236992346581393
     ],
     "up": [
-      0.6295283196247293,
+      0.6295283196247294,
       -0.1264953167825765,
       -0.7666113941382166
     ],
-    "fov": 84,
+    "fov": 86.94,
     "breachEnabled": true,
     "breachLat": 12,
     "breachLon": -12,
@@ -44,7 +44,7 @@
     "grid": false,
     "viewMode": "material",
     "projection": "perspective",
-    "speed": 0.02,
+    "speed": 1000000,
     "quality": 1,
     "seed": 23,
     "starfield": true,
@@ -108,7 +108,28 @@
     "shadeAttachment": null,
     "surfaceLock": true
   },
-  "application": "The Sphere Observatory — current source build",
+  "application": "The Sphere Observatory 1.6.0",
+  "build": {
+    "version": "1.6.0",
+    "commit": "5cdb0985691a99b2068ce4c01e7157b6cab7677a",
+    "sourceSha256": "8cabd50378b228bb67b640fe8289e626aa8ef7a84646fad9d1b5c54e80a8d0b5",
+    "status": "local-modified",
+    "release": false,
+    "assets": [
+      {
+        "path": "assets/wound-edges/manifest.json",
+        "sha256": "ea2c769ce86b82699e2bb745d521678a716ed106bdab755e726f11e2c32a03fe"
+      }
+    ],
+    "assetSetSha256": "45f67a383ac6ec295844b3bc6ddc40e9a1d661f354d7f406bf82e6519410a91d",
+    "assetCount": 45
+  },
+  "location": {
+    "id": "region-10",
+    "title": "Thermal routing fields",
+    "region": "Shell works",
+    "frame": "shell"
+  },
   "title": "At the edge of a world",
   "units": "kilometres, seconds, degrees",
   "image": {
@@ -132,13 +153,16 @@
         "nearWidthKm": 16,
         "farWidthKm": 128,
         "nearTexelMetres": 7.8125,
-        "submittedTriangles": 28160,
+        "submittedTriangles": 27840,
         "cached": false,
         "depthStorageMiB": 32
       },
       "geometry": {
-        "groups": 446,
-        "triangles": 48256,
+        "groups": 109,
+        "residentGroups": 422,
+        "culledGroups": 313,
+        "lightSamples": 1,
+        "triangles": 10496,
         "localShadow": true,
         "materials": "roughness / metalness / normal"
       },
@@ -151,18 +175,25 @@
         "cavityHaze": 0.28,
         "weatherLayers": 3
       },
-      "cpuMs": 3.399999976158142,
-      "gpuMs": 25.975456,
+      "cpuMs": 3.5,
+      "gpuMs": 11.57232,
+      "fullDrawCpuMs": 3.5,
+      "geometryWork": {
+        "allocatedBytes": 106338408,
+        "uploadedBytes": 106338408,
+        "synchronousUploads": 405,
+        "synchronousUploadMs": 4.200000166893005
+      },
       "indirectLight": "exact frame",
       "indirectSampleTime": 0,
       "heroTextures": {
-        "ready": 3,
+        "ready": 4,
         "total": 10,
         "gpuMiB": 79.96,
         "tileKm": 2.5
       },
       "woundTextures": {
-        "ready": 1,
+        "ready": 2,
         "total": 10,
         "gpuMiB": 79.96,
         "tileKm": 0.64,
@@ -175,7 +206,7 @@
         "missing": []
       },
       "textures": {
-        "ready": 3,
+        "ready": 4,
         "total": 10,
         "gpuMiB": 40,
         "scalesKm": [

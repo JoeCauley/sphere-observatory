@@ -1,22 +1,38 @@
-# Photographs from Observatory v1.5
+# Photographs from Observatory v1.6
 
-Seventeen fresh **3840 × 2160** photographs from the running v1.5.0 source build. The smaller JPEGs on this page are display copies; every linked PNG is unretouched output from the Observatory renderer.
+**Nineteen new 3840 × 2160 photographs and three interface screenshots**, captured from the running app. Every photograph has a fresh composition and an importable scene. The PNGs are untouched renderer output; JPEGs are smaller display copies.
 
-To return to a photograph, download its scene JSON and choose **Capture → Import scene**. Each scene contains the camera, world, time, seed and actual rendering settings. Hardware, browser and later renderer changes may affect exact reproduction.
+To return to a photograph, download its scene JSON and open **Journey → Saved viewpoints & scene files → Import scene**. Camera, world, time, seed, place identity, build and rendering settings travel with the file. Later renderer, GPU or browser changes may affect exact reproduction.
 
 ### The Sphere from the polar court
 
 ![The Sphere from the polar court](hero.jpg)
 
-The polar court beneath the habitat bands, Shades and Wounds. The camera, lens and world staging come from the saved reference photograph; this is a fresh v1.5 render with current Shade bodies. The polar court retains its authored landmark geometry.
+A new framing of the polar court beneath the habitat waist, moving Shades and Wounds. The scene begins from the project’s reference staging and is freshly composed in the current renderer.
 
 [Original 4K PNG](hero.png) · [Restore scene](hero.json)
+
+### On foot in Dark Age Forest
+
+![On foot in Dark Age Forest](forest-ground.jpg)
+
+A settled walking viewpoint in Dark Age Forest. Connected terrain shares the surrounding geographic material; the enormous interior remains visible above the local horizon.
+
+[Original 4K PNG](forest-ground.png) · [Restore scene](forest-ground.json)
+
+### Walking beside the opening
+
+![Walking beside the opening](wound-ground.jpg)
+
+On foot beside a Wound in Chalk Archipelago. Surviving ground meets the opening; terrain and collision support are absent from the void.
+
+[Original 4K PNG](wound-ground.png) · [Restore scene](wound-ground.json)
 
 ### Ultra Desert
 
 ![Ultra Desert](ultra-desert.jpg)
 
-A low aerial view of Ultra Desert, with its warm surface material, sparse local formations and the opposite shell overhead. This is a procedural field site, not fully authored desert terrain.
+A low aerial view over warm desert materials and sparse formations. This is an implemented field site, not a fully authored desert ecosystem.
 
 [Original 4K PNG](ultra-desert.png) · [Restore scene](ultra-desert.json)
 
@@ -24,71 +40,69 @@ A low aerial view of Ultra Desert, with its warm surface material, sparse local 
 
 ![Winter Hell](winter-hell.jpg)
 
-A low aerial view of Winter Hell. Pale ice materials continue between local walking geometry and the surrounding shell. The two biome views use the same lens and relative camera staging.
+Pale ice terrain and scattered local formations below the distant shell. The camera uses the same relative altitude and lens family as the desert view.
 
 [Original 4K PNG](winter-hell.png) · [Restore scene](winter-hell.json)
 
 ## Watersheds at six scales
 
-These are the six named Watershed arrival presets, from the surrounding neighbourhood to the garden terrace. Regional heights are above the shell; the garden height is relative to its landscape and the terrace height to its floor.
+Explore → Watersheds → Watershed · the river gardens offers these six views and a separate On foot arrival. Heights are above the shell for regional views, above the garden landscape for the 1 km view, and above the floor for the terrace.
 
-### Connected catchments Â· 40,000 km
+### Connected catchments · 40,000 km
 
-![Connected catchments Â· 40,000 km](watershed-40000.jpg)
+![Connected catchments · 40,000 km](watershed-40000.jpg)
 
-Connected catchments at the 40,000 km arrival: the neighbourhood surrounds the original province with regional drainage and receiving country.
+The connected neighbourhood at the 40,000 km arrival, showing regional catchments around the original province.
 
 [Original 4K PNG](watershed-40000.png) · [Restore scene](watershed-40000.json)
 
-### Receiving reaches Â· 10,000 km
+### Receiving reaches · 10,000 km
 
-![Receiving reaches Â· 10,000 km](watershed-10000.jpg)
+![Receiving reaches · 10,000 km](watershed-10000.jpg)
 
-The 10,000 km arrival connects the central province to the surrounding receiving reaches. The landscape uses the current saved Watershed pack.
+Receiving country at the 10,000 km arrival, where regional drainage meets the wider neighbourhood.
 
 [Original 4K PNG](watershed-10000.png) · [Restore scene](watershed-10000.json)
 
-### The province Â· 1,100 km
+### The province · 1,100 km
 
-![The province Â· 1,100 km](watershed-1100.jpg)
+![The province · 1,100 km](watershed-1100.jpg)
 
-The 1,100 km arrival looks across the original 640 km river-garden province and its basins.
+The 640 km river-garden province at the 1,100 km arrival. Geography and art revisions are stored with the scene.
 
 [Original 4K PNG](watershed-1100.png) · [Restore scene](watershed-1100.json)
 
-### River country Â· 48 km
+### River country · 48 km
 
-![River country Â· 48 km](watershed-48.jpg)
+![River country · 48 km](watershed-48.jpg)
 
-The 48 km approach brings the river, banks and receiving water into a single view. Regional water is a static rendered surface.
+An approach to river country at 48 km. Water is a designed rendered surface, not a fluid simulation.
 
 [Original 4K PNG](watershed-48.png) · [Restore scene](watershed-48.json)
 
-### The water garden Â· 1 km
+### The water garden · 1 km
 
-![The water garden Â· 1 km](watershed-1.jpg)
+![The water garden · 1 km](watershed-1.jpg)
 
-One kilometre above the garden landscape: curved terraces, an island court and local planting beside the river.
+One kilometre above the garden landscape: curved terraces, an island court, planting and the nearby river.
 
 [Original 4K PNG](watershed-1.png) · [Restore scene](watershed-1.json)
 
-### The open terrace Â· 6 m above its floor
+### The open terrace · 6 m above its floor
 
-![The open terrace Â· 6 m above its floor](terrace.jpg)
+![The open terrace · 6 m above its floor](terrace.jpg)
 
-Six metres above the terrace floor. The same garden can be inspected from human scale beneath the distant inner shell.
+A view six metres above the terrace floor. Builder architecture frames the sky of the interior at a more familiar scale.
 
 [Original 4K PNG](terrace.png) · [Restore scene](terrace.json)
 
-## Three Watershed compositions
-
-Choose these through **Explore → Places → Watersheds → Landscape view**.
+## Regional compositions
 
 ### The receiving lake
 
 ![The receiving lake](lake.jpg)
 
-The receiving lake, viewed from its 9,000 km regional composition camera. Geography revision 1 and art revision 2 are saved in the scene.
+The receiving lake in its regional composition. Use Explore → Watersheds for the dry-bank arrival or regional view.
 
 [Original 4K PNG](lake.png) · [Restore scene](lake.json)
 
@@ -96,7 +110,7 @@ The receiving lake, viewed from its 9,000 km regional composition camera. Geogra
 
 ![The quiet reach](reach.jpg)
 
-The quiet reach, viewed from its 9,000 km regional composition camera. The river and banks belong to the connected neighbourhood.
+The quiet reach and its banks within the connected neighbourhood. Detailed shore environments remain future work.
 
 [Original 4K PNG](reach.png) · [Restore scene](reach.json)
 
@@ -104,15 +118,17 @@ The quiet reach, viewed from its 9,000 km regional composition camera. The river
 
 ![The open meadow](meadow.jpg)
 
-The open meadow, viewed from its 9,000 km regional composition camera. Regional material variation is implemented; detailed local shore environments remain future work.
+The open meadow in its regional composition, retaining the same saved geographic address as its arrival.
 
 [Original 4K PNG](meadow.png) · [Restore scene](meadow.json)
+
+## Engineering, light and weather
 
 ### The finished Shade perimeter
 
 ![The finished Shade perimeter](shade-intact.jpg)
 
-A finished perimeter on Shade 4. Both faces and the 180 m layered body are visible; vertical members close the intact edge. Geometry revision 3 discovers detail automatically.
+Layered panels and vertical members along Shade 4’s intact perimeter. The body’s two faces are 180 m apart.
 
 [Original 4K PNG](shade-intact.png) · [Restore scene](shade-intact.json)
 
@@ -120,7 +136,7 @@ A finished perimeter on Shade 4. Both faces and the 180 m layered body are visib
 
 ![The broken Shade edge](shade-broken.jpg)
 
-The exposed edge of Shade 0. Layered returns and braces follow a damaged boundary on the moving parent. The simulation is paused for this photograph.
+Recessed layers and exposed braces follow a broken boundary on Shade 0. The simulation is paused for the photograph.
 
 [Original 4K PNG](shade-broken.png) · [Restore scene](shade-broken.json)
 
@@ -128,7 +144,7 @@ The exposed edge of Shade 0. Layered returns and braces follow a damaged boundar
 
 ![At the edge of a world](wound.jpg)
 
-An oblique view along an exposed Wound wall with surviving surface and clouds above it. Shell thickness and engineering details are provisional.
+An oblique inspection of the exposed shell wall with surviving surface and clouds above. Shell thickness and structural dimensions are provisional.
 
 [Original 4K PNG](wound.png) · [Restore scene](wound.json)
 
@@ -136,7 +152,7 @@ An oblique view along an exposed Wound wall with surviving surface and clouds ab
 
 ![The stellar conservatory](interior.jpg)
 
-The Sun-sized star and its damaged service rings, framed from within the vast cavity. Exposure is an artistic display choice, not calibrated photometry.
+The Sun-sized star and damaged service rings. The exposure is an artistic display choice, not calibrated photometry.
 
 [Original 4K PNG](interior.png) · [Restore scene](interior.json)
 
@@ -144,25 +160,48 @@ The Sun-sized star and its damaged service rings, framed from within the vast ca
 
 ![Above the Super Jungle](clouds.jpg)
 
-Nine kilometres above Super Jungle, with local cloud banks below and the distant shell overhead. Weather and atmosphere are approximate rendering models.
+Nine kilometres above Super Jungle, with local cloud banks and the far interior beyond. Weather and atmospheric transport are approximate.
 
 [Original 4K PNG](clouds.png) · [Restore scene](clouds.json)
 
+## The interface in use
+
+These 1600 × 1000 screenshots were taken after journeys made through the app’s visible controls. They show the actual interface, including its persistent location and clock.
+
+### Explore · a prepared forest arrival
+
+![Explore · a prepared forest arrival](interface-explore.jpg)
+
+[Original screenshot](interface-explore.png)
+
+### Journey · places already visited
+
+![Journey · places already visited](interface-journey.jpg)
+
+[Original screenshot](interface-journey.png)
+
+### Capture · a named 4K photograph
+
+![Capture · a named 4K photograph](interface-capture.jpg)
+
+[Original screenshot](interface-capture.png)
+
 ## Capture and provenance
 
-[Gallery metadata](gallery.json) records the source-content fingerprint, GPU, output dimensions, every PNG hash and all adjacent-frame comparisons. The capture helper prepares the saved scene, draws three to eight paused frames, and requires the final two to match byte for byte. This checks the photographs presented here; it does not close the separately documented intermittent cold-capture diagnostic. No external compositing, retouching or generated replacement image is used. Some material artwork used inside the app was created with AI assistance.
+[Gallery metadata](gallery.json) records the source fingerprint, GPU, every PNG hash and all adjacent-frame comparisons. All 19 photographs finished with two identical prepared frames, with no WebGL or page errors. Earlier nonmatching pairs occurred in ultra-desert, clouds; those comparisons are retained. This is evidence for these prepared photographs, not a solution to the separately documented cold-capture diagnostic.
 
-All 17 final pairs matched in this run. The hero, Ultra Desert and cloud views had an earlier nonmatching pair, retained in the metadata. Graphics errors and page errors were zero.
+[Interface metadata](interface.json) records the three UI screenshots. No picture was externally retouched, composited or replaced with generated imagery. Some material artwork used inside the app was created with AI assistance.
 
-The hero reconstructs the supplied reference using its [archived camera scene](../archive/v1.4/polar-station.json) and current Shade geometry. The other photographs are composed with current Places, Watershed and inspection controls.
+The [v1.5 gallery](../archive/v1.5/README.md) preserves the previous photographs and saved scenes. Its archive manifest verifies the original image bytes. [Older photographs and studies](../archive/README.md) remain available too.
 
-Start the local server and configure Playwright and your browser as described in the [project README](../../README.md). Recapture the saved scenes with:
+With the server running, configure Playwright, `SPHERE_BROWSER` and `SPHERE_URL` as described in the [project README](../../README.md). Recreate compositions and captures sequentially:
 
 ```sh
+node tools/compose-gallery.cjs
 node tools/capture-gallery.cjs
+node tools/capture-interface.cjs
 python tools/gallery-previews.py
+node tools/verify-gallery.cjs
 ```
 
-The preview helper requires Pillow. Supply shot IDs to capture selected photographs, for example `node tools/capture-gallery.cjs hero shade-broken`. To reconstruct the initial compositions before capture, run `node tools/compose-gallery.cjs`; this replaces the current gallery scene files.
-
-[Previous public photographs and documentation images](../archive/README.md) remain archived with their original image bytes. The [pre-v1.5 manifest](../archive/pre-v1.5/manifest.json) records the relocated files and hashes. Runtime texture assets remain in `assets/` because they are part of the app.
+The preview helper needs Pillow. Capture selected photographs with IDs, for example `node tools/capture-gallery.cjs hero shade-broken`. `SPHERE_PROFILE` optionally selects an isolated persistent browser profile for warm shader caching. The composition helper intentionally replaces the current gallery scenes.

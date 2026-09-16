@@ -1,0 +1,792 @@
+[
+  {
+    "id": "tab-camera",
+    "panel": "scene",
+    "label": "Explore"
+  },
+  {
+    "id": "tab-journey",
+    "panel": "scene",
+    "label": "Journey"
+  },
+  {
+    "id": "tab-scene",
+    "panel": "scene",
+    "label": "World"
+  },
+  {
+    "id": "tab-photo",
+    "panel": "scene",
+    "label": "Capture"
+  },
+  {
+    "id": "helpButton",
+    "panel": "scene",
+    "label": "Guide & assumptions"
+  },
+  {
+    "id": "closeToolPanel",
+    "panel": "scene",
+    "label": "Close panel"
+  },
+  {
+    "id": "worldIllumination",
+    "panel": "scene",
+    "label": "IlluminationCurrent geometric lightingIllumination study · first lightIllumination study · darkness "
+  },
+  {
+    "id": "worldWeather",
+    "panel": "scene",
+    "label": "WeatherClearMixedCoverPrecipitationStorm"
+  },
+  {
+    "id": "worldClock",
+    "panel": "scene",
+    "label": "Go to the clock"
+  },
+  {
+    "id": "layoutVersion",
+    "panel": "scene",
+    "label": "Surface arrangementDesigned waist and machinery fieldsLegacy · intersecting belts"
+  },
+  {
+    "id": "axisLat",
+    "panel": "scene",
+    "label": "Axis latitude°"
+  },
+  {
+    "id": "axisLon",
+    "panel": "scene",
+    "label": "Axis longitude°"
+  },
+  {
+    "id": "waistWidth",
+    "panel": "scene",
+    "label": "Habitat half-width°"
+  },
+  {
+    "id": "transitionKm",
+    "panel": "scene",
+    "label": "Transition widthkm"
+  },
+  {
+    "id": "shellThickness",
+    "panel": "scene",
+    "label": "Exposed shell thicknesskm · provisional"
+  },
+  {
+    "id": "shadeGeometryRevision",
+    "panel": "scene",
+    "label": "Shade edge detailSolid shades · automatic edgesAutomatic intact and broken edgesOriginal selected se"
+  },
+  {
+    "id": "geometryDetail",
+    "panel": "scene",
+    "label": "Local terrain, structures and Wound edges"
+  },
+  {
+    "id": "wreckage",
+    "panel": "scene",
+    "label": "Post-attack exterior wreckage"
+  },
+  {
+    "id": "spaceEnvironment",
+    "panel": "scene",
+    "label": "Exterior environmentBreach spillAncient graveyardContested approach"
+  },
+  {
+    "id": "worldModel",
+    "panel": "scene",
+    "label": "World modelThe CollectionOriginal single shade"
+  },
+  {
+    "id": "biome",
+    "panel": "scene",
+    "label": "Biome paletteAutomatic · regional mosaicDark Age ForestSuper JungleUltra DesertWinter HellThe RuinMa"
+  },
+  {
+    "id": "textureDetail",
+    "panel": "scene",
+    "label": "Near-surface texture detail"
+  },
+  {
+    "id": "biomeAtmosphere",
+    "panel": "scene",
+    "label": "Regional atmosphere colours"
+  },
+  {
+    "id": "surfaceRelief",
+    "panel": "scene",
+    "label": "Surface relief · bump shading"
+  },
+  {
+    "id": "shadeShape",
+    "panel": "scene",
+    "label": "Shade geometryRounded planeRectangular planeCurved sphere sectionSphere section · trimmed sides"
+  },
+  {
+    "id": "shadeTrim",
+    "panel": "scene",
+    "label": "Shade width · across the route"
+  },
+  {
+    "id": "regionOrder",
+    "panel": "scene",
+    "label": "Collection order"
+  },
+  {
+    "id": "colorRichness",
+    "panel": "scene",
+    "label": "Colour richness"
+  },
+  {
+    "id": "routeShades",
+    "panel": "scene",
+    "label": "Cycling shade fleet"
+  },
+  {
+    "id": "multipleWounds",
+    "panel": "scene",
+    "label": "Six wounds after the attack"
+  },
+  {
+    "id": "starStation",
+    "panel": "scene",
+    "label": "Stellar service rings"
+  },
+  {
+    "id": "routeGuides",
+    "panel": "scene",
+    "label": "Show collection belt boundaries"
+  },
+  {
+    "id": "cycleScale",
+    "panel": "scene",
+    "label": "Cycle durationHalf length24 / 36 / 60 hoursDouble length"
+  },
+  {
+    "id": "advanceCycle",
+    "panel": "scene",
+    "label": "Advance six hours"
+  },
+  {
+    "id": "breachEnabled",
+    "panel": "scene",
+    "label": "Enable breach"
+  },
+  {
+    "id": "breachDiameter",
+    "panel": "scene",
+    "label": "Opening diameter million km, along shell"
+  },
+  {
+    "id": "breachLat",
+    "panel": "scene",
+    "label": "Latitude °"
+  },
+  {
+    "id": "breachLon",
+    "panel": "scene",
+    "label": "Longitude °"
+  },
+  {
+    "id": "breachRoughness",
+    "panel": "scene",
+    "label": "Fractured edge 0%"
+  },
+  {
+    "id": "shadeEnabled",
+    "panel": "scene",
+    "label": "Enable shade"
+  },
+  {
+    "id": "shadeAltitude",
+    "panel": "scene",
+    "label": "Altitude km"
+  },
+  {
+    "id": "shadeDiameter",
+    "panel": "scene",
+    "label": "Diameter km"
+  },
+  {
+    "id": "shadeOffset",
+    "panel": "scene",
+    "label": "Starting offset 0.00 radii"
+  },
+  {
+    "id": "shadeDamage",
+    "panel": "scene",
+    "label": "Edge damage 0%"
+  },
+  {
+    "id": "shadeSpeed",
+    "panel": "scene",
+    "label": "Travel speed km/s"
+  },
+  {
+    "id": "surfaceStyle",
+    "panel": "scene",
+    "label": "Surface interpretationRegional atlas · graded detailOriginal v0.1 material"
+  },
+  {
+    "id": "seed",
+    "panel": "scene",
+    "label": "Surface pattern seed"
+  },
+  {
+    "id": "starfield",
+    "panel": "scene",
+    "label": "Illustrative external stars"
+  },
+  {
+    "id": "radius",
+    "panel": "scene",
+    "label": "Sphere radius million km"
+  },
+  {
+    "id": "starRadius",
+    "panel": "scene",
+    "label": "Star radius km"
+  },
+  {
+    "id": "luminosity",
+    "panel": "scene",
+    "label": "Luminosity × Sun"
+  },
+  {
+    "id": "exposure",
+    "panel": "scene",
+    "label": "Exposure compensation 0.2 stops"
+  },
+  {
+    "id": "shellshine",
+    "panel": "scene",
+    "label": "Estimated shellshine 22%"
+  },
+  {
+    "id": "atmosphere",
+    "panel": "scene",
+    "label": "Approximate local atmosphere 100%"
+  },
+  {
+    "id": "previewFps",
+    "panel": "scene",
+    "label": "Preview frame limit15 fps · gentle30 fps · balanced60 fps · smooth"
+  },
+  {
+    "id": "quality",
+    "panel": "scene",
+    "label": "Preview detailLight · lower GPU useBalancedHigh detail · within preview budget"
+  },
+  {
+    "id": "adaptivePreview",
+    "panel": "scene",
+    "label": "Adaptive preview · target frame rate"
+  },
+  {
+    "id": "antialias",
+    "panel": "scene",
+    "label": "AntialiasingOffSupersampling only · measured resolveSmooth edges · silhouette detail + filtering"
+  },
+  {
+    "id": "shadowSamples",
+    "panel": "scene",
+    "label": "Stellar shadow quality7 samples · gentle19 samples · finer penumbrae"
+  },
+  {
+    "id": "stationSamples",
+    "panel": "scene",
+    "label": "Station shadow integration19 rays · comparison64 rays · balanced128 rays · fine256 rays · capture st"
+  },
+  {
+    "id": "shineField",
+    "panel": "scene",
+    "label": "Coloured ShellShine"
+  },
+  {
+    "id": "clouds",
+    "panel": "scene",
+    "label": "Clouds and suspended particles"
+  },
+  {
+    "id": "weatherStrength",
+    "panel": "scene",
+    "label": "Cloud coverage"
+  },
+  {
+    "id": "weatherQuality",
+    "panel": "scene",
+    "label": "Cloud detailLightBalancedFine"
+  },
+  {
+    "id": "cavityHaze",
+    "panel": "scene",
+    "label": "Cavity haze"
+  },
+  {
+    "id": "richMaterials",
+    "panel": "scene",
+    "label": "Detailed Shade and Wound materials"
+  },
+  {
+    "id": "localShadows",
+    "panel": "scene",
+    "label": "Structure shadowsOffBalancedFine"
+  },
+  {
+    "id": "watershedArrival",
+    "panel": "scene",
+    "label": "ArrivalConnected catchments · 40,000 kmReceiving reaches · 10,000 kmThe whole watershed · 1,100 km a"
+  },
+  {
+    "id": "visitWatershed",
+    "panel": "scene",
+    "label": "Enter the province"
+  },
+  {
+    "id": "returnWatershed",
+    "panel": "scene",
+    "label": "Return to previous view"
+  },
+  {
+    "id": "fieldDestination",
+    "panel": "scene",
+    "label": "Local destinationDark Age ForestSuper JungleUltra DesertWinter HellThe RuinMachine ExpanseRustwater "
+  },
+  {
+    "id": "visitField",
+    "panel": "scene",
+    "label": "Inspect site"
+  },
+  {
+    "id": "walkField",
+    "panel": "scene",
+    "label": "Walk here"
+  },
+  {
+    "id": "returnField",
+    "panel": "scene",
+    "label": "Return to previous view"
+  },
+  {
+    "id": "terrainRevision",
+    "panel": "scene",
+    "label": "Terrain for new landingsConnected walkingOriginal local patches"
+  },
+  {
+    "id": "biomeDestination",
+    "panel": "scene",
+    "label": "DestinationDark Age ForestSuper JungleUltra DesertWinter HellThe RuinMachine ExpanseRustwater MarshC"
+  },
+  {
+    "id": "biomeAltitude",
+    "panel": "scene",
+    "label": "Approach altitude1,000 km · regional100 km · district10 km · local1 km · close approach"
+  },
+  {
+    "id": "visitBiome",
+    "panel": "scene",
+    "label": "Visit biome"
+  },
+  {
+    "id": "collectionVista",
+    "panel": "scene",
+    "label": "Across the collection"
+  },
+  {
+    "id": "collectionWounds",
+    "panel": "scene",
+    "label": "The long wounds"
+  },
+  {
+    "id": "collectionShades",
+    "panel": "scene",
+    "label": "Among the shades"
+  },
+  {
+    "id": "collectionStation",
+    "panel": "scene",
+    "label": "At the star"
+  },
+  {
+    "id": "collectionEclipse",
+    "panel": "scene",
+    "label": "A shade eclipsed · intact fleet"
+  },
+  {
+    "id": "legacyStudy",
+    "panel": "scene",
+    "label": "Load original dawn scene · resets conditions"
+  },
+  {
+    "id": "placeCategory",
+    "panel": "camera",
+    "label": "Place category"
+  },
+  {
+    "id": "placeDestination",
+    "panel": "camera",
+    "label": "DestinationAcross the collectionShade fleetThe long woundsCentral star"
+  },
+  {
+    "id": "placeAltitude",
+    "panel": "camera",
+    "label": "ArrivalRegional view"
+  },
+  {
+    "id": "placeWorld",
+    "panel": "camera",
+    "label": "Open World"
+  },
+  {
+    "id": "visitPlace",
+    "panel": "camera",
+    "label": "Visit"
+  },
+  {
+    "id": "cancelTravel",
+    "panel": "camera",
+    "label": "Cancel"
+  },
+  {
+    "id": "retryTravel",
+    "panel": "camera",
+    "label": "Retry"
+  },
+  {
+    "id": "clearMark",
+    "panel": "camera",
+    "label": "Clear mark"
+  },
+  {
+    "id": "speedMode",
+    "panel": "camera",
+    "label": "Speed controlAutomatic · eases near surfacesManual · use my chosen speed"
+  },
+  {
+    "id": "speed",
+    "panel": "camera",
+    "label": "Flight speed km/s1 · Surface exploration0.0028 · Walking pace0.02 · Local inspection10 · Fine adjust"
+  },
+  {
+    "id": "fov",
+    "panel": "camera",
+    "label": "Horizontal field of view 80°"
+  },
+  {
+    "id": "cameraLat",
+    "panel": "camera",
+    "label": "Latitude °"
+  },
+  {
+    "id": "cameraLon",
+    "panel": "camera",
+    "label": "Longitude °"
+  },
+  {
+    "id": "cameraAltitude",
+    "panel": "camera",
+    "label": "Altitude above inner surface km"
+  },
+  {
+    "id": "moveCamera",
+    "panel": "camera",
+    "label": "Move to coordinates"
+  },
+  {
+    "id": "faceSurface",
+    "panel": "camera",
+    "label": "Face surface"
+  },
+  {
+    "id": "faceStar",
+    "panel": "camera",
+    "label": "Face star"
+  },
+  {
+    "id": "inspectBelow",
+    "panel": "camera",
+    "label": "Look straight down"
+  },
+  {
+    "id": "rotationStep",
+    "panel": "camera",
+    "label": "Turn per click1° · precise5° · gentle15°90° · quarter turn"
+  },
+  {
+    "id": "levelCamera",
+    "panel": "camera",
+    "label": "Level to nearby surface"
+  },
+  {
+    "id": "projection",
+    "panel": "camera",
+    "label": "ProjectionPerspective · photographic360° × 180° · unwrapped"
+  },
+  {
+    "id": "viewMode",
+    "panel": "camera",
+    "label": "DisplayMaterial & illuminationDistance colours · diagnostic"
+  },
+  {
+    "id": "grid",
+    "panel": "camera",
+    "label": "Show 15° shell reference grid"
+  },
+  {
+    "id": "autoWalk",
+    "panel": "camera",
+    "label": "Walk when descending below 100 m"
+  },
+  {
+    "id": "bookmarkName",
+    "panel": "journey",
+    "label": "Viewpoint name"
+  },
+  {
+    "id": "saveBookmark",
+    "panel": "journey",
+    "label": "Save this viewpoint"
+  },
+  {
+    "id": "saveScene",
+    "panel": "journey",
+    "label": "Export scene"
+  },
+  {
+    "id": "loadScene",
+    "panel": "journey",
+    "label": "Import scene"
+  },
+  {
+    "id": "sceneFile",
+    "panel": "journey",
+    "label": ""
+  },
+  {
+    "id": "captureTitle",
+    "panel": "photo",
+    "label": "Capture title"
+  },
+  {
+    "id": "exportSize",
+    "panel": "photo",
+    "label": "Export dimensions4K · 3840 × 2160HD · 1920 × 10808K · 7680 × 4320"
+  },
+  {
+    "id": "capture",
+    "panel": "photo",
+    "label": "Take photograph ↗"
+  },
+  {
+    "id": "capturePanorama",
+    "panel": "photo",
+    "label": "Take panorama"
+  },
+  {
+    "id": "cancelPhoto",
+    "panel": "photo",
+    "label": "Cancel photograph"
+  },
+  {
+    "id": "clipShot",
+    "panel": "photo",
+    "label": "Motion studyStaged · First light · 12 secondsStaged · Under the shade · 12 secondsThis viewpoint · 1"
+  },
+  {
+    "id": "recordClip",
+    "panel": "photo",
+    "label": "Record 4K SDR clip"
+  },
+  {
+    "id": "cancelClip",
+    "panel": "photo",
+    "label": "Cancel recording"
+  },
+  {
+    "id": "captureSaveViewpoint",
+    "panel": "photo",
+    "label": "Save viewpoint"
+  },
+  {
+    "id": "loadingRetry",
+    "panel": "scene",
+    "label": "Retry"
+  },
+  {
+    "id": "loadingFallback",
+    "panel": "scene",
+    "label": "Use simpler surface"
+  },
+  {
+    "id": "leaveWalk",
+    "panel": "scene",
+    "label": "Lift off · Space + E"
+  },
+  {
+    "id": "surveyShape",
+    "panel": "scene",
+    "label": "Area selection shape"
+  },
+  {
+    "id": "clearSurvey",
+    "panel": "scene",
+    "label": "Clear"
+  },
+  {
+    "id": "exportSurvey",
+    "panel": "scene",
+    "label": "Save measurement"
+  },
+  {
+    "id": "closeFlightConsole",
+    "panel": "flightConsole",
+    "label": "Close flight console"
+  },
+  {
+    "id": "consolePlay",
+    "panel": "flightConsole",
+    "label": "Pause simulation"
+  },
+  {
+    "id": "consoleRate",
+    "panel": "flightConsole",
+    "label": "Flight console time rate"
+  },
+  {
+    "id": "consoleScrub",
+    "panel": "flightConsole",
+    "label": "Flight console simulation time"
+  },
+  {
+    "id": "consoleReset",
+    "panel": "flightConsole",
+    "label": "Reset time"
+  },
+  {
+    "id": "consoleAttachment",
+    "panel": "flightConsole",
+    "label": "Follow Shade"
+  },
+  {
+    "id": "consoleLevel",
+    "panel": "flightConsole",
+    "label": "Keep level within 1 km L"
+  },
+  {
+    "id": "consoleSpeedMode",
+    "panel": "flightConsole",
+    "label": "Speed controlAutomaticManual"
+  },
+  {
+    "id": "consoleSpeed",
+    "panel": "flightConsole",
+    "label": "Flight console flight speed"
+  },
+  {
+    "id": "consoleFov",
+    "panel": "flightConsole",
+    "label": "Flight console field of view"
+  },
+  {
+    "id": "consoleExposure",
+    "panel": "flightConsole",
+    "label": "Flight console exposure"
+  },
+  {
+    "id": "consoleMaterials",
+    "panel": "flightConsole",
+    "label": "MaterialsDetailedSimple"
+  },
+  {
+    "id": "consoleShadows",
+    "panel": "flightConsole",
+    "label": "Structure shadowsOffBalancedFine"
+  },
+  {
+    "id": "consoleAntialias",
+    "panel": "flightConsole",
+    "label": "Flight console edge smoothing"
+  },
+  {
+    "id": "consoleLevelNow",
+    "panel": "flightConsole",
+    "label": "Level now"
+  },
+  {
+    "id": "consolePhoto",
+    "panel": "flightConsole",
+    "label": "Save photograph"
+  },
+  {
+    "id": "play",
+    "panel": "scene",
+    "label": "Pause clock"
+  },
+  {
+    "id": "resetTime",
+    "panel": "scene",
+    "label": "Reset clock"
+  },
+  {
+    "id": "timeSlider",
+    "panel": "scene",
+    "label": "Simulation time in seconds"
+  },
+  {
+    "id": "timeRate",
+    "panel": "scene",
+    "label": "Time rate 1×60×600×3600×"
+  },
+  {
+    "id": "eraBefore",
+    "panel": "scene",
+    "label": "Before the attack"
+  },
+  {
+    "id": "eraAfter",
+    "panel": "scene",
+    "label": "After the attack"
+  },
+  {
+    "id": "browseBiomes",
+    "panel": "scene",
+    "label": "Return"
+  },
+  {
+    "id": "flightConsoleButton",
+    "panel": "scene",
+    "label": "Instruments"
+  },
+  {
+    "id": "seeSurface",
+    "panel": "scene",
+    "label": "Go · centre ray"
+  },
+  {
+    "id": "measureButton",
+    "panel": "scene",
+    "label": "Measure area"
+  },
+  {
+    "id": "togglePanel",
+    "panel": "scene",
+    "label": "Show or hide controls"
+  },
+  {
+    "id": "fullscreen",
+    "panel": "scene",
+    "label": "Enter or exit full screen"
+  },
+  {
+    "id": "quietView",
+    "panel": "scene",
+    "label": "Quiet"
+  },
+  {
+    "id": "closeGuide",
+    "panel": "scene",
+    "label": "Close guide"
+  }
+]

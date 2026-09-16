@@ -1,5 +1,5 @@
 (function(){
-'use strict';const B=SphereBiomes;
+'use strict';const patch=SphereShaderSections.section('Biome appearance');const B=SphereBiomes;
 const rgb=hex=>[1,3,5].map(i=>(parseInt(hex.slice(i,i+2),16)/255).toFixed(5));
 const palette=B.catalog.map(b=>'vec3('+b.albedo.map(x=>x.toFixed(5)).join(',')+')').join(',');
 const haze=B.catalog.map(b=>'vec3('+rgb(b.haze).join(',')+')').join(',');
@@ -137,13 +137,14 @@ vec3 surfaceMaterial(vec3 q,vec3 delta,float footprint,float distanceKm){
  return max(col,vec3(.001));
 }
 `;
-let src=SphereShaders.fragment.replace('const float PI=',declarations+'\nconst float PI=');
-src=src.replace('void main(){',functions+'\nvoid main(){');
-src=src.replace(/vec3 collectionPalette\(float id\)\{[^}]+\}/, 'vec3 collectionPalette(float id){return BIOME_ALBEDO[int(mod(id,10.))];}');
-src=src.replace('mod(cell+float(band)*3.+floor(uSeed),8.)','mod(cell+float(band)*3.+floor(uSeed),10.)');
-src=src.replace('(uCollection==1?collectionMaterial(q,delta,footprint):(uStyle==1?atlasMaterial(q,delta,footprint):shellMaterial(q)))','surfaceMaterial(q,delta,footprint,ts*uRadius)');
-src=src.replace('col=surfaceMaterial(q,delta,footprint,ts*uRadius)*','vec3 ground=surfaceMaterial(q,delta,footprint,ts*uRadius);col=ground*');
-src=src.replace('(uCollection==1?collectionLight(q):lightFraction(q))*uLuminosity+fill','(uCollection==1?collectionLight(q):lightFraction(q))*uLuminosity*surfaceBumpLight+fill');
-src=src.replace('vec3 scatter=vec3(.10,.20,.38)*','vec3 scatter=mix(vec3(.10,.20,.38),biomeHaze(uN)*.38,float(uBiomeAtm))*');
+SphereShaderSections.register('biome-shader.js declarations',declarations);SphereShaderSections.register('biome-shader.js functions',functions);
+let src=patch(SphereShaders.fragment,'const float PI=',declarations+'\nconst float PI=');
+src=patch(src,'void main(){',functions+'\nvoid main(){');
+src=patch(src,/vec3 collectionPalette\(float id\)\{[^}]+\}/, 'vec3 collectionPalette(float id){return BIOME_ALBEDO[int(mod(id,10.))];}');
+src=patch(src,'mod(cell+float(band)*3.+floor(uSeed),8.)','mod(cell+float(band)*3.+floor(uSeed),10.)');
+src=patch(src,'(uCollection==1?collectionMaterial(q,delta,footprint):(uStyle==1?atlasMaterial(q,delta,footprint):shellMaterial(q)))','surfaceMaterial(q,delta,footprint,ts*uRadius)');
+src=patch(src,'col=surfaceMaterial(q,delta,footprint,ts*uRadius)*','vec3 ground=surfaceMaterial(q,delta,footprint,ts*uRadius);col=ground*');
+src=patch(src,'(uCollection==1?collectionLight(q):lightFraction(q))*uLuminosity+fill','(uCollection==1?collectionLight(q):lightFraction(q))*uLuminosity*surfaceBumpLight+fill');
+src=patch(src,'vec3 scatter=vec3(.10,.20,.38)*','vec3 scatter=mix(vec3(.10,.20,.38),biomeHaze(uN)*.38,float(uBiomeAtm))*');
 SphereShaders.fragment=src;
 })();

@@ -34,11 +34,11 @@
   return s;
  }
  async function recordClip(options={}){
-  if(busy)return;busy=true;cancelled=false;if(measuring){measuring=false;$('surveyControls').hidden=true;$('measureButton').classList.remove('active');canvas.classList.remove('measuring');clear();}
+  if(busy||A.busy||A.travelHeld){A.toast('Finish the current travel or capture first.');return;}busy=true;cancelled=false;if(measuring){measuring=false;$('surveyControls').hidden=true;$('measureButton').classList.remove('active');canvas.classList.remove('measuring');clear();}
   const original=A.getState(),originalTitle=$('viewTitle').textContent,originalPreset=document.querySelector('[data-preset].selected')?.dataset.preset,name=options.shot||$('clipShot').value,seconds=options.seconds||12,fps=24,width=options.width||3840,height=Math.round(width*9/16);
   const mime=['video/mp4;codecs=avc1.640033','video/webm;codecs=vp9','video/webm;codecs=vp8'].find(t=>window.MediaRecorder&&MediaRecorder.isTypeSupported(t));
   if(!mime){busy=false;A.toast('This browser does not offer a supported local video encoder.');return;}
-  if(name!=='current')A.preset(name,{stage:true});const start=A.getState();start.antialias=original.antialias;start.shadowSamples=original.shadowSamples;start.stationSamples=original.stationSamples;start.surfaceStyle=options.surfaceStyle||original.surfaceStyle;A.setBusy(true);
+  const start=name==='current'?A.getState():A.buildPreset(original,name,{stage:true});start.antialias=original.antialias;start.shadowSamples=original.shadowSamples;start.stationSamples=original.stationSamples;start.surfaceStyle=options.surfaceStyle||original.surfaceStyle;A.setBusy(true);
   const disabled=[...document.querySelectorAll('button,input,select')].filter(e=>e.id!=='cancelClip');const oldDisabled=disabled.map(e=>e.disabled);disabled.forEach(e=>e.disabled=true);$('cancelClip').hidden=false;
   let recorder,stream,chunks=[],frames=0,wall=0;
   try{
@@ -54,10 +54,10 @@
    }
    const remaining=begin+seconds*1000-performance.now();if(remaining>0)await new Promise(r=>setTimeout(r,remaining));wall=(performance.now()-begin)/1000;recorder.stop();await stopped;
    const blob=new Blob(chunks,{type:mime.split(';')[0]}),extension=mime.startsWith('video/mp4')?'mp4':'webm';
-   const metadata={format:'sphere-motion-study',version:1,application:'Sphere Observatory 1.0',shot:name,width,height,render:{...A.renderer.renderInfo},targetFps:fps,requestedSeconds:seconds,captureSeconds:wall,submittedFrames:frames,mimeType:mime,colour:'SDR, browser canvas encoding; not HDR or calibrated photometry',start:shot(name,start,0),end:shot(name,start,1),assumptions:A.assumptions};
+   const metadata={format:'sphere-motion-study',version:1,application:'Sphere Observatory '+(window.SphereBuild?.version||'1.6.0'),build:window.SphereBuild,location:SphereJourney.current(),title:document.getElementById('captureTitle')?.value,shot:name,width,height,render:{...A.renderer.renderInfo},targetFps:fps,requestedSeconds:seconds,captureSeconds:wall,submittedFrames:frames,mimeType:mime,colour:'SDR, browser canvas encoding; not HDR or calibrated photometry',start:shot(name,start,0),end:shot(name,start,1),assumptions:A.assumptions};
    if(options.returnBlob)return {blob,metadata,extension};
    const enc=new TextEncoder();A.download(SphereZip([['motion-study.'+extension,new Uint8Array(await blob.arrayBuffer())],['shot.json',enc.encode(JSON.stringify(metadata,null,2))]]),'sphere-'+name+'-4k-sdr.zip');A.toast('Clip and shot settings saved.');
-  }catch(e){A.toast(e.message);if(options.returnBlob)throw e;}finally{if(recorder&&recorder.state!=='inactive')recorder.stop();stream?.getTracks().forEach(t=>t.stop());disabled.forEach((el,i)=>el.disabled=oldDisabled[i]);$('recordClip').textContent='Record 4K SDR clip';$('cancelClip').hidden=true;A.setState(original);$('viewTitle').textContent=originalTitle;document.querySelectorAll('[data-preset]').forEach(e=>e.classList.toggle('selected',e.dataset.preset===originalPreset));A.setBusy(false);busy=false;}
+  }catch(e){A.toast(e.message);if(options.returnBlob)throw e;}finally{if(recorder&&recorder.state!=='inactive')recorder.stop();stream?.getTracks().forEach(t=>t.stop());disabled.forEach((el,i)=>el.disabled=oldDisabled[i]);$('recordClip').textContent='Record 4K SDR clip';$('cancelClip').hidden=true;let recoveryFailed=false;try{await A.renderer.prepare(original);}catch(e){recoveryFailed=true;A.toast('Restoring the current view: '+e.message);}finally{A.setState(original);$('viewTitle').textContent=originalTitle;document.querySelectorAll('[data-preset]').forEach(e=>e.classList.toggle('selected',e.dataset.preset===originalPreset));A.setBusy(false);busy=false;}if(recoveryFailed)await SphereLoading.ensureCurrent({force:true});}
  }
  $('recordClip').onclick=()=>recordClip();$('cancelClip').onclick=()=>cancelled=true;
  window.SphereEnhancements={recordClip,getMeasurement:()=>result,clearMeasurement:clear,closeMeasurement:()=>showMeasure(false),get measuring(){return measuring;}};

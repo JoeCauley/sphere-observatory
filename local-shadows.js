@@ -27,18 +27,21 @@ uniform vec3 uOffset,uX,uY,uZ;uniform vec2 uExtent;
 void main(){vec3 p=uOffset+position.x*uX+position.y*uY+position.z*uZ;gl_Position=vec4(p.xy/uExtent.x,p.z/uExtent.y,1.);}`;
 class LocalShadows{
  constructor(gl){this.gl=gl;this.texture=gl.createTexture();gl.activeTexture(gl.TEXTURE7);gl.bindTexture(gl.TEXTURE_2D,this.texture);gl.texImage2D(gl.TEXTURE_2D,0,gl.DEPTH_COMPONENT24,2,1,0,gl.DEPTH_COMPONENT,gl.UNSIGNED_INT,null);for(const [k,v]of [[gl.TEXTURE_MIN_FILTER,gl.NEAREST],[gl.TEXTURE_MAG_FILTER,gl.NEAREST],[gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE],[gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE]])gl.texParameteri(gl.TEXTURE_2D,k,v);gl.activeTexture(gl.TEXTURE0);this.plan=null;this.quality=0;this.size=0;this.renders=0;}
- prepare(s,groups,upload,{exportFrame=false}={}){
+ prepare(s,groups,upload,{exportFrame=false,target,viewport}={}){
   const gl=this.gl;this.quality=0;this.info={enabled:false};
   if(s.localShadows===0||!s.geometryDetail||s.layoutVersion!==2||!s.collection||s.viewMode!=='material')return;
   const quality=s.localShadows??1,resolution=exportFrame||quality===2?2048:1024,plan=makePlan(s,groups,resolution);if(!plan)return;
   this.quality=quality;this.plan=plan;
   this.program??=root.SphereGLProgram(gl,vertex,'#version 300 es\nprecision highp float;void main(){}');
   if(!this.fbo)this.fbo=gl.createFramebuffer();
-  const target=gl.getParameter(gl.FRAMEBUFFER_BINDING),viewport=gl.getParameter(gl.VIEWPORT);
+  // The renderer already knows its framebuffer and viewport. Querying them
+  // here can flush queued GPU work on every frame.
+  target=target===undefined?gl.getParameter(gl.FRAMEBUFFER_BINDING):target;viewport=viewport||gl.getParameter(gl.VIEWPORT);
+  const resized=this.size!==resolution;
   gl.activeTexture(gl.TEXTURE7);gl.bindTexture(gl.TEXTURE_2D,this.texture);
   if(this.size!==resolution){gl.texImage2D(gl.TEXTURE_2D,0,gl.DEPTH_COMPONENT24,resolution*2,resolution,0,gl.DEPTH_COMPONENT,gl.UNSIGNED_INT,null);this.size=resolution;this.key='';}
   gl.bindFramebuffer(gl.FRAMEBUFFER,this.fbo);gl.framebufferTexture2D(gl.FRAMEBUFFER,gl.DEPTH_ATTACHMENT,gl.TEXTURE_2D,this.texture,0);gl.drawBuffers([gl.NONE]);gl.readBuffer(gl.NONE);
-  if(gl.checkFramebufferStatus(gl.FRAMEBUFFER)!==gl.FRAMEBUFFER_COMPLETE)throw Error('Structure shadow framebuffer unavailable');
+  if(resized&&gl.checkFramebufferStatus(gl.FRAMEBUFFER)!==gl.FRAMEBUFFER_COMPLETE)throw Error('Structure shadow framebuffer unavailable');
   const key=JSON.stringify([quality,resolution,plan.ray,plan.right,plan.cascades.map(c=>[c.centre,c.extent,c.casters.map(m=>[m.streamKey||m.name,m.count,m.origin,m.basis])]),plan.depth]);
   let triangles=0;
   // A photograph owns a fresh shadow pass. Switching from

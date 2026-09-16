@@ -1,0 +1,55 @@
+{
+  "probes": 11376,
+  "mismatch": 5,
+  "outOfBound": 0,
+  "partial": 4973,
+  "maxError": 0.007873774509803977,
+  "failures": [
+    {
+      "era": "before",
+      "routes": false,
+      "n": 128,
+      "x": 1,
+      "y": 5,
+      "cpu": 1,
+      "gpu": 0.9921568627450981
+    },
+    {
+      "era": "before",
+      "routes": false,
+      "n": 128,
+      "x": 31,
+      "y": 11,
+      "cpu": 0.9921875,
+      "gpu": 1
+    },
+    {
+      "era": "before",
+      "routes": false,
+      "n": 128,
+      "x": 16,
+      "y": 14,
+      "cpu": 0.9921875,
+      "gpu": 0.984313725490196
+    },
+    {
+      "era": "before",
+      "routes": true,
+      "n": 128,
+      "x": 1,
+      "y": 5,
+      "cpu": 1,
+      "gpu": 0.9921568627450981
+    },
+    {
+      "era": "before",
+      "routes": true,
+      "n": 128,
+      "x": 16,
+      "y": 14,
+      "cpu": 0.9921875,
+      "gpu": 0.984313725490196
+    }
+  ],
+  "gl": 0
+}

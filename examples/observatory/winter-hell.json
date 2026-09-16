@@ -1,7 +1,7 @@
 {
   "format": "sphere-observatory",
   "version": 1,
-  "created": "2026-09-15T01:17:37.546Z",
+  "created": "2026-09-16T01:16:18.139Z",
   "state": {
     "version": 1,
     "radius": 149597870.7,
@@ -13,16 +13,16 @@
       -107013519.97652106
     ],
     "forward": [
-      -0.26675152470920105,
-      0.923384216376469,
-      -0.2760529170505735
+      -0.22875021995144781,
+      0.9221187503997501,
+      -0.3120422199532747
     ],
     "up": [
-      0.6416485384763598,
-      0.3838770492577205,
-      0.6640222617686377
+      0.6530624882947365,
+      0.38307107654319816,
+      0.6532732481116325
     ],
-    "fov": 82,
+    "fov": 84.86999999999999,
     "breachEnabled": true,
     "breachLat": 12,
     "breachLon": -12,
@@ -116,7 +116,28 @@
     "shadeAttachment": null,
     "surfaceLock": true
   },
-  "application": "The Sphere Observatory — current source build",
+  "application": "The Sphere Observatory 1.6.0",
+  "build": {
+    "version": "1.6.0",
+    "commit": "5cdb0985691a99b2068ce4c01e7157b6cab7677a",
+    "sourceSha256": "8cabd50378b228bb67b640fe8289e626aa8ef7a84646fad9d1b5c54e80a8d0b5",
+    "status": "local-modified",
+    "release": false,
+    "assets": [
+      {
+        "path": "assets/wound-edges/manifest.json",
+        "sha256": "ea2c769ce86b82699e2bb745d521678a716ed106bdab755e726f11e2c32a03fe"
+      }
+    ],
+    "assetSetSha256": "45f67a383ac6ec295844b3bc6ddc40e9a1d661f354d7f406bf82e6519410a91d",
+    "assetCount": 45
+  },
+  "location": {
+    "id": "region-3",
+    "title": "Winter Hell",
+    "region": "Habitat waist",
+    "frame": "shell"
+  },
   "title": "Winter Hell",
   "units": "kilometres, seconds, degrees",
   "image": {
@@ -140,13 +161,16 @@
         "nearWidthKm": 1,
         "farWidthKm": 8,
         "nearTexelMetres": 0.48828125,
-        "submittedTriangles": 147120,
+        "submittedTriangles": 147250,
         "cached": false,
         "depthStorageMiB": 32
       },
       "geometry": {
-        "groups": 25,
-        "triangles": 113822,
+        "groups": 11,
+        "residentGroups": 25,
+        "culledGroups": 14,
+        "lightSamples": 1,
+        "triangles": 56164,
         "localShadow": true,
         "materials": "simple"
       },
@@ -159,20 +183,27 @@
         "cavityHaze": 0.06,
         "weatherLayers": 3
       },
-      "cpuMs": 2.100000023841858,
-      "gpuMs": 25.975456,
+      "cpuMs": 0.9000000357627869,
+      "gpuMs": 11.57232,
+      "fullDrawCpuMs": 0.9000000357627869,
+      "geometryWork": {
+        "allocatedBytes": 62030100,
+        "uploadedBytes": 62030100,
+        "synchronousUploads": 177,
+        "synchronousUploadMs": 3.2000001072883606
+      },
       "indirectLight": "exact frame",
       "indirectSampleTime": 0,
       "heroTextures": {
-        "ready": 2,
+        "ready": 4,
         "total": 10,
         "gpuMiB": 79.96,
         "tileKm": 2.5
       },
       "woundTextures": {
-        "ready": 0,
+        "ready": 1,
         "total": 10,
-        "gpuMiB": 0,
+        "gpuMiB": 79.96,
         "tileKm": 0.64,
         "damageBandKm": 240
       },
@@ -183,7 +214,7 @@
         "missing": []
       },
       "textures": {
-        "ready": 2,
+        "ready": 4,
         "total": 10,
         "gpuMiB": 40,
         "scalesKm": [

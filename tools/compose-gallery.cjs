@@ -1,10 +1,11 @@
 // Compose gallery scenes with the current app's destinations and renderer.
-// The hero restores the reference photograph's exact camera and world staging.
+// The hero starts from the reference staging; every v1.6 view is reframed.
 const {chromium}=require(process.env.SPHERE_PLAYWRIGHT||'playwright');
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
 const root=path.resolve(__dirname,'..'),dir=path.join(root,'examples/observatory');
 const shots=[
  ['hero','The Sphere from the polar court'],
+ ['forest-ground','On foot in Dark Age Forest'],['wound-ground','Walking beside the opening'],
  ['ultra-desert','Ultra Desert'],['winter-hell','Winter Hell'],
  ['watershed-40000','Connected catchments · 40,000 km'],
  ['watershed-10000','Receiving reaches · 10,000 km'],
@@ -18,18 +19,22 @@ const shots=[
 ];
 (async()=>{
  fs.mkdirSync(dir,{recursive:true});
- const browser=await chromium.launch({headless:true,executablePath:process.env.SPHERE_BROWSER});
+ const options={headless:true,executablePath:process.env.SPHERE_BROWSER,viewport:{width:1440,height:900}};
+ const browser=process.env.SPHERE_PROFILE?await chromium.launchPersistentContext(path.resolve(process.env.SPHERE_PROFILE),options):await chromium.launch(options);
  try{
-  const page=await browser.newPage({viewport:{width:1440,height:900}}),errors=[];
+  const page=await browser.newPage(),errors=[];
   page.setDefaultTimeout(240000);page.on('pageerror',e=>errors.push(e.message));
+  await page.addInitScript(()=>localStorage.clear());
   await page.goto(process.env.SPHERE_URL||'http://127.0.0.1:8766/',{waitUntil:'domcontentloaded'});
   await page.waitForFunction(()=>window.SphereLoading?.ready);await page.evaluate(()=>SphereApp.setBusy(true));
+  const groundScenes=JSON.parse(fs.readFileSync(path.join(root,'docs/evidence/performance-2026-09-15/scenes.json')));
   const reference=JSON.parse(fs.readFileSync(path.join(root,'examples/archive/v1.4/polar-station.json')));
   for(const [id,title] of shots){
-   const result=await page.evaluate(async({id,title,reference})=>{
+   const result=await page.evaluate(async({id,title,reference,groundScenes})=>{
     const A=SphereApp,M=SphereMath,R=A.renderer,P=SphereWatershed;
     let s={...M.defaultState(),collection:true,era:'after',playing:false,shadeGeometryRevision:3};
-    if(id==='hero')s={...M.validate(reference.state),shadeGeometryRevision:3};
+    if(id==='forest-ground'||id==='wound-ground')s=M.validate(groundScenes[id==='forest-ground'?'biome-0':'wound-2']);
+    else if(id==='hero')s={...M.validate(reference.state),shadeGeometryRevision:3};
     else if(id.startsWith('watershed-')||['terrace','lake','reach','meadow'].includes(id)){
      s=SpherePacks.activate(s);await P.prepare(s);
      if(['lake','reach','meadow'].includes(id))s=SphereNeighbourhood.view(s,id);
@@ -49,18 +54,22 @@ const shots=[
      s.forward=M.norm(M.add(M.add(inside,M.mul(along,.55)),M.mul(up,-.25)));s.up=M.basis(s.forward,up).u;s.fov=75;s.exposure=.8;
     }else{
      A.setState(s);
-     if(id==='interior'){document.getElementById('collectionStation').click();s=A.getState();s.fov=48;s.exposure=-3.5;s.atmosphere=.6;s.cavityHaze=.12;}
-     else {SphereEvolution.visit(id==='wound'?'rim':'biome-1');s=A.getState();s.exposure=.5;s.fov=84;
+     if(id==='interior'){A.setBusy(false);document.getElementById('collectionStation').click();await SphereJourney.travel.pending;A.setBusy(true);if(SphereJourney.travel.status.state!=='arrived')throw Error(SphereJourney.travel.status.error);s=A.getState();s.fov=48;s.exposure=-3.5;s.atmosphere=.6;s.cavityHaze=.12;}
+     else {A.setBusy(false);const trip=await SphereEvolution.visit(id==='wound'?'rim':'biome-1');A.setBusy(true);if(trip.state!=='arrived')throw Error(trip.error);s=A.getState();s.exposure=.5;s.fov=84;
       if(id==='clouds'){const f=SphereSites.shellFrame(s.siteAnchor);s.position=M.mul(s.siteAnchor,s.radius-9);s.forward=M.norm(M.add(f[2],M.mul(f[1],-.15)));s.up=M.basis(s.forward,f[1]).u;s.fov=85;s.weatherStrength=.5;}
      }
     }
+    // Fresh v1.6 compositions: retain the geographic subject while opening
+    // a slightly different view of the surrounding world.
+    const turn={hero:-4,'forest-ground':5,'wound-ground':-4,'ultra-desert':3,'winter-hell':-3,'shade-intact':-3,'shade-broken':4,wound:3,interior:2,clouds:-4}[id]??2;
+    s.forward=M.rotate(s.forward,s.up,M.radians(turn));s.up=M.basis(s.forward,s.up).u;s.fov=Math.min(130,s.fov*1.035);
     s.antialias=3;s.weatherQuality=2;s.richMaterials=true;s.playing=false;s.shadeGeometryRevision=3;
     A.setState(s);s=A.getState();await R.prepare(s);
     for(let n=0;n<3;n++){R.draw(s,1280,720,{exportFrame:true});R.gl.finish();}
     return {image:R.canvas.toDataURL(),scene:M.sceneRecord(s,{title}),error:R.error()};
-   },{id,title,reference});
+   },{id,title,reference,groundScenes});
    assert.equal(result.error,0);fs.writeFileSync(path.join(dir,id+'.json'),JSON.stringify(result.scene,null,2)+'\n');
-   const preview=path.join(root,'work/screenshots/release-v1.5');fs.mkdirSync(preview,{recursive:true});
+   const preview=path.join(root,'work/screenshots/release-v1.6');fs.mkdirSync(preview,{recursive:true});
    fs.writeFileSync(path.join(preview,id+'.png'),Buffer.from(result.image.split(',')[1],'base64'));
    console.log('Composed '+id);
   }

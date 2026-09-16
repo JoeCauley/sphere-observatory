@@ -69,6 +69,7 @@ function surroundings(s,d){
  const ahead=F.contact(s,s.position,d,MAX*2),forward=ahead.distance;
  return {nearest:Math.max(0,nearest),normal,kind,forward,approachNormal:ahead.normal};
 }
+function estimate(s,d=s.forward,boost=false){if(s.walkMode)return boost?.006:.0028;if(s.autoSpeed===false)return s.speed*(boost?5:1);const near=surroundings(s,d);return curve(Math.min(near.nearest,near.forward),regionScale(s))*(boost?1.5:1);}
 function speed(s,d,dt,boost=false){
  if(s.autoSpeed===false){effective=s.speed*(boost?5:1);return effective;}
  const near=surroundings(s,d),target=curve(Math.min(near.nearest,near.forward),regionScale(s))*(boost?1.5:1);lastNear=near;
@@ -100,5 +101,5 @@ function level(s,dt){
  s.up=M.norm(M.rotate(s.up,s.forward,angle*(1-Math.exp(-dt*rate))));return true;
 }
 function reset(){effective=0;lift=null;lastNear=null;rimCache=null;}
-root.SphereTravel={curve,regionScale,shadeClearance,surroundings,speed,takeoff,stepTakeoff,level,reset,get lifting(){return !!lift;},get effectiveSpeed(){return effective;},maxSpeed:MAX};
+root.SphereTravel={curve,regionScale,shadeClearance,surroundings,estimate,speed,takeoff,stepTakeoff,level,reset,get lifting(){return !!lift;},get effectiveSpeed(){return effective;},maxSpeed:MAX};
 })(typeof window==='undefined'?globalThis:window);

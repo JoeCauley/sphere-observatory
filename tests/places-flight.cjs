@@ -43,12 +43,13 @@ const diameter={...base,geometryDetail:true},origin=W.locateBiome(8,base),depart
 while(diameterFrames<3000&&!diameter.walkMode){const velocity=T.speed(diameter,departure,.05),result=L.move(diameter,departure,velocity*.05);diameter.position=result.position;T.level(diameter,.05);diameterFrames++;}
 assert(diameter.walkMode);assert(M.dot(oldAnchor,diameter.siteAnchor)<-.999999999);assert.equal(diameter.siteId,'biome-2');assert(Math.abs(diameter.walkPosition[1])<1);
 for(let i=0;i<180;i++)S.step(diameter,new Set(),1/60);assert(Math.abs(L.heightAboveGround(diameter)-S.EYE)<.00008,'A diametric trip settles onto its actual destination');
-const categories=P.categories.map(c=>c.id);assert.equal(new Set(categories).size,6);
+const categories=P.categories.map(c=>c.id);assert.equal(new Set(categories).size,7);
 for(const entry of P.catalogue(base)){assert(categories.includes(entry.category));assert(entry.description);}
 assert.equal(P.atmosphereKm,384400*2/3);
 (async()=>{
  let visits=0;
  for(const id of ['biome-0','biome-2','works-0','works-1','works-2','port-0','port-1','shade-0','wound-0'])for(const height of ['ground','clouds','atmosphere']){
+  if(id.startsWith('wound')&&height!=='ground'){await assert.rejects(()=>P.destination(base,id,height),/not supported/);continue;}
   const next=await P.destination({...base,playing:true},id,height,'darkness','storm');M.validate(next);assert(next.playing);assert.equal(next.placeScene,'darkness');assert.equal(next.placeWeather,'storm');assert.equal(next.speed,base.speed);
   if(id.startsWith('wound'))assert.equal(next.siteId,'exterior-0');
   else if(height==='ground'&&!id.startsWith('shade'))assert(next.walkMode);

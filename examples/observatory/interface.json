@@ -1,0 +1,46 @@
+{
+  "capturedAt": "2026-09-16T01:04:43.218Z",
+  "viewport": {
+    "width": 1600,
+    "height": 1000
+  },
+  "method": "Browser screenshots of the running app, journeys made through visible controls",
+  "build": {
+    "version": "1.6.0",
+    "commit": "5cdb0985691a99b2068ce4c01e7157b6cab7677a",
+    "sourceSha256": "8cabd50378b228bb67b640fe8289e626aa8ef7a84646fad9d1b5c54e80a8d0b5",
+    "status": "local-modified",
+    "release": false,
+    "assets": [
+      {
+        "path": "assets/wound-edges/manifest.json",
+        "sha256": "ea2c769ce86b82699e2bb745d521678a716ed106bdab755e726f11e2c32a03fe"
+      }
+    ],
+    "assetSetSha256": "45f67a383ac6ec295844b3bc6ddc40e9a1d661f354d7f406bf82e6519410a91d",
+    "assetCount": 45
+  },
+  "device": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+  "error": 0,
+  "shots": [
+    {
+      "id": "interface-explore",
+      "file": "interface-explore.png",
+      "sha256": "4f025de43d35211b2906f36724397cce143d32fe874c625119e3c29a292f114c",
+      "location": "Dark Age Forest · Habitat waist"
+    },
+    {
+      "id": "interface-journey",
+      "file": "interface-journey.png",
+      "sha256": "416f6c589284e8e3232306a7b5780250784bea304f6aede3726a70595ceca095",
+      "location": "The river gardens · Watershed"
+    },
+    {
+      "id": "interface-capture",
+      "file": "interface-capture.png",
+      "sha256": "68ce259d40e9cdfa98d7fbf288daddbec9b6073644bcf4535ae26551af54b27d",
+      "location": "The river gardens · Watershed"
+    }
+  ],
+  "errors": []
+}

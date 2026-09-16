@@ -6,6 +6,8 @@
 const M=root.SphereMath,W=root.SphereWorld,S=root.SphereSites,F=root.SphereFlight;
 const TRIGGER=.1,REARM=.2,EYE=S.EYE,SKIN=.00028,HEAD=.00015,STEP=.00045;
 let suppressed=null,approach=null,jumpHeld=false;
+const prepared=new WeakMap();
+function activate(s){suppressed=null;approach=prepared.get(s)||null;jumpHeld=false;}
 function elevation(s,p){
  const q=M.norm(p),province=root.SphereWatershed?.sample(q,s);let h=province?.terrainKm||0;
  if(/^(biome|port)-/.test(s.siteId)&&s.siteAnchor&&M.dot(q,s.siteAnchor)>0){const mesh=S.site(s),local=mesh.local(p);if(s.siteRevision===2||Math.max(Math.abs(local[0]),Math.abs(local[2]))<1.08)h=Math.max(h,(s.siteRevision===2?0:s.siteElevation||0)+S.ground(mesh,local[0],local[2]));}
@@ -39,7 +41,7 @@ function patch(s,position){
  s.siteAnchor=q;s.siteRevision=s.terrainRevision??1;s.terrainAnchor=s.siteRevision===2?q:null;s.siteElevation=province?.terrainKm||0;s.geometryDetail=true;
  return S.site(s);
 }
-function enter(s,position){
+function enter(s,position,{activate:live=true}={}){
  const mesh=patch(s,position),p=mesh.local(position),up=mesh.basis[1];s.position=position;
  // A new local terrain sample can rise a few metres above the coarse shell.
  // Place the camera above its real support before starting the gentle descent.
@@ -48,7 +50,7 @@ function enter(s,position){
  s.shadeAttachment=null;s.projection='perspective';s.surfaceLock=true;
  const b=M.basis(s.forward,s.up),tangent=M.sub(s.forward,M.mul(up,M.dot(s.forward,up)));
  const heading=M.length(tangent)>.03?M.norm(tangent):M.norm(M.cross(up,b.r)),forward=M.norm(M.add(heading,M.mul(up,-.055)));
- approach={anchor:s.siteAnchor.slice(),time:0,startY:p[1],startForward:s.forward.slice(),forward,lastForward:s.forward.slice()};jumpHeld=false;
+ prepared.set(s,{anchor:s.siteAnchor.slice(),time:0,startY:p[1],startForward:s.forward.slice(),forward,lastForward:s.forward.slice()});if(live)activate(s);
  return s;
 }
 function move(s,d,distance){
@@ -118,5 +120,5 @@ function step(s,keys,dt){
  if((mesh.ground.rim||s.siteRevision===2)&&s.radius-M.length(s.position)<-.1)release(s);
  return changed;
 }
-root.SphereLanding={move,enter,release,step,probe,clearance,elevation,heightAboveGround,triggerKm:TRIGGER,rearmKm:REARM};
+root.SphereLanding={move,enter,activate,release,step,probe,clearance,elevation,heightAboveGround,triggerKm:TRIGGER,rearmKm:REARM};
 })(typeof window==='undefined'?globalThis:window);

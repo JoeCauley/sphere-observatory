@@ -1,0 +1,34 @@
+const assert=require('node:assert/strict'),M=require('../math.js');
+for(const f of ['collection','biomes','world-palette','world','field-sites','watershed-network','watershed-province','watershed-neighbourhood','wreckage','flight','surface-walk','travel-control','inspection-camera','surface-arrival','places','travel-transaction','location-identity','simulation-timing','session-state'])require('../'+f+'.js');
+global.window=globalThis;require('../volume.js');require('../atmosphere.js');delete global.window;
+const deferred=()=>{let resolve;return {promise:new Promise(r=>resolve=r),resolve:()=>resolve()};};
+const base={...M.defaultState(),collection:true,playing:true,routeShades:true,terrainRevision:1};
+function harness(){let state=structuredClone(base),gate=null,failed=false,commits=[],holds=[];
+ const t=SphereTravelTransaction.create({getState:()=>structuredClone(state),validate:M.validate,hold:v=>holds.push(v),prepare:async(s)=>{if(gate){const pending=gate;gate=null;await pending.promise;}if(failed){failed=false;throw Error('Injected preparation failure');}},commit:(s,spec)=>{commits.push(spec);state=s;}});
+ return {t,commits,holds,get state(){return state;},set state(s){state=s;},delay(){gate=deferred();return gate;},fail(){failed=true;}};
+}
+const request=(h,id='biome-2',arrival='ground')=>h.t.request({type:'place',title:id,resolve:s=>SpherePlaces.destination(s,id,arrival)});
+(async()=>{
+ let h=harness(),gate=h.delay(),pending=request(h);await new Promise(setImmediate);
+ h.state.position[0]+=.00000001;h.state.exposure=2;h.state.speed=12;h.state.autoSpeed=false;h.state.playing=false;gate.resolve();assert.equal((await pending).state,'arrived');assert.equal(h.commits.length,1);assert.equal(h.state.exposure,2);assert.equal(h.state.speed,12);assert.equal(h.state.playing,false);assert(h.state.walkMode);
+ h=harness();gate=h.delay();pending=request(h);await new Promise(setImmediate);h.t.cancel('Manual navigation');gate.resolve();assert.equal((await pending).state,'cancelled');assert.equal(h.commits.length,0);assert.deepEqual(h.state,base);assert.deepEqual(h.holds,[true,false]);
+ h=harness();gate=h.delay();pending=request(h);await new Promise(setImmediate);h.state.seed++;gate.resolve();assert.match((await pending).error,/seed/);assert.equal(h.commits.length,0);
+ h=harness();gate=h.delay();pending=request(h);await new Promise(setImmediate);const newer=request(h,'biome-3');gate.resolve();await pending;assert.equal((await newer).state,'arrived');assert.equal(h.commits.length,1);
+ h=harness();gate=h.delay();pending=request(h);await new Promise(setImmediate);const queued=request(h,'biome-3');h.t.cancel('Cancel queued trip');gate.resolve();await pending;assert.equal((await queued).state,'cancelled');assert.equal(h.commits.length,0);
+ h=harness();gate=h.delay();pending=request(h,'shade-0');await new Promise(setImmediate);h.state.time+=60;gate.resolve();assert.equal((await pending).state,'arrived');const expected=await SpherePlaces.destination({...base,time:60},'shade-0','ground');assert(M.length(M.sub(h.state.position,expected.position))<1e-5,'Delayed Shade resolves in its current parent frame');assert(SphereTravel.estimate(h.state)<1);assert.notEqual(SphereLocation.resolve({...h.state,position:[0,0,0]}).id,'shade-0','Leaving a Shade footprint updates location identity');const speed=SphereTravel.effectiveSpeed;SphereTravel.estimate(h.state);assert.equal(SphereTravel.effectiveSpeed,speed);
+ h=harness();h.fail();assert.equal((await request(h)).state,'failed');assert.deepEqual(h.state,base);assert.equal(h.commits.length,0);assert.equal((await h.t.retry()).state,'arrived');assert.equal(h.commits.length,1);
+ // A saved return restores its declared world/clock while retaining preferences.
+ const saved={...base,time:123,era:'before'};h=harness();h.state.speed=.2;h.state.autoSpeed=false;await h.t.request({type:'saved',title:'Return',resolve:()=>saved});assert.equal(h.state.era,'before');assert.equal(h.state.time,123);assert.equal(h.state.speed,.2);
+ // Candidate construction cannot reset the active walker's descent.
+ const walker=await SpherePlaces.destination(base,'biome-2','ground');SphereLanding.activate(walker);SphereSites.step(walker,new Set(),.2);const first=structuredClone(walker);await SpherePlaces.destination(base,'biome-3','ground');SphereSites.step(walker,new Set(),.2);const result=walker.walkPosition[1];
+ const control=await SpherePlaces.destination(base,'biome-2','ground');SphereLanding.activate(control);SphereSites.step(control,new Set(),.2);assert.deepEqual(control.position,first.position);SphereSites.step(control,new Set(),.2);assert.equal(control.walkPosition[1],result);
+ for(const id of ['biome-4','wound-0','wound-5','overview-wounds']){assert.equal(SpherePlaces.availability({...base,era:'before'},id).available,false);await assert.rejects(()=>SpherePlaces.destination({...base,era:'before'},id,'ground'),/after the attack/i);}
+ assert.equal(SphereLocation.resolve(await SpherePlaces.destination(base,'port-0','ground')).title,'Polar entry A');
+ const choices=SpherePlaces.arrivals(base,'watershed');assert.equal(choices.length,7);assert(choices.some(c=>c.id==='terrace'));await assert.rejects(()=>SpherePlaces.destination(base,'wound-0','clouds'),/not supported/);
+ for(const [name]of SpherePlaces.watershedViews){const s=await SpherePlaces.destination(base,'watershed',name);assert(!s.walkMode);assert.equal(s.placeWeather,base.placeWeather);assert.equal(s.era,base.era);}
+ for(const id of ['lake','reach','meadow']){const s=await SpherePlaces.destination(base,'watershed-'+id,'ground');assert.equal(SphereLocation.resolve(s).id,'watershed-'+id);const far={...s,position:[0,0,s.radius*.5]};assert.notEqual(SphereLocation.resolve(far,SphereLocation.resolve(s)).id,'watershed-'+id);}
+ const entry={state:base,title:'Forest'},record=JSON.parse(SphereSessionCodec.encode(base,{},[entry,{state:{radius:-1},title:'Bad'},entry]));const restored=SphereSessionCodec.decode(JSON.stringify(record));assert.equal(restored.history.length,2);assert.equal(restored.skipped.length,1);assert.equal(restored.state.playing,false);
+ for(const interval of [1/60,.05,.1,.2]){const s={...base,time:0};let distance=0;for(let elapsed=0;elapsed<2-1e-10;elapsed+=interval)SphereTiming.advance(s,Math.min(interval,2-elapsed),dt=>distance+=dt*.006);assert(Math.abs(distance-.012)<1e-12);assert(Math.abs(s.time-120)<1e-8);}
+ {const s={...base,time:0};let movement=0;const result=SphereTiming.advance(s,5,dt=>movement+=dt);assert(result.steps<=15);assert(Math.abs(movement-.25)<1e-10);assert.equal(s.time,300);assert.equal(result.droppedSeconds,4.75);}
+ console.log('PASS transactional travel: idle pose, settings, explicit cancellation, world invalidation, supersession, moving Shade, failure/retry, saved restore, pure controller, registry, semantic identity, session migration, wall-clock substeps');
+})().catch(e=>{console.error(e);process.exitCode=1;});

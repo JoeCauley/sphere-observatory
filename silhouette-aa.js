@@ -1,7 +1,7 @@
 /* Extra primary rays only where an analytic Shade boundary crosses a pixel.
  * Eclipse visibility keeps its original geometry and stellar sample set. */
 (function(){
-'use strict';
+'use strict';const patch=SphereShaderSections.section('Silhouette sampling');
 const declarations=`
 uniform int uSilhouetteSamples,uAAPass;
 uniform sampler2D uAAMask;uniform vec2 uAAOffset;
@@ -37,10 +37,10 @@ void probeShadeBoundary(vec3 d,float t,vec3 hit,vec2 uv,int i){
 }
 `;
 SphereShaders.geometryFragment=SphereShaders.fragment;
-let source=SphereShaders.fragment.replace('out vec4 fragColor;','layout(location=0)out vec4 fragColor;');
-source=source.replace('float primaryDiskLayerHit(vec3 d,int i,float depth){',declarations+'\nfloat primaryDiskLayerHit(vec3 d,int i,float depth){');
-source=source.replace('if(cameraShadeSolid(uv,i,d*(t*uRadius)))return t;','bool solid=cameraShadeSolid(uv,i,d*(t*uRadius));probeShadeBoundary(d,t,hit,uv,i);if(solid)return t;');
-source=source.replace('void main(){',`void main(){
+let source=patch(SphereShaders.fragment,'out vec4 fragColor;','layout(location=0)out vec4 fragColor;');
+source=patch(source,'float primaryDiskLayerHit(vec3 d,int i,float depth){',declarations+'\nfloat primaryDiskLayerHit(vec3 d,int i,float depth){');
+source=patch(source,'if(cameraShadeSolid(uv,i,d*(t*uRadius)))return t;','bool solid=cameraShadeSolid(uv,i,d*(t*uRadius));probeShadeBoundary(d,t,hit,uv,i);if(solid)return t;');
+source=patch(source,'void main(){',`void main(){
  silhouetteMask=vec4(0.);probingSilhouette=uSilhouetteSamples>1&&uMode==0&&uAAPass==0;silhouetteDistance=1e20;
  if(uAAPass>0){
   // A whole derivative quad must remain live while shading an edge. Testing
@@ -50,8 +50,8 @@ source=source.replace('void main(){',`void main(){
   if(quadMask<.5)discard;
  }
  vec2 sampleUV=vUV+uAAOffset/uRasterSize;`);
-source=source.replace('vec2 xy=(vUV*2.-1.);','vec2 xy=(sampleUV*2.-1.);');
-source=source.replace('float ts=shellHit(d);','pixelCone=length(dFdx(d))+length(dFdy(d));\n float ts=shellHit(d);');
+source=patch(source,'vec2 xy=(vUV*2.-1.);','vec2 xy=(sampleUV*2.-1.);');
+source=patch(source,'float ts=shellHit(d);','pixelCone=length(dFdx(d))+length(dFdy(d));\n float ts=shellHit(d);');
 const final=source.lastIndexOf('}');
 source=source.slice(0,final)+`
  if(uSilhouetteSamples>1&&uMode==0){

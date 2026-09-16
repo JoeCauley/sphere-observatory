@@ -48,6 +48,7 @@ void main(){vec3 center=mapped(texture(source,vUV).rgb);if(edgeAA==0){fragColor=
    this.preparedViews=new Set();this.geometry=null;this.finishes=new SphereSurfaceFinishes(gl);this.localShadows=new SphereLocalShadows(gl);this.weather=window.SphereAtmosphere?new SphereAtmosphere(gl):null;
   }
   draw(s,width,height,{exportFrame=false,adaptiveScale=1,facePass=false}={}){
+   const frameStarted=performance.now();
    SphereEdges.setView(width,{deterministic:exportFrame});
    if(!exportFrame&&window.SphereEdgeStreaming){
     if(!s.geometryDetail||s.layoutVersion!==2||!s.collection)SphereEdgeStreaming.cancel();
@@ -86,7 +87,7 @@ void main(){vec3 center=mapped(texture(source,vUV).rgb);if(edgeAA==0){fragColor=
    this.renderInfo={width,height,internalWidth:rw,internalHeight:rh,antialias:linear&&s.antialias===3?(smooth?'supersampled + edge filter':'edge filter'):smooth?'supersampled':'none',lightPipeline:linear?'linear-half-float':'display-colour',exportFrame,silhouetteSamples:silhouettes?8:0,silhouetteMaskMiB:silhouettes?rw*rh/1048576:0};
    const assetPlan=SphereAssets.plan(s,width/height);SphereAssets.request(this,assetPlan);if(assetPlan.finishes)this.finishes.prepare();
    const shadowGroups=this.geometry&&s.layoutVersion===2&&s.geometryDetail?SphereSites.geometry(s):[];
-   this.localShadows.prepare(s,shadowGroups,mesh=>this.geometry.upload(mesh),{exportFrame});
+   this.localShadows.prepare(s,shadowGroups,mesh=>this.geometry.upload(mesh),{exportFrame,target:linear?this.lightBuffer:smooth?this.aaBuffer:null,viewport:[0,0,rw,rh]});
    this.renderInfo.structureShadows=this.localShadows.info;
    gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,this.texture);gl.viewport(0,0,rw,rh);gl.useProgram(this.program);gl.uniform1i(this.uniforms.uLinearOutput,linear?1:0);
    this.finishes.bind(this.uniforms,s);this.localShadows.bind(this.uniforms,s);
@@ -126,7 +127,7 @@ void main(){vec3 center=mapped(texture(source,vUV).rgb);if(edgeAA==0){fragColor=
    // Export callers immediately read the canvas (toBlob/toDataURL). Complete
    // the GPU resolve before handing the frame to the browser's image encoder.
    if(exportFrame)gl.finish();
-   this.cpuMs=performance.now()-started;this.renderInfo.cpuMs=this.cpuMs;this.renderInfo.gpuMs=this.gpuMs;
+   this.cpuMs=performance.now()-started;this.renderInfo.cpuMs=this.cpuMs;this.renderInfo.gpuMs=this.gpuMs;this.renderInfo.fullDrawCpuMs=performance.now()-frameStarted;this.renderInfo.geometryWork=this.geometry?.work||null;
    this.renderInfo.indirectLight=exportFrame?'exact frame':this.previewLight?.worker?'worker, at most 10 Hz':'cached CPU';
    this.renderInfo.indirectSampleTime=exportFrame?s.time:this.previewLight?.sampleTime;
    if(this.heroes)this.renderInfo.heroTextures={ready:this.heroes.status.filter(x=>x==='ready').length,total:10,gpuMiB:this.heroes.allocated?79.96:0,tileKm:SphereBiomes.heroScale};
@@ -146,7 +147,7 @@ void main(){vec3 center=mapped(texture(source,vUV).rgb);if(edgeAA==0){fragColor=
    }
    const plan=SphereAssets.plan(s,aspect),progress=()=>onProgress?.({phase:'Preparing the artwork',...SphereAssets.status(this,plan)});
    if(plan.province){
-    onProgress?.({phase:'Building the river gardens'});const groups=await SphereWatershed.prepare(s);
+    onProgress?.({phase:'Building the river gardens'});const groups=await SphereWatershed.prepare(s,{signal});
     if(signal?.aborted)throw new DOMException('View changed','AbortError');
     // Compilation and every province upload belong to preparation, including
     // a first-ever visit. The first visible frame must not allocate them all.
