@@ -1,0 +1,35 @@
+{
+  "baseCommit": "5cdb0985691a99b2068ce4c01e7157b6cab7677a",
+  "baseline": "Pre-session local integration and Wound repair, not the clean base commit",
+  "before": {
+    "app.js": "6492ac4f3058bb2cc0e606009aba9c8479cbda4a28c92c748cb89008535e4493",
+    "asset-plan.js": "da31c8749da5a816b5d0917479914c81c7f4e70be16845a97bb40b0e550490d1",
+    "bootstrap.js": "3653b6090cc7b10e46011bf0567b2ed7e89960782faa2aa77ad5780703ba17f3",
+    "edge-streaming.js": "7196eff7ee4e024ba52abac2fa486237cc026ec3a2355380f0722241c56345d9",
+    "field-sites.js": "27dfdf58813173feccd71f61c8ea6503b8437f073a98433a32d6dc67692bdb36",
+    "geometry-renderer.js": "90ea270c2ea492eccb2eddc454a13d475711dea72d82cabf1d5c4549cd5fd698",
+    "ground-chunks.js": "b6ed5751157561afd70b6ccc7435a8293886c94319310f9947ec30c8c8d0ba0d",
+    "local-shadows.js": "ca43f608f75197fdc9c35f88dcfce72af3a15245d81d5f511cfc1655de65b2f9",
+    "renderer.js": "2f9cf8150a7b39f9247a7c2154f2ccddccd779c93b2b12054b63d6b38f50e2de",
+    "shade-edges.js": "bdf2654221df275ef8f9c4911ed8468ad35815c607ac3b36121f1dd5b48a8c32",
+    "world.js": "6d117fd7c25e058c2983bfc5faa49dc24f842913ce306472215d859eb50f33cd"
+  },
+  "after": {
+    "app.js": "f0ccf1960a37ef87a974efe44eaa31fde42617fe9314b4f4a140d71c88555c10",
+    "simulation-timing.js": "18875ed16d535571a62a087cf0422864064eeb1cff46f5eb2211a236da8e56f5",
+    "asset-plan.js": "7ae08f59c0aaa46697d3757c04062df295afd2ae00445f6a5b1a16d409569efe",
+    "world.js": "5a5cd7c284dd2b755c5603ca50940524116b2a691e3f418a570e16bfe67eb6c9",
+    "shade-edges.js": "b3a089476ae2ed87ecb0a38c3ffd745362692b3669a7b3bc270bb09222a30541",
+    "field-sites.js": "2a673d5c46de4a726bb2307e8786d462bf1906ddd8c1927d615a08178ad227ad",
+    "ground-chunks.js": "167b134e786377917f2713c10fd6eb7be7aba1a4950a6053230c3751a1d6cf30",
+    "geometry-renderer.js": "90d242261968243bbdb2034e125cf8424c54a33aad43f95d01208017f30e5009",
+    "local-shadows.js": "d289ef6ffc58232eac646e54ff19fd61f8bf9475316acdde81ea486057e48da7",
+    "renderer.js": "12b64f6f4055c609ec91ff3705a12533d62b27922e069f1780a6069b5b62891e",
+    "station-shader-performance.js": "60fd4fd9c3b70493b207b3282f6e4e5cbe550578f77a401b0c074455deedf2d2",
+    "bootstrap.js": "836498bdf68e63cdab7751d14b249cd488329f80216bfa748f75f0d07e0b7324",
+    "package.json": "d416e6a0bd752f5c8eceda213a91a5e177e6fe81f6cc15907751591aebc09e1b"
+  },
+  "chrome": "152.0.7977.83",
+  "node": "24.18.0",
+  "device": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+}

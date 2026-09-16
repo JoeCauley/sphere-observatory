@@ -3,7 +3,15 @@
 (function(root){
 'use strict';
 const managers={biomes:'Surface detail',heroes:'Landscape artwork',worldTextures:'Builder materials',woundTextures:'Wound artwork'};
+let cachedPlanKey='',cachedPlan=null;
 function plan(s,aspect=16/9){
+ // Readiness and drawing ask for the same view. Compare values rather than
+ // object identity: the live scene is mutated in place, including its vectors.
+ const key=JSON.stringify([s,aspect,root.SphereEdges?.viewWidth]);
+ if(key===cachedPlanKey)return cachedPlan;
+ const result=buildPlan(s,aspect);cachedPlanKey=key;cachedPlan=result;return result;
+}
+function buildPlan(s,aspect){
  const M=root.SphereMath,B=root.SphereBiomes,W=root.SphereWorld,C=root.SphereCollection,sets=Object.fromEntries(Object.keys(managers).map(k=>[k,new Set()]));let nearest=Infinity;
  const add=(id,distance)=>{if(!Number.isInteger(id)||id<0)return;if(id<10){if(distance<2400)sets.heroes.add(id);if(distance<(s.layoutVersion===2?25:2400))sets.biomes.add(id);}else if(distance<6000)sets.worldTextures.add(id===15?4:Math.min(4,id-10));};
  const modern=s.collection&&s.layoutVersion===2,exterior=s.geometryDetail&&s.siteId?.startsWith('exterior-');

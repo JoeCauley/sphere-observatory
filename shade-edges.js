@@ -8,7 +8,7 @@ const {add,sub,mul,dot,norm,length:len}=M,cache=new Map();
 const solid=(p,u,v)=>C.diskContains(u*p.size*(p.across||1),v*p.size,p);
 function curves(p){
  const key=[p.shape,p.trim,p.damage,p.id].join('|');if(cache.has(key))return cache.get(key);const out=[];
- const line=(id,a,b,kind='intact')=>out.push({id,kind,lo:0,hi:1,at:t=>[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t]});
+ const line=(id,a,b,kind='intact')=>out.push({id,kind,lo:0,hi:1,line:[a,b],at:t=>[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t]});
  const curve=(id,lo,hi,at,kind='broken')=>out.push({id,lo,hi,at,kind});
  if(p.shape==='square'){line('south',[-1,-1],[1,-1]);line('east',[1,-1],[1,1]);line('north',[1,1],[-1,1]);line('west',[-1,1],[-1,-1]);}
  else if(p.shape==='trimmed'&&p.trim<1){const angle=Math.acos(p.trim),z=Math.sqrt(1-p.trim*p.trim);curve('north-arc',angle,Math.PI-angle,t=>[Math.cos(t),Math.sin(t)],'intact');curve('south-arc',Math.PI+angle,2*Math.PI-angle,t=>[Math.cos(t),Math.sin(t)],'intact');line('east-trim',[p.trim,-z],[p.trim,z]);line('west-trim',[-p.trim,z],[-p.trim,-z]);}
@@ -24,7 +24,11 @@ function curves(p){
  cache.set(key,out);return out;
 }
 function uvAt(s,p,position){const pos=[dot(position,p.right),dot(position,p.normal),dot(position,p.up)],r=len(p.center)*s.radius,f=(p.shape==='cap'||p.shape==='trimmed')?r/pos[1]:1;return [pos[0]*f/(p.size*(p.across||1)*s.radius),pos[2]*f/(p.size*s.radius)];}
-function nearest(curve,uv,across=1){let best=Infinity,t=curve.lo;const distance=t=>{const q=curve.at(t);return ((q[0]-uv[0])*across)**2+(q[1]-uv[1])**2;},step=(curve.hi-curve.lo)/64;
+function nearest(curve,uv,across=1){
+ // Most boundaries are straight sides of holes. Their exact weighted segment
+ // projection replaces 65 search samples and 80 refinement evaluations.
+ if(curve.line){const [a,b]=curve.line,dx=(b[0]-a[0])*across,dy=b[1]-a[1],den=dx*dx+dy*dy;return den?M.clamp(((uv[0]-a[0])*across*dx+(uv[1]-a[1])*dy)/den,0,1):0;}
+ let best=Infinity,t=curve.lo;const distance=t=>{const q=curve.at(t);return ((q[0]-uv[0])*across)**2+(q[1]-uv[1])**2;},step=(curve.hi-curve.lo)/64;
  for(let i=0;i<=64;i++){const u=curve.lo+i*step,d=distance(u);if(d<best){best=d;t=u;}}
  let lo=Math.max(curve.lo,t-step),hi=Math.min(curve.hi,t+step);for(let i=0;i<40;i++){const a=lo+(hi-lo)/3,b=hi-(hi-lo)/3;if(distance(a)<distance(b))hi=b;else lo=a;}return (lo+hi)/2;
 }

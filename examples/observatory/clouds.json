@@ -1,7 +1,7 @@
 {
   "format": "sphere-observatory",
   "version": 1,
-  "created": "2026-09-15T01:17:55.240Z",
+  "created": "2026-09-16T01:16:32.824Z",
   "state": {
     "version": 1,
     "radius": 149597870.7,
@@ -13,16 +13,16 @@
       36687404.49715725
     ],
     "forward": [
-      0.027909160186237715,
-      0.9995851447781028,
-      0.00711457072761824
+      0.010609996100320283,
+      0.9971502056043969,
+      0.07469200389506225
     ],
     "up": [
-      -0.9686086213477949,
+      -0.9686086213477951,
       0.0288017072226519,
-      -0.24691658573652875
+      -0.24691658573652864
     ],
-    "fov": 85,
+    "fov": 87.975,
     "breachEnabled": true,
     "breachLat": 12,
     "breachLon": -12,
@@ -44,7 +44,7 @@
     "grid": false,
     "viewMode": "material",
     "projection": "perspective",
-    "speed": 0.02,
+    "speed": 1000000,
     "quality": 1,
     "seed": 23,
     "starfield": true,
@@ -112,7 +112,28 @@
     "shadeAttachment": null,
     "surfaceLock": true
   },
-  "application": "The Sphere Observatory — current source build",
+  "application": "The Sphere Observatory 1.6.0",
+  "build": {
+    "version": "1.6.0",
+    "commit": "5cdb0985691a99b2068ce4c01e7157b6cab7677a",
+    "sourceSha256": "8cabd50378b228bb67b640fe8289e626aa8ef7a84646fad9d1b5c54e80a8d0b5",
+    "status": "local-modified",
+    "release": false,
+    "assets": [
+      {
+        "path": "assets/wound-edges/manifest.json",
+        "sha256": "ea2c769ce86b82699e2bb745d521678a716ed106bdab755e726f11e2c32a03fe"
+      }
+    ],
+    "assetSetSha256": "45f67a383ac6ec295844b3bc6ddc40e9a1d661f354d7f406bf82e6519410a91d",
+    "assetCount": 45
+  },
+  "location": {
+    "id": "region-1",
+    "title": "Super Jungle",
+    "region": "Habitat waist",
+    "frame": "shell"
+  },
   "title": "Above the Super Jungle",
   "units": "kilometres, seconds, degrees",
   "image": {
@@ -141,8 +162,11 @@
         "depthStorageMiB": 32
       },
       "geometry": {
-        "groups": 25,
-        "triangles": 113942,
+        "groups": 5,
+        "residentGroups": 25,
+        "culledGroups": 20,
+        "lightSamples": 1,
+        "triangles": 12120,
         "localShadow": true,
         "materials": "simple"
       },
@@ -155,18 +179,25 @@
         "cavityHaze": 0.28,
         "weatherLayers": 3
       },
-      "cpuMs": 1.800000011920929,
-      "gpuMs": 25.975456,
+      "cpuMs": 0.699999988079071,
+      "gpuMs": 11.57232,
+      "fullDrawCpuMs": 0.699999988079071,
+      "geometryWork": {
+        "allocatedBytes": 121378752,
+        "uploadedBytes": 121378752,
+        "synchronousUploads": 405,
+        "synchronousUploadMs": 4.200000166893005
+      },
       "indirectLight": "exact frame",
       "indirectSampleTime": 0,
       "heroTextures": {
-        "ready": 4,
+        "ready": 5,
         "total": 10,
         "gpuMiB": 79.96,
         "tileKm": 2.5
       },
       "woundTextures": {
-        "ready": 1,
+        "ready": 2,
         "total": 10,
         "gpuMiB": 79.96,
         "tileKm": 0.64,
@@ -179,7 +210,7 @@
         "missing": []
       },
       "textures": {
-        "ready": 4,
+        "ready": 5,
         "total": 10,
         "gpuMiB": 40,
         "scalesKm": [

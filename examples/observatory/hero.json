@@ -1,7 +1,7 @@
 {
   "format": "sphere-observatory",
   "version": 1,
-  "created": "2026-09-15T01:17:30.933Z",
+  "created": "2026-09-16T01:16:06.441Z",
   "state": {
     "version": 1,
     "radius": 149597870.7,
@@ -13,16 +13,16 @@
       59966279.97107302
     ],
     "forward": [
-      0.4694554682368316,
-      -0.008280299330354398,
-      -0.8829173234145636
+      0.4067205877322536,
+      -0.008260128937352045,
+      -0.9135152619330826
     ],
     "up": [
-      -0.0038873650669564146,
-      -0.9999657177338629,
-      0.007311070361887814
+      0.02923073974572515,
+      -0.9993294480794688,
+      0.0220503527205818
     ],
-    "fov": 112,
+    "fov": 115.91999999999999,
     "breachEnabled": true,
     "breachLat": 12,
     "breachLon": -12,
@@ -108,7 +108,28 @@
     "shadeAttachment": null,
     "surfaceLock": true
   },
-  "application": "The Sphere Observatory — current source build",
+  "application": "The Sphere Observatory 1.6.0",
+  "build": {
+    "version": "1.6.0",
+    "commit": "5cdb0985691a99b2068ce4c01e7157b6cab7677a",
+    "sourceSha256": "8cabd50378b228bb67b640fe8289e626aa8ef7a84646fad9d1b5c54e80a8d0b5",
+    "status": "local-modified",
+    "release": false,
+    "assets": [
+      {
+        "path": "assets/wound-edges/manifest.json",
+        "sha256": "ea2c769ce86b82699e2bb745d521678a716ed106bdab755e726f11e2c32a03fe"
+      }
+    ],
+    "assetSetSha256": "45f67a383ac6ec295844b3bc6ddc40e9a1d661f354d7f406bf82e6519410a91d",
+    "assetCount": 45
+  },
+  "location": {
+    "id": "port-0",
+    "title": "Polar entry A",
+    "region": "Polar entry complex",
+    "frame": "shell"
+  },
   "title": "The Sphere from the polar court",
   "units": "kilometres, seconds, degrees",
   "image": {
@@ -138,6 +159,9 @@
       },
       "geometry": {
         "groups": 1,
+        "residentGroups": 1,
+        "culledGroups": 0,
+        "lightSamples": 1,
         "triangles": 27144,
         "localShadow": true,
         "materials": "simple"
@@ -151,8 +175,15 @@
         "cavityHaze": 0.18,
         "weatherLayers": 3
       },
-      "cpuMs": 4.799999952316284,
-      "gpuMs": 25.975456,
+      "cpuMs": 0.6000000238418579,
+      "gpuMs": 11.57232,
+      "fullDrawCpuMs": 0.6000000238418579,
+      "geometryWork": {
+        "allocatedBytes": 3583008,
+        "uploadedBytes": 3583008,
+        "synchronousUploads": 1,
+        "synchronousUploadMs": 0.3999999761581421
+      },
       "indirectLight": "exact frame",
       "indirectSampleTime": 983,
       "heroTextures": {

@@ -1,0 +1,195 @@
+{
+  "method": "Local GitHub-style Markdown preview (marked), not GitHub production CSS",
+  "results": [
+    {
+      "width": 1440,
+      "images": [
+        {
+          "src": "examples/observatory/hero.jpg",
+          "width": 1920
+        },
+        {
+          "src": "examples/observatory/interface-explore.jpg",
+          "width": 1600
+        },
+        {
+          "src": "examples/observatory/interface-journey.jpg",
+          "width": 1600
+        },
+        {
+          "src": "examples/observatory/forest-ground.jpg",
+          "width": 1920
+        },
+        {
+          "src": "examples/observatory/ultra-desert.jpg",
+          "width": 1920
+        },
+        {
+          "src": "examples/observatory/winter-hell.jpg",
+          "width": 1920
+        },
+        {
+          "src": "examples/observatory/watershed-40000.jpg",
+          "width": 1920
+        },
+        {
+          "src": "examples/observatory/watershed-10000.jpg",
+          "width": 1920
+        },
+        {
+          "src": "examples/observatory/watershed-1100.jpg",
+          "width": 1920
+        },
+        {
+          "src": "examples/observatory/watershed-48.jpg",
+          "width": 1920
+        },
+        {
+          "src": "examples/observatory/watershed-1.jpg",
+          "width": 1920
+        },
+        {
+          "src": "examples/observatory/terrace.jpg",
+          "width": 1920
+        },
+        {
+          "src": "examples/observatory/lake.jpg",
+          "width": 1920
+        },
+        {
+          "src": "examples/observatory/reach.jpg",
+          "width": 1920
+        },
+        {
+          "src": "examples/observatory/meadow.jpg",
+          "width": 1920
+        },
+        {
+          "src": "examples/observatory/wound-ground.jpg",
+          "width": 1920
+        },
+        {
+          "src": "examples/observatory/wound.jpg",
+          "width": 1920
+        },
+        {
+          "src": "examples/observatory/shade-intact.jpg",
+          "width": 1920
+        },
+        {
+          "src": "examples/observatory/shade-broken.jpg",
+          "width": 1920
+        },
+        {
+          "src": "examples/observatory/interior.jpg",
+          "width": 1920
+        },
+        {
+          "src": "examples/observatory/clouds.jpg",
+          "width": 1920
+        },
+        {
+          "src": "examples/observatory/interface-capture.jpg",
+          "width": 1600
+        }
+      ],
+      "overflow": false,
+      "scrollHeight": 10773
+    },
+    {
+      "width": 390,
+      "images": [
+        {
+          "src": "examples/observatory/hero.jpg",
+          "width": 1920
+        },
+        {
+          "src": "examples/observatory/interface-explore.jpg",
+          "width": 1600
+        },
+        {
+          "src": "examples/observatory/interface-journey.jpg",
+          "width": 1600
+        },
+        {
+          "src": "examples/observatory/forest-ground.jpg",
+          "width": 1920
+        },
+        {
+          "src": "examples/observatory/ultra-desert.jpg",
+          "width": 1920
+        },
+        {
+          "src": "examples/observatory/winter-hell.jpg",
+          "width": 1920
+        },
+        {
+          "src": "examples/observatory/watershed-40000.jpg",
+          "width": 1920
+        },
+        {
+          "src": "examples/observatory/watershed-10000.jpg",
+          "width": 1920
+        },
+        {
+          "src": "examples/observatory/watershed-1100.jpg",
+          "width": 1920
+        },
+        {
+          "src": "examples/observatory/watershed-48.jpg",
+          "width": 1920
+        },
+        {
+          "src": "examples/observatory/watershed-1.jpg",
+          "width": 1920
+        },
+        {
+          "src": "examples/observatory/terrace.jpg",
+          "width": 1920
+        },
+        {
+          "src": "examples/observatory/lake.jpg",
+          "width": 1920
+        },
+        {
+          "src": "examples/observatory/reach.jpg",
+          "width": 1920
+        },
+        {
+          "src": "examples/observatory/meadow.jpg",
+          "width": 1920
+        },
+        {
+          "src": "examples/observatory/wound-ground.jpg",
+          "width": 1920
+        },
+        {
+          "src": "examples/observatory/wound.jpg",
+          "width": 1920
+        },
+        {
+          "src": "examples/observatory/shade-intact.jpg",
+          "width": 1920
+        },
+        {
+          "src": "examples/observatory/shade-broken.jpg",
+          "width": 1920
+        },
+        {
+          "src": "examples/observatory/interior.jpg",
+          "width": 1920
+        },
+        {
+          "src": "examples/observatory/clouds.jpg",
+          "width": 1920
+        },
+        {
+          "src": "examples/observatory/interface-capture.jpg",
+          "width": 1600
+        }
+      ],
+      "overflow": false,
+      "scrollHeight": 12581
+    }
+  ]
+}

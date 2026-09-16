@@ -1,0 +1,136 @@
+{
+  "date": "2026-09-15",
+  "scope": "Focused numerical reproduction; not browser journey certification",
+  "wounds": [
+    {
+      "pack": false,
+      "id": "wound-0",
+      "era": "after",
+      "valid": true
+    },
+    {
+      "pack": false,
+      "id": "wound-1",
+      "era": "after",
+      "valid": true
+    },
+    {
+      "pack": false,
+      "id": "wound-2",
+      "era": "after",
+      "valid": true
+    },
+    {
+      "pack": false,
+      "id": "wound-3",
+      "era": "after",
+      "valid": true
+    },
+    {
+      "pack": false,
+      "id": "wound-4",
+      "era": "after",
+      "valid": true
+    },
+    {
+      "pack": false,
+      "id": "wound-5",
+      "era": "after",
+      "valid": true
+    },
+    {
+      "pack": true,
+      "id": "wound-0",
+      "era": "after",
+      "valid": true
+    },
+    {
+      "pack": true,
+      "id": "wound-1",
+      "era": "after",
+      "valid": true
+    },
+    {
+      "pack": true,
+      "id": "wound-2",
+      "era": "after",
+      "valid": true
+    },
+    {
+      "pack": true,
+      "id": "wound-3",
+      "era": "after",
+      "valid": true
+    },
+    {
+      "pack": true,
+      "id": "wound-4",
+      "era": "after",
+      "valid": true
+    },
+    {
+      "pack": true,
+      "id": "wound-5",
+      "era": "after",
+      "valid": true
+    }
+  ],
+  "ruin": [
+    {
+      "pack": false,
+      "height": "ground",
+      "rejected": true,
+      "message": "The Ruin belongs to the world after the attack. Choose After attack in World."
+    },
+    {
+      "pack": false,
+      "height": "clouds",
+      "rejected": true,
+      "message": "The Ruin belongs to the world after the attack. Choose After attack in World."
+    },
+    {
+      "pack": false,
+      "height": "atmosphere",
+      "rejected": true,
+      "message": "The Ruin belongs to the world after the attack. Choose After attack in World."
+    },
+    {
+      "pack": true,
+      "height": "ground",
+      "rejected": true,
+      "message": "The Ruin belongs to the world after the attack. Choose After attack in World."
+    },
+    {
+      "pack": true,
+      "height": "clouds",
+      "rejected": true,
+      "message": "The Ruin belongs to the world after the attack. Choose After attack in World."
+    },
+    {
+      "pack": true,
+      "height": "atmosphere",
+      "rejected": true,
+      "message": "The Ruin belongs to the world after the attack. Choose After attack in World."
+    }
+  ],
+  "idle": {
+    "frames": 300,
+    "positionChanges": 288,
+    "movementReports": 300,
+    "maxMillimetres": 0.029816870751943666
+  },
+  "shade": {
+    "altitudeMetres": 35.00001772772521,
+    "hudFallbackKmPerSecond": 10000000,
+    "localInitialSpeedKmPerSecond": 0.0877510360052924
+  },
+  "polar": {
+    "siteRevision": 1,
+    "walkMode": true
+  },
+  "movingArrivalRisk": {
+    "description": "Difference between copying a later time into a prepared Shade pose and transporting that pose to the later parent frame",
+    "delaySimulationSeconds": 60,
+    "positionDifferenceKm": 48915.975695102534
+  }
+}

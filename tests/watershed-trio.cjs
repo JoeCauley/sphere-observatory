@@ -32,6 +32,7 @@ assert(overlap>100);assert(N.info.addresses<=2);assert(N.info.graphBytes<=96*102
   const view=N.view(legacy,c.id);assert.equal(view.packAddress.artRevision,2);assert.deepEqual(view.packAddress.anchor,legacy.packAddress.anchor);assert.equal(view.time,legacy.time);
   const regional=await SpherePlaces.destination(legacy,'watershed-'+c.id,'regional','day','clear');assert.equal(regional.packAddress.artRevision,2);assert.equal(regional.time,legacy.time);assert.equal(regional.speed,legacy.speed);assert(!regional.walkMode);assert(Math.abs(M.length(regional.position)-(regional.radius-9000))<1e-6);
   const arrival=await SpherePlaces.destination(state,'watershed-'+c.id,'ground','day','clear');
+  SphereLanding.activate(arrival);
   assert(arrival.walkMode);assert(arrival.playing);assert.equal(arrival.time,state.time);assert.equal(arrival.speed,state.speed);assert.equal(arrival.autoSpeed,false);
   for(let i=0;i<180;i++)S.step(arrival,new Set(),1/60);
   assert(Math.abs(SphereLanding.heightAboveGround(arrival)-S.EYE)<.00008);

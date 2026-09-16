@@ -1,7 +1,8 @@
 {
-  "capturedAt": "2026-09-15T01:17:55.430Z",
-  "version": "1.5.0",
-  "sourceContentSha256": "2ee8017eebac4980d05f3a0649128e096ee9cec791bb2fb3990b36e2b0d4e5ec",
+  "capturedAt": "2026-09-16T01:16:33.002Z",
+  "version": "1.6.0",
+  "sourceContentSha256": "6ca1d61609c8f06dbbeef824db5cb87b0873bbf250b0c8d5f9b1a3a8da203938",
+  "sourceHashEncoding": "UTF-8 text with LF line endings; sorted file name plus NUL then file content",
   "sourceFiles": [
     "app.js",
     "asset-plan.js",
@@ -15,6 +16,7 @@
     "biome-ui.js",
     "biomes.js",
     "bootstrap.js",
+    "build-info.cjs",
     "collection-shader.js",
     "collection-ui.js",
     "collection.js",
@@ -32,9 +34,12 @@
     "hero-textures.js",
     "index.html",
     "inspection-camera.js",
+    "integration-ui.js",
+    "integration.css",
     "loading-screen.css",
     "loading-screen.js",
     "local-shadows.js",
+    "location-identity.js",
     "math.js",
     "navigation-history.js",
     "neighbourhood-shader.js",
@@ -46,17 +51,22 @@
     "preview-light.js",
     "preview-quality.js",
     "renderer.js",
+    "serve.cjs",
     "session-state.js",
     "shade-edges.js",
+    "shader-sections.js",
     "shaders.js",
     "shine-worker.js",
     "silhouette-aa.js",
+    "simulation-timing.js",
+    "station-shader-performance.js",
     "style.css",
     "surface-arrival.js",
     "surface-lighting.js",
     "surface-walk.js",
     "survey.js",
     "travel-control.js",
+    "travel-transaction.js",
     "ui-layout.js",
     "volume.js",
     "watershed-neighbourhood.js",
@@ -82,13 +92,40 @@
       "warmMatches": true,
       "frameMatches": [
         true,
-        false,
         true
       ],
       "error": 0,
       "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-      "bytes": 14929770,
-      "sha256": "e378911de2da7db2c96a9aef0950ffd09b180ebafeba2b08d118129d1e8b569c"
+      "bytes": 14895298,
+      "sha256": "308169214ce2f445fb1e784fdf210a10f9b9671d5df02f4895d46e81cebb4771"
+    },
+    {
+      "id": "forest-ground",
+      "title": "On foot in Dark Age Forest",
+      "coldMatches": true,
+      "warmMatches": true,
+      "frameMatches": [
+        true,
+        true
+      ],
+      "error": 0,
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "bytes": 5831461,
+      "sha256": "5cb0afe7b9da19ccd74a56d63fc1c4c17fb143b6b2888f87e7bd2829e31e2668"
+    },
+    {
+      "id": "wound-ground",
+      "title": "Walking beside the opening",
+      "coldMatches": true,
+      "warmMatches": true,
+      "frameMatches": [
+        true,
+        true
+      ],
+      "error": 0,
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "bytes": 6392431,
+      "sha256": "ba2e9ba71e18b3df05e85155181d5f2951ca440e63025a271212d0875e4649c5"
     },
     {
       "id": "ultra-desert",
@@ -101,8 +138,8 @@
       ],
       "error": 0,
       "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-      "bytes": 11806442,
-      "sha256": "1c9b62d2378cdfc8256bdd7c4013c1fbec731c32d239ce4b5854c6dc301c3c3e"
+      "bytes": 11830940,
+      "sha256": "464c89440c11869651a03ab04c5cec0e0d93806e4088c284c756047327196d9d"
     },
     {
       "id": "winter-hell",
@@ -115,12 +152,12 @@
       ],
       "error": 0,
       "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-      "bytes": 9830046,
-      "sha256": "723925222070c2a2fc34ede504f40f581937ca626de62ddbdf57998920ef3e44"
+      "bytes": 9938401,
+      "sha256": "9ec488c9e2c146f571c7232d6ce1c12e6d6bc133d6ea4182e83d46b8927029d3"
     },
     {
       "id": "watershed-40000",
-      "title": "Connected catchments \u00c2\u00b7 40,000 km",
+      "title": "Connected catchments · 40,000 km",
       "coldMatches": true,
       "warmMatches": true,
       "frameMatches": [
@@ -129,12 +166,12 @@
       ],
       "error": 0,
       "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-      "bytes": 6209307,
-      "sha256": "e93d8888050dbe423c1f330af57862cd82f4dc6391ece18ea957164f92c4bc7f"
+      "bytes": 6176157,
+      "sha256": "366cf4947ab005cb878abd5848ba1c1192af05f7bbfdab25138a25efa1506ae6"
     },
     {
       "id": "watershed-10000",
-      "title": "Receiving reaches \u00c2\u00b7 10,000 km",
+      "title": "Receiving reaches · 10,000 km",
       "coldMatches": true,
       "warmMatches": true,
       "frameMatches": [
@@ -143,12 +180,12 @@
       ],
       "error": 0,
       "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-      "bytes": 2066458,
-      "sha256": "3544306a8779ffd59b199c281bdcedd14f5f3b30c017efc65eef571d14cfc494"
+      "bytes": 2095770,
+      "sha256": "dae292f26546ef5b9794e088c1d5a5efe1bc02fe69e917965d41c7c028d813a8"
     },
     {
       "id": "watershed-1100",
-      "title": "The province \u00c2\u00b7 1,100 km",
+      "title": "The province · 1,100 km",
       "coldMatches": true,
       "warmMatches": true,
       "frameMatches": [
@@ -157,12 +194,12 @@
       ],
       "error": 0,
       "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-      "bytes": 2791714,
-      "sha256": "c35c3ab26776ea1e6a8850ae103d33724fefca6386dd8ff7813a00e80db40673"
+      "bytes": 2836251,
+      "sha256": "21d9d9ee43c7d111f1dedb17473843bd82411526a630b60b34cfda7e7b3e208c"
     },
     {
       "id": "watershed-48",
-      "title": "River country \u00c2\u00b7 48 km",
+      "title": "River country · 48 km",
       "coldMatches": true,
       "warmMatches": true,
       "frameMatches": [
@@ -171,12 +208,12 @@
       ],
       "error": 0,
       "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-      "bytes": 446565,
-      "sha256": "e28f6d66d649dd95aa8d19be38c692af1e7cc3f7254f4c0829d0554104cb659b"
+      "bytes": 466658,
+      "sha256": "08f4d1c0b36958c7e2181194937a39a6cedadf0173c7c16c1442f49a79eff396"
     },
     {
       "id": "watershed-1",
-      "title": "The water garden \u00c2\u00b7 1 km",
+      "title": "The water garden · 1 km",
       "coldMatches": true,
       "warmMatches": true,
       "frameMatches": [
@@ -185,12 +222,12 @@
       ],
       "error": 0,
       "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-      "bytes": 12334941,
-      "sha256": "1e4fd380eccdfb867e9a242a488fe80460a56b8b034f3e3ec6ad9c2f951646f6"
+      "bytes": 12332110,
+      "sha256": "befb66f46de36cce7a50965a53092c332dcc05e8a5fe8b172ea3a486e258eeff"
     },
     {
       "id": "terrace",
-      "title": "The open terrace \u00c2\u00b7 6 m above its floor",
+      "title": "The open terrace · 6 m above its floor",
       "coldMatches": true,
       "warmMatches": true,
       "frameMatches": [
@@ -199,8 +236,8 @@
       ],
       "error": 0,
       "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-      "bytes": 5141516,
-      "sha256": "de0db7ec9d9854bfd4f6936467f0d8b3b820b9e073779721f9cf2a06e310c9d4"
+      "bytes": 5286190,
+      "sha256": "5e970be41419254876a17895be4328af37851f248136fd26cc9eecc6a76de6aa"
     },
     {
       "id": "lake",
@@ -213,8 +250,8 @@
       ],
       "error": 0,
       "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-      "bytes": 9909198,
-      "sha256": "74c275d85b1d5594dadfb3ed9d25f59cffa3131ee6489376621f5117469f93a7"
+      "bytes": 10214948,
+      "sha256": "4deba2b5af510ced3236b9f536121f82840bb3da74b425dc08dbaff345f47424"
     },
     {
       "id": "reach",
@@ -227,8 +264,8 @@
       ],
       "error": 0,
       "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-      "bytes": 11531260,
-      "sha256": "d216d848dfd2b32f39bcf4e2bc62d4f0d79c6fd4049feccbbcc4b7a8ead2729a"
+      "bytes": 11496695,
+      "sha256": "7e3d0e23ce49f79ad97afff061ada489764188c3f7a608e35e3b00cf02090f0e"
     },
     {
       "id": "meadow",
@@ -241,8 +278,8 @@
       ],
       "error": 0,
       "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-      "bytes": 11520567,
-      "sha256": "89a60b184b1353ef03b5a77bcdcddcd04fc209292703bf58848ea159a388064a"
+      "bytes": 11494994,
+      "sha256": "d8ad7581247659d672c9eb0603796ac68e6586f8a213aef224a5063d361fe028"
     },
     {
       "id": "shade-intact",
@@ -255,8 +292,8 @@
       ],
       "error": 0,
       "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-      "bytes": 10266783,
-      "sha256": "a138ee4600eb3bfa7128e021d3e2cb2681b3094e1f9a72951dad91a39ff055b0"
+      "bytes": 10460345,
+      "sha256": "c0edcce08c6504569d7fbe3f92e53afb5c506e29055ee466a805eedd3a81359b"
     },
     {
       "id": "shade-broken",
@@ -269,8 +306,8 @@
       ],
       "error": 0,
       "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-      "bytes": 8082182,
-      "sha256": "28b148c1f351bfc8590f8fb3bd287f80854ed0ce747ea1ec926a4d84e7e1f22c"
+      "bytes": 8132799,
+      "sha256": "1699fdbf08c8142a3c15f5b27b2679b8862a2bb061bc162e1189a4a9504aa46d"
     },
     {
       "id": "wound",
@@ -283,8 +320,8 @@
       ],
       "error": 0,
       "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-      "bytes": 14972550,
-      "sha256": "b51ab3ecdfb2b304ae2b880d1dc2f44f1c1b5aa1f66321c96e8e0cf136011fb4"
+      "bytes": 14744228,
+      "sha256": "430114858272f93d442ba17cb427dc76d0716f558a2338d170be4e258d38039b"
     },
     {
       "id": "interior",
@@ -297,8 +334,8 @@
       ],
       "error": 0,
       "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-      "bytes": 12498941,
-      "sha256": "499beaf425d9153d39901dbf071b5b6e686404868394285d941081ce6bedd40a"
+      "bytes": 12210463,
+      "sha256": "e22a5467d2387b2bd47af6ac29ad6f5b00feb519adfccf3c748c5c66cc8fb9db"
     },
     {
       "id": "clouds",
@@ -307,14 +344,14 @@
       "warmMatches": true,
       "frameMatches": [
         false,
+        false,
         true
       ],
       "error": 0,
       "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-      "bytes": 16452636,
-      "sha256": "3b26df7483dc0c16c695fbd2a6d3e876d289ba416c600223572fc56e534af8e4"
+      "bytes": 16819882,
+      "sha256": "58241668e7ab2606d25bf0e5c4782a0a4756bb718ba90ee947b0dad07bb20db1"
     }
   ],
-  "errors": [],
-  "sourceHashEncoding": "UTF-8 text with LF line endings; sorted file name plus NUL then file content"
+  "errors": []
 }

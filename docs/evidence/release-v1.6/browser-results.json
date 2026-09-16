@@ -1,0 +1,96 @@
+{
+  "results": [
+    {
+      "id": "biome-0",
+      "arrival": "ground",
+      "ms": 2194
+    },
+    {
+      "id": "watershed-lake",
+      "arrival": "ground",
+      "ms": 2220
+    },
+    {
+      "id": "shade-0",
+      "arrival": "ground",
+      "ms": 312
+    },
+    {
+      "id": "biome-3",
+      "arrival": "clouds",
+      "ms": 625
+    },
+    {
+      "id": "watershed",
+      "arrival": "neighbourhood",
+      "ms": 33
+    },
+    {
+      "id": "watershed",
+      "arrival": "region",
+      "ms": 37
+    },
+    {
+      "id": "watershed",
+      "arrival": "province",
+      "ms": 36
+    },
+    {
+      "id": "watershed",
+      "arrival": "approach",
+      "ms": 37
+    },
+    {
+      "id": "watershed",
+      "arrival": "garden",
+      "ms": 37
+    },
+    {
+      "id": "watershed",
+      "arrival": "terrace",
+      "ms": 37
+    },
+    {
+      "id": "watershed",
+      "arrival": "ground",
+      "ms": 521
+    }
+  ],
+  "errors": [],
+  "diagnostic": {
+    "device": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "timing": {
+      "frames": 83,
+      "medianMs": 18,
+      "p95Ms": 18.200000000000273,
+      "maxMs": 30,
+      "droppedMovementSeconds": 0
+    },
+    "ground": {
+      "chunks": 25,
+      "cache": 25,
+      "bytes": 0,
+      "pendingBytes": 0,
+      "budget": 67108864,
+      "buildMs": 0.09999996423721313,
+      "queue": 0,
+      "waits": 0
+    },
+    "build": {
+      "version": "1.6.0",
+      "commit": "5cdb0985691a99b2068ce4c01e7157b6cab7677a",
+      "sourceSha256": "8cabd50378b228bb67b640fe8289e626aa8ef7a84646fad9d1b5c54e80a8d0b5",
+      "status": "local-modified",
+      "release": false,
+      "assets": [
+        {
+          "path": "assets/wound-edges/manifest.json",
+          "sha256": "ea2c769ce86b82699e2bb745d521678a716ed106bdab755e726f11e2c32a03fe"
+        }
+      ],
+      "assetSetSha256": "45f67a383ac6ec295844b3bc6ddc40e9a1d661f354d7f406bf82e6519410a91d",
+      "assetCount": 45
+    },
+    "history": 11
+  }
+}

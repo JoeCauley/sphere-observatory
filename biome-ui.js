@@ -27,7 +27,7 @@ $('visitBiome').onclick=()=>{const s=A.getState(),id=Number($('biomeDestination'
  // Prefer belt interiors and avoid wounds. Search changes the pose, never the world's seed.
  for(let lat=-70;lat<=70&&!chosen;lat+=2)for(let lon=-179;lon<180;lon+=2){const q=M.axis(lat,lon);if(B.region(q,{...s,biome:-1})!==id||M.inBreach(q,s))continue;if(s.collection&&SphereCollection.region(q,s).weight<.99)continue;chosen=q;break;}
  if(!chosen){A.toast('No intact region of that biome was found in this world layout. Increase Collection order or try another biome.');return;}
- s.speed=alt<=10?1:alt<=100?10:1000;s.projection='perspective';s.position=M.mul(chosen,s.radius-alt);const tangent=M.basis(chosen).r;s.forward=M.norm(M.add(M.mul(chosen,.6),M.mul(tangent,.8)));s.up=M.basis(s.forward,M.mul(chosen,-1)).u;A.setState(s);$('viewTitle').textContent=B.catalog[id].name+' · approach';window.dispatchEvent(new Event('sphere-view-changed'));$('viewport').focus({preventScroll:true});
+ s.speed=alt<=10?1:alt<=100?10:1000;s.projection='perspective';s.position=M.mul(chosen,s.radius-alt);const tangent=M.basis(chosen).r;s.forward=M.norm(M.add(M.mul(chosen,.6),M.mul(tangent,.8)));s.up=M.basis(s.forward,M.mul(chosen,-1)).u;return SphereJourney.travel.request({type:'place',title:B.catalog[id].name+' · approach',resolve:()=>s});
 };
 let last='';setInterval(()=>{if(document.hidden)return;const s=A.getState(),hit=M.trace(s.position,s.forward,s),id=B.region(hit.point?M.norm(hit.point):M.norm(s.position),s),d=hit.kind==='Inner surface'?hit.distance:Infinity;
  const tier=d<24?'hero landscape · fine surface detail':d<600?'hero landscape':d<1800?'regional transition':'distant atlas',status=(A.renderer.heroes?.status[id]||A.renderer.biomes?.status[id]);

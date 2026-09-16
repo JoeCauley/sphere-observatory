@@ -3,7 +3,7 @@
 'use strict';
 const key='sphere-session-v1',M=root.SphereMath;
 function decode(raw){if(typeof raw!=='string'||raw.length>1000000)throw Error('Invalid saved session');const record=JSON.parse(raw);
- if(!record||record.format!=='sphere-session'||record.version!==1)throw Error('Unsupported saved session');
+ if(!record||record.format!=='sphere-session'||![1,2].includes(record.version))throw Error('Unsupported saved session');
  const state=M.validate(record.state);
  // Upgrade the resumable exploration once. Portable scene imports still keep
  // their explicit geometry revision; subsequent saved choices are respected.
@@ -17,9 +17,12 @@ function decode(raw){if(typeof raw!=='string'||raw.length>1000000)throw Error('I
   }
  }
  state.playing=false;state.walkVelocity=0;
- return {state,ui:record.ui&&typeof record.ui==='object'&&!Array.isArray(record.ui)?record.ui:{}};
+ const history=[],skipped=[];
+ if(record.version===2&&record.journey?.version===1&&Array.isArray(record.journey.entries))for(const entry of record.journey.entries.slice(-24)){try{if(!entry||typeof entry.title!=='string'||entry.title.length>240||!entry.state)throw Error('Invalid journey entry');history.push({state:M.validate(entry.state),title:entry.title,created:typeof entry.created==='string'?entry.created.slice(0,40):'',identity:entry.identity});}catch(e){skipped.push(e.message);}}
+ else if(record.version===2&&record.journey)skipped.push('Unsupported journey version');
+ return {state,history,skipped,ui:record.ui&&typeof record.ui==='object'&&!Array.isArray(record.ui)?record.ui:{}};
 }
-function encode(state,ui={}){const clean=M.validate(state);clean.playing=false;clean.walkVelocity=0;return JSON.stringify({format:'sphere-session',version:1,shadeBodyVersion:3,state:clean,ui});}
+function encode(state,ui={},entries=[]){const clean=M.validate(state);clean.playing=false;clean.walkVelocity=0;const raw=JSON.stringify({format:'sphere-session',version:2,shadeBodyVersion:3,state:clean,ui,journey:{version:1,entries:entries.slice(-24)}});if(raw.length>1000000)throw Error('Saved session exceeds 1 MB');return raw;}
 root.SphereSessionCodec={key,decode,encode};
 if(!root.document||!root.SphereApp)return;
 const A=root.SphereApp,$=id=>document.getElementById(id),preferences=['previewFps','adaptivePreview','exportSize','clipShot','biomeDestination','biomeAltitude','fieldDestination','rotationStep','placeCategory','placeDestination','placeAltitude'];
@@ -41,15 +44,16 @@ function applyUI(ui){for(const id of preferences){const el=$(id),value=ui.values
  for(const el of document.querySelectorAll('.tab-panel details')){const open=ui.details?.[detailKey(el)];if(typeof open==='boolean')el.open=open;}
 }
 function flush(){clearTimeout(timer);timer=null;if(!ready||(A.busy&&!root.SphereLoading?.active)||root.spherePreviewSuspended)return false;
- try{const next=encode(A.getState(),uiState());if(next!==lastWritten){localStorage.setItem(key,next);lastWritten=next;}
+ try{const next=encode(A.getState(),uiState(),root.SphereJourney?.entries||[]);if(next!==lastWritten){localStorage.setItem(key,next);lastWritten=next;}
   if(storageError){status.textContent='Settings and your viewpoint save automatically in this browser. Reopens paused.';storageError=false;}return true;
  }catch{status.textContent='This browser could not save the session. Export a scene from Capture to keep your settings.';storageError=true;return false;}
 }
 function schedule(delay=300){if(ready&&timer===null)timer=setTimeout(flush,delay);}
-try{const raw=localStorage.getItem(key);if(raw){const saved=decode(raw);A.setState(saved.state);applyUI(saved.ui);$('viewTitle').textContent='Restored viewpoint';document.querySelectorAll('.journeys .selected,[data-preset].selected').forEach(el=>el.classList.remove('selected'));lastWritten=raw;restored=true;}}
+try{const raw=localStorage.getItem(key);if(raw){const saved=decode(raw);A.setState(saved.state);root.SphereJourney?.restore(saved.history);applyUI(saved.ui);$('viewTitle').textContent=root.SphereJourney?.current().title||'Restored viewpoint';if(saved.skipped.length)status.textContent=saved.skipped.length+' unsupported journey entries were skipped. Your current view was restored.';document.querySelectorAll('.journeys .selected,[data-preset].selected').forEach(el=>el.classList.remove('selected'));lastWritten=raw;restored=true;}}
 catch{storageError=true;status.textContent='The saved session was unavailable. Current settings will be saved as you explore.';}
 ready=true;
 window.addEventListener('sphere-state-synced',()=>schedule());window.addEventListener('sphere-view-changed',()=>schedule(1000));window.addEventListener('sphere-telemetry',()=>schedule(1000));
+window.addEventListener('sphere-travel-committed',flush);window.addEventListener('sphere-history-changed',()=>schedule());
 for(const type of ['input','change','click','toggle'])document.addEventListener(type,()=>schedule(),true);
 window.addEventListener('pagehide',flush);window.addEventListener('blur',flush);document.addEventListener('visibilitychange',()=>{if(document.hidden)flush();});
 root.SphereSession={flush,get restored(){return restored;},key};

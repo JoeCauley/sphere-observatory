@@ -2,6 +2,15 @@
 (function(){
 'use strict';const M=SphereMath;
 function program(gl,vs,fs){const compile=(type,source)=>{const sh=gl.createShader(type);gl.shaderSource(sh,source);gl.compileShader(sh);if(!gl.getShaderParameter(sh,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(sh));return sh;};const p=gl.createProgram();gl.attachShader(p,compile(gl.VERTEX_SHADER,vs));gl.attachShader(p,compile(gl.FRAGMENT_SHADER,fs));gl.linkProgram(p);if(!gl.getProgramParameter(p,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(p));const u={};for(let i=0;i<gl.getProgramParameter(p,gl.ACTIVE_UNIFORMS);i++){const name=gl.getActiveUniform(p,i).name;u[name]=gl.getUniformLocation(p,name);}return {p,u};}
+// Conservative oriented-box/frustum rejection. Residency and shadow casters
+// retain the full set; only the colour pass rejects wholly invisible meshes.
+function visible(mesh,s,b,aspect){
+ if(!mesh.count)return false;const box=mesh.bvh;if(!box)return true;
+ const middle=box.min.map((v,i)=>(v+box.max[i])*.5),half=box.min.map((v,i)=>(box.max[i]-v)*.5),centre=M.sub(mesh.origin,s.position);
+ for(let i=0;i<3;i++)for(let k=0;k<3;k++)centre[k]+=mesh.basis[i][k]*middle[i];
+ const tan=Math.tan(M.radians(s.fov)*.5),planes=[b.f,M.add(M.mul(b.f,tan),b.r),M.sub(M.mul(b.f,tan),b.r),M.add(M.mul(b.f,tan/aspect),b.u),M.sub(M.mul(b.f,tan/aspect),b.u)];
+ return planes.every(p=>M.dot(centre,p)+mesh.basis.reduce((r,axis,i)=>r+Math.abs(M.dot(axis,p))*half[i],0)>=-.000001);
+}
 const vertex=`#version 300 es
 precision highp float;
 layout(location=0)in vec3 position;layout(location=1)in vec3 normal;layout(location=2)in vec3 albedo;layout(location=3)in float material;layout(location=4)in float emission;
@@ -10,7 +19,7 @@ out vec3 vRelative,vNormal,vAlbedo,vLocal,vLocalNormal;flat out float vMaterial,
 void main(){vec3 p=uOriginRelative+position.x*uMeshX+position.y*uMeshY+position.z*uMeshZ;vRelative=p;vNormal=normal.x*uMeshX+normal.y*uMeshY+normal.z*uMeshZ;vLocalNormal=normal;vAlbedo=albedo;vMaterial=material;vEmission=emission;vLocal=position;float z=dot(p,uForward),t=tan(uFov*.5);gl_Position=vec4(dot(p,uRight)/t,dot(p,uUp)/t*uResolution.x/uResolution.y,z-.00002,z);}
 `;
 class GeometryRenderer{
- constructor(gl){this.gl=gl;this.meshes=new Map();
+ constructor(gl){this.gl=gl;this.meshes=new Map();this.work={allocatedBytes:0,uploadedBytes:0,synchronousUploads:0,synchronousUploadMs:0};
   const fragment=SphereShaders.geometryFragment||SphereShaders.fragment,shared=fragment.slice(0,fragment.lastIndexOf('void main(){')).replace('in vec2 vUV;','');
   this.main=program(gl,vertex,shared+`
 in vec3 vRelative,vNormal,vAlbedo,vLocal,vLocalNormal;flat in float vMaterial,vEmission;
@@ -31,7 +40,7 @@ void main(){float distanceKm=length(vRelative);if(uDetailFeature>0.){float cover
  else if(vMaterial== -4.){float fw=max(length(dFdx(vLocal)),length(dFdy(vLocal)));vec3 weights=pow(abs(vLocalNormal),vec3(8.));weights/=max(.00001,weights.x+weights.y+weights.z);float seams=weights.x*panelLine(vLocal.yz/.12,fw/.12)+weights.y*panelLine(vLocal.xz/.12,fw/.12)+weights.z*panelLine(vLocal.xy/.12,fw/.12);col*=.72+.48*noise(vLocal*2.);col*=1.-seams*.55;float fine=weights.x*panelLine(vLocal.yz/.008,fw/.008)+weights.y*panelLine(vLocal.xz/.008,fw/.008)+weights.z*panelLine(vLocal.xy/.008,fw/.008);col*=1.-fine*.2;}
  else if(vMaterial>=13.&&vMaterial<=14.&&uMaterialPlate>=0){vec2 uv=uShadeUVAnchor[uMaterialPlate]+vec2(dot(vRelative,uShadeUVRight[uMaterialPlate]),dot(vRelative,uShadeUVUp[uMaterialPlate]))/1.2;col=shadeSkin(uv,int(vMaterial)-10,distanceKm);}
  else if(vMaterial>=13.&&uWorldTexturesReady==1&&uTextureDetail==1){vec3 tri=pow(abs(vLocalNormal),vec3(8.));tri/=max(.00001,tri.x+tri.y+tri.z);int layer=vMaterial==15.?4:int(vMaterial)-10;col=mix(col,sampleSurface(uEngineering,float(layer),vLocal/6.,tri,dFdx(vLocal)/6.,dFdy(vLocal)/6.,false),uEngineeringReady[layer]);}
- else if(vMaterial>=0.){float footprint=max(length(dFdx(delta)),length(dFdy(delta)));col=worldDetail(int(vMaterial),q,delta,footprint,distanceKm);if(uPackEnabled==1)col=packMaterial(col,delta,footprint);if(vMaterial<10.&&distanceKm<.12&&uPackEnabled==0)col=mix(col,fieldGround(int(vMaterial),vLocal,footprint),1.-smoothstep(.05,.12,distanceKm));}
+ else if(vMaterial>=0.&&!(uConnectedGround==1&&vMaterial<10.)){float footprint=max(length(dFdx(delta)),length(dFdy(delta)));col=worldDetail(int(vMaterial),q,delta,footprint,distanceKm);if(uPackEnabled==1)col=packMaterial(col,delta,footprint);if(vMaterial<10.&&distanceKm<.12&&uPackEnabled==0)col=mix(col,fieldGround(int(vMaterial),vLocal,footprint),1.-smoothstep(.05,.12,distanceKm));}
  // Evaluate the geographic material once for all transition owners. Repeating
  // this large graph in three branches needlessly multiplies cold compilation.
  float geographicBlend=uConnectedGround==1&&vMaterial>=0.&&vMaterial<10.?1.:0.;
@@ -72,9 +81,9 @@ void main(){float distanceKm=length(vRelative);if(uDetailFeature>0.){float cover
  fragColor=vec4(uLinearOutput==1?clamp(radiance,vec3(0.),vec3(60000.)):tone(radiance),1.);}
 `);
  }
- allocate(mesh){const gl=this.gl,vao=gl.createVertexArray(),buffer=gl.createBuffer();gl.bindVertexArray(vao);gl.bindBuffer(gl.ARRAY_BUFFER,buffer);gl.bufferData(gl.ARRAY_BUFFER,mesh.vertices.byteLength,gl.STATIC_DRAW);for(const [loc,size,offset]of[[0,3,0],[1,3,3],[2,3,6],[3,1,9],[4,1,10]]){gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,size,gl.FLOAT,false,44,offset*4);}gl.bindVertexArray(null);const result={vao,buffer,offset:0};this.meshes.set(mesh,result);return result;}
- stage(mesh,budget=4){const gl=this.gl,start=performance.now(),record=this.meshes.get(mesh)||this.allocate(mesh);gl.bindBuffer(gl.ARRAY_BUFFER,record.buffer);while(record.offset<mesh.vertices.byteLength){const end=Math.min(mesh.vertices.byteLength,record.offset+65536);gl.bufferSubData(gl.ARRAY_BUFFER,record.offset,new Uint8Array(mesh.vertices.buffer,mesh.vertices.byteOffset+record.offset,end-record.offset));record.offset=end;if(performance.now()-start>=budget)break;}return record.offset===mesh.vertices.byteLength;}
- upload(mesh){const record=this.meshes.get(mesh);if(record&&record.offset===mesh.vertices.byteLength)return record;this.stage(mesh,Infinity);return this.meshes.get(mesh);}
+ allocate(mesh){this.work.allocatedBytes+=mesh.vertices.byteLength;const gl=this.gl,vao=gl.createVertexArray(),buffer=gl.createBuffer();gl.bindVertexArray(vao);gl.bindBuffer(gl.ARRAY_BUFFER,buffer);gl.bufferData(gl.ARRAY_BUFFER,mesh.vertices.byteLength,gl.STATIC_DRAW);for(const [loc,size,offset]of[[0,3,0],[1,3,3],[2,3,6],[3,1,9],[4,1,10]]){gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,size,gl.FLOAT,false,44,offset*4);}gl.bindVertexArray(null);const result={vao,buffer,offset:0};this.meshes.set(mesh,result);return result;}
+ stage(mesh,budget=4){const gl=this.gl,start=performance.now(),record=this.meshes.get(mesh)||this.allocate(mesh);gl.bindBuffer(gl.ARRAY_BUFFER,record.buffer);while(record.offset<mesh.vertices.byteLength){const end=Math.min(mesh.vertices.byteLength,record.offset+65536);gl.bufferSubData(gl.ARRAY_BUFFER,record.offset,new Uint8Array(mesh.vertices.buffer,mesh.vertices.byteOffset+record.offset,end-record.offset));this.work.uploadedBytes+=end-record.offset;record.offset=end;if(performance.now()-start>=budget)break;}return record.offset===mesh.vertices.byteLength;}
+ upload(mesh){const record=this.meshes.get(mesh);if(record&&record.offset===mesh.vertices.byteLength)return record;const start=performance.now();this.stage(mesh,Infinity);this.work.synchronousUploads++;this.work.synchronousUploadMs+=performance.now()-start;return this.meshes.get(mesh);}
  draw(s,renderer,linear,width,height){const groups=s.geometryDetail&&s.layoutVersion===2&&s.collection&&s.projection!=='panorama'?SphereSites.geometry(s):[],gl=this.gl;
   // Release retired chunks even when the camera leaves the detail region entirely.
   for(const [m,b]of this.meshes)if(!groups.includes(m)&&!window.SphereEdgeStreaming?.has(m)&&!window.SphereWatershed?.has(m)&&!window.SphereGround?.has(m)){gl.deleteVertexArray(b.vao);gl.deleteBuffer(b.buffer);this.meshes.delete(m);}
@@ -90,14 +99,18 @@ void main(){float distanceKm=length(vRelative);if(uDetailFeature>0.){float cover
   SphereCollection.upload(gl,u,s,[0,0,0]); // Mesh lighting uses uSiteLight/uSiteFill below.
   gl.uniform3fv(u['uAnchor[0]'],[1000000,100000,10000,1000,100,10,1,.1,.01,.001].flatMap(scale=>n.map(x=>((x*s.radius/scale)%256+256)%256)));v('uHeroAnchor',SphereBiomes.heroAnchors(n,s.radius));gl.uniform3fv(u['uBiomeAnchor[0]'],SphereBiomes.anchors(n,s.radius));renderer.biomes?.bind(u,true);renderer.heroes?.bind(u,true);renderer.worldTextures?.bind(u);SphereWorld.upload(gl,u,s);
   renderer.woundTextures?.bind(u,true);renderer.finishes.bind(u,s);renderer.localShadows.bind(u,s);
-  const lights=new Map();let triangles=0;for(const mesh of groups){const buffer=this.upload(mesh);gl.bindVertexArray(buffer.vao);gl.uniform3fv(u.uOriginRelative,M.sub(mesh.origin,s.position));gl.uniform3fv(u.uMeshX,mesh.basis[0]);gl.uniform3fv(u.uMeshY,mesh.basis[1]);gl.uniform3fv(u.uMeshZ,mesh.basis[2]);gl.uniform1i(u.uStructureMaterial,mesh.plate||mesh.name.startsWith('Wound')?1:0);
-   const lightKey=mesh.plate?'shade-'+mesh.plate.id:mesh.name.startsWith('Wound')?'rim':mesh;
-   if(!lights.has(lightKey)){const lightPoint=M.add(mesh.origin,M.mul(mesh.basis[1],.01));lights.set(lightKey,SphereCollection.visibility(lightPoint,s,s.stationSamples||64,mesh.plate?.id??-1));}const direct=lights.get(lightKey);
+  const lights=new Map(),lightSources=new Map(),lightKeys=new Map();
+  // Keep each shared Wound/Shade sample at its original resident origin even
+  // when that first section is outside the camera. Culling cannot move light.
+  for(const mesh of groups){const point=M.add(mesh.origin,M.mul(mesh.basis[1],.01)),key=mesh.plate?'shade-'+mesh.plate.id:mesh.name.startsWith('Wound')?'rim':point.join(',');lightKeys.set(mesh,key);if(!lightSources.has(key))lightSources.set(key,point);}
+  let triangles=0,drawn=0;for(const mesh of groups){if(this.culling!==false&&!visible(mesh,s,b,width/height))continue;drawn++;const buffer=this.upload(mesh);gl.bindVertexArray(buffer.vao);gl.uniform3fv(u.uOriginRelative,M.sub(mesh.origin,s.position));gl.uniform3fv(u.uMeshX,mesh.basis[0]);gl.uniform3fv(u.uMeshY,mesh.basis[1]);gl.uniform3fv(u.uMeshZ,mesh.basis[2]);gl.uniform1i(u.uStructureMaterial,mesh.plate||mesh.name.startsWith('Wound')?1:0);
+   const lightKey=lightKeys.get(mesh);
+   if(!lights.has(lightKey))lights.set(lightKey,SphereCollection.visibility(lightSources.get(lightKey),s,s.stationSamples||64,mesh.plate?.id??-1));const direct=lights.get(lightKey);
    gl.uniform1i(u.uConnectedGround,mesh.chunk?1:0);gl.uniform1f(u.uGroundPatchRadius,mesh.ground&&!mesh.chunk?SphereSites.SITE_RADIUS:0);gl.uniform1f(u.uDetailFeature,mesh.detailFeature||0);gl.uniform1f(u.uPixelFocal,SphereEdges.focal(s));const materialFrame=mesh.materialFrame||(mesh.plate?[mesh.plate.right,mesh.plate.normal,mesh.plate.up]:mesh.basis);gl.uniform3fv(u.uMaterialOffset,materialFrame.map(b=>((M.dot(s.position,b)%76.8)+76.8)%76.8));gl.uniform3fv(u.uMaterialX,materialFrame[0]);gl.uniform3fv(u.uMaterialY,materialFrame[1]);gl.uniform3fv(u.uMaterialZ,materialFrame[2]);gl.uniform1i(u.uMaterialPlate,mesh.plate?SphereCollection.plates(s).findIndex(p=>p.id===mesh.plate.id):-1);
    gl.uniform1f(u.uSiteLight,direct);gl.uniform3fv(u.uSiteFill,renderer.frameFill.map(v=>v*(s.siteId.startsWith('exterior-')?.375:1)));gl.drawArrays(gl.TRIANGLES,0,mesh.count);triangles+=mesh.count/3;}
-  gl.bindVertexArray(null);gl.activeTexture(gl.TEXTURE0);renderer.renderInfo.geometry={groups:groups.length,triangles,localShadow:renderer.localShadows.quality>0,materials:s.richMaterials!==false&&groups.some(m=>m.plate||m.name.startsWith('Wound'))?'roughness / metalness / normal':'simple'};
+  gl.bindVertexArray(null);gl.activeTexture(gl.TEXTURE0);renderer.renderInfo.geometry={groups:drawn,residentGroups:groups.length,culledGroups:groups.length-drawn,lightSamples:lights.size,triangles,localShadow:renderer.localShadows.quality>0,materials:s.richMaterials!==false&&groups.some(m=>m.plate||m.name.startsWith('Wound'))?'roughness / metalness / normal':'simple'};
  }
  dispose(){const gl=this.gl;for(const b of this.meshes.values()){gl.deleteVertexArray(b.vao);gl.deleteBuffer(b.buffer);}gl.deleteProgram(this.main.p);}
 }
-window.SphereGeometryRenderer=GeometryRenderer;window.SphereGLProgram=program;
+window.SphereGeometryVisible=visible;window.SphereGeometryRenderer=GeometryRenderer;window.SphereGLProgram=program;
 })();

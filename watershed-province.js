@@ -9,13 +9,14 @@ const EXTENT=640,cache=new Map(),models=new Map(),mix=(a,b,t)=>a.map((v,i)=>v*(1
 const keyFor=s=>JSON.stringify([s.provinceRevision,s.provinceSeed,s.provinceAnchor,s.radius,s.era,s.multipleWounds]);
 const pending=new Map();
 function retain(key,groups){cache.set(key,groups);while(cache.size>2)cache.delete(cache.keys().next().value);return groups;}
-async function prepare(s){
+async function prepare(s,{signal}={}){
+ if(signal?.aborted)throw new DOMException('Travel cancelled','AbortError');
  if(!enabled(s))return [];
  const key=keyFor(s);if(cache.has(key))return cache.get(key);if(pending.has(key))return pending.get(key);
  if(typeof Worker==='undefined')return geometry(s);
- const job=new Promise((resolve,reject)=>{const worker=new Worker('watershed-worker.js');const timer=setTimeout(()=>{worker.terminate();reject(Error('The Watershed did not finish preparing. Please retry.'));},120000);
-  worker.onmessage=({data})=>{clearTimeout(timer);worker.terminate();if(data.error){reject(Error(data.error));return;}resolve(retain(key,data.groups.map(g=>Object.assign(Object.create(S.Mesh.prototype),g))));};
-  worker.onerror=e=>{clearTimeout(timer);worker.terminate();reject(Error(e.message));};worker.postMessage(s);
+ const job=new Promise((resolve,reject)=>{const worker=new Worker('watershed-worker.js'),clean=()=>{clearTimeout(timer);worker.terminate();signal?.removeEventListener('abort',abort);},abort=()=>{clean();reject(new DOMException('Travel cancelled','AbortError'));};const timer=setTimeout(()=>{clean();reject(Error('The Watershed did not finish preparing. Please retry.'));},120000);
+  signal?.addEventListener('abort',abort,{once:true});worker.onmessage=({data})=>{clean();if(data.error){reject(Error(data.error));return;}resolve(retain(key,data.groups.map(g=>Object.assign(Object.create(S.Mesh.prototype),g))));};
+  worker.onerror=e=>{clean();reject(Error(e.message));};worker.postMessage(s);
  });pending.set(key,job);try{return await job;}finally{pending.delete(key);}
 }
 function model(seed=713){

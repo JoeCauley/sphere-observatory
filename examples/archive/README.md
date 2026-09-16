@@ -1,7 +1,8 @@
 # Earlier Observatory photographs
 
-The photographs previously featured on GitHub are retained here with their original scene files. Image bytes are unchanged. The [current gallery](pre-v1.5/observatory/README.md) contains new captures from the running app.
+The photographs previously featured on GitHub are retained here with their original scene files. Image bytes are unchanged. The [current gallery](../observatory/README.md) contains new captures from the running app.
 
+- [v1.5 gallery](v1.5/README.md): seventeen original 4K photographs and saved scenes, retained with a byte-hash manifest.
 - [Previous repository README](Previous-README.md), preserving the earlier overview and development history with updated local links.
 - [Pre-v1.5 gallery and documentation images](pre-v1.5/README.md), including the seven-image gallery, portable scenes, previous project overview and a hash-verified archive manifest.
 - [Previous seven-image gallery](v1.4/README.md): Ultra Desert, polar station, Wound edge, Shade structure, clouds, Mycelium Sea and wreckage.

@@ -1,0 +1,45 @@
+{
+  "version": "1.6.0",
+  "status": "passed",
+  "sourceContentSha256": "6ca1d61609c8f06dbbeef824db5cb87b0873bbf250b0c8d5f9b1a3a8da203938",
+  "numerical": {
+    "suites": 36,
+    "exitCode": 0,
+    "log": "numerical.txt"
+  },
+  "journeyBrowser": {
+    "exitCode": 0,
+    "results": "browser-results.json",
+    "method": "Original assertions in isolated persistent Chrome context with warm shader cache"
+  },
+  "readme": {
+    "exitCode": 0,
+    "results": "readme-layout.json",
+    "images": 22,
+    "viewports": [
+      1440,
+      390
+    ]
+  },
+  "gallery": {
+    "photographs": 19,
+    "resolution": [
+      3840,
+      2160
+    ],
+    "interfaceScreenshots": 3,
+    "audit": "../../../examples/observatory/gallery.json",
+    "exitCode": 0,
+    "command": "node tools/verify-gallery.cjs"
+  },
+  "exports": {
+    "status": "passed",
+    "firstAttempt": "Warm persistent test context closed during download.path; repeating unchanged test in a clean browser context.",
+    "exitCode": 0,
+    "results": "export-results.json",
+    "method": "Unmodified tests/integration-export-browser.cjs in fresh Chrome context",
+    "log": "exports.txt"
+  },
+  "checkedAt": "2026-09-16T01:16:50.351541+00:00",
+  "performance": "../performance-2026-09-15/"
+}

@@ -1,0 +1,394 @@
+{
+  "parity": {
+    "out": [
+      {
+        "era": 0,
+        "probes": 32768,
+        "mismatch": 0,
+        "hits": 3876
+      },
+      {
+        "era": 1,
+        "probes": 32768,
+        "mismatch": 0,
+        "hits": 2923
+      }
+    ],
+    "gl": 0
+  },
+  "visual": [
+    {
+      "name": "biome-0",
+      "objectid": {
+        "changed": 0,
+        "max": 0
+      },
+      "material": {
+        "changed": 0,
+        "max": 0
+      },
+      "gl": 0,
+      "info": {
+        "width": 641,
+        "height": 359,
+        "internalWidth": 1282,
+        "internalHeight": 718,
+        "antialias": "supersampled + edge filter",
+        "lightPipeline": "linear-half-float",
+        "exportFrame": true,
+        "silhouetteSamples": 8,
+        "silhouetteMaskMiB": 0.8778343200683594,
+        "structureShadows": {
+          "enabled": true,
+          "quality": 1,
+          "resolution": 2048,
+          "cascades": 2,
+          "nearWidthKm": 1,
+          "farWidthKm": 8,
+          "nearTexelMetres": 0.48828125,
+          "submittedTriangles": 147300,
+          "cached": false,
+          "depthStorageMiB": 32
+        },
+        "geometry": {
+          "groups": 11,
+          "residentGroups": 25,
+          "culledGroups": 14,
+          "lightSamples": 1,
+          "triangles": 56344,
+          "localShadow": true,
+          "materials": "simple"
+        },
+        "weather": "Forest cumulus",
+        "volume": {
+          "steps": 112,
+          "width": 641,
+          "height": 359,
+          "depthAware": true,
+          "cavityHaze": 0.28,
+          "weatherLayers": 3
+        },
+        "cpuMs": 0.5,
+        "gpuMs": 6.943488,
+        "fullDrawCpuMs": 0.5,
+        "geometryWork": {
+          "allocatedBytes": 16142544,
+          "uploadedBytes": 16142544,
+          "synchronousUploads": 4,
+          "synchronousUploadMs": 0.19999998807907104
+        },
+        "indirectLight": "exact frame",
+        "indirectSampleTime": 0,
+        "heroTextures": {
+          "ready": 1,
+          "total": 10,
+          "gpuMiB": 79.96,
+          "tileKm": 2.5
+        },
+        "woundTextures": {
+          "ready": 0,
+          "total": 10,
+          "gpuMiB": 0,
+          "tileKm": 0.64,
+          "damageBandKm": 240
+        },
+        "assets": {
+          "total": 2,
+          "ready": 2,
+          "failed": [],
+          "missing": []
+        },
+        "textures": {
+          "ready": 1,
+          "total": 10,
+          "gpuMiB": 40,
+          "scalesKm": [
+            256,
+            16,
+            1
+          ]
+        }
+      }
+    },
+    {
+      "name": "wound-2",
+      "objectid": {
+        "changed": 0,
+        "max": 0
+      },
+      "material": {
+        "changed": 0,
+        "max": 0
+      },
+      "gl": 0,
+      "info": {
+        "width": 641,
+        "height": 359,
+        "internalWidth": 1282,
+        "internalHeight": 718,
+        "antialias": "supersampled + edge filter",
+        "lightPipeline": "linear-half-float",
+        "exportFrame": true,
+        "silhouetteSamples": 8,
+        "silhouetteMaskMiB": 0.8778343200683594,
+        "structureShadows": {
+          "enabled": true,
+          "quality": 1,
+          "resolution": 2048,
+          "cascades": 2,
+          "nearWidthKm": 1,
+          "farWidthKm": 8,
+          "nearTexelMetres": 0.48828125,
+          "submittedTriangles": 92048,
+          "cached": false,
+          "depthStorageMiB": 32
+        },
+        "geometry": {
+          "groups": 43,
+          "residentGroups": 87,
+          "culledGroups": 44,
+          "lightSamples": 2,
+          "triangles": 35784,
+          "localShadow": true,
+          "materials": "roughness / metalness / normal"
+        },
+        "weather": "Marine cumulus",
+        "volume": {
+          "steps": 112,
+          "width": 641,
+          "height": 359,
+          "depthAware": true,
+          "cavityHaze": 0.28,
+          "weatherLayers": 3
+        },
+        "cpuMs": 1.199999988079071,
+        "gpuMs": 3.738432,
+        "fullDrawCpuMs": 1.199999988079071,
+        "geometryWork": {
+          "allocatedBytes": 26564868,
+          "uploadedBytes": 26564868,
+          "synchronousUploads": 64,
+          "synchronousUploadMs": 0.800000011920929
+        },
+        "indirectLight": "exact frame",
+        "indirectSampleTime": 0,
+        "heroTextures": {
+          "ready": 2,
+          "total": 10,
+          "gpuMiB": 79.96,
+          "tileKm": 2.5
+        },
+        "woundTextures": {
+          "ready": 1,
+          "total": 10,
+          "gpuMiB": 79.96,
+          "tileKm": 0.64,
+          "damageBandKm": 240
+        },
+        "assets": {
+          "total": 4,
+          "ready": 4,
+          "failed": [],
+          "missing": []
+        },
+        "textures": {
+          "ready": 2,
+          "total": 10,
+          "gpuMiB": 40,
+          "scalesKm": [
+            256,
+            16,
+            1
+          ]
+        }
+      }
+    },
+    {
+      "name": "shade-7-inner",
+      "objectid": {
+        "changed": 0,
+        "max": 0
+      },
+      "material": {
+        "changed": 0,
+        "max": 0
+      },
+      "gl": 0,
+      "info": {
+        "width": 641,
+        "height": 359,
+        "internalWidth": 1282,
+        "internalHeight": 718,
+        "antialias": "supersampled + edge filter",
+        "lightPipeline": "linear-half-float",
+        "exportFrame": true,
+        "silhouetteSamples": 8,
+        "silhouetteMaskMiB": 0.8778343200683594,
+        "structureShadows": {
+          "enabled": true,
+          "quality": 1,
+          "resolution": 2048,
+          "cascades": 2,
+          "nearWidthKm": 1,
+          "farWidthKm": 8,
+          "nearTexelMetres": 0.48828125,
+          "submittedTriangles": 3264,
+          "cached": false,
+          "depthStorageMiB": 32
+        },
+        "geometry": {
+          "groups": 1,
+          "residentGroups": 94,
+          "culledGroups": 93,
+          "lightSamples": 1,
+          "triangles": 544,
+          "localShadow": true,
+          "materials": "roughness / metalness / normal"
+        },
+        "weather": "Layered distant weather",
+        "volume": {
+          "steps": 112,
+          "width": 641,
+          "height": 359,
+          "depthAware": true,
+          "cavityHaze": 0.28,
+          "weatherLayers": 3
+        },
+        "cpuMs": 0.699999988079071,
+        "gpuMs": 3.738432,
+        "fullDrawCpuMs": 0.699999988079071,
+        "geometryWork": {
+          "allocatedBytes": 28752900,
+          "uploadedBytes": 28752900,
+          "synchronousUploads": 158,
+          "synchronousUploadMs": 1.0999999642372131
+        },
+        "indirectLight": "exact frame",
+        "indirectSampleTime": 0,
+        "heroTextures": {
+          "ready": 2,
+          "total": 10,
+          "gpuMiB": 79.96,
+          "tileKm": 2.5
+        },
+        "woundTextures": {
+          "ready": 1,
+          "total": 10,
+          "gpuMiB": 79.96,
+          "tileKm": 0.64,
+          "damageBandKm": 240
+        },
+        "assets": {
+          "total": 2,
+          "ready": 2,
+          "failed": [],
+          "missing": []
+        },
+        "textures": {
+          "ready": 2,
+          "total": 10,
+          "gpuMiB": 40,
+          "scalesKm": [
+            256,
+            16,
+            1
+          ]
+        }
+      }
+    },
+    {
+      "name": "shade-7-outer",
+      "objectid": {
+        "changed": 0,
+        "max": 0
+      },
+      "material": {
+        "changed": 0,
+        "max": 0
+      },
+      "gl": 0,
+      "info": {
+        "width": 641,
+        "height": 359,
+        "internalWidth": 1282,
+        "internalHeight": 718,
+        "antialias": "supersampled + edge filter",
+        "lightPipeline": "linear-half-float",
+        "exportFrame": true,
+        "silhouetteSamples": 8,
+        "silhouetteMaskMiB": 0.8778343200683594,
+        "structureShadows": {
+          "enabled": true,
+          "quality": 1,
+          "resolution": 2048,
+          "cascades": 2,
+          "nearWidthKm": 1,
+          "farWidthKm": 8,
+          "nearTexelMetres": 0.48828125,
+          "submittedTriangles": 3264,
+          "cached": false,
+          "depthStorageMiB": 32
+        },
+        "geometry": {
+          "groups": 1,
+          "residentGroups": 94,
+          "culledGroups": 93,
+          "lightSamples": 1,
+          "triangles": 544,
+          "localShadow": true,
+          "materials": "roughness / metalness / normal"
+        },
+        "weather": "Layered distant weather",
+        "volume": {
+          "steps": 112,
+          "width": 641,
+          "height": 359,
+          "depthAware": true,
+          "cavityHaze": 0.28,
+          "weatherLayers": 3
+        },
+        "cpuMs": 0.6000000238418579,
+        "gpuMs": 3.738432,
+        "fullDrawCpuMs": 0.6000000238418579,
+        "geometryWork": {
+          "allocatedBytes": 28752900,
+          "uploadedBytes": 28752900,
+          "synchronousUploads": 158,
+          "synchronousUploadMs": 1.0999999642372131
+        },
+        "indirectLight": "exact frame",
+        "indirectSampleTime": 0,
+        "heroTextures": {
+          "ready": 2,
+          "total": 10,
+          "gpuMiB": 79.96,
+          "tileKm": 2.5
+        },
+        "woundTextures": {
+          "ready": 1,
+          "total": 10,
+          "gpuMiB": 79.96,
+          "tileKm": 0.64,
+          "damageBandKm": 240
+        },
+        "assets": {
+          "total": 2,
+          "ready": 2,
+          "failed": [],
+          "missing": []
+        },
+        "textures": {
+          "ready": 2,
+          "total": 10,
+          "gpuMiB": 40,
+          "scalesKm": [
+            256,
+            16,
+            1
+          ]
+        }
+      }
+    }
+  ],
+  "errors": []
+}

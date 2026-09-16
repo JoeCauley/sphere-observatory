@@ -1,0 +1,281 @@
+{
+  "label": "baseline-settled-4k",
+  "device": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+  "viewport": [
+    3840,
+    2160
+  ],
+  "adaptive": false,
+  "playing": false,
+  "timeRate": 1,
+  "openingMs": 727,
+  "results": [
+    {
+      "name": "biome-0",
+      "kind": "biome",
+      "id": 0,
+      "arrivalMs": 2450,
+      "elapsedMs": 4017,
+      "frames": 241,
+      "fps": 59.995021160069705,
+      "cpuMs": {
+        "median": 1.600000023841858,
+        "p95": 1.800000011920929,
+        "max": 4
+      },
+      "gpuMs": {
+        "median": 16.47296,
+        "p95": 17.72352,
+        "max": 18.765824
+      },
+      "frameMs": {
+        "median": 16.69999998807907,
+        "p95": 17,
+        "max": 19.399999976158142
+      },
+      "over50ms": 0,
+      "simulatedSeconds": 0,
+      "droppedMovementSeconds": 0,
+      "movementMetres": 11.200284164194706,
+      "walk": true,
+      "attached": null,
+      "internal": [
+        3504,
+        2094
+      ],
+      "geometry": {
+        "groups": 25,
+        "triangles": 113972,
+        "localShadow": true,
+        "materials": "simple"
+      },
+      "ground": {
+        "chunks": 25,
+        "cache": 25,
+        "bytes": 25378208,
+        "pendingBytes": 0,
+        "budget": 67108864,
+        "buildMs": 38.5,
+        "queue": 0,
+        "waits": 0
+      },
+      "edges": {
+        "worker": true,
+        "failed": false,
+        "queue": 0,
+        "budgetLimited": 0,
+        "ready": 0,
+        "cache": 0,
+        "vertexMiB": 0,
+        "collisionAndVertexMiB": 0,
+        "uploadMs": 0,
+        "maxUploadMs": 0.3999999761581421,
+        "uploadBudgetMs": 4,
+        "buildMs": 0,
+        "cancelled": 0
+      },
+      "gl": 0
+    },
+    {
+      "name": "wound-2",
+      "kind": "wound",
+      "id": 2,
+      "arrivalMs": 1733,
+      "elapsedMs": 4105.199999988079,
+      "frames": 196,
+      "fps": 47.744324271794106,
+      "cpuMs": {
+        "median": 17.100000023841858,
+        "p95": 18.400000035762787,
+        "max": 26
+      },
+      "gpuMs": {
+        "median": 20.707232,
+        "p95": 20.888736,
+        "max": 28.57392
+      },
+      "frameMs": {
+        "median": 20.899999976158142,
+        "p95": 23.30000001192093,
+        "max": 31.30000001192093
+      },
+      "over50ms": 0,
+      "simulatedSeconds": 0,
+      "droppedMovementSeconds": 0,
+      "movementMetres": 24.192510560982452,
+      "walk": true,
+      "attached": null,
+      "internal": [
+        3504,
+        2094
+      ],
+      "geometry": {
+        "groups": 365,
+        "triangles": 130525,
+        "localShadow": true,
+        "materials": "roughness / metalness / normal"
+      },
+      "ground": {
+        "chunks": 25,
+        "cache": 51,
+        "bytes": 40359660,
+        "pendingBytes": 0,
+        "budget": 67108864,
+        "buildMs": 33.5,
+        "queue": 0,
+        "waits": 0
+      },
+      "edges": {
+        "worker": true,
+        "failed": false,
+        "queue": 0,
+        "budgetLimited": 0,
+        "ready": 0,
+        "cache": 359,
+        "vertexMiB": 8.113037109375,
+        "collisionAndVertexMiB": 13.451492309570312,
+        "uploadMs": 0,
+        "maxUploadMs": 0.3999999761581421,
+        "uploadBudgetMs": 4,
+        "buildMs": 0.5,
+        "cancelled": 1
+      },
+      "gl": 0
+    },
+    {
+      "name": "shade-7-inner",
+      "kind": "shade",
+      "id": 7,
+      "side": -1,
+      "arrivalMs": 191,
+      "elapsedMs": 4105.300000011921,
+      "frames": 166,
+      "fps": 40.435534552777625,
+      "cpuMs": {
+        "median": 22.19999998807907,
+        "p95": 25,
+        "max": 30.400000035762787
+      },
+      "gpuMs": {
+        "median": 23.931392,
+        "p95": 26.787616,
+        "max": 32.372192
+      },
+      "frameMs": {
+        "median": 24.30000001192093,
+        "p95": 29.100000023841858,
+        "max": 38.59999996423721
+      },
+      "over50ms": 0,
+      "simulatedSeconds": 0,
+      "droppedMovementSeconds": 0,
+      "movementMetres": 134.1528712888471,
+      "walk": false,
+      "attached": null,
+      "internal": [
+        3504,
+        2094
+      ],
+      "geometry": {
+        "groups": 503,
+        "triangles": 90464,
+        "localShadow": true,
+        "materials": "roughness / metalness / normal"
+      },
+      "ground": {
+        "chunks": 0,
+        "cache": 51,
+        "bytes": 40359660,
+        "pendingBytes": 0,
+        "budget": 67108864,
+        "buildMs": 33.5,
+        "queue": 0,
+        "waits": 0
+      },
+      "edges": {
+        "worker": true,
+        "failed": false,
+        "queue": 0,
+        "budgetLimited": 0,
+        "ready": 0,
+        "cache": 888,
+        "vertexMiB": 20.0247802734375,
+        "collisionAndVertexMiB": 33.3021240234375,
+        "uploadMs": 0,
+        "maxUploadMs": 0.3999999761581421,
+        "uploadBudgetMs": 4,
+        "buildMs": 0.6000000238418579,
+        "cancelled": 33
+      },
+      "gl": 0
+    },
+    {
+      "name": "shade-7-outer",
+      "kind": "shade",
+      "id": 7,
+      "side": 1,
+      "arrivalMs": 18,
+      "elapsedMs": 4052.5,
+      "frames": 231,
+      "fps": 57.00185070943862,
+      "cpuMs": {
+        "median": 15.100000023841858,
+        "p95": 17.899999976158142,
+        "max": 25.099999964237213
+      },
+      "gpuMs": {
+        "median": 16.681632,
+        "p95": 19.787264,
+        "max": 26.66848
+      },
+      "frameMs": {
+        "median": 17.30000001192093,
+        "p95": 21,
+        "max": 31.399999976158142
+      },
+      "over50ms": 0,
+      "simulatedSeconds": 0,
+      "droppedMovementSeconds": 0,
+      "movementMetres": 133.46172157353269,
+      "walk": false,
+      "attached": null,
+      "internal": [
+        3504,
+        2094
+      ],
+      "geometry": {
+        "groups": 503,
+        "triangles": 90464,
+        "localShadow": true,
+        "materials": "roughness / metalness / normal"
+      },
+      "ground": {
+        "chunks": 0,
+        "cache": 51,
+        "bytes": 40359660,
+        "pendingBytes": 0,
+        "budget": 67108864,
+        "buildMs": 33.5,
+        "queue": 0,
+        "waits": 0
+      },
+      "edges": {
+        "worker": true,
+        "failed": false,
+        "queue": 0,
+        "budgetLimited": 0,
+        "ready": 0,
+        "cache": 888,
+        "vertexMiB": 20.0247802734375,
+        "collisionAndVertexMiB": 33.3021240234375,
+        "uploadMs": 0,
+        "maxUploadMs": 0.3999999761581421,
+        "uploadBudgetMs": 4,
+        "buildMs": 0.6000000238418579,
+        "cancelled": 33
+      },
+      "gl": 0
+    }
+  ],
+  "errors": []
+}

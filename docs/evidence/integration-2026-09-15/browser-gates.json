@@ -1,0 +1,12 @@
+[
+  {
+    "file": "tests/integration-browser.cjs",
+    "exitCode": 0,
+    "elapsedMs": 137571
+  },
+  {
+    "file": "tests/integration-export-browser.cjs",
+    "exitCode": 0,
+    "elapsedMs": 55233
+  }
+]
