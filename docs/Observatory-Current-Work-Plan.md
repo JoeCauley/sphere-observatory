@@ -10,6 +10,8 @@ Continue from exact `review-source-73` / `READ-FIRST-76.md` and the sealed `clos
 
 The active disjoint Main lanes are (1) genuine R/Root/Scene/Field command admission, finite operation coverage and shared-account attribution, and (2) authenticated Renderer/K steady preparation reuse. Preserve all required current-frame native, contributor, sample, AA and restoration checks. Merge only exact reviewed successors; current unsealed controls do not supersede the sealed checkpoint. Camera culling does not substitute for this condition.
 
+Joined source18 now connects demand-driven numeric preparation to Main's frozen Scene with an explicitly paid one-use guard. Three current-source Main model processes, 20 Scene guard controls and 19 Field retirement controls pass in their scopes. It still defers before native entry (2,797 available / 4,153 provisional necessary minimum). Source73 remains the historical parent. Read the [joined reuse and image follow-up](Observatory-Main-Reuse-and-Image-Check-2026-10-20.md) for exact source/seal identities, shared attribution, retained retirement and remaining gates. Further work removes repeated immutable metadata checks and exercises the full command before any product fee or acceptance selection.
+
 Exit: a justified, bounded entry and following-work path, accurate owner lifetimes/accounting, unchanged original limits, and the required source/component controls. Do not promote a diagnostic tariff or a component pass into native acceptance.
 
 ## 2. Add conservative display demand before expensive preparation
@@ -32,6 +34,8 @@ Validate against the preserved scene with and without the new display-demand pat
 Finish the whole ordinary Main/native owner chain, all required content generations, movement/replacement, publication, normal cleanup and loss/recovery. Qualify actual heap/driver peaks and the required quiet matched native performance windows; include preparation and new visibility/cache costs in the existing measurement boundary. A passing working walk or source-only culling control does not close this step.
 
 Complete the public registration/install/place/visit path, binding-aware saved return and export/import, then final conformance and delivery under the existing service ledger. Report P05 complete only when its required gates are actually satisfied; retain all earlier failures and unknowns.
+
+For the six existing content prerequisites, join Baseline/Binding/Finish through genuine private readers and actual GPU-use/fence scopes. Baseline import precedes every physical R allocation. Retaining Star (3,072) and the four-array batch (3,584) needs dedicated early Main visits before the current prefix; do not discount those public fees or treat the current no-Baseline/10 MiB fixture as a complete ordinary host. Active Shadow/Ground and full AA content remain separately required. This bridge is planned, not implemented by the numeric reuse.
 
 ## 4. Deliver creation and registration utilities, then Biome Border
 

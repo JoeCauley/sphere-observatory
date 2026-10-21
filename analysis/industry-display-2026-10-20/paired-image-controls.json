@@ -1,0 +1,2389 @@
+{
+  "date": "2026-10-21T02:53:53.490774+00:00",
+  "scope": "Diagnostic native image-repeat observations; no exact-image/native-performance/P05 acceptance",
+  "publishedImplementationCommit": "99f4ed6",
+  "publishedProductInventoryFilesStillExact": 24,
+  "protectedOriginalFilesStillExact": 60,
+  "observations": {
+    "rawPixelsPerPair": 2457000,
+    "firstEdgePairEqual": true,
+    "sameCallbackSameModeCanVary": true,
+    "sameModeNoIndustryDrawsDifferentPixels": 15,
+    "maximumChannelDelta": 1,
+    "cause": "UNKNOWN; variation occurs at shared pixel positions without changing culling, including zero Industry draws. Do not attribute every on/off difference or claim a driver cause from this control.",
+    "requiredExactImage": "OPEN",
+    "normalProductReadback": "NONE"
+  },
+  "probes": [
+    {
+      "folder": "I:/Sphere/work/industry-same-frame-probe-2026-10-21-02",
+      "manifestSHA256": "5816638f14b7da10c5b247c9d91c6b593385d806d8b7b820cb95843fb8842ffc",
+      "source": [
+        {
+          "path": "app.js",
+          "bytes": 18845,
+          "sha256": "cc7065664fb052afc7533e427262418749a2584d64ecb550e091a3f6002ea3a6",
+          "publishedExact": false
+        },
+        {
+          "path": "display-comparison.js",
+          "bytes": 4070,
+          "sha256": "0c6bf76ffdae1dc455262b758920b83b801e02eb96b2247775736055451b7b8f",
+          "publishedExact": false
+        },
+        {
+          "path": "host.js",
+          "bytes": 7168,
+          "sha256": "36f2af1222734f3e6cfca65154ab77f5e038004e4c6fd13af33220a948bc68fe",
+          "publishedExact": true
+        },
+        {
+          "path": "index.html",
+          "bytes": 2841,
+          "sha256": "7c74bbb7e5a8c6f9eafb2102347afab0c641b0973a7097c434c4696dec2a951c",
+          "publishedExact": false
+        },
+        {
+          "path": "industry-display.js",
+          "bytes": 7056,
+          "sha256": "b16ee67e1f8679f3557c84d83fee741e55590d43e4e67271e144c80cc4c5af0e",
+          "publishedExact": true
+        },
+        {
+          "path": "industry-visibility.js",
+          "bytes": 6241,
+          "sha256": "89687129014411eb65a8302a179005cda1cfe33a73b2c98fa15bc76ed3abe830",
+          "publishedExact": true
+        },
+        {
+          "path": "navigation.js",
+          "bytes": 5999,
+          "sha256": "ad290b3214410877689e4f93b5cd652f231d941d097a5c7dc4b0c3476344ef50",
+          "publishedExact": true
+        },
+        {
+          "path": "package.json",
+          "bytes": 96,
+          "sha256": "608daa60f9134eec8f90906057e5682233a3c4f3f61bcbe804908db0fd1e567c",
+          "publishedExact": true
+        },
+        {
+          "path": "reference.js",
+          "bytes": 5165,
+          "sha256": "f19a6044111009e6511293bc0255754810044fbab8b257233a02839f5caff41d",
+          "publishedExact": true
+        },
+        {
+          "path": "registry-loader.js",
+          "bytes": 3046,
+          "sha256": "d5ce6a77b56fe19ab57a96cd240122b9154caee12b2fde666ab2997af6618a37",
+          "publishedExact": true
+        },
+        {
+          "path": "registry.json",
+          "bytes": 11709,
+          "sha256": "daf62628593a2921e2fea8872bbb5b01e5bdfd2c41e6a27260a3881fa411d19a",
+          "publishedExact": false
+        },
+        {
+          "path": "renderer-batch.js",
+          "bytes": 2000,
+          "sha256": "af9a4fde8cce13246b557f0446cd89f39e7bfad6fd6af50631b981e58290e942",
+          "publishedExact": true
+        },
+        {
+          "path": "renderer-shaders.js",
+          "bytes": 3636,
+          "sha256": "4c2d9ccc662a113158fddc154afa358d5cf2b07904e88c6c634252eb5a059c27",
+          "publishedExact": true
+        },
+        {
+          "path": "renderer.js",
+          "bytes": 5403,
+          "sha256": "d3ce966e8cd568597bfb8381349dc5cec91b415c8276b2cc89edd1f7cf5b70e5",
+          "publishedExact": true
+        },
+        {
+          "path": "style.css",
+          "bytes": 3914,
+          "sha256": "1916dfd33f1bf1d0905c29e29de0dfb7feb4b1614208e71e4b4b5074df7c137d",
+          "publishedExact": true
+        }
+      ],
+      "sourceChangesFromPublished": [
+        "app.js",
+        "display-comparison.js",
+        "index.html",
+        "registry.json"
+      ],
+      "scope": "Opt-in diagnostic only; published application unchanged; original renderer/geometry/simulation dependencies exact",
+      "nativeContext": "Original antialias setting retained; original renderer disables DITHER; diagnostic did not request dither changes"
+    },
+    {
+      "folder": "I:/Sphere/work/industry-same-frame-probe-2026-10-21-03",
+      "manifestSHA256": "ef1c6e956e7749faba02eb0a61fe97af48665fcd58b47911bb4101a05dfcdd37",
+      "source": [
+        {
+          "path": "app.js",
+          "bytes": 18845,
+          "sha256": "cc7065664fb052afc7533e427262418749a2584d64ecb550e091a3f6002ea3a6"
+        },
+        {
+          "path": "display-comparison.js",
+          "bytes": 4559,
+          "sha256": "48376d41f5b1a326ed27cecee55c030c338f069b2e3fd8d7041a73e1f39c595d"
+        },
+        {
+          "path": "host.js",
+          "bytes": 7168,
+          "sha256": "36f2af1222734f3e6cfca65154ab77f5e038004e4c6fd13af33220a948bc68fe"
+        },
+        {
+          "path": "index.html",
+          "bytes": 2841,
+          "sha256": "7c74bbb7e5a8c6f9eafb2102347afab0c641b0973a7097c434c4696dec2a951c"
+        },
+        {
+          "path": "industry-display.js",
+          "bytes": 7056,
+          "sha256": "b16ee67e1f8679f3557c84d83fee741e55590d43e4e67271e144c80cc4c5af0e"
+        },
+        {
+          "path": "industry-visibility.js",
+          "bytes": 6241,
+          "sha256": "89687129014411eb65a8302a179005cda1cfe33a73b2c98fa15bc76ed3abe830"
+        },
+        {
+          "path": "navigation.js",
+          "bytes": 5999,
+          "sha256": "ad290b3214410877689e4f93b5cd652f231d941d097a5c7dc4b0c3476344ef50"
+        },
+        {
+          "path": "package.json",
+          "bytes": 96,
+          "sha256": "608daa60f9134eec8f90906057e5682233a3c4f3f61bcbe804908db0fd1e567c"
+        },
+        {
+          "path": "reference.js",
+          "bytes": 5165,
+          "sha256": "f19a6044111009e6511293bc0255754810044fbab8b257233a02839f5caff41d"
+        },
+        {
+          "path": "registry-loader.js",
+          "bytes": 3046,
+          "sha256": "d5ce6a77b56fe19ab57a96cd240122b9154caee12b2fde666ab2997af6618a37"
+        },
+        {
+          "path": "registry.json",
+          "bytes": 11709,
+          "sha256": "be5dbc665510834a5093b04f948f564920402fc70bd44bd4c0b4ed6ce108349f"
+        },
+        {
+          "path": "renderer-batch.js",
+          "bytes": 2000,
+          "sha256": "af9a4fde8cce13246b557f0446cd89f39e7bfad6fd6af50631b981e58290e942"
+        },
+        {
+          "path": "renderer-shaders.js",
+          "bytes": 3636,
+          "sha256": "4c2d9ccc662a113158fddc154afa358d5cf2b07904e88c6c634252eb5a059c27"
+        },
+        {
+          "path": "renderer.js",
+          "bytes": 5403,
+          "sha256": "d3ce966e8cd568597bfb8381349dc5cec91b415c8276b2cc89edd1f7cf5b70e5"
+        },
+        {
+          "path": "style.css",
+          "bytes": 3914,
+          "sha256": "1916dfd33f1bf1d0905c29e29de0dfb7feb4b1614208e71e4b4b5074df7c137d"
+        }
+      ],
+      "sourceChangesFromPublished": [
+        "app.js",
+        "display-comparison.js",
+        "index.html",
+        "registry.json"
+      ],
+      "scope": "Opt-in diagnostic only; published application unchanged; original renderer/geometry/simulation dependencies exact",
+      "nativeContext": "Original antialias setting retained; original renderer disables DITHER; diagnostic did not request dither changes"
+    }
+  ],
+  "cases": [
+    {
+      "file": "I:/Sphere/work/industry-same-frame-probe-2026-10-21-02/same-frame-on-off-01.json",
+      "sha256": "6cd347e301b232570cc6b4d6c057ad118cad9a5e42bdb2c198b8b033e4a2cfd9",
+      "pose": {
+        "eastM": 439.42562584220406,
+        "northM": -32.00000000000003,
+        "altitudeM": 49.7,
+        "yaw": 4.605208311019714,
+        "pitch": 0.04,
+        "mode": "walk"
+      },
+      "graphicsSample": {
+        "revision": 27,
+        "referenceRevision": "meadow-industry-shared-v1",
+        "windTime": 9.606374000000006,
+        "processTime": 9.606374000000006,
+        "routing": "distribution",
+        "transition": 1
+      },
+      "verifiedInputs": {
+        "exact": true,
+        "files": 61,
+        "bytes": 319114
+      },
+      "comparison": {
+        "status": "compared",
+        "sample": "same-frame-on-off-01-second",
+        "frame": 84,
+        "width": 1575,
+        "height": 1560,
+        "readBytes": 9828000,
+        "differentPixels": 0,
+        "maximumChannelDelta": 0,
+        "equal": true,
+        "retainedBytes": 9828000,
+        "pair": "on-off",
+        "sameAnimationCallback": true,
+        "ditherWasEnabled": false,
+        "ditherDisabledForDiagnostic": false,
+        "first": {
+          "draws": 6,
+          "culled": 1,
+          "triangles": 41548
+        },
+        "second": {
+          "draws": 7,
+          "culled": 0,
+          "triangles": 42936
+        },
+        "pending": null,
+        "disposed": false
+      },
+      "scopeCorrection": null
+    },
+    {
+      "file": "I:/Sphere/work/industry-same-frame-probe-2026-10-21-02/same-frame-control-02.json",
+      "sha256": "670653b72be0ee041519ed1a0187bd434f9c9f22d35ca54062ff12fa00420637",
+      "pose": {
+        "eastM": 439.42562584220406,
+        "northM": -32.00000000000003,
+        "altitudeM": 49.7,
+        "yaw": 4.605208311019714,
+        "pitch": 0.04,
+        "mode": "walk"
+      },
+      "graphicsSample": {
+        "revision": 27,
+        "referenceRevision": "meadow-industry-shared-v1",
+        "windTime": 9.606374000000006,
+        "processTime": 9.606374000000006,
+        "routing": "distribution",
+        "transition": 1
+      },
+      "verifiedInputs": {
+        "exact": true,
+        "files": 61,
+        "bytes": 319114
+      },
+      "comparison": {
+        "status": "compared",
+        "sample": "same-frame-control-02-second",
+        "frame": 195,
+        "width": 1575,
+        "height": 1560,
+        "readBytes": 9828000,
+        "differentPixels": 0,
+        "maximumChannelDelta": 0,
+        "equal": true,
+        "retainedBytes": 9828000,
+        "pair": "same",
+        "sameAnimationCallback": true,
+        "ditherWasEnabled": false,
+        "ditherDisabledForDiagnostic": false,
+        "first": {
+          "draws": 6,
+          "culled": 1,
+          "triangles": 41548
+        },
+        "second": {
+          "draws": 6,
+          "culled": 1,
+          "triangles": 41548
+        },
+        "pending": null,
+        "disposed": false
+      },
+      "scopeCorrection": null
+    },
+    {
+      "file": "I:/Sphere/work/industry-same-frame-probe-2026-10-21-02/same-frame-on-off-repeat-03.json",
+      "sha256": "bf3b7a7c1bed6babdcedf5f8d2dca638ea93c75439f64f0d40334fa6d6bc7bd5",
+      "pose": {
+        "eastM": 439.42562584220406,
+        "northM": -32.00000000000003,
+        "altitudeM": 49.7,
+        "yaw": 4.605208311019714,
+        "pitch": 0.04,
+        "mode": "walk"
+      },
+      "graphicsSample": {
+        "revision": 27,
+        "referenceRevision": "meadow-industry-shared-v1",
+        "windTime": 9.606374000000006,
+        "processTime": 9.606374000000006,
+        "routing": "distribution",
+        "transition": 1
+      },
+      "verifiedInputs": {
+        "exact": true,
+        "files": 61,
+        "bytes": 319114
+      },
+      "comparison": {
+        "status": "compared",
+        "sample": "same-frame-on-off-repeat-03-second",
+        "frame": 196,
+        "width": 1575,
+        "height": 1560,
+        "readBytes": 9828000,
+        "differentPixels": 9,
+        "maximumChannelDelta": 1,
+        "equal": false,
+        "retainedBytes": 9828000,
+        "pair": "on-off",
+        "sameAnimationCallback": true,
+        "ditherWasEnabled": false,
+        "ditherDisabledForDiagnostic": false,
+        "first": {
+          "draws": 6,
+          "culled": 1,
+          "triangles": 41548
+        },
+        "second": {
+          "draws": 7,
+          "culled": 0,
+          "triangles": 42936
+        },
+        "pending": null,
+        "disposed": false
+      },
+      "scopeCorrection": null
+    },
+    {
+      "file": "I:/Sphere/work/industry-same-frame-probe-2026-10-21-03/edge-with-coordinates-01.json",
+      "sha256": "02650423ec2ee7d054bf47e65a95a79c40e338f1165837a96d1205be2c9ab3e8",
+      "pose": {
+        "eastM": 439.42562584220406,
+        "northM": -32.00000000000003,
+        "altitudeM": 49.7,
+        "yaw": 4.604030213774617,
+        "pitch": 0.04,
+        "mode": "walk"
+      },
+      "graphicsSample": {
+        "revision": 45,
+        "referenceRevision": "meadow-industry-shared-v1",
+        "windTime": 21.378700000000087,
+        "processTime": 21.378700000000087,
+        "routing": "distribution",
+        "transition": 1
+      },
+      "verifiedInputs": {
+        "exact": true,
+        "files": 61,
+        "bytes": 319603
+      },
+      "comparison": {
+        "status": "compared",
+        "sample": "edge-with-coordinates-01-second",
+        "frame": 51,
+        "width": 1575,
+        "height": 1560,
+        "readBytes": 9828000,
+        "differentPixels": 1,
+        "maximumChannelDelta": 1,
+        "differenceBounds": [
+          1279,
+          730,
+          1279,
+          730
+        ],
+        "differenceSamples": [
+          {
+            "x": 1279,
+            "yFromBottom": 730,
+            "first": [
+              143,
+              158,
+              139,
+              255
+            ],
+            "second": [
+              144,
+              158,
+              139,
+              255
+            ]
+          }
+        ],
+        "equal": false,
+        "retainedBytes": 9828000,
+        "pair": "on-off",
+        "sameAnimationCallback": true,
+        "ditherWasEnabled": false,
+        "ditherDisabledForDiagnostic": false,
+        "first": {
+          "draws": 6,
+          "culled": 1,
+          "triangles": 41548
+        },
+        "second": {
+          "draws": 7,
+          "culled": 0,
+          "triangles": 42936
+        },
+        "pending": null,
+        "disposed": false
+      },
+      "scopeCorrection": null
+    },
+    {
+      "file": "I:/Sphere/work/industry-same-frame-probe-2026-10-21-03/repeat-same-02.json",
+      "sha256": "74632475a3ec79f52a6342e8a72b071eb7c92fa831454a551734135b7b265150",
+      "pose": {
+        "eastM": 439.42562584220406,
+        "northM": -32.00000000000003,
+        "altitudeM": 49.7,
+        "yaw": 4.604030213774617,
+        "pitch": 0.04,
+        "mode": "walk"
+      },
+      "graphicsSample": {
+        "revision": 45,
+        "referenceRevision": "meadow-industry-shared-v1",
+        "windTime": 21.378700000000087,
+        "processTime": 21.378700000000087,
+        "routing": "distribution",
+        "transition": 1
+      },
+      "verifiedInputs": {
+        "exact": true,
+        "files": 61,
+        "bytes": 319603
+      },
+      "comparison": {
+        "status": "compared",
+        "sample": "repeat-same-02-second",
+        "frame": 172,
+        "width": 1575,
+        "height": 1560,
+        "readBytes": 9828000,
+        "differentPixels": 13,
+        "maximumChannelDelta": 1,
+        "differenceBounds": [
+          1201,
+          725,
+          1279,
+          731
+        ],
+        "differenceSamples": [
+          {
+            "x": 1201,
+            "yFromBottom": 725,
+            "first": [
+              120,
+              135,
+              109,
+              255
+            ],
+            "second": [
+              120,
+              134,
+              109,
+              255
+            ]
+          },
+          {
+            "x": 1202,
+            "yFromBottom": 725,
+            "first": [
+              120,
+              135,
+              109,
+              255
+            ],
+            "second": [
+              120,
+              134,
+              109,
+              255
+            ]
+          },
+          {
+            "x": 1203,
+            "yFromBottom": 725,
+            "first": [
+              120,
+              135,
+              109,
+              255
+            ],
+            "second": [
+              120,
+              134,
+              109,
+              255
+            ]
+          },
+          {
+            "x": 1208,
+            "yFromBottom": 725,
+            "first": [
+              120,
+              135,
+              109,
+              255
+            ],
+            "second": [
+              120,
+              134,
+              109,
+              255
+            ]
+          },
+          {
+            "x": 1209,
+            "yFromBottom": 725,
+            "first": [
+              120,
+              135,
+              109,
+              255
+            ],
+            "second": [
+              120,
+              134,
+              109,
+              255
+            ]
+          },
+          {
+            "x": 1269,
+            "yFromBottom": 728,
+            "first": [
+              132,
+              147,
+              125,
+              255
+            ],
+            "second": [
+              133,
+              147,
+              125,
+              255
+            ]
+          },
+          {
+            "x": 1270,
+            "yFromBottom": 728,
+            "first": [
+              109,
+              124,
+              107,
+              255
+            ],
+            "second": [
+              110,
+              124,
+              107,
+              255
+            ]
+          },
+          {
+            "x": 1265,
+            "yFromBottom": 729,
+            "first": [
+              96,
+              114,
+              105,
+              255
+            ],
+            "second": [
+              97,
+              114,
+              105,
+              255
+            ]
+          },
+          {
+            "x": 1269,
+            "yFromBottom": 729,
+            "first": [
+              137,
+              152,
+              131,
+              255
+            ],
+            "second": [
+              138,
+              152,
+              131,
+              255
+            ]
+          },
+          {
+            "x": 1279,
+            "yFromBottom": 730,
+            "first": [
+              143,
+              158,
+              139,
+              255
+            ],
+            "second": [
+              144,
+              158,
+              139,
+              255
+            ]
+          },
+          {
+            "x": 1237,
+            "yFromBottom": 731,
+            "first": [
+              151,
+              165,
+              147,
+              255
+            ],
+            "second": [
+              151,
+              166,
+              148,
+              255
+            ]
+          },
+          {
+            "x": 1238,
+            "yFromBottom": 731,
+            "first": [
+              151,
+              165,
+              147,
+              255
+            ],
+            "second": [
+              151,
+              166,
+              148,
+              255
+            ]
+          },
+          {
+            "x": 1239,
+            "yFromBottom": 731,
+            "first": [
+              151,
+              166,
+              147,
+              255
+            ],
+            "second": [
+              151,
+              166,
+              148,
+              255
+            ]
+          }
+        ],
+        "equal": false,
+        "retainedBytes": 9828000,
+        "pair": "same",
+        "sameAnimationCallback": true,
+        "ditherWasEnabled": false,
+        "ditherDisabledForDiagnostic": false,
+        "first": {
+          "draws": 6,
+          "culled": 1,
+          "triangles": 41548
+        },
+        "second": {
+          "draws": 6,
+          "culled": 1,
+          "triangles": 41548
+        },
+        "pending": null,
+        "disposed": false
+      },
+      "scopeCorrection": null
+    },
+    {
+      "file": "I:/Sphere/work/industry-same-frame-probe-2026-10-21-03/repeat-same-03.json",
+      "sha256": "ac94d623d71b9a44a15dc4c721d46b0914c221b1c257c1dae1c18160a6449ffc",
+      "pose": {
+        "eastM": 439.42562584220406,
+        "northM": -32.00000000000003,
+        "altitudeM": 49.7,
+        "yaw": 4.604030213774617,
+        "pitch": 0.04,
+        "mode": "walk"
+      },
+      "graphicsSample": {
+        "revision": 45,
+        "referenceRevision": "meadow-industry-shared-v1",
+        "windTime": 21.378700000000087,
+        "processTime": 21.378700000000087,
+        "routing": "distribution",
+        "transition": 1
+      },
+      "verifiedInputs": {
+        "exact": true,
+        "files": 61,
+        "bytes": 319603
+      },
+      "comparison": {
+        "status": "compared",
+        "sample": "repeat-same-03-second",
+        "frame": 173,
+        "width": 1575,
+        "height": 1560,
+        "readBytes": 9828000,
+        "differentPixels": 0,
+        "maximumChannelDelta": 0,
+        "differenceBounds": null,
+        "differenceSamples": [],
+        "equal": true,
+        "retainedBytes": 9828000,
+        "pair": "same",
+        "sameAnimationCallback": true,
+        "ditherWasEnabled": false,
+        "ditherDisabledForDiagnostic": false,
+        "first": {
+          "draws": 6,
+          "culled": 1,
+          "triangles": 41548
+        },
+        "second": {
+          "draws": 6,
+          "culled": 1,
+          "triangles": 41548
+        },
+        "pending": null,
+        "disposed": false
+      },
+      "scopeCorrection": null
+    },
+    {
+      "file": "I:/Sphere/work/industry-same-frame-probe-2026-10-21-03/repeat-same-04.json",
+      "sha256": "d052d03585dfc206bbe04ca3e98138af27bf5f52638659064b44f82ca4b21542",
+      "pose": {
+        "eastM": 439.42562584220406,
+        "northM": -32.00000000000003,
+        "altitudeM": 49.7,
+        "yaw": 4.604030213774617,
+        "pitch": 0.04,
+        "mode": "walk"
+      },
+      "graphicsSample": {
+        "revision": 45,
+        "referenceRevision": "meadow-industry-shared-v1",
+        "windTime": 21.378700000000087,
+        "processTime": 21.378700000000087,
+        "routing": "distribution",
+        "transition": 1
+      },
+      "verifiedInputs": {
+        "exact": true,
+        "files": 61,
+        "bytes": 319603
+      },
+      "comparison": {
+        "status": "compared",
+        "sample": "repeat-same-04-second",
+        "frame": 174,
+        "width": 1575,
+        "height": 1560,
+        "readBytes": 9828000,
+        "differentPixels": 17,
+        "maximumChannelDelta": 1,
+        "differenceBounds": [
+          1201,
+          725,
+          1270,
+          731
+        ],
+        "differenceSamples": [
+          {
+            "x": 1201,
+            "yFromBottom": 725,
+            "first": [
+              120,
+              134,
+              109,
+              255
+            ],
+            "second": [
+              120,
+              135,
+              109,
+              255
+            ]
+          },
+          {
+            "x": 1202,
+            "yFromBottom": 725,
+            "first": [
+              120,
+              134,
+              109,
+              255
+            ],
+            "second": [
+              120,
+              135,
+              109,
+              255
+            ]
+          },
+          {
+            "x": 1203,
+            "yFromBottom": 725,
+            "first": [
+              120,
+              134,
+              109,
+              255
+            ],
+            "second": [
+              120,
+              135,
+              109,
+              255
+            ]
+          },
+          {
+            "x": 1208,
+            "yFromBottom": 725,
+            "first": [
+              120,
+              134,
+              109,
+              255
+            ],
+            "second": [
+              120,
+              135,
+              109,
+              255
+            ]
+          },
+          {
+            "x": 1209,
+            "yFromBottom": 725,
+            "first": [
+              120,
+              134,
+              109,
+              255
+            ],
+            "second": [
+              120,
+              135,
+              109,
+              255
+            ]
+          },
+          {
+            "x": 1242,
+            "yFromBottom": 728,
+            "first": [
+              132,
+              147,
+              125,
+              255
+            ],
+            "second": [
+              132,
+              146,
+              125,
+              255
+            ]
+          },
+          {
+            "x": 1243,
+            "yFromBottom": 728,
+            "first": [
+              132,
+              147,
+              125,
+              255
+            ],
+            "second": [
+              132,
+              146,
+              125,
+              255
+            ]
+          },
+          {
+            "x": 1244,
+            "yFromBottom": 728,
+            "first": [
+              132,
+              147,
+              125,
+              255
+            ],
+            "second": [
+              132,
+              146,
+              125,
+              255
+            ]
+          },
+          {
+            "x": 1269,
+            "yFromBottom": 728,
+            "first": [
+              133,
+              147,
+              125,
+              255
+            ],
+            "second": [
+              132,
+              147,
+              125,
+              255
+            ]
+          },
+          {
+            "x": 1270,
+            "yFromBottom": 728,
+            "first": [
+              110,
+              124,
+              107,
+              255
+            ],
+            "second": [
+              109,
+              124,
+              107,
+              255
+            ]
+          },
+          {
+            "x": 1265,
+            "yFromBottom": 729,
+            "first": [
+              97,
+              114,
+              105,
+              255
+            ],
+            "second": [
+              96,
+              114,
+              105,
+              255
+            ]
+          },
+          {
+            "x": 1269,
+            "yFromBottom": 729,
+            "first": [
+              138,
+              152,
+              131,
+              255
+            ],
+            "second": [
+              137,
+              152,
+              131,
+              255
+            ]
+          },
+          {
+            "x": 1241,
+            "yFromBottom": 730,
+            "first": [
+              143,
+              158,
+              139,
+              255
+            ],
+            "second": [
+              143,
+              158,
+              138,
+              255
+            ]
+          },
+          {
+            "x": 1242,
+            "yFromBottom": 730,
+            "first": [
+              143,
+              158,
+              139,
+              255
+            ],
+            "second": [
+              143,
+              158,
+              138,
+              255
+            ]
+          },
+          {
+            "x": 1237,
+            "yFromBottom": 731,
+            "first": [
+              151,
+              166,
+              148,
+              255
+            ],
+            "second": [
+              151,
+              165,
+              147,
+              255
+            ]
+          },
+          {
+            "x": 1238,
+            "yFromBottom": 731,
+            "first": [
+              151,
+              166,
+              148,
+              255
+            ],
+            "second": [
+              151,
+              165,
+              147,
+              255
+            ]
+          },
+          {
+            "x": 1239,
+            "yFromBottom": 731,
+            "first": [
+              151,
+              166,
+              148,
+              255
+            ],
+            "second": [
+              151,
+              166,
+              147,
+              255
+            ]
+          }
+        ],
+        "equal": false,
+        "retainedBytes": 9828000,
+        "pair": "same",
+        "sameAnimationCallback": true,
+        "ditherWasEnabled": false,
+        "ditherDisabledForDiagnostic": false,
+        "first": {
+          "draws": 6,
+          "culled": 1,
+          "triangles": 41548
+        },
+        "second": {
+          "draws": 6,
+          "culled": 1,
+          "triangles": 41548
+        },
+        "pending": null,
+        "disposed": false
+      },
+      "scopeCorrection": null
+    },
+    {
+      "file": "I:/Sphere/work/industry-same-frame-probe-2026-10-21-03/fully-hidden-on-off-05.json",
+      "sha256": "18c4daa7d7e34aced74c79b214fc3d61266ff6c7f0fb6aebbb804f33633a0fe5",
+      "pose": {
+        "eastM": 439.42562584220406,
+        "northM": -32.00000000000003,
+        "altitudeM": 49.7,
+        "yaw": 7.1577523420614115,
+        "pitch": 0.04,
+        "mode": "walk"
+      },
+      "graphicsSample": {
+        "revision": 45,
+        "referenceRevision": "meadow-industry-shared-v1",
+        "windTime": 21.378700000000087,
+        "processTime": 21.378700000000087,
+        "routing": "distribution",
+        "transition": 1
+      },
+      "verifiedInputs": {
+        "exact": true,
+        "files": 61,
+        "bytes": 319603
+      },
+      "comparison": {
+        "status": "compared",
+        "sample": "fully-hidden-on-off-05-second",
+        "frame": 276,
+        "width": 1575,
+        "height": 1560,
+        "readBytes": 9828000,
+        "differentPixels": 89,
+        "maximumChannelDelta": 1,
+        "differenceBounds": [
+          29,
+          689,
+          1554,
+          731
+        ],
+        "differenceSamples": [
+          {
+            "x": 643,
+            "yFromBottom": 689,
+            "first": [
+              137,
+              141,
+              134,
+              255
+            ],
+            "second": [
+              137,
+              142,
+              134,
+              255
+            ]
+          },
+          {
+            "x": 718,
+            "yFromBottom": 714,
+            "first": [
+              100,
+              114,
+              86,
+              255
+            ],
+            "second": [
+              101,
+              115,
+              87,
+              255
+            ]
+          },
+          {
+            "x": 719,
+            "yFromBottom": 714,
+            "first": [
+              100,
+              114,
+              86,
+              255
+            ],
+            "second": [
+              101,
+              115,
+              87,
+              255
+            ]
+          },
+          {
+            "x": 717,
+            "yFromBottom": 715,
+            "first": [
+              101,
+              114,
+              88,
+              255
+            ],
+            "second": [
+              101,
+              115,
+              88,
+              255
+            ]
+          },
+          {
+            "x": 718,
+            "yFromBottom": 715,
+            "first": [
+              101,
+              114,
+              88,
+              255
+            ],
+            "second": [
+              101,
+              115,
+              88,
+              255
+            ]
+          },
+          {
+            "x": 719,
+            "yFromBottom": 715,
+            "first": [
+              101,
+              114,
+              88,
+              255
+            ],
+            "second": [
+              101,
+              115,
+              88,
+              255
+            ]
+          },
+          {
+            "x": 1499,
+            "yFromBottom": 716,
+            "first": [
+              101,
+              114,
+              90,
+              255
+            ],
+            "second": [
+              101,
+              114,
+              89,
+              255
+            ]
+          },
+          {
+            "x": 1500,
+            "yFromBottom": 716,
+            "first": [
+              101,
+              114,
+              90,
+              255
+            ],
+            "second": [
+              101,
+              114,
+              89,
+              255
+            ]
+          },
+          {
+            "x": 1501,
+            "yFromBottom": 716,
+            "first": [
+              101,
+              114,
+              90,
+              255
+            ],
+            "second": [
+              101,
+              114,
+              89,
+              255
+            ]
+          },
+          {
+            "x": 1503,
+            "yFromBottom": 716,
+            "first": [
+              101,
+              114,
+              90,
+              255
+            ],
+            "second": [
+              101,
+              114,
+              89,
+              255
+            ]
+          },
+          {
+            "x": 1503,
+            "yFromBottom": 717,
+            "first": [
+              103,
+              117,
+              92,
+              255
+            ],
+            "second": [
+              103,
+              116,
+              92,
+              255
+            ]
+          },
+          {
+            "x": 1552,
+            "yFromBottom": 720,
+            "first": [
+              107,
+              120,
+              96,
+              255
+            ],
+            "second": [
+              106,
+              119,
+              96,
+              255
+            ]
+          },
+          {
+            "x": 1553,
+            "yFromBottom": 720,
+            "first": [
+              107,
+              120,
+              96,
+              255
+            ],
+            "second": [
+              106,
+              119,
+              96,
+              255
+            ]
+          },
+          {
+            "x": 1554,
+            "yFromBottom": 720,
+            "first": [
+              107,
+              120,
+              96,
+              255
+            ],
+            "second": [
+              106,
+              119,
+              96,
+              255
+            ]
+          },
+          {
+            "x": 67,
+            "yFromBottom": 721,
+            "first": [
+              109,
+              122,
+              101,
+              255
+            ],
+            "second": [
+              110,
+              123,
+              101,
+              255
+            ]
+          },
+          {
+            "x": 68,
+            "yFromBottom": 721,
+            "first": [
+              109,
+              122,
+              101,
+              255
+            ],
+            "second": [
+              110,
+              123,
+              101,
+              255
+            ]
+          },
+          {
+            "x": 69,
+            "yFromBottom": 721,
+            "first": [
+              109,
+              122,
+              101,
+              255
+            ],
+            "second": [
+              110,
+              123,
+              101,
+              255
+            ]
+          },
+          {
+            "x": 70,
+            "yFromBottom": 721,
+            "first": [
+              109,
+              122,
+              101,
+              255
+            ],
+            "second": [
+              110,
+              123,
+              101,
+              255
+            ]
+          },
+          {
+            "x": 71,
+            "yFromBottom": 721,
+            "first": [
+              109,
+              122,
+              101,
+              255
+            ],
+            "second": [
+              110,
+              123,
+              101,
+              255
+            ]
+          },
+          {
+            "x": 72,
+            "yFromBottom": 721,
+            "first": [
+              110,
+              122,
+              101,
+              255
+            ],
+            "second": [
+              110,
+              123,
+              101,
+              255
+            ]
+          },
+          {
+            "x": 75,
+            "yFromBottom": 721,
+            "first": [
+              110,
+              123,
+              101,
+              255
+            ],
+            "second": [
+              110,
+              123,
+              102,
+              255
+            ]
+          },
+          {
+            "x": 76,
+            "yFromBottom": 721,
+            "first": [
+              110,
+              123,
+              101,
+              255
+            ],
+            "second": [
+              110,
+              123,
+              102,
+              255
+            ]
+          },
+          {
+            "x": 77,
+            "yFromBottom": 721,
+            "first": [
+              109,
+              122,
+              101,
+              255
+            ],
+            "second": [
+              110,
+              123,
+              101,
+              255
+            ]
+          },
+          {
+            "x": 78,
+            "yFromBottom": 721,
+            "first": [
+              109,
+              122,
+              101,
+              255
+            ],
+            "second": [
+              110,
+              123,
+              101,
+              255
+            ]
+          },
+          {
+            "x": 79,
+            "yFromBottom": 721,
+            "first": [
+              109,
+              122,
+              101,
+              255
+            ],
+            "second": [
+              110,
+              123,
+              101,
+              255
+            ]
+          },
+          {
+            "x": 1408,
+            "yFromBottom": 722,
+            "first": [
+              108,
+              121,
+              98,
+              255
+            ],
+            "second": [
+              107,
+              120,
+              98,
+              255
+            ]
+          },
+          {
+            "x": 1409,
+            "yFromBottom": 722,
+            "first": [
+              108,
+              121,
+              98,
+              255
+            ],
+            "second": [
+              107,
+              120,
+              98,
+              255
+            ]
+          },
+          {
+            "x": 1410,
+            "yFromBottom": 722,
+            "first": [
+              108,
+              121,
+              98,
+              255
+            ],
+            "second": [
+              107,
+              120,
+              98,
+              255
+            ]
+          },
+          {
+            "x": 1411,
+            "yFromBottom": 722,
+            "first": [
+              108,
+              121,
+              98,
+              255
+            ],
+            "second": [
+              107,
+              120,
+              98,
+              255
+            ]
+          },
+          {
+            "x": 1412,
+            "yFromBottom": 722,
+            "first": [
+              108,
+              121,
+              98,
+              255
+            ],
+            "second": [
+              107,
+              120,
+              98,
+              255
+            ]
+          },
+          {
+            "x": 1413,
+            "yFromBottom": 722,
+            "first": [
+              108,
+              121,
+              98,
+              255
+            ],
+            "second": [
+              107,
+              120,
+              98,
+              255
+            ]
+          },
+          {
+            "x": 1414,
+            "yFromBottom": 722,
+            "first": [
+              108,
+              121,
+              98,
+              255
+            ],
+            "second": [
+              107,
+              120,
+              98,
+              255
+            ]
+          }
+        ],
+        "equal": false,
+        "retainedBytes": 9828000,
+        "pair": "on-off",
+        "sameAnimationCallback": true,
+        "ditherWasEnabled": false,
+        "ditherDisabledForDiagnostic": false,
+        "first": {
+          "draws": 3,
+          "culled": 4,
+          "triangles": 18298
+        },
+        "second": {
+          "draws": 7,
+          "culled": 0,
+          "triangles": 42936
+        },
+        "pending": null,
+        "disposed": false
+      },
+      "scopeCorrection": "PARTIALLY_CULLED; three Industry draws, despite intended fully-hidden label"
+    },
+    {
+      "file": "I:/Sphere/work/industry-same-frame-probe-2026-10-21-03/outside-hidden-on-off-06.json",
+      "sha256": "0b0ad576c3037291aa62995aa233badb0b307cdb7d249b15f95129186f61c3d1",
+      "pose": {
+        "eastM": 553.2140745743143,
+        "northM": -127.11154519604231,
+        "altitudeM": 20.66741568773138,
+        "yaw": 7.1577523420614115,
+        "pitch": 0.04,
+        "mode": "walk"
+      },
+      "graphicsSample": {
+        "revision": 45,
+        "referenceRevision": "meadow-industry-shared-v1",
+        "windTime": 21.378700000000087,
+        "processTime": 21.378700000000087,
+        "routing": "distribution",
+        "transition": 1
+      },
+      "verifiedInputs": {
+        "exact": true,
+        "files": 61,
+        "bytes": 319603
+      },
+      "comparison": {
+        "status": "compared",
+        "sample": "outside-hidden-on-off-06-second",
+        "frame": 412,
+        "width": 1575,
+        "height": 1560,
+        "readBytes": 9828000,
+        "differentPixels": 21,
+        "maximumChannelDelta": 1,
+        "differenceBounds": [
+          362,
+          716,
+          1130,
+          735
+        ],
+        "differenceSamples": [
+          {
+            "x": 852,
+            "yFromBottom": 716,
+            "first": [
+              70,
+              85,
+              43,
+              255
+            ],
+            "second": [
+              71,
+              85,
+              43,
+              255
+            ]
+          },
+          {
+            "x": 536,
+            "yFromBottom": 719,
+            "first": [
+              83,
+              98,
+              57,
+              255
+            ],
+            "second": [
+              84,
+              98,
+              57,
+              255
+            ]
+          },
+          {
+            "x": 540,
+            "yFromBottom": 719,
+            "first": [
+              82,
+              96,
+              59,
+              255
+            ],
+            "second": [
+              82,
+              97,
+              59,
+              255
+            ]
+          },
+          {
+            "x": 541,
+            "yFromBottom": 719,
+            "first": [
+              82,
+              96,
+              59,
+              255
+            ],
+            "second": [
+              82,
+              97,
+              59,
+              255
+            ]
+          },
+          {
+            "x": 546,
+            "yFromBottom": 719,
+            "first": [
+              82,
+              96,
+              59,
+              255
+            ],
+            "second": [
+              82,
+              96,
+              58,
+              255
+            ]
+          },
+          {
+            "x": 547,
+            "yFromBottom": 719,
+            "first": [
+              82,
+              96,
+              59,
+              255
+            ],
+            "second": [
+              82,
+              96,
+              58,
+              255
+            ]
+          },
+          {
+            "x": 548,
+            "yFromBottom": 719,
+            "first": [
+              82,
+              96,
+              59,
+              255
+            ],
+            "second": [
+              82,
+              96,
+              58,
+              255
+            ]
+          },
+          {
+            "x": 549,
+            "yFromBottom": 719,
+            "first": [
+              85,
+              99,
+              57,
+              255
+            ],
+            "second": [
+              84,
+              99,
+              57,
+              255
+            ]
+          },
+          {
+            "x": 550,
+            "yFromBottom": 719,
+            "first": [
+              86,
+              100,
+              53,
+              255
+            ],
+            "second": [
+              85,
+              100,
+              53,
+              255
+            ]
+          },
+          {
+            "x": 362,
+            "yFromBottom": 720,
+            "first": [
+              85,
+              100,
+              65,
+              255
+            ],
+            "second": [
+              86,
+              100,
+              65,
+              255
+            ]
+          },
+          {
+            "x": 363,
+            "yFromBottom": 720,
+            "first": [
+              86,
+              100,
+              65,
+              255
+            ],
+            "second": [
+              86,
+              100,
+              66,
+              255
+            ]
+          },
+          {
+            "x": 630,
+            "yFromBottom": 727,
+            "first": [
+              85,
+              99,
+              65,
+              255
+            ],
+            "second": [
+              85,
+              100,
+              65,
+              255
+            ]
+          },
+          {
+            "x": 632,
+            "yFromBottom": 727,
+            "first": [
+              85,
+              100,
+              65,
+              255
+            ],
+            "second": [
+              86,
+              100,
+              65,
+              255
+            ]
+          },
+          {
+            "x": 677,
+            "yFromBottom": 729,
+            "first": [
+              86,
+              101,
+              65,
+              255
+            ],
+            "second": [
+              86,
+              100,
+              65,
+              255
+            ]
+          },
+          {
+            "x": 677,
+            "yFromBottom": 730,
+            "first": [
+              86,
+              100,
+              66,
+              255
+            ],
+            "second": [
+              86,
+              100,
+              65,
+              255
+            ]
+          },
+          {
+            "x": 678,
+            "yFromBottom": 730,
+            "first": [
+              86,
+              100,
+              66,
+              255
+            ],
+            "second": [
+              86,
+              100,
+              65,
+              255
+            ]
+          },
+          {
+            "x": 674,
+            "yFromBottom": 731,
+            "first": [
+              86,
+              100,
+              66,
+              255
+            ],
+            "second": [
+              86,
+              100,
+              65,
+              255
+            ]
+          },
+          {
+            "x": 675,
+            "yFromBottom": 731,
+            "first": [
+              86,
+              100,
+              66,
+              255
+            ],
+            "second": [
+              86,
+              100,
+              65,
+              255
+            ]
+          },
+          {
+            "x": 1128,
+            "yFromBottom": 735,
+            "first": [
+              86,
+              100,
+              66,
+              255
+            ],
+            "second": [
+              85,
+              99,
+              66,
+              255
+            ]
+          },
+          {
+            "x": 1129,
+            "yFromBottom": 735,
+            "first": [
+              86,
+              100,
+              66,
+              255
+            ],
+            "second": [
+              85,
+              99,
+              66,
+              255
+            ]
+          },
+          {
+            "x": 1130,
+            "yFromBottom": 735,
+            "first": [
+              86,
+              100,
+              66,
+              255
+            ],
+            "second": [
+              85,
+              99,
+              66,
+              255
+            ]
+          }
+        ],
+        "equal": false,
+        "retainedBytes": 9828000,
+        "pair": "on-off",
+        "sameAnimationCallback": true,
+        "ditherWasEnabled": false,
+        "ditherDisabledForDiagnostic": false,
+        "first": {
+          "draws": 0,
+          "culled": 6,
+          "triangles": 0
+        },
+        "second": {
+          "draws": 7,
+          "culled": 0,
+          "triangles": 19316
+        },
+        "pending": null,
+        "disposed": false
+      },
+      "scopeCorrection": null
+    },
+    {
+      "file": "I:/Sphere/work/industry-same-frame-probe-2026-10-21-03/outside-hidden-control-07.json",
+      "sha256": "b8b69af8f0faaa8023dc419a388d20f8cd56295b087c9c8d3f38f30638eb1bb8",
+      "pose": {
+        "eastM": 553.2140745743143,
+        "northM": -127.11154519604231,
+        "altitudeM": 20.66741568773138,
+        "yaw": 7.1577523420614115,
+        "pitch": 0.04,
+        "mode": "walk"
+      },
+      "graphicsSample": {
+        "revision": 45,
+        "referenceRevision": "meadow-industry-shared-v1",
+        "windTime": 21.378700000000087,
+        "processTime": 21.378700000000087,
+        "routing": "distribution",
+        "transition": 1
+      },
+      "verifiedInputs": {
+        "exact": true,
+        "files": 61,
+        "bytes": 319603
+      },
+      "comparison": {
+        "status": "compared",
+        "sample": "outside-hidden-control-07-second",
+        "frame": 413,
+        "width": 1575,
+        "height": 1560,
+        "readBytes": 9828000,
+        "differentPixels": 15,
+        "maximumChannelDelta": 1,
+        "differenceBounds": [
+          270,
+          716,
+          1130,
+          735
+        ],
+        "differenceSamples": [
+          {
+            "x": 852,
+            "yFromBottom": 716,
+            "first": [
+              71,
+              85,
+              43,
+              255
+            ],
+            "second": [
+              70,
+              85,
+              43,
+              255
+            ]
+          },
+          {
+            "x": 536,
+            "yFromBottom": 719,
+            "first": [
+              83,
+              98,
+              57,
+              255
+            ],
+            "second": [
+              84,
+              98,
+              57,
+              255
+            ]
+          },
+          {
+            "x": 544,
+            "yFromBottom": 720,
+            "first": [
+              82,
+              97,
+              59,
+              255
+            ],
+            "second": [
+              83,
+              98,
+              59,
+              255
+            ]
+          },
+          {
+            "x": 545,
+            "yFromBottom": 720,
+            "first": [
+              82,
+              97,
+              59,
+              255
+            ],
+            "second": [
+              83,
+              98,
+              59,
+              255
+            ]
+          },
+          {
+            "x": 546,
+            "yFromBottom": 720,
+            "first": [
+              83,
+              97,
+              59,
+              255
+            ],
+            "second": [
+              83,
+              98,
+              59,
+              255
+            ]
+          },
+          {
+            "x": 547,
+            "yFromBottom": 720,
+            "first": [
+              83,
+              97,
+              59,
+              255
+            ],
+            "second": [
+              83,
+              98,
+              59,
+              255
+            ]
+          },
+          {
+            "x": 630,
+            "yFromBottom": 727,
+            "first": [
+              85,
+              100,
+              65,
+              255
+            ],
+            "second": [
+              85,
+              99,
+              65,
+              255
+            ]
+          },
+          {
+            "x": 632,
+            "yFromBottom": 727,
+            "first": [
+              86,
+              100,
+              65,
+              255
+            ],
+            "second": [
+              85,
+              100,
+              65,
+              255
+            ]
+          },
+          {
+            "x": 270,
+            "yFromBottom": 731,
+            "first": [
+              87,
+              101,
+              70,
+              255
+            ],
+            "second": [
+              87,
+              101,
+              69,
+              255
+            ]
+          },
+          {
+            "x": 271,
+            "yFromBottom": 731,
+            "first": [
+              87,
+              101,
+              70,
+              255
+            ],
+            "second": [
+              87,
+              101,
+              69,
+              255
+            ]
+          },
+          {
+            "x": 1126,
+            "yFromBottom": 735,
+            "first": [
+              85,
+              99,
+              66,
+              255
+            ],
+            "second": [
+              86,
+              100,
+              66,
+              255
+            ]
+          },
+          {
+            "x": 1127,
+            "yFromBottom": 735,
+            "first": [
+              85,
+              99,
+              66,
+              255
+            ],
+            "second": [
+              86,
+              100,
+              66,
+              255
+            ]
+          },
+          {
+            "x": 1128,
+            "yFromBottom": 735,
+            "first": [
+              85,
+              99,
+              66,
+              255
+            ],
+            "second": [
+              86,
+              100,
+              66,
+              255
+            ]
+          },
+          {
+            "x": 1129,
+            "yFromBottom": 735,
+            "first": [
+              85,
+              99,
+              66,
+              255
+            ],
+            "second": [
+              86,
+              100,
+              66,
+              255
+            ]
+          },
+          {
+            "x": 1130,
+            "yFromBottom": 735,
+            "first": [
+              85,
+              99,
+              66,
+              255
+            ],
+            "second": [
+              86,
+              100,
+              66,
+              255
+            ]
+          }
+        ],
+        "equal": false,
+        "retainedBytes": 9828000,
+        "pair": "same",
+        "sameAnimationCallback": true,
+        "ditherWasEnabled": false,
+        "ditherDisabledForDiagnostic": false,
+        "first": {
+          "draws": 0,
+          "culled": 6,
+          "triangles": 0
+        },
+        "second": {
+          "draws": 0,
+          "culled": 6,
+          "triangles": 0
+        },
+        "pending": null,
+        "disposed": false
+      },
+      "scopeCorrection": null
+    }
+  ],
+  "cleanup": "Both task-created diagnostic servers and the one temporary browser tab were closed; existing servers and ordinary walking tab retained."
+}
