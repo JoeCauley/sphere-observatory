@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "runtimeApi": "sphere-shared-world-v1",
+  "id": "infinite-industry",
+  "name": "Infinite Industry",
+  "version": "1.2.0",
+  "contentVersion": "1.0.0",
+  "world": {
+    "id": "meadow-industry",
+    "version": "1.1.0",
+    "entry": "../../shared-world/1.1.0/index.html?pack=infinite-industry"
+  },
+  "content": {
+    "manifest": "../1.0.0/manifest.json",
+    "preserved": true
+  },
+  "coordinateContract": "shell-tangent-metres-v1",
+  "placement": {
+    "eastM": 384,
+    "northM": 0,
+    "facilityAcrossFlatsM": 150,
+    "datumM": 48,
+    "flatRadiusM": 120,
+    "apronWidthM": 128
+  },
+  "capabilities": [
+    "walk",
+    "free-flight",
+    "shared-world",
+    "continuous-pack-crossing",
+    "local-save"
+  ],
+  "status": "Shared world adapter with conservative Industry display demand; native qualification recorded separately",
+  "formalPhaseOneStatus": "P05 remains open; this adapter is not a Frame/fragment or service qualification."
+}

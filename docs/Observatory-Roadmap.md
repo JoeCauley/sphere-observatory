@@ -1,3 +1,6 @@
+<!-- industry-display-preparation-2026-10-20 -->
+> **Industry display preparation — 20 October 2026:** The [successor implementation](Observatory-Industry-Display-Preparation-2026-10-20.md) uses verified bounds before detail uploads, origin copies, draws and moving-geometry preparation. A public walk crossed both ways, hidden graphics stopped while the clock advanced, and exact saved return/tracked cleanup passed. Original content remains exact. Required image/performance qualification and formal P05 remain OPEN; see the [current work plan](Observatory-Current-Work-Plan.md). Earlier reports and results remain exact below.
+
 <!-- culling-preparation-review-2026-10-20 -->
 > **Current work plan — 20 October 2026:** The [camera culling review](Observatory-Culling-Preparation-Review-2026-10-20.md) records existing visibility checks and where preparation can wait. The [forward work plan](Observatory-Current-Work-Plan.md) adds verified Industry bounds, visibility before copies/uploads, and guarded job priorities alongside the remaining Main/P05 work. These are planned changes; P05 remains OPEN.
 

@@ -8,6 +8,7 @@
     "start": "node serve.cjs",
     "test:pack": "node tests/biome-pack.mjs",
     "test:industry": "node tests/industry.mjs",
+    "test:industry:display": "node tests/industry-display.mjs && node tests/industry-display-preparation.mjs && node tests/industry-display-comparison.mjs",
     "test:industry:browser": "node tests/industry-browser.cjs",
     "test:biome-service": "node tests/biome-service.cjs",
     "start:managed": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/start-observatory.ps1",

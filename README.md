@@ -1,3 +1,6 @@
+<!-- industry-display-preparation-2026-10-20 -->
+> **Industry display preparation — 20 October 2026:** The [successor implementation](docs/Observatory-Industry-Display-Preparation-2026-10-20.md) uses verified bounds before detail uploads, origin copies, draws and moving-geometry preparation. A public walk crossed both ways, hidden graphics stopped while the clock advanced, and exact saved return/tracked cleanup passed. Original content remains exact. Required image/performance qualification and formal P05 remain OPEN; see the [current work plan](docs/Observatory-Current-Work-Plan.md). Earlier reports and results remain exact below.
+
 <!-- repository-safety-checkpoint-2026-10-20 -->
 > **Project safety checkpoint — 20 October 2026:** Meadow–Industry walking is delivered; formal P05 remains OPEN. The latest Main candidate completes input compilation but defers before drawing on its unqualified work contract. Read [current status and completion path](docs/Observatory-Project-Checkpoint-2026-10-20.md). Source/progress backups preserve the unfinished candidates separately from the working application; raw archives remain local by owner selection.
 

@@ -1,0 +1,72 @@
+{
+  "date": "2026-10-21T02:01:48.978Z",
+  "protectedFilesExact": 60,
+  "expectedRootChanges": [
+    "pack-library.js",
+    "package.json"
+  ],
+  "registryFilesExact": 61,
+  "registrySHA256": "e61e75e92ebfbb4d381d8376227c493fa0a40827a7687d9181b5e4a7a0701b04",
+  "sourceSHA256": [
+    {
+      "path": "packs/shared-world/1.1.0/app.js",
+      "sha256": "e699730e2022d55c6723e6e5cd11fc5ae54cb31a53c5d64c95e075e34a42780f"
+    },
+    {
+      "path": "packs/shared-world/1.1.0/display-comparison.js",
+      "sha256": "351d83cc947a4763b5141e39b32c93aac67083c171d2843fbca8c26c89dac035"
+    },
+    {
+      "path": "packs/shared-world/1.1.0/host.js",
+      "sha256": "36f2af1222734f3e6cfca65154ab77f5e038004e4c6fd13af33220a948bc68fe"
+    },
+    {
+      "path": "packs/shared-world/1.1.0/index.html",
+      "sha256": "20df86eee67ae945767126ff73eafa297b7100a196eced1d1475b79dc4ab8890"
+    },
+    {
+      "path": "packs/shared-world/1.1.0/industry-display.js",
+      "sha256": "b16ee67e1f8679f3557c84d83fee741e55590d43e4e67271e144c80cc4c5af0e"
+    },
+    {
+      "path": "packs/shared-world/1.1.0/industry-visibility.js",
+      "sha256": "89687129014411eb65a8302a179005cda1cfe33a73b2c98fa15bc76ed3abe830"
+    },
+    {
+      "path": "packs/shared-world/1.1.0/navigation.js",
+      "sha256": "ad290b3214410877689e4f93b5cd652f231d941d097a5c7dc4b0c3476344ef50"
+    },
+    {
+      "path": "packs/shared-world/1.1.0/package.json",
+      "sha256": "608daa60f9134eec8f90906057e5682233a3c4f3f61bcbe804908db0fd1e567c"
+    },
+    {
+      "path": "packs/shared-world/1.1.0/reference.js",
+      "sha256": "f19a6044111009e6511293bc0255754810044fbab8b257233a02839f5caff41d"
+    },
+    {
+      "path": "packs/shared-world/1.1.0/registry-loader.js",
+      "sha256": "d5ce6a77b56fe19ab57a96cd240122b9154caee12b2fde666ab2997af6618a37"
+    },
+    {
+      "path": "packs/shared-world/1.1.0/registry.json",
+      "sha256": "e61e75e92ebfbb4d381d8376227c493fa0a40827a7687d9181b5e4a7a0701b04"
+    },
+    {
+      "path": "packs/shared-world/1.1.0/renderer-batch.js",
+      "sha256": "af9a4fde8cce13246b557f0446cd89f39e7bfad6fd6af50631b981e58290e942"
+    },
+    {
+      "path": "packs/shared-world/1.1.0/renderer-shaders.js",
+      "sha256": "4c2d9ccc662a113158fddc154afa358d5cf2b07904e88c6c634252eb5a059c27"
+    },
+    {
+      "path": "packs/shared-world/1.1.0/renderer.js",
+      "sha256": "d3ce966e8cd568597bfb8381349dc5cec91b415c8276b2cc89edd1f7cf5b70e5"
+    },
+    {
+      "path": "packs/shared-world/1.1.0/style.css",
+      "sha256": "1916dfd33f1bf1d0905c29e29de0dfb7feb4b1614208e71e4b4b5074df7c137d"
+    }
+  ]
+}

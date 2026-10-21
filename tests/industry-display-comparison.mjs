@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';
+import {DisplayComparison} from '../packs/shared-world/1.1.0/display-comparison.js';
+const image=new Uint8Array(32);image.fill(64);
+const gl={FRAMEBUFFER_BINDING:1,NO_ERROR:0,RGBA:2,UNSIGNED_BYTE:3,isContextLost:()=>false,getParameter:()=>null,getError:()=>0,readPixels:(x,y,w,h,format,type,out)=>out.set(image)};
+const owner=new DisplayComparison(gl,{width:4,height:2});
+owner.capture('fixed scene',0);assert.equal(owner.inspect().status,'idle');
+owner.request(new URLSearchParams('capture=baseline&sample=first'));owner.capture('fixed scene',1);assert.equal(owner.inspect().retainedBytes,32);
+owner.request(new URLSearchParams('capture=compare&sample=equal'));owner.capture('fixed scene',2);assert.equal(owner.inspect().equal,true);assert.equal(owner.inspect().differentPixels,0);
+image[5]=65;owner.request(new URLSearchParams('capture=compare&sample=one-channel'));owner.capture('fixed scene',3);assert.equal(owner.inspect().equal,false);assert.equal(owner.inspect().differentPixels,1);assert.equal(owner.inspect().maximumChannelDelta,1);
+owner.request(new URLSearchParams('capture=compare&sample=changed-camera'));owner.capture('another scene',4);assert.equal(owner.inspect().status,'refused');
+owner.dispose();owner.dispose();assert.equal(owner.inspect().retainedBytes,0);assert.equal(owner.baseline,null);assert.equal(owner.gl,null);assert.equal(owner.canvas,null);
+console.log(JSON.stringify({pass:true,groups:4,scope:'Opt-in raw comparison controls, exact pixel changes, mismatched view refusal and retirement; native GL validation is separate.'}));

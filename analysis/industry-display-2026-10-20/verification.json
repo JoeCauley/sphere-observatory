@@ -1,0 +1,189 @@
+{
+  "date": "2026-10-21T02:13:28.897179+00:00",
+  "scope": "Functional public shared-world successor and conservative Industry display preparation. Formal P05, exact-image, quiet-performance, whole-heap/driver and loss/recovery qualification remain open.",
+  "protectedOriginalFilesExact": 60,
+  "registryFilesExact": 61,
+  "registryPinnedBytes": 317326,
+  "registrySHA256": "e61e75e92ebfbb4d381d8376227c493fa0a40827a7687d9181b5e4a7a0701b04",
+  "sourceInventorySHA256": "b1d5561aacaebe790206cd79370c78ccb174fdcfef4897901d057bab91a984bc",
+  "sourceControls": {
+    "date": "2026-10-21T01:53:45.944Z",
+    "pass": true,
+    "groups": [
+      {
+        "name": "Complete actual static buffers enclosed; analytic all-phase motion envelope checked against supported extremes and large addresses",
+        "staticCases": 1080,
+        "motionCases": 2208,
+        "vertices": 12744288
+      },
+      {
+        "name": "Unknown/invalid bounds fail open"
+      },
+      {
+        "name": "Rejected actual geometry has no surviving triangle under independent float32 clipping; exact camera keys reuse and invalidate",
+        "rejectedChecks": 621
+      },
+      {
+        "name": "Hidden graphics prepare zero uploads/motion; return refreshes current simulation once; origin/replacement and repeated retirement stay bounded",
+        "peakFakeGpuBytes": 5803920
+      },
+      {
+        "name": "Original and successor read one another's exact saved-pose format"
+      }
+    ],
+    "scope": "Source bounds, independent clipping oracle and instrumented GL ownership controls; native image/walking/performance qualification is separate."
+  },
+  "additionalObservedControls": {
+    "preparationGroups": 3,
+    "comparisonGroups": 4,
+    "pass": true,
+    "provenance": "Retained console outcomes from the named current-source test scripts; the final source inventory pins those scripts."
+  },
+  "regressions": {
+    "standardProcesses": 61,
+    "industryChecks": 19,
+    "meadowChecks": 16,
+    "pass": true
+  },
+  "nativePublic": {
+    "route": "Explore > Biome Packs > Infinite Industry > Arrival court on foot > Visit",
+    "walkedMetersAtSecondCrossing": 380.9544000000088,
+    "crossings": [
+      {
+        "from": "industry",
+        "to": "meadow",
+        "crossingCount": 1,
+        "frame": 184,
+        "timeMs": 90275.70000000298,
+        "mode": "walk",
+        "pose": {
+          "eastM": 598.7879833399267,
+          "northM": -124.0079000000004,
+          "altitudeM": 13.747213124550084,
+          "yaw": 4.1887902047863905,
+          "pitch": 0.04,
+          "mode": "walk"
+        }
+      },
+      {
+        "from": "meadow",
+        "to": "industry",
+        "crossingCount": 2,
+        "frame": 267,
+        "timeMs": 131694,
+        "mode": "walk",
+        "pose": {
+          "eastM": 487.6944807311994,
+          "northM": -59.868036363635895,
+          "altitudeM": 49.7,
+          "yaw": 4.1887902047863905,
+          "pitch": 0.04,
+          "mode": "walk"
+        }
+      }
+    ],
+    "trackedPeakGpuBufferBytes": 11421612,
+    "unchangedBufferCapBytes": 25165824,
+    "hiddenClockFrom": 443.37799999999186,
+    "hiddenClockTo": 756.8182999999203,
+    "hiddenMotionBuildCount": 793,
+    "hiddenUploadsAndDraws": 0,
+    "savedPoseExact": true,
+    "retiredSceneTrackedResources": {
+      "buffers": 0,
+      "arrays": 0,
+      "programs": 0,
+      "shaders": 0,
+      "textures": 0,
+      "queries": 0
+    },
+    "retiredListeners": 0,
+    "retiredPendingFrames": 0,
+    "normalDiagnosticComparison": null
+  },
+  "limitations": {
+    "exactImage": "NOT_PASSED; retained raw on/off and same-mode repeat both show one-level channel changes. No exact-image gate waived.",
+    "quietNativePerformance": "UNQUALIFIED",
+    "completeHeapAndDriverPeaks": "UNQUALIFIED",
+    "nativeLossRecovery": "NOT_RUN",
+    "phaseOne": "NOT_ACCEPTED / NOT_RELEASED",
+    "P05": "OPEN"
+  },
+  "localRawArchive": "I:/Sphere/work/industry-camera-preparation-2026-10-21T01-00-00",
+  "preview": "I:/Sphere/work/industry-camera-preparation-2026-10-21T01-00-00/industry-display-preview-13.jpg",
+  "retainedRecords": [
+    {
+      "path": "analysis/industry-display-2026-10-20/source-verification-01.json",
+      "bytes": 2578,
+      "sha256": "ea2739893cc1ec36fc278054eaa69269910a788ceef34cc9551f0d1893609830",
+      "localOriginal": "I:/Sphere/work/industry-camera-preparation-2026-10-21T01-00-00/source-verification-01.json"
+    },
+    {
+      "path": "analysis/industry-display-2026-10-20/industry-display-tests-04.json",
+      "bytes": 1022,
+      "sha256": "63e277051616377965b1b7b094c2301d94592605034120d14d2870e082914405",
+      "localOriginal": "I:/Sphere/work/industry-camera-preparation-2026-10-21T01-00-00/industry-display-tests-04.json"
+    },
+    {
+      "path": "analysis/industry-display-2026-10-20/standard-regressions-01.json",
+      "bytes": 5728,
+      "sha256": "84c751515ab437c70a0b7f6c6450ea36e9667714bc820299202509103c18cf60",
+      "localOriginal": "I:/Sphere/work/industry-camera-preparation-2026-10-21T01-00-00/standard-regressions-01.json"
+    },
+    {
+      "path": "analysis/industry-display-2026-10-20/industry-tests.json",
+      "bytes": 4328,
+      "sha256": "c31b46110b2d862451634b0d05f5a2d0e10664a8f0d2db0aca110946322c143f",
+      "localOriginal": "I:/Sphere/work/industry-camera-preparation-2026-10-21T01-00-00/industry-contracts/industry-tests.json"
+    },
+    {
+      "path": "analysis/industry-display-2026-10-20/pack-tests.json",
+      "bytes": 1987,
+      "sha256": "c4729356e2e9f50f1eedfc7dec83601589381de175bfd66c001599fe564d4ea9",
+      "localOriginal": "I:/Sphere/work/industry-camera-preparation-2026-10-21T01-00-00/meadow-pack-contracts/pack-tests.json"
+    },
+    {
+      "path": "analysis/industry-display-2026-10-20/public-walk-return-08.json",
+      "bytes": 9006,
+      "sha256": "a9de80596262ca5a68244d2ae1e4fe75e3cda539811c62e48bafede391403153",
+      "localOriginal": "I:/Sphere/work/industry-camera-preparation-2026-10-21T01-00-00/public-walk-return-08.json"
+    },
+    {
+      "path": "analysis/industry-display-2026-10-20/public-hidden-current-09.json",
+      "bytes": 8944,
+      "sha256": "26a6424caf398ddd2db8b61e3431257494e76aca0e18679491ac3b8ef505eba2",
+      "localOriginal": "I:/Sphere/work/industry-camera-preparation-2026-10-21T01-00-00/public-hidden-current-09.json"
+    },
+    {
+      "path": "analysis/industry-display-2026-10-20/public-hidden-followup-10.json",
+      "bytes": 8927,
+      "sha256": "8514031935b9d4d9ac9946012a5e57f0cc9a39ee176e2445ba73c224307f54e7",
+      "localOriginal": "I:/Sphere/work/industry-camera-preparation-2026-10-21T01-00-00/public-hidden-followup-10.json"
+    },
+    {
+      "path": "analysis/industry-display-2026-10-20/public-visible-return-11.json",
+      "bytes": 9192,
+      "sha256": "868fb0bc491e31a2a945e32881d0bf4b3d5618445abf1531ebe6dd5e52c98183",
+      "localOriginal": "I:/Sphere/work/industry-camera-preparation-2026-10-21T01-00-00/public-visible-return-11.json"
+    },
+    {
+      "path": "analysis/industry-display-2026-10-20/public-saved-reopen-12.json",
+      "bytes": 7858,
+      "sha256": "3289422edc26a4371806725632e0dbb44ea619e6f19bde7c2677057c9d90534a",
+      "localOriginal": "I:/Sphere/work/industry-camera-preparation-2026-10-21T01-00-00/public-saved-reopen-12.json"
+    },
+    {
+      "path": "analysis/industry-display-2026-10-20/raw-edge-comparison-01.json",
+      "bytes": 8074,
+      "sha256": "1297111080889cf019e8c113524d4f68b231f07fceb5582a9adcc7ed44c40a4e",
+      "localOriginal": "I:/Sphere/work/industry-camera-preparation-2026-10-21T01-00-00/raw-edge-comparison-01.json"
+    },
+    {
+      "path": "analysis/industry-display-2026-10-20/raw-same-mode-on-06.json",
+      "bytes": 8053,
+      "sha256": "e98c87c86e0637ec18cdd759e21c394670f2d7e89ab0d7e7df0e15a398b54f05",
+      "localOriginal": "I:/Sphere/work/industry-camera-preparation-2026-10-21T01-00-00/raw-same-mode-on-06.json"
+    }
+  ],
+  "preservation": "Original raw archives, failed attempts, source versions, sealed evidence and existing servers were retained."
+}

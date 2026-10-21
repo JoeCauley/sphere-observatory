@@ -1,0 +1,311 @@
+{
+  "date": "2026-10-21T01:40:04.174Z",
+  "results": [
+    {
+      "file": "tests/geometry.cjs",
+      "exitCode": 0,
+      "ms": 52
+    },
+    {
+      "file": "tests/survey.cjs",
+      "exitCode": 0,
+      "ms": 553
+    },
+    {
+      "file": "tests/collection.cjs",
+      "exitCode": 0,
+      "ms": 72
+    },
+    {
+      "file": "tests/shades.cjs",
+      "exitCode": 0,
+      "ms": 38
+    },
+    {
+      "file": "tests/station-convergence.cjs",
+      "exitCode": 0,
+      "ms": 513
+    },
+    {
+      "file": "tests/performance.cjs",
+      "exitCode": 0,
+      "ms": 199
+    },
+    {
+      "file": "tests/evolution.cjs",
+      "exitCode": 0,
+      "ms": 1107
+    },
+    {
+      "file": "tests/focus.cjs",
+      "exitCode": 0,
+      "ms": 208
+    },
+    {
+      "file": "tests/continuity.cjs",
+      "exitCode": 0,
+      "ms": 645
+    },
+    {
+      "file": "tests/materials.cjs",
+      "exitCode": 0,
+      "ms": 46
+    },
+    {
+      "file": "tests/shade-mips.cjs",
+      "exitCode": 0,
+      "ms": 35
+    },
+    {
+      "file": "tests/session-state.cjs",
+      "exitCode": 0,
+      "ms": 38
+    },
+    {
+      "file": "tests/wound-materials.cjs",
+      "exitCode": 0,
+      "ms": 104
+    },
+    {
+      "file": "tests/wound-ground.cjs",
+      "exitCode": 0,
+      "ms": 23506
+    },
+    {
+      "file": "tests/wound-chunks.cjs",
+      "exitCode": 0,
+      "ms": 10624
+    },
+    {
+      "file": "tests/surface-arrival.cjs",
+      "exitCode": 0,
+      "ms": 584
+    },
+    {
+      "file": "tests/streaming.cjs",
+      "exitCode": 0,
+      "ms": 597
+    },
+    {
+      "file": "tests/atlas-study.cjs",
+      "exitCode": 0,
+      "ms": 165
+    },
+    {
+      "file": "tests/watershed.cjs",
+      "exitCode": 0,
+      "ms": 11252
+    },
+    {
+      "file": "tests/legacy-role-adapter.cjs",
+      "exitCode": 0,
+      "ms": 1295
+    },
+    {
+      "file": "tests/neighbourhood.cjs",
+      "exitCode": 0,
+      "ms": 4053
+    },
+    {
+      "file": "tests/watershed-trio.cjs",
+      "exitCode": 0,
+      "ms": 8472
+    },
+    {
+      "file": "tests/travel.cjs",
+      "exitCode": 0,
+      "ms": 21682
+    },
+    {
+      "file": "tests/places-flight.cjs",
+      "exitCode": 0,
+      "ms": 21685
+    },
+    {
+      "file": "tests/edge-speed.cjs",
+      "exitCode": 0,
+      "ms": 375
+    },
+    {
+      "file": "tests/pointer-navigation.cjs",
+      "exitCode": 0,
+      "ms": 182
+    },
+    {
+      "file": "tests/asset-loading.cjs",
+      "exitCode": 0,
+      "ms": 65
+    },
+    {
+      "file": "tests/surface-transition.cjs",
+      "exitCode": 0,
+      "ms": 3928
+    },
+    {
+      "file": "tests/shade-edges.cjs",
+      "exitCode": 0,
+      "ms": 3425
+    },
+    {
+      "file": "tests/shade-footprint.cjs",
+      "exitCode": 0,
+      "ms": 483
+    },
+    {
+      "file": "tests/shade-body.cjs",
+      "exitCode": 0,
+      "ms": 948
+    },
+    {
+      "file": "tests/shade-seams.cjs",
+      "exitCode": 0,
+      "ms": 244
+    },
+    {
+      "file": "tests/ground-chunks.cjs",
+      "exitCode": 0,
+      "ms": 15669
+    },
+    {
+      "file": "tests/ground-addresses.cjs",
+      "exitCode": 0,
+      "ms": 2539
+    },
+    {
+      "file": "tests/ground-identity.cjs",
+      "exitCode": 0,
+      "ms": 4432
+    },
+    {
+      "file": "tests/world-address.cjs",
+      "exitCode": 0,
+      "ms": 38
+    },
+    {
+      "file": "tests/world-geography.cjs",
+      "exitCode": 0,
+      "ms": 43
+    },
+    {
+      "file": "tests/world-topology.cjs",
+      "exitCode": 0,
+      "ms": 148
+    },
+    {
+      "file": "tests/instanced-environment.cjs",
+      "exitCode": 0,
+      "ms": 35
+    },
+    {
+      "file": "tests/grass-stream.cjs",
+      "exitCode": 0,
+      "ms": 671
+    },
+    {
+      "file": "tests/meadow-field.cjs",
+      "exitCode": 0,
+      "ms": 1069
+    },
+    {
+      "file": "tests/meadow-profile.cjs",
+      "exitCode": 0,
+      "ms": 2513
+    },
+    {
+      "file": "tests/meadow-revisions.cjs",
+      "exitCode": 0,
+      "ms": 54
+    },
+    {
+      "file": "tests/vegetation-service.cjs",
+      "exitCode": 0,
+      "ms": 437
+    },
+    {
+      "file": "tests/meadow-provider.cjs",
+      "exitCode": 0,
+      "ms": 3800
+    },
+    {
+      "file": "tests/meadow-blocks.cjs",
+      "exitCode": 0,
+      "ms": 16261
+    },
+    {
+      "file": "tests/vegetation-gpu.cjs",
+      "exitCode": 0,
+      "ms": 464
+    },
+    {
+      "file": "tests/vegetation-lifecycle.cjs",
+      "exitCode": 0,
+      "ms": 689
+    },
+    {
+      "file": "tests/vegetation-selection.cjs",
+      "exitCode": 0,
+      "ms": 185
+    },
+    {
+      "file": "tests/vegetation-selection-fragmentation.cjs",
+      "exitCode": 0,
+      "ms": 844
+    },
+    {
+      "file": "tests/vegetation-preparation.cjs",
+      "exitCode": 0,
+      "ms": 1115
+    },
+    {
+      "file": "tests/vegetation-integrated.cjs",
+      "exitCode": 0,
+      "ms": 1831
+    },
+    {
+      "file": "tests/vegetation-optimisation.cjs",
+      "exitCode": 0,
+      "ms": 547
+    },
+    {
+      "file": "tests/vegetation-memory.cjs",
+      "exitCode": 0,
+      "ms": 223
+    },
+    {
+      "file": "tests/meadow-wind.cjs",
+      "exitCode": 0,
+      "ms": 1025
+    },
+    {
+      "file": "tests/meadow-performance.cjs",
+      "exitCode": 0,
+      "ms": 41
+    },
+    {
+      "file": "tests/travel-transaction.cjs",
+      "exitCode": 0,
+      "ms": 3693
+    },
+    {
+      "file": "tests/shader-assembly.cjs",
+      "exitCode": 0,
+      "ms": 46
+    },
+    {
+      "file": "tests/render-performance.cjs",
+      "exitCode": 0,
+      "ms": 161
+    },
+    {
+      "file": "tests/session-travel-authority.cjs",
+      "exitCode": 0,
+      "ms": 47
+    },
+    {
+      "file": "tests/renderer-disposal-authority.cjs",
+      "exitCode": 0,
+      "ms": 178
+    }
+  ],
+  "pass": true
+}

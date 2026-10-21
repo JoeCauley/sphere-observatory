@@ -1,0 +1,121 @@
+{
+  "date": "2026-10-21T01:50:00.787Z",
+  "pass": true,
+  "checks": 19,
+  "results": [
+    {
+      "name": "Industry assets and every reused Meadow/runtime dependency are pinned and exact"
+    },
+    {
+      "name": "100 stable seeds exercise all six rotations, both materials and both structural variants"
+    },
+    {
+      "name": "All six authoritative boundaries agree byte for byte from both sides at four hex widths"
+    },
+    {
+      "name": "Both operating water/pedestrian interfaces align to the one seam authority through every rotation"
+    },
+    {
+      "name": "Every near/middle/far zone is finite, deterministic and within its preparation credit",
+      "geometryEvidence": [
+        {
+          "zone": "yard",
+          "nearBytes": 957960,
+          "middleBytes": 33048,
+          "farBytes": 33048,
+          "sha256": "817e603d96ef9c7ee0775cb267cf864a2f3708d63b84c24a52c9913fc008d7b2"
+        },
+        {
+          "zone": "hall",
+          "nearBytes": 2020032,
+          "middleBytes": 423792,
+          "farBytes": 325296,
+          "sha256": "3f39871e39b79c897c64ae587ee29c80b4e60939ff6f3f8992d240d44f2836e1"
+        },
+        {
+          "zone": "intake",
+          "nearBytes": 442800,
+          "middleBytes": 149904,
+          "farBytes": 87696,
+          "sha256": "bd23d23807d117611d2b2b10529c65041099c3f202ca7d040042bf35e1265ab7"
+        },
+        {
+          "zone": "gallery",
+          "nearBytes": 423144,
+          "middleBytes": 132840,
+          "farBytes": 34344,
+          "sha256": "748842423d59ac0840d467d90cdf145259b7fe8cfbb03fa7df9839606f9f536f"
+        },
+        {
+          "zone": "storage",
+          "nearBytes": 1092528,
+          "middleBytes": 67824,
+          "farBytes": 39312,
+          "sha256": "1b692e168d404643c7ced74e1a8ee00e15bb6c98adab8a64fc63ff8d300df484"
+        },
+        {
+          "zone": "connections",
+          "nearBytes": 930528,
+          "middleBytes": 266112,
+          "farBytes": 206496,
+          "sha256": "6874c8a10b28cd4d49b8eaa1e5902af4d202d673cbb659658074512ce052764c"
+        }
+      ]
+    },
+    {
+      "name": "Traversal and worker preparation order do not affect geometry"
+    },
+    {
+      "name": "Large axial addresses keep mesh coordinates local; double precision geographic anchors precede GPU rebasing"
+    },
+    {
+      "name": "Cancelled, stale and over-budget worker packets never become resident; eviction and disposal terminate ownership"
+    },
+    {
+      "name": "Only the nearby walking visitor can divert flow; the machine, return and basin geometry change causally"
+    },
+    {
+      "name": "Gallery and ramp decks are solid from below; ground support never teleports a visitor onto a high deck"
+    },
+    {
+      "name": "Complete supported hall/ramp/gallery/two-sided boundary walking route at rotation 0",
+      "steps": 8293,
+      "peakPlatformM": 9.000000000000004
+    },
+    {
+      "name": "Complete supported hall/ramp/gallery/two-sided boundary walking route at rotation 1",
+      "steps": 8293,
+      "peakPlatformM": 9.000000000000004
+    },
+    {
+      "name": "Complete supported hall/ramp/gallery/two-sided boundary walking route at rotation 2",
+      "steps": 8293,
+      "peakPlatformM": 9.000000000000004
+    },
+    {
+      "name": "Complete supported hall/ramp/gallery/two-sided boundary walking route at rotation 3",
+      "steps": 8293,
+      "peakPlatformM": 9.000000000000004
+    },
+    {
+      "name": "Complete supported hall/ramp/gallery/two-sided boundary walking route at rotation 4",
+      "steps": 8293,
+      "peakPlatformM": 9.000000000000004
+    },
+    {
+      "name": "Complete supported hall/ramp/gallery/two-sided boundary walking route at rotation 5",
+      "steps": 8293,
+      "peakPlatformM": 9.000000000000004
+    },
+    {
+      "name": "Distinct current/bookmark states round trip; unsafe or wrong-revision saves fail without migrating either existing scene"
+    },
+    {
+      "name": "Shared navigation preserves the accepted Meadow walking integrator and flight-speed curve"
+    },
+    {
+      "name": "Floating origin changes leave geographic eye and facility identity intact"
+    }
+  ],
+  "scope": "II-001 deterministic generation, connection geometry, support, collision, shared movement, save and dependency contracts; native browser evidence is separate."
+}

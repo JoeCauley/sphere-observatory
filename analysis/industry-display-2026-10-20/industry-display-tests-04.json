@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-21T01:53:45.944Z",
+  "pass": true,
+  "groups": [
+    {
+      "name": "Complete actual static buffers enclosed; analytic all-phase motion envelope checked against supported extremes and large addresses",
+      "staticCases": 1080,
+      "motionCases": 2208,
+      "vertices": 12744288
+    },
+    {
+      "name": "Unknown/invalid bounds fail open"
+    },
+    {
+      "name": "Rejected actual geometry has no surviving triangle under independent float32 clipping; exact camera keys reuse and invalidate",
+      "rejectedChecks": 621
+    },
+    {
+      "name": "Hidden graphics prepare zero uploads/motion; return refreshes current simulation once; origin/replacement and repeated retirement stay bounded",
+      "peakFakeGpuBytes": 5803920
+    },
+    {
+      "name": "Original and successor read one another's exact saved-pose format"
+    }
+  ],
+  "scope": "Source bounds, independent clipping oracle and instrumented GL ownership controls; native image/walking/performance qualification is separate."
+}

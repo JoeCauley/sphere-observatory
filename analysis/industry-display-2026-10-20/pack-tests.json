@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-21T01:51:09.186Z",
+  "pass": true,
+  "checks": 16,
+  "results": [
+    {
+      "name": "All assets verified; all fourteen accepted graphics files are byte exact",
+      "assets": 20,
+      "exactFiles": 14
+    },
+    {
+      "name": "The fully tested Study 13 control and terrain-bound model is byte exact",
+      "controlFiles": 2
+    },
+    {
+      "name": "Malformed versions, paths, identities and moving world anchors are rejected"
+    },
+    {
+      "name": "Current view and distinct saved place round trip without touching legacy storage"
+    },
+    {
+      "name": "Unsupported revisions and unsafe bookmarks fail atomically; auto flight is never stored"
+    },
+    {
+      "name": "Study saves migrate only through an explicit import"
+    },
+    {
+      "name": "Noncanonical and out-of-range geographic addresses are rejected"
+    },
+    {
+      "name": "A single bounded stage follows the eye continuously over ten thousand frames"
+    },
+    {
+      "name": "A different content family uses the shared contract and isolated storage"
+    },
+    {
+      "name": "A hundred allocation/release cycles leave zero owned GPU resources; limits fail before allocation"
+    },
+    {
+      "name": "Thirty mount/unmount cycles release listeners, clocks and resources; duplicate residents are blocked"
+    },
+    {
+      "name": "Missing assets stop before scene creation and preserve clean ownership"
+    },
+    {
+      "name": "A hundred completed recordings release their streams and replaced preview URLs during the scene"
+    },
+    {
+      "name": "Modified required assets fail integrity verification"
+    },
+    {
+      "name": "Pack visits require a saved Observatory handoff before navigation"
+    },
+    {
+      "name": "Explicit Observatory pack arrival leaves the legacy Watershed registry and proof route intact"
+    }
+  ],
+  "scope": "Pack contract, integrity, numeric stage and simulated lifecycle checks; native browser observations are separate."
+}

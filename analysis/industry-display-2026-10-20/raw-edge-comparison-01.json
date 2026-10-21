@@ -1,0 +1,335 @@
+{
+  "status": "ready",
+  "worldId": "meadow-industry",
+  "worldVersion": "1.1.0",
+  "packIds": [
+    "infinite-meadow",
+    "infinite-industry"
+  ],
+  "contextCount": 1,
+  "canvasCount": 1,
+  "pose": {
+    "eastM": 492.03090300410133,
+    "northM": -48.83553930469088,
+    "altitudeM": 49.7,
+    "yaw": 5.019820001477242,
+    "pitch": 0.04,
+    "mode": "walk"
+  },
+  "currentRegion": "industry",
+  "crossingCount": 0,
+  "crossings": [],
+  "walkedMeters": 0,
+  "flownMeters": 0,
+  "frame": 30,
+  "elapsed": {
+    "acceptedSeconds": 10.545699999999997,
+    "droppedSeconds": 0,
+    "droppedCallbacks": 0,
+    "simulationSteps": 224,
+    "last": {
+      "elapsedSeconds": 0.4757999999999993,
+      "acceptedSeconds": 0.4757999999999993,
+      "droppedSeconds": 0,
+      "steps": 10,
+      "stepSeconds": 0.04757999999999993
+    }
+  },
+  "graphicsSample": {
+    "revision": 1,
+    "referenceRevision": "meadow-industry-shared-v1",
+    "windTime": 504.1776999999955,
+    "processTime": 504.1776999999955,
+    "routing": "distribution",
+    "transition": 1
+  },
+  "displayComparison": {
+    "status": "compared",
+    "sample": "edge-off",
+    "frame": 30,
+    "width": 1575,
+    "height": 1616,
+    "readBytes": 10180800,
+    "differentPixels": 34,
+    "maximumChannelDelta": 1,
+    "equal": false,
+    "retainedBytes": 10180800,
+    "pending": null,
+    "disposed": false
+  },
+  "reference": {
+    "revision": "meadow-industry-shared-v1",
+    "industryCenter": [
+      384,
+      0
+    ],
+    "flatRadiusM": 120,
+    "apronM": 128,
+    "outerRadiusM": 248,
+    "graphicsSamples": 1
+  },
+  "stage": {
+    "frames": 30,
+    "eye": {
+      "eastM": 492.03090300410133,
+      "northM": -48.83553930469088,
+      "altitudeM": 49.7
+    },
+    "origin": {
+      "eastM": 256,
+      "northM": -256,
+      "altitudeM": 0
+    },
+    "windTime": 504.1776999999955,
+    "worldAnchorsStable": true,
+    "eyeCentered": true
+  },
+  "resources": {
+    "disposed": false,
+    "counts": {
+      "buffers": 23,
+      "arrays": 23,
+      "programs": 5,
+      "shaders": 0,
+      "textures": 0,
+      "queries": 1
+    },
+    "liveResources": 52,
+    "bufferBytes": 11441268,
+    "textureBytes": 0,
+    "peakBufferBytes": 11441268,
+    "allocated": {
+      "buffers": 23,
+      "arrays": 23,
+      "programs": 8,
+      "shaders": 16,
+      "textures": 0,
+      "queries": 30
+    },
+    "deleted": {
+      "buffers": 0,
+      "arrays": 0,
+      "programs": 3,
+      "shaders": 16,
+      "textures": 0,
+      "queries": 29
+    }
+  },
+  "preparation": {
+    "residentZones": 4,
+    "maximumZones": 4,
+    "pending": null,
+    "prepared": 4,
+    "evicted": 0,
+    "bytes": 4351320,
+    "peakBytes": 4351320,
+    "workerReservationBytes": 2097152,
+    "lastBuildMs": 15.099999994039536,
+    "builds": [
+      {
+        "key": "yard",
+        "buildMs": 12.600000008940697,
+        "bytes": 957960
+      },
+      {
+        "key": "connections",
+        "buildMs": 36.20000000298023,
+        "bytes": 930528
+      },
+      {
+        "key": "hall",
+        "buildMs": 52.70000000298023,
+        "bytes": 2020032
+      },
+      {
+        "key": "intake",
+        "buildMs": 15.099999994039536,
+        "bytes": 442800
+      }
+    ],
+    "errors": [],
+    "disposed": false
+  },
+  "renderer": {
+    "webglVersion": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+    "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "timerQuery": true,
+    "coverage": "Eye-centered 81-cell stage; stable canonical root subsets and wind; 64 m geometry reach; continuous filtered canopy; geographic terrain grids and attached distant clumps; full original 150 m Industry facility, six original fallback zones and original detailed-zone residency",
+    "ownedGpuBufferBytes": 11441268,
+    "ownedGpuTextureBytes": 0,
+    "lighting": "Directional shading, transmission, root occlusion; one shared geographic wind field for near grass, grassbox and distant cover",
+    "industryStartupPreparationMs": 142.20000000298023,
+    "content": "Infinite Meadow + Infinite Industry · one geographic world, camera, sky, clock and Meadow WebGL2 context",
+    "assignment": {
+      "industryCenter": [
+        384,
+        0
+      ],
+      "flatRadiusM": 120,
+      "apronM": 128
+    }
+  },
+  "lastFrame": {
+    "rendererFrame": 30,
+    "renderCpuMs": 0.7000000029802322,
+    "gpuMs": 2.817696,
+    "gpuSampleFrame": 29,
+    "gpuDisjoint": false,
+    "gpuResolved": [
+      {
+        "frame": 29,
+        "ms": 2.817696,
+        "disjoint": false
+      }
+    ],
+    "drawCalls": 15,
+    "triangles": 7114657,
+    "uploadBytes": 885600,
+    "descriptorBytes": 1272,
+    "gpuBytes": 11441268,
+    "gpuTextureBytes": 0,
+    "origin": {
+      "eastM": 256,
+      "northM": -256,
+      "altitudeM": 0
+    },
+    "originId": "256/-256",
+    "reveal": 0,
+    "interiorDaylight": 1,
+    "instanceCount": 293888,
+    "grassboxInstances": 49152,
+    "grassboxBlades": 2359296,
+    "ready": true,
+    "gpuQueryPending": 1,
+    "terrainAlpha": 1,
+    "heroCenter": {
+      "eastM": 492.03090300410133,
+      "northM": -48.83553930469088
+    },
+    "grassCenter": {
+      "eastM": 492.03090300410133,
+      "northM": -48.83553930469088
+    },
+    "terrainRadiusM": 65536,
+    "uploadCpuMs": 0.4000000059604645,
+    "motionPreparationMs": 0,
+    "industryPreparationMs": 0.4000000059604645,
+    "industry": {
+      "distanceM": 118.56844395985618,
+      "lod": "near / middle",
+      "residentZones": 4,
+      "facilityCenter": [
+        384,
+        0
+      ],
+      "staticTriangles": 42148,
+      "motionTriangles": 812,
+      "drawCalls": 7,
+      "uploadBytes": 885600,
+      "uploadCpuMs": 0.4000000059604645,
+      "motionPreparationMs": 0,
+      "displayPreparationMs": 0.4000000059604645,
+      "culling": false,
+      "boundsTests": 7,
+      "culledZones": 0,
+      "deferredNearUploads": 0,
+      "motionVisible": true,
+      "motionDeferred": false,
+      "ownedGpuBufferBytes": 6238728,
+      "totals": {
+        "nearUploads": 4,
+        "motionBuilds": 1,
+        "vertexBoundsBuilds": 16
+      }
+    },
+    "sharedWorld": true
+  },
+  "contextEvents": [],
+  "errors": [],
+  "errorObservation": "Opt-in native comparison polls GL error for its framebuffer readback",
+  "verifiedInputs": {
+    "exact": true,
+    "files": 61,
+    "bytes": 316477
+  },
+  "save": {
+    "available": true,
+    "rejected": null,
+    "separateFromStandalone": true,
+    "checkpointResult": {
+      "attempted": true,
+      "success": true,
+      "frame": 20
+    }
+  },
+  "cleanup": null,
+  "hostCleanup": null,
+  "previousRelease": {
+    "schema": 1,
+    "date": "2026-10-21T01:46:38.368Z",
+    "identity": {
+      "id": "infinite-industry",
+      "version": "1.2.0"
+    },
+    "sharedWorld": true,
+    "worldId": "meadow-industry",
+    "worldVersion": "1.1.0",
+    "packIds": [
+      "infinite-meadow",
+      "infinite-industry"
+    ],
+    "status": "disposed",
+    "saved": true,
+    "checkpointResult": {
+      "attempted": true,
+      "success": true,
+      "frame": 542
+    },
+    "reason": "pagehide",
+    "resources": {
+      "disposed": true,
+      "counts": {
+        "buffers": 0,
+        "arrays": 0,
+        "programs": 0,
+        "shaders": 0,
+        "textures": 0,
+        "queries": 0
+      },
+      "liveResources": 0,
+      "bufferBytes": 0,
+      "textureBytes": 0,
+      "peakBufferBytes": 11441268,
+      "allocated": {
+        "buffers": 23,
+        "arrays": 23,
+        "programs": 8,
+        "shaders": 16,
+        "textures": 0,
+        "queries": 542
+      },
+      "deleted": {
+        "buffers": 23,
+        "arrays": 23,
+        "programs": 8,
+        "shaders": 16,
+        "textures": 0,
+        "queries": 542
+      }
+    },
+    "failures": [],
+    "pendingFrames": 0,
+    "listeners": 0,
+    "child": {
+      "workerDisposed": true,
+      "grassTiles": 0,
+      "rendererDisposed": true,
+      "checkpointResult": {
+        "attempted": true,
+        "success": true,
+        "frame": 542
+      }
+    }
+  },
+  "qualification": "Functional shared-world preview; formal P05 remains open"
+}
