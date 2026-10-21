@@ -2,6 +2,8 @@
 
 Updated 21 October 2026 after the [camera culling review](Observatory-Culling-Preparation-Review-2026-10-20.md) and [Industry implementation](Observatory-Industry-Display-Preparation-2026-10-20.md). This is the forward engineering sequence; dated reports and sealed evidence retain their original results. Industry's successor is functionally verified; complete native/image/performance acceptance remains separate.
 
+Operations are paused for the owner's client update. The [pause checkpoint](../analysis/main-reuse-2026-10-21/client-update-pause-06.json) preserves the latest tested components and unfinished integration; resume only on the owner's instruction.
+
 The delivered experience is walking between Infinite Meadow and Infinite Industry in the same world. Formal Biome Pack Service P05 is OPEN; P06–P08 are NOT_STARTED and Phase One is NOT_ACCEPTED / NOT_RELEASED. The [current checkpoint](Observatory-Project-Checkpoint-2026-10-20.md) identifies the preserved sources and outstanding qualification. Biome Border follows the reusable creation/registration foundation.
 
 ## 1. Resolve the current Main entry condition

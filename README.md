@@ -1,3 +1,5 @@
+> **Client update pause - 21 October 2026:** Operations are safely paused. Source, tested results and unfinished joins are preserved in the [pause checkpoint](analysis/main-reuse-2026-10-21/client-update-pause-06.json). The working Meadow-Industry session is unchanged; P05 remains OPEN.
+
 <!-- main-reuse-advancement-2026-10-21 -->
 > **Main integration — 21 October 2026:** The complete prepared-view prefix passes the 810-pair model. A repaired authenticated view planner and bounded image copies now pass 23 integrated controls with exact original image bytes. Dedicated Canvas preparation passes 15 actual Renderer/Target model cases plus 38 existing facts/import checks. Current work joins content, genuine source/bootstrap ownership and the complete Canvas/finite Target budget before native Main proof. Earlier failed approaches remain preserved. P05 remains OPEN; see [current progress](docs/Observatory-Main-Reuse-Progress-2026-10-21.md) and [work plan](docs/Observatory-Current-Work-Plan.md). Earlier reports keep their original cutoffs.
 

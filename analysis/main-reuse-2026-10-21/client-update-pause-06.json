@@ -1,0 +1,65 @@
+{
+  "utc": "2026-10-21T09:50:28.300222+00:00",
+  "status": "PAUSED_BY_USER_FOR_CLIENT_UPDATE",
+  "P05": "OPEN_IN_PROGRESS",
+  "P06_P08": "NOT_STARTED",
+  "PhaseOne": "NOT_ACCEPTED_NOT_RELEASED",
+  "backup": {
+    "snapshots": 20,
+    "archiveEntriesVerified": 10332,
+    "recordsVerified": 2105,
+    "recordsAdded": 429,
+    "recordsBytes": 84335043,
+    "freshRestore": {
+      "snapshot": "source-owned-bootstrap-wip",
+      "destination": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\restored-bootstrap-pause-check-06",
+      "files": 520,
+      "verified": true
+    },
+    "restorerUnchanged": true,
+    "scope": "Pausepreservation/integrityonly;functionalmodelsandWIPremainexplicit,noNativeMain/P05acceptance.",
+    "pass": true
+  },
+  "currentSources": [
+    {
+      "snapshot": "managed-local-table-component",
+      "source": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/managed-default-surface-08/source",
+      "files": 516,
+      "sha256": "cace51e6060d35d36cefbf3d9d0465dcee5d2613484945d1dbc407622b0ac28c",
+      "scope": "Sealed08 local source/API table from independent07ledger+10Renderer frontend events, rounded32.18freshactualRendererTargetmodelprocesses24groups+33facts/5import, no priceoverride. Allocation preflights local/factory/R/optionalRoot/following beforedebit. Native fullMain and completehost remainopen."
+    },
+    {
+      "snapshot": "owned-context-retirement-wip",
+      "source": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/managed-default-surface-10/source",
+      "files": 516,
+      "sha256": "db53731e8c2c0b335eae2cdb6bc057aed9b83ecf85ea9f103c3e8d4a67ace972",
+      "scope": "UNSEALED10 distinctownedSurface2 captures native extension during genuine original constructor, privateactualRenderer.dispose bracket waitsforcapturednativeisContextLost.9freshmodelprocesses18groups plus18legacyresizeprocesses24groups and33+5regressions pass. Scope01 harnessfault preserved/corrected02. Requestlocal128 source/storage/partial-constructor/browser qualification remainsopen. Old Surface1 unchanged."
+    },
+    {
+      "snapshot": "closed-six-content-component",
+      "source": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/closed-content-facet-11/source",
+      "files": 518,
+      "sha256": "0f29e9cf7e1a12c03932b693f06c5524e7e560a5f9fb043a00c716c93fe373d8",
+      "scope": "Sealed11 genuine private source six-content generation/cookie bracket withactualR/Q andexplicitmodeledouterprovenance.76functionalgroup/68staticpeer0, source266payload+Field376=642candidate,4textureR1+FieldR1separate, declaredlogicalmetadata65536. Allnewcontenttablesnull/nativegatefalse; cold/all9/fullMain/native remainopen."
+    },
+    {
+      "snapshot": "content-surface-joint-wip",
+      "source": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/closed-content-surface-join-02/source",
+      "files": 519,
+      "sha256": "ecf146b5909888afa23bbf5cc577ac6be578b5697c5a35c36c0306020c789a09",
+      "scope": "UNSEALEDjoint02 explicit13threewaydecisions mergecontent11/managed08/fivebootstrapRendererApphunks withdistinctunionBaselineprofile.6managedregressionspass. Newjointfactory correctlyrefusesORDINARY_BRIDGE_COST_UNQUALIFIED thenpaidcleanupQ/R0. Noactualnativepermission; Ground/Shadow/defaultresolve/currentgeneration/cold/fullMainopen."
+    },
+    {
+      "snapshot": "source-owned-bootstrap-wip",
+      "source": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/owned-module-baseline-bootstrap-04/source",
+      "files": 520,
+      "sha256": "c899c9088d163a30dc370da7adeb1b3d2fae4154c46f09dc7f8e860ff1c6a30b",
+      "scope": "UNSEALED04 all519joint02filesexact+controller.14closedgateand7actualSurface.prepare/Renderer/Apphandoffcontrols passusingactualQ/S andmodeledDOM/GL/streams/SRI; onlydisclosedprivateAppgate diagnostictrue inhandoff, nofees/capsselected. Module1324128reservedbefore6baselineeval; controller389120logicalQ separate. ProductAppgatefalse; trustedentry/fixedgenuineMaininitializer/linkedpositionshelper/cold/nativeunfinished."
+    }
+  ],
+  "deliveredWalk": "UNCHANGED",
+  "browserAndServers": "UNTOUCHED",
+  "rawArchives": "PRESERVED_LOCAL",
+  "otherChatWork": "UNTOUCHED",
+  "remaining": "Resumeonlyafterownercontinuation: preserveallcurrentcutoffs; complete trustedMaininitializer/coldcontracts; composeownedCanvasretirementonlyafterreview; actualGround/Shadow+AA/defaultresolvegenerationprovenance; avoidduplicateoriginalchildpreparationonlywithprivatecurrentnessproof; completeexactsimultaneoushostbaseline/service/resourcevector; proveactualnativeMainP05. InitialunchangedMainbirthistruthfulseparatehostbaseline,notretroactiveRbirth; nativepeaks/timingunmeasured/P08separate."
+}
