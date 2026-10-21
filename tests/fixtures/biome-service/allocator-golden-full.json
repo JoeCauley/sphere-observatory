@@ -1,0 +1,850 @@
+{
+  "format": "sphere-biome-allocator-golden/1",
+  "inputDigest": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+  "source": "Independent Python hashlib/struct, exact integer fractions, math libm and independently coded six-face projection. Numeric angles/directions/scores tolerate 2e-15 binary64 host/libm difference; all discrete address/rectangle/frontier identities match exactly.",
+  "anchors": [
+    {
+      "level": 0,
+      "counter": 0,
+      "hash": "01db02fc2f6df6316831707ed3da9513371da0d7548fe34aae24b51f4de96edc",
+      "fractions": [
+        0.007248102730436079,
+        0.4070043859136183,
+        0.21529584176147365
+      ]
+    },
+    {
+      "level": 0,
+      "counter": 1,
+      "hash": "8834ea899c5596bc78a6ef5cd943414fe0fe48b17d538dce28bf911d9f4ed6d7",
+      "fractions": [
+        0.5320574365581108,
+        0.4712972261124948,
+        0.8788800652813064
+      ]
+    },
+    {
+      "level": 0,
+      "counter": 4095,
+      "hash": "959d59cdacaa4849e04ebb42398b71aabc3cc99c781d9bab01382fe6729f4e82",
+      "fractions": [
+        0.5844322325835175,
+        0.8762013470346071,
+        0.7353025443081748
+      ]
+    },
+    {
+      "level": 1,
+      "counter": 0,
+      "hash": "4f6d631184779fcdea0a153e8db4751ba7ca84589ea0232e50dc368c5c98615f",
+      "fractions": [
+        0.3102628629462444,
+        0.914216354152545,
+        0.655433913837101
+      ]
+    },
+    {
+      "level": 1,
+      "counter": 1,
+      "hash": "014a3b3b2cc0735686737849d9b255ec6b59522a41f154f3decd15ec66e81d06",
+      "fractions": [
+        0.005038930842376166,
+        0.5251994304941914,
+        0.4193316796462956
+      ]
+    },
+    {
+      "level": 1,
+      "counter": 4095,
+      "hash": "a9416b2e0761842fec29d0f31a0bbb0ffeea1d33320800cf0d7bbb5efb2a5d6a",
+      "fractions": [
+        0.6611544597029759,
+        0.9225130647192107,
+        0.9957597970951895
+      ]
+    },
+    {
+      "level": 14,
+      "counter": 0,
+      "hash": "b7a2fb332725fc390d83425f592bc6c07de0aeae402ccc2df5b7f9fc33c21543",
+      "fractions": [
+        0.7173306465039316,
+        0.05278410747375428,
+        0.49170963052908967
+      ]
+    },
+    {
+      "level": 14,
+      "counter": 1,
+      "hash": "ef86b46d4ca4be7f9f65f44c407394997caab90fdc50c39f301071f70fbf6974",
+      "fractions": [
+        0.9356491820186815,
+        0.6226494489823848,
+        0.4869800246927438
+      ]
+    },
+    {
+      "level": 14,
+      "counter": 4095,
+      "hash": "dde55c9326db5d8e769bc5e3a4e00bb19a3f7cecb68737a467b272ed0f8e27c8",
+      "fractions": [
+        0.8667810305840765,
+        0.4633144074222174,
+        0.6025312498009299
+      ]
+    },
+    {
+      "level": 30,
+      "counter": 0,
+      "hash": "65b62fbcacd9e57210efe50b584994e83d118e26b8404edff743273878906001",
+      "fractions": [
+        0.3973111949570476,
+        0.06616050269102502,
+        0.23854912228876046
+      ]
+    },
+    {
+      "level": 30,
+      "counter": 1,
+      "hash": "ebf79cc65d9454429329021706ff12c5081591a36f5356e59097a2658165f299",
+      "fractions": [
+        0.9217470154085998,
+        0.57484448492232,
+        0.031579115296449745
+      ]
+    },
+    {
+      "level": 30,
+      "counter": 4095,
+      "hash": "aa2d9df4d859187f28149d1b17a59e97447a986ef0114924490f2921a07fc3f1",
+      "fractions": [
+        0.6647585604444867,
+        0.1565645400184138,
+        0.2674956580013418
+      ]
+    }
+  ],
+  "frontiers": [
+    {
+      "cell": {
+        "face": 0,
+        "level": 0,
+        "x": 0,
+        "y": 0
+      },
+      "canonical": "{\"face\":0,\"level\":0,\"x\":0,\"y\":0}",
+      "hash": "34955e8d941060b3804c4059843c61fdc3362561148bbdd6f0f57d20bc9550f5"
+    },
+    {
+      "cell": {
+        "face": 0,
+        "level": 14,
+        "x": 8192,
+        "y": 8191
+      },
+      "canonical": "{\"face\":0,\"level\":14,\"x\":8192,\"y\":8191}",
+      "hash": "674179124524ac14f1c41eb448e90d7073223ed1d0db76509cfb625fd90557de"
+    },
+    {
+      "cell": {
+        "face": 5,
+        "level": 30,
+        "x": 1073741823,
+        "y": 0
+      },
+      "canonical": "{\"face\":5,\"level\":30,\"x\":1073741823,\"y\":0}",
+      "hash": "5e57ac220a7c2093910929c08df2b78e6014f1f9b907936a3cb2fc453df9578c"
+    },
+    {
+      "cell": {
+        "face": 3,
+        "level": 1,
+        "x": 1,
+        "y": 1
+      },
+      "canonical": "{\"face\":3,\"level\":1,\"x\":1,\"y\":1}",
+      "hash": "b2defafc08a837ec63ef4bd680b0f0e2b8a1da180a9427b0ee10b616bb61fcbf"
+    }
+  ],
+  "frames": [
+    {
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "right": [
+        1,
+        0,
+        0
+      ],
+      "up": [
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "right": [
+        0,
+        0,
+        1
+      ],
+      "up": [
+        0,
+        -1,
+        0
+      ]
+    }
+  ],
+  "rectangles": [
+    {
+      "latitudeMin": -0.9,
+      "latitudeMax": -0.5,
+      "longitudeMin": -2.1,
+      "longitudeMax": 0.1
+    },
+    {
+      "latitudeMin": -0.2,
+      "latitudeMax": 0.4,
+      "longitudeMin": -1.2,
+      "longitudeMax": 0.8
+    },
+    {
+      "latitudeMin": 0.7,
+      "latitudeMax": 1.1,
+      "longitudeMin": 0.2,
+      "longitudeMax": 2.5
+    }
+  ],
+  "numericAnchors": [
+    {
+      "level": 0,
+      "counter": 0,
+      "frame": 0,
+      "rectangle": 0,
+      "latitudeRad": -0.7203366350123592,
+      "longitudeRad": -1.626349148124758,
+      "direction": [
+        -0.041731123565321625,
+        -0.6596377187358465,
+        0.7504242755581298
+      ],
+      "cell": {
+        "face": 4,
+        "level": 0,
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "level": 0,
+      "counter": 0,
+      "frame": 1,
+      "rectangle": 0,
+      "latitudeRad": -0.7203366350123592,
+      "longitudeRad": -1.626349148124758,
+      "direction": [
+        -0.6596377187358465,
+        0.7504242755581298,
+        -0.041731123565321625
+      ],
+      "cell": {
+        "face": 2,
+        "level": 0,
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "level": 0,
+      "counter": 1,
+      "frame": 0,
+      "rectangle": 1,
+      "latitudeRad": 0.07857558918753028,
+      "longitudeRad": 0.5577601305626128,
+      "direction": [
+        0.8458249246200067,
+        0.07849475824966973,
+        -0.5276540247348502
+      ],
+      "cell": {
+        "face": 0,
+        "level": 0,
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "level": 0,
+      "counter": 1,
+      "frame": 1,
+      "rectangle": 1,
+      "latitudeRad": 0.07857558918753028,
+      "longitudeRad": 0.5577601305626128,
+      "direction": [
+        0.07849475824966973,
+        -0.5276540247348502,
+        0.8458249246200067
+      ],
+      "cell": {
+        "face": 4,
+        "level": 0,
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "level": 0,
+      "counter": 4095,
+      "frame": 0,
+      "rectangle": 1,
+      "latitudeRad": 0.3221575824770319,
+      "longitudeRad": 0.2706050886163496,
+      "direction": [
+        0.9140359659933087,
+        0.31661388055285866,
+        -0.2535624252761817
+      ],
+      "cell": {
+        "face": 0,
+        "level": 0,
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "level": 0,
+      "counter": 4095,
+      "frame": 1,
+      "rectangle": 1,
+      "latitudeRad": 0.3221575824770319,
+      "longitudeRad": 0.2706050886163496,
+      "direction": [
+        0.31661388055285866,
+        -0.2535624252761817,
+        0.9140359659933087
+      ],
+      "cell": {
+        "face": 4,
+        "level": 0,
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "level": 1,
+      "counter": 0,
+      "frame": 0,
+      "rectangle": 1,
+      "latitudeRad": 0.3458219050870676,
+      "longitudeRad": 0.11086782767420211,
+      "direction": [
+        0.9350211026833561,
+        0.3389700376318677,
+        -0.10409059095158871
+      ],
+      "cell": {
+        "face": 0,
+        "level": 1,
+        "x": 1,
+        "y": 1
+      }
+    },
+    {
+      "level": 1,
+      "counter": 0,
+      "frame": 1,
+      "rectangle": 1,
+      "latitudeRad": 0.3458219050870676,
+      "longitudeRad": 0.11086782767420211,
+      "direction": [
+        0.3389700376318677,
+        -0.10409059095158871,
+        0.9350211026833561
+      ],
+      "cell": {
+        "face": 4,
+        "level": 1,
+        "x": 1,
+        "y": 0
+      }
+    },
+    {
+      "level": 1,
+      "counter": 1,
+      "frame": 0,
+      "rectangle": 0,
+      "latitudeRad": -0.6734904418530507,
+      "longitudeRad": -1.1774703047781498,
+      "direction": [
+        0.29957695372686266,
+        -0.6237180826396526,
+        0.7219621888880668
+      ],
+      "cell": {
+        "face": 4,
+        "level": 1,
+        "x": 1,
+        "y": 0
+      }
+    },
+    {
+      "level": 1,
+      "counter": 1,
+      "frame": 1,
+      "rectangle": 0,
+      "latitudeRad": -0.6734904418530507,
+      "longitudeRad": -1.1774703047781498,
+      "direction": [
+        -0.6237180826396526,
+        0.7219621888880668,
+        0.29957695372686266
+      ],
+      "cell": {
+        "face": 2,
+        "level": 1,
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "level": 1,
+      "counter": 4095,
+      "frame": 0,
+      "rectangle": 1,
+      "latitudeRad": 0.3510130158975025,
+      "longitudeRad": 0.791519594190379,
+      "direction": [
+        0.6599138641320177,
+        0.3438492308434332,
+        -0.6680429614738322
+      ],
+      "cell": {
+        "face": 5,
+        "level": 1,
+        "x": 0,
+        "y": 1
+      }
+    },
+    {
+      "level": 1,
+      "counter": 4095,
+      "frame": 1,
+      "rectangle": 1,
+      "latitudeRad": 0.3510130158975025,
+      "longitudeRad": 0.791519594190379,
+      "direction": [
+        0.3438492308434332,
+        -0.6680429614738322,
+        0.6599138641320177
+      ],
+      "cell": {
+        "face": 3,
+        "level": 1,
+        "x": 1,
+        "y": 1
+      }
+    },
+    {
+      "level": 14,
+      "counter": 0,
+      "frame": 0,
+      "rectangle": 1,
+      "latitudeRad": -0.16842277247293558,
+      "longitudeRad": -0.21658073894182062,
+      "direction": [
+        0.9628188715745428,
+        -0.16762764785396483,
+        0.2118508725846351
+      ],
+      "cell": {
+        "face": 0,
+        "level": 14,
+        "x": 6389,
+        "y": 6765
+      }
+    },
+    {
+      "level": 14,
+      "counter": 0,
+      "frame": 1,
+      "rectangle": 1,
+      "latitudeRad": -0.16842277247293558,
+      "longitudeRad": -0.21658073894182062,
+      "direction": [
+        -0.16762764785396483,
+        0.2118508725846351,
+        0.9628188715745428
+      ],
+      "cell": {
+        "face": 4,
+        "level": 14,
+        "x": 6765,
+        "y": 9994
+      }
+    },
+    {
+      "level": 14,
+      "counter": 1,
+      "frame": 0,
+      "rectangle": 2,
+      "latitudeRad": 0.923978663148421,
+      "longitudeRad": 1.3200540567933106,
+      "direction": [
+        0.14953136247606463,
+        0.798005670925735,
+        -0.5838041801892302
+      ],
+      "cell": {
+        "face": 2,
+        "level": 14,
+        "x": 9727,
+        "y": 14185
+      }
+    },
+    {
+      "level": 14,
+      "counter": 1,
+      "frame": 1,
+      "rectangle": 2,
+      "latitudeRad": 0.923978663148421,
+      "longitudeRad": 1.3200540567933106,
+      "direction": [
+        0.798005670925735,
+        -0.5838041801892302,
+        0.14953136247606463
+      ],
+      "cell": {
+        "face": 0,
+        "level": 14,
+        "x": 6656,
+        "y": 2198
+      }
+    },
+    {
+      "level": 14,
+      "counter": 4095,
+      "frame": 0,
+      "rectangle": 2,
+      "latitudeRad": 0.8612408574441872,
+      "longitudeRad": 1.5858218745421386,
+      "direction": [
+        -0.009788724804881653,
+        0.7586515611414315,
+        -0.6514230496723026
+      ],
+      "cell": {
+        "face": 2,
+        "level": 14,
+        "x": 8086,
+        "y": 15226
+      }
+    },
+    {
+      "level": 14,
+      "counter": 4095,
+      "frame": 1,
+      "rectangle": 2,
+      "latitudeRad": 0.8612408574441872,
+      "longitudeRad": 1.5858218745421386,
+      "direction": [
+        0.7586515611414315,
+        -0.6514230496723026,
+        -0.009788724804881653
+      ],
+      "cell": {
+        "face": 0,
+        "level": 14,
+        "x": 8297,
+        "y": 1157
+      }
+    },
+    {
+      "level": 30,
+      "counter": 0,
+      "frame": 0,
+      "rectangle": 1,
+      "latitudeRad": -0.16044869521108313,
+      "longitudeRad": -0.722901755422479,
+      "direction": [
+        0.7402573908528642,
+        -0.15976115471612445,
+        0.6530661289115217
+      ],
+      "cell": {
+        "face": 0,
+        "level": 30,
+        "x": 63235373,
+        "y": 421004298
+      }
+    },
+    {
+      "level": 30,
+      "counter": 0,
+      "frame": 1,
+      "rectangle": 1,
+      "latitudeRad": -0.16044869521108313,
+      "longitudeRad": -0.722901755422479,
+      "direction": [
+        -0.15976115471612445,
+        0.6530661289115217,
+        0.7402573908528642
+      ],
+      "cell": {
+        "face": 4,
+        "level": 30,
+        "x": 421004298,
+        "y": 1010506450
+      }
+    },
+    {
+      "level": 30,
+      "counter": 1,
+      "frame": 0,
+      "rectangle": 2,
+      "latitudeRad": 0.9046328820414673,
+      "longitudeRad": 0.2726319651818344,
+      "direction": [
+        0.5951496984696086,
+        0.7861983384931888,
+        -0.16640014712157972
+      ],
+      "cell": {
+        "face": 2,
+        "level": 30,
+        "x": 943280523,
+        "y": 650500506
+      }
+    },
+    {
+      "level": 30,
+      "counter": 1,
+      "frame": 1,
+      "rectangle": 2,
+      "latitudeRad": 0.9046328820414673,
+      "longitudeRad": 0.2726319651818344,
+      "direction": [
+        0.7861983384931888,
+        -0.16640014712157972,
+        0.5951496984696086
+      ],
+      "cell": {
+        "face": 0,
+        "level": 30,
+        "x": 130461300,
+        "y": 423241317
+      }
+    },
+    {
+      "level": 30,
+      "counter": 4095,
+      "frame": 0,
+      "rectangle": 1,
+      "latitudeRad": -0.10679856188361667,
+      "longitudeRad": -0.6650086839973164,
+      "direction": [
+        0.7824279610657093,
+        -0.10659565476507929,
+        0.6135502034289947
+      ],
+      "cell": {
+        "face": 0,
+        "level": 30,
+        "x": 115877192,
+        "y": 463729218
+      }
+    },
+    {
+      "level": 30,
+      "counter": 4095,
+      "frame": 1,
+      "rectangle": 1,
+      "latitudeRad": -0.10679856188361667,
+      "longitudeRad": -0.6650086839973164,
+      "direction": [
+        -0.10659565476507929,
+        0.6135502034289947,
+        0.7824279610657093
+      ],
+      "cell": {
+        "face": 4,
+        "level": 30,
+        "x": 463729218,
+        "y": 957864631
+      }
+    }
+  ],
+  "frontierOrders": [
+    {
+      "anchor": {
+        "face": 0,
+        "level": 0,
+        "x": 0,
+        "y": 0
+      },
+      "anchorDirection": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "ordered": [
+        {
+          "cell": {
+            "face": 0,
+            "level": 0,
+            "x": 0,
+            "y": 0
+          },
+          "score": -1.0,
+          "digest": "34955e8d941060b3804c4059843c61fdc3362561148bbdd6f0f57d20bc9550f5"
+        },
+        {
+          "cell": {
+            "face": 2,
+            "level": 0,
+            "x": 0,
+            "y": 0
+          },
+          "score": -0.0,
+          "digest": "334373ec6e14a39999a2960f9553c8161fe7633384fe78bf4bfae2804a1009c8"
+        },
+        {
+          "cell": {
+            "face": 3,
+            "level": 0,
+            "x": 0,
+            "y": 0
+          },
+          "score": -0.0,
+          "digest": "4419d76e4dbb3a1fa41c2415fa9c9ae2a266ad9824d20e061f422f2e7d15bb97"
+        },
+        {
+          "cell": {
+            "face": 5,
+            "level": 0,
+            "x": 0,
+            "y": 0
+          },
+          "score": -0.0,
+          "digest": "66f2436d14da64568b91db95e3b0244c03a1f77ba911cc23798d102e8ca7c8c2"
+        },
+        {
+          "cell": {
+            "face": 4,
+            "level": 0,
+            "x": 0,
+            "y": 0
+          },
+          "score": -0.0,
+          "digest": "b2c4042ecc8035f652e97bd656ec37e262ecbb1a018baa3ecd3c0d60699d595a"
+        },
+        {
+          "cell": {
+            "face": 1,
+            "level": 0,
+            "x": 0,
+            "y": 0
+          },
+          "score": 1.0,
+          "digest": "eb7b4b4b2d3ece1c7db4642f9d8d75aade7ee505b525cffe55391de022b1bafc"
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "face": 4,
+        "level": 1,
+        "x": 1,
+        "y": 0
+      },
+      "anchorDirection": [
+        0.4082482904638631,
+        -0.4082482904638631,
+        0.8164965809277261
+      ],
+      "ordered": [
+        {
+          "cell": {
+            "face": 4,
+            "level": 1,
+            "x": 1,
+            "y": 0
+          },
+          "score": -1.0000000000000002,
+          "digest": "8f958a6f3899f17d8317a170554ecd9bc45572817ae20509cd8641f04a946b5c"
+        },
+        {
+          "cell": {
+            "face": 4,
+            "level": 1,
+            "x": 1,
+            "y": 1
+          },
+          "score": -0.6666666666666669,
+          "digest": "1954065fbbadcbd57f3302b9e0e0f294eac4da45625102d63d8bb2f8ac81a982"
+        },
+        {
+          "cell": {
+            "face": 4,
+            "level": 1,
+            "x": 0,
+            "y": 0
+          },
+          "score": -0.6666666666666669,
+          "digest": "89ac1c8ef2f4f0aef8c750605c28c008e394f6145415833f93826dbbd4a72406"
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "face": 0,
+        "level": 14,
+        "x": 8192,
+        "y": 8192
+      },
+      "anchorDirection": [
+        0.9999999962747097,
+        6.1035156022626325e-05,
+        -6.1035156022626325e-05
+      ],
+      "ordered": [
+        {
+          "cell": {
+            "face": 0,
+            "level": 14,
+            "x": 8192,
+            "y": 8192
+          },
+          "score": -1.0,
+          "digest": "1503d877b0c4e9a44a2fcc9e903d9e3e517774db1a49ade97bb49131893ab037"
+        },
+        {
+          "cell": {
+            "face": 0,
+            "level": 14,
+            "x": 8192,
+            "y": 8193
+          },
+          "score": -0.9999999925494197,
+          "digest": "8b887f836d5a1c232f64c632c77b2dbac2cf12e99bdf1d771a80172f1e5991a9"
+        },
+        {
+          "cell": {
+            "face": 0,
+            "level": 14,
+            "x": 8191,
+            "y": 8192
+          },
+          "score": -0.9999999925494194,
+          "digest": "b363f4f4fe68ece19b485930c3ef4721d2debd1e5e4149f54578dbbc6b892da0"
+        }
+      ]
+    }
+  ]
+}

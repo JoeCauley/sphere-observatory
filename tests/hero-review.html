@@ -1,7 +1,7 @@
 <!doctype html><html lang="en"><meta charset="utf-8"><title>Biome hero review</title>
 <style>body{background:#101920;color:#dce7e1;font:14px system-ui}button,select{padding:10px}canvas{max-width:100%}pre{white-space:pre-wrap}</style>
 <h1>Biome hero review · matched captures</h1><select id="attempt"><option>baseline</option><option>attempt1</option><option>attempt2</option><option>attempt3</option></select><button id="run">Capture all ten biomes</button><button id="verify">Verify relief and motion</button><pre id="results">Ready</pre><canvas id="view"></canvas>
-<script src="../math.js"></script><script src="../collection.js"></script><script src="../biomes.js"></script><script src="../hero-textures.js"></script><script src="../shaders.js"></script><script src="../collection-shader.js"></script><script src="../biome-shader.js"></script><script src="../preview-light.js"></script><script src="../renderer.js"></script>
+<script src="../meadow-wind.js"></script><script src="../math.js"></script><script src="../collection.js"></script><script src="../biomes.js"></script><script src="../hero-textures.js"></script><script src="../shaders.js"></script><script src="../collection-shader.js"></script><script src="../biome-shader.js"></script><script src="../preview-light.js"></script><script src="../renderer.js"></script>
 <script>
 const r=new SphereRenderer(document.querySelector('#view')),M=SphereMath,B=SphereBiomes,log=document.querySelector('#results');
 document.querySelector('#run').onclick=async()=>{const button=document.querySelector('#run');button.disabled=true;log.textContent='Loading textures…';try{

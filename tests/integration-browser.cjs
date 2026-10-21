@@ -1,5 +1,5 @@
-const {chromium}=require(process.env.SPHERE_PLAYWRIGHT||'playwright'),assert=require('node:assert/strict'),fs=require('node:fs');
-(async()=>{const browser=await chromium.launch({headless:true,executablePath:process.env.SPHERE_BROWSER||'C:/Program Files/Google/Chrome/Application/chrome.exe'}),errors=[],results=[],dir='work/integration';fs.mkdirSync(dir,{recursive:true});try{
+const {chromium}=require(process.env.SPHERE_PLAYWRIGHT||'playwright'),{executable}=require('../tools/playwright-browser.cjs'),assert=require('node:assert/strict'),fs=require('node:fs');
+(async()=>{const browser=await chromium.launch({headless:true,executablePath:executable()}),errors=[],results=[],dir='work/integration';fs.mkdirSync(dir,{recursive:true});try{
  const page=await browser.newPage({viewport:{width:1440,height:900},acceptDownloads:true});page.setDefaultTimeout(180000);page.on('pageerror',e=>{errors.push(e.message);console.log('PAGE ERROR',e.message);});
  await page.goto(process.env.SPHERE_URL||'http://127.0.0.1:8766/',{waitUntil:'domcontentloaded'});await page.waitForFunction(()=>window.SphereLoading?.ready);console.log('Ready with real loop');
  const ready=()=>page.waitForFunction(()=>!SphereJourney.travel.active&&!SphereApp.travelHeld&&SphereJourney.travel.status.state==='arrived');

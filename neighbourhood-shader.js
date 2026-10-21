@@ -1,11 +1,13 @@
 /* Shared graph uniforms; analytic shell fallback is available before any image load. */
 (function(){
-'use strict';const patch=SphereShaderSections.section('Watershed appearance');const P=SphereNeighbourhood,M=SphereMath;
+'use strict';const root=typeof window==='undefined'?globalThis:window,patch=SphereShaderSections.section('Watershed appearance');const P=SphereNeighbourhood,M=SphereMath;
 const declarations=`
 uniform int uPackEnabled,uPackEdges,uPackArtRevision;
 uniform vec3 uPackX,uPackZ,uPackNormal,uPackBase;
 uniform vec4 uPackA[128],uPackB[128],uPackC[128],uPackCatchments[6];
 uniform vec4 uPackDistricts[3],uPackAxes[3];
+uniform int uMeadowEnabled;
+uniform vec3 uMeadowGround;
 `;
 const material=`
 vec3 packCompositionWeights(vec2 p){
@@ -61,6 +63,7 @@ vec3 packMaterial(vec3 original,vec3 delta,float footprint){
  }
  land=mix(land,vec3(.14,.145,.08),road*.65*(1.-water));
  land=mix(land,vec3(.012,.086,.098),water);
+ if(uMeadowEnabled==1){float edge=max(abs(p.x-21500.),abs(p.y+5000.)),meadow=1.-smoothstep(112.,128.,edge);meadow*=1.-max(water,road);vec3 proof=uMeadowGround*(.88+.18*noise(vec3(p/18.,6.)));land=mix(land,proof,meadow);}
  return mix(original,land,coverage);
 }
 `;
@@ -70,7 +73,7 @@ source=patch(source,'vec3 surfaceMaterial(vec3 q,vec3 delta,float footprint,floa
 SphereShaders.fragment=patch(source,'float damage=woundDamage(q,delta);','col=packMaterial(col,delta,footprint);\n float damage=woundDamage(q,delta);');
 P.shader={declarations,material};
 const upload=SphereWorld.upload;
-SphereWorld.upload=(gl,u,s)=>{upload(gl,u,s);const enabled=SpherePacks.enabled(s);gl.uniform1i(u.uPackEnabled,enabled?1:0);if(!enabled)return;
+SphereWorld.upload=(gl,u,s)=>{upload(gl,u,s);const enabled=SpherePacks.enabled(s),study=root.SphereMeadowEcology?.active?.(s);gl.uniform1i(u.uPackEnabled,enabled?1:0);gl.uniform1i(u.uMeadowEnabled,study?1:0);gl.uniform3fv(u.uMeadowGround,study?root.SphereMeadowEcology.GROUND_PALETTE.albedo:[0,0,0]);if(!enabled)return;
  const graph=P.model(s.provinceSeed),f=SphereWatershed.frame(s),n=M.norm(s.position);gl.uniform3fv(u.uPackX,f.basis[0]);gl.uniform3fv(u.uPackZ,f.basis[2]);gl.uniform3fv(u.uPackNormal,s.provinceAnchor);gl.uniform3fv(u.uPackBase,[M.dot(n,f.basis[0])*s.radius,M.dot(n,f.basis[2])*s.radius,M.dot(n,s.provinceAnchor)]);
  gl.uniform1i(u.uPackArtRevision,s.packAddress.artRevision);gl.uniform4fv(u['uPackDistricts[0]'],graph.compositions.flatMap(c=>[c.x,c.z,c.rx,c.rz]));gl.uniform4fv(u['uPackAxes[0]'],graph.compositions.flatMap(c=>[...c.axis,0,0]));
  gl.uniform1i(u.uPackEdges,graph.edges.length);gl.uniform4fv(u['uPackA[0]'],graph.edges.flatMap(e=>[...e.a,e.widthA,e.widthB]));gl.uniform4fv(u['uPackB[0]'],graph.edges.flatMap(e=>[...e.b,...e.c1]));gl.uniform4fv(u['uPackC[0]'],graph.edges.flatMap(e=>[...e.c2,0,0]));gl.uniform4fv(u['uPackCatchments[0]'],graph.catchments.flatMap(c=>[c.x,c.z,c.r,0]));

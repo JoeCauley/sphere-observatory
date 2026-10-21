@@ -1,0 +1,94 @@
+{
+  "format": "sphere-biome-assignment/1",
+  "regionId": "design-region-01",
+  "worldId": "design-world-01",
+  "requestKey": "design-install-track-01",
+  "packId": "fixture-track-meadow",
+  "releaseDigest": "a8baaa1d04aee528e59966ee8532e07bc7a2f4f3885e0aa7e02c81e85dd872d7",
+  "semanticGeneratorId": "fixture-track-meadow-generator-v1",
+  "geographyRevision": "fixture-geography-v1",
+  "appearanceRevision": "fixture-appearance-v1",
+  "provider": {
+    "id": "fixture-heightfield-v1",
+    "abi": "sphere-biome-provider/1",
+    "digest": "4f7e29cf7fc391a712cbc7e0f4303f066c0840bd338209eb6929634c14bc0369",
+    "backendProfile": "webgl2-static-surface-v1"
+  },
+  "frame": {
+    "id": "design-region-frame",
+    "profile": "region-gnomonic-metres-v1",
+    "origin": {
+      "schema": 2,
+      "worldSeed": 713,
+      "geographyRevision": 1,
+      "terrainRevision": 2,
+      "artRevision": 1,
+      "assetRevision": 1,
+      "heroRevision": null,
+      "space": "shell",
+      "face": 0,
+      "level": 14,
+      "x": 8192,
+      "y": 8192,
+      "local": [
+        0,
+        0
+      ]
+    },
+    "east": [
+      0,
+      0,
+      -1
+    ],
+    "inward": [
+      -1,
+      0,
+      0
+    ],
+    "north": [
+      0,
+      1,
+      0
+    ],
+    "maximumAngularRadiusRad": 0.7853981633974483,
+    "maximumLocalRadiusM": 10000000000.0
+  },
+  "core": {
+    "level": 14,
+    "cells": [
+      {
+        "face": 0,
+        "x": 8192,
+        "y": 8192
+      },
+      {
+        "face": 0,
+        "x": 8193,
+        "y": 8192
+      }
+    ]
+  },
+  "area": {
+    "requestedM2": 1000000000000000.0,
+    "actualM2": 1100000000000000.0,
+    "largestCellM2": 600000000000000.0,
+    "certificateDigest": "0d8e3dd0fb851f28483cdef1b71c038e966dd92f80abc031580f6ac9750f1957"
+  },
+  "eligibility": {
+    "trackRelation": "within",
+    "trackIds": [
+      "verdant-track"
+    ],
+    "trackProfileDigest": "6985745c963ff62e61b403f2a02825b1668378d65e01c2087a118f54a0c22fa7",
+    "protectionProfileDigest": "545b4918d6cf1db97bbbd6ada1ba593d419344b536f6715fa9a7b99631f7df83",
+    "clearanceM": 1000,
+    "certificateDigests": [
+      "a5116bfdb712bc14fd8966e810f68da76be1ac2d54c3e2175e1de170cc24ba72"
+    ]
+  },
+  "guardWidthM": 1000,
+  "boundaryIds": [
+    "design-boundary-01"
+  ],
+  "stateSchemaId": "fixture-state-v1"
+}

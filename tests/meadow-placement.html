@@ -1,0 +1,54 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>IB-075-C worker parity</title>
+<pre id="status">Preparing…</pre>
+<pre id="info"></pre>
+<script src="../world-address.js"></script>
+<script src="../world-topology.js"></script>
+<script src="../meadow-wind.js"></script><script src="../math.js"></script>
+<script src="../collection.js"></script>
+<script src="../biomes.js"></script>
+<script src="../world-palette.js"></script>
+<script src="../biome-packs.js"></script>
+<script src="../world.js"></script>
+<script src="../watershed-network.js"></script>
+<script src="../field-sites.js"></script>
+<script src="../legacy-role-adapter.js"></script>
+<script src="../edge-stream.js"></script>
+<script src="../shade-edges.js"></script>
+<script src="../watershed-province.js"></script>
+<script src="../world-geography.js"></script>
+<script src="../watershed-neighbourhood.js"></script>
+<script src="../meadow-ecology.js"></script>
+<script src="../ground-chunks.js"></script>
+<script src="../meadow-support.js"></script>
+<script src="../instanced-environment.js"></script>
+<script src="../grass-stream.js"></script>
+<script>
+(async()=>{
+ const M=SphereMath,E=SphereMeadowEcology,G=SphereGrass,Inst=SphereInstancedEnvironment;
+ const base=SpherePacks.activate({...M.defaultState(),collection:true,multipleWounds:false,seed:713,provinceSeed:713}),state={...base,terrainRevision:2,geographyRevision:1,time:2468,playing:false};
+ state.meadow=E.createProfile(state,{densityBladesPerM2:250,worker:true});
+ const anchor=SphereWatershed.direction(...E.DOMAIN.anchor,state);state.position=M.mul(E.chartDirection(state,2,2),state.radius-.0017);state.terrainAnchor=anchor;state.siteAnchor=anchor;state.siteId='biome-0';state.siteRevision=2;state.siteElevation=0;state.walkMode=false;state.walkPosition=null;
+ const frame=G.frameForState(state),cells=[{...G.meadowCellForChart(2,2)},{...G.meadowCellForChart(10,2)}].map(cell=>({...cell,key:G.meadowCellKey(cell,state)}));
+ const summary=patch=>JSON.stringify({key:patch.key,candidateCount:patch.candidateCount,roots:patch.roots.map(r=>[r.key,r.candidate,r.chart,r.bladeIds]),instances:patch.instances.map(i=>[i.id,i.rootId,i.bladeNumber,i.addressKey,i.worldOrigin,i.quaternion,i.scale,i.colour,i.phase,i.seed,i.boundsRadius,i.supportSource])});
+ const bytesEqual=(a,b)=>a.length===b.length&&a.every((v,i)=>v===b[i]);
+ const send=(worker,cell,generation)=>new Promise((resolve,reject)=>{
+  const timer=setTimeout(()=>{cleanup();reject(Error('IB-075-C grass worker timed out'));},120000),cleanup=()=>{clearTimeout(timer);worker.removeEventListener('message',onMessage);worker.removeEventListener('error',onError);},onMessage=event=>{const data=event.data;if(data.generation!==generation||data.patch?.key!==cell.key)return;cleanup();if(data.error)reject(Error(data.error));else resolve(data.patch);},onError=event=>{cleanup();reject(Error(event.message||'IB-075-C grass worker failed'));};
+  worker.addEventListener('message',onMessage);worker.addEventListener('error',onError);worker.postMessage({kind:'meadow-cell-v2',generation,state,cell,frame,areaSteps:8});
+ });
+ const syncStarted=performance.now(),sync=new Map(cells.map(cell=>[cell.key,G.buildMeadowCell({state,cell,frame,areaSteps:8})])),syncMs=performance.now()-syncStarted;
+ const workers=[new Worker('../grass-worker.js?ib075c=worker-parity-2'),new Worker('../grass-worker.js?ib075c=worker-parity-2')];let first,second;
+ const workerStarted=performance.now();
+ try{
+  [first,second]=await Promise.all([send(workers[0],cells[0],11),send(workers[1],cells[1],21)]);
+  const reordered=await Promise.all([send(workers[0],cells[1],12),send(workers[1],cells[0],22)]),workerBuilds=[first,second,...reordered];
+  for(const cell of cells){const reference=sync.get(cell.key),results=workerBuilds.filter(p=>p.key===cell.key);if(results.length!==2)throw Error('Expected two independent worker results per cell');for(const result of results){if(summary(reference)!==summary(result))throw Error('Worker and synchronous placements differ for '+cell.key);if(!bytesEqual(reference.instanceBuffer,result.instanceBuffer))throw Error('Worker and synchronous packed instances differ for '+cell.key);}}
+  const uniqueRoots=new Set(cells.flatMap(c=>sync.get(c.key).roots.map(r=>r.key))),uniqueBlades=new Set(cells.flatMap(c=>sync.get(c.key).instances.map(i=>i.addressKey)));
+  if(uniqueRoots.size!==cells.reduce((n,c)=>n+sync.get(c.key).roots.length,0))throw Error('Worker fixture found duplicate root ownership');
+  if(uniqueBlades.size!==cells.reduce((n,c)=>n+sync.get(c.key).instances.length,0))throw Error('Worker fixture found duplicate blade ownership');
+  const result={status:'PASS',fixture:'tests/fixtures/meadow-placement-c1.json',placementRevision:2,workers:2,requestOrder:['cell A, cell B','cell B, cell A'],cells:cells.map(c=>({key:c.key,rootCount:sync.get(c.key).rootCount,bladeCount:sync.get(c.key).bladeCount,candidateCount:sync.get(c.key).candidateCount,bytes:sync.get(c.key).instanceBytes,hash:G.hashHex(summary(sync.get(c.key)))})),uniqueRoots:uniqueRoots.size,duplicateRootChecks:0,uniqueBlades:uniqueBlades.size,duplicateBladeChecks:0,workerSyncParity:'exact instance metadata and packed 32-byte records',reorderedWorkerParity:true,synchronousBuildMs:syncMs,workerRoundTripMs:performance.now()-workerStarted,workerCountIndependent:true};
+  document.getElementById('status').textContent='PASS';document.getElementById('info').textContent=JSON.stringify(result);
+ }finally{for(const worker of workers)worker.terminate();}
+})().catch(error=>{document.getElementById('status').textContent='FAIL';document.getElementById('info').textContent=JSON.stringify({error:String(error)});});
+</script>

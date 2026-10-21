@@ -4,7 +4,7 @@
  */
 (function(root){
 'use strict';
-const M=root.SphereMath,W=root.SphereWorld,C=root.SphereCollection,S=root.SphereSites,N=root.SphereWatershedNetwork;
+const M=root.SphereMath,W=root.SphereWorld,C=root.SphereCollection,S=root.SphereSites,N=root.SphereWatershedNetwork,G=()=>root.SphereGeography,R=()=>root.SphereLegacyRoleAdapter||((typeof require==='function')?require('./legacy-role-adapter.js'):null);
 const EXTENT=640,cache=new Map(),models=new Map(),mix=(a,b,t)=>a.map((v,i)=>v*(1-t)+b[i]*t);
 const keyFor=s=>JSON.stringify([s.provinceRevision,s.provinceSeed,s.provinceAnchor,s.radius,s.era,s.multipleWounds]);
 const pending=new Map();
@@ -49,14 +49,34 @@ function model(seed=713){
   for(const side of [1,-1]){const offset=nearest.width+1.1,point=[nearest.a[0]-dz*offset*side,nearest.a[1]+dx*offset*side];if(water(...point).river||water(...point).basin)continue;stations.push({x:point[0],z:point[1],angle:Math.atan2(dz,dx),role:source.role,river:nearest});break;}
  }
  const focus=stations.find(p=>Math.abs(p.x)<160&&Math.abs(p.z)<160)||stations[0];let role=0;
- for(const station of stations)station.role=station===focus?'Water recovery':['Reserve storage','Fabrication','Thermal transfer','Water recovery'][role++%4];
+ for(const station of stations){const displayRole=station===focus?'Water recovery':['Reserve storage','Fabrication','Thermal transfer','Water recovery'][role++%4],adapted=R().adapt(displayRole);station.role=adapted.slug;station.displayRole=adapted.displayName;}
  const result={seed,graph,n,step,height,level,water,segments,caps:[...caps.values()],stations,focus,taper};models.set(seed,result);while(models.size>2)models.delete(models.keys().next().value);return result;
 }
 function enabled(s){return s.provinceRevision===1&&s.layoutVersion===2&&s.collection&&!!s.provinceAnchor;}
 function frame(s){const q=s.provinceAnchor;return {origin:M.mul(q,s.radius),basis:S.shellFrame(q)};}
 function local(q,s){const f=frame(s),den=M.dot(q,s.provinceAnchor);if(den<=0)return [Infinity,Infinity];return [M.dot(q,f.basis[0])*s.radius/den,M.dot(q,f.basis[2])*s.radius/den];}
 function direction(x,z,s){const f=frame(s);return M.norm(M.add(s.provinceAnchor,M.add(M.mul(f.basis[0],x/s.radius),M.mul(f.basis[2],z/s.radius))));}
-function sample(q,s){if(!enabled(s))return null;const [x,z]=local(q,s);if(Math.max(Math.abs(x),Math.abs(z))>=320)return null;const p=model(s.provinceSeed),original=W.sample(q,s),water=p.water(x,z);return {revision:1,seed:s.provinceSeed,x,z,originalBiome:original.id,terrainKm:p.height(x,z),water,service:p.stations.find(v=>Math.hypot(v.x-x,v.z-z)<1)?.role||null,damage:original.damage,missing:C.missing(q,s)};}
+ function sample(q,s){if(!enabled(s))return null;const [x,z]=local(q,s);if(Math.max(Math.abs(x),Math.abs(z))>=320)return null;const p=model(s.provinceSeed),original=W.sample(q,s),water=p.water(x,z),station=p.stations.find(v=>Math.hypot(v.x-x,v.z-z)<1);return {revision:1,seed:s.provinceSeed,x,z,originalBiome:original.id,terrainKm:p.height(x,z),water,service:station?.displayRole||null,serviceRole:station?.role||null,damage:original.damage,missing:C.missing(q,s)};}
+// Query the exact triangle used by geometry() for the rendered and collision
+// floor. The raster's diagonal is p00→p11; returning the barycentric point of
+// that owning triangle avoids substituting the smooth semantic height field.
+function surfaceSupport(q,s){
+ if(!enabled(s))return null;
+ const [x,z]=local(q,s);if(!Number.isFinite(x)||Math.max(Math.abs(x),Math.abs(z))>=320)return null;
+ const p=model(s.provinceSeed),gx=M.clamp((x+320)/p.step,0,p.n-1-1e-12),gz=M.clamp((z+320)/p.step,0,p.n-1-1e-12),ix=Math.floor(gx),iz=Math.floor(gz),u=gx-ix,v=gz-iz;
+ const x0=ix*p.step-320,z0=iz*p.step-320,coords=[[x0,z0],[x0+p.step,z0],[x0+p.step,z0+p.step],[x0,z0+p.step]],indices=u>=v?[0,2,1]:[0,3,2],weights=u>=v?[1-u,v,u-v]:[1-v,v-u,u];
+ const f=frame(s),vertices=coords.map(([tx,tz])=>{
+  const point=M.mul(direction(tx,tz,s),s.radius-p.height(tx,tz));
+  return f.basis.map(axis=>M.dot(M.sub(point,f.origin),axis));
+ });
+ const tri=indices.map(i=>vertices[i]),worldVertices=indices.map(i=>M.mul(direction(...coords[i],s),s.radius-p.height(...coords[i])));
+ if(worldVertices.some(point=>C.missing(M.norm(point),s)))return null;
+ const localPoint=[0,0,0];for(let i=0;i<3;i++)for(let j=0;j<3;j++)localPoint[j]+=tri[i][j]*weights[i];
+ const worldPoint=M.add(f.origin,f.basis.reduce((sum,axis,i)=>M.add(sum,M.mul(axis,localPoint[i])),[0,0,0]));
+ let localNormal=M.norm(M.cross(M.sub(tri[1],tri[0]),M.sub(tri[2],tri[0]))),normal=M.norm(f.basis.reduce((sum,axis,i)=>M.add(sum,M.mul(axis,localNormal[i])),[0,0,0]));
+ if(M.dot(normal,M.mul(M.norm(worldPoint),-1))<0){localNormal=M.mul(localNormal,-1);normal=M.mul(normal,-1);}
+ return {point:worldPoint,normal,direction:M.norm(worldPoint),heightKm:s.radius-M.length(worldPoint),triangleId:`watershed:${s.provinceSeed}:${ix}:${iz}:${u>=v?0:1}`,barycentric:weights.slice(),coordinate:[x,z],source:'watershed-revision-1-triangle'};
+}
 function geometry(s){
  if(!enabled(s))return [];
  const key=keyFor(s);
@@ -67,7 +87,7 @@ function geometry(s){
  const landColor=()=>[.055,.10,.029];
  function tri(a,b,c,color,material){if([a,b,c].some(v=>C.missing(M.norm(mesh.world(v)),s)))return;mesh.tri(a,c,b,color,material);}
  for(let z=0;z<p.n-1;z++)for(let x=0;x<p.n-1;x++){
-  const xx=x*p.step-320,zz=z*p.step-320,coords=[[xx,zz],[xx+p.step,zz],[xx+p.step,zz+p.step],[xx,zz+p.step]],points=coords.map(([x,z])=>point(x,z,p.height(x,z))),q=direction(xx+p.step*.5,zz+p.step*.5,s),damage=W.sample(q,s).damage,col=mix(landColor(xx,zz),W.woundPalette[W.edgeBiome(W.sample(q,s).id)],damage);
+  const xx=x*p.step-320,zz=z*p.step-320,coords=[[xx,zz],[xx+p.step,zz],[xx+p.step,zz+p.step],[xx,zz+p.step]],points=coords.map(([x,z])=>point(x,z,p.height(x,z))),q=direction(xx+p.step*.5,zz+p.step*.5,s),semantic=G()?.query(q,{state:s,representation:'district'}),damage=semantic?.damage??W.sample(q,s).damage,biome=semantic?.biome??W.sample(q,s).id,col=mix(landColor(xx,zz),W.woundPalette[W.edgeBiome(biome)],damage);
   tri(points[0],points[1],points[2],col,-5);tri(points[0],points[2],points[3],col,-5);
   // Clip each basin triangle at its actual shoreline, instead of painting a
   // whole flood-grid cell blue. Land and water interpolate the same elevations.
@@ -78,11 +98,11 @@ function geometry(s){
  for(const seg of p.segments){const positions=seg.banks.map(([x,z],i)=>point(x,z,Math.max(p.height(x,z),p.level(...(i<2?seg.a:seg.b)))+.004));tri(positions[0],positions[1],positions[3],[.016,.105,.115],-6);tri(positions[0],positions[3],positions[2],[.016,.105,.115],-6);}
  for(const cap of p.caps){const [x,z]=cap.point;if(Math.max(Math.abs(x),Math.abs(z))>315)continue;const level=p.level(x,z)+.004,centre=point(x,z,Math.max(p.height(x,z)+.004,level)),ring=Array.from({length:24},(_,i)=>{const a=i*Math.PI/12,xx=x+Math.cos(a)*cap.width,zz=z+Math.sin(a)*cap.width;return point(xx,zz,Math.max(p.height(xx,zz)+.004,level));});for(let i=0;i<24;i++)tri(centre,ring[i],ring[(i+1)%24],[.016,.105,.115],-6);}
  mesh.finish({deferBVH:true});const groups=[mesh];
- for(const station of p.stations){const q=direction(station.x,station.z,s);if(C.missing(q,s)||W.sample(q,s).damage>.3)continue;groups.push(garden(s,p,station));}
+ for(const station of p.stations){const q=direction(station.x,station.z,s),semantic=G()?.query(q,{state:s,representation:'district'});if(semantic?.exclusionMasks?.missing||C.missing(q,s)||((semantic?.damage??W.sample(q,s).damage)>.3))continue;groups.push(garden(s,p,station));}
  return retain(key,groups);
 }
 function garden(s,p,station){
- const q=direction(station.x,station.z,s),mesh=new S.Mesh(M.mul(q,s.radius),S.shellFrame(q),'Watershed · '+station.role),angle=station.angle,c=Math.cos(angle),sn=Math.sin(angle);
+ const q=direction(station.x,station.z,s),mesh=new S.Mesh(M.mul(q,s.radius),S.shellFrame(q),'Watershed · '+station.displayRole),angle=station.angle,c=Math.cos(angle),sn=Math.sin(angle);
  const toProvince=(x,z)=>[station.x+c*x-sn*z,station.z+sn*x+c*z];
  const ground=(x,z)=>p.height(...toProvince(x,z));
  // Ivory crescents and copper ribs sit among planted courts. The open centre
@@ -104,9 +124,9 @@ function garden(s,p,station){
  for(let i=0;i<480;i++){const a=i*2.3999632297,r=.41+.44*Math.sqrt(N.noise(i*3.17,7,s.provinceSeed)),x=Math.cos(a)*r,z=Math.sin(a)*r,[px,pz]=toProvince(x,z),water=p.water(px,pz);if(water.river||water.basin)continue;const y=ground(x,z),h=.010+.020*N.noise(i*2.1,11,s.provinceSeed);mesh.cone([x,y,z],.001,h*.60,copper,5,.0006);crown(x,y+h*.83,z,h*.42,h*.32,mix(leaf,[.16,.19,.06],N.noise(i,3,s.provinceSeed)));}
  for(let i=0;i<18;i++){const a=.4+i*.25,x=Math.cos(a)*.19,z=Math.sin(a)*.19;mesh.box([x,platform+.000225,z],[.0024,.00045,.0007],copper,a);}
  // The shared architectural language does not erase the facility's job.
- if(station.role==='Thermal transfer')for(let i=0;i<30;i++){const a=.5+i*.11,r=.34;mesh.box([Math.cos(a)*r,platform+.035,Math.sin(a)*r],[.003,.045,.030],copper,a);}
- if(station.role==='Reserve storage')for(let i=0;i<5;i++){const a=.5+i*.8,x=Math.cos(a)*.34,z=Math.sin(a)*.34;mesh.cone([x,platform+.025,z],.026,.008,stone,32,.026);for(let j=0;j<32;j++){const b=j*Math.PI/16,d=(j+1)*Math.PI/16;mesh.tri([x,platform+.033,z],[x+Math.cos(b)*.026,platform+.033,z+Math.sin(b)*.026],[x+Math.cos(d)*.026,platform+.033,z+Math.sin(d)*.026],stone,-7);}}
- if(station.role==='Fabrication')for(let i=0;i<3;i++){const a=.8+i*.65,x=Math.cos(a)*.33,z=Math.sin(a)*.33;for(let j=0;j<14;j++){const t=j*Math.PI/13;mesh.beam([x-.028,platform+.028+Math.sin(t)*.018,z+Math.cos(t)*.022],[x+.028,platform+.028+Math.sin(t)*.018,z+Math.cos(t)*.022],.002,copper);}}
+ if(station.role==='thermal-transfer')for(let i=0;i<30;i++){const a=.5+i*.11,r=.34;mesh.box([Math.cos(a)*r,platform+.035,Math.sin(a)*r],[.003,.045,.030],copper,a);}
+ if(station.role==='reserve-storage')for(let i=0;i<5;i++){const a=.5+i*.8,x=Math.cos(a)*.34,z=Math.sin(a)*.34;mesh.cone([x,platform+.025,z],.026,.008,stone,32,.026);for(let j=0;j<32;j++){const b=j*Math.PI/16,d=(j+1)*Math.PI/16;mesh.tri([x,platform+.033,z],[x+Math.cos(b)*.026,platform+.033,z+Math.sin(b)*.026],[x+Math.cos(d)*.026,platform+.033,z+Math.sin(d)*.026],stone,-7);}}
+ if(station.role==='fabrication')for(let i=0;i<3;i++){const a=.8+i*.65,x=Math.cos(a)*.33,z=Math.sin(a)*.33;for(let j=0;j<14;j++){const t=j*Math.PI/13;mesh.beam([x-.028,platform+.028+Math.sin(t)*.018,z+Math.cos(t)*.022],[x+.028,platform+.028+Math.sin(t)*.018,z+Math.cos(t)*.022],.002,copper);}}
  // Observation terrace is the saved ground arrival, six metres above its floor.
  mesh.box([.33,platform+.01,0],[.09,.02,.065],stone);
  mesh.arrivalLocal=[.35,platform+.026,0];mesh.lookLocal=[-.02,platform+.003,0];mesh.station=[station.x,station.z];
@@ -125,7 +145,7 @@ function view(input,name='approach'){
  s.up=M.basis(s.forward,s.up).u;const clean=M.validate(s);clean.playing=!!input.playing;return clean;
 }
 function visible(s){return enabled(s)&&M.length(M.sub(s.position,M.mul(s.provinceAnchor,s.radius)))<2000000;}
-root.SphereWatershed={enabled,visible,ready:s=>!enabled(s)||cache.has(keyFor(s)),model,frame,local,direction,sample,geometry,prepare,activate,view,extentKm:EXTENT,revision:1,
+root.SphereWatershed={enabled,visible,ready:s=>!enabled(s)||cache.has(keyFor(s)),model,frame,local,direction,sample,surfaceSupport,geometry,prepare,activate,view,extentKm:EXTENT,revision:1,
  has(mesh){return [...cache.values()].some(groups=>groups.includes(mesh));},
  get info(){const groups=[...cache.values()].flat();return {provinces:cache.size,pending:pending.size,meshes:groups.length,triangles:groups.reduce((n,m)=>n+m.count/3,0),vertexMiB:groups.reduce((n,m)=>n+m.vertices.byteLength,0)/1048576,packedCollisionMiB:groups.reduce((n,m)=>n+(m.bvh.packedTriangles?.byteLength||0)+(m.bvh.nodes?.byteLength||0),0)/1048576};}};
 })(typeof window==='undefined'?globalThis:window);

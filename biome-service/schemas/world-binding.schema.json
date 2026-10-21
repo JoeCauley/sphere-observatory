@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:sphere:biome-service:1:world-binding",
+  "title": "Proposed world binding record",
+  "description": "Immutable body; its digest is held by a record envelope/world head and excluded from this body.",
+  "type": "object",
+  "properties": {
+    "format": {
+      "const": "sphere-biome-binding/1"
+    },
+    "worldId": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/id"
+    },
+    "worldSeed": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 2147483647
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "parentDigest": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/nullableDigest"
+    },
+    "hostWorldDigest": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/digest"
+    },
+    "hostGeographyDigest": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/digest"
+    },
+    "trackProfileDigest": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/digest"
+    },
+    "protectionProfileDigest": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/digest"
+    },
+    "policyDigest": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/digest"
+    },
+    "registryDigest": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/digest"
+    },
+    "assignments": {
+      "type": "array",
+      "items": {
+        "$ref": "urn:sphere:biome-service:1:assignment"
+      },
+      "minItems": 0,
+      "maxItems": 128
+    },
+    "boundaries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "urn:sphere:biome-service:1:core#/$defs/id"
+          },
+          "ownerRegionId": {
+            "$ref": "urn:sphere:biome-service:1:core#/$defs/id"
+          },
+          "leftRegionId": {
+            "$ref": "urn:sphere:biome-service:1:core#/$defs/id"
+          },
+          "rightRegionId": {
+            "anyOf": [
+              {
+                "$ref": "urn:sphere:biome-service:1:core#/$defs/id"
+              },
+              {
+                "const": "base-surface"
+              }
+            ]
+          },
+          "widthM": {
+            "type": "number",
+            "exclusiveMinimum": 0,
+            "maximum": 1000000000
+          },
+          "profileId": {
+            "$ref": "urn:sphere:biome-service:1:core#/$defs/id"
+          },
+          "supportRevision": {
+            "$ref": "urn:sphere:biome-service:1:core#/$defs/id"
+          },
+          "appearanceRevision": {
+            "$ref": "urn:sphere:biome-service:1:core#/$defs/id"
+          },
+          "connectorSchemaId": {
+            "$ref": "urn:sphere:biome-service:1:core#/$defs/id"
+          },
+          "certificateDigest": {
+            "$ref": "urn:sphere:biome-service:1:core#/$defs/digest"
+          }
+        },
+        "required": [
+          "id",
+          "ownerRegionId",
+          "leftRegionId",
+          "rightRegionId",
+          "widthM",
+          "profileId",
+          "supportRevision",
+          "appearanceRevision",
+          "connectorSchemaId",
+          "certificateDigest"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "maxItems": 8192
+    },
+    "index": {
+      "type": "object",
+      "properties": {
+        "profile": {
+          "const": "sparse-face-tree-u32-v1"
+        },
+        "digest": {
+          "$ref": "urn:sphere:biome-service:1:core#/$defs/digest"
+        },
+        "nodeCount": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 262144
+        },
+        "assignmentCount": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 128
+        }
+      },
+      "required": [
+        "profile",
+        "digest",
+        "nodeCount",
+        "assignmentCount"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "format",
+    "worldId",
+    "worldSeed",
+    "revision",
+    "parentDigest",
+    "hostWorldDigest",
+    "hostGeographyDigest",
+    "trackProfileDigest",
+    "protectionProfileDigest",
+    "policyDigest",
+    "registryDigest",
+    "assignments",
+    "boundaries",
+    "index"
+  ],
+  "additionalProperties": false
+}

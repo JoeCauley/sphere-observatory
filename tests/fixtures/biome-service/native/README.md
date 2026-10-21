@@ -1,0 +1,3 @@
+# Native fixture test inputs
+
+These records are component test shapes, not installable catalogue content. The helper replaces the zero provider digest and hashes exact current compiled source, canonical recipe bytes, raw manifest bytes and a fresh release before each isolated test. The ordinary scene was retained from the public Journey export at the Phase One baseline. The compiled provider/kernel ABI is real repository code; its GPU backend here is an instrumented byte store and cannot establish renderer, native visual, driver memory or timing conformance. Both fixtures retain their declared budgets and fixed data. Existing world and allocator tests provide separate coverage.

@@ -1,0 +1,250 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:sphere:biome-service:1:world-policy",
+  "title": "Proposed world policy record",
+  "description": "Host-owned policy. Example values are proposed pilot limits and are not measured capability.",
+  "type": "object",
+  "properties": {
+    "format": {
+      "const": "sphere-biome-policy/1"
+    },
+    "policyId": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/id"
+    },
+    "allocatorRevision": {
+      "const": "connected-frontier-v1"
+    },
+    "worldId": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/id"
+    },
+    "worldSeed": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 2147483647
+    },
+    "hostWorldDigest": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/digest"
+    },
+    "hostGeographyDigest": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/digest"
+    },
+    "trackProfileDigest": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/digest"
+    },
+    "protectionProfileDigest": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/digest"
+    },
+    "shellRadiusM": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "maximum": 1000000000000000
+    },
+    "addressProfile": {
+      "const": "sphere-world-address-v2"
+    },
+    "allocation": {
+      "type": "object",
+      "properties": {
+        "level": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 30
+        },
+        "minimumLevel": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 30
+        },
+        "maximumLevel": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 30
+        },
+        "regionsPerPack": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 16
+        },
+        "targetAreaM2": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1e+24
+        },
+        "maxCandidateAnchors": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4096
+        },
+        "maxCellVisits": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 65536
+        },
+        "maxCellsPerRegion": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4096
+        },
+        "maxCellsPerWorld": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 65536
+        },
+        "maxRegionsPerWorld": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 128
+        },
+        "maxBatchClassifications": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 256
+        },
+        "maxIndexNodes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 262144
+        },
+        "numericSafetyMarginM": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1000
+        },
+        "tieBreak": {
+          "const": "numeric-face-level-x-y"
+        },
+        "freshBatchOrder": {
+          "const": "priority-pack-request"
+        }
+      },
+      "required": [
+        "level",
+        "minimumLevel",
+        "maximumLevel",
+        "regionsPerPack",
+        "targetAreaM2",
+        "maxCandidateAnchors",
+        "maxCellVisits",
+        "maxCellsPerRegion",
+        "maxCellsPerWorld",
+        "maxRegionsPerWorld",
+        "maxBatchClassifications",
+        "maxIndexNodes",
+        "numericSafetyMarginM",
+        "tieBreak",
+        "freshBatchOrder"
+      ],
+      "additionalProperties": false
+    },
+    "limits": {
+      "type": "object",
+      "properties": {
+        "maxInstalledReleases": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 64
+        },
+        "maxManifestBytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1048576
+        },
+        "maxReleaseBytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 268435456
+        },
+        "maxAssets": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4096
+        },
+        "maxWorldBindingBytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 16777216
+        },
+        "maxProviderStateBytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1048576
+        },
+        "serviceCpuPeakBytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 33554432
+        },
+        "serviceGpuPeakBytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10485760
+        },
+        "aggregateProviderCpuPeakBytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4294967296
+        },
+        "aggregateProviderGpuPeakBytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4294967296
+        },
+        "frameMaintenanceP95Ms": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 0.5
+        },
+        "overviewIncrementalGpuP95Ms": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 0.5
+        }
+      },
+      "required": [
+        "maxInstalledReleases",
+        "maxManifestBytes",
+        "maxReleaseBytes",
+        "maxAssets",
+        "maxWorldBindingBytes",
+        "maxProviderStateBytes",
+        "serviceCpuPeakBytes",
+        "serviceGpuPeakBytes",
+        "aggregateProviderCpuPeakBytes",
+        "aggregateProviderGpuPeakBytes",
+        "frameMaintenanceP95Ms",
+        "overviewIncrementalGpuP95Ms"
+      ],
+      "additionalProperties": false
+    },
+    "protectedProfiles": {
+      "type": "array",
+      "items": {
+        "$ref": "urn:sphere:biome-service:1:core#/$defs/id"
+      },
+      "minItems": 1,
+      "maxItems": 32,
+      "uniqueItems": true
+    },
+    "continuation": {
+      "const": "same-input-same-counters"
+    }
+  },
+  "required": [
+    "format",
+    "policyId",
+    "allocatorRevision",
+    "worldId",
+    "worldSeed",
+    "hostWorldDigest",
+    "hostGeographyDigest",
+    "trackProfileDigest",
+    "protectionProfileDigest",
+    "shellRadiusM",
+    "addressProfile",
+    "allocation",
+    "limits",
+    "protectedProfiles",
+    "continuation"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "id": "watershed-open-meadow-wind-g1",
+  "windTimelineRevision": 1,
+  "source": {
+    "fixture": "tests/fixtures/meadow-e-visual-exit-v2.json",
+    "sha256": "706f80ea3cf0fb024ffccc39c6a1f9244046dc2840d163667ed2a9a25ca43bdc",
+    "pose": "normal",
+    "note": "Existing exact E/F normal pose after ordinary Explore arrival; public serialized walkPosition is synchronized to that pose."
+  },
+  "profile": {
+    "appearancePreset": "meadow-proof-f2",
+    "appearanceRevision": 4,
+    "canopyRevision": 2,
+    "materialRevision": 3,
+    "windStrength": 0.38,
+    "windVisualSpeed": 1
+  },
+  "mapping": "phaseSeconds = anchorPhaseSeconds + (sceneTime - anchorSceneTime) / sceneSecondsPerWindSecond",
+  "units": {
+    "coordinates": "fixed geographic chart metres",
+    "phase": "seconds",
+    "strength": "fraction of stem height"
+  },
+  "controls": {
+    "liveFrames": 2,
+    "liveControl": "actual play button",
+    "minimumChangedGrassPixels": 1,
+    "frozenSceneDeltaSeconds": 1800,
+    "farCameraOffsetMetres": 80,
+    "rateChange": 600,
+    "scrubDeltaSceneSeconds": 1200,
+    "exportWidth": 1920
+  },
+  "mask": {
+    "diagnostic": "grass-id",
+    "roi": [
+      0.18,
+      0.42,
+      0.82,
+      0.94
+    ],
+    "excludedRects": [
+      [
+        0,
+        0,
+        1,
+        0.42
+      ]
+    ],
+    "minimumCanopyCoverage": 0.7,
+    "minimumGrassPixels": 64,
+    "minimumWindChangedPixels": 32
+  },
+  "statusScope": {
+    "implementation": "G",
+    "performance": "H pending",
+    "exportComposition": "I pending",
+    "B1": "NOT ACCEPTED",
+    "M1": "WITHDRAWN"
+  }
+}

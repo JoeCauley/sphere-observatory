@@ -1,6 +1,33 @@
 # Places and assisted travel
 
+<!-- current-meadow-progress-2026-10-03 -->
+> **Current Meadow status (2026-10-05 bounded HR-09 map/preparation continuation):** Runtime `7ca67b137100b81c10c3ae173ffab90f0b9054aac99d1bf199fee7e145e59116` is unchanged. Ready-map winner reuse is rejected for observable object identity effects; SHA64 remains unpromoted with no dependable complete preparation gain. Fresh integrated regression/contracts/seven ownership states and independent thirteen-pair audit PASS in their scopes. Complete quiet H1 retains six 900-frame windows/5,400 unique valid GPU samples/protocol PASS and numerical FAIL with twelve unchanged-limit failures. Original-order raw native diagnosis repeats the elevated-turn first-canonical 376-row material mismatch; all 54 raw captures and every changed channel are retained, cause UNKNOWN/unwaived. Retained F/G media re-review is complete; fine-edge/shimmer/filter/shadow feedback and human acceptance remain open. HR09/H IN PROGRESS; HR10 NOT STARTED; I-K blocked; B1/acceptedBy NOT ACCEPTED; M1 WITHDRAWN. Current baseline bytes are preserved in the pre-docs audit; the historical missing PID/server and absent process/context qualifications remain INCOMPLETE/NOT_CONFIRMED/UNKNOWN. See [current map/preparation report](Observatory-Meadow-HR09-Map-Preparation.md) and its authoritative final after-docs audit/seal. Integrity sealing does not waive failed numerical/native/human/preservation gates.
+
 12 September 2026 · local development following Watershed province 1.
+
+## Current Meadow study route · 30 September 2026
+
+Launch **Sphere Observatory** or open [the supported local app](http://127.0.0.1:8766/),
+then choose **Explore → Watershed · Open meadow → Meadow study · on foot → Visit**.
+The app restores its last scene; a restored Quiet reach / On foot arrival does
+not select the Meadow study profile. This route now selects `meadow-proof-f2`
+(appearance 4 / canopy 2 / material 3), with IB-075-F's bounded canopy visual
+exit complete and G's wind timeline revision 1 selected. See the [reviewed F2 evidence](evidence/meadow-proof-01/f-canopy-continuation-v2-2026-09-30T20-41-39-185Z/f-reviewed-report.md) and
+[current ledger state](Observatory-Infinite-Biomes-Ledger-STATE.md).
+
+The controls and travel record below retains its 12 September results.
+G is DONE under its bounded wind/timeline criteria. H measurement implementation is PASS; fixed-resolution performance/resource certification is FAIL, retained CPU-memory attribution is INCOMPLETE and H remains IN PROGRESS. I export/UI certification remains PENDING and I–K remain blocked; B1/acceptedBy are NOT ACCEPTED and M1 is WITHDRAWN. Moving-window integration remains later work. The [documentation index](README.md) lists current
+guidance and historical travel/continuity reports.
+
+## Restored scenes, walking and grass return · 30 September 2026
+
+**Import scene** is in **Journey → Saved viewpoints & scene files**, after the history list. Capture contains a Save viewpoint shortcut; the final integration layout moved the scene-file controls out of Capture.
+
+A normal Meadow study Visit explicitly enters walking, but inherits world seed, weather, terrain generation and lens settings. Original local patches use the retained conifer-population generator; Connected walking uses the later terrain path. Visiting the named meadow does not silently reset those preferences. The [G photograph](evidence/meadow-proof-01/g-wind-timeline-v1-2026-09-30/browser-06/g-photo.zip) uses seed 713, Clear weather, Connected walking, an 80° fixed camera and wind timeline 1.
+
+The G2 scene in that ZIP saves walkMode=false, walkSurface=false, walkPosition=null, autoWalk=false and surfaceLock=false to isolate wind from camera movement. Its location title is provenance, not a claim that the imported controller is on foot. Revisit Explore → Watersheds → Open meadow → Meadow study · on foot → Visit to enter walking at the same seeded place. For later flights, enable Explore → Exact address, lens & speed → Walk when descending below 100 m. The automatic descent trigger is 100 m; deliberate lift-off suppresses immediate relanding until the controller rearms above 200 m or moves more than 3 km from its departure direction.
+
+The grass is a bounded 256 × 256 m ecological domain. Detailed blades and clumps use distance/size/height LOD, so geometry can disappear on ascent while terrain shading remains. Joe reported that grass eventually reloaded at ground level without landing. Worker preparation and resident uploads can delay that return; the time was not measured and no seamless-return claim follows. Read [progress and lessons](Observatory-Meadow-Progress-and-Lessons-2026-09-30.md).
 
 ## Controls and travel
 
@@ -223,3 +250,7 @@ physical patch from three distances. It verifies independent contributions from
 all three layers, subtle clock evolution, frozen photographs and stable weather
 across camera phase rebasing. The ascent, atmosphere release and complete flight
 checks also run against the layered representation.
+
+## Hands-on wind appearance feedback · 30 September 2026
+
+Joe reported that at **1×** the wind looked good, with abundant grass visibly waving. He also observed **alias shimmer** and said **shadows still need work**. This is positive qualitative appearance/motion feedback with two unresolved visual issues, not a measured frame result or explicit B1 acceptance. The existing production light/visibility/shadow connections do not prove that the visible meadow has sufficient cast/self-shadow detail. Retain shimmer and shadow adequacy as follow-up observations within the authoritative work order; no shader fix or new gate closure was made in this documentation update. See [progress and lessons](Observatory-Meadow-Progress-and-Lessons-2026-09-30.md).

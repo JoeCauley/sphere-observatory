@@ -43,7 +43,7 @@ const diameter={...base,geometryDetail:true},origin=W.locateBiome(8,base),depart
 while(diameterFrames<3000&&!diameter.walkMode){const velocity=T.speed(diameter,departure,.05),result=L.move(diameter,departure,velocity*.05);diameter.position=result.position;T.level(diameter,.05);diameterFrames++;}
 assert(diameter.walkMode);assert(M.dot(oldAnchor,diameter.siteAnchor)<-.999999999);assert.equal(diameter.siteId,'biome-2');assert(Math.abs(diameter.walkPosition[1])<1);
 for(let i=0;i<180;i++)S.step(diameter,new Set(),1/60);assert(Math.abs(L.heightAboveGround(diameter)-S.EYE)<.00008,'A diametric trip settles onto its actual destination');
-const categories=P.categories.map(c=>c.id);assert.equal(new Set(categories).size,7);
+const categories=P.categories.map(c=>c.id);assert.equal(new Set(categories).size,8);assert(categories.includes('packs'));
 for(const entry of P.catalogue(base)){assert(categories.includes(entry.category));assert(entry.description);}
 assert.equal(P.atmosphereKm,384400*2/3);
 (async()=>{

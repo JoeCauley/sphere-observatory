@@ -1,0 +1,76 @@
+{
+  "schema": 1,
+  "id": "watershed-open-meadow-wind-g2",
+  "windTimelineRevision": 1,
+  "source": {
+    "fixture": "tests/fixtures/meadow-e-visual-exit-v2.json",
+    "sha256": "706f80ea3cf0fb024ffccc39c6a1f9244046dc2840d163667ed2a9a25ca43bdc",
+    "pose": "normal",
+    "note": "Same E/F exact normal camera input and ordinary UI arrival. For isolated actual-app playback, public saved-state walkMode=false, walkSurface=false, walkPosition=null and surfaceLock=false freeze that camera. No population or renderer-private mutation."
+  },
+  "profile": {
+    "appearancePreset": "meadow-proof-f2",
+    "appearanceRevision": 4,
+    "canopyRevision": 2,
+    "materialRevision": 3,
+    "windStrength": 0.38,
+    "windVisualSpeed": 1
+  },
+  "mapping": "phaseSeconds = anchorPhaseSeconds + (sceneTime - anchorSceneTime) / sceneSecondsPerWindSecond",
+  "units": {
+    "coordinates": "fixed geographic chart metres",
+    "phase": "seconds",
+    "strength": "fraction of stem height"
+  },
+  "controls": {
+    "liveFrames": 2,
+    "liveControl": "actual play button",
+    "minimumChangedGrassPixels": 1,
+    "frozenSceneDeltaSeconds": 1800,
+    "farCameraOffsetMetres": 80,
+    "rateChange": 600,
+    "scrubDeltaSceneSeconds": 1200,
+    "exportWidth": 1920
+  },
+  "mask": {
+    "diagnostic": "grass-id",
+    "roi": [
+      0.18,
+      0.42,
+      0.82,
+      0.94
+    ],
+    "excludedRects": [
+      [
+        0,
+        0,
+        1,
+        0.42
+      ]
+    ],
+    "minimumCanopyCoverage": 0.7,
+    "minimumGrassPixels": 64,
+    "minimumWindChangedPixels": 32
+  },
+  "statusScope": {
+    "implementation": "G",
+    "performance": "H pending",
+    "exportComposition": "I pending",
+    "B1": "NOT ACCEPTED",
+    "M1": "WITHDRAWN"
+  },
+  "fixtureRevision": 2,
+  "successorOf": {
+    "fixture": "tests/fixtures/meadow-wind-g1.json",
+    "sha256": "9e89a931760890848fbb321bef84324c00c8d31d0ccb42a46c7096506d42ce9d"
+  },
+  "cameraPlaybackPolicy": {
+    "positionExact": true,
+    "forwardExact": true,
+    "upNormalizationTolerance": 1e-12,
+    "walkMode": false,
+    "walkSurface": false,
+    "surfaceLock": false,
+    "autoWalk": false
+  }
+}

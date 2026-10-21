@@ -1,0 +1,24 @@
+const assert=require('node:assert/strict');
+const A=require('../world-address.js'),T=require('../world-topology.js'),G=require('../world-geography.js'),E=require('../instanced-environment.js'),Grass=require('../grass-stream.js'),Meadow=require('../meadow-field.js');
+
+const radius=10000000,anchor=[.4283555294795114,-.605653780282823,-.6705930500634892];
+const state={seed:713,worldSeed:713,geographyRevision:2,terrainRevision:2,artRevision:1,assetRevision:1,radius,terrainAnchor:anchor,siteAnchor:anchor,position:anchor.map(v=>v*radius),forward:[0,0,1],up:[0,1,0],time:17,playing:false,meadow:{enabled:true,nearRange:.30,middleRange:.82,farRange:1.7,rootsPerSubcell:4,maxPatches:121,worker:false}};
+const frame=Grass.frameForState(state);state.position=frame.origin.map((v,i)=>v+frame.basis[0][i]*.15+frame.basis[2][i]*.15);
+const meadow=new Meadow.EndlessMeadow({worker:false});
+const first=meadow.request(state),firstHash=meadow.hash();
+assert.equal(first.meadowRevision,Meadow.REVISION);
+assert(first.near.length>0&&first.middle.length>0&&first.far.length>0,'all three meadow representations are resident');
+assert(first.far.every(p=>p.instances.length===1&&p.instances[0].prototypeId==='meadow-far-material'),'far field uses one material tile per patch, not blades');
+assert(first.near.every(p=>p.instances.every(i=>i.prototypeId.startsWith('grass-blade-'))),'near field keeps curved blade prototypes');
+assert(first.near.every(p=>p.instances.length%14===0)&&first.near.reduce((n,p)=>n+p.instances.length,0)>1000,'near field expands stable roots into dense deterministic blade tufts');
+assert(first.middle.every(p=>p.instances.every(i=>i.prototypeId.startsWith('meadow-middle-card-'))),'middle field uses card prototypes');
+assert(first.farMaterialField.every(m=>m.density>=0&&m.density<=1&&m.roughness>=0&&m.roughness<=1));
+for(const distance of [0,.2,.4,.7,1,1.4,2]){const weights=Meadow.tierWeights(distance,state.meadow);assert(Math.abs(weights.total-1)<1e-12,`tier weights cover ${distance}`);}
+const repeat=meadow.request(state);assert.equal(meadow.hash(),firstHash,'cold repeat preserves the meadow');assert.deepEqual(repeat.far.map(p=>p.material?.density),first.far.map(p=>p.material?.density));
+// Terrain is on the inner shell: roots and patch culling centres must share
+// that positive local-up coordinate at both low and high terrain heights.
+for(const terrainKm of [.004,1.8]){const request=Grass.patchRequests(state,frame,{radiusPatches:0})[0],patch=Grass.buildPatch({state,request,frame,rootsPerSubcell:1,terrainHeight:()=>terrainKm});assert(Math.abs(patch.center[1]-terrainKm)<1e-8,`patch centre follows ${terrainKm} km terrain`);assert(patch.roots.every(root=>Math.abs(root.localOrigin[1]-terrainKm)<1e-8),`roots share ${terrainKm} km ground`);const walking=Meadow.tierWeights(.006,state.meadow),elevated=Meadow.tierWeights(.406,state.meadow);assert(walking.near>0&&elevated.middle>0,'tiering uses height above terrain rather than shell altitude');}
+const sourceRequest=Grass.patchRequests(state,frame,{radiusPatches:1})[0],rebasedFrame={...frame,origin:frame.origin.map((v,i)=>v+(i===0?.512:0))},rebasedPatch=Grass.buildPatch({state,request:sourceRequest,frame:rebasedFrame,rootsPerSubcell:4});assert.deepEqual(rebasedPatch.roots.map(r=>r.key),Grass.buildPatch({state,request:sourceRequest,frame,rootsPerSubcell:4}).roots.map(r=>r.key),'rebase preserves root identity');assert.notDeepEqual(rebasedPatch.roots.map(r=>r.localOrigin),Grass.buildPatch({state,request:sourceRequest,frame,rootsPerSubcell:4}).roots.map(r=>r.localOrigin),'rebase updates local render origins');
+const capture=Meadow.windClock({...state,meadow:{...state.meadow,windClock:99,pausedClock:17}},{capture:true});assert.equal(capture,17,'paused captures use their recorded wind clock');const liveA=Meadow.windClock({...state,playing:true,time:20,meadow:{...state.meadow,windClock:17}}),liveB=Meadow.windClock({...state,playing:true,time:23,meadow:{...state.meadow,windClock:17}});assert(liveB>liveA,'live wind follows advancing scene time rather than the recorded clock');const windAddress=first.far[0].instances[0].address;assert.notEqual(Meadow.windAt(windAddress,{...state,playing:true,time:20}).gust,Meadow.windAt(windAddress,{...state,playing:true,time:23}).gust,'live wind changes without changing root identity');assert.equal(meadow.hash(),firstHash,'wind time does not change root hashes');
+const field=Meadow.semantic(A.direction(windAddress),state);assert.equal(field.source,'generated');assert.equal(G.probeParity(A.direction(windAddress),{state}).pass,true);
+console.log(JSON.stringify({status:'PASS',revision:Meadow.REVISION,near:first.near.length,middle:first.middle.length,far:first.far.length,roots:first.near.reduce((n,p)=>n+p.instances.length,0),hash:firstHash,rebases:meadow.info.rebases,windCapture:capture,semantic:field.source}));

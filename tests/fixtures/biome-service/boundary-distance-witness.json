@@ -1,0 +1,214 @@
+{
+  "format": "sphere-biome-independent-boundary-witness/1",
+  "status": "PASS",
+  "attempts": 4,
+  "qualification": "Independent directed b192 lower bound proves historical falsely-inside result. Private function diagnostic only; no runtime provider or renderer qualification.",
+  "numericProfile": "sphere-outward-b192-v1",
+  "sourceIdentities": [
+    {
+      "name": "historical-commonboundary-adapter.js",
+      "bytes": 24764,
+      "sha256": "ef82e75b2938d3fb3b166b43bfb80b3b6f1d7f2d03bb87ac3f6f40e6834aee39"
+    },
+    {
+      "name": "fixed-commonboundary-adapter.js",
+      "bytes": 25080,
+      "sha256": "c32b009043930f9897197d966c8d1a7ad392afb8f18d6c3f9278a25d495a91ce"
+    }
+  ],
+  "hostProfileRef": {
+    "digest": "b771a9c9ac502c1157f7f2c67068e58dddb3ba6357220e9f3a4c02847984cfe6",
+    "id": "observatory-world-codec-v1"
+  },
+  "hostWorldEnvelope": {
+    "digest": "2b9534793ad78ad00d2fd376c3a53ba7db053d856363869b7a9fc35632947dae",
+    "body": {
+      "format": "sphere-host-world/1",
+      "hostGeographyDigest": "88cf78b607877504cd17824b896a5aebc548e81e8d75e59f5a7a86d2d43f7d02",
+      "hostProfileRef": {
+        "digest": "b771a9c9ac502c1157f7f2c67068e58dddb3ba6357220e9f3a4c02847984cfe6",
+        "id": "observatory-world-codec-v1"
+      },
+      "protectionProfileDigest": "8aae4b9e1254f6a87cf1f0fdf2850670ebee719e490a841f4ea105f46e2861be",
+      "trackProfileDigest": "0f5aefea7ad97652cdf11e4648e3a1198eed433e184b740496a0e715527c0903",
+      "validatedStaticWorldParameters": {
+        "authoredSite": null,
+        "axisLat": 63,
+        "axisLon": -28,
+        "biome": -1,
+        "collection": true,
+        "geographyRevision": null,
+        "layoutVersion": 2,
+        "packAddress": null,
+        "provinceAnchor": null,
+        "provinceRevision": 0,
+        "provinceSeed": 713,
+        "radius": 1000000000,
+        "seed": 23,
+        "shadeGeometryRevision": 3,
+        "shadeShape": "disk",
+        "shadeTrim": 0.65,
+        "shellThickness": 12,
+        "surfaceStyle": "atlas",
+        "terrainRevision": 2,
+        "transitionKm": 60000,
+        "waistWidth": 20
+      },
+      "worldId": "world-04853fb57dc132c50766d3c0f20d8238",
+      "worldSeed": 23
+    }
+  },
+  "witness": {
+    "input": {
+      "schema": 2,
+      "worldSeed": 23,
+      "geographyRevision": 1,
+      "terrainRevision": 2,
+      "artRevision": 1,
+      "assetRevision": 1,
+      "heroRevision": null,
+      "space": "shell",
+      "face": 3,
+      "level": 14,
+      "x": 4165,
+      "y": 3526,
+      "local": [
+        0.000001,
+        0.63
+      ]
+    },
+    "address": {
+      "schema": 2,
+      "worldSeed": 23,
+      "geographyRevision": 1,
+      "terrainRevision": 2,
+      "artRevision": 1,
+      "assetRevision": 1,
+      "heroRevision": null,
+      "space": "shell",
+      "face": 3,
+      "level": 14,
+      "x": 4165,
+      "y": 3526,
+      "local": [
+        0.0000010000003385357559,
+        0.6300000000001091
+      ]
+    },
+    "assignment": {
+      "core": {
+        "level": 14,
+        "cells": [
+          {
+            "face": 3,
+            "x": 4165,
+            "y": 3526
+          }
+        ]
+      },
+      "guardWidthM": 87.49514313855366
+    },
+    "radiusM": 1000000000000,
+    "q": [
+      -0.39282426702697765,
+      -0.7991101058564964,
+      -0.45509574152340365
+    ],
+    "nativeEndpoints": [
+      [
+        -0.3928307193858575,
+        -0.7991232314896808,
+        -0.4550671234008009
+      ],
+      [
+        -0.39281328035520313,
+        -0.7990877558157,
+        -0.45514446638623735
+      ]
+    ],
+    "nativeNormal": [
+      0.8974303176430392,
+      -0.44115623646857116,
+      6.390909716881143e-13
+    ],
+    "nativeProjected": [
+      -0.39282426710545626,
+      -0.7991101058179183,
+      -0.4550957415234037
+    ],
+    "exactCoplanarityInterval": [
+      8.176895681152755e-18,
+      8.176895681152756e-18
+    ],
+    "arcOrderIntervals": [
+      [
+        2.791574605672252e-9,
+        2.7915746056722524e-9
+      ],
+      [
+        4.753006017508632e-9,
+        4.7530060175086325e-9
+      ]
+    ],
+    "nativeDistanceBoundsM": [
+      87.44807349497485,
+      87.44807349497486
+    ],
+    "exactGreatCircleDistanceBoundsM": [
+      87.54221278213245,
+      87.54221278213247
+    ],
+    "edgePlaneLowerBounds": [
+      {
+        "edge": "left",
+        "distanceBoundsM": [
+          87.54221278213245,
+          87.54221278213247
+        ]
+      },
+      {
+        "edge": "right",
+        "distanceBoundsM": [
+          87546335.03906718,
+          87546335.0390672
+        ]
+      },
+      {
+        "edge": "down",
+        "distanceBoundsM": [
+          53400352.46064443,
+          53400352.46064444
+        ]
+      },
+      {
+        "edge": "up",
+        "distanceBoundsM": [
+          31363758.13854043,
+          31363758.138540436
+        ]
+      }
+    ],
+    "trueBoundaryLowerM": 87.54221278213245,
+    "oldResult": {
+      "cell": {
+        "face": 3,
+        "level": 14,
+        "x": 4165,
+        "y": 3526
+      },
+      "classification": "inside",
+      "distanceBoundsM": [
+        87.44807349497485,
+        87.44807349497486
+      ],
+      "edge": "left",
+      "logicalEdges": 4,
+      "outwardRoundingProfile": "sphere-outward-b192-v1"
+    },
+    "fixedResult": {
+      "classification": "unproved-or-outside",
+      "logicalEdges": 4
+    },
+    "underestimateAtLeastM": 0.09413928715758857
+  }
+}

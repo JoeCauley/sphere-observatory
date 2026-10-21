@@ -25,7 +25,7 @@ function woundDistance(q,s){
   distance=Math.min(distance,(f>.44?(Math.sqrt(f+1)-1)*w.width:f/Math.max(1e-12,woundGradient(a,b,w)))*s.radius);
  }return distance;
 }
-const defaults={terrainAnchor:null,terrainRevision:2,shadeGeometryRevision:3,packAddress:null,layoutVersion:2,provinceRevision:0,provinceSeed:713,provinceAnchor:null,axisLat:63,axisLon:-28,waistWidth:20,transitionKm:60000,shellThickness:12,geometryDetail:true,richMaterials:true,localShadows:1,wreckage:true,clouds:true,weatherStrength:.55,weatherQuality:1,cavityHaze:.28,spaceEnvironment:0,siteId:'',siteAnchor:null,siteRevision:0,siteElevation:0,autoWalk:true,autoSpeed:true,placeScene:'day',placeWeather:'mixed',walkSurface:false,walkMode:false,walkPosition:null,walkVelocity:0,shadeAttachment:null,surfaceLock:true};
+const defaults={terrainAnchor:null,terrainRevision:2,geographyRevision:null,shadeGeometryRevision:3,packAddress:null,layoutVersion:2,provinceRevision:0,provinceSeed:713,provinceAnchor:null,axisLat:63,axisLon:-28,waistWidth:20,transitionKm:60000,shellThickness:12,geometryDetail:true,richMaterials:true,localShadows:1,wreckage:true,clouds:true,weatherStrength:.55,weatherQuality:1,cavityHaze:.28,spaceEnvironment:0,siteId:'',siteAnchor:null,siteRevision:0,siteElevation:0,autoWalk:true,autoSpeed:true,placeScene:'day',placeWeather:'mixed',walkSurface:false,walkMode:false,walkPosition:null,walkVelocity:0,shadeAttachment:null,surfaceLock:true};
 const oldDefault=M.defaultState,oldValidate=M.validate,oldRegion=B.region,oldCollectionRegion=C.region,oldCavity=C.cavity;
 M.defaultState=()=>({...oldDefault(),...defaults});
 M.validate=input=>{
@@ -48,6 +48,8 @@ M.validate=input=>{
  if(![1,2,3].includes(s.shadeGeometryRevision))throw Error('Unsupported Shade geometry revision');
  s.terrainRevision=input.terrainRevision??1;
  if(![1,2].includes(s.terrainRevision))throw Error('Unsupported terrain revision');
+ s.geographyRevision=input.geographyRevision??null;
+ if(s.geographyRevision!==null&&(!Number.isInteger(s.geographyRevision)||![1,2].includes(s.geographyRevision)))throw Error('Unsupported geography revision');
  s.siteRevision=input.siteRevision??0;s.siteElevation=input.siteElevation??0;
  if(![0,1,2].includes(s.siteRevision)||!Number.isFinite(s.siteElevation)||s.siteElevation<0||s.siteElevation>10)throw Error('Invalid walking patch');
  s.siteId=input.siteId??'';if(typeof s.siteId!=='string'||!/^$|^(biome-[0-9]|rim|shade-[0-9]{1,2}|port-[01]|exterior-[012])$/.test(s.siteId))throw Error('Invalid field site');

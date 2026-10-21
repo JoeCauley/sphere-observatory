@@ -1,11 +1,82 @@
+<!-- repository-safety-checkpoint-2026-10-20 -->
+> **Project safety checkpoint — 20 October 2026:** Meadow–Industry walking is delivered; formal P05 remains OPEN. The latest Main candidate completes input compilation but defers before drawing on its unqualified work contract. Read [current status and completion path](Observatory-Project-Checkpoint-2026-10-20.md). Source/progress backups preserve the unfinished candidates separately from the working application; raw archives remain local by owner selection.
+
+<!-- Current Biome Pack Service pointer — 13 October 2026. Previous exact bytes preserved below. -->
+
+Current report: docs/Observatory-Biome-Pack-Service-Implementation-09.md; continuation ledger08. Correlated CPU perspective/canonical cell/X proof passes13 groups/20 refusals. Native Industry/Track/Both current02 pass15/17,15/17,15/21; full bulk API invoked, complete bulk raw readback NOT_RUN; actual CPU reference ownership remains UNKNOWN. Final isolated40 service children (989 sources),61 standard children and16 accepted separate-scene pack checks (444 sources) PASS,870 dependencies unchanged. The first live final run passed40 children but failed its source census on two preserved concurrent runtime additions. WORK: I:\Sphere\work\biome-pack-service-main-2026-10-13T21-35-09-434Z-1acb8fb3; read-only component viewer http://127.0.0.1:9027/review-final-01/index.html.
+
+P05 IN_PROGRESS; P06–P08 NOT_STARTED; Phase One NOT_ACCEPTED/NOT_RELEASED. Full48/53 matrix0 full PASS,52 NOT_RUN,T45 UNMEASURED;16 gates retain all14 inherited, initial9025 absence and concurrent live source association INCOMPLETE. Frozen40/61/16/native147 results do not certify later shared Main/package changes. Frame/native rays/AA/resolve/two-pixel, complete fragments/materials/receivers, shared Main ownership/accounting/ordinary replacement/public footprints/arrival/session/head/ACK/export/native peaks/quiet timing remain open. Catalogue51B empty. Canonical Phase-01, accepted Meadow/HR-09/H1 states/caps and failures are preserved. No acceptance or release claim.
+
+---
+
+<!-- Current Biome Pack Service pointer — 13 October 2026. Earlier bytes preserved below. -->
+
+Current browser Phase One report: `docs/Observatory-Biome-Pack-Service-Implementation-08.md`; continuation ledger07. Actual Main uncertain-travel autosave suppression and owned GL cleanup/cancellation are corrected (4/27 groups). Directed whole CPU ray-box geometry and authentic complete linked uniform transport are admitted prerequisites. Individual Industry/Track and current06 combined initial-construction native controls pass; earlier04/05 combined32MiB cap failures remain unwaived and replacement is unqualified. Final39 service children (983 sources),61 standard children and16 accepted separate-scene pack checks (442 sources) PASS with870 dependencies unchanged. Evidence: `I:\Sphere\work\biome-pack-service-main-2026-10-13T10-04-21-871Z-48ef1e62`; viewer `http://127.0.0.1:9026/review-final-01/index.html`.
+
+P05 IN_PROGRESS; complete Frame/viewport/fragment/material/receiver proof, Main R baseline/child lifetimes/public footprints/single arrival/session/head/ACK/export and native peaks/quiet timing remain open. P06–P08 NOT_STARTED; Phase One NOT_ACCEPTED/NOT_RELEASED; full48/53 matrix0 full PASS,52 NOT_RUN,T45 UNMEASURED. Catalogue51B empty. Initial9022/9023/9024 absence and all older preservation UNKNOWN gates remain unwaived. Accepted Meadow/HR-09/H1 states and Phase Two/Unreal exclusions are unchanged. This pointer supplies no acceptance or release claim.
+
+---
+
+> **Later preservation observation — 12 October 2026:** Port9023/PID29136/parent58484 was present at the initial observation and absent at the final check. Time and cause remain UNKNOWN; the continuity gate is UNWAIVED. No stop, restart or recreation was issued. Port9022 remains an initial absence. Six requested continuing servers and new9025 retain their observed identities. Read the current [implementation07](Observatory-Biome-Pack-Service-Implementation-07.md), [ledger06](Observatory-Biome-Pack-Service-Continuation-Ledger-06.md) and `I:\Sphere\work\biome-pack-service-resume-2026-10-12T23-51-47-961Z-4aad6eae/qualification/current-02/matrix.json`. P05 remains open; Phase One NOT_ACCEPTED/NOT_RELEASED. Earlier bodies retain their complete exact bytes.
+
+> **Current Biome Pack Service authority — 12 October 2026:** [Implementation07](Observatory-Biome-Pack-Service-Implementation-07.md) and [continuation ledger06](Observatory-Biome-Pack-Service-Continuation-Ledger-06.md) retain authentic precharged byte inputs and exact native parents, three actual12-group WebGL/browser-IDB controls, and fresh37/59/16 regression scopes. Phase One remains PARTIAL/NOT_ACCEPTED/NOT_RELEASED; P05 open, P06–P08 NOT_STARTED. Whole-view/fragment/Main/facade/session/export/native peak/quiet gates remain open. Port9022 was absent at this interval’s first observation; its loss remains UNKNOWN and unwaived. Every earlier body below retains its exact bytes.
+
+> **Current Biome Pack Service authority — 12 October 2026:** [Implementation06](Observatory-Biome-Pack-Service-Implementation-06.md) and [continuation ledger05](Observatory-Biome-Pack-Service-Continuation-Ledger-05.md) retain current prepared-reader/source/program/transform coupling, three actual WebGL/browser-IDB11-group results and fresh35/59/16 regression scopes. Phase One remains PARTIAL/NOT_ACCEPTED/NOT_RELEASED; P05 open, P06–P08 NOT_STARTED. Whole-view/fragment/Main/session/export/native peaks/quiet gates remain open. Every earlier body below retains its exact bytes.
+
+> **Current Biome Pack Service authority — 12 October 2026:** [Implementation05](Observatory-Biome-Pack-Service-Implementation-05.md) and [continuation ledger04](Observatory-Biome-Pack-Service-Continuation-Ledger-04.md) retain current native shared source/state/support/target ownership for both families separately and together, typed classic authority refusals and fresh35/59/16 regression scopes. Phase One remains PARTIAL/NOT_ACCEPTED/NOT_RELEASED; P05 open, P06–P08 NOT_STARTED. Whole-view/fragment/Main/session/export/native heap/driver/quiet gates remain open. Earlier bodies below retain their exact bytes.
+
 # Observatory roadmap and next-session handoff
 
-Updated 15 September 2026 · travel and interface integration
+<!-- infinite-meadow-pack-01-2026-10-10 -->
+> **New Observatory pack track - 10 October 2026:** [Infinite Meadow Pack 01](Observatory-Meadow-Pack-01.md) packages the accepted Study 12 appearance and Study 13 level cruise as `infinite-meadow` 1.0.0. Browser Observatory only: Explore → Biome Packs → Infinite Meadow → Visit, with a direct opening link and Return to Observatory. Versioned saves, asset checks, an eye-following stage and explicit cleanup form the shared foundation for Infinite Industry. Local delivery is verified: all 59 standard Observatory suites and 16 pack contract checks pass; public native Visit, portable startup, saves, exact full reveal/return and resource cleanup pass. The [delivery viewer](http://127.0.0.1:8890/review.html), portable ZIP and sealed evidence are under `I:/Sphere/work/meadow-biome-pack-01-2026-10-10`. Infinite Industry content is next, not yet implemented. The bounded Watershed Meadow below remains a separate frozen representation: HR-09/H1 remains failed/in progress, HR-10 not started, I-K blocked, B1 not accepted and M1 withdrawn. Its dated source hashes and evidence are historical, not fresh certification of this new menu/pack build.
 
-Current implementation and remaining gates: [Integration status](Integration-2026-09-15.md). The older continuation narrative below describes the reviewed v1.5.0 baseline; it is retained as historical context.
 
-This is the current continuation plan. Use it ahead of the older Next Leap
-sequence when priorities or status differ. The first Watershed pack milestone
+<!-- current-meadow-progress-2026-10-03 -->
+> **Current Meadow status (2026-10-05 bounded HR-09 map/preparation continuation):** Runtime `7ca67b137100b81c10c3ae173ffab90f0b9054aac99d1bf199fee7e145e59116` is unchanged. Ready-map winner reuse is rejected for observable object identity effects; SHA64 remains unpromoted with no dependable complete preparation gain. Fresh integrated regression/contracts/seven ownership states and independent thirteen-pair audit PASS in their scopes. Complete quiet H1 retains six 900-frame windows/5,400 unique valid GPU samples/protocol PASS and numerical FAIL with twelve unchanged-limit failures. Original-order raw native diagnosis repeats the elevated-turn first-canonical 376-row material mismatch; all 54 raw captures and every changed channel are retained, cause UNKNOWN/unwaived. Retained F/G media re-review is complete; fine-edge/shimmer/filter/shadow feedback and human acceptance remain open. HR09/H IN PROGRESS; HR10 NOT STARTED; I-K blocked; B1/acceptedBy NOT ACCEPTED; M1 WITHDRAWN. Current baseline bytes are preserved in the pre-docs audit; the historical missing PID/server and absent process/context qualifications remain INCOMPLETE/NOT_CONFIRMED/UNKNOWN. See [current map/preparation report](Observatory-Meadow-HR09-Map-Preparation.md) and its authoritative final after-docs audit/seal. Integrity sealing does not waive failed numerical/native/human/preservation gates.
+
+<!-- hr09-next-current-source-2026-10-04 -->
+## Current source correction — 3 October 2026 EDT
+
+The [further correction and complete evidence](Observatory-Meadow-HR09-Next-Correction.md) supersedes prior source measurements for current performance interpretation. Runtime SHA-256 is **6d38e527d570c9bfee644a710c10c92dcc10028a22256f1e8b0ca1ba3fd74d4c**; HEAD, version 1.6.0, assets and immutable H1/E/F/G fixtures are unchanged. Full regressions, affected HR-05/HR-06 native proof, ordinary bounded F/G/HR-08 actual review and seven native ownership states are restored PASS under their bounded criteria. Known visual limitations remain.
+
+The new complete quiet H1 has eight protocol checks PASS, 5,400 valid unique GPU samples and **numerical FAIL with twelve unchanged-limit failures**. Walking/turning CPU p95 is 10.70/9.60 ms; incremental CPU 10.20/9.10 ms; preparation MAX 16.10/13.90 ms. Stationary/moving incremental GPU is 8.676/10.545/10.290 ms. On cadence is 56.75/55.67/55.99 fps. Absolute GPU, interval and resource limits pass; no limit is relaxed.
+
+Native retained MAX is 59,439,399 bytes, conservative replacement/preparation MAX **64,060,211 bytes**, margin 3,048,653 under 64 MiB; all three worker heaps and added cache/metadata are included. The ordered clump candidate remains rejected/unimplemented (planning 3.20–6.50 ms, high retained work, no proved envelope/GPU gain). An empty page also reproduces approximately 56.5 fps in visible/headless Chrome; underlying cadence mechanism remains UNKNOWN.
+
+**HR-00 through HR-08 DONE under bounded criteria; HR-09/H IN PROGRESS; HR-10 NOT STARTED; I–K blocked; B1/acceptedBy NOT ACCEPTED; M1 WITHDRAWN.** Continue with bounded complete demand/candidate/reference-plan/filter corrections, preserving all original identities, geometry, input/lifetime effects and H1 limits. Reopen/repeat affected proof, full regressions, native ownership and complete H1 after meaningful changes. No release/export/human acceptance/closeout authorization is implied.
+
+The sections below retain dated source-specific measurements and their original scope.
+
+
+Updated 30 September 2026 · bounded IB-075-A–G complete; historical roadmap retained
+
+Current implementation and remaining gates: [Infinite Biomes ledger state](Observatory-Infinite-Biomes-Ledger-STATE.md). IB-075-A–G are complete under their recorded bounded criteria; the [reviewed F continuation](evidence/meadow-proof-01/f-canopy-continuation-v2-2026-09-30T20-41-39-185Z/f-reviewed-report.md) records implementation, numerical/runtime and visual PASS for `meadow-proof-f2` (appearance 4, canopy 2, material 3). H measurement implementation is PASS; fixed-resolution performance/resource certification is FAIL, retained CPU-memory attribution is INCOMPLETE and H remains IN PROGRESS. I export/UI certification remains PENDING and I–K remain blocked; B1/acceptedBy are NOT ACCEPTED and M1 is WITHDRAWN. G is DONE under the [reviewed wind/timeline gate](evidence/meadow-proof-01/g-wind-timeline-v1-2026-09-30/g-reviewed-report-v2.md).
+
+Use **Explore → Watershed · Open meadow → Meadow study · on foot → Visit** in the supported local app at `http://127.0.0.1:8766/`. The app restores its last scene, so explicitly select Meadow study. Moving-window integration and seamless infinite walking/flight remain later work. The [project documentation index](README.md) separates current contracts from historical records.
+
+The [hands-on lessons](Observatory-Meadow-Progress-and-Lessons-2026-09-30.md) distinguish the frozen G2 capture from a walkable arrival, inherited scene settings from source identity, and eventual grass return from measured performance. For the H redesign continuation, use [the implemented matched protocol and measured failures](Observatory-Meadow-Performance-H-01.md); record preparation/upload waits separately from steady frame intervals. I still owns export/UI compatibility and explicit B1 acceptance; J/K still own moving-window and full-route proof. No automatic run has been scheduled by this update.
+
+## H redesign implementation sequence
+
+Implement the selected [shared vegetation service](Observatory-Meadow-H-Redesign-Ledger.md)
+in the current Observatory. HR-00 through HR-08 are DONE; Continue at HR-09 for fresh unchanged-limit H1 certification. The first stage has verified canonical
+block generation, persistent storage, compact references, real batching and
+progressive replacement/ownership, production selection and measured GPU optimisation;
+later stages deliver CPU attribution, full F/G review and H certification. Three implementation
+sessions plus certification are a planning allowance, not a guaranteed schedule.
+HR-00 through HR-08 are DONE; HR-09 is IN PROGRESS; HR-10 is NOT STARTED. The design is intended for later pack reuse,
+but H implements the Meadow provider only. No automatic run is scheduled and
+I-K, B1/acceptedBy and M1 retain their gates.
+
+The older continuation narrative below describes the reviewed v1.5.0 baseline and subsequent dated additions. Its [integration status](Integration-2026-09-15.md), measurements and handoff remain historical context.
+
+The approved [Infinite Biomes implementation ledger](Observatory-Infinite-Biomes-Ledger.md)
+is the authoritative sequence for persistent seeded geography, Endless Meadow,
+modern walkable ground, global Watershed, dense biome families and cities. Use
+that ledger when its ordering is more specific than the historical queue below.
+
+The earlier continuation plan below superseded the original Next Leap
+sequence. Current priorities and status follow the Infinite Biomes ledger above. The first Watershed pack milestone
 has implementation and verification evidence. The latest screenshot review
 prioritises Wound support, Watershed altitude continuity and automatic intact /
 damaged Shade edges ahead of more artistic variations. The investigation and
@@ -48,7 +119,7 @@ land. Weather should help reveal distance; it must not hide a regular atlas.
 | Navigation | One-way Go to pointer, marked destinations, return history, central Breach spill arrivals and exits through the opening to visible far destinations | Broader route and moving-target regression coverage as geography expands |
 | Flight and walking | Auto by default, gaze-independent nearest-triangle/Wound/Shade clearance with bounded acceleration, 80° lens and 0.2 stops; Space + E lift-off, smooth landing, opposite-shell flight; local Wound ground/props clipped, terrain-following wall shares top/end seam vertices and collision, real lip permits a fall to flight | New landings use nine fine and sixteen coarse connected cells with pinned support and rebasing; original revision-0/1 patches retain their saved bounds. Full mixed shell/Shade journeys remain a broader programme |
 | Time and tools | Play/Pause persists through navigation; measurements survive clock ticks and tool close/reopen | Keep these behaviours during new streaming and UI work |
-| Watershed | Pack `watershed`, geography 1 / new art 2, saved schema-1 address, seed 713; original garden and 76 curved edges retained; receiving lake, quiet reach and meadow share overlapping regional materials | Art-1 scenes retain their appearance; local planting/shore geometry, nine finished variants and global walking continuity remain queued |
+| Watershed | Pack `watershed`, geography 1 / new art 2, saved schema-1 address, seed 713; original garden and 76 curved edges retained; receiving lake, quiet reach and meadow share overlapping regional materials; bounded Meadow study now has reviewed F2 canopy/material continuity | Art-1 scenes retain their appearance; broader shore geometry, nine finished variants and global walking continuity remain queued; B1 remains NOT ACCEPTED |
 | Shades | Revision 3 adds two continuous faces 180 m apart, finished intact perimeters, closed fracture profiles, shared curved LOD seams and immediate coarse coverage; all four shapes discover edges without selection | Complete face environments/interiors remain separate work; portable revision-1/2 scenes retain their geometry, while pre-update browser exploration upgrades once |
 | Weather | Three curved layers, regional tint/coverage, independent scene-clock masks, smaller/fainter distant detail, filtered noise and broad Shade shadows | Illustrative lighting; fine cloud shadows and art variation can improve; local Wound containment now follows the shared curved contour |
 | Latest size adjustment | All local cloud features and six distant wavelengths are **two-thirds of their previous size**: a one-third reduction | Layer heights, motion periods, atmosphere reach and the existing distance fade retain their settings |
@@ -110,7 +181,7 @@ collision; the final view has 38.84 MiB of GPU vertices, zero pending uploads,
 and two bounded graphs using about 43 KiB of numeric data. No pack texture
 allocation was added.
 
-## Current bounded delivery and next work
+## Earlier bounded deliveries and work proposals
 
 [Ground material correction 1](Observatory-Ground-Material-01.md) fixes the
 reported shared green border on unrelated walking biomes. The mesh pass now
@@ -162,7 +233,7 @@ evidence above. Keep geometry, collision, materials and atmosphere tied to the
 same geographic boundaries as local detail is added. Global route coverage and
 finished Shade-face environments remain distinct milestones.
 
-## Ordered improvement work
+## Historical ordered improvement work
 
 | Priority | Work item | Concrete completion check |
 |---|---|---|
@@ -282,7 +353,7 @@ Generated screenshots, reports and the flight video are local under
 `atmosphere-release/`, `continuous-flight/` and `pointer/`. They are ignored by Git;
 reproduce them with the tests when continuing from a different checkout.
 
-## Handoff details
+## Historical handoff details · September baseline
 
 - Repository: `I:/Sphere/repositories/sphere-observatory`.
 - Current branch: `codex/watershed-neighbourhood`. The continuity milestone is
@@ -316,8 +387,20 @@ Supporting detail: [Places and travel](Observatory-Places-Travel.md),
 [historical queue](Observatory-Queue.md) and
 [original Next Leap plan](Observatory-Next-Leap.md).
 
-Suggested next-session request: “Review Watershed trio 1 and its evidence, then
+Historical suggested next-session request (superseded by the Infinite Biomes ledger): “Review Watershed trio 1 and its evidence, then
 design and implement one bounded receiving-lake shore with planted geometry and
 a promenade. Keep its regional shoreline, material, visible ground and collision
 registered through descent. Preserve the revision-1 garden and saved art-1
 scenes, Wound seams, cloud scale, Shade bodies, connected support and travel.”
+
+## Hands-on wind appearance feedback · 30 September 2026
+
+Joe reported that at **1×** the wind looked good, with abundant grass visibly waving. He also observed **alias shimmer** and said **shadows still need work**. This is positive qualitative appearance/motion feedback with two unresolved visual issues, not a measured frame result or explicit B1 acceptance. The existing production light/visibility/shadow connections do not prove that the visible meadow has sufficient cast/self-shadow detail. Retain shimmer and shadow adequacy as follow-up observations within the authoritative work order; no shader fix or new gate closure was made in this documentation update. See [progress and lessons](Observatory-Meadow-Progress-and-Lessons-2026-09-30.md).
+
+## HR-08 integrated update - 3 October 2026
+
+**Completion - 3 October 2026.** HR-08 is DONE. [Integrated contracts and F/G review](Observatory-Meadow-HR08-Integrated-Review.md), [delivery report](evidence/meadow-proof-01/hr08-integration-v1-2026-10-03T12-41-49Z/hr08-report.md) and [verification receipt](evidence/meadow-proof-01/hr08-integration-v1-2026-10-03T12-41-49Z/hr08-verification.json) record bounded record-pressure replacement, pinned-reader fragmentation/splitting, cancellation, corruption/worker failure, backing aliases, incremental compaction, stale generations and full disposal. Real production workers complete a direct 21 m jump, the metre-by-metre return, turn/elevation and 722 packed-byte revisits without reconfiguration. The repeated F density/coverage, 37 frozen still conditions, 381 motion requests and retained native/lossless review pass their bounded criteria. G live motion, frozen/far-only negative controls, roots, rate/scrub/save and latched capture phases pass. Fresh retained/replacement CPU upper bounds are 57.95 / 63.74 MiB under the recorded scope. Full regressions and focused native checks PASS. This is integrated regression evidence, not fresh H1 certification or I/B1 acceptance; HR-09 is next.
+
+## HR-09 certification attempt - 3 October 2026
+
+The [integrated H1 certification runner](Observatory-Meadow-HR09-Certification.md) is implemented and full regressions PASS. The [fresh production result](evidence/meadow-proof-01/hr09-certification-v1-2026-10-03T20-14-59Z/hr09-report.md) is **FAIL**, with all 5400 matched frames, valid unique GPU samples, complete CPU ownership and no page/worker/GL/resolution errors. Resource limits and the measured 63.77 MiB CPU replacement bound pass; CPU, preparation, frame intervals and incremental GPU limits fail. **HR-09 and parent H remain IN PROGRESS; HR-10 NOT STARTED; I-K blocked; B1/acceptedBy NOT ACCEPTED and M1 WITHDRAWN.** The current certification entry point is `npm run test:ib075:hr09` with a fresh `IB075_HR09_OUTPUT`. H1 and E/F/G fixture bytes and numerical limits remain unchanged.

@@ -6,14 +6,48 @@
   "license": "UNLICENSED",
   "scripts": {
     "start": "node serve.cjs",
+    "test:pack": "node tests/biome-pack.mjs",
+    "test:industry": "node tests/industry.mjs",
+    "test:industry:browser": "node tests/industry-browser.cjs",
+    "test:biome-service": "node tests/biome-service.cjs",
     "start:managed": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/start-observatory.ps1",
     "stop": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/stop-observatory.ps1",
-    "test": "node tests/geometry.cjs && node tests/survey.cjs && node tests/collection.cjs && node tests/shades.cjs && node tests/station-convergence.cjs && node tests/performance.cjs && node tests/evolution.cjs && node tests/focus.cjs && node tests/continuity.cjs && node tests/materials.cjs && node tests/shade-mips.cjs && node tests/session-state.cjs && node tests/wound-materials.cjs && node tests/wound-ground.cjs && node tests/wound-chunks.cjs && node tests/surface-arrival.cjs && node tests/streaming.cjs && node tests/atlas-study.cjs && node tests/watershed.cjs && node tests/neighbourhood.cjs && node tests/watershed-trio.cjs && node tests/travel.cjs && node tests/places-flight.cjs && node tests/edge-speed.cjs && node tests/pointer-navigation.cjs && node tests/asset-loading.cjs && node tests/surface-transition.cjs && node tests/shade-edges.cjs && node tests/shade-footprint.cjs && node tests/shade-body.cjs && node tests/shade-seams.cjs && node tests/ground-chunks.cjs && node tests/ground-addresses.cjs && node tests/travel-transaction.cjs && node tests/shader-assembly.cjs && node tests/render-performance.cjs",
+    "test": "node tests/geometry.cjs && node tests/survey.cjs && node tests/collection.cjs && node tests/shades.cjs && node tests/station-convergence.cjs && node tests/performance.cjs && node tests/evolution.cjs && node tests/focus.cjs && node tests/continuity.cjs && node tests/materials.cjs && node tests/shade-mips.cjs && node tests/session-state.cjs && node tests/wound-materials.cjs && node tests/wound-ground.cjs && node tests/wound-chunks.cjs && node tests/surface-arrival.cjs && node tests/streaming.cjs && node tests/atlas-study.cjs && node tests/watershed.cjs && node tests/legacy-role-adapter.cjs && node tests/neighbourhood.cjs && node tests/watershed-trio.cjs && node tests/travel.cjs && node tests/places-flight.cjs && node tests/edge-speed.cjs && node tests/pointer-navigation.cjs && node tests/asset-loading.cjs && node tests/surface-transition.cjs && node tests/shade-edges.cjs && node tests/shade-footprint.cjs && node tests/shade-body.cjs && node tests/shade-seams.cjs && node tests/ground-chunks.cjs && node tests/ground-addresses.cjs && node tests/ground-identity.cjs && node tests/world-address.cjs && node tests/world-geography.cjs && node tests/world-topology.cjs && node tests/instanced-environment.cjs && node tests/grass-stream.cjs && node tests/meadow-field.cjs && node tests/meadow-profile.cjs && node tests/meadow-revisions.cjs && node tests/vegetation-service.cjs && node tests/meadow-provider.cjs && node tests/meadow-blocks.cjs && node tests/vegetation-gpu.cjs && node tests/vegetation-lifecycle.cjs && node tests/vegetation-selection.cjs && node tests/vegetation-selection-fragmentation.cjs && node tests/vegetation-preparation.cjs && node tests/vegetation-integrated.cjs && node tests/vegetation-optimisation.cjs && node tests/vegetation-memory.cjs && node tests/meadow-wind.cjs && node tests/meadow-performance.cjs && node tests/travel-transaction.cjs && node tests/shader-assembly.cjs && node tests/render-performance.cjs && node tests/session-travel-authority.cjs && node tests/renderer-disposal-authority.cjs",
     "test:integration": "node tests/integration-browser.cjs",
+    "test:ib070:integration": "node tests/ib070-integration-browser.cjs",
+    "test:ib075:a": "node tests/meadow-benchmark.cjs && node tests/ib075-a-benchmark-browser.cjs",
+    "test:ib075:b": "node tests/meadow-profile.cjs && node tests/meadow-field.cjs && node tests/grass-stream.cjs && node tests/shader-assembly.cjs",
+    "test:ib075:c": "node tests/meadow-placement.cjs && node tests/meadow-placement-browser.cjs",
+    "test:ib075:d": "node tests/meadow-residency.cjs && node tests/meadow-residency-browser.cjs",
+    "test:ib075:e": "node tests/meadow-art.cjs && node tests/ib075-e-botanical-browser.cjs",
+    "test:ib075:b:ground": "node tests/ground-chunks.cjs && node tests/ground-identity.cjs",
+    "test:ib075:b:browser": "node tests/meadow-field-browser.cjs",
+    "test:instanced-environment:browser": "node tests/instanced-environment-browser.cjs",
+    "test:meadow-field:browser": "node tests/meadow-field-browser.cjs",
     "test:performance": "node tests/traversal-performance.cjs",
-    "test:performance-visual": "node tests/performance-visual-browser.cjs"
+    "test:performance-visual": "node tests/performance-visual-browser.cjs",
+    "test:ib075:f": "node tests/meadow-canopy.cjs && node tests/meadow-canopy-fixtures.cjs && node tests/meadow-canopy-continuity.cjs && node tests/meadow-canopy-ground-lifecycle.cjs && node tests/ib075-f-canopy-browser.cjs",
+    "test:ib075:g": "node tests/meadow-wind.cjs && node tests/meadow-wind-gpu-browser.cjs && node tests/ib075-g-wind-browser.cjs",
+    "test:ib075:h": "node tests/meadow-performance.cjs && node tests/ib075-h-performance-browser.cjs",
+    "test:ib075:hr00": "node tests/meadow-revisions.cjs && node tests/meadow-profile.cjs && node tests/session-state.cjs && node tests/meadow-canopy-fixtures.cjs && node tests/meadow-performance.cjs && node tests/meadow-revisions-browser.cjs && node tests/meadow-canopy-worker-browser.cjs",
+    "test:ib075:hr01": "node tests/vegetation-service.cjs && node tests/meadow-provider.cjs && node tests/vegetation-service-browser.cjs",
+    "test:ib075:hr02": "node tests/meadow-blocks.cjs && node tests/meadow-blocks-browser.cjs",
+    "test:ib075:hr03": "node tests/vegetation-gpu.cjs && node tests/vegetation-gpu-browser.cjs",
+    "test:ib075:hr04": "node tests/vegetation-lifecycle.cjs && node tests/vegetation-lifecycle-browser.cjs",
+    "test:ib075:hr05": "node tests/vegetation-selection.cjs && node tests/vegetation-selection-fragmentation.cjs && node tests/vegetation-selection-browser.cjs",
+    "test:ib075:hr06": "node tests/vegetation-optimisation.cjs && node tests/vegetation-optimisation-browser.cjs",
+    "test:ib075:hr07": "node tests/vegetation-memory.cjs && node tests/vegetation-memory-browser.cjs",
+    "test:ib075:hr08": "node tests/vegetation-integrated-suite.cjs",
+    "test:ib075:hr09": "node tests/vegetation-certification-suite.cjs"
   },
   "engines": {
     "node": ">=20"
+  },
+  "devDependencies": {
+    "ajv": "8.17.1",
+    "esbuild": "0.25.10",
+    "fake-indexeddb": "6.2.5",
+    "fflate": "0.8.2",
+    "playwright": "^1.63.0"
   }
 }

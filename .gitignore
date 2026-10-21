@@ -7,3 +7,10 @@ tests/artifacts/
 .observatory-server.pid
 # Local studies, scratch scripts, archived working images and packaged downloads.
 /work/
+
+# Historical generated captures remain local. Their source and progress records
+# are backed up in the separate private Sphere repository checkpoint.
+/docs/evidence/
+
+# Raw conversation export is retained locally and backed up privately.
+/analysis/infinite-biomes-codex-sessions.csv

@@ -1,5 +1,8 @@
 # Observatory 1.1 — volumes, wreckage and aligned Shades
 
+<!-- current-meadow-progress-2026-10-03 -->
+> **Current Meadow status (2026-10-05 bounded HR-09 map/preparation continuation):** Runtime `7ca67b137100b81c10c3ae173ffab90f0b9054aac99d1bf199fee7e145e59116` is unchanged. Ready-map winner reuse is rejected for observable object identity effects; SHA64 remains unpromoted with no dependable complete preparation gain. Fresh integrated regression/contracts/seven ownership states and independent thirteen-pair audit PASS in their scopes. Complete quiet H1 retains six 900-frame windows/5,400 unique valid GPU samples/protocol PASS and numerical FAIL with twelve unchanged-limit failures. Original-order raw native diagnosis repeats the elevated-turn first-canonical 376-row material mismatch; all 54 raw captures and every changed channel are retained, cause UNKNOWN/unwaived. Retained F/G media re-review is complete; fine-edge/shimmer/filter/shadow feedback and human acceptance remain open. HR09/H IN PROGRESS; HR10 NOT STARTED; I-K blocked; B1/acceptedBy NOT ACCEPTED; M1 WITHDRAWN. Current baseline bytes are preserved in the pre-docs audit; the historical missing PID/server and absent process/context qualifications remain INCOMPLETE/NOT_CONFIRMED/UNKNOWN. See [current map/preparation report](Observatory-Meadow-HR09-Map-Preparation.md) and its authoritative final after-docs audit/seal. Integrity sealing does not waive failed numerical/native/human/preservation gates.
+
 This pass addresses the stretched exterior illustrations, cloud sampling streaks, lack of depth across the cavity, flight through solid ground, and Shade routes that missed the habitat waist.
 
 ## Try it
@@ -71,3 +74,7 @@ Scene files now identify Observatory 1.1. Old layout-2 scenes acquire the new al
 ## Technique references
 
 WebGL2's [3D texture API](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/texImage3D) supports the sampled density field. The [Nubis 2017 presentation](https://advances.realtimerendering.com/s2017/index.html) describes the broader practice of combining density structure, ray marching and controlled sampling budgets for real-time clouds. These informed the approach; this implementation and its procedural models are original. It does not incorporate game assets, shaders or other content from Star Agent.
+
+## Later bounded meadow rendering · 30 September 2026
+
+The [IB-075-F F2 reviewed continuation](evidence/meadow-proof-01/f-canopy-continuation-v2-2026-09-30T20-41-39-185Z/f-reviewed-report.md) records later bounded canopy work using the production star direction, visibility/shadows, cavity fill, exposure and atmosphere alongside curved clump geometry and actual terrain material. Its ordinary-app route and current revision/status record are in the [bounded proof](Observatory-Meadow-Bounded-Proof-01.md) and [documentation index](README.md). This link does not revise the historical v1.1 implementation or measurements above. F is complete under bounded criteria; G is DONE under bounded wind/timeline criteria. H measurement implementation is PASS; fixed-resolution performance/resource certification is FAIL, retained CPU-memory attribution is INCOMPLETE and H remains IN PROGRESS. I export/UI certification remains PENDING and I–K remain blocked; B1/acceptedBy are NOT ACCEPTED and M1 is WITHDRAWN.

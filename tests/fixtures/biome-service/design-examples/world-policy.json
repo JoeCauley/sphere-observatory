@@ -1,0 +1,50 @@
+{
+  "format": "sphere-biome-policy/1",
+  "policyId": "pilot-policy-v1",
+  "allocatorRevision": "connected-frontier-v1",
+  "worldId": "design-world-01",
+  "worldSeed": 713,
+  "hostWorldDigest": "6d9a0740367f803aacbfd17615d4430a57d77cee5efb0df4ba49772677c70c38",
+  "hostGeographyDigest": "c2938eccea60c0fc95ec84645f817b7bd5281a5bf4abe8a7c7afe62f6143364d",
+  "trackProfileDigest": "6985745c963ff62e61b403f2a02825b1668378d65e01c2087a118f54a0c22fa7",
+  "protectionProfileDigest": "545b4918d6cf1db97bbbd6ada1ba593d419344b536f6715fa9a7b99631f7df83",
+  "shellRadiusM": 149597870700,
+  "addressProfile": "sphere-world-address-v2",
+  "allocation": {
+    "level": 14,
+    "minimumLevel": 12,
+    "maximumLevel": 18,
+    "regionsPerPack": 1,
+    "targetAreaM2": 1e+16,
+    "maxCandidateAnchors": 4096,
+    "maxCellVisits": 65536,
+    "maxCellsPerRegion": 4096,
+    "maxCellsPerWorld": 65536,
+    "maxRegionsPerWorld": 128,
+    "maxBatchClassifications": 256,
+    "maxIndexNodes": 262144,
+    "numericSafetyMarginM": 1,
+    "tieBreak": "numeric-face-level-x-y",
+    "freshBatchOrder": "priority-pack-request"
+  },
+  "limits": {
+    "maxInstalledReleases": 64,
+    "maxManifestBytes": 1048576,
+    "maxReleaseBytes": 268435456,
+    "maxAssets": 4096,
+    "maxWorldBindingBytes": 16777216,
+    "maxProviderStateBytes": 1048576,
+    "serviceCpuPeakBytes": 33554432,
+    "serviceGpuPeakBytes": 10485760,
+    "aggregateProviderCpuPeakBytes": 67108864,
+    "aggregateProviderGpuPeakBytes": 33554432,
+    "frameMaintenanceP95Ms": 0.5,
+    "overviewIncrementalGpuP95Ms": 0.5
+  },
+  "protectedProfiles": [
+    "wound-apertures-v1",
+    "authored-sites-v1",
+    "polar-ports-v1"
+  ],
+  "continuation": "same-input-same-counters"
+}

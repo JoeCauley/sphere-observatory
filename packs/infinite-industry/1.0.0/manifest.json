@@ -1,0 +1,230 @@
+{
+  "schema": 1,
+  "id": "infinite-industry",
+  "name": "Infinite Industry",
+  "version": "1.0.0",
+  "runtimeApi": 1,
+  "geography": {
+    "revision": "industry-water-v1",
+    "seed": 9187,
+    "coordinateContract": "shell-tangent-metres-v1",
+    "sourceWorldRevision": "industry-water-v1",
+    "addressRevision": "industry-address-v1",
+    "siteId": "industry-water-0-0",
+    "cellM": 256,
+    "shellRadiusM": 149597870700,
+    "eastLimitM": 469975571583.7958,
+    "northLimitM": 234987785791.8979,
+    "maximumGroundM": 57,
+    "acrossFlatsM": 150
+  },
+  "appearance": {
+    "revision": "builder-water-v1",
+    "stateField": "industryRevision",
+    "status": "II-001 implementation candidate"
+  },
+  "entry": "app.js",
+  "capabilities": [
+    "walk",
+    "free-flight",
+    "collision",
+    "elevated-gallery",
+    "water-routing",
+    "local-save",
+    "portable-save",
+    "recording",
+    "worker-preparation"
+  ],
+  "representations": [
+    {
+      "id": "near",
+      "provider": "geometry.js",
+      "anchor": "world",
+      "follows": "eye"
+    },
+    {
+      "id": "middle",
+      "provider": "geometry.js",
+      "anchor": "world",
+      "follows": "eye"
+    },
+    {
+      "id": "far",
+      "provider": "geometry.js",
+      "anchor": "world",
+      "follows": "eye"
+    },
+    {
+      "id": "shell",
+      "provider": "../../infinite-meadow/1.0.0/renderer.js",
+      "anchor": "shell"
+    }
+  ],
+  "budgets": {
+    "residentInstances": 1,
+    "gpuBufferBytes": 16777216,
+    "gpuTextureBytes": 0,
+    "stageCells": 4,
+    "sourceBytes": 2097152
+  },
+  "storageKey": "sphere-pack:infinite-industry:1.0.0",
+  "assets": [
+    {
+      "path": "app.js",
+      "bytes": 19037,
+      "sha256": "16e61c9eef7ce8916b5ab524001e76d7fb6b4717a12d335d5e4c2c3204ba69fc"
+    },
+    {
+      "path": "boundaries.js",
+      "bytes": 2349,
+      "sha256": "813f6de8c63a86267b5d75d9e949e69552e26c0499daf29592c2f93fab8c7c0b"
+    },
+    {
+      "path": "entry.js",
+      "bytes": 1466,
+      "sha256": "857699eecd5baf9628dc13b31a358f0710c4007aaf2457a1574a02ecf9110ae7"
+    },
+    {
+      "path": "facility.js",
+      "bytes": 6040,
+      "sha256": "79858ed044925b74bda91cf990c686f09d55b22ffcde7b23478141940313b39d"
+    },
+    {
+      "path": "geometry.js",
+      "bytes": 10721,
+      "sha256": "6dc26f016d1ae927abe76bf6b77f2186aa1034509630a716c34b8423c4ed4c25"
+    },
+    {
+      "path": "index.html",
+      "bytes": 3254,
+      "sha256": "b5f21e2831671fb678ad34bf8528de7cb3dbc822f302ca2b4c69e28c6b745573"
+    },
+    {
+      "path": "model.js",
+      "bytes": 3023,
+      "sha256": "eacc56c44d2cfd55ec42a767a6c204fd1a14649f576168db647de06269a45e3c"
+    },
+    {
+      "path": "prepare-worker.js",
+      "bytes": 356,
+      "sha256": "b54fb82f9f3202c7774110046623c167c73e3c9f89cde5df34fb1967098af6c3"
+    },
+    {
+      "path": "renderer.js",
+      "bytes": 7500,
+      "sha256": "6fabc6c0e401b16b161bc3d67d8c19c34ba5a33cf92a0bf08f858332733beedd"
+    },
+    {
+      "path": "style.css",
+      "bytes": 3711,
+      "sha256": "47a2c042a30fe241697c958f5aa0fff931e92a84d448d20b0fbeaab6a5bcd060"
+    }
+  ],
+  "dependencies": [
+    {
+      "path": "../../infinite-meadow/1.0.0/app.js",
+      "bytes": 32759,
+      "sha256": "92c450e94c1b3ce3d1fa273f6e22efaba8a22bc7f126820fa8d533b165832157"
+    },
+    {
+      "path": "../../infinite-meadow/1.0.0/coordinates.js",
+      "bytes": 3908,
+      "sha256": "2b70f23c6fef245c0893e8f8fa300d8f1f1f0601768321d695884bfe99a4e147"
+    },
+    {
+      "path": "../../infinite-meadow/1.0.0/entry.js",
+      "bytes": 736,
+      "sha256": "c29219f84691abb1e9faf6040adaf04bd7b5b940ee2d060a53a62299ade18407"
+    },
+    {
+      "path": "../../infinite-meadow/1.0.0/grass-allocation.js",
+      "bytes": 1454,
+      "sha256": "9bd016a67d673402ad89372f1ba60f708722b679cdc0f1b91180f811c936d631"
+    },
+    {
+      "path": "../../infinite-meadow/1.0.0/grass-handoff.js",
+      "bytes": 2827,
+      "sha256": "426b367b2d301e910e5897156f81abaf7e7e6adb840853e1f1b73bd4aa30c86a"
+    },
+    {
+      "path": "../../infinite-meadow/1.0.0/grass-scatter.js",
+      "bytes": 919,
+      "sha256": "900f72c77d8a8c2b1fad7bbbe738c4e8eb512b131ac4d58ee7720e1e11104ea4"
+    },
+    {
+      "path": "../../infinite-meadow/1.0.0/grass-shaders.js",
+      "bytes": 11160,
+      "sha256": "0e149323a0f5b5cd22ddd8a4b71d8905291a8188226f826a078607ce68ba833d"
+    },
+    {
+      "path": "../../infinite-meadow/1.0.0/grass-stage.js",
+      "bytes": 8031,
+      "sha256": "fae3b698c7fd55e8aefb144ffc2f273294dcbaf7bbce21ef72a122accfc2ec8e"
+    },
+    {
+      "path": "../../infinite-meadow/1.0.0/landscape.js",
+      "bytes": 2657,
+      "sha256": "e298f775c45a24ed78ef63283bea5a535db01b6ad97c0926bc6588463868c587"
+    },
+    {
+      "path": "../../infinite-meadow/1.0.0/level-cruise.js",
+      "bytes": 3147,
+      "sha256": "2ad5947433f66ab3424b67264a613a98655f3dc0c98a457a45350a0102d0c6c9"
+    },
+    {
+      "path": "../../infinite-meadow/1.0.0/meadow-surface.js",
+      "bytes": 4694,
+      "sha256": "200f167be15f39cc09be6cab45f5aacb2ed9883c9eb340c4cc57eca9e2c3e466"
+    },
+    {
+      "path": "../../infinite-meadow/1.0.0/model.js",
+      "bytes": 18066,
+      "sha256": "f2b152d83f026d154154ec4891e4d21b636804a4a3760b96866503644360770f"
+    },
+    {
+      "path": "../../infinite-meadow/1.0.0/renderer.js",
+      "bytes": 28271,
+      "sha256": "31aef7070eb2a7946634a9c58eaa042ae545c2c1c68e7af2bab523ba4e82a337"
+    },
+    {
+      "path": "../../infinite-meadow/1.0.0/terrain-grid.js",
+      "bytes": 5533,
+      "sha256": "dd838ac932b7319d7f608a2a2bcd7cf30af31774c16266f9808abea7bfbd7f6f"
+    },
+    {
+      "path": "../../infinite-meadow/1.0.0/vendor/world-address.js",
+      "bytes": 9929,
+      "sha256": "b614e3f9e9492674c180ac9ebc72aec2345e5428bdfe98984cb4cd5c224b77f1"
+    },
+    {
+      "path": "../../runtime/v1/contract.js",
+      "bytes": 5980,
+      "sha256": "a7b20a809396b248a37ef9258c7cf4c9fce40be8c125ff4b9a34e1e32f9fb6e8"
+    },
+    {
+      "path": "../../runtime/v1/host.js",
+      "bytes": 5123,
+      "sha256": "8ec6c7f9264cd3ee7d1b20c4ad96df961c853556bbf36244c703d1b689ed002b"
+    },
+    {
+      "path": "../../runtime/v1/navigation.js",
+      "bytes": 2931,
+      "sha256": "5d8287ef62dfe5f3da63b33b6fbc5e930cc465dc88a38563b7b907b076122007"
+    },
+    {
+      "path": "../../runtime/v1/preparation.js",
+      "bytes": 2381,
+      "sha256": "7685030b9267e97eb04d76a63ff820022504a63817b52952e6027c3654f3d326"
+    },
+    {
+      "path": "../../runtime/v1/resources.js",
+      "bytes": 3215,
+      "sha256": "956f61babe41e098ae5e8e3449fa231352e99d052f61830aa4b323040f2461e0"
+    },
+    {
+      "path": "../../runtime/v1/stage.js",
+      "bytes": 773,
+      "sha256": "6aa48351188471ebbfed3f0f1d70b7dc134f23d7fac91dd7307ec9192eb3e2df"
+    }
+  ]
+}

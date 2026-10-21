@@ -1,0 +1,20 @@
+{
+  "format": "sphere-host-world/1",
+  "worldId": "design-world-01",
+  "worldSeed": 713,
+  "hostProfileRef": {
+    "id": "design-host-profile-v1",
+    "digest": "20474c22b31633da2cc7a3e6d6d66f2e4bca6cc147f6d47a30444b4dea2de5ec"
+  },
+  "validatedStaticWorldParameters": {
+    "purpose": "Shape fixture only. The host codec must retain all actual static world parameters.",
+    "shellRadiusM": 149597870700,
+    "axisLatitudeDeg": 63,
+    "axisLongitudeDeg": -28,
+    "waistWidthDeg": 20,
+    "layoutRevision": 2
+  },
+  "hostGeographyDigest": "c2938eccea60c0fc95ec84645f817b7bd5281a5bf4abe8a7c7afe62f6143364d",
+  "trackProfileDigest": "6985745c963ff62e61b403f2a02825b1668378d65e01c2087a118f54a0c22fa7",
+  "protectionProfileDigest": "545b4918d6cf1db97bbbd6ada1ba593d419344b536f6715fa9a7b99631f7df83"
+}

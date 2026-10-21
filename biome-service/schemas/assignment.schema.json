@@ -1,0 +1,183 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:sphere:biome-service:1:assignment",
+  "title": "Proposed assignment record",
+  "description": "Proposed persistent region record. Example certificates are identifiers only; whole-region geometry and resource proofs are mandatory at runtime.",
+  "type": "object",
+  "properties": {
+    "format": {
+      "const": "sphere-biome-assignment/1"
+    },
+    "regionId": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/id"
+    },
+    "worldId": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/id"
+    },
+    "requestKey": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/id"
+    },
+    "packId": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/packId"
+    },
+    "releaseDigest": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/digest"
+    },
+    "semanticGeneratorId": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/id"
+    },
+    "geographyRevision": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/id"
+    },
+    "appearanceRevision": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/id"
+    },
+    "provider": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/provider"
+    },
+    "frame": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/frame"
+    },
+    "core": {
+      "type": "object",
+      "properties": {
+        "level": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 30
+        },
+        "cells": {
+          "type": "array",
+          "items": {
+            "$ref": "urn:sphere:biome-service:1:core#/$defs/cell"
+          },
+          "minItems": 1,
+          "maxItems": 4096,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "level",
+        "cells"
+      ],
+      "additionalProperties": false
+    },
+    "area": {
+      "type": "object",
+      "properties": {
+        "requestedM2": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1e+24
+        },
+        "actualM2": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1e+24
+        },
+        "largestCellM2": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1e+24
+        },
+        "certificateDigest": {
+          "$ref": "urn:sphere:biome-service:1:core#/$defs/digest"
+        }
+      },
+      "required": [
+        "requestedM2",
+        "actualM2",
+        "largestCellM2",
+        "certificateDigest"
+      ],
+      "additionalProperties": false
+    },
+    "eligibility": {
+      "type": "object",
+      "properties": {
+        "trackRelation": {
+          "enum": [
+            "within",
+            "outside",
+            "any"
+          ]
+        },
+        "trackIds": {
+          "type": "array",
+          "items": {
+            "$ref": "urn:sphere:biome-service:1:core#/$defs/id"
+          },
+          "minItems": 0,
+          "maxItems": 32,
+          "uniqueItems": true
+        },
+        "trackProfileDigest": {
+          "$ref": "urn:sphere:biome-service:1:core#/$defs/digest"
+        },
+        "protectionProfileDigest": {
+          "$ref": "urn:sphere:biome-service:1:core#/$defs/digest"
+        },
+        "clearanceM": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1000000000
+        },
+        "certificateDigests": {
+          "type": "array",
+          "items": {
+            "$ref": "urn:sphere:biome-service:1:core#/$defs/digest"
+          },
+          "minItems": 1,
+          "maxItems": 65536,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "trackRelation",
+        "trackIds",
+        "trackProfileDigest",
+        "protectionProfileDigest",
+        "clearanceM",
+        "certificateDigests"
+      ],
+      "additionalProperties": false
+    },
+    "guardWidthM": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1000000000
+    },
+    "boundaryIds": {
+      "type": "array",
+      "items": {
+        "$ref": "urn:sphere:biome-service:1:core#/$defs/id"
+      },
+      "minItems": 0,
+      "maxItems": 8192,
+      "uniqueItems": true
+    },
+    "stateSchemaId": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/id"
+    }
+  },
+  "required": [
+    "format",
+    "regionId",
+    "worldId",
+    "requestKey",
+    "packId",
+    "releaseDigest",
+    "semanticGeneratorId",
+    "geographyRevision",
+    "appearanceRevision",
+    "provider",
+    "frame",
+    "core",
+    "area",
+    "eligibility",
+    "guardWidthM",
+    "boundaryIds",
+    "stateSchemaId"
+  ],
+  "additionalProperties": false
+}

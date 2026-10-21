@@ -1,0 +1,50 @@
+{
+  "status": "DESIGN_EXAMPLES_ONLY_NOT_INSTALLABLE",
+  "note": "Only the two data descriptors and their resource envelopes have real byte hashes. Host identities, geometric certificates, index bodies, binding digests and coreScene are shape fixtures, not validated runtime objects.",
+  "records": [
+    {
+      "file": "examples/fixture-track-meadow/manifest.json",
+      "schema": "manifest"
+    },
+    {
+      "file": "examples/fixture-track-meadow/release.json",
+      "schema": "release"
+    },
+    {
+      "file": "examples/fixture-open-industry/manifest.json",
+      "schema": "manifest"
+    },
+    {
+      "file": "examples/fixture-open-industry/release.json",
+      "schema": "release"
+    },
+    {
+      "file": "examples/world-policy.json",
+      "schema": "world-policy"
+    },
+    {
+      "file": "examples/host-world.json",
+      "schema": "host-world"
+    },
+    {
+      "file": "examples/assignment.json",
+      "schema": "assignment"
+    },
+    {
+      "file": "examples/world-binding.json",
+      "schema": "world-binding"
+    },
+    {
+      "file": "examples/installation-plan.json",
+      "schema": "installation-plan"
+    },
+    {
+      "file": "examples/create-world-plan.json",
+      "schema": "installation-plan"
+    },
+    {
+      "file": "examples/session.json",
+      "schema": "session"
+    }
+  ]
+}

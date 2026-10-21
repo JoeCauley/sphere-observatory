@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "profile": "meadow-prototype-p2",
+  "repo": "I:\\Sphere\\repositories\\sphere-observatory",
+  "work": "I:\\Sphere\\work\\meadow-prototype-p2-2026-10-05T23-07-10-027Z",
+  "runtime": "I:\\Sphere\\work\\meadow-prototype-p2-2026-10-05T23-07-10-027Z\\runtime",
+  "evidence": "I:\\Sphere\\repositories\\sphere-observatory\\docs\\evidence\\meadow-prototype-p2-2026-10-05T23-07-10-027Z",
+  "baselineBuild": {
+    "version": "1.6.0",
+    "commit": "6a52267ddf5d9d49b0f64bc75a6699f671232e77",
+    "sourceSha256": "7ca67b137100b81c10c3ae173ffab90f0b9054aac99d1bf199fee7e145e59116",
+    "status": "local-modified",
+    "release": false,
+    "assets": [
+      {
+        "path": "assets/wound-edges/manifest.json",
+        "sha256": "ea2c769ce86b82699e2bb745d521678a716ed106bdab755e726f11e2c32a03fe"
+      }
+    ],
+    "assetSetSha256": "45f67a383ac6ec295844b3bc6ddc40e9a1d661f354d7f406bf82e6519410a91d",
+    "assetCount": 45
+  },
+  "createdAt": "2026-10-05T23:07:14.021Z"
+}

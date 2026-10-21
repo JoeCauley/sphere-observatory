@@ -1,0 +1,12 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),{spawn}=require('node:child_process');
+const repo=path.resolve(__dirname,'..'),out=path.resolve(process.env.IB075_HR09_OUTPUT||path.join(repo,'work','hr09-suite-'+new Date().toISOString().replace(/[:.]/g,'-')));
+(async()=>{
+ fs.mkdirSync(out,{recursive:true});const receipt=path.join(out,'hr09-suite.json');if(fs.existsSync(receipt))throw Error('Fresh HR-09 output required');
+ const report={schema:1,status:'INCOMPLETE',scope:'HR-09 full regression, fresh ownership evidence and unchanged-limit H1 certification; HR-10 closeout remains separate',commands:[]},save=()=>fs.writeFileSync(receipt,JSON.stringify(report,null,2)+'\n');save();
+ const temp=path.join(out,'browser-temp');fs.mkdirSync(temp,{recursive:true});
+ if(process.env.IB075_H_NATIVE_ONLY==='1')throw Error('HR-09 requires all six fixed-resolution windows');
+ const env={...process.env,TEMP:temp,TMP:temp,IB075_TEST_OUTPUT:path.join(out,'regression'),IB075_HR07_OUTPUT:path.join(out,'memory'),IB075_H_OUTPUT:path.join(out,'h1'),IB075_H_CPU_EVIDENCE:path.join(out,'memory','hr07-browser.json')};
+ const steps=[['full-regression',process.env.npm_execpath,['test']],['certification-contracts',path.join(__dirname,'vegetation-certification.cjs'),[]],['cpu-memory',path.join(__dirname,'vegetation-memory-browser.cjs'),[]],['h1',path.join(__dirname,'vegetation-certification-browser.cjs'),[]]];
+ try{for(const [label,entry,args]of steps){if(!entry)throw Error('Run the HR-09 suite through npm');fs.mkdirSync(path.join(out,label),{recursive:true});const log=fs.createWriteStream(path.join(out,label,'command.log'),{flags:'wx'}),started=new Date().toISOString();console.log('HR09 '+label);const child=spawn(process.execPath,[entry,...args],{cwd:repo,windowsHide:true,env,stdio:['ignore','pipe','pipe']});for(const stream of [child.stdout,child.stderr])stream.on('data',data=>{log.write(data);process.stdout.write(data);});const exitCode=await new Promise((resolve,reject)=>{child.on('error',reject);child.on('close',resolve);});await new Promise(r=>log.end(r));report.commands.push({label,entry:path.relative(repo,entry),args,started,ended:new Date().toISOString(),exitCode});save();if(exitCode!==0)throw Error('HR-09 '+label+' failed; retained attempt remains open');}report.status='PASS';report.H='IN PROGRESS; HR-10 closeout remains';save();}catch(error){report.status='FAIL';report.failure=error.stack;save();throw error;}
+})().catch(error=>{console.error(error);process.exitCode=1;});

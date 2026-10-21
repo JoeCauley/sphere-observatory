@@ -2,12 +2,31 @@
  * field-sites.js. Shared parent coordinates, geographic samples and ownership
  * are independent of the camera, heading and residency history. Units: km. */
 (function(root){
-'use strict';const M=root.SphereMath,W=root.SphereWorld,S=root.SphereSites,C=root.SphereCollection;
-const SIZE=1.024,FINE=64,COARSE=32,BUDGET=64*1048576,cache=new Map();let bytes=0,active=null,buildMs=0,target=null,worker=null,pending=null,generation=0,waits=0,revision=0,rebase=null,rebaseReady=null;
+'use strict';const M=root.SphereMath,W=root.SphereWorld,S=root.SphereSites,C=root.SphereCollection,A=root.SphereWorldAddress,T=root.SphereWorldTopology,G=root.SphereGeography;
+const SIZE=1.024,FINE=64,COARSE=32,BUDGET=64*1048576,HYSTERESIS=1e-7,cache=new Map();let budget=BUDGET,bytes=0,active=null,buildMs=0,target=null,worker=null,pending=null,generation=0,waits=0,revision=0,rebase=null,rebaseReady=null,clock=0,cancelled=0,evictions=0;
 const enabled=s=>s.siteRevision===2&&s.siteAnchor&&/^(biome|port)-/.test(s.siteId)&&(s.walkMode||M.length(M.sub(s.position,M.mul(s.terrainAnchor||s.siteAnchor,s.radius)))<S.localRange(s));
-function key(s){return JSON.stringify([s.terrainAnchor||s.siteAnchor,s.seed,s.radius,s.era,s.multipleWounds,s.shellThickness,s.provinceRevision,s.provinceSeed,s.provinceAnchor,s.packAddress,s.layoutVersion,s.axisLat,s.axisLon,s.waistWidth,s.transitionKm]);}
+const protectedProvinceAt=(q,s)=>{if(!s?.provinceAnchor||!root.SphereWatershed?.enabled?.(s)||!root.SphereWatershed?.local)return false;const local=root.SphereWatershed.local(q,s),extent=(root.SphereWatershed.extentKm||640)/2;return Number.isFinite(local?.[0])&&Math.max(Math.abs(local[0]),Math.abs(local[1]))<extent;};
+function contentKey(s){return JSON.stringify([s.seed,s.radius,s.era,s.multipleWounds,s.shellThickness,s.terrainRevision,s.provinceRevision,s.provinceSeed,s.provinceAnchor,s.packAddress,s.layoutVersion,s.axisLat,s.axisLon,s.waistWidth,s.transitionKm]);}
+function renderKey(s){return JSON.stringify([s.terrainAnchor||s.siteAnchor,contentKey(s)]);}
 function frame(s){const anchor=s.terrainAnchor||s.siteAnchor,basis=S.shellFrame(anchor);return new S.Mesh(M.mul(anchor,s.radius),basis,'Connected terrain');}
-function geographic(q,s){const sample=root.SphereWatershed?.sample(q,s);if(sample)return sample.terrainKm;
+function addressAt(s,f,x,z){
+ const q=M.norm(f.world([x,0,z])),level=A?.MAX_LEVEL||30;
+ if(!A?.shell)return {cellId:`legacy:${q.map(v=>v.toPrecision(16)).join(',')}`,address:null};
+ const address=A.shell({worldSeed:s.seed??0,geographyRevision:s.geographyRevision??(s.provinceRevision||1),terrainRevision:s.terrainRevision??2,artRevision:s.artRevision??1,assetRevision:s.assetRevision??1,heroRevision:s.heroRevision??null,direction:q,level});
+ const cell=T?.cellAt(q,level),cellId=cell?T.cellKey(cell):A.gridKey(address);
+ return {cellId,address};
+}
+function geographicCell(s,f,loX,loZ,spanX,spanZ){
+ const center=addressAt(s,f,loX+spanX*.5,loZ+spanZ*.5),corners=[addressAt(s,f,loX,loZ),addressAt(s,f,loX+spanX,loZ),addressAt(s,f,loX,loZ+spanZ),addressAt(s,f,loX+spanX,loZ+spanZ)].map(v=>v.cellId).sort();
+ return {cellId:center.cellId,address:center.address,corners};
+}
+function jobGeometry(s,cx,cz,cells,centre){
+ const loX=(cells===COARSE&&cx===centre[0]-2?(centre[0]-1)*SIZE-16:cx*SIZE),loZ=(cells===COARSE&&cz===centre[1]-2?(centre[1]-1)*SIZE-16:cz*SIZE),spanX=cells===COARSE&&Math.abs(cx-centre[0])===2?16:SIZE,spanZ=cells===COARSE&&Math.abs(cz-centre[1])===2?16:SIZE;
+ return {loX,loZ,spanX,spanZ,geography:geographicCell(s,frame(s),loX,loZ,spanX,spanZ)};
+}
+function cacheKey(s,job){return JSON.stringify(['ib030',contentKey(s),job.geography.cellId,job.cells]);}
+function cacheUsable(k,render){const entry=cache.get(k);if(!entry||entry.renderKey!==render)return false;entry.lastUsed=++clock;entry.supportPriority=Math.max(entry.supportPriority,entry.basePriority);return true;}
+function geographic(q,s){const shared=G?.query(q,{state:s,representation:'walking'});if(shared)return shared.elevationKm;
  const world=M.mul(q,s.radius),n=(scale,seed)=>{const p=world.map(v=>v*scale);return (S.noise(p[0],p[1],seed)+S.noise(p[1],p[2],seed+91)+S.noise(p[2],p[0],seed+173))/3;},region=W.sample(q,s);
  const extra=id=>id===2?.012*n(.14,s.seed+21):id===3?.016*n(.4,s.seed+27):0,relief=.002+n(.45,s.seed)*.008+n(2.5,s.seed+5)*.0002+extra(region.a)*(1-region.blend)+extra(region.b)*region.blend;
  // The preserved province reaches the analytic shell at its 320 km border.
@@ -24,19 +43,19 @@ function bounds(s){const f=frame(s),p=f.local(s.position);
  // reservations, cancelling the worker's entire queue on successive frames.
  // Stabilize only the residency centre (within 0.1 mm); terrain ownership,
  // uploaded vertices, collision and geographic addresses remain exact.
- const centre=v=>{const q=v/SIZE,n=Math.round(q);return Math.abs(q-n)<1e-7?n:Math.floor(q);};
+ const centre=v=>{const q=v/SIZE,n=Math.round(q);return Math.abs(q-n)<HYSTERESIS?n:Math.floor(q);};
  return {x:centre(p[0]),z:centre(p[2]),f};}
-function build(s,cx,cz,cells=FINE,centre=[cx,cz]){const f=frame(s),mesh=new S.Mesh(f.origin,f.basis,'Connected terrain · '+cx+','+cz),loX=(cells===COARSE&&cx===centre[0]-2?(centre[0]-1)*SIZE-16:cx*SIZE),loZ=(cells===COARSE&&cz===centre[1]-2?(centre[1]-1)*SIZE-16:cz*SIZE),spanX=cells===COARSE&&Math.abs(cx-centre[0])===2?16:SIZE,spanZ=cells===COARSE&&Math.abs(cz-centre[1])===2?16:SIZE,step=spanX/cells,stepZ=spanZ/cells;
+function build(s,cx,cz,cells=FINE,centre=[cx,cz],identity=null){const f=frame(s),geometry=jobGeometry(s,cx,cz,cells,centre),geography=identity?.geography||geometry.geography,meshKey=identity?.key||cacheKey(s,{geography,cells}),mesh=new S.Mesh(f.origin,f.basis,'Connected terrain · '+cx+','+cz),{loX,loZ,spanX,spanZ}=geometry,step=spanX/cells,stepZ=spanZ/cells;
  // The authored province already supplies connected land, water and gardens.
  // Its residency cells carry support ownership, never duplicate that mesh or
  // resample every river segment to generate a second invisible height field.
- if(root.SphereWatershed&&[[loX,loZ],[loX+spanX,loZ],[loX,loZ+spanZ],[loX+spanX,loZ+spanZ]].every(([x,z])=>root.SphereWatershed.sample(M.norm(f.world([x,0,z])),s))){mesh.finish();mesh.bvh=S.packBVH([]);delete mesh.triangles;mesh.ground={bounds:[loX,loZ,loX+spanX,loZ+spanZ],top:10,floor:S.packBVH([]),props:[],province:true};mesh.chunk={x:cx,z:cz,cells,revision:2};return mesh;}
+ if([[loX,loZ],[loX+spanX,loZ],[loX,loZ+spanZ],[loX+spanX,loZ+spanZ]].every(([x,z])=>protectedProvinceAt(M.norm(f.world([x,0,z])),s))){mesh.finish();mesh.bvh=S.packBVH([]);delete mesh.triangles;mesh.ground={bounds:[loX,loZ,loX+spanX,loZ+spanZ],top:10,floor:S.packBVH([]),props:[],province:true};mesh.chunk={x:cx,z:cz,cells,revision:2,cellId:geography.cellId,key:meshKey,renderKey:renderKey(s)};return mesh;}
  mesh.ground={bounds:[loX,loZ,loX+spanX,loZ+spanZ],top:10};const clip=S.woundGround(mesh,s);
  // A wholly missing section has neither triangles nor support. Do not sample
  // thousands of elevations/normals and props only to discard all of them.
- if(clip?.empty){mesh.finish();mesh.bvh=S.packBVH([]);delete mesh.triangles;mesh.ground.floor=mesh.bvh;mesh.ground.props=[];mesh.chunk={x:cx,z:cz,cells,revision:2};return mesh;}
+ if(clip?.empty){mesh.finish();mesh.bvh=S.packBVH([]);delete mesh.triangles;mesh.ground.floor=mesh.bvh;mesh.ground.props=[];mesh.chunk={x:cx,z:cz,cells,revision:2,cellId:geography.cellId,key:meshKey,renderKey:renderKey(s)};return mesh;}
  const points=new Map(),sample=(x,z)=>{x=Math.round(x*1e9)/1e9;z=Math.round(z*1e9)/1e9;const id=x+','+z;if(!points.has(id)){const q=M.norm(f.world([x,0,z])),h=height(s,f,x,z),radial=(x*x+z*z)/(2*s.radius),r=Math.max(Math.abs(x-(centre[0]+.5)*SIZE),Math.abs(z-(centre[1]+.5)*SIZE)),fade=cells===COARSE?1-W.smooth(1.5*SIZE,1.5*SIZE+16,r):1;points.set(id,[x,radial+(h-radial)*fade,z]);}return points.get(id);};
- const triangle=(a,b,c)=>{const q=M.norm(f.world(M.mul(M.add(M.add(a,b),c),1/3)));if(root.SphereWatershed?.sample(q,s))return;const id=W.sample(q,s).biome;if(clip)clip.triangle(a,b,c,id);else mesh.tri(a,b,c,[1,1,1],id);};
+ const triangle=(a,b,c)=>{const q=M.norm(f.world(M.mul(M.add(M.add(a,b),c),1/3)));if(root.SphereWatershed?.sample(q,s))return;const id=G?.query(q,{state:s,representation:'walking'}).biome??W.sample(q,s).biome;if(clip)clip.triangle(a,b,c,id);else mesh.tri(a,b,c,[1,1,1],id);};
  for(let j=0;j<cells;j++)for(let i=0;i<cells;i++){const x=loX+i*step,z=loZ+j*stepZ,a=sample(x,z),b=sample(x+step,z),c=sample(x+step,z+stepZ),d=sample(x,z+stepZ);
   if(cells===COARSE&&(i===0||j===0||i===cells-1||j===cells-1)){
    // Coarse borders consume the same 16 m samples as their fine neighbour.
@@ -56,8 +75,9 @@ function build(s,cx,cz,cells=FINE,centre=[cx,cz]){const f=frame(s),mesh=new S.Me
   const corners=[[loX,0,loZ],[loX+spanX,0,loZ],[loX,0,loZ+spanZ],[loX+spanX,0,loZ+spanZ]].map(p=>M.mul(M.norm(f.world(p)),s.radius)),pitch=.128,min=[0,1,2].map(i=>Math.floor(Math.min(...corners.map(p=>p[i]))/pitch)-1),max=[0,1,2].map(i=>Math.floor(Math.max(...corners.map(p=>p[i]))/pitch)+1),floor=S.packBVH(floorTriangles);
   for(let iz=min[2];iz<=max[2];iz++)for(let iy=min[1];iy<=max[1];iy++)for(let ix=min[0];ix<=max[0];ix++){
    const world=[(ix+.5)*pitch,(iy+.5)*pitch,(iz+.5)*pitch];if(Math.abs(M.length(world)-s.radius)>.055||S.noise(ix,iy,s.seed+iz)>.28)continue;
-   const q=M.norm(world),local=f.local(M.mul(q,s.radius)),x=local[0],z=local[2];if(x<loX||x>=loX+spanX||z<loZ||z>=loZ+spanZ||root.SphereWatershed?.sample(q,s)||C.missing(q,s))continue;
-   const id=W.sample(q,s).biome,r=.0025,h=.003+S.noise(ix,iz,s.seed+iy)*.004,hit={},distance=S.rayBVH([x,10,z],[0,-1,0],floor,Infinity,hit);if(!hit.normal)continue;
+   const q=M.norm(world),local=f.local(M.mul(q,s.radius)),x=local[0],z=local[2],province=root.SphereWatershed?.sample(q,s);if(x<loX||x>=loX+spanX||z<loZ||z>=loZ+spanZ||protectedProvinceAt(q,s)||province?.water?.river||province?.water?.basin||province?.route||C.missing(q,s))continue;
+   const ecology=root.SphereMeadowEcology?.active?.(s)?root.SphereMeadowEcology.query(q,s):null;if(ecology?.treeSuppressed)continue;
+   const id=G?.query(q,{state:s,representation:'walking'}).biome??W.sample(q,s).biome,r=.0025,h=.003+S.noise(ix,iz,s.seed+iy)*.004,hit={},distance=S.rayBVH([x,10,z],[0,-1,0],floor,Infinity,hit);if(!hit.normal)continue;
    if(clip&&[[x-r,0,z-r],[x+r,0,z-r],[x-r,0,z+r],[x+r,0,z+r]].some(p=>clip.margin(p)<0))continue;
    props.push([s.seed,ix,iy,iz].join(':'));
    // Object axes belong to its geographic point, not to the current chart.
@@ -66,29 +86,43 @@ function build(s,cx,cz,cells=FINE,centre=[cx,cz]){const f=frame(s),mesh=new S.Me
   }
  }
 
- mesh.finish({deferBVH:true});mesh.bvh=S.packBVH(mesh.triangles);delete mesh.triangles;mesh.ground.floor=mesh.bvh;if(mesh.ground.rim)delete mesh.ground.rim.floor;delete mesh.ground.solid;mesh.ground.props=props;mesh.chunk={x:cx,z:cz,cells,revision:2};mesh.ground.rim&&(mesh.ground.rim.key=key(s)+':'+cx+':'+cz+':'+cells);return mesh;
+ mesh.finish({deferBVH:true});mesh.bvh=S.packBVH(mesh.triangles);delete mesh.triangles;mesh.ground.floor=mesh.bvh;if(mesh.ground.rim)delete mesh.ground.rim.floor;delete mesh.ground.solid;mesh.ground.props=props;mesh.chunk={x:cx,z:cz,cells,revision:2,cellId:geography.cellId,key:meshKey,renderKey:renderKey(s)};mesh.ground.rim&&(mesh.ground.rim.key=meshKey);return mesh;
 }
 function sizeOf(mesh){const tree=t=>t?.packedTriangles?t.packedTriangles.byteLength+t.nodes.byteLength:0,wall=mesh.ground.rim?.wall;return mesh.vertices.byteLength+tree(mesh.bvh)+(mesh.ground.floor===mesh.bvh?0:tree(mesh.ground.floor))+(wall?wall.vertices.byteLength+tree(wall.bvh):0);}
-function trim(extra=0){for(const [k,entry]of cache){if(bytes+extra<=BUDGET)break;if(active?.wanted.has(k)||target?.wanted.has(k)||rebaseReady?.wanted.has(k))continue;bytes-=entry.size;cache.delete(k);}}
-function retain(k,mesh){const size=sizeOf(mesh);trim(size);if(bytes+size>BUDGET)throw Error('Connected ground reservation exceeded');cache.set(k,{mesh,size});bytes+=size;return mesh;}
-function request(s){if(!enabled(s))return;const b=bounds(s),id=key(s),signature=id+':'+b.x+':'+b.z;if(rebase&&!s.walkMode){rebase=null;rebaseReady=null;}if(rebase&&id===rebase.from)return;if(active?.signature===signature){if(target){target=null;pending=null;generation++;worker?.postMessage({generation,state:s,jobs:[]});}return;}if(target?.signature===signature)return;
- if(!s.walkMode&&(active?.id!==id||Math.max(Math.abs((active?.b.x||0)-b.x),Math.abs((active?.b.z||0)-b.z))>3))active=null;
- const wanted=new Set(),jobs=[];for(let z=b.z-2;z<=b.z+2;z++)for(let x=b.x-2;x<=b.x+2;x++){const cells=Math.max(Math.abs(x-b.x),Math.abs(z-b.z))<=1?FINE:COARSE,k=id+':'+x+':'+z+':'+cells+(cells===COARSE?':'+b.x+':'+b.z:'');wanted.add(k);if(!cache.has(k))jobs.push({key:k,x,z,cells,centre:[b.x,b.z]});}
- target={signature,id,wanted,b};generation++;pending=null;
- if(typeof Worker==='undefined'){for(const job of jobs)retain(job.key,build(s,job.x,job.z,job.cells,job.centre));promote();return;}
- if(!worker){worker=new Worker('ground-worker.js');worker.onmessage=({data})=>{if(data.generation!==generation)return;if(data.error){target.error=data.error;return;}trim(sizeOf(data.mesh));if(bytes+sizeOf(data.mesh)>BUDGET){target.error='Connected ground reservation exceeded';return;}pending=data;};worker.onerror=e=>{if(target)target.error=e.message;};}
- worker.postMessage({generation,state:s,jobs:jobs.sort((a,c)=>Math.hypot(a.x-b.x,a.z-b.z)-Math.hypot(c.x-b.x,c.z-b.z))});promote();
+function trim(extra=0){
+ if(bytes+extra<=budget)return;
+ const protectedKeys=new Set([...(active?.wanted||[]),...(target?.wanted||[]),...(rebaseReady?.wanted||[])]),candidates=[...cache].filter(([k])=>!protectedKeys.has(k)).sort((a,b)=>a[1].supportPriority-b[1].supportPriority||a[1].lastUsed-b[1].lastUsed);
+ for(const [k,entry]of candidates){if(bytes+extra<=budget)break;bytes-=entry.size;cache.delete(k);evictions++;}
 }
-function promote(){if(target&&[...target.wanted].every(k=>cache.has(k))){const result={...target,groups:[...target.wanted].map(k=>cache.get(k).mesh)};if(rebase&&target.id===rebase.to)rebaseReady=result;else active=result;target=null;revision++;}}
+function retain(k,mesh,meta={}){
+ const size=sizeOf(mesh),old=cache.get(k);if(old){bytes-=old.size;cache.delete(k);}
+ trim(size);if(bytes+size>budget)throw Error('Connected ground reservation exceeded');
+ const basePriority=meta.basePriority??(mesh.chunk?.cells===FINE?100:25);cache.set(k,{mesh,size,renderKey:meta.renderKey??mesh.chunk?.renderKey,basePriority,supportPriority:meta.supportPriority??basePriority,lastUsed:++clock});bytes+=size;return mesh;
+}
+function cancelPending(s,notify=true){if(!target&&!pending)return;target=null;pending=null;generation++;cancelled++;if(notify)worker?.postMessage({generation,state:s,jobs:[]});}
+function request(s){if(!enabled(s))return;const b=bounds(s),id=renderKey(s),signature=id+':'+b.x+':'+b.z;if(rebase&&!s.walkMode){rebase=null;rebaseReady=null;}if(rebase&&id===rebase.from)return;if(active?.signature===signature){cancelPending(s);return;}if(target?.signature===signature)return;
+ if(!s.walkMode&&(active?.id!==id||Math.max(Math.abs((active?.b.x||0)-b.x),Math.abs((active?.b.z||0)-b.z))>3))active=null;
+ if(target||pending)cancelPending(s,false);
+ const wanted=new Set(),jobs=[];for(let z=b.z-2;z<=b.z+2;z++)for(let x=b.x-2;x<=b.x+2;x++){
+  const cells=Math.max(Math.abs(x-b.x),Math.abs(z-b.z))<=1?FINE:COARSE,geometry=jobGeometry(s,x,z,cells,[b.x,b.z]),geography=geometry.geography,job={x,z,cells,centre:[b.x,b.z],geography,cellId:geography.cellId,address:geography.address,basePriority:cells===FINE?100:25};job.key=cacheKey(s,job);wanted.add(job.key);if(!cacheUsable(job.key,id))jobs.push(job);
+ }
+ target={signature,id,wanted,b};generation++;pending=null;
+ if(typeof Worker==='undefined'){for(const job of jobs)retain(job.key,build(s,job.x,job.z,job.cells,job.centre,job),job);promote();return;}
+ if(!worker){worker=new Worker('ground-worker.js');worker.onmessage=({data})=>{if(data.generation!==generation)return;if(data.error){target.error=data.error;return;}trim(sizeOf(data.mesh));if(bytes+sizeOf(data.mesh)>budget){target.error='Connected ground reservation exceeded';return;}pending=data;};worker.onerror=e=>{if(target)target.error=e.message;};}
+ const basis=frame(s),walk=frame(s).local(M.add(s.position,M.mul(s.forward||basis.basis[0],.01))),dx=M.length([walk[0]-b.x,walk[2]-b.z])?M.norm([walk[0]-b.x,walk[2]-b.z]):[1,0];
+ jobs.sort((a,c)=>{const sa=Math.hypot(a.x-b.x,a.z-b.z)-.7*((a.x-b.x)*dx[0]+(a.z-b.z)*dx[1]),sc=Math.hypot(c.x-b.x,c.z-b.z)-.7*((c.x-b.x)*dx[0]+(c.z-b.z)*dx[1]);return sa-sc;});
+ worker.postMessage({generation,state:s,jobs});promote();
+}
+function promote(){if(target&&[...target.wanted].every(k=>cacheUsable(k,target.id))){const result={...target,groups:[...target.wanted].map(k=>cache.get(k).mesh)};if(rebase&&target.id===rebase.to)rebaseReady=result;else active=result;target=null;revision++;}}
 function rebaseWalking(s){if(!enabled(s)||!s.walkMode)return;
- if(rebaseReady&&key(s)===rebase.from){s.terrainAnchor=rebase.anchor;s.walkPosition=frame(s).local(s.position);active=rebaseReady;rebaseReady=null;rebase=null;revision++;return;}
+ if(rebaseReady&&renderKey(s)===rebase.from){s.terrainAnchor=rebase.anchor;s.walkPosition=frame(s).local(s.position);active=rebaseReady;rebaseReady=null;rebase=null;revision++;return;}
  if(rebase||Math.max(Math.abs(s.walkPosition[0]),Math.abs(s.walkPosition[2]))<7)return;
- const anchor=M.norm(s.position),next={...s,terrainAnchor:anchor};rebase={from:key(s),to:key(next),anchor};request(next);
+ const anchor=M.norm(s.position),next={...s,terrainAnchor:anchor};rebase={from:renderKey(s),to:renderKey(next),anchor};request(next);
 }
 function pump(upload){if(!pending)return;const packet=pending;if(packet.generation!==generation){pending=null;return;}const mesh=packet.hydrated||(packet.hydrated=Object.assign(Object.create(S.Mesh.prototype),packet.mesh));if(mesh.ground.rim?.wall&&!mesh.ground.rim.wall.world)Object.setPrototypeOf(mesh.ground.rim.wall,S.Mesh.prototype);
- if(!upload(mesh))return;if(mesh.ground.rim?.wall&&!upload(mesh.ground.rim.wall))return;retain(packet.key,mesh);buildMs=packet.buildMs;pending=null;promote();worker.postMessage({generation,next:true});
+ if(!upload(mesh))return;if(mesh.ground.rim?.wall&&!upload(mesh.ground.rim.wall))return;retain(packet.key,mesh,{renderKey:mesh.chunk?.renderKey,basePriority:packet.basePriority??(mesh.chunk?.cells===FINE?100:25)});buildMs=packet.buildMs;pending=null;promote();worker.postMessage({generation,next:true});
 }
-function neighbourhood(s){if(!enabled(s))return [];request(s);if(target?.error)throw Error(target.error);return active?.id===key(s)?active.groups:[];
+function neighbourhood(s){if(!enabled(s))return [];request(s);if(target?.error)throw Error(target.error);return active?.id===renderKey(s)?active.groups:[];
 }
 function rimCut(s){const groups=neighbourhood(s),rims=groups.map(m=>m.ground.rim).filter(Boolean);if(!rims.length)return null;const index=rims[0].index,intervals=rims.flatMap(r=>r.cuts).sort((a,b)=>a[0]-b[0]),cuts=[];
  for(const [a,b]of intervals){if(cuts.length&&a<=cuts.at(-1)[1]+1e-12)cuts.at(-1)[1]=Math.max(cuts.at(-1)[1],b);else cuts.push([a,b]);}
@@ -97,8 +131,22 @@ function rimCut(s){const groups=neighbourhood(s),rims=groups.map(m=>m.ground.rim
 }
 function geometry(s){const groups=neighbourhood(s);return groups.flatMap(m=>m.ground.rim?[m,m.ground.rim.wall]:m.count?[m]:[]);}
 function ground(s,x,z){const [cx,cz]=owner(x,z),mesh=neighbourhood(s).find(m=>x>=m.ground.bounds[0]&&x<m.ground.bounds[2]&&z>=m.ground.bounds[1]&&z<m.ground.bounds[3]);if(!mesh)return -Infinity;const hit={},t=S.rayBVH([x,10,z],[0,-1,0],mesh.ground.floor,Infinity,hit);return hit.normal?10-t:-Infinity;}
+function surfaceSupport(s,q){
+ if(!enabled(s)||active?.id!==renderKey(s))return null;
+ const f=frame(s),point=M.mul(M.norm(q),s.radius),local=f.local(point),x=local[0],z=local[2];
+ for(const mesh of active.groups){
+  const bounds=mesh.ground?.bounds,floor=mesh.ground?.floor;
+  if(!bounds||!floor||x<bounds[0]||x>=bounds[2]||z<bounds[1]||z>=bounds[3])continue;
+  const top=mesh.ground.top??10,hit={},distance=S.rayBVH([x,top,z],[0,-1,0],floor,Infinity,hit);if(!hit.normal)continue;
+  const localPoint=[x,top-distance,z],worldPoint=mesh.world(localPoint),normal=M.norm(mesh.basis.reduce((sum,axis,i)=>M.add(sum,M.mul(axis,hit.normal[i])),[0,0,0]));
+  if(M.dot(normal,M.mul(M.norm(worldPoint),-1))<0)for(let i=0;i<3;i++)normal[i]*=-1;
+  return {point:worldPoint,normal,direction:M.norm(worldPoint),heightKm:s.radius-M.length(worldPoint),triangleId:mesh.chunk?.cellId||mesh.chunk?.key||'connected-ground',coordinate:[x,z],source:'connected-ground-collision-triangle'};
+ }
+ return null;
+}
 function controller(s){const f=frame(s);f.ground={connected:true,sample:(x,z)=>ground(s,x,z)};return f;}
 function suspend(){worker?.terminate();worker=null;pending=null;active=null;target=null;rebase=null;rebaseReady=null;generation++;revision++;}
-function dispose(){suspend();cache.clear();bytes=0;waits=0;}
-root.SphereGround={suspend,dispose,enabled,frame,geographic,height,owner,build,neighbourhood,geometry,rimCut,ground,controller,request,pump,rebaseWalking,available(s){if(!enabled(s))return false;request(s);const p=frame(s).local(s.position);return active?.id===key(s)&&active.groups.some(m=>m.chunk.cells===FINE&&p[0]>=m.ground.bounds[0]&&p[0]<m.ground.bounds[2]&&p[2]>=m.ground.bounds[1]&&p[2]<m.ground.bounds[3]);},SIZE,FINE,COARSE,support(s,x,z){request(s);const ok=active?.id===key(s)&&active.groups.some(m=>m.chunk.cells===FINE&&x>=m.ground.bounds[0]&&x<m.ground.bounds[2]&&z>=m.ground.bounds[1]&&z<m.ground.bounds[3]);if(!ok)waits++;return ok;},ready(s){if(rebase&&key(s)===rebase.from){if(!rebaseReady)return false;rebaseWalking(s);}request(s);return active?.signature===key(s)+':'+bounds(s).x+':'+bounds(s).z;},has(mesh){return [...cache.values()].some(e=>e.mesh===mesh||e.mesh.ground.rim?.wall===mesh)||pending?.hydrated===mesh||pending?.hydrated?.ground.rim?.wall===mesh;},get revision(){return revision;},get needsFrame(){return !!target;},get info(){return {chunks:active?.groups.length||0,cache:cache.size,bytes:bytes+(pending?.mesh?sizeOf(pending.mesh):0),pendingBytes:pending?.mesh?sizeOf(pending.mesh):0,budget:BUDGET,buildMs,queue:target?[...target.wanted].filter(k=>!cache.has(k)).length:0,waits};}};
+function setBudget(value){if(!Number.isFinite(value)||value<1)throw Error('Invalid ground budget');budget=value;trim(0);}
+function dispose(){suspend();cache.clear();bytes=0;waits=0;clock=0;cancelled=0;evictions=0;budget=BUDGET;}
+root.SphereGround={suspend,dispose,enabled,frame,geographic,height,owner,build,neighbourhood,geometry,rimCut,ground,surfaceSupport,controller,request,pump,rebaseWalking,addressAt,geographicCell,cacheKey,renderKey,setBudget,available(s){if(!enabled(s))return false;request(s);const p=frame(s).local(s.position);return active?.id===renderKey(s)&&active.groups.some(m=>m.chunk.cells===FINE&&p[0]>=m.ground.bounds[0]&&p[0]<m.ground.bounds[2]&&p[2]>=m.ground.bounds[1]&&p[2]<m.ground.bounds[3]);},SIZE,FINE,COARSE,support(s,x,z){request(s);const ok=active?.id===renderKey(s)&&active.groups.some(m=>m.chunk.cells===FINE&&x>=m.ground.bounds[0]&&x<m.ground.bounds[2]&&z>=m.ground.bounds[1]&&z<m.ground.bounds[3]);if(!ok)waits++;return ok;},ready(s){if(rebase&&renderKey(s)===rebase.from){if(!rebaseReady)return false;rebaseWalking(s);}request(s);return active?.signature===renderKey(s)+':'+bounds(s).x+':'+bounds(s).z;},has(mesh){return [...cache.values()].some(e=>e.mesh===mesh||e.mesh.ground.rim?.wall===mesh)||pending?.hydrated===mesh||pending?.hydrated?.ground.rim?.wall===mesh;},get revision(){return revision;},get needsFrame(){return !!target;},get info(){return {chunks:active?.groups.length||0,cache:cache.size,bytes:bytes+(pending?.mesh?sizeOf(pending.mesh):0),pendingBytes:pending?.mesh?sizeOf(pending.mesh):0,budget,buildMs,queue:target?[...target.wanted].filter(k=>!cacheUsable(k,target.id)).length:0,waits,cancelled,evictions,stableIdentity:true};}};
 })(typeof window==='undefined'?globalThis:window);

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:sphere:biome-service:1:release",
+  "title": "Proposed release record",
+  "description": "External digest envelope; it is not included in its own payload digest.",
+  "type": "object",
+  "properties": {
+    "format": {
+      "const": "sphere-biome-release/1"
+    },
+    "descriptorFormat": {
+      "const": "sphere-biome-pack/1"
+    },
+    "manifestPath": {
+      "const": "manifest.json"
+    },
+    "manifestBytes": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 1048576
+    },
+    "manifestSha256": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/digest"
+    },
+    "payloadDigest": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/digest"
+    }
+  },
+  "required": [
+    "format",
+    "descriptorFormat",
+    "manifestPath",
+    "manifestBytes",
+    "manifestSha256",
+    "payloadDigest"
+  ],
+  "additionalProperties": false
+}

@@ -5,12 +5,14 @@
    this.canvas=canvas;this.gl=canvas.getContext('webgl2',{antialias:false,alpha:false,preserveDrawingBuffer:true,powerPreference:'high-performance'});
    if(!this.gl)throw Error('WebGL 2 is unavailable. Open this app in Chrome or Edge with hardware acceleration enabled.');
    const gl=this.gl;
+   try{
    // Own the final quantization: driver dithering introduced intermittent
    // one-level differences when revisiting identical paused weather frames.
    gl.disable(gl.DITHER);
    this.maxSize=gl.getParameter(gl.MAX_RENDERBUFFER_SIZE);this.previewLight=window.SpherePreviewLight?new SpherePreviewLight():null;this.biomes=window.SphereBiomes?new SphereBiomes.Textures(gl):null;this.heroes=window.SphereBiomes?.HeroTextures?new SphereBiomes.HeroTextures(gl):null;this.timer=gl.getExtension('EXT_disjoint_timer_query_webgl2');this.queries=[];this.gpuMs=null;this.atmosphereCache={};
-   const compile=(type,src)=>{const sh=gl.createShader(type);gl.shaderSource(sh,src);gl.compileShader(sh);if(!gl.getShaderParameter(sh,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(sh));return sh;};
-   this.program=gl.createProgram();gl.attachShader(this.program,compile(gl.VERTEX_SHADER,SphereShaders.vertex));gl.attachShader(this.program,compile(gl.FRAGMENT_SHADER,SphereShaders.fragment));gl.linkProgram(this.program);
+   const compile=(type,src)=>{const sh=gl.createShader(type);try{gl.shaderSource(sh,src);gl.compileShader(sh);if(!gl.getShaderParameter(sh,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(sh));return sh;}catch(error){gl.deleteShader(sh);throw error;}};
+   const attach=(program,type,src)=>{const sh=compile(type,src);try{gl.attachShader(program,sh);}finally{gl.deleteShader(sh);}};
+   this.program=gl.createProgram();attach(this.program,gl.VERTEX_SHADER,SphereShaders.vertex);attach(this.program,gl.FRAGMENT_SHADER,SphereShaders.fragment);gl.linkProgram(this.program);
    if(!gl.getProgramParameter(this.program,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(this.program));
    gl.useProgram(this.program);this.uniforms={};
    for(let i=0;i<gl.getProgramParameter(this.program,gl.ACTIVE_UNIFORMS);i++){const info=gl.getActiveUniform(this.program,i);this.uniforms[info.name]=gl.getUniformLocation(this.program,info.name);}
@@ -19,8 +21,8 @@
    for(let i=0;i<3800;i++){let x=Math.floor(random()*2048),lat=Math.asin(random()*2-1),y=Math.floor((lat/Math.PI+.5)*1024),j=(y*2048+x)*4;const bright=30+Math.floor(Math.pow(random(),3)*225);data[j]=bright;data[j+1]=bright;data[j+2]=bright;data[j+3]=255;}
    this.texture=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,this.texture);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,2048,1024,0,gl.RGBA,gl.UNSIGNED_BYTE,data);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.REPEAT);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);
    this.linearSupported=!!gl.getExtension('EXT_color_buffer_float');this.worldTextures=window.SphereWorldTextures?new SphereWorldTextures(gl):null;this.woundTextures=window.SphereWoundTextures?new SphereWoundTextures(gl):null;
-   this.resolve=gl.createProgram();gl.attachShader(this.resolve,compile(gl.VERTEX_SHADER,SphereShaders.vertex));
-   gl.attachShader(this.resolve,compile(gl.FRAGMENT_SHADER,`#version 300 es
+   this.resolve=gl.createProgram();attach(this.resolve,gl.VERTEX_SHADER,SphereShaders.vertex);
+   attach(this.resolve,gl.FRAGMENT_SHADER,`#version 300 es
 precision highp float;
 in vec2 vUV;out vec4 fragColor;uniform sampler2D source;uniform float exposure;uniform int edgeAA;
 vec3 mapped(vec3 x){x*=exp2(exposure);x=(x*(2.51*x+.03))/(x*(2.43*x+.59)+.14);return pow(clamp(x,0.,1.),vec3(1./2.2));}
@@ -41,14 +43,24 @@ void main(){vec3 center=mapped(texture(source,vUV).rgb);if(edgeAA==0){fragColor=
  vec3 a=.5*(display(vUV+dir*(-1./6.))+display(vUV+dir*(1./6.)));
  vec3 b=a*.5+.25*(display(vUV-dir*.5)+display(vUV+dir*.5));float lb=lum(b);
  fragColor=vec4(lb<lo||lb>hi?a:b,1.);
-}`));
+}`);
    gl.linkProgram(this.resolve);if(!gl.getProgramParameter(this.resolve,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(this.resolve));
    this.resolveSource=gl.getUniformLocation(this.resolve,'source');this.resolveExposure=gl.getUniformLocation(this.resolve,'exposure');this.resolveEdge=gl.getUniformLocation(this.resolve,'edgeAA');
    const debug=gl.getExtension('WEBGL_debug_renderer_info');this.device=debug?gl.getParameter(debug.UNMASKED_RENDERER_WEBGL):gl.getParameter(gl.RENDERER);
-   this.preparedViews=new Set();this.geometry=null;this.finishes=new SphereSurfaceFinishes(gl);this.localShadows=new SphereLocalShadows(gl);this.weather=window.SphereAtmosphere?new SphereAtmosphere(gl):null;
+    this.preparedViews=new Set();this.geometry=null;this.environment=window.SphereInstancedEnvironment?new SphereInstancedEnvironment.InstancedEnvironmentPass(gl):null;this.grass=window.SphereGrass?new SphereGrass.GrassStreamManager():null;this.meadow=window.SphereMeadow?new SphereMeadow.EndlessMeadow():null;this.meadowGround=window.SphereMeadowCanopy?new SphereMeadowCanopy.GroundField(gl):null;this.finishes=new SphereSurfaceFinishes(gl);this.localShadows=new SphereLocalShadows(gl);this.weather=window.SphereAtmosphere?new SphereAtmosphere(gl):null;
+   }catch(error){try{this.dispose();}catch(cleanupError){error.cleanupError=cleanupError;error.renderer=this;}throw error;}
+  }
+  // Service/slot lifetimes stay outside saved scenes and worker state clones.
+  setVegetationPopulation(population=null){
+   if(this.disposalStarted)throw Error('The renderer is being disposed.');
+   if(population&&(population.coordinateSpace!=='vegetation-chart'||!population.service||!Array.isArray(population.handles)))throw Error('Invalid runtime vegetation population');
+   const previous=this.vegetationPopulation?.service;if(previous&&previous!==population?.service)this.vegetationPopulation.lifecycle?.dispose();if(previous&&previous!==population?.service&&previous.gpuBackend?.owningPass===this.environment)previous.gpuBackend.dispose();
+   previous?.collectRetired();this.vegetationPopulation=population;
   }
   draw(s,width,height,{exportFrame=false,adaptiveScale=1,facePass=false}={}){
+   if(this.disposalStarted)throw Error('The renderer is being disposed.');
    const frameStarted=performance.now();
+   const frameId=this.drawFrameId=(this.drawFrameId||0)+1;
    SphereEdges.setView(width,{deterministic:exportFrame});
    if(!exportFrame&&window.SphereEdgeStreaming){
     if(!s.geometryDetail||s.layoutVersion!==2||!s.collection)SphereEdgeStreaming.cancel();
@@ -58,8 +70,9 @@ void main(){vec3 center=mapped(texture(source,vUV).rgb);if(edgeAA==0){fragColor=
    if(window.SpherePlaces)s=SpherePlaces.renderState(s);
    if(!this.geometry&&window.SphereGeometryRenderer&&s.layoutVersion===2&&s.collection&&s.geometryDetail&&SphereSites.geometry(s).length)this.geometry=new SphereGeometryRenderer(this.gl);
    const gl=this.gl;const started=performance.now();if(!facePass)this.pollTimers();let timerQuery=null;if(this.timer&&!exportFrame&&!facePass&&this.queries.length<4){timerQuery=gl.createQuery();gl.beginQuery(this.timer.TIME_ELAPSED_EXT,timerQuery);}
-   if(s.collection&&s.layoutVersion===2){this.program=this.modernProgram;this.uniforms=this.modernUniforms;}
-   else if(window.SphereLegacyShaders){if(!this.legacyProgram){const compiled=SphereGLProgram(gl,SphereLegacyShaders.vertex,SphereLegacyShaders.fragment);this.legacyProgram=compiled.p;this.legacyUniforms=compiled.u;}this.program=this.legacyProgram;this.uniforms=this.legacyUniforms;}
+   try{
+    if(s.collection&&s.layoutVersion===2){this.program=this.modernProgram;this.uniforms=this.modernUniforms;}
+    else if(window.SphereLegacyShaders){if(!this.legacyProgram){const compiled=SphereGLProgram(gl,SphereLegacyShaders.vertex,SphereLegacyShaders.fragment);this.legacyProgram=compiled.p;this.legacyUniforms=compiled.u;}this.program=this.legacyProgram;this.uniforms=this.legacyUniforms;}
    if(this.canvas.width!==width||this.canvas.height!==height){this.canvas.width=width;this.canvas.height=height;}
    const diagnostic=['objectid','lightid','surfaceLight','distance','geographyid'].includes(s.viewMode),budget=(exportFrame?3840*2160*4:1920*1080*adaptiveScale*adaptiveScale)/(facePass?6:1),maxSize=this.maxSize;
    const factor=s.antialias>=2&&!diagnostic?Math.max(1,Math.min(2,Math.sqrt(budget/(width*height)),maxSize/width,maxSize/height)):1;
@@ -70,7 +83,7 @@ void main(){vec3 center=mapped(texture(source,vUV).rgb);if(edgeAA==0){fragColor=
     gl.bindFramebuffer(gl.FRAMEBUFFER,this.lightBuffer);gl.activeTexture(gl.TEXTURE1);gl.bindTexture(gl.TEXTURE_2D,this.lightTexture);
     if(this.lightWidth!==rw||this.lightHeight!==rh){gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA16F,rw,rh,0,gl.RGBA,gl.HALF_FLOAT,null);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);gl.framebufferTexture2D(gl.FRAMEBUFFER,gl.COLOR_ATTACHMENT0,gl.TEXTURE_2D,this.lightTexture,0);
      gl.activeTexture(gl.TEXTURE6);gl.bindTexture(gl.TEXTURE_2D,this.depthTexture);gl.texImage2D(gl.TEXTURE_2D,0,gl.DEPTH_COMPONENT24,rw,rh,0,gl.DEPTH_COMPONENT,gl.UNSIGNED_INT,null);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.NEAREST);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.NEAREST);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);gl.framebufferTexture2D(gl.FRAMEBUFFER,gl.DEPTH_ATTACHMENT,gl.TEXTURE_2D,this.depthTexture,0);
-     if(gl.checkFramebufferStatus(gl.FRAMEBUFFER)!==gl.FRAMEBUFFER_COMPLETE){this.linearSupported=false;gl.bindFramebuffer(gl.FRAMEBUFFER,null);if(timerQuery){gl.endQuery(this.timer.TIME_ELAPSED_EXT);gl.deleteQuery(timerQuery);}return this.draw(s,width,height,{exportFrame,adaptiveScale});}this.lightWidth=rw;this.lightHeight=rh;
+     if(gl.checkFramebufferStatus(gl.FRAMEBUFFER)!==gl.FRAMEBUFFER_COMPLETE){this.linearSupported=false;gl.bindFramebuffer(gl.FRAMEBUFFER,null);return this.draw(s,width,height,{exportFrame,adaptiveScale});}this.lightWidth=rw;this.lightHeight=rh;
     }
    }else if(smooth){
     if(!this.aaBuffer){this.aaBuffer=gl.createFramebuffer();this.aaColor=gl.createRenderbuffer();this.aaDepth=gl.createRenderbuffer();}
@@ -84,8 +97,8 @@ void main(){vec3 center=mapped(texture(source,vUV).rgb);if(edgeAA==0){fragColor=
    }
    // The mask must not be bound for reading while attached for writing.
    gl.activeTexture(gl.TEXTURE13);gl.bindTexture(gl.TEXTURE_2D,this.texture);
-   this.renderInfo={width,height,internalWidth:rw,internalHeight:rh,antialias:linear&&s.antialias===3?(smooth?'supersampled + edge filter':'edge filter'):smooth?'supersampled':'none',lightPipeline:linear?'linear-half-float':'display-colour',exportFrame,silhouetteSamples:silhouettes?8:0,silhouetteMaskMiB:silhouettes?rw*rh/1048576:0};
-   const assetPlan=SphereAssets.plan(s,width/height);SphereAssets.request(this,assetPlan);if(assetPlan.finishes)this.finishes.prepare();
+   this.renderInfo={windPhaseSeconds:window.SphereMeadowWind?.active(s)?SphereMeadowWind.phase(s):null,windTimelineRevision:s.meadow?.windTimelineRevision||0,width,height,internalWidth:rw,internalHeight:rh,antialias:linear&&s.antialias===3?(smooth?'supersampled + edge filter':'edge filter'):smooth?'supersampled':'none',lightPipeline:linear?'linear-half-float':'display-colour',exportFrame,silhouetteSamples:silhouettes?8:0,silhouetteMaskMiB:silhouettes?rw*rh/1048576:0};
+   this.meadowGround?.request(s);const assetPlan=SphereAssets.plan(s,width/height);SphereAssets.request(this,assetPlan);if(assetPlan.finishes)this.finishes.prepare();
    const shadowGroups=this.geometry&&s.layoutVersion===2&&s.geometryDetail?SphereSites.geometry(s):[];
    this.localShadows.prepare(s,shadowGroups,mesh=>this.geometry.upload(mesh),{exportFrame,target:linear?this.lightBuffer:smooth?this.aaBuffer:null,viewport:[0,0,rw,rh]});
    this.renderInfo.structureShadows=this.localShadows.info;
@@ -110,7 +123,7 @@ void main(){vec3 center=mapped(texture(source,vUV).rgb);if(edgeAA==0){fragColor=
    v('uPlateRelative',M.mul(M.sub(plate.center,s.position),1/s.radius));v('uPlateWorld',M.mul(plate.center,1/s.radius));f('uPlateRadius',plate.radius/s.radius);f('uDamage',s.shadeDamage);i('uShade',+s.shadeEnabled);
    i('uGrid',+s.grid);i('uMode',s.viewMode==='geographyid'?6:s.viewMode==='surfaceLight'?5:s.viewMode==='coverageid'?4:s.viewMode==='lightid'?3:s.viewMode==='objectid'?2:s.viewMode==='distance'?1:0);i('uPanorama',s.projection==='panorama'?1:0);i('uStars',+s.starfield);i('uStarTex',0);
    if(window.SphereCollection)SphereCollection.upload(gl,this.uniforms,s,indirect);
-   if(window.SphereWorld)SphereWorld.upload(gl,this.uniforms,s);
+   if(window.SphereWorld)SphereWorld.upload(gl,this.uniforms,s);this.meadowGround?.bind(this.uniforms,s);this.renderInfo.meadowGround=this.meadowGround?.info;
    if(this.worldTextures){this.worldTextures.upload();this.worldTextures.bind(this.uniforms);}
    if(this.woundTextures){this.woundTextures.upload();this.woundTextures.bind(this.uniforms,exportFrame);}
    gl.bindVertexArray(null);gl.enable(gl.DEPTH_TEST);gl.depthMask(true);gl.depthFunc(gl.ALWAYS);gl.clearDepth(1);gl.clear(gl.DEPTH_BUFFER_BIT);gl.drawArrays(gl.TRIANGLES,0,3);
@@ -120,10 +133,16 @@ void main(){vec3 center=mapped(texture(source,vUV).rgb);if(edgeAA==0){fragColor=
     for(const offset of SphereSilhouetteOffsets){gl.uniform2fv(this.uniforms.uAAOffset,offset);gl.drawArrays(gl.TRIANGLES,0,3);}
     gl.disable(gl.BLEND);gl.depthMask(true);gl.enable(gl.DEPTH_TEST);i('uAAPass',0);gl.uniform2f(this.uniforms.uAAOffset,0,0);gl.activeTexture(gl.TEXTURE0);
    }
-   this.geometry?.draw(s,this,linear,rw,rh);gl.disable(gl.DEPTH_TEST);
+    this.geometry?.draw(s,this,linear,rw,rh);
+    let environmentPopulation=this.vegetationPopulation||s.instancedEnvironment?.population||null,meadowResidentPopulation=null,environmentFrameDiagnostics=null;const meadowConfig=s.meadow||s.instancedEnvironment?.meadow;const grassConfig=s.grass||s.instancedEnvironment?.grass;
+    if(this.meadow&&meadowConfig?.enabled){const runtimePopulation=environmentPopulation?.coordinateSpace==='vegetation-chart'&&environmentPopulation.service?.providers.has(window.SphereMeadowProvider?.ID)?environmentPopulation:null;if(runtimePopulation&&SphereVegetationRevisions.resourceKey(SphereVegetationRevisions.describe(runtimePopulation.service.current.get(SphereMeadowProvider.ID)?.value.state))!==SphereVegetationRevisions.resourceKey(SphereVegetationRevisions.describe({...s,meadow:meadowConfig})))throw Error('Runtime Meadow population belongs to another scene');const meadowPopulation=runtimePopulation?SphereMeadow.createGpuPopulation(runtimePopulation.service,{...s,meadow:meadowConfig},runtimePopulation.handles,{prototypes:runtimePopulation.prototypes,culling:runtimePopulation.culling,maxUploadBytesPerFrame:runtimePopulation.maxUploadBytesPerFrame,diagnostic:runtimePopulation.diagnostic,lifecycle:runtimePopulation.lifecycle,productionSelection:runtimePopulation.productionSelection}):this.meadow.request({...s,meadow:meadowConfig},{internalWidth:rw,capture:exportFrame});if(runtimePopulation)environmentPopulation=null;if(['resident-chart','vegetation-chart'].includes(meadowPopulation.coordinateSpace))meadowResidentPopulation=meadowPopulation;else environmentPopulation=environmentPopulation?{...environmentPopulation,prototypes:[...(environmentPopulation.prototypes||[]),...meadowPopulation.prototypes],patches:[...(environmentPopulation.patches||[]),...meadowPopulation.patches],windTime:meadowPopulation.windTime,windStrength:meadowPopulation.windStrength,diagnostic:meadowConfig.diagnostic}: {...meadowPopulation,diagnostic:meadowConfig.diagnostic};if(!meadowResidentPopulation?.service)this.renderInfo.meadow={...this.meadow.info,diagnostic:meadowConfig.diagnostic||null};}
+    if(this.grass&&grassConfig?.enabled&&!meadowConfig?.enabled){this.grass.options={...this.grass.options,...grassConfig};const grassPopulation=this.grass.request({...s,grass:grassConfig});environmentPopulation=environmentPopulation?{...environmentPopulation,prototypes:[...(environmentPopulation.prototypes||[]),...grassPopulation.prototypes],patches:[...(environmentPopulation.patches||[]),...grassPopulation.patches],windTime:grassPopulation.windTime,windStrength:grassPopulation.windStrength}:grassPopulation;this.renderInfo.grass={...this.grass.info};}
+    if(this.environment&&s.instancedEnvironment?.enabled!==false&&environmentPopulation){this.environment.draw(s,environmentPopulation,rw,rh,{linear,exportFrame,measureGpu:false,renderer:this});environmentFrameDiagnostics={...this.environment.diagnostics};this.renderInfo.instancedEnvironment=environmentFrameDiagnostics;}
+    if(this.environment&&s.instancedEnvironment?.enabled!==false&&meadowResidentPopulation){this.environment.draw(s,meadowResidentPopulation,rw,rh,{linear,exportFrame,measureGpu:false,renderer:this});if(meadowResidentPopulation.coordinateSpace==='resident-chart')this.meadow.commitResident(this.environment.diagnostics.committedTargetSignature);const meadowInfo=meadowResidentPopulation.service?.info;this.renderInfo.meadow=meadowInfo?{...meadowInfo,fixedBlades:meadowInfo.retainedDetailedRecords,fixedBytes:meadowInfo.retainedBackingBytes,fixedCells:meadowResidentPopulation.service.allocations.size,queue:meadowInfo.queue+meadowInfo.workers,diagnostic:meadowConfig.diagnostic||null}:{...this.meadow.info,diagnostic:meadowConfig.diagnostic||null};this.renderInfo.instancedEnvironment={...this.environment.diagnostics};if(environmentFrameDiagnostics){for(const field of ['drawCalls','instances','triangles','frameUploadedBytes','frameInstanceUploadBytes','framePrototypeUploadBytes','frameReferenceUploadBytes'])this.renderInfo.instancedEnvironment[field]=(this.renderInfo.instancedEnvironment[field]||0)+(environmentFrameDiagnostics[field]||0);}}
+   gl.disable(gl.DEPTH_TEST);
    if(linear){const image=this.weather?this.weather.draw(s,this,rw,rh):this.lightTexture;gl.bindFramebuffer(gl.FRAMEBUFFER,null);gl.viewport(0,0,width,height);gl.useProgram(this.resolve);gl.activeTexture(gl.TEXTURE1);gl.bindTexture(gl.TEXTURE_2D,image);gl.uniform1i(this.resolveSource,1);gl.uniform1f(this.resolveExposure,s.exposure);gl.uniform1i(this.resolveEdge,s.antialias===3?1:0);gl.drawArrays(gl.TRIANGLES,0,3);gl.activeTexture(gl.TEXTURE0);}
    else if(smooth){gl.bindFramebuffer(gl.READ_FRAMEBUFFER,this.aaBuffer);gl.bindFramebuffer(gl.DRAW_FRAMEBUFFER,null);gl.blitFramebuffer(0,0,rw,rh,0,0,width,height,gl.COLOR_BUFFER_BIT,gl.LINEAR);gl.bindFramebuffer(gl.FRAMEBUFFER,null);}
-   if(timerQuery){gl.endQuery(this.timer.TIME_ELAPSED_EXT);this.queries.push(timerQuery);}
+    if(timerQuery){gl.endQuery(this.timer.TIME_ELAPSED_EXT);this.timerFrameIds??=new WeakMap();this.timerFrameIds.set(timerQuery,frameId);this.queries.push(timerQuery);timerQuery=null;}
    // Export callers immediately read the canvas (toBlob/toDataURL). Complete
    // the GPU resolve before handing the frame to the browser's image encoder.
    if(exportFrame)gl.finish();
@@ -132,35 +151,60 @@ void main(){vec3 center=mapped(texture(source,vUV).rgb);if(edgeAA==0){fragColor=
    this.renderInfo.indirectSampleTime=exportFrame?s.time:this.previewLight?.sampleTime;
    if(this.heroes)this.renderInfo.heroTextures={ready:this.heroes.status.filter(x=>x==='ready').length,total:10,gpuMiB:this.heroes.allocated?79.96:0,tileKm:SphereBiomes.heroScale};
    if(this.woundTextures)this.renderInfo.woundTextures=this.woundTextures.info;
-   this.renderInfo.assets=SphereAssets.status(this,assetPlan);this.preparedViews.add(SphereAssets.pipelineKey(s,assetPlan));
+    this.renderInfo.assets=SphereAssets.status(this,assetPlan);this.preparedViews.add(SphereAssets.pipelineKey(s,assetPlan));
    if(this.biomes)this.renderInfo.textures={ready:this.biomes.status.filter(x=>x==='ready').length,total:10,gpuMiB:this.biomes.allocated?40:0,scalesKm:SphereBiomes.scales};
+  }finally{
+   if(timerQuery){try{gl.endQuery(this.timer.TIME_ELAPSED_EXT);}catch{}gl.deleteQuery(timerQuery);timerQuery=null;}
   }
-  pollTimers(){const gl=this.gl;if(!this.timer)return;const disjoint=gl.getParameter(this.timer.GPU_DISJOINT_EXT);
-   while(this.queries.length){const q=this.queries[0];if(!disjoint&&!gl.getQueryParameter(q,gl.QUERY_RESULT_AVAILABLE))break;this.queries.shift();if(!disjoint)this.gpuMs=gl.getQueryParameter(q,gl.QUERY_RESULT)/1e6;gl.deleteQuery(q);}
+  }
+  pollTimers(){const gl=this.gl;this.environment?.poll();this.gpuTimerSamples=[];if(!this.timer)return;const disjoint=gl.getParameter(this.timer.GPU_DISJOINT_EXT);this.gpuTimerDisjoint=disjoint;
+   while(this.queries.length){const q=this.queries[0];if(!disjoint&&!gl.getQueryParameter(q,gl.QUERY_RESULT_AVAILABLE))break;this.queries.shift();const sample={frameId:this.timerFrameIds?.get(q)??null,valid:!disjoint,ms:disjoint?null:gl.getQueryParameter(q,gl.QUERY_RESULT)/1e6};this.gpuTimerSamples.push(sample);if(sample.valid)this.gpuMs=sample.ms;gl.deleteQuery(q);}
    if(disjoint)this.gpuMs=null;
   }
-  dispose(){if(this.silhouetteMask)this.gl.deleteTexture(this.silhouetteMask);this.previewLight?.dispose();this.biomes?.dispose();this.heroes?.dispose();this.worldTextures?.dispose();this.woundTextures?.dispose();this.finishes?.dispose();this.localShadows?.dispose();this.geometry?.dispose();window.SphereEdgeStreaming?.dispose();window.SphereGround?.dispose();this.weather?.dispose();this.panorama?.dispose();for(const q of this.queries)this.gl.deleteQuery(q);this.queries=[];}
+  dispose(){
+   if(this.disposalComplete)return;
+   this.disposalStarted=true;for(const controller of this.prepareControllers||[])controller.abort();const gl=this.gl;this.disposedChildren??=new WeakSet();
+   const child=value=>{if(value?.dispose&&!this.disposedChildren.has(value)){value.dispose();this.disposedChildren.add(value);}};
+   child(this.vegetationPopulation?.lifecycle);for(const name of ['previewLight','biomes','heroes','worldTextures','woundTextures','finishes','localShadows','geometry','environment','meadowGround','grass','meadow'])child(this[name]);child(window.SphereEdgeStreaming);child(window.SphereGround);child(this.weather);child(this.panorama);
+   const destroy=(method,value)=>{if(gl.isContextLost())return;gl[method](value);if(gl.getError()!==gl.NO_ERROR&&!gl.isContextLost())throw Error('The renderer could not finish '+method+'. Its resource is retained for retry.');};
+   const programs=new Set(['modernProgram','program','legacyProgram','resolve'].map(name=>this[name]).filter(Boolean));
+   if(!gl.isContextLost()&&programs.has(gl.getParameter(gl.CURRENT_PROGRAM))){gl.useProgram(null);if(!gl.isContextLost()&&(gl.getError()!==gl.NO_ERROR||gl.getParameter(gl.CURRENT_PROGRAM)!==null))throw Error('The renderer could not unbind its current program. Its programs are retained for retry.');}
+   // These fields are the legacy renderer's own allocations. Native R targets
+   // remain private to R and must never be installed as mutable field aliases.
+   for(const [method,names]of [['deleteTexture',['texture','lightTexture','depthTexture','silhouetteMask']],['deleteFramebuffer',['lightBuffer','aaBuffer']],['deleteRenderbuffer',['aaColor','aaDepth']],['deleteProgram',['modernProgram','program','legacyProgram','resolve']]]){
+    const values=new Set(names.map(name=>this[name]).filter(Boolean));for(const value of values){destroy(method,value);for(const name of names)if(this[name]===value)this[name]=null;}
+   }
+   for(const query of new Set(this.queries||[])){destroy('deleteQuery',query);this.queries=this.queries.filter(value=>value!==query);}
+   this.disposalComplete=true;
+  }
   async prepare(s,{aspect=this.canvas.clientWidth/Math.max(1,this.canvas.clientHeight)||16/9,onProgress,signal}={}){
+   if(this.disposalStarted)throw Error('The renderer is being disposed.');
+   const controller=new AbortController();this.prepareControllers??=new Set();this.prepareControllers.add(controller);signal=signal?AbortSignal.any([signal,controller.signal]):controller.signal;
+   const check=()=>{if(this.disposalStarted||signal.aborted)throw new DOMException('View changed','AbortError');};
+   try{
+   check();
    if(window.SphereGround?.enabled(s)){
-    onProgress?.({phase:'Preparing connected ground'});this.geometry??=new SphereGeometryRenderer(this.gl);
-    while(!SphereGround.ready(s)){if(signal?.aborted)throw new DOMException('View changed','AbortError');SphereGround.neighbourhood(s);SphereEdgeStreaming.pump((mesh,budget)=>this.geometry.stage(mesh,budget));await new Promise(requestAnimationFrame);}
+    onProgress?.({phase:'Preparing connected ground'});check();this.geometry??=new SphereGeometryRenderer(this.gl);
+    while(!SphereGround.ready(s)){check();SphereGround.neighbourhood(s);SphereEdgeStreaming.pump((mesh,budget)=>this.geometry.stage(mesh,budget));await new Promise(requestAnimationFrame);check();}
    }
    const plan=SphereAssets.plan(s,aspect),progress=()=>onProgress?.({phase:'Preparing the artwork',...SphereAssets.status(this,plan)});
    if(plan.province){
-    onProgress?.({phase:'Building the river gardens'});const groups=await SphereWatershed.prepare(s,{signal});
-    if(signal?.aborted)throw new DOMException('View changed','AbortError');
+    onProgress?.({phase:'Building the river gardens'});check();const groups=await SphereWatershed.prepare(s,{signal});
+    check();
     // Compilation and every province upload belong to preparation, including
     // a first-ever visit. The first visible frame must not allocate them all.
-    if(!this.geometry){onProgress?.({phase:'Preparing the landscape renderer'});await new Promise(r=>requestAnimationFrame(r));if(signal?.aborted)throw new DOMException('View changed','AbortError');this.geometry=new SphereGeometryRenderer(this.gl);}
-    for(const mesh of groups)while(!this.geometry.stage(mesh,4)){if(signal?.aborted)throw new DOMException('View changed','AbortError');await new Promise(r=>requestAnimationFrame(r));}
+    if(!this.geometry){onProgress?.({phase:'Preparing the landscape renderer'});check();await new Promise(r=>requestAnimationFrame(r));check();this.geometry=new SphereGeometryRenderer(this.gl);}
+    for(const mesh of groups){check();while(!this.geometry.stage(mesh,4)){check();await new Promise(r=>requestAnimationFrame(r));check();}}
    }
-   if(signal?.aborted)throw new DOMException('View changed','AbortError');progress();
-   const results=await Promise.allSettled(['biomes','heroes','worldTextures','woundTextures'].map(key=>this[key]?.prepare(plan[key],{signal,onProgress:progress})));
+   check();progress();check();
+   const results=await Promise.allSettled(['biomes','heroes','worldTextures','woundTextures'].map(key=>{check();return this[key]?.prepare(plan[key],{signal,onProgress:progress});}));
+   check();
    const failure=results.find(r=>r.status==='rejected');if(failure){failure.reason.artwork=true;throw failure.reason;}
-   if(signal?.aborted)throw new DOMException('View changed','AbortError');
-   if(plan.finishes)this.finishes.prepare();return plan;
+   check();
+   if(plan.finishes)this.finishes.prepare();check();return plan;
+   }finally{this.prepareControllers.delete(controller);}
   }
-  get needsFrame(){return !!(window.SphereEdgeStreaming?.needsFrame||this.biomes&&(this.biomes.fading||this.biomes.pending.length||this.heroes?.fading||this.heroes?.pending.length)||this.woundTextures?.fading||this.woundTextures?.pending.length);}
+  get needsFrame(){return !!(window.SphereEdgeStreaming?.needsFrame||this.meadowGround?.pending||this.meadowGround?.worker||this.grass?.info.queue||this.meadow?.info.queue||this.environment?.needsFrame||this.biomes&&(this.biomes.fading||this.biomes.pending.length||this.heroes?.fading||this.heroes?.pending.length)||this.woundTextures?.fading||this.woundTextures?.pending.length);}
   error(){return this.gl.getError();}
  }
  window.SphereRenderer=Renderer;

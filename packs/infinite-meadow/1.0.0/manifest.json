@@ -1,0 +1,193 @@
+{
+  "schema": 1,
+  "id": "infinite-meadow",
+  "name": "Infinite Meadow",
+  "version": "1.0.0",
+  "runtimeApi": 1,
+  "geography": {
+    "revision": "rolling-landscape-v05",
+    "seed": 713,
+    "coordinateContract": "shell-tangent-metres-v1",
+    "sourceWorldRevision": "scale-study-v05",
+    "addressRevision": "scale-study-v03",
+    "siteId": "rolling-meadow-study-03",
+    "cellM": 256,
+    "shellRadiusM": 149597870700,
+    "eastLimitM": 469975571583.7958,
+    "northLimitM": 234987785791.8979,
+    "maximumGroundM": 39.2
+  },
+  "appearance": {
+    "revision": "grass-stage-v12",
+    "floor": "Study 12",
+    "acceptedOn": "2026-10-10",
+    "acceptedBy": "Human user in this chat",
+    "source": "scale-transition-slice-v12-2026-10-09",
+    "stateField": "vegetationRevision"
+  },
+  "controls": {
+    "revision": "level-cruise-v13",
+    "minimumLevelAltitudeM": 39.55
+  },
+  "entry": "app.js",
+  "capabilities": [
+    "walk",
+    "lift",
+    "free-flight",
+    "terrain-cruise",
+    "level-cruise",
+    "reveal-return",
+    "local-save",
+    "portable-save",
+    "recording"
+  ],
+  "representations": [
+    {
+      "id": "hero",
+      "provider": "grass-stage.js",
+      "anchor": "world",
+      "follows": "eye",
+      "maximumCells": 81
+    },
+    {
+      "id": "transition",
+      "provider": "grass-handoff.js",
+      "anchor": "world",
+      "follows": "eye"
+    },
+    {
+      "id": "distant",
+      "provider": "grass-shaders.js",
+      "anchor": "world",
+      "follows": "eye"
+    },
+    {
+      "id": "surface",
+      "provider": "meadow-surface.js",
+      "anchor": "world",
+      "follows": "eye"
+    },
+    {
+      "id": "shell",
+      "provider": "renderer.js",
+      "anchor": "shell"
+    }
+  ],
+  "budgets": {
+    "residentInstances": 1,
+    "gpuBufferBytes": 8388608,
+    "gpuTextureBytes": 0,
+    "stageCells": 81,
+    "sourceBytes": 2097152
+  },
+  "storageKey": "sphere-pack:infinite-meadow:1.0.0",
+  "assets": [
+    {
+      "path": "app.js",
+      "bytes": 32759,
+      "sha256": "92c450e94c1b3ce3d1fa273f6e22efaba8a22bc7f126820fa8d533b165832157"
+    },
+    {
+      "path": "coordinates.js",
+      "bytes": 3908,
+      "sha256": "2b70f23c6fef245c0893e8f8fa300d8f1f1f0601768321d695884bfe99a4e147"
+    },
+    {
+      "path": "entry.js",
+      "bytes": 736,
+      "sha256": "c29219f84691abb1e9faf6040adaf04bd7b5b940ee2d060a53a62299ade18407"
+    },
+    {
+      "path": "grass-allocation.js",
+      "bytes": 1454,
+      "sha256": "9bd016a67d673402ad89372f1ba60f708722b679cdc0f1b91180f811c936d631"
+    },
+    {
+      "path": "grass-handoff.js",
+      "bytes": 2827,
+      "sha256": "426b367b2d301e910e5897156f81abaf7e7e6adb840853e1f1b73bd4aa30c86a"
+    },
+    {
+      "path": "grass-scatter.js",
+      "bytes": 919,
+      "sha256": "900f72c77d8a8c2b1fad7bbbe738c4e8eb512b131ac4d58ee7720e1e11104ea4"
+    },
+    {
+      "path": "grass-shaders.js",
+      "bytes": 11160,
+      "sha256": "0e149323a0f5b5cd22ddd8a4b71d8905291a8188226f826a078607ce68ba833d"
+    },
+    {
+      "path": "grass-stage.js",
+      "bytes": 8031,
+      "sha256": "fae3b698c7fd55e8aefb144ffc2f273294dcbaf7bbce21ef72a122accfc2ec8e"
+    },
+    {
+      "path": "index.html",
+      "bytes": 7502,
+      "sha256": "8e9133c1b35efd1c0f25e6851748da8ba3593f7c5591349c3694a422d62e782f"
+    },
+    {
+      "path": "landscape.js",
+      "bytes": 2657,
+      "sha256": "e298f775c45a24ed78ef63283bea5a535db01b6ad97c0926bc6588463868c587"
+    },
+    {
+      "path": "level-cruise.js",
+      "bytes": 3147,
+      "sha256": "2ad5947433f66ab3424b67264a613a98655f3dc0c98a457a45350a0102d0c6c9"
+    },
+    {
+      "path": "meadow-surface.js",
+      "bytes": 4694,
+      "sha256": "200f167be15f39cc09be6cab45f5aacb2ed9883c9eb340c4cc57eca9e2c3e466"
+    },
+    {
+      "path": "meadow.css",
+      "bytes": 1016,
+      "sha256": "fe92cee08d3b20b71f6c1536baabfc25b11e9aa1d2b92ec9f52e0a02e21f3be6"
+    },
+    {
+      "path": "model.js",
+      "bytes": 18066,
+      "sha256": "f2b152d83f026d154154ec4891e4d21b636804a4a3760b96866503644360770f"
+    },
+    {
+      "path": "pack.css",
+      "bytes": 290,
+      "sha256": "e9cbd87c28cabb8d8b63246a970463cd5e7aa306d078f7d653e9b743bfe2c8ec"
+    },
+    {
+      "path": "refinement.css",
+      "bytes": 513,
+      "sha256": "edcb1a1489ca3ebbe8cedf04a76ce81bcce92b507c3f51a54b04ff56e867a14a"
+    },
+    {
+      "path": "renderer.js",
+      "bytes": 28271,
+      "sha256": "31aef7070eb2a7946634a9c58eaa042ae545c2c1c68e7af2bab523ba4e82a337"
+    },
+    {
+      "path": "style.css",
+      "bytes": 4034,
+      "sha256": "ac2bd4a602bd04f49eaf10880a7ad10914014186cc03d855e3c3cf419ae01e3a"
+    },
+    {
+      "path": "terrain-grid.js",
+      "bytes": 5533,
+      "sha256": "dd838ac932b7319d7f608a2a2bcd7cf30af31774c16266f9808abea7bfbd7f6f"
+    },
+    {
+      "path": "vendor/world-address.js",
+      "bytes": 9929,
+      "sha256": "b614e3f9e9492674c180ac9ebc72aec2345e5428bdfe98984cb4cd5c224b77f1"
+    }
+  ],
+  "limits": [
+    "One procedural Meadow biome with finite coordinates.",
+    "Accepted faint moving handoffs remain.",
+    "Large viewport frame pacing and a two-hour rendered soak remain unproved.",
+    "Explicit document scene transition; seamless geographic blending into the legacy Watershed is not implemented.",
+    "This pack does not certify or alter the older bounded Meadow HR-09/H1 route."
+  ]
+}

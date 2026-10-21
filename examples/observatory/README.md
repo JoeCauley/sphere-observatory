@@ -1,5 +1,8 @@
 # Photographs from Observatory v1.6
 
+<!-- current-meadow-progress-2026-10-03 -->
+> **Current Meadow status (2026-10-05 bounded HR-09 map/preparation continuation):** Runtime `7ca67b137100b81c10c3ae173ffab90f0b9054aac99d1bf199fee7e145e59116` is unchanged. Ready-map winner reuse is rejected for observable object identity effects; SHA64 remains unpromoted with no dependable complete preparation gain. Fresh integrated regression/contracts/seven ownership states and independent thirteen-pair audit PASS in their scopes. Complete quiet H1 retains six 900-frame windows/5,400 unique valid GPU samples/protocol PASS and numerical FAIL with twelve unchanged-limit failures. Original-order raw native diagnosis repeats the elevated-turn first-canonical 376-row material mismatch; all 54 raw captures and every changed channel are retained, cause UNKNOWN/unwaived. Retained F/G media re-review is complete; fine-edge/shimmer/filter/shadow feedback and human acceptance remain open. HR09/H IN PROGRESS; HR10 NOT STARTED; I-K blocked; B1/acceptedBy NOT ACCEPTED; M1 WITHDRAWN. Current baseline bytes are preserved in the pre-docs audit; the historical missing PID/server and absent process/context qualifications remain INCOMPLETE/NOT_CONFIRMED/UNKNOWN. See [current map/preparation report](../../docs/Observatory-Meadow-HR09-Map-Preparation.md) and its authoritative final after-docs audit/seal. Integrity sealing does not waive failed numerical/native/human/preservation gates.
+
 **Nineteen new 3840 × 2160 photographs and three interface screenshots**, captured from the running app. Every photograph has a fresh composition and an importable scene. The PNGs are untouched renderer output; JPEGs are smaller display copies.
 
 To return to a photograph, download its scene JSON and open **Journey → Saved viewpoints & scene files → Import scene**. Camera, world, time, seed, place identity, build and rendering settings travel with the file. Later renderer, GPU or browser changes may affect exact reproduction.
@@ -122,6 +125,8 @@ The open meadow in its regional composition, retaining the same saved geographic
 
 [Original 4K PNG](meadow.png) · [Restore scene](meadow.json)
 
+This photograph and scene retain their v1.6 gallery provenance. For the current local canopy study, use **Explore → Watershed · Open meadow → Meadow study · on foot → Visit**; explicitly select that arrival after the app restores its last scene. The [reviewed F2 continuation](../../docs/evidence/meadow-proof-01/f-canopy-continuation-v2-2026-09-30T20-41-39-185Z/f-reviewed-report.md) establishes bounded IB-075-F continuity, with performance/export certification and moving-window integration still pending. B1 remains NOT ACCEPTED and M1 WITHDRAWN. See the [current ledger state](../../docs/Observatory-Infinite-Biomes-Ledger-STATE.md) and [documentation index](../../docs/README.md).
+
 ## Engineering, light and weather
 
 ### The finished Shade perimeter
@@ -205,3 +210,13 @@ node tools/verify-gallery.cjs
 ```
 
 The preview helper needs Pillow. Capture selected photographs with IDs, for example `node tools/capture-gallery.cjs hero shade-broken`. `SPHERE_PROFILE` optionally selects an isolated persistent browser profile for warm shader caching. The composition helper intentionally replaces the current gallery scenes.
+
+## Current G photograph and reproduction lessons · 30 September 2026
+
+The [G reviewed report v2](../../docs/evidence/meadow-proof-01/g-wind-timeline-v1-2026-09-30/g-reviewed-report-v2.md) establishes bounded geographic wind and recorded-time behavior. Its [browser-06 photograph ZIP](../../docs/evidence/meadow-proof-01/g-wind-timeline-v1-2026-09-30/browser-06/g-photo.zip) includes the exact scene.json. Import through Journey → Saved viewpoints & scene files; it is a fixed-camera test scene with walking and automatic landing disabled, not a normal walking preset. Revisit the named Meadow study on-foot arrival to walk.
+
+A normal visit inherits seed/weather/terrain settings, so the same named meadow need not resemble this clear-weather seed-713 Connected-walking photograph. Grass LOD and return preparation remain distinct from walking. [Progress and hands-on lessons](../../docs/Observatory-Meadow-Progress-and-Lessons-2026-09-30.md) document the comparison and delayed return. A–G are complete under bounded criteria. H measurement implementation is PASS; fixed-resolution performance/resource certification is FAIL, retained CPU-memory attribution is INCOMPLETE and H remains IN PROGRESS. I export/UI certification remains PENDING and I–K remain blocked; B1/acceptedBy are NOT ACCEPTED and M1 is WITHDRAWN. The published historical gallery images above retain their release provenance.
+
+## HR-09 certification attempt - 3 October 2026
+
+The [integrated H1 certification runner](../../docs/Observatory-Meadow-HR09-Certification.md) is implemented and full regressions PASS. The [fresh production result](../../docs/evidence/meadow-proof-01/hr09-certification-v1-2026-10-03T20-14-59Z/hr09-report.md) is **FAIL**, with all 5400 matched frames, valid unique GPU samples, complete CPU ownership and no page/worker/GL/resolution errors. Resource limits and the measured 63.77 MiB CPU replacement bound pass; CPU, preparation, frame intervals and incremental GPU limits fail. **HR-09 and parent H remain IN PROGRESS; HR-10 NOT STARTED; I-K blocked; B1/acceptedBy NOT ACCEPTED and M1 WITHDRAWN.** The current certification entry point is `npm run test:ib075:hr09` with a fresh `IB075_HR09_OUTPUT`. H1 and E/F/G fixture bytes and numerical limits remain unchanged.

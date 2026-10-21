@@ -1,0 +1,214 @@
+{
+  "schema": 1,
+  "id": "watershed-open-meadow-e-visual-exit-v2",
+  "title": "Watershed · Open meadow benchmark",
+  "source": "IB-075-E visual-exit unblock",
+  "location": {
+    "bankMetres": [
+      21500,
+      -5000
+    ],
+    "worldAddress": "v2:shell:legacy-watershed-open-meadow",
+    "packAddress": {
+      "schema": 1,
+      "packId": "watershed",
+      "geographyRevision": 1,
+      "artRevision": 2,
+      "seed": 713,
+      "anchor": [
+        0.9990056996801094,
+        -0.033228470003808824,
+        0.029723404715151572
+      ]
+    }
+  },
+  "settings": {
+    "sceneTime": 2468,
+    "placeScene": "day",
+    "placeWeather": "clear",
+    "horizontalFov": 80,
+    "quality": 1,
+    "viewport": [
+      1920,
+      1080
+    ],
+    "terrainOwner": "Watershed revision 1 rendered/collision surface",
+    "meadow": {
+      "enabled": true,
+      "nearRange": 0.32,
+      "middleRange": 1.15,
+      "farRange": 2.8,
+      "rootsPerSubcell": 8,
+      "density": 1,
+      "windStrength": 0.38,
+      "windClock": 2468,
+      "pausedClock": 2468,
+      "worker": true
+    }
+  },
+  "poses": {
+    "normal": {
+      "terrainRelativeEyeHeightMetres": 1.7,
+      "position": [
+        149449597.19812354,
+        -4975905.543873623,
+        4425062.576094079
+      ],
+      "forward": [
+        0.11280760304793562,
+        0.9936112359686622,
+        0.0033401274537029255
+      ],
+      "up": [
+        -0.9990088528701357,
+        0.03326187412057977,
+        -0.029579716311726657
+      ]
+    },
+    "grazing": {
+      "terrainRelativeEyeHeightMetres": 0.4,
+      "position": [
+        149449597.19942227,
+        -4975905.543916863,
+        4425062.576132533
+      ],
+      "forward": [
+        0.11280760304793562,
+        0.9936112359686622,
+        0.0033401274537029255
+      ],
+      "up": [
+        -0.9990088528701357,
+        0.03326187412057977,
+        -0.029579716311726657
+      ]
+    },
+    "downward": {
+      "terrainRelativeEyeHeightMetres": 1.7,
+      "position": [
+        149449597.19812354,
+        -4975905.543873623,
+        4425062.576094079
+      ],
+      "forward": [
+        0.9990088528701357,
+        -0.03326187412057977,
+        0.029579716311726657
+      ],
+      "up": [
+        0.033247303414030316,
+        0.9994466707783797,
+        0.0009844215096708048
+      ]
+    },
+    "boundary": {
+      "terrainRelativeEyeHeightMetres": 8,
+      "position": [
+        149449600.98009527,
+        -4975905.543050368,
+        4424934.631981167
+      ],
+      "forward": [
+        -0.4523092926833029,
+        0.8917605935993389,
+        -0.013392066893693605
+      ],
+      "up": [
+        -0.9990088781931261,
+        0.0332618741164774,
+        -0.02957886105940275
+      ]
+    },
+    "close": {
+      "position": [
+        149449597.19810358,
+        -4975905.543872958,
+        4425062.576093488
+      ],
+      "forward": [
+        0.08805970059783641,
+        0.9961117862856057,
+        0.0026073652447584374
+      ],
+      "up": [
+        -0.9956754292578622,
+        0.08809829296246414,
+        -0.029481016761152525
+      ],
+      "terrainRelativeEyeHeightMetres": 1.7199873918284283
+    }
+  },
+  "mask": {
+    "diagnostic": "grass-id",
+    "roi": [
+      0.18,
+      0.42,
+      0.82,
+      0.94
+    ],
+    "excludedRects": [
+      [
+        0,
+        0,
+        1,
+        0.42
+      ]
+    ],
+    "minimumCanopyCoverage": 0.7,
+    "minimumGrassPixels": 64,
+    "minimumWindChangedPixels": 32
+  },
+  "expectedBaselineFailures": [
+    "empty-foreground",
+    "far-only-or-empty-foreground",
+    "frozen-wind"
+  ],
+  "fixtureRevision": 2,
+  "baseline": {
+    "fixture": "tests/fixtures/meadow-benchmark-v1.json",
+    "sha256": "cf23da7070c9545cc1db68155d45b7df1fb27bc3febf44c757c7fb40b6b52c70",
+    "artFixture": "tests/fixtures/meadow-art-e2.json",
+    "artSha256": "85fc4a79b7b03f0be0c04c2bef8d926fc338b9f21d1d990d108c3666008f8ca6",
+    "priorReviewedRun": "docs/evidence/meadow-proof-01/e-visual-exit-2026-09-29T23-43-12-999Z/e-botanical-run.json",
+    "priorReviewedRunSha256": "da365501aacbaaac39190d24dcb397c7b02c7241fd9593b16704c185e0f2fdf9",
+    "supersedes": "A downward orientation for this E visual-exit run only; A and all prior evidence remain immutable",
+    "change": "Negate downward.forward toward supported Meadow ground; retain downward.up, position, and terrain-relative eye height"
+  },
+  "profile": {
+    "representationRevision": 3,
+    "placementRevision": 2,
+    "densityPreset": "near-290-blades-m2",
+    "densityBladesPerM2": 290,
+    "appearancePreset": "meadow-proof-v2",
+    "appearanceRevision": 2,
+    "residentResourceRevision": 1,
+    "supportContractRevision": 1
+  },
+  "views": {
+    "close": "ordinary UI arrival pose",
+    "normal": "meadow-e-visual-exit-v2#/poses/normal",
+    "grazing": "meadow-e-visual-exit-v2#/poses/grazing",
+    "downward": "meadow-e-visual-exit-v2#/poses/downward"
+  },
+  "closeCapture": {
+    "policy": "ordinary UI arrival, held without camera override",
+    "frozenFrom": "baseline.priorReviewedRun#/poseResults/close/cameraPose",
+    "reason": "Record the existing reviewed ordinary-arrival camera exactly; no changed close framing"
+  },
+  "acceptance": {
+    "terrainDepthRangeMetres": [
+      2,
+      15
+    ],
+    "densityRangeBladesPerM2": [
+      200,
+      300
+    ],
+    "requiredFullAppViews": [
+      "close",
+      "normal",
+      "grazing",
+      "downward"
+    ]
+  }
+}

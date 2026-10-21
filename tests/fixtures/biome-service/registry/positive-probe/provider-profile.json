@@ -1,0 +1,45 @@
+{
+  "digest": "98dd0c5d6e04d776b6513451db9b44fbb59b0cb4f79e0fea21b99ed70e8c3296",
+  "body": {
+    "abi": "sphere-biome-provider/1",
+    "backendProfile": "webgl2-static-surface-v1",
+    "capabilities": [
+      "surface.heightfield",
+      "representation.overview",
+      "representation.surface",
+      "representation.detail",
+      "movement.flight",
+      "movement.walk",
+      "surface.mesh-collision"
+    ],
+    "closure": [
+      {
+        "bytes": 164,
+        "path": "tests/fixtures/biome-service/admission-probe.js",
+        "sha256": "7b6c0b433aa8404e38f3b64b685f912c347f34aa9a62ad27c9b0c87b18a51c11"
+      }
+    ],
+    "entryPath": "tests/fixtures/biome-service/admission-probe.js",
+    "fallbackProfiles": [
+      "fixture-coarse-solid-v1"
+    ],
+    "format": "sphere-biome-provider-profile/1",
+    "id": "abi-registry-probe-v1",
+    "recipeSchemaIds": [
+      "registry-unit-recipe-v1"
+    ],
+    "representationProfiles": [
+      "fixture-overview-v1",
+      "fixture-surface-v1",
+      "fixture-detail-v1"
+    ],
+    "revealProfiles": [],
+    "stateCodecs": [
+      {
+        "codecId": "fixture-state-codec-v1",
+        "maximumStateBytes": 65536,
+        "stateSchemaId": "fixture-state-v1"
+      }
+    ]
+  }
+}

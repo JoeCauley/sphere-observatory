@@ -1,0 +1,6 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto'),esbuild=require('esbuild');
+const repo=path.resolve(__dirname,'..'),result=esbuild.buildSync({entryPoints:[path.join(__dirname,'biome-service-ingestion-worker-entry.cjs')],bundle:true,write:false,platform:'browser',format:'iife',target:'es2020',legalComments:'inline',metafile:true,external:['node:crypto'],banner:{js:'/* Generated fixed Biome Pack Service ingestion worker. */'}}),output=result.outputFiles[0].contents,sha=raw=>crypto.createHash('sha256').update(raw).digest('hex');
+fs.writeFileSync(path.join(repo,'biome-service/ingestion-worker-runtime.js'),output);
+const inputs=Object.keys(result.metafile.inputs).sort().map(file=>{const raw=fs.readFileSync(file);return {path:path.relative(repo,path.resolve(file)).replaceAll('\\','/'),bytes:raw.length,sha256:sha(raw)};}),manifest={format:'sphere-biome-ingestion-worker-build/1',bundler:{name:'esbuild',version:esbuild.version},scriptSha256:sha(fs.readFileSync(__filename)),inputs,generated:{path:'biome-service/ingestion-worker-runtime.js',bytes:output.length,sha256:sha(output)}};
+fs.writeFileSync(path.join(repo,'biome-service/ingestion-worker-build-manifest.json'),JSON.stringify(manifest,null,2)+'\n');console.log(JSON.stringify(manifest.generated));

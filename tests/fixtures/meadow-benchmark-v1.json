@@ -1,0 +1,74 @@
+{
+  "schema": 1,
+  "id": "watershed-open-meadow-baseline-v1",
+  "title": "Watershed · Open meadow benchmark",
+  "source": "IB-075-A",
+  "location": {
+    "bankMetres": [21500, -5000],
+    "worldAddress": "v2:shell:legacy-watershed-open-meadow",
+    "packAddress": {
+      "schema": 1,
+      "packId": "watershed",
+      "geographyRevision": 1,
+      "artRevision": 2,
+      "seed": 713,
+      "anchor": [0.9990056996801094, -0.033228470003808824, 0.029723404715151572]
+    }
+  },
+  "settings": {
+    "sceneTime": 2468,
+    "placeScene": "day",
+    "placeWeather": "clear",
+    "horizontalFov": 80,
+    "quality": 1,
+    "viewport": [1920, 1080],
+    "terrainOwner": "Watershed revision 1 rendered/collision surface",
+    "meadow": {
+      "enabled": true,
+      "nearRange": 0.32,
+      "middleRange": 1.15,
+      "farRange": 2.8,
+      "rootsPerSubcell": 8,
+      "density": 1,
+      "windStrength": 0.38,
+      "windClock": 2468,
+      "pausedClock": 2468,
+      "worker": true
+    }
+  },
+  "poses": {
+    "normal": {
+      "terrainRelativeEyeHeightMetres": 1.7,
+      "position": [149449597.19812354, -4975905.543873623, 4425062.576094079],
+      "forward": [0.11280760304793562, 0.9936112359686622, 0.0033401274537029255],
+      "up": [-0.9990088528701357, 0.03326187412057977, -0.029579716311726657]
+    },
+    "grazing": {
+      "terrainRelativeEyeHeightMetres": 0.4,
+      "position": [149449597.19942227, -4975905.543916863, 4425062.576132533],
+      "forward": [0.11280760304793562, 0.9936112359686622, 0.0033401274537029255],
+      "up": [-0.9990088528701357, 0.03326187412057977, -0.029579716311726657]
+    },
+    "downward": {
+      "terrainRelativeEyeHeightMetres": 1.7,
+      "position": [149449597.19812354, -4975905.543873623, 4425062.576094079],
+      "forward": [-0.9990088528701357, 0.03326187412057977, -0.029579716311726657],
+      "up": [0.033247303414030316, 0.9994466707783797, 0.0009844215096708048]
+    },
+    "boundary": {
+      "terrainRelativeEyeHeightMetres": 8,
+      "position": [149449600.98009527, -4975905.543050368, 4424934.631981167],
+      "forward": [-0.4523092926833029, 0.8917605935993389, -0.013392066893693605],
+      "up": [-0.9990088781931261, 0.0332618741164774, -0.02957886105940275]
+    }
+  },
+  "mask": {
+    "diagnostic": "grass-id",
+    "roi": [0.18, 0.42, 0.82, 0.94],
+    "excludedRects": [[0, 0, 1, 0.42]],
+    "minimumCanopyCoverage": 0.7,
+    "minimumGrassPixels": 64,
+    "minimumWindChangedPixels": 32
+  },
+  "expectedBaselineFailures": ["empty-foreground", "far-only-or-empty-foreground", "frozen-wind"]
+}

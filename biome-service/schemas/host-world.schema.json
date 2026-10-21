@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:sphere:biome-service:1:host-world",
+  "title": "Proposed host world record",
+  "description": "Retained static host inputs. The admitted host profile codec validates the parameter body; an arbitrary object is not a reconstructible world.",
+  "type": "object",
+  "properties": {
+    "format": {
+      "const": "sphere-host-world/1"
+    },
+    "worldId": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/id"
+    },
+    "worldSeed": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 2147483647
+    },
+    "hostProfileRef": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "urn:sphere:biome-service:1:core#/$defs/id"
+        },
+        "digest": {
+          "$ref": "urn:sphere:biome-service:1:core#/$defs/digest"
+        }
+      },
+      "required": [
+        "id",
+        "digest"
+      ],
+      "additionalProperties": false
+    },
+    "validatedStaticWorldParameters": {
+      "type": "object",
+      "minProperties": 1,
+      "maxProperties": 256
+    },
+    "hostGeographyDigest": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/digest"
+    },
+    "trackProfileDigest": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/digest"
+    },
+    "protectionProfileDigest": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/digest"
+    }
+  },
+  "required": [
+    "format",
+    "worldId",
+    "worldSeed",
+    "hostProfileRef",
+    "validatedStaticWorldParameters",
+    "hostGeographyDigest",
+    "trackProfileDigest",
+    "protectionProfileDigest"
+  ],
+  "additionalProperties": false
+}

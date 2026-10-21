@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="dark"><title>Sphere · Infinite Meadow</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="meadow.css"><link rel="stylesheet" href="refinement.css"><link rel="stylesheet" href="pack.css"></head>
+<body><canvas id="world" tabindex="0" aria-label="Walkable rolling meadow"></canvas>
+<header><div class="brand"><span class="mark">◉</span><div>SPHERE <span class="study">INFINITE MEADOW · 1.0</span></div></div><span class="badge">BIOME PACK · MEADOW</span></header>
+<main class="panel"><button id="leavePack" class="hide-button">Return to Observatory</button><div class="eyebrow">YOUR MEADOW. THE WHOLE SPHERE.</div><h1>Walk here.<br>Then lift off.</h1><p class="intro">Taller grass. Wind across the rolling hills.<br>Your meadow continues wherever you travel.</p>
+<button id="lift" class="primary">Lift off · Space + E</button>
+<div class="button-row"><button id="skim">Skim grass · T</button><button id="cruise">Cruise</button></div>
+<button id="levelCruise">Level cruise · L</button>
+<button id="journey" class="journey-button">Reveal &amp; return <span>↗</span></button>
+<p id="flightHelp" class="flight-help">WASD fly · Q/E down/up · Z/X turn<br>Shift faster · T skims · F lands</p>
+<div class="button-row"><button id="walk">Walk the meadow</button><button id="manual">Take control</button></div>
+<div class="button-row"><button id="pause">Pause journey</button><button id="reverse">Reverse</button></div>
+<div class="rule"></div><div class="metric"><label>HEIGHT ABOVE MEADOW DATUM</label><output id="height">—</output></div>
+<div class="metric"><label>ABOVE THE HILLS · TRAVEL</label><output id="clearance">—</output></div>
+<div class="metric"><label>DUCK BLIND · STUDY HEIGHT</label><output id="blindLabel">100 km · provisional</output></div>
+<div class="progress"><i id="progress"></i></div><p id="stage" class="stage">Meadow ready · walk freely</p>
+<details id="controls"><summary>Light, height &amp; saved place</summary>
+<label class="control" for="daylight">Light beneath the Blind <input id="daylight" type="range" min="0" max="1" step="0.01" value="1"></label>
+<div class="button-row"><button id="day">Day</button><button id="dusk">Dusk</button><button id="night">Night</button></div>
+<label class="control" for="blindHeight">Blind height, km <input id="blindHeight" type="number" min="20" max="200" step="10" value="100"></label>
+<label class="control" for="density">Grass <select id="density"><option value="full">Short · original density</option><option value="dense">Short · denser</option><option value="lush" selected>Tall · full meadow</option></select></label>
+<label class="control" for="reach">Grass reach <select id="reach"><option value="wide" selected>Wider field · lighter close grass</option><option value="original">Original near radius</option></select></label>
+<label class="control" for="skimSpeed">Cruise / skim speed, km/h <input id="skimSpeed" type="range" min="60" max="720" step="30" value="180"><output id="skimSpeedValue">180</output></label>
+<label class="control" for="grassHeight">Grass height <input id="grassHeight" type="range" min="0.5" max="1.6" step="0.05" value="1"></label>
+<label class="control" for="grassWidth">Blade fullness <input id="grassWidth" type="range" min="0.5" max="2.5" step="0.05" value="1.15"></label>
+<label class="check"><input id="wind" type="checkbox" checked> Wind through the grass</label>
+<label class="check"><input id="grassbox" type="checkbox" checked> Grass across the distant hills</label>
+<label class="check"><input id="concealment" type="checkbox" checked> Ordinary sky below the Blind</label>
+<label class="check"><input id="comfort" type="checkbox" checked> Slow, steady flight camera</label>
+<div class="button-row"><button id="save">Save this place</button><button id="return">Return to saved</button></div>
+<div class="button-row"><button id="trample">Trample here</button><button id="home">Starting meadow</button></div>
+<button id="plain">Visit the open plain</button>
+<div class="button-row"><button id="downloadSave">Download save</button><button id="importSave">Import save</button></div>
+<input id="saveFile" type="file" accept="application/json,.json" hidden>
+<p class="note">The sky and dimming end together as you leave the Blind. The Sphere above stays fully lit. Your saved place includes its grass and wind.</p></details>
+<details id="inspection"><summary>Recording &amp; inspection</summary>
+<label class="control" for="grassLayers">Grass layers <select id="grassLayers"><option value="all">Full meadow</option><option value="near">Close grass and surface</option><option value="distant">Distant grass and surface</option><option value="surface">Surface alone</option></select></label>
+<div class="metric"><label>DETAIL READINESS</label><output id="ready">—</output></div>
+<div class="metric"><label>VIEW</label><output id="tier">—</output></div>
+<div class="metric"><label>ADDRESS</label><output id="address">—</output></div>
+<div class="button-row"><button id="record">Record journey</button><button id="quiet">Measure 900 frames</button></div>
+<div class="button-row"><button id="walkingSample">Measure meadow walk</button><button id="flyingSample">Measure low flight</button></div>
+<button id="skimSample">Measure fast skim</button>
+<button id="levelSample">Measure level cruise</button>
+<button id="survey" class="survey-button">Survey the surrounding landscape</button>
+<button id="edgeReview" class="survey-button">Review the grass transition</button>
+<button id="atlas">View blade artwork reference</button><img id="atlasPreview" hidden alt="Blade palette artwork reference; distant clumps use geometry">
+<div class="button-row"><button id="export">Download evidence</button><button id="inspect">Show evidence</button></div>
+<a id="evidenceLink" hidden download="sphere-infinite-meadow-1.0.0-evidence.json">Download evidence file</a>
+<textarea id="evidenceText" aria-label="Pack evidence" readonly hidden></textarea>
+<a id="recordingLink" hidden download="sphere-infinite-meadow-1.0.0-journey.webm">Download recorded journey</a>
+<video id="recordingPreview" controls hidden aria-label="Recorded journey"></video>
+<p class="note">Measurements run for 900 frames without recording and return you to your starting view. This is the first local Infinite Meadow pack.</p><p class="note" id="packIdentity">Meadow · version 1.0.0</p><p class="note" id="packLifecycle" role="status">Preparing the meadow…</p></details>
+<button id="hide" class="hide-button">Hide panel · H</button></main>
+<button id="show" hidden>Show controls · H</button>
+<div id="status" role="status">Starting meadow…</div>
+<footer><div><b id="mode">WALK</b><span id="footerHelp">Space + E lift off · T skim grass · WASD travel · Q/E down/up · Shift faster · drag / arrows look · F walk</span></div><span id="performance">—</span></footer>
+<div class="scope">Walk freely, then lift off from your chosen place. <b>100 km</b> is a provisional Blind height.</div><div id="error" hidden></div>
+<div id="packLoading" role="status"><h2>Opening the meadow.</h2><p id="packLoadingStatus">Checking the landscape…</p><button id="packRetry" hidden>Try again</button><a id="packLoadingReturn" href="../../../index.html">Return to Observatory</a></div><script type="module" src="entry.js"></script></body></html>

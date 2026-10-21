@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "id": "watershed-open-meadow-botanical-art-e2",
+  "sourceFixture": "meadow-benchmark-v1",
+  "profile": {
+    "representationRevision": 3,
+    "placementRevision": 2,
+    "densityPreset": "near-290-blades-m2",
+    "densityBladesPerM2": 290,
+    "appearancePreset": "meadow-proof-v2",
+    "appearanceRevision": 2,
+    "residentResourceRevision": 1,
+    "supportContractRevision": 1
+  },
+  "blade": {
+    "verticalSegments": 5,
+    "heightMetres": [0.35, 1.1],
+    "maximumFractionAboveOneMetre": 0.1,
+    "baseWidthMillimetres": [2.8, 12.1],
+    "tipWidthFraction": 0.015,
+    "restCurvatureOffsetsByHeight": [0.038, 0.072],
+    "leanRadians": [0.035, 0.24]
+  },
+  "density": {
+    "targetBladesPerSquareMetre": 250,
+    "selectedTuningBladesPerSquareMetre": 290,
+    "selectionReason": "Frozen normal-pose canopy was 66.20% at 250 blades/m2; the in-range 290 preset is the documented correction tested against the unchanged 70% threshold.",
+    "tuningRange": [200, 300],
+    "distanceBandsMetres": [[0, 5], [5, 15]],
+    "noEmptyEligibleOneSquareMetreCells": true
+  },
+  "canopy": {
+    "sourceMask": "meadow-benchmark-v1#/mask",
+    "minimumCoverage": 0.7,
+    "terrainDepthRangeMetres": [2, 15]
+  },
+  "views": {
+    "close": "ordinary UI arrival pose",
+    "normal": "meadow-benchmark-v1#/poses/normal",
+    "grazing": "meadow-benchmark-v1#/poses/grazing",
+    "downward": "meadow-benchmark-v1#/poses/downward"
+  }
+}

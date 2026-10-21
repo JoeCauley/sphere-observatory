@@ -1,5 +1,8 @@
 # Surface continuity, Wound landings and Shade approaches
 
+<!-- current-meadow-progress-2026-10-03 -->
+> **Current Meadow status (2026-10-05 bounded HR-09 map/preparation continuation):** Runtime `7ca67b137100b81c10c3ae173ffab90f0b9054aac99d1bf199fee7e145e59116` is unchanged. Ready-map winner reuse is rejected for observable object identity effects; SHA64 remains unpromoted with no dependable complete preparation gain. Fresh integrated regression/contracts/seven ownership states and independent thirteen-pair audit PASS in their scopes. Complete quiet H1 retains six 900-frame windows/5,400 unique valid GPU samples/protocol PASS and numerical FAIL with twelve unchanged-limit failures. Original-order raw native diagnosis repeats the elevated-turn first-canonical 376-row material mismatch; all 54 raw captures and every changed channel are retained, cause UNKNOWN/unwaived. Retained F/G media re-review is complete; fine-edge/shimmer/filter/shadow feedback and human acceptance remain open. HR09/H IN PROGRESS; HR10 NOT STARTED; I-K blocked; B1/acceptedBy NOT ACCEPTED; M1 WITHDRAWN. Current baseline bytes are preserved in the pre-docs audit; the historical missing PID/server and absent process/context qualifications remain INCOMPLETE/NOT_CONFIRMED/UNKNOWN. See [current map/preparation report](Observatory-Meadow-HR09-Map-Preparation.md) and its authoritative final after-docs audit/seal. Integrity sealing does not waive failed numerical/native/human/preservation gates.
+
 Planned 13 September 2026 · continuation after Watershed pack 1
 
 Status: execution plan with the first [Wound clipping/seam implementation](Observatory-Wound-Seams-01.md)
@@ -8,6 +11,20 @@ are also implemented; broader weather acceptance and general streaming remain op
 user's three screenshots and request; the older roadmap's variants-first order
 is superseded. Historical completion evidence remains valid only for its tested
 views. No new task, schedule, release or commit is implied.
+
+## Later bounded meadow continuity · 30 September 2026
+
+The [IB-075-F F2 continuation](evidence/meadow-proof-01/f-canopy-continuation-v2-2026-09-30T20-41-39-185Z/f-reviewed-report.md) completes equivalent detailed-blade, curved-clump and actual terrain-material canopy under the fixed Meadow study criteria. The prior walking band and elevated cutoff ring are cleared in reviewed ordinary-app walking, rotation, elevation, local-boundary and changed-light conditions; soft high-elevation filtering and fine sampling variation remain documented.
+
+This is a bounded canopy result within the existing support/address contracts. The broader surface plan below retains its historical scope and remaining streaming work. Moving-window meadow integration, global joins and seamless infinite walking/flight remain later work. F is complete under its bounded criteria. H measurement implementation is PASS; fixed-resolution performance/resource certification is FAIL, retained CPU-memory attribution is INCOMPLETE and H remains IN PROGRESS. I export/UI certification remains PENDING and I–K remain blocked; B1/acceptedBy are NOT ACCEPTED and M1 is WITHDRAWN. G is now DONE under its bounded wind/timeline criteria. The earlier F-only update stopped after F. Use the [Infinite Biomes ledger](Observatory-Infinite-Biomes-Ledger.md), [state ledger](Observatory-Infinite-Biomes-Ledger-STATE.md) and [documentation index](README.md) for current work order and navigation.
+
+## Planned vegetation resource redesign
+
+The [H redesign implementation queue](Observatory-Meadow-H-Redesign-Ledger.md)
+will add compact vegetation blocks and progressive coverage readiness within
+the existing bounded Meadow and support contracts. HR-00 through HR-08 are DONE; HR-09 is IN PROGRESS; HR-10 is NOT STARTED. Vegetation replacement cannot evict collision support or consume
+the independent 64 MiB ground allowance. This plan does not certify connected
+ground traversal, global moving-window meadow or the surface programme below.
 
 ## Intended result
 
@@ -329,3 +346,11 @@ addresses while old scenes retain their meaning; specify migrations before edits
 Persistent Hero Zones, the complex geometry benchmark, Fallen Shade placement,
 general texture paging and expansion to all biomes remain on the roadmap. This
 plan adds no graveyard ships and chooses no asset importer.
+
+## HR-08 integrated update - 3 October 2026
+
+**Completion - 3 October 2026.** HR-08 is DONE. [Integrated contracts and F/G review](Observatory-Meadow-HR08-Integrated-Review.md), [delivery report](evidence/meadow-proof-01/hr08-integration-v1-2026-10-03T12-41-49Z/hr08-report.md) and [verification receipt](evidence/meadow-proof-01/hr08-integration-v1-2026-10-03T12-41-49Z/hr08-verification.json) record bounded record-pressure replacement, pinned-reader fragmentation/splitting, cancellation, corruption/worker failure, backing aliases, incremental compaction, stale generations and full disposal. Real production workers complete a direct 21 m jump, the metre-by-metre return, turn/elevation and 722 packed-byte revisits without reconfiguration. The repeated F density/coverage, 37 frozen still conditions, 381 motion requests and retained native/lossless review pass their bounded criteria. G live motion, frozen/far-only negative controls, roots, rate/scrub/save and latched capture phases pass. Fresh retained/replacement CPU upper bounds are 57.95 / 63.74 MiB under the recorded scope. Full regressions and focused native checks PASS. This is integrated regression evidence, not fresh H1 certification or I/B1 acceptance; HR-09 is next.
+
+## HR-09 certification attempt - 3 October 2026
+
+The [integrated H1 certification runner](Observatory-Meadow-HR09-Certification.md) is implemented and full regressions PASS. The [fresh production result](evidence/meadow-proof-01/hr09-certification-v1-2026-10-03T20-14-59Z/hr09-report.md) is **FAIL**, with all 5400 matched frames, valid unique GPU samples, complete CPU ownership and no page/worker/GL/resolution errors. Resource limits and the measured 63.77 MiB CPU replacement bound pass; CPU, preparation, frame intervals and incremental GPU limits fail. **HR-09 and parent H remain IN PROGRESS; HR-10 NOT STARTED; I-K blocked; B1/acceptedBy NOT ACCEPTED and M1 WITHDRAWN.** The current certification entry point is `npm run test:ib075:hr09` with a fresh `IB075_HR09_OUTPUT`. H1 and E/F/G fixture bytes and numerical limits remain unchanged.

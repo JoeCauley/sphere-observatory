@@ -1,0 +1,105 @@
+{
+  "format": "sphere-biome-pack/1",
+  "contractVersion": "1.0.0",
+  "packId": "registry-unit-probe",
+  "version": "0.0.1",
+  "name": "Registry verification probe",
+  "description": "Unit byte/admission fixture only; it is not a native biome and is absent from the public catalogue.",
+  "semanticGeneratorId": "registry-unit-generator-v1",
+  "geographyRevision": "registry-unit-geography-v1",
+  "appearanceRevision": "registry-unit-appearance-v1",
+  "provider": {
+    "id": "abi-registry-probe-v1",
+    "abi": "sphere-biome-provider/1",
+    "digest": "98dd0c5d6e04d776b6513451db9b44fbb59b0cb4f79e0fea21b99ed70e8c3296",
+    "backendProfile": "webgl2-static-surface-v1"
+  },
+  "recipeAssetId": "fixture-recipe",
+  "recipeSchemaId": "registry-unit-recipe-v1",
+  "addressProfile": "sphere-world-address-v2",
+  "timeProfile": "sphere-clock-v1",
+  "capabilities": {
+    "required": [
+      "surface.heightfield",
+      "representation.overview",
+      "representation.surface",
+      "representation.detail",
+      "movement.flight",
+      "movement.walk",
+      "surface.mesh-collision"
+    ],
+    "optional": []
+  },
+  "placement": {
+    "surface": "shell",
+    "trackRelation": "outside",
+    "trackIds": [],
+    "minimumClearanceM": 1000,
+    "minimumCoreAreaM2": 1000000000000000,
+    "maximumCoreAreaM2": 100000000000000000,
+    "recommendedAreaM2": 10000000000000000,
+    "shape": "connected-cells",
+    "transitionWidthM": 1000,
+    "frameProfile": "region-gnomonic-metres-v1",
+    "maximumAngularRadiusRad": 0.7853981633974483,
+    "maximumLocalRadiusM": 10000000000
+  },
+  "terrainBoundsM": {
+    "datum": "host-shell-v1",
+    "minimum": -1,
+    "maximum": 4
+  },
+  "representations": [
+    {
+      "tier": "overview",
+      "profileId": "fixture-overview-v1",
+      "semanticGeneratorId": "registry-unit-generator-v1"
+    },
+    {
+      "tier": "surface",
+      "profileId": "fixture-surface-v1",
+      "semanticGeneratorId": "registry-unit-generator-v1"
+    },
+    {
+      "tier": "detail",
+      "profileId": "fixture-detail-v1",
+      "semanticGeneratorId": "registry-unit-generator-v1"
+    }
+  ],
+  "fallback": {
+    "profileId": "fixture-coarse-solid-v1",
+    "solid": true,
+    "semanticGeneratorId": "registry-unit-generator-v1"
+  },
+  "presentation": {
+    "mode": "none"
+  },
+  "budgets": {
+    "maxCpuBytes": 2097152,
+    "maxGpuBufferBytes": 2097152,
+    "maxGpuTextureBytes": 0,
+    "maxTransientCpuBytes": 2097152,
+    "maxTransientGpuBytes": 2097152,
+    "maxJobs": 2,
+    "maxStageRadiusM": 256,
+    "maxUploadBytesPerFrame": 262144,
+    "maxPrepareOpsPerSlice": 4096
+  },
+  "persistence": {
+    "stateSchemaId": "fixture-state-v1",
+    "codecId": "fixture-state-codec-v1",
+    "maximumStateBytes": 65536
+  },
+  "assets": [
+    {
+      "id": "fixture-recipe",
+      "path": "assets/recipe.json",
+      "bytes": 104,
+      "sha256": "74aee222b8647110f96ac9332f7dce7f625b0340466f8bfe283b2180ce7570e5",
+      "mediaType": "application/json",
+      "role": "recipe",
+      "maxDecodedBytes": 65536
+    }
+  ],
+  "dependencies": []
+}

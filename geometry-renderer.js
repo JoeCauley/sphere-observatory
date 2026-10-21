@@ -20,7 +20,7 @@ void main(){vec3 p=uOriginRelative+position.x*uMeshX+position.y*uMeshY+position.
 `;
 class GeometryRenderer{
  constructor(gl){this.gl=gl;this.meshes=new Map();this.work={allocatedBytes:0,uploadedBytes:0,synchronousUploads:0,synchronousUploadMs:0};
-  const fragment=SphereShaders.geometryFragment||SphereShaders.fragment,shared=fragment.slice(0,fragment.lastIndexOf('void main(){')).replace('in vec2 vUV;','');
+  const fragment=SphereShaders.geometryFragment||SphereShaders.fragment,sharedBase=fragment.slice(0,fragment.lastIndexOf('void main(){')).replace('in vec2 vUV;',''),shared=sharedBase+(sharedBase.includes('uniform int uMeadowMaterialRevision;')?'':'\nuniform int uMeadowMaterialRevision;vec3 meadowGroundLighting(vec3 radiance,vec3 delta,float direct,vec3 fill){return radiance;}\nvec3 meadowGroundNormal(vec3 n,vec3 delta){return n;}float meadowGroundSpec(vec3 delta,vec3 n,vec3 v,float direct){return 0.;}\n');
   this.main=program(gl,vertex,shared+`
 in vec3 vRelative,vNormal,vAlbedo,vLocal,vLocalNormal;flat in float vMaterial,vEmission;
 uniform float uSiteLight,uDetailFeature,uPixelFocal,uGroundPatchRadius;uniform int uMaterialPlate,uStructureMaterial,uConnectedGround;uniform vec3 uMaterialOffset,uMaterialX,uMaterialY,uMaterialZ;uniform vec3 uSiteFill;
@@ -66,8 +66,10 @@ void main(){float distanceKm=length(vRelative);if(uDetailFeature>0.){float cover
  }
 
  float micro=noise(vLocal*400.)*.6+noise(vLocal*1700.)*.4,footprint=max(length(dFdx(vLocal)),length(dFdy(vLocal)));if(uStructureMaterial==0)col*=mix(1.,.90+.20*micro,1.-smoothstep(.001,.005,footprint));
+ if(uMeadowMaterialRevision>=2&&(vMaterial== -5.||(vMaterial>=0.&&vMaterial<10.)))n=meadowGroundNormal(n,delta);
  vec3 light=-q;float cosine=max(0.,dot(n,light)),shadow=structureShadow(vRelative,n);vec3 view=-normalize(vRelative),halfway=normalize(light+view);float spec=pow(max(0.,dot(n,halfway)),32.)*.018;if(uPackEnabled==1&&(vMaterial== -5.||(vMaterial>=0.&&vMaterial<10.)))spec=0.;
  vec3 radiance=col*(uSiteFill*(.45+.55*max(0.,dot(n,-uN)))+uSiteLight*uLuminosity/max(.01,dot(camera()+vRelative/uRadius,camera()+vRelative/uRadius))*cosine*shadow)+vec3(spec*uSiteLight*shadow)+col*vEmission;
+ if(uMeadowMaterialRevision>=2&&(vMaterial== -5.||(vMaterial>=0.&&vMaterial<10.))){radiance=meadowGroundLighting(radiance,delta,uSiteLight*uLuminosity/max(.01,dot(camera()+vRelative/uRadius,camera()+vRelative/uRadius))*cosine*shadow,uSiteFill*(.45+.55*max(0.,dot(n,-uN))));radiance+=vec3(meadowGroundSpec(delta,n,view,uSiteLight*uLuminosity*shadow));}
  if(vMaterial== -6.&&(uPackEnabled==0||distanceKm<20.)){float fresnel=pow(1.-max(0.,dot(n,view)),5.);float ripple=noise(vLocal*18.)*.6+noise(vLocal*57.)*.4;vec3 reflected=mix(vec3(.11,.19,.19),uSiteFill*2.,.45);radiance=mix(radiance,reflected,.18+.65*fresnel)+vec3(pow(max(0.,dot(n,halfway)),180.)*.16*uSiteLight*shadow)*( .65+.35*ripple);}
  if(uStructureMaterial==1&&uRichMaterials==1){
   vec3 p=vec3(dot(vRelative,uMaterialX),dot(vRelative,uMaterialY),dot(vRelative,uMaterialZ))+uMaterialOffset;
@@ -98,7 +100,7 @@ void main(){float distanceKm=length(vRelative);if(uDetailFeature>0.){float cover
   i('uBiomeOverride',s.biome??-1);i('uGrid',+s.grid);
   SphereCollection.upload(gl,u,s,[0,0,0]); // Mesh lighting uses uSiteLight/uSiteFill below.
   gl.uniform3fv(u['uAnchor[0]'],[1000000,100000,10000,1000,100,10,1,.1,.01,.001].flatMap(scale=>n.map(x=>((x*s.radius/scale)%256+256)%256)));v('uHeroAnchor',SphereBiomes.heroAnchors(n,s.radius));gl.uniform3fv(u['uBiomeAnchor[0]'],SphereBiomes.anchors(n,s.radius));renderer.biomes?.bind(u,true);renderer.heroes?.bind(u,true);renderer.worldTextures?.bind(u);SphereWorld.upload(gl,u,s);
-  renderer.woundTextures?.bind(u,true);renderer.finishes.bind(u,s);renderer.localShadows.bind(u,s);
+  renderer.woundTextures?.bind(u,true);renderer.finishes.bind(u,s);renderer.localShadows.bind(u,s);renderer.meadowGround?.bind(u,s);
   const lights=new Map(),lightSources=new Map(),lightKeys=new Map();
   // Keep each shared Wound/Shade sample at its original resident origin even
   // when that first section is outside the camera. Culling cannot move light.

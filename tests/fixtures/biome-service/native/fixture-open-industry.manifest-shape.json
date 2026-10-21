@@ -1,0 +1,105 @@
+{
+  "addressProfile": "sphere-world-address-v2",
+  "appearanceRevision": "fixture-appearance-v1",
+  "assets": [
+    {
+      "bytes": 708,
+      "id": "fixture-recipe",
+      "maxDecodedBytes": 65536,
+      "mediaType": "application/json",
+      "path": "assets/recipe.json",
+      "role": "recipe",
+      "sha256": "cb4a93e25114bac0c50d1a8eb5440291f12dbb9ea2bdbf5b51431a769f449b9c"
+    }
+  ],
+  "budgets": {
+    "maxCpuBytes": 2097152,
+    "maxGpuBufferBytes": 2097152,
+    "maxGpuTextureBytes": 0,
+    "maxJobs": 2,
+    "maxPrepareOpsPerSlice": 4096,
+    "maxStageRadiusM": 256,
+    "maxTransientCpuBytes": 2097152,
+    "maxTransientGpuBytes": 2097152,
+    "maxUploadBytesPerFrame": 262144
+  },
+  "capabilities": {
+    "optional": [],
+    "required": [
+      "surface.heightfield",
+      "representation.overview",
+      "representation.surface",
+      "representation.detail",
+      "movement.flight",
+      "movement.walk",
+      "surface.mesh-collision"
+    ]
+  },
+  "contractVersion": "1.0.0",
+  "dependencies": [],
+  "description": "Test-only descriptor shape. Exact compiled provider identity and resource inventory are rebuilt from current source before every component test; this file is not usable installed content.",
+  "fallback": {
+    "profileId": "fixture-coarse-solid-v1",
+    "semanticGeneratorId": "fixture-open-industry-generator-v1",
+    "solid": true
+  },
+  "format": "sphere-biome-pack/1",
+  "geographyRevision": "fixture-geography-v1",
+  "name": "Fixture Open Industry",
+  "packId": "fixture-open-industry",
+  "persistence": {
+    "codecId": "fixture-state-codec-v1",
+    "maximumStateBytes": 65536,
+    "stateSchemaId": "fixture-state-v1"
+  },
+  "placement": {
+    "frameProfile": "region-gnomonic-metres-v1",
+    "maximumAngularRadiusRad": 0.7853981633974483,
+    "maximumCoreAreaM2": 100000000000000000,
+    "maximumLocalRadiusM": 10000000000,
+    "minimumClearanceM": 1000,
+    "minimumCoreAreaM2": 1000000000000000,
+    "recommendedAreaM2": 10000000000000000,
+    "shape": "connected-cells",
+    "surface": "shell",
+    "trackIds": [],
+    "trackRelation": "outside",
+    "transitionWidthM": 1000
+  },
+  "presentation": {
+    "mode": "none"
+  },
+  "provider": {
+    "abi": "sphere-biome-provider/1",
+    "backendProfile": "webgl2-static-surface-v1",
+    "digest": "0000000000000000000000000000000000000000000000000000000000000000",
+    "id": "fixture-structures-v1"
+  },
+  "recipeAssetId": "fixture-recipe",
+  "recipeSchemaId": "native-fixture-recipe-v1",
+  "representations": [
+    {
+      "profileId": "fixture-overview-v1",
+      "semanticGeneratorId": "fixture-open-industry-generator-v1",
+      "tier": "overview"
+    },
+    {
+      "profileId": "fixture-surface-v1",
+      "semanticGeneratorId": "fixture-open-industry-generator-v1",
+      "tier": "surface"
+    },
+    {
+      "profileId": "fixture-detail-v1",
+      "semanticGeneratorId": "fixture-open-industry-generator-v1",
+      "tier": "detail"
+    }
+  ],
+  "semanticGeneratorId": "fixture-open-industry-generator-v1",
+  "terrainBoundsM": {
+    "datum": "host-shell-v1",
+    "maximum": 4,
+    "minimum": -1
+  },
+  "timeProfile": "sphere-clock-v1",
+  "version": "0.0.1"
+}

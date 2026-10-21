@@ -1,0 +1,15 @@
+{
+  "schema": 2,
+  "worldSeed": 713,
+  "geographyRevision": 1,
+  "terrainRevision": 2,
+  "artRevision": 2,
+  "assetRevision": 1,
+  "heroRevision": null,
+  "space": "shell",
+  "face": 0,
+  "level": 4,
+  "x": 8,
+  "y": 7,
+  "local": [0.25, 0.75]
+}

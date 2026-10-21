@@ -1,0 +1,31 @@
+{
+  "format": "design-fixture-recipe/1",
+  "seed": 713,
+  "purpose": "Protocol example only. Not installed, certified or accepted biome content.",
+  "terrain": {
+    "kind": "bounded-heightfield",
+    "minimumM": -1,
+    "maximumM": 4
+  },
+  "landmarks": [
+    {
+      "id": "landmark-one",
+      "eastM": 10,
+      "northM": 0,
+      "heightM": 2
+    },
+    {
+      "id": "landmark-two",
+      "eastM": 0,
+      "northM": 15,
+      "heightM": 3
+    },
+    {
+      "id": "landmark-three",
+      "eastM": -15,
+      "northM": 5,
+      "heightM": 4
+    }
+  ],
+  "structures": []
+}

@@ -8,6 +8,7 @@ function resolve(s,previous=null){
  if(/^port-/.test(s.siteId)&&s.siteAnchor&&M.length(M.sub(s.position,M.mul(s.siteAnchor,s.radius)))<3)return {id:s.siteId,title:'Polar entry '+(s.siteId==='port-0'?'A':'B'),region:'Polar entry complex',frame:'shell'};
  if(s.siteId==='exterior-0'&&s.siteAnchor&&M.length(M.sub(s.position,M.mul(s.siteAnchor,s.radius+2500)))<100)return {id:'wound-spill',title:'Breach spill',region:'Wound '+(root.SphereWorld.nearestRim(s.siteAnchor,s).index+1),frame:'shell'};
  if(height<50000&&root.SpherePacks?.enabled(s)){
+  if(root.SphereMeadowEcology?.active?.(s)&&root.SphereMeadowEcology.directionInDomain(s).coverage>0)return {id:'watershed-meadow-study',title:'Open meadow · Meadow study · on foot',region:'Watershed',frame:'shell'};
   const sample=root.SphereNeighbourhood?.sample(q,s),weights=sample?.compositionWeights;
   if(weights){const districts=root.SphereNeighbourhood.model(s.provinceSeed).compositions;let i=weights.indexOf(Math.max(...weights));const prior=districts.findIndex(c=>'watershed-'+c.id===previous?.id);if(prior>=0&&weights[prior]>.2&&weights[prior]+.12>=weights[i])i=prior;
    if(weights[i]>.25)return {id:'watershed-'+districts[i].id,title:{lake:'Receiving lake',reach:'Quiet reach',meadow:'Open meadow'}[districts[i].id],region:'Watershed',frame:'shell'};

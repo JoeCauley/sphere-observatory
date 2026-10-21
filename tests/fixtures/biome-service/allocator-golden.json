@@ -1,0 +1,169 @@
+{
+  "format": "sphere-biome-allocator-golden/1",
+  "inputDigest": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+  "source": "Independent Python hashlib/struct and exact integer fractions, protocol sections6-7; numeric directions separately qualified against actual host binary64 conversion",
+  "anchors": [
+    {
+      "level": 0,
+      "counter": 0,
+      "hash": "01db02fc2f6df6316831707ed3da9513371da0d7548fe34aae24b51f4de96edc",
+      "fractions": [
+        0.007248102730436079,
+        0.4070043859136183,
+        0.21529584176147365
+      ]
+    },
+    {
+      "level": 0,
+      "counter": 1,
+      "hash": "8834ea899c5596bc78a6ef5cd943414fe0fe48b17d538dce28bf911d9f4ed6d7",
+      "fractions": [
+        0.5320574365581108,
+        0.4712972261124948,
+        0.8788800652813064
+      ]
+    },
+    {
+      "level": 0,
+      "counter": 4095,
+      "hash": "959d59cdacaa4849e04ebb42398b71aabc3cc99c781d9bab01382fe6729f4e82",
+      "fractions": [
+        0.5844322325835175,
+        0.8762013470346071,
+        0.7353025443081748
+      ]
+    },
+    {
+      "level": 1,
+      "counter": 0,
+      "hash": "4f6d631184779fcdea0a153e8db4751ba7ca84589ea0232e50dc368c5c98615f",
+      "fractions": [
+        0.3102628629462444,
+        0.914216354152545,
+        0.655433913837101
+      ]
+    },
+    {
+      "level": 1,
+      "counter": 1,
+      "hash": "014a3b3b2cc0735686737849d9b255ec6b59522a41f154f3decd15ec66e81d06",
+      "fractions": [
+        0.005038930842376166,
+        0.5251994304941914,
+        0.4193316796462956
+      ]
+    },
+    {
+      "level": 1,
+      "counter": 4095,
+      "hash": "a9416b2e0761842fec29d0f31a0bbb0ffeea1d33320800cf0d7bbb5efb2a5d6a",
+      "fractions": [
+        0.6611544597029759,
+        0.9225130647192107,
+        0.9957597970951895
+      ]
+    },
+    {
+      "level": 14,
+      "counter": 0,
+      "hash": "b7a2fb332725fc390d83425f592bc6c07de0aeae402ccc2df5b7f9fc33c21543",
+      "fractions": [
+        0.7173306465039316,
+        0.05278410747375428,
+        0.49170963052908967
+      ]
+    },
+    {
+      "level": 14,
+      "counter": 1,
+      "hash": "ef86b46d4ca4be7f9f65f44c407394997caab90fdc50c39f301071f70fbf6974",
+      "fractions": [
+        0.9356491820186815,
+        0.6226494489823848,
+        0.4869800246927438
+      ]
+    },
+    {
+      "level": 14,
+      "counter": 4095,
+      "hash": "dde55c9326db5d8e769bc5e3a4e00bb19a3f7cecb68737a467b272ed0f8e27c8",
+      "fractions": [
+        0.8667810305840765,
+        0.4633144074222174,
+        0.6025312498009299
+      ]
+    },
+    {
+      "level": 30,
+      "counter": 0,
+      "hash": "65b62fbcacd9e57210efe50b584994e83d118e26b8404edff743273878906001",
+      "fractions": [
+        0.3973111949570476,
+        0.06616050269102502,
+        0.23854912228876046
+      ]
+    },
+    {
+      "level": 30,
+      "counter": 1,
+      "hash": "ebf79cc65d9454429329021706ff12c5081591a36f5356e59097a2658165f299",
+      "fractions": [
+        0.9217470154085998,
+        0.57484448492232,
+        0.031579115296449745
+      ]
+    },
+    {
+      "level": 30,
+      "counter": 4095,
+      "hash": "aa2d9df4d859187f28149d1b17a59e97447a986ef0114924490f2921a07fc3f1",
+      "fractions": [
+        0.6647585604444867,
+        0.1565645400184138,
+        0.2674956580013418
+      ]
+    }
+  ],
+  "frontiers": [
+    {
+      "cell": {
+        "face": 0,
+        "level": 0,
+        "x": 0,
+        "y": 0
+      },
+      "canonical": "{\"face\":0,\"level\":0,\"x\":0,\"y\":0}",
+      "hash": "34955e8d941060b3804c4059843c61fdc3362561148bbdd6f0f57d20bc9550f5"
+    },
+    {
+      "cell": {
+        "face": 0,
+        "level": 14,
+        "x": 8192,
+        "y": 8191
+      },
+      "canonical": "{\"face\":0,\"level\":14,\"x\":8192,\"y\":8191}",
+      "hash": "674179124524ac14f1c41eb448e90d7073223ed1d0db76509cfb625fd90557de"
+    },
+    {
+      "cell": {
+        "face": 5,
+        "level": 30,
+        "x": 1073741823,
+        "y": 0
+      },
+      "canonical": "{\"face\":5,\"level\":30,\"x\":1073741823,\"y\":0}",
+      "hash": "5e57ac220a7c2093910929c08df2b78e6014f1f9b907936a3cb2fc453df9578c"
+    },
+    {
+      "cell": {
+        "face": 3,
+        "level": 1,
+        "x": 1,
+        "y": 1
+      },
+      "canonical": "{\"face\":3,\"level\":1,\"x\":1,\"y\":1}",
+      "hash": "b2defafc08a837ec63ef4bd680b0f0e2b8a1da180a9427b0ee10b616bb61fcbf"
+    }
+  ]
+}

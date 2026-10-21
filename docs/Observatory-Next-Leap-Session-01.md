@@ -1,6 +1,11 @@
 # Next Leap, session 1: arrivals and background edge construction
 
+<!-- current-meadow-progress-2026-10-03 -->
+> **Current Meadow status (2026-10-05 bounded HR-09 map/preparation continuation):** Runtime `7ca67b137100b81c10c3ae173ffab90f0b9054aac99d1bf199fee7e145e59116` is unchanged. Ready-map winner reuse is rejected for observable object identity effects; SHA64 remains unpromoted with no dependable complete preparation gain. Fresh integrated regression/contracts/seven ownership states and independent thirteen-pair audit PASS in their scopes. Complete quiet H1 retains six 900-frame windows/5,400 unique valid GPU samples/protocol PASS and numerical FAIL with twelve unchanged-limit failures. Original-order raw native diagnosis repeats the elevated-turn first-canonical 376-row material mismatch; all 54 raw captures and every changed channel are retained, cause UNKNOWN/unwaived. Retained F/G media re-review is complete; fine-edge/shimmer/filter/shadow feedback and human acceptance remain open. HR09/H IN PROGRESS; HR10 NOT STARTED; I-K blocked; B1/acceptedBy NOT ACCEPTED; M1 WITHDRAWN. Current baseline bytes are preserved in the pre-docs audit; the historical missing PID/server and absent process/context qualifications remain INCOMPLETE/NOT_CONFIRMED/UNKNOWN. See [current map/preparation report](Observatory-Meadow-HR09-Map-Preparation.md) and its authoritative final after-docs audit/seal. Integrity sealing does not waive failed numerical/native/human/preservation gates.
+
 12 September 2026 · development branch `codex/observatory-next-leap` · baseline v1.4.0
+
+Historical session record; current status pointer added 30 September 2026. Its implementation, command outcomes, measurements and then-next milestones below remain dated evidence. Use the [Infinite Biomes ledger](Observatory-Infinite-Biomes-Ledger.md), [current state](Observatory-Infinite-Biomes-Ledger-STATE.md) and [documentation index](README.md) for current work. The [reviewed F continuation](evidence/meadow-proof-01/f-canopy-continuation-v2-2026-09-30T20-41-39-185Z/f-reviewed-report.md) completes bounded IB-075-F; G is DONE under bounded wind/timeline criteria. H measurement implementation is PASS; fixed-resolution performance/resource certification is FAIL, retained CPU-memory attribution is INCOMPLETE and H remains IN PROGRESS. I export/UI certification remains PENDING and I–K remain blocked; B1/acceptedBy are NOT ACCEPTED and M1 is WITHDRAWN. Moving-window integration and seamless infinite walking/flight remain later work.
 
 This session implements the first-session deliverable from [the Next Leap plan](Observatory-Next-Leap.md): corrected Wound arrivals and a measured streaming prototype. It does not change the shell atlas or add the later atmosphere, Fallen Shade, walking-level or import milestones.
 
@@ -52,7 +57,7 @@ The final [continuity browser run](evidence/next-leap-session-01/continuity.json
 
 Reproduce with `npm test`, then `node tests/streaming-browser.cjs`, `node tests/next-leap-browser.cjs`, and `node tests/continuity-browser.cjs`. Browser tests use the existing `SPHERE_PLAYWRIGHT`, `SPHERE_BROWSER`, and optional `SPHERE_URL` environment variables. The profiler also accepts `SPHERE_PROFILE_LABEL` and `SPHERE_UPLOAD_BUDGET`; the reduced run uses 0.25 ms.
 
-## Remaining work
+## Remaining work recorded in this historical session
 
 Cold startup/shader compilation is still expensive. One flight is not a comprehensive throughput, heap plateau, or visual continuity certification; broader routes and long-duration operation remain necessary before calling streaming finished. Newly entered regions can still reveal geometry progressively while requests arrive. The v1.4 intermittent first-use 4K mismatch was reproduced and remains open. This is a development prototype, not a release-validation claim.
 

@@ -16,6 +16,9 @@ function elevation(s,p){
 function clearance(s,p){return s.radius-M.length(p)-elevation(s,p);}
 function heightAboveGround(s){
  const altitude=s.radius-M.length(s.position);
+ if(s.meadow?.placementRevision===2&&root.SphereMeadowEcology?.active?.(s)){
+  const support=root.SphereMeadowSupport?.camera?.(s,s.position);if(Number.isFinite(support?.cameraHeightKm))return Math.max(0,support.cameraHeightKm);
+ }
  if(s.geometryDetail&&s.collection&&s.layoutVersion===2&&altitude>=0&&altitude<5&&!M.inBreach(M.norm(s.position),s)){
   const mesh=s.walkMode?S.site(s):null,down=mesh?M.mul(mesh.basis[1],-1):M.norm(s.position),hit=probe(s,s.position,down,5);
   if(Number.isFinite(hit.distance)&&hit.kind!=='Shade')return hit.distance;

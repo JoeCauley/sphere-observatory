@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="dark"><title>Meadow + Industry · Sphere</title><link rel="stylesheet" href="style.css"></head>
+<body>
+ <canvas id="world" tabindex="0" aria-label="Shared Meadow and Industry landscape. Use WASD to walk and drag to look."></canvas>
+ <div id="loading" role="status">Preparing one shared world…</div>
+ <header><a href="../../../index.html" id="leave">← Sphere</a><span class="brand">ONE WORLD · TWO PACKS</span><button id="show" hidden>Show controls · H</button></header>
+ <main id="panel" aria-label="World controls">
+  <div class="eyebrow">SPHERE / SHARED LANDSCAPE</div>
+  <h1 id="currentPack">Infinite Meadow</h1>
+  <p class="intro">Walk from the meadow into the water works. The camera, ground and clock stay with you.</p>
+  <div class="pack-list"><span>Infinite Meadow <small>1.1.0</small></span><span>Infinite Industry <small>1.1.0</small></span></div>
+  <div class="destination"><span id="directionArrow" aria-hidden="true">↑</span><div><strong id="destination">Industry · east</strong><span id="distance">384 m away</span></div></div>
+  <p id="position" class="position">E 0 m · N 0 m</p>
+  <button id="faceDestination">Face Industry</button>
+  <div class="buttons"><button id="fly">Lift off · Space</button><button id="land">Land · F</button></div>
+  <div id="interaction" hidden><button id="operate">Change water route · R</button><p id="waterRoute"></p></div>
+  <details><summary>Controls and saved place</summary>
+   <dl><dt>W A S D</dt><dd>Walk or fly</dd><dt>Shift</dt><dd>Move faster</dd><dt>Drag mouse</dt><dd>Look around</dd><dt>Arrow keys</dt><dd>Turn and look</dd><dt>Space</dt><dd>Lift off</dd><dt>Q / E</dt><dd>Descend / climb in flight</dd><dt>F</dt><dd>Land near the ground</dd><dt>R</dt><dd>Operate the water valve nearby</dd><dt>H</dt><dd>Hide controls</dd></dl>
+   <div class="buttons"><button id="save">Save this place</button><button id="returnSaved">Return to saved place</button></div>
+   <label class="check"><input id="pauseWorld" type="checkbox"> Pause wind and water</label>
+   <p class="fine">This shared world has its own save. Your original standalone pack saves stay separate.</p>
+  </details>
+  <details id="worldDetailsPanel"><summary>World details</summary><p class="fine">Shared-world functional preview. Formal P05 certification remains open.</p><pre id="worldDetails">Starting…</pre></details>
+  <p id="readiness" class="fine">Preparing scenery…</p>
+  <button class="subtle" id="hide">Hide controls · H</button>
+ </main>
+ <footer><span id="mode">ON FOOT</span><span id="status" role="status">W walks toward Industry. Drag to look.</span></footer>
+ <script type="module" src="app.js"></script>
+</body></html>

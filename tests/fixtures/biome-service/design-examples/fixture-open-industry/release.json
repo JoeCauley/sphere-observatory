@@ -1,0 +1,8 @@
+{
+  "format": "sphere-biome-release/1",
+  "descriptorFormat": "sphere-biome-pack/1",
+  "manifestPath": "manifest.json",
+  "manifestBytes": 3144,
+  "manifestSha256": "217b856d844686c67793dd922c3b52cbf9506b53599d41805e64681693e9b503",
+  "payloadDigest": "14993b0be69f3f8e7cde0dbcea0c2b233da12a2781ac0dd0d45370c53b6190be"
+}

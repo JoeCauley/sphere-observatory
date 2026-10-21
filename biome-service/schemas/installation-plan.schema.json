@@ -1,0 +1,193 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:sphere:biome-service:1:installation-plan",
+  "title": "Proposed installation plan record",
+  "description": "Staged locked proposal; no head changes until publication acknowledges a complete transaction.",
+  "type": "object",
+  "properties": {
+    "format": {
+      "const": "sphere-biome-install-plan/1"
+    },
+    "operationId": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/id"
+    },
+    "requestKey": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/id"
+    },
+    "worldId": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/id"
+    },
+    "releaseDigest": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/digest"
+    },
+    "mode": {
+      "enum": [
+        "create-world",
+        "existing-world"
+      ]
+    },
+    "expectedHead": {
+      "anyOf": [
+        {
+          "$ref": "urn:sphere:biome-service:1:core#/$defs/head"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "policyDigest": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/digest"
+    },
+    "allocatorRevision": {
+      "const": "connected-frontier-v1"
+    },
+    "proposedRegistryDigest": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/digest"
+    },
+    "proposedBindingDigest": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/digest"
+    },
+    "newRegionIds": {
+      "type": "array",
+      "items": {
+        "$ref": "urn:sphere:biome-service:1:core#/$defs/id"
+      },
+      "minItems": 1,
+      "maxItems": 16,
+      "uniqueItems": true
+    },
+    "requiredResourceDigests": {
+      "type": "array",
+      "items": {
+        "$ref": "urn:sphere:biome-service:1:core#/$defs/digest"
+      },
+      "minItems": 1,
+      "maxItems": 4096,
+      "uniqueItems": true
+    },
+    "inputDigest": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/digest"
+    },
+    "proofs": {
+      "type": "object",
+      "properties": {
+        "area": {
+          "$ref": "urn:sphere:biome-service:1:core#/$defs/digest"
+        },
+        "eligibility": {
+          "$ref": "urn:sphere:biome-service:1:core#/$defs/digest"
+        },
+        "boundaries": {
+          "$ref": "urn:sphere:biome-service:1:core#/$defs/digest"
+        },
+        "budget": {
+          "$ref": "urn:sphere:biome-service:1:core#/$defs/digest"
+        },
+        "index": {
+          "$ref": "urn:sphere:biome-service:1:core#/$defs/digest"
+        }
+      },
+      "required": [
+        "area",
+        "eligibility",
+        "boundaries",
+        "budget",
+        "index"
+      ],
+      "additionalProperties": false
+    },
+    "work": {
+      "type": "object",
+      "properties": {
+        "candidateAnchors": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4096
+        },
+        "cellVisits": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65536
+        },
+        "acceptedCells": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65536
+        },
+        "continuationCounter": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "candidateAnchors",
+        "cellVisits",
+        "acceptedCells",
+        "continuationCounter"
+      ],
+      "additionalProperties": false
+    },
+    "state": {
+      "enum": [
+        "planned",
+        "prepared"
+      ]
+    }
+  },
+  "required": [
+    "format",
+    "operationId",
+    "requestKey",
+    "worldId",
+    "releaseDigest",
+    "mode",
+    "expectedHead",
+    "policyDigest",
+    "allocatorRevision",
+    "proposedRegistryDigest",
+    "proposedBindingDigest",
+    "newRegionIds",
+    "requiredResourceDigests",
+    "inputDigest",
+    "proofs",
+    "work",
+    "state"
+  ],
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "mode": {
+            "const": "create-world"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "expectedHead": {
+            "type": "null"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "mode": {
+            "const": "existing-world"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "expectedHead": {
+            "$ref": "urn:sphere:biome-service:1:core#/$defs/head"
+          }
+        }
+      }
+    }
+  ]
+}

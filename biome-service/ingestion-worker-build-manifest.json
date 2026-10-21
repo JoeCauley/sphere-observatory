@@ -1,0 +1,50 @@
+{
+  "format": "sphere-biome-ingestion-worker-build/1",
+  "bundler": {
+    "name": "esbuild",
+    "version": "0.25.10"
+  },
+  "scriptSha256": "3c27591a97ac7127e35bc08fb12a85bfee29b6fcb545b315892c2cc2a6433f15",
+  "inputs": [
+    {
+      "path": "biome-service/ingestion-worker.js",
+      "bytes": 26165,
+      "sha256": "ec0dbb64189f96a1b2a39a6b4789ff1885f00a476c90d6fd746965ab9d27dd9e"
+    },
+    {
+      "path": "biome-service/records.js",
+      "bytes": 24045,
+      "sha256": "70dbb2302f88f5f950de3eb2d3e94951a1537fdeab54640e7bb95746d69c1556"
+    },
+    {
+      "path": "biome-service/schema-validators.js",
+      "bytes": 1108030,
+      "sha256": "7e2a0965c4e5f92b72bb4af2599425149ce1bb52d501b00471bfb01f59e4a46f"
+    },
+    {
+      "path": "biome-service/zip-codec.js",
+      "bytes": 11372,
+      "sha256": "37a0d5b58c1aa91a452bccc60dbe612ea30c57f2611f59372c62104b8c579d48"
+    },
+    {
+      "path": "scripts/biome-service-ingestion-worker-entry.cjs",
+      "bytes": 791,
+      "sha256": "28e31caf20d74e14d04de6d820962dc662de23a1f6f2c3763fa9ee6852a863ca"
+    },
+    {
+      "path": "world-address.js",
+      "bytes": 9929,
+      "sha256": "b614e3f9e9492674c180ac9ebc72aec2345e5428bdfe98984cb4cd5c224b77f1"
+    },
+    {
+      "path": "world-topology.js",
+      "bytes": 10225,
+      "sha256": "2652a46d33997899f8c0108481ff84a0c97dfc720f2e3853592d0748280f8cf6"
+    }
+  ],
+  "generated": {
+    "path": "biome-service/ingestion-worker-runtime.js",
+    "bytes": 1285404,
+    "sha256": "d2c633501b59c47d1ed11f6653ea77beb97c5b62e11f745505025390e7af5164"
+  }
+}

@@ -1,0 +1,531 @@
+{
+  "schema": 1,
+  "id": "ib075-f-motion-v2",
+  "fixtureRevision": 2,
+  "recordedUtc": "2026-09-30T10:08:58.629Z",
+  "source": "tests/fixtures/meadow-canopy-f2.json",
+  "cameraProtocol": "Pose API, app loop held, synchronous ordinary renderer draw and gl.finish for every frame; no vegetation state injection.",
+  "conditions": {
+    "placeScene": "day",
+    "placeWeather": "clear",
+    "sceneTime": 2468
+  },
+  "framesPerSecond": 12,
+  "sequence": [
+    {
+      "id": "walking",
+      "durationSeconds": 11.428571428571429,
+      "keyframes": [
+        {
+          "seconds": 0,
+          "pose": {
+            "position": [
+              149449597.19812354,
+              -4975905.543873623,
+              4425062.576094079
+            ],
+            "forward": [
+              -0.0295960926946604,
+              0,
+              0.9995619397001915
+            ],
+            "up": [
+              -0.9990088528701357,
+              0.03326187412057977,
+              -0.029579716311726657
+            ],
+            "terrainRelativeEyeHeightMetres": 1.7,
+            "chartOffsetMetres": [
+              0,
+              0
+            ],
+            "condition": "day-clear",
+            "sequence": "walk-out-return",
+            "elapsedSeconds": 0
+          }
+        },
+        {
+          "seconds": 5.714285714285714,
+          "pose": {
+            "position": [
+              149449597.19765002,
+              -4975905.543873623,
+              4425062.5920870695
+            ],
+            "forward": [
+              -0.0295960926946604,
+              0,
+              0.9995619397001915
+            ],
+            "up": [
+              -0.9990088528701357,
+              0.03326187412057977,
+              -0.029579716311726657
+            ],
+            "terrainRelativeEyeHeightMetres": 1.7,
+            "chartOffsetMetres": [
+              0,
+              16
+            ],
+            "condition": "day-clear",
+            "sequence": "walk-out-return",
+            "elapsedSeconds": 5.714285714285714
+          }
+        },
+        {
+          "seconds": 11.428571428571429,
+          "pose": {
+            "position": [
+              149449597.19812354,
+              -4975905.543873623,
+              4425062.576094079
+            ],
+            "forward": [
+              -0.0295960926946604,
+              0,
+              0.9995619397001915
+            ],
+            "up": [
+              -0.9990088528701357,
+              0.03326187412057977,
+              -0.029579716311726657
+            ],
+            "terrainRelativeEyeHeightMetres": 1.7,
+            "chartOffsetMetres": [
+              0,
+              0
+            ],
+            "condition": "day-clear",
+            "sequence": "walk-out-return",
+            "elapsedSeconds": 11.428571428571429
+          }
+        }
+      ]
+    },
+    {
+      "id": "rotation",
+      "durationSeconds": 8,
+      "keyframes": [
+        {
+          "seconds": 0,
+          "pose": {
+            "position": [
+              149449597.19812354,
+              -4975905.543873623,
+              4425062.576094079
+            ],
+            "forward": [
+              -0.0295960926946604,
+              0,
+              0.9995619397001915
+            ],
+            "up": [
+              -0.9990088528701357,
+              0.03326187412057977,
+              -0.029579716311726657
+            ],
+            "terrainRelativeEyeHeightMetres": 1.7,
+            "chartOffsetMetres": [
+              0,
+              0
+            ],
+            "condition": "day-clear",
+            "sequence": "rotation"
+          }
+        },
+        {
+          "seconds": 1,
+          "pose": {
+            "position": [
+              149449597.19812354,
+              -4975905.543873623,
+              4425062.576094079
+            ],
+            "forward": [
+              0.0025817958592074773,
+              0.7067155183417111,
+              0.7074931169030184
+            ],
+            "up": [
+              -0.9990088528701357,
+              0.03326187412057977,
+              -0.029579716311726657
+            ],
+            "terrainRelativeEyeHeightMetres": 1.7,
+            "chartOffsetMetres": [
+              0,
+              0
+            ],
+            "condition": "day-clear",
+            "sequence": "rotation"
+          }
+        },
+        {
+          "seconds": 2,
+          "pose": {
+            "position": [
+              149449597.19812354,
+              -4975905.543873623,
+              4425062.576094079
+            ],
+            "forward": [
+              0.033247303414030316,
+              0.9994466707783797,
+              0.000984421509670866
+            ],
+            "up": [
+              -0.9990088528701357,
+              0.03326187412057977,
+              -0.029579716311726657
+            ],
+            "terrainRelativeEyeHeightMetres": 1.7,
+            "chartOffsetMetres": [
+              0,
+              0
+            ],
+            "condition": "day-clear",
+            "sequence": "rotation"
+          }
+        },
+        {
+          "seconds": 3,
+          "pose": {
+            "position": [
+              149449597.19812354,
+              -4975905.543873623,
+              4425062.576094079
+            ],
+            "forward": [
+              0.0444369915412475,
+              0.7067155183417112,
+              -0.7061009346529501
+            ],
+            "up": [
+              -0.9990088528701357,
+              0.03326187412057977,
+              -0.029579716311726657
+            ],
+            "terrainRelativeEyeHeightMetres": 1.7,
+            "chartOffsetMetres": [
+              0,
+              0
+            ],
+            "condition": "day-clear",
+            "sequence": "rotation"
+          }
+        },
+        {
+          "seconds": 4,
+          "pose": {
+            "position": [
+              149449597.19812354,
+              -4975905.543873623,
+              4425062.576094079
+            ],
+            "forward": [
+              0.029596092694660403,
+              1.2239691662872213e-16,
+              -0.9995619397001915
+            ],
+            "up": [
+              -0.9990088528701357,
+              0.03326187412057977,
+              -0.029579716311726657
+            ],
+            "terrainRelativeEyeHeightMetres": 1.7,
+            "chartOffsetMetres": [
+              0,
+              0
+            ],
+            "condition": "day-clear",
+            "sequence": "rotation"
+          }
+        },
+        {
+          "seconds": 5,
+          "pose": {
+            "position": [
+              149449597.19812354,
+              -4975905.543873623,
+              4425062.576094079
+            ],
+            "forward": [
+              -0.0025817958592074734,
+              -0.706715518341711,
+              -0.7074931169030184
+            ],
+            "up": [
+              -0.9990088528701357,
+              0.03326187412057977,
+              -0.029579716311726657
+            ],
+            "terrainRelativeEyeHeightMetres": 1.7,
+            "chartOffsetMetres": [
+              0,
+              0
+            ],
+            "condition": "day-clear",
+            "sequence": "rotation"
+          }
+        },
+        {
+          "seconds": 6,
+          "pose": {
+            "position": [
+              149449597.19812354,
+              -4975905.543873623,
+              4425062.576094079
+            ],
+            "forward": [
+              -0.03324730341403031,
+              -0.9994466707783797,
+              -0.0009844215096709884
+            ],
+            "up": [
+              -0.9990088528701357,
+              0.03326187412057977,
+              -0.029579716311726657
+            ],
+            "terrainRelativeEyeHeightMetres": 1.7,
+            "chartOffsetMetres": [
+              0,
+              0
+            ],
+            "condition": "day-clear",
+            "sequence": "rotation"
+          }
+        },
+        {
+          "seconds": 7,
+          "pose": {
+            "position": [
+              149449597.19812354,
+              -4975905.543873623,
+              4425062.576094079
+            ],
+            "forward": [
+              -0.0444369915412475,
+              -0.7067155183417113,
+              0.70610093465295
+            ],
+            "up": [
+              -0.9990088528701357,
+              0.03326187412057977,
+              -0.029579716311726657
+            ],
+            "terrainRelativeEyeHeightMetres": 1.7,
+            "chartOffsetMetres": [
+              0,
+              0
+            ],
+            "condition": "day-clear",
+            "sequence": "rotation"
+          }
+        },
+        {
+          "seconds": 8,
+          "pose": {
+            "position": [
+              149449597.19812354,
+              -4975905.543873623,
+              4425062.576094079
+            ],
+            "forward": [
+              -0.029596092694660407,
+              -2.4479383325744425e-16,
+              0.9995619397001915
+            ],
+            "up": [
+              -0.9990088528701357,
+              0.03326187412057977,
+              -0.029579716311726657
+            ],
+            "terrainRelativeEyeHeightMetres": 1.7,
+            "chartOffsetMetres": [
+              0,
+              0
+            ],
+            "condition": "day-clear",
+            "sequence": "rotation"
+          }
+        }
+      ]
+    },
+    {
+      "id": "elevation",
+      "durationSeconds": 12,
+      "keyframes": [
+        {
+          "seconds": 0,
+          "pose": {
+            "position": [
+              149449597.19782385,
+              -4975905.543863645,
+              4425062.576085205
+            ],
+            "forward": [
+              0.5757284375663532,
+              -0.019957124472347865,
+              0.8173973815471891
+            ],
+            "up": [
+              -0.9990088528701357,
+              0.03326187412057977,
+              -0.029579716311726657
+            ],
+            "terrainRelativeEyeHeightMetres": 2,
+            "chartOffsetMetres": [
+              0,
+              0
+            ],
+            "condition": "day-clear",
+            "sequence": "elevation"
+          }
+        },
+        {
+          "seconds": 2.4,
+          "pose": {
+            "position": [
+              149449597.1918298,
+              -4975905.543664074,
+              4425062.575907727
+            ],
+            "forward": [
+              0.5757284375663532,
+              -0.019957124472347865,
+              0.8173973815471891
+            ],
+            "up": [
+              -0.9990088528701357,
+              0.03326187412057977,
+              -0.029579716311726657
+            ],
+            "terrainRelativeEyeHeightMetres": 8,
+            "chartOffsetMetres": [
+              0,
+              0
+            ],
+            "condition": "day-clear",
+            "sequence": "elevation"
+          }
+        },
+        {
+          "seconds": 4.8,
+          "pose": {
+            "position": [
+              149449597.1798417,
+              -4975905.543264931,
+              4425062.57555277
+            ],
+            "forward": [
+              0.5757284375663532,
+              -0.019957124472347865,
+              0.8173973815471891
+            ],
+            "up": [
+              -0.9990088528701357,
+              0.03326187412057977,
+              -0.029579716311726657
+            ],
+            "terrainRelativeEyeHeightMetres": 20,
+            "chartOffsetMetres": [
+              0,
+              0
+            ],
+            "condition": "day-clear",
+            "sequence": "elevation"
+          }
+        },
+        {
+          "seconds": 7.2,
+          "pose": {
+            "position": [
+              149449597.15186945,
+              -4975905.542333598,
+              4425062.574724538
+            ],
+            "forward": [
+              0.5757284375663532,
+              -0.019957124472347865,
+              0.8173973815471891
+            ],
+            "up": [
+              -0.9990088528701357,
+              0.03326187412057977,
+              -0.029579716311726657
+            ],
+            "terrainRelativeEyeHeightMetres": 48,
+            "chartOffsetMetres": [
+              0,
+              0
+            ],
+            "condition": "day-clear",
+            "sequence": "elevation"
+          }
+        },
+        {
+          "seconds": 9.6,
+          "pose": {
+            "position": [
+              149449597.1358853,
+              -4975905.541801408,
+              4425062.5742512625
+            ],
+            "forward": [
+              0.5757284375663532,
+              -0.019957124472347865,
+              0.8173973815471891
+            ],
+            "up": [
+              -0.9990088528701357,
+              0.03326187412057977,
+              -0.029579716311726657
+            ],
+            "terrainRelativeEyeHeightMetres": 64,
+            "chartOffsetMetres": [
+              0,
+              0
+            ],
+            "condition": "day-clear",
+            "sequence": "elevation"
+          }
+        },
+        {
+          "seconds": 12,
+          "pose": {
+            "position": [
+              149449597.11990115,
+              -4975905.541269219,
+              4425062.573777987
+            ],
+            "forward": [
+              0.5757284375663532,
+              -0.019957124472347865,
+              0.8173973815471891
+            ],
+            "up": [
+              -0.9990088528701357,
+              0.03326187412057977,
+              -0.029579716311726657
+            ],
+            "terrainRelativeEyeHeightMetres": 80,
+            "chartOffsetMetres": [
+              0,
+              0
+            ],
+            "condition": "day-clear",
+            "sequence": "elevation"
+          }
+        }
+      ]
+    }
+  ],
+  "savedAs": "WebM from live production canvas plus representative unaltered full-app screenshots and frame JSON.",
+  "review": "Inspect walking, rotation and elevation motion and actual frame differences; performance observations remain H pending.",
+  "successorOf": {
+    "fixture": "tests/fixtures/meadow-f-motion-v1.json",
+    "fixtureRevision": 1,
+    "sha256": "70615244ba045665d327b5d2c557058b558a75ff764c05c2939a2d164614d795",
+    "change": "Reference F2 canopy profile; every frozen camera vector, condition, frame rate, interpolation keyframe and sequence duration remains unchanged."
+  }
+}

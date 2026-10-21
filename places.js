@@ -5,6 +5,7 @@ const atmosphereKm=384400*2/3;
 const categories=[
  {id:'overview',name:'Overview',family:'The collection'},
  {id:'biomes',name:'Biomes',family:'Living places'},
+ {id:'packs',name:'Biome Packs',family:'Living places'},
  {id:'watersheds',name:'Watersheds',family:'Builder places'},
  {id:'machinery',name:'Shell works',family:'Builder places'},
  {id:'poles',name:'Polar entries',family:'Builder places'},
@@ -15,6 +16,7 @@ function catalogue(s){return [
  ...[['overview','Across the collection'],['shades','Shade fleet'],['wounds','The long wounds'],['station','Central star']].map(([key,name])=>({id:'overview-'+key,name,category:'overview',description:'A broad view of '+name.toLowerCase()+'.',walk:false})),
  ...root.SphereBiomes.catalog.map((b,id)=>({id:'biome-'+id,name:b.name,category:'biomes',description:b.description,biome:id,walk:true})),
  ...root.SpherePacks.catalogue(s),
+ ...(root.SpherePackLibrary?.catalogue()||[]),
  ...['Thermal routing','Air & water exchange','Fabrication fields'].map((name,i)=>({id:'works-'+i,name,category:'machinery',description:['Quiet ceramic heat fields, woven channels and long service aisles.','Condensation works and branching air and water networks.','An immense fabric of assembly districts and service structures.'][i],biome:5,walk:true})),
  ...['A','B'].map((name,i)=>({id:'port-'+i,name:'Polar entry '+name,category:'poles',description:'A monumental gateway at the end of the shell axis, surrounded by service courts.',biome:5,walk:true})),
  ...root.SphereCollection.plates({...s,routeShades:true}).map(p=>({id:'shade-'+p.id,name:'Shade '+p.id+' · '+(p.damage?'broken edge':s.shadeGeometryRevision>=3?'intact edge':'service skin'),category:'shades',description:p.damage?'A fractured sunshade. Long through-openings expose its layered body and service structure. Close flight follows its motion.':'A moving sunshade with a continuous body and a finished perimeter. Close flight follows its motion.',biome:5,walk:false})),
@@ -26,14 +28,17 @@ function conditions(s,scene='day',weather='mixed'){
 }
 const watershedViews=[['neighbourhood','Connected catchments · 40,000 km','shell'],['region','Receiving reaches · 10,000 km','shell'],['province','The whole watershed · 1,100 km','shell'],['approach','River country · 48 km','shell'],['garden','Water garden · 1 km','landscape'],['terrace','Terrace inspection · 6 m','terrace floor']];
 function arrivals(s,id){const entry=catalogue(s).find(p=>p.id===id);if(!entry)return [];
+ if(root.SpherePackLibrary?.get(id))return root.SpherePackLibrary.arrivals(id);
  if(id.startsWith('overview-'))return [{id:'regional',label:'Regional view',frame:'shell',units:'km'}];
  if(id.startsWith('wound-'))return [{id:'ground',label:'Exterior spill · free flight',frame:'shell',units:'km'}];
  const list=[{id:'ground',label:entry.walk?'On foot'+(id.startsWith('port-')?' · bounded court':''):'Close flight · 35 m above Shade skin',frame:id.startsWith('shade-')?'shade':'shell',units:'km'}];
+ if(id==='watershed-meadow')list.push({id:'meadow-study',label:'Meadow study · on foot',reference:'bounded meadow proof',frame:'shell',units:'km'});
  if(id==='watershed')return [...watershedViews.map(([id,label,reference])=>({id,label,reference,frame:'shell',units:'km'})),...list];
  if(entry.composition)list.push({id:'regional',label:'Regional view · 9,000 km',frame:'shell',units:'km'});
  return [...list,{id:'clouds',label:id.startsWith('shade-')?'Close flight · 700 m above Shade skin':'Below clouds · '+Math.round(cloudAltitude(entry.biome)*1000)+' m',frame:id.startsWith('shade-')?'shade':'shell',units:'km'},{id:'atmosphere',label:'High-altitude view · 256,267 km',frame:id.startsWith('shade-')?'shade':'shell',units:'km'}];
 }
 function availability(s,id,arrival){
+ if(root.SpherePackLibrary?.get(id)){const available=!arrival||root.SpherePackLibrary.arrivals(id).some(a=>a.id===arrival);return {available,reason:available?'':'This arrival is not supported at this destination.'};}
  if(!s.collection||s.layoutVersion!==2)return {available:false,reason:'These Places use Collection layout 2. Choose that world model and geography in World.'};
  if((id==='biome-4'||id.startsWith('wound-')||id==='overview-wounds')&&s.era==='before')return {available:false,reason:'Available after the attack. Choose After attack in World.'};
  if((id.startsWith('wound-')||id==='overview-wounds')&&!s.multipleWounds)return {available:false,reason:'Enable six Wounds in World to visit this opening.'};
@@ -46,7 +51,12 @@ async function destination(input,id,altitude='ground',scene,weather,options={}){
  const allowed=availability(input,id,altitude);if(!allowed.available)throw Error(allowed.reason);
  const finish=s=>scene===undefined&&weather===undefined?s:conditions(s,scene??input.placeScene,weather??input.placeWeather);
  const entry=catalogue(input).find(p=>p.id===id);if(!entry)throw Error('This Place is unavailable in the current era.');
+ if(root.SpherePackLibrary?.get(id))throw Error('Visit this Biome Pack through its world launcher.');
  let s={...structuredClone(input),layoutVersion:2,collection:true,biome:-1,siteId:'',siteAnchor:null,siteRevision:0,siteElevation:0,walkSurface:false,walkMode:false,walkPosition:null,walkVelocity:0,shadeAttachment:null,geometryDetail:true,projection:'perspective',surfaceLock:true};
+ // The bounded proof is an explicit arrival, not a new default. Leaving it
+ // through an ordinary Place visit removes only the new versioned overlay;
+ // historical unversioned meadow blocks retain their old behaviour.
+ if(input.meadow?.representationRevision===3)s.meadow=null;
  if(id==='biome-4'&&s.era==='before')throw Error('The Ruin belongs to the world after the attack. Choose After attack in World.');
  let q,ground=0;
  if(id.startsWith('overview-')){
@@ -68,6 +78,13 @@ async function destination(input,id,altitude='ground',scene,weather,options={}){
   const district=root.SphereNeighbourhood.model(s.provinceSeed).compositions.find(c=>c.id===entry.composition);
   q=root.SphereWatershed.direction(...district.bank,s);
   if(root.SphereNeighbourhood.sample(q,s).water||root.SphereCollection.missing(q,s))throw Error('This composition has no dry arrival in the current world.');
+  if(id==='watershed-meadow'&&altitude==='meadow-study'){
+   const frame=S.shellFrame(q),field=root.SphereNeighbourhood.sample(q,s),height=field?.terrainKm||0;
+   s.meadow=root.SphereMeadowEcology?.createProfile(s,{densityBladesPerM2:290,densityPreset:'near-290-blades-m2',appearancePreset:'meadow-proof-f2',appearanceRevision:4,canopyRevision:2,materialRevision:3,windTimelineRevision:1})||{enabled:true,schema:1,representationRevision:3,placementRevision:2,profileId:'bounded-meadow-proof-v1',coverageId:'watershed-open-meadow-proof-v1',seed:Number.isInteger(s.seed)?s.seed:0,anchor:[21500,-5000],ecologicalRevision:1,densityBladesPerM2:290,densityPreset:'near-290-blades-m2',qualityPreset:'proof',appearancePreset:'meadow-proof-f2',appearanceRevision:4,canopyRevision:2,materialRevision:3,windTimelineRevision:1,windVisualSpeed:1,windResolvedPhaseSeconds:s.time,windPhaseSeconds:s.time,windAnchorSceneTime:s.time,windSceneSecondsPerSecond:s.timeRate,windClock:s.time,pausedClock:s.time,worker:true};
+   Object.assign(s.meadow,M.PERSISTENT_VEGETATION_REVISIONS);
+   s.position=M.mul(q,s.radius-height-.08);s.forward=M.norm(M.add(frame[2],M.mul(frame[1],-.055)));s.up=M.basis(s.forward,frame[1]).u;s.speed=input.speed;
+   root.SphereLanding.enter(s,s.position,{activate:false});return finish(s);
+  }
  }else if(id.startsWith('wound-')){
   const axis=root.SphereCollection.wounds[Number(id.slice(6))].axis;
   Object.assign(s,root.SphereArrival.spill(s,axis));s.speed=input.speed;return finish(s);

@@ -1,0 +1,84 @@
+{
+  "format": "sphere-biome-session/1",
+  "sessionId": "design-session-01",
+  "worldId": "design-world-01",
+  "bindingDigest": "31a664ed8ad1c97d2c2deca227a5f54f9d958c68bd8269b39b27d6a1edfca90b",
+  "stateRevision": 0,
+  "coreScene": {
+    "purpose": "Opaque shape example. Must pass the existing SphereMath validator at runtime."
+  },
+  "observer": {
+    "address": {
+      "schema": 2,
+      "worldSeed": 713,
+      "geographyRevision": 1,
+      "terrainRevision": 2,
+      "artRevision": 1,
+      "assetRevision": 1,
+      "heroRevision": null,
+      "space": "shell",
+      "face": 0,
+      "level": 14,
+      "x": 8192,
+      "y": 8192,
+      "local": [
+        0,
+        0
+      ]
+    },
+    "altitudeM": 2,
+    "forward": [
+      0,
+      1,
+      0
+    ],
+    "up": [
+      -1,
+      0,
+      0
+    ],
+    "movementProfile": "host-walk-v1",
+    "playing": false,
+    "automaticCruise": false
+  },
+  "providerStates": [
+    {
+      "regionId": "design-region-01",
+      "releaseDigest": "a8baaa1d04aee528e59966ee8532e07bc7a2f4f3885e0aa7e02c81e85dd872d7",
+      "stateSchemaId": "fixture-state-v1",
+      "revision": 0,
+      "digest": "c03b02436c03db051725952036836aa320afbecbb3f730d90f17ad1b408ede61",
+      "data": {
+        "selectedLandmarkId": "landmark-one"
+      }
+    }
+  ],
+  "bookmarks": [
+    {
+      "id": "design-bookmark-01",
+      "bindingDigest": "31a664ed8ad1c97d2c2deca227a5f54f9d958c68bd8269b39b27d6a1edfca90b",
+      "address": {
+        "schema": 2,
+        "worldSeed": 713,
+        "geographyRevision": 1,
+        "terrainRevision": 2,
+        "artRevision": 1,
+        "assetRevision": 1,
+        "heroRevision": null,
+        "space": "shell",
+        "face": 0,
+        "level": 14,
+        "x": 8192,
+        "y": 8192,
+        "local": [
+          0,
+          0
+        ]
+      },
+      "viewDigest": "2d5fed6c963e2f4a8bda5440ddd1c18404ac226b3ce62ae0b62330fd3a3a28b3",
+      "altitudeM": 2,
+      "providerStateDigests": []
+    }
+  ],
+  "history": []
+}

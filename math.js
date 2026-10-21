@@ -1,6 +1,21 @@
 /* Geometry in kilometres and radians. CPU calculations use JavaScript doubles. */
 (function(root) {
   'use strict';
+  const W=root.SphereMeadowWind||(typeof require==='function'?require('./meadow-wind.js'):null);
+  const VEGETATION_REVISIONS=Object.freeze({residentResourceRevision:1,packetRevision:1,selectionRevision:1});
+  const PERSISTENT_VEGETATION_REVISIONS=Object.freeze({residentResourceRevision:2,packetRevision:2,selectionRevision:2});
+  const VEGETATION_LIFETIME_FIELDS=Object.freeze(['requestGeneration','slotGeneration','renderFrame']);
+  function validateVegetationRevisions(meadow){
+    for(const field of VEGETATION_LIFETIME_FIELDS)if(field in meadow)throw Error('Runtime vegetation '+field+' cannot be saved in a meadow scene');
+    const fields=Object.keys(VEGETATION_REVISIONS);
+    if(!fields.some(field=>field in meadow))return {};
+    if(meadow.schema!==1||meadow.representationRevision!==3||meadow.placementRevision!==2)throw Error('Explicit vegetation revisions require the fixed-chart meadow profile');
+    const result={};
+    const persistent=fields.every(field=>meadow[field]===PERSISTENT_VEGETATION_REVISIONS[field]);
+    for(const field of fields){const value=field in meadow?meadow[field]:VEGETATION_REVISIONS[field];if(!Number.isSafeInteger(value)||value!==(persistent?PERSISTENT_VEGETATION_REVISIONS:VEGETATION_REVISIONS)[field])throw Error('Unsupported vegetation '+field);result[field]=value;}
+    if(persistent&&(meadow.appearanceRevision!==4||meadow.canopyRevision!==2||meadow.materialRevision!==3))throw Error('Persistent vegetation requires the F2 profile');
+    return result;
+  }
   const AU = 149597870.7, SUN = 695700, PI = Math.PI;
   const add=(a,b)=>a.map((v,i)=>v+b[i]), sub=(a,b)=>a.map((v,i)=>v-b[i]);
   const mul=(a,s)=>a.map(v=>v*s), dot=(a,b)=>a.reduce((s,v,i)=>s+v*b[i],0);
@@ -100,10 +115,41 @@
     if(['material','distance'].includes(input.viewMode))s.viewMode=input.viewMode;
     if(['perspective','panorama'].includes(input.projection))s.projection=input.projection;
     if(['atlas','legacy'].includes(input.surfaceStyle))s.surfaceStyle=input.surfaceStyle;
+    if(input.grass&&typeof input.grass==='object'&&!Array.isArray(input.grass))s.grass={enabled:!!input.grass.enabled,radiusPatches:Number.isFinite(input.grass.radiusPatches)?input.grass.radiusPatches:2,rootsPerSubcell:Number.isFinite(input.grass.rootsPerSubcell)?input.grass.rootsPerSubcell:12,density:Number.isFinite(input.grass.density)?input.grass.density:1,windStrength:Number.isFinite(input.grass.windStrength)?input.grass.windStrength:.0015,worker:input.grass.worker!==false};
+    if(input.meadow&&typeof input.meadow==='object'&&!Array.isArray(input.meadow)){
+      const meadow=input.meadow,residentResourceRevisions=validateVegetationRevisions(meadow),versioned=('schema' in meadow)||('representationRevision' in meadow)||('profileId' in meadow)||('coverageId' in meadow);
+      const base={enabled:!!meadow.enabled,nearRange:Number.isFinite(meadow.nearRange)?meadow.nearRange:.32,middleRange:Number.isFinite(meadow.middleRange)?meadow.middleRange:1.15,farRange:Number.isFinite(meadow.farRange)?meadow.farRange:2.8,rootsPerSubcell:Number.isFinite(meadow.rootsPerSubcell)?meadow.rootsPerSubcell:12,density:Number.isFinite(meadow.density)?meadow.density:1,windStrength:Number.isFinite(meadow.windStrength)?meadow.windStrength:.0015,windClock:Number.isFinite(meadow.windClock)?meadow.windClock:input.time,pausedClock:Number.isFinite(meadow.pausedClock)?meadow.pausedClock:input.time,worker:meadow.worker!==false,diagnostic:meadow.diagnostic==='grass-id'?'grass-id':null};
+      if(versioned){
+        if(meadow.schema!==1||meadow.representationRevision!==3||meadow.profileId!=='bounded-meadow-proof-v1'||meadow.coverageId!=='watershed-open-meadow-proof-v1')throw Error('Unsupported meadow representation revision or profile');
+        const placementRevision=meadow.placementRevision??1;
+        if(!Number.isInteger(placementRevision)||![1,2].includes(placementRevision))throw Error('Unsupported meadow placement revision');
+        if(!Array.isArray(meadow.anchor)||meadow.anchor.length!==2||!meadow.anchor.every(Number.isFinite))throw Error('Invalid meadow coverage anchor');
+        if(placementRevision===2&&(meadow.anchor[0]!==21500||meadow.anchor[1]!==-5000))throw Error('Meadow placement revision 2 is fixed to the named Open meadow anchor');
+        if(!Number.isInteger(meadow.seed)||meadow.seed<0||meadow.seed>2147483647)throw Error('Invalid meadow seed');
+        if(!Number.isInteger(meadow.ecologicalRevision)||meadow.ecologicalRevision!==1)throw Error('Unsupported meadow ecological revision');
+        if(!Number.isFinite(meadow.densityBladesPerM2)||meadow.densityBladesPerM2<1||meadow.densityBladesPerM2>1000)throw Error('Invalid meadow density');
+        if(typeof meadow.densityPreset!=='string'||!meadow.densityPreset.length||typeof meadow.qualityPreset!=='string'||!meadow.qualityPreset.length)throw Error('Invalid meadow quality contract');
+        if(typeof meadow.appearancePreset!=='string'||!meadow.appearancePreset.length)throw Error('Invalid meadow appearance contract');
+        const appearanceRevision=Number.isInteger(meadow.appearanceRevision)?meadow.appearanceRevision:1;
+        if(![1,2,3,4].includes(appearanceRevision))throw Error('Unsupported meadow appearance revision');
+        if(appearanceRevision===3&&(meadow.appearancePreset!=='meadow-proof-f1'||meadow.canopyRevision!==1||meadow.materialRevision!==2||placementRevision!==2))throw Error('Unsupported F canopy or material revision');
+        if(appearanceRevision===4&&(meadow.appearancePreset!=='meadow-proof-f2'||meadow.canopyRevision!==2||meadow.materialRevision!==3||placementRevision!==2))throw Error('Unsupported F2 canopy or material revision');
+        const wind=meadow.wind&&typeof meadow.wind==='object'&&!Array.isArray(meadow.wind)?meadow.wind:{};
+        const windPhase=Number.isFinite(meadow.windPhaseSeconds)?meadow.windPhaseSeconds:Number.isFinite(wind.phaseSeconds)?wind.phaseSeconds:base.pausedClock;
+        const windAnchor=Number.isFinite(meadow.windAnchorSceneTime)?meadow.windAnchorSceneTime:Number.isFinite(wind.anchorSceneTime)?wind.anchorSceneTime:input.time;
+        const windScale=Number.isFinite(meadow.windSceneSecondsPerSecond)?meadow.windSceneSecondsPerSecond:Number.isFinite(wind.sceneSecondsPerSecond)?wind.sceneSecondsPerSecond:60;
+        if(!Number.isFinite(windPhase)||!Number.isFinite(windAnchor)||!Number.isFinite(windScale)||windScale<=0)throw Error('Invalid meadow wind timeline');
+        s.meadow={...base,schema:1,representationRevision:3,placementRevision,profileId:meadow.profileId,coverageId:meadow.coverageId,seed:meadow.seed,anchor:meadow.anchor.slice(),ecologicalRevision:1,densityBladesPerM2:meadow.densityBladesPerM2,densityPreset:meadow.densityPreset,qualityPreset:meadow.qualityPreset,appearancePreset:meadow.appearancePreset,appearanceRevision,windPhaseSeconds:windPhase,windAnchorSceneTime:windAnchor,windSceneSecondsPerSecond:windScale,wind:{phaseSeconds:windPhase,anchorSceneTime:windAnchor,sceneSecondsPerWindSecond:windScale}};
+        Object.assign(s.meadow,W.validate(meadow,s.time,s.timeRate));
+        if(appearanceRevision===3)Object.assign(s.meadow,{canopyRevision:1,materialRevision:2});
+        if(appearanceRevision===4)Object.assign(s.meadow,{canopyRevision:2,materialRevision:3});
+        Object.assign(s.meadow,residentResourceRevisions);
+      }else s.meadow=base;
+    }
     s.playing=false;return s;
   }
-  function sceneRecord(s,extra={}) {return {format:'sphere-observatory',version:1,created:new Date().toISOString(),state:JSON.parse(JSON.stringify(s)),...extra};}
-  const api={AU,SUN,PI,add,sub,mul,dot,cross,length,norm,clamp,radians,degrees,axis,latlon,rotate,basis,shellDistance,sphereDistance,shade,plateContains,plateDistance,inBreach,trace,sunVisibility,ray,defaultState,validate,sceneRecord};
+  function sceneRecord(s,extra={}) {return {format:'sphere-observatory',version:1,created:new Date().toISOString(),state:JSON.parse(JSON.stringify(W.snapshot(s))),...extra};}
+  const api={AU,SUN,PI,add,sub,mul,dot,cross,length,norm,clamp,radians,degrees,axis,latlon,rotate,basis,shellDistance,sphereDistance,shade,plateContains,plateDistance,inBreach,trace,sunVisibility,ray,defaultState,validate,sceneRecord,VEGETATION_REVISIONS,PERSISTENT_VEGETATION_REVISIONS,VEGETATION_LIFETIME_FIELDS,validateVegetationRevisions};
   if(typeof module!=='undefined'&&module.exports)module.exports=api;
   root.SphereMath=api;
 })(typeof window!=='undefined'?window:globalThis);

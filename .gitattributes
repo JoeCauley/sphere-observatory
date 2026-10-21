@@ -1,0 +1,3 @@
+# Preserve exact accepted-source, manifest and evidence bytes in safety branches.
+# Do not normalize working files during Git staging or checkout.
+* -text

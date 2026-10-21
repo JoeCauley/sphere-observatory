@@ -1,0 +1,110 @@
+{
+  "format": "sphere-biome-pack/1",
+  "contractVersion": "1.0.0",
+  "packId": "fixture-track-meadow",
+  "version": "0.0.1",
+  "name": "Fixture Track Meadow",
+  "description": "Design fixture. Actual host provider and eligibility proofs have not been implemented.",
+  "semanticGeneratorId": "fixture-track-meadow-generator-v1",
+  "geographyRevision": "fixture-geography-v1",
+  "appearanceRevision": "fixture-appearance-v1",
+  "provider": {
+    "id": "fixture-heightfield-v1",
+    "abi": "sphere-biome-provider/1",
+    "digest": "4f7e29cf7fc391a712cbc7e0f4303f066c0840bd338209eb6929634c14bc0369",
+    "backendProfile": "webgl2-static-surface-v1"
+  },
+  "recipeAssetId": "fixture-recipe",
+  "recipeSchemaId": "design-fixture-recipe-v1",
+  "addressProfile": "sphere-world-address-v2",
+  "timeProfile": "sphere-clock-v1",
+  "capabilities": {
+    "required": [
+      "surface.heightfield",
+      "representation.overview",
+      "representation.surface",
+      "representation.detail",
+      "movement.flight",
+      "movement.walk",
+      "presentation.duck-blind"
+    ],
+    "optional": [
+      "wind.geographic"
+    ]
+  },
+  "placement": {
+    "surface": "shell",
+    "trackRelation": "within",
+    "trackIds": [],
+    "minimumClearanceM": 1000,
+    "minimumCoreAreaM2": 1000000000000000.0,
+    "maximumCoreAreaM2": 1e+17,
+    "recommendedAreaM2": 1e+16,
+    "shape": "connected-cells",
+    "transitionWidthM": 1000,
+    "frameProfile": "region-gnomonic-metres-v1",
+    "maximumAngularRadiusRad": 0.7853981633974483,
+    "maximumLocalRadiusM": 10000000000.0
+  },
+  "terrainBoundsM": {
+    "datum": "host-shell-v1",
+    "minimum": -1,
+    "maximum": 4
+  },
+  "representations": [
+    {
+      "tier": "overview",
+      "profileId": "fixture-overview-v1",
+      "semanticGeneratorId": "fixture-track-meadow-generator-v1"
+    },
+    {
+      "tier": "surface",
+      "profileId": "fixture-surface-v1",
+      "semanticGeneratorId": "fixture-track-meadow-generator-v1"
+    },
+    {
+      "tier": "detail",
+      "profileId": "fixture-detail-v1",
+      "semanticGeneratorId": "fixture-track-meadow-generator-v1"
+    }
+  ],
+  "fallback": {
+    "profileId": "fixture-coarse-solid-v1",
+    "solid": true,
+    "semanticGeneratorId": "fixture-track-meadow-generator-v1"
+  },
+  "presentation": {
+    "mode": "duck-blind",
+    "heightM": 100000,
+    "revealProfileId": "fixture-reveal-v1",
+    "lighting": "host-mediated"
+  },
+  "budgets": {
+    "maxCpuBytes": 2097152,
+    "maxGpuBufferBytes": 2097152,
+    "maxGpuTextureBytes": 0,
+    "maxTransientCpuBytes": 2097152,
+    "maxTransientGpuBytes": 2097152,
+    "maxJobs": 2,
+    "maxStageRadiusM": 256,
+    "maxUploadBytesPerFrame": 262144,
+    "maxPrepareOpsPerSlice": 4096
+  },
+  "persistence": {
+    "stateSchemaId": "fixture-state-v1",
+    "codecId": "fixture-state-codec-v1",
+    "maximumStateBytes": 65536
+  },
+  "assets": [
+    {
+      "id": "fixture-recipe",
+      "path": "assets/recipe.json",
+      "bytes": 610,
+      "sha256": "c8c6a8d0a38600deb4caa9ae32ed4120218ab8d5ef73d997ab2e7c148b75197f",
+      "mediaType": "application/json",
+      "role": "recipe",
+      "maxDecodedBytes": 65536
+    }
+  ],
+  "dependencies": []
+}

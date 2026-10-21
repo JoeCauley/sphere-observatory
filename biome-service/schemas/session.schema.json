@@ -1,0 +1,194 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:sphere:biome-service:1:session",
+  "title": "Proposed session record",
+  "description": "Binding-aware paused restore record. Provider data and coreScene require their admitted semantic codecs.",
+  "type": "object",
+  "properties": {
+    "format": {
+      "const": "sphere-biome-session/1"
+    },
+    "sessionId": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/id"
+    },
+    "worldId": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/id"
+    },
+    "bindingDigest": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/digest"
+    },
+    "stateRevision": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "coreScene": {
+      "type": "object"
+    },
+    "observer": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "$ref": "urn:sphere:biome-service:1:core#/$defs/address"
+        },
+        "altitudeM": {
+          "type": "number"
+        },
+        "forward": {
+          "$ref": "urn:sphere:biome-service:1:core#/$defs/vec3"
+        },
+        "up": {
+          "$ref": "urn:sphere:biome-service:1:core#/$defs/vec3"
+        },
+        "movementProfile": {
+          "$ref": "urn:sphere:biome-service:1:core#/$defs/id"
+        },
+        "playing": {
+          "const": false
+        },
+        "automaticCruise": {
+          "const": false
+        }
+      },
+      "required": [
+        "address",
+        "altitudeM",
+        "forward",
+        "up",
+        "movementProfile",
+        "playing",
+        "automaticCruise"
+      ],
+      "additionalProperties": false
+    },
+    "providerStates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "regionId": {
+            "$ref": "urn:sphere:biome-service:1:core#/$defs/id"
+          },
+          "releaseDigest": {
+            "$ref": "urn:sphere:biome-service:1:core#/$defs/digest"
+          },
+          "stateSchemaId": {
+            "$ref": "urn:sphere:biome-service:1:core#/$defs/id"
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "digest": {
+            "$ref": "urn:sphere:biome-service:1:core#/$defs/digest"
+          },
+          "data": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "regionId",
+          "releaseDigest",
+          "stateSchemaId",
+          "revision",
+          "digest",
+          "data"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "maxItems": 128
+    },
+    "bookmarks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "urn:sphere:biome-service:1:core#/$defs/id"
+          },
+          "bindingDigest": {
+            "$ref": "urn:sphere:biome-service:1:core#/$defs/digest"
+          },
+          "address": {
+            "$ref": "urn:sphere:biome-service:1:core#/$defs/address"
+          },
+          "viewDigest": {
+            "$ref": "urn:sphere:biome-service:1:core#/$defs/digest"
+          },
+          "altitudeM": {
+            "type": "number"
+          },
+          "providerStateDigests": {
+            "type": "array",
+            "items": {
+              "$ref": "urn:sphere:biome-service:1:core#/$defs/digest"
+            },
+            "minItems": 0,
+            "maxItems": 128,
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "id",
+          "bindingDigest",
+          "address",
+          "viewDigest",
+          "altitudeM",
+          "providerStateDigests"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "maxItems": 128
+    },
+    "history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "maxLength": 240
+          },
+          "bindingDigest": {
+            "$ref": "urn:sphere:biome-service:1:core#/$defs/digest"
+          },
+          "viewDigest": {
+            "$ref": "urn:sphere:biome-service:1:core#/$defs/digest"
+          },
+          "address": {
+            "$ref": "urn:sphere:biome-service:1:core#/$defs/address"
+          },
+          "altitudeM": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "title",
+          "bindingDigest",
+          "viewDigest",
+          "address",
+          "altitudeM"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "maxItems": 24
+    }
+  },
+  "required": [
+    "format",
+    "sessionId",
+    "worldId",
+    "bindingDigest",
+    "stateRevision",
+    "coreScene",
+    "observer",
+    "providerStates",
+    "bookmarks",
+    "history"
+  ],
+  "additionalProperties": false
+}

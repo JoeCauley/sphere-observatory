@@ -1,0 +1,48 @@
+{
+  "format": "sphere-biome-canonical-golden/1",
+  "note": "Expected strings are fixed ECMAScript numeric/UTF-16 ordering vectors; literal-byte digests independently calculated with Python hashlib.",
+  "vectors": [
+    {
+      "name": "object",
+      "value": {
+        "z": "é",
+        "a": [
+          1,
+          true,
+          null
+        ],
+        "😀": "astral",
+        "": "bmp"
+      },
+      "canonical": "{\"a\":[1,true,null],\"z\":\"é\",\"😀\":\"astral\",\"\":\"bmp\"}",
+      "utf8Hex": "7b2261223a5b312c747275652c6e756c6c5d2c227a223a22c3a9222c22f09f9880223a2261737472616c222c22ee8080223a22626d70227d",
+      "sha256": "873b83b122705c6aaabec3a8eaeee8a62cceac00ed96ca8ce62a7099a295676a",
+      "recordDigest": "340274e5eacfd6b772edea794bb4ef05181d1b3bc7813e826e1dba8dc5f4eb90"
+    },
+    {
+      "name": "binary64",
+      "value": [
+        1e-07,
+        1e+21,
+        1e+16,
+        1e+24,
+        1e-06
+      ],
+      "canonical": "[1e-7,1e+21,10000000000000000,1e+24,0.000001]",
+      "utf8Hex": "5b31652d372c31652b32312c31303030303030303030303030303030302c31652b32342c302e3030303030315d",
+      "sha256": "f7978275e046edac61ab5e8eeb2115a8bd621ea79930288c214e42ac6bc5bf06",
+      "recordDigest": "10d477bbb4399cffa21be156bb7c2b2ec087236e1ac010a920d41452228b8f0a"
+    },
+    {
+      "name": "escape",
+      "value": {
+        "text": "line\n\t\"\\\b\f\r",
+        "slash": "/"
+      },
+      "canonical": "{\"slash\":\"/\",\"text\":\"line\\n\\t\\\"\\\\\\b\\f\\r\"}",
+      "utf8Hex": "7b22736c617368223a222f222c2274657874223a226c696e655c6e5c745c225c5c5c625c665c72227d",
+      "sha256": "27918e95717486d79221b1188d8032fba457a66ac9edd543111301fbbe1e96e2",
+      "recordDigest": "f9bd0fc8aecc25f02f8ed216ab5a6c84008050a890aeb33c85328e00f1286bb4"
+    }
+  ]
+}

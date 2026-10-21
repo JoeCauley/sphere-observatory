@@ -1,0 +1,32 @@
+{
+  "format": "sphere-biome-zip-build/1",
+  "decoder": {
+    "name": "fflate",
+    "version": "0.8.2",
+    "integrity": "sha512-cPJU47OaAoCbg0pBvzsgpTPhmhqI5eJjh/JIu8tPj5q+T7iLvW/JAYUqmE7KOB4R1ZyEhzBaIQpQpardBF5z8A==",
+    "sourcePath": "node_modules/fflate/esm/browser.js",
+    "sourceBytes": 89198,
+    "sourceSha256": "8cc1f687e0159e977addb6b85e274dbd11e622cf151f4fcb7b85d49622ea43e7"
+  },
+  "instrumentation": {
+    "replacement": "var emitted = slc(dt, bts, this.s.b); if (this.onmemory) this.onmemory({outputBufferBytes:dt.byteLength, emittedBytes:emitted.byteLength, pendingBufferBytes:this.p.byteLength, previousOutputBytes:this.o.byteLength}); this.ondata(emitted, this.d);",
+    "transformedSha256": "5406f51f324ad26aa92e415a32539956f1491822a6c7d03f2c08e918d6a998a3",
+    "semanticChange": false,
+    "purpose": "Expose actual typed-array buffer bytes before decoder callback"
+  },
+  "bundler": {
+    "name": "esbuild",
+    "version": "0.25.10"
+  },
+  "scriptSha256": "2f090a01f88994a26c583d2bd92aecfc67c1046a2b9b08d1e2de9679305abdee",
+  "generated": {
+    "path": "biome-service/zip-codec.js",
+    "bytes": 11372,
+    "sha256": "37a0d5b58c1aa91a452bccc60dbe612ea30c57f2611f59372c62104b8c579d48"
+  },
+  "license": {
+    "path": "biome-service/vendor-licenses/fflate.txt",
+    "bytes": 1069,
+    "sha256": "805f6cb28bb8b6d3a0badd83c93bccd9671fa01a3b4b92b7042b0743325ac243"
+  }
+}

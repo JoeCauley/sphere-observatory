@@ -1,0 +1,404 @@
+{
+  "format": "sphere-native-fixed-program-golden/1",
+  "scope": "EXACT_COMPONENT03_SOURCE_STRINGS_NOT_RENDERER_ADMISSION",
+  "hostModuleOrder": [
+    "world-address",
+    "world-topology",
+    "meadow-wind",
+    "math",
+    "vegetation-revisions",
+    "vegetation-memory",
+    "vegetation-service",
+    "vegetation-selection",
+    "vegetation-gpu",
+    "collection",
+    "biomes",
+    "hero-textures",
+    "world-palette",
+    "biome-packs",
+    "world",
+    "watershed-network",
+    "field-sites",
+    "legacy-role-adapter",
+    "watershed-province",
+    "world-geography",
+    "watershed-neighbourhood",
+    "meadow-ecology",
+    "edge-stream",
+    "shade-edges",
+    "ground-chunks",
+    "meadow-support",
+    "edge-streaming",
+    "inspection-camera",
+    "wreckage",
+    "flight",
+    "surface-walk",
+    "travel-control",
+    "pack-library",
+    "places",
+    "survey",
+    "shaders",
+    "shader-sections",
+    "collection-shader",
+    "biome-shader",
+    "world-shader",
+    "neighbourhood-shader",
+    "asset-plan",
+    "world-textures",
+    "wound-textures",
+    "surface-lighting",
+    "silhouette-aa",
+    "station-shader-performance",
+    "preview-light",
+    "meadow-canopy"
+  ],
+  "hostSources": [
+    {
+      "path": "asset-plan.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\asset-plan.js",
+      "bytes": 6038,
+      "sha256": "7ae08f59c0aaa46697d3757c04062df295afd2ae00445f6a5b1a16d409569efe",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    },
+    {
+      "path": "biome-packs.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\biome-packs.js",
+      "bytes": 3023,
+      "sha256": "333a3fc917109b9f8adebd90131dc49c1e283706c68ac8dc4a12494a18305253",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    },
+    {
+      "path": "biome-shader.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\biome-shader.js",
+      "bytes": 10163,
+      "sha256": "7bf773e6680c9a9e086f8ed7f189023ee64e49fd70fd1cbd87feb231f342f2c3",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    },
+    {
+      "path": "biomes.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\biomes.js",
+      "bytes": 7308,
+      "sha256": "e95f1a6a24884986f72072d8238eb44631400bc7a02d4b31718385e878746164",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    },
+    {
+      "path": "collection-shader.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\collection-shader.js",
+      "bytes": 11973,
+      "sha256": "03e9c1a69365a20a6bd0dc89230b861a51196d30631575785d64aeb6c3678e01",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    },
+    {
+      "path": "collection.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\collection.js",
+      "bytes": 12060,
+      "sha256": "92ec11877bcef8eea143295bf29404b5fb7bcb5bd94ede4bc001abd121851778",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    },
+    {
+      "path": "edge-stream.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\edge-stream.js",
+      "bytes": 16244,
+      "sha256": "70e62f25e09af71e8a8d96708606f8a7e6c487607440c543fef154bd497ee257",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    },
+    {
+      "path": "edge-streaming.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\edge-streaming.js",
+      "bytes": 8197,
+      "sha256": "7196eff7ee4e024ba52abac2fa486237cc026ec3a2355380f0722241c56345d9",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    },
+    {
+      "path": "field-sites.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\field-sites.js",
+      "bytes": 25969,
+      "sha256": "2a673d5c46de4a726bb2307e8786d462bf1906ddd8c1927d615a08178ad227ad",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    },
+    {
+      "path": "flight.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\flight.js",
+      "bytes": 3957,
+      "sha256": "33022381fc0ae8a13ed01937fafa716ea98f510ec4cf71644e66f0d4e5da08b3",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    },
+    {
+      "path": "ground-chunks.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\ground-chunks.js",
+      "bytes": 19761,
+      "sha256": "75f2edcf0042f2dced81a209f050bb3b9557c33b892b42bddd3b54c9f102f0b2",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    },
+    {
+      "path": "hero-textures.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\hero-textures.js",
+      "bytes": 4145,
+      "sha256": "28b076026db92bf55abdc11e666913f271c3c81263ff124154be70a1779edccb",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    },
+    {
+      "path": "inspection-camera.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\inspection-camera.js",
+      "bytes": 2618,
+      "sha256": "ccb66d6a7017d554739a9f77253bf0d1ef4b19cf21f06572058b4297c7a133c4",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    },
+    {
+      "path": "legacy-role-adapter.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\legacy-role-adapter.js",
+      "bytes": 1009,
+      "sha256": "d5395969c47ebbe4670117721668cacbee01fb34216735458d92f1d83635a6a7",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    },
+    {
+      "path": "math.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\math.js",
+      "bytes": 14576,
+      "sha256": "deb9170a2c4070ae3af6ae4e418a62bfc4ee074fe2d4f6d90956ee709a6051de",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    },
+    {
+      "path": "meadow-canopy.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\meadow-canopy.js",
+      "bytes": 23024,
+      "sha256": "9f75aec53a4b433e9cb604d6cf03cd5c023b9f78cfe62e3f07cd9bd68f649f8a",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    },
+    {
+      "path": "meadow-ecology.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\meadow-ecology.js",
+      "bytes": 7954,
+      "sha256": "abebfeb8cfce8f0ed72196b0077239310fde3d0c6be08810879ee09f87bb17dc",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    },
+    {
+      "path": "meadow-support.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\meadow-support.js",
+      "bytes": 4122,
+      "sha256": "f8f6f94579266dcf2898ee3ccb9b35c08e2aa5b3f49e2ad606799ac67c037bd2",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    },
+    {
+      "path": "meadow-wind.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\meadow-wind.js",
+      "bytes": 3433,
+      "sha256": "5612b89c625d4ac0c35ceded8e9a1f3f4c6e6e57a4756c17582774f6f3cf4486",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    },
+    {
+      "path": "neighbourhood-shader.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\neighbourhood-shader.js",
+      "bytes": 6687,
+      "sha256": "8e612f8f322c88e1f956543651f8624b0b94a48a27bb6854bd7e61f62f1bd0ea",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    },
+    {
+      "path": "pack-library.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\pack-library.js",
+      "bytes": 1750,
+      "sha256": "e36fe2ab4e93666f4d8a769c1498700f5a3f4d8de8cae3e72d7c5971155644c4",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    },
+    {
+      "path": "places.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\places.js",
+      "bytes": 12078,
+      "sha256": "ce973b4e307ba9b72bb72ce378325fad643cd5496edbe9c07707b1cf77f2048e",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    },
+    {
+      "path": "preview-light.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\preview-light.js",
+      "bytes": 2048,
+      "sha256": "75ab3f5cee1833dc49155a9389719e1926281d4c81b5325bf865a93b605a088d",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    },
+    {
+      "path": "shade-edges.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\shade-edges.js",
+      "bytes": 11798,
+      "sha256": "b3a089476ae2ed87ecb0a38c3ffd745362692b3669a7b3bc270bb09222a30541",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    },
+    {
+      "path": "shader-sections.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\shader-sections.js",
+      "bytes": 1022,
+      "sha256": "c307ad33b42fb84bd54ab1d24158471259470a45b85038097bb39f7057894fa0",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    },
+    {
+      "path": "shaders.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\shaders.js",
+      "bytes": 9604,
+      "sha256": "3c0513513b4eba2ad62607b76d39ed712e7bd85282f5cae970189d0a95e8379e",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    },
+    {
+      "path": "silhouette-aa.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\silhouette-aa.js",
+      "bytes": 4314,
+      "sha256": "8aaa97a79941d9f61093f57250a8d9f6e00d3df254e6f88629df200b7c10eb0b",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    },
+    {
+      "path": "station-shader-performance.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\station-shader-performance.js",
+      "bytes": 3130,
+      "sha256": "ad47dc0321792d7c30ab9fde5aa66b95d024c056f941ac729e33a89811f85e04",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    },
+    {
+      "path": "surface-lighting.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\surface-lighting.js",
+      "bytes": 11655,
+      "sha256": "69b81bbe3b7cd19ee196d0b0852a1597492897347b7d3659772ec8403edc2d90",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    },
+    {
+      "path": "surface-walk.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\surface-walk.js",
+      "bytes": 10016,
+      "sha256": "4fdef10c6d32346a45d2f19c5d739cd40489039e143b8e053c4f505620e6b20d",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    },
+    {
+      "path": "survey.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\survey.js",
+      "bytes": 2190,
+      "sha256": "b4d3d9edaad52c03a36a94c1456fad6d74ae4e512e3b4788ce566a84cb9b7d0a",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    },
+    {
+      "path": "travel-control.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\travel-control.js",
+      "bytes": 8459,
+      "sha256": "48e2a309d15dad234bf317f6d6003387010179e9efc0d4e1798d53bb90516188",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    },
+    {
+      "path": "vegetation-gpu.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\vegetation-gpu.js",
+      "bytes": 39337,
+      "sha256": "9ed26f3dd1df67e63e57d29fa7089037ba0173237b8a56874abf976ff0b18a75",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    },
+    {
+      "path": "vegetation-memory.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\vegetation-memory.js",
+      "bytes": 10510,
+      "sha256": "7a700a994f343b61347689922a83b4aa10bd6acc1ee532a59c3bf3a808f04347",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    },
+    {
+      "path": "vegetation-revisions.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\vegetation-revisions.js",
+      "bytes": 3228,
+      "sha256": "b77f8d4c4dc9f5c5208be40d5c7875e4967839cc93f65fef404c42aca1e2d5ac",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    },
+    {
+      "path": "vegetation-selection.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\vegetation-selection.js",
+      "bytes": 16655,
+      "sha256": "e33cccadcac9a2a6bbe0782a03c794beaf23b34bf9169c6435668e35cb37aa95",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    },
+    {
+      "path": "vegetation-service.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\vegetation-service.js",
+      "bytes": 36609,
+      "sha256": "f34ce1569dc720f9f1867e0e541191bfc140f26060c67cc33dc7527af6965627",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    },
+    {
+      "path": "watershed-neighbourhood.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\watershed-neighbourhood.js",
+      "bytes": 7515,
+      "sha256": "da095c5d02dd7f3e7e3cb9f77c00d32a12b81de8f08d47b333e024534d27fdfe",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    },
+    {
+      "path": "watershed-network.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\watershed-network.js",
+      "bytes": 3424,
+      "sha256": "31e1339b3626436e29e6a04059a9552aeada818d3374d3292c681cb54615678c",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    },
+    {
+      "path": "watershed-province.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\watershed-province.js",
+      "bytes": 19723,
+      "sha256": "a035b224759aa938882ef2c7d44c34467319d8b0efe2c163c5c8224cdbce6707",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    },
+    {
+      "path": "world-address.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\world-address.js",
+      "bytes": 9929,
+      "sha256": "b614e3f9e9492674c180ac9ebc72aec2345e5428bdfe98984cb4cd5c224b77f1",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    },
+    {
+      "path": "world-geography.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\world-geography.js",
+      "bytes": 15807,
+      "sha256": "1dce2e952860f5d6498bdd360646335782866ffe7d6b9d6cb584eb1f0c9d1073",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    },
+    {
+      "path": "world-palette.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\world-palette.js",
+      "bytes": 649,
+      "sha256": "73df1a28a61be534c9b8b63a1a83fa11888e4f7fc5ac179221709e40fb22e70b",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    },
+    {
+      "path": "world-shader.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\world-shader.js",
+      "bytes": 33005,
+      "sha256": "4a070d38f535aa7b1330f176231be272c781e28ae10829914138dceb61911e3b",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    },
+    {
+      "path": "world-textures.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\world-textures.js",
+      "bytes": 5940,
+      "sha256": "6fe63933d534485832152fafe067d56e58e19155e9bbaa00699996d73d5b7b53",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    },
+    {
+      "path": "world-topology.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\world-topology.js",
+      "bytes": 10225,
+      "sha256": "2652a46d33997899f8c0108481ff84a0c97dfc720f2e3853592d0748280f8cf6",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    },
+    {
+      "path": "world.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\world.js",
+      "bytes": 15919,
+      "sha256": "136943e4e19e1d29ca3f1d20aaa7ee989123d36bef881aa9781239df943b9aeb",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    },
+    {
+      "path": "wound-textures.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\wound-textures.js",
+      "bytes": 5410,
+      "sha256": "086499538699f3e77dd9a3efcd02cd5e87e071264f4717e3ba467515b9dff8a9",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    },
+    {
+      "path": "wreckage.js",
+      "origin": "I:\\Sphere\\repositories\\sphere-observatory\\wreckage.js",
+      "bytes": 5146,
+      "sha256": "b73a8d580c9f54cc728c232b2d8db095ab1292db6da418b70c4eb92628d056fe",
+      "scope": "COMPLETE_49_SOURCE_HOST_ASSEMBLY_READ_ONLY"
+    }
+  ],
+  "vertexSource": "#version 300 es\nprecision highp float;precision highp int;\nlayout(location=0) in vec3 aPosition;\nuniform mat4 uViewProjection;uniform vec3 uBpsRebaseHigh,uBpsRebaseLow;uniform highp uint uBpsVertexRoundXor;\nout vec3 vEyePosition;out vec3 vPreparedPosition;out vec4 vBpsProjectedPosition;\nfloat bpsVertexRound(float v){return uintBitsToFloat(floatBitsToUint(v)^uBpsVertexRoundXor);}\nvec3 bpsVertexRound3(vec3 v){return vec3(bpsVertexRound(v.x),bpsVertexRound(v.y),bpsVertexRound(v.z));}\nvoid main(){vPreparedPosition=aPosition;vEyePosition=bpsVertexRound3(bpsVertexRound3(aPosition+uBpsRebaseHigh)+uBpsRebaseLow);vBpsProjectedPosition=uViewProjection*vec4(vEyePosition,1.);gl_Position=vBpsProjectedPosition;}",
+  "vertexSha256": "3384bd6625545bc53f7052dac9b5508e248febd957c9fe0a838b6f4c7e588339",
+  "fragmentSha256": "099a1db5802d2f0841c7dc5694288c04489e686903155faf9b090c5428f19e75",
+  "hostFragmentSha256": "8a9b1d93f0a87b8d0cdb8578ab48314cd6e29b481eff553e4db8024ddfac0903"
+}

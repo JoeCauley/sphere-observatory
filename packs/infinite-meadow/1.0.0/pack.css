@@ -1,0 +1,1 @@
+#packLoading{position:fixed;inset:0;z-index:100;background:#182c20;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#e9edd9;font:16px system-ui}#packLoading[hidden]{display:none}#packLoading h2{font:36px Georgia}#leavePack{margin-bottom:14px;color:#d7e2be}

@@ -1,0 +1,20 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>IB-050 instanced environment gate</title>
+<style>
+ html,body{margin:0;background:#071116;color:#d9c79e;font:14px system-ui,sans-serif}main{display:grid;grid-template-columns:minmax(640px,1fr) 340px;gap:24px;padding:24px;min-height:calc(100vh - 48px);box-sizing:border-box}canvas{width:100%;height:auto;aspect-ratio:16/9;background:#0d1b20;border:1px solid #36505a}pre{white-space:pre-wrap;line-height:1.5}h1{font-size:20px;font-weight:500}#status{color:#9ed7b4}
+</style>
+<main><section><h1>IB-050 · bounded indexed population</h1><canvas id="view" width="960" height="540"></canvas></section><aside><p id="status">Preparing WebGL2 pass…</p><pre id="info"></pre></aside></main>
+<script src="../instanced-environment.js"></script>
+<script>
+(() => {
+ const out=document.getElementById('info'),status=document.getElementById('status'),canvas=document.getElementById('view'),gl=canvas.getContext('webgl2');
+ if(!gl){status.textContent='FAIL · WebGL2 unavailable';return;}
+ const E=SphereInstancedEnvironment,pass=new E.InstancedEnvironmentPass(gl),population=E.syntheticPopulation({seed:42,patchCount:4,instancesPerPatch:32,options:{dither:true}}),base={forward:[0,0,1],right:[1,0,0],up:[0,1,0],position:[0,0,0],fov:70,radius:1000000,exposure:0,viewMode:'material'};
+ const hash=bytes=>{let h=2166136261>>>0;for(const byte of bytes){h^=byte;h=Math.imul(h,16777619);}return h>>>0;};
+ const render=(state,width,height,exportFrame)=>{canvas.width=width;canvas.height=height;gl.clearColor(.03,.07,.08,1);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);const start=performance.now(),d=pass.draw(state,population,width,height,{linear:false,exportFrame});gl.finish();pass.poll();const cpuMs=performance.now()-start,pixels=new Uint8Array(Math.min(width*height*4,1024*1024));gl.readPixels(0,0,Math.min(width,pixels.length/4),Math.min(height,Math.floor(pixels.length/4/Math.min(width,pixels.length/4))),gl.RGBA,gl.UNSIGNED_BYTE,pixels);return {d,hash:hash(pixels),cpuMs,width,height};};
+ const preview=render(base,640,360,false),photograph=render({...base,fov:90},3840,2160,true),faces=[[1,0,0],[0,0,1]],panorama=[];for(const [forward,up]of [[[1,0,0],[0,1,0]],[[-1,0,0],[0,1,0]],[[0,1,0],[0,0,-1]],[[0,-1,0],[0,0,1]],[[0,0,1],[0,1,0]],[[0,0,-1],[0,1,0]]]){const right=[up[1]*forward[2]-up[2]*forward[1],up[2]*forward[0]-up[0]*forward[2],up[0]*forward[1]-up[1]*forward[0]];panorama.push(render({...base,forward,up,right},256,256,true).hash);}
+ const repeated=render(base,640,360,false).hash,first=photograph.d,resident=first.residentBytes,budget=64*1024*1024;pass.dispose();const after=pass.diagnostics.residentBytes;const ok=first.shaderVariantsPrepared===2&&first.instances>0&&first.drawCalls>0&&resident<=budget&&after===0&&repeated===preview.hash&&panorama.length===6&&gl.getError()===gl.NO_ERROR;
+ status.textContent=ok?'PASS · indexed instancing rendered':'FAIL · see diagnostics';status.style.color=ok?'#9ed7b4':'#e28c82';out.textContent=JSON.stringify({status:ok?'PASS':'FAIL',declaredBudgetBytes:budget,preview:{width:preview.width,height:preview.height,hash:preview.hash,cpuMs:preview.cpuMs,gpuMs:preview.d.gpuMs},photograph:{width:photograph.width,height:photograph.height,hash:photograph.hash,cpuMs:photograph.cpuMs},panoramaHashes:panorama,instances:first.instances,drawCalls:first.drawCalls,triangles:first.triangles,visiblePatches:first.visiblePatches,culledPatches:first.culledPatches,shaderVariantsPrepared:first.shaderVariantsPrepared,residentBytesBeforeDispose:resident,residentBytesAfterDispose:after,webglError:gl.getError()},null,2);
+})();
+</script>

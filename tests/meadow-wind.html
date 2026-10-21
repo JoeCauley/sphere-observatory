@@ -1,0 +1,24 @@
+<!doctype html><meta charset="utf-8"><title>IB-075-G wind GPU contract</title>
+<canvas id="view" width="32" height="32"></canvas><pre id="status">Preparing…</pre><pre id="info"></pre>
+<script src="../meadow-wind.js"></script><script src="../math.js"></script><script src="../meadow-canopy.js"></script><script src="../instanced-environment.js"></script>
+<script>
+try{
+ const gl=document.querySelector('canvas').getContext('webgl2'),W=SphereMeadowWind,E=SphereInstancedEnvironment;
+ const check=(test,message)=>{if(!test)throw Error(message);};
+ function program(vertex,varyings){const p=gl.createProgram();for(const [type,source]of [[gl.VERTEX_SHADER,vertex],[gl.FRAGMENT_SHADER,'#version 300 es\nprecision highp float;out vec4 colour;void main(){colour=vec4(1.);}']]){const s=gl.createShader(type);gl.shaderSource(s,source);gl.compileShader(s);check(gl.getShaderParameter(s,gl.COMPILE_STATUS),gl.getShaderInfoLog(s));gl.attachShader(p,s);gl.deleteShader(s);}gl.transformFeedbackVaryings(p,varyings,gl.INTERLEAVED_ATTRIBS);gl.linkProgram(p);check(gl.getProgramParameter(p,gl.LINK_STATUS),gl.getProgramInfoLog(p));return p;}
+ function feedback(p,components){const buffer=gl.createBuffer();gl.bindBuffer(gl.TRANSFORM_FEEDBACK_BUFFER,buffer);gl.bufferData(gl.TRANSFORM_FEEDBACK_BUFFER,components*4,gl.STREAM_READ);gl.bindBufferBase(gl.TRANSFORM_FEEDBACK_BUFFER,0,buffer);gl.enable(gl.RASTERIZER_DISCARD);gl.beginTransformFeedback(gl.POINTS);gl.drawArrays(gl.POINTS,0,1);gl.endTransformFeedback();gl.disable(gl.RASTERIZER_DISCARD);const values=new Float32Array(components);gl.getBufferSubData(gl.TRANSFORM_FEEDBACK_BUFFER,0,values);gl.bindBufferBase(gl.TRANSFORM_FEEDBACK_BUFFER,0,null);gl.deleteBuffer(buffer);check(gl.getError()===gl.NO_ERROR,'GPU feedback error');return Array.from(values);}
+ const p=program('#version 300 es\nprecision highp float;uniform vec2 metres;uniform float phase;out vec2 field;'+W.GLSL+'\nvoid main(){field=meadowWind(metres,phase);gl_Position=vec4(0.,0.,0.,1.);}', ['field']);gl.useProgram(p);
+ let maxFieldError=0;const samples=[];
+ for(const metres of [[0,0],[8,4],[-128,128],[127,-127]])for(const phase of [0,2468,2472.5]){gl.uniform2fv(gl.getUniformLocation(p,'metres'),metres);gl.uniform1f(gl.getUniformLocation(p,'phase'),phase);const gpu=feedback(p,2),cpu=W.field(metres,phase).vector,error=Math.max(...gpu.map((v,i)=>Math.abs(v-cpu[i])));maxFieldError=Math.max(maxFieldError,error);check(error<.0001,'CPU/GPU field disagreement');samples.push({metres,phase,cpu,gpu,error});}gl.deleteProgram(p);
+ // Transform feedback from the actual exported production foliage vertex
+ // source verifies roots and chart gust direction across independent yaws.
+ const vertex=program(E.F_VERTEX,['vRelative']),phase=2468,origin=[.008,0,.004];gl.useProgram(vertex);
+ const f=(name,v)=>gl.uniform1f(gl.getUniformLocation(vertex,name),v),i=(name,v)=>gl.uniform1i(gl.getUniformLocation(vertex,name),v),v=(name,a)=>gl.uniform3fv(gl.getUniformLocation(vertex,name),a);
+ v('uForward',[0,0,1]);v('uRight',[1,0,0]);v('uUp',[0,1,0]);v('uCameraLocal',[0,0,0]);f('uFov',1);gl.uniform2f(gl.getUniformLocation(vertex,'uResolution'),32,32);f('uWindTime',phase);f('uWindStrength',W.DEFAULT_STRENGTH);f('uWindEnabled',1);i('uTier',1);
+ for(let a=0;a<7;a++)gl.disableVertexAttribArray(a);gl.vertexAttrib3fv(1,[0,1,0]);gl.vertexAttrib3fv(2,origin);gl.vertexAttrib1f(4,.001);gl.vertexAttrib4fv(5,[1,1,1,1]);gl.vertexAttrib2fv(6,[.25,.3]);
+ const tips=[],roots=[],legacyTips=[];
+ for(const revision of [0,1])for(const yaw of [0,Math.PI/2,Math.PI]){i('uWindTimelineRevision',revision);gl.vertexAttrib4fv(3,[0,Math.sin(yaw/2),0,Math.cos(yaw/2)]);gl.vertexAttrib3fv(0,[0,0,0]);const base=feedback(vertex,3);gl.vertexAttrib3fv(0,[0,1,0]);const tip=feedback(vertex,3);if(revision===1){roots.push(base);tips.push(tip);}else legacyTips.push(tip);}
+ const rootError=Math.max(...roots.flatMap(r=>r.map((x,i)=>Math.abs(x-origin[i])))),yawError=Math.max(...tips.flatMap(t=>t.map((x,i)=>Math.abs(x-tips[0][i]))));check(rootError<1e-8,'Wind moved a root');check(yawError<1e-8,'Geographic gust rotated with stem yaw');check(Math.abs(legacyTips[0][0]-legacyTips[2][0])>1e-5,'Historical branch was inadvertently converted');
+ const result={status:'PASS',samples,maxFieldError,productionVertexFeedback:{roots,tips,legacyTips,rootError,yawError},defaultStrength:W.DEFAULT_STRENGTH,gpuMaximumStrength:E.MAX_RESIDENT_WIND_STRENGTH};check(result.defaultStrength===result.gpuMaximumStrength,'Validator/GPU strength mismatch');gl.deleteProgram(vertex);document.querySelector('#info').textContent=JSON.stringify(result);document.querySelector('#status').textContent='PASS';
+}catch(e){document.querySelector('#info').textContent=JSON.stringify({status:'FAIL',error:e.stack});document.querySelector('#status').textContent='FAIL';}
+</script>

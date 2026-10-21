@@ -1,0 +1,403 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:sphere:biome-service:1:manifest",
+  "title": "Proposed manifest record",
+  "description": "Proposed immutable pack data descriptor. Does not authorize executable code or world assignment.",
+  "type": "object",
+  "properties": {
+    "format": {
+      "const": "sphere-biome-pack/1"
+    },
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "packId": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/packId"
+    },
+    "version": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/version"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 160
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 1200
+    },
+    "semanticGeneratorId": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/id"
+    },
+    "geographyRevision": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/id"
+    },
+    "appearanceRevision": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/id"
+    },
+    "provider": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/provider"
+    },
+    "recipeAssetId": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/id"
+    },
+    "recipeSchemaId": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/id"
+    },
+    "addressProfile": {
+      "const": "sphere-world-address-v2"
+    },
+    "timeProfile": {
+      "const": "sphere-clock-v1"
+    },
+    "capabilities": {
+      "type": "object",
+      "properties": {
+        "required": {
+          "type": "array",
+          "items": {
+            "$ref": "urn:sphere:biome-service:1:core#/$defs/capability"
+          },
+          "minItems": 1,
+          "maxItems": 64,
+          "uniqueItems": true
+        },
+        "optional": {
+          "type": "array",
+          "items": {
+            "$ref": "urn:sphere:biome-service:1:core#/$defs/capability"
+          },
+          "minItems": 0,
+          "maxItems": 64,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "required",
+        "optional"
+      ],
+      "additionalProperties": false
+    },
+    "placement": {
+      "type": "object",
+      "properties": {
+        "surface": {
+          "const": "shell"
+        },
+        "trackRelation": {
+          "enum": [
+            "within",
+            "outside",
+            "any"
+          ]
+        },
+        "trackIds": {
+          "type": "array",
+          "items": {
+            "$ref": "urn:sphere:biome-service:1:core#/$defs/id"
+          },
+          "minItems": 0,
+          "maxItems": 32,
+          "uniqueItems": true
+        },
+        "minimumClearanceM": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1000000000
+        },
+        "minimumCoreAreaM2": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1e+24
+        },
+        "maximumCoreAreaM2": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1e+24
+        },
+        "recommendedAreaM2": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1e+24
+        },
+        "shape": {
+          "const": "connected-cells"
+        },
+        "transitionWidthM": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1000000000
+        },
+        "frameProfile": {
+          "const": "region-gnomonic-metres-v1"
+        },
+        "maximumAngularRadiusRad": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 0.7853981633974483
+        },
+        "maximumLocalRadiusM": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1000000000000
+        }
+      },
+      "required": [
+        "surface",
+        "trackRelation",
+        "trackIds",
+        "minimumClearanceM",
+        "minimumCoreAreaM2",
+        "maximumCoreAreaM2",
+        "recommendedAreaM2",
+        "shape",
+        "transitionWidthM",
+        "frameProfile",
+        "maximumAngularRadiusRad",
+        "maximumLocalRadiusM"
+      ],
+      "additionalProperties": false
+    },
+    "terrainBoundsM": {
+      "type": "object",
+      "properties": {
+        "datum": {
+          "const": "host-shell-v1"
+        },
+        "minimum": {
+          "type": "number"
+        },
+        "maximum": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "datum",
+        "minimum",
+        "maximum"
+      ],
+      "additionalProperties": false
+    },
+    "representations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "tier": {
+            "enum": [
+              "overview",
+              "surface",
+              "detail"
+            ]
+          },
+          "profileId": {
+            "$ref": "urn:sphere:biome-service:1:core#/$defs/id"
+          },
+          "semanticGeneratorId": {
+            "$ref": "urn:sphere:biome-service:1:core#/$defs/id"
+          }
+        },
+        "required": [
+          "tier",
+          "profileId",
+          "semanticGeneratorId"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "fallback": {
+      "type": "object",
+      "properties": {
+        "profileId": {
+          "$ref": "urn:sphere:biome-service:1:core#/$defs/id"
+        },
+        "solid": {
+          "const": true
+        },
+        "semanticGeneratorId": {
+          "$ref": "urn:sphere:biome-service:1:core#/$defs/id"
+        }
+      },
+      "required": [
+        "profileId",
+        "solid",
+        "semanticGeneratorId"
+      ],
+      "additionalProperties": false
+    },
+    "presentation": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "mode": {
+              "const": "none"
+            }
+          },
+          "required": [
+            "mode"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "mode": {
+              "const": "duck-blind"
+            },
+            "heightM": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "maximum": 1000000000
+            },
+            "revealProfileId": {
+              "$ref": "urn:sphere:biome-service:1:core#/$defs/id"
+            },
+            "lighting": {
+              "const": "host-mediated"
+            }
+          },
+          "required": [
+            "mode",
+            "heightM",
+            "revealProfileId",
+            "lighting"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "budgets": {
+      "$ref": "urn:sphere:biome-service:1:core#/$defs/budget"
+    },
+    "persistence": {
+      "type": "object",
+      "properties": {
+        "stateSchemaId": {
+          "$ref": "urn:sphere:biome-service:1:core#/$defs/id"
+        },
+        "codecId": {
+          "$ref": "urn:sphere:biome-service:1:core#/$defs/id"
+        },
+        "maximumStateBytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1048576
+        }
+      },
+      "required": [
+        "stateSchemaId",
+        "codecId",
+        "maximumStateBytes"
+      ],
+      "additionalProperties": false
+    },
+    "assets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "urn:sphere:biome-service:1:core#/$defs/id"
+          },
+          "path": {
+            "$ref": "urn:sphere:biome-service:1:core#/$defs/path"
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 67108864
+          },
+          "sha256": {
+            "$ref": "urn:sphere:biome-service:1:core#/$defs/digest"
+          },
+          "mediaType": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 96
+          },
+          "role": {
+            "enum": [
+              "recipe",
+              "data",
+              "media",
+              "reference"
+            ]
+          },
+          "maxDecodedBytes": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1073741824
+          }
+        },
+        "required": [
+          "id",
+          "path",
+          "bytes",
+          "sha256",
+          "mediaType",
+          "role",
+          "maxDecodedBytes"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "maxItems": 4096
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "packId": {
+            "$ref": "urn:sphere:biome-service:1:core#/$defs/packId"
+          },
+          "payloadDigest": {
+            "$ref": "urn:sphere:biome-service:1:core#/$defs/digest"
+          },
+          "kind": {
+            "const": "resources"
+          }
+        },
+        "required": [
+          "packId",
+          "payloadDigest",
+          "kind"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "maxItems": 64,
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "format",
+    "contractVersion",
+    "packId",
+    "version",
+    "name",
+    "description",
+    "semanticGeneratorId",
+    "geographyRevision",
+    "appearanceRevision",
+    "provider",
+    "recipeAssetId",
+    "recipeSchemaId",
+    "addressProfile",
+    "timeProfile",
+    "capabilities",
+    "placement",
+    "terrainBoundsM",
+    "representations",
+    "fallback",
+    "presentation",
+    "budgets",
+    "persistence",
+    "assets",
+    "dependencies"
+  ],
+  "additionalProperties": false
+}

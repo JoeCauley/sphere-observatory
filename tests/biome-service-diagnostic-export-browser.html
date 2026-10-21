@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Biome service — retained diagnostic evidence</title>
+<style>body{font:16px/1.5 system-ui;background:#101a20;color:#dae5e8;max-width:1100px;margin:40px auto;padding:20px}button,input{font:inherit;padding:10px}input{width:95%}pre{white-space:pre-wrap;overflow-wrap:anywhere;padding:20px;background:#17252c}a{color:#9fd4ee}#status{font-weight:600}</style>
+<h1>Retain isolated component evidence</h1>
+<p>This public diagnostic page reads an existing isolated test database through one read-only snapshot of all12 stores. It retains every resource's exact bytes, original key, provenance, independently checked raw SHA-256 and domain identity, every other stored row, and schema/source identities. It refuses production database names and never creates, upgrades, deletes or collects service data.</p>
+<p>This archive is diagnostic evidence. It is separate from Phase Seven portable export/import and does not establish usable native fixtures, main Observatory installation, rendering, travel or performance. The complete archive is bounded to32MiB; unknown or oversized inputs refuse without changing retained records.</p>
+<label for="database">Existing isolated database name</label><input id="database" list="existing" autocomplete="off" spellcheck="false" placeholder="sphere-biome-service-v1-test-…"><datalist id="existing"></datalist>
+<p><button id="refresh">Refresh isolated database list</button> <button id="export">Prepare diagnostic archive</button> <button id="cancel">Cancel export</button></p>
+<p><a id="download" hidden>Download exact retained diagnostic archive</a></p><p id="status">Loading isolated database inventory</p><pre id="report"></pre>
+<script src="../world-address.js"></script><script src="../world-topology.js"></script><script src="../biome-service/schema-validators.js"></script><script src="../biome-service/records.js"></script><script src="../biome-service/storage.js"></script><script src="biome-service-diagnostic-export.js"></script><script src="biome-service-diagnostic-export-browser.js"></script>
+</html>

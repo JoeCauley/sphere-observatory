@@ -4,7 +4,7 @@
 const emit=(name,detail)=>window.dispatchEvent(new CustomEvent(name,{detail}));
 function sync(){emit('sphere-history-changed');}
 function current(){return identity=SphereLocation.resolve(A.getState(),identity);}
-function remember(state=A.getState(),title=current().title){entries.push({state:structuredClone(state),title,identity:SphereLocation.resolve(state),created:new Date().toISOString()});if(entries.length>24)entries.shift();sync();}
+function remember(state=A.getState(),title=current().title){entries.push({state:SphereMeadowWind.snapshot(state),title,identity:SphereLocation.resolve(state),created:new Date().toISOString()});if(entries.length>24)entries.shift();sync();}
 const travel=SphereTravelTransaction.create({getState:A.getState,validate:M.validate,hold:A.setTravelHold,blocked:()=>A.busy&&window.SphereLoading?.ready,
  requiresHold:s=>s.walkMode||!!window.SphereGround?.enabled(s),
  ready:s=>{const r=document.getElementById('viewport').getBoundingClientRect(),plan=SphereAssets.plan(s,r.width/r.height);return !SphereAssets.status(A.renderer,plan).missing.length&&(!s.walkMode||!SphereGround.enabled(s)||SphereGround.available(s));},

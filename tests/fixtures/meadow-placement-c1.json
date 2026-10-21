@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "id": "watershed-open-meadow-placement-c1",
+  "profileId": "bounded-meadow-proof-v1",
+  "coverageId": "watershed-open-meadow-proof-v1",
+  "representationRevision": 3,
+  "placementRevision": 2,
+  "location": {
+    "bankMetres": [21500, -5000],
+    "packAddress": "tests/fixtures/meadow-benchmark-v1.json#/location/packAddress"
+  },
+  "chart": {
+    "coverageMetres": [256, 256],
+    "origin": "named Open meadow bank",
+    "basis": "deterministic tangent frame at the named bank direction",
+    "cameraOrRenderAnchorDependent": false,
+    "logicalCellMetres": [8, 8],
+    "ownership": "half-open; lower edge included, upper edge excluded",
+    "cellsPerAxis": 32
+  },
+  "distribution": {
+    "targetBladesPerSquareMetre": 250,
+    "tuningRange": [200, 300],
+    "candidatePoolRootsPerSquareMetre": 100,
+    "acceptedRootsPerSquareMetreAt250": 50,
+    "childBladesPerRoot": 5,
+    "childSupportSamples": "one actual support query per emitted blade",
+    "identity": "profile + placement revision + seed + chart cell + candidate; blade ID adds blade number"
+  },
+  "support": {
+    "contractRevision": 1,
+    "priority": [
+      "active connected-ground collision triangle",
+      "Watershed revision-1 rendered/collision triangle",
+      "exact analytic inner-shell collision surface"
+    ],
+    "radialConvention": "radius - terrainHeight",
+    "maximumRootToSupportErrorMetres": 0.002,
+    "areaIntegrationStepsPerCellEdge": 16
+  },
+  "distanceBandsMetres": [[0, 5], [5, 15]],
+  "globalPageOrCubeFaceOwnershipClaimed": false
+}

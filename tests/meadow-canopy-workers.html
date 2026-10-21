@@ -1,0 +1,41 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>IB-075-F worker parity</title>
+<pre id="status">Preparing…</pre>
+<pre id="info"></pre>
+<script src="../world-address.js"></script>
+<script src="../world-topology.js"></script>
+<script src="../meadow-wind.js"></script><script src="../math.js"></script>
+<script src="../collection.js"></script>
+<script src="../biomes.js"></script>
+<script src="../world-palette.js"></script>
+<script src="../biome-packs.js"></script>
+<script src="../world.js"></script>
+<script src="../watershed-network.js"></script>
+<script src="../field-sites.js"></script>
+<script src="../legacy-role-adapter.js"></script>
+<script src="../edge-stream.js"></script>
+<script src="../shade-edges.js"></script>
+<script src="../watershed-province.js"></script>
+<script src="../world-geography.js"></script>
+<script src="../watershed-neighbourhood.js"></script>
+<script src="../meadow-ecology.js"></script>
+<script src="../ground-chunks.js"></script>
+<script src="../meadow-support.js"></script>
+<script src="../meadow-canopy.js"></script>
+<script src="../instanced-environment.js"></script>
+<script src="../grass-stream.js"></script>
+
+<script>
+(async()=>{
+ const M=SphereMath,Ec=SphereMeadowEcology,G=SphereGrass,C=SphereMeadowCanopy,base=SpherePacks.activate({...M.defaultState(),collection:true,multipleWounds:false,seed:713,provinceSeed:713,time:2468,playing:false}),worker=new Worker('../grass-worker.js?ib075f=canopy-2'),profileResults=[];let generation=0;
+ const send=data=>new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(Error('F worker timed out')),120000);worker.onmessage=({data})=>{clearTimeout(timer);if(data.error)reject(Error(data.error));else resolve(data);};worker.onerror=e=>reject(Error(e.message));worker.postMessage(data);});
+ const equal=(a,b)=>a.byteLength===b.byteLength&&a.every((v,i)=>v===b[i]);
+ for(const profileId of ['f1','f2']){
+  const fixture=await(await fetch('fixtures/meadow-canopy-'+profileId+'.json')).json(),profile=fixture.profile,state={...base,terrainRevision:2,geographyRevision:1};state.meadow=Ec.createProfile(state,{...profile,densityBladesPerM2:25,worker:true});const q=Ec.chartDirection(state,4,4);Object.assign(state,{position:M.mul(q,state.radius-.0017),terrainAnchor:q,siteAnchor:q,siteId:'biome-0',siteRevision:2,siteElevation:0});const frame=G.frameForMeadowChart(state),results=[];
+  for(const canopyTier of ['detail','clump']){const cell={x:16,z:16,size:8,chartBounds:[0,0,8,8],canopyTier,key:G.meadowCellKey({x:16,z:16},state)+':'+profileId+':'+canopyTier},input={state,frame,cell,areaSteps:4},cpu=G.prepareResidentCell(C.buildResidentCell(input),{releaseSource:true,releasePlacementObjects:true}),packet=await send({...input,kind:'meadow-cell-v2',resident:true,generation:++generation}),parallel=packet.patch;if(!equal(cpu.residentBuffer,parallel.residentBuffer)||cpu.residentContentHash!==parallel.residentContentHash||JSON.stringify(cpu.residentGroups)!==JSON.stringify(parallel.residentGroups))throw Error(profileId+' '+canopyTier+' worker byte parity failed');if(parallel.canopyRevision!==profile.canopyRevision||parallel.materialRevision!==profile.materialRevision||parallel.appearanceRevision!==profile.appearanceRevision)throw Error(profileId+' revisions were lost in the worker');if(canopyTier==='clump'&&(parallel.rootCount!==0||parallel.bladeCount!==0))throw Error('Clump worker created individual blade roots');results.push({profileId,canopyTier,packedBytes:cpu.residentBuffer.byteLength,rootCount:cpu.rootCount,bladeCount:cpu.bladeCount,clumpCount:cpu.clumpCount,contentHash:cpu.residentContentHash,byteIdentical:true,prepareMs:packet.prepareMs});}
+  const cpu=C.buildDescriptor(state),packet=await send({kind:'meadow-material-f1',state,generation:++generation});if(!equal(cpu.data,packet.descriptor.data)||cpu.key!==packet.descriptor.key)throw Error(profileId+' material descriptor worker parity failed');profileResults.push({profileId,revisions:{appearance:profile.appearanceRevision,canopy:profile.canopyRevision,material:profile.materialRevision,placement:profile.placementRevision,resident:profile.residentResourceRevision,support:profile.supportContractRevision},cellParity:results,descriptor:{byteIdentical:true,bytes:cpu.data.byteLength,prepareMs:packet.prepareMs}});
+ }
+ worker.terminate();const result={status:'PASS',revisions:profileResults[0].revisions,profileRevisions:Object.fromEntries(profileResults.map(p=>[p.profileId,p.revisions])),cellParity:profileResults.flatMap(p=>p.cellParity),descriptor:{...profileResults[0].descriptor,byteIdentical:profileResults.every(p=>p.descriptor.byteIdentical)},profileResults,rendering:'No test populations drawn; ordinary-app evidence is collected separately.'};document.getElementById('info').textContent=JSON.stringify(result,null,2);document.getElementById('status').textContent='PASS';
+})().catch(error=>{document.getElementById('info').textContent=JSON.stringify({status:'FAIL',error:String(error.stack||error)});document.getElementById('status').textContent='FAIL';});
+</script>
