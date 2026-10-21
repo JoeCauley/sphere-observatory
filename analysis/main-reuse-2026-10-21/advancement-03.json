@@ -1,0 +1,145 @@
+{
+  "utc": "2026-10-21T05:39:59.093832+00:00",
+  "status": "RAW_SOURCE_LOGICAL_CONTRACT_PASS_ACTUAL_PREFIX_AND_CONTENT_IN_PROGRESS",
+  "P05": "OPEN_IN_PROGRESS",
+  "P06_P08": "NOT_STARTED",
+  "PhaseOne": "NOT_ACCEPTED_NOT_RELEASED",
+  "evidence": [
+    {
+      "path": "closed-qualified-branch-02/final-seal-02.json",
+      "bytes": 118648,
+      "sha256": "68ae13e2e29aee274a412f5b1efcea472c0d5f1ea7c0704b036c94a7afa16213"
+    },
+    {
+      "path": "closed-qualified-branch-02/review-02.json",
+      "bytes": 10270,
+      "sha256": "1844c9fb60e81eaaa0a04473f0d6b9bf6350b9d4a2816254080cbcdb836abd89"
+    },
+    {
+      "path": "closed-qualified-branch-02/numeric-summary-01.json",
+      "bytes": 2568,
+      "sha256": "5daf81111d4d085b856c2946fbd605bde27f236cb7b8bc656cb04a4e2f082075"
+    },
+    {
+      "path": "qualified-root-source-peer-01/review-01.json",
+      "bytes": 2351,
+      "sha256": "2833d16c7f320c1d28a079e37f2fa7a7794fe6fdb81cc2132e28605d1e819b23"
+    },
+    {
+      "path": "full-ordinary-host-envelope-peer-01/pure-demand-01.json",
+      "bytes": 3294,
+      "sha256": "14ecabbff95acbc5423b25708798ced5f9cfe9d31263ff96b3015a88c717875d"
+    },
+    {
+      "path": "full-ordinary-host-envelope-peer-01/pure-demand-02.json",
+      "bytes": 19417,
+      "sha256": "6710fdf234d97f4d6dc83ca2d442615be38d5127df4dde7e234f8a378b0abb2f"
+    },
+    {
+      "path": "main-demand-image-manifest-01/manifest-01.json",
+      "bytes": 17067,
+      "sha256": "fd6de293fd6406d64e571ec6e715aac419ee68eb19fe9a02f6dc7457e26f20c8"
+    },
+    {
+      "path": "main-demand-image-manifest-01/verification-01.json",
+      "bytes": 534,
+      "sha256": "587f8373eec2a74b6046d462e01fe8a27a13a899c9a008681cca55fb42efa2d1"
+    },
+    {
+      "path": "full-ordinary-host-envelope-review-01/p05-exit-boundary-01.json",
+      "bytes": 2538,
+      "sha256": "1c9fe01eae51a47cfaec5f267f4076f9e6a907f52b82090e4793f9f0237da2f9"
+    }
+  ],
+  "rawV11": {
+    "sourceFiles": 515,
+    "sourceOrPriceOverrides": 0,
+    "legacyGatesAdmitted": false,
+    "MainVisits": 7936,
+    "producers": 810,
+    "consumers": 810,
+    "baseWrites": 90,
+    "AAReads": 720,
+    "AppCompleted": 1,
+    "firstConsumerWork": 2708,
+    "finalPublicationWork": 3184,
+    "maxWork": 4064,
+    "maxUpload": 17016,
+    "maxJobs": 1,
+    "RootCompleteSourceBound": 85,
+    "RootCompleteSelected": 128,
+    "RootConsumerFailureSourceBound": 212,
+    "RootConsumerFailureSelected": 256,
+    "RootRoundingQuantum": 64,
+    "paidRetirementPrefix": 64,
+    "RootNewMetadataBound": 1888,
+    "RootNewMetadataReserved": 2048,
+    "eachNewImmutablePlanReserved": 4096,
+    "faultControls0": 2,
+    "restoredNativeStatesEach": 18,
+    "scope": "Selected source-owned logical contract and actual R/Q/App model. The complete ready-Ray/GeometryBinding prefix and ordinary-content host are separate."
+  },
+  "actualPrefix": {
+    "status": "IN_PROGRESS_PRESERVED_PUBLICATION_REFUSAL",
+    "readyRaySamples": 2764800,
+    "readyRayCpuCallbacks": 21072,
+    "geometryBindingTriangles": 91672,
+    "producerConsumerPairs": 810,
+    "firstConsumerWork": 2871,
+    "publicationAvailable": 2601,
+    "publicationRequired": 2613,
+    "publicationFollowing": 2085,
+    "GeometryBindingScheduled": 384,
+    "LocalGuardAdditional": 50,
+    "next": "Derive a source-owned fused prepare/publication-bound result that avoids duplicate quotation only, retaining complete following and fresh live draw checks. No prices or limits are adjusted to fit."
+  },
+  "actualDemand": {
+    "method": "Genuine unchanged pure SphereAssets.plan, with original and current-realm Core pins recorded separately; six aspect probes do not establish all-pixel/native visibility.",
+    "currentCoreSHA256": "99399e8c54f2a3c4b22fd84e49cefc5d1276c9122c5e536d357424b2fb709e78",
+    "current": {
+      "biomes": [
+        7
+      ],
+      "heroes": [
+        7
+      ],
+      "worldTextures": [],
+      "woundTextures": [],
+      "finishes": true,
+      "province": false
+    },
+    "originalRecordedCore": {
+      "biomes": [
+        4
+      ],
+      "heroes": [
+        4
+      ],
+      "worldTextures": [],
+      "woundTextures": [],
+      "finishes": true,
+      "province": false
+    },
+    "allOriginalBiomeHeroFilesPinned": 20,
+    "originalFileBytes": 67688387,
+    "oneRequestedPairUploadBytes": 12578372,
+    "contentGpuOldRowsHeldSubtotal": 135570668,
+    "fullHostCapSelected": false,
+    "deferred": "World and Wound preparation is not requested by this genuine current plan. Do not make optional World-only completion a Main prerequisite.",
+    "next": "Implement owned exact demanded Biome/Hero decode, original Canvas tier/mip recipes, bounded upload and private current Binding publication before batch retention. Original HTMLImageElement retained; verified owned-byte Blob URL provenance is explicit. Native pixel parity remains unmeasured."
+  },
+  "host": {
+    "status": "SOURCE_DERIVED_PROPOSAL_IN_PROGRESS",
+    "contentOnlyGpuBytes": 135570668,
+    "fullMainCapSelected": false,
+    "required": [
+      "actual viewport/current/staging/fenced Root targets",
+      "all active ordinary content",
+      "Field and service/provider resources",
+      "R CPU plus Q/source metadata separately",
+      "native decoder/Canvas/VM/driver backing observations"
+    ],
+    "retainedTargetAdmission": "A finite source-owned admission rule must preserve old readers/fences and defer before preparing an additional target when not admitted."
+  },
+  "preservation": "Walking experience, simulation, original accepted content and all service/provider/4096/262144/2 limits unchanged. Failed predecessors and optional component refusals remain preserved. This is no native/Frame/P05 acceptance."
+}

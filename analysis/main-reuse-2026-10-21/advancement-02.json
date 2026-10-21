@@ -1,0 +1,152 @@
+{
+  "utc": "2026-10-21T05:23:46.286338+00:00",
+  "status": "SOURCE_CONTRACT_AND_MODEL_PROGRESS_P05_OPEN",
+  "P05": "OPEN_IN_PROGRESS",
+  "P06_P08": "NOT_STARTED",
+  "PhaseOne": "NOT_ACCEPTED_NOT_RELEASED",
+  "evidence": [
+    {
+      "path": "closed-compiled-ready-integration-01/final-integration-seal-02.json",
+      "bytes": 218544,
+      "sha256": "814c53cc5e53b75c42f319c574afd58758463a8e18e5c58f60d96f145d43e3df"
+    },
+    {
+      "path": "closed-branch-ready-integration-02/final-seal-03.json",
+      "bytes": 222322,
+      "sha256": "4e192603e0bfd72c1b3fa9c00bc9a1a91631e61396dba26b31e69b5af3d8172b"
+    },
+    {
+      "path": "scene-joint80-numeric-01/final-seal-03.json",
+      "bytes": 230421,
+      "sha256": "74fe40707182d1561f59a1441e883b9913707933bf0717293d156ac6997c04f0"
+    },
+    {
+      "path": "scene-joint80-hot-peer-01/review-02.json",
+      "bytes": 19804,
+      "sha256": "3b157991d81612572db6f2a50eb4cf13cd23252dd76e327bc688c069b1aebaa2"
+    },
+    {
+      "path": "field-command-resource-contract-01/final-resource-contract-seal-04.json",
+      "bytes": 100377,
+      "sha256": "cd955ef42ef18d85422ea4697588d67f7971b0ce1de529899715c9c6691358d7"
+    },
+    {
+      "path": "field-command-resource-peer-01/review-01.json",
+      "bytes": 4274,
+      "sha256": "4401c5a5695f32b567a7b16b933022989013f9c3f668595bdba6760cefbc70c3"
+    },
+    {
+      "path": "closed-branch-operation-contract-01/final-seal-06.json",
+      "bytes": 188854,
+      "sha256": "a7711c3e851c93eededdc592bba88da44f0ddbd2ba5775f4be81b927fa97dcc7"
+    },
+    {
+      "path": "closed-qualified-branch-peer-01/READ-FIRST-01.md",
+      "bytes": 2727,
+      "sha256": "8546ce43bacf3a1b96911e96a49421256bcd9ff5e2c307ab29cdc800a5c67c5e"
+    },
+    {
+      "path": "ordinary-main-location-reuse-02/final-location-reuse-seal-03.json",
+      "bytes": 218599,
+      "sha256": "d3fc6a55c7a0ef6aa0ba39d7ae90fec56b3f44f9d14527fe91b35314aa0dc8d0"
+    },
+    {
+      "path": "ordinary-main-location-peer-01/review-hold-01.json",
+      "bytes": 1864,
+      "sha256": "0d658047ae21af68599f89c926d5ae23e3d6edf4c1f47c9199f6099f31bdea05"
+    },
+    {
+      "path": "ordinary-main-location-peer-01/review-pass-02.json",
+      "bytes": 1456,
+      "sha256": "f85a815e24ef1de334f14679d464074514dc05a61de08fddc912c8edc8c6f2f3"
+    },
+    {
+      "path": "full-ordinary-host-envelope-review-01/inventory-01.json",
+      "bytes": 4468,
+      "sha256": "b9a822b536e65a80ea88abc322949b1161469ff19c2ca3f683c78d99138789ec"
+    },
+    {
+      "path": "full-ordinary-host-envelope-review-01/combined-content-envelope-01.json",
+      "bytes": 5073,
+      "sha256": "0121f8fcc3187a9506b38bbc6ef13096674bd753fcd1f0ca6fd547b5a6eb8493"
+    },
+    {
+      "path": "full-ordinary-host-envelope-review-01/p05-exit-boundary-01.json",
+      "bytes": 2538,
+      "sha256": "1c9fe01eae51a47cfaec5f267f4076f9e6a907f52b82090e4793f9f0237da2f9"
+    }
+  ],
+  "compiledReadyJoin": {
+    "MainVisits": 7934,
+    "producerSections": 810,
+    "consumerSections": 810,
+    "baseWrites": 90,
+    "AAReads": 720,
+    "AppCompleted": true,
+    "faultControls": 2,
+    "restoredNativeStateGroups": 18,
+    "scope": "Disclosed deterministic native model; inherited Root/hot execution probes, not native/admitted whole Main."
+  },
+  "joint80Scene": {
+    "MainVisits": 7936,
+    "producerSections": 810,
+    "consumerSections": 810,
+    "AppCompleted": true,
+    "controlExits0": 6,
+    "rows": 80,
+    "words": 2056,
+    "coldTable": [
+      640,
+      128,
+      128,
+      128,
+      128,
+      64
+    ],
+    "hotWork": 368,
+    "fixedOwn": 78,
+    "fixedActualR": 50,
+    "fixedTotal": 128,
+    "numericDiagnosticOverride": false,
+    "RootDiagnosticOverride": true,
+    "RootConsumerProbe": 512,
+    "RootCompleteProbe": 256,
+    "legacyNumericFees": null,
+    "RootV10BillingHold": "Bundle cleanup precedes original1024 prepay; source remains preserved. Fresh v11 prepays64 before cleanup; raw-source execution/seal pending at this cutoff."
+  },
+  "FieldContract": {
+    "declaredResourceAPIOperations": 376,
+    "nativeCalls": 237,
+    "recordRowAndAPI": 139,
+    "retainedCharge": 720,
+    "RUseSeparate": 1,
+    "nextActualMainRetirementSeparate": 106,
+    "sourceEdits": 0,
+    "scope": "Explicit bounded cold-authenticated CLOSED graph; independent read-only source coverage. No global AST credit or physical duration claim."
+  },
+  "samplerLocationReuse": {
+    "source": "ordinary-main-location-reuse-02/source",
+    "controls0": 26,
+    "coldLookups": 6,
+    "hotLookups": 0,
+    "freshUniformReads": 12,
+    "retainedLogicalBytes": 1536,
+    "coldLogicalBytes": 1056,
+    "Qrequested": 2592,
+    "QactualCharged": 3226,
+    "source01Q256HoldPreserved": true,
+    "privateWorkTable": null,
+    "fullOrdinaryMainRefused": true,
+    "scope": "Initial-array component and genuine R/Q with modeled GL/link behavior; no full World/Main/native performance claim."
+  },
+  "fullHost": {
+    "combinedContentOnlyGpu": 37748968,
+    "fullMainCapSelected": false,
+    "sourceInventoryModules": 377,
+    "allocationRelatedSites": 843,
+    "sourceFiles": 515,
+    "nativeCoreEligibility": "Unchanged native-shaped Core is geometryDetailfalse/localShadows1/atmosphere0 with no own meadow field; textureDetail/richMaterials stay true. Sibling image demand still needs exact applicability proof.",
+    "next": "Complete World publication before batch retain; authentic early Target clocks; full simultaneous R/Q/host proposal and all demanded owner branches; then native whole-view/Main/provider proof."
+  },
+  "milestoneBoundary": "P05 native Main overview/local same assigned surfaces with required rendering/support/ownership/budget evidence. P06 public travel UI; P07 exact sessions/export/recovery; P08 full conformance, quiet native timing/peaks and delivery. No existing gate or limit waived."
+}

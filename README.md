@@ -1,3 +1,6 @@
+<!-- main-reuse-advancement-2026-10-21 -->
+> **Main integration — 21 October 2026:** The raw source-owned command profile now completes the 810-pair model without price overrides. Verified Industry bounds and camera-dependent preparation remain delivered. The next join retains prepared results, loads the images the actual view requests, and qualifies complete host/native Main behavior. P05 remains OPEN; see [current progress](docs/Observatory-Main-Reuse-Progress-2026-10-21.md) and [work plan](docs/Observatory-Current-Work-Plan.md). Earlier reports keep their original cutoffs.
+
 <!-- industry-display-preparation-2026-10-20 -->
 > **Industry display preparation — 20 October 2026:** The [successor implementation](docs/Observatory-Industry-Display-Preparation-2026-10-20.md) uses verified bounds before detail uploads, origin copies, draws and moving-geometry preparation. A public walk crossed both ways, hidden graphics stopped while the clock advanced, and exact saved return/tracked cleanup passed. Original content remains exact. Required image/performance qualification and formal P05 remain OPEN; see the [current work plan](docs/Observatory-Current-Work-Plan.md). Earlier reports and results remain exact below.
 
