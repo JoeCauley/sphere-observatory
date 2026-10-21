@@ -1,0 +1,393 @@
+{
+  "status": "PASS_EXECUTION_ONLY_UNADMITTED_FULL_COMMAND_MODEL",
+  "productSource": {
+    "root": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\closed-joint-operation-02\\review-source-27",
+    "inventory": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\closed-joint-operation-02\\source-inventory-27.json",
+      "bytes": 92614,
+      "sha256": "0fa23aab918ef08c52e614a269713b96f1ca706e14a11c39fbc9beecfa3b190c"
+    },
+    "files": 515,
+    "costGate": false,
+    "jointGate": false,
+    "numericFees": null,
+    "entryWorkProvisional": 2048
+  },
+  "diagnostic": {
+    "entryWork": 256,
+    "numericFees": {
+      "begin": 256,
+      "row": 256,
+      "retire": 64,
+      "replay": 584
+    },
+    "purpose": "Execute genuine existing command/currentness/phase/restoration paths on deterministic modeled native replies. These are NOT selected logical tariffs and provide NO accounting/admission/P05 proof.",
+    "caps": "Original4096 work/slice,262144 upload/frame,two jobs,all memory and physical-resource limits unchanged."
+  },
+  "execution": {
+    "mainVisits": 7938,
+    "groups": 10,
+    "firstConsumer": {
+      "frame": 3890,
+      "work": 2860,
+      "upload": 8576
+    },
+    "lastPublication": {
+      "frame": 7938,
+      "work": 3464,
+      "upload": 17016
+    },
+    "producers": 810,
+    "consumers": 810,
+    "samples": 9,
+    "raster": [
+      640,
+      480
+    ],
+    "maskBaseWrites": 90,
+    "maskAAReads": 720,
+    "acknowledgements": 1,
+    "appCompleted": 1,
+    "pending": false,
+    "maxWork": 4064,
+    "maxUpload": 17016,
+    "maxJobs": 1,
+    "uncertain": false,
+    "restoration": "Actual original/fixed G/PB/Field native-state restoration bodies and their fresh post-query verifiers executed for every consumer without uncertainty; deterministic modeled WebGL, not a browser/native result."
+  },
+  "preservedFailures": {
+    "probe01": "Fixture drawBuffers/bindSampler returned Map instead of native void; source correctly refused. Corrected only in fresh02.",
+    "probe02": "All810commands complete; final App publication remains budget-deferred under debug512.",
+    "probe03": {
+      "reason": "Exact final preflight budget-only refusal",
+      "available": 2828,
+      "work": 1268,
+      "budget": {
+        "refused": true,
+        "available": 2828,
+        "minimum": 2957,
+        "following": 1829
+      },
+      "sceneCaptures": 1,
+      "sceneReplays": 810,
+      "sceneRefusals": 0
+    }
+  },
+  "ownership": {
+    "sceneAndMask": "Actual Scene/facet/compiler and Mask child-owned charges/records/readers/physical refs retired; assertions and final snapshots persisted.",
+    "remainingParentOwnership": "Explicit residual R/Q itemized; whole fixture parent cleanup not claimed.",
+    "wholeFixtureZero": false,
+    "finalR": {
+      "held": {
+        "cpuResidentBytes": 1014972,
+        "cpuTransientBytes": 0,
+        "gpuBufferResidentBytes": 1112028,
+        "gpuTextureResidentBytes": 4009984,
+        "gpuTransientBytes": 0
+      },
+      "peak": {
+        "cpuResidentBytes": 1031420,
+        "cpuTransientBytes": 1374172,
+        "gpuBufferResidentBytes": 1112028,
+        "gpuTextureResidentBytes": 4141056,
+        "gpuTransientBytes": 0
+      },
+      "physicalResources": 21,
+      "logicalLeases": 21,
+      "cpuReaders": 5,
+      "gpuReaders": 0,
+      "preparedBackingPins": 8,
+      "totalResourceReaderReferences": 13,
+      "retiringResources": 0,
+      "jobs": 0,
+      "phaseCounts": {
+        "new": 8,
+        "current": 12,
+        "staging": 1,
+        "neighbor": 0
+      },
+      "active": {
+        "contextDigest": "fe4f5d7170304b15fc6e2556fe495bbd24fe5976b17d3121b683cc1ddbeb06c6",
+        "tier": "surface",
+        "members": [
+          {
+            "contextDigest": "fe4f5d7170304b15fc6e2556fe495bbd24fe5976b17d3121b683cc1ddbeb06c6",
+            "tier": "surface"
+          }
+        ],
+        "terrainAndCollisionReady": true,
+        "visualCoverageReady": true
+      },
+      "contextLost": false,
+      "disposed": false,
+      "currentFrameUploadBytes": 17016,
+      "currentSliceWork": 128,
+      "counters": {
+        "allocations": 837,
+        "creationFaults": 0,
+        "cacheHits": 0,
+        "logicalWork": 71010237,
+        "uploadedBytes": 1121164,
+        "uploadAttempts": 11217,
+        "jobsAdmitted": 847,
+        "jobsPeak": 1,
+        "cancellationRefusals": 0,
+        "disposalFaults": 0,
+        "nativeVerifierCaptureWork": 50
+      },
+      "accounting": "EXACT_OWNED_CPU_ARRAYBUFFER_LENGTHS_AND_DECLARED_MOCK_GPU_BYTES_ONLY",
+      "backendQualification": "NOT_GPU",
+      "nativeHeap": "UNMEASURED",
+      "wrappersAndEngine": "UNMEASURED",
+      "driverPeak": "UNMEASURED"
+    },
+    "finalQ": {
+      "heldBytes": 18660587,
+      "requestedBytes": 18473261,
+      "bookkeepingBytes": 187326,
+      "peakBytes": 22294852,
+      "limitBytes": 33554432,
+      "liveReservations": 307,
+      "maximumReservations": 4096,
+      "owners": [
+        {
+          "name": "biome-binding-builder",
+          "bytes": 2214494
+        },
+        {
+          "name": "biome-native-kernel",
+          "bytes": 1408958
+        },
+        {
+          "name": "biome-native-provider",
+          "bytes": 2103022
+        },
+        {
+          "name": "biome-native-source-owner",
+          "bytes": 5812661
+        },
+        {
+          "name": "biome-root-program",
+          "bytes": 427094
+        },
+        {
+          "name": "biome-root-target",
+          "bytes": 130984
+        },
+        {
+          "name": "biome-spatial-index",
+          "bytes": 112110
+        },
+        {
+          "name": "canonical-composite-row-viewport",
+          "bytes": 6840
+        },
+        {
+          "name": "complete-c1-contributors",
+          "bytes": 226726
+        },
+        {
+          "name": "complete-c1-field-camera",
+          "bytes": 632902
+        },
+        {
+          "name": "complete-c1-material-bank",
+          "bytes": 219080
+        },
+        {
+          "name": "main-app-snapshot-ingress",
+          "bytes": 805602
+        },
+        {
+          "name": "main-canonical-ray-packet",
+          "bytes": 580610
+        },
+        {
+          "name": "main-host-cpu-cache",
+          "bytes": 526066
+        },
+        {
+          "name": "main-prepared-surface-pass",
+          "bytes": 2514760
+        },
+        {
+          "name": "main-target-owner",
+          "bytes": 88250
+        },
+        {
+          "name": "main-world-snapshot",
+          "bytes": 518910
+        },
+        {
+          "name": "observed-generation-retirement",
+          "bytes": 7032
+        },
+        {
+          "name": "overview-material-table",
+          "bytes": 206806
+        },
+        {
+          "name": "owned-cell-partition",
+          "bytes": 113584
+        }
+      ],
+      "scope": "CONSERVATIVE_LOGICAL_METADATA_ADMISSION",
+      "nativeHeap": "UNMEASURED"
+    }
+  },
+  "scope": {
+    "actualApp": true,
+    "actualOwnerCode": true,
+    "sourcePinsExact": true,
+    "RootIssuerInMain": "genuine original Renderer/Scene/Field private chain",
+    "nativeQueries": "deterministic modeled replies",
+    "GPU": false,
+    "performance": false,
+    "semanticNineContent": false,
+    "baselineImport": false,
+    "readyRayGeometryBinding163": false,
+    "fullMainAccounting": false,
+    "Frame": false,
+    "P05": false
+  },
+  "runs": [
+    {
+      "probe": "01",
+      "receipt": {
+        "runs": [
+          {
+            "name": "product",
+            "started": "2026-10-21T02:56:32.065Z",
+            "ended": "2026-10-21T02:56:47.043Z",
+            "status": 0,
+            "signal": null,
+            "error": null,
+            "fixture": {
+              "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\closed-command-execution-probe-01\\model\\test-metadata-product-72.cjs",
+              "bytes": 68756,
+              "sha256": "ab48ba5fee2b26028329c2188469fc4ce759f36def71cb7a4d85e7c7bb90642d"
+            },
+            "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\closed-command-execution-probe-01\\product-source"
+          },
+          {
+            "name": "execution-probe",
+            "started": "2026-10-21T02:56:47.044Z",
+            "ended": "2026-10-21T02:57:01.902Z",
+            "status": 1,
+            "signal": null,
+            "error": null,
+            "fixture": {
+              "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\closed-command-execution-probe-01\\model\\test-command-execution-probe-01.cjs",
+              "bytes": 68831,
+              "sha256": "81efa65f12cf72981de995d88c51f620458c435a498c7e5c0c7953fb53124dc2"
+            },
+            "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\closed-command-execution-probe-01\\diagnostic-source"
+          }
+        ],
+        "sourceFiles": 515,
+        "productBeforeAfterExact": true,
+        "diagnosticBeforeAfterExact": true,
+        "parentBeforeAfterExact": true,
+        "node": {
+          "path": "C:\\Users\\Joe\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+          "bytes": 92825416,
+          "sha256": "3602f2bb1a10f2cbab4c36886218a33c1ab3db87290e73b033c46c77147d0237"
+        },
+        "builder": {
+          "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\prepare-closed-command-execution-probe-01.cjs",
+          "bytes": 8030,
+          "sha256": "e5695ef1fc1b1906764441a1078930266834d20d36dc4fee1649519900edac4d"
+        },
+        "scope": "Disclosed execution-only price probe; all product gates/fees and actual caps preserved."
+      },
+      "artifactInventory": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\closed-command-execution-review-01\\probe-01-artifact-inventory.json",
+        "bytes": 212110,
+        "sha256": "c29f22b173f49f98308e4f79de2e4db0a938a7fc508d316c21bb9fec25dd5607"
+      }
+    },
+    {
+      "probe": "02",
+      "receipt": {
+        "status": 1,
+        "signal": null,
+        "error": null,
+        "started": "2026-10-21T02:58:17.121Z",
+        "ended": "2026-10-21T02:58:38.054Z",
+        "test": {
+          "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\closed-command-execution-probe-02\\model\\test-command-execution-probe-02.cjs",
+          "bytes": 68936,
+          "sha256": "31e10917e8f4a5859cf71585ca8451ed323a230c9079ae8209ebba041ee3a039"
+        },
+        "node": {
+          "path": "C:\\Users\\Joe\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+          "bytes": 92825416,
+          "sha256": "3602f2bb1a10f2cbab4c36886218a33c1ab3db87290e73b033c46c77147d0237"
+        },
+        "sourceFiles": 515,
+        "sourceBeforeAfterExact": true,
+        "parentBeforeAfterExact": true,
+        "scope": "Unadmitted execution-only modeled command; exploratory Root512/compiler table not qualified logical accounting/admission."
+      },
+      "artifactInventory": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\closed-command-execution-review-01\\probe-02-artifact-inventory.json",
+        "bytes": 208126,
+        "sha256": "bc49d5e8832c7761a87d29b4c3bd2f66cf3f8f0343f293f4224acfc1dac28ff1"
+      }
+    },
+    {
+      "probe": "03",
+      "receipt": {
+        "status": 1,
+        "signal": null,
+        "started": "2026-10-21T03:00:12.470Z",
+        "ended": "2026-10-21T03:00:33.683Z",
+        "test": {
+          "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\closed-command-execution-probe-03\\model\\test-command-execution-probe-03.cjs",
+          "bytes": 69489,
+          "sha256": "f4c252690aabf2d7414cfe7763d9957dc9e1049f2d00b58e8f896bafb78be52f"
+        },
+        "node": {
+          "path": "C:\\Users\\Joe\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+          "bytes": 92825416,
+          "sha256": "3602f2bb1a10f2cbab4c36886218a33c1ab3db87290e73b033c46c77147d0237"
+        },
+        "sourceFiles": 515,
+        "sourceBeforeAfterExact": true,
+        "scope": "Execution-only Root512; exact final-publication boundary diagnosis. No accounting/admission/native claim."
+      },
+      "artifactInventory": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\closed-command-execution-review-01\\probe-03-artifact-inventory.json",
+        "bytes": 208373,
+        "sha256": "d24c8749133df99a66f94fcb3418ad7fe9c0f6310202458d1addeaa9ab10de47"
+      }
+    },
+    {
+      "probe": "04",
+      "receipt": {
+        "status": 0,
+        "signal": null,
+        "started": "2026-10-21T03:01:24.538Z",
+        "ended": "2026-10-21T03:01:41.068Z",
+        "test": {
+          "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\closed-command-execution-probe-04\\model\\test-command-execution-probe-04.cjs",
+          "bytes": 69489,
+          "sha256": "63cbb5f9eb2be43fb58b97ed06ac67e27e8b84b51fb58de99d8b911b20254c55"
+        },
+        "node": {
+          "path": "C:\\Users\\Joe\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+          "bytes": 92825416,
+          "sha256": "3602f2bb1a10f2cbab4c36886218a33c1ab3db87290e73b033c46c77147d0237"
+        },
+        "sourceFiles": 515,
+        "sourceBeforeAfterExact": true,
+        "scope": "Execution-only Root256; all product tariffs/gates unchanged. No accounting/admission/native claim."
+      },
+      "artifactInventory": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\closed-command-execution-review-01\\probe-04-artifact-inventory.json",
+        "bytes": 208556,
+        "sha256": "26bc6fa87536735b4a419f61a14f7b5b47eebdee7bff3ee34591b5e6af2cd421"
+      }
+    }
+  ]
+}

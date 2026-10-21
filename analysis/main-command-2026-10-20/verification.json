@@ -1,0 +1,168 @@
+{
+  "format": "sphere-main-command-progress/1",
+  "dateUTC": "2026-10-21T03:18:41.885594+00:00",
+  "scope": "SOURCE AND DETERMINISTIC WEBGL MODEL ONLY; no product admission/native/performance/P05 claim",
+  "P05": "OPEN",
+  "P06_P08": "NOT_STARTED",
+  "phaseOne": "NOT_ACCEPTED_NOT_RELEASED",
+  "work": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00",
+  "sourceFilesChecked": 515,
+  "productGates": {
+    "cost": false,
+    "joint": false,
+    "numericFees": null
+  },
+  "execution": {
+    "mainVisits": 7938,
+    "groups": 10,
+    "firstConsumer": {
+      "frame": 3890,
+      "work": 2860,
+      "upload": 8576
+    },
+    "lastPublication": {
+      "frame": 7938,
+      "work": 3464,
+      "upload": 17016
+    },
+    "producers": 810,
+    "consumers": 810,
+    "samples": 9,
+    "raster": [
+      640,
+      480
+    ],
+    "maskBaseWrites": 90,
+    "maskAAReads": 720,
+    "acknowledgements": 1,
+    "appCompleted": 1,
+    "pending": false,
+    "maxWork": 4064,
+    "maxUpload": 17016,
+    "maxJobs": 1,
+    "uncertain": false,
+    "restoration": "Actual original/fixed G/PB/Field native-state restoration bodies and their fresh post-query verifiers executed for every consumer without uncertainty; deterministic modeled WebGL, not a browser/native result."
+  },
+  "fusedPlan": {
+    "groups": 10,
+    "mainVisits": 7938,
+    "producers": 810,
+    "consumers": 810,
+    "samples": 9,
+    "raster": [
+      640,
+      480
+    ],
+    "fieldAcknowledgements": 1,
+    "appCompleted": 1,
+    "pending": false,
+    "maxWork": 4064,
+    "maxUpload": 17016,
+    "maxJobs": 1,
+    "wholeFixtureZero": false
+  },
+  "sourceControls": {
+    "groups": 25,
+    "pass_": true,
+    "fieldSHA256": "f77b0d630742c5f70eeec6de8d03472f51834eb0d7f7af48b7695f99f5c89595",
+    "rendererSHA256": "ea7a3c4ea59f0d87bc319c72c6cea2f2c5821ef9bb22bee639caa6125eea1a2d"
+  },
+  "diagnostic": {
+    "entryWork": 256,
+    "numericFees": {
+      "begin": 256,
+      "row": 256,
+      "retire": 64,
+      "replay": 584
+    },
+    "purpose": "Execute genuine existing command/currentness/phase/restoration paths on deterministic modeled native replies. These are NOT selected logical tariffs and provide NO accounting/admission/P05 proof.",
+    "caps": "Original4096 work/slice,262144 upload/frame,two jobs,all memory and physical-resource limits unchanged."
+  },
+  "preservedFailures": {
+    "probe01": "Fixture drawBuffers/bindSampler returned Map instead of native void; source correctly refused. Corrected only in fresh02.",
+    "probe02": "All810commands complete; final App publication remains budget-deferred under debug512.",
+    "probe03": {
+      "reason": "Exact final preflight budget-only refusal",
+      "available": 2828,
+      "work": 1268,
+      "budget": {
+        "refused": true,
+        "available": 2828,
+        "minimum": 2957,
+        "following": 1829
+      },
+      "sceneCaptures": 1,
+      "sceneReplays": 810,
+      "sceneRefusals": 0
+    }
+  },
+  "recoveryFinding": "Scope change retains Mask.busy after record revocation; fresh recovery correction in progress, not qualified by these artifacts",
+  "fullHost": "No admitted host344 envelope verified. Historical36350872B array component and10MiB/no-Baseline execution fixture are separate scopes.",
+  "records": [
+    {
+      "path": "closed-command-execution-review-01/review-01.json",
+      "bytes": 13839,
+      "sha256": "0f280c3a0165859cce480669f031a68ed912c561367f38315580af7d72778552"
+    },
+    {
+      "path": "closed-command-execution-review-01/final-seal-01.json",
+      "bytes": 961,
+      "sha256": "e500c726343df06d23015fdfa59e7e429c0fce61bdc8fccbe4bfc5260806c476"
+    },
+    {
+      "path": "closed-joint-operation-02/source-inventory-27.json",
+      "bytes": 92614,
+      "sha256": "0fa23aab918ef08c52e614a269713b96f1ca706e14a11c39fbc9beecfa3b190c"
+    },
+    {
+      "path": "closed-frozen-plan-integration-review-01/review-01.json",
+      "bytes": 1654,
+      "sha256": "8059c97ccc40a4b06d9fc4fa709e5ac59c0f8ec3378c5df25441110778d1f590"
+    },
+    {
+      "path": "closed-frozen-plan-integration-review-01/final-seal-01.json",
+      "bytes": 857,
+      "sha256": "2263c2353d0fb9c96f1527a5f73a520eb985cbf960cb2a0923a44ff121d4bb0f"
+    },
+    {
+      "path": "closed-frozen-plan-integration-review-01/source-inventory-01.json",
+      "bytes": 92620,
+      "sha256": "6a67cc830e1619904b30d305dc05e1231739b532d45141e2ea5cea8e33bae4c2"
+    },
+    {
+      "path": "closed-command-execution-probe-05/numeric-exit.json",
+      "bytes": 890,
+      "sha256": "87fe0b3b665d4880c1f796965e9f1ce850ec943976513d1ada2af45482dc602a"
+    },
+    {
+      "path": "field-frozen-plan-reuse-01/results-02.json",
+      "bytes": 3126,
+      "sha256": "094f27bf9087a430ae62f5e034371de07e5fa32d6f3fcafefa57eb185b369761"
+    },
+    {
+      "path": "field-frozen-plan-reuse-01/final-seal-03.json",
+      "bytes": 2213,
+      "sha256": "0d4660a43cbb47745b3dc831e7b42c4f216ebdb255b8cd8c3cfa4f1faad38138"
+    },
+    {
+      "path": "closed-command-execution-fault-01/final-execution-fault-seal-04.json",
+      "bytes": 28600,
+      "sha256": "03409fe0415006ed7686fc6970e668c1db7c3e5b8cb0808119eeccba46eb56c2"
+    },
+    {
+      "path": "closed-command-execution-fault-01/READ-FIRST-04.md",
+      "bytes": 5749,
+      "sha256": "12537dfc7abae6085cc71cab55d2c9004ae9043466db52eb4a4ad1061434f974"
+    },
+    {
+      "path": "closed-command-execution-fault-01/corrupt-mask-02.numeric-exit.json",
+      "bytes": 892,
+      "sha256": "3cae5cf8ef32767fa4b027188bad4f4d96a2236c314d6e682406adb08ece99e6"
+    },
+    {
+      "path": "closed-command-execution-fault-01/scope-change-03.numeric-exit.json",
+      "bytes": 892,
+      "sha256": "2d830939b29859949e7f06b643807bb09ef2fc0becad012b39ee93764f136283"
+    }
+  ]
+}

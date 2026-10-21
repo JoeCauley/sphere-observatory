@@ -1,0 +1,120 @@
+{
+  "format": "sphere-field-frozen-plan-controls/1",
+  "pass": true,
+  "groups": 25,
+  "results": [
+    {
+      "name": "515 exact inventory rows; only declared Field/Renderer deltas; both complete parents reconstruct exactly; JS2022 parse",
+      "scripts": 375,
+      "modules": 44,
+      "status": "PASS"
+    },
+    {
+      "name": "Original view/hint parity and unchanged actual R charge {\"complete\":false,\"produced\":false}",
+      "work": 64,
+      "status": "PASS"
+    },
+    {
+      "name": "Original view/hint parity and unchanged actual R charge {\"complete\":false,\"produced\":true}",
+      "work": 64,
+      "status": "PASS"
+    },
+    {
+      "name": "Original view/hint parity and unchanged actual R charge {\"complete\":true}",
+      "work": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "Original view/hint parity and unchanged actual R charge {\"complete\":false,\"produced\":false,\"remaining\":831}",
+      "work": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "Refuses foreignKey",
+      "status": "PASS"
+    },
+    {
+      "name": "Refuses priorMain",
+      "status": "PASS"
+    },
+    {
+      "name": "Refuses notAdvanced",
+      "status": "PASS"
+    },
+    {
+      "name": "Refuses notReady",
+      "status": "PASS"
+    },
+    {
+      "name": "Refuses published",
+      "status": "PASS"
+    },
+    {
+      "name": "Refuses changedWorld",
+      "status": "PASS"
+    },
+    {
+      "name": "Refuses changedPacket",
+      "status": "PASS"
+    },
+    {
+      "name": "Refuses newSlice",
+      "status": "PASS"
+    },
+    {
+      "name": "Refuses closing",
+      "status": "PASS"
+    },
+    {
+      "name": "Refuses uncertain",
+      "status": "PASS"
+    },
+    {
+      "name": "Refuses retiredScratch",
+      "status": "PASS"
+    },
+    {
+      "name": "Refuses changedNative",
+      "status": "PASS"
+    },
+    {
+      "name": "Refuses nonClosed",
+      "status": "PASS"
+    },
+    {
+      "name": "Refuses entered targetChangesMain",
+      "status": "PASS"
+    },
+    {
+      "name": "Refuses entered targetChangesScope",
+      "status": "PASS"
+    },
+    {
+      "name": "Refuses entered targetChangesWorld",
+      "status": "PASS"
+    },
+    {
+      "name": "Refuses entered targetReplacesProgress",
+      "status": "PASS"
+    },
+    {
+      "name": "Refuses entered targetReplacesImage",
+      "status": "PASS"
+    },
+    {
+      "name": "Refuses entered packetStartsClosing",
+      "status": "PASS"
+    },
+    {
+      "name": "Actual Renderer selection uses immutable CLOSED own method only; absent, mutable, accessor, other profile and ordinary paths retain original read; no accessor execution",
+      "status": "PASS",
+      "getters": 0,
+      "plans": 1,
+      "legacy": 5
+    }
+  ],
+  "fieldSHA256": "f77b0d630742c5f70eeec6de8d03472f51834eb0d7f7af48b7695f99f5c89595",
+  "rendererSHA256": "ea7a3c4ea59f0d87bc319c72c6cea2f2c5821ef9bb22bee639caa6125eea1a2d",
+  "sourceFiles": 515,
+  "scope": "Actual extracted Field/Renderer code and actual R debits; modeled World/K/native replies; source controls only, no selected tariff, complete content/native/performance/Frame/P05 claim"
+}

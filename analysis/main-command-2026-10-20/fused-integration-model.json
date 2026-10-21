@@ -1,0 +1,41 @@
+{
+  "status": "PASS_FUSED_PLAN_ACTUAL_COMMAND_MODEL_EXECUTION_ONLY",
+  "source": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\closed-frozen-plan-integration-review-01\\source-inventory-01.json",
+    "bytes": 92620,
+    "sha256": "6a67cc830e1619904b30d305dc05e1231739b532d45141e2ea5cea8e33bae4c2"
+  },
+  "composition": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\closed-command-execution-probe-05\\minimal-composition.json",
+    "bytes": 1365,
+    "sha256": "0580c96c741631322494f6f58dadb1de948dbcfe600f9df6da4d521191090ffb"
+  },
+  "numericExit": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\closed-command-execution-probe-05\\numeric-exit.json",
+    "bytes": 890,
+    "sha256": "87fe0b3b665d4880c1f796965e9f1ce850ec943976513d1ada2af45482dc602a"
+  },
+  "groups": 10,
+  "mainVisits": 7938,
+  "producers": 810,
+  "consumers": 810,
+  "samples": 9,
+  "raster": [
+    640,
+    480
+  ],
+  "fieldAcknowledgements": 1,
+  "appCompleted": 1,
+  "pending": false,
+  "maxWork": 4064,
+  "maxUpload": 17016,
+  "maxJobs": 1,
+  "physicalChildRefsFinal": 0,
+  "maskChildRecordsFinal": 0,
+  "wholeFixtureZero": false,
+  "productCostGate": false,
+  "productJointGate": false,
+  "productNumericFees": null,
+  "diagnosticRoot": 256,
+  "scope": "Exact2module Field/Renderer fusion over immutable review27 product. Both old public methods/fees remain in source. Disclosed Root256/compiler diagnostic table executes actual source native bodies on deterministic modeled replies; not operation pricing/accounting/native/performance/semantic nine-content/Frame/P05 qualification."
+}
