@@ -1,3 +1,6 @@
+<!-- culling-preparation-review-2026-10-20 -->
+> **Current work plan — 20 October 2026:** The [camera culling review](Observatory-Culling-Preparation-Review-2026-10-20.md) records existing visibility checks and where preparation can wait. The [forward work plan](Observatory-Current-Work-Plan.md) adds verified Industry bounds, visibility before copies/uploads, and guarded job priorities alongside the remaining Main/P05 work. These are planned changes; P05 remains OPEN.
+
 <!-- repository-safety-checkpoint-2026-10-20 -->
 > **Project safety checkpoint — 20 October 2026:** Meadow–Industry walking is delivered; formal P05 remains OPEN. The latest Main candidate completes input compilation but defers before drawing on its unqualified work contract. Read [current status and completion path](Observatory-Project-Checkpoint-2026-10-20.md). Source/progress backups preserve the unfinished candidates separately from the working application; raw archives remain local by owner selection.
 

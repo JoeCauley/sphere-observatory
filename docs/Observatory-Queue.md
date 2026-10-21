@@ -1,3 +1,6 @@
+<!-- culling-preparation-review-2026-10-20 -->
+> **Current work plan — 20 October 2026:** The [camera culling review](Observatory-Culling-Preparation-Review-2026-10-20.md) records existing visibility checks and where preparation can wait. The [forward work plan](Observatory-Current-Work-Plan.md) adds verified Industry bounds, visibility before copies/uploads, and guarded job priorities alongside the remaining Main/P05 work. These are planned changes; P05 remains OPEN.
+
 # Observatory queue and resumption notes
 
 <!-- current-meadow-progress-2026-10-03 -->

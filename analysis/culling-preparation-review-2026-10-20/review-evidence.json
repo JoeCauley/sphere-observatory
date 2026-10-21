@@ -1,0 +1,247 @@
+{
+  "schema": "sphere-culling-source-review/1",
+  "date": "2026-10-20",
+  "checkedAt": "2026-10-21T00:33:36.270Z",
+  "baselineCommit": "2c151880876412ae087ad57d591226ae8c25011f",
+  "branch": "codex/observatory-safety-2026-10-20",
+  "scope": "Source audit and forward-plan update; no rendering behavior or acceptance change.",
+  "focusedControls": {
+    "result": "PASS",
+    "visibilityCases": [
+      {
+        "name": "ahead",
+        "center": [
+          0,
+          0,
+          10
+        ],
+        "half": 1,
+        "expected": true,
+        "meshVisible": true,
+        "patchVisible": true
+      },
+      {
+        "name": "behind",
+        "center": [
+          0,
+          0,
+          -10
+        ],
+        "half": 1,
+        "expected": false,
+        "meshVisible": false,
+        "patchVisible": false
+      },
+      {
+        "name": "side",
+        "center": [
+          30,
+          0,
+          10
+        ],
+        "half": 1,
+        "expected": false,
+        "meshVisible": false,
+        "patchVisible": false
+      },
+      {
+        "name": "touching-edge",
+        "center": [
+          11,
+          0,
+          10
+        ],
+        "half": 1,
+        "expected": true,
+        "meshVisible": true,
+        "patchVisible": true
+      },
+      {
+        "name": "enclosing-camera",
+        "center": [
+          0,
+          0,
+          0
+        ],
+        "half": 2,
+        "expected": true,
+        "meshVisible": true,
+        "patchVisible": true
+      },
+      {
+        "name": "no-far-plane",
+        "center": [
+          0,
+          0,
+          100000000
+        ],
+        "half": 1,
+        "expected": true,
+        "meshVisible": true,
+        "patchVisible": true
+      }
+    ],
+    "additionalVisibilityAssertions": 3,
+    "staticGeometryCases": 432,
+    "staticVerticesInspected": 5090544,
+    "sampledMotionStates": 24,
+    "normalSizeOrientationZeroModelZeroBounds": [
+      {
+        "zone": "yard",
+        "demandRadius": 72,
+        "maxHorizontal": 134.74112787522216,
+        "max3D": 134.74118131006063
+      },
+      {
+        "zone": "hall",
+        "demandRadius": 43,
+        "maxHorizontal": 36.138759084148035,
+        "max3D": 41.53311931459037
+      },
+      {
+        "zone": "intake",
+        "demandRadius": 37,
+        "maxHorizontal": 36.065501331769845,
+        "max3D": 36.065681498483826
+      },
+      {
+        "zone": "gallery",
+        "demandRadius": 35,
+        "maxHorizontal": 33.684650397721036,
+        "max3D": 35.16625714508066
+      },
+      {
+        "zone": "storage",
+        "demandRadius": 33,
+        "maxHorizontal": 33.28663395418648,
+        "max3D": 33.28678415970558
+      },
+      {
+        "zone": "connections",
+        "demandRadius": 108,
+        "maxHorizontal": 95.81398493681733,
+        "max3D": 95.84403850421204
+      }
+    ],
+    "limitations": "Existing pure source behavior and sampled generated geometry, not a new culler, universal bounds proof, native render or performance measurement."
+  },
+  "preservation": {
+    "applicationSourceFilesExact": 363,
+    "privateMainSourceFilesMatchSealedInventory": 515,
+    "privateMainInventorySHA256": "53fd3f1ed96edda970650a42d0a3c5aac201b43952ba56ee4a83c4dd11881cb0",
+    "priorIndexRoadmapQueueBodiesExact": true
+  },
+  "reviewedApplicationSources": [
+    {
+      "path": "math.js",
+      "sha256": "deb9170a2c4070ae3af6ae4e418a62bfc4ee074fe2d4f6d90956ee709a6051de"
+    },
+    {
+      "path": "geometry-renderer.js",
+      "sha256": "d7e49700f9b2406a5a1f9e70a40cfd6c1a0ed9238eb05616f0fefeb7bc8ce05b"
+    },
+    {
+      "path": "asset-plan.js",
+      "sha256": "7ae08f59c0aaa46697d3757c04062df295afd2ae00445f6a5b1a16d409569efe"
+    },
+    {
+      "path": "renderer.js",
+      "sha256": "9fa60e56ef06e91873eed45054d1a69e2382a595940dde7fa0a3d9768c2bc731"
+    },
+    {
+      "path": "local-shadows.js",
+      "sha256": "d289ef6ffc58232eac646e54ff19fd61f8bf9475316acdde81ea486057e48da7"
+    },
+    {
+      "path": "instanced-environment.js",
+      "sha256": "5a5a001a1713630a1fef1810c328f516cd183301046ad6faa46b21e82d6e8a56"
+    },
+    {
+      "path": "vegetation-selection.js",
+      "sha256": "e33cccadcac9a2a6bbe0782a03c794beaf23b34bf9169c6435668e35cb37aa95"
+    },
+    {
+      "path": "vegetation-gpu.js",
+      "sha256": "9ed26f3dd1df67e63e57d29fa7089037ba0173237b8a56874abf976ff0b18a75"
+    },
+    {
+      "path": "vegetation-lifecycle.js",
+      "sha256": "f762122dde51453f82de0f5927066652175344aea72f838c556beb68b7f473ac"
+    },
+    {
+      "path": "meadow-field.js",
+      "sha256": "a89b5405ef698eba20606a37afc7382b4288ec33e123f281043bcbd8053c3743"
+    },
+    {
+      "path": "meadow-provider.js",
+      "sha256": "34812a5b7ddaf52e90f5514cca4be8f2f4f3fa0585ec3447496401fbf3b08aa5"
+    },
+    {
+      "path": "meadow-canopy.js",
+      "sha256": "9f75aec53a4b433e9cb604d6cf03cd5c023b9f78cfe62e3f07cd9bd68f649f8a"
+    },
+    {
+      "path": "packs/runtime/v1/preparation.js",
+      "sha256": "7685030b9267e97eb04d76a63ff820022504a63817b52952e6027c3654f3d326"
+    },
+    {
+      "path": "packs/shared-world/1.0.0/host.js",
+      "sha256": "642f22a580a82af47c7439a4e17b103e5d65dcc831d932623661ec4be45f0e0d"
+    },
+    {
+      "path": "packs/shared-world/1.0.0/app.js",
+      "sha256": "9170d2b1e1371019b4bb76bc63801297045771803c3966b538f8641fcbd5c684"
+    },
+    {
+      "path": "packs/shared-world/1.0.0/reference.js",
+      "sha256": "f19a6044111009e6511293bc0255754810044fbab8b257233a02839f5caff41d"
+    },
+    {
+      "path": "packs/shared-world/1.0.0/renderer.js",
+      "sha256": "a6a8167b961bd7fb6511092797f68ea395a195af857273d4d87ed7c27b7744bc"
+    },
+    {
+      "path": "packs/shared-world/1.0.0/renderer-batch.js",
+      "sha256": "af9a4fde8cce13246b557f0446cd89f39e7bfad6fd6af50631b981e58290e942"
+    },
+    {
+      "path": "packs/infinite-industry/1.0.0/facility.js",
+      "sha256": "79858ed044925b74bda91cf990c686f09d55b22ffcde7b23478141940313b39d"
+    },
+    {
+      "path": "packs/infinite-industry/1.0.0/geometry.js",
+      "sha256": "6dc26f016d1ae927abe76bf6b77f2186aa1034509630a716c34b8423c4ed4c25"
+    },
+    {
+      "path": "packs/infinite-industry/1.0.0/prepare-worker.js",
+      "sha256": "b54fb82f9f3202c7774110046623c167c73e3c9f89cde5df34fb1967098af6c3"
+    },
+    {
+      "path": "packs/infinite-meadow/1.0.0/grass-stage.js",
+      "sha256": "fae3b698c7fd55e8aefb144ffc2f273294dcbaf7bbce21ef72a122accfc2ec8e"
+    },
+    {
+      "path": "packs/infinite-meadow/1.0.0/renderer.js",
+      "sha256": "31aef7070eb2a7946634a9c58eaa042ae545c2c1c68e7af2bab523ba4e82a337"
+    },
+    {
+      "path": "packs/infinite-meadow/1.0.0/grass-shaders.js",
+      "sha256": "0e149323a0f5b5cd22ddd8a4b71d8905291a8188226f826a078607ce68ba833d"
+    }
+  ],
+  "reproduction": {
+    "runtime": "Node.js v24.19.0; no added dependencies",
+    "command": "node analysis/culling-preparation-review-2026-10-20/source-controls.mjs <fresh-output-json-path>",
+    "scriptSHA256": "171223a5b4f8dfd85c623af99f21100a82b17ec30ed0bbd1466405f5280398ae",
+    "localFullOutput": "I:/Sphere/work/culling-preparation-review-2026-10-21T00-24-57Z/portable-source-controls.json",
+    "localFullOutputSHA256": "fe3db091296cea4f546db02a7115bbcb1412204f0daa18161fcd44b2d28e0e71"
+  },
+  "notClaimed": [
+    "new culling implementation",
+    "universal animated bound proof",
+    "native GPU state or visual equivalence",
+    "performance saving",
+    "P05 completion",
+    "acceptance or release"
+  ]
+}
