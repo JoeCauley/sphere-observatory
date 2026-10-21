@@ -1,0 +1,221 @@
+{
+  "utc": "2026-10-21T06:16:49.077778+00:00",
+  "status": "COMPLETE_READY_PREFIX_REUSE_PASS_NATIVE_IMAGE_PROVENANCE_PASS_ROW_SUBSTITUTION_REJECTED",
+  "P05": "OPEN_IN_PROGRESS",
+  "P06_P08": "NOT_STARTED",
+  "PhaseOne": "NOT_ACCEPTED_NOT_RELEASED",
+  "evidence": [
+    {
+      "path": "closed-ready-prefix-06/final-seal-01.json",
+      "bytes": 421736,
+      "sha256": "e3f2d96ea29f112772e4730a2df17a040e922448fb239b12536125ec7f80b7c6"
+    },
+    {
+      "path": "closed-ready-prefix-peer-01/final-peer-seal-06.json",
+      "bytes": 199528,
+      "sha256": "20598830f9332a8850a8290039a72597c1825380dc8a43ca104d922977a3a811"
+    },
+    {
+      "path": "ready-prefix-integrity-review-01/review-01.json",
+      "bytes": 3795,
+      "sha256": "d988a70fd6c386e766f8e56774c837be19989abe6e5a0e9dda89c00d60ee7804"
+    },
+    {
+      "path": "preview-light-demand-peer-01/final-peer-seal-03.json",
+      "bytes": 1935,
+      "sha256": "f1d61b25b04d49c87ad4a8f750d4012e3523cc2e4584f8a75bb4ec727e894fee"
+    },
+    {
+      "path": "preview-light-demand-02/source-delta-01.json",
+      "bytes": 309,
+      "sha256": "eb73b35ae8ac6ab62caaa6185309db9b49a52141f81d103ddcdc9cd9f3870b0e"
+    },
+    {
+      "path": "full-ordinary-host-envelope-peer-01/final-peer-seal-08.json",
+      "bytes": 5302,
+      "sha256": "35ef449247ff528fc5a2619b132af777c9bfe68c540f0315ef0c48084212ab71"
+    },
+    {
+      "path": "original-image-parity-native-01/final-seal-01.json",
+      "bytes": 4138,
+      "sha256": "20f69613530a5d18d279472a650b795b6407f674f5ecb42a3708e98c939247c7"
+    },
+    {
+      "path": "original-image-parity-native-02/final-seal-01.json",
+      "bytes": 3905,
+      "sha256": "e49a8df279e3093d35a280c2ef6b614780d39a2a3736408f3e47b675eb7e1a61"
+    }
+  ],
+  "completeReadyPrefix": {
+    "status": "PASS_BOUNDED_COMPLETE_GENUINE_READY_PREFIX_MODEL",
+    "sourceFiles": 515,
+    "sourceBeforeAfterExact": true,
+    "parsed": 419,
+    "script": 375,
+    "module": 44,
+    "controls": [
+      {
+        "mode": "bound-entry",
+        "exitCode": 0,
+        "sourceBeforeAfterExact": true
+      },
+      {
+        "mode": "scope-change",
+        "exitCode": 0,
+        "sourceBeforeAfterExact": true
+      },
+      {
+        "mode": "corrupt-mask",
+        "exitCode": 0,
+        "sourceBeforeAfterExact": true
+      }
+    ],
+    "actualAppCallbacks": 8747,
+    "actualMainFrames": 8726,
+    "ray": {
+      "samples": 9,
+      "provedPixels": 2764800,
+      "cpuCallbacks": 21072,
+      "proofSteps": 3862669
+    },
+    "geometry": {
+      "triangles": 91672,
+      "localTriangles": 91672
+    },
+    "producer": 810,
+    "consumer": 810,
+    "AppCompleted": 1,
+    "pending": false,
+    "firstConsumerWork": 2903,
+    "finalPublicationWork": 3585,
+    "publicationFollowing": 2085,
+    "maxWork": 4064,
+    "maxUpload": 17016,
+    "maxJobs": 1,
+    "newQ": {
+      "requested": 2048,
+      "chargedBefore": 2772,
+      "chargedAfter": 0
+    },
+    "faults": "Bothactualnativefaults restore18groups, nofalsecursor/ack; actualobservedmodeledGL+Rloss then paidScene/Mask/Fieldcleanup.",
+    "priorRefusal": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\closed-ready-prefix-01\\failure-review-01\\review-01.json",
+      "bytes": 3578,
+      "sha256": "f0b1161fc49c291ad1ac2e3cacd35a180bedd9d2d9e82d8d08ebfa5d9f238c72"
+    },
+    "peerSeal": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\closed-ready-prefix-peer-01\\final-peer-seal-06.json",
+      "bytes": 199528,
+      "sha256": "20598830f9332a8850a8290039a72597c1825380dc8a43ca104d922977a3a811"
+    },
+    "disclosure": {
+      "status": "RAW_CURRENT_SOURCE_MODEL_AND_REVIEWED_LOGICAL_COMPONENT",
+      "sourceTransforms": 0,
+      "feeOverrides": 0,
+      "selectedNewProfile": "sphere-main-oriented-prepared-publication-bound-profile/5",
+      "newWork": {
+        "planning": 32,
+        "cold": 64
+      },
+      "newRequestedQ": 2048,
+      "observedQWithBookkeeping": 2772,
+      "legacyFixtureWording": "Some inherited output strings say execution-only/unadmitted/Root256notproducttariff. They describe historical fixtures, not source transforms in this run. All executed product files are exact source inventory; Rootv11/JOINT80 remain genuine source-admitted predecessors. This handoff qualifies only this bounded logical resource/API component + deterministic model evidence.",
+      "strictOpen": [
+        "Actual ordinary/full-host Baseline and allnine semantic sampler contents.",
+        "Default visible Canvas/backing ownership.",
+        "Actual browser/GPU pixels, native Main following/resource aggregate/performance/.5ms/Frame/P05.",
+        "Remaining authentic numerical/provider/Root parents after scoped component retirement; whole fixture zero is not claimed."
+      ]
+    }
+  },
+  "lazyLightingWorker": {
+    "source": "preview-light-demand-02/source",
+    "changedFiles": 1,
+    "unchangedFiles": 514,
+    "controls0": 13,
+    "independentRerunControls0": 13,
+    "constructorWorkerAttempts": 0,
+    "firstRealPostCondition": "unchanged actual time/play/pending/100ms condition",
+    "currentCapturedCore": "shineField=false; genuine Renderer never calls sample on this exact route",
+    "activeWorkerAdmission": false,
+    "nativeTimingPixelsHeap": "UNMEASURED",
+    "scope": "Reviewed separate staged source. New startup timing/worker status label intentionally differs. No integrated Main or active-worker ownership conclusion."
+  },
+  "nativeImageProvenance": {
+    "browser": "Chrome155",
+    "assets": 4,
+    "ids": [
+      4,
+      7
+    ],
+    "mipLevels": 82,
+    "comparedBytes": 25156744,
+    "differentBytes": 0,
+    "method": "Original URL versus SHA256-verified PNG bytes in Blob URL, original native HTMLImageElement, unchanged original Canvas mip methods. GPU upload calls are model-observed.",
+    "newImageOwnerMainAcceptance": false
+  },
+  "rejectedRows": {
+    "spanRows": 16,
+    "nativeReads": 728,
+    "maxNativeSpanBytes": 80256,
+    "mipLevels": 82,
+    "comparedBytes": 25156744,
+    "differentBytes": 1399339,
+    "heroMaxDelta": 106,
+    "original82ReferenceHashesStableAcrossRuns": true,
+    "cause": "UNDETERMINED",
+    "disposition": "Keep original whole-level getImageData, same Canvas/context history and original mip recipe; no threshold waiver."
+  },
+  "hostProposal": {
+    "readOnlySourceDesignSealed": true,
+    "sourceFilesExact": 515,
+    "contentOnlyGpuOldRowsHeld": 135570668,
+    "fullMainCapSelected": false,
+    "finiteRootTargetProposal": 2,
+    "hostCpuCacheUpperBytesOutsideService": 119296,
+    "remaining": [
+      "Demanded original Biome/Hero private owners and paid current-publication teardown",
+      "Finite pre-prepare Root target admission preserving current/Mask/readers/fences",
+      "Visible Canvas initial facts/joint truthful baseline import and owned managed resize",
+      "Complete simultaneous R/Q/source/service/provider vector and native Main/Frame evidence"
+    ],
+    "initialCanvasBirth": "Current Baseline pattern is post-construction import. A new initial facts/import path may not be described as pre-birth GPU reservation. Native initial peak remains open."
+  },
+  "nativeTaskCleanup": {
+    "comparisonTabsClosed": true,
+    "task8357ServerStopped": true,
+    "existing9121Preserved": true,
+    "walkingWindowPreserved": true
+  },
+  "copiedCurrentEvidence": [
+    {
+      "path": "analysis/main-reuse-2026-10-21/native-original-blob.json",
+      "bytes": 22649,
+      "sha256": "402d679aa28ceac4aa9baaf256c0a9361038b15a6c677a3fb811a7052b6b68de"
+    },
+    {
+      "path": "analysis/main-reuse-2026-10-21/native-original-blob.png",
+      "bytes": 170468,
+      "sha256": "6a32f2d724ed87125a0defdda0c24624467026a0628e6cf927a92b9112a23745"
+    },
+    {
+      "path": "analysis/main-reuse-2026-10-21/native-row-rejected.json",
+      "bytes": 23080,
+      "sha256": "e4eba7cf200f73fc289a7e4da1ff23da6288ad1d7a2c4172a2a9feb8ebb0bd26"
+    },
+    {
+      "path": "analysis/main-reuse-2026-10-21/native-row-rejected.png",
+      "bytes": 176493,
+      "sha256": "167d4a3adc489d59d4a96eb84d9c5816c50e07e919900812ae8a510a6770687c"
+    }
+  ],
+  "unchangedLimits": {
+    "prepareOps": 4096,
+    "uploadBytesPerFrame": 262144,
+    "jobs": 2,
+    "serviceCpuBytes": 33554432,
+    "serviceGpuBytes": 10485760,
+    "Qbytes": 33554432
+  },
+  "scope": "Independent simulation and delivered Meadow\u2013Industry walking remain unchanged. Component/native image results do not close ordinary Main, full host, whole-view/fragment/Frame, physical heap/driver, quiet timing or P05."
+}

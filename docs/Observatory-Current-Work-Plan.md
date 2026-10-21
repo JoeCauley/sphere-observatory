@@ -6,18 +6,20 @@ The delivered experience is walking between Infinite Meadow and Infinite Industr
 
 ## 1. Resolve the current Main entry condition
 
-Continue from sealed `closed-qualified-branch-02/product-source` for the admitted Root v11 logical command contract, alongside separately reviewed ordinary-location source 02. The raw 515-file owner model completes all 810 producer/consumer pairs, all nine samples and App publication without source, gate or price overrides. The complete Scene, Root, Field and retirement tables retain unchanged work/upload/job and service/provider limits. Read the [latest scoped advancement](../analysis/main-reuse-2026-10-21/advancement-03.json) and [reuse progress](Observatory-Main-Reuse-Progress-2026-10-21.md).
+Continue from sealed `closed-ready-prefix-06/source` for the complete prepared-view prefix. It includes the admitted raw Root/Scene command path plus genuine Ray/GeometryBinding and source-owned publication-bound reuse. Three full source models and 17 focused peer controls pass without price/source overrides; publication retains the complete 2,085 following reserve and fresh native checks. The earlier 12-unit refusal and first candidate ownership/metadata/billing defects are preserved. Read [advancement 04](../analysis/main-reuse-2026-10-21/advancement-04.json) and the [reuse progress record](Observatory-Main-Reuse-Progress-2026-10-21.md).
 
-The immediate steps are:
+The immediate sequence is:
 
-1. Resolve the actual ready-Ray/GeometryBinding publication handoff. All 810 pairs complete, then publication honestly refuses at 2,601 available versus 2,613 required. Retain a source-derived conservative bound from preparation if it removes redundant quotation; preserve full following work and every live draw check.
-2. Prepare only the content requested by genuine camera/pass demand. The current Core requests Biome 7, Hero 7 and Finish, with no World/Wound images. Preserve original image, Canvas, tier, mip and array content; privately publish complete current bindings before retaining the batch.
-3. Admit the full simultaneous host envelope from actual viewport, current/staging/fenced targets, content, Field, service/providers and CPU/Q/source ownership. The 135,570,668-byte content GPU subtotal is not a whole-host cap. Preserve old readers and fences, and defer additional target preparation when finite admission is unavailable.
-4. Run native Main overview/local whole-view, fragment, Frame, support and ownership proof required for P05.
+1. Complete and review the original demanded Biome/Hero owners and private binding publication, preserving the exact Canvas recipe and paid cleanup. Join the separate corrected location and lazy-lighting sources. Requalify the actual joined source graph and its complete following work.
+2. Implement finite Root target admission before new preparation. A third physical descriptor or an over-budget request must defer while retaining the current view, Mask, readers and fences. A new fixed genuine R usage reader must have source-bound work/storage; the existing broad inspect result is not a cheap scalar port.
+3. Add authentic visible-Canvas facts and truthful initial joint baseline import, then pre-reserved managed resize/use. Initial import is not pre-birth ownership; native birth/backing peaks stay explicit. Avoid needless unchanged-dimension setters; verify every resized native layout and keep logical raster generations separate from opaque browser backing buffers.
+4. Admit the full simultaneous actual-viewport content/target/Canvas/Field/service/provider/CPU/Q/source vector. The 135,570,668-byte content subtotal and two-target design are not a whole-host cap. Then run required native Main overview/local, whole-view/fragment/Frame and support/ownership proof for P05.
 
-Reuse now avoids immutable schema searches, generic parent lookup, completed cold compilation and repeated sampler-location searches. Corrected location 02 retains all 12 fresh uniform observations and every existing mutable/native/R/Main guard. Simulation truth, live resource replies and all required render passes remain independent. A deterministic model supplies no native acceptance.
+The actual current Core requests Biome 7, Hero 7 and Finish, with World/Wound empty. Compute the genuine plan for each admitted camera/pass; never hardcode 7 or infer occlusion from sparse rays. Preserve all original assets, density, geometry, mips, shadows and support. The independent simulation remains the reference system.
 
-Exit: justified bounded entry and actual following-work path; exact owner lifetimes and simultaneous accounting; unchanged service/provider/work/upload/job/content limits; required source/ownership controls and actual P05 native evidence.
+Native Chrome confirms original URL versus verified Blob URL with zero differences across all 82 original mip levels for IDs 4 and 7. A 16-row getImageData experiment failed and is rejected; retain the original whole-level readback and Canvas object history. Logical operation fees do not prove .5ms or physical memory.
+
+Exit: exact joined ownership and complete following work under unchanged limits, accurate simultaneous admission, and required native P05 evidence. Models and image components alone supply no native Main acceptance.
 
 ## 2. Add conservative display demand before expensive preparation
 
@@ -48,6 +50,7 @@ Provide configure, preview, validate, version and package for supported pack cre
 
 ## Deferred experiments
 
+- Smaller-row Canvas readback is rejected in its tested form: native mip equivalence fails. Keep the original whole-level recipe; any alternate path requires a new exact comparison.
 - Procedural Meadow tile/grid-block visibility, after Industry measurements. Preserve canonical instance identities, wind, exclusions, boundary silhouettes and every accepted Meadow limit.
 - Static Industry geometry origin uniforms, if full-buffer rebasing remains material after culling. Preserve geographic double-precision subtraction, depth and visible equivalence.
 - Backface culling for individually verified closed solid mesh families. Grass/cards and other required two-sided surfaces stay two-sided.
