@@ -1,0 +1,61 @@
+{
+  "created": "2026-10-21T04:11:58.463Z",
+  "status": "PASS_STAGED_COLD_COMPILER_SOURCE_CONTRACT_AND_COMPONENT_CONTROLS",
+  "sourceFiles": 515,
+  "exactOtherParentFiles": 514,
+  "reversibleHunks": 9,
+  "sourceBeforeAfterExact": true,
+  "parseJS2022": {
+    "total": 419,
+    "scripts": 375,
+    "modules": 44
+  },
+  "groups": 28,
+  "cases": 32,
+  "componentFinalPhysicalAndLogicalAndQZero": true,
+  "candidateColdFees": {
+    "controller": 640,
+    "visit": 128,
+    "begin": 128,
+    "row": 128,
+    "retire": 128,
+    "cleanup": 64
+  },
+  "feeSemantics": "Source-pinned bounded resource/API operation contract, finite local helper/error/loop language; not a global1AST=1credit claim or a physical-time guarantee.",
+  "product": {
+    "RootCostGate": false,
+    "jointGate": false,
+    "numericFees": null,
+    "unchangedLimits": true
+  },
+  "unqualified": [
+    "Genuine joined Main/Scene/Root execution of these new cold fees and actual full following schedule.",
+    "Exactjoint80/2056 hot numeric368 source guard and repaired/Bound profile/source composition.",
+    "Complete Root/Field/new bound-reader cold contracts; all native runtime/content/sampler/physical usage/heap/performance/Frame/public routes/P05 gates."
+  ],
+  "currentTests": {
+    "path": "numeric-cold-admission-01/test-cold-admission-03.cjs",
+    "bytes": 32700,
+    "sha256": "fbe3a24f4d6498e25ad90d2d391c2ba10a1b809f00594c6f212e6e61bad7a5a5"
+  },
+  "numericReceipt": {
+    "path": "numeric-cold-admission-01/numeric-exit-03.json",
+    "bytes": 53,
+    "sha256": "5be607aa6069756a424013851e837a1d6719ca60a53323cc1dcdd74f0dd1cb8a"
+  },
+  "derivation": {
+    "path": "derive-compiler-cold-admission-01.cjs",
+    "bytes": 13824,
+    "sha256": "eeab9a8b5bc66ce54e88db9043816826ab462b905591e1ed6652e6035bf41d3e"
+  },
+  "coverage": {
+    "path": "numeric-cold-admission-01/cold-operation-coverage-05.json",
+    "bytes": 138177,
+    "sha256": "c357bd178f6af316ed8144b62cfbdfe824a99aa2a798cf7410009266ecaebff5"
+  },
+  "sourceInventory": {
+    "path": "numeric-cold-admission-01/source-inventory-01.json",
+    "bytes": 87327,
+    "sha256": "896ed931fc1d63283a6db56cbc11e9d27f2e76d9181a12ddd57973612859604c"
+  }
+}

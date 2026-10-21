@@ -1,0 +1,59 @@
+{
+  "created": "2026-10-21T04:36:04.321901+00:00",
+  "status": "SCOPED_SOURCE_COMPONENT_AND_EXECUTION_MODEL_PROGRESS_NOT_P05_ACCEPTANCE",
+  "P05": "OPEN_IN_PROGRESS",
+  "P06_P08": "NOT_STARTED",
+  "PhaseOne": "NOT_ACCEPTED_NOT_RELEASED",
+  "publicImplementation": "Industry shared-world1.1.0 /adapter1.2.0 delivered in99f4ed6; original packs/runtime retained",
+  "sealed": [
+    {
+      "path": "scene-ordinary-index-reuse-02/final-seal-02.json",
+      "bytes": 2176,
+      "sha256": "c87020dda49fcbdf25da896274ff13b6d9d2957d1c98d15f1800078fa7c5b228"
+    },
+    {
+      "path": "closed-ordinary-index-integration-review-01/final-seal-01.json",
+      "bytes": 4472,
+      "sha256": "544682be4cc61bfad868d003b2f9f41d581cae624ab6d9da63d9ca892c8204de"
+    },
+    {
+      "path": "closed-bound-entry-reader-01/final-bound-entry-seal-16.json",
+      "bytes": 324561,
+      "sha256": "ae11a6843e3c9139e34e7f180cf22e218ff69a9f123fa89a33d5ef432944bd79"
+    },
+    {
+      "path": "closed-bound-index-integration-01/final-seal-01.json",
+      "bytes": 219176,
+      "sha256": "48562999e42845fe0f00d48b6f437924a493e64fb54b98f823a0ff792324c3d6"
+    },
+    {
+      "path": "numeric-cold-admission-01/final-seal-01.json",
+      "bytes": 3402,
+      "sha256": "a52f94c16baad03355146c1e575df3445d8e008664ad1694e0ab405c3cc9deb9"
+    },
+    {
+      "path": "numeric-cold-admission-peer-01/final-peer-seal-03.json",
+      "bytes": 5345,
+      "sha256": "5d22052522d9b040abf80320e6199b68056c8e49a517f342955ffb97272e8011"
+    },
+    {
+      "path": "numeric-compiled-ready-reuse-02/final-seal-02.json",
+      "bytes": 678,
+      "sha256": "0ae8126d3c863c59edc147e153b35314240ac729dfa541d1029d7033f064e745"
+    }
+  ],
+  "compiledReadyPeer": "PENDING_AT_THIS_RECORDED_CUTOFF",
+  "compiledReadyJoinedExecution": "NOT_YET_RUN_AT_THIS_RECORDED_CUTOFF",
+  "schedulingFailure": "The first full cold-table join completes810producer/810consumer pairs but refuses final publication with2700remaining against2701required. Root256/hot584 are disclosed unadmitted diagnostic values. No fee/cap was reduced to change that result.",
+  "checkpoint": "I:/Sphere/checkpoints/observatory-main-reuse-2026-10-21;two515-file snapshots and137selected records,1030ZIPentriesverified and onefresh515restore",
+  "newerWorkInProgress": [
+    "Separate consumer/complete Root plan contracts and genuine two-bundle branch; product null/gated.",
+    "Complete Field720 native operation coverage.",
+    "Genuine Baseline/Binding/Finish early retained ownership and private GPU-use bridge; full ordinary content/aggregate remains unqualified."
+  ],
+  "limits": [
+    "All deterministic WebGL/control receipts are model/component scope, not browser/native pixels/timing/heap or product admission.",
+    "No measured native speedup, exact image qualification orP05 closure.",
+    "Raw archives remain locally; source checkpoints exclude dependencies/browser storage/process state."
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "status": "PASS_ACTUAL_OWNER_MODEL_JOIN_EXECUTION_ONLY",
+  "sourceFiles": 515,
+  "changedFilesVsAbortRepair": 11,
+  "positive": {
+    "numeric": 0,
+    "groups": 11,
+    "MainVisits": 7939,
+    "producerRectangles": 810,
+    "consumerRectangles": 810,
+    "baseWrites": 90,
+    "AAReads": 720,
+    "AppCompleted": true,
+    "freshRootEntryObjects": 811,
+    "actualBoundReaders": 7,
+    "entryPooling": false,
+    "maxWork": 4064,
+    "maxUpload": 17016,
+    "maxJobs": 1
+  },
+  "faults": [
+    {
+      "mode": "scope-change",
+      "numeric": 0,
+      "groups": 9,
+      "all18NativeStateGroupsEqual": true,
+      "failedPublication": false,
+      "actualLossPaidComponentsClosed": true,
+      "boundReaderAndSceneOwnersAbsent": true,
+      "residualParentRequestedBytes": 17828462,
+      "boundParentRequestedBytes": 17826121,
+      "indexSceneSourceGrowth": 2341,
+      "onlySourceOwnerChanged": true,
+      "liveReservations": 297,
+      "bookkeepingBytes": 181156
+    },
+    {
+      "mode": "corrupt-mask",
+      "numeric": 0,
+      "groups": 9,
+      "all18NativeStateGroupsEqual": true,
+      "failedPublication": false,
+      "actualLossPaidComponentsClosed": true,
+      "boundReaderAndSceneOwnersAbsent": true,
+      "residualParentRequestedBytes": 17828462,
+      "boundParentRequestedBytes": 17826121,
+      "indexSceneSourceGrowth": 2341,
+      "onlySourceOwnerChanged": true,
+      "liveReservations": 297,
+      "bookkeepingBytes": 181156
+    }
+  ],
+  "product": {
+    "RootCostGate": false,
+    "jointWorkGate": false,
+    "boundReaderCostGate": false,
+    "numericFees": null,
+    "RootEntryWork": 2048,
+    "limits": "UNCHANGED"
+  },
+  "diagnostic": {
+    "RootEntryWork": 256,
+    "compiler": {
+      "begin": 256,
+      "row": 256,
+      "retire": 64,
+      "replay": 584
+    },
+    "boundReaderCold": 512,
+    "gateOverrides": "Explicit execution-only inherited parent transforms",
+    "coldObserver": "Disclosed capture of source-issued zeroarg getter; test hardware observer reads entries and returns same native answer; no readiness/budget output"
+  },
+  "open": [
+    "No selected Root or bound-reader cost contract.",
+    "Compiler cold prices exploratory; parent deriving distinct complete successor.",
+    "Missing readyRay/Binding163 and no genuine Baseline/full-host sampler content in this model.",
+    "No nine semantic content generation/draw-use or activeShadow/Ground authority.",
+    "No browser/native pixels, driver/nativeheap/timing, .5ms gate, fullFrame or P05 qualification."
+  ],
+  "seal": {
+    "path": "closed-bound-index-integration-01/final-seal-01.json",
+    "bytes": 219176,
+    "sha256": "48562999e42845fe0f00d48b6f437924a493e64fb54b98f823a0ff792324c3d6"
+  }
+}

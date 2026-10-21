@@ -1,0 +1,46 @@
+{
+  "created": "2026-10-21T04:31:24.975148+00:00",
+  "status": "PASS_STAGED_COMPILED_GENERATION_REUSE_SOURCE_AND_COMPONENT_CONTROLS",
+  "sourceFiles": 515,
+  "exactOtherParentFiles": 514,
+  "reversibleHunks": 11,
+  "parse": {
+    "scripts": 375,
+    "modules": 44,
+    "total": 419
+  },
+  "sourceBeforeAfterExact": true,
+  "groups": 35,
+  "cases": 38,
+  "componentPhysicalLogicalQFinalZero": true,
+  "newMarkerRequestedBytes": 256,
+  "newPaidCacheCheck": 64,
+  "candidateFees": {
+    "ready": 64,
+    "controller": 640,
+    "visit": 128,
+    "begin": 128,
+    "row": 128,
+    "retire": 128,
+    "cleanup": 64
+  },
+  "factoryAndCapturesExactParent": true,
+  "productFeesNull": true,
+  "productGatesFalse": true,
+  "limitsUnchanged": true,
+  "keySemantics": "Compilation readiness only. Fresh actual R/World/K/program/native/read/draw/replay authority stays in the existing hot command.",
+  "invalidations": [
+    "before actual retire in clear",
+    "before actual retire in captureFromMain",
+    "exact slot serial mismatch cannot hit",
+    "cache post-scope mismatch",
+    "Scene replay uncertainty",
+    "Scene disposal before compiler close"
+  ],
+  "sameVisitCleanup": "Actual Scene releases marker references/Q immediately after genuine paid compiler.close returns true, before a later Root close may defer. Its8-unit release envelope is assigned inside final cleanup63<=64; no prepaid work carries across slices.",
+  "unqualified": [
+    "Joined Main source/schedule and both actual fault/loss/component cleanup.",
+    "Exactjoint80/2056 hot368 guard and complete Root/Field/bound-reader contracts.",
+    "Full ordinary Baseline/content/native pixels/heap/driver/quiet timing/Frame/public/P05 evidence."
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "created": "2026-10-21T04:16:08.539268+00:00",
+  "status": "PASS_EXACT_REUSE_SOURCE_AND_SCOPED_RECEIPT_REVIEW",
+  "sourceFiles": 515,
+  "combinedChanges": 11,
+  "otherParentFilesExact": 504,
+  "boundHunksReversedExactly": 45,
+  "indexSceneExact": true,
+  "sealedFilesAndExternalHashesVerified": 1118,
+  "positive": {
+    "numeric": 0,
+    "groups": 11,
+    "MainVisits": 7939,
+    "producerRectangles": 810,
+    "consumerRectangles": 810,
+    "baseWrites": 90,
+    "AAReads": 720,
+    "AppCompleted": true,
+    "freshRootEntryObjects": 811,
+    "actualBoundReaders": 7,
+    "entryPooling": false,
+    "maxWork": 4064,
+    "maxUpload": 17016,
+    "maxJobs": 1
+  },
+  "faults": [
+    {
+      "mode": "scope-change",
+      "numeric": 0,
+      "all18NativeStateGroupsEqual": true,
+      "failedPublication": false,
+      "actualLossPaidComponentsClosed": true,
+      "boundReaderAndSceneOwnersAbsent": true,
+      "residualParentRequestedBytes": 17828462,
+      "onlySourceOwnerChanged": true
+    },
+    {
+      "mode": "corrupt-mask",
+      "numeric": 0,
+      "all18NativeStateGroupsEqual": true,
+      "failedPublication": false,
+      "actualLossPaidComponentsClosed": true,
+      "boundReaderAndSceneOwnersAbsent": true,
+      "residualParentRequestedBytes": 17828462,
+      "onlySourceOwnerChanged": true
+    }
+  ],
+  "coldComponent": {
+    "sourceSHA256": "6f7befbce0249032e2c9f9d9fc37b695e7e798cb8ef60ea59b337d1004a2dfe9",
+    "groups": 28,
+    "cases": 32,
+    "candidateFees": {
+      "controller": 640,
+      "visit": 128,
+      "begin": 128,
+      "row": 128,
+      "retire": 128,
+      "cleanup": 64
+    },
+    "separateImmutableSourceNotYetJoined": true,
+    "independentPeerSeal": "5d22052522d9b040abf80320e6199b68056c8e49a517f342955ffb97272e8011"
+  },
+  "productGates": "Root/joint/bound false, numeric null, all original limits unchanged",
+  "reviewScope": [
+    "No new native/model execution by this source/receipt review.",
+    "Zeroarg reader retains only a two-scalar cell; fresh entries published/cleared, no pooling.",
+    "Mask cleanup deliberately retains entry identity after scope loss; dynamic native/currentness checks stay in their owning facets.",
+    "Q source-growth delta is retained source ownership, not an unreleased index/Bound component."
+  ],
+  "open": [
+    "Complete selected Root/Field/bound cold contract and actual full following schedule.",
+    "Joined execution of new cold compiler source and exact80/2056 hot-demand guard.",
+    "Full ordinary Baseline/content/native memory/timing/Frame/public-route/P05 evidence."
+  ]
+}
