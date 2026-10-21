@@ -1,0 +1,248 @@
+{
+  "format": "sphere-main-abort-recovery-verification/1",
+  "dateUTC": "2026-10-21T03:30:48.209814+00:00",
+  "P05": "OPEN",
+  "phaseOne": "NOT_ACCEPTED_NOT_RELEASED",
+  "scope": "ACTUAL_SOURCE_WITH_DETERMINISTIC_WEBGL_MODEL_ONLY",
+  "productGates": "false/false/null",
+  "independentReview": {
+    "dateUTC": "2026-10-21T03:29:27.228646+00:00",
+    "status": "PASS_BOUNDED_RECOVERY_SOURCE_AND_RECEIPT_REVIEW",
+    "sourceFiles": 515,
+    "otherParentFilesExact": 513,
+    "sourceBeforeAfterExact": true,
+    "productGates": "FALSE_FALSE_NULL",
+    "recoverySealSHA256": "e83d18fb9185f9a3f9070bde561134252f9757161342fdeece6740823ab0d4e6",
+    "hunkReview": [
+      "Root abort occurs before private entry clearing and only after a genuine mask-before observation; first fault rethrown if abort itself refuses.",
+      "Mask abort clears only failed-record pending/command links and revokes; packet/World/physical/Q resources remain for owned retirement.",
+      "Existing private abort authority is cleanup-only and remains usable after scope change; no new readiness/native/currentness authority."
+    ],
+    "receipts": "Three numeric0 actual-owner deterministic model processes; both faults18state-groups/no-progress; genuine observedloss and14paidcomponentcleanupvisits; full810/Appcompletion",
+    "limitations": [
+      "No new execution by this review; recorded tests were source-pinned separately.",
+      "No native/performance/product admission, fullparentzero or P05 claim."
+    ],
+    "changes": [
+      {
+        "path": "biome-service/native/root-target-backend.js",
+        "sha256": "e5f54c70843e918ebfc6389e937cc9a733fc50bd19a2446fe617208fac84cb9a"
+      },
+      {
+        "path": "biome-service/native/main-aa-mask-content-owner.js",
+        "sha256": "52cdd932080478957e922c7064cbfb2219589e7f2182e9c7e6fbf2cfb2e1a7ee"
+      }
+    ]
+  },
+  "summary": {
+    "faults": [
+      {
+        "mode": "scope-change",
+        "status": 0,
+        "positiveConsumers": 1,
+        "firstConsumerFrame": 3890,
+        "faultFrame": 3895,
+        "faultAttempts": 5,
+        "errorCodes": [
+          "COMMITTED_UNCERTAIN",
+          "COMMITTED_UNCERTAIN",
+          "STALE_PREPARE_SCOPE"
+        ],
+        "beforeFault": {
+          "consumers": 1,
+          "producers": 2,
+          "strips": 1,
+          "acknowledgements": 0,
+          "maskBusy": false,
+          "R": 24,
+          "Qrequested": 19767091,
+          "Qheld": 19970859
+        },
+        "afterFault": {
+          "consumers": 1,
+          "producers": 2,
+          "strips": 1,
+          "acknowledgements": 0,
+          "maskBusy": false,
+          "maskPending": false,
+          "maskStaged": false,
+          "maskRevoked": true,
+          "maskUncertain": true,
+          "fieldUncertain": true,
+          "fieldTiles": 1,
+          "fieldScratch": 131072,
+          "rootUnsafe": true,
+          "rootPhysical": true,
+          "R": 24,
+          "Qrequested": 19767091,
+          "Qheld": 19970859
+        },
+        "nativeRestorationEqualGroups": 18,
+        "postLoss": {
+          "sceneClosed": true,
+          "maskClosed": true,
+          "fieldClosed": true,
+          "scenePortHeld": false,
+          "maskBusy": false,
+          "maskRecords": 0,
+          "maskReaders": 0,
+          "maskPhysicalPins": 0,
+          "fieldTiles": 0,
+          "fieldScratch": 0,
+          "actualRContextLost": true,
+          "actualGContextLost": true,
+          "Rremaining": 21,
+          "Qremaining": 17816643,
+          "lossStage": "retire",
+          "paidVisits": 14,
+          "actualSliceWork": [
+            128,
+            608,
+            544,
+            544,
+            544,
+            544,
+            2752,
+            672,
+            608,
+            672,
+            1312,
+            944,
+            352,
+            560
+          ]
+        },
+        "wholeParentZeroClaim": false
+      },
+      {
+        "mode": "corrupt-mask",
+        "status": 0,
+        "positiveConsumers": 1,
+        "firstConsumerFrame": 3890,
+        "faultFrame": 3895,
+        "faultAttempts": 5,
+        "errorCodes": [
+          "COMMITTED_UNCERTAIN",
+          "COMMITTED_UNCERTAIN",
+          "TARGET_FEEDBACK"
+        ],
+        "beforeFault": {
+          "consumers": 1,
+          "producers": 2,
+          "strips": 1,
+          "acknowledgements": 0,
+          "maskBusy": false,
+          "R": 24,
+          "Qrequested": 19767091,
+          "Qheld": 19970859
+        },
+        "afterFault": {
+          "consumers": 1,
+          "producers": 2,
+          "strips": 1,
+          "acknowledgements": 0,
+          "maskBusy": false,
+          "maskPending": false,
+          "maskStaged": false,
+          "maskRevoked": true,
+          "maskUncertain": true,
+          "fieldUncertain": true,
+          "fieldTiles": 1,
+          "fieldScratch": 131072,
+          "rootUnsafe": true,
+          "rootPhysical": true,
+          "R": 24,
+          "Qrequested": 19767091,
+          "Qheld": 19970859
+        },
+        "nativeRestorationEqualGroups": 18,
+        "postLoss": {
+          "sceneClosed": true,
+          "maskClosed": true,
+          "fieldClosed": true,
+          "scenePortHeld": false,
+          "maskBusy": false,
+          "maskRecords": 0,
+          "maskReaders": 0,
+          "maskPhysicalPins": 0,
+          "fieldTiles": 0,
+          "fieldScratch": 0,
+          "actualRContextLost": true,
+          "actualGContextLost": true,
+          "Rremaining": 21,
+          "Qremaining": 17816643,
+          "lossStage": "retire",
+          "paidVisits": 14,
+          "actualSliceWork": [
+            128,
+            608,
+            544,
+            544,
+            544,
+            544,
+            2752,
+            672,
+            608,
+            672,
+            1312,
+            944,
+            352,
+            560
+          ]
+        },
+        "wholeParentZeroClaim": false
+      }
+    ],
+    "full": {
+      "status": 0,
+      "mainVisits": 7938,
+      "maxWork": 4064,
+      "maxUpload": 17016,
+      "maxJobs": 1,
+      "producerPairs": 810,
+      "consumerPairs": 810,
+      "baseWrites": 90,
+      "aaReads": 720,
+      "streamAcknowledgements": 1,
+      "actualAppPending": false,
+      "maskClosed": true,
+      "maskRecords": 0,
+      "maskPhysicalPins": 0
+    },
+    "productGatesFalse": true,
+    "numericFeesNull": true,
+    "productRootEntry2048": true,
+    "allOther513Exact": true,
+    "parentProduct515AndDiagnostic515Exact": true,
+    "noWholeParentZero": true,
+    "scope": "Execution-only actual command recovery and modeled actual-loss component disposal. Existing diagnostic Root256/table/two gates are unadmitted. No tariff/admission/content/native GPU/timing/P05 qualification."
+  },
+  "records": [
+    {
+      "path": "closed-command-abort-repair-01/final-recovery-seal-05.json",
+      "bytes": 217976,
+      "sha256": "e83d18fb9185f9a3f9070bde561134252f9757161342fdeece6740823ab0d4e6"
+    },
+    {
+      "path": "closed-command-abort-repair-01/numeric-summary-05.json",
+      "bytes": 4500,
+      "sha256": "5c096f60512c41da79cde65494b31066140ef292cd14e614eb9f5ef202e53dc7"
+    },
+    {
+      "path": "closed-command-abort-repair-01/minimal-source-delta-03.json",
+      "bytes": 3390,
+      "sha256": "8c4705bcd9d5439cbcee75068184be1430edd2b0bebf1494b131112f67a7a5b9"
+    },
+    {
+      "path": "closed-command-abort-repair-01/product-source-after-tests-05.json",
+      "bytes": 87327,
+      "sha256": "6532f77ad1cf193b23412113cc2f06a2c878b9f7863348bc2d1e175b44cf4639"
+    },
+    {
+      "path": "root-command-successor-reviews-01/abort-repair-review-01.json",
+      "bytes": 1507,
+      "sha256": "f1e4f367c3df6ecf3f47b387e944ef2b49f1ce9b44cf52e7e061b69e1657db0c"
+    }
+  ],
+  "supersedes": "The earlier scope-failure cleanup finding only; historical source/failure records remain unchanged. No fullhost/native/performance acceptance."
+}
