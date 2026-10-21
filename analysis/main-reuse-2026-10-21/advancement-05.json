@@ -1,0 +1,111 @@
+{
+  "utc": "2026-10-21T07:55:43.520395+00:00",
+  "status": "DEMANDED_IMAGES_FUNCTIONAL_STAGED_MAIN_PLAN_EXECUTION_PLANNER_CLOSURE_HOLD",
+  "P05": "OPEN_IN_PROGRESS",
+  "P06_P08": "NOT_STARTED",
+  "PhaseOne": "NOT_ACCEPTED_NOT_RELEASED",
+  "evidence": [
+    {
+      "path": "ordinary-main-demanded-content-01/final-demanded-content-seal-37.json",
+      "bytes": 2952,
+      "sha256": "b8f627757ecbbb014cd9510dd3edfa45021d43ed76da01fca534fa0dcf265cc4"
+    },
+    {
+      "path": "finite-target-admission-01/final-seal-29.json",
+      "bytes": 4628,
+      "sha256": "4d41285c7352b08309ede47c63846b3347894e9942386718b55d214111204ab0"
+    },
+    {
+      "path": "retained-demand-plan-03/functional-seal-10.json",
+      "bytes": 2085,
+      "sha256": "8ec75fcd9577f73ca09359e35e92b207d1d74ca4384a9fbf75ceb6f72202ac5e"
+    },
+    {
+      "path": "retained-demand-plan-peer-01/closure-counterexamples-01.json",
+      "bytes": 3273,
+      "sha256": "cef9463352483cb1f79113b0e4e429febceab1b1e9c4bcedceb22a428c5f31c5"
+    },
+    {
+      "path": "owned-retained-demand-plan-06/controls-demand-normal-01/results.json",
+      "bytes": 233329,
+      "sha256": "3b17303290ee811fdb8d102d80d8f0a7f6094762c0c69e6cad227bf37e1fd793"
+    },
+    {
+      "path": "owned-retained-demand-plan-07/failure-lifetime-verification-03.json",
+      "bytes": 1990,
+      "sha256": "be9c12067d4d296dfc3bdb66def3e28b1d01f46d43dfcd84448b32509fc1a302"
+    },
+    {
+      "path": "closed-ready-prefix-peer-01/error-record-clarification-07.json",
+      "bytes": 1219,
+      "sha256": "f0da7dd47ce20619228b4717b2541bc68d5485681198e0c55f7e68b68d0b1eb7"
+    }
+  ],
+  "images": {
+    "sourceFiles": 517,
+    "finalFunctionalControls": 11,
+    "originalModeledMipLevels": 41,
+    "uploadBytes": 12578372,
+    "demand": "Biome7/Hero7 plus Finish; World/Wound empty for genuine unchanged current Core",
+    "workTables": "UNSELECTED",
+    "nativeMain": "REFUSED",
+    "scope": "Original HTMLImage/whole-level Canvas recipe retained. Functional source/model, with previously separate native decoder/Canvas parity; no native new-owner/Main certificate."
+  },
+  "stagedMainPlan": {
+    "sourceFiles": 518,
+    "callbacks": 64685,
+    "planVisits": 1177,
+    "planSteps": 2776,
+    "maxWork": 4096,
+    "maxUpload": 262144,
+    "maxJobs": 2,
+    "maxGPU": 135570668,
+    "cleanupVisits": 2,
+    "mode": "DISCLOSED_UNADMITTED_PROPOSAL_TABLE_EXECUTION",
+    "scope": "Actual Main/App/World/Target/R/Q/S/PB and explicit DOM/GL/Image/Canvas model; same exact41original mip bytes. App draw publication not yet joined."
+  },
+  "plannerClosure": {
+    "status": "HOLD_REPRODUCED_COUNTEREXAMPLES",
+    "findings": [
+      "A changed SphereMath.norm before first references token is adopted and called69times.",
+      "A changed Array constructor/species path after captured helper rows invokes an arbitrary getter12655times while old guards remain equal."
+    ],
+    "repair": "Fresh successor authenticates lexical helpers and module-load native descriptors, guards original nested data identities and array constructor/species/iterator paths, and recomputes planner-owned data instead of trusting mutable caches. In progress; no admission."
+  },
+  "failureLifetime": {
+    "successor": "07",
+    "controls": 4,
+    "status": "PASS_EXACT_PRIMARY_ERROR_NO_PUBLICATION_PAID_CLEANUP_ZERO",
+    "sourceParsedECMA2022": 422,
+    "scope": "Before/after World retain and before/after planner begin. Already acquired World readers remain owned/reachable until paid close; first four harness stops preserved."
+  },
+  "finiteTarget": {
+    "sourceFiles": 515,
+    "sealedFunctionalControls": "11focused plus57legacyR and3reader, genuine constructor/capacity/late-attachment/paid-close cases",
+    "physicalGenerationBound": 2,
+    "fixedHeldReaderScalars": 7,
+    "workProposals": [
+      105,
+      186
+    ],
+    "workAdmission": "UNSELECTED",
+    "scope": "Pre-admit required class and aggregate current/staging/fenced generations before preparation. Budget or third-generation refusal preserves current/Mask/readers/fences."
+  },
+  "backup": {
+    "snapshots": 10,
+    "sourceEntries": 5158,
+    "records": 1113,
+    "bytes": 52712350,
+    "freshRestoreVerified": true,
+    "latestReviewedPrefix": "ready-prefix-main",
+    "newSnapshotsAreSeparate": true,
+    "rawArchives": "PRESERVED_LOCAL"
+  },
+  "next": [
+    "Finish authenticated bounded planner closure, full helper/resource/API and logical-storage contracts.",
+    "Join owned demanded content/current cookies with the existing prepared-view prefix through private genuine Main authority; retain fresh native draw checks.",
+    "Join finite Target/R reader and authentic visible Canvas baseline/managed resize; admit the exact simultaneous host vector.",
+    "Prove actual native Main overview/local assigned surfaces and required whole-view/fragment/Frame evidence for P05."
+  ],
+  "preservation": "Delivered Meadow-Industry walk and simulation unchanged. Frozen packs, original recipes/limits, failures and other-chat dirt preserved. No full native/physical heap/driver/timing/acceptance claim."
+}
