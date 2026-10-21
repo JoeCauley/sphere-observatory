@@ -1,0 +1,130 @@
+{
+  "utc": "2026-10-21T09:07:14.526781+00:00",
+  "status": "REPAIRED_PLAN_CLOSURE_BOUNDED_IMAGE_COPY_AND_GENUINE_RENDERER_TARGET_SURFACE_FUNCTIONAL_COMPONENTS",
+  "P05": "OPEN_IN_PROGRESS",
+  "P06_P08": "NOT_STARTED",
+  "PhaseOne": "NOT_ACCEPTED_NOT_RELEASED",
+  "evidence": [
+    {
+      "path": "retained-demand-plan-05/final-seal-10.json",
+      "bytes": 105046,
+      "sha256": "073787db8a96d18d60463c29a6d2a5e428a7e326451e4ba9b5d838b14528ec61"
+    },
+    {
+      "path": "owned-retained-demand-plan-08/final-seal-07.json",
+      "bytes": 1627583,
+      "sha256": "3e15b09fe8e6effcf8c32a726e454a3f801a9ec7796f30a29560813eeaa4f994"
+    },
+    {
+      "path": "owned-retained-demand-plan-09/final-seal-05.json",
+      "bytes": 1394955,
+      "sha256": "5965b9a00a66e3fb78f4a967669d3450e5daefac12380fdf2223b227a9f39777"
+    },
+    {
+      "path": "ordinary-main-demand-native-copy-01/final-native-copy-seal-07.json",
+      "bytes": 1832,
+      "sha256": "11024fd2eec01a9f671a23e74cfecda7f08815590cd4c5dde7ed539c0f00e1f8"
+    },
+    {
+      "path": "ordinary-main-demand-native-copy-peer-01/review-01.json",
+      "bytes": 1880,
+      "sha256": "47c46416aaf9754e42407e314497e528607934738dd9eeb127e78e582942802e"
+    },
+    {
+      "path": "ordinary-main-demand-work-contract-01/final-review-seal-03.json",
+      "bytes": 94641,
+      "sha256": "224d239b82f00058dc7451f0e92ab75f673e5ff1c6e53e902ba62d1693efd5cc"
+    },
+    {
+      "path": "visible-surface-baseline-import-09/final-functional-seal-27.json",
+      "bytes": 202031,
+      "sha256": "5c99b7835da5e0937bfc5082cb51a632f3908723f15d3c35c2f73681dfc2b821"
+    },
+    {
+      "path": "managed-default-surface-07/final-functional-seal-07.json",
+      "bytes": 9605,
+      "sha256": "e1b65c5fc7b16493149e00736dd10244bc941c503d2ba92e232ffa9b8ad546f1"
+    },
+    {
+      "path": "managed-surface-private-peer-01/final-peer-seal-03.json",
+      "bytes": 1939,
+      "sha256": "70cc319089a8b6ef0bea1194ef0ef52b2305413092eef011bfd1839d5d67ee4e"
+    },
+    {
+      "path": "closed-content-joint-route-01/final-assessment-seal-01.json",
+      "bytes": 1229,
+      "sha256": "5460f1ef2141b52762170203fe8f876c186df1bf7e2a85c300a7d0ebaf940204"
+    }
+  ],
+  "planner": {
+    "sourceFiles": 518,
+    "parsedECMA2022": 422,
+    "defaultFormulaBodiesPreserved": 109,
+    "fullFreshGuardWork": 1802,
+    "maxTokenWork": 2247,
+    "moduleLogicalBytesBeforeEvaluation": 1324128,
+    "instanceLogicalBytesBeforeConstruction": 1693824,
+    "status": "FUNCTIONAL_CLOSURE_SUCCESSOR_WITH_GENUINE_PRE_EVALUATION_BOOTSTRAP_STILL_OPEN",
+    "details": "Original lexical helpers, nested data identities and Array constructor/species/iterator protocols authenticated against module-load descriptors. Duplicate per-instance capture removed only where original module guard already proves the same dependency. Finished immutable result returned only after a final fresh publication guard. Prior03 failures remain preserved."
+  },
+  "actualMainDemand": {
+    "sourceFiles": 518,
+    "finalIntegratedControls": 23,
+    "normalCallbacks": 40269,
+    "originalMipLevels": 41,
+    "originalMipBytes": 12578372,
+    "finishBytes": 1048576,
+    "maxPrepareOpsPerSlice": 4096,
+    "maxUploadBytesPerFrame": 262144,
+    "maxJobs": 2,
+    "cleanup": "R_Q_MODELED_GL_IMAGE_CANVAS_PORTS_ZERO",
+    "appCompletion": 0,
+    "scope": "Actual Main/App/World/Target/R and explicit native interface models. New product prices and native final draw gates remain unselected. Complete source graph and final Main host join still required."
+  },
+  "bulkCopy": {
+    "originalComponentNormalCallbacks": 38317,
+    "priorComponentNormalCallbacks": 63501,
+    "capturedBulkCalls": 202,
+    "bytesCopied": 6585272,
+    "maxBytesPerCall": 32768,
+    "sourceQualifiedNativeCopySpan": 221,
+    "sourceRowAllowanceUnchanged": 1152,
+    "details": "Captured TypedArray.set replaces tiny per-byte loops; original Canvas history and all original image mip bytes retained. Entered native CPU errors preserve primary and release through paid cleanup without inventing GL loss. Entered GL uncertainty remains held until actual modeled native+R loss."
+  },
+  "visibleSurface": {
+    "initialSourceFiles": 516,
+    "initialFreshProcesses": 14,
+    "initialGroups": 149,
+    "initialLogicalPayloadBytes": 270000,
+    "initialTextureAndSurfaceRows": 8,
+    "nativeBackingBytes": null,
+    "nativeBirthPeakBytes": null,
+    "managedSourceFiles": 516,
+    "managedFreshProcesses": 15,
+    "managedGroups": 18,
+    "originalFactsGroups": 33,
+    "originalImportGroups": 5,
+    "maxObservedSliceWork": 3976,
+    "liveNativeGenerationBound": 3,
+    "surfaceBookkeepingRowBound": 5,
+    "totalBookkeepingRowBound": 16,
+    "scope": "Genuine actual Renderer.draw and same Target/R clock drive dedicated reserve/execute/settle visits; Canvas/WebGL modeled. Fixed metadata and full operation union independent review remains open, work table null, full actual App handoff/native draw and owned normal current Canvas retirement unproved."
+  },
+  "backup": {
+    "snapshots": 15,
+    "sourceEntries": 7743,
+    "records": 1676,
+    "bytes": 69614264,
+    "freshRestoreVerified": true,
+    "latestReviewedPrefix": "ready-prefix-main",
+    "newSnapshotsAreSeparate": true,
+    "rawArchives": "PRESERVED_LOCAL"
+  },
+  "next": [
+    "Complete source-owned six-content currentness bracket and join retained plan/copy to the reviewed prepared-view prefix, retaining fresh native consumer proof.",
+    "Complete genuine Q reservation before module evaluation and exact source loading; pass pre-context Surface preparation directly into actual App constructor.",
+    "Finish independent managed Canvas work/metadata and owned normal retirement; compose finite Target/R and admit exact simultaneous host/resource vector.",
+    "Run actual native Main overview/local assigned surfaces and required whole-view/fragment/Frame, support and ownership proof for P05."
+  ],
+  "preservation": "Verified Industry camera preparation, delivered Meadow-Industry walk and independent simulation unchanged. Frozen packs, original image recipes/caps, all failures, raw archives and unrelated chat work remain preserved. No physical memory, driver or quiet-timing claim."
+}
