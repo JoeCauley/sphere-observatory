@@ -1,0 +1,678 @@
+{
+  "status": "FINAL_SOURCE_DERIVED_ADDED_SURFACE_RENDERER_BASE_SHARED_MODULE_LOGICAL_ABI",
+  "supersedes": "module-installation-supplement-02.json for full shared module total; old artifacts remain immutable",
+  "language": {
+    "header": 128,
+    "slot": 32,
+    "string": "128+ceil(UTF16codeUnits*2/32)*32 per literal/key/name occurrence; no string-interning discount",
+    "nativeHeap": "UNMEASURED",
+    "functionRepresentation": "128 control header+32 per distinct lexical capture; machine code,bytecode,JIT,VM/native wrappers remain external module/realm contract"
+  },
+  "inputPins": [
+    {
+      "path": "managed-default-surface-08/source/biome-service/native/main-default-surface-facts.js",
+      "bytes": 28983,
+      "sha256": "c2269c969a5d3a626750a18a1d403791274f1f7470c8edfbc937b57c92dfbcbc"
+    },
+    {
+      "path": "managed-default-surface-10/source/biome-service/native/main-default-surface-facts.js",
+      "bytes": 31326,
+      "sha256": "a7af35e07ed7962e431f8c31ef294260eba8313801d69f0206db1620d0fded4e"
+    },
+    {
+      "path": "managed-default-surface-08/source/renderer.js",
+      "bytes": 140883,
+      "sha256": "79671c411073cd4fdac54b5ba3ff712a9c753853f2b2262a188b0695529483bb"
+    },
+    {
+      "path": "managed-default-surface-10/source/renderer.js",
+      "bytes": 141629,
+      "sha256": "fc05eab3e02e08d03c65a48c4597da38ab6a8a6277133f1c2795f1d56429b3b5"
+    },
+    {
+      "path": "owned-module-baseline-bootstrap-04/source/biome-service/native/main-baseline-owner.js",
+      "bytes": 92707,
+      "sha256": "f10ae962c85497d88529363ca958af91b4875c67c0153717b47aa40d0feb5d57"
+    },
+    {
+      "path": "resume-canvas-retirement-2026-10-22-01/candidate-02/source/biome-service/native/main-baseline-owner.js",
+      "bytes": 66557,
+      "sha256": "8000604182887ced8302e51d32882fb1ab0d2b65e4cf2ac16cd7d0f8a07a5362"
+    },
+    {
+      "path": "owned-context-retirement-join-2026-10-22-01/source/biome-service/native/main-baseline-owner.js",
+      "bytes": 93936,
+      "sha256": "0c355aa169f728b840517b818b13ca251c286135c18c12d24bbcf1257133a58f"
+    }
+  ],
+  "moduleRows": [
+    {
+      "name": "Owned limits record10fields",
+      "bytes": 448,
+      "reason": "Inherited7 fields plus3 new; Freeze preserves the object."
+    },
+    {
+      "name": "New Surface module binding slots5",
+      "bytes": 160,
+      "reason": "Three constants plus two helper function bindings."
+    },
+    {
+      "name": "Surface API added3slots",
+      "bytes": 96,
+      "reason": "OWNED_FORMAT,OWNED_ID,OWNED_LIMITS; existing API header is inherited."
+    },
+    {
+      "name": "Private Baseline port added2slots",
+      "bytes": 64,
+      "reason": "One once-only existing private port header; two new methods."
+    },
+    {
+      "name": "Five new function/closure envelopes",
+      "bytes": 1056,
+      "reason": "Actual lexical captures listed separately; undefined global slot is conservatively included."
+    },
+    {
+      "name": "Renderer new retirement WeakMap",
+      "bytes": 128,
+      "reason": "Empty realm-lifetime map before any private call; live entry belongs to Base Q."
+    },
+    {
+      "name": "Renderer new map binding",
+      "bytes": 32,
+      "reason": "One new top-level captured reference cell."
+    },
+    {
+      "name": "Renderer class method slot",
+      "bytes": 32,
+      "reason": "One new static class property."
+    },
+    {
+      "name": "Retained locked static property descriptor",
+      "bytes": 256,
+      "reason": "Conservative header+4 visible descriptor fields."
+    },
+    {
+      "name": "Lock-name vector added slot",
+      "bytes": 32,
+      "reason": "New name string occurrence is separately in literal ledger."
+    },
+    {
+      "name": "Static lock descriptor result",
+      "bytes": 256,
+      "reason": "One own-property result object,4fields,can overlap the original descriptor during locking."
+    },
+    {
+      "name": "Static lock define descriptor",
+      "bytes": 256,
+      "reason": "One4field define object; counted even if VM optimizes it."
+    },
+    {
+      "name": "New Surface positive literal occurrences",
+      "bytes": 3584,
+      "reason": "Every new literal occurrence independently owns string header+UTF16 payload rounded32; AST is only a literal census,not work pricing."
+    },
+    {
+      "name": "New Renderer positive literal occurrences",
+      "bytes": 736,
+      "reason": "Includes explicit lock name and both new Renderer error message occurrences."
+    },
+    {
+      "name": "Conservative key and function-name strings",
+      "bytes": 3776,
+      "reason": "Each new generated own-key and function-name occurrence separately counted; deliberately no interning/shared-string discount."
+    },
+    {
+      "name": "Additional captured slots in existing module functions",
+      "bytes": 256,
+      "reason": "Explicitly extend old closure/callable logical envelopes; no assumed old module slack. Nested issuer and returned callable each conservatively own a capture reference."
+    },
+    {
+      "name": "Base shared positive literal occurrences",
+      "bytes": 832,
+      "reason": "Two new reservation literal occurrences and new private authority refusal literals; original factored prefix literals are byte-identical/multiset-preserved."
+    },
+    {
+      "name": "Base generated method keys/function names",
+      "bytes": 1024,
+      "reason": "Two facade keys,two facade function names,and one helper function name; per-instance callable headers/captures are in distinct Base Q4096."
+    }
+  ],
+  "SurfaceAndRendererPositiveLiterals": {
+    "Surface": [
+      {
+        "value": "sphere-main-owned-default-surface-facts/2",
+        "line": 14,
+        "codeUnits": 41,
+        "bytes": 224
+      },
+      {
+        "value": "main-owned-default-surface-facts-v2",
+        "line": 14,
+        "codeUnits": 35,
+        "bytes": 224
+      },
+      {
+        "value": "WEBGL_lose_context",
+        "line": 14,
+        "codeUnits": 18,
+        "bytes": 192
+      },
+      {
+        "value": "CAPTURED_NATIVE_LOSS_ONLY",
+        "line": 14,
+        "codeUnits": 25,
+        "bytes": 192
+      },
+      {
+        "value": "getExtension",
+        "line": 50,
+        "codeUnits": 12,
+        "bytes": 160
+      },
+      {
+        "value": "WEBGL_lose_context",
+        "line": 51,
+        "codeUnits": 18,
+        "bytes": 192
+      },
+      {
+        "value": "SURFACE_OWNED_RETIREMENT_UNAVAILABLE",
+        "line": 51,
+        "codeUnits": 36,
+        "bytes": 224
+      },
+      {
+        "value": "loseContext",
+        "line": 51,
+        "codeUnits": 11,
+        "bytes": 160
+      },
+      {
+        "value": "SURFACE_OWNED_RETIREMENT_UNAVAILABLE",
+        "line": 51,
+        "codeUnits": 36,
+        "bytes": 224
+      },
+      {
+        "value": "SURFACE_OWNED_RETIREMENT_UNAVAILABLE",
+        "line": 57,
+        "codeUnits": 36,
+        "bytes": 224
+      },
+      {
+        "value": "SURFACE_NATIVE_CHANGED",
+        "line": 57,
+        "codeUnits": 22,
+        "bytes": 192
+      },
+      {
+        "value": "SURFACE_NATIVE_RETIREMENT_UNCERTAIN",
+        "line": 58,
+        "codeUnits": 35,
+        "bytes": 224
+      },
+      {
+        "value": "SURFACE_NATIVE_CHANGED",
+        "line": 59,
+        "codeUnits": 22,
+        "bytes": 192
+      },
+      {
+        "value": "SURFACE_NATIVE_CHANGED",
+        "line": 99,
+        "codeUnits": 22,
+        "bytes": 192
+      },
+      {
+        "value": "function",
+        "line": 121,
+        "codeUnits": 8,
+        "bytes": 160
+      },
+      {
+        "value": "SURFACE_NATIVE_UNCERTAIN",
+        "line": 151,
+        "codeUnits": 24,
+        "bytes": 192
+      },
+      {
+        "value": "FOREIGN_SURFACE_RETIREMENT",
+        "line": 175,
+        "codeUnits": 26,
+        "bytes": 192
+      },
+      {
+        "value": "SURFACE_NATIVE_RETIREMENT_PENDING",
+        "line": 175,
+        "codeUnits": 33,
+        "bytes": 224
+      }
+    ],
+    "Renderer": [
+      {
+        "value": "Owned context retirement cannot reenter",
+        "line": 506,
+        "codeUnits": 39,
+        "bytes": 224
+      },
+      {
+        "value": "Owned default surface is waiting for paid native context retirement.",
+        "line": 506,
+        "codeUnits": 68,
+        "bytes": 288
+      },
+      {
+        "value": "matchesDefaultSurfaceRetirementCall",
+        "line": 559,
+        "codeUnits": 35,
+        "bytes": 224
+      }
+    ]
+  },
+  "generatedSurfaceRendererNames": [
+    {
+      "owner": "Owned limits property names",
+      "values": [
+        "ownedContextRetirement",
+        "retirementExtension",
+        "retirementCompletion"
+      ],
+      "strings": [
+        {
+          "value": "ownedContextRetirement",
+          "codeUnits": 22,
+          "bytes": 192
+        },
+        {
+          "value": "retirementExtension",
+          "codeUnits": 19,
+          "bytes": 192
+        },
+        {
+          "value": "retirementCompletion",
+          "codeUnits": 20,
+          "bytes": 192
+        }
+      ],
+      "bytes": 576
+    },
+    {
+      "owner": "New Surface state keys",
+      "values": [
+        "ownedRetirement",
+        "retirement"
+      ],
+      "strings": [
+        {
+          "value": "ownedRetirement",
+          "codeUnits": 15,
+          "bytes": 160
+        },
+        {
+          "value": "retirement",
+          "codeUnits": 10,
+          "bytes": 160
+        }
+      ],
+      "bytes": 320
+    },
+    {
+      "owner": "Retirement record keys",
+      "values": [
+        "getExtension",
+        "extension",
+        "lose",
+        "requested",
+        "error"
+      ],
+      "strings": [
+        {
+          "value": "getExtension",
+          "codeUnits": 12,
+          "bytes": 160
+        },
+        {
+          "value": "extension",
+          "codeUnits": 9,
+          "bytes": 160
+        },
+        {
+          "value": "lose",
+          "codeUnits": 4,
+          "bytes": 160
+        },
+        {
+          "value": "requested",
+          "codeUnits": 9,
+          "bytes": 160
+        },
+        {
+          "value": "error",
+          "codeUnits": 5,
+          "bytes": 160
+        }
+      ],
+      "bytes": 800
+    },
+    {
+      "owner": "Private Baseline port method keys",
+      "values": [
+        "ownedRetirementEnabled",
+        "requestOwnedRetirement"
+      ],
+      "strings": [
+        {
+          "value": "ownedRetirementEnabled",
+          "codeUnits": 22,
+          "bytes": 192
+        },
+        {
+          "value": "requestOwnedRetirement",
+          "codeUnits": 22,
+          "bytes": 192
+        }
+      ],
+      "bytes": 384
+    },
+    {
+      "owner": "New Surface API keys",
+      "values": [
+        "OWNED_FORMAT",
+        "OWNED_ID",
+        "OWNED_LIMITS"
+      ],
+      "strings": [
+        {
+          "value": "OWNED_FORMAT",
+          "codeUnits": 12,
+          "bytes": 160
+        },
+        {
+          "value": "OWNED_ID",
+          "codeUnits": 8,
+          "bytes": 160
+        },
+        {
+          "value": "OWNED_LIMITS",
+          "codeUnits": 12,
+          "bytes": 160
+        }
+      ],
+      "bytes": 480
+    },
+    {
+      "owner": "New Renderer class method key",
+      "values": [
+        "matchesDefaultSurfaceRetirementCall"
+      ],
+      "strings": [
+        {
+          "value": "matchesDefaultSurfaceRetirementCall",
+          "codeUnits": 35,
+          "bytes": 224
+        }
+      ],
+      "bytes": 224
+    },
+    {
+      "owner": "Source function name metadata",
+      "values": [
+        "captureOwnedRetirement",
+        "requestOwnedRetirement",
+        "ownedRetirementEnabled",
+        "requestOwnedRetirement",
+        "matchesDefaultSurfaceRetirementCall"
+      ],
+      "strings": [
+        {
+          "value": "captureOwnedRetirement",
+          "codeUnits": 22,
+          "bytes": 192
+        },
+        {
+          "value": "requestOwnedRetirement",
+          "codeUnits": 22,
+          "bytes": 192
+        },
+        {
+          "value": "ownedRetirementEnabled",
+          "codeUnits": 22,
+          "bytes": 192
+        },
+        {
+          "value": "requestOwnedRetirement",
+          "codeUnits": 22,
+          "bytes": 192
+        },
+        {
+          "value": "matchesDefaultSurfaceRetirementCall",
+          "codeUnits": 35,
+          "bytes": 224
+        }
+      ],
+      "bytes": 992
+    }
+  ],
+  "newFunctionEnvelopes": [
+    {
+      "name": "captureOwnedRetirement",
+      "owner": "Surface module",
+      "captures": [
+        "Create",
+        "fail",
+        "invoke",
+        "lookup"
+      ],
+      "bytes": 256
+    },
+    {
+      "name": "requestOwnedRetirement",
+      "owner": "Surface module",
+      "captures": [
+        "Apply",
+        "current",
+        "fail",
+        "undefined"
+      ],
+      "bytes": 256
+    },
+    {
+      "name": "Baseline port.ownedRetirementEnabled",
+      "owner": "Surface private port at once-only Baseline declaration",
+      "captures": [
+        "importRecord"
+      ],
+      "bytes": 160
+    },
+    {
+      "name": "Baseline port.requestOwnedRetirement",
+      "owner": "Surface private port at once-only Baseline declaration",
+      "captures": [
+        "importRecord",
+        "requestOwnedRetirement"
+      ],
+      "bytes": 192
+    },
+    {
+      "name": "Renderer.matchesDefaultSurfaceRetirementCall",
+      "owner": "Renderer module",
+      "captures": [
+        "defaultSurfaceRetirementCalls",
+        "mainBaselines"
+      ],
+      "bytes": 192
+    }
+  ],
+  "additionalExistingModuleCaptures": [
+    {
+      "function": "Surface.prepare",
+      "captures": [
+        "OWNED_FORMAT",
+        "OWNED_ID",
+        "OWNED_LIMITS"
+      ],
+      "slots": 3
+    },
+    {
+      "function": "Surface.release",
+      "captures": [
+        "requestOwnedRetirement"
+      ],
+      "slots": 1
+    },
+    {
+      "function": "Surface.declareRenderer",
+      "captures": [
+        "captureOwnedRetirement"
+      ],
+      "slots": 1
+    },
+    {
+      "function": "Surface.createContext returned method",
+      "captures": [
+        "captureOwnedRetirement"
+      ],
+      "slots": 1
+    },
+    {
+      "function": "Surface.declareBaselineOwner",
+      "captures": [
+        "requestOwnedRetirement"
+      ],
+      "slots": 1
+    },
+    {
+      "function": "Renderer.dispose",
+      "captures": [
+        "defaultSurfaceRetirementCalls"
+      ],
+      "slots": 1
+    }
+  ],
+  "BasePositiveLiterals": [
+    {
+      "value": "owned-context-control-and-retirement-bracket",
+      "line": 79,
+      "codeUnits": 44,
+      "bytes": 224
+    },
+    {
+      "value": "Only actual owned Main disposal may retire this context",
+      "line": 266,
+      "codeUnits": 55,
+      "bytes": 256
+    },
+    {
+      "value": "FOREIGN_OWNER",
+      "line": 268,
+      "codeUnits": 13,
+      "bytes": 160
+    },
+    {
+      "value": "main-baseline-owner",
+      "line": 278,
+      "codeUnits": 19,
+      "bytes": 192
+    }
+  ],
+  "BaseGeneratedNames": [
+    {
+      "kind": "new facade property key",
+      "value": "hasOwnedContextRetirement",
+      "codeUnits": 25,
+      "bytes": 192
+    },
+    {
+      "kind": "new facade property key",
+      "value": "prepareOwnedContextRetirementFromMain",
+      "codeUnits": 37,
+      "bytes": 224
+    },
+    {
+      "kind": "factored helper function name",
+      "value": "beginOwnedClosing",
+      "codeUnits": 17,
+      "bytes": 192
+    },
+    {
+      "kind": "facade function name",
+      "value": "hasOwnedContextRetirement",
+      "codeUnits": 25,
+      "bytes": 192
+    },
+    {
+      "kind": "facade function name",
+      "value": "prepareOwnedContextRetirementFromMain",
+      "codeUnits": 37,
+      "bytes": 224
+    }
+  ],
+  "totalLogicalBytes": 13024,
+  "rounded4096Bytes": 16384,
+  "inequality": "13024 <= 16384",
+  "baseControl": {
+    "requestedBytes": 4096,
+    "rows": [
+      {
+        "name": "Three new per-instance callable envelopes and four extra facade/helper/dispose slots",
+        "bytes": 1408
+      },
+      {
+        "name": "Combined beginOwnedClosing closeOrdinaryBridge capture",
+        "bytes": 32
+      },
+      {
+        "name": "Existing collect new charge capture",
+        "bytes": 32
+      },
+      {
+        "name": "Maximum native-retirement paying scope/bracket/argument/error/Renderer+Base activations",
+        "bytes": 1760
+      },
+      {
+        "name": "New charge root slot",
+        "bytes": 32
+      },
+      {
+        "name": "New reserve options2field object",
+        "bytes": 192
+      },
+      {
+        "name": "One extra close/catch release temporary slot",
+        "bytes": 32
+      }
+    ],
+    "totalLogicalBytes": 3488,
+    "headroom": 608,
+    "inequality": "3488 <= 4096",
+    "allProfiles": true,
+    "bookkeeping": "Q additionally bills512+2*(19+44)=638 B for labels main-baseline-owner/owned-context-control-and-retirement-bracket; genuine reserve therefore increases heldBytes by4734 while requestedBytes rises4096. This Q bookkeeping is additional to the participant4096 ABI,as in original Q contract."
+  },
+  "verifiedSourceOrders": {
+    "candidate02ReservationBeforeFacade": true,
+    "jointReservationBeforeFacade": true,
+    "collectAfterSurfaceImportClose": true,
+    "noKeyCatchRetainsInvariant": true,
+    "jointCloseOrdinaryBridgeBeforeStarAndNative": true
+  },
+  "noKeyInvariant": "Surface.capture returns r.created=false with no r.managed. Surface initial factory.create is the eighth importOne,after seven preceding texture keys. Managed activation follows the completed eight-key loop. Thus no physical key implies r.created=false,no managed state; Source Surface.close cannot defer and has no native call there under the genuine source contract. Existing no-key catch needs no speculative recovery rewrite.",
+  "bridge": {
+    "source": "owned-module-baseline-bootstrap-04/source/biome-service/native/main-baseline-owner.js:166,267",
+    "body": "  function closeOrdinaryBridge(){if(!bridge)return true;if(bridge.busy)return false;if(ORDINARY_BRIDGE_WORK===null||!Number.isSafeInteger(ORDINARY_BRIDGE_WORK.close)||ORDINARY_BRIDGE_WORK.close<1)fail('ORDINARY_BRIDGE_COST_UNQUALIFIED','Complete private retirement work remains unselected');const paid=starScope();if(credits.availablePrepareCredits()<ORDINARY_BRIDGE_WORK.close+64||!resourceHost.takeRetirementWork(service,ORDINARY_BRIDGE_WORK.close))return false;starRequireRetirementScope(paid);bridge.closing=true;for(const name of ['finish','batch','star']){const reader=bridge[name];if(reader){if(reader.close()===false)return false;bridge[name]=null;}}bridge.locations=null;bridge.native=null;bridge=null;finishBridgeKey=null;bridgeLocationMetadata.release();bridgeLocationMetadata=null;bridgeMetadata.release();bridgeMetadata=null;return true;}",
+    "beginOwnedClosingCaptureCount": 11,
+    "addedCapture": "closeOrdinaryBridge",
+    "requiredOrder": "managedBusy/facet guard -> closeOrdinaryBridge -> startStarClosing -> six existing children -> closing=true -> native loss request",
+    "bodyObligation": "The source bridge closes retained Finish,batch,Star readers under its existing selected close debit. It clears native/locations/bridge roots and both reservations only after reader.close succeeds. False/throw/unselected work returns before native context request; full child reader bodies,R payment/scope remain separate.",
+    "localEffect": "One additional local dispatch raises factored begin closing16→17,Base68→69,Renderer-with-Base77→78. Real bridge close body retains its own existing tariff and caller contract."
+  },
+  "controllerObligation": "Parent will add separate retirementModuleCharge before any module evaluation and hold it once evaluationPossible. Its new controller variable/options/label literal/control/charge metadata is a separately explicit controller ledger delta; none is included in or borrowed from this module addend.",
+  "otherObligations": [
+    "Code source byte/hash copies and generated profile/graph clones remain separately charged by S/controller.",
+    "Original389120controller allowance and1324128six-pure-baseline module reservation remain separate.",
+    "Per-instance Base4096 owns callable headers/captures,paying scope,args,private Renderer map entry and activation. Per-Surface131072 owns full native capability/facts/request union.",
+    "Native VM/bytecode/JIT,WebGL wrappers,driver/backing/compositor and raw native exception representation remain UNMEASURED; this is the fixed logical ABI only.",
+    "Common R/ordinary bridge reader/native caller work remains separate; local combined Base69 and frontend78 do not qualify whole P05."
+  ],
+  "productMutations": 0,
+  "nativeRuns": 0
+}

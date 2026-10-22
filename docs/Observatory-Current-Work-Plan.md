@@ -1,8 +1,8 @@
 # Sphere Observatory current work plan
 
-Updated 21 October 2026 after the [camera culling review](Observatory-Culling-Preparation-Review-2026-10-20.md) and [Industry implementation](Observatory-Industry-Display-Preparation-2026-10-20.md). This is the forward engineering sequence; dated reports and sealed evidence retain their original results. Industry's successor is functionally verified; complete native/image/performance acceptance remains separate.
+Updated 22 October 2026 after the [bounded owned-context integration](Observatory-Owned-Context-Retirement-2026-10-22.md), following the [camera culling review](Observatory-Culling-Preparation-Review-2026-10-20.md) and [Industry implementation](Observatory-Industry-Display-Preparation-2026-10-20.md). This is the forward engineering sequence; dated reports and sealed evidence retain their original results. Industry's successor is functionally verified; complete native/image/performance acceptance remains separate.
 
-Operations are paused for the owner's client update. The [pause checkpoint](../analysis/main-reuse-2026-10-21/client-update-pause-06.json) preserves the latest tested components and unfinished integration; resume only on the owner's instruction.
+The owner resumed operations on 22 October. The next bounded step is complete: owned Canvas retirement is reviewed, funded and joined to the combined bootstrap candidate, with 52 controlled scenarios passing. The [new bounded-step record](../analysis/main-reuse-2026-10-22/bounded-step-01.json) supersedes the operational pause; the [earlier pause checkpoint](../analysis/main-reuse-2026-10-21/client-update-pause-06.json) remains historical evidence. The delivered walk is unchanged.
 
 The delivered experience is walking between Infinite Meadow and Infinite Industry in the same world. Formal Biome Pack Service P05 is OPEN; P06–P08 are NOT_STARTED and Phase One is NOT_ACCEPTED / NOT_RELEASED. The [current checkpoint](Observatory-Project-Checkpoint-2026-10-20.md) identifies the preserved sources and outstanding qualification. Biome Border follows the reusable creation/registration foundation.
 
@@ -12,9 +12,11 @@ Continue from sealed `closed-ready-prefix-06/source` for the complete prepared-v
 
 The immediate sequence is:
 
+The next bounded implementation within item 1 is the fixed Main initializer's genuine linked positions helper and exclusively owned VAO. Use the exported shader and actual common owners; a bare modeled program is not native integration evidence. Keep the product gate closed while completing the remaining graph and caller qualification.
+
 1. Join the functionally verified Main09 demanded plan and image owners to current-content publication and the reviewed prepared-view prefix. Preserve the exact Canvas recipe, complete cleanup and fresh native draw checks. Complete genuine pre-evaluation Q/source bootstrap, then requalify the joined graph and following work.
 2. Compose the separately sealed finite Root target and fixed genuine R reader. Keep at most two physical Root generations before preparation; a third descriptor or over-budget request defers while retaining current view, Mask, readers and fences. Select no complete Main pricing from the current component proposals.
-3. Complete managed Canvas work/metadata review, genuine App constructor handoff and owned normal retirement using sealed initialSurface09/managed07. Preserve dedicated pre-reserved resize visits, unchanged-dimension avoidance and exact layout/currentness checks. Keep logical raster generations separate from unknown native birth/backing peaks.
+3. Use the separately saved funded owned-context component and its combined bootstrap successor for the Canvas path. Local managed08 review, modeled genuine App constructor handoff and owned retirement now have focused evidence; complete cold/full-caller/native Main qualification remains open. Preserve dedicated pre-reserved resize visits, unchanged-dimension avoidance and exact layout/currentness checks. Keep logical raster generations separate from unknown native birth/backing peaks.
 4. Admit the full simultaneous actual-viewport content/target/Canvas/Field/service/provider/CPU/Q/source vector. The 135,570,668-byte content subtotal and two-target design are not a whole-host cap. Then run required native Main overview/local, whole-view/fragment/Frame and support/ownership proof for P05.
 
 The actual current Core requests Biome 7, Hero 7 and Finish, with World/Wound empty. Compute the genuine plan for each admitted camera/pass; never hardcode 7 or infer occlusion from sparse rays. Preserve all original assets, density, geometry, mips, shadows and support. The independent simulation remains the reference system.

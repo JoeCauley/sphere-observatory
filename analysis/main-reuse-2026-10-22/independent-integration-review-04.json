@@ -1,0 +1,172 @@
+{
+  "status": "PASS_BOUNDED_FINAL_INTEGRATION_SOURCE_PINS_AND_NAMED_LOGICAL_FUNDING",
+  "sourceRoot": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\owned-context-retirement-join-2026-10-22-01\\source",
+  "sourceFiles": 520,
+  "sourceBeforeAfterExact": true,
+  "bothInventoryPinsExact": true,
+  "graphRows": 218,
+  "executionOrder": 212,
+  "foundationRows": 6,
+  "controllerSHA256": "79bc17d8bc8a0deffa0a2232cfda7748e04fbe57341c1bbc0b9224fd7083631d",
+  "graphDigest": "0763f0564b2bc60a2364d3fe78cff5f8a1b049d9c4ce546a3794ebb690d00e1e",
+  "surfaceDigest": "3674347329a90e039ea8f0dc58713d766cfd76dcec3bdbfb8d64aaa3b8c6eecb",
+  "keyPins": [
+    {
+      "path": "biome-service/native/main-baseline-owner.js",
+      "bytes": 93936,
+      "sha256": "0c355aa169f728b840517b818b13ca251c286135c18c12d24bbcf1257133a58f"
+    },
+    {
+      "path": "biome-service/native/main-default-surface-facts.js",
+      "bytes": 31326,
+      "sha256": "a7af35e07ed7962e431f8c31ef294260eba8313801d69f0206db1620d0fded4e"
+    },
+    {
+      "path": "owned-main-bootstrap.js",
+      "bytes": 52590,
+      "sha256": "79bc17d8bc8a0deffa0a2232cfda7748e04fbe57341c1bbc0b9224fd7083631d"
+    },
+    {
+      "path": "renderer.js",
+      "bytes": 153512,
+      "sha256": "a1cf2a979ae368510dd0f1e211544f42d8bdd9a02b4d411489ed91b036beddc3"
+    }
+  ],
+  "changedFromFrozen04": [
+    "biome-service/native/main-baseline-owner.js",
+    "biome-service/native/main-default-surface-facts.js",
+    "owned-main-bootstrap.js",
+    "renderer.js"
+  ],
+  "controller": {
+    "parentComplete": 385792,
+    "literalDelta": 512,
+    "addedStatic": 1504,
+    "total": 387808,
+    "reservation": 389120,
+    "headroom": 1312,
+    "inequality": "387808 <= 389120",
+    "correctedRecord": "controller-storage-bound-06.json",
+    "preservedRecord": "controller-storage-bound-05.json",
+    "correction": "Named persistent256B row:192B new generated retirementModuleBytes inspect key +64B existing start/releaseUnexecuted lifecycle captures. Accepted06 corrects05; no source/reservation change."
+  },
+  "retirementModule": {
+    "logical": 13024,
+    "reservation": 16384,
+    "headroom": 3360,
+    "inequality": "13024 <= 16384",
+    "reservedBeforeModuleEvaluation": true,
+    "heldAfterEvaluationPossible": true,
+    "releaseOnlyUnexecuted": true,
+    "qBookkeepingAdditional": 662,
+    "actualHeldIncrement": 17046
+  },
+  "BaseControl": {
+    "logical": 3488,
+    "reservation": 4096,
+    "headroom": 608,
+    "inequality": "3488 <= 4096",
+    "reservedBeforeFacade": true,
+    "ordinaryBridgeOrderPreserved": true
+  },
+  "separateReservations": {
+    "pureBaselineModule": 1324128,
+    "originalController": 389120,
+    "sourceS": "Actual per-source admission additional",
+    "genuineQBookkeeping": "Additional,unchanged contract"
+  },
+  "controlRecordsInspected": {
+    "rendererTargetBase": {
+      "status": "PASS",
+      "cases": 30
+    },
+    "closedGateLoader": {
+      "status": "PASS",
+      "modes": 14
+    },
+    "actualAppHandoff": {
+      "status": "PASS",
+      "modes": 7,
+      "scope": "Exact Surface listener removal; original App listeners remain separately retained. Explicit DOM/GL/stream/SRI models; App gate change exists only in disclosed diagnostic controller copy."
+    },
+    "ordinaryRefusal": {
+      "status": "PASS_ACTUAL_JOINT_PROFILE_REFUSAL_BEFORE_IMPORT",
+      "file": "controls-joint-refusal-new-joint-joined07/results.json"
+    },
+    "independentRerun": false
+  },
+  "productGate": false,
+  "criticalSourceCorrectionsRequired": 0,
+  "ledgerCorrectionResolvedIn06": true,
+  "remainingHolds": [
+    "Full genuine initialization/common caller/SourceRead/module execution/ordinary-reader retirement palette work",
+    "Actual browser/public Main installation,whole-view/local fragment,pixels and durable native session behavior",
+    "Physical JS/native/driver/backing/compositor/worker peaks and timing",
+    "P05/Phase One acceptance/release"
+  ],
+  "artifactPins": [
+    {
+      "path": "controller-storage-bound-05.json",
+      "bytes": 2088,
+      "sha256": "671f4632bc759d4377b507316ae00ddbdae2e76da4ac2b23ee3f114a7e405c32"
+    },
+    {
+      "path": "controller-storage-bound-06.json",
+      "bytes": 2774,
+      "sha256": "20652d842e73ad0e0fca58499bc653e11862a565f8efc093e82451ea3d3f0baa"
+    },
+    {
+      "path": "bootstrap-repin-01.json",
+      "bytes": 69249,
+      "sha256": "32108b43d270b15a505f28b071ad3c5be8ec644702cff1c263c0b01059e6e71a"
+    },
+    {
+      "path": "source-verification-01.json",
+      "bytes": 608,
+      "sha256": "1bfdd0d7f96c4c8540a75fb0eb490442a25bdbfa65e9668046ef598e5291bb1c"
+    },
+    {
+      "path": "source-plan-04.json",
+      "bytes": 54219,
+      "sha256": "e2993fe85e28588ff436fb81f0c4f57f2eb54bf64259263f3a5b8ffbf168060e"
+    },
+    {
+      "path": "source-inventory-04.json",
+      "bytes": 88189,
+      "sha256": "2a59a6449c951421b86c5648a12fb8bb6c8dfb8ab4d3b73f889e77739b38583a"
+    },
+    {
+      "path": "source-inventory-09.json",
+      "bytes": 93533,
+      "sha256": "e5f6c09058c36ff574815dc9aa93e1a08c9db76b0b76d015993f1fe75e845b29"
+    },
+    {
+      "path": "renderer-control-run-01.json",
+      "bytes": 9276,
+      "sha256": "dc7638fc35207f522da64e38ab3a75ccfe45dd0eafcfe5c6879fad390336b918"
+    },
+    {
+      "path": "controls-loader-04/results-01.json",
+      "bytes": 187851,
+      "sha256": "aa8f2b223419b81aa6cae8bc1735f996c752b62995a7897bb4de8640ad7fc177"
+    },
+    {
+      "path": "controls-handoff-retirement-11/results-01.json",
+      "bytes": 187797,
+      "sha256": "1ac1b76dc20f4e304e7c8ddf4c8fee6a01854eb5f4beb2d52c2a8371be2a06bb"
+    },
+    {
+      "path": "controls-joint-refusal-new-joint-joined07/results.json",
+      "bytes": 2324,
+      "sha256": "c5efcd2327e787e7bf1999ca56e1b888cba5d0a00155eb63bd2e925f086b5669"
+    },
+    {
+      "path": "handoff-listener-scope-correction-11.json",
+      "bytes": 1838,
+      "sha256": "aaf4ddf672f67d17a4e67506c2ecdbe4ab252a3e8e2fcb6be0ee088997bf44f4"
+    }
+  ],
+  "scope": "Read-only final pins/order/explicit logical inequalities and existing focused-control records. No product source edits,no browser/server activity,no new full-caller/native/heap/timing/P05 grant.",
+  "productMutations": 0,
+  "nativeRuns": 0
+}

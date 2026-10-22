@@ -1,0 +1,170 @@
+{
+  "format": "sphere-owned-context-bounded-integration/1",
+  "utc": "2026-10-22T22:52:17.684660+00:00",
+  "status": "BOUNDED_FUNCTIONAL_INTEGRATION_COMPLETE_WITH_EXPLICIT_LOGICAL_COMPONENT_REVIEW",
+  "P05": "OPEN_IN_PROGRESS",
+  "P06_P08": "NOT_STARTED",
+  "PhaseOne": "NOT_ACCEPTED_NOT_RELEASED",
+  "component": {
+    "source": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/resume-canvas-retirement-2026-10-22-01/candidate-02/source",
+    "files": 516,
+    "successfulFreshProcesses": 32,
+    "originalFactsGroups": 33,
+    "originalImportGroups": 5,
+    "ownedCases": 9,
+    "legacyResizeCases": 18,
+    "nonmanagedOwnedCases": 3
+  },
+  "combined": {
+    "source": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/owned-context-retirement-join-2026-10-22-01/source",
+    "files": 520,
+    "parsed": 424,
+    "rendererCases": 30,
+    "loaderCases": 14,
+    "appHandoffCases": 7,
+    "unqualifiedFactoryRefusalCases": 1,
+    "controlledScenarios": 52,
+    "maximumControlledSliceWork": 3968,
+    "limit4096Unchanged": true,
+    "sourceFilesChanged": 4,
+    "appAndAllOtherParentBytesUnchanged": true
+  },
+  "logical": {
+    "surface": {
+      "upper": 78624,
+      "allowance": 131072
+    },
+    "addedBase": {
+      "upper": 3488,
+      "allowance": 4096
+    },
+    "addedModule": {
+      "upper": 13024,
+      "allowance": 16384
+    },
+    "controller": {
+      "upper": 387808,
+      "allowance": 389120
+    },
+    "actualQBookkeepingAndSourceAdditional": true,
+    "nativePhysicalHeapOrBackingMeasured": false
+  },
+  "nativeBrowserRun": false,
+  "productMainGate": false,
+  "sourceOrPriceOverride": false,
+  "diagnostics": "Private source observations only for Renderer controls; sole existing private App execution gate diagnostic for handoff. All native behaviors are explicit models. Product gate remainsfalse.",
+  "lifetime": "Uncertain native context and exact captured extension/error roots retained until captured native loss. Added Base Q closes after Surface import; new module Q remains with evaluated realm. Separate App listeners remain owned by App.",
+  "preservedAttempts": [
+    "Component batch output-name collision,with completed results and corrected suffix preserved.",
+    "Handoff10 overbroad all-listeners-zero test assertion; unchanged product tested by exact Surface-listener successor11.",
+    "Incomplete controller logical ledger05 preserved beside corrected06.",
+    "Initial authoring whitespace guards refused before any product output/write; corrected exact byte anchors recorded."
+  ],
+  "remaining": [
+    "Fixed genuine Main initializer, including genuinely linked exported positions helper and exclusively owned VAO; trusted entry boundary remains explicit.",
+    "Full inherited controller/disposal/cold caller resource-API work, child/reader/factory palette and native exception implementation representation. Local retirement bound does not qualify these.",
+    "Ground/Shadow/AA/default-resolve current-generation integration; new content cold tables and complete native Main gate stay unselected.",
+    "Exact simultaneous complete actual-viewport host baseline plus service/provider/CPU/Q/source vector and required native P05 overview/local/whole-view/fragment/Frame/support/ownership proof.",
+    "Physical native/VM/driver/compositor peaks,pixels and quiet timing remain unmeasured by this step; later P08 obligations remain separate."
+  ],
+  "artifacts": [
+    {
+      "path": "resume-canvas-retirement-2026-10-22-01/candidate-02/source-delta-02.json",
+      "bytes": 97176,
+      "sha256": "fb5f03d445caf453dc401d4fd69f029c3bb6a709cdd089f55bf6a8cbacae83c7"
+    },
+    {
+      "path": "resume-canvas-retirement-2026-10-22-01/candidate-02/control-run-01.json",
+      "bytes": 5344,
+      "sha256": "6c674cbf3c461256ce9f42303cc823e12422e1921bc232cf61bed1b79396da8c"
+    },
+    {
+      "path": "resume-canvas-retirement-2026-10-22-01/candidate-02/control-run-02.json",
+      "bytes": 4674,
+      "sha256": "4e46e6a0c08857c392fc1c5abca6df03710e2f4cbca49e270a9d5f1931ddfb50"
+    },
+    {
+      "path": "resume-canvas-retirement-2026-10-22-01/candidate-02/constructor-facts-controls-16.json",
+      "bytes": 5913,
+      "sha256": "2b80ffa708dbc84b4ee1f0bbdfee487be9e19e1f04c859bead611623f28666dd"
+    },
+    {
+      "path": "resume-canvas-retirement-2026-10-22-01/candidate-02/controls-normal-funded02/results.json",
+      "bytes": 101048,
+      "sha256": "ea2faf3820161bf4f1ade5956e4754a81a3404fc9c20a225ed2226dd4d2f3804"
+    },
+    {
+      "path": "owned-context-retirement-review-2026-10-22-01/review-seal-01.json",
+      "bytes": 2428,
+      "sha256": "d2261c4d75ca7b9f1b9913ea76f5b024ec144246b72f38b5ce063e44499bbf42"
+    },
+    {
+      "path": "owned-context-retirement-review-2026-10-22-01/module-installation-supplement-03.json",
+      "bytes": 20552,
+      "sha256": "1989bcb62d0095afd501da1dddfde7f3eae8989da14fcd523a7d6deab8a004bd"
+    },
+    {
+      "path": "owned-context-retirement-review-2026-10-22-01/supplement-receipt-03.json",
+      "bytes": 490,
+      "sha256": "4c58706392aca394ed93b043e10ce8582da01c809d8f2f9f8e2fe82d5cfb9ba4"
+    },
+    {
+      "path": "owned-context-retirement-review-2026-10-22-01/final-integration-review-04.json",
+      "bytes": 6237,
+      "sha256": "68cdea2c23e5cce847e24906836f2c42b4a2773b10416f94cdef1c42fae97eae"
+    },
+    {
+      "path": "owned-context-retirement-join-2026-10-22-01/assembly-delta-01.json",
+      "bytes": 163849,
+      "sha256": "e801da3bddb90491d1d76d7bd50c3365efdfa60b50d6dab15791425b2b843384"
+    },
+    {
+      "path": "owned-context-retirement-join-2026-10-22-01/bootstrap-repin-01.json",
+      "bytes": 69249,
+      "sha256": "32108b43d270b15a505f28b071ad3c5be8ec644702cff1c263c0b01059e6e71a"
+    },
+    {
+      "path": "owned-context-retirement-join-2026-10-22-01/controller-storage-bound-05.json",
+      "bytes": 2088,
+      "sha256": "671f4632bc759d4377b507316ae00ddbdae2e76da4ac2b23ee3f114a7e405c32"
+    },
+    {
+      "path": "owned-context-retirement-join-2026-10-22-01/controller-storage-bound-06.json",
+      "bytes": 2774,
+      "sha256": "20652d842e73ad0e0fca58499bc653e11862a565f8efc093e82451ea3d3f0baa"
+    },
+    {
+      "path": "owned-context-retirement-join-2026-10-22-01/source-verification-01.json",
+      "bytes": 608,
+      "sha256": "1bfdd0d7f96c4c8540a75fb0eb490442a25bdbfa65e9668046ef598e5291bb1c"
+    },
+    {
+      "path": "owned-context-retirement-join-2026-10-22-01/renderer-control-run-01.json",
+      "bytes": 9276,
+      "sha256": "dc7638fc35207f522da64e38ab3a75ccfe45dd0eafcfe5c6879fad390336b918"
+    },
+    {
+      "path": "owned-context-retirement-join-2026-10-22-01/controls-loader-04/results-01.json",
+      "bytes": 187851,
+      "sha256": "aa8f2b223419b81aa6cae8bc1735f996c752b62995a7897bb4de8640ad7fc177"
+    },
+    {
+      "path": "owned-context-retirement-join-2026-10-22-01/controls-handoff-retirement-11/results-01.json",
+      "bytes": 187797,
+      "sha256": "1ac1b76dc20f4e304e7c8ddf4c8fee6a01854eb5f4beb2d52c2a8371be2a06bb"
+    },
+    {
+      "path": "owned-context-retirement-join-2026-10-22-01/controls-joint-refusal-new-joint-joined07/results.json",
+      "bytes": 2324,
+      "sha256": "c5efcd2327e787e7bf1999ca56e1b888cba5d0a00155eb63bd2e925f086b5669"
+    },
+    {
+      "path": "owned-context-retirement-join-2026-10-22-01/handoff-listener-scope-correction-11.json",
+      "bytes": 1838,
+      "sha256": "aaf4ddf672f67d17a4e67506c2ecdbe4ab252a3e8e2fcb6be0ee088997bf44f4"
+    }
+  ],
+  "deliveredWalk": "UNCHANGED",
+  "browserTabsAndServers": "NOT_OPERATED",
+  "rawArchives": "PRESERVED_LOCAL"
+}

@@ -1,0 +1,74 @@
+{
+  "status": "SOURCE_DERIVED_CONTROLLER_PLUS_SEPARATE_RETIREMENT_MODULE_CANDIDATE",
+  "parent": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\owned-context-retirement-join-2026-10-22-01\\controller-storage-bound-05.json",
+  "language": {
+    "headerOrControlBytes": 128,
+    "slotBytes": 32,
+    "stringHeaderBytes": 128,
+    "stringPayload": "UTF16 occurrence rounded32; each literal occurrence separately",
+    "allocationOrdering": "genuine Qreserve BEFORE graph/native/controller storage",
+    "nativeHeap": "UNMEASURED"
+  },
+  "priorCompleteLogicalBytes": 385792,
+  "oldLiteralBytes": {
+    "graph": 159872,
+    "surface": 5600,
+    "order": 52704
+  },
+  "newLiteralBytes": {
+    "graph": 159904,
+    "surface": 6080,
+    "order": 52704
+  },
+  "literalDelta": 512,
+  "staticRows": [
+    {
+      "name": "New module charge binding and inspect field",
+      "bytes": 64
+    },
+    {
+      "name": "Additional reserve options record",
+      "bytes": 192
+    },
+    {
+      "name": "Additional reserve two-argument vector",
+      "bytes": 192
+    },
+    {
+      "name": "Additional zero-argument release vector",
+      "bytes": 128
+    },
+    {
+      "name": "Additional controller activation envelope",
+      "bytes": 256
+    },
+    {
+      "name": "Two added reservation label literal occurrences",
+      "bytes": 416
+    },
+    {
+      "name": "New inspect key string and existing lifecycle closure captures",
+      "bytes": 256,
+      "detail": {
+        "retirementModuleBytesKeyString": 192,
+        "startAndReleaseUnexecutedAddedCaptureSlots": 64
+      },
+      "kind": "persistent",
+      "reason": "Each generated key string receives its header and UTF16-rounded32 payload. start and releaseUnexecuted each gain one32-byte reference capture; the separate activation envelope is transient."
+    }
+  ],
+  "staticDelta": 1504,
+  "totalLogicalBytes": 387808,
+  "rounded4096Bytes": 389120,
+  "separatePureModuleBytes": 1324128,
+  "separateRetirementModuleBytes": 16384,
+  "retirementModuleBound": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\owned-context-retirement-review-2026-10-22-01\\module-installation-supplement-03.json",
+    "sha256": "1989bcb62d0095afd501da1dddfde7f3eae8989da14fcd523a7d6deab8a004bd",
+    "totalLogicalBytes": 13024
+  },
+  "actualQBookkeepingAdditional": true,
+  "sourceSAdditional": true,
+  "scope": "Logical authored record ABI only. Full inherited controller source/URL/loader work, whole module execution, native heap/backing/peaks and full Main entry remain separate and unqualified.",
+  "correction": "Independent review named one generated inspect key string and two added persistent closure captures. Prior05 remains preserved. No product source,fee,gate or reservation change."
+}

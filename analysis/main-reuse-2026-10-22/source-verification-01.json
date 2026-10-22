@@ -1,0 +1,20 @@
+{
+  "status": "PASS_EXACT_COMPOSITION_AND_PARSE",
+  "files": 520,
+  "parsed": 424,
+  "changed": [
+    "biome-service/native/main-baseline-owner.js",
+    "biome-service/native/main-default-surface-facts.js",
+    "owned-main-bootstrap.js",
+    "renderer.js"
+  ],
+  "allInverseBytesEqualParent": true,
+  "executionOrderUnchanged": true,
+  "foundationUnchanged": true,
+  "appUnchanged": true,
+  "oldComponentSourcesUnchangedByConstruction": true,
+  "newSurfaceProfile": "main-owned-default-surface-facts-v2",
+  "mainPermission": false,
+  "logicalModuleBeforeEvaluation": true,
+  "fullMainOrNativeClaim": false
+}
