@@ -1,0 +1,26 @@
+{
+  "status": "CONFIRMED_SOURCE_EXPOSURE_INTERCEPTION_GAP",
+  "sourcePins": {
+    "app": "c784abfd6f66e95df7788c6409f6aefc68d372d82552f57c121d5941a0008bee",
+    "loader": "8cd40f45c0151e4199e4ab29c39b627b5f7c80110a8aca5561286090d6f5d8c7",
+    "portBody": "4f716be8ac3a0959fe4e6801d0adbce95afccb10716199f2d377ba1e02c2f964",
+    "claimBody": "d4505cd69f3264c013b7810a83d836984f140c3d26b4938756f0fcf9f9b61413",
+    "assignment": "8c4786f8d483f343e273f604dfcdbfc6871a0fab39dfe4b19faaba9847b1bce1"
+  },
+  "constructorCalls": 2,
+  "sourceClaimSucceeded": true,
+  "originalAppPublishedAsOwnData": true,
+  "nativeWeakRefBrandAccepted": true,
+  "privateCoreExportedByForeignConstructor": true,
+  "writeSerialAfterExternalMutation": 7,
+  "portCurrentAfterExternalPositionMutation": true,
+  "positionAfterExternalMutation": 99,
+  "Main": false,
+  "scope": [
+    "Exact original App namespace assignment expression, new App port body and loader claim body execute unchanged.",
+    "Named private App/Renderer/currentScript/viewport models are inherited from the author harness; unused original App methods are not invoked.",
+    "A preinstalled SphereApp setter replaces WeakRef during the actual assignment, then publishes the real App as own data. New port captures that constructor only afterward.",
+    "Replacement returns a genuinely branded native WeakRef, so loader deref cannot distinguish it; this is not a forged ready flag or a native/heap claim."
+  ],
+  "remedy": "Capture the original WeakRef constructor/deref and native viewport reader at actual App script initialization before exposing SphereApp or invoking UI callbacks, then use those captured identities for the new port. Preserve original dispatch and source checks. Funding/work remains separate."
+}

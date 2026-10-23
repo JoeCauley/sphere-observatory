@@ -1,0 +1,102 @@
+{
+  "status": "FUNCTIONAL_SHARED_CALLER_AND_WEAK_APP_INPUT_HANDOFF_SOURCE_COMPONENT_COST_REVIEW_PASSED",
+  "utc": "2026-10-23T15:39:43.794823+00:00",
+  "proofs": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-caller-join-2026-10-23-01\\CHECK-09.json",
+      "bytes": 119461,
+      "sha256": "da4a6b81018714557230808a098c5fcf2284c75a8c3a96147e5d9f33fcd2e13e"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\FUNCTIONAL-05.json",
+      "bytes": 7658,
+      "sha256": "e638d2e87685cdb8493eb8d4d67078d89a3b418da5565bc83776561c9be5edce"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-review-02\\CHECK-12.json",
+      "bytes": 6637,
+      "sha256": "da05adb1e545400fcde0d093c123b06e923d252f70e2fe732bfadc32787c2e3b"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-review-02\\REVIEW-RECEIPT-13.json",
+      "bytes": 2176,
+      "sha256": "f7ab9a79af95d1cbc0ec75a037423255e5456b271dc49f96f569151a8a783ab3"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\CHECK-02.json",
+      "bytes": 28254,
+      "sha256": "bb82b725d51e01f00954a6f29b16ceb3f9870ebbf9e1b4ca5ad3f450e1919d3c"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\CHECK-14.json",
+      "bytes": 118181,
+      "sha256": "149850c1c217111f3715ecd9a8e0a671ac27fbf6989ca2b15b5701db8709e123"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\independent-review-01\\CHECK-01.json",
+      "bytes": 9083,
+      "sha256": "bad1c8fc61afc1f8944981e351d18f6e7e385832b43f98bdc74c437a3b001f9f"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\independent-review-02\\CHECK-01.json",
+      "bytes": 8207,
+      "sha256": "30f21e5bb5481e4d5de2dde26f962581458f7fda0b43d30c858d912fceace3c6"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\independent-review-01\\namespace-interception-counterexample-01.json",
+      "bytes": 1761,
+      "sha256": "204a6a633c4e342740d494d5bf67ced7763ef984ffec31ffcbbb0505d651051b"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\independent-review-01\\freeze-interception-counterexample-02.json",
+      "bytes": 1711,
+      "sha256": "573fc6e65303f3b1990fbf3432ba09475f95ec9d05c59ca168e0eb8948f5f068"
+    }
+  ],
+  "sourceFiles": 521,
+  "parses": 425,
+  "profilesFresh": 3,
+  "genuineSourceReads": 233,
+  "initialSourceRuntimeRows": 219,
+  "sourceCallerPassingRuns": 13,
+  "sourceCallerPreservedFailedRuns": 5,
+  "actualStartupModelCases": 9,
+  "appAuthorFunctionalGroups": 16,
+  "appIndependentAddedGroups": 4,
+  "sourceComponentInternalMaximum": 785,
+  "sourceComponentProposals": {
+    "instance": 1241088,
+    "pending": 49152,
+    "caller": 2609152,
+    "sourceOnlyEntry": 28672,
+    "hookWork": [
+      439,
+      101,
+      34,
+      2346,
+      37
+    ]
+  },
+  "sourceComponentOnlyQModelHighwater": 16591503,
+  "selectedMainStartupComponent": "main-texture-handoff-funded-c3",
+  "latestUnselectedCallerJoin": "main-localized-caller-joined-c2",
+  "latestUnselectedAppInputs": "main-actual-app-input-unselected-c3",
+  "completeNewFundingSelected": false,
+  "completeNewWorkSelected": false,
+  "fullHostLimitsSelected": false,
+  "nativeMain": false,
+  "MainPermission": false,
+  "P05": "OPEN",
+  "simulationAssetsWalkingChanged": false,
+  "browserServerOperated": false,
+  "activeOutsideCutoff": [
+    "fixed helper Source successor and helper/caller06+ successor",
+    "App C03 positive storage review03 and future complete entry/caller composition"
+  ],
+  "next": [
+    "Complete fixed private helper Source/Positions-hash preparation in the same owned caller and fresh checks",
+    "Compose exact Source/G/App entry, phase, pending and returned-closed ownership before selecting values",
+    "Derive genuine same-surface-backend R from actual App/Core/viewport and original Surface/provider/Root/content/active-weather parents",
+    "Use original Host/PH/PB/Base setup/import, demanded content/prepared Root and required native Main assigned surfaces/Frame/support"
+  ]
+}

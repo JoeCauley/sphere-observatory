@@ -1,0 +1,29 @@
+{
+  "pass": true,
+  "cutoff": 15,
+  "snapshots": 65,
+  "archiveEntriesVerified": 33771,
+  "recordsVerified": 5166,
+  "recordsAdded": 362,
+  "recordBytes": 179315241,
+  "freshRestore": {
+    "snapshot": "main-actual-app-input-unselected-c3",
+    "destination": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-caller-progress-2026-10-23-01\\restored-check-15\\source",
+    "files": 521,
+    "verified": true
+  },
+  "earlierRowsExact": true,
+  "restorerUnchanged": true,
+  "currentReadmeUTF8": true,
+  "historicalReadmeBytesExact": true,
+  "selectedMainComponent": "main-texture-handoff-funded-c3",
+  "callerJoinSelected": false,
+  "appInputsSelected": false,
+  "P05": "OPEN",
+  "excludedActive": [
+    "Helper Source successor",
+    "Private helper/caller06+ successors",
+    "App independent storage review03"
+  ],
+  "rawArchivesRemainLocal": true
+}

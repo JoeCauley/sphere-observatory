@@ -1,0 +1,62 @@
+{
+  "format": "sphere-source-bootstrap-component-review-receipt/1",
+  "status": "PASS_SOURCE_COMPONENT_PROPOSAL_INDEPENDENTLY_REVIEWED_NOT_SELECTED",
+  "utc": "2026-10-23T15:17:24.119Z",
+  "author": {
+    "path": "CHECK-12.json",
+    "bytes": 6637,
+    "sha256": "da05adb1e545400fcde0d093c123b06e923d252f70e2fe732bfadc32787c2e3b"
+  },
+  "independent": {
+    "path": "../work-ownership-independent-review-02/CHECK-02.json",
+    "bytes": 28254,
+    "sha256": "bb82b725d51e01f00954a6f29b16ceb3f9870ebbf9e1b4ca5ad3f450e1919d3c"
+  },
+  "currentProposal": "source-selection-proposal-11.json",
+  "metadata": {
+    "SOURCE_CONTROLLER_BYTES": 1241088,
+    "SOURCE_PENDING_BYTES": 49152,
+    "SCHEDULED_SOURCE_CONTROLLER_METADATA_BYTES": 2609152
+  },
+  "sourceEntry": {
+    "raw": 26624,
+    "rounded4096": 28672,
+    "placement": "Add to original inline389120 reserve before entering strict new Source prefix block; actual common/Surface entry contributions are separate"
+  },
+  "work": {
+    "internal": {
+      "visit": 29,
+      "completion": 15,
+      "header": 82,
+      "scan": 4,
+      "row": 44,
+      "canonical": 727,
+      "profileHash": 741,
+      "profileDigest": 121,
+      "open": 321,
+      "response": 12,
+      "read": 19,
+      "chunk": 18,
+      "copy": 27,
+      "rowDigest": 105,
+      "commit": 13,
+      "publish": 23,
+      "rollback": 9,
+      "cleanup": 17
+    },
+    "internalCompleteVisitMax": 785,
+    "sourceHookPayload": {
+      "sourceCreate": 439,
+      "sourceStart": 101,
+      "sourceAccept": 34,
+      "sourceRelease": 2346,
+      "sourceDispose": 37
+    },
+    "commonCallerFit": "actual common visit+hook payload+queue+completion <=4096 must be independently derived; remaining capacity is never used as a price"
+  },
+  "sourceFilesUnchanged": 521,
+  "selected": false,
+  "actualSharedCurrentCode": "K/J/C shared caller/source profiles need separate exact re-census and funding/work composition before any literals are applied",
+  "MainGate": false,
+  "next": "Fresh fixed6-field nine-source helper extension, preserving this frozen bootstrap branch/proposal/evidence; no inherited fee selection for changed header/callback/capture/lifetime."
+}

@@ -1,0 +1,174 @@
+{
+  "format": "sphere-app-startup-input-independent-review/1",
+  "status": "REFUSED_CANDIDATE02_PENDING_EARLY_ORIGINAL_INTRINSIC_CAPTURE",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\candidate-02\\source",
+  "sourceEdits": 0,
+  "sourcePins": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\candidate-02\\source\\app.js",
+      "bytes": 37452,
+      "sha256": "c784abfd6f66e95df7788c6409f6aefc68d372d82552f57c121d5941a0008bee"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\candidate-02\\source\\owned-main-bootstrap.js",
+      "bytes": 156715,
+      "sha256": "8cd40f45c0151e4199e4ab29c39b627b5f7c80110a8aca5561286090d6f5d8c7"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\independent-review-01\\exact-edits-01.json",
+      "bytes": 82722,
+      "sha256": "31160fd4c89550c44a6ec733b36e445eac91ac628a795ee2b377f2d199d23029"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\independent-review-01\\freeze-counter-relocation-02.json",
+      "bytes": 2770,
+      "sha256": "b5df739ab2dcc6705edd29b553698c3f6ec63803ec1549267e27d6b9d95caf27"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\independent-review-01\\freeze-interception-counterexample-02.json",
+      "bytes": 1711,
+      "sha256": "573fc6e65303f3b1990fbf3432ba09475f95ec9d05c59ca168e0eb8948f5f068"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\independent-review-01\\frozen-inputs-01.json",
+      "bytes": 2522,
+      "sha256": "932bcb68475101092a575e3a24de104631b32e440eae47a4d8d22c959d444e3e"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\independent-review-01\\independent-input-controls-04.json",
+      "bytes": 3263,
+      "sha256": "820441768217caaa827d5f5784b9cfb6c356baa512ad312d7b01bc48bdd8d9dd"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\independent-review-01\\independent-source-verification-05.json",
+      "bytes": 761,
+      "sha256": "a77a048a6ba045c7e2fe94d0a291cc0fdab7fb9790765e3696f3146f3a6a3889"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\independent-review-01\\input-controls-04.json",
+      "bytes": 3237,
+      "sha256": "494b3633c449343dfdb86d4f92b9da2f6c3e4e82814663fd61375b82674ceaee"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\independent-review-01\\namespace-interception-counterexample-01.json",
+      "bytes": 1761,
+      "sha256": "204a6a633c4e342740d494d5bf67ced7763ef984ffec31ffcbbb0505d651051b"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\independent-review-01\\prepare-freeze-interception-02.cjs",
+      "bytes": 3008,
+      "sha256": "d5a05d86140e1a621cccae59255ae3b39d70d6fc5957eb676ca07049dade50da"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\independent-review-01\\prepare-namespace-interception-01.cjs",
+      "bytes": 4403,
+      "sha256": "3d2749c05165fd0794c33d91065578e9811e4195f231310eaee0ee767a61ff8c"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\independent-review-01\\READ-FIRST-01.md",
+      "bytes": 3424,
+      "sha256": "3805aa1ed3c6c2733729dbace46daeecb73eaec3245be422d71c88e77e26f0ae"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\independent-review-01\\replay-test-inputs-04.cjs",
+      "bytes": 12428,
+      "sha256": "d58f8168092f718f0869af401673b7fef6c5e2e68cfce2c99406b197fe095bc3"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\independent-review-01\\replay-verify-source-05.cjs",
+      "bytes": 3767,
+      "sha256": "ef0ca5e9bea79fe90b236674ebe6d97e9f456376a6289bcf051bad06245204db"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\independent-review-01\\seal-review-01.cjs",
+      "bytes": 3698,
+      "sha256": "6ac283086917e05fefc0d5f45c99c591197338665a7f1d8159a1f9d703414903"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\independent-review-01\\source-inventory-02.json",
+      "bytes": 88363,
+      "sha256": "a8992bd9b972974fef982e34d7c84ae037643b8b3d7d2e6cafc49e7360c38d04"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\independent-review-01\\source-verification-05.json",
+      "bytes": 761,
+      "sha256": "a77a048a6ba045c7e2fe94d0a291cc0fdab7fb9790765e3696f3146f3a6a3889"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\independent-review-01\\test-freeze-interception-02.cjs",
+      "bytes": 9725,
+      "sha256": "ddd09cf99c07a4a05ab989f022a3218bb2c67c027fad5bbe098e00514158a068"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\independent-review-01\\test-inputs-04.cjs",
+      "bytes": 12413,
+      "sha256": "479973737f8f169bb3fc0a21e4b9c5acbfe1d0d17a60c924758415d6ac974a38"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\independent-review-01\\test-namespace-interception-01.cjs",
+      "bytes": 9632,
+      "sha256": "59c0a449d7e90e643b5fee73154ebfae61aa29a8d3c2d1fc7d1c2872234e54ff"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\independent-review-01\\verify-source-05.cjs",
+      "bytes": 3749,
+      "sha256": "260165e646bb5ec12b1a5e47bca47e4a20410f9ffa08ce11775f8435e6a83dd7"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\independent-review-01\\weak-author-disposition-03.json",
+      "bytes": 433,
+      "sha256": "06c5480a16653f122f9e3fb4449afaa739c51656424d41052f9b4da5e20f0cbc"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\independent-review-01\\weak-input-edits-02.json",
+      "bytes": 76065,
+      "sha256": "4485db3b1477bbd9212c57fd7d3d5dbcb9e2ce41be9c0719906e12c0c2f5dd32"
+    }
+  ],
+  "positive": {
+    "actualBodyGroups": 14,
+    "sourceFiles": 521,
+    "parsed": 425,
+    "freshSourceReads": 233,
+    "other519Exact": true,
+    "inverseToCaller05K02": true
+  },
+  "counterexamples": [
+    {
+      "path": "namespace-interception-counterexample-01.json",
+      "result": "Actual App publication setter replaces late-captured WeakRef; genuine native weak record/source claim/currentness pass while private Core escapes."
+    },
+    {
+      "path": "freeze-interception-counterexample-02.json",
+      "result": "Actual App publication setter replaces dynamic Object.freeze; genuine frozen record/source claim/currentness pass while private Core escapes."
+    }
+  ],
+  "findings": [
+    {
+      "id": "APP_INPUT_01",
+      "severity": "BLOCKING_COMPONENT_AUTHORITY",
+      "source": "app.js:131,139,144,146",
+      "fix": "Capture original new-port intrinsics before public App exposure/UI callbacks; use captured WeakRef/deref/viewport/freeze for record+port. Preserve original source/nonce/Renderer checks."
+    },
+    {
+      "id": "APP_INPUT_02",
+      "severity": "NO_ADDITIONAL_FINDING",
+      "source": "app.js:142-146; owned-main-bootstrap.js:575-587",
+      "finding": "Weak record has no retained strong Core property. Strong deref locals are synchronous only; no VM/GC conclusion."
+    }
+  ],
+  "funding": "Null/unselected; positive storage/entry/work derivation must use corrected source and actual caller.",
+  "scope": [
+    "Exact source assignment/port/claim/reader bodies in disclosed named models",
+    "Actual Node WeakRef/deref and native-delegating freeze",
+    "No ordinary-path changes, product source edits, native browser/DOM/Main/Frame or P08 heap claim"
+  ],
+  "selection": {
+    "metadata": false,
+    "work": false,
+    "Main": false,
+    "P05": false
+  }
+}

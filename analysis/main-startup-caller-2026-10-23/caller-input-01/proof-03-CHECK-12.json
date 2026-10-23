@@ -1,0 +1,181 @@
+{
+  "format": "sphere-source-bootstrap-work-ownership-component-author-check/1",
+  "status": "PASS_COMPLETE_SOURCE_COMPONENT_PROPOSAL_NOT_SELECTED_PENDING_INDEPENDENT_AND_SHARED_CALLER",
+  "utc": "2026-10-23T15:13:15.724Z",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\candidate-01\\source",
+  "sourceUnchanged": {
+    "files": 521,
+    "inventory": "49e03fe786056d35213f363e23deb7c515291bb31e4050c39f6b78f89795cec1",
+    "originalSourceSha256": "90a572d5f2386feb7b367c14ba7cf9e506a1e41cf554acf915e15304985fb706",
+    "Records": "70dbb2302f88f5f950de3eb2d3e94951a1537fdeab54640e7bb95746d69c1556",
+    "Q": "9318446452e9a99fee2873eaf0d072bd76c39f714e4d1bceadf6057d04df6635"
+  },
+  "manifest": [
+    {
+      "path": "storage-union-11.json",
+      "bytes": 121320,
+      "sha256": "23904b25ea6057ac6306266a26a5d0b1d05a12470d2cdbd0652aef1186156f6f"
+    },
+    {
+      "path": "q-entry-basis-09.json",
+      "bytes": 15875,
+      "sha256": "20f34603a0c2ed72b5e921b189e313d6ce669e7822e649da19d4a277fc486c62"
+    },
+    {
+      "path": "source-phase-work-02.json",
+      "bytes": 43916,
+      "sha256": "638872162080e636d9bddb16c6800459e9811fa45085e8a144b48e4eca8ed998"
+    },
+    {
+      "path": "storage-basis-02.json",
+      "bytes": 879779,
+      "sha256": "07193e8aced2df9d8f089d2db1a3aef5661db0142b34ba5d8e81b0c312b3403c"
+    },
+    {
+      "path": "source-entry-work-09.json",
+      "bytes": 27242,
+      "sha256": "96a010964d3e46537965257e1591808eb19d611bc9f452fb8955c8b1dff71f7a"
+    },
+    {
+      "path": "source-entry-prefix-draft-05.inc.js",
+      "bytes": 929,
+      "sha256": "8cde44eba18844dee7f4fb4dbd2b5da24a855584259e72d2f857896a0918e791"
+    },
+    {
+      "path": "source-owned-hooks-draft-02.inc.js",
+      "bytes": 4694,
+      "sha256": "b9d7f7c92144eff9e688bb20ff25e51b9f40595636ed195a7cfcf7dc2388e9bc"
+    },
+    {
+      "path": "source-original-q-high-water-11.json",
+      "bytes": 48316,
+      "sha256": "b9334e3839b3e1a07927beed9e59578d1ba19f57ea92bc9611946cd025493c4f"
+    },
+    {
+      "path": "source-selection-proposal-11.json",
+      "bytes": 2057,
+      "sha256": "f6b960c4777bcfcf032fe5adcdb456db132bf1bdff3190d5bb1b09123dcc30a6"
+    },
+    {
+      "path": "source-hooks-run-05.json",
+      "bytes": 7162,
+      "sha256": "5eced25e961334633436c7e5dce9724b33994a2e2bc8173996e4559b33f0fb84"
+    },
+    {
+      "path": "test-source-owned-hooks-11.cjs",
+      "bytes": 11942,
+      "sha256": "1c5a4afbf9bf0e2dca1246d9048fb88ed507e6822da7635e5ec927c04562e8ba"
+    },
+    {
+      "path": "append-final-overlap-11.cjs",
+      "bytes": 5261,
+      "sha256": "6f963c5d987ae561ed11c4812b51613950f491f70acbb978bac02e210085e65b"
+    },
+    {
+      "path": "append-review-corrections-09.cjs",
+      "bytes": 9979,
+      "sha256": "4768214e3e9d72df967f7754f07907fe3a201a2184a6d4bb17ecf5b20f6861d2"
+    },
+    {
+      "path": "derive-q-entry-basis-06.cjs",
+      "bytes": 5632,
+      "sha256": "ade68d52d8ca76c1179856115aa6ea3c6da63b997f8e2144c6b789ac09d22299"
+    },
+    {
+      "path": "derive-storage-union-07.cjs",
+      "bytes": 23157,
+      "sha256": "3d346936f276f1c483884c5dd7cd4fff04e354aa9bb319ea10adc8f7ec2ba380"
+    },
+    {
+      "path": "derive-entry-work-07.cjs",
+      "bytes": 13284,
+      "sha256": "162c434ec97b93da2fff575a9d6dbec7f4ed5edc203b37790b69b7cedaab91da"
+    }
+  ],
+  "proposedFees": {
+    "internal": {
+      "visit": 29,
+      "completion": 15,
+      "header": 82,
+      "scan": 4,
+      "row": 44,
+      "canonical": 727,
+      "profileHash": 741,
+      "profileDigest": 121,
+      "open": 321,
+      "response": 12,
+      "read": 19,
+      "chunk": 18,
+      "copy": 27,
+      "rowDigest": 105,
+      "commit": 13,
+      "publish": 23,
+      "rollback": 9,
+      "cleanup": 17
+    },
+    "internalCompleteVisitMax": 785,
+    "sourceHookPayload": {
+      "sourceCreate": 439,
+      "sourceStart": 101,
+      "sourceAccept": 34,
+      "sourceRelease": 2346,
+      "sourceDispose": 37
+    },
+    "commonCallerFit": "actual common visit+hook payload+queue+completion <=4096 must be independently derived; remaining capacity is never used as a price"
+  },
+  "proposedStorage": {
+    "SOURCE_CONTROLLER_BYTES": 1241088,
+    "SOURCE_PENDING_BYTES": 49152,
+    "SCHEDULED_SOURCE_CONTROLLER_METADATA_BYTES": 2609152
+  },
+  "sourceOnlyEntry": {
+    "raw": 26624,
+    "rounded4096": 28672,
+    "placement": "Add to original inline389120 reserve before entering strict new Source prefix block; actual common/Surface entry contributions are separate"
+  },
+  "logicalQ": {
+    "knownComponentPeak": {
+      "stage": "OPEN",
+      "row": 151,
+      "path": "biome-service/schema-validators.js",
+      "persistentCharged": 6014815,
+      "scratchCharged": 3328816,
+      "charged": 16591503
+    },
+    "closedCharged": 6241046,
+    "otherOwners": "Shared caller state/module/entry remainder, cold builders, Surface/G and whole-host overlap are not included",
+    "unchangedLimit": 33554432
+  },
+  "models": {
+    "groups": 8,
+    "actualHookGroups": 7,
+    "originalAffinityAPIProbe": 1,
+    "full219": true,
+    "exactOriginalLoaderEnvelope": true,
+    "actualNativeObserverHold": true,
+    "diagnosticOnly": true,
+    "productionSourceTablesRemainNull": true,
+    "adapters": [
+      "small fixtures and exact original219-row loader envelope; data URLs replace HTTP",
+      "hook factory supplies private environment; Surface/helper builders are unused fixture records",
+      "raw undefined/false check injection probes candidate root order",
+      "no shared dispatcher scheduler or original DOM loaded"
+    ]
+  },
+  "qualification": {
+    "selected": false,
+    "actualGlobalR": false,
+    "frameOrUploadReset": false,
+    "arbitraryReadyTicket": false,
+    "MainGate": false,
+    "wholeP05": false,
+    "nativePhysicalVMHeap": "UNMEASURED"
+  },
+  "independent": "Partial phase/basis already sealed separately; complete ownership and entry successors are under fresh independent-review02. This author receipt is not its acceptance.",
+  "remaining": [
+    "Current merged shared caller and Surface entry/full module/controller union and work prices",
+    "Current merged Source/schema/capture/profile recensus before applying any numeric literals",
+    "Original private script/DOM/native-host integration and all later P05 gates remain separately qualified"
+  ],
+  "history": "01/03/04/05/07/08/09 proposals and corrections remain unchanged; only12 manifest describes current11 ownership. Missing --expose-internals on first09 generator call failed before any output write, corrected by proper rerun; no source was edited."
+}

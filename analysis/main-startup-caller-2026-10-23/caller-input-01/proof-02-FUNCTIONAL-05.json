@@ -1,0 +1,151 @@
+{
+  "status": "FROZEN_FUNCTIONAL_SHARED_CALLER_SOURCE_05_FEES_OWNERSHIP_HELPER_SOURCE_EXTENSION_UNSELECTED",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\candidate-05\\source",
+  "loader": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\candidate-05\\source\\owned-main-bootstrap.js",
+    "bytes": 153124,
+    "sha256": "19a4a289b136a39ab918ad813499ba03e15f17dff14036690fee255777e757f8"
+  },
+  "files": 521,
+  "parses": 425,
+  "changedFromG02": [
+    "owned-main-bootstrap.js"
+  ],
+  "recipes": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\exact-byte-edits-03.json",
+      "bytes": 49858,
+      "sha256": "334e8fe0683f85fe0ace115d7a481776dd73ea7e1d623c84592a93b6f6f9f3ff"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\exact-byte-edits-04.json",
+      "bytes": 1476,
+      "sha256": "5fd9c3e4b15511f3f9befcd732092ef62b70b3bcfa344a0065cb5546066ed00f"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\exact-byte-edits-05.json",
+      "bytes": 1515,
+      "sha256": "27b694315ec10c23814a8db71f6f8271bcd94e475932ef63fc2171bfd5d9fc50"
+    }
+  ],
+  "exactInverseToG02": true,
+  "hunks": 30,
+  "inventory": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\inventory-caller-05.json",
+    "bytes": 93744,
+    "sha256": "cf8386373558daac7ba9ef2329e549063172a90f4b258e55ea10faa72fdc177f"
+  },
+  "profiles": {
+    "rows": [
+      {
+        "name": "buildGraph",
+        "rows": 219,
+        "digest": "80221bb5aa3f571d77b48cea7d23ed28591482fc5c0dc06089127d17110209a6"
+      },
+      {
+        "name": "buildSurfaceEnvelope",
+        "rows": 5,
+        "digest": "45e96edbf8a8525fcb7cdbec054a7ba677565b8c9a16339589012ba8d033c0de"
+      },
+      {
+        "name": "buildStartupEnvelope",
+        "rows": 9,
+        "digest": "608c8c5d670cd81edc377ce9e657a8929aaf5748c4a22d54469217e2ce067157"
+      }
+    ],
+    "reads": 233,
+    "distinctCopies": 219,
+    "scope": "GENUINE_RECORDS_Q_S_FRESH_SOURCE_ADMISSION_ONLY"
+  },
+  "focusedControls": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\control-positive-c05-01.json",
+      "bytes": 6394,
+      "sha256": "d9b97df65f401b0a1b415e60ff6e7f0e460dcc032832d9154ef903b0908d4ad8"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\control-field-c05-01.json",
+      "bytes": 6391,
+      "sha256": "2209b8cb82fb56a16ef380a6bed21a38bf94ca25f3440f32dfc3124970da162a"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\control-composite-c05-01.json",
+      "bytes": 6395,
+      "sha256": "ea69318cf9a2802749ec0cd8dd74f2a48e4453b1933d1b417956a74a030676df"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\control-helperRestoreNull-c05-01.json",
+      "bytes": 3863,
+      "sha256": "cd48d8fc85c4f144ef95e5d3350233a39581589055333da3414e573f2f318e23"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\control-helperRestoreUndefined-c05-01.json",
+      "bytes": 3868,
+      "sha256": "30b2bee82591b3ddf635140e7bcdedc03745f752d599d6c2cb42525f10bd5ecf"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\control-helperRestoreFalse-c05-01.json",
+      "bytes": 3864,
+      "sha256": "97dbf3b031cf71c62ad3205ba592eeef360caacb97caf033b5d15c20da38f755"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\control-surfaceRestoreNull-c05-01.json",
+      "bytes": 4649,
+      "sha256": "65b97b28e45c2e89b75513a10d0cca35bcb413eb9df38f4d283db1b93771b561"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\control-surfaceCompileFalse-c05-01.json",
+      "bytes": 4650,
+      "sha256": "494f240969bd9222a6105beaa4814203afeb5d84cd9edb8721de07ef4396183c"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\control-helperCompileNull-c05-01.json",
+      "bytes": 3948,
+      "sha256": "6f0bf2c170278279c467b02a7348d2083670e3765688f46efa419c4b27c89e7e"
+    }
+  ],
+  "sourceBridge": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\source-hook-L03-bridge-03.json",
+    "bytes": 1152,
+    "sha256": "847ea2a56d60506b64cfdf158411d23e1f343ab6e8230654abb0c0e7bdfdbf38"
+  },
+  "witness": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\control-helperRestoreNull-c03-witness-01.json",
+    "bytes": 3880,
+    "sha256": "3039c28cf46ed521459853a17ba857940b7c70ad845dab18e61581434767fabe"
+  },
+  "harness": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\test-caller-03.cjs",
+    "bytes": 26053,
+    "sha256": "a5a66c860ae1573de581043c9b2cf41a9d4fe7269fd62c86cf12508610e6d375"
+  },
+  "boundary": [
+    "Positive fixture extracts exact private block and actual runAppStartup, with disclosed diagnostic accounts/unit fees; all product new tables remain null and inlineNaN refuses before prefix births",
+    "Actual copied Renderer/Local/helper/Construction/G/Positions/Q/S bodies; named GL/Surface/constructor children/Document models; Source scheduling constructor values diagnostically substituted",
+    "Real captured Node timer visits,16helper steps,17Local-G phases, separate originalG objects, cumulative post-constructor shaderSource extent; no R, native WebGL, Main graph or RAF permission",
+    "Initial219 admission in focused startup fixture uses actual ordinaryS.admit; root separately exercises exact3 API-bridge Source03 join. Root K02 receipt is external until pinned here",
+    "Original helper bytes remain unchanged. New caller contains inherited falsy restore sentinel; Source generic helper admission/canonical/parser/IO/continuations still require the new private scheduled helper extension",
+    "Entry/controller/module/state/source work and complete closed/native/constructor/whole-host accounting remain unselected; root owns authentic viewport/Core/R handoff"
+  ],
+  "holds": {
+    "entryDelta": null,
+    "newModule": null,
+    "newController": null,
+    "sourceHookController": null,
+    "stateAllowances": null,
+    "completeWorkTable": null,
+    "helperScheduledSource": null,
+    "MainPermission": false,
+    "APP_EXECUTION_ENABLED": false
+  },
+  "preserved": {
+    "G02": true,
+    "C03Counter": true,
+    "C04": true,
+    "sealedWHistory": true,
+    "sourceLimit262144": true,
+    "work4096": true,
+    "jobs2": true,
+    "gitBrowserServerNative": false
+  }
+}

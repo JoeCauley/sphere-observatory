@@ -1,3 +1,5 @@
+> Current continuation: combined startup caller and corrected weak actual-App inputs pass scoped checks; Source-only work/lifetime proposals pass independent review. Complete helper/shared entry/work/host/native Main remain open. P05 OPEN. See [the caller report](Observatory-Main-Startup-Caller-2026-10-23.md).
+
 # Main preparation join - 23 October 2026
 
 The selected six-visit texture handoff is preserved. A corrected test copy now combines source-state reuse, scheduled Source loading, actual surface-program/backend preparation, finite Target retirement safeguards and deferred Preview worker creation. It passes independent component and join review. **P05 remains OPEN**: the complete private Main startup caller, its work/ownership, actual full host inputs and native Main integration still need completion.

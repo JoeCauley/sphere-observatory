@@ -1,0 +1,156 @@
+{
+  "format": "sphere-app-startup-input-independent-review/1",
+  "status": "REVIEWED_C03_FUNCTIONAL_AUTHORITY_CURRENTNESS_COMPONENT_NOT_SELECTED",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\candidate-03\\source",
+  "sourceEdits": 0,
+  "sourcePins": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\candidate-03\\source\\app.js",
+      "bytes": 38440,
+      "sha256": "127859b3d22aa5ca4d16b6541a8b16968155758b9f2e0e9fe05d773f484d0573"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\candidate-03\\source\\owned-main-bootstrap.js",
+      "bytes": 156981,
+      "sha256": "6bfa9ee8e630f63d3d1ba03af6c5b8f3fa381e0ca5fe6920bd2bf9b09131b0f2"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\independent-review-02\\early-native-edits-08.json",
+      "bytes": 79980,
+      "sha256": "7854ad869f62438dbe786eb9dbe4ba75ec3bcb66fc9cf2a06a2c771617fae498"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\independent-review-02\\exact-edits-01.json",
+      "bytes": 82722,
+      "sha256": "31160fd4c89550c44a6ec733b36e445eac91ac628a795ee2b377f2d199d23029"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\independent-review-02\\frozen-inputs-01.json",
+      "bytes": 1618,
+      "sha256": "5a7d5788c32eb8b77fdd1d56aef297ec4ffc3ae199eefb264a44da1a33c72e77"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\independent-review-02\\independent-input-controls-09.json",
+      "bytes": 3611,
+      "sha256": "4bced9406b897618aca34d51741837159c745d1d8165b1a97369312cbe12843b"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\independent-review-02\\input-controls-09.json",
+      "bytes": 3585,
+      "sha256": "779fe6205207221f5f829975bcf06449b7761517e06de65038141ceac7dc9f28"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\independent-review-02\\publication-regression-controls-01.json",
+      "bytes": 2273,
+      "sha256": "54dc1a486c679c3f9355188ec4f60fd094f0253885f616bb05cd0228151afe91"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\independent-review-02\\READ-FIRST-01.md",
+      "bytes": 3656,
+      "sha256": "a418d5ed9a99907118dcdc46a8c5ce49d946e10acfd3017973bb7fa1575e56d1"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\independent-review-02\\replay-test-inputs-09.cjs",
+      "bytes": 13299,
+      "sha256": "0d23d30cd235fce0017e4d0f936955b25fb2c875e7133165ff0a41dff3f9725d"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\independent-review-02\\seal-review-01.cjs",
+      "bytes": 3712,
+      "sha256": "064d643136a487ffcbb1d5cd30883d1c7a623f793aad595b8f3b91c5a25d09b4"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\independent-review-02\\source-inventory-08.json",
+      "bytes": 88363,
+      "sha256": "4be69871e8863d01583ece1a12511eb6db0f847f8ba754f5a8ae24847c190342"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\independent-review-02\\source-verification-01.json",
+      "bytes": 1429,
+      "sha256": "89bf0f8308f989740a14d2aa511fc1a323fea267e8cd4e61837f54d0a46218e8"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\independent-review-02\\test-inputs-09.cjs",
+      "bytes": 13284,
+      "sha256": "459a1b2d2e7d2d223021137dbede386d9b0cac454a6c1254062bf53cf74acedb"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\independent-review-02\\test-publication-regressions-01.cjs",
+      "bytes": 6480,
+      "sha256": "e925917dd3cc36d389b35255eefb0d61add27e82adcf2c639edd008125879f6d"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\independent-review-02\\verify-source-and-inverses-01.cjs",
+      "bytes": 4362,
+      "sha256": "d142748d906f153e3e43247c5deb6f41c741a37f5764e45d7471f9b03a0ed266"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\independent-review-02\\weak-input-edits-02.json",
+      "bytes": 76065,
+      "sha256": "4485db3b1477bbd9212c57fd7d3d5dbcb9e2ce41be9c0719906e12c0c2f5dd32"
+    }
+  ],
+  "sourceVerification": {
+    "files": 521,
+    "parsed": 425,
+    "other519Exact": true,
+    "freshGenuineSourceReads": 233,
+    "allThreeProfiles": true,
+    "inverse03to02to01toK02": true,
+    "verificationQFinal": 0
+  },
+  "controls": {
+    "exactBodyModels": 16,
+    "additionalPublicationInterceptionRegressions": 4,
+    "scope": [
+      "Named viewport/Document/window models; no native browser sizing claim",
+      "Private App variable fixture instead of full DOM App startup",
+      "Renderer brand/source/currentScript/nonce environment model for exact claim body",
+      "No Q or work selection; complete cold/R/Frame/Main remain held"
+    ],
+    "publicationScope": [
+      "Exact original early capture/guard, App object assignment, native/ordinary publication and port bodies execute unchanged in a named private environment.",
+      "Unused original App methods are dummy eager values and are never invoked; no full DOM/App initialization or native browser claim.",
+      "Foreign WeakRef/freeze/Math callbacks reproduce the previous actual interception mechanisms and are restored in finally.",
+      "No source or funding literal changes; no P08/GC/heap claim."
+    ]
+  },
+  "priorNegative": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\independent-review-01\\CHECK-01.json",
+    "bytes": 9083,
+    "sha256": "bad1c8fc61afc1f8944981e351d18f6e7e385832b43f98bdc74c437a3b001f9f"
+  },
+  "resolved": [
+    "Late WeakRef capture at App publication can no longer export private Core",
+    "Dynamic Object.freeze can no longer see the new record/port after App exposure",
+    "Preinstalled or mid-initialization App namespace setter is refused before native publication without callback dispatch",
+    "Actual App.renderer replacement refuses before/after input read"
+  ],
+  "currentnessAndLifetime": {
+    "actualPrivateState": true,
+    "opaqueSourceNonce": true,
+    "weakRecordStoredBeforePostChecks": true,
+    "serialTimePlayingDimensionsFresh": true,
+    "retainedStrongOldCoreProperty": false,
+    "synchronousStrongDerefOnly": true,
+    "nativeWeakRefGCHeap": "P08_UNQUALIFIED",
+    "noCloneOrSimulationOrCanvasResize": true
+  },
+  "noBlockingFindingWithinScope": true,
+  "remaining": [
+    "Corrected C03 storage/entry/work derivation, prospective early capture/record/activation ownership",
+    "Actual combined caller connection and full cold R/Surface/host envelope",
+    "Native browser layout/DOM/App/Main/Frame/timing/heap/public route and P05"
+  ],
+  "selection": {
+    "metadata": false,
+    "work": false,
+    "entry": false,
+    "Main": false,
+    "P05": false
+  },
+  "ordinaryPath": "Same ordinary App object is assigned before sync; native-only port/early captures do not execute in ordinary mode.",
+  "scope": "Exact source/nonce/Renderer functional handoff in disclosed models. No old C02 storage adoption, arbitrary hostile-runtime attestation, native Main or P08 promotion."
+}

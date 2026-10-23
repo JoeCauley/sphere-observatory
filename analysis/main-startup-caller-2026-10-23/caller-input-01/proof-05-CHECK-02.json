@@ -1,0 +1,487 @@
+{
+  "format": "sphere-source-work-ownership-independent-component-review/1",
+  "status": "REVIEWED_FINAL_SOURCE_COMPONENT_PROPOSAL_NOT_SELECTED_PENDING_CURRENT_MERGED_CALLER",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\candidate-01\\source",
+  "sourceFilesRehashed": 521,
+  "sourceEdits": 0,
+  "authorSeal": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\author-CHECK-12.json",
+    "bytes": 6637,
+    "sha256": "da05adb1e545400fcde0d093c123b06e923d252f70e2fe732bfadc32787c2e3b"
+  },
+  "sourceInventory": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\source-rehash-01.json",
+    "bytes": 93767,
+    "sha256": "54d38fabe85b79cb716600d34dcd1464606c6c62e0202bcfe6e40fa2b883941d"
+  },
+  "priorPartialReview": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-01\\CHECK-01.json",
+    "bytes": 8171,
+    "sha256": "65734e9c736ee12f7fa44a8efa48a028796f68db74e235e646233e3446b0bd91"
+  },
+  "finalInputs": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\storage-union-11.json",
+      "bytes": 121320,
+      "sha256": "23904b25ea6057ac6306266a26a5d0b1d05a12470d2cdbd0652aef1186156f6f"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\q-entry-basis-09.json",
+      "bytes": 15875,
+      "sha256": "20f34603a0c2ed72b5e921b189e313d6ce669e7822e649da19d4a277fc486c62"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\source-entry-work-09.json",
+      "bytes": 27242,
+      "sha256": "96a010964d3e46537965257e1591808eb19d611bc9f452fb8955c8b1dff71f7a"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\source-phase-work-02.json",
+      "bytes": 43916,
+      "sha256": "638872162080e636d9bddb16c6800459e9811fa45085e8a144b48e4eca8ed998"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\source-selection-proposal-11.json",
+      "bytes": 2057,
+      "sha256": "f6b960c4777bcfcf032fe5adcdb456db132bf1bdff3190d5bb1b09123dcc30a6"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\source-original-q-high-water-11.json",
+      "bytes": 48316,
+      "sha256": "b9334e3839b3e1a07927beed9e59578d1ba19f57ea92bc9611946cd025493c4f"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\append-final-overlap-11.cjs",
+      "bytes": 5261,
+      "sha256": "6f963c5d987ae561ed11c4812b51613950f491f70acbb978bac02e210085e65b"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\append-review-corrections-09.cjs",
+      "bytes": 9979,
+      "sha256": "4768214e3e9d72df967f7754f07907fe3a201a2184a6d4bb17ecf5b20f6861d2"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\author-CHECK-12.json",
+      "bytes": 6637,
+      "sha256": "da05adb1e545400fcde0d093c123b06e923d252f70e2fe732bfadc32787c2e3b"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\author-READ-FIRST-12.md",
+      "bytes": 1592,
+      "sha256": "b189b862f141df4102ba2ae1b9c2974c44f626f1d0905d4130930bc70d778dc7"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\author-source-hooks-run-05.json",
+      "bytes": 7162,
+      "sha256": "5eced25e961334633436c7e5dce9724b33994a2e2bc8173996e4559b33f0fb84"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\census-storage-basis-02.cjs",
+      "bytes": 9942,
+      "sha256": "c87d21b826df95c9c4630082d826b57fb17110920e935d4d9f828aa88b53325f"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\closed-own-record-controls-01.json",
+      "bytes": 1064,
+      "sha256": "51cf5aa5642ad9682286ed0d182cd3ab5cb6aee3bfc5cea26b4104fcb20457ce"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\derive-entry-work-07.cjs",
+      "bytes": 13284,
+      "sha256": "162c434ec97b93da2fff575a9d6dbec7f4ed5edc203b37790b69b7cedaab91da"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\derive-q-entry-basis-06.cjs",
+      "bytes": 5632,
+      "sha256": "ade68d52d8ca76c1179856115aa6ea3c6da63b997f8e2144c6b789ac09d22299"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\derive-storage-union-07.cjs",
+      "bytes": 23157,
+      "sha256": "3d346936f276f1c483884c5dd7cd4fff04e354aa9bb319ea10adc8f7ec2ba380"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\final-union-controls-11.json",
+      "bytes": 2163,
+      "sha256": "42d40d94b2d872d5727849c94c833d8a88d787aabcb7365da820078b41b31074"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\frozen-inputs-01.json",
+      "bytes": 3636,
+      "sha256": "c263d2064980d5ddc4581a7a9918a91cd04f91c5f3a9f436aba38faa8feb6851"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\lifetime-and-future-table-correction-07.json",
+      "bytes": 927,
+      "sha256": "1281c7ab92bc644d90d76ebbe930c1a0c396731fdc73aee91c04d168acc8bf83"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\loader-with-source-hooks-census-04.js",
+      "bytes": 105307,
+      "sha256": "0a62c9c165420b0c9659d87f95a77700bed99ff3167c28d13fbc0fd90ce42478"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\original-release-lifetime-controls-01.json",
+      "bytes": 44579,
+      "sha256": "deb7cca76e3a3c84be12ae5c97834239f7fd2055c7f29a8ae2af27ef17a2b431"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\prepare-replays-01.cjs",
+      "bytes": 927,
+      "sha256": "78b98fbca0805294b436905cf01f53443ccc18168a83012617c6f2de2046ae02"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\prepare-superseder-09.cjs",
+      "bytes": 1756,
+      "sha256": "2b0f727f71fbea9274b20f502da6af3e71855a82cac9e6b0b785be62a817b472"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\prepare-superseder-11.cjs",
+      "bytes": 1678,
+      "sha256": "bf6efab8af1184ad82332b28e9328f7f48de0e0d0b55020ceae283da730dcd38"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\proposal-ledger-controls-09.json",
+      "bytes": 15869,
+      "sha256": "059586466b1f3f9fcd2f7a482b037a24691e96b4c2ddb7dc7b0efb21602efae4"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\q-entry-basis-06.json",
+      "bytes": 12900,
+      "sha256": "8fca4495d509a16acd0d1efbac0680b7330abacd1611d71aa3d14b6e30ab0ad0"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\q-entry-basis-08.json",
+      "bytes": 13030,
+      "sha256": "ae77df44c60ecdc5916762694f791e42f1ad79c8f4a3e4f2e0761f3f1b0be814"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\q-entry-basis-09.json",
+      "bytes": 15875,
+      "sha256": "20f34603a0c2ed72b5e921b189e313d6ce669e7822e649da19d4a277fc486c62"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\READ-FIRST-01.md",
+      "bytes": 5664,
+      "sha256": "64755fd42b5792d1da22c53489cf6a902a983f927dcd4cdd96b4784ba49c1df4"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\replay-append-final-overlap-11.cjs",
+      "bytes": 5297,
+      "sha256": "0aa237b8c4dbeb51fd2bafd9851681fede2f4bfd13737c27ef91f76abcff6284"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\replay-append-review-corrections-09.cjs",
+      "bytes": 10006,
+      "sha256": "555c93d39ac07af09e0f17e54c9c51fab6a0c708a582211656c594d77790f351"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\replay-derive-entry-work-07.cjs",
+      "bytes": 13293,
+      "sha256": "05cd8733f0d4d25166a96c3815387aef1260c580e0d5362f5630c7160d129dda"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\replay-derive-q-entry-basis-06.cjs",
+      "bytes": 5641,
+      "sha256": "2c452f82ced46b15942d56ea335a6b21a8a32fa4e9c0288b25f8f1e3460fb929"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\replay-derive-storage-union-07.cjs",
+      "bytes": 23166,
+      "sha256": "761ef7e79e4d21e7e9422a9872badc21b18676f667e922e20819d7a48d8df799"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\replay-relocations-01.json",
+      "bytes": 1220,
+      "sha256": "3932a275e703cde16cfe75d39f66257782e40e85271d0fabbba916584a980271"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\replayed-q-entry-basis-06.json",
+      "bytes": 12900,
+      "sha256": "8fca4495d509a16acd0d1efbac0680b7330abacd1611d71aa3d14b6e30ab0ad0"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\replayed-q-entry-basis-09.json",
+      "bytes": 15875,
+      "sha256": "20f34603a0c2ed72b5e921b189e313d6ce669e7822e649da19d4a277fc486c62"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\replayed-source-entry-work-07.json",
+      "bytes": 21609,
+      "sha256": "2da07f0b37ded0906e411e09dac990528ba50b054e3f0bed2e136f38c689db45"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\replayed-source-entry-work-09.json",
+      "bytes": 27242,
+      "sha256": "96a010964d3e46537965257e1591808eb19d611bc9f452fb8955c8b1dff71f7a"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\replayed-source-original-q-high-water-11.json",
+      "bytes": 48316,
+      "sha256": "b9334e3839b3e1a07927beed9e59578d1ba19f57ea92bc9611946cd025493c4f"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\replayed-source-selection-proposal-11.json",
+      "bytes": 2057,
+      "sha256": "f6b960c4777bcfcf032fe5adcdb456db132bf1bdff3190d5bb1b09123dcc30a6"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\replayed-storage-union-07.json",
+      "bytes": 115387,
+      "sha256": "afb8c50a54d90956b0a6deb3519d42ef60d6dffd8b440833309dd44ad11cb3ab"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\replayed-storage-union-09.json",
+      "bytes": 119364,
+      "sha256": "7e1eb1d8588f2340d2bfafd4401bebae107d12afafd542164c56dbff4ea70f22"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\replayed-storage-union-11.json",
+      "bytes": 121320,
+      "sha256": "23904b25ea6057ac6306266a26a5d0b1d05a12470d2cdbd0652aef1186156f6f"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\replayed-test-source-owned-hooks-11.cjs",
+      "bytes": 11942,
+      "sha256": "1c5a4afbf9bf0e2dca1246d9048fb88ed507e6822da7635e5ec927c04562e8ba"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\seal-complete-review-01.cjs",
+      "bytes": 6362,
+      "sha256": "7e09a47c4fdf14c12c0d5534f0772e08c27d5a11b0a5bb02767d3cbfee6d62e1"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\source-entry-prefix-draft-05.inc.js",
+      "bytes": 929,
+      "sha256": "8cde44eba18844dee7f4fb4dbd2b5da24a855584259e72d2f857896a0918e791"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\source-entry-work-07.json",
+      "bytes": 21609,
+      "sha256": "2da07f0b37ded0906e411e09dac990528ba50b054e3f0bed2e136f38c689db45"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\source-entry-work-09.json",
+      "bytes": 27242,
+      "sha256": "96a010964d3e46537965257e1591808eb19d611bc9f452fb8955c8b1dff71f7a"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\source-hooks-run-02.json",
+      "bytes": 4844,
+      "sha256": "eff321ed98f41edb26e97c6703a57a08dd452b9fef7fad27630949bb7cce4142"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\source-hooks-run-independent-11.json",
+      "bytes": 7162,
+      "sha256": "5eced25e961334633436c7e5dce9724b33994a2e2bc8173996e4559b33f0fb84"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\source-inventory-parent-06.json",
+      "bytes": 101089,
+      "sha256": "49e03fe786056d35213f363e23deb7c515291bb31e4050c39f6b78f89795cec1"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\source-original-q-high-water-10.json",
+      "bytes": 48309,
+      "sha256": "51d13f3c1f99fdf9dc3c1c83fe3c5dbd77a34dabfd3016892b089c7668a65e56"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\source-original-q-high-water-11.json",
+      "bytes": 48316,
+      "sha256": "b9334e3839b3e1a07927beed9e59578d1ba19f57ea92bc9611946cd025493c4f"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\source-owned-hooks-draft-01.inc.js",
+      "bytes": 4570,
+      "sha256": "25da93912e0230dee1bf234aa820f22e5b15ba151b51172431da5a8136bc7b92"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\source-owned-hooks-draft-02.inc.js",
+      "bytes": 4694,
+      "sha256": "b9d7f7c92144eff9e688bb20ff25e51b9f40595636ed195a7cfcf7dc2388e9bc"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\source-phase-work-02.json",
+      "bytes": 43916,
+      "sha256": "638872162080e636d9bddb16c6800459e9811fa45085e8a144b48e4eca8ed998"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\source-rehash-01.json",
+      "bytes": 93767,
+      "sha256": "54d38fabe85b79cb716600d34dcd1464606c6c62e0202bcfe6e40fa2b883941d"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\source-selection-proposal-11.json",
+      "bytes": 2057,
+      "sha256": "f6b960c4777bcfcf032fe5adcdb456db132bf1bdff3190d5bb1b09123dcc30a6"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\storage-basis-02.json",
+      "bytes": 879779,
+      "sha256": "07193e8aced2df9d8f089d2db1a3aef5661db0142b34ba5d8e81b0c312b3403c"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\storage-union-07.json",
+      "bytes": 115387,
+      "sha256": "afb8c50a54d90956b0a6deb3519d42ef60d6dffd8b440833309dd44ad11cb3ab"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\storage-union-08.json",
+      "bytes": 116328,
+      "sha256": "67280a5b68cc36f7a8e85a6ba304903c168234ccdb2da081b907a2242f5c393e"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\storage-union-09.json",
+      "bytes": 119364,
+      "sha256": "7e1eb1d8588f2340d2bfafd4401bebae107d12afafd542164c56dbff4ea70f22"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\storage-union-11.json",
+      "bytes": 121320,
+      "sha256": "23904b25ea6057ac6306266a26a5d0b1d05a12470d2cdbd0652aef1186156f6f"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\superseder-inputs-09.json",
+      "bytes": 1731,
+      "sha256": "c23735afe5bd831c76660e567ed927e1924bb4bffeff724e9f069fbd333a2ca8"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\superseder-inputs-11.json",
+      "bytes": 1958,
+      "sha256": "efc975dd82b512f45f9676f9107c2576256f2b6a6c531fb1319abb5d0337ec03"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\test-closed-own-record-01.cjs",
+      "bytes": 2519,
+      "sha256": "1dcf5b6bec9587a8eac17dda5bfeadbff5431afbfefadf415270e744f745ceaa"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\test-final-union-and-high-water-11.cjs",
+      "bytes": 5447,
+      "sha256": "ce38d1960d5c80c4a5f7ec3c39bf829a7de928da53c35fc546d78626a093447b"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\test-original-release-lifetime-01.cjs",
+      "bytes": 4777,
+      "sha256": "dde630a7f82b430424c93a7ab90b78d727e97ec7c141675fb85b2222231ca32a"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\test-proposal-ledgers-09.cjs",
+      "bytes": 5650,
+      "sha256": "9d85f9d891c647dc01a458791fe3ca9ed2383024e0cb18e8d493ddef4f82d7be"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\test-source-owned-hooks-05.cjs",
+      "bytes": 11117,
+      "sha256": "6b8455f6b373d496b77cb3741bd0969af6d8e590e0b514b4abec8523352d4f12"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\test-source-owned-hooks-10.cjs",
+      "bytes": 11942,
+      "sha256": "ebf56cb64b706d6258d209d45568d547c803c71cf2cb37648b3d67f62bed0a60"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\test-source-owned-hooks-11.cjs",
+      "bytes": 11942,
+      "sha256": "1c5a4afbf9bf0e2dca1246d9048fb88ed507e6822da7635e5ec927c04562e8ba"
+    }
+  ],
+  "independentReplays": {
+    "Q06_entry07_union07": true,
+    "Q09_entry09_union09": true,
+    "finalUnion11_QVector11_patch11": true,
+    "sourceClausesApplied": false
+  },
+  "executedControls": [
+    {
+      "name": "Original Source release lifetime",
+      "groups": 3,
+      "result": "219 released entries stay in held array until loop clear;220 real Q facades remain callable/idempotent;standalone fixture finalQ0"
+    },
+    {
+      "name": "Original ownRecord closed immutable root",
+      "groups": 3,
+      "result": "30422B/883nodes remain readable after charge release and Q.dispose; diagnostic caller roots outside production ownership"
+    },
+    {
+      "name": "Work09/Q09/source identity corroboration",
+      "groups": 4,
+      "result": "42 manual roles/capture identities,59 records, all terms and ledger sums match exact source"
+    },
+    {
+      "name": "Final11 union/high-water/reversible clause",
+      "groups": 3,
+      "result": "Every storage row and222 listed Q states independently recomputed; proposal hash exact and unapplied"
+    },
+    {
+      "name": "Actual native private hook models",
+      "groups": 8,
+      "result": "Exact original219 success/close, raw-value acceptance errors, replay, rollback, affinity and SHA observer-uncertain holds pass",
+      "scope": [
+        "small fixtures and exact original219-row loader envelope; data URLs replace HTTP",
+        "hook factory supplies private environment; Surface/helper builders are unused fixture records",
+        "raw undefined/false check injection probes candidate root order",
+        "no shared dispatcher scheduler or original DOM loaded"
+      ]
+    }
+  ],
+  "proposals": {
+    "phaseMax": 785,
+    "phaseComposition": {
+      "visit": 29,
+      "profileHash": 741,
+      "completion": 15
+    },
+    "hookPayloads": {
+      "sourceCreate": 439,
+      "sourceStart": 101,
+      "sourceAccept": 34,
+      "sourceRelease": 2346,
+      "sourceDispose": 37
+    },
+    "metadata": {
+      "SOURCE_CONTROLLER_BYTES": 1241088,
+      "SOURCE_PENDING_BYTES": 49152,
+      "SCHEDULED_SOURCE_CONTROLLER_METADATA_BYTES": 2609152
+    },
+    "SourceOnlyEntry": 28672,
+    "SourceEntryRaw": 26624,
+    "sourceOnlyQPeak": 16591503,
+    "closedSourceOnlyQ": 6241046
+  },
+  "resolvedReviewFindings": [
+    "Complete returned Q lexical graph6624 instead of2592",
+    "Explicit generator/result448, URL/Response/stream/BYOB640, hex intermediate160 and Q.release2944",
+    "Constructor old20+new22 roles with actual captures and nine-capture executor",
+    "Two full profile/row scratch Q handle overlap13248 in pending49,152",
+    "Discarded detach ArrayBuffer160 and SourceReserve wrapper384",
+    "Released219 entry/Q metadata union held until original loop clears, immutable closed profile tree/facades held through realm",
+    "Constructor failure original block-exit transition before outer extra-Q release; no blanket upfront lower bound"
+  ],
+  "noBlockingFindingWithinFinalComponent": true,
+  "remaining": [
+    "Current K/shared caller source-profile/string/capture/activation/entry re-census;219 parent is not authority for a different current closure",
+    "Actual source-owned pre-debit and prospective funding around all shared caller visits/births/returns",
+    "Later Surface/helper/Host/PB/R/Root/global cold and full ordinary host admission",
+    "Original native primitive contract only; foreign adapters/prototype hooks, VM/native heap/time unqualified",
+    "DOM/App/nativeGL/Main/Frame/P05 remain unqualified"
+  ],
+  "scope": "Conservative Source component upper ownership/work proposal only. No mandatory simultaneous lower bound, GC assumption, old-base/rounding borrowing, new limits or source/fee selection.",
+  "selection": {
+    "work": false,
+    "funding": false,
+    "wholeCaller": false,
+    "Main": false,
+    "P05": false
+  },
+  "reportOnlyCorrection": {
+    "prior": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\work-ownership-independent-review-02\\CHECK-01.json",
+      "bytes": 27718,
+      "sha256": "716122128f3d1beeac10a7c12ef946d5e3f42b4acc04996078928f387d7c9c01"
+    },
+    "reason": "Report-only state-count typo221. Actual independent code compared all222 states (two prefix states +219 OPEN rows +PUBLISH) and passes. No source, proposal, control or finding changes."
+  }
+}
