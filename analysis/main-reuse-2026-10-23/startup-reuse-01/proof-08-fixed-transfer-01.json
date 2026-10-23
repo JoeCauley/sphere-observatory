@@ -1,0 +1,54 @@
+{
+  "status": "PASS_NATIVE_FIXED_TRANSFER_BUILDING_BLOCK_ONLY",
+  "node": "v24.19.0",
+  "groups": [
+    {
+      "case": "fixed-backing-alias-detach-and-fresh-pending-hash",
+      "bytes": 1
+    },
+    {
+      "case": "fixed-backing-alias-detach-and-fresh-pending-hash",
+      "bytes": 41
+    },
+    {
+      "case": "fixed-backing-alias-detach-and-fresh-pending-hash",
+      "bytes": 32768
+    },
+    {
+      "case": "fixed-backing-alias-detach-and-fresh-pending-hash",
+      "bytes": 65537
+    },
+    {
+      "case": "resizable-input-becomes-exact-fixed-private-backing",
+      "bytes": 41
+    },
+    {
+      "case": "captured-native-getters-ignore-caller-own-hooks",
+      "hooks": 0
+    },
+    {
+      "case": "refuse-without-detaching-offset-view"
+    },
+    {
+      "case": "refuse-without-detaching-oversized-backing"
+    },
+    {
+      "case": "refuse-without-detaching-wrong-view-type"
+    },
+    {
+      "case": "refuse-without-detaching-data-view"
+    },
+    {
+      "case": "refuse-without-detaching-plain-facade"
+    },
+    {
+      "case": "refuse-without-detaching-shared-backing"
+    }
+  ],
+  "groupsPassed": 12,
+  "sourceOrRuntimeEdited": false,
+  "legacyV2Preserved": true,
+  "newSourceCopyPhaseSelected": false,
+  "existingConservativeScratchAllowanceChanged": false,
+  "scope": "Native Node typed-buffer effects and actual fresh SHA only. No full Source/Q/caller/work/browser/native Main acceptance; private bytes must not escape a runtime successor. No physical zero-copy or heap claim."
+}

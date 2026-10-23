@@ -1,0 +1,129 @@
+{
+  "status": "PASS_BOUNDED_EXACT_N06_SR02_JOIN_UNSELECTED",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-reuse-join-2026-10-23-01\\candidate-01\\source",
+  "sourceRows": 521,
+  "parsed": 425,
+  "loader": {
+    "bytes": 100702,
+    "sha256": "323a02e6719153293a04dc58be3458b94d59a2a24f6c4fef4dd5fc579f7e2dd5"
+  },
+  "changed": [
+    "biome-service/native/source-admission.js",
+    "biome-service/records.js",
+    "owned-main-bootstrap.js"
+  ],
+  "rangeHunks": {
+    "N06": 18,
+    "SR02": 8,
+    "overlap": false,
+    "B05inverseExact": true,
+    "siblingReconstructionExact": true
+  },
+  "N06PrivateBlockExact": true,
+  "SR02S_Records_ReaderAndOriginalFunctionsExact": true,
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "digest": "80221bb5aa3f571d77b48cea7d23ed28591482fc5c0dc06089127d17110209a6",
+      "rows": 219
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "digest": "45e96edbf8a8525fcb7cdbec054a7ba677565b8c9a16339589012ba8d033c0de",
+      "rows": 5
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "digest": "608c8c5d670cd81edc377ce9e657a8929aaf5748c4a22d54469217e2ce067157",
+      "rows": 9
+    }
+  ],
+  "independentReplays": {
+    "builderRepresentative": 8,
+    "sourceRepresentative": 2,
+    "realHashObserverHold": 1
+  },
+  "rootFullSeal": {
+    "PBroot": 1,
+    "path": "root-CHECK-06-copy.json",
+    "sha256": "9823917ac2aa4e70c1971c08c4559ba50ca9022edb1eb4c4ddcc9341aeb730ca",
+    "builder": 32,
+    "prefix": 4,
+    "runtimeIncluding219Rows": 20,
+    "funding": 4
+  },
+  "feeFundingMain": "NULL_UNSELECTED_NO_PERMISSION",
+  "fullCold": false,
+  "fullHost": false,
+  "nativeMain": false,
+  "noNewBoundedJoinBlocker": true,
+  "sourceUnchangedAfterReview": true,
+  "earlierSourceAndEvidenceUntouched": true,
+  "artifacts": [
+    {
+      "path": "REVIEW.md",
+      "bytes": 4051,
+      "sha256": "4f285fdf04545ca2f857b6846dc211675c559fddbbe8ac68be659f2191ffaa96"
+    },
+    {
+      "path": "source-validation-01.json",
+      "bytes": 94858,
+      "sha256": "e6cd33962cf9e261c7e1428a54ec486c35468730d5ddff2ae29ced444360f5fd"
+    },
+    {
+      "path": "verify-join-01.cjs",
+      "bytes": 5121,
+      "sha256": "e309cf74d63e178f7d16ce49ef751a7b7d0243d7d3ec44e36350ff8c497c3eb5"
+    },
+    {
+      "path": "exact-join-copy-01.json",
+      "bytes": 109845,
+      "sha256": "926e8599ec960b734a1d3a1f5770eb780fe2c8ba10f191a0c54592cc80ecd91e"
+    },
+    {
+      "path": "root-CHECK-06-copy.json",
+      "bytes": 5172,
+      "sha256": "9823917ac2aa4e70c1971c08c4559ba50ca9022edb1eb4c4ddcc9341aeb730ca"
+    },
+    {
+      "path": "builder-representative-01.json",
+      "bytes": 1108,
+      "sha256": "7a588319510f28d6db22f2d4ca751f9fe3d724fd5ddfa15784613085cd902576"
+    },
+    {
+      "path": "test-builders-independent-01.cjs",
+      "bytes": 29597,
+      "sha256": "29c2c4be07010a48be87cc153063c2d154efca7876d59b4cd0d774339cece7fe"
+    },
+    {
+      "path": "root-test-builders-original-01.cjs",
+      "bytes": 29602,
+      "sha256": "252600b91e32ebf0fd19b91d002dcf901e563ec5e41bb64485b064925d2fc156"
+    },
+    {
+      "path": "source-representative-01.json",
+      "bytes": 1400,
+      "sha256": "d94bbaafe2d257d09bba04979a1ca142579aa5d2f1ea6684bbbbb7d50cd137e3"
+    },
+    {
+      "path": "test-source-representative-01.cjs",
+      "bytes": 10862,
+      "sha256": "f02b4fd3bff19be1032ccb74da29adee88eb15c822dc809d82944cc88cd34ab1"
+    },
+    {
+      "path": "prepare-source-representative-01.cjs",
+      "bytes": 2887,
+      "sha256": "d079f9207f6386cf6f1dd61cbbc77bf4271f00aeb199541cecfe1f8deab9b7e7"
+    },
+    {
+      "path": "observation-hold-02.json",
+      "bytes": 5535,
+      "sha256": "6b90e1341f1ef44a9531e82f6d5304f1359f849bcb6b14e0a23536136ba36c6a"
+    },
+    {
+      "path": "test-observation-hold-02.cjs",
+      "bytes": 12460,
+      "sha256": "14ffefa582529433ebb01d422b49f60ee4d94125d8c4794274b63e1c29c212c0"
+    }
+  ]
+}

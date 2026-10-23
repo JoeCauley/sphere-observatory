@@ -1,0 +1,131 @@
+{
+  "format": "sphere-main-private-reuse-join-check/1",
+  "status": "PASS_MERGED_SOURCE_AND_COMPONENT_CONTROLS_UNSELECTED",
+  "utc": "2026-10-23T13:18:35.155Z",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-reuse-join-2026-10-23-01\\candidate-01\\source",
+  "files": 521,
+  "parsedJavaScript": 425,
+  "changedFromB05": [
+    "biome-service/native/source-admission.js",
+    "biome-service/records.js",
+    "owned-main-bootstrap.js"
+  ],
+  "inverseLoaderHunks": 26,
+  "exactInverseToB05": true,
+  "N06PrivateBlockByteExact": true,
+  "SR02ReaderAndRecordsAndSourceByteExact": true,
+  "all3ProfilesExactSR02AndFreshRows": true,
+  "buildOrderUnchanged": true,
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "id": "owned-startup-texture-handoff-held-bootstrap-v7",
+      "rows": 219,
+      "digest": "80221bb5aa3f571d77b48cea7d23ed28591482fc5c0dc06089127d17110209a6"
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "id": "main-owned-default-surface-facts-v2",
+      "rows": 5,
+      "digest": "45e96edbf8a8525fcb7cdbec054a7ba677565b8c9a16339589012ba8d033c0de"
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "id": "main-startup-draw-owner-v1",
+      "rows": 9,
+      "digest": "608c8c5d670cd81edc377ce9e657a8929aaf5748c4a22d54469217e2ce067157"
+    }
+  ],
+  "loader": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-reuse-join-2026-10-23-01\\candidate-01\\source\\owned-main-bootstrap.js",
+    "bytes": 100702,
+    "sha256": "323a02e6719153293a04dc58be3458b94d59a2a24f6c4fef4dd5fc579f7e2dd5"
+  },
+  "inputSeals": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-builder-funding-2026-10-23-01\\independent-review-04\\CHECK-01.json",
+      "bytes": 3685,
+      "sha256": "451ddde3a170081895fdf212700fc587225c4b914f0b652c6207ef186e1abf79"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-runtime-2026-10-23-01\\independent-review-02\\CHECK-01.json",
+      "bytes": 5507,
+      "sha256": "07419f029f2070b2ab3b0d1627d6b7007e498940e1c39c0a625008a6061c128a"
+    }
+  ],
+  "controls": {
+    "builderCases": 32,
+    "closedPBRootObserver": 1,
+    "sourceRuntime": 20,
+    "loaderPrefix": 4,
+    "fundingBoundaryGroups": 4
+  },
+  "controlReceipts": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-reuse-join-2026-10-23-01\\builder-corpus-01.json",
+      "bytes": 8376,
+      "sha256": "cfd62066e45e53abce12afef1e05e3fb114b0723c786801b1f95e9b522db0aed"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-reuse-join-2026-10-23-01\\control-positive-roots01.json",
+      "bytes": 93027,
+      "sha256": "a9cf6cebbee52eee2caecbbbb28abca5ee3e08cb6688eaedd7c83ca0108c95bd"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-reuse-join-2026-10-23-01\\controls-01\\control-run-01.json",
+      "bytes": 20430,
+      "sha256": "75eb7e99e5fd6ebef5f4c99b81f0ec062cb8d85ba875c011d2431fff549c2f3f"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-reuse-join-2026-10-23-01\\controls-01\\loader-prefix-run-01.json",
+      "bytes": 3050,
+      "sha256": "7d98f884118bee657ade146291200c4750fda1cb5b2ce0e6aa220153e8775402"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-reuse-join-2026-10-23-01\\funding-boundary-03.json",
+      "bytes": 1879,
+      "sha256": "543b9f05b4d3e935f7d1d9156debae66e4732dee53879ed5a26a88b025ebb824"
+    }
+  ],
+  "preservedHarnessFailures": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-reuse-join-2026-10-23-01\\funding-harness-failure-01.json",
+      "bytes": 641,
+      "sha256": "7a8afd61974cc3a2862c46893e44e80f0f867029bc4af39f82a022a33f5559b6"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-reuse-join-2026-10-23-01\\funding-harness-failure-02.json",
+      "bytes": 625,
+      "sha256": "2e939d822cd343182713595fdd3d2d4b30c4ed86282f427a6763bc3634a7c135"
+    }
+  ],
+  "nativeSourceFacts": {
+    "runtime": "Actual Node timers/dataURL fetch/BYOB/Promise/WebCrypto; explicit diagnostic prices/allowances",
+    "rows": 219,
+    "peakDiagnosticQ": 11616481,
+    "uncertainJobs": "Actual external result receipt is not Source receipt; uncertain promise/input/scope/Q remain held"
+  },
+  "boundaries": {
+    "genuine": [
+      "Original Source private entries/borrowers",
+      "Records",
+      "Q",
+      "HostWorld/Numeric",
+      "R/PB in builder models"
+    ],
+    "modeled": [
+      "Builder GL/Surface/G/Document/constructor children",
+      "source dataURL/private current adapters",
+      "diagnostic work/storage values"
+    ],
+    "sourceFunding": null,
+    "newCallerWork": null,
+    "foundationPreQ": "UNQUALIFIED",
+    "closedModuleControllerLifetime": "RETAINED",
+    "fullHost": false,
+    "nativeBrowser": false,
+    "Main": false,
+    "P05": "OPEN",
+    "selectedMainComponent": "main-texture-handoff-funded-c3"
+  }
+}

@@ -1,3 +1,5 @@
+> Current continuation: immutable-state reuse and actual scheduled Source loading are joined and independently component-checked. Complete startup ownership/work and genuine Main resource/drawing integration remain open; P05 is OPEN. See [the startup reuse report](Observatory-Main-Startup-Reuse-2026-10-23.md).
+
 > Current continuation: private cold-profile builders pass independent component checks; actual scheduled Source integration and complete builder funding are now active. P05 remains OPEN. See [the builder report](Observatory-Main-Cold-Builders-2026-10-23.md).
 
 > **Next Main startup step — 23 October 2026:** The selected texture handoff is backed up. A source scan guard and fresh-profile proposal pass scoped review; complete cold staging remains unimplemented and unpriced. The next concrete work is actual host/program/Base profile builders, then paid source/setup/import visits with fresh checks. P05 remains OPEN. Read the [cold-entry report](Observatory-Main-Cold-Entry-2026-10-23.md) and [work plan](Observatory-Current-Work-Plan.md). Earlier records below retain their original scopes.

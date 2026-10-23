@@ -1,0 +1,472 @@
+{
+  "format": "sphere-main-v8-narrow-private-builder-seal/1",
+  "status": "PASS_SOURCE_COMPONENT_MODELS_AND_EXECUTABLE_OPERAND_DERIVATION_UNSELECTED",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-builder-funding-2026-10-23-01\\candidate-06\\source",
+  "frozenBuilderParent": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-cold-profiles-2026-10-23-01\\candidate-05\\source",
+  "selectedTextureParent": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\texture-handoff-split-2026-10-23-01\\candidate-03\\source",
+  "files": 521,
+  "parsedJavaScript": 425,
+  "changed": [
+    "owned-main-bootstrap.js"
+  ],
+  "changedFromT": [
+    "owned-main-bootstrap.js",
+    "renderer.js"
+  ],
+  "exactHunkInverseCount": 52,
+  "mergeRecipe": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-builder-funding-2026-10-23-01\\MERGE-AND-TEST-RELOCATION-06.md",
+    "bytes": 4774,
+    "sha256": "28337da7067791ad199c5a2e4c52757a754dd84e5f6cc3ed9abde684fabd73da"
+  },
+  "byteInverseToFrozenB05": true,
+  "all3ProfilesExactB05AndFreshRows": true,
+  "sourceInventory": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-builder-funding-2026-10-23-01\\source-inventory-06.json",
+    "bytes": 137849,
+    "sha256": "4d9b54885626565c8760302a1c8269f1c25d152f4a5f44dfb58a4ca39695b8ad"
+  },
+  "loader": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-builder-funding-2026-10-23-01\\candidate-06\\source\\owned-main-bootstrap.js",
+    "bytes": 97921,
+    "sha256": "dbf6a11ac3770f655d6c840e11927b3001c5d18a43c60782869710fa01129fe9"
+  },
+  "renderer": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-builder-funding-2026-10-23-01\\candidate-06\\source\\renderer.js",
+    "bytes": 155485,
+    "sha256": "c83ff61c51b5a033d335a12bd705918df23f9913fb00639caad068c50b5d6a63"
+  },
+  "sourceAdmission": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-builder-funding-2026-10-23-01\\candidate-06\\source\\biome-service\\native\\source-admission.js",
+    "bytes": 16839,
+    "sha256": "d1676c985688bb3330ae2e35e1194c8b2c05116652939e1b183e0047751d8a7f"
+  },
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "digest": "2e153579f883c472ec8a72dd0709e5956065ef0f6bc2ac42b971d7cac49b2d3b",
+      "rows": 219
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "digest": "237843edcb7dfbaa45285125c500f721f2ecf8ba8726f9fbe03793bc69ad7031",
+      "rows": 5
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "digest": "911396ee29ddc252f4e168aadba58a07e55e80189c81a4e1ec4750419b4b2669",
+      "rows": 9
+    }
+  ],
+  "modelCases": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-builder-funding-2026-10-23-01\\control-positive-n06.json",
+      "bytes": 91945,
+      "sha256": "b6e88269730b606122c4b0ed4d3bc4d78bd1130963a47a8a5b85f8ea9b5eb679",
+      "case": "positive",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual copied Renderer constructor and its private canonical program record populate the reciprocal source-currentScript reader",
+        "Actual HostWorld.create + Node Numeric verification, actual PB.create/admit of original overview, and Base v8 envelope construction complete with 23/219/219 exact rows and original Surface/genuine-R limits",
+        "Explicit private close releases genuine PB/source/profile outputs; inherited admitted graph, source owner, host/controller/model roots remain disclosed"
+      ]
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-builder-funding-2026-10-23-01\\control-field-n06.json",
+      "bytes": 92200,
+      "sha256": "5af931f15a035d107270be85dc7453eb2cc9ed3c2a4da7e1832c2708800de42d",
+      "case": "field",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual copied Renderer constructor and its private canonical program record populate the reciprocal source-currentScript reader",
+        "Actual HostWorld.create + Node Numeric verification, actual PB.create/admit of original overview, and Base v8 envelope construction complete with 23/219/219 exact rows and original Surface/genuine-R limits",
+        "Explicit private close releases genuine PB/source/profile outputs; inherited admitted graph, source owner, host/controller/model roots remain disclosed"
+      ]
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-builder-funding-2026-10-23-01\\control-composite-n06.json",
+      "bytes": 92206,
+      "sha256": "3a0b2121bc8414eebfb46455b479aa09f9c082be7ee96a93aa2d652abb09a1d7",
+      "case": "composite",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual copied Renderer constructor and its private canonical program record populate the reciprocal source-currentScript reader",
+        "Actual HostWorld.create + Node Numeric verification, actual PB.create/admit of original overview, and Base v8 envelope construction complete with 23/219/219 exact rows and original Surface/genuine-R limits",
+        "Explicit private close releases genuine PB/source/profile outputs; inherited admitted graph, source owner, host/controller/model roots remain disclosed"
+      ]
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-builder-funding-2026-10-23-01\\control-foreignHost-n06.json",
+      "bytes": 2108,
+      "sha256": "7cd41a7b2c487528042b8e91348dd99c8a68876b98a2ae95d3d3b15f6c39d9f3",
+      "case": "foreignHost",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual copied Renderer constructor and its private canonical program record populate the reciprocal source-currentScript reader",
+        "A facade copying every genuine R method is refused by actual R private brand"
+      ]
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-builder-funding-2026-10-23-01\\control-wrongLimits-n06.json",
+      "bytes": 2097,
+      "sha256": "4baa04144dac5d190d910b6f87b1b233cc3ddc94efa3d670296b1bc407a5eec1",
+      "case": "wrongLimits",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual copied Renderer constructor and its private canonical program record populate the reciprocal source-currentScript reader",
+        "Limits differing by one refuse the genuine actual host comparison"
+      ]
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-builder-funding-2026-10-23-01\\control-foreignRegistration-n06.json",
+      "bytes": 92077,
+      "sha256": "22cd777b7da01eaea00b5df7181a6b4cabe8e73ffdf89ea68d14ee0abd5a0b55",
+      "case": "foreignRegistration",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual copied Renderer constructor and its private canonical program record populate the reciprocal source-currentScript reader",
+        "Outside actual Renderer source evaluation a foreign callback cannot replace the private constructor-source reader",
+        "Actual HostWorld.create + Node Numeric verification, actual PB.create/admit of original overview, and Base v8 envelope construction complete with 23/219/219 exact rows and original Surface/genuine-R limits",
+        "Explicit private close releases genuine PB/source/profile outputs; inherited admitted graph, source owner, host/controller/model roots remain disclosed"
+      ]
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-builder-funding-2026-10-23-01\\control-prototypeChange-n06.json",
+      "bytes": 1704,
+      "sha256": "ac0df50480d2ee15a0ee43ae99a4efa11eadd32b9c4e14c4fe091a9286b48b22",
+      "case": "prototypeChange",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual copied Renderer constructor and its private canonical program record populate the reciprocal source-currentScript reader",
+        "Irrelevant function/class prototype additions do not become authority: actual original builders/verifiers and all original current checks still complete"
+      ]
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-builder-funding-2026-10-23-01\\control-nativeChange-n06.json",
+      "bytes": 1620,
+      "sha256": "14d999d9117dc12011656addda861a25dd5601f913127ed230c43a215a235bd6",
+      "case": "nativeChange",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual copied Renderer constructor and its private canonical program record populate the reciprocal source-currentScript reader",
+        "A changed native capability is refused independently of same program identity"
+      ]
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-builder-funding-2026-10-23-01\\control-dependencyChange-n06.json",
+      "bytes": 2103,
+      "sha256": "c6c71628130bbc46a26a1c4b18ebb359179c1a4ac9d8d18cfcbd2aaed4c2f69f",
+      "case": "dependencyChange",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual copied Renderer constructor and its private canonical program record populate the reciprocal source-currentScript reader",
+        "HostWorld.create replacement refuses before host capture/admission"
+      ]
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-builder-funding-2026-10-23-01\\control-concurrent-n06.json",
+      "bytes": 92044,
+      "sha256": "40c035534e2d6011ec50a8535aa0e84270e84f9a66dfa50ecc1b10cc9294081c",
+      "case": "concurrent",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual copied Renderer constructor and its private canonical program record populate the reciprocal source-currentScript reader",
+        "One asynchronous private entry owns the source operation; nested stage/close cannot enter",
+        "Actual HostWorld.create + Node Numeric verification, actual PB.create/admit of original overview, and Base v8 envelope construction complete with 23/219/219 exact rows and original Surface/genuine-R limits",
+        "Explicit private close releases genuine PB/source/profile outputs; inherited admitted graph, source owner, host/controller/model roots remain disclosed"
+      ]
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-builder-funding-2026-10-23-01\\control-staleSource-n06.json",
+      "bytes": 2135,
+      "sha256": "622f80eed26b81c12299116669211e537e92c03793d06ffb0a01ada033838339",
+      "case": "staleSource",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual copied Renderer constructor and its private canonical program record populate the reciprocal source-currentScript reader",
+        "Fresh byte mutation after the retained graph was admitted refuses and keeps a closeable failure root"
+      ]
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-builder-funding-2026-10-23-01\\control-parentChange-n06.json",
+      "bytes": 2126,
+      "sha256": "231129351345693fbb62593c3c98f5ad83876dea091c7671883dea8827ff9d37",
+      "case": "parentChange",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual copied Renderer constructor and its private canonical program record populate the reciprocal source-currentScript reader",
+        "A Surface envelope copy with the same digest fails the retained original binding identity"
+      ]
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-builder-funding-2026-10-23-01\\control-relink-n06.json",
+      "bytes": 2208,
+      "sha256": "45c949abeaa043a295c0c7fb1f125086eed50a94d961571bdecb2dc01d3fdf45",
+      "case": "relink",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual copied Renderer constructor and its private canonical program record populate the reciprocal source-currentScript reader",
+        "Mutating/recompiling/relinking the SAME actual Renderer private program leaves its route predicate true but fails original constructor-source equality before profile publication"
+      ]
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-builder-funding-2026-10-23-01\\control-relinkBetween-n06.json",
+      "bytes": 3274,
+      "sha256": "a5d5db230a5b8fe1c784b7e5dc0cdabbd428122966ee8cd9b138cb9769116d13",
+      "case": "relinkBetween",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual copied Renderer constructor and its private canonical program record populate the reciprocal source-currentScript reader",
+        "Same actual original program relink between PROGRAM/Base or inside source await is caught by the full current barrier; the genuine PB teardown root remains retained and closes"
+      ]
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-builder-funding-2026-10-23-01\\control-relinkAwait-n06.json",
+      "bytes": 3277,
+      "sha256": "c7a30613e25cb78eae05564da146c23ca54d772ced82b53d9c89f8c8482fdeb9",
+      "case": "relinkAwait",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual copied Renderer constructor and its private canonical program record populate the reciprocal source-currentScript reader",
+        "Same actual original program relink between PROGRAM/Base or inside source await is caught by the full current barrier; the genuine PB teardown root remains retained and closes"
+      ]
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-builder-funding-2026-10-23-01\\control-rendererRouteChange-n06.json",
+      "bytes": 1711,
+      "sha256": "4646374d2c0a5910c6d967b446c24b41ff19c93693453c7f99aa31d56318b330",
+      "case": "rendererRouteChange",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual copied Renderer constructor and its private canonical program record populate the reciprocal source-currentScript reader",
+        "A Renderer route method changed after original source-load acknowledgement refuses before a private builder can adopt the new callable or choose a profile format"
+      ]
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-builder-funding-2026-10-23-01\\control-duplicateRegistration-n06.json",
+      "bytes": 1695,
+      "sha256": "434a4ceab90c6cca243057c98ee5449d9d18911d011e3493d2af04450b022f0b",
+      "case": "duplicateRegistration",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual copied Renderer constructor and its private canonical program record populate the reciprocal source-currentScript reader",
+        "A legitimate duplicate during the owned source activation latches failure, clears the reader and prevents source-completion or builder creation"
+      ]
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-builder-funding-2026-10-23-01\\control-oldProfiles-n06.json",
+      "bytes": 2822,
+      "sha256": "45b4d195c765967877eed310d5ca9aa94e38aa6e25225e5e61e6b2d2cf0c9e75",
+      "case": "oldProfiles",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual copied Renderer constructor and its private canonical program record populate the reciprocal source-currentScript reader",
+        "All three old exact source envelopes refuse the new Renderer pin; all three freshly regenerated envelopes admit under genuine shared S/Q without harming the retained graph"
+      ]
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-builder-funding-2026-10-23-01\\control-setterRefusal-n06.json",
+      "bytes": 1581,
+      "sha256": "f9b1bfb16c1d54eb35e1525e4426c8bd185d4bd18c756ddf8e0d046d33ef7496",
+      "case": "setterRefusal",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Exact copied Renderer refuses preinstalled namespace before its setter can hijack the source reader; source-load completion acknowledgement also refuses"
+      ]
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-builder-funding-2026-10-23-01\\control-namespaceChange-n06.json",
+      "bytes": 1658,
+      "sha256": "e8e4e72fe8c2d70d327d2a0fb40dbc29c68df37f1f1368dcf8f4ec4dc620e98b",
+      "case": "namespaceChange",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual copied Renderer constructor and its private canonical program record populate the reciprocal source-currentScript reader",
+        "A namespace facade with identical current method values refuses the retained exact source-loaded module identity"
+      ]
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-builder-funding-2026-10-23-01\\control-mathMethodChange-n06.json",
+      "bytes": 1657,
+      "sha256": "4a832e43d6c0d250eb57d8271c2aecdbad65fa2a2ecee2412dfa87d2461ead61",
+      "case": "mathMethodChange",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual copied Renderer constructor and its private canonical program record populate the reciprocal source-currentScript reader",
+        "A used numerical dependency method changed while HOST is active refuses before original Numeric.capture/verify"
+      ]
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-builder-funding-2026-10-23-01\\control-unusedHostChange-n06.json",
+      "bytes": 1665,
+      "sha256": "131433e70c135098495b9f9a31783248be9395f589e6d2602094dae6664a2dee",
+      "case": "unusedHostChange",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual copied Renderer constructor and its private canonical program record populate the reciprocal source-currentScript reader",
+        "An unrelated new Host method is ignored by source-selected captured original callables and immutable data tables"
+      ]
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-builder-funding-2026-10-23-01\\control-mutableDataAtCapture-n06.json",
+      "bytes": 1647,
+      "sha256": "05fea9286be7feb64357fb38e88c1927a5017de41fbe8fcf83e02e0c5cdb725b",
+      "case": "mutableDataAtCapture",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual copied Renderer constructor and its private canonical program record populate the reciprocal source-currentScript reader",
+        "A mutable replacement selected MODULE_ORDER cannot be reused as immutable source-owned authority"
+      ]
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-builder-funding-2026-10-23-01\\control-localDataChange-n06.json",
+      "bytes": 1703,
+      "sha256": "41ce2637f71a0a9c31b8740382235c6e2b68a4fe2c27be6fafc0cf075fdadf83",
+      "case": "localDataChange",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual copied Renderer constructor and its private canonical program record populate the reciprocal source-currentScript reader",
+        "A changed actually used Local dependency namespace/data refuses before pure assembly/profile construction; original source namespace identity is retained"
+      ]
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-builder-funding-2026-10-23-01\\control-fixedDataChange-n06.json",
+      "bytes": 1703,
+      "sha256": "b7c65840c78eceef51b19f108aaed035485e7884d753dc79ab17534df213736c",
+      "case": "fixedDataChange",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual copied Renderer constructor and its private canonical program record populate the reciprocal source-currentScript reader",
+        "A changed actually used Local dependency namespace/data refuses before pure assembly/profile construction; original source namespace identity is retained"
+      ]
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-builder-funding-2026-10-23-01\\control-boundaryDataChange-n06.json",
+      "bytes": 1706,
+      "sha256": "bdaf3b2ccfdc61fdd7e6a7420204bad8b58b0708f88815d3636640358673f40d",
+      "case": "boundaryDataChange",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual copied Renderer constructor and its private canonical program record populate the reciprocal source-currentScript reader",
+        "A changed actually used Local dependency namespace/data refuses before pure assembly/profile construction; original source namespace identity is retained"
+      ]
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-builder-funding-2026-10-23-01\\control-assignedDataChange-n06.json",
+      "bytes": 1706,
+      "sha256": "a4846cf4658e0f28faf0e7b54a536927b73baa52b8da9882a5b922adf2ffe185",
+      "case": "assignedDataChange",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual copied Renderer constructor and its private canonical program record populate the reciprocal source-currentScript reader",
+        "A changed actually used Local dependency namespace/data refuses before pure assembly/profile construction; original source namespace identity is retained"
+      ]
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-builder-funding-2026-10-23-01\\control-unsupportedConic-n06.json",
+      "bytes": 1784,
+      "sha256": "bfdfbacfb614f3f9d459cd96829c889e48d00365adee3c1b92740befd979df26",
+      "case": "unsupportedConic",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual copied Renderer constructor and its private canonical program record populate the reciprocal source-currentScript reader",
+        "Actual copied Renderer constructed/retained the deliberate unsupported source branch, but the private builder refused before Local dynamic conic/pixel lookup; modeled GL only"
+      ]
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-builder-funding-2026-10-23-01\\control-unsupportedPixel-n06.json",
+      "bytes": 1784,
+      "sha256": "0bc1f3c3fbc7f8046815270fb5f74b50f74fa7df734423f0d41f8ebcd0b4f7ea",
+      "case": "unsupportedPixel",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual copied Renderer constructor and its private canonical program record populate the reciprocal source-currentScript reader",
+        "Actual copied Renderer constructed/retained the deliberate unsupported source branch, but the private builder refused before Local dynamic conic/pixel lookup; modeled GL only"
+      ]
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-builder-funding-2026-10-23-01\\control-hostMethodAfterHost-n06.json",
+      "bytes": 1741,
+      "sha256": "c704ca5b08267a6fbb2ac8789cbc18cc92e97b3b43719aa5a82b610c5befdf34",
+      "case": "hostMethodAfterHost",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual copied Renderer constructor and its private canonical program record populate the reciprocal source-currentScript reader",
+        "After genuine Host creation, later PROGRAM/BASELINE stages use retained authority and ignore the unused Host.create descriptor while preserving namespace and all original current checks"
+      ]
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-builder-funding-2026-10-23-01\\control-mutableHostData-n06.json",
+      "bytes": 1665,
+      "sha256": "18e78ee5b10e827a6ced9a143dc0c5ed32d98473a14d52e8b3028130240e22e2",
+      "case": "mutableHostData",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual copied Renderer constructor and its private canonical program record populate the reciprocal source-currentScript reader",
+        "An actually mutable used source primitive remains freshly descriptor/value checked; Host.PROFILE_ID replacement refuses"
+      ]
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-builder-funding-2026-10-23-01\\control-immutableSourceSlots-n06.json",
+      "bytes": 1767,
+      "sha256": "9daa3164dfbb4410ea89e21f2722732f98e16e88e6baf120062cd904be3b3230",
+      "case": "immutableSourceSlots",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual copied Renderer constructor and its private canonical program record populate the reciprocal source-currentScript reader",
+        "Actual source-loaded long primitive slots are own data/nonwritable/nonconfigurable; attempted replacement fails and original construction/verifiers complete. Later namespace replacements are covered separately."
+      ]
+    }
+  ],
+  "fundingBoundary": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-builder-funding-2026-10-23-01\\funding-boundary-06.json",
+    "bytes": 1760,
+    "sha256": "62165ed51e2f8f8c7dfdf9e067cc604975a7a63044f72b02efe3e02ef0d1eb19"
+  },
+  "privateClosedRootObserver": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-builder-funding-2026-10-23-01\\control-positive-roots06.json",
+    "bytes": 93027,
+    "sha256": "ea07dcd9e2ced2db823be085e65a304ccc8bf898195605622bd99d9cebe9b434"
+  },
+  "independentReview": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-builder-funding-2026-10-23-01\\independent-review-04\\CHECK-01.json",
+    "bytes": 3685,
+    "sha256": "451ddde3a170081895fdf212700fc587225c4b914f0b652c6207ef186e1abf79"
+  },
+  "ownershipAndPhaseOperands": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-builder-funding-2026-10-23-01\\ownership-and-phases-06.json",
+    "bytes": 82283,
+    "sha256": "5de1f64f74c61f4ed44e7b791e1c4f54b8040382b34190111375b6b909ad7744"
+  },
+  "rawCensusTariffCorrection": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-builder-funding-2026-10-23-01\\census-tariff-correction-01.json",
+    "bytes": 968,
+    "sha256": "f55845822c3b430aa5931ed1b5d6635d7a7f87838a6fe9b7b30ca47c17ba1c18"
+  },
+  "preservedEarlierDrafts": [
+    "candidate-01 parent-only copy after author newline assertion",
+    "candidate-02 narrow14module controls",
+    "candidate-03 additional Local primitive captures",
+    "candidate-04 dynamic PB alias leak witness",
+    "candidate-05 sealed private-root fix, before immutable primitive reuse"
+  ],
+  "preservedHarnessFailures": [
+    "author-failed-attempt-01.json",
+    "census-observer-failed-attempt-05.json"
+  ],
+  "scope": {
+    "genuineBodies": "Original Host/Numeric/Q/S/R/PB and full copied Renderer constructor in disclosed Node component models",
+    "modeledParents": "GL/Surface/G/construction/children/Document and diagnostic host limits",
+    "closedPB": "New private row and WeakMap aliases dropped; external observer explicitly retains test-only owner outsideQ; no VM heapzero claim",
+    "SourceAndSRepair": "Original selected C03 S unchanged; no S.shape proposal adopted",
+    "funding": "All complete new module/controller/instance allowances remainnull; structural subtotals are not complete budgets",
+    "work": "Immutable source primitives reused; mutable/native/shader operands remain fresh. Complete current/caller/cold worknull",
+    "closedLifetime": "Reachable controller/module/instance API and inherited renderer/native/source parents remain retained obligations",
+    "helperVsMainG": "Helper G is not the genuine Root surface-program/privateVAO backend",
+    "nativeCold": false,
+    "FullMain": false,
+    "APP_EXECUTION_ENABLED": false,
+    "allOldNullsUnchanged": true,
+    "noBrowserServerRuntimeCheckpointGit": true
+  }
+}

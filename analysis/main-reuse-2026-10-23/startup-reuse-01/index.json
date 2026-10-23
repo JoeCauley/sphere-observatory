@@ -1,0 +1,110 @@
+{
+  "status": "PASS_TEXTURE_HANDOFF_SELECTED_AND_FRESH_SOURCE_REUSE_JOIN_UNSELECTED_P05_OPEN",
+  "receipts": [
+    {
+      "path": "proof-01-CHECK-06.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-builder-funding-2026-10-23-01\\CHECK-06.json",
+        "bytes": 30335,
+        "sha256": "d247c67531f8d2e23cb32fce242e47fbf2f7dda428916d2d019990562829c84b"
+      },
+      "copy": {
+        "path": "I:\\Sphere\\repositories\\sphere-observatory\\analysis\\main-reuse-2026-10-23\\startup-reuse-01\\proof-01-CHECK-06.json",
+        "bytes": 30335,
+        "sha256": "d247c67531f8d2e23cb32fce242e47fbf2f7dda428916d2d019990562829c84b"
+      }
+    },
+    {
+      "path": "proof-02-CHECK-01.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-builder-funding-2026-10-23-01\\independent-review-04\\CHECK-01.json",
+        "bytes": 3685,
+        "sha256": "451ddde3a170081895fdf212700fc587225c4b914f0b652c6207ef186e1abf79"
+      },
+      "copy": {
+        "path": "I:\\Sphere\\repositories\\sphere-observatory\\analysis\\main-reuse-2026-10-23\\startup-reuse-01\\proof-02-CHECK-01.json",
+        "bytes": 3685,
+        "sha256": "451ddde3a170081895fdf212700fc587225c4b914f0b652c6207ef186e1abf79"
+      }
+    },
+    {
+      "path": "proof-03-CHECK-03.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-runtime-2026-10-23-01\\author-02\\CHECK-03.json",
+        "bytes": 10223,
+        "sha256": "476eee04c0e83d52e5dc39cda83fbb88ff4fd8bebeb551836fb791c168501663"
+      },
+      "copy": {
+        "path": "I:\\Sphere\\repositories\\sphere-observatory\\analysis\\main-reuse-2026-10-23\\startup-reuse-01\\proof-03-CHECK-03.json",
+        "bytes": 10223,
+        "sha256": "476eee04c0e83d52e5dc39cda83fbb88ff4fd8bebeb551836fb791c168501663"
+      }
+    },
+    {
+      "path": "proof-04-CHECK-01.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-runtime-2026-10-23-01\\independent-review-02\\CHECK-01.json",
+        "bytes": 5507,
+        "sha256": "07419f029f2070b2ab3b0d1627d6b7007e498940e1c39c0a625008a6061c128a"
+      },
+      "copy": {
+        "path": "I:\\Sphere\\repositories\\sphere-observatory\\analysis\\main-reuse-2026-10-23\\startup-reuse-01\\proof-04-CHECK-01.json",
+        "bytes": 5507,
+        "sha256": "07419f029f2070b2ab3b0d1627d6b7007e498940e1c39c0a625008a6061c128a"
+      }
+    },
+    {
+      "path": "proof-05-CHECK-06.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-reuse-join-2026-10-23-01\\CHECK-06.json",
+        "bytes": 5172,
+        "sha256": "9823917ac2aa4e70c1971c08c4559ba50ca9022edb1eb4c4ddcc9341aeb730ca"
+      },
+      "copy": {
+        "path": "I:\\Sphere\\repositories\\sphere-observatory\\analysis\\main-reuse-2026-10-23\\startup-reuse-01\\proof-05-CHECK-06.json",
+        "bytes": 5172,
+        "sha256": "9823917ac2aa4e70c1971c08c4559ba50ca9022edb1eb4c4ddcc9341aeb730ca"
+      }
+    },
+    {
+      "path": "proof-06-CHECK-01.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-reuse-join-2026-10-23-01\\independent-review-01\\CHECK-01.json",
+        "bytes": 4048,
+        "sha256": "92bd150932d5b811a3786d642638f7e2ee50d636c74536eaf5d06f79075f5b50"
+      },
+      "copy": {
+        "path": "I:\\Sphere\\repositories\\sphere-observatory\\analysis\\main-reuse-2026-10-23\\startup-reuse-01\\proof-06-CHECK-01.json",
+        "bytes": 4048,
+        "sha256": "92bd150932d5b811a3786d642638f7e2ee50d636c74536eaf5d06f79075f5b50"
+      }
+    },
+    {
+      "path": "proof-07-CHECK-02.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-shader-metrics-2026-10-23-01\\CHECK-02.json",
+        "bytes": 2152,
+        "sha256": "ae50e79b830b1d2c9a90d9891b54aad432a79c9a776772f257c7041c835f3581"
+      },
+      "copy": {
+        "path": "I:\\Sphere\\repositories\\sphere-observatory\\analysis\\main-reuse-2026-10-23\\startup-reuse-01\\proof-07-CHECK-02.json",
+        "bytes": 2152,
+        "sha256": "ae50e79b830b1d2c9a90d9891b54aad432a79c9a776772f257c7041c835f3581"
+      }
+    },
+    {
+      "path": "proof-08-fixed-transfer-01.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-fixed-transfer-2026-10-23-01\\fixed-transfer-01.json",
+        "bytes": 1508,
+        "sha256": "01ef94ce06d00915527cb6b625a8837bc23ec77252b806a73c2faa14a38c7559"
+      },
+      "copy": {
+        "path": "I:\\Sphere\\repositories\\sphere-observatory\\analysis\\main-reuse-2026-10-23\\startup-reuse-01\\proof-08-fixed-transfer-01.json",
+        "bytes": 1508,
+        "sha256": "01ef94ce06d00915527cb6b625a8837bc23ec77252b806a73c2faa14a38c7559"
+      }
+    }
+  ],
+  "scope": "Exact source/progress receipts; raw archives and full source snapshots preserved privately. Diagnostic allowances do not enable Main."
+}

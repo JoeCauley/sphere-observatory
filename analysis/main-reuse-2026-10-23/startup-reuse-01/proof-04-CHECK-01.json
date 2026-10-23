@@ -1,0 +1,167 @@
+{
+  "status": "PASS_BOUNDED_RUNTIME02_SOURCE_OWNERSHIP_CHRONOLOGY_UNSELECTED",
+  "candidate": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-runtime-2026-10-23-01\\candidate-02\\source",
+  "sourceRows": 521,
+  "parsed": 425,
+  "changed": [
+    "biome-service/native/source-admission.js",
+    "biome-service/records.js",
+    "owned-main-bootstrap.js"
+  ],
+  "sourcePins": [
+    {
+      "path": "biome-service/native/source-admission.js",
+      "bytes": 36075,
+      "sha256": "f3b99843c0dec4574d02cc47b81aaaf0feaa02fc15b14494144faac432f6fe53"
+    },
+    {
+      "path": "biome-service/records.js",
+      "bytes": 25436,
+      "sha256": "4248dd50301c4e48035133c40be94845b6d0c3d6d77ae705c36dceaf49fc58b3"
+    },
+    {
+      "path": "biome-service/metadata-budget.js",
+      "bytes": 4137,
+      "sha256": "9318446452e9a99fee2873eaf0d072bd76c39f714e4d1bceadf6057d04df6635"
+    },
+    {
+      "path": "owned-main-bootstrap.js",
+      "bytes": 94095,
+      "sha256": "77b9bce6c034931ec2ce85d22de68d63702cf2afb98e65541419aaf197edfbcc"
+    }
+  ],
+  "inverse": [
+    {
+      "path": "biome-service/native/source-admission.js",
+      "hunks": 33,
+      "exactParent": true
+    },
+    {
+      "path": "biome-service/records.js",
+      "hunks": 2,
+      "exactParent": true
+    },
+    {
+      "path": "owned-main-bootstrap.js",
+      "hunks": 15,
+      "exactParent": true
+    }
+  ],
+  "legacyByteExactBodies": 30,
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "digest": "80221bb5aa3f571d77b48cea7d23ed28591482fc5c0dc06089127d17110209a6",
+      "rows": 219
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "digest": "45e96edbf8a8525fcb7cdbec054a7ba677565b8c9a16339589012ba8d033c0de",
+      "rows": 5
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "digest": "608c8c5d670cd81edc377ce9e657a8929aaf5748c4a22d54469217e2ce067157",
+      "rows": 9
+    }
+  ],
+  "runtimeGroups": 20,
+  "prefixGroups": 4,
+  "extraIndependentRealHashObserverCounterReplay": 1,
+  "normalClose": "Source rows released; closed controller account retained, no wholeQzero",
+  "uncertainClose": "Returnedpromise/input/scratch/busy/Q/scope retained; externalnativeSUCCESS doesnotmintSourcecompletion; disposeandreplayrefused",
+  "remainingGates": [
+    "All newwork/module/controller/pending/caller/foundationpreQfundingNULL_UNSELECTED",
+    "Original returnedrelease and externallyheldprofilecallerwork",
+    "Genericforeignreader/current adapters",
+    "Uncertainrepairorforcedcleanup",
+    "FullDOM/browser/HTTP/App/G/R/globaljobs/fullhost/nativeMain/P05"
+  ],
+  "nativeMain": false,
+  "feesSelected": false,
+  "selectionPermission": false,
+  "sourceUnchangedAfterReview": true,
+  "B_T_J_NarrowCopiesUntouched": true,
+  "artifacts": [
+    {
+      "path": "REVIEW.md",
+      "bytes": 5504,
+      "sha256": "238f65e7f18997f32620b89846b05c285b06d96b5a51f94698e41444f14d52af"
+    },
+    {
+      "path": "source-validation-02.json",
+      "bytes": 100753,
+      "sha256": "cd91b40e6fd1a645501dc79866f1dbbbb96c8ba60eceb953727edd152527354c"
+    },
+    {
+      "path": "verify-runtime-02.cjs",
+      "bytes": 4927,
+      "sha256": "63cfe8122eb3c0a17bcae156bce75831a90951fe06cd85b76963a5b3489f8e5a"
+    },
+    {
+      "path": "control-run-independent-01.json",
+      "bytes": 20441,
+      "sha256": "33d96f23dd026d6469e74295fb23f31aadc074aa9a8adad76148769b318e623c"
+    },
+    {
+      "path": "test-source-runtime-02.cjs",
+      "bytes": 26803,
+      "sha256": "c6b3b38f687d711584b199c5f662b004c58e0f1859673b713b0c80c56bcb1999"
+    },
+    {
+      "path": "author-test-source-runtime-02.cjs",
+      "bytes": 26819,
+      "sha256": "f58ce31a2cb50463833e2d544a89bd4cb831679c48304d984b1bc601445761d2"
+    },
+    {
+      "path": "loader-prefix-run-01.json",
+      "bytes": 3049,
+      "sha256": "4645f589c4cf66b7e6369e8e6a40749ba76aa1aae81e841c59740d9616b14798"
+    },
+    {
+      "path": "test-loader-prefix-02.cjs",
+      "bytes": 3936,
+      "sha256": "2e2c7110501b27978bd322921bd66cb8f7beb4f8b027ed3048edc2357c35b5b1"
+    },
+    {
+      "path": "author-test-loader-prefix-02.cjs",
+      "bytes": 3952,
+      "sha256": "50d47e5f2fa727b51fe3a191121dff39c656f5a637a48f1dd1b4efefe2e0e707"
+    },
+    {
+      "path": "observation-hold-02.json",
+      "bytes": 5551,
+      "sha256": "efa6b5a5f9a4501ffeb46eedd6f461451f813b0343f0196f6862423f2c45f4ca"
+    },
+    {
+      "path": "test-observation-hold-02.cjs",
+      "bytes": 12460,
+      "sha256": "14ffefa582529433ebb01d422b49f60ee4d94125d8c4794274b63e1c29c212c0"
+    },
+    {
+      "path": "prepare-observation-hold-02.cjs",
+      "bytes": 4357,
+      "sha256": "c17d9bc3152a6b704d719dee97ea00232beaa508ae60c1fa45a5b2f3a155b81f"
+    },
+    {
+      "path": "author-CHECK-03.json",
+      "bytes": 10223,
+      "sha256": "476eee04c0e83d52e5dc39cda83fbb88ff4fd8bebeb551836fb791c168501663"
+    },
+    {
+      "path": "author-source-inventory-03.json",
+      "bytes": 102054,
+      "sha256": "fae0cb25460bc81bd66930ed8c591f405bb70fc24766aef4cef39002cedba5d6"
+    },
+    {
+      "path": "author-exact-delta-06.json",
+      "bytes": 2159,
+      "sha256": "53960aed6fb42a0202c9915f7170f7baeb2ea1b5ffe38fe636438ac1cc3dfb84"
+    },
+    {
+      "path": "author-exact-delta-07.json",
+      "bytes": 74779,
+      "sha256": "d7479da67b8eec082809a83c739bfb8d5f0f7b43bd3b15b217186eb492da9791"
+    }
+  ]
+}

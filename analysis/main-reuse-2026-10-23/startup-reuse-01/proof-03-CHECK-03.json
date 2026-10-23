@@ -1,0 +1,227 @@
+{
+  "format": "sphere-original-source-scheduled-bootstrap-component-check/1",
+  "status": "PASS_SOURCE_AND_COMPONENT_CONTROLS_UNSELECTED",
+  "utc": "2026-10-23T13:06:38.881Z",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-runtime-2026-10-23-01\\candidate-02\\source",
+  "parent": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-cold-profiles-2026-10-23-01\\candidate-05\\source",
+  "files": 521,
+  "parsedJavaScript": 425,
+  "changed": [
+    "biome-service/native/source-admission.js",
+    "biome-service/records.js",
+    "owned-main-bootstrap.js"
+  ],
+  "sourcePins": {
+    "biome-service/native/source-admission.js": {
+      "path": "biome-service/native/source-admission.js",
+      "bytes": 36075,
+      "sha256": "f3b99843c0dec4574d02cc47b81aaaf0feaa02fc15b14494144faac432f6fe53"
+    },
+    "biome-service/records.js": {
+      "path": "biome-service/records.js",
+      "bytes": 25436,
+      "sha256": "4248dd50301c4e48035133c40be94845b6d0c3d6d77ae705c36dceaf49fc58b3"
+    },
+    "owned-main-bootstrap.js": {
+      "path": "owned-main-bootstrap.js",
+      "bytes": 94095,
+      "sha256": "77b9bce6c034931ec2ce85d22de68d63702cf2afb98e65541419aaf197edfbcc"
+    }
+  },
+  "inventory": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-runtime-2026-10-23-01\\author-02\\source-inventory-03.json",
+    "bytes": 102054,
+    "sha256": "fae0cb25460bc81bd66930ed8c591f405bb70fc24766aef4cef39002cedba5d6"
+  },
+  "inverse": [
+    {
+      "path": "biome-service/native/source-admission.js",
+      "exactParent": true,
+      "sha256": "d1676c985688bb3330ae2e35e1194c8b2c05116652939e1b183e0047751d8a7f"
+    },
+    {
+      "path": "biome-service/records.js",
+      "exactParent": true,
+      "sha256": "70dbb2302f88f5f950de3eb2d3e94951a1537fdeab54640e7bb95746d69c1556"
+    },
+    {
+      "path": "owned-main-bootstrap.js",
+      "exactParent": true,
+      "sha256": "f7b7bcf4d19587183d8f6f256a8f9fa731fb3fe680a7961f003e8f426900c9cc"
+    }
+  ],
+  "legacyByteExactBodyCount": 30,
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "rows": 219,
+      "id": "owned-startup-texture-handoff-held-bootstrap-v7",
+      "digest": "80221bb5aa3f571d77b48cea7d23ed28591482fc5c0dc06089127d17110209a6",
+      "exactCurrentSourceRows": true,
+      "changedRows": [
+        "biome-service/native/source-admission.js",
+        "biome-service/records.js"
+      ],
+      "otherBodyFieldsEqual": true
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "rows": 5,
+      "id": "main-owned-default-surface-facts-v2",
+      "digest": "45e96edbf8a8525fcb7cdbec054a7ba677565b8c9a16339589012ba8d033c0de",
+      "exactCurrentSourceRows": true,
+      "changedRows": [
+        "biome-service/native/source-admission.js",
+        "biome-service/records.js"
+      ],
+      "otherBodyFieldsEqual": true
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "rows": 9,
+      "id": "main-startup-draw-owner-v1",
+      "digest": "608c8c5d670cd81edc377ce9e657a8929aaf5748c4a22d54469217e2ce067157",
+      "exactCurrentSourceRows": true,
+      "changedRows": [
+        "biome-service/native/source-admission.js",
+        "biome-service/records.js"
+      ],
+      "otherBodyFieldsEqual": true
+    }
+  ],
+  "controlGroups": 24,
+  "controls": {
+    "runtime": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-runtime-2026-10-23-01\\controls-02\\control-run-01.json",
+      "sha256": "fb2a414dbc7b33b7fb58728c4b9fafd6e007879d5315e93f6dbadb58d403a20a",
+      "groups": 20
+    },
+    "loaderPrefixAndInputScope": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-runtime-2026-10-23-01\\controls-02\\loader-prefix-run-01.json",
+      "sha256": "532f60962a477b413e1ad3b8818cfac909c0933435307f902332ac6b5ae07824",
+      "groups": 4
+    }
+  },
+  "artifacts": {
+    "author-01/seal-failure-01.json": {
+      "bytes": 1192,
+      "sha256": "ca4ce5658131f288d2c8a5eba5d43e8f80dd1b11518ebeecc50ea94bf958c8ec",
+      "correction": "Original vendor fake-indexeddb .js files are modules under their original package type; initial script-only parsing was a tooling classification error, not waived source syntax"
+    },
+    "controls-02/control-run-01.json": {
+      "bytes": 20432,
+      "sha256": "fb2a414dbc7b33b7fb58728c4b9fafd6e007879d5315e93f6dbadb58d403a20a"
+    },
+    "controls-02/loader-prefix-run-01.json": {
+      "bytes": 3049,
+      "sha256": "532f60962a477b413e1ad3b8818cfac909c0933435307f902332ac6b5ae07824"
+    },
+    "controls-01/control-failure-01.json": {
+      "bytes": 34214,
+      "sha256": "ff57e16c7b96be164f6adcdbf64a67e5392a49956f8890a0345ba19040437af5"
+    },
+    "controls-01/control-failure-02.json": {
+      "bytes": 35119,
+      "sha256": "daec793da84e50576d2e2152e7b27d9322c7984dd6dadb0f2a15957b7c24bf08"
+    },
+    "controls-01/control-failure-03.json": {
+      "bytes": 35671,
+      "sha256": "6879dcc05629c3f60c8e64676f620f4ca0f33c20bffc30babbdad97fbb4d6f92"
+    },
+    "author-01/exact-delta-01.json": {
+      "bytes": 21721,
+      "sha256": "65a7be57b89f666d6c37f51e790389695871d13b982427796ab116bb589b8b4a"
+    },
+    "author-01/exact-delta-02.json": {
+      "bytes": 4924,
+      "sha256": "6eab4d9ffa4455161c01eabc7c9f0e1b25fba2a711d607b03fb09dcdb2cab506"
+    },
+    "author-01/exact-delta-03.json": {
+      "bytes": 6087,
+      "sha256": "a6e08c6849063250242dd22787cf17ba55eb8471535771e4341b265abdd40e8e"
+    },
+    "author-01/exact-delta-04.json": {
+      "bytes": 75697,
+      "sha256": "560291e0c24b52308ef397952bd9363e07a2e09abb3ebb31bc43e3d758bf7e0b"
+    },
+    "author-01/exact-delta-05.json": {
+      "bytes": 883,
+      "sha256": "4dfb2057863751764155a77d7b69aab0b60fd9fa996d7c0f0d93e981b5a43a80"
+    },
+    "author-02/exact-delta-06.json": {
+      "bytes": 2159,
+      "sha256": "53960aed6fb42a0202c9915f7170f7baeb2ea1b5ffe38fe636438ac1cc3dfb84"
+    },
+    "author-02/exact-delta-07.json": {
+      "bytes": 74779,
+      "sha256": "d7479da67b8eec082809a83c739bfb8d5f0f7b43bd3b15b217186eb492da9791"
+    },
+    "author-01/CHECK-02.json": {
+      "bytes": 8868,
+      "sha256": "1539ecb22268c169aaf1898adcbf33fa483c939ab23fba4865ac9b0fa12f1f2a"
+    },
+    "independent-review-01/observation-counterexample-01.json": {
+      "bytes": 3695,
+      "sha256": "4efa55453bc644a0c56f22d6e331d11a990d5960585dc3612ebce8f9b5fc0008"
+    }
+  },
+  "scope": {
+    "actualOriginalSourceOwnerStorage": true,
+    "genuineQAndRecords": true,
+    "exactExtractedLoaderReaderBody": true,
+    "NodeNativeTimersFetchDataURLBYOBPromiseWebCrypto": true,
+    "browserLoaderExecution": false,
+    "adaptersDisclosed": true,
+    "fullFreshReadCopyHashOnCacheHits": true,
+    "exactPrivateFixedBacking": true,
+    "pendingInputsRetainedUntilActualSourceCallback": true,
+    "postReturnObservationFailure": "Returned native Promise/input/scratch/job remain rooted as uncertain and original scope stays pinned; only a matching actual callback clears them; external observation gives Source no settlement authority",
+    "callbackChronology": "Actual callback consumes reserved diagnostic completion row, only latches result/failure, then queues captured timer; no scope reset or adoption in callback",
+    "rollback": "One original entry drop per actual scheduled visit before admission publication",
+    "primaryFailureIdentity": "Undefined/false/object exact; secondary cleanup failures do not replace primary",
+    "publicCancellation": false,
+    "profileOrByteReadyTicket": false,
+    "returnedSourceBytesEscape": false,
+    "returnedReleaseCallerWork": "HELD original postpublication synchronous releaseBorrower/drop path unchanged",
+    "closedInstanceControl": "RETAINED; not released by SourceOwner.dispose or loader.close",
+    "nativeSchedulerFailureAfterStarted": "HELD; does not manufacture a cleanup visit when original native timer is unavailable",
+    "newSourceModuleAndExportsFunding": "HELD original foundation pre-Q admission unresolved",
+    "newControllerAndPendingStorage": "NULL; only disclosed diagnostic allocations used",
+    "newSourcePhaseAndCallerWork": "NULL; diagnostic1 is not a price or upper proof",
+    "loaderNewFunding": "NULL guard before first Q/controller births; original B cold funding null preserved",
+    "capsUnchanged": {
+      "sourceVisitWork": 4096,
+      "profileBytes": 262144,
+      "profileNodes": 4096,
+      "profileDepth": 32,
+      "sourceBytes": 16777216,
+      "metadataBytes": 33554432,
+      "metadataReservations": 4096,
+      "globalPrepareOpsPerSlice": 4096,
+      "uploadBytesPerFrame": 262144,
+      "jobs": 2
+    },
+    "fullCold": false,
+    "fullHost": false,
+    "nativeMain": false,
+    "productAppGate": false,
+    "P05": "OPEN"
+  },
+  "runtime01Disposition": {
+    "historicalAuthorCheck": "author-01/CHECK-02.json",
+    "independentCounter": "independent-review-01/observation-counterexample-01.json",
+    "status": "SUPERSEDED_NATIVE_POSTRETURN_ROOT_BUG",
+    "preserved": true,
+    "currentDelta": "author-02/exact-delta-06.json"
+  },
+  "knownGaps": [
+    "Post-return observation failure has no force-complete/repair path: pending source/caller/native references and Q remain explicitly held even if an external fixture later observes the native result",
+    "Source/controller/module/phase/callback/caller complete fee and logical census not derived or selected",
+    "S/Records additive exports/captures load before bootstrap Q and still need original pre-evaluation foundation funding",
+    "Generic supplied read/current adapters are not qualified original loader authority; genuine path uses captured private loader reader/current and exact captured timer identity",
+    "The original returned admission release facade remains synchronous and its caller lifetime/work is held",
+    "A native timer failing after work starts leaves funded pending state rooted without invented synchronous cleanup; native availability/resume integration is held",
+    "No actual DOM/browser/HTTP/App/G/R invocation, no CPU/native backing/heap timing or whole-host/Main evidence",
+    "Parent B05 private cold builders remain unselected; sibling narrow-capture successor not composed here"
+  ]
+}

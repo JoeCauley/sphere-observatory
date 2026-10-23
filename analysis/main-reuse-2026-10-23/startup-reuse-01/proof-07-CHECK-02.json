@@ -1,0 +1,64 @@
+{
+  "status": "PASS_EXACT_SOURCE_SHADER_SIZE_OBSERVATION_ONLY",
+  "sourcePins": {
+    "owned-main-bootstrap.js": {
+      "path": "owned-main-bootstrap.js",
+      "bytes": 91314,
+      "sha256": "f7b7bcf4d19587183d8f6f256a8f9fa731fb3fe680a7961f003e8f426900c9cc"
+    },
+    "renderer.js": {
+      "path": "renderer.js",
+      "bytes": 155485,
+      "sha256": "c83ff61c51b5a033d335a12bd705918df23f9913fb00639caad068c50b5d6a63"
+    }
+  },
+  "routes": 3,
+  "shaderTransferSizeObstructionEstablished": false,
+  "originalLimit": 262144,
+  "newFundingOrWorkOrNativeUploadQualified": false,
+  "modelsAndObserver": "Copied actual private controller/Renderer constructor with existing disclosed Node GL/Surface/G/Document/child models; added observer strings are outside Q and invalidate reuse of their Q totals as complete ownership.",
+  "P05": "OPEN",
+  "sourceFilesEdited": false,
+  "records": [
+    {
+      "path": "control-composite-01.json",
+      "bytes": 92877,
+      "sha256": "b7216f05efe375b37cf80ad48e63194cf31a321256e414a51f3a491bd9efae97"
+    },
+    {
+      "path": "control-field-01.json",
+      "bytes": 92871,
+      "sha256": "c6ebb9423e35d00d24010db9a51dd61cd1703b77403b42c67558bde2b8ba7f51"
+    },
+    {
+      "path": "control-positive-01.json",
+      "bytes": 92616,
+      "sha256": "4a2dd1591416736aeecb7e25825591bba1a7bf23b2465e489aab3cd5fd0e415a"
+    },
+    {
+      "path": "preparation-01.json",
+      "bytes": 651,
+      "sha256": "1e9f5d0e9de9e282335412d80ad634a84eeb18f5db53429d77e100a18844eea4"
+    },
+    {
+      "path": "prepare-metrics-01.py",
+      "bytes": 2141,
+      "sha256": "39ca6f512962e883eef8c5794ec79408b089329dd1df7647cc786e2392b24a03"
+    },
+    {
+      "path": "seal-metrics-02.py",
+      "bytes": 1753,
+      "sha256": "ccee96cbb25407057e8fde4c11ba0634b772a32f262c5bce01a420ebc0b285ed"
+    },
+    {
+      "path": "shader-string-metrics-01.json",
+      "bytes": 3168,
+      "sha256": "8e16e4af8f8edaeee20163fb73edde389d42c99974cc3c243ccb891a0927956f"
+    },
+    {
+      "path": "test-metrics-01.cjs",
+      "bytes": 24069,
+      "sha256": "861027277cae0701280651f77fea6ebb2e3d2a4403a00e556308c9fcd3a6fa3a"
+    }
+  ]
+}

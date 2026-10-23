@@ -1,0 +1,28 @@
+{
+  "pass": true,
+  "cutoff": 13,
+  "snapshots": 46,
+  "archiveEntriesVerified": 23872,
+  "recordsVerified": 4221,
+  "recordsAdded": 576,
+  "recordBytes": 150549634,
+  "freshRestore": {
+    "snapshot": "main-private-source-reuse-joined-c1",
+    "destination": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-reuse-progress-2026-10-23-01\\restored-check-13\\source",
+    "files": 521,
+    "verified": true
+  },
+  "earlierRowsExact": true,
+  "restorerUnchanged": true,
+  "currentReadmeUTF8": true,
+  "historicalReadmeBytesExact": true,
+  "selectedMainComponent": "main-texture-handoff-funded-c3",
+  "reuseJoinSelected": false,
+  "P05": "OPEN",
+  "excludedActive": [
+    "Source review-04",
+    "new surface-G preparation",
+    "full-host-vector derivation"
+  ],
+  "rawArchivesRemainLocal": true
+}

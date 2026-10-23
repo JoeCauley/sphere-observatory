@@ -1,3 +1,5 @@
+> Current continuation: immutable-state reuse and actual scheduled Source loading are joined and independently component-checked. Complete startup ownership/work and genuine Main resource/drawing integration remain open; P05 is OPEN. See [the startup reuse report](Observatory-Main-Startup-Reuse-2026-10-23.md).
+
 # Main cold-profile builders and source reuse - 23 October 2026
 
 The texture handoff split is complete in its verified component scope. The next startup profile builders now exist and pass independent component review. They are an **unselected proposal** until their full startup costs and ownership are qualified. Formal **P05 remains OPEN**.

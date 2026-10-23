@@ -1,0 +1,108 @@
+{
+  "status": "PASS_BOUNDED_NARROW06_IMMUTABLE_SLOT_REUSE_UNSELECTED",
+  "candidate": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-builder-funding-2026-10-23-01\\candidate-06\\source",
+  "sourceRows": 521,
+  "parsed": 425,
+  "loaderBytes": 97921,
+  "loaderSha256": "dbf6a11ac3770f655d6c840e11927b3001c5d18a43c60782869710fa01129fe9",
+  "inverseHunks": 52,
+  "focusedCases": 32,
+  "fundingGroups": 4,
+  "closedPBrootControl": 1,
+  "immutablePremise": "Only own nonwritable/nonconfigurable primitive value reused; fresh namespace identity; mutable/object/function and allnative/program checks remain",
+  "fees": "NULL_UNSELECTED",
+  "nativeCallCensus": "NOT_A_PRICED_4096_LOWER",
+  "Main": false,
+  "fullCold": false,
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "digest": "2e153579f883c472ec8a72dd0709e5956065ef0f6bc2ac42b971d7cac49b2d3b",
+      "rows": 219
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "digest": "237843edcb7dfbaa45285125c500f721f2ecf8ba8726f9fbe03793bc69ad7031",
+      "rows": 5
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "digest": "911396ee29ddc252f4e168aadba58a07e55e80189c81a4e1ec4750419b4b2669",
+      "rows": 9
+    }
+  ],
+  "sourceUnchangedAfterReview": true,
+  "B_T_J_EarlierCopiesUntouched": true,
+  "artifacts": [
+    {
+      "path": "REVIEW.md",
+      "bytes": 2278,
+      "sha256": "9c26ee4346def89098503dd01e9d7c3062d012a914280a10e6ac532b34ddc3a4"
+    },
+    {
+      "path": "source-validation-02.json",
+      "bytes": 94751,
+      "sha256": "7a599a826c52a3dad040fa8b85356949988a3b720c0ed181cb17eaf276b6767b"
+    },
+    {
+      "path": "verify-source-06.cjs",
+      "bytes": 3606,
+      "sha256": "74e42fe3a46f724c0350c18311497b1467b638cd694965b036ccb297e567ce18"
+    },
+    {
+      "path": "replay-results-01.json",
+      "bytes": 9543,
+      "sha256": "095886f65ae0d4ca0a21cf407df3ae27aa9d35a5a24a31743dd3a9c0728c608c"
+    },
+    {
+      "path": "execution-replay-01.json",
+      "bytes": 8779,
+      "sha256": "f0a0abedaf211b1ce550110c094092e934d282d152d0b8dfa9467183871289c5"
+    },
+    {
+      "path": "replay-narrow-06.cjs",
+      "bytes": 1268,
+      "sha256": "09128d18179751dd0c130a1ed9de37ffba26d65f86fb8dbad3585a1febe765a3"
+    },
+    {
+      "path": "test-narrow-builders-06.cjs",
+      "bytes": 29597,
+      "sha256": "29c2c4be07010a48be87cc153063c2d154efca7876d59b4cd0d774339cece7fe"
+    },
+    {
+      "path": "control-positive-independent-roots06.json",
+      "bytes": 93027,
+      "sha256": "079c6321bab4efa77d6d450579bf0b638c878a32193a917bbc074112563d31ea"
+    },
+    {
+      "path": "test-close-roots-06.cjs",
+      "bytes": 30232,
+      "sha256": "3cdb7e03f9316463b9c9f6d2578ad69604bd480faf02fe8c2e1204356b228339"
+    },
+    {
+      "path": "funding-boundary-independent-06.json",
+      "bytes": 1760,
+      "sha256": "62165ed51e2f8f8c7dfdf9e067cc604975a7a63044f72b02efe3e02ef0d1eb19"
+    },
+    {
+      "path": "test-funding-independent-06.cjs",
+      "bytes": 4864,
+      "sha256": "4255f7dd75e2802276130d3b941724c64804449aa37afa59bcad9eecec7e9c97"
+    },
+    {
+      "path": "author-exact-byte-edits-06.json",
+      "bytes": 25064,
+      "sha256": "3617fc934b61d8114e02ecab93e3a637dec54ffe7bc3207cc41e02b967fe25c0"
+    },
+    {
+      "path": "author-test-close-roots-06.cjs",
+      "bytes": 30237,
+      "sha256": "6dfb73c528ce7891a02b14cac15bc78d0f244cf5be6e8465f039173ceea9762d"
+    },
+    {
+      "path": "author-test-narrow-builders-06.cjs",
+      "bytes": 29602,
+      "sha256": "9356699fae7581e4d25326ec00a6ed81d02b496f53318593ae96de4c9e4cf3c4"
+    }
+  ]
+}
