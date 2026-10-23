@@ -1,0 +1,85 @@
+{
+  "status": "PASS",
+  "case": "relinkAwait",
+  "scope": "EXACT_PRIVATE_SOURCE_FUNCTIONS_AND_ACTUAL_COPIED_RENDERER_CONSTRUCTOR_NODE_MODEL_ONLY",
+  "candidate": {
+    "loaderSha256": "f7b7bcf4d19587183d8f6f256a8f9fa731fb3fe680a7961f003e8f426900c9cc",
+    "rendererSha256": "c83ff61c51b5a033d335a12bd705918df23f9913fb00639caad068c50b5d6a63"
+  },
+  "substitutions": [
+    "Controller block extracted and invoked in Node despite original product funding null; no source fee or instance literal override",
+    "Actual copied Renderer module and constructor; constructor resource port and required texture child constructors modeled; optional GPU children omitted",
+    "Instrumented linked-program/shader/reflection adapter, not native WebGL",
+    "Surface ownership/facts and G/backend brand are modeled; common Q/S/R and actual PB factory/admit remain genuine",
+    "Loader Document/currentScript model authenticates the exact copied Renderer hook",
+    "Explicit fixture-only resource limits matched by actual R; no whole-host cap authority or Main graph claimed",
+    "Actual Node host dependencies, Numeric.capture/verify and HostWorld.create; no external host digest/adapter accepted"
+  ],
+  "groups": [
+    "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+    "Actual copied Renderer constructor and its private canonical program record populate the reciprocal source-currentScript reader",
+    "Same actual original program relink between PROGRAM/Base or inside source await is caught by the full current barrier; the genuine PB teardown root remains retained and closes"
+  ],
+  "counts": {
+    "reads": 704,
+    "shaderQueries": 3442,
+    "facts": 1717
+  },
+  "held": {
+    "state": "FAILED_RETAINED",
+    "busy": false,
+    "closing": false,
+    "closed": false,
+    "failed": true,
+    "hostAdapterRetained": true,
+    "programOwnerRetained": true,
+    "programTokenRetained": true,
+    "pendingSourceRetained": true,
+    "pendingEnvelopeRetained": false,
+    "hostRows": 23,
+    "programRows": 219,
+    "baselineRows": 0,
+    "scope": "PRIVATE_PROFILE_CONSTRUCTION_ONLY",
+    "mainPermission": false,
+    "coldWork": "NOT_YET_DERIVED"
+  },
+  "afterClose": {
+    "state": "CLOSED_PRIVATE_OUTPUTS_RELEASED",
+    "busy": false,
+    "closing": true,
+    "closed": true,
+    "failed": true,
+    "hostAdapterRetained": false,
+    "programOwnerRetained": false,
+    "programTokenRetained": false,
+    "pendingSourceRetained": false,
+    "pendingEnvelopeRetained": false,
+    "hostRows": 0,
+    "programRows": 0,
+    "baselineRows": 0,
+    "scope": "PRIVATE_PROFILE_CONSTRUCTION_ONLY",
+    "mainPermission": false,
+    "coldWork": "NOT_YET_DERIVED"
+  },
+  "q": {
+    "heldBytes": 7829783,
+    "requestedBytes": 7694727,
+    "bookkeepingBytes": 135056,
+    "peakBytes": 16876231,
+    "limitBytes": 33554432,
+    "liveReservations": 222,
+    "maximumReservations": 4096,
+    "owners": [
+      {
+        "name": "biome-native-source-owner",
+        "bytes": 7351591
+      },
+      {
+        "name": "builder-model",
+        "bytes": 474096
+      }
+    ],
+    "scope": "CONSERVATIVE_LOGICAL_METADATA_ADMISSION",
+    "nativeHeap": "UNMEASURED"
+  }
+}

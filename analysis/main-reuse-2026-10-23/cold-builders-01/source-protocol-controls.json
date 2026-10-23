@@ -1,0 +1,76 @@
+{
+  "status": "PASS",
+  "scope": "executable reference protocol controls; no selected fees/Q allowance/original browser native source or Main/P05 acceptance",
+  "results": [
+    {
+      "name": "actual219-profile-plan-equals-original-Records",
+      "status": "PASS",
+      "rows": 219,
+      "visits": 1544,
+      "scope": "protocol/native-Node-timer+SHA only; no fee/Q/native-Main proof"
+    },
+    {
+      "name": "all-native-starts-and-result-processing-in-real-visits",
+      "status": "PASS",
+      "callbacks": 8,
+      "actualReadCalls": 5
+    },
+    {
+      "name": "fresh-cache-hit-read-copy-hash-and-single-owned-entry",
+      "status": "PASS",
+      "opens": 2,
+      "reads": 10,
+      "cancels": 0,
+      "releases": 2
+    },
+    {
+      "name": "changed-cache-hit-refuses-and-old-entry-remains",
+      "status": "PASS",
+      "freshReads": 2,
+      "oldBytes": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "name": "one-byte-progress-needs-B-plus-one-reads",
+      "status": "PASS",
+      "bytes": 41,
+      "reads": 42,
+      "notCeilingBytesOver32768": true
+    },
+    {
+      "name": "no-concurrent-transaction-or-forged-plan",
+      "status": "PASS"
+    },
+    {
+      "name": "wrong-profile-digest-and-hidden-row-accessor-refuse",
+      "status": "PASS"
+    },
+    {
+      "name": "cancel-pending-read-retains-until-settlement-then-cancels",
+      "status": "PASS",
+      "opens": 1,
+      "reads": 1,
+      "cancels": 1,
+      "releases": 1
+    },
+    {
+      "name": "cancel-pending-native-hash-defers-input-clear",
+      "status": "PASS",
+      "scope": "native hash input remains live through actual settlement"
+    },
+    {
+      "name": "primary-native-rejection-preserved-undefined",
+      "status": "PASS",
+      "value": "undefined"
+    },
+    {
+      "name": "primary-native-rejection-preserved-false",
+      "status": "PASS",
+      "value": "false"
+    }
+  ]
+}

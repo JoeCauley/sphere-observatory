@@ -1,0 +1,111 @@
+{
+  "status": "PASS_PINNED_NARROW_PROTOCOL_MODEL_WITH_EXPLICIT_RUNTIME_FUNDING_AND_OWNERSHIP_GAPS",
+  "scope": "Executable source-only protocol proposal. No selected runtime fee/Q/native browser/Main/P05 claim.",
+  "tests": {
+    "passed": 11,
+    "failed": 0,
+    "result": "probe-results-02.json",
+    "native": "Node actual timer and SHA; stream/metadata adapters disclosed"
+  },
+  "proposedPayloads": {
+    "currentV2RowUnion": 57,
+    "strictCanonicalThreeFieldPayload": 718,
+    "streamChunkPayload": 9,
+    "newWholePhaseFees": null
+  },
+  "remainingRuntimeGaps": [
+    "private cached bytes must never escape",
+    "internal profile/canonical lifetime and owner/closed inspection",
+    "actual source-owner borrower/drop/retirement integration",
+    "prospective module/callable/controller/instance/pending Q",
+    "actual payer/held completion-scope guard",
+    "original native reader/typed/Promise/scheduler/hash capability capture",
+    "no production trace"
+  ],
+  "nextSeam": "Opt-in S.admitScheduledBootstrap + private cursor in original SourceOwner entries/borrowers/drop; original private loader staged BYOB/scheduler; narrow SHA start/finish companion; return original admission facade only.",
+  "inputSourceHashesUnchanged": true,
+  "sealedJoinAndTNotEdited": true,
+  "noBrowserServerGitOrRuntimeSourceEdits": true,
+  "records": [
+    {
+      "path": "attempt/derive-current-source-01.py",
+      "bytes": 8243,
+      "sha256": "8299c479181127edf362239cd9c5c5204a453043fa4929f1fa17f5c51fc4c5d5"
+    },
+    {
+      "path": "attempt/payload-work-graph-01-unselected.json",
+      "bytes": 7199,
+      "sha256": "4f8317f71ba0d65781ce7f2f61aa19acdd656ad2e3c215357d336016bdde2d86"
+    },
+    {
+      "path": "attempt/protocol-draft-01.cjs",
+      "bytes": 10121,
+      "sha256": "06080413a43d76b9bb345b795bd3a42f6f5d70b52328c89207b5ebbbb5d6a572"
+    },
+    {
+      "path": "bootstrap-profile.json",
+      "bytes": 41205,
+      "sha256": "a06a31e4f033a791cd9c461a94d5a692c4e53a868ca2658bf8df3322703162da"
+    },
+    {
+      "path": "derive-current-source.py",
+      "bytes": 8370,
+      "sha256": "91a198c99c3a527e6ba8ca1bf574dfd0b4d2808c756adb8c7f519d73d5806541"
+    },
+    {
+      "path": "exact-profile-census.json",
+      "bytes": 560,
+      "sha256": "499ab9b4951c9009c19894af97da0665092bc4ae725e57b06660e7aec4e8aabe"
+    },
+    {
+      "path": "held-ledger.json",
+      "bytes": 1867,
+      "sha256": "da1a014b7c74afa162e4f7d0fdce1baa28cc05072a911f3fe77dbfdd0bf4c398"
+    },
+    {
+      "path": "payload-work-graph.json",
+      "bytes": 7432,
+      "sha256": "5ac86827dc1f4d14541c1e7a88463a39bac79e986bb58b9268b5bcff5a35cf3b"
+    },
+    {
+      "path": "probe-protocol.cjs",
+      "bytes": 7744,
+      "sha256": "032f1e5eb93b29e57cf2f660a34180d9d0a994759ff08fc9f9d410b9a33f31b2"
+    },
+    {
+      "path": "probe-results-01.json",
+      "bytes": 1918,
+      "sha256": "76a748ee61ce78981e1cfade4ef4d60d9cd86e563fac4b7e6dd712d6c921be7f"
+    },
+    {
+      "path": "probe-results-02.json",
+      "bytes": 1918,
+      "sha256": "a5cb6fe0c46d0c56f8e4c144ff73ac45989e59ba6c4a80537cb28e1faea78b18"
+    },
+    {
+      "path": "protocol-reference.cjs",
+      "bytes": 11367,
+      "sha256": "bbd1b8ba73472db015657bd3f2a82e8c749ebd702abe4d8b437cb7863e5d45da"
+    },
+    {
+      "path": "READ-FIRST.md",
+      "bytes": 9722,
+      "sha256": "f2723d57d26d5ccdb2a5d83fb84b42b01d39d893b98b8d93c838665799aad86c"
+    },
+    {
+      "path": "seal-review.py",
+      "bytes": 2309,
+      "sha256": "8dd0a7ca79d3fb0c1e32420842466a4faeca72a0fed2df54a507d7b5e3c69b78"
+    },
+    {
+      "path": "source-pins.json",
+      "bytes": 1811,
+      "sha256": "6aa6a99fbd672bd0ef36329efffd2b17eefffaef39bd046116f8ba936c632f77"
+    },
+    {
+      "path": "WIP-01.md",
+      "bytes": 932,
+      "sha256": "5c31d0517e399d9c114ca942ce316b42cb53af9b00d495c7be720c8a6f0986c4"
+    }
+  ]
+}

@@ -1,0 +1,330 @@
+{
+  "format": "sphere-independent-private-cold-builder-review/1",
+  "status": "PASS_BOUNDED_SOURCE_AND_COMPONENT_REVIEW_UNSELECTED",
+  "candidate": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-cold-profiles-2026-10-23-01\\candidate-05\\source",
+  "independentCopy": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-cold-profiles-2026-10-23-01\\independent-review-01\\candidate-05-copy-source",
+  "parent": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\texture-handoff-split-2026-10-23-01\\candidate-03\\source",
+  "sourceRows": 521,
+  "parsedJavaScript": 425,
+  "changed": [
+    "owned-main-bootstrap.js",
+    "renderer.js"
+  ],
+  "pins": [
+    {
+      "path": "renderer.js",
+      "sha256": "c83ff61c51b5a033d335a12bd705918df23f9913fb00639caad068c50b5d6a63"
+    },
+    {
+      "path": "owned-main-bootstrap.js",
+      "sha256": "f7b7bcf4d19587183d8f6f256a8f9fa731fb3fe680a7961f003e8f426900c9cc"
+    }
+  ],
+  "embeddedProfiles": [
+    {
+      "builder": "buildGraph",
+      "digest": "2e153579f883c472ec8a72dd0709e5956065ef0f6bc2ac42b971d7cac49b2d3b",
+      "rows": 219,
+      "exact": true
+    },
+    {
+      "builder": "buildSurfaceEnvelope",
+      "digest": "237843edcb7dfbaa45285125c500f721f2ecf8ba8726f9fbe03793bc69ad7031",
+      "rows": 5,
+      "exact": true
+    },
+    {
+      "builder": "buildStartupEnvelope",
+      "digest": "911396ee29ddc252f4e168aadba58a07e55e80189c81a4e1ec4750419b4b2669",
+      "rows": 9,
+      "exact": true
+    }
+  ],
+  "independentModels": {
+    "finalInvocations": 19,
+    "fundingGroups": 4,
+    "scope": "Exact source/private builder and actual copied Renderer module/constructor; named Surface/G/GL/Document/child models remain disclosed. No complete cold fee/host/Main qualification.",
+    "timingOnlyHarnessCorrection": {
+      "preserved": "execution-replay-05.json",
+      "final": "replay-results-06.json",
+      "change": "256 setImmediate spins to a10-second bounded source-pause wait; no source change"
+    }
+  },
+  "findingsResolved": [
+    "Prospective funded nested block prevents added controller callable birth before successful Q reservation",
+    "Original constructor shader strings, not same-program self-profiling, authorize the attached overview source",
+    "Preinstalled owned Renderer namespace is refused without invoking a setter; authentic registration duplicate/failure is sticky and completion is required",
+    "Original Renderer class descriptor graph captured at source-load acknowledgement, before future factory adoption",
+    "Caller host limits are descriptor-owned before genuine R exact-limits comparison",
+    "Original world-address definition has an actual source-loaded capture visit",
+    "Private output close is distinct from retained controller/API/realm lifetime"
+  ],
+  "preservedScopeCorrection": "Original null guard prevented try entry; actual old funding gap was try-block callable instantiation before successful later reserve, not outer-function/null-guard bypass.",
+  "gates": {
+    "coldControllerFunding": null,
+    "APP_EXECUTION_ENABLED": false,
+    "ordinaryBridgeWork": null,
+    "fullHostDraw": "UNCONDITIONAL_REFUSAL",
+    "sourceShapeRepair": "NOT_INCLUDED_OR_SELECTED",
+    "wholeColdCosts": "UNSELECTED"
+  },
+  "limits": {
+    "fullColdWorkStorageCaller": "UNSELECTED",
+    "programRoles": "2 declarations, or3 with actual C1 source; only actual overview is PB.admitted",
+    "completeNativeHostMain": "NOT_GRANTED",
+    "nativeVMHeap": "UNMEASURED",
+    "sourceShapeSuccessor": "NOT_INCLUDED_OR_SELECTED",
+    "T": "UNTOUCHED"
+  },
+  "authorCheck": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-cold-profiles-2026-10-23-01\\builder-author-01\\CHECK-05.json",
+    "bytes": 19414,
+    "sha256": "3efe4976c633b22877846f98a57a66f3ea710257121be930578ed3977add3ad5"
+  },
+  "sourceUnchangedAfterReview": true,
+  "selectedSourceUnchanged": true,
+  "noBrowserServerRuntimeGitOperations": true,
+  "artifacts": [
+    {
+      "path": "REVIEW.md",
+      "bytes": 7672,
+      "sha256": "8fb100585e19f026071fc2c9b29756397e6df17f35bf6973dc33f5a71a95b080"
+    },
+    {
+      "path": "replay-builders-06.cjs",
+      "bytes": 2079,
+      "sha256": "dec0676e30b0c07df1068eaec5aa51f23eee1ecf156665bcce67870897d6eeb1"
+    },
+    {
+      "path": "test-private-builders-original-07.cjs",
+      "bytes": 23275,
+      "sha256": "c99501cb826df9836043469a0b4cce20a90096cc18de43bf3a560640624dbc27"
+    },
+    {
+      "path": "test-private-builders-replay-08.cjs",
+      "bytes": 23306,
+      "sha256": "a46ecd9a9607993d133b028db3749c437de1e6e7c9bbb15bb5584c54687678ff"
+    },
+    {
+      "path": "execution-replay-06.json",
+      "bytes": 5105,
+      "sha256": "f6cc9ce460c8ba742584782bb6c35796775f5bfee08bd4a9944a221c2ef9e6a3"
+    },
+    {
+      "path": "replay-results-06.json",
+      "bytes": 5664,
+      "sha256": "fe226ec91c0f41b34e9a906fa8380912d7a496987cbb3e75e2d051fb2993973e"
+    },
+    {
+      "path": "funding-boundary-independent-01.json",
+      "bytes": 1758,
+      "sha256": "b4d27137ff86a25717b56acf630bc2c53a6770555bce59f213ac0ad5c0cdbd0e"
+    },
+    {
+      "path": "test-funding-boundary-independent-01.cjs",
+      "bytes": 4843,
+      "sha256": "1d1a3b4251afa9a5114cc066d9521d6542ca365a414c7157c66d0520ff480933"
+    },
+    {
+      "path": "test-funding-boundary-original-03.cjs",
+      "bytes": 4829,
+      "sha256": "8a884ea32d2dfc385b0ac76a915ae0e0e73a733bc0501f142885f6c021b6e64d"
+    },
+    {
+      "path": "source-validation-06.json",
+      "bytes": 1995,
+      "sha256": "52eb1ef64b370b04969d1f960670db5fd08b90f21a3ebe70e8afe22d4498c653"
+    },
+    {
+      "path": "source-inventory-06.json",
+      "bytes": 88362,
+      "sha256": "4ee5641da5be949f7fbe7fa0f83743372433d20d9e9ed5d4be2fdce43f19b1a3"
+    },
+    {
+      "path": "verify-final-06.cjs",
+      "bytes": 5085,
+      "sha256": "b567dae6ff7f7a56020dd4b33a5f9813415ff5a69cf5991c6886777d7c84ab36"
+    },
+    {
+      "path": "exact-byte-edits-05-copy.json",
+      "bytes": 104238,
+      "sha256": "630b34e43f30135ad7bea3534876f9b0ee8142450e2f3f8361a834a1e445894d"
+    },
+    {
+      "path": "copy-manifest-05-copy.json",
+      "bytes": 90969,
+      "sha256": "9bfd30b64c75e9c12d4cb1ff6ff433bd0bb775c8172d8b5e681347cc58a5e70e"
+    },
+    {
+      "path": "execution-replay-05.json",
+      "bytes": 2705,
+      "sha256": "cdd7296f6dc867de265fc0c78bc32a6a636a345968ae249eea89f59be306f1c0"
+    },
+    {
+      "path": "control-concurrent-independent-02.json",
+      "bytes": 2040,
+      "sha256": "6fc602ea682dbf80f1eb82a12512128269ea27542b66ae25e505b85b27f6486b"
+    },
+    {
+      "path": "replay-builders-05.cjs",
+      "bytes": 1773,
+      "sha256": "7e9889a9d8c8d2327a1357acaf0fbebebe7c46f2469749547d6848876d070951"
+    },
+    {
+      "path": "test-private-builders-replay-07.cjs",
+      "bytes": 23280,
+      "sha256": "091cf8e2ac698a5642683a1f59342b1b3446d91e6701a06c775b11c2e1115629"
+    },
+    {
+      "path": "verify-final-05.cjs",
+      "bytes": 4913,
+      "sha256": "047d9b8d829dcaa3b05ecfb5a37d3d3ada92b18767e39522e684cab3108a3819"
+    },
+    {
+      "path": "seal-review-01.cjs",
+      "bytes": 4534,
+      "sha256": "775e349a6800d0b8e480a23ea70ddc799329145f07352c0283ddf1de86bc5f38"
+    },
+    {
+      "path": "control-setterHijack-01.json",
+      "bytes": 93530,
+      "sha256": "46b08407b9c4d77541470ccbdf34b9aaf2ac716047e1033ededde3fcafffc8bd"
+    },
+    {
+      "path": "test-setter-witness-01.cjs",
+      "bytes": 22678,
+      "sha256": "6d37ae122af1d6217229037e3409091f20693490b9b2ead21e1e02898081198a"
+    },
+    {
+      "path": "prepare-setter-witness-01.cjs",
+      "bytes": 4633,
+      "sha256": "2126f720e4f9474ffd1dc71e1e923c2b78d744b0dc6b8e37deadf85168727cdc"
+    },
+    {
+      "path": "witness-preparation-failure-01.json",
+      "bytes": 328,
+      "sha256": "399809eb64eb70471444adb078235c4c4b5b1075dd07ae521d87b3820aabba89"
+    },
+    {
+      "path": "replay-results-04.json",
+      "bytes": 5368,
+      "sha256": "58dade7d19bacb422f9d407aa360245a1d3f45d609c45817659e6befe15264c1"
+    },
+    {
+      "path": "control-positive-independent-03.json",
+      "bytes": 91872,
+      "sha256": "ae71b05797516f7845aa5b031e0248a97921e0d706542f1b8ef3899832be49e8"
+    },
+    {
+      "path": "control-field-independent-03.json",
+      "bytes": 92127,
+      "sha256": "fb0244e04266dfc9f7b087bc80e54958add4477e5bdbc3bc5dce538d5b3a3e87"
+    },
+    {
+      "path": "control-composite-independent-03.json",
+      "bytes": 92133,
+      "sha256": "90cb98315ccb86fae21062a0f627822789ed4d63cdf86613d7be86a2b9e2c8ee"
+    },
+    {
+      "path": "control-foreignHost-independent-03.json",
+      "bytes": 2108,
+      "sha256": "0bb948dc5a33df3d102a42d561e2730392db634083285ca67bd9f113584aa65f"
+    },
+    {
+      "path": "control-wrongLimits-independent-03.json",
+      "bytes": 2097,
+      "sha256": "8c72084028cb8146d8b979bca24795863a0d2e5c41177eaf0c777ab2430054a2"
+    },
+    {
+      "path": "control-foreignRegistration-independent-03.json",
+      "bytes": 92004,
+      "sha256": "422250cdc24be77d78a027bfe6c0c0c059bda2523d825b664f8e1fac963b129a"
+    },
+    {
+      "path": "control-dependencyChange-independent-03.json",
+      "bytes": 2103,
+      "sha256": "5f8223fb76bbd7e5ada6e6cba055d9ae8b0fe1c49d9bbddd42bbd144aa3d2352"
+    },
+    {
+      "path": "control-staleSource-independent-03.json",
+      "bytes": 2135,
+      "sha256": "a7b49abe6e8f3993dd5a8fa88d684fbc6c51e072b333c9810888920a3ee028ff"
+    },
+    {
+      "path": "control-concurrent-independent-03.json",
+      "bytes": 91971,
+      "sha256": "af9d44c00116aad5688ea352d6872338aaed79da93ab90961d16fe9acae1c55b"
+    },
+    {
+      "path": "control-parentChange-independent-03.json",
+      "bytes": 2126,
+      "sha256": "615ba43d92a6289064828bca30f8c88a37a2b736d47a7093bc7427273ee7d52d"
+    },
+    {
+      "path": "control-relink-independent-03.json",
+      "bytes": 2208,
+      "sha256": "c8c87e0249d4dda099e84755908cd98718fa9e9d28cd9f9ebfeb637f259bfd2f"
+    },
+    {
+      "path": "control-relinkBetween-independent-03.json",
+      "bytes": 3201,
+      "sha256": "a2d1a47e08c5c6e544445d66635fb90d97380c698e3688ce3ab0159aa0192903"
+    },
+    {
+      "path": "control-relinkAwait-independent-03.json",
+      "bytes": 3204,
+      "sha256": "4ed51ae7d6edad87186246943dcf5fb90fba88bb43bdb9b55c510115dae691c4"
+    },
+    {
+      "path": "control-prototypeChange-independent-03.json",
+      "bytes": 1657,
+      "sha256": "24b60f82c44812aab57c3d84a57b380ab7da1981d3924709dd6634953d3420fe"
+    },
+    {
+      "path": "control-nativeChange-independent-03.json",
+      "bytes": 1620,
+      "sha256": "2982595d1d8d3f50f521cac16bb7cdc97fecb59f963fd22cbceceb51f9387cd3"
+    },
+    {
+      "path": "control-setterRefusal-independent-03.json",
+      "bytes": 1581,
+      "sha256": "907aa1d59f57f51d473ebe12aeee189658537276cb74a8240f80c1265698b286"
+    },
+    {
+      "path": "control-duplicateRegistration-independent-03.json",
+      "bytes": 1695,
+      "sha256": "df2b66407ae668b5eba7beaf4c3a8e166c0c8244b8a2b048f5e4a8fa1e2d3d42"
+    },
+    {
+      "path": "control-oldProfiles-independent-03.json",
+      "bytes": 2822,
+      "sha256": "32f5c7c7f7d4f3ac04a77f8c7db5ca38df67bcd25d756d05498a061e815f556a"
+    },
+    {
+      "path": "control-rendererRouteChange-independent-03.json",
+      "bytes": 1711,
+      "sha256": "dd1eee3eeb561c57ee796576d67a89dcc223f1ba456f191782c152bb95d5e475"
+    },
+    {
+      "path": "harness-dispositions-01.json",
+      "bytes": 1050,
+      "sha256": "b2d1dbbb2801045340bb4696aa41f976446343c00885ba8a4b7357c9e8226f09"
+    },
+    {
+      "path": "seal-review-01.cjs",
+      "bytes": 4534,
+      "sha256": "775e349a6800d0b8e480a23ea70ddc799329145f07352c0283ddf1de86bc5f38"
+    },
+    {
+      "path": "seal-review-02.cjs",
+      "bytes": 4560,
+      "sha256": "91fc65ecd172d700494fe910ca5b4cbb233becec6d781b9a51f5df4181be5c42"
+    },
+    {
+      "path": "CHECK-01.json",
+      "bytes": 11418,
+      "sha256": "bb1c9ae4f3f9c655800e1a8f5a0a3a614dc53b5f5695ceca78e265eb2a24e59a"
+    }
+  ],
+  "supersedesPreserved": "CHECK-01.json"
+}

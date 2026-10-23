@@ -1,0 +1,20 @@
+{
+  "status": "EXECUTABLE_PROTOCOL_MODEL_ONLY_RUNTIME_ADMISSION_HELD",
+  "runtimePhaseWorkTable": null,
+  "runtimeModuleIncrementBytes": null,
+  "runtimeControllerIncrementBytes": null,
+  "runtimeInstanceAndPendingIncrementBytes": null,
+  "wholeCanonicalPreludeWork": null,
+  "wholeSourceReaderAndCallerWork": null,
+  "preRSourceScopeAndPostRAdapterQualification": null,
+  "nativeCompletionCapacityPolicy": "Quote a fixed following reserve before the native start; debit only when the actual callback executes in the held source scope. No reset while pending. Proposed only; not implemented by model.",
+  "modelMetadataHooks": "Ordering log only. No genuine Q byte admission or full pre-create activation proof.",
+  "modelNativeAdapters": "Actual Node timers/SHA and original Records; synthetic stream and ownership adapters. Original browser native provenance is not established.",
+  "sourceStorageOwnership": "Reference model exposes cached bytes and lacks plan close/full borrower retirement. Must integrate into existing private Source entries/borrowers/drop and original result shape; never claim parity from this model.",
+  "initialCanonicalBacking": "Temporary backing may detach only after actual digest settlement; the narrow runtime need not retain/expose a plan. Any retained reuse backing requires explicit same-Q parent reference and close accounting.",
+  "fullColdAndCaller": "Open. New module/callable/capture/instance/pending state prospectively owned before birth; no accepted handoff/retirement/module slack borrowed.",
+  "limits": {"workPerVisit":4096,"profileBytes":262144,"profileNodes":4096,"profileDepth":32,"sourceRows":256,"sourceBytes":16777216,"BYOBMaximumRequest":32768},
+  "limitsScope": "Original ceilings unchanged. No cap default, raised aggregate or internal R frame/slice reset.",
+  "productMainPermission": false,
+  "P05": "OPEN"
+}

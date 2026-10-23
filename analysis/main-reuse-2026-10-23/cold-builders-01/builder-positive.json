@@ -1,0 +1,2425 @@
+{
+  "status": "PASS",
+  "case": "positive",
+  "scope": "EXACT_PRIVATE_SOURCE_FUNCTIONS_AND_ACTUAL_COPIED_RENDERER_CONSTRUCTOR_NODE_MODEL_ONLY",
+  "candidate": {
+    "loaderSha256": "f7b7bcf4d19587183d8f6f256a8f9fa731fb3fe680a7961f003e8f426900c9cc",
+    "rendererSha256": "c83ff61c51b5a033d335a12bd705918df23f9913fb00639caad068c50b5d6a63"
+  },
+  "substitutions": [
+    "Controller block extracted and invoked in Node despite original product funding null; no source fee or instance literal override",
+    "Actual copied Renderer module and constructor; constructor resource port and required texture child constructors modeled; optional GPU children omitted",
+    "Instrumented linked-program/shader/reflection adapter, not native WebGL",
+    "Surface ownership/facts and G/backend brand are modeled; common Q/S/R and actual PB factory/admit remain genuine",
+    "Loader Document/currentScript model authenticates the exact copied Renderer hook",
+    "Explicit fixture-only resource limits matched by actual R; no whole-host cap authority or Main graph claimed",
+    "Actual Node host dependencies, Numeric.capture/verify and HostWorld.create; no external host digest/adapter accepted"
+  ],
+  "groups": [
+    "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+    "Actual copied Renderer constructor and its private canonical program record populate the reciprocal source-currentScript reader",
+    "Actual HostWorld.create + Node Numeric verification, actual PB.create/admit of original overview, and Base v8 envelope construction complete with 23/219/219 exact rows and original Surface/genuine-R limits",
+    "Explicit private close releases genuine PB/source/profile outputs; inherited admitted graph, source owner, host/controller/model roots remain disclosed"
+  ],
+  "counts": {
+    "reads": 922,
+    "shaderQueries": 5198,
+    "facts": 2596
+  },
+  "beforeClose": {
+    "state": "BASELINE_PROFILE_ONLY",
+    "busy": false,
+    "closing": false,
+    "closed": false,
+    "failed": false,
+    "hostAdapterRetained": true,
+    "programOwnerRetained": true,
+    "programTokenRetained": true,
+    "pendingSourceRetained": false,
+    "pendingEnvelopeRetained": false,
+    "hostRows": 23,
+    "programRows": 219,
+    "baselineRows": 219,
+    "scope": "PRIVATE_PROFILE_CONSTRUCTION_ONLY",
+    "mainPermission": false,
+    "coldWork": "NOT_YET_DERIVED"
+  },
+  "afterClose": {
+    "state": "CLOSED_PRIVATE_OUTPUTS_RELEASED",
+    "busy": false,
+    "closing": true,
+    "closed": true,
+    "failed": false,
+    "hostAdapterRetained": false,
+    "programOwnerRetained": false,
+    "programTokenRetained": false,
+    "pendingSourceRetained": false,
+    "pendingEnvelopeRetained": false,
+    "hostRows": 0,
+    "programRows": 0,
+    "baselineRows": 0,
+    "scope": "PRIVATE_PROFILE_CONSTRUCTION_ONLY",
+    "mainPermission": false,
+    "coldWork": "NOT_YET_DERIVED"
+  },
+  "qBeforeClose": {
+    "heldBytes": 12639737,
+    "requestedBytes": 12498615,
+    "bookkeepingBytes": 141122,
+    "peakBytes": 17887337,
+    "limitBytes": 33554432,
+    "liveReservations": 232,
+    "maximumReservations": 4096,
+    "owners": [
+      {
+        "name": "biome-native-source-owner",
+        "bytes": 7356275
+      },
+      {
+        "name": "biome-root-program",
+        "bytes": 480706
+      },
+      {
+        "name": "builder-model",
+        "bytes": 474096
+      },
+      {
+        "name": "private-main-cold-profiles",
+        "bytes": 4324564
+      }
+    ],
+    "scope": "CONSERVATIVE_LOGICAL_METADATA_ADMISSION",
+    "nativeHeap": "UNMEASURED"
+  },
+  "qAfterClose": {
+    "heldBytes": 7829783,
+    "requestedBytes": 7694727,
+    "bookkeepingBytes": 135056,
+    "peakBytes": 17887337,
+    "limitBytes": 33554432,
+    "liveReservations": 222,
+    "maximumReservations": 4096,
+    "owners": [
+      {
+        "name": "biome-native-source-owner",
+        "bytes": 7351591
+      },
+      {
+        "name": "builder-model",
+        "bytes": 474096
+      }
+    ],
+    "scope": "CONSERVATIVE_LOGICAL_METADATA_ADMISSION",
+    "nativeHeap": "UNMEASURED"
+  },
+  "programProfile": {
+    "body": {
+      "closure": [
+        {
+          "bytes": 35890,
+          "path": "app.js",
+          "sha256": "ea40b2952058757fd7773db9c3f0e983a9903738bde34e8ca210fc62490bf727"
+        },
+        {
+          "bytes": 10975,
+          "path": "asset-plan.js",
+          "sha256": "4e186418f1de27f60bcb11a7327b246b7570f0d820f22292943d03552e656cf0"
+        },
+        {
+          "bytes": 16008,
+          "path": "atmosphere.js",
+          "sha256": "32cd0b34e31f7581d8961152f074ef958191bfd080369e40f8f5533594cccc55"
+        },
+        {
+          "bytes": 3023,
+          "path": "biome-packs.js",
+          "sha256": "333a3fc917109b9f8adebd90131dc49c1e283706c68ac8dc4a12494a18305253"
+        },
+        {
+          "bytes": 40386,
+          "path": "biome-service/allocator.js",
+          "sha256": "c7f9a0fc5ba3c8146e7608bb07c9844df5421703f009db5f9fcf160586ed97c2"
+        },
+        {
+          "bytes": 54392,
+          "path": "biome-service/binding-builder.js",
+          "sha256": "57103c00d9a49600b099668d0da893a7c2128fc70bec2a3fad2a4ef230050500"
+        },
+        {
+          "bytes": 13532,
+          "path": "biome-service/cell-geometry.js",
+          "sha256": "005e4b7f9fe00b63563b331ea223908068ac17b7ba424314a8ec02812ed9d184"
+        },
+        {
+          "bytes": 9410,
+          "path": "biome-service/checkpoint-store.js",
+          "sha256": "b93186eb719624d876a70e70f110c8351d61fcb3dafd1ff8cefce5947f7ae976"
+        },
+        {
+          "bytes": 26994,
+          "path": "biome-service/commonboundary-adapter.js",
+          "sha256": "77f739ae2065244323740c011d1875990a657123f9aca8c130254a648d8683b1"
+        },
+        {
+          "bytes": 18159,
+          "path": "biome-service/eligibility-verifier.js",
+          "sha256": "ae6e6ba5f800f486c279138c91b4072f8fa807ba7ef7a244db5c733793fa61c6"
+        },
+        {
+          "bytes": 19991,
+          "path": "biome-service/eligibility.js",
+          "sha256": "06687f84abaa76586a9174b4ac2af24d3265ba98bee33aad4b0bbe239fad3f1f"
+        },
+        {
+          "bytes": 22368,
+          "path": "biome-service/host-world.js",
+          "sha256": "522698997c3f67befde8f5e69ff5a35eba3595f5c2f59e0c099561c7d9681c7c"
+        },
+        {
+          "bytes": 5971,
+          "path": "biome-service/intervals.js",
+          "sha256": "7077e639756eb3ac248ab5b92a426ec7e1b913f87eb71c36a4d2077aceab5f03"
+        },
+        {
+          "bytes": 4137,
+          "path": "biome-service/metadata-budget.js",
+          "sha256": "9318446452e9a99fee2873eaf0d072bd76c39f714e4d1bceadf6057d04df6635"
+        },
+        {
+          "bytes": 16039,
+          "path": "biome-service/native/binary64-sampler.js",
+          "sha256": "515ace513e2a3d3baa828b6251f73e52d6dc01e8eccba312d03471e61791f4a3"
+        },
+        {
+          "bytes": 5563,
+          "path": "biome-service/native/boundary-live-record-context-02.js",
+          "sha256": "9ad97e02bbb4cc25addb2db99f38c08f84da1108665e38caea6485fd36ce0eca"
+        },
+        {
+          "bytes": 19407,
+          "path": "biome-service/native/boundary-shader.js",
+          "sha256": "89e7cbd0917260e64441d8d8cc2ca2f26722ed0f2b3edc271efc6baaba1a337c"
+        },
+        {
+          "bytes": 2000,
+          "path": "biome-service/native/c1-intrinsic-snapshot.js",
+          "sha256": "d6c23ea8974e963d8c11878bfc078ad9614636b525e952caf290792d855a6f24"
+        },
+        {
+          "bytes": 7546,
+          "path": "biome-service/native/camera-guard-conics.js",
+          "sha256": "c99c2379defd937899518b2133f3c7f92b43ffe1f302b2d518a324817485ab70"
+        },
+        {
+          "bytes": 34448,
+          "path": "biome-service/native/canonical-boundary-parameters-owner.js",
+          "sha256": "072915f22e971d7fa8b1b840d399b1027805154d04537ec2a245158807f01446"
+        },
+        {
+          "bytes": 31522,
+          "path": "biome-service/native/canonical-camera-reuse-proof-owner.js",
+          "sha256": "bbf5d7fb37921a9ccf20044e7c224c4a6d5621b936bc11c7f99ddf64de3b318a"
+        },
+        {
+          "bytes": 34679,
+          "path": "biome-service/native/canonical-camera-reuse.js",
+          "sha256": "55c4b9c58a6f536c50fbbe90526c0053fc556b76997434d6cee250bfbda9d58b"
+        },
+        {
+          "bytes": 4498,
+          "path": "biome-service/native/canonical-grid-witness.js",
+          "sha256": "1c79c4d2649d12170862af33ab570ad0d4c3e498b97ee59437db6c8b5d639882"
+        },
+        {
+          "bytes": 9027,
+          "path": "biome-service/native/canonical-local-transport.js",
+          "sha256": "4666d62465f791a8b2ed0b89abfb58db2d855cf4b3c5a12bd61b958b4dc72c05"
+        },
+        {
+          "bytes": 1853,
+          "path": "biome-service/native/canonical-rectangle-planes.js",
+          "sha256": "e4532d9e7599e0b992e725991c73ce49ec90ca5012e55c07892c3ec54aab3c8c"
+        },
+        {
+          "bytes": 12687,
+          "path": "biome-service/native/canonical-shell-chart-prototype.js",
+          "sha256": "02287d65c6b0aa2ab18c54b1aaaea7330e6c6d1d9175a2b78c955bd9382a9b19"
+        },
+        {
+          "bytes": 22919,
+          "path": "biome-service/native/compiled-intrinsic-slots.js",
+          "sha256": "83761511263fed712f6fc7fc5b359327e350f04997edec92ebc3beb44c0c3892"
+        },
+        {
+          "bytes": 6175,
+          "path": "biome-service/native/complete-c1-cell-cover.js",
+          "sha256": "7528f5fc70271758347194ff40f65cfb6ec1e0a57589c3848f767f0a63a66958"
+        },
+        {
+          "bytes": 8646,
+          "path": "biome-service/native/complete-c1-cell-weight.js",
+          "sha256": "c98b0b3265bf4bb4bdaa1f993d0d1d2c11bd0ee260035c4764e79b3fda49bad3"
+        },
+        {
+          "bytes": 53384,
+          "path": "biome-service/native/complete-c1-contributor-owner.js",
+          "sha256": "82d98d19a2267fa6edc1af39ff1a8f6e7bc27e9e8ad4c26e17223ab7a739c1b7"
+        },
+        {
+          "bytes": 121611,
+          "path": "biome-service/native/complete-c1-field-packet-owner.js",
+          "sha256": "8f61eb1bfa0e70d939831aa37b8eb9b4995e094902f2ae8020076ddd15b0da4b"
+        },
+        {
+          "bytes": 15969,
+          "path": "biome-service/native/complete-c1-index-shader.js",
+          "sha256": "0dd096a8c7452d8d8f15eb813ee163100175666fc2630b570824aa3a956ae849"
+        },
+        {
+          "bytes": 6123,
+          "path": "biome-service/native/composition-model.js",
+          "sha256": "296f7a51bcb14a193f488577d83ab4beb0ddea3743fde0d87c0e0f58f9088ffb"
+        },
+        {
+          "bytes": 1694,
+          "path": "biome-service/native/conic-coefficient-packing.js",
+          "sha256": "f6069165eabaf80a8cd74ea6d97ecbb45dc22256f68f951e4d6dd962f5c7fcdf"
+        },
+        {
+          "bytes": 10899,
+          "path": "biome-service/native/conic-owner-banks.js",
+          "sha256": "3dda65a605b4c2eda6696239a26dd642540aa4b2e7fa36a426f51f99f4631882"
+        },
+        {
+          "bytes": 135619,
+          "path": "biome-service/native/cooperative-boundary-kernel-09.js",
+          "sha256": "a8282ff4c48b0ddbc5bf906afc520c8e497c084992ced6e636c61035ed101fed"
+        },
+        {
+          "bytes": 194666,
+          "path": "biome-service/native/cooperative-camera-reuse-kernel.js",
+          "sha256": "bf1adc8ab50495e9ee4fade451d613f88dccc381f81953f0b19ece0f7b184e50"
+        },
+        {
+          "bytes": 11205,
+          "path": "biome-service/native/cooperative-edge-plan-keys.js",
+          "sha256": "bf76b0fa618241226f85bc2aa18d44849187ce5996d3af3e8cb639e43b71391d"
+        },
+        {
+          "bytes": 132866,
+          "path": "biome-service/native/cooperative-main-frame-ray-kernel.js",
+          "sha256": "c95be4ba559518663e736bed35cb59898d6eb0145bfeb4ad96e9f03883959ff7"
+        },
+        {
+          "bytes": 133977,
+          "path": "biome-service/native/cooperative-main-frame-schedule-kernel.js",
+          "sha256": "147fc2001b2193205fc000f498d2f9c72950af7948f14c9ddbe5f9b621f5ec76"
+        },
+        {
+          "bytes": 4491,
+          "path": "biome-service/native/cooperative-mesh-bvh.js",
+          "sha256": "7974a749503fa800235d5ff4b5d6c50dd761fe4f634cc526fc6bb17b94d24452"
+        },
+        {
+          "bytes": 14259,
+          "path": "biome-service/native/cooperative-v8-powersort.js",
+          "sha256": "88cc5277ca5ff06251d17659b3cd61c73e2e47615f0c326a89c761fc4b4c01e1"
+        },
+        {
+          "bytes": 8862,
+          "path": "biome-service/native/correlated-rebase-rounding.js",
+          "sha256": "fb73a08e085de76dcd1ea6f1c423e97f4a45da641b48f4c7f19fc62067c9c4d0"
+        },
+        {
+          "bytes": 1511,
+          "path": "biome-service/native/direction-halo.js",
+          "sha256": "fb3e7740c0cd29dbd04366e0ecb2db58b9718648bdea7f6c2fe1a6076c98354a"
+        },
+        {
+          "bytes": 15408,
+          "path": "biome-service/native/exact-conic-coefficients.js",
+          "sha256": "41bafe96c95557a3f7299c1919268fb4f399758917ba1a7dda88d63c46e11ca7"
+        },
+        {
+          "bytes": 3527,
+          "path": "biome-service/native/exact-conic-overview-shader.js",
+          "sha256": "c3f907dd0f0ca6ebd4301f059165955be34726e3791cffc1d613915fa2db6f4a"
+        },
+        {
+          "bytes": 23282,
+          "path": "biome-service/native/exact-conic-owner-banks.js",
+          "sha256": "16bf39d45fbd50f2b1c2d8a42681a1f487f14dc72ad670a46af7008b0eeba525"
+        },
+        {
+          "bytes": 7320,
+          "path": "biome-service/native/exact-conic-shader.js",
+          "sha256": "4449acd756501c5095589e21ffbc34879fa1fc7cf7adf4b3e576bad49d59954c"
+        },
+        {
+          "bytes": 9974,
+          "path": "biome-service/native/facet-conditioning.js",
+          "sha256": "39c0d8dfbe4fd03663bf02f98c4e9ffe23ec2e8b5c5b1bac106218e784a14f87"
+        },
+        {
+          "bytes": 118135,
+          "path": "biome-service/native/fixed-arithmetic-camera-reuse-reference.js",
+          "sha256": "b3d51303ea382be3c67cea45402a8d4d1ff98510d68e2170a761443c1926b2c9"
+        },
+        {
+          "bytes": 73594,
+          "path": "biome-service/native/fixed-arithmetic.js",
+          "sha256": "22923730dea072ed9ae24aaa4d0427e5484ec5ceca77c1594a839dc3ee118c1e"
+        },
+        {
+          "bytes": 4962,
+          "path": "biome-service/native/fixture-definition.js",
+          "sha256": "80c6c91e8cdcb612db0e1681ee6465fe4796cc238fe8c6e4ad1c82ca258a6315"
+        },
+        {
+          "bytes": 5170,
+          "path": "biome-service/native/fixture-recipe.js",
+          "sha256": "771a6eb77f2f64c9ac4b30a442d78944dfd271356d49b26f10c95f0334dda71a"
+        },
+        {
+          "bytes": 3825,
+          "path": "biome-service/native/folded-conic-hybrid-shader.js",
+          "sha256": "5df3878483f6d42504536928538f49e0eb53b34ed144b52556ee997e193a06e2"
+        },
+        {
+          "bytes": 2873,
+          "path": "biome-service/native/folded-conic-shader.js",
+          "sha256": "a721a73b23f237acad5b9aa62fd12a4de54800d2f20d2c5c4b54e25ad92fd13b"
+        },
+        {
+          "bytes": 4804,
+          "path": "biome-service/native/folded-ray-plane.js",
+          "sha256": "def8afd09bdee2ca08e9b9defb559f0da5c0db8132953190a30e5c6013a859b7"
+        },
+        {
+          "bytes": 4622,
+          "path": "biome-service/native/guarded-owner-shader.js",
+          "sha256": "78fce05a483b24853f9d532963beaa275ce17a05d4de3112cb949bf6ab5ff933"
+        },
+        {
+          "bytes": 3733,
+          "path": "biome-service/native/homogeneous-owner-blocks.js",
+          "sha256": "c832c16e9e1821348605cca30fc08a9a4d413070fb8edeff016ecc4968c5bd99"
+        },
+        {
+          "bytes": 14586,
+          "path": "biome-service/native/host-coordinator.js",
+          "sha256": "5c8c74935cd943af52de3723041b026a6a788a5c3b5d1640d8b1c26a3edd3125"
+        },
+        {
+          "bytes": 5657,
+          "path": "biome-service/native/interior-exact-perspective-cell.js",
+          "sha256": "e8879c84d57736f4b49f9245fa4d6611bece8a23458c4e105d116346f85e9a0a"
+        },
+        {
+          "bytes": 2636,
+          "path": "biome-service/native/interior-perspective-rectangle.js",
+          "sha256": "0c7fff7a35a77ad0b54ed3b15e231505c684da89924bb0d9510004de9e39c7b1"
+        },
+        {
+          "bytes": 9832,
+          "path": "biome-service/native/interior-ray-cell.js",
+          "sha256": "1ebc0aa3b09a8f49702181275c8a5f9bab55d31b43d343015c1470145ad5d714"
+        },
+        {
+          "bytes": 9160,
+          "path": "biome-service/native/interior-ray-halfspace.js",
+          "sha256": "440be49872bc54d69c3dfa3ffbda9682f453f920ed867a2602016f4872546386"
+        },
+        {
+          "bytes": 5835,
+          "path": "biome-service/native/legacy-base.js",
+          "sha256": "6b988fe363e6598b13f0e4810ca56fa9c9664b4ee60eb46524c2c1943cc71850"
+        },
+        {
+          "bytes": 19467,
+          "path": "biome-service/native/local-field.js",
+          "sha256": "6c60b1b7920bda0a6593904fb4cd435052e3ebd319495759ff4ae12505df0d9c"
+        },
+        {
+          "bytes": 8636,
+          "path": "biome-service/native/local-oriented-transform.js",
+          "sha256": "e204c8221fa9d4e39ff2975a5427470867eb8782e13a0309ef312bf8f2f79344"
+        },
+        {
+          "bytes": 9337,
+          "path": "biome-service/native/local-transform.js",
+          "sha256": "ebf9e6f6d1139845fb664b0ee8622158d2a5ae492a08b49b937f4b7791df5752"
+        },
+        {
+          "bytes": 7190,
+          "path": "biome-service/native/lossless-owner-palette.js",
+          "sha256": "65b3932ffb8c1695862434b55ce241bb471be08c5937a5ef2a5085c41c072148"
+        },
+        {
+          "bytes": 43674,
+          "path": "biome-service/native/main-aa-mask-content-owner.js",
+          "sha256": "8ca28a2eb0410e16114b4a576e9ec6d72e9260f2fbbabeab3d8fa2c2855dd83e"
+        },
+        {
+          "bytes": 5955,
+          "path": "biome-service/native/main-app-canonical-projection.js",
+          "sha256": "aab73657bf09a43e0fde290d11f2bc4143c738e14f16f969f3e72561ea23301a"
+        },
+        {
+          "bytes": 41567,
+          "path": "biome-service/native/main-app-snapshot-ingress.js",
+          "sha256": "1919de92f23febba789b8ce96f6a23e552aa64dbb04d72bde00d464d7499ac9f"
+        },
+        {
+          "bytes": 37635,
+          "path": "biome-service/native/main-assigned-material-owner.js",
+          "sha256": "acd74bc2dfa3a7bf91378bc89e8a05797b3db185aa01b7482de0399239783ed4"
+        },
+        {
+          "bytes": 10405,
+          "path": "biome-service/native/main-assigned-material-shader.js",
+          "sha256": "3f06d4ad779cd8f2d59535e91576d9b97952c401f3d52528f2a76363227ac8fc"
+        },
+        {
+          "bytes": 21540,
+          "path": "biome-service/native/main-atmosphere-noise-owner.js",
+          "sha256": "85240b910c0803e127da20694978cacb2486f80dad2de7f514a2985aa0dde5ea"
+        },
+        {
+          "bytes": 99101,
+          "path": "biome-service/native/main-baseline-owner.js",
+          "sha256": "b4889a954e2e00fb86cab8ae01d589c067c7dc52bf385c146acc4577ef68b9c6"
+        },
+        {
+          "bytes": 36785,
+          "path": "biome-service/native/main-baseline-resource-records.js",
+          "sha256": "ce402c73b6b61f5384e30d995e044aa083d9b32b5b02d50ba1ce2dd699628a0b"
+        },
+        {
+          "bytes": 37215,
+          "path": "biome-service/native/main-canonical-ray-packet.js",
+          "sha256": "2f1c36456769b9043de85a5db2885a43f1fd4cd7ee9622f5cbf5bcceb52315ce"
+        },
+        {
+          "bytes": 11033,
+          "path": "biome-service/native/main-conic-reuse.js",
+          "sha256": "5d4e559712bf6f06d8fdf90c5ba8ed16112cd6ba1b8bbddd78f84d669d272ea7"
+        },
+        {
+          "bytes": 17258,
+          "path": "biome-service/native/main-context-loss-owner.js",
+          "sha256": "6768ea92bd5ddf1bc62316cf9c2000a6894c7ce97c50b505016ed2bb396ffed1"
+        },
+        {
+          "bytes": 17215,
+          "path": "biome-service/native/main-correlated-rebase-rounding-owner.js",
+          "sha256": "a77c7ebba9889d8d6060773b4b12a2a2040acf4921c702d1506f79362ae2fa2f"
+        },
+        {
+          "bytes": 31763,
+          "path": "biome-service/native/main-default-surface-facts.js",
+          "sha256": "34e6b98a2b32d54d6eda0b5521858ff2cd4df241dbb7291a384f4fc981fb8115"
+        },
+        {
+          "bytes": 5303,
+          "path": "biome-service/native/main-demand-image-asset-manifest.js",
+          "sha256": "756f74f1580ebf73889b09c4b6e8fb4a9e34b396f01ea7cd01e47cbf757ace3e"
+        },
+        {
+          "bytes": 36686,
+          "path": "biome-service/native/main-demanded-array-content-owner.js",
+          "sha256": "a92f1e4572c99fb688a5e3fe301d7fa83470919f6b97523a357b6b130db6ca31"
+        },
+        {
+          "bytes": 29098,
+          "path": "biome-service/native/main-edge-mesh-cpu-owner.js",
+          "sha256": "f83ceedeb277541568fd84fe6caaceda8f789cc055bd29dd2f4e592dfe658e2f"
+        },
+        {
+          "bytes": 20531,
+          "path": "biome-service/native/main-edge-mesh-gpu-owner.js",
+          "sha256": "8c5cab067d157113ec64d5a3dfa9440aa8bef870029a72807b9ad4b1c5f59c95"
+        },
+        {
+          "bytes": 17408,
+          "path": "biome-service/native/main-edge-mesh-result-pool.js",
+          "sha256": "4c0d071f70d67ad1eeb8241aeffaf3e21fccb925846a9eb6574f2ab18f338e6e"
+        },
+        {
+          "bytes": 72866,
+          "path": "biome-service/native/main-edge-planning-owner.js",
+          "sha256": "82a83d7aac7a46adbebcb0d9ed833b19737f504803626a0ace13a96b0d753200"
+        },
+        {
+          "bytes": 17207,
+          "path": "biome-service/native/main-facet-conditioning-owner.js",
+          "sha256": "361d07fb8e5051b62d17405d69e736aaa0a1e37f6d992020c577fadf1fc3d85d"
+        },
+        {
+          "bytes": 36631,
+          "path": "biome-service/native/main-finish-storage-owner.js",
+          "sha256": "25c39c66f199f9ea8d12976f574e704f4818d58f3f98a68c32b6d4a8311aae6a"
+        },
+        {
+          "bytes": 86120,
+          "path": "biome-service/native/main-frame-perspective-reference.js",
+          "sha256": "d75b79e679b36f14f9f9f2c6cffbca6c64de5011b73b9b5cb491bf3d06d53733"
+        },
+        {
+          "bytes": 13661,
+          "path": "biome-service/native/main-frame-ray-cpu-continuation.js",
+          "sha256": "7a34bffd79c2e25670fc49e1faf4ee323d02963c308bfc80d773e9ce6b8b2d74"
+        },
+        {
+          "bytes": 30714,
+          "path": "biome-service/native/main-frame-ray-proof-owner.js",
+          "sha256": "cdcf9c653700de9a8ae1b3f8551078252f9416a58d4f322ca15415fe70b36049"
+        },
+        {
+          "bytes": 86827,
+          "path": "biome-service/native/main-frame-schedule-reference.js",
+          "sha256": "01239aed63b809cb9d409123a2e625c7a3da59eac3b9fb5710a814e894843ea3"
+        },
+        {
+          "bytes": 90033,
+          "path": "biome-service/native/main-geometry-cpu-owner.js",
+          "sha256": "1a5f2efbb9b3858695a876e3a5b9c82348103676ae23e577c6088e21d1c4da45"
+        },
+        {
+          "bytes": 26324,
+          "path": "biome-service/native/main-geometry-rebase-binding-owner.js",
+          "sha256": "7f68b54df41ff392c51ce8b22bcc17a30422232e3b740006931b08282282bb1a"
+        },
+        {
+          "bytes": 7412,
+          "path": "biome-service/native/main-geometry-retirement-roots.js",
+          "sha256": "688ac8064cf345b8c7ff664527d2211e09d440254547c6babd1dd8f0981a778a"
+        },
+        {
+          "bytes": 14508,
+          "path": "biome-service/native/main-ground-field-owner.js",
+          "sha256": "a6c8d9b9432955ad531b7120e905c82c87b937d442de98dea7ee7c2cd0f68ed7"
+        },
+        {
+          "bytes": 23209,
+          "path": "biome-service/native/main-host-cpu-cache.js",
+          "sha256": "53aed7b369441ec37031b6bcc2f71f694a5f972ce7772c795a72dbedadca7497"
+        },
+        {
+          "bytes": 1829,
+          "path": "biome-service/native/main-image-asset-manifest.js",
+          "sha256": "45609ec5cfe0819bd3c4192ceb39a8edda051164d9e7f803d2272c97baf24d15"
+        },
+        {
+          "bytes": 56945,
+          "path": "biome-service/native/main-image-input-owner.js",
+          "sha256": "95dc355f8821f7227c223f0a7490c64b2b5702f2da730612daeb8500f58936f4"
+        },
+        {
+          "bytes": 17727,
+          "path": "biome-service/native/main-material-parameter-bank.js",
+          "sha256": "1aa7e1b6dacd7a9b14a0ea74646deeffe943a31aae057f8b9fb6fa293dd55959"
+        },
+        {
+          "bytes": 19940,
+          "path": "biome-service/native/main-original-geometry-group-collector.js",
+          "sha256": "e98e3e953a33aba055afa88e772f40c007b28a314ae480b8f4d335ce6e1c3deb"
+        },
+        {
+          "bytes": 32792,
+          "path": "biome-service/native/main-owned-shade-mip-owner.js",
+          "sha256": "f46cc4cb2579590ff8a510441f26742d0dee408996fdf92826f350fe4a4298b3"
+        },
+        {
+          "bytes": 29532,
+          "path": "biome-service/native/main-owner-field.js",
+          "sha256": "4b24988ff5fa72a3779ad2df6367ff844395360c95518697066ddaff58542f4f"
+        },
+        {
+          "bytes": 21998,
+          "path": "biome-service/native/main-ownership-inputs.js",
+          "sha256": "9f7dbd9a3a1e7d2f85cf6ab0c968902acb466ed76613f332142e254203c6fa99"
+        },
+        {
+          "bytes": 23892,
+          "path": "biome-service/native/main-prepared-geometry-snapshot.js",
+          "sha256": "21b36d961fc607960cfd5e1401f7aa9034563a25438e5b55c117b03ea149f894"
+        },
+        {
+          "bytes": 45659,
+          "path": "biome-service/native/main-prepared-surface-pass.js",
+          "sha256": "d0155e348e9ebad597440298cf89df82404757da72a6c320747c79e4926d3592"
+        },
+        {
+          "bytes": 9400,
+          "path": "biome-service/native/main-ray-bridge-prototype.js",
+          "sha256": "ea89a3032f3c5040ff754bca5669adeba66630ea962dc15787868b484beb007d"
+        },
+        {
+          "bytes": 11258,
+          "path": "biome-service/native/main-shade-mip-cpu-owner.js",
+          "sha256": "ee0663c18a70878a4766acd9076e05729ebc363f181a826a475ad06d33420440"
+        },
+        {
+          "bytes": 18111,
+          "path": "biome-service/native/main-startup-draw-owner.js",
+          "sha256": "422a8a07ed168ad741ef43f922b0ef231302e9dfc7eebd5ea58177827147a3aa"
+        },
+        {
+          "bytes": 65159,
+          "path": "biome-service/native/main-surface-scene-inputs.js",
+          "sha256": "75ac4a44943d05350210f300fd27ec9e57e9cfc7fc997be8f2c0cd9045340bc3"
+        },
+        {
+          "bytes": 24726,
+          "path": "biome-service/native/main-target-owner.js",
+          "sha256": "e85aa8ae4e0ad59d33afce43023a9c2c7905a36be8bcae6dbe6b02cbd853f235"
+        },
+        {
+          "bytes": 99452,
+          "path": "biome-service/native/main-texture-binding-owner.js",
+          "sha256": "234d212e4de8589520672085bdbaa071ba662b461f3ac196b468fe13983b077d"
+        },
+        {
+          "bytes": 5631,
+          "path": "biome-service/native/main-world-coercion.js",
+          "sha256": "7d99065345d28d3b4b17cd5fa9b103659413d1e2207ab37809b572ad61fc946b"
+        },
+        {
+          "bytes": 19728,
+          "path": "biome-service/native/main-world-mip-upload-owner.js",
+          "sha256": "47b2a7f4ad5246a54df2fe1dcba2b8dd46a676f3f2c0668cdc6f9462cc02a790"
+        },
+        {
+          "bytes": 15298,
+          "path": "biome-service/native/main-world-pass-inputs.js",
+          "sha256": "e07a88fb798c4da54290448191953371e1a77925b39e597f50b7f3031865eed1"
+        },
+        {
+          "bytes": 91205,
+          "path": "biome-service/native/main-world-state-snapshot.js",
+          "sha256": "710012f55293105baecd499ec5df877f125b9f8e9a1581607f2bd80cea355d2a"
+        },
+        {
+          "bytes": 9271,
+          "path": "biome-service/native/native-distance.js",
+          "sha256": "94ab0d7abe3df07aa7221c7899794c73c5749666471e24cb4164a453759170ff"
+        },
+        {
+          "bytes": 5968,
+          "path": "biome-service/native/native-surface-program.js",
+          "sha256": "84df8832bb566a587feb636dc6588c1f67d44316733157f0d30ea620b461d5f7"
+        },
+        {
+          "bytes": 70934,
+          "path": "biome-service/native/original-edge-planner-kernel.js",
+          "sha256": "0fe2f6bf34719acc3d6d7d38554157dece45776e7ab416d87be3f4847ce1ef58"
+        },
+        {
+          "bytes": 3180,
+          "path": "biome-service/native/overview-index.js",
+          "sha256": "a6e5b4c455b9eff673948f1db6902fc184da08f25d81035dce5b0ea8e7a1a04c"
+        },
+        {
+          "bytes": 18643,
+          "path": "biome-service/native/overview-material-table.js",
+          "sha256": "33b8f363d4389a31bb214280f1a22c928ccd0e91ccbe07925c538e06016edf17"
+        },
+        {
+          "bytes": 8800,
+          "path": "biome-service/native/overview-shader.js",
+          "sha256": "fe79f393b045c8e13cdf03a3b0eca402fcc557554d37155d5138625ac5625400"
+        },
+        {
+          "bytes": 9652,
+          "path": "biome-service/native/owner-tile-resources.js",
+          "sha256": "f2adbabad80182a9f5062bec59c899595e43133eab06935fe919056822bcfb29"
+        },
+        {
+          "bytes": 31960,
+          "path": "biome-service/native/positions-backend.js",
+          "sha256": "f212f18d8fefa60dc25b5f1c3cf3689da1beb53e3a365c5bd7f05de16c4c6421"
+        },
+        {
+          "bytes": 5200,
+          "path": "biome-service/native/projection-lens.js",
+          "sha256": "83a8e5428217cb8725b3aab4738df522c41ecbc6f9e6e781910a101aee6cd92b"
+        },
+        {
+          "bytes": 30704,
+          "path": "biome-service/native/provider-host.js",
+          "sha256": "9bd0ad8149d4579b61fc3ffa417ee7caf2b3d88357dcfe079cf784cfdb78d87d"
+        },
+        {
+          "bytes": 1830,
+          "path": "biome-service/native/providers/fixture-open-industry.js",
+          "sha256": "b85da63f32616eb1c5fbe6695035af1f04947297ddd14cd640a5063645e53703"
+        },
+        {
+          "bytes": 6655,
+          "path": "biome-service/native/providers/fixture-track-meadow.js",
+          "sha256": "dce5440bc2cd65366444361c5118ead8b7745a7ec162b5f0cfd76cb4e537bc60"
+        },
+        {
+          "bytes": 108311,
+          "path": "biome-service/native/resource-leases.js",
+          "sha256": "f805286612250ce24c6e8105141da52169c72599a2abb5ef455c79b116f95ed7"
+        },
+        {
+          "bytes": 18614,
+          "path": "biome-service/native/retained-demand-plan.js",
+          "sha256": "ab9d99f676169b7b645c9d4efd38f4d2d85d25faa1268edc855e81602024f730"
+        },
+        {
+          "bytes": 58784,
+          "path": "biome-service/native/root-program-binding.js",
+          "sha256": "39616fb243e7968243ecfe4599ded05ff65635aa351bd19d541ff01e24302f7e"
+        },
+        {
+          "bytes": 118511,
+          "path": "biome-service/native/root-target-backend.js",
+          "sha256": "b0efa9271d94fef061f293fdd55f051fd266cc42b8b471174f2bc54ea43497cc"
+        },
+        {
+          "bytes": 76077,
+          "path": "biome-service/native/shared-gpu-backend.js",
+          "sha256": "6699c52a359d14ee5aab85dc0dd8d305ff955e7b87ea5bc7d8a547c9d8b53251"
+        },
+        {
+          "bytes": 16839,
+          "path": "biome-service/native/source-admission.js",
+          "sha256": "d1676c985688bb3330ae2e35e1194c8b2c05116652939e1b183e0047751d8a7f"
+        },
+        {
+          "bytes": 9652,
+          "path": "biome-service/native/spbx-owned-cell-partition.js",
+          "sha256": "bb351a8e7743f783ed4545621fdb2a43178ccb54fc336a5b314ec21656c64fdc"
+        },
+        {
+          "bytes": 15018,
+          "path": "biome-service/native/state-contexts.js",
+          "sha256": "48ae6f98aaf97a239111dc6751b14b82ac3d2d436260e5f05befb9296ea157e5"
+        },
+        {
+          "bytes": 1675,
+          "path": "biome-service/native/static-geometry.js",
+          "sha256": "c22d7c42323c0e02373929cc6c78edac6921f94f2b307d106bdf4bceebc1c2b6"
+        },
+        {
+          "bytes": 13969,
+          "path": "biome-service/native/surface-bounds.js",
+          "sha256": "58dedbf812e6e51f827bf30e71d79afdcc45fca223a719fca9e0452ff0aaa15c"
+        },
+        {
+          "bytes": 8715,
+          "path": "biome-service/native/surface-differential.js",
+          "sha256": "f18fc04c9a1c4e58d4d011b315ac9ad4a290d64b2caf31721c0f68ca29bb597d"
+        },
+        {
+          "bytes": 35729,
+          "path": "biome-service/native/surface-kernel.js",
+          "sha256": "4f1bf9fc14db88f83e9c5fe48a870428b35b491b158363b18f38a0aaee64c90f"
+        },
+        {
+          "bytes": 31867,
+          "path": "biome-service/native/surface-uniform-transport.js",
+          "sha256": "7e5989e82cbcf14ed4e9c62f8cc3301f4689b083774c95ef82bafdd22c9f516e"
+        },
+        {
+          "bytes": 9747,
+          "path": "biome-service/native/terrain-mesh.js",
+          "sha256": "8d77dcda8f8ca241e8c50383706bed49b005911b746091718def658b65d1a924"
+        },
+        {
+          "bytes": 3016,
+          "path": "biome-service/native/tiled-owner-shader.js",
+          "sha256": "04730b62929503a2c83142104fd3434f02d3803433ac82fad6f2ae81e02d3247"
+        },
+        {
+          "bytes": 9048,
+          "path": "biome-service/native/world-input.js",
+          "sha256": "91e94085bf71751a3177a2f0abfc55f764ce24fa3eae41094a6ab38963669e4b"
+        },
+        {
+          "bytes": 11195,
+          "path": "biome-service/numeric-profile.js",
+          "sha256": "a4ce397e3593c46cbaab513d51bb759205f188947a003b2c7bfe9a8a88a12108"
+        },
+        {
+          "bytes": 7448,
+          "path": "biome-service/owned-record-intake.js",
+          "sha256": "1b83470a1951e2be42ab585caff5dc5636753fe4134fcb81e4ec458387ec7328"
+        },
+        {
+          "bytes": 8263,
+          "path": "biome-service/provider-profiles.js",
+          "sha256": "2538836f3de836a39cb08018dc42be230104178a713b845bf1e7318e7ff142d9"
+        },
+        {
+          "bytes": 24045,
+          "path": "biome-service/records.js",
+          "sha256": "70dbb2302f88f5f950de3eb2d3e94951a1537fdeab54640e7bb95746d69c1556"
+        },
+        {
+          "bytes": 17507,
+          "path": "biome-service/release-store.js",
+          "sha256": "fe25c7809fadac26918305ec69974f0b21eded0905a76e0e8665680610554627"
+        },
+        {
+          "bytes": 11865,
+          "path": "biome-service/reservation-index.js",
+          "sha256": "2d99179e6286f4d0232ffe9b3b7820d6780daf1a4640296630af1854ef7e0210"
+        },
+        {
+          "bytes": 1108030,
+          "path": "biome-service/schema-validators.js",
+          "sha256": "7e2a0965c4e5f92b72bb4af2599425149ce1bb52d501b00471bfb01f59e4a46f"
+        },
+        {
+          "bytes": 30482,
+          "path": "biome-service/spatial-index.js",
+          "sha256": "3d5bb52156db3b03f99831a012c7ff2c6c119093712c8ee5fb20942e67a0822e"
+        },
+        {
+          "bytes": 6110,
+          "path": "biome-service/storage.js",
+          "sha256": "5bfe64c9e93afad365237cc73e81282da8176fca4a764cb11b3eba89530f9fbe"
+        },
+        {
+          "bytes": 12238,
+          "path": "biome-service/verified-record-store.js",
+          "sha256": "020409821f63b085c0d4ab8214a42ccec6ee9179cafc7b75e1245aad188b1d0a"
+        },
+        {
+          "bytes": 13660,
+          "path": "biome-service/view-envelope.js",
+          "sha256": "db9dee381d246f3e957a96964ad86fff806d8b954c341eedebba1e61cf6438eb"
+        },
+        {
+          "bytes": 10163,
+          "path": "biome-shader.js",
+          "sha256": "7bf773e6680c9a9e086f8ed7f189023ee64e49fd70fd1cbd87feb231f342f2c3"
+        },
+        {
+          "bytes": 10063,
+          "path": "biomes.js",
+          "sha256": "01924bec4da4ebb9cd1a8e648193d7e4de8be8edaa91104da8824b1e2bdcc439"
+        },
+        {
+          "bytes": 11973,
+          "path": "collection-shader.js",
+          "sha256": "03e9c1a69365a20a6bd0dc89230b861a51196d30631575785d64aeb6c3678e01"
+        },
+        {
+          "bytes": 13626,
+          "path": "collection.js",
+          "sha256": "d937d9379cdfd56e2436d370460f696a7c6427464ec297d7272bdd59485bebb4"
+        },
+        {
+          "bytes": 16871,
+          "path": "edge-stream.js",
+          "sha256": "ae26132ae326c88d6dcddb5e6f077f4fce9458957fb1a4065a4106e2a5800651"
+        },
+        {
+          "bytes": 8197,
+          "path": "edge-streaming.js",
+          "sha256": "7196eff7ee4e024ba52abac2fa486237cc026ec3a2355380f0722241c56345d9"
+        },
+        {
+          "bytes": 40746,
+          "path": "field-sites.js",
+          "sha256": "5d3ce858453f82788df891a51dc2ac15d22d6f5ec877dce90f05bf09ef2af5b2"
+        },
+        {
+          "bytes": 3957,
+          "path": "flight.js",
+          "sha256": "33022381fc0ae8a13ed01937fafa716ea98f510ec4cf71644e66f0d4e5da08b3"
+        },
+        {
+          "bytes": 32527,
+          "path": "geometry-renderer.js",
+          "sha256": "8732ceedf4374aa4a1a9f36a2dc25978de9d28d5a6d39eb76424ffdc4cec330f"
+        },
+        {
+          "bytes": 53065,
+          "path": "grass-stream.js",
+          "sha256": "9b2ac9bd4957c52a6453b8ddd44f425ffcdf0fb4f025f2f75c85293e4e7e7700"
+        },
+        {
+          "bytes": 19761,
+          "path": "ground-chunks.js",
+          "sha256": "75f2edcf0042f2dced81a209f050bb3b9557c33b892b42bddd3b54c9f102f0b2"
+        },
+        {
+          "bytes": 6848,
+          "path": "hero-textures.js",
+          "sha256": "3c468b7b93e8a69ac18056d6dc0ac666e51b42ef62f00eb5bbad05649bd7f4ac"
+        },
+        {
+          "bytes": 2618,
+          "path": "inspection-camera.js",
+          "sha256": "ccb66d6a7017d554739a9f77253bf0d1ef4b19cf21f06572058b4297c7a133c4"
+        },
+        {
+          "bytes": 60890,
+          "path": "instanced-environment.js",
+          "sha256": "38da69ae1da12145306b6e37540c097e85de41b6beb10d547e154f77957783e6"
+        },
+        {
+          "bytes": 1009,
+          "path": "legacy-role-adapter.js",
+          "sha256": "d5395969c47ebbe4670117721668cacbee01fb34216735458d92f1d83635a6a7"
+        },
+        {
+          "bytes": 8293,
+          "path": "local-shadows.js",
+          "sha256": "2866cee95f72fd842005ddb36c416d1a2715a735fca058d8b6cb0b704f337104"
+        },
+        {
+          "bytes": 14995,
+          "path": "math.js",
+          "sha256": "c249ce5165d27bcfbaf8431bfa09bc00fdac84e5a83c6a471ee59c455ab2a6df"
+        },
+        {
+          "bytes": 3975,
+          "path": "meadow-benchmark.js",
+          "sha256": "158589a8a308cdadb79843681df31221f5f32c034e4b4d9aa8630b05b074401c"
+        },
+        {
+          "bytes": 14687,
+          "path": "meadow-blocks.js",
+          "sha256": "bea7391d4aa6120a039a55ae4e422163e4a95ca5f8a84385d4def08d2e31fef8"
+        },
+        {
+          "bytes": 23946,
+          "path": "meadow-canopy.js",
+          "sha256": "0e5ee0316a13ab07d6260f201be7d1db85331d8a5995de0845b2f5b1b6933c95"
+        },
+        {
+          "bytes": 7954,
+          "path": "meadow-ecology.js",
+          "sha256": "abebfeb8cfce8f0ed72196b0077239310fde3d0c6be08810879ee09f87bb17dc"
+        },
+        {
+          "bytes": 22364,
+          "path": "meadow-field.js",
+          "sha256": "a89b5405ef698eba20606a37afc7382b4288ec33e123f281043bcbd8053c3743"
+        },
+        {
+          "bytes": 8744,
+          "path": "meadow-provider.js",
+          "sha256": "34812a5b7ddaf52e90f5514cca4be8f2f4f3fa0585ec3447496401fbf3b08aa5"
+        },
+        {
+          "bytes": 4122,
+          "path": "meadow-support.js",
+          "sha256": "f8f6f94579266dcf2898ee3ccb9b35c08e2aa5b3f49e2ad606799ac67c037bd2"
+        },
+        {
+          "bytes": 3433,
+          "path": "meadow-wind.js",
+          "sha256": "5612b89c625d4ac0c35ceded8e9a1f3f4c6e6e57a4756c17582774f6f3cf4486"
+        },
+        {
+          "bytes": 6687,
+          "path": "neighbourhood-shader.js",
+          "sha256": "8e612f8f322c88e1f956543651f8624b0b94a48a27bb6854bd7e61f62f1bd0ea"
+        },
+        {
+          "bytes": 2673,
+          "path": "pack-library.js",
+          "sha256": "9c719d9e4ae7a08853342ac9a1e248ae9da9faa0a06f6c626845f5e5b8b1afdb"
+        },
+        {
+          "bytes": 3239,
+          "path": "panorama.js",
+          "sha256": "9017a71c5857fe4179c96a6c140c6c3fe7cd07b5cbac9e9c7269337ff2fd2ddc"
+        },
+        {
+          "bytes": 12079,
+          "path": "places.js",
+          "sha256": "945b094b3e90efcb73ffda717e853d9e172da93496ebdd15e2b282eb08b5129a"
+        },
+        {
+          "bytes": 2097,
+          "path": "preview-light.js",
+          "sha256": "e405d9b4237fdcd7d84c848ea0b0921025e165564a8f4c884faf4b23b1f75801"
+        },
+        {
+          "bytes": 719,
+          "path": "preview-quality.js",
+          "sha256": "07c40e7dc269f75a523859028b9a541ce69c209a3817d3db35447dbc9a3d49e8"
+        },
+        {
+          "bytes": 155485,
+          "path": "renderer.js",
+          "sha256": "c83ff61c51b5a033d335a12bd705918df23f9913fb00639caad068c50b5d6a63"
+        },
+        {
+          "bytes": 11798,
+          "path": "shade-edges.js",
+          "sha256": "b3a089476ae2ed87ecb0a38c3ffd745362692b3669a7b3bc270bb09222a30541"
+        },
+        {
+          "bytes": 1022,
+          "path": "shader-sections.js",
+          "sha256": "c307ad33b42fb84bd54ab1d24158471259470a45b85038097bb39f7057894fa0"
+        },
+        {
+          "bytes": 9604,
+          "path": "shaders.js",
+          "sha256": "3c0513513b4eba2ad62607b76d39ed712e7bd85282f5cae970189d0a95e8379e"
+        },
+        {
+          "bytes": 4314,
+          "path": "silhouette-aa.js",
+          "sha256": "8aaa97a79941d9f61093f57250a8d9f6e00d3df254e6f88629df200b7c10eb0b"
+        },
+        {
+          "bytes": 1562,
+          "path": "simulation-timing.js",
+          "sha256": "d10459287b47055e88f008ecdfa25b6971ab74ae289295a77a62e2cbe6298b81"
+        },
+        {
+          "bytes": 3130,
+          "path": "station-shader-performance.js",
+          "sha256": "ad47dc0321792d7c30ab9fde5aa66b95d024c056f941ac729e33a89811f85e04"
+        },
+        {
+          "bytes": 3601,
+          "path": "surface-arrival.js",
+          "sha256": "039497a162338f636ce531634861240e13d741c0230551a0a5a8e99d7184172c"
+        },
+        {
+          "bytes": 14352,
+          "path": "surface-lighting.js",
+          "sha256": "0b5b89dbc5d19bb19a3a944924d58323c9c2a65e7175941d416693faae7fa063"
+        },
+        {
+          "bytes": 10016,
+          "path": "surface-walk.js",
+          "sha256": "4fdef10c6d32346a45d2f19c5d739cd40489039e143b8e053c4f505620e6b20d"
+        },
+        {
+          "bytes": 2190,
+          "path": "survey.js",
+          "sha256": "b4d3d9edaad52c03a36a94c1456fad6d74ae4e512e3b4788ce566a84cb9b7d0a"
+        },
+        {
+          "bytes": 8459,
+          "path": "travel-control.js",
+          "sha256": "48e2a309d15dad234bf317f6d6003387010179e9efc0d4e1798d53bb90516188"
+        },
+        {
+          "bytes": 39337,
+          "path": "vegetation-gpu.js",
+          "sha256": "9ed26f3dd1df67e63e57d29fa7089037ba0173237b8a56874abf976ff0b18a75"
+        },
+        {
+          "bytes": 26596,
+          "path": "vegetation-lifecycle.js",
+          "sha256": "f762122dde51453f82de0f5927066652175344aea72f838c556beb68b7f473ac"
+        },
+        {
+          "bytes": 10510,
+          "path": "vegetation-memory.js",
+          "sha256": "7a700a994f343b61347689922a83b4aa10bd6acc1ee532a59c3bf3a808f04347"
+        },
+        {
+          "bytes": 3228,
+          "path": "vegetation-revisions.js",
+          "sha256": "b77f8d4c4dc9f5c5208be40d5c7875e4967839cc93f65fef404c42aca1e2d5ac"
+        },
+        {
+          "bytes": 16655,
+          "path": "vegetation-selection.js",
+          "sha256": "e33cccadcac9a2a6bbe0782a03c794beaf23b34bf9169c6435668e35cb37aa95"
+        },
+        {
+          "bytes": 36609,
+          "path": "vegetation-service.js",
+          "sha256": "f34ce1569dc720f9f1867e0e541191bfc140f26060c67cc33dc7527af6965627"
+        },
+        {
+          "bytes": 7202,
+          "path": "vegetation-worker-pool.js",
+          "sha256": "eb57b5761827c7cf8204213f743758cfcc39cce57ae1bb7767e1f9d50be26ee0"
+        },
+        {
+          "bytes": 27013,
+          "path": "volume.js",
+          "sha256": "114acfffc5b9a528e311da77fe37f9832a0e780a7ab21d70e3716135a06599ba"
+        },
+        {
+          "bytes": 7515,
+          "path": "watershed-neighbourhood.js",
+          "sha256": "da095c5d02dd7f3e7e3cb9f77c00d32a12b81de8f08d47b333e024534d27fdfe"
+        },
+        {
+          "bytes": 3424,
+          "path": "watershed-network.js",
+          "sha256": "31e1339b3626436e29e6a04059a9552aeada818d3374d3292c681cb54615678c"
+        },
+        {
+          "bytes": 19962,
+          "path": "watershed-province.js",
+          "sha256": "75334be87b9aeba3893abe5fcf05793dab251bbe745c6f290ee6c290fe9fc50d"
+        },
+        {
+          "bytes": 9929,
+          "path": "world-address.js",
+          "sha256": "b614e3f9e9492674c180ac9ebc72aec2345e5428bdfe98984cb4cd5c224b77f1"
+        },
+        {
+          "bytes": 15807,
+          "path": "world-geography.js",
+          "sha256": "1dce2e952860f5d6498bdd360646335782866ffe7d6b9d6cb584eb1f0c9d1073"
+        },
+        {
+          "bytes": 649,
+          "path": "world-palette.js",
+          "sha256": "73df1a28a61be534c9b8b63a1a83fa11888e4f7fc5ac179221709e40fb22e70b"
+        },
+        {
+          "bytes": 33005,
+          "path": "world-shader.js",
+          "sha256": "4a070d38f535aa7b1330f176231be272c781e28ae10829914138dceb61911e3b"
+        },
+        {
+          "bytes": 8540,
+          "path": "world-textures.js",
+          "sha256": "d424815ad1af9f10ad61c59408243c8862e4b633d7ff1c35d6460c3f87265e41"
+        },
+        {
+          "bytes": 10225,
+          "path": "world-topology.js",
+          "sha256": "2652a46d33997899f8c0108481ff84a0c97dfc720f2e3853592d0748280f8cf6"
+        },
+        {
+          "bytes": 20538,
+          "path": "world.js",
+          "sha256": "82877ee7543aef2336d3a4dc94b5e42aa55f2eee9f9eb24ef02ece2b0eea861a"
+        },
+        {
+          "bytes": 8027,
+          "path": "wound-textures.js",
+          "sha256": "068a6c89cd7207b0217b0ead8b3ea1294fe94546ec7b672a9c64d44277d2a5d4"
+        },
+        {
+          "bytes": 5146,
+          "path": "wreckage.js",
+          "sha256": "b73a8d580c9f54cc728c232b2d8db095ab1292db6da418b70c4eb92628d056fe"
+        }
+      ],
+      "format": "sphere-biome-root-program-profile/2",
+      "hostProfileRef": {
+        "digest": "bbc5d5d4816abdbebfb4f577da7521b24101c49adf555acf6c50c0edc8b9b391",
+        "id": "observatory-world-codec-v1"
+      },
+      "id": "main-owned-cold-original-programs-v1",
+      "programs": [
+        {
+          "fragmentSha256": "436c227762466bc44d9c687ee9d9eb512826ee8cb485e7f4a4cdd2380ef1cd49",
+          "role": "overview",
+          "vertexSha256": "11711e1a247697bb28159903edbab828306690379a79690c87dbb3cd3a74a226"
+        },
+        {
+          "fragmentSha256": "85218945bd30815d7a359fe3ffda52080c4e45919abe2f19fcd7fabdef11a64e",
+          "role": "surface",
+          "vertexSha256": "3384bd6625545bc53f7052dac9b5508e248febd957c9fe0a838b6f4c7e588339"
+        }
+      ]
+    },
+    "digest": "aaec9807abe3c085461480af1428dc1b8b161ab6bdd57d8abfcc57f443873ff5"
+  },
+  "baselineProfile": {
+    "body": {
+      "closure": [
+        {
+          "bytes": 35890,
+          "path": "app.js",
+          "sha256": "ea40b2952058757fd7773db9c3f0e983a9903738bde34e8ca210fc62490bf727"
+        },
+        {
+          "bytes": 10975,
+          "path": "asset-plan.js",
+          "sha256": "4e186418f1de27f60bcb11a7327b246b7570f0d820f22292943d03552e656cf0"
+        },
+        {
+          "bytes": 16008,
+          "path": "atmosphere.js",
+          "sha256": "32cd0b34e31f7581d8961152f074ef958191bfd080369e40f8f5533594cccc55"
+        },
+        {
+          "bytes": 3023,
+          "path": "biome-packs.js",
+          "sha256": "333a3fc917109b9f8adebd90131dc49c1e283706c68ac8dc4a12494a18305253"
+        },
+        {
+          "bytes": 40386,
+          "path": "biome-service/allocator.js",
+          "sha256": "c7f9a0fc5ba3c8146e7608bb07c9844df5421703f009db5f9fcf160586ed97c2"
+        },
+        {
+          "bytes": 54392,
+          "path": "biome-service/binding-builder.js",
+          "sha256": "57103c00d9a49600b099668d0da893a7c2128fc70bec2a3fad2a4ef230050500"
+        },
+        {
+          "bytes": 13532,
+          "path": "biome-service/cell-geometry.js",
+          "sha256": "005e4b7f9fe00b63563b331ea223908068ac17b7ba424314a8ec02812ed9d184"
+        },
+        {
+          "bytes": 9410,
+          "path": "biome-service/checkpoint-store.js",
+          "sha256": "b93186eb719624d876a70e70f110c8351d61fcb3dafd1ff8cefce5947f7ae976"
+        },
+        {
+          "bytes": 26994,
+          "path": "biome-service/commonboundary-adapter.js",
+          "sha256": "77f739ae2065244323740c011d1875990a657123f9aca8c130254a648d8683b1"
+        },
+        {
+          "bytes": 18159,
+          "path": "biome-service/eligibility-verifier.js",
+          "sha256": "ae6e6ba5f800f486c279138c91b4072f8fa807ba7ef7a244db5c733793fa61c6"
+        },
+        {
+          "bytes": 19991,
+          "path": "biome-service/eligibility.js",
+          "sha256": "06687f84abaa76586a9174b4ac2af24d3265ba98bee33aad4b0bbe239fad3f1f"
+        },
+        {
+          "bytes": 22368,
+          "path": "biome-service/host-world.js",
+          "sha256": "522698997c3f67befde8f5e69ff5a35eba3595f5c2f59e0c099561c7d9681c7c"
+        },
+        {
+          "bytes": 5971,
+          "path": "biome-service/intervals.js",
+          "sha256": "7077e639756eb3ac248ab5b92a426ec7e1b913f87eb71c36a4d2077aceab5f03"
+        },
+        {
+          "bytes": 4137,
+          "path": "biome-service/metadata-budget.js",
+          "sha256": "9318446452e9a99fee2873eaf0d072bd76c39f714e4d1bceadf6057d04df6635"
+        },
+        {
+          "bytes": 16039,
+          "path": "biome-service/native/binary64-sampler.js",
+          "sha256": "515ace513e2a3d3baa828b6251f73e52d6dc01e8eccba312d03471e61791f4a3"
+        },
+        {
+          "bytes": 5563,
+          "path": "biome-service/native/boundary-live-record-context-02.js",
+          "sha256": "9ad97e02bbb4cc25addb2db99f38c08f84da1108665e38caea6485fd36ce0eca"
+        },
+        {
+          "bytes": 19407,
+          "path": "biome-service/native/boundary-shader.js",
+          "sha256": "89e7cbd0917260e64441d8d8cc2ca2f26722ed0f2b3edc271efc6baaba1a337c"
+        },
+        {
+          "bytes": 2000,
+          "path": "biome-service/native/c1-intrinsic-snapshot.js",
+          "sha256": "d6c23ea8974e963d8c11878bfc078ad9614636b525e952caf290792d855a6f24"
+        },
+        {
+          "bytes": 7546,
+          "path": "biome-service/native/camera-guard-conics.js",
+          "sha256": "c99c2379defd937899518b2133f3c7f92b43ffe1f302b2d518a324817485ab70"
+        },
+        {
+          "bytes": 34448,
+          "path": "biome-service/native/canonical-boundary-parameters-owner.js",
+          "sha256": "072915f22e971d7fa8b1b840d399b1027805154d04537ec2a245158807f01446"
+        },
+        {
+          "bytes": 31522,
+          "path": "biome-service/native/canonical-camera-reuse-proof-owner.js",
+          "sha256": "bbf5d7fb37921a9ccf20044e7c224c4a6d5621b936bc11c7f99ddf64de3b318a"
+        },
+        {
+          "bytes": 34679,
+          "path": "biome-service/native/canonical-camera-reuse.js",
+          "sha256": "55c4b9c58a6f536c50fbbe90526c0053fc556b76997434d6cee250bfbda9d58b"
+        },
+        {
+          "bytes": 4498,
+          "path": "biome-service/native/canonical-grid-witness.js",
+          "sha256": "1c79c4d2649d12170862af33ab570ad0d4c3e498b97ee59437db6c8b5d639882"
+        },
+        {
+          "bytes": 9027,
+          "path": "biome-service/native/canonical-local-transport.js",
+          "sha256": "4666d62465f791a8b2ed0b89abfb58db2d855cf4b3c5a12bd61b958b4dc72c05"
+        },
+        {
+          "bytes": 1853,
+          "path": "biome-service/native/canonical-rectangle-planes.js",
+          "sha256": "e4532d9e7599e0b992e725991c73ce49ec90ca5012e55c07892c3ec54aab3c8c"
+        },
+        {
+          "bytes": 12687,
+          "path": "biome-service/native/canonical-shell-chart-prototype.js",
+          "sha256": "02287d65c6b0aa2ab18c54b1aaaea7330e6c6d1d9175a2b78c955bd9382a9b19"
+        },
+        {
+          "bytes": 22919,
+          "path": "biome-service/native/compiled-intrinsic-slots.js",
+          "sha256": "83761511263fed712f6fc7fc5b359327e350f04997edec92ebc3beb44c0c3892"
+        },
+        {
+          "bytes": 6175,
+          "path": "biome-service/native/complete-c1-cell-cover.js",
+          "sha256": "7528f5fc70271758347194ff40f65cfb6ec1e0a57589c3848f767f0a63a66958"
+        },
+        {
+          "bytes": 8646,
+          "path": "biome-service/native/complete-c1-cell-weight.js",
+          "sha256": "c98b0b3265bf4bb4bdaa1f993d0d1d2c11bd0ee260035c4764e79b3fda49bad3"
+        },
+        {
+          "bytes": 53384,
+          "path": "biome-service/native/complete-c1-contributor-owner.js",
+          "sha256": "82d98d19a2267fa6edc1af39ff1a8f6e7bc27e9e8ad4c26e17223ab7a739c1b7"
+        },
+        {
+          "bytes": 121611,
+          "path": "biome-service/native/complete-c1-field-packet-owner.js",
+          "sha256": "8f61eb1bfa0e70d939831aa37b8eb9b4995e094902f2ae8020076ddd15b0da4b"
+        },
+        {
+          "bytes": 15969,
+          "path": "biome-service/native/complete-c1-index-shader.js",
+          "sha256": "0dd096a8c7452d8d8f15eb813ee163100175666fc2630b570824aa3a956ae849"
+        },
+        {
+          "bytes": 6123,
+          "path": "biome-service/native/composition-model.js",
+          "sha256": "296f7a51bcb14a193f488577d83ab4beb0ddea3743fde0d87c0e0f58f9088ffb"
+        },
+        {
+          "bytes": 1694,
+          "path": "biome-service/native/conic-coefficient-packing.js",
+          "sha256": "f6069165eabaf80a8cd74ea6d97ecbb45dc22256f68f951e4d6dd962f5c7fcdf"
+        },
+        {
+          "bytes": 10899,
+          "path": "biome-service/native/conic-owner-banks.js",
+          "sha256": "3dda65a605b4c2eda6696239a26dd642540aa4b2e7fa36a426f51f99f4631882"
+        },
+        {
+          "bytes": 135619,
+          "path": "biome-service/native/cooperative-boundary-kernel-09.js",
+          "sha256": "a8282ff4c48b0ddbc5bf906afc520c8e497c084992ced6e636c61035ed101fed"
+        },
+        {
+          "bytes": 194666,
+          "path": "biome-service/native/cooperative-camera-reuse-kernel.js",
+          "sha256": "bf1adc8ab50495e9ee4fade451d613f88dccc381f81953f0b19ece0f7b184e50"
+        },
+        {
+          "bytes": 11205,
+          "path": "biome-service/native/cooperative-edge-plan-keys.js",
+          "sha256": "bf76b0fa618241226f85bc2aa18d44849187ce5996d3af3e8cb639e43b71391d"
+        },
+        {
+          "bytes": 132866,
+          "path": "biome-service/native/cooperative-main-frame-ray-kernel.js",
+          "sha256": "c95be4ba559518663e736bed35cb59898d6eb0145bfeb4ad96e9f03883959ff7"
+        },
+        {
+          "bytes": 133977,
+          "path": "biome-service/native/cooperative-main-frame-schedule-kernel.js",
+          "sha256": "147fc2001b2193205fc000f498d2f9c72950af7948f14c9ddbe5f9b621f5ec76"
+        },
+        {
+          "bytes": 4491,
+          "path": "biome-service/native/cooperative-mesh-bvh.js",
+          "sha256": "7974a749503fa800235d5ff4b5d6c50dd761fe4f634cc526fc6bb17b94d24452"
+        },
+        {
+          "bytes": 14259,
+          "path": "biome-service/native/cooperative-v8-powersort.js",
+          "sha256": "88cc5277ca5ff06251d17659b3cd61c73e2e47615f0c326a89c761fc4b4c01e1"
+        },
+        {
+          "bytes": 8862,
+          "path": "biome-service/native/correlated-rebase-rounding.js",
+          "sha256": "fb73a08e085de76dcd1ea6f1c423e97f4a45da641b48f4c7f19fc62067c9c4d0"
+        },
+        {
+          "bytes": 1511,
+          "path": "biome-service/native/direction-halo.js",
+          "sha256": "fb3e7740c0cd29dbd04366e0ecb2db58b9718648bdea7f6c2fe1a6076c98354a"
+        },
+        {
+          "bytes": 15408,
+          "path": "biome-service/native/exact-conic-coefficients.js",
+          "sha256": "41bafe96c95557a3f7299c1919268fb4f399758917ba1a7dda88d63c46e11ca7"
+        },
+        {
+          "bytes": 3527,
+          "path": "biome-service/native/exact-conic-overview-shader.js",
+          "sha256": "c3f907dd0f0ca6ebd4301f059165955be34726e3791cffc1d613915fa2db6f4a"
+        },
+        {
+          "bytes": 23282,
+          "path": "biome-service/native/exact-conic-owner-banks.js",
+          "sha256": "16bf39d45fbd50f2b1c2d8a42681a1f487f14dc72ad670a46af7008b0eeba525"
+        },
+        {
+          "bytes": 7320,
+          "path": "biome-service/native/exact-conic-shader.js",
+          "sha256": "4449acd756501c5095589e21ffbc34879fa1fc7cf7adf4b3e576bad49d59954c"
+        },
+        {
+          "bytes": 9974,
+          "path": "biome-service/native/facet-conditioning.js",
+          "sha256": "39c0d8dfbe4fd03663bf02f98c4e9ffe23ec2e8b5c5b1bac106218e784a14f87"
+        },
+        {
+          "bytes": 118135,
+          "path": "biome-service/native/fixed-arithmetic-camera-reuse-reference.js",
+          "sha256": "b3d51303ea382be3c67cea45402a8d4d1ff98510d68e2170a761443c1926b2c9"
+        },
+        {
+          "bytes": 73594,
+          "path": "biome-service/native/fixed-arithmetic.js",
+          "sha256": "22923730dea072ed9ae24aaa4d0427e5484ec5ceca77c1594a839dc3ee118c1e"
+        },
+        {
+          "bytes": 4962,
+          "path": "biome-service/native/fixture-definition.js",
+          "sha256": "80c6c91e8cdcb612db0e1681ee6465fe4796cc238fe8c6e4ad1c82ca258a6315"
+        },
+        {
+          "bytes": 5170,
+          "path": "biome-service/native/fixture-recipe.js",
+          "sha256": "771a6eb77f2f64c9ac4b30a442d78944dfd271356d49b26f10c95f0334dda71a"
+        },
+        {
+          "bytes": 3825,
+          "path": "biome-service/native/folded-conic-hybrid-shader.js",
+          "sha256": "5df3878483f6d42504536928538f49e0eb53b34ed144b52556ee997e193a06e2"
+        },
+        {
+          "bytes": 2873,
+          "path": "biome-service/native/folded-conic-shader.js",
+          "sha256": "a721a73b23f237acad5b9aa62fd12a4de54800d2f20d2c5c4b54e25ad92fd13b"
+        },
+        {
+          "bytes": 4804,
+          "path": "biome-service/native/folded-ray-plane.js",
+          "sha256": "def8afd09bdee2ca08e9b9defb559f0da5c0db8132953190a30e5c6013a859b7"
+        },
+        {
+          "bytes": 4622,
+          "path": "biome-service/native/guarded-owner-shader.js",
+          "sha256": "78fce05a483b24853f9d532963beaa275ce17a05d4de3112cb949bf6ab5ff933"
+        },
+        {
+          "bytes": 3733,
+          "path": "biome-service/native/homogeneous-owner-blocks.js",
+          "sha256": "c832c16e9e1821348605cca30fc08a9a4d413070fb8edeff016ecc4968c5bd99"
+        },
+        {
+          "bytes": 14586,
+          "path": "biome-service/native/host-coordinator.js",
+          "sha256": "5c8c74935cd943af52de3723041b026a6a788a5c3b5d1640d8b1c26a3edd3125"
+        },
+        {
+          "bytes": 5657,
+          "path": "biome-service/native/interior-exact-perspective-cell.js",
+          "sha256": "e8879c84d57736f4b49f9245fa4d6611bece8a23458c4e105d116346f85e9a0a"
+        },
+        {
+          "bytes": 2636,
+          "path": "biome-service/native/interior-perspective-rectangle.js",
+          "sha256": "0c7fff7a35a77ad0b54ed3b15e231505c684da89924bb0d9510004de9e39c7b1"
+        },
+        {
+          "bytes": 9832,
+          "path": "biome-service/native/interior-ray-cell.js",
+          "sha256": "1ebc0aa3b09a8f49702181275c8a5f9bab55d31b43d343015c1470145ad5d714"
+        },
+        {
+          "bytes": 9160,
+          "path": "biome-service/native/interior-ray-halfspace.js",
+          "sha256": "440be49872bc54d69c3dfa3ffbda9682f453f920ed867a2602016f4872546386"
+        },
+        {
+          "bytes": 5835,
+          "path": "biome-service/native/legacy-base.js",
+          "sha256": "6b988fe363e6598b13f0e4810ca56fa9c9664b4ee60eb46524c2c1943cc71850"
+        },
+        {
+          "bytes": 19467,
+          "path": "biome-service/native/local-field.js",
+          "sha256": "6c60b1b7920bda0a6593904fb4cd435052e3ebd319495759ff4ae12505df0d9c"
+        },
+        {
+          "bytes": 8636,
+          "path": "biome-service/native/local-oriented-transform.js",
+          "sha256": "e204c8221fa9d4e39ff2975a5427470867eb8782e13a0309ef312bf8f2f79344"
+        },
+        {
+          "bytes": 9337,
+          "path": "biome-service/native/local-transform.js",
+          "sha256": "ebf9e6f6d1139845fb664b0ee8622158d2a5ae492a08b49b937f4b7791df5752"
+        },
+        {
+          "bytes": 7190,
+          "path": "biome-service/native/lossless-owner-palette.js",
+          "sha256": "65b3932ffb8c1695862434b55ce241bb471be08c5937a5ef2a5085c41c072148"
+        },
+        {
+          "bytes": 43674,
+          "path": "biome-service/native/main-aa-mask-content-owner.js",
+          "sha256": "8ca28a2eb0410e16114b4a576e9ec6d72e9260f2fbbabeab3d8fa2c2855dd83e"
+        },
+        {
+          "bytes": 5955,
+          "path": "biome-service/native/main-app-canonical-projection.js",
+          "sha256": "aab73657bf09a43e0fde290d11f2bc4143c738e14f16f969f3e72561ea23301a"
+        },
+        {
+          "bytes": 41567,
+          "path": "biome-service/native/main-app-snapshot-ingress.js",
+          "sha256": "1919de92f23febba789b8ce96f6a23e552aa64dbb04d72bde00d464d7499ac9f"
+        },
+        {
+          "bytes": 37635,
+          "path": "biome-service/native/main-assigned-material-owner.js",
+          "sha256": "acd74bc2dfa3a7bf91378bc89e8a05797b3db185aa01b7482de0399239783ed4"
+        },
+        {
+          "bytes": 10405,
+          "path": "biome-service/native/main-assigned-material-shader.js",
+          "sha256": "3f06d4ad779cd8f2d59535e91576d9b97952c401f3d52528f2a76363227ac8fc"
+        },
+        {
+          "bytes": 21540,
+          "path": "biome-service/native/main-atmosphere-noise-owner.js",
+          "sha256": "85240b910c0803e127da20694978cacb2486f80dad2de7f514a2985aa0dde5ea"
+        },
+        {
+          "bytes": 99101,
+          "path": "biome-service/native/main-baseline-owner.js",
+          "sha256": "b4889a954e2e00fb86cab8ae01d589c067c7dc52bf385c146acc4577ef68b9c6"
+        },
+        {
+          "bytes": 36785,
+          "path": "biome-service/native/main-baseline-resource-records.js",
+          "sha256": "ce402c73b6b61f5384e30d995e044aa083d9b32b5b02d50ba1ce2dd699628a0b"
+        },
+        {
+          "bytes": 37215,
+          "path": "biome-service/native/main-canonical-ray-packet.js",
+          "sha256": "2f1c36456769b9043de85a5db2885a43f1fd4cd7ee9622f5cbf5bcceb52315ce"
+        },
+        {
+          "bytes": 11033,
+          "path": "biome-service/native/main-conic-reuse.js",
+          "sha256": "5d4e559712bf6f06d8fdf90c5ba8ed16112cd6ba1b8bbddd78f84d669d272ea7"
+        },
+        {
+          "bytes": 17258,
+          "path": "biome-service/native/main-context-loss-owner.js",
+          "sha256": "6768ea92bd5ddf1bc62316cf9c2000a6894c7ce97c50b505016ed2bb396ffed1"
+        },
+        {
+          "bytes": 17215,
+          "path": "biome-service/native/main-correlated-rebase-rounding-owner.js",
+          "sha256": "a77c7ebba9889d8d6060773b4b12a2a2040acf4921c702d1506f79362ae2fa2f"
+        },
+        {
+          "bytes": 31763,
+          "path": "biome-service/native/main-default-surface-facts.js",
+          "sha256": "34e6b98a2b32d54d6eda0b5521858ff2cd4df241dbb7291a384f4fc981fb8115"
+        },
+        {
+          "bytes": 5303,
+          "path": "biome-service/native/main-demand-image-asset-manifest.js",
+          "sha256": "756f74f1580ebf73889b09c4b6e8fb4a9e34b396f01ea7cd01e47cbf757ace3e"
+        },
+        {
+          "bytes": 36686,
+          "path": "biome-service/native/main-demanded-array-content-owner.js",
+          "sha256": "a92f1e4572c99fb688a5e3fe301d7fa83470919f6b97523a357b6b130db6ca31"
+        },
+        {
+          "bytes": 29098,
+          "path": "biome-service/native/main-edge-mesh-cpu-owner.js",
+          "sha256": "f83ceedeb277541568fd84fe6caaceda8f789cc055bd29dd2f4e592dfe658e2f"
+        },
+        {
+          "bytes": 20531,
+          "path": "biome-service/native/main-edge-mesh-gpu-owner.js",
+          "sha256": "8c5cab067d157113ec64d5a3dfa9440aa8bef870029a72807b9ad4b1c5f59c95"
+        },
+        {
+          "bytes": 17408,
+          "path": "biome-service/native/main-edge-mesh-result-pool.js",
+          "sha256": "4c0d071f70d67ad1eeb8241aeffaf3e21fccb925846a9eb6574f2ab18f338e6e"
+        },
+        {
+          "bytes": 72866,
+          "path": "biome-service/native/main-edge-planning-owner.js",
+          "sha256": "82a83d7aac7a46adbebcb0d9ed833b19737f504803626a0ace13a96b0d753200"
+        },
+        {
+          "bytes": 17207,
+          "path": "biome-service/native/main-facet-conditioning-owner.js",
+          "sha256": "361d07fb8e5051b62d17405d69e736aaa0a1e37f6d992020c577fadf1fc3d85d"
+        },
+        {
+          "bytes": 36631,
+          "path": "biome-service/native/main-finish-storage-owner.js",
+          "sha256": "25c39c66f199f9ea8d12976f574e704f4818d58f3f98a68c32b6d4a8311aae6a"
+        },
+        {
+          "bytes": 86120,
+          "path": "biome-service/native/main-frame-perspective-reference.js",
+          "sha256": "d75b79e679b36f14f9f9f2c6cffbca6c64de5011b73b9b5cb491bf3d06d53733"
+        },
+        {
+          "bytes": 13661,
+          "path": "biome-service/native/main-frame-ray-cpu-continuation.js",
+          "sha256": "7a34bffd79c2e25670fc49e1faf4ee323d02963c308bfc80d773e9ce6b8b2d74"
+        },
+        {
+          "bytes": 30714,
+          "path": "biome-service/native/main-frame-ray-proof-owner.js",
+          "sha256": "cdcf9c653700de9a8ae1b3f8551078252f9416a58d4f322ca15415fe70b36049"
+        },
+        {
+          "bytes": 86827,
+          "path": "biome-service/native/main-frame-schedule-reference.js",
+          "sha256": "01239aed63b809cb9d409123a2e625c7a3da59eac3b9fb5710a814e894843ea3"
+        },
+        {
+          "bytes": 90033,
+          "path": "biome-service/native/main-geometry-cpu-owner.js",
+          "sha256": "1a5f2efbb9b3858695a876e3a5b9c82348103676ae23e577c6088e21d1c4da45"
+        },
+        {
+          "bytes": 26324,
+          "path": "biome-service/native/main-geometry-rebase-binding-owner.js",
+          "sha256": "7f68b54df41ff392c51ce8b22bcc17a30422232e3b740006931b08282282bb1a"
+        },
+        {
+          "bytes": 7412,
+          "path": "biome-service/native/main-geometry-retirement-roots.js",
+          "sha256": "688ac8064cf345b8c7ff664527d2211e09d440254547c6babd1dd8f0981a778a"
+        },
+        {
+          "bytes": 14508,
+          "path": "biome-service/native/main-ground-field-owner.js",
+          "sha256": "a6c8d9b9432955ad531b7120e905c82c87b937d442de98dea7ee7c2cd0f68ed7"
+        },
+        {
+          "bytes": 23209,
+          "path": "biome-service/native/main-host-cpu-cache.js",
+          "sha256": "53aed7b369441ec37031b6bcc2f71f694a5f972ce7772c795a72dbedadca7497"
+        },
+        {
+          "bytes": 1829,
+          "path": "biome-service/native/main-image-asset-manifest.js",
+          "sha256": "45609ec5cfe0819bd3c4192ceb39a8edda051164d9e7f803d2272c97baf24d15"
+        },
+        {
+          "bytes": 56945,
+          "path": "biome-service/native/main-image-input-owner.js",
+          "sha256": "95dc355f8821f7227c223f0a7490c64b2b5702f2da730612daeb8500f58936f4"
+        },
+        {
+          "bytes": 17727,
+          "path": "biome-service/native/main-material-parameter-bank.js",
+          "sha256": "1aa7e1b6dacd7a9b14a0ea74646deeffe943a31aae057f8b9fb6fa293dd55959"
+        },
+        {
+          "bytes": 19940,
+          "path": "biome-service/native/main-original-geometry-group-collector.js",
+          "sha256": "e98e3e953a33aba055afa88e772f40c007b28a314ae480b8f4d335ce6e1c3deb"
+        },
+        {
+          "bytes": 32792,
+          "path": "biome-service/native/main-owned-shade-mip-owner.js",
+          "sha256": "f46cc4cb2579590ff8a510441f26742d0dee408996fdf92826f350fe4a4298b3"
+        },
+        {
+          "bytes": 29532,
+          "path": "biome-service/native/main-owner-field.js",
+          "sha256": "4b24988ff5fa72a3779ad2df6367ff844395360c95518697066ddaff58542f4f"
+        },
+        {
+          "bytes": 21998,
+          "path": "biome-service/native/main-ownership-inputs.js",
+          "sha256": "9f7dbd9a3a1e7d2f85cf6ab0c968902acb466ed76613f332142e254203c6fa99"
+        },
+        {
+          "bytes": 23892,
+          "path": "biome-service/native/main-prepared-geometry-snapshot.js",
+          "sha256": "21b36d961fc607960cfd5e1401f7aa9034563a25438e5b55c117b03ea149f894"
+        },
+        {
+          "bytes": 45659,
+          "path": "biome-service/native/main-prepared-surface-pass.js",
+          "sha256": "d0155e348e9ebad597440298cf89df82404757da72a6c320747c79e4926d3592"
+        },
+        {
+          "bytes": 9400,
+          "path": "biome-service/native/main-ray-bridge-prototype.js",
+          "sha256": "ea89a3032f3c5040ff754bca5669adeba66630ea962dc15787868b484beb007d"
+        },
+        {
+          "bytes": 11258,
+          "path": "biome-service/native/main-shade-mip-cpu-owner.js",
+          "sha256": "ee0663c18a70878a4766acd9076e05729ebc363f181a826a475ad06d33420440"
+        },
+        {
+          "bytes": 18111,
+          "path": "biome-service/native/main-startup-draw-owner.js",
+          "sha256": "422a8a07ed168ad741ef43f922b0ef231302e9dfc7eebd5ea58177827147a3aa"
+        },
+        {
+          "bytes": 65159,
+          "path": "biome-service/native/main-surface-scene-inputs.js",
+          "sha256": "75ac4a44943d05350210f300fd27ec9e57e9cfc7fc997be8f2c0cd9045340bc3"
+        },
+        {
+          "bytes": 24726,
+          "path": "biome-service/native/main-target-owner.js",
+          "sha256": "e85aa8ae4e0ad59d33afce43023a9c2c7905a36be8bcae6dbe6b02cbd853f235"
+        },
+        {
+          "bytes": 99452,
+          "path": "biome-service/native/main-texture-binding-owner.js",
+          "sha256": "234d212e4de8589520672085bdbaa071ba662b461f3ac196b468fe13983b077d"
+        },
+        {
+          "bytes": 5631,
+          "path": "biome-service/native/main-world-coercion.js",
+          "sha256": "7d99065345d28d3b4b17cd5fa9b103659413d1e2207ab37809b572ad61fc946b"
+        },
+        {
+          "bytes": 19728,
+          "path": "biome-service/native/main-world-mip-upload-owner.js",
+          "sha256": "47b2a7f4ad5246a54df2fe1dcba2b8dd46a676f3f2c0668cdc6f9462cc02a790"
+        },
+        {
+          "bytes": 15298,
+          "path": "biome-service/native/main-world-pass-inputs.js",
+          "sha256": "e07a88fb798c4da54290448191953371e1a77925b39e597f50b7f3031865eed1"
+        },
+        {
+          "bytes": 91205,
+          "path": "biome-service/native/main-world-state-snapshot.js",
+          "sha256": "710012f55293105baecd499ec5df877f125b9f8e9a1581607f2bd80cea355d2a"
+        },
+        {
+          "bytes": 9271,
+          "path": "biome-service/native/native-distance.js",
+          "sha256": "94ab0d7abe3df07aa7221c7899794c73c5749666471e24cb4164a453759170ff"
+        },
+        {
+          "bytes": 5968,
+          "path": "biome-service/native/native-surface-program.js",
+          "sha256": "84df8832bb566a587feb636dc6588c1f67d44316733157f0d30ea620b461d5f7"
+        },
+        {
+          "bytes": 70934,
+          "path": "biome-service/native/original-edge-planner-kernel.js",
+          "sha256": "0fe2f6bf34719acc3d6d7d38554157dece45776e7ab416d87be3f4847ce1ef58"
+        },
+        {
+          "bytes": 3180,
+          "path": "biome-service/native/overview-index.js",
+          "sha256": "a6e5b4c455b9eff673948f1db6902fc184da08f25d81035dce5b0ea8e7a1a04c"
+        },
+        {
+          "bytes": 18643,
+          "path": "biome-service/native/overview-material-table.js",
+          "sha256": "33b8f363d4389a31bb214280f1a22c928ccd0e91ccbe07925c538e06016edf17"
+        },
+        {
+          "bytes": 8800,
+          "path": "biome-service/native/overview-shader.js",
+          "sha256": "fe79f393b045c8e13cdf03a3b0eca402fcc557554d37155d5138625ac5625400"
+        },
+        {
+          "bytes": 9652,
+          "path": "biome-service/native/owner-tile-resources.js",
+          "sha256": "f2adbabad80182a9f5062bec59c899595e43133eab06935fe919056822bcfb29"
+        },
+        {
+          "bytes": 31960,
+          "path": "biome-service/native/positions-backend.js",
+          "sha256": "f212f18d8fefa60dc25b5f1c3cf3689da1beb53e3a365c5bd7f05de16c4c6421"
+        },
+        {
+          "bytes": 5200,
+          "path": "biome-service/native/projection-lens.js",
+          "sha256": "83a8e5428217cb8725b3aab4738df522c41ecbc6f9e6e781910a101aee6cd92b"
+        },
+        {
+          "bytes": 30704,
+          "path": "biome-service/native/provider-host.js",
+          "sha256": "9bd0ad8149d4579b61fc3ffa417ee7caf2b3d88357dcfe079cf784cfdb78d87d"
+        },
+        {
+          "bytes": 1830,
+          "path": "biome-service/native/providers/fixture-open-industry.js",
+          "sha256": "b85da63f32616eb1c5fbe6695035af1f04947297ddd14cd640a5063645e53703"
+        },
+        {
+          "bytes": 6655,
+          "path": "biome-service/native/providers/fixture-track-meadow.js",
+          "sha256": "dce5440bc2cd65366444361c5118ead8b7745a7ec162b5f0cfd76cb4e537bc60"
+        },
+        {
+          "bytes": 108311,
+          "path": "biome-service/native/resource-leases.js",
+          "sha256": "f805286612250ce24c6e8105141da52169c72599a2abb5ef455c79b116f95ed7"
+        },
+        {
+          "bytes": 18614,
+          "path": "biome-service/native/retained-demand-plan.js",
+          "sha256": "ab9d99f676169b7b645c9d4efd38f4d2d85d25faa1268edc855e81602024f730"
+        },
+        {
+          "bytes": 58784,
+          "path": "biome-service/native/root-program-binding.js",
+          "sha256": "39616fb243e7968243ecfe4599ded05ff65635aa351bd19d541ff01e24302f7e"
+        },
+        {
+          "bytes": 118511,
+          "path": "biome-service/native/root-target-backend.js",
+          "sha256": "b0efa9271d94fef061f293fdd55f051fd266cc42b8b471174f2bc54ea43497cc"
+        },
+        {
+          "bytes": 76077,
+          "path": "biome-service/native/shared-gpu-backend.js",
+          "sha256": "6699c52a359d14ee5aab85dc0dd8d305ff955e7b87ea5bc7d8a547c9d8b53251"
+        },
+        {
+          "bytes": 16839,
+          "path": "biome-service/native/source-admission.js",
+          "sha256": "d1676c985688bb3330ae2e35e1194c8b2c05116652939e1b183e0047751d8a7f"
+        },
+        {
+          "bytes": 9652,
+          "path": "biome-service/native/spbx-owned-cell-partition.js",
+          "sha256": "bb351a8e7743f783ed4545621fdb2a43178ccb54fc336a5b314ec21656c64fdc"
+        },
+        {
+          "bytes": 15018,
+          "path": "biome-service/native/state-contexts.js",
+          "sha256": "48ae6f98aaf97a239111dc6751b14b82ac3d2d436260e5f05befb9296ea157e5"
+        },
+        {
+          "bytes": 1675,
+          "path": "biome-service/native/static-geometry.js",
+          "sha256": "c22d7c42323c0e02373929cc6c78edac6921f94f2b307d106bdf4bceebc1c2b6"
+        },
+        {
+          "bytes": 13969,
+          "path": "biome-service/native/surface-bounds.js",
+          "sha256": "58dedbf812e6e51f827bf30e71d79afdcc45fca223a719fca9e0452ff0aaa15c"
+        },
+        {
+          "bytes": 8715,
+          "path": "biome-service/native/surface-differential.js",
+          "sha256": "f18fc04c9a1c4e58d4d011b315ac9ad4a290d64b2caf31721c0f68ca29bb597d"
+        },
+        {
+          "bytes": 35729,
+          "path": "biome-service/native/surface-kernel.js",
+          "sha256": "4f1bf9fc14db88f83e9c5fe48a870428b35b491b158363b18f38a0aaee64c90f"
+        },
+        {
+          "bytes": 31867,
+          "path": "biome-service/native/surface-uniform-transport.js",
+          "sha256": "7e5989e82cbcf14ed4e9c62f8cc3301f4689b083774c95ef82bafdd22c9f516e"
+        },
+        {
+          "bytes": 9747,
+          "path": "biome-service/native/terrain-mesh.js",
+          "sha256": "8d77dcda8f8ca241e8c50383706bed49b005911b746091718def658b65d1a924"
+        },
+        {
+          "bytes": 3016,
+          "path": "biome-service/native/tiled-owner-shader.js",
+          "sha256": "04730b62929503a2c83142104fd3434f02d3803433ac82fad6f2ae81e02d3247"
+        },
+        {
+          "bytes": 9048,
+          "path": "biome-service/native/world-input.js",
+          "sha256": "91e94085bf71751a3177a2f0abfc55f764ce24fa3eae41094a6ab38963669e4b"
+        },
+        {
+          "bytes": 11195,
+          "path": "biome-service/numeric-profile.js",
+          "sha256": "a4ce397e3593c46cbaab513d51bb759205f188947a003b2c7bfe9a8a88a12108"
+        },
+        {
+          "bytes": 7448,
+          "path": "biome-service/owned-record-intake.js",
+          "sha256": "1b83470a1951e2be42ab585caff5dc5636753fe4134fcb81e4ec458387ec7328"
+        },
+        {
+          "bytes": 8263,
+          "path": "biome-service/provider-profiles.js",
+          "sha256": "2538836f3de836a39cb08018dc42be230104178a713b845bf1e7318e7ff142d9"
+        },
+        {
+          "bytes": 24045,
+          "path": "biome-service/records.js",
+          "sha256": "70dbb2302f88f5f950de3eb2d3e94951a1537fdeab54640e7bb95746d69c1556"
+        },
+        {
+          "bytes": 17507,
+          "path": "biome-service/release-store.js",
+          "sha256": "fe25c7809fadac26918305ec69974f0b21eded0905a76e0e8665680610554627"
+        },
+        {
+          "bytes": 11865,
+          "path": "biome-service/reservation-index.js",
+          "sha256": "2d99179e6286f4d0232ffe9b3b7820d6780daf1a4640296630af1854ef7e0210"
+        },
+        {
+          "bytes": 1108030,
+          "path": "biome-service/schema-validators.js",
+          "sha256": "7e2a0965c4e5f92b72bb4af2599425149ce1bb52d501b00471bfb01f59e4a46f"
+        },
+        {
+          "bytes": 30482,
+          "path": "biome-service/spatial-index.js",
+          "sha256": "3d5bb52156db3b03f99831a012c7ff2c6c119093712c8ee5fb20942e67a0822e"
+        },
+        {
+          "bytes": 6110,
+          "path": "biome-service/storage.js",
+          "sha256": "5bfe64c9e93afad365237cc73e81282da8176fca4a764cb11b3eba89530f9fbe"
+        },
+        {
+          "bytes": 12238,
+          "path": "biome-service/verified-record-store.js",
+          "sha256": "020409821f63b085c0d4ab8214a42ccec6ee9179cafc7b75e1245aad188b1d0a"
+        },
+        {
+          "bytes": 13660,
+          "path": "biome-service/view-envelope.js",
+          "sha256": "db9dee381d246f3e957a96964ad86fff806d8b954c341eedebba1e61cf6438eb"
+        },
+        {
+          "bytes": 10163,
+          "path": "biome-shader.js",
+          "sha256": "7bf773e6680c9a9e086f8ed7f189023ee64e49fd70fd1cbd87feb231f342f2c3"
+        },
+        {
+          "bytes": 10063,
+          "path": "biomes.js",
+          "sha256": "01924bec4da4ebb9cd1a8e648193d7e4de8be8edaa91104da8824b1e2bdcc439"
+        },
+        {
+          "bytes": 11973,
+          "path": "collection-shader.js",
+          "sha256": "03e9c1a69365a20a6bd0dc89230b861a51196d30631575785d64aeb6c3678e01"
+        },
+        {
+          "bytes": 13626,
+          "path": "collection.js",
+          "sha256": "d937d9379cdfd56e2436d370460f696a7c6427464ec297d7272bdd59485bebb4"
+        },
+        {
+          "bytes": 16871,
+          "path": "edge-stream.js",
+          "sha256": "ae26132ae326c88d6dcddb5e6f077f4fce9458957fb1a4065a4106e2a5800651"
+        },
+        {
+          "bytes": 8197,
+          "path": "edge-streaming.js",
+          "sha256": "7196eff7ee4e024ba52abac2fa486237cc026ec3a2355380f0722241c56345d9"
+        },
+        {
+          "bytes": 40746,
+          "path": "field-sites.js",
+          "sha256": "5d3ce858453f82788df891a51dc2ac15d22d6f5ec877dce90f05bf09ef2af5b2"
+        },
+        {
+          "bytes": 3957,
+          "path": "flight.js",
+          "sha256": "33022381fc0ae8a13ed01937fafa716ea98f510ec4cf71644e66f0d4e5da08b3"
+        },
+        {
+          "bytes": 32527,
+          "path": "geometry-renderer.js",
+          "sha256": "8732ceedf4374aa4a1a9f36a2dc25978de9d28d5a6d39eb76424ffdc4cec330f"
+        },
+        {
+          "bytes": 53065,
+          "path": "grass-stream.js",
+          "sha256": "9b2ac9bd4957c52a6453b8ddd44f425ffcdf0fb4f025f2f75c85293e4e7e7700"
+        },
+        {
+          "bytes": 19761,
+          "path": "ground-chunks.js",
+          "sha256": "75f2edcf0042f2dced81a209f050bb3b9557c33b892b42bddd3b54c9f102f0b2"
+        },
+        {
+          "bytes": 6848,
+          "path": "hero-textures.js",
+          "sha256": "3c468b7b93e8a69ac18056d6dc0ac666e51b42ef62f00eb5bbad05649bd7f4ac"
+        },
+        {
+          "bytes": 2618,
+          "path": "inspection-camera.js",
+          "sha256": "ccb66d6a7017d554739a9f77253bf0d1ef4b19cf21f06572058b4297c7a133c4"
+        },
+        {
+          "bytes": 60890,
+          "path": "instanced-environment.js",
+          "sha256": "38da69ae1da12145306b6e37540c097e85de41b6beb10d547e154f77957783e6"
+        },
+        {
+          "bytes": 1009,
+          "path": "legacy-role-adapter.js",
+          "sha256": "d5395969c47ebbe4670117721668cacbee01fb34216735458d92f1d83635a6a7"
+        },
+        {
+          "bytes": 8293,
+          "path": "local-shadows.js",
+          "sha256": "2866cee95f72fd842005ddb36c416d1a2715a735fca058d8b6cb0b704f337104"
+        },
+        {
+          "bytes": 14995,
+          "path": "math.js",
+          "sha256": "c249ce5165d27bcfbaf8431bfa09bc00fdac84e5a83c6a471ee59c455ab2a6df"
+        },
+        {
+          "bytes": 3975,
+          "path": "meadow-benchmark.js",
+          "sha256": "158589a8a308cdadb79843681df31221f5f32c034e4b4d9aa8630b05b074401c"
+        },
+        {
+          "bytes": 14687,
+          "path": "meadow-blocks.js",
+          "sha256": "bea7391d4aa6120a039a55ae4e422163e4a95ca5f8a84385d4def08d2e31fef8"
+        },
+        {
+          "bytes": 23946,
+          "path": "meadow-canopy.js",
+          "sha256": "0e5ee0316a13ab07d6260f201be7d1db85331d8a5995de0845b2f5b1b6933c95"
+        },
+        {
+          "bytes": 7954,
+          "path": "meadow-ecology.js",
+          "sha256": "abebfeb8cfce8f0ed72196b0077239310fde3d0c6be08810879ee09f87bb17dc"
+        },
+        {
+          "bytes": 22364,
+          "path": "meadow-field.js",
+          "sha256": "a89b5405ef698eba20606a37afc7382b4288ec33e123f281043bcbd8053c3743"
+        },
+        {
+          "bytes": 8744,
+          "path": "meadow-provider.js",
+          "sha256": "34812a5b7ddaf52e90f5514cca4be8f2f4f3fa0585ec3447496401fbf3b08aa5"
+        },
+        {
+          "bytes": 4122,
+          "path": "meadow-support.js",
+          "sha256": "f8f6f94579266dcf2898ee3ccb9b35c08e2aa5b3f49e2ad606799ac67c037bd2"
+        },
+        {
+          "bytes": 3433,
+          "path": "meadow-wind.js",
+          "sha256": "5612b89c625d4ac0c35ceded8e9a1f3f4c6e6e57a4756c17582774f6f3cf4486"
+        },
+        {
+          "bytes": 6687,
+          "path": "neighbourhood-shader.js",
+          "sha256": "8e612f8f322c88e1f956543651f8624b0b94a48a27bb6854bd7e61f62f1bd0ea"
+        },
+        {
+          "bytes": 2673,
+          "path": "pack-library.js",
+          "sha256": "9c719d9e4ae7a08853342ac9a1e248ae9da9faa0a06f6c626845f5e5b8b1afdb"
+        },
+        {
+          "bytes": 3239,
+          "path": "panorama.js",
+          "sha256": "9017a71c5857fe4179c96a6c140c6c3fe7cd07b5cbac9e9c7269337ff2fd2ddc"
+        },
+        {
+          "bytes": 12079,
+          "path": "places.js",
+          "sha256": "945b094b3e90efcb73ffda717e853d9e172da93496ebdd15e2b282eb08b5129a"
+        },
+        {
+          "bytes": 2097,
+          "path": "preview-light.js",
+          "sha256": "e405d9b4237fdcd7d84c848ea0b0921025e165564a8f4c884faf4b23b1f75801"
+        },
+        {
+          "bytes": 719,
+          "path": "preview-quality.js",
+          "sha256": "07c40e7dc269f75a523859028b9a541ce69c209a3817d3db35447dbc9a3d49e8"
+        },
+        {
+          "bytes": 155485,
+          "path": "renderer.js",
+          "sha256": "c83ff61c51b5a033d335a12bd705918df23f9913fb00639caad068c50b5d6a63"
+        },
+        {
+          "bytes": 11798,
+          "path": "shade-edges.js",
+          "sha256": "b3a089476ae2ed87ecb0a38c3ffd745362692b3669a7b3bc270bb09222a30541"
+        },
+        {
+          "bytes": 1022,
+          "path": "shader-sections.js",
+          "sha256": "c307ad33b42fb84bd54ab1d24158471259470a45b85038097bb39f7057894fa0"
+        },
+        {
+          "bytes": 9604,
+          "path": "shaders.js",
+          "sha256": "3c0513513b4eba2ad62607b76d39ed712e7bd85282f5cae970189d0a95e8379e"
+        },
+        {
+          "bytes": 4314,
+          "path": "silhouette-aa.js",
+          "sha256": "8aaa97a79941d9f61093f57250a8d9f6e00d3df254e6f88629df200b7c10eb0b"
+        },
+        {
+          "bytes": 1562,
+          "path": "simulation-timing.js",
+          "sha256": "d10459287b47055e88f008ecdfa25b6971ab74ae289295a77a62e2cbe6298b81"
+        },
+        {
+          "bytes": 3130,
+          "path": "station-shader-performance.js",
+          "sha256": "ad47dc0321792d7c30ab9fde5aa66b95d024c056f941ac729e33a89811f85e04"
+        },
+        {
+          "bytes": 3601,
+          "path": "surface-arrival.js",
+          "sha256": "039497a162338f636ce531634861240e13d741c0230551a0a5a8e99d7184172c"
+        },
+        {
+          "bytes": 14352,
+          "path": "surface-lighting.js",
+          "sha256": "0b5b89dbc5d19bb19a3a944924d58323c9c2a65e7175941d416693faae7fa063"
+        },
+        {
+          "bytes": 10016,
+          "path": "surface-walk.js",
+          "sha256": "4fdef10c6d32346a45d2f19c5d739cd40489039e143b8e053c4f505620e6b20d"
+        },
+        {
+          "bytes": 2190,
+          "path": "survey.js",
+          "sha256": "b4d3d9edaad52c03a36a94c1456fad6d74ae4e512e3b4788ce566a84cb9b7d0a"
+        },
+        {
+          "bytes": 8459,
+          "path": "travel-control.js",
+          "sha256": "48e2a309d15dad234bf317f6d6003387010179e9efc0d4e1798d53bb90516188"
+        },
+        {
+          "bytes": 39337,
+          "path": "vegetation-gpu.js",
+          "sha256": "9ed26f3dd1df67e63e57d29fa7089037ba0173237b8a56874abf976ff0b18a75"
+        },
+        {
+          "bytes": 26596,
+          "path": "vegetation-lifecycle.js",
+          "sha256": "f762122dde51453f82de0f5927066652175344aea72f838c556beb68b7f473ac"
+        },
+        {
+          "bytes": 10510,
+          "path": "vegetation-memory.js",
+          "sha256": "7a700a994f343b61347689922a83b4aa10bd6acc1ee532a59c3bf3a808f04347"
+        },
+        {
+          "bytes": 3228,
+          "path": "vegetation-revisions.js",
+          "sha256": "b77f8d4c4dc9f5c5208be40d5c7875e4967839cc93f65fef404c42aca1e2d5ac"
+        },
+        {
+          "bytes": 16655,
+          "path": "vegetation-selection.js",
+          "sha256": "e33cccadcac9a2a6bbe0782a03c794beaf23b34bf9169c6435668e35cb37aa95"
+        },
+        {
+          "bytes": 36609,
+          "path": "vegetation-service.js",
+          "sha256": "f34ce1569dc720f9f1867e0e541191bfc140f26060c67cc33dc7527af6965627"
+        },
+        {
+          "bytes": 7202,
+          "path": "vegetation-worker-pool.js",
+          "sha256": "eb57b5761827c7cf8204213f743758cfcc39cce57ae1bb7767e1f9d50be26ee0"
+        },
+        {
+          "bytes": 27013,
+          "path": "volume.js",
+          "sha256": "114acfffc5b9a528e311da77fe37f9832a0e780a7ab21d70e3716135a06599ba"
+        },
+        {
+          "bytes": 7515,
+          "path": "watershed-neighbourhood.js",
+          "sha256": "da095c5d02dd7f3e7e3cb9f77c00d32a12b81de8f08d47b333e024534d27fdfe"
+        },
+        {
+          "bytes": 3424,
+          "path": "watershed-network.js",
+          "sha256": "31e1339b3626436e29e6a04059a9552aeada818d3374d3292c681cb54615678c"
+        },
+        {
+          "bytes": 19962,
+          "path": "watershed-province.js",
+          "sha256": "75334be87b9aeba3893abe5fcf05793dab251bbe745c6f290ee6c290fe9fc50d"
+        },
+        {
+          "bytes": 9929,
+          "path": "world-address.js",
+          "sha256": "b614e3f9e9492674c180ac9ebc72aec2345e5428bdfe98984cb4cd5c224b77f1"
+        },
+        {
+          "bytes": 15807,
+          "path": "world-geography.js",
+          "sha256": "1dce2e952860f5d6498bdd360646335782866ffe7d6b9d6cb584eb1f0c9d1073"
+        },
+        {
+          "bytes": 649,
+          "path": "world-palette.js",
+          "sha256": "73df1a28a61be534c9b8b63a1a83fa11888e4f7fc5ac179221709e40fb22e70b"
+        },
+        {
+          "bytes": 33005,
+          "path": "world-shader.js",
+          "sha256": "4a070d38f535aa7b1330f176231be272c781e28ae10829914138dceb61911e3b"
+        },
+        {
+          "bytes": 8540,
+          "path": "world-textures.js",
+          "sha256": "d424815ad1af9f10ad61c59408243c8862e4b633d7ff1c35d6460c3f87265e41"
+        },
+        {
+          "bytes": 10225,
+          "path": "world-topology.js",
+          "sha256": "2652a46d33997899f8c0108481ff84a0c97dfc720f2e3853592d0748280f8cf6"
+        },
+        {
+          "bytes": 20538,
+          "path": "world.js",
+          "sha256": "82877ee7543aef2336d3a4dc94b5e42aa55f2eee9f9eb24ef02ece2b0eea861a"
+        },
+        {
+          "bytes": 8027,
+          "path": "wound-textures.js",
+          "sha256": "068a6c89cd7207b0217b0ead8b3ea1294fe94546ec7b672a9c64d44277d2a5d4"
+        },
+        {
+          "bytes": 5146,
+          "path": "wreckage.js",
+          "sha256": "b73a8d580c9f54cc728c232b2d8db095ab1292db6da418b70c4eb92628d056fe"
+        }
+      ],
+      "defaultSurfaceProfileRef": {
+        "digest": "237843edcb7dfbaa45285125c500f721f2ecf8ba8726f9fbe03793bc69ad7031",
+        "id": "main-owned-default-surface-facts-v2"
+      },
+      "demandedBridgeLimits": {
+        "maximumRequests": 20,
+        "metadataBytes": 14976,
+        "readyStage": 8,
+        "singleInitialPlan": true,
+        "sourceFamilies": 2
+      },
+      "format": "sphere-main-managed-split-texture-handoff/8",
+      "hostLimits": {
+        "cpuResidentBytes": 0,
+        "cpuTotalBytes": 0,
+        "cpuTransientBytes": 0,
+        "gpuBufferResidentBytes": 0,
+        "gpuTextureResidentBytes": 8388852,
+        "gpuTotalBytes": 8388852,
+        "gpuTransientBytes": 0,
+        "maxJobs": 2,
+        "maxPrepareOpsPerSlice": 4096,
+        "maxUploadBytesPerFrame": 262144
+      },
+      "id": "main-managed-split-texture-handoff-v8",
+      "managedSurfaceLimits": {
+        "logicalOnly": true,
+        "maxDimension": 16384,
+        "maxRecords": 3,
+        "maxSetters": 2,
+        "metadataBytes": 32768,
+        "nativeBackingBytes": "UNMEASURED",
+        "planMetadataBytes": 8192
+      },
+      "ordinaryBridgeLimits": {
+        "contentScopes": [
+          1,
+          4,
+          1
+        ],
+        "maximumNativeHolderDepth": 8,
+        "metadataBytes": 8192,
+        "retainedReaders": 6
+      },
+      "programProfileRef": {
+        "digest": "aaec9807abe3c085461480af1428dc1b8b161ab6bdd57d8abfcc57f443873ff5",
+        "id": "main-owned-cold-original-programs-v1"
+      },
+      "splitHandoffLimits": {
+        "controlMetadataBytes": 12288,
+        "followingWork": 768,
+        "maximumPending": 1,
+        "maximumPhases": 6,
+        "maximumSharesPerVisit": 1,
+        "prepareStage": 7,
+        "readyStage": 8
+      },
+      "starContentLimits": {
+        "checkWork": 2048,
+        "closeWork": 128,
+        "coldWork": 1024,
+        "fixedMetadataBytes": 4096,
+        "followingWork": 64,
+        "maxReaders": 64,
+        "readerMetadataBytes": 4608,
+        "retainWork": 3072
+      },
+      "surfaceImportLimits": {
+        "captureWork": 1024,
+        "checkWork": 1024,
+        "closeWork": 128,
+        "currentWork": 128,
+        "factoryWork": 128,
+        "initialPeak": "UNMEASURED_POST_CREATION_IMPORT",
+        "maxInitialSurfaceRecords": 1,
+        "metadataBytes": 4096,
+        "nativeBackingBytes": "UNMEASURED",
+        "readerMetadataBytes": 8192,
+        "retireWork": 64
+      }
+    },
+    "digest": "36b21e524f5a0c00a6728b34852286184940230aa2318ce8c413d5b2d295f096"
+  },
+  "remainingGates": {
+    "newControllerFunding": null,
+    "APP_EXECUTION_ENABLED": false,
+    "ordinaryBridgeWork": null,
+    "sourceCallerWork": null,
+    "wholeHostCap": null,
+    "fullMain": false
+  }
+}

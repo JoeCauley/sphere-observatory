@@ -1,0 +1,306 @@
+{
+  "status": "PASS_SIMULTANEOUS_SOURCE_ONLY_VECTOR_AND_FRESH_CACHE_REFUSAL",
+  "utc": "2026-10-23T11:57:34.532Z",
+  "selectedSource": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/candidate-03/source",
+  "actualBodies": [
+    "S.admit/SourceStorageV2",
+    "Q",
+    "Records"
+  ],
+  "sourceOverrides": "Positive reads use exact selected disk bytes. One disclosed negative returns a copied S byte array with one byte changed; no file is edited.",
+  "sourcePins": [
+    {
+      "path": "biome-service/native/source-admission.js",
+      "bytes": 16839,
+      "sha256": "d1676c985688bb3330ae2e35e1194c8b2c05116652939e1b183e0047751d8a7f"
+    },
+    {
+      "path": "biome-service/metadata-budget.js",
+      "bytes": 4137,
+      "sha256": "9318446452e9a99fee2873eaf0d072bd76c39f714e4d1bceadf6057d04df6635"
+    },
+    {
+      "path": "biome-service/records.js",
+      "bytes": 24045,
+      "sha256": "70dbb2302f88f5f950de3eb2d3e94951a1537fdeab54640e7bb95746d69c1556"
+    },
+    {
+      "path": "owned-main-bootstrap.js",
+      "bytes": 67631,
+      "sha256": "a29fd0953fa0560eef5b790647de00704b79cc220e17686b472e49bfd9132716"
+    }
+  ],
+  "simultaneous": {
+    "sourceCopies": 219,
+    "sourceBytes": 6310755,
+    "logicalReferences": 233,
+    "borrowers": 3,
+    "admitting": false,
+    "disposed": false,
+    "ownership": "PRIVATE_SOURCE_BYTES_AND_COMPLETE_LOGICAL_READERS",
+    "nativeHeap": "UNMEASURED",
+    "storageProfile": "private-source-copy-serial-scratch-v2",
+    "persistentSourcePayloadBytes": 6310755,
+    "scratchPayloadBytes": 0,
+    "peakScratchPayloadBytes": 3328186,
+    "scratchAllocations": 240,
+    "incomingBacking": "EXACT_ROW_SIZE_OFFSET0_UINT8_ARRAY",
+    "scratchLifetime": "PREPAID_SERIAL_READ_COPY_HASH_CLEARED_BEFORE_RELEASE"
+  },
+  "snapshots": [
+    {
+      "name": "Common Q/S before graph",
+      "Q": {
+        "heldBytes": 12874,
+        "requestedBytes": 8192,
+        "bookkeepingBytes": 4682,
+        "peakBytes": 12874,
+        "limitBytes": 33554432,
+        "liveReservations": 1,
+        "maximumReservations": 4096,
+        "owners": [
+          {
+            "name": "biome-native-source-owner",
+            "bytes": 8778
+          }
+        ],
+        "scope": "CONSERVATIVE_LOGICAL_METADATA_ADMISSION",
+        "nativeHeap": "UNMEASURED"
+      },
+      "source": {
+        "sourceCopies": 0,
+        "sourceBytes": 0,
+        "logicalReferences": 0,
+        "borrowers": 0,
+        "admitting": false,
+        "disposed": false,
+        "ownership": "PRIVATE_SOURCE_BYTES_AND_COMPLETE_LOGICAL_READERS",
+        "nativeHeap": "UNMEASURED",
+        "storageProfile": "private-source-copy-serial-scratch-v2",
+        "persistentSourcePayloadBytes": 0,
+        "scratchPayloadBytes": 0,
+        "peakScratchPayloadBytes": 0,
+        "scratchAllocations": 0,
+        "incomingBacking": "EXACT_ROW_SIZE_OFFSET0_UINT8_ARRAY",
+        "scratchLifetime": "PREPAID_SERIAL_READ_COPY_HASH_CLEARED_BEFORE_RELEASE"
+      }
+    },
+    {
+      "name": "Graph219 retained",
+      "Q": {
+        "heldBytes": 7828629,
+        "requestedBytes": 7693587,
+        "bookkeepingBytes": 135042,
+        "peakBytes": 10283776,
+        "limitBytes": 33554432,
+        "liveReservations": 222,
+        "maximumReservations": 4096,
+        "owners": [
+          {
+            "name": "biome-native-source-owner",
+            "bytes": 7350451
+          },
+          {
+            "name": "shared-source-vector",
+            "bytes": 474082
+          }
+        ],
+        "scope": "CONSERVATIVE_LOGICAL_METADATA_ADMISSION",
+        "nativeHeap": "UNMEASURED"
+      },
+      "source": {
+        "sourceCopies": 219,
+        "sourceBytes": 6310755,
+        "logicalReferences": 219,
+        "borrowers": 1,
+        "admitting": false,
+        "disposed": false,
+        "ownership": "PRIVATE_SOURCE_BYTES_AND_COMPLETE_LOGICAL_READERS",
+        "nativeHeap": "UNMEASURED",
+        "storageProfile": "private-source-copy-serial-scratch-v2",
+        "persistentSourcePayloadBytes": 6310755,
+        "scratchPayloadBytes": 0,
+        "peakScratchPayloadBytes": 3328186,
+        "scratchAllocations": 219,
+        "incomingBacking": "EXACT_ROW_SIZE_OFFSET0_UINT8_ARRAY",
+        "scratchLifetime": "PREPAID_SERIAL_READ_COPY_HASH_CLEARED_BEFORE_RELEASE"
+      }
+    },
+    {
+      "name": "Changed-source cache hit refuses; old graph retained exactly",
+      "Q": {
+        "heldBytes": 7828629,
+        "requestedBytes": 7693587,
+        "bookkeepingBytes": 135042,
+        "peakBytes": 13110733,
+        "limitBytes": 33554432,
+        "liveReservations": 222,
+        "maximumReservations": 4096,
+        "owners": [
+          {
+            "name": "biome-native-source-owner",
+            "bytes": 7350451
+          },
+          {
+            "name": "shared-source-vector",
+            "bytes": 474082
+          }
+        ],
+        "scope": "CONSERVATIVE_LOGICAL_METADATA_ADMISSION",
+        "nativeHeap": "UNMEASURED"
+      },
+      "source": {
+        "sourceCopies": 219,
+        "sourceBytes": 6310755,
+        "logicalReferences": 219,
+        "borrowers": 1,
+        "admitting": false,
+        "disposed": false,
+        "ownership": "PRIVATE_SOURCE_BYTES_AND_COMPLETE_LOGICAL_READERS",
+        "nativeHeap": "UNMEASURED",
+        "storageProfile": "private-source-copy-serial-scratch-v2",
+        "persistentSourcePayloadBytes": 6310755,
+        "scratchPayloadBytes": 0,
+        "peakScratchPayloadBytes": 3328186,
+        "scratchAllocations": 226,
+        "incomingBacking": "EXACT_ROW_SIZE_OFFSET0_UINT8_ARRAY",
+        "scratchLifetime": "PREPAID_SERIAL_READ_COPY_HASH_CLEARED_BEFORE_RELEASE"
+      }
+    },
+    {
+      "name": "Graph and helper simultaneously retained",
+      "Q": {
+        "heldBytes": 7867769,
+        "requestedBytes": 7731563,
+        "bookkeepingBytes": 136206,
+        "peakBytes": 13110733,
+        "limitBytes": 33554432,
+        "liveReservations": 224,
+        "maximumReservations": 4096,
+        "owners": [
+          {
+            "name": "biome-native-source-owner",
+            "bytes": 7355135
+          },
+          {
+            "name": "shared-source-vector",
+            "bytes": 508538
+          }
+        ],
+        "scope": "CONSERVATIVE_LOGICAL_METADATA_ADMISSION",
+        "nativeHeap": "UNMEASURED"
+      },
+      "source": {
+        "sourceCopies": 219,
+        "sourceBytes": 6310755,
+        "logicalReferences": 228,
+        "borrowers": 2,
+        "admitting": false,
+        "disposed": false,
+        "ownership": "PRIVATE_SOURCE_BYTES_AND_COMPLETE_LOGICAL_READERS",
+        "nativeHeap": "UNMEASURED",
+        "storageProfile": "private-source-copy-serial-scratch-v2",
+        "persistentSourcePayloadBytes": 6310755,
+        "scratchPayloadBytes": 0,
+        "peakScratchPayloadBytes": 3328186,
+        "scratchAllocations": 235,
+        "incomingBacking": "EXACT_ROW_SIZE_OFFSET0_UINT8_ARRAY",
+        "scratchLifetime": "PREPAID_SERIAL_READ_COPY_HASH_CLEARED_BEFORE_RELEASE"
+      }
+    },
+    {
+      "name": "Graph/helper/Surface simultaneously retained",
+      "Q": {
+        "heldBytes": 7896167,
+        "requestedBytes": 7758795,
+        "bookkeepingBytes": 137372,
+        "peakBytes": 13139085,
+        "limitBytes": 33554432,
+        "liveReservations": 226,
+        "maximumReservations": 4096,
+        "owners": [
+          {
+            "name": "biome-native-source-owner",
+            "bytes": 7359819
+          },
+          {
+            "name": "shared-source-vector",
+            "bytes": 532252
+          }
+        ],
+        "scope": "CONSERVATIVE_LOGICAL_METADATA_ADMISSION",
+        "nativeHeap": "UNMEASURED"
+      },
+      "source": {
+        "sourceCopies": 219,
+        "sourceBytes": 6310755,
+        "logicalReferences": 233,
+        "borrowers": 3,
+        "admitting": false,
+        "disposed": false,
+        "ownership": "PRIVATE_SOURCE_BYTES_AND_COMPLETE_LOGICAL_READERS",
+        "nativeHeap": "UNMEASURED",
+        "storageProfile": "private-source-copy-serial-scratch-v2",
+        "persistentSourcePayloadBytes": 6310755,
+        "scratchPayloadBytes": 0,
+        "peakScratchPayloadBytes": 3328186,
+        "scratchAllocations": 240,
+        "incomingBacking": "EXACT_ROW_SIZE_OFFSET0_UINT8_ARRAY",
+        "scratchLifetime": "PREPAID_SERIAL_READ_COPY_HASH_CLEARED_BEFORE_RELEASE"
+      }
+    },
+    {
+      "name": "All three source-profile charges released",
+      "Q": {
+        "heldBytes": 12874,
+        "requestedBytes": 8192,
+        "bookkeepingBytes": 4682,
+        "peakBytes": 13139085,
+        "limitBytes": 33554432,
+        "liveReservations": 1,
+        "maximumReservations": 4096,
+        "owners": [
+          {
+            "name": "biome-native-source-owner",
+            "bytes": 8778
+          }
+        ],
+        "scope": "CONSERVATIVE_LOGICAL_METADATA_ADMISSION",
+        "nativeHeap": "UNMEASURED"
+      },
+      "source": {
+        "sourceCopies": 0,
+        "sourceBytes": 0,
+        "logicalReferences": 0,
+        "borrowers": 0,
+        "admitting": false,
+        "disposed": false,
+        "ownership": "PRIVATE_SOURCE_BYTES_AND_COMPLETE_LOGICAL_READERS",
+        "nativeHeap": "UNMEASURED",
+        "storageProfile": "private-source-copy-serial-scratch-v2",
+        "persistentSourcePayloadBytes": 0,
+        "scratchPayloadBytes": 0,
+        "peakScratchPayloadBytes": 3328186,
+        "scratchAllocations": 240,
+        "incomingBacking": "EXACT_ROW_SIZE_OFFSET0_UINT8_ARRAY",
+        "scratchLifetime": "PREPAID_SERIAL_READ_COPY_HASH_CLEARED_BEFORE_RELEASE"
+      }
+    }
+  ],
+  "cleanSourceReads": 233,
+  "sharedDistinctCopies": 219,
+  "logicalProfileReferences": 233,
+  "peakQBytes": 13139085,
+  "QAfterDispose": 0,
+  "unchangedQCap": 33554432,
+  "noGCOrRealmReleaseClaim": true,
+  "excluded": [
+    "Module/controller/instance/caller bodies and retained closed APIs",
+    "R/CPU payloads/native VM/heap/source response backing and driver memory",
+    "Actual Renderer/App execution, full host admission and Main/P05"
+  ],
+  "sourceFilesEdited": 0,
+  "browserActions": 0,
+  "serverActions": 0,
+  "P05": "OPEN"
+}

@@ -1,3 +1,5 @@
+> Current continuation: private cold-profile builders pass independent component checks; actual scheduled Source integration and complete builder funding are now active. P05 remains OPEN. See [the builder report](Observatory-Main-Cold-Builders-2026-10-23.md).
+
 # Main cold-entry continuation — 23 October 2026
 
 The texture handoff split is complete in its verified component scope. The next Main startup work is now defined: separate real source checks and the existing Star setup from the later surface import, retaining ownership and refreshing the checks between visits. The existing limits stay unchanged.

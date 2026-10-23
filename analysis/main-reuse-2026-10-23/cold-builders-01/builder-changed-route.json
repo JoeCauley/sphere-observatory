@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "case": "rendererRouteChange",
+  "scope": "EXACT_PRIVATE_SOURCE_FUNCTIONS_AND_ACTUAL_COPIED_RENDERER_CONSTRUCTOR_NODE_MODEL_ONLY",
+  "candidate": {
+    "loaderSha256": "f7b7bcf4d19587183d8f6f256a8f9fa731fb3fe680a7961f003e8f426900c9cc",
+    "rendererSha256": "c83ff61c51b5a033d335a12bd705918df23f9913fb00639caad068c50b5d6a63"
+  },
+  "substitutions": [
+    "Controller block extracted and invoked in Node despite original product funding null; no source fee or instance literal override",
+    "Actual copied Renderer module and constructor; constructor resource port and required texture child constructors modeled; optional GPU children omitted",
+    "Instrumented linked-program/shader/reflection adapter, not native WebGL",
+    "Surface ownership/facts and G/backend brand are modeled; common Q/S/R and actual PB factory/admit remain genuine",
+    "Loader Document/currentScript model authenticates the exact copied Renderer hook",
+    "Explicit fixture-only resource limits matched by actual R; no whole-host cap authority or Main graph claimed",
+    "Actual Node host dependencies, Numeric.capture/verify and HostWorld.create; no external host digest/adapter accepted"
+  ],
+  "groups": [
+    "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+    "Actual copied Renderer constructor and its private canonical program record populate the reciprocal source-currentScript reader",
+    "A Renderer route method changed after original source-load acknowledgement refuses before a private builder can adopt the new callable or choose a profile format"
+  ],
+  "counts": {
+    "reads": 219,
+    "shaderQueries": 0,
+    "facts": 0
+  }
+}

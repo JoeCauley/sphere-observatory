@@ -1,0 +1,86 @@
+[
+  {
+    "path": "combined-component-02.json",
+    "source": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-builders-progress-2026-10-23-01/combined-receipt-02.json",
+    "bytes": 4122,
+    "sha256": "c92d2127c2fdc768e46235ee9162d0ae31211677b5e0f5c2ed35ad23f3e7a1af"
+  },
+  {
+    "path": "builder-author.json",
+    "source": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-cold-profiles-2026-10-23-01/builder-author-01/CHECK-05.json",
+    "bytes": 19414,
+    "sha256": "3efe4976c633b22877846f98a57a66f3ea710257121be930578ed3977add3ad5"
+  },
+  {
+    "path": "builder-independent.json",
+    "source": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-cold-profiles-2026-10-23-01/independent-review-01/CHECK-02.json",
+    "bytes": 12408,
+    "sha256": "cebdecb135a8825e8dd4a24ba34e06e2e7ae36604cd096de63cb3e247916411f"
+  },
+  {
+    "path": "builder-review.md",
+    "source": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-cold-profiles-2026-10-23-01/independent-review-01/REVIEW.md",
+    "bytes": 7672,
+    "sha256": "8fb100585e19f026071fc2c9b29756397e6df17f35bf6973dc33f5a71a95b080"
+  },
+  {
+    "path": "builder-positive.json",
+    "source": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-cold-profiles-2026-10-23-01/builder-author-01/control-positive-07.json",
+    "bytes": 91872,
+    "sha256": "d47ac97646e353ce8493c16949d714cf89a5770e667f03dd36ec16c5134c891c"
+  },
+  {
+    "path": "builder-relink-during-await.json",
+    "source": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-cold-profiles-2026-10-23-01/builder-author-01/control-relinkAwait-07.json",
+    "bytes": 3204,
+    "sha256": "4ed51ae7d6edad87186246943dcf5fb90fba88bb43bdb9b55c510115dae691c4"
+  },
+  {
+    "path": "builder-changed-route.json",
+    "source": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-cold-profiles-2026-10-23-01/builder-author-01/control-rendererRouteChange-07.json",
+    "bytes": 1711,
+    "sha256": "dd1eee3eeb561c57ee796576d67a89dcc223f1ba456f191782c152bb95d5e475"
+  },
+  {
+    "path": "builder-namespace-refusal.json",
+    "source": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-cold-profiles-2026-10-23-01/builder-author-01/control-setterRefusal-07.json",
+    "bytes": 1581,
+    "sha256": "907aa1d59f57f51d473ebe12aeee189658537276cb74a8240f80c1265698b286"
+  },
+  {
+    "path": "builder-funding-boundary.json",
+    "source": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-cold-profiles-2026-10-23-01/builder-author-01/funding-boundary-03.json",
+    "bytes": 1758,
+    "sha256": "b4d27137ff86a25717b56acf630bc2c53a6770555bce59f213ac0ad5c0cdbd0e"
+  },
+  {
+    "path": "source-reuse-vector.json",
+    "source": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-source-vector-2026-10-23-01/shared-source-vector-01.json",
+    "bytes": 10116,
+    "sha256": "f53bad8d52a4ecc0cefad0d0385c67a70c60424f14556d565c79e5310b147efc"
+  },
+  {
+    "path": "source-protocol.json",
+    "source": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-source-scheduling-2026-10-23-01/component-review-01/CHECK.json",
+    "bytes": 3980,
+    "sha256": "ca65999520bff82e7366d4503879a5fcb90c37aefa74460312dbb8d2b95dcd95"
+  },
+  {
+    "path": "source-protocol-controls.json",
+    "source": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-source-scheduling-2026-10-23-01/component-review-01/probe-results-02.json",
+    "bytes": 1918,
+    "sha256": "a5cb6fe0c46d0c56f8e4c144ff73ac45989e59ba6c4a80537cb28e1faea78b18"
+  },
+  {
+    "path": "source-protocol-held.json",
+    "source": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-source-scheduling-2026-10-23-01/component-review-01/held-ledger.json",
+    "bytes": 1867,
+    "sha256": "da1a014b7c74afa162e4f7d0fdce1baa28cc05072a911f3fe77dbfdd0bf4c398"
+  },
+  {
+    "path": "source-payload-proposals.json",
+    "source": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-source-scheduling-2026-10-23-01/component-review-01/payload-work-graph.json",
+    "bytes": 7432,
+    "sha256": "5ac86827dc1f4d14541c1e7a88463a39bac79e986bb58b9268b5bcff5a35cf3b"
+  }
+]

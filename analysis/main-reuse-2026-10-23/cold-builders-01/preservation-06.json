@@ -1,0 +1,18 @@
+{
+  "status": "PASS_EXACT_BUILDER_PROGRESS_PRESERVATION_AND_PUBLICATION",
+  "utc": "2026-10-23T12:25:30.740874+00:00",
+  "snapshotCount": 37,
+  "archiveEntries": 19183,
+  "recordCount": 3645,
+  "recordsAdded": 224,
+  "freshUnselectedRestoreFiles": 521,
+  "allPriorSnapshotsAndRecordsExact": true,
+  "allCurrentPrefacePriorBodiesExact": true,
+  "currentPlanOnlyOneParagraphChanged": true,
+  "curatedCopiesExact": true,
+  "unrelatedPrivateAtlasFilesExact": true,
+  "publicRuntimeEdited": false,
+  "productMainEnabled": false,
+  "P05": "OPEN",
+  "nextRuntimeAndFundingWork": "ACTIVE_IN_SEPARATE_SIBLINGS"
+}

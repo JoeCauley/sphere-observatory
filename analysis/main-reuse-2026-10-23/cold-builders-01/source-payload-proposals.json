@@ -1,0 +1,232 @@
+{
+  "status": "PROPOSED_SOURCE_DERIVED_PAYLOAD_ENVELOPES_NOT_RUNTIME_PRICES",
+  "vocabulary": "Pinned Source37 fixed metadata/native/source row vocabulary. Canonical character transaction is explicitly named and width-bounded here for review; no AST/event-count/room-left pricing.",
+  "currentV2Row": {
+    "source": "S44-70 +Records53",
+    "components": [
+      {
+        "name": "row/liveness/key transaction",
+        "units": 1
+      },
+      {
+        "name": "possible persistent Q reserve",
+        "units": 1
+      },
+      {
+        "name": "scratch Q reserve",
+        "units": 1
+      },
+      {
+        "name": "external SourceRead API entry, payload separately owned",
+        "units": 1
+      },
+      {
+        "name": "post-read liveness transaction",
+        "units": 1
+      },
+      {
+        "name": "actual typed/backing getters",
+        "units": 5
+      },
+      {
+        "name": "owned U8 allocation/view",
+        "units": 1
+      },
+      {
+        "name": "native exact copy",
+        "units": 1
+      },
+      {
+        "name": "R.sha256 fixed bytes/crypto/API request administration",
+        "units": 1
+      },
+      {
+        "name": "native SHA digest",
+        "units": 1
+      },
+      {
+        "name": "digest U8 result view",
+        "units": 1
+      },
+      {
+        "name": "Array.from fixed request, 32 callback payload rows separate",
+        "units": 1
+      },
+      {
+        "name": "owned byte-to-hex rows",
+        "units": 32
+      },
+      {
+        "name": "hex join result",
+        "units": 1
+      },
+      {
+        "name": "post-hash liveness/equality transaction",
+        "units": 1
+      },
+      {
+        "name": "adopt/cache/reference/held-row transaction",
+        "units": 1
+      },
+      {
+        "name": "possible cache/error detach buffer+length+transfer",
+        "units": 3
+      },
+      {
+        "name": "clear aliases before release transaction",
+        "units": 1
+      },
+      {
+        "name": "possible persistent Q release",
+        "units": 1
+      },
+      {
+        "name": "scratch Q release",
+        "units": 1
+      }
+    ],
+    "unionUpper": 57,
+    "excludes": [
+      "actual SourceRead IO/stream payload",
+      "S full profile prelude",
+      "new scheduler/phase/scope API/control bodies",
+      "final borrower and API birth",
+      "whole rollback over prior rows"
+    ],
+    "note": "Conservative union includes new-entry reserve/release and cache-hit detach even though not all are simultaneous. A shared payload envelope, not a complete phase fee."
+  },
+  "canonicalThreeFieldRow": {
+    "source": "Records36-48 on strict copied three-field row",
+    "maximumDataValueVisits": 4,
+    "maximumFieldTransactions": 3,
+    "maximumUTF16ValidationUnits": 335,
+    "maximumCharRequestsIncludingFailure": 336,
+    "components": [
+      {
+        "name": "quota validation records",
+        "units": 3
+      },
+      {
+        "name": "row/header control and result guards",
+        "units": 3
+      },
+      {
+        "name": "row object value control",
+        "units": 1
+      },
+      {
+        "name": "three key/value records",
+        "units": 3
+      },
+      {
+        "name": "three primitive value controls",
+        "units": 3
+      },
+      {
+        "name": "UTF16 validation transactions, <=15+256+64 units",
+        "units": 335
+      },
+      {
+        "name": "UTF16 charCodeAt requests including one refused trailing surrogate",
+        "units": 336
+      },
+      {
+        "name": "quota SafeInteger requests",
+        "units": 3
+      },
+      {
+        "name": "two private Set constructions",
+        "units": 2
+      },
+      {
+        "name": "object/array/private-set/prototype/keys/sort/map/join requests",
+        "units": 9
+      },
+      {
+        "name": "three own descriptor requests",
+        "units": 3
+      },
+      {
+        "name": "three key JSON.stringify requests",
+        "units": 3
+      },
+      {
+        "name": "two string JSON.stringify requests",
+        "units": 2
+      },
+      {
+        "name": "numeric finite/is/has/stringify requests",
+        "units": 4
+      },
+      {
+        "name": "key path replace requests",
+        "units": 6
+      },
+      {
+        "name": "active set delete request",
+        "units": 1
+      },
+      {
+        "name": "canonical byte-size encoder request",
+        "units": 1
+      }
+    ],
+    "proposedPayloadUpper": 718,
+    "rowEncodedBufferUpper": 1680,
+    "headerEncodedBufferUpper": 976,
+    "headerFitsSamePayloadClass": "same three fields/two strings/one safe integer; fixed format+id128+keys<=335 UTF16 units",
+    "status": "Requires independent vocabulary/source review; not selected. No fee inferred from4096."
+  },
+  "nativeCompletion": {
+    "proposedFixedRecordNodes": [
+      "pending identity/lifecycle guard",
+      "result or primary-error latch without inspecting value",
+      "one native schedule request",
+      "schedule-once/pending-state publication"
+    ],
+    "proposedControlUpper": 4,
+    "payer": "quote4 capacity before one native request, consume4 at the actual callback in its still-held source scope; no new scope/reset at promise completion",
+    "status": "New implementation must derive/census actual guard/callable/metadata source before selection."
+  },
+  "currentLoaderChunk": {
+    "source": "loader48-54",
+    "fixedNodes": [
+      "pre-read lifecycle guard",
+      "capacity Math.min request",
+      "one bounded BYOB allocation/view",
+      "one native stream.read request",
+      "post-read lifecycle guard",
+      "native result/cursor tuple transaction",
+      "typed byteLength getter",
+      "bounded native typed copy",
+      "positive-progress/EOF/refusal transaction"
+    ],
+    "payloadUpper": 9,
+    "maxCopiedBytes": 32768,
+    "completionControlSeparate": true,
+    "loopCount": "1..row.bytes positive progress iterations plus final EOF; do not substitute ceil(bytes/32768)",
+    "excludes": [
+      "new scheduler/API/scope bodies",
+      "fetch/response/getReader/header/finally",
+      "URL/fetch payload/native internal time"
+    ]
+  },
+  "wholePhaseFee": null,
+  "sourceVisitLimit": 4096,
+  "limitStatus": "Existing unchanged ceiling, no cap default or raised aggregate; separate pre-R foundation source clock proposed, not a fabricated R.",
+  "wholePrelude": "Original ownRecord/verifyEnvelope is not assigned a one-visit fee. Fixed-schema companion performs actual per-row canonical spans, not a whole raw-profile parser call. Full actual phase/caller/Q activation/retirement upper remains required.",
+  "sharedSourceVector": {
+    "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-source-vector-2026-10-23-01/shared-source-vector-01.json",
+    "sha256": "f53bad8d52a4ecc0cefad0d0385c67a70c60424f14556d565c79e5310b147efc",
+    "distinctCopies": 219,
+    "logicalReferences": 233,
+    "freshReadPaths": 233,
+    "peakQBytes": 13139085,
+    "unchangedQCap": 33554432,
+    "scope": [
+      "Module/controller/instance/caller bodies and retained closed APIs",
+      "R/CPU payloads/native VM/heap/source response backing and driver memory",
+      "Actual Renderer/App execution, full host admission and Main/P05"
+    ]
+  }
+}

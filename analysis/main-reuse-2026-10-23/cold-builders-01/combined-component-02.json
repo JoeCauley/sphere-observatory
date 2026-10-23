@@ -1,0 +1,106 @@
+{
+  "status": "PASS_PRIVATE_PROFILE_BUILDERS_AND_SOURCE_REUSE_COMPONENTS_P05_OPEN",
+  "utc": "2026-10-23T12:21:39.186782+00:00",
+  "selectedMainComponent": "main-texture-handoff-funded-c3",
+  "newBuilderCandidate": "main-cold-profile-builders-unselected-c5",
+  "newBuilderSelected": false,
+  "P05": "OPEN",
+  "proofs": [
+    {
+      "name": "builderAuthor",
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-cold-profiles-2026-10-23-01/builder-author-01/CHECK-05.json",
+      "bytes": 19414,
+      "sha256": "3efe4976c633b22877846f98a57a66f3ea710257121be930578ed3977add3ad5",
+      "status": "PASS_SOURCE_AND_COMPONENT_MODELS_UNSELECTED"
+    },
+    {
+      "name": "builderPeer",
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-cold-profiles-2026-10-23-01/independent-review-01/CHECK-02.json",
+      "bytes": 12408,
+      "sha256": "cebdecb135a8825e8dd4a24ba34e06e2e7ae36604cd096de63cb3e247916411f",
+      "status": "PASS_BOUNDED_SOURCE_AND_COMPONENT_REVIEW_UNSELECTED"
+    },
+    {
+      "name": "protocolModel",
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-source-scheduling-2026-10-23-01/component-review-01/CHECK.json",
+      "bytes": 3980,
+      "sha256": "ca65999520bff82e7366d4503879a5fcb90c37aefa74460312dbb8d2b95dcd95",
+      "status": "PASS_PINNED_NARROW_PROTOCOL_MODEL_WITH_EXPLICIT_RUNTIME_FUNDING_AND_OWNERSHIP_GAPS"
+    },
+    {
+      "name": "sharedSourceVector",
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-source-vector-2026-10-23-01/shared-source-vector-01.json",
+      "bytes": 10116,
+      "sha256": "f53bad8d52a4ecc0cefad0d0385c67a70c60424f14556d565c79e5310b147efc",
+      "status": "PASS_SIMULTANEOUS_SOURCE_ONLY_VECTOR_AND_FRESH_CACHE_REFUSAL"
+    }
+  ],
+  "inventories": {
+    "1": "candidate-01-inventory-02.json",
+    "2": "candidate-02-inventory-02.json",
+    "3": "candidate-03-inventory-02.json",
+    "4": "candidate-04-inventory-02.json",
+    "5": "candidate-05-inventory-02.json"
+  },
+  "builderScope": {
+    "files": 521,
+    "parses": 425,
+    "changedFiles": [
+      "owned-main-bootstrap.js",
+      "renderer.js"
+    ],
+    "authorModelCases": 19,
+    "independentReplayCases": 19,
+    "independentFundingGroups": 4,
+    "inverseHunks": 16,
+    "genuineModels": [
+      "Records",
+      "Q",
+      "Source",
+      "Resources",
+      "HostWorld",
+      "Numeric",
+      "PB.create/admit",
+      "actual copied Renderer constructor and private original shader record"
+    ],
+    "modeledBoundary": [
+      "Document/currentScript",
+      "native GL/reflection",
+      "Surface ownership/facts",
+      "G/backend",
+      "constructor resource/texture children"
+    ],
+    "newPricesAndControllerFunding": null,
+    "actualMainFrames": 0
+  },
+  "sourceReuseScope": {
+    "privateCopies": 219,
+    "logicalReferences": 233,
+    "freshSourceReadsAndHashes": 233,
+    "sourceAndProfileOnlyQPeak": 13139085,
+    "unchangedQCeiling": 33554432,
+    "wholeHostAdmission": false
+  },
+  "protocolScope": {
+    "controls": 11,
+    "currentV2PayloadProposal": 57,
+    "canonicalRowPayloadProposal": 718,
+    "selectedWholePhasePrices": null,
+    "productIntegration": false,
+    "ownershipParity": false
+  },
+  "next": [
+    "Implement actual opt-in scheduled admission in original Source/Records/private loader, returning the original admission facade and retaining all fresh checks",
+    "Derive complete actual builder/module/controller/instance/closed ownership and original caller phase upper contracts",
+    "Construct genuine R with actual full-host limits and original verifier closures; privately build original Host/PB/Base profiles, stage loss/Star and later import with all fresh checks",
+    "Compose demanded image/plan and prepared Root; admit complete simultaneous required host vector and obtain required native Main P05 proof"
+  ],
+  "limitsUnchanged": {
+    "prepareOpsPerSlice": 4096,
+    "uploadBytesPerFrame": 262144,
+    "jobs": 2,
+    "readers": 64
+  },
+  "walkingSimulationAndAssetsChanged": false,
+  "browserOrServerOperated": false
+}

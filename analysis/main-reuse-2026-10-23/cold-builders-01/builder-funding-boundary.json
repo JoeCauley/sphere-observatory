@@ -1,0 +1,57 @@
+{
+  "status": "PASS",
+  "sourceSha256": "f7b7bcf4d19587183d8f6f256a8f9fa731fb3fe680a7961f003e8f426900c9cc",
+  "scope": "EXACT_PRODUCT_NULL_GUARD_AND_SOURCE_AST_PLUS_DISCLOSED_DIAGNOSTIC_RESERVE_REFUSAL_MODEL",
+  "groups": [
+    "Exact product null guard rejects before Q creation, publication or entry into the new controller block",
+    "All 9 new top-level controller function declarations are inside a strict nested block entered only after successful prospective Q reserve",
+    "Disclosed amount=1/entry-observer diagnostic confirms forced reserve failure never enters that block or publishes an API",
+    "New controller account is held through the reachable API/realm; private output close is not total-controller or VM zero"
+  ],
+  "product": {
+    "funding": null,
+    "MainGate": false,
+    "qCreates": 0,
+    "newApiPublished": false
+  },
+  "diagnostic": {
+    "sourceSha256": "7618c84d3d6a3d5695c63dfd2990257ea9293b690d86214220dc6437e345c210",
+    "substitutions": [
+      "null to1 only to reach forced modeled Q rejection; not a selected allowance",
+      "one block entry observer",
+      "modeled metadata API only for this reserve-order diagnostic"
+    ],
+    "trace": [
+      {
+        "bytes": 389120,
+        "owner": "owned-main-bootstrap"
+      },
+      {
+        "bytes": 8192,
+        "owner": "owned-texture-handoff-controller-delta"
+      },
+      {
+        "bytes": 368640,
+        "owner": "owned-app-startup-controller"
+      },
+      {
+        "bytes": 1,
+        "owner": "private-main-cold-profiles"
+      }
+    ],
+    "releases": 3,
+    "disposed": 1,
+    "newBlockEntered": false
+  },
+  "ast": {
+    "reserve": [
+      2754,
+      2927
+    ],
+    "newBlock": [
+      7748,
+      30523
+    ],
+    "newFunctionCount": 9
+  }
+}
