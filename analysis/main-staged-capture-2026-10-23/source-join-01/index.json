@@ -1,0 +1,63 @@
+{
+  "status": "FROZEN_STAGED_WORLD_CAPTURE_AND_REUSE_JOIN_MAIN_HELD",
+  "proofs": [
+    {
+      "path": "joined-state.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v36-staged-world-reuse-join-2026-10-23-01\\CHECK-08.json",
+        "bytes": 9588,
+        "sha256": "1e6ce535ec710d9c7f8ae48f131d080c043dfc384b5c696b09ea5d861f4a1c70"
+      }
+    },
+    {
+      "path": "synchronous-reuse.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-synchronous-validation-reuse-2026-10-23-01\\CHECK-15.json",
+        "bytes": 7095,
+        "sha256": "3c65b0101e056f9faa4aa6de72479d35724662c7e8ffa02717080ecb47b55551"
+      }
+    },
+    {
+      "path": "staged-host-capture.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v31-owned-host-envelope-stages-2026-10-23-01\\CHECK-01.json",
+        "bytes": 7871,
+        "sha256": "be4a20b1fbeff93bd62ee785af1f9a75d5de9df0d28f6ca7732a47daae7e67f9"
+      }
+    },
+    {
+      "path": "support-compatibility.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v33-projection-support-compatibility-2026-10-23-01\\CHECK-06.json",
+        "bytes": 2247,
+        "sha256": "9a48ea9ed7cb90a7dc3751185d610862562faa8b7b9d40238ca191a81593c4a7"
+      }
+    },
+    {
+      "path": "main-capture-caller.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v35-main-staged-world-capture-2026-10-23-01\\CHECK-09.json",
+        "bytes": 4548,
+        "sha256": "115516e89d990ed68be8694dcfd3087fe04ac40247934b99d6e66fd94a80a0d8"
+      }
+    },
+    {
+      "path": "bootstrap-seed-static.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-owned-bootstrap-seed-2026-10-23-01\\FREEZE-STATIC-02.json",
+        "bytes": 2164,
+        "sha256": "e1ef5b8ccea8e888067e242f760069a5600bc379a626cc32df3fd68d20103921"
+      }
+    },
+    {
+      "path": "p05-exit-boundary.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\full-ordinary-host-envelope-review-01\\p05-exit-boundary-01.json",
+        "bytes": 2538,
+        "sha256": "1c9fe01eae51a47cfaec5f267f4076f9e6a907f52b82090e4793f9f0237da2f9"
+      }
+    }
+  ],
+  "Main": false,
+  "P05": "OPEN"
+}

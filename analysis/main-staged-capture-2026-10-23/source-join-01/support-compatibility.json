@@ -1,0 +1,48 @@
+{
+  "status": "PASS_VERSIONED_PROJECTION_SUPPORT_COMPONENT_UNSELECTED",
+  "files": 522,
+  "parsed": 426,
+  "otherExact": 517,
+  "changed": [
+    "biome-service/commonboundary-adapter.js",
+    "biomes.js",
+    "collection.js",
+    "hero-textures.js",
+    "world.js"
+  ],
+  "currentProfile": "observatory-protected-free-base-current-sources-v3",
+  "supportSHA256": "71637aa50226ddbc805e350686e3397ce0c9f43546aa3dfd554eb4f62d918011",
+  "checks": {
+    "genuineOriginalSupportAndBindingPrepareGroups": 5,
+    "freshAdmissionAndForeignNullGuardGroups": 4,
+    "legacyDefault12SourcePinsExact": true,
+    "currentWorldRefusedUnderLegacyUnchanged": true,
+    "legacyRefusalPreservedAsActualFailedPositiveHarness": true,
+    "completeCurrentSupportInverse": true,
+    "frozenProjectionOriginalBodyArchive": true
+  },
+  "controls": [
+    {
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v33-projection-support-compatibility-2026-10-23-01\\control-support-04.json",
+      "bytes": 4621,
+      "sha256": "b7ea50418954d9083e7d36339092674a19daf4d1e9afcf92305623143389ad9f"
+    },
+    {
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v33-projection-support-compatibility-2026-10-23-01\\control-guards-04.json",
+      "bytes": 4447,
+      "sha256": "ab9a32f102a62d018f19657ae5d688820cb15ee4fb1dd59ed48e2c979e970e7e"
+    },
+    {
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v33-projection-support-compatibility-2026-10-23-01\\control-legacyCurrent-04.json",
+      "bytes": 4903,
+      "sha256": "ac740ba85c86fd45ea255e12a2bfbb7709bd7383f9726779116486fa60425480"
+    }
+  ],
+  "scope": "Actual original support/perimeter/masks/nonempty Binding preparation under v3 with disclosed same-Q diagnostic amounts and original private admission fragment fixture. Logical fees remain unselected. Legacy default exact pins continue refusing incompatible World bytes; original failed positive-harness record retained and explicitly classified as the expected contract refusal.",
+  "supportAdditionalStorageRoleWidth": 0,
+  "supportAdditionalCallableOrFieldCount": 0,
+  "feesSelected": false,
+  "loaderProfilesFresh": false,
+  "nativeMain": false,
+  "P05": "OPEN"
+}

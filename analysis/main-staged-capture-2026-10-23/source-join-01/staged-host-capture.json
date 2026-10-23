@@ -1,0 +1,211 @@
+{
+  "status": "PASS_SCOPED_FUNCTIONAL_COMPONENT_COMPLETE_WORK_OWNERSHIP_CALLER_SELECTION_HELD",
+  "parent": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-current-validated-state-join-2026-10-23-01\\candidate-01\\source",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v31-owned-host-envelope-stages-2026-10-23-01\\candidate-09\\source",
+  "files": 522,
+  "parsed": 426,
+  "otherFilesExact": 516,
+  "changes": [
+    {
+      "path": "biome-service/host-world.js",
+      "bytes": 117231,
+      "sha256": "9d7b66e53be1f081f428a15a2f693ed20f5ff93daaea5cc1a209679c5c7dc0c7"
+    },
+    {
+      "path": "biome-service/records.js",
+      "bytes": 29686,
+      "sha256": "349b37bd25743e00912cc1fc56719c9f3283186bd5436e6ce56f6e9e1cd1d74d"
+    },
+    {
+      "path": "biomes.js",
+      "bytes": 12406,
+      "sha256": "c8e91fe1c8cbd422edb89bf2ac841327806992e420715300fd2161e61a8ccf0a"
+    },
+    {
+      "path": "collection.js",
+      "bytes": 17791,
+      "sha256": "57c08e1907a7f0cd3c7d857b3ee9291d7620d0db557dce86e69f17b5e614181b"
+    },
+    {
+      "path": "hero-textures.js",
+      "bytes": 8083,
+      "sha256": "4158130acd6f3e888aadf782166ca3ed816b9fcfdd6414df84bbecd4f7e77ff4"
+    },
+    {
+      "path": "world.js",
+      "bytes": 29064,
+      "sha256": "1a55cd76e927c5b1da958478ad441eba755bfe8f13dd90726dcdbfba0bbb1895"
+    }
+  ],
+  "sourceRecipeHunks": 60,
+  "forwardInverseExact": true,
+  "legacyOriginal": {
+    "RecordsDeclarationsByteExact": 27,
+    "HostCaptureCurrentWorldBodies": 2,
+    "HostPublicCreate": true,
+    "otherChanges": "Original owned controller/close/validation parent changes are explicitly archived. Extra nullable Records API field changes namespace shape and is a positive foundation liability."
+  },
+  "controls": {
+    "total": 18,
+    "runner": {
+      "path": "test-stages-10.cjs",
+      "bytes": 103763,
+      "sha256": "3c0c1b4fa9f156e235a456cf74e4ee8a5d0d27dc00031a8c250f71849647cd20"
+    },
+    "manifest": {
+      "path": "functional-controls-11.json",
+      "bytes": 4850,
+      "sha256": "2f25a3d983986354f1ecbde70ef20eb0e3da2195a680b0c8c4791f1f1ead9583"
+    },
+    "reference": "Actual original full capture output canonical/worldId/four-envelope equality in four actual Core variants. Five actual original Strict children; original semantic body and result ports, copied original Renderer construction. Named GL/Surface/App/caller/transport models and all diagnostic literal substitutions are disclosed in every report."
+  },
+  "preservedFailures": [
+    {
+      "source": "candidate-02",
+      "issue": "Initial target scratch close was not idempotent;03 correction preserved."
+    },
+    {
+      "source": "candidate-04",
+      "issue": "Actual exported host-world schema callback mutation changed private worldId and published a wrong output; original counter05 preserved.09 pure captured original invocation refuses callback/metadata substitutions before unknown code."
+    },
+    {
+      "source": "candidate-07",
+      "issue": "Unnecessary replaceable-namespace schema scope layer; preserved controls do not certify a Q/source permission.09 removes this token concept, delegates actual sameQ/source/receipt/projection authority to genuine Host caller."
+    },
+    {
+      "source": "seal11/12/13 harnesses",
+      "issue": "Original ESM parse mode, expected Hero filename and documented first-owned duplicate hook assumptions corrected in seal14/parse15; source unchanged."
+    }
+  ],
+  "newRecordsPort": {
+    "shape": [
+      "FORMAT",
+      "assertCurrent",
+      "validate(value)"
+    ],
+    "authority": "Only original structural validator invocation; creates no Q/source/Host/projection/work/readiness receipt. Genuine owned Host supplies sameQ/source/current proof before/after use."
+  },
+  "remainingGates": {
+    "moduleFoundationBirth": "Unselected positive current source footprint; no old module slack or retrospective instance payment.",
+    "completeSource37Work": null,
+    "completeABIStorage": null,
+    "callerAndNativeWaitJobs": null,
+    "proof4096": null,
+    "originalBindingResolveAndHostValidateSnapshot": "Next actual route heavy prelude, not waived.",
+    "currentCommonBoundaryCompatibility": "Root-owned reviewed versioned C33 successor, not migrated old pins.",
+    "productionProfiles": "Parent stale intentionally; no product loader changed.",
+    "nativeMain": false,
+    "fullHost": false,
+    "Main": false,
+    "P05": "OPEN"
+  },
+  "funding": null,
+  "work": null,
+  "artifacts": [
+    {
+      "path": "READ-FIRST-11.md",
+      "bytes": 4498,
+      "sha256": "6493d899ed374b37990003c54f1d9777013b7c5a0e659110c55e329bd07dfd78"
+    },
+    {
+      "path": "root-safe-recipe-11.json",
+      "bytes": 80541,
+      "sha256": "b4ef0f55229835a22199b92f949b9c7791866785a52c1aae5f441786e814e6cc"
+    },
+    {
+      "path": "source-inventory-11.json",
+      "bytes": 95358,
+      "sha256": "e2a6e6aa11af3cd66699f432fcde5ba2857e7eba60575bf19f301588c7e99eab"
+    },
+    {
+      "path": "parse-scripts-15.json",
+      "bytes": 41788,
+      "sha256": "f0ccb41ae3fb01f411107cfc3cadea5d510ece9c620f01d17c5945b5ea7bd6f0"
+    },
+    {
+      "path": "original-body-archive-11.json",
+      "bytes": 466674,
+      "sha256": "2ae637e3e01eba18a7cec69492ac01c7eece49af54b287f24669765b09079083"
+    },
+    {
+      "path": "functional-controls-11.json",
+      "bytes": 4850,
+      "sha256": "2f25a3d983986354f1ecbde70ef20eb0e3da2195a680b0c8c4791f1f1ead9583"
+    },
+    {
+      "path": "ownership-and-work-liabilities-11.json",
+      "bytes": 7126,
+      "sha256": "5d11aaf6f56bee27caaf16e0e881e074042a139634c8a2b6cca98368051fb892"
+    },
+    {
+      "path": "test-stages-10.cjs",
+      "bytes": 103763,
+      "sha256": "3c0c1b4fa9f156e235a456cf74e4ee8a5d0d27dc00031a8c250f71849647cd20"
+    },
+    {
+      "path": "prepare-profiles-10.cjs",
+      "bytes": 892,
+      "sha256": "2c26bb27851a493af627f1f259d699263be50ce2c4cc1770af8290242868e78d"
+    },
+    {
+      "path": "diagnostic-profile-loader-10.js",
+      "bytes": 276139,
+      "sha256": "f4671e536e9fa402c52465e74a983eed461e75c45fa95ca0977f8dbc2e00ef8f"
+    },
+    {
+      "path": "control-ownedHostStagesSchemaCounter-05.json",
+      "bytes": 10266,
+      "sha256": "81fe1cf25f95af6c068f91ec405771a21b0700e5398bd69ce45c4556cef0cddd"
+    },
+    {
+      "path": "build-stages-06.cjs",
+      "bytes": 5707,
+      "sha256": "122bcc862c964d37620c3fc0eb7779511d575c1e25077912f264fcd57a5b8bd4"
+    },
+    {
+      "path": "build-stages-09.cjs",
+      "bytes": 1539,
+      "sha256": "0aee8308867ac47000bb47001db3fcd6ce788b0a2ead5cb86f85bc57f24b9329"
+    },
+    {
+      "path": "exact-stages-02.json",
+      "bytes": 18193,
+      "sha256": "4a5df5469d55c65cae40bc66803ac204044af0a497495aa17567f27b08e46275"
+    },
+    {
+      "path": "exact-stages-03.json",
+      "bytes": 1307,
+      "sha256": "cc37aaf5f6f27ecda33d95a92d71a9ecc05b98b2350925fdc0db5eea00ededd9"
+    },
+    {
+      "path": "exact-stages-04.json",
+      "bytes": 1298,
+      "sha256": "6e6d378a18fa20e9c3634bff6345d319b86ecc5248c8458af5f489ebffe7d09b"
+    },
+    {
+      "path": "exact-stages-06.json",
+      "bytes": 5512,
+      "sha256": "d70f9f1e748aeccad6dc9c9e1f4abbcf129e7ade0ccf20cc9995ff2d5d164a5b"
+    },
+    {
+      "path": "exact-stages-09.json",
+      "bytes": 1038,
+      "sha256": "bd0120d87a2121792d1d2fa53cb438e4bf1a8fcd02e9d822a95f1e50404e4ba8"
+    },
+    {
+      "path": "base-composition-02.json",
+      "bytes": 47626,
+      "sha256": "7fd5f049126c05fe8055414356cee18268e2b1688ca3be1c53f00d9cfa4204b3"
+    },
+    {
+      "path": "seal-component-14.cjs",
+      "bytes": 7058,
+      "sha256": "e95ae528008b6d1539d5f615db6dfdf6a85c7adac7431b33ab1f0280d20e5237"
+    },
+    {
+      "path": "parse-scripts-15.cjs",
+      "bytes": 1558,
+      "sha256": "017728b809ef04c0d96829926808a463ae015be8d5c388706440874b6fd68114"
+    }
+  ]
+}

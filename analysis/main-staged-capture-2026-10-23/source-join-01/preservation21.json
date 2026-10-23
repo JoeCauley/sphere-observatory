@@ -1,0 +1,31 @@
+{
+  "pass": true,
+  "cutoff": 21,
+  "snapshots": 215,
+  "archiveEntriesVerified": 97984,
+  "recordsVerified": 9818,
+  "recordsAdded": 558,
+  "recordBytes": 381847200,
+  "freshRestore": {
+    "snapshot": "main-staged-world-reuse-join-unselected-c1",
+    "destination": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v36-staged-world-progress-2026-10-23-01\\restored-check-21\\source",
+    "files": 522,
+    "verified": true
+  },
+  "earlier194Snapshots9260RecordsExact": true,
+  "restorerUnchanged": true,
+  "currentReadmeUTF8": true,
+  "historicalReadmeBytesExact": true,
+  "selectedMainComponent": "main-texture-handoff-funded-c3",
+  "latestJoinedMainStartup": "main-staged-world-reuse-join-unselected-c1",
+  "joinedMainStartupSelected": false,
+  "P05": "OPEN",
+  "excludedActive": [
+    "R next actual-phase dependency fact, complete caller arithmetic and builder constructor/begin split; successor and review-01 stay outside this cutoff",
+    "P34 private small durable Binding read and staged compiled-schema successor",
+    "G full owned launch/foundation two-job work and metadata review",
+    "Root32 timer launch remains a parsed unselected draft; no product execution, and later retained script handoff is open",
+    "Complete current/replacement Main/provider bundle, whole-view/fragment/Frame/support and ordinary Main evidence"
+  ],
+  "rawArchivesRemainLocal": true
+}

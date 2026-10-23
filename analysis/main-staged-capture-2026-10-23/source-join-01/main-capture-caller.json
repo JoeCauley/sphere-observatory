@@ -1,0 +1,94 @@
+{
+  "status": "PASS_STAGED_WORLD_CAPTURE_MAIN_CALLER_COMPONENT_UNSELECTED",
+  "source": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v35-main-staged-world-capture-2026-10-23-01\\author-03\\owned-main-bootstrap.js",
+    "bytes": 316953,
+    "sha256": "58d49223ce0e5a865a5b25e37478cf5b049aa8e821d2c9e2ed6aa7563c01d57d"
+  },
+  "exactInverseHunks": 10,
+  "fragment": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v35-main-staged-world-capture-2026-10-23-01\\catalogue-capture-02.inc.js",
+    "bytes": 5892,
+    "sha256": "59a3064f9f9611523b310f6910823dc535bb16730ebf83a9c5236ce786037907"
+  },
+  "cases": 7,
+  "groups": 25,
+  "controls": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v35-main-staged-world-capture-2026-10-23-01\\control-ownedHostStagesCaller-08.json",
+      "bytes": 11346,
+      "sha256": "73e4d7e5ad67ebd8e28c3496ada4b031850d915c46be87c3fad92bfe58517ba9",
+      "case": "ownedHostStagesCaller",
+      "groups": 4,
+      "visits": 6002,
+      "nativeWaits": 5
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v35-main-staged-world-capture-2026-10-23-01\\control-ownedHostStagesCallerPack-08.json",
+      "bytes": 11350,
+      "sha256": "fd171f32b29327b6ca2d2c70f7614a5469b9fa6ff106ff63ef3d6a05409255a7",
+      "case": "ownedHostStagesCallerPack",
+      "groups": 4,
+      "visits": 6564,
+      "nativeWaits": 5
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v35-main-staged-world-capture-2026-10-23-01\\control-ownedHostStagesCallerAuthored-08.json",
+      "bytes": 11354,
+      "sha256": "0649b46296ea72e75e41c00a9b177987ed0eba1077352f7ab5b82145b0660706",
+      "case": "ownedHostStagesCallerAuthored",
+      "groups": 4,
+      "visits": 6387,
+      "nativeWaits": 5
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v35-main-staged-world-capture-2026-10-23-01\\control-ownedHostStagesCallerBoth-08.json",
+      "bytes": 11350,
+      "sha256": "258d47ceb368ad9c36e54ad821330aa200dfa09f1ecbf49034f320b0e1de0e68",
+      "case": "ownedHostStagesCallerBoth",
+      "groups": 4,
+      "visits": 6949,
+      "nativeWaits": 5
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v35-main-staged-world-capture-2026-10-23-01\\control-ownedHostStagesCallerNoFunding-06.json",
+      "bytes": 10695,
+      "sha256": "7309844d7b24647d99cba712a6046185e39cf06da0f90c9db4a5485416ba0d3b",
+      "case": "ownedHostStagesCallerNoFunding",
+      "groups": 3,
+      "visits": null,
+      "nativeWaits": null
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v35-main-staged-world-capture-2026-10-23-01\\control-ownedHostStagesCallerRawFalse-06.json",
+      "bytes": 10895,
+      "sha256": "82afe2a8b0e5d04d0e7445d6663a4b35c12bae4d6846b696f79ebb6ef466696b",
+      "case": "ownedHostStagesCallerRawFalse",
+      "groups": 3,
+      "visits": null,
+      "nativeWaits": null
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v35-main-staged-world-capture-2026-10-23-01\\control-ownedHostStagesCallerPendingClose-06.json",
+      "bytes": 11183,
+      "sha256": "7ca5b45cf6a65343b61189a3514382e5ef22da943f410a0d74cba6f98709ba40",
+      "case": "ownedHostStagesCallerPendingClose",
+      "groups": 3,
+      "visits": 939,
+      "nativeWaits": 1
+    }
+  ],
+  "firstActualDefect": "Rawfalse fresh-parent failure outside caller try was corrected in fragment02 and is nonreplayable; actual failed03/04 and corrected controls preserved.",
+  "scope": "Actual Main loader phase source and exact catalogue capture fragment with original P31 receipt/projection/Strict/schema/Q/native children. Test selectedCurrent/catalogue parent adapter invokes real builder.readHostAdapter, GL/Surface/App remain disclosed models. This does not claim full original catalogue/initializer scheduler/R work or native Main integration.",
+  "actualInitializerSourcePhases": [
+    "BINDING_CURRENT_CAPTURE_START",
+    "BINDING_CURRENT_CAPTURE_STEP",
+    "BINDING_CURRENT_CAPTURE_READ"
+  ],
+  "nativeWait": "Original child pendingPromise/status forwarded to existing original wait scope; no replacement fake Promise or work clock in product source.",
+  "allFundingAndCompleteQuotes": null,
+  "loaderSourceProfilesParentStale": true,
+  "limitsChanged": false,
+  "Main": false,
+  "P05": "OPEN"
+}

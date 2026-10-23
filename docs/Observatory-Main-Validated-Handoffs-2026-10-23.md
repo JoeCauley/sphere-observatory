@@ -1,3 +1,5 @@
+> Current progress: [Staged world capture and validated reuse](Observatory-Main-Staged-Capture-2026-10-23.md). Root36 joins original capture/projection, fresh currentness, support compatibility and the actual Main capture caller. Complete ownership/work, whole demand and native Main remain held; P05 OPEN.
+
 # Validated handoffs and current-state reuse
 
 The private Main candidate now joins the texture handoff, authentic Strict/Numeric workspace transfers, fresh same-paid currentness checks, explicit durable world-head selection and the corrected scheduled source entry. Validated immutable results can be reused; source bytes, native operations, parents and lifetime facts are checked again at the appropriate boundary. Main remains disabled until complete work, ownership and complete-view admission pass.

@@ -1,0 +1,45 @@
+{
+  "status": "FROZEN_STATIC_OPTIONAL_SAME_Q_SEED_COMPONENT_UNSELECTED_GENUINE_LAUNCH_ABSENT",
+  "check": {
+    "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-owned-bootstrap-seed-2026-10-23-01\\STATIC-02.json",
+    "bytes": 16775,
+    "sha256": "43d499addab33bca560ad4dd573d93526899a23349de341a42684b35f595f894"
+  },
+  "source": {
+    "path": "biome-service/metadata-budget.js",
+    "bytes": 13676,
+    "sha256": "f297bdde5d682e3396f4dae185dd72651b91551dad3a4a0e31d0bde53c0b0511"
+  },
+  "inventory": {
+    "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-owned-bootstrap-seed-2026-10-23-01\\source-inventory-02.json",
+    "bytes": 88533,
+    "sha256": "be0889fe81905ea814189acb23ac2d2977103626898816f41873fd87af459efd"
+  },
+  "recipe": {
+    "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-owned-bootstrap-seed-2026-10-23-01\\exact-root30-recipe-02.json",
+    "bytes": 11593,
+    "sha256": "0e37bf885b7c83172cfebf3e0c6220a205f949efd63da80f401f0b143e2d01bf"
+  },
+  "census": {
+    "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-owned-bootstrap-seed-2026-10-23-01\\seed-census-02.json",
+    "bytes": 177832,
+    "sha256": "0ea4bd6554eafac539d668de98b0c01a744bb31eb2a91524115e08bacca98595"
+  },
+  "readFirst": {
+    "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-owned-bootstrap-seed-2026-10-23-01\\READ-FIRST.md",
+    "bytes": 3567,
+    "sha256": "d89174c64c5bc6c202c016bb11bff3fb65c57c3348658467ad7d3a6c3df534dd"
+  },
+  "upstream": {
+    "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-owned-bootstrap-seed-2026-10-23-01\\UPSTREAM-CONTRACT-01.md",
+    "bytes": 5806,
+    "sha256": "352c2b8034d5a7b7eb153b3e69cc630d43f59f6e7cc28a1e24cacdee0c5738b3"
+  },
+  "script": {
+    "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-owned-bootstrap-seed-2026-10-23-01\\seal-static-03.cjs",
+    "bytes": 10093,
+    "sha256": "c87097b9a69ffb8f70535cf7f117960802f0e2746be64ad1b187ea9da35174cd"
+  },
+  "selection": null,
+  "MainPermission": false
+}

@@ -1,0 +1,225 @@
+{
+  "status": "PASS_FROZEN_UNSELECTED_STAGED_WORLD_REUSE_JOIN",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v36-staged-world-reuse-join-2026-10-23-01\\candidate-01\\source",
+  "loader": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v36-staged-world-reuse-join-2026-10-23-01\\candidate-01\\source\\owned-main-bootstrap.js",
+    "bytes": 326133,
+    "sha256": "897f34388d32e6773ecc1438805722598fde56a978d9d408fc1d6cb50cf771c0"
+  },
+  "files": 522,
+  "parses": 426,
+  "changed": [
+    "biome-service/commonboundary-adapter.js",
+    "biome-service/host-world.js",
+    "biome-service/metadata-budget.js",
+    "biome-service/native/surface-kernel.js",
+    "biome-service/numeric-profile.js",
+    "biome-service/records.js",
+    "biomes.js",
+    "collection.js",
+    "hero-textures.js",
+    "owned-main-bootstrap.js",
+    "world.js"
+  ],
+  "other511Root30FilesExact": true,
+  "inverseHunks": 160,
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "rows": 222,
+      "digest": "82b1b56cdcd53e2edef78fd22f3e8871b52a12920e249dffc3133c7db90f87fa"
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "rows": 5,
+      "digest": "c84eaa5c13e2244281f4effdf8e180e5d1e3580a3dec7714d25c997cfd9ff1d1"
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "rows": 9,
+      "digest": "ab0e67568d20db05c04926e7f69dc2d27b09fab4d9f84483c60dc3c4ca44d01a"
+    }
+  ],
+  "freshSourceReads": 236,
+  "sourceCopies": 222,
+  "sourceOnlyPeak": 13498899,
+  "sourceOnlyFinalQ": {
+    "heldBytes": 0,
+    "requestedBytes": 0,
+    "bookkeepingBytes": 0,
+    "peakBytes": 13498899,
+    "limitBytes": 33554432,
+    "liveReservations": 0,
+    "maximumReservations": 4096,
+    "owners": [],
+    "scope": "CONSERVATIVE_LOGICAL_METADATA_ADMISSION",
+    "nativeHeap": "UNMEASURED"
+  },
+  "orderRows": 218,
+  "fullControls": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v36-staged-world-reuse-join-2026-10-23-01\\controls-02\\full-regressions-13.json",
+    "bytes": 8518,
+    "sha256": "99dd3ad5a7bb3bce47c03e8ca7d69198ca47772766da1e371f048476def633b1"
+  },
+  "componentCases": 18,
+  "componentGroups": 103,
+  "boundaryControls": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v36-staged-world-reuse-join-2026-10-23-01\\controls-02\\current-scope-controls-13.json",
+    "bytes": 21149,
+    "sha256": "894c02dd3ad26be7ff65fe083de70761b03805b2a489e29c913e3db89a6fb149"
+  },
+  "boundaryGroups": 62,
+  "receiptEntries": 485323,
+  "receiptEnds": 485323,
+  "extraControls": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v36-staged-world-reuse-join-2026-10-23-01\\controls-02\\private-numeric-14.json",
+      "bytes": 8008,
+      "sha256": "07a5d673d198d64e6675c0aec00fec3ef5af10f6be1274d5a2dbb6dc443c331e",
+      "groups": 29
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v36-staged-world-reuse-join-2026-10-23-01\\controls-02\\private-proof-model-13.json",
+      "bytes": 3680,
+      "sha256": "4b8f26e85d0584017666ab6d9e00c5f50a61dad8da9098ad390380e58b7537a4",
+      "groups": 8
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v36-staged-world-reuse-join-2026-10-23-01\\controls-02\\registration-14.json",
+      "bytes": 1181,
+      "sha256": "a81c6e9b5f8bc9e13aefed302e054baf8546f5775640eb03c3b9dae1158146ff",
+      "groups": 7
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v36-staged-world-reuse-join-2026-10-23-01\\controls-02\\regexp-refusal-13.json",
+      "bytes": 5130,
+      "sha256": "2f46cf0354d1f2d37da54ecb4afe764aa39ebdbd2f7842ef03798c54a8525363",
+      "foreignCalls": 0
+    }
+  ],
+  "captureCaller": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v36-staged-world-reuse-join-2026-10-23-01\\caller-controls-03\\control-ownedHostStagesCaller-04.json",
+      "bytes": 14038,
+      "sha256": "5d32b970428da7a221c85beb2cf8b43b90d0a0df283b6023228f0a7c02fa3073",
+      "case": "ownedHostStagesCaller",
+      "groups": 5,
+      "visits": 6002,
+      "nativeWaits": 5,
+      "receiptEntries": 54213,
+      "receiptEnds": 54213
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v36-staged-world-reuse-join-2026-10-23-01\\caller-controls-03\\control-ownedHostStagesCallerPack-04.json",
+      "bytes": 14042,
+      "sha256": "846171cea12f7a092b2eb32e0b03627cc46b2d25ab92a13da2adaaf78f4db151",
+      "case": "ownedHostStagesCallerPack",
+      "groups": 5,
+      "visits": 6564,
+      "nativeWaits": 5,
+      "receiptEntries": 54213,
+      "receiptEnds": 54213
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v36-staged-world-reuse-join-2026-10-23-01\\caller-controls-03\\control-ownedHostStagesCallerAuthored-04.json",
+      "bytes": 14046,
+      "sha256": "27782f6fe9390f2a19c5c583a4b8f12a4912b83e01827ca2066b89b0d95c276e",
+      "case": "ownedHostStagesCallerAuthored",
+      "groups": 5,
+      "visits": 6387,
+      "nativeWaits": 5,
+      "receiptEntries": 54213,
+      "receiptEnds": 54213
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v36-staged-world-reuse-join-2026-10-23-01\\caller-controls-03\\control-ownedHostStagesCallerBoth-04.json",
+      "bytes": 14042,
+      "sha256": "bd4495e3de05de512325038b1193b34130723fc856852426ba2d035974b46204",
+      "case": "ownedHostStagesCallerBoth",
+      "groups": 5,
+      "visits": 6949,
+      "nativeWaits": 5,
+      "receiptEntries": 54213,
+      "receiptEnds": 54213
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v36-staged-world-reuse-join-2026-10-23-01\\caller-controls-03\\control-ownedHostStagesCallerNoFunding-04.json",
+      "bytes": 13385,
+      "sha256": "72d5adcfd08c555b34526cf9a49aa94b49b73bcf2f1d96c3dd20f882b083466f",
+      "case": "ownedHostStagesCallerNoFunding",
+      "groups": 4,
+      "visits": 0,
+      "nativeWaits": 0,
+      "receiptEntries": 54213,
+      "receiptEnds": 54213
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v36-staged-world-reuse-join-2026-10-23-01\\caller-controls-03\\control-ownedHostStagesCallerRawFalse-04.json",
+      "bytes": 13585,
+      "sha256": "a8c4b9904e50e483e6fd33d653028c5d9b386843878fffcc7dad535982b76a26",
+      "case": "ownedHostStagesCallerRawFalse",
+      "groups": 4,
+      "visits": 0,
+      "nativeWaits": 0,
+      "receiptEntries": 54213,
+      "receiptEnds": 54213
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v36-staged-world-reuse-join-2026-10-23-01\\caller-controls-03\\control-ownedHostStagesCallerPendingClose-04.json",
+      "bytes": 13875,
+      "sha256": "ff2f1f6bc0a54d40535f50ad870d40a3ec37b85ba4d252c413934d21615f9a1d",
+      "case": "ownedHostStagesCallerPendingClose",
+      "groups": 4,
+      "visits": 939,
+      "nativeWaits": 1,
+      "receiptEntries": 54213,
+      "receiptEnds": 54213
+    }
+  ],
+  "captureCallerGroups": 32,
+  "actualPrivateNumericV2Registered": true,
+  "coverageCorrections": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v36-staged-world-reuse-join-2026-10-23-01\\caller-control-correction-04.json",
+      "bytes": 1253,
+      "sha256": "ac3ea7e91046d705049fd4750135018e34478a44cf5951cbdb999e4754a7573e"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v36-staged-world-reuse-join-2026-10-23-01\\caller-control-correction-06.json",
+      "bytes": 1345,
+      "sha256": "b69f56396e350bbdaca3eb0bd43bc1d88ebf994be908c068549100f9402a9bd3"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v36-staged-world-reuse-join-2026-10-23-01\\caller-control-correction-07.json",
+      "bytes": 467,
+      "sha256": "5138f90d0d3cb131a3adb35c5797dc9e8635c2571a3cd3bc67d08da483f1c20a"
+    }
+  ],
+  "failedCaptureTest": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v36-staged-world-reuse-join-2026-10-23-01\\caller-controls-03\\control-ownedHostStagesCaller-01.json",
+    "status": "PRESERVED_TEST_SETUP_FAILURE",
+    "correction": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v36-staged-world-reuse-join-2026-10-23-01\\caller-control-correction-07.json",
+      "bytes": 467,
+      "sha256": "5138f90d0d3cb131a3adb35c5797dc9e8635c2571a3cd3bc67d08da483f1c20a"
+    }
+  },
+  "disclosures": [
+    "Source/GL/App/Surface/transport diagnostic adapters are preserved and explicit in individual controls. New capture caller enclosing catalogue/current parent remains a disclosed adapter; actual original private Numeric v2 registration, same-paid scope source, Host/Strict/Q/schema/projection/capture/native hash bodies execute.",
+    "Literal diagnostic funding is unselected. This component seal does not qualify complete caller, ownership, work, R admission, whole view, fragment, Frame or ordinary native Main.",
+    "Source29 actual Chrome component evidence is inherited byte-for-byte, not a new combined native Main run."
+  ],
+  "countsArePrices": false,
+  "completeCosts": null,
+  "limits": {
+    "prepare": 4096,
+    "upload": 262144,
+    "jobs": 2,
+    "slots": 64,
+    "serviceCPU": 33554432,
+    "serviceGPU": 10485760,
+    "commonQ": 33554432
+  },
+  "Main": false,
+  "P05": "OPEN"
+}

@@ -1,0 +1,147 @@
+{
+  "status": "PASS_FROZEN_UNSELECTED_SYNCHRONOUS_VALIDATION_COMPONENT",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-synchronous-validation-reuse-2026-10-23-01\\candidate-01\\source",
+  "parent": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-current-validated-state-join-2026-10-23-01\\candidate-01\\source",
+  "parentCheck": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-current-validated-state-join-2026-10-23-01\\CHECK-06.json",
+    "bytes": 3620,
+    "sha256": "cf97d1fe6dff5597b26b4df9cfc1b7fce4b1e6bb0b908c37983b1a7a9f6e2c92"
+  },
+  "files": 522,
+  "parses": 426,
+  "changed": [
+    "biome-service/host-world.js",
+    "biome-service/native/surface-kernel.js",
+    "biome-service/numeric-profile.js",
+    "owned-main-bootstrap.js"
+  ],
+  "other518ParentFilesExact": true,
+  "sourcePins": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-synchronous-validation-reuse-2026-10-23-01\\candidate-01\\source\\biome-service\\host-world.js",
+      "bytes": 82062,
+      "sha256": "01f417226d09fcd70e92f6190fcc34f5d71cedf708d9627c92869956f3a939be"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-synchronous-validation-reuse-2026-10-23-01\\candidate-01\\source\\biome-service\\native\\surface-kernel.js",
+      "bytes": 74515,
+      "sha256": "b23771217ad3d4fbfa29eea5c690903ad6abe835cd9251c9bfa4473ad1861a37"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-synchronous-validation-reuse-2026-10-23-01\\candidate-01\\source\\biome-service\\numeric-profile.js",
+      "bytes": 50352,
+      "sha256": "6b72175e5b6351e5bac677a40d25bfdeb73ff4164a243d66d7ddedcd679a52d6"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-synchronous-validation-reuse-2026-10-23-01\\candidate-01\\source\\owned-main-bootstrap.js",
+      "bytes": 318478,
+      "sha256": "bb5ea81d68e3e37bce0e5760cada9004d45b5489657f23d2c008f57ec9751d31"
+    }
+  ],
+  "codeHunks": 82,
+  "historicalHunks": 87,
+  "exactInverse": true,
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "rows": 222,
+      "digest": "5b71baf00b3c7b1ad0e3ff89e298bad6f3c2966aae623807b2cb77520cf488ff"
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "rows": 5,
+      "digest": "95600ffa007cdd056cd8939871d24209c6aac95c04e79a436e7a81ddc783d40c"
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "rows": 9,
+      "digest": "b24f9a2a56dc78482c0b7bdf902e439694358ab14fda13fc502a310f3e9abae1"
+    }
+  ],
+  "freshSourceReads": 236,
+  "sourceCopies": 222,
+  "orderRows": 218,
+  "sourceOnlyPeakQ": 13433259,
+  "sourceOnlyFinalQ": {
+    "heldBytes": 0,
+    "requestedBytes": 0,
+    "bookkeepingBytes": 0,
+    "peakBytes": 13433259,
+    "limitBytes": 33554432,
+    "liveReservations": 0,
+    "maximumReservations": 4096,
+    "owners": [],
+    "scope": "CONSERVATIVE_LOGICAL_METADATA_ADMISSION",
+    "nativeHeap": "UNMEASURED"
+  },
+  "controls": [
+    {
+      "name": "full-regressions-13.json",
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-synchronous-validation-reuse-2026-10-23-01\\controls-01\\full-regressions-13.json",
+      "bytes": 8613,
+      "sha256": "71ae09225c5e43a522b2d96398a105d66f3fedb28d49527d309a65c8db815ad8",
+      "status": "PASS_UNSELECTED_ACTUAL_ORIGINAL_COMPONENT_REGRESSIONS",
+      "groups": 103,
+      "cases": 18
+    },
+    {
+      "name": "current-scope-controls-13.json",
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-synchronous-validation-reuse-2026-10-23-01\\controls-01\\current-scope-controls-13.json",
+      "bytes": 21154,
+      "sha256": "930e3de8019a12eb5398e8d60271963233436e8d164c6cec0a3f3a57f7e7c43d",
+      "status": "PASS_EXACT_SOURCE_SCOPE_BOUNDARIES_WITH_DISCLOSED_MODELS",
+      "groups": 62
+    },
+    {
+      "name": "private-numeric-14.json",
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-synchronous-validation-reuse-2026-10-23-01\\controls-01\\private-numeric-14.json",
+      "bytes": 8013,
+      "sha256": "cc126bf219ad2a2bd5abb1c4a00dfd88a30f8fb54c4dc36c50cb8d27348c71e4",
+      "status": "PASS_ACTUAL_PRIVATE_NUMERIC_COMPONENT_WITH_DIAGNOSTIC_FUNDING",
+      "groups": 29
+    },
+    {
+      "name": "private-proof-model-13.json",
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-synchronous-validation-reuse-2026-10-23-01\\controls-01\\private-proof-model-13.json",
+      "bytes": 3680,
+      "sha256": "4b8f26e85d0584017666ab6d9e00c5f50a61dad8da9098ad390380e58b7537a4",
+      "status": "PASS_EXACT_SOURCE_WRAPPER_PROTOCOL_MODELS",
+      "groups": 8
+    },
+    {
+      "name": "registration-14.json",
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-synchronous-validation-reuse-2026-10-23-01\\controls-01\\registration-14.json",
+      "bytes": 1181,
+      "sha256": "a81c6e9b5f8bc9e13aefed302e054baf8546f5775640eb03c3b9dae1158146ff",
+      "status": "PASS_EXACT_SOURCE_REGISTRATION_MODELS",
+      "groups": 7
+    },
+    {
+      "name": "regexp-refusal-13.json",
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-synchronous-validation-reuse-2026-10-23-01\\controls-01\\regexp-refusal-13.json",
+      "bytes": 5135,
+      "sha256": "5ca1229021dd301d1e64be6932464c8c85f2563c61f8656d63e515c6aaff79a1",
+      "status": "REFUSED_WITHOUT_CALLBACK"
+    }
+  ],
+  "preservedCounter": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-synchronous-validation-reuse-2026-10-23-01\\controls-01\\regexp-counter-10.json",
+    "bytes": 5140,
+    "sha256": "b0b34bc26c265e5b595834149252a6580309b2e146d2b5fc59090ebed1a00b2f"
+  },
+  "sourceTruth": "Original Q/S/Records/Host/Kernel/Binding/ReleaseStore and actual Node native SHA are used in full regressions; App/Surface/GL/source-script/transport and paid-scope adapters are disclosed. Protocol/reentry tests identify their exact mocked children. No browser/native Main run.",
+  "currentProof": "Private original source-script port; sameQ/original-owner/certificate and fresh serial at entry; proof expires before unknown callback/wait/return and next visit. Public/default routes preserve original fresh checks. Added native pre/post query checks and successful Resource step exit stay fresh.",
+  "unqualified": [
+    "Full constructor/start/accept/read/close/caller phase fee composition",
+    "Entry prefix prospective funding and complete module/controller/instance/active/closed/caller logical census",
+    "Actual shared initializer/R debit/following/job/scope composition",
+    "Complete current wholeQ/native/driver/engine physical memory",
+    "Default generic Numeric callback eligibility and every unrelated legacy cold route",
+    "Main/frame/draw/whole-host/P05"
+  ],
+  "funding": null,
+  "work": null,
+  "Main": false,
+  "P05": "OPEN",
+  "countsArePrices": false
+}
