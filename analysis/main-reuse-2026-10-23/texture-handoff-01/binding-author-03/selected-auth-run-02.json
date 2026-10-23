@@ -1,0 +1,312 @@
+{
+  "format": "sphere-binding-selected-auth-control-run/1",
+  "utc": "2026-10-23T11:07:47.844Z",
+  "status": "PASS_4_EXACT_SELECTED_SOURCE_FUNCTIONAL_MODELS",
+  "product": {
+    "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/candidate-03/source/biome-service/native/main-texture-binding-owner.js",
+    "bytes": 99452,
+    "sha256": "234d212e4de8589520672085bdbaa071ba662b461f3ac196b468fe13983b077d"
+  },
+  "sourcePins": [
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/candidate-03/source/biome-service/native/main-texture-binding-owner.js",
+      "bytes": 99452,
+      "sha256": "234d212e4de8589520672085bdbaa071ba662b461f3ac196b468fe13983b077d"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/candidate-03/source/biome-service/metadata-budget.js",
+      "bytes": 4137,
+      "sha256": "9318446452e9a99fee2873eaf0d072bd76c39f714e4d1bceadf6057d04df6635"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/candidate-03/source/biome-service/native/source-admission.js",
+      "bytes": 16839,
+      "sha256": "d1676c985688bb3330ae2e35e1194c8b2c05116652939e1b183e0047751d8a7f"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/candidate-03/source/biome-service/native/resource-leases.js",
+      "bytes": 108311,
+      "sha256": "f805286612250ce24c6e8105141da52169c72599a2abb5ef455c79b116f95ed7"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/candidate-03/source/biome-service/native/shared-gpu-backend.js",
+      "bytes": 76077,
+      "sha256": "6699c52a359d14ee5aab85dc0dd8d305ff955e7b87ea5bc7d8a547c9d8b53251"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/candidate-03/source/biome-service/records.js",
+      "bytes": 24045,
+      "sha256": "70dbb2302f88f5f950de3eb2d3e94951a1537fdeab54640e7bb95746d69c1556"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/candidate-03/source/tests/fixtures/biome-service/native-local-fake-gl.cjs",
+      "bytes": 5327,
+      "sha256": "d9e8e3901798e4fa861463ef354e1260825a95d24d2bf4fbc84ede0f71d6536f"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/candidate-03/source/owned-main-bootstrap.js",
+      "bytes": 67631,
+      "sha256": "a29fd0953fa0560eef5b790647de00704b79cc220e17686b472e49bfd9132716"
+    }
+  ],
+  "sourceAdmission": {
+    "genuineS": true,
+    "BindingBytesExactProduct": true,
+    "sourceOverrides": 0,
+    "feeOverrides": 0,
+    "instanceOverrides": 0,
+    "observerInjections": 0,
+    "MainGateOverrides": 0
+  },
+  "selectedSourceFees": {
+    "phaseWork": [
+      632,
+      586,
+      589,
+      592,
+      595,
+      590
+    ],
+    "closeWork": 88,
+    "pendingMetadataBytes": 4096,
+    "instanceMetadataBytes": 32768
+  },
+  "results": [
+    {
+      "mode": "foreign-pending-complete",
+      "pin": {
+        "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/binding-author-03/controls-auth-foreign-pending-complete-01/results-01.json",
+        "bytes": 32220,
+        "sha256": "38b297c917ecc5e7595cf867c04a2f7b255a12e6a38a9f2882656dc3e80da29f"
+      },
+      "foreignRejections": 100,
+      "originalSixVisits": true,
+      "authenticMutationInvalidates": false,
+      "events": [
+        {
+          "phase": 0,
+          "shareDelta": 0,
+          "readers": 4,
+          "returned": false,
+          "demandChecks": 1
+        },
+        {
+          "phase": 1,
+          "shareDelta": 1,
+          "readers": 4,
+          "returned": false,
+          "demandChecks": 2
+        },
+        {
+          "phase": 2,
+          "shareDelta": 1,
+          "readers": 4,
+          "returned": false,
+          "demandChecks": 3
+        },
+        {
+          "phase": 3,
+          "shareDelta": 1,
+          "readers": 4,
+          "returned": false,
+          "demandChecks": 4
+        },
+        {
+          "phase": 4,
+          "shareDelta": 1,
+          "readers": 4,
+          "returned": false,
+          "demandChecks": 5
+        },
+        {
+          "phase": 5,
+          "shareDelta": 0,
+          "readers": 4,
+          "returned": true,
+          "demandChecks": 6
+        }
+      ],
+      "remainingLeases": 0,
+      "requestedQ": 32768,
+      "heldQ": 37542
+    },
+    {
+      "mode": "foreign-pending-cancel",
+      "pin": {
+        "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/binding-author-03/controls-auth-foreign-pending-cancel-01/results-01.json",
+        "bytes": 8125,
+        "sha256": "272a162fd6bf5879c4e22fe672d52509cee7b69f69300f7f19cde9d64d0eb395"
+      },
+      "foreignRejections": 20,
+      "originalSixVisits": false,
+      "authenticMutationInvalidates": false,
+      "events": [
+        {
+          "phase": 0,
+          "shareDelta": 0,
+          "readers": 4,
+          "returned": false,
+          "demandChecks": 1
+        },
+        {
+          "phase": 1,
+          "shareDelta": 1,
+          "readers": 4,
+          "returned": false,
+          "demandChecks": 2
+        },
+        {
+          "phase": 2,
+          "shareDelta": 1,
+          "readers": 4,
+          "returned": false,
+          "demandChecks": 3
+        }
+      ],
+      "remainingLeases": 0,
+      "requestedQ": 32768,
+      "heldQ": 37542
+    },
+    {
+      "mode": "authentic-baseline-invalidates",
+      "pin": {
+        "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/binding-author-03/controls-auth-authentic-baseline-invalidates-01/results-01.json",
+        "bytes": 2161,
+        "sha256": "a48ba096b318139c39f469f21bb305d55150b276c3395c01f20c04dc0bcbce6f"
+      },
+      "foreignRejections": 0,
+      "originalSixVisits": false,
+      "authenticMutationInvalidates": true,
+      "events": [
+        {
+          "phase": 0,
+          "shareDelta": 0,
+          "readers": 4,
+          "returned": false,
+          "demandChecks": 1
+        },
+        {
+          "phase": 1,
+          "shareDelta": 1,
+          "readers": 4,
+          "returned": false,
+          "demandChecks": 2
+        }
+      ],
+      "remainingLeases": 0,
+      "requestedQ": 32768,
+      "heldQ": 37542
+    },
+    {
+      "mode": "authentic-publisher-invalidates",
+      "pin": {
+        "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/binding-author-03/controls-auth-authentic-publisher-invalidates-01/results-01.json",
+        "bytes": 2163,
+        "sha256": "9958cc527642d0e1594966942c42f8a4d7a6a633cf9ddc46a532e608a57f2699"
+      },
+      "foreignRejections": 0,
+      "originalSixVisits": false,
+      "authenticMutationInvalidates": true,
+      "events": [
+        {
+          "phase": 0,
+          "shareDelta": 0,
+          "readers": 4,
+          "returned": false,
+          "demandChecks": 1
+        },
+        {
+          "phase": 1,
+          "shareDelta": 1,
+          "readers": 4,
+          "returned": false,
+          "demandChecks": 2
+        }
+      ],
+      "remainingLeases": 0,
+      "requestedQ": 32768,
+      "heldQ": 37542
+    }
+  ],
+  "foreignControl": {
+    "refusals": 120,
+    "variantsPerPendingState": 20,
+    "pendingPhases": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "perAttempt": "Full public Binding, actual R/Q, original source parent and native-query snapshots remain equal.",
+    "paths": [
+      "beforeTextureTransition wrong/null key or foreign/null child",
+      "acceptTextureGeneration wrong/null key or foreign/null child",
+      "Demand publisher allocate/upload/publish foreign/null owner or wrong/null key"
+    ],
+    "privateKeyEvidence": "No observer hook exposes private keys. Genuine unchanged R state and original final shared-key/currentness barriers/checkCurrent/cleanup validate retained keys."
+  },
+  "completion": {
+    "originalSixVisits": true,
+    "shareDeltas": [
+      0,
+      1,
+      1,
+      1,
+      1,
+      0
+    ],
+    "originalCompoundReaderBrand": true,
+    "original64SlotsAnd3584PublicRetainUnchanged": true,
+    "paidPartialCancelShares": 2,
+    "authenticMutationSealing": [
+      "Baseline beforeTextureTransition",
+      "Demand publisher allocate"
+    ]
+  },
+  "closedFacade": {
+    "instanceRequestedBytes": 32768,
+    "chargedWithReservationAndLabels": 33446,
+    "QBaseBytes": 4096,
+    "heldQBytes": 37542,
+    "liveReservations": 1,
+    "instanceStillOwned": true,
+    "QDisposed": false,
+    "allRLeases": 0
+  },
+  "scope": {
+    "actualBodies": [
+      "Binding",
+      "Q",
+      "S",
+      "R",
+      "G"
+    ],
+    "modeledParents": [
+      "identity-only Renderer",
+      "Construction ports/records",
+      "Baseline guards/readers",
+      "Demand completion"
+    ],
+    "gl": "DETERMINISTIC_MODEL",
+    "actualManagedSurfaceBody": false,
+    "actualMain": false,
+    "native": false,
+    "P05": false,
+    "coldGraph": false,
+    "VMHeap": false,
+    "feeOrStorageDerivation": false
+  },
+  "preservation": {
+    "priorFocusedSeal": {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/binding-author-02/CHECK-03.json",
+      "bytes": 3399,
+      "sha256": "141bcfe048b71c15dd05560517bc20ff0327723cbe8c187eb669d71cf393bafc"
+    },
+    "priorFocusedArtifactsVerified": 9,
+    "sourceEdits": 0,
+    "historicalEdits": 0,
+    "browserServerGitActions": 0
+  },
+  "productMainExecutionEnabled": false
+}

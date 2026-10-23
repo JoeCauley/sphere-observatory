@@ -1,0 +1,88 @@
+{
+  "format": "sphere-split-base-wrapper-source-models/1",
+  "status": "PASS",
+  "source": "biome-service/native/main-baseline-owner.js",
+  "sha256": "b4889a954e2e00fb86cab8ae01d589c067c7dc52bf385c146acc4577ef68b9c6",
+  "completed": 19,
+  "tests": [
+    {
+      "name": "Original demanded and ordinary visit function bodies remain byte exact",
+      "status": "PASS"
+    },
+    {
+      "name": "Legacy retain and all renderer/simulation sources remain exact at Base-only boundary",
+      "status": "PASS"
+    },
+    {
+      "name": "Foreign key rejected before arbitrary argument descriptor",
+      "status": "PASS"
+    },
+    {
+      "name": "Entry latch precedes argument descriptor reentry",
+      "status": "PASS"
+    },
+    {
+      "name": "Own accessor frame is refused without invoking its getter",
+      "status": "PASS"
+    },
+    {
+      "name": "Earlier stages retain original dispatcher",
+      "status": "PASS"
+    },
+    {
+      "name": "Unselected fee refuses before fresh Base/native or child work",
+      "status": "PASS"
+    },
+    {
+      "name": "Insufficient work preserves phase and never enters child",
+      "status": "PASS"
+    },
+    {
+      "name": "Main remains on phase seven for every incomplete transfer step",
+      "status": "PASS"
+    },
+    {
+      "name": "Completed reader rooted before brand callback and final scope check",
+      "status": "PASS"
+    },
+    {
+      "name": "A reader survives failed final scope barrier and every replay is refused",
+      "status": "PASS"
+    },
+    {
+      "name": "A reader survives failed returned-brand check",
+      "status": "PASS"
+    },
+    {
+      "name": "Child failure seals Base without losing child pending state",
+      "status": "PASS"
+    },
+    {
+      "name": "Primary Proxy failure survives simultaneous final scope failure without inspection",
+      "status": "PASS"
+    },
+    {
+      "name": "Cancellation latch covers its credit and retirement paying prefix",
+      "status": "PASS"
+    },
+    {
+      "name": "Cancellation runs before inherited unselected bridge close refusal",
+      "status": "PASS"
+    },
+    {
+      "name": "Deferred cancellation leaves original bridge and returns safely",
+      "status": "PASS"
+    },
+    {
+      "name": "Cancellation remains possible after native context loss without fresh-use checks",
+      "status": "PASS"
+    },
+    {
+      "name": "Child cancellation false and throw both clear caller latch",
+      "status": "PASS"
+    }
+  ],
+  "feeValues": "17/19 are model symbols only, not qualified or selected product prices",
+  "parents": "Named model callbacks; exact authored wrapper bodies. No actual Base construction/admission/native Main claim.",
+  "P05": "OPEN"
+}

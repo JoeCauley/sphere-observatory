@@ -1,0 +1,129 @@
+{
+  "format": "sphere-v8-ordinary-bridge-ledger-seal/1",
+  "utc": "2026-10-23T10:48:03.163Z",
+  "status": "PASS_READ_ONLY_SOURCE_IDENTITY_AND_GUARD_ARITHMETIC",
+  "artifactPins": [
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/v8-bridge-ledger-01/C02-ADDENDUM-01.json",
+      "bytes": 2034,
+      "sha256": "4016e190ab878774f38dc086d3a720295d1abd2de79a889502f41365282afb18"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/v8-bridge-ledger-01/DERIVATION-01.md",
+      "bytes": 12868,
+      "sha256": "4d85871e0baea88bafca22243ad54b478f403afa1cc56c065a33ed22ca70cc48"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/v8-bridge-ledger-01/attempt-01.json",
+      "bytes": 556,
+      "sha256": "417a1837a7fa17d08d8b18d37aaf5d67af90c6ec3a13bda57fa827a96cec9bf8"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/v8-bridge-ledger-01/derive-ledger-01.cjs",
+      "bytes": 31588,
+      "sha256": "1a87607f22f5db27ffa0cd1d6d81ed5e887b1d95da3a31c807743d8be45e0ef9"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/v8-bridge-ledger-01/four-key-ledger-01.json",
+      "bytes": 23713,
+      "sha256": "2bac1ac9344639b409aee909425aa5e4553eea72a84074367af40798f7b372bb"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/v8-bridge-ledger-01/function-identities-01.json",
+      "bytes": 33477,
+      "sha256": "b2aa5fbc4fc3e9c1cbb1a80ed501c2a0bddaafe8662744985a932019a634225b"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/v8-bridge-ledger-01/guard-arithmetic-01.json",
+      "bytes": 3089,
+      "sha256": "fe2e2fca9ca905353d8701466cc74fb53c109c785f7c5a9051dabdc1a43f3fc8"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/v8-bridge-ledger-01/preservation-01.json",
+      "bytes": 3311,
+      "sha256": "50673fcf97f3418c74354bc9b45b425b6c47fd62fbdf93c859cd6dae1e8ee123"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/v8-bridge-ledger-01/seal-ledger-01.cjs",
+      "bytes": 3784,
+      "sha256": "939a1d7578553dd39e4f3bca6b5c36340e86aeb99f62b55e2fa1f3cfb6fd1348"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/v8-bridge-ledger-01/source-pins-01.json",
+      "bytes": 8152,
+      "sha256": "efffb785011d43e546ae600cbaaf3975073ca2ab3ea3f9414857c5d6739c3c15"
+    }
+  ],
+  "sourceC01FilesVerified": 14,
+  "sourceC01Inventory": {
+    "files": 521,
+    "inventoryDigest": "c031c963c0adb48d34d128a25d6c51192d92a9da0c83968c97c1c2b2b354893a",
+    "unchanged": true
+  },
+  "sourceC02InventoryAtCutoff": {
+    "files": 521,
+    "inventoryDigest": "7601f2fc4a4c756ca43180c1425bbbd4873a9956a09645ef03cb70ebcd8121a0",
+    "unchanged": true
+  },
+  "C02CurrentAtSeal": [
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/candidate-02/source/biome-service/native/main-baseline-owner.js",
+      "bytes": 99076,
+      "sha256": "8b390df9b7ca7168bd301e917c18f6cde5b98d1f7237250ea69e10fdba3cd042",
+      "exactLedgerCutoff": true
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/candidate-02/source/biome-service/native/main-texture-binding-owner.js",
+      "bytes": 99362,
+      "sha256": "73c85d0e221ecf6a0eb7fe205b91820349941521e59ebb0c3f84b721030be078",
+      "exactLedgerCutoff": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/candidate-02/source/owned-main-bootstrap.js",
+      "bytes": 67627,
+      "sha256": "b7e5a01aad907a285257e4017d99309611c4b29ebecbd193260dfc4f05a31ce0",
+      "exactLedgerCutoff": true
+    }
+  ],
+  "C02Scope": "Exact frozen following/lifetime cutoff recorded, future authorized root successors/deltas are outside this ledger; no source2 current claim if its pin differs.",
+  "supporting": [
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/candidate-02/lifetime-successor-09.json",
+      "bytes": 7256,
+      "sha256": "8b45908407332b0da74e3c26d9740d966c04277cd5cd06297942e577592f319d"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/candidate-02/following-tightening-10.json",
+      "bytes": 2453,
+      "sha256": "523a53bf29b97f257ef145be6110d28a32e758a132be39874d196252c485a4b5"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/candidate-02/following-schema-11.json",
+      "bytes": 416,
+      "sha256": "e55646dad69f460feed71773156fb5a334630f7815aba0cdde22174768dc8f38"
+    }
+  ],
+  "identity": {
+    "historicalFunctions": 65,
+    "exactHistoricalFunctions": 62,
+    "newOrExtraFunctions": 22,
+    "oldLocalVisitUseBatchBodiesExact": true,
+    "BaseLiveExactAddedFailureGuard": true,
+    "BaseCloseExactAddedPaidCancelPrefix": true
+  },
+  "guardArithmeticChecks": 12,
+  "sourceEdits": 0,
+  "historicalEdits": 0,
+  "browserServerGitActions": 0,
+  "selectedWorkTables": [],
+  "nativeExecution": false,
+  "modelExecution": false,
+  "sourcePricingByAstOrEvents": false,
+  "globalFourKeyWork": "NULL_HELD",
+  "MainExecutionEnabled": false,
+  "fullMain": "HELD",
+  "P05": "OPEN",
+  "coldWholeGraph": "UNQUALIFIED",
+  "originalH": "UNQUALIFIED",
+  "laterAuthFirstCorrection": "PENDING_SEPARATE_SOURCE_AND_CONTROL"
+}

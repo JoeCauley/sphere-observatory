@@ -1,0 +1,159 @@
+{
+  "status": "PASS_ACTUAL_SELECTED_SOURCE_INCREMENT_RE_CENSUS",
+  "sourcePins": [
+    {
+      "file": "biome-service/native/main-texture-binding-owner.js",
+      "sha256": "234d212e4de8589520672085bdbaa071ba662b461f3ac196b468fe13983b077d",
+      "bytes": 99452
+    },
+    {
+      "file": "biome-service/native/main-baseline-owner.js",
+      "sha256": "b4889a954e2e00fb86cab8ae01d589c067c7dc52bf385c146acc4577ef68b9c6",
+      "bytes": 99101
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "sha256": "a29fd0953fa0560eef5b790647de00704b79cc220e17686b472e49bfd9132716",
+      "bytes": 67631
+    }
+  ],
+  "module": {
+    "rows": [
+      {
+        "item": "Actual Binding source strings",
+        "bytes": 45824,
+        "proof": "45824=previous45312+actual selected table keys512. No future key row remains."
+      },
+      {
+        "item": "Binding actual module create-capture increment",
+        "bytes": 128,
+        "proof": "Current captured module references, unchanged from reviewed draft."
+      },
+      {
+        "item": "Binding control/export slots",
+        "bytes": 320,
+        "proof": "Actual5 new module cells and5 exported fields."
+      },
+      {
+        "item": "Binding actual selected work/phase-array/limits schema",
+        "bytes": 960,
+        "proof": "224+320+416=960, all now actual source records."
+      },
+      {
+        "item": "Actual Base source strings",
+        "bytes": 17312,
+        "proof": "17312=previous16992+actual selected visit/close keys320. No future key row remains."
+      },
+      {
+        "item": "Base actual module create-capture increment",
+        "bytes": 128,
+        "proof": "Same four added module captures."
+      },
+      {
+        "item": "Base control/export slots",
+        "bytes": 256,
+        "proof": "Actual4 new module cells and4 exported fields."
+      },
+      {
+        "item": "Base actual selected work/limits schema",
+        "bytes": 544,
+        "proof": "192+352=544, both actual source records."
+      }
+    ],
+    "actualRaw": 65472,
+    "selected": 65536,
+    "difference": 64,
+    "futureRows": 0
+  },
+  "controller": {
+    "rows": [
+      {
+        "item": "Loader positive source strings including graphID and two changed SHA values",
+        "bytes": 5408,
+        "proof": "Current selected-loader positive string multiset5408, including actual new digest values. Same-length fixed graph row repins create no additional source occurrence."
+      },
+      {
+        "item": "Loader existing function capture increment",
+        "bytes": 192,
+        "proof": "inspect/releaseUnexecuted/start each add2captures."
+      },
+      {
+        "item": "Loader added control cells",
+        "bytes": 192,
+        "proof": "Six new cells including2constants,2charge refs and2error bindings."
+      },
+      {
+        "item": "Loader added lexical scope headers",
+        "bytes": 512,
+        "proof": "Four new source scopes,128each."
+      },
+      {
+        "item": "Loader inspection return fields",
+        "bytes": 64,
+        "proof": "Two added fields,32each; existing record header unchanged."
+      },
+      {
+        "item": "New guard error and descriptor union",
+        "bytes": 448,
+        "proof": "Logical error4fields256 +own code descriptor2fields192."
+      },
+      {
+        "item": "Two new reservation option records",
+        "bytes": 384,
+        "proof": "Two2field owner/phase records,192each."
+      }
+    ],
+    "actualRaw": 7200,
+    "selected": 8192
+  },
+  "baseInstance": {
+    "actualRaw": 9504,
+    "selected": 12288,
+    "proof": "All actual callable/capture/activation layouts match independently reviewed C02. Prior source rows apply byte-for-byte; selected scalar types do not create additional fields."
+  },
+  "bindingInstance": {
+    "actualRaw": 30784,
+    "selected": 32768,
+    "mutationUnion": 2304,
+    "runtimeMaximum": 11808,
+    "proof": "Capture/activation layouts unchanged, including auth-first accept rowsSource capture. Added mutation union2304 is explicitly included via maximum11808."
+  },
+  "pending": {
+    "actualRaw": 320,
+    "selected": 4096,
+    "readerSeparate": 16384
+  },
+  "instanceLayouts": [
+    {
+      "file": "biome-service/native/main-texture-binding-owner.js",
+      "count": 103,
+      "exactCaptureAndActivationLayouts": true,
+      "functionBytes": 5280,
+      "prototypeBytes": 1600,
+      "controlBytes": 544
+    },
+    {
+      "file": "biome-service/native/main-baseline-owner.js",
+      "count": 105,
+      "exactCaptureAndActivationLayouts": true,
+      "functionBytes": 1728,
+      "prototypeBytes": 480,
+      "controlBytes": 160
+    }
+  ],
+  "qualifiedLifetimes": "Module/controller are separate evaluated-realm accounts; every-create added instance accounts remain retained with reachable closed APIs/Renderer graphs. Pending Q and readerQ have distinct transfer/cancel lifetimes. Body Q reserve still is not original caller pre-create/cold proof.",
+  "qualification": "Increment logical accounting only. Full cold/caller/inherited instance/host/native/Main/P05 stay held; native/VM/wrapper/physical backing UNMEASURED. No source, browser/server or Git action.",
+  "checks": {
+    "allSelectedModuleBytesActuallyCounted": true,
+    "moduleFits65536": true,
+    "controllerRaw7200": true,
+    "controllerFits8192": true,
+    "actualSchemasMatchReviewed": true,
+    "allInstanceLayoutsUnchanged": true,
+    "baseFits": true,
+    "bindingFits": true,
+    "correctedMutationMaximum": true,
+    "sourceCheckAllPass": true,
+    "noOldSlackBorrowed": true
+  }
+}

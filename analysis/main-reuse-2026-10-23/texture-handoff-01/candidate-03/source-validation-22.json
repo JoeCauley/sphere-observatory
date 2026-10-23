@@ -1,0 +1,106 @@
+{
+  "status": "PASS_SELECTED_SOURCE_IDENTITY_AND_LITERAL_DEBIT_LEDGER",
+  "sourceFiles": 521,
+  "javaScriptParses": 425,
+  "onlyChanged": [
+    "biome-service/native/main-baseline-owner.js",
+    "biome-service/native/main-texture-binding-owner.js",
+    "owned-main-bootstrap.js"
+  ],
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "digest": "f0fcf485eea4dc61d6db859a2399db84d8a74c71b4dd8ad35751e0d41d1a6c9e",
+      "closureRows": 219
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "digest": "7751dd2a8a392292cf3626723edbe755976bfc3398d4c77cff5f02e5a4d59c6c",
+      "closureRows": 5
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "digest": "987bf7095c3da5ab6ac39fae2fb03409c87f12c40f8e4993f24aea7a400b1021",
+      "closureRows": 9
+    }
+  ],
+  "productAppGate": false,
+  "globalOrdinaryWork": null,
+  "originalReaderCap": 64,
+  "originalPublicRetain": 3584,
+  "limits": {
+    "prepare": 4096,
+    "uploadBytes": 262144,
+    "jobs": 2
+  },
+  "sequentialPhaseLedgers": [
+    {
+      "phase": 0,
+      "targetClock": 8,
+      "baseEntry": 117,
+      "baseSurface": 128,
+      "bindingPhase": 632,
+      "demandSurface": 128,
+      "actualDebits": 1013,
+      "following": 768,
+      "unspentBeyondFollowing": 2315
+    },
+    {
+      "phase": 1,
+      "targetClock": 8,
+      "baseEntry": 117,
+      "baseSurface": 128,
+      "bindingPhase": 586,
+      "demandSurface": 128,
+      "actualDebits": 967,
+      "following": 768,
+      "unspentBeyondFollowing": 2361
+    },
+    {
+      "phase": 2,
+      "targetClock": 8,
+      "baseEntry": 117,
+      "baseSurface": 128,
+      "bindingPhase": 589,
+      "demandSurface": 128,
+      "actualDebits": 970,
+      "following": 768,
+      "unspentBeyondFollowing": 2358
+    },
+    {
+      "phase": 3,
+      "targetClock": 8,
+      "baseEntry": 117,
+      "baseSurface": 128,
+      "bindingPhase": 592,
+      "demandSurface": 128,
+      "actualDebits": 973,
+      "following": 768,
+      "unspentBeyondFollowing": 2355
+    },
+    {
+      "phase": 4,
+      "targetClock": 8,
+      "baseEntry": 117,
+      "baseSurface": 128,
+      "bindingPhase": 595,
+      "demandSurface": 128,
+      "actualDebits": 976,
+      "following": 768,
+      "unspentBeyondFollowing": 2352
+    },
+    {
+      "phase": 5,
+      "targetClock": 8,
+      "baseEntry": 117,
+      "baseSurface": 128,
+      "bindingPhase": 590,
+      "demandSurface": 128,
+      "actualDebits": 971,
+      "following": 768,
+      "unspentBeyondFollowing": 2357
+    }
+  ],
+  "qualification": "Literal debit ledger only, not a work-price derivation, native timing or complete cold/caller/Main/host qualification. Price derivation and independent review remain separately pinned.",
+  "P05": "OPEN"
+}

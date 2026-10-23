@@ -1,0 +1,124 @@
+{
+  "status": "PASS_POST_SELECTION_EXACT_SOURCE_AND_LOGICAL_INCREMENT_RE_CENSUS",
+  "utc": "2026-10-23T11:13:03.872Z",
+  "candidate": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/candidate-03/source",
+  "sourcePins": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\texture-handoff-split-2026-10-23-01\\candidate-03\\source\\biome-service\\native\\main-texture-binding-owner.js",
+      "bytes": 99452,
+      "sha256": "234d212e4de8589520672085bdbaa071ba662b461f3ac196b468fe13983b077d",
+      "expected": "234d212e4de8589520672085bdbaa071ba662b461f3ac196b468fe13983b077d",
+      "pass": true
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\texture-handoff-split-2026-10-23-01\\candidate-03\\source\\biome-service\\native\\main-baseline-owner.js",
+      "bytes": 99101,
+      "sha256": "b4889a954e2e00fb86cab8ae01d589c067c7dc52bf385c146acc4577ef68b9c6",
+      "expected": "b4889a954e2e00fb86cab8ae01d589c067c7dc52bf385c146acc4577ef68b9c6",
+      "pass": true
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\texture-handoff-split-2026-10-23-01\\candidate-03\\source\\owned-main-bootstrap.js",
+      "bytes": 67631,
+      "sha256": "a29fd0953fa0560eef5b790647de00704b79cc220e17686b472e49bfd9132716",
+      "expected": "a29fd0953fa0560eef5b790647de00704b79cc220e17686b472e49bfd9132716",
+      "pass": true
+    }
+  ],
+  "sourceCount": 521,
+  "parseCount": 425,
+  "selection": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\texture-handoff-split-2026-10-23-01/candidate-03/selection-receipt-15.json",
+    "bytes": 127285,
+    "sha256": "64734cbb2cb16c96726c2b121ae59314db20513f04f9e02fb4cdbd950d6ad0e4"
+  },
+  "independentBasis": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\texture-handoff-split-2026-10-23-01/split-independent-review-01/CHECK-05.json",
+    "bytes": 7954,
+    "sha256": "8103efde1b2d71f3d01cd7dda3bca1a7cc9d4beda6f1d5732a3ddfcbf983faa9"
+  },
+  "finalAuthorBasis": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\texture-handoff-split-2026-10-23-01/fee-review-02/CHECK-02.json",
+    "bytes": 3018,
+    "sha256": "65b3114423e845ac01317d5d6ead339c6070cfaf6b3a6e68e66122f784ab0fab"
+  },
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "digest": "f0fcf485eea4dc61d6db859a2399db84d8a74c71b4dd8ad35751e0d41d1a6c9e",
+      "closureRows": 219,
+      "current": true,
+      "domainDigestVerified": true,
+      "sameAsC02": false
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "digest": "7751dd2a8a392292cf3626723edbe755976bfc3398d4c77cff5f02e5a4d59c6c",
+      "closureRows": 5,
+      "current": true,
+      "domainDigestVerified": true,
+      "sameAsC02": true
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "digest": "987bf7095c3da5ab6ac39fae2fb03409c87f12c40f8e4993f24aea7a400b1021",
+      "closureRows": 9,
+      "current": true,
+      "domainDigestVerified": true,
+      "sameAsC02": true
+    }
+  ],
+  "selected": {
+    "phase": [
+      632,
+      586,
+      589,
+      592,
+      595,
+      590
+    ],
+    "baseVisit": 117,
+    "cancel": 88,
+    "baseClose": 18,
+    "SurfaceEachSeparate": 128,
+    "following": 768,
+    "logicalBytes": {
+      "module": 65536,
+      "loader": 8192,
+      "basePerCreate": 12288,
+      "bindingPerCreate": 32768,
+      "pending": 4096,
+      "oldReaderSeparate": 16384
+    },
+    "actualRaw": {
+      "module": 65472,
+      "loader": 7200,
+      "base": 9504,
+      "binding": 30784,
+      "pending": 320
+    }
+  },
+  "lifetime": "Every-created-owner extra CPU account remains retained through reachable closed APIs/Renderer/realm; module/controller separate realm lifetime; pending/reader separate transfer/cancel. No GC or total-Q-zero shutdown claim.",
+  "checks": {
+    "allSelectedSourceChecks": true,
+    "allActualStorageChecks": true,
+    "currentThreePinsExact": true,
+    "peerBasisExact": true,
+    "finalAuthorBasisExact": true,
+    "module65472Fits65536": true,
+    "noFutureTableReserveAssumption": true,
+    "all425AppropriateJSSourceTypes": true,
+    "eightExactForwardInverseHunks": true,
+    "allThreeCurrentProfileDomainDigests": true,
+    "otherNullsAndMainGateHeld": true,
+    "noProductSourceEditsByThisTask": true,
+    "noBrowserServerOrGitActions": true,
+    "noFullColdHostNativeMainP05Promotion": true
+  },
+  "artifacts": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\texture-handoff-split-2026-10-23-01\\fee-review-03\\ARTIFACTS.json",
+    "bytes": 2382,
+    "sha256": "8117fdea3637baf1d6b2bcd412f52196585127ac6519b2007f5d8bb6bc71b9d4"
+  },
+  "scope": "Static source/types/captures/records/canonical-domain/inverse verification only. Product modules and native/browser/server were not executed here. Root selected-source functional/native App controls remain separately scoped evidence. No fullcold/caller/inherited instance/host/native/Main/P05 acceptance; other null contracts and unconditional Main refusal remain held."
+}

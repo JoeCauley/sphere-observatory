@@ -1,0 +1,177 @@
+{
+  "status": "PASS_FUNCTIONAL_SOURCE_MODELS_ONLY",
+  "planned": 28,
+  "completed": 28,
+  "testSha256": "96d5e99b3d1ed773b9b6d6a417e238371f3ea38b22fe64ee72afc5762f431538",
+  "results": [
+    {
+      "mode": "unselected",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_FUNCTIONAL_SOURCE_MODEL_ONLY\",\"mode\":\"unselected\",\"newProfileRefused\":true,\"heldQ\":0,\"productWorkUnselected\":true}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "normal",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_FUNCTIONAL_SOURCE_MODEL_ONLY\",\"mode\":\"normal\",\"completeOriginalBrand\":true,\"workVisits\":6,\"isTextureCalls\":28,\"demandFreshCalls\":6,\"events\":[{\"phase\":0,\"shareDelta\":0,\"readers\":4,\"returned\":false,\"demandChecks\":1},{\"phase\":1,\"shareDelta\":1,\"readers\":4,\"returned\":false,\"demandChecks\":2},{\"phase\":2,\"shareDelta\":1,\"readers\":4,\"returned\":false,\"demandChecks\":3},{\"phase\":3,\"shareDelta\":1,\"readers\":4,\"returned\":false,\"demandChecks\":4},{\"phase\":4,\"shareDelta\":1,\"readers\":4,\"returned\":false,\"demandChecks\":5},{\"phase\":5,\"shareDelta\":0,\"readers\":4,\"returned\":true,\"demandChecks\":6}],\"baseChecks\":53,\"demandChecks\":6,\"remainingLeases\":0,\"retainedClosedApiQ\":{\"heldBytes\":37542,\"requestedBytes\":32768,\"bookkeepingBytes\":4774,\"peakBytes\":5332666,\"limitBytes\":33554432,\"liveReservations\":1,\"maximumReservations\":4096,\"owners\":[{\"name\":\"main-texture-handoff-instance-realm\",\"bytes\":33446}],\"scope\":\"CONSERVATIVE_LOGICAL_METADATA_ADMISSION\",\"nativeHeap\":\"UNMEASURED\"},\"zeroTransientAndReaderCharges\":true}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "legacy-v12",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_FUNCTIONAL_SOURCE_MODEL_ONLY\",\"mode\":\"legacy-v12\",\"legacyPublicRetainUnchanged\":true,\"original64\":64,\"events\":[],\"baseChecks\":5,\"demandChecks\":0,\"remainingLeases\":0,\"retainedClosedApiQ\":{\"heldBytes\":37542,\"requestedBytes\":32768,\"bookkeepingBytes\":4774,\"peakBytes\":5326762,\"limitBytes\":33554432,\"liveReservations\":1,\"maximumReservations\":4096,\"owners\":[{\"name\":\"main-texture-handoff-instance-realm\",\"bytes\":33446}],\"scope\":\"CONSERVATIVE_LOGICAL_METADATA_ADMISSION\",\"nativeHeap\":\"UNMEASURED\"},\"zeroTransientAndReaderCharges\":true}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "foreign",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_FUNCTIONAL_SOURCE_MODEL_ONLY\",\"mode\":\"foreign\",\"foreignRefused\":true,\"events\":[],\"baseChecks\":2,\"demandChecks\":0,\"remainingLeases\":0,\"retainedClosedApiQ\":{\"heldBytes\":37542,\"requestedBytes\":32768,\"bookkeepingBytes\":4774,\"peakBytes\":5332666,\"limitBytes\":33554432,\"liveReservations\":1,\"maximumReservations\":4096,\"owners\":[{\"name\":\"main-texture-handoff-instance-realm\",\"bytes\":33446}],\"scope\":\"CONSERVATIVE_LOGICAL_METADATA_ADMISSION\",\"nativeHeap\":\"UNMEASURED\"},\"zeroTransientAndReaderCharges\":true}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "capacity-commit",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_FUNCTIONAL_SOURCE_MODEL_ONLY\",\"mode\":\"capacity-commit\",\"capacityCommitRefused\":true,\"errorCode\":\"RESOURCE_LIMIT\",\"events\":[],\"baseChecks\":70,\"demandChecks\":1,\"remainingLeases\":0,\"retainedClosedApiQ\":{\"heldBytes\":37542,\"requestedBytes\":32768,\"bookkeepingBytes\":4774,\"peakBytes\":5332666,\"limitBytes\":33554432,\"liveReservations\":1,\"maximumReservations\":4096,\"owners\":[{\"name\":\"main-texture-handoff-instance-realm\",\"bytes\":33446}],\"scope\":\"CONSERVATIVE_LOGICAL_METADATA_ADMISSION\",\"nativeHeap\":\"UNMEASURED\"},\"zeroTransientAndReaderCharges\":true}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "advance-reentry",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_FUNCTIONAL_SOURCE_MODEL_ONLY\",\"mode\":\"advance-reentry\",\"completeOriginalBrand\":true,\"workVisits\":6,\"isTextureCalls\":28,\"demandFreshCalls\":6,\"events\":[{\"phase\":0,\"shareDelta\":0,\"readers\":4,\"returned\":false,\"demandChecks\":1},{\"phase\":1,\"shareDelta\":1,\"readers\":4,\"returned\":false,\"demandChecks\":2},{\"phase\":2,\"shareDelta\":1,\"readers\":4,\"returned\":false,\"demandChecks\":3},{\"phase\":3,\"shareDelta\":1,\"readers\":4,\"returned\":false,\"demandChecks\":4},{\"phase\":4,\"shareDelta\":1,\"readers\":4,\"returned\":false,\"demandChecks\":5},{\"phase\":5,\"shareDelta\":0,\"readers\":4,\"returned\":true,\"demandChecks\":6}],\"baseChecks\":53,\"demandChecks\":6,\"remainingLeases\":0,\"retainedClosedApiQ\":{\"heldBytes\":37542,\"requestedBytes\":32768,\"bookkeepingBytes\":4774,\"peakBytes\":5332666,\"limitBytes\":33554432,\"liveReservations\":1,\"maximumReservations\":4096,\"owners\":[{\"name\":\"main-texture-handoff-instance-realm\",\"bytes\":33446}],\"scope\":\"CONSERVATIVE_LOGICAL_METADATA_ADMISSION\",\"nativeHeap\":\"UNMEASURED\"},\"zeroTransientAndReaderCharges\":true}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "guard-phase-0",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_FUNCTIONAL_SOURCE_MODEL_ONLY\",\"mode\":\"guard-phase-0\",\"freshGuardPhase\":0,\"errorCode\":null,\"events\":[{\"phase\":0,\"shareDelta\":0,\"readers\":0,\"returned\":false,\"demandChecks\":1}],\"baseChecks\":3,\"demandChecks\":1,\"remainingLeases\":0,\"retainedClosedApiQ\":{\"heldBytes\":37542,\"requestedBytes\":32768,\"bookkeepingBytes\":4774,\"peakBytes\":5332666,\"limitBytes\":33554432,\"liveReservations\":1,\"maximumReservations\":4096,\"owners\":[{\"name\":\"main-texture-handoff-instance-realm\",\"bytes\":33446}],\"scope\":\"CONSERVATIVE_LOGICAL_METADATA_ADMISSION\",\"nativeHeap\":\"UNMEASURED\"},\"zeroTransientAndReaderCharges\":true}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "guard-phase-1",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_FUNCTIONAL_SOURCE_MODEL_ONLY\",\"mode\":\"guard-phase-1\",\"freshGuardPhase\":1,\"errorCode\":\"STALE_CONTENT\",\"events\":[{\"phase\":0,\"shareDelta\":0,\"readers\":4,\"returned\":false,\"demandChecks\":1}],\"baseChecks\":12,\"demandChecks\":2,\"remainingLeases\":0,\"retainedClosedApiQ\":{\"heldBytes\":37542,\"requestedBytes\":32768,\"bookkeepingBytes\":4774,\"peakBytes\":5332666,\"limitBytes\":33554432,\"liveReservations\":1,\"maximumReservations\":4096,\"owners\":[{\"name\":\"main-texture-handoff-instance-realm\",\"bytes\":33446}],\"scope\":\"CONSERVATIVE_LOGICAL_METADATA_ADMISSION\",\"nativeHeap\":\"UNMEASURED\"},\"zeroTransientAndReaderCharges\":true}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "guard-phase-2",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_FUNCTIONAL_SOURCE_MODEL_ONLY\",\"mode\":\"guard-phase-2\",\"freshGuardPhase\":2,\"errorCode\":\"STALE_CONTENT\",\"events\":[{\"phase\":0,\"shareDelta\":0,\"readers\":4,\"returned\":false,\"demandChecks\":1},{\"phase\":1,\"shareDelta\":1,\"readers\":4,\"returned\":false,\"demandChecks\":2}],\"baseChecks\":20,\"demandChecks\":3,\"remainingLeases\":0,\"retainedClosedApiQ\":{\"heldBytes\":37542,\"requestedBytes\":32768,\"bookkeepingBytes\":4774,\"peakBytes\":5332666,\"limitBytes\":33554432,\"liveReservations\":1,\"maximumReservations\":4096,\"owners\":[{\"name\":\"main-texture-handoff-instance-realm\",\"bytes\":33446}],\"scope\":\"CONSERVATIVE_LOGICAL_METADATA_ADMISSION\",\"nativeHeap\":\"UNMEASURED\"},\"zeroTransientAndReaderCharges\":true}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "guard-phase-3",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_FUNCTIONAL_SOURCE_MODEL_ONLY\",\"mode\":\"guard-phase-3\",\"freshGuardPhase\":3,\"errorCode\":\"STALE_CONTENT\",\"events\":[{\"phase\":0,\"shareDelta\":0,\"readers\":4,\"returned\":false,\"demandChecks\":1},{\"phase\":1,\"shareDelta\":1,\"readers\":4,\"returned\":false,\"demandChecks\":2},{\"phase\":2,\"shareDelta\":1,\"readers\":4,\"returned\":false,\"demandChecks\":3}],\"baseChecks\":28,\"demandChecks\":4,\"remainingLeases\":0,\"retainedClosedApiQ\":{\"heldBytes\":37542,\"requestedBytes\":32768,\"bookkeepingBytes\":4774,\"peakBytes\":5332666,\"limitBytes\":33554432,\"liveReservations\":1,\"maximumReservations\":4096,\"owners\":[{\"name\":\"main-texture-handoff-instance-realm\",\"bytes\":33446}],\"scope\":\"CONSERVATIVE_LOGICAL_METADATA_ADMISSION\",\"nativeHeap\":\"UNMEASURED\"},\"zeroTransientAndReaderCharges\":true}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "guard-phase-4",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_FUNCTIONAL_SOURCE_MODEL_ONLY\",\"mode\":\"guard-phase-4\",\"freshGuardPhase\":4,\"errorCode\":\"STALE_CONTENT\",\"events\":[{\"phase\":0,\"shareDelta\":0,\"readers\":4,\"returned\":false,\"demandChecks\":1},{\"phase\":1,\"shareDelta\":1,\"readers\":4,\"returned\":false,\"demandChecks\":2},{\"phase\":2,\"shareDelta\":1,\"readers\":4,\"returned\":false,\"demandChecks\":3},{\"phase\":3,\"shareDelta\":1,\"readers\":4,\"returned\":false,\"demandChecks\":4}],\"baseChecks\":36,\"demandChecks\":5,\"remainingLeases\":0,\"retainedClosedApiQ\":{\"heldBytes\":37542,\"requestedBytes\":32768,\"bookkeepingBytes\":4774,\"peakBytes\":5332666,\"limitBytes\":33554432,\"liveReservations\":1,\"maximumReservations\":4096,\"owners\":[{\"name\":\"main-texture-handoff-instance-realm\",\"bytes\":33446}],\"scope\":\"CONSERVATIVE_LOGICAL_METADATA_ADMISSION\",\"nativeHeap\":\"UNMEASURED\"},\"zeroTransientAndReaderCharges\":true}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "guard-phase-5",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_FUNCTIONAL_SOURCE_MODEL_ONLY\",\"mode\":\"guard-phase-5\",\"freshGuardPhase\":5,\"errorCode\":\"STALE_CONTENT\",\"events\":[{\"phase\":0,\"shareDelta\":0,\"readers\":4,\"returned\":false,\"demandChecks\":1},{\"phase\":1,\"shareDelta\":1,\"readers\":4,\"returned\":false,\"demandChecks\":2},{\"phase\":2,\"shareDelta\":1,\"readers\":4,\"returned\":false,\"demandChecks\":3},{\"phase\":3,\"shareDelta\":1,\"readers\":4,\"returned\":false,\"demandChecks\":4},{\"phase\":4,\"shareDelta\":1,\"readers\":4,\"returned\":false,\"demandChecks\":5}],\"baseChecks\":44,\"demandChecks\":6,\"remainingLeases\":0,\"retainedClosedApiQ\":{\"heldBytes\":37542,\"requestedBytes\":32768,\"bookkeepingBytes\":4774,\"peakBytes\":5332666,\"limitBytes\":33554432,\"liveReservations\":1,\"maximumReservations\":4096,\"owners\":[{\"name\":\"main-texture-handoff-instance-realm\",\"bytes\":33446}],\"scope\":\"CONSERVATIVE_LOGICAL_METADATA_ADMISSION\",\"nativeHeap\":\"UNMEASURED\"},\"zeroTransientAndReaderCharges\":true}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "partial-cancel",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_FUNCTIONAL_SOURCE_MODEL_ONLY\",\"mode\":\"partial-cancel\",\"partialCleanup\":true,\"errorCode\":null,\"closeNested\":[],\"primaryPhysicalRemain\":true,\"events\":[{\"phase\":0,\"shareDelta\":0,\"readers\":4,\"returned\":false,\"demandChecks\":1},{\"phase\":1,\"shareDelta\":1,\"readers\":4,\"returned\":false,\"demandChecks\":2},{\"phase\":2,\"shareDelta\":1,\"readers\":4,\"returned\":false,\"demandChecks\":3}],\"baseChecks\":27,\"demandChecks\":3,\"remainingLeases\":0,\"retainedClosedApiQ\":{\"heldBytes\":37542,\"requestedBytes\":32768,\"bookkeepingBytes\":4774,\"peakBytes\":5332666,\"limitBytes\":33554432,\"liveReservations\":1,\"maximumReservations\":4096,\"owners\":[{\"name\":\"main-texture-handoff-instance-realm\",\"bytes\":33446}],\"scope\":\"CONSERVATIVE_LOGICAL_METADATA_ADMISSION\",\"nativeHeap\":\"UNMEASURED\"},\"zeroTransientAndReaderCharges\":true}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "native-stale",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_FUNCTIONAL_SOURCE_MODEL_ONLY\",\"mode\":\"native-stale\",\"partialCleanup\":true,\"errorCode\":\"STALE_CONTENT\",\"closeNested\":[],\"primaryPhysicalRemain\":true,\"events\":[{\"phase\":0,\"shareDelta\":0,\"readers\":4,\"returned\":false,\"demandChecks\":1},{\"phase\":1,\"shareDelta\":1,\"readers\":4,\"returned\":false,\"demandChecks\":2},{\"phase\":2,\"shareDelta\":1,\"readers\":4,\"returned\":false,\"demandChecks\":3}],\"baseChecks\":28,\"demandChecks\":4,\"remainingLeases\":0,\"retainedClosedApiQ\":{\"heldBytes\":37542,\"requestedBytes\":32768,\"bookkeepingBytes\":4774,\"peakBytes\":5332666,\"limitBytes\":33554432,\"liveReservations\":1,\"maximumReservations\":4096,\"owners\":[{\"name\":\"main-texture-handoff-instance-realm\",\"bytes\":33446}],\"scope\":\"CONSERVATIVE_LOGICAL_METADATA_ADMISSION\",\"nativeHeap\":\"UNMEASURED\"},\"zeroTransientAndReaderCharges\":true}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "scope-after-share",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_FUNCTIONAL_SOURCE_MODEL_ONLY\",\"mode\":\"scope-after-share\",\"partialCleanup\":true,\"errorCode\":\"STALE_PREPARE_SCOPE\",\"closeNested\":[],\"primaryPhysicalRemain\":true,\"events\":[{\"phase\":0,\"shareDelta\":0,\"readers\":4,\"returned\":false,\"demandChecks\":1},{\"phase\":1,\"shareDelta\":1,\"readers\":4,\"returned\":false,\"demandChecks\":2},{\"phase\":2,\"shareDelta\":1,\"readers\":4,\"returned\":false,\"demandChecks\":3}],\"baseChecks\":34,\"demandChecks\":4,\"remainingLeases\":0,\"retainedClosedApiQ\":{\"heldBytes\":37542,\"requestedBytes\":32768,\"bookkeepingBytes\":4774,\"peakBytes\":5332666,\"limitBytes\":33554432,\"liveReservations\":1,\"maximumReservations\":4096,\"owners\":[{\"name\":\"main-texture-handoff-instance-realm\",\"bytes\":33446}],\"scope\":\"CONSERVATIVE_LOGICAL_METADATA_ADMISSION\",\"nativeHeap\":\"UNMEASURED\"},\"zeroTransientAndReaderCharges\":true}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "loss-cancel",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_FUNCTIONAL_SOURCE_MODEL_ONLY\",\"mode\":\"loss-cancel\",\"partialCleanup\":true,\"errorCode\":null,\"closeNested\":[],\"primaryPhysicalRemain\":false,\"events\":[{\"phase\":0,\"shareDelta\":0,\"readers\":4,\"returned\":false,\"demandChecks\":1},{\"phase\":1,\"shareDelta\":1,\"readers\":4,\"returned\":false,\"demandChecks\":2},{\"phase\":2,\"shareDelta\":1,\"readers\":4,\"returned\":false,\"demandChecks\":3}],\"baseChecks\":27,\"demandChecks\":3,\"remainingLeases\":0,\"retainedClosedApiQ\":{\"heldBytes\":37542,\"requestedBytes\":32768,\"bookkeepingBytes\":4774,\"peakBytes\":5332666,\"limitBytes\":33554432,\"liveReservations\":1,\"maximumReservations\":4096,\"owners\":[{\"name\":\"main-texture-handoff-instance-realm\",\"bytes\":33446}],\"scope\":\"CONSERVATIVE_LOGICAL_METADATA_ADMISSION\",\"nativeHeap\":\"UNMEASURED\"},\"zeroTransientAndReaderCharges\":true}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "mutation",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_FUNCTIONAL_SOURCE_MODEL_ONLY\",\"mode\":\"mutation\",\"partialCleanup\":true,\"errorCode\":null,\"closeNested\":[],\"primaryPhysicalRemain\":true,\"events\":[{\"phase\":0,\"shareDelta\":0,\"readers\":4,\"returned\":false,\"demandChecks\":1},{\"phase\":1,\"shareDelta\":1,\"readers\":4,\"returned\":false,\"demandChecks\":2},{\"phase\":2,\"shareDelta\":1,\"readers\":4,\"returned\":false,\"demandChecks\":3}],\"baseChecks\":27,\"demandChecks\":3,\"remainingLeases\":0,\"retainedClosedApiQ\":{\"heldBytes\":37542,\"requestedBytes\":32768,\"bookkeepingBytes\":4774,\"peakBytes\":5332666,\"limitBytes\":33554432,\"liveReservations\":1,\"maximumReservations\":4096,\"owners\":[{\"name\":\"main-texture-handoff-instance-realm\",\"bytes\":33446}],\"scope\":\"CONSERVATIVE_LOGICAL_METADATA_ADMISSION\",\"nativeHeap\":\"UNMEASURED\"},\"zeroTransientAndReaderCharges\":true}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "close-prefix-reentry",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_FUNCTIONAL_SOURCE_MODEL_ONLY\",\"mode\":\"close-prefix-reentry\",\"partialCleanup\":true,\"errorCode\":null,\"closeNested\":[false,false,false,false],\"primaryPhysicalRemain\":true,\"events\":[{\"phase\":0,\"shareDelta\":0,\"readers\":4,\"returned\":false,\"demandChecks\":1},{\"phase\":1,\"shareDelta\":1,\"readers\":4,\"returned\":false,\"demandChecks\":2},{\"phase\":2,\"shareDelta\":1,\"readers\":4,\"returned\":false,\"demandChecks\":3}],\"baseChecks\":27,\"demandChecks\":3,\"remainingLeases\":0,\"retainedClosedApiQ\":{\"heldBytes\":37542,\"requestedBytes\":32768,\"bookkeepingBytes\":4774,\"peakBytes\":5332666,\"limitBytes\":33554432,\"liveReservations\":1,\"maximumReservations\":4096,\"owners\":[{\"name\":\"main-texture-handoff-instance-realm\",\"bytes\":33446}],\"scope\":\"CONSERVATIVE_LOGICAL_METADATA_ADMISSION\",\"nativeHeap\":\"UNMEASURED\"},\"zeroTransientAndReaderCharges\":true}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "dispose-pending",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_FUNCTIONAL_SOURCE_MODEL_ONLY\",\"mode\":\"dispose-pending\",\"partialCleanup\":true,\"errorCode\":null,\"closeNested\":[],\"primaryPhysicalRemain\":true,\"events\":[{\"phase\":0,\"shareDelta\":0,\"readers\":4,\"returned\":false,\"demandChecks\":1},{\"phase\":1,\"shareDelta\":1,\"readers\":4,\"returned\":false,\"demandChecks\":2},{\"phase\":2,\"shareDelta\":1,\"readers\":4,\"returned\":false,\"demandChecks\":3}],\"baseChecks\":27,\"demandChecks\":3,\"remainingLeases\":0,\"retainedClosedApiQ\":{\"heldBytes\":37542,\"requestedBytes\":32768,\"bookkeepingBytes\":4774,\"peakBytes\":5332666,\"limitBytes\":33554432,\"liveReservations\":1,\"maximumReservations\":4096,\"owners\":[{\"name\":\"main-texture-handoff-instance-realm\",\"bytes\":33446}],\"scope\":\"CONSERVATIVE_LOGICAL_METADATA_ADMISSION\",\"nativeHeap\":\"UNMEASURED\"},\"zeroTransientAndReaderCharges\":true}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "registered-failure",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_FUNCTIONAL_SOURCE_MODEL_ONLY\",\"mode\":\"registered-failure\",\"registeredFailureRootClosed\":true,\"errorCode\":\"STALE_CURRENT\",\"events\":[{\"phase\":0,\"shareDelta\":0,\"readers\":4,\"returned\":false,\"demandChecks\":1},{\"phase\":1,\"shareDelta\":1,\"readers\":4,\"returned\":false,\"demandChecks\":2},{\"phase\":2,\"shareDelta\":1,\"readers\":4,\"returned\":false,\"demandChecks\":3},{\"phase\":3,\"shareDelta\":1,\"readers\":4,\"returned\":false,\"demandChecks\":4},{\"phase\":4,\"shareDelta\":1,\"readers\":4,\"returned\":false,\"demandChecks\":5}],\"baseChecks\":51,\"demandChecks\":6,\"remainingLeases\":0,\"retainedClosedApiQ\":{\"heldBytes\":37542,\"requestedBytes\":32768,\"bookkeepingBytes\":4774,\"peakBytes\":5332666,\"limitBytes\":33554432,\"liveReservations\":1,\"maximumReservations\":4096,\"owners\":[{\"name\":\"main-texture-handoff-instance-realm\",\"bytes\":33446}],\"scope\":\"CONSERVATIVE_LOGICAL_METADATA_ADMISSION\",\"nativeHeap\":\"UNMEASURED\"},\"zeroTransientAndReaderCharges\":true}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "first-q-scope",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_FUNCTIONAL_SOURCE_MODEL_ONLY\",\"mode\":\"first-q-scope\",\"firstQRootedBeforeScope\":true,\"noSecondQOrShare\":true,\"errorCode\":\"STALE_PREPARE_SCOPE\",\"events\":[],\"baseChecks\":8,\"demandChecks\":1,\"remainingLeases\":0,\"retainedClosedApiQ\":{\"heldBytes\":37542,\"requestedBytes\":32768,\"bookkeepingBytes\":4774,\"peakBytes\":5332666,\"limitBytes\":33554432,\"liveReservations\":1,\"maximumReservations\":4096,\"owners\":[{\"name\":\"main-texture-handoff-instance-realm\",\"bytes\":33446}],\"scope\":\"CONSERVATIVE_LOGICAL_METADATA_ADMISSION\",\"nativeHeap\":\"UNMEASURED\"},\"zeroTransientAndReaderCharges\":true}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "proxy-error",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_FUNCTIONAL_SOURCE_MODEL_ONLY\",\"mode\":\"proxy-error\",\"fixedFailureScalar\":true,\"externalProxyDescriptorCalls\":0,\"events\":[],\"baseChecks\":9,\"demandChecks\":1,\"remainingLeases\":0,\"retainedClosedApiQ\":{\"heldBytes\":37542,\"requestedBytes\":32768,\"bookkeepingBytes\":4774,\"peakBytes\":5332666,\"limitBytes\":33554432,\"liveReservations\":1,\"maximumReservations\":4096,\"owners\":[{\"name\":\"main-texture-handoff-instance-realm\",\"bytes\":33446}],\"scope\":\"CONSERVATIVE_LOGICAL_METADATA_ADMISSION\",\"nativeHeap\":\"UNMEASURED\"},\"zeroTransientAndReaderCharges\":true}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "pending-capacity",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_FUNCTIONAL_SOURCE_MODEL_ONLY\",\"mode\":\"pending-capacity\",\"pendingFourPlusOriginalReaders\":64,\"originalCapNotRaised\":true,\"events\":[{\"phase\":0,\"shareDelta\":0,\"readers\":4,\"returned\":false,\"demandChecks\":1}],\"baseChecks\":72,\"demandChecks\":1,\"remainingLeases\":0,\"retainedClosedApiQ\":{\"heldBytes\":37542,\"requestedBytes\":32768,\"bookkeepingBytes\":4774,\"peakBytes\":5332666,\"limitBytes\":33554432,\"liveReservations\":1,\"maximumReservations\":4096,\"owners\":[{\"name\":\"main-texture-handoff-instance-realm\",\"bytes\":33446}],\"scope\":\"CONSERVATIVE_LOGICAL_METADATA_ADMISSION\",\"nativeHeap\":\"UNMEASURED\"},\"zeroTransientAndReaderCharges\":true}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "advance-quota",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_FUNCTIONAL_SOURCE_MODEL_ONLY\",\"mode\":\"advance-quota\",\"completeOriginalBrand\":true,\"workVisits\":6,\"isTextureCalls\":28,\"demandFreshCalls\":6,\"events\":[{\"phase\":0,\"shareDelta\":0,\"readers\":4,\"returned\":false,\"demandChecks\":1},{\"phase\":1,\"shareDelta\":1,\"readers\":4,\"returned\":false,\"demandChecks\":2},{\"phase\":2,\"shareDelta\":1,\"readers\":4,\"returned\":false,\"demandChecks\":3},{\"phase\":3,\"shareDelta\":1,\"readers\":4,\"returned\":false,\"demandChecks\":4},{\"phase\":4,\"shareDelta\":1,\"readers\":4,\"returned\":false,\"demandChecks\":5},{\"phase\":5,\"shareDelta\":0,\"readers\":4,\"returned\":true,\"demandChecks\":6}],\"baseChecks\":53,\"demandChecks\":6,\"remainingLeases\":0,\"retainedClosedApiQ\":{\"heldBytes\":37542,\"requestedBytes\":32768,\"bookkeepingBytes\":4774,\"peakBytes\":5332666,\"limitBytes\":33554432,\"liveReservations\":1,\"maximumReservations\":4096,\"owners\":[{\"name\":\"main-texture-handoff-instance-realm\",\"bytes\":33446}],\"scope\":\"CONSERVATIVE_LOGICAL_METADATA_ADMISSION\",\"nativeHeap\":\"UNMEASURED\"},\"zeroTransientAndReaderCharges\":true}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "close-quota",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_FUNCTIONAL_SOURCE_MODEL_ONLY\",\"mode\":\"close-quota\",\"partialCleanup\":true,\"errorCode\":null,\"closeNested\":[],\"primaryPhysicalRemain\":true,\"events\":[{\"phase\":0,\"shareDelta\":0,\"readers\":4,\"returned\":false,\"demandChecks\":1},{\"phase\":1,\"shareDelta\":1,\"readers\":4,\"returned\":false,\"demandChecks\":2},{\"phase\":2,\"shareDelta\":1,\"readers\":4,\"returned\":false,\"demandChecks\":3}],\"baseChecks\":27,\"demandChecks\":3,\"remainingLeases\":0,\"retainedClosedApiQ\":{\"heldBytes\":37542,\"requestedBytes\":32768,\"bookkeepingBytes\":4774,\"peakBytes\":5332666,\"limitBytes\":33554432,\"liveReservations\":1,\"maximumReservations\":4096,\"owners\":[{\"name\":\"main-texture-handoff-instance-realm\",\"bytes\":33446}],\"scope\":\"CONSERVATIVE_LOGICAL_METADATA_ADMISSION\",\"nativeHeap\":\"UNMEASURED\"},\"zeroTransientAndReaderCharges\":true}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "cancel-scope-retry",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_FUNCTIONAL_SOURCE_MODEL_ONLY\",\"mode\":\"cancel-scope-retry\",\"partialCleanup\":true,\"errorCode\":\"STALE_RETIREMENT_SCOPE\",\"closeNested\":[],\"primaryPhysicalRemain\":true,\"events\":[{\"phase\":0,\"shareDelta\":0,\"readers\":4,\"returned\":false,\"demandChecks\":1},{\"phase\":1,\"shareDelta\":1,\"readers\":4,\"returned\":false,\"demandChecks\":2},{\"phase\":2,\"shareDelta\":1,\"readers\":4,\"returned\":false,\"demandChecks\":3}],\"baseChecks\":27,\"demandChecks\":3,\"remainingLeases\":0,\"retainedClosedApiQ\":{\"heldBytes\":37542,\"requestedBytes\":32768,\"bookkeepingBytes\":4774,\"peakBytes\":5332666,\"limitBytes\":33554432,\"liveReservations\":1,\"maximumReservations\":4096,\"owners\":[{\"name\":\"main-texture-handoff-instance-realm\",\"bytes\":33446}],\"scope\":\"CONSERVATIVE_LOGICAL_METADATA_ADMISSION\",\"nativeHeap\":\"UNMEASURED\"},\"zeroTransientAndReaderCharges\":true}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "following-boundary",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_FUNCTIONAL_SOURCE_MODEL_ONLY\",\"mode\":\"following-boundary\",\"freshSurfaceDebitReserved\":true,\"followingTail\":768,\"belowQuoteDefers\":false,\"events\":[],\"baseChecks\":11,\"demandChecks\":1,\"remainingLeases\":0,\"retainedClosedApiQ\":{\"heldBytes\":37542,\"requestedBytes\":32768,\"bookkeepingBytes\":4774,\"peakBytes\":5332666,\"limitBytes\":33554432,\"liveReservations\":1,\"maximumReservations\":4096,\"owners\":[{\"name\":\"main-texture-handoff-instance-realm\",\"bytes\":33446}],\"scope\":\"CONSERVATIVE_LOGICAL_METADATA_ADMISSION\",\"nativeHeap\":\"UNMEASURED\"},\"zeroTransientAndReaderCharges\":true}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "following-below",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_FUNCTIONAL_SOURCE_MODEL_ONLY\",\"mode\":\"following-below\",\"freshSurfaceDebitReserved\":true,\"followingTail\":null,\"belowQuoteDefers\":true,\"events\":[],\"baseChecks\":2,\"demandChecks\":0,\"remainingLeases\":0,\"retainedClosedApiQ\":{\"heldBytes\":37542,\"requestedBytes\":32768,\"bookkeepingBytes\":4774,\"peakBytes\":5332666,\"limitBytes\":33554432,\"liveReservations\":1,\"maximumReservations\":4096,\"owners\":[{\"name\":\"main-texture-handoff-instance-realm\",\"bytes\":33446}],\"scope\":\"CONSERVATIVE_LOGICAL_METADATA_ADMISSION\",\"nativeHeap\":\"UNMEASURED\"},\"zeroTransientAndReaderCharges\":true}\n",
+      "stderr": ""
+    }
+  ],
+  "scope": "Actual Binding and Q/S/R/G; identity-authenticated mock Renderer/Base/Construction/Demand and deterministic GL; actual selected fee source admitted by genuine S in positive modes; observer/null negative copies disclosed. Closed instance Q retained; full caller/cold/native Main gate remains held."
+}

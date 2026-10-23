@@ -1,0 +1,89 @@
+{
+  "status": "AUTHOR_PASS_WITH_EXPLICIT_MUTATION_SCOPE_CORRECTION_PENDING_PEER",
+  "utc": "2026-10-23T10:58:55.169Z",
+  "originalAuthor": {
+    "file": "CHECK.json",
+    "bytes": 5319,
+    "sha256": "dce0d6699ec657704e9b12d6dced7a9fe6271d7d86c304e25e3fd1ccf38098dc"
+  },
+  "supersededScope": {
+    "file": "MUTATION-CONTROL-STORAGE-01.json",
+    "bytes": 2409,
+    "sha256": "ee068dd99495c745b3e19b680cb611b9dd6d20644252fdd4dfd1884717d62e62"
+  },
+  "correctedScope": {
+    "file": "MUTATION-CONTROL-STORAGE-02.json",
+    "bytes": 2678,
+    "sha256": "d1099736f384a425500bb8efd02fd31ed5c15c9fe3e37952d82efa9a9877d3d8"
+  },
+  "unchangedInputs": [
+    {
+      "file": "phase-work-proposal.json",
+      "bytes": 21286,
+      "sha256": "5293b2af97fd51d4cb8f4ad0896371d30ae495427c59d61563617f8ac16b48d4"
+    },
+    {
+      "file": "storage-proposal.json",
+      "bytes": 14469,
+      "sha256": "57afcc4a0e95e7fe71df9be1430bfb14706f784bcda9e432cec804a3809d9cfb"
+    },
+    {
+      "file": "storage-census-v4.json",
+      "bytes": 2123028,
+      "sha256": "ab902ab05feb5d9833b850ad86c56a6ff14677ec1df7a03c612ca7c3ac6fefab"
+    },
+    {
+      "file": "LIFECYCLE-GROUPING-01.json",
+      "bytes": 1665,
+      "sha256": "cd739084a6d9d05ab985286aec87237a96587c0c62debef1430be11580c66fa4"
+    }
+  ],
+  "currentSource": [
+    {
+      "file": "biome-service/native/main-texture-binding-owner.js",
+      "expected": "73c85d0e221ecf6a0eb7fe205b91820349941521e59ebb0c3f84b721030be078",
+      "sha256": "73c85d0e221ecf6a0eb7fe205b91820349941521e59ebb0c3f84b721030be078"
+    },
+    {
+      "file": "biome-service/native/main-baseline-owner.js",
+      "expected": "8b390df9b7ca7168bd301e917c18f6cde5b98d1f7237250ea69e10fdba3cd042",
+      "sha256": "8b390df9b7ca7168bd301e917c18f6cde5b98d1f7237250ea69e10fdba3cd042"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "expected": "b7e5a01aad907a285257e4017d99309611c4b29ebecbd193260dfc4f05a31ce0",
+      "sha256": "b7e5a01aad907a285257e4017d99309611c4b29ebecbd193260dfc4f05a31ce0"
+    }
+  ],
+  "correction": "1920->2304 added mutation-activation union, including third authentic refusal in demanded allocation chain. Runtime maximum11808 and all raw/proposed amounts unchanged. No silent replacement of sealed prior bytes.",
+  "proposals": {
+    "phase": [
+      632,
+      586,
+      589,
+      592,
+      595,
+      590
+    ],
+    "baseVisit": 117,
+    "cancel": 88,
+    "baseClose": 18,
+    "bytes": {
+      "module": 65536,
+      "loader": 8192,
+      "basePerCreate": 12288,
+      "bindingPerCreate": 32768,
+      "pending": 4096
+    }
+  },
+  "checks": {
+    "originalAuthorBytesPreserved": true,
+    "oldScopeBytesPreserved": true,
+    "unchangedInputs": true,
+    "currentSourcePins": true,
+    "correctedRows": true,
+    "correctedMaximum": true,
+    "noSourceOrPriceChange": true
+  },
+  "qualification": "Increment-only fixed-source proposal, no source fee selection/fullcold/fullinstance/host/native/Main/P05. Exact numeric/schema/graph successor must be re-censused."
+}

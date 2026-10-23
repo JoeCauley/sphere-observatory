@@ -1,0 +1,134 @@
+{
+  "status": "PASS",
+  "planned": 21,
+  "completed": 21,
+  "results": [
+    {
+      "mode": "funding-held",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_ACTUAL_APP_LOADER_SOURCE_EXPLICIT_MODEL\",\"mode\":\"funding-held\",\"appFrames\":0,\"operationIdentityShared\":false}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "app-gate-held",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_ACTUAL_APP_LOADER_SOURCE_EXPLICIT_MODEL\",\"mode\":\"app-gate-held\",\"appFrames\":0,\"operationIdentityShared\":false}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "legacy",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_ACTUAL_APP_LOADER_SOURCE_EXPLICIT_MODEL\",\"mode\":\"legacy\",\"appFrames\":1,\"operationIdentityShared\":false}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "missing-bootstrap",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_ACTUAL_APP_LOADER_SOURCE_EXPLICIT_MODEL\",\"mode\":\"missing-bootstrap\",\"appFrames\":0,\"operationIdentityShared\":false}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "held",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_ACTUAL_APP_LOADER_SOURCE_EXPLICIT_MODEL\",\"mode\":\"held\",\"appFrames\":0,\"operationIdentityShared\":true}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "foreign-claim",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_ACTUAL_APP_LOADER_SOURCE_EXPLICIT_MODEL\",\"mode\":\"foreign-claim\",\"appFrames\":0,\"operationIdentityShared\":true}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "map-get-after-close",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_ACTUAL_APP_LOADER_SOURCE_EXPLICIT_MODEL\",\"mode\":\"map-get-after-close\",\"appFrames\":0,\"operationIdentityShared\":true}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "map-delete-after-close",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_ACTUAL_APP_LOADER_SOURCE_EXPLICIT_MODEL\",\"mode\":\"map-delete-after-close\",\"appFrames\":0,\"operationIdentityShared\":true}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "claim-reentry",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_ACTUAL_APP_LOADER_SOURCE_EXPLICIT_MODEL\",\"mode\":\"claim-reentry\",\"appFrames\":0,\"operationIdentityShared\":true}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "registration-reentry",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_ACTUAL_APP_LOADER_SOURCE_EXPLICIT_MODEL\",\"mode\":\"registration-reentry\",\"appFrames\":0,\"operationIdentityShared\":true}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "dispose-reentry",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_ACTUAL_APP_LOADER_SOURCE_EXPLICIT_MODEL\",\"mode\":\"dispose-reentry\",\"appFrames\":0,\"operationIdentityShared\":true}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "compile-failure",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_ACTUAL_APP_LOADER_SOURCE_EXPLICIT_MODEL\",\"mode\":\"compile-failure\",\"appFrames\":0,\"operationIdentityShared\":true}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "g-entry-failure",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_ACTUAL_APP_LOADER_SOURCE_EXPLICIT_MODEL\",\"mode\":\"g-entry-failure\",\"appFrames\":0,\"operationIdentityShared\":true}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "dispose-pending",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_ACTUAL_APP_LOADER_SOURCE_EXPLICIT_MODEL\",\"mode\":\"dispose-pending\",\"appFrames\":0,\"operationIdentityShared\":true}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "helper-source-failure",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_ACTUAL_APP_LOADER_SOURCE_EXPLICIT_MODEL\",\"mode\":\"helper-source-failure\",\"appFrames\":0,\"operationIdentityShared\":true}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "dispose-before-app",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_ACTUAL_APP_LOADER_SOURCE_EXPLICIT_MODEL\",\"mode\":\"dispose-before-app\",\"appFrames\":0,\"operationIdentityShared\":false}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "dispose-during-surface-claim",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_ACTUAL_APP_LOADER_SOURCE_EXPLICIT_MODEL\",\"mode\":\"dispose-during-surface-claim\",\"appFrames\":0,\"operationIdentityShared\":false}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "postconstructor-ui-failure",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_ACTUAL_APP_LOADER_SOURCE_EXPLICIT_MODEL\",\"mode\":\"postconstructor-ui-failure\",\"appFrames\":0,\"operationIdentityShared\":false}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "dispose-during-constructor",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_ACTUAL_APP_LOADER_SOURCE_EXPLICIT_MODEL\",\"mode\":\"dispose-during-constructor\",\"appFrames\":0,\"operationIdentityShared\":false}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "registration-not-reached",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_ACTUAL_APP_LOADER_SOURCE_EXPLICIT_MODEL\",\"mode\":\"registration-not-reached\",\"appFrames\":0,\"operationIdentityShared\":false}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "claim-stop-during-auth",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS_ACTUAL_APP_LOADER_SOURCE_EXPLICIT_MODEL\",\"mode\":\"claim-stop-during-auth\",\"appFrames\":0,\"operationIdentityShared\":false}\n",
+      "stderr": ""
+    }
+  ],
+  "scope": "Actual successor App/loader/Q/S/helper/Surface/G on disclosed native DOM/GL models. Actual product App gate remainsfalse; diagnostic App dispatch only; zero Main frames. No cold/caller/full Main/native qualification."
+}

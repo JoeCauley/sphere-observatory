@@ -1,0 +1,387 @@
+{
+  "status": "INCREMENT_ONLY_LOGICAL_STORAGE_PROPOSAL_NOT_FULL_INSTANCE_OR_COLD_PROOF",
+  "sourcePins": [
+    {
+      "path": "biome-service/native/main-texture-binding-owner.js",
+      "sha256": "73c85d0e221ecf6a0eb7fe205b91820349941521e59ebb0c3f84b721030be078",
+      "bytes": 99362
+    },
+    {
+      "path": "biome-service/native/main-baseline-owner.js",
+      "sha256": "8b390df9b7ca7168bd301e917c18f6cde5b98d1f7237250ea69e10fdba3cd042",
+      "bytes": 99076
+    },
+    {
+      "path": "owned-main-bootstrap.js",
+      "sha256": "b7e5a01aad907a285257e4017d99309611c4b29ebecbd193260dfc4f05a31ce0",
+      "bytes": 67627
+    }
+  ],
+  "ABI": {
+    "header": 128,
+    "slot": 32,
+    "function": "128+32*distinct lexical captures",
+    "ordinaryPrototype": 160,
+    "string": "128+round32(2*UTF16length)",
+    "nativeVM": "UNMEASURED"
+  },
+  "module": {
+    "rows": [
+      {
+        "item": "Binding new source literal/member/record-key occurrence strings",
+        "bytes": 45312,
+        "proof": "Positive occurrence multiset from actual source; string=128+round32(2*UTF16length); no interning discount."
+      },
+      {
+        "item": "Binding create module-capture increment",
+        "bytes": 128,
+        "proof": "Four new captured module identities, storage AST only."
+      },
+      {
+        "item": "Binding module control and export fields",
+        "bytes": 320,
+        "proof": "5new module control cells+5export slots,10*32."
+      },
+      {
+        "item": "Binding future fixed work/limits schema",
+        "bytes": 960,
+        "proof": "HANDOFF_WORK3fields224 +phaseWork6array320 +limits9fields416, null currently. Exact shape only."
+      },
+      {
+        "item": "Binding future table key strings",
+        "bytes": 512,
+        "proof": "phaseWork160 +closeWork160 +pendingMetadataBytes192 (20UTF16 units). freshSurfaceWork is already in the actual source multiset."
+      },
+      {
+        "item": "Base new source literal/member/record-key occurrence strings",
+        "bytes": 16992,
+        "proof": "Actual positive occurrence multiset."
+      },
+      {
+        "item": "Base create module captures",
+        "bytes": 128,
+        "proof": "Four new distinct module captures."
+      },
+      {
+        "item": "Base module control and export fields",
+        "bytes": 256,
+        "proof": "4new module cells+4export slots,8*32."
+      },
+      {
+        "item": "Base fixed limits/future table schema",
+        "bytes": 544,
+        "proof": "7field splitHandoffLimits352 +future2field selected-work object192."
+      },
+      {
+        "item": "Base future table key strings",
+        "bytes": 320,
+        "proof": "visit/close key occurrence envelopes160each."
+      }
+    ],
+    "total": 65472,
+    "proposed": 65536,
+    "lifetime": "One evaluated module realm; new literals/global identities/schemas only. Source text S and physical VM code/wrappers are separate, unmeasured here."
+  },
+  "controller": {
+    "rows": [
+      {
+        "item": "Loader positive source strings including graphID and two changed SHA values",
+        "bytes": 5408,
+        "proof": "Actual final b7e5 positive occurrence strings. New graph ID and each full new64-char digest included; no length-only inheritance."
+      },
+      {
+        "item": "Loader existing function capture increment",
+        "bytes": 192,
+        "proof": "inspect/releaseUnexecuted/start each add2captures."
+      },
+      {
+        "item": "Loader added control cells",
+        "bytes": 192,
+        "proof": "Six new cells including2constants,2charge refs and2error bindings."
+      },
+      {
+        "item": "Loader added lexical scope headers",
+        "bytes": 512,
+        "proof": "Four new source scopes,128each."
+      },
+      {
+        "item": "Loader inspection return fields",
+        "bytes": 64,
+        "proof": "Two added fields,32each; existing record header unchanged."
+      },
+      {
+        "item": "New guard error and descriptor union",
+        "bytes": 448,
+        "proof": "Logical error4fields256 +own code descriptor2fields192."
+      },
+      {
+        "item": "Two new reservation option records",
+        "bytes": 384,
+        "proof": "Two2field owner/phase records,192each."
+      }
+    ],
+    "total": 7200,
+    "proposed": 8192,
+    "lifetime": "Retained after evaluation; release only pre-evaluation failure path as source permits. Existing389120/368640 accounts remain separate."
+  },
+  "baseInstance": {
+    "persistent": [
+      {
+        "item": "Base new and changed callable/captures",
+        "bytes": 1728,
+        "proof": "101->105 callables;874->912 captures; exact added+positive changed allocation."
+      },
+      {
+        "item": "Base new ordinary function prototype records",
+        "bytes": 480,
+        "proof": "Three*(128+constructor ref32)."
+      },
+      {
+        "item": "Base added persistent control cells",
+        "bytes": 160,
+        "proof": "Five32-byte cells; includes prospective charge ref."
+      },
+      {
+        "item": "Base new constructor scope headers",
+        "bytes": 256,
+        "proof": "Two added actual constructor control blocks."
+      },
+      {
+        "item": "Base new owner API slot and two v8 bridge flags",
+        "bytes": 96,
+        "proof": "Three32-byte fields."
+      },
+      {
+        "item": "Base automatic prototype constructor-key strings",
+        "bytes": 480,
+        "proof": "Three new ordinary prototypes,3*160; no implicit shared-intrinsic exemption."
+      },
+      {
+        "item": "Base per-create automatic function-name/key string envelopes",
+        "bytes": 2560,
+        "proof": "Conservative per-callable birth ownership; do not assume module interning."
+      }
+    ],
+    "constructor": [
+      {
+        "item": "Base added reservation options and exact-profile key slot",
+        "bytes": 224,
+        "proof": "New2field Q options192 and one32-byte profile-key array slot."
+      }
+    ],
+    "runtimeUpper": [
+      {
+        "item": "Base new advance activation union",
+        "bytes": 1760,
+        "proof": "All eleven scopes/eleven cells from exact49e10, includes failed boolean32."
+      },
+      {
+        "item": "Base new fee helper activation union",
+        "bytes": 640,
+        "proof": "Four scopes/four local/parameter cells."
+      },
+      {
+        "item": "Base new profile predicate activation",
+        "bytes": 128,
+        "proof": "One activation envelope."
+      },
+      {
+        "item": "Frame descriptor reply and paid tuple result",
+        "bytes": 512,
+        "proof": "Two four-field logical records,256each."
+      },
+      {
+        "item": "Old-stage delegation one-field input",
+        "bytes": 160,
+        "proof": "New wrapper-created own literal before exact old path; inherited old work stays held."
+      },
+      {
+        "item": "One fixed new error envelope",
+        "bytes": 256,
+        "proof": "Four-slot error envelope; payload is fixed module literal, no cause graph inspection."
+      }
+    ],
+    "inspect": [
+      {
+        "item": "Base retained account inspection return fields",
+        "bytes": 64,
+        "proof": "Two new32-byte fields."
+      }
+    ],
+    "total": 9504,
+    "proposed": 12288,
+    "lifetime": "Every entered create in every profile; retained while owner/API or a retaining Renderer/parent graph is reachable. No zero-Q-at-close claim; C02 retains the extra account through collect; release is limited to pre-owner constructor failure."
+  },
+  "bindingInstance": {
+    "persistent": [
+      {
+        "item": "Binding added/changed callable/captures",
+        "bytes": 5280,
+        "proof": "91->103 directcreate callables,983->1100 captures, includes six-phase validation callback."
+      },
+      {
+        "item": "Binding new ordinary function prototypes",
+        "bytes": 1600,
+        "proof": "Ten*(128+constructor ref32)."
+      },
+      {
+        "item": "Binding added persistent control cells",
+        "bytes": 544,
+        "proof": "17new cells, includes retained instance charge, five latches/roots, splitProfile and10function names."
+      },
+      {
+        "item": "Binding new constructor scope header",
+        "bytes": 128,
+        "proof": "One bounded pre-owner constructor cleanup block."
+      },
+      {
+        "item": "Binding v13 owner API slots",
+        "bytes": 96,
+        "proof": "Three32-byte fields."
+      },
+      {
+        "item": "Binding automatic prototype constructor-key strings",
+        "bytes": 1600,
+        "proof": "Ten new ordinary prototypes,10*160; no implicit shared-intrinsic exemption."
+      },
+      {
+        "item": "Binding per-create function name/key envelopes",
+        "bytes": 7616,
+        "proof": "Conservative automatic names/name/length/prototype keys per added callable; kept out of module account."
+      }
+    ],
+    "constructor": [
+      {
+        "item": "Binding instance Q reservation options",
+        "bytes": 192,
+        "proof": "Two fixed owner/phase fields."
+      },
+      {
+        "item": "Six exact table validation callback activations",
+        "bytes": 960,
+        "proof": "6*(128+1parameter32). Callback object itself is already in callable increment."
+      },
+      {
+        "item": "Exact-profile expected key array increment",
+        "bytes": 32,
+        "proof": "One added handoffLimits field."
+      },
+      {
+        "item": "Conditional new owner API temporary objects union",
+        "bytes": 352,
+        "proof": "v13 three-field224 +legacyempty128; conservative branch union."
+      }
+    ],
+    "inspect": [
+      {
+        "item": "New inspection temporary branch union and result fields",
+        "bytes": 576,
+        "proof": "Four-field temporary256 +legacyempty128 +six added return fields192 (including retained account inspection)."
+      }
+    ],
+    "advanceUpper": [
+      {
+        "item": "One full advance activation including pre-Q snapshot cells",
+        "bytes": 2208,
+        "proof": "All11 scopes and25slots; phase0 body contains12 snapshot refs BEFORE Q.reserve. Never attributed solely to pendingQ."
+      },
+      {
+        "item": "Four-slot add loop extra activations",
+        "bytes": 384,
+        "proof": "3extra empty body scopes*128; original one is in2208."
+      },
+      {
+        "item": "Three new current helper activations incl all row iterations",
+        "bytes": 3552,
+        "proof": "3*(704+3extra row-body160)."
+      },
+      {
+        "item": "Auth/pay/fresh/fixed failure-code activations",
+        "bytes": 1344,
+        "proof": "320+352+384+288; all-branch allocation sum upper."
+      },
+      {
+        "item": "New argument vectors and Q option records",
+        "bytes": 1632,
+        "proof": "WeakMap owner args160;4Set args640;2capacity empty args256;final2arg registry192;2Qoptions384."
+      },
+      {
+        "item": "Fixed new error envelope",
+        "bytes": 256,
+        "proof": "No dynamic exception inspection or retained cause graph."
+      }
+    ],
+    "closeUpper": [
+      {
+        "item": "Full cleanup activation incl all bounded iterations",
+        "bytes": 6560,
+        "proof": "2624 initial all-scope sum +3*(160+160+128) share-loop scopes +3*(160+128+128+128) slot-loop scopes +3*(160+160) clear-loop scopes."
+      },
+      {
+        "item": "Eleven new retirement helper activations",
+        "bytes": 3168,
+        "proof": "11*(128+32parameter+128body)=3168."
+      },
+      {
+        "item": "Authentication, public close wrapper and fixed error-code activations",
+        "bytes": 928,
+        "proof": "320+320+288."
+      },
+      {
+        "item": "Four Set-delete argument vectors",
+        "bytes": 640,
+        "proof": "4*(128+one slot32)."
+      },
+      {
+        "item": "One paid scope result and one fixed error envelope",
+        "bytes": 512,
+        "proof": "2*(128+4*32)."
+      }
+    ],
+    "prospectivePlumbing": [],
+    "total": 30784,
+    "lifetime": "Every entered create, including legacy profiles; not one realm charge for arbitrarily many instances. Keep retained account after close. Active scratch is bounded by entry/busy guards, no overlapping full advance and close.",
+    "proposed": 32768
+  },
+  "pending": {
+    "rows": [
+      {
+        "item": "One pending compound transaction record",
+        "bytes": 320,
+        "proof": "Header128+6fields*32, Binding163. Reader/rows/facade/slots use unchanged separate reader16384 account."
+      }
+    ],
+    "total": 320,
+    "proposed": 4096,
+    "lifetime": "From prospective phase0 reserve until paid cancel or later charge-only release. Never released during final no-fallible-callback transfer. New transaction maximum1."
+  },
+  "reader": {
+    "requested": 16384,
+    "slots": 4,
+    "retainedOriginalBatchFee": 3584,
+    "constructedLiteralRecordUnion": 2976,
+    "proof": "r8fields384 +rows4array256 +4sixfieldrows1280 +slots4array256 +facade3fields224 +controller2fields192 +3emptyplaceholders384 =2976. This unchanged reader schema is only a subset check, not a new full16384 derivation."
+  },
+  "qualification": {
+    "moduleAndControllerAreSeparate": true,
+    "fullColdHeld": true,
+    "fullInstancesHeld": true,
+    "preCreate": "Constructor function declarations/captures and pre-pending snapshot cells are born before in-body admission. A future original initializer must prospectively reserve complete increment before create; body charges alone do not prove that.",
+    "retainedClosedRoots": "Renderer.mainBaselines normally remains after Renderer.dispose; retained Renderer ->Base ->Binding and frozen APIs preserve closures. No GC/map-clear assumption.",
+    "prospectiveSource": "Pinned C02 tables and increment amounts remain null. Five fixed table-key envelopes are prospectively included. Numeric-only selection has scalar ABI, but exact successor labels/schema/captures/graph strings must be rechecked before acceptance.",
+    "nativePhysical": "UNMEASURED; no heap/VM/native storage or timing bound.",
+    "QBookkeeping": "Real metadata-budget chargedBytes includes512+2*(owner.length+phase.length) beyond requested bytes; fee proposals are requested logical amounts, not silently total chargedBytes."
+  },
+  "checks": {
+    "module65472": true,
+    "controller7200": true,
+    "base9504": true,
+    "binding30784": true,
+    "baseAllowance12288": true,
+    "bindingAllowance32768": true,
+    "moduleAllowance65536": true,
+    "controllerAllowance8192": true,
+    "allAllowancesRounded4096": true,
+    "readerLiteral2976": true
+  }
+}

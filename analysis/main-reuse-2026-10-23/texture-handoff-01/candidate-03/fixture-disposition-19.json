@@ -1,0 +1,12 @@
+{
+  "status": "TEST_FIXTURE_REPAIR_NO_PRODUCT_SOURCE_EDIT",
+  "sourceValidation18": "Initial parser classified every .js as classic; an inherited ESM test fixture requires module parsing. New test permits ESM fallback only for unchanged tests/ fixture files.",
+  "appRegression14": "Initial metadata-only source plan omitted preserved foundation/order arrays. Restored exact C4 arrays to test plan; no product source bytes or gates changed.",
+  "productSourcesChanged": 0,
+  "preserved": [
+    "verify-successor-18.cjs",
+    "app-regression-14.json",
+    "source-plan-draft-15.json",
+    "controls-app-startup-funding-held-14/failure-01.json"
+  ]
+}

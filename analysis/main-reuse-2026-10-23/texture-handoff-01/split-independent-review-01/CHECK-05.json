@@ -1,0 +1,178 @@
+{
+  "format": "sphere-split-handoff-independent-corrected-auth-fee-check/1",
+  "utc": "2026-10-23T11:04:29.106Z",
+  "status": "PASS_INDEPENDENT_CORRECTED_AUTH_AND_CONDITIONAL_FEE_STORAGE_REVIEW",
+  "report": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\texture-handoff-split-2026-10-23-01\\split-independent-review-01\\AUTH-AND-FEE-REVIEW-05.json",
+    "bytes": 14092,
+    "sha256": "0e36dfab1b2c779b5a1e4941989b641d6fccf5a5dee074aa4c2ff3433f374924"
+  },
+  "readFirst": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\texture-handoff-split-2026-10-23-01\\split-independent-review-01\\READ-REVIEW-05.md",
+    "bytes": 1854,
+    "sha256": "366bb9b1fc24345a42d76377d0c7dd1a4987cb298f081e57821b7334019e22fc"
+  },
+  "inputs": [
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/fee-review-02/CHECK.json",
+      "bytes": 5319,
+      "sha256": "dce0d6699ec657704e9b12d6dced7a9fe6271d7d86c304e25e3fd1ccf38098dc"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/fee-review-02/phase-work-proposal.json",
+      "bytes": 21286,
+      "sha256": "5293b2af97fd51d4cb8f4ad0896371d30ae495427c59d61563617f8ac16b48d4"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/fee-review-02/storage-proposal.json",
+      "bytes": 14469,
+      "sha256": "57afcc4a0e95e7fe71df9be1430bfb14706f784bcda9e432cec804a3809d9cfb"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/fee-review-02/storage-census-v4.json",
+      "bytes": 2123028,
+      "sha256": "ab902ab05feb5d9833b850ad86c56a6ff14677ec1df7a03c612ca7c3ac6fefab"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/fee-review-02/LIFECYCLE-GROUPING-01.json",
+      "bytes": 1665,
+      "sha256": "cd739084a6d9d05ab985286aec87237a96587c0c62debef1430be11580c66fa4"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/fee-review-02/MUTATION-CONTROL-STORAGE-01.json",
+      "bytes": 2409,
+      "sha256": "ee068dd99495c745b3e19b680cb611b9dd6d20644252fdd4dfd1884717d62e62"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/fee-review-02/CHECK-02.json",
+      "bytes": 3018,
+      "sha256": "65b3114423e845ac01317d5d6ead339c6070cfaf6b3a6e68e66122f784ab0fab"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/fee-review-02/MUTATION-CONTROL-STORAGE-02.json",
+      "bytes": 2678,
+      "sha256": "d1099736f384a425500bb8efd02fd31ed5c15c9fe3e37952d82efa9a9877d3d8"
+    }
+  ],
+  "source": [
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/candidate-02/source/biome-service/native/main-texture-binding-owner.js",
+      "bytes": 99362,
+      "sha256": "73c85d0e221ecf6a0eb7fe205b91820349941521e59ebb0c3f84b721030be078"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/candidate-02/source/biome-service/native/main-baseline-owner.js",
+      "bytes": 99076,
+      "sha256": "8b390df9b7ca7168bd301e917c18f6cde5b98d1f7237250ea69e10fdba3cd042"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/candidate-02/source/owned-main-bootstrap.js",
+      "bytes": 67627,
+      "sha256": "b7e5a01aad907a285257e4017d99309611c4b29ebecbd193260dfc4f05a31ce0"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/split-independent-review-01/PEER-DATA-05.json",
+      "bytes": 9025,
+      "sha256": "6d03e430921fbe83bd7f93aa26778aad85ef5aeb10155e575f505867ed735b28"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\texture-handoff-split-2026-10-23-01\\split-independent-review-01\\AUTH-CONTROLS-05.json",
+      "bytes": 7479,
+      "sha256": "a38bafc91e92c1ee72e735cd51fcc79d81ee0c19a5239e205d416a98d9b911ec"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\texture-handoff-split-2026-10-23-01\\split-independent-review-01\\SOURCE-SUPPLEMENT-05.json",
+      "bytes": 11871,
+      "sha256": "05332553a595b62ff179c790e3ae1cd3c5bd9043717f0dda1a64df26da7c44ee"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/split-independent-review-01/review-auth-and-fees-05.cjs",
+      "bytes": 22378,
+      "sha256": "5058758bfec336ccfbdea40713099ed3c7ddc63a6d2a2b601a93bb289a4d14af"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/split-independent-review-01/seal-auth-and-fee-review-05.cjs",
+      "bytes": 19593,
+      "sha256": "ded305e194b61db51da9a631061aafb0a3acf8a362a04be9652eeac1adba5c0a"
+    }
+  ],
+  "previousReceipts": [
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/split-independent-review-01/CHECK-02.json",
+      "bytes": 13584,
+      "sha256": "727fd685725767a4f8c56aec3273824ca26df38c5746ac76c080f9c731df0854"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/split-independent-review-01/CHECK-03.json",
+      "bytes": 2402,
+      "sha256": "499ed56c20a8c89fd689cd1a488993385f245d058fc1df6fa627621bd809a1fc"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/split-independent-review-01/CHECK-04.json",
+      "bytes": 3822,
+      "sha256": "928d473d5d4e1b504a96c01b4be67044b59c7f51fe8e644ab2a8ff23f135fbeb"
+    }
+  ],
+  "authorFixture": {
+    "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/binding-author-02/CHECK-03.json",
+    "bytes": 3399,
+    "sha256": "141bcfe048b71c15dd05560517bc20ff0327723cbe8c187eb669d71cf393bafc"
+  },
+  "checks": {
+    "allReviewedSourcePinsExact": true,
+    "authorOriginalAndCorrectionPinsExact": true,
+    "allEarlierReceiptsPreserved": true,
+    "threeAuthHunksInvertExactly": true,
+    "independentAuthControls": 29,
+    "originalBindingBodiesExact": 16,
+    "oldBaseAdvanceBodiesExact": 2,
+    "sourceFilesEach": 521,
+    "unchangedC4Files": 518,
+    "allFiveIndependentLexicalCaptureAndStringCensusesMatch": true,
+    "all32WorkRecurrencesMatch": true,
+    "thirdRuntimeScopeCorrection2304": true,
+    "closedInstanceLifetimeRetained": true,
+    "followingQuoteIncludesFreshSurface128": true,
+    "actualNumbersRemainNull": true,
+    "noSourceOrNumericMutation": true,
+    "noBrowserServerGitActions": true
+  },
+  "proposedWork": {
+    "bindingPhases": [
+      632,
+      586,
+      589,
+      592,
+      595,
+      590
+    ],
+    "baseVisit": 117,
+    "bindingCancel": 88,
+    "baseClose": 18,
+    "SurfaceEach": 128,
+    "following": 768
+  },
+  "proposedRequestedLogicalBytes": {
+    "module": 65536,
+    "loader": 8192,
+    "basePerCreate": 12288,
+    "bindingPerCreate": 32768,
+    "pending": 4096,
+    "oldReaderSeparate": 16384
+  },
+  "rawLogicalBytes": {
+    "module": 65472,
+    "loader": 7200,
+    "basePerCreate": 9504,
+    "bindingPerCreate": 30784,
+    "pending": 320
+  },
+  "cold": "HELD",
+  "fullInstances": "HELD",
+  "caller": "HELD",
+  "Main": "HELD",
+  "P05": "OPEN",
+  "next": "Root may construct controlled numeric/schema-already-funded/graph-pin successor, then verify finite inverse and exact selected-source re-census. This receipt does not select it."
+}

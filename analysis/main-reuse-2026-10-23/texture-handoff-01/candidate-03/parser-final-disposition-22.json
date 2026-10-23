@@ -1,0 +1,12 @@
+{
+  "status": "EXACT_EXTENSION_AND_ESM_METADATA_CLASSIFICATION",
+  "counts": {
+    "js": 386,
+    "cjs": 38,
+    "mjs": 1,
+    "total": 425
+  },
+  "attempt21": "Its fixture-count narrative incorrectly grouped .mjs with cjs and its parser still treated the inherited fake-indexeddb auto/index.mjs as classic.",
+  "fix": "Explicit module parse for .mjs and preserved fake-indexeddb/build/esm/*.js; classic script elsewhere. Product source unchanged.",
+  "priorAttemptsPreserved": true
+}

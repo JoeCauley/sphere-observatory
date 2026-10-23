@@ -1,0 +1,7 @@
+{
+  "status": "ESM_DEPENDENCY_CLASSIFICATION_CORRECTION_NO_PRODUCT_EDIT",
+  "fact": "The inherited fake-indexeddb ESM build needs module parsing. It is not a classic native bootstrap script.",
+  "priorReportCorrection": "fixture-disposition-19 called this a test fixture before exact path inspection; this supplement identifies the actual preserved dependency path.",
+  "allowedModulePath": "node_modules/fake-indexeddb/build/esm/",
+  "bytesUnchangedFromC4": true
+}

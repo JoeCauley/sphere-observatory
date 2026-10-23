@@ -1,0 +1,675 @@
+{
+  "status": "SOURCE_DERIVED_PROPOSAL_REQUIRES_INDEPENDENT_REVIEW_AND_SUCCESSOR_SOURCE_SELECTION",
+  "sourcePins": [
+    {
+      "path": "biome-service/native/main-texture-binding-owner.js",
+      "sha256": "73c85d0e221ecf6a0eb7fe205b91820349941521e59ebb0c3f84b721030be078",
+      "bytes": 99362
+    },
+    {
+      "path": "biome-service/native/main-baseline-owner.js",
+      "sha256": "8b390df9b7ca7168bd301e917c18f6cde5b98d1f7237250ea69e10fdba3cd042",
+      "bytes": 99076
+    },
+    {
+      "path": "owned-main-bootstrap.js",
+      "sha256": "b7e5a01aad907a285257e4017d99309611c4b29ebecbd193260dfc4f05a31ce0",
+      "bytes": 67627
+    }
+  ],
+  "vocabulary": {
+    "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/ordinary-main-demand-work-contract-01/resource-api-coverage-02.json",
+    "bytes": 105601,
+    "sha256": "9bdbf2951a6b8252e472ef667fbfbcdadeac148855f4b619c80fb178345b7102"
+  },
+  "components": {
+    "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/dependency-review-01/component-ledger.json",
+    "bytes": 2280,
+    "sha256": "dd839c8c20a4c474e308d9dc0f9481e14a864aa411c6b29651bbbaed3db124b4"
+  },
+  "parentGraph": {
+    "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-ordinary-bridge-work-2026-10-22-01/current-named-operation-graph.json",
+    "bytes": 12631,
+    "sha256": "6959b0615bd5d7931c02e3d9bb4f4a8ec345231da1f6758a1c69d9ed1083f732"
+  },
+  "nodes": [
+    {
+      "id": "ScopeRead",
+      "own": 4,
+      "terms": {},
+      "total": 4,
+      "proof": "Fixed frame/slice/epoch tuple and three actual R getters.",
+      "payer": "Binding"
+    },
+    {
+      "id": "ScopeRequire",
+      "own": 5,
+      "terms": {},
+      "total": 5,
+      "proof": "Fixed tuple predicate, three R getters and matchesScope.",
+      "payer": "Binding"
+    },
+    {
+      "id": "RetirementScope",
+      "own": 4,
+      "terms": {},
+      "total": 4,
+      "proof": "Fixed tuple predicate and three R getters, without matchesScope.",
+      "payer": "Binding"
+    },
+    {
+      "id": "SurfacePayload",
+      "own": 28,
+      "terms": {},
+      "total": 28,
+      "proof": "Exact existing SurfacePay11+SurfaceCurrent17 component; separately paid by original Surface128.",
+      "payer": "Surface128"
+    },
+    {
+      "id": "FullFreshReadiness",
+      "own": 395,
+      "terms": {},
+      "total": 395,
+      "proof": "Current complete readyFromBaseline: InitialBindingReadiness102 +completion record1 +DemandLive292; DemandLive=97native+118BaseReader+42port+31origin+4own. Contains one SurfacePayload28. Full native/port/origin guards remain fresh every phase.",
+      "payer": "Binding"
+    },
+    {
+      "id": "BatchParent",
+      "own": 24,
+      "terms": {},
+      "total": 24,
+      "proof": "Own2+BatchGate2+BindingLive15+ScopeRequire5; BindingLive15=own5+BasePublishedParent10.",
+      "payer": "Binding"
+    },
+    {
+      "id": "BatchStateFalse",
+      "own": 10,
+      "terms": {},
+      "total": 10,
+      "proof": "Gate1+record1+four rows each(row1+source R.inspect1), exact four cookies/serials/keys/source rows.",
+      "payer": "Binding"
+    },
+    {
+      "id": "BatchStateTrue",
+      "own": 14,
+      "terms": {},
+      "total": 14,
+      "proof": "False state10 plus four held-share R.inspect requests.",
+      "payer": "Binding"
+    },
+    {
+      "id": "BatchNative",
+      "own": 53,
+      "terms": {},
+      "total": 53,
+      "proof": "Controller1+four physical rows+four real native isTexture calls+four gates+eight ScopeRequire5. Original genuine native authority is repeated, not replaced by a ready bit.",
+      "payer": "Binding"
+    },
+    {
+      "id": "HandoffPay",
+      "own": 3,
+      "terms": {
+        "ScopeRead": 1,
+        "ScopeRequire": 1
+      },
+      "total": 12,
+      "proof": "Fixed selected fee/counter transaction1, actual available1 and consume1; C02 Binding151. The fixed transaction includes phase fee, following768 and freshSurfaceWork128 operands; adding this exact immutable scalar does not add an AST-priced operation.",
+      "payer": "Binding"
+    },
+    {
+      "id": "HandoffFresh",
+      "own": 2,
+      "terms": {
+        "FullFreshReadiness": 1,
+        "ScopeRequire": 1
+      },
+      "total": 402,
+      "proof": "One fixed private demand-state lookup/dispatch record and one ready-result/latch record; Binding149. No omitted callback payload.",
+      "payer": "Binding"
+    },
+    {
+      "id": "AdvanceControl",
+      "own": 6,
+      "terms": {},
+      "total": 6,
+      "proof": "Six explicitly bounded transactions: authenticate145 (three identities); entry/phase152-155 (six state operands); normal cursor/result156-180; catch failed-root181; fixed scalar handoffCode146; finally two flags182. All-branch union includes failure branches without inspecting cause.",
+      "payer": "Binding"
+    },
+    {
+      "id": "AdvanceCommon",
+      "own": 0,
+      "terms": {
+        "AdvanceControl": 1,
+        "HandoffPay": 1,
+        "HandoffFresh": 1
+      },
+      "total": 420,
+      "proof": "Common exact call union for one admitted phase.",
+      "payer": "Binding"
+    },
+    {
+      "id": "CurrentFalse0",
+      "own": 5,
+      "terms": {
+        "BatchParent": 1,
+        "BatchStateFalse": 1,
+        "ScopeRequire": 1
+      },
+      "total": 44,
+      "proof": "One pending identity/failure record, four row visits, 0 real held-share inspect requests; Binding150. k is the actual completed-share prefix, at most4.",
+      "payer": "Binding"
+    },
+    {
+      "id": "CurrentFalse1",
+      "own": 6,
+      "terms": {
+        "BatchParent": 1,
+        "BatchStateFalse": 1,
+        "ScopeRequire": 1
+      },
+      "total": 45,
+      "proof": "One pending identity/failure record, four row visits, 1 real held-share inspect requests; Binding150. k is the actual completed-share prefix, at most4.",
+      "payer": "Binding"
+    },
+    {
+      "id": "CurrentFalse2",
+      "own": 7,
+      "terms": {
+        "BatchParent": 1,
+        "BatchStateFalse": 1,
+        "ScopeRequire": 1
+      },
+      "total": 46,
+      "proof": "One pending identity/failure record, four row visits, 2 real held-share inspect requests; Binding150. k is the actual completed-share prefix, at most4.",
+      "payer": "Binding"
+    },
+    {
+      "id": "CurrentFalse3",
+      "own": 8,
+      "terms": {
+        "BatchParent": 1,
+        "BatchStateFalse": 1,
+        "ScopeRequire": 1
+      },
+      "total": 47,
+      "proof": "One pending identity/failure record, four row visits, 3 real held-share inspect requests; Binding150. k is the actual completed-share prefix, at most4.",
+      "payer": "Binding"
+    },
+    {
+      "id": "CurrentFalse4",
+      "own": 9,
+      "terms": {
+        "BatchParent": 1,
+        "BatchStateFalse": 1,
+        "ScopeRequire": 1
+      },
+      "total": 48,
+      "proof": "One pending identity/failure record, four row visits, 4 real held-share inspect requests; Binding150. k is the actual completed-share prefix, at most4.",
+      "payer": "Binding"
+    },
+    {
+      "id": "CurrentTrue",
+      "own": 1,
+      "terms": {
+        "BatchParent": 1,
+        "BatchStateTrue": 1,
+        "ScopeRequire": 1
+      },
+      "total": 44,
+      "proof": "One pending identity/failure record, parent, shared state and exact current scope; Binding150.",
+      "payer": "Binding"
+    },
+    {
+      "id": "Phase0Own",
+      "own": 21,
+      "terms": {
+        "ScopeRequire": 2
+      },
+      "total": 31,
+      "proof": "Capacity requests2; immutable12-cell snapshot transaction1; actual Q.reserve2; pending root1; compound root1; four six-field snapshot rows4; four-slot vector1; facade1; controller1; empty placeholders3; four Set membership/counter row transactions4. Two post-Q scopes. Binding159-169.",
+      "payer": "Binding"
+    },
+    {
+      "id": "Phase0Complete",
+      "own": 0,
+      "terms": {
+        "AdvanceCommon": 1,
+        "Phase0Own": 1,
+        "BatchParent": 1,
+        "CurrentFalse0": 3,
+        "BatchNative": 1
+      },
+      "total": 660,
+      "proof": "Three complete current checks at167/169 and one genuine native scan; no real R.share in phase0.",
+      "payer": "Binding"
+    },
+    {
+      "id": "Phase1Complete",
+      "own": 2,
+      "terms": {
+        "AdvanceCommon": 1,
+        "CurrentFalse0": 1,
+        "ScopeRequire": 1,
+        "CurrentFalse1": 2,
+        "BatchNative": 1
+      },
+      "total": 614,
+      "proof": "One real R.share1 and immediate returned-key rooting transaction1; phase1 pre-state has 0 shares and both post-state scans have 1. Binding171-172.",
+      "payer": "Binding"
+    },
+    {
+      "id": "Phase2Complete",
+      "own": 2,
+      "terms": {
+        "AdvanceCommon": 1,
+        "CurrentFalse1": 1,
+        "ScopeRequire": 1,
+        "CurrentFalse2": 2,
+        "BatchNative": 1
+      },
+      "total": 617,
+      "proof": "One real R.share1 and immediate returned-key rooting transaction1; phase2 pre-state has 1 shares and both post-state scans have 2. Binding171-172.",
+      "payer": "Binding"
+    },
+    {
+      "id": "Phase3Complete",
+      "own": 2,
+      "terms": {
+        "AdvanceCommon": 1,
+        "CurrentFalse2": 1,
+        "ScopeRequire": 1,
+        "CurrentFalse3": 2,
+        "BatchNative": 1
+      },
+      "total": 620,
+      "proof": "One real R.share1 and immediate returned-key rooting transaction1; phase3 pre-state has 2 shares and both post-state scans have 3. Binding171-172.",
+      "payer": "Binding"
+    },
+    {
+      "id": "Phase4Complete",
+      "own": 2,
+      "terms": {
+        "AdvanceCommon": 1,
+        "CurrentFalse3": 1,
+        "ScopeRequire": 1,
+        "CurrentFalse4": 2,
+        "BatchNative": 1
+      },
+      "total": 623,
+      "proof": "One real R.share1 and immediate returned-key rooting transaction1; phase4 pre-state has 3 shares and both post-state scans have 4. Binding171-172.",
+      "payer": "Binding"
+    },
+    {
+      "id": "Phase5Complete",
+      "own": 3,
+      "terms": {
+        "AdvanceCommon": 1,
+        "CurrentTrue": 3,
+        "BatchNative": 1,
+        "ScopeRequire": 2
+      },
+      "total": 618,
+      "proof": "WeakMap registration1; registered-state record1; final no-callback transfer1. Three complete all-share current checks and two explicit additional scopes. Binding171,173-180.",
+      "payer": "Binding"
+    },
+    {
+      "id": "CancelComplete",
+      "own": 40,
+      "terms": {
+        "ScopeRead": 1,
+        "RetirementScope": 11
+      },
+      "total": 88,
+      "proof": "Own40: authenticate/latch/catch/fixedcode/finally5; fee-counter/available/take3; four held-row records4; eight R.inspect8; four real R.release4; four slot-row records4; four actual Set.delete4; four six-field clear-row records4; final compound root clear1; two Q.release2; final terminal/failure transfer1. At most11 retirement scopes (initial,4shares,4slots,readerQ,admissionQ). Binding184-202.",
+      "payer": "Binding"
+    },
+    {
+      "id": "CancelChargeOnly",
+      "own": 10,
+      "terms": {
+        "ScopeRead": 1,
+        "RetirementScope": 2
+      },
+      "total": 22,
+      "proof": "Control5+fee API/counter3+admission Q.release1+terminal/root/failure result1. Strict subset of full cancellation, including partial reserve failure and transferred charge-only root.",
+      "payer": "Binding"
+    },
+    {
+      "id": "BaseBridgeScope",
+      "own": 121,
+      "terms": {},
+      "total": 121,
+      "proof": "Original bridgeScope fixed record/capability/frame checks6+BaseLive115, including exactly one original SurfacePayload28. Full Base lifecycle and current Surface remain fresh.",
+      "payer": "Base"
+    },
+    {
+      "id": "BaseSplitPay",
+      "own": 3,
+      "terms": {
+        "ScopeRead": 1,
+        "ScopeRequire": 1
+      },
+      "total": 12,
+      "proof": "Selection/fee result transaction1, available1, consume1; Base171-174. Nonretirement fixed transaction includes genuine captured Surface currentWork128 in quote; retirement has no Surface debit.",
+      "payer": "Base"
+    },
+    {
+      "id": "BaseSplitVisitComplete",
+      "own": 7,
+      "terms": {
+        "BaseSplitPay": 1,
+        "BaseBridgeScope": 1,
+        "ScopeRequire": 1
+      },
+      "total": 145,
+      "proof": "Own7: five fixed records (private caller/frame; entry/stage/children; publication/cursor; primary-secondary failure; final flags) plus isSplitHandoffProfile1 and original ownsContentBatchReader1. Base176-189. Child Binding phase excluded and priced separately.",
+      "payer": "Base"
+    },
+    {
+      "id": "BaseSplitCloseComplete",
+      "own": 6,
+      "terms": {
+        "ScopeRead": 1,
+        "RetirementScope": 2
+      },
+      "total": 18,
+      "proof": "Own6: selected fee/control1, available1, takeRetirementWork1; original close entry/result/flags3. Two scope barriers, Base191-194. Child cancellation separately priced.",
+      "payer": "Base"
+    }
+  ],
+  "partition": {
+    "surfaceEach": 128,
+    "exactSurfaceComponentExcludedEach": 28,
+    "bindingComplete": [
+      660,
+      614,
+      617,
+      620,
+      623,
+      618
+    ],
+    "bindingOwned": [
+      632,
+      586,
+      589,
+      592,
+      595,
+      590
+    ],
+    "baseVisitComplete": 145,
+    "baseVisitOwned": 117,
+    "bindingClose": 88,
+    "baseClose": 18,
+    "following": 768
+  },
+  "sequential": [
+    {
+      "phase": 0,
+      "steps": [
+        {
+          "label": "actual Target.beginPreparationFrame",
+          "debit": 8,
+          "followingGuard": null,
+          "remaining": 4088
+        },
+        {
+          "label": "Base split caller",
+          "debit": 117,
+          "followingGuard": 896,
+          "remaining": 3971
+        },
+        {
+          "label": "outer fresh Surface",
+          "debit": 128,
+          "followingGuard": null,
+          "remaining": 3843
+        },
+        {
+          "label": "Binding actual subset phase0",
+          "debit": 632,
+          "followingGuard": 896,
+          "remaining": 3211
+        },
+        {
+          "label": "full Demand fresh inner Surface",
+          "debit": 128,
+          "followingGuard": null,
+          "remaining": 3083
+        }
+      ],
+      "remaining": 3083,
+      "above768": true
+    },
+    {
+      "phase": 1,
+      "steps": [
+        {
+          "label": "actual Target.beginPreparationFrame",
+          "debit": 8,
+          "followingGuard": null,
+          "remaining": 4088
+        },
+        {
+          "label": "Base split caller",
+          "debit": 117,
+          "followingGuard": 896,
+          "remaining": 3971
+        },
+        {
+          "label": "outer fresh Surface",
+          "debit": 128,
+          "followingGuard": null,
+          "remaining": 3843
+        },
+        {
+          "label": "Binding actual subset phase1",
+          "debit": 586,
+          "followingGuard": 896,
+          "remaining": 3257
+        },
+        {
+          "label": "full Demand fresh inner Surface",
+          "debit": 128,
+          "followingGuard": null,
+          "remaining": 3129
+        }
+      ],
+      "remaining": 3129,
+      "above768": true
+    },
+    {
+      "phase": 2,
+      "steps": [
+        {
+          "label": "actual Target.beginPreparationFrame",
+          "debit": 8,
+          "followingGuard": null,
+          "remaining": 4088
+        },
+        {
+          "label": "Base split caller",
+          "debit": 117,
+          "followingGuard": 896,
+          "remaining": 3971
+        },
+        {
+          "label": "outer fresh Surface",
+          "debit": 128,
+          "followingGuard": null,
+          "remaining": 3843
+        },
+        {
+          "label": "Binding actual subset phase2",
+          "debit": 589,
+          "followingGuard": 896,
+          "remaining": 3254
+        },
+        {
+          "label": "full Demand fresh inner Surface",
+          "debit": 128,
+          "followingGuard": null,
+          "remaining": 3126
+        }
+      ],
+      "remaining": 3126,
+      "above768": true
+    },
+    {
+      "phase": 3,
+      "steps": [
+        {
+          "label": "actual Target.beginPreparationFrame",
+          "debit": 8,
+          "followingGuard": null,
+          "remaining": 4088
+        },
+        {
+          "label": "Base split caller",
+          "debit": 117,
+          "followingGuard": 896,
+          "remaining": 3971
+        },
+        {
+          "label": "outer fresh Surface",
+          "debit": 128,
+          "followingGuard": null,
+          "remaining": 3843
+        },
+        {
+          "label": "Binding actual subset phase3",
+          "debit": 592,
+          "followingGuard": 896,
+          "remaining": 3251
+        },
+        {
+          "label": "full Demand fresh inner Surface",
+          "debit": 128,
+          "followingGuard": null,
+          "remaining": 3123
+        }
+      ],
+      "remaining": 3123,
+      "above768": true
+    },
+    {
+      "phase": 4,
+      "steps": [
+        {
+          "label": "actual Target.beginPreparationFrame",
+          "debit": 8,
+          "followingGuard": null,
+          "remaining": 4088
+        },
+        {
+          "label": "Base split caller",
+          "debit": 117,
+          "followingGuard": 896,
+          "remaining": 3971
+        },
+        {
+          "label": "outer fresh Surface",
+          "debit": 128,
+          "followingGuard": null,
+          "remaining": 3843
+        },
+        {
+          "label": "Binding actual subset phase4",
+          "debit": 595,
+          "followingGuard": 896,
+          "remaining": 3248
+        },
+        {
+          "label": "full Demand fresh inner Surface",
+          "debit": 128,
+          "followingGuard": null,
+          "remaining": 3120
+        }
+      ],
+      "remaining": 3120,
+      "above768": true
+    },
+    {
+      "phase": 5,
+      "steps": [
+        {
+          "label": "actual Target.beginPreparationFrame",
+          "debit": 8,
+          "followingGuard": null,
+          "remaining": 4088
+        },
+        {
+          "label": "Base split caller",
+          "debit": 117,
+          "followingGuard": 896,
+          "remaining": 3971
+        },
+        {
+          "label": "outer fresh Surface",
+          "debit": 128,
+          "followingGuard": null,
+          "remaining": 3843
+        },
+        {
+          "label": "Binding actual subset phase5",
+          "debit": 590,
+          "followingGuard": 896,
+          "remaining": 3253
+        },
+        {
+          "label": "full Demand fresh inner Surface",
+          "debit": 128,
+          "followingGuard": null,
+          "remaining": 3125
+        }
+      ],
+      "remaining": 3125,
+      "above768": true
+    }
+  ],
+  "predebit": {
+    "bindingAdvance": 7,
+    "bindingAdvanceExpression": "authenticate1+entry/phase1+ScopeRead4+available1; consume request and post-scope are in HandoffPay. No ready callback occurs before the debit.",
+    "bindingClose": 7,
+    "bindingCloseExpression": "authenticate1+entry/root1+ScopeRead4+available1. takeRetirementWork is a genuine source API; false paths are bounded prefixes.",
+    "baseAdvance": 7,
+    "baseAdvanceExpression": "Exact original Renderer private key and own-data frame option boundary; caller/frame transaction1+entry/selection1+ScopeRead4+available1. Foreign Proxy option work is outside this admitted source boundary.",
+    "callerObligation": "These per-invocation bounded prefixes still need a genuine caller pre-admission contract. An insufficient-credit refusal is not a free arbitrary repeated callback contract."
+  },
+  "qualification": {
+    "selected": false,
+    "workTablesRemainNull": true,
+    "oldBatchFee": 3584,
+    "oldBatchInvokedByNewPhases": false,
+    "actualLimits": {
+      "prepare": 4096,
+      "uploadBytes": 262144,
+      "jobs": 2
+    },
+    "followingIs": "C02 advance quotes include the exact subsequent Surface128 debit in addition to following768. Retirement quotes require768 without Surface. Explicit complete sequential ledgers preserve at least768; this does not fund unrelated caller work.",
+    "cold": "Full cold/create/initializer caller and instance envelope remain held.",
+    "otherWork": "ORDINARY_BRIDGE_WORK/CLOSED_CONTENT_WORK, Demand demanded/plan work and Root content tables remain null unless separately qualified.",
+    "hostNativeMain": "UNQUALIFIED; source models/native App startup with0Main frames do not open product Main gate."
+  },
+  "counterexamples": [
+    {
+      "pin": "584909f2f427a2427f34075349f525439eaa2c4be65a4923b9c16be673c15ffd",
+      "source": "handoffCode read own(cause,code) through a Proxy descriptor trap; try/catch bounded throwing but not work or termination.",
+      "fix": "Current2b643 handoffCode returns fixed scalar without touching cause; primary error rethrown unchanged."
+    },
+    {
+      "source": "Base options own descriptor could run a foreign Proxy trap.",
+      "boundary": "Current49e10 rejects foreign private capability before descriptor; admitted caller is original Renderer own literal. No fixed fee for foreign caller Proxy payload."
+    }
+  ],
+  "checks": {
+    "fullFresh395": true,
+    "rawPhases": true,
+    "base145": true,
+    "cancel88": true,
+    "baseClose18": true,
+    "allSequentialLedgersFit": true,
+    "nativeAndOriginRepeatedEveryPhase": true,
+    "noASTWorkPrices": true,
+    "noHeadroomPriceRule": true
+  }
+}

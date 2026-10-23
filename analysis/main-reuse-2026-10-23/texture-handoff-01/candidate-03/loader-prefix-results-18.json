@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "sourceSha256": "a29fd0953fa0560eef5b790647de00704b79cc220e17686b472e49bfd9132716",
+  "completed": 3,
+  "tests": [
+    {
+      "name": "Unselected new funding refuses before Q creation",
+      "status": "PASS"
+    },
+    {
+      "name": "Reservation failure 2 releases every earlier account",
+      "status": "PASS"
+    },
+    {
+      "name": "Reservation failure 3 releases every earlier account",
+      "status": "PASS"
+    }
+  ],
+  "scope": "Exact guard/prefix/catch source with disclosed metadata failure models and prefix-only diagnostic stop. No module/native/cold/Main source qualification."
+}

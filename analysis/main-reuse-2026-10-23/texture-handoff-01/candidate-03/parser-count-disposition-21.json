@@ -1,0 +1,5 @@
+{
+  "status": "PRESERVED_PARSER_FIXTURE_COUNT_FAILURE",
+  "attempt20": "Parsed386 .js files, then incorrectly compared that subset with425 JavaScript sources. Original425 includes39 .cjs files.",
+  "fix": "Parse .js/.cjs/.mjs; retain restricted ESM classification for preserved fake-indexeddb ESM dependency. No product source edit."
+}

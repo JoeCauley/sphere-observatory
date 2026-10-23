@@ -1,0 +1,70 @@
+{
+  "format": "sphere-texture-handoff-preservation/1",
+  "status": "PASS_EXACT_SOURCE_AND_PROGRESS_PRESERVATION",
+  "utc": "2026-10-23T11:20:27.909491+00:00",
+  "checkpoint": "I:/Sphere/checkpoints/observatory-main-joint80-2026-10-21",
+  "manifestSHA256": "94a07b0acf98779b2206c094b2a3656330ffd130bcf6026d63c866a370269ade",
+  "verificationSHA256": "02859582d77e2a4025724c299c45fa9662313d6a53a0639305b99d7cd07dbcfe",
+  "verification": {
+    "pass": true,
+    "snapshots": 29,
+    "archiveEntriesVerified": 15015,
+    "recordsVerified": 3348,
+    "recordsAdded": 403,
+    "recordsBytes": 122369398,
+    "freshRestore": {
+      "snapshot": "main-texture-handoff-funded-c3",
+      "destination": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\texture-handoff-split-2026-10-23-01\\restored-check-10\\source",
+      "files": 521,
+      "verified": true
+    },
+    "restorerUnchanged": true,
+    "earlierSnapshotAndRecordRowsExact": true,
+    "scope": "Exact source/progress preservation and referenced bounded selected component controls, no full Main/P05/cold/physical/timing acceptance."
+  },
+  "privateAtlasFilesExact": [
+    {
+      "path": "docs/README.md",
+      "bytes": 6139,
+      "sha256": "222bb6a7701ac6f707aef43b0196a708502f20c25903ffafb22b563fd687a6c9"
+    },
+    {
+      "path": "docs/Sphere-Project-Curation-Log.md",
+      "bytes": 2402,
+      "sha256": "468d71ad6695fb30b835e5b6ccd0e71f98feb6e59e3ac8dafe4ae0878fa1901d"
+    },
+    {
+      "path": "docs/Sphere-Project-Curator-Protocol.md",
+      "bytes": 5159,
+      "sha256": "16bbb4719997407e48c391569e7f7f4189ac0e72b844c881b277d5df9998d702"
+    },
+    {
+      "path": "docs/Sphere-Project-Living-Atlas.md",
+      "bytes": 28239,
+      "sha256": "e1d0055df4eafcf89755eaea99c53c7f84f03d5ec27d9fa6cfa90fb6df3f97ed"
+    },
+    {
+      "path": "docs/Sphere-Project-Source-Register.json",
+      "bytes": 23708,
+      "sha256": "881386f6b30361f37ade84c117e365ec855ffe0f0f10bbf3daa72e1a16794326"
+    }
+  ],
+  "publicRuntimeTrackedFilesUnchanged": true,
+  "historicalReadmeCheckpointBodiesExact": true,
+  "curatedReceiptCopiesExact": 25,
+  "newReportLinksResolveLocally": true,
+  "stagedPrivateFiles": 412,
+  "preservedSealedWhitespaceExceptions": [
+    "records/main-ordinary-bridge-work-2026-10-22-01/source-excerpts.md",
+    "records/main-ordinary-bridge-work-review-2026-10-22-01/amend-input-pins-02.cjs",
+    "records/texture-handoff-split-2026-10-23-01/dependency-review-01/source-excerpts.md"
+  ],
+  "sourceSnapshotIds": [
+    "main-texture-handoff-unselected-c1",
+    "main-texture-handoff-lifetime-unselected-c2",
+    "main-texture-handoff-funded-c3"
+  ],
+  "privateBaseCommit": "a7f85f66a14161d33093dd28214484c3bc945ecf",
+  "publicBaseCommit": "b0c9258ea047500ff8d0e00a8f6d8ff20cca3c58",
+  "scope": "Exact archival/logical/component source preservation only. No native Main, physical memory, timing, P05 or later acceptance. Raw archives remain local; no browser/server operations."
+}

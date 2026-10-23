@@ -1,0 +1,56 @@
+{
+  "format": "sphere-binding-selected-auth-seal/1",
+  "utc": "2026-10-23T11:07:47.846Z",
+  "status": "PASS_4_EXACT_SELECTED_SOURCE_FUNCTIONAL_MODELS",
+  "record": {
+    "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/binding-author-03/selected-auth-run-02.json",
+    "bytes": 9887,
+    "sha256": "4e5dcbac09220aab8cadd04243068521c2ab866a92fbef8a8c5c197d9e0cb6be"
+  },
+  "artifactPins": [
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/binding-author-03/READ-FIRST-02.md",
+      "bytes": 1884,
+      "sha256": "f37445ec28d048f4e53c0f59fde963f0e4703e45e00c4198e3b881ce1fc9281c"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/binding-author-03/fixture-adaptation-01.json",
+      "bytes": 5720,
+      "sha256": "dce679e66adcb46c76cb24c46331ba0edf4587971b758cbef06eda6bdeb3efc0"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/binding-author-03/prepare-selected-auth-controls-01.cjs",
+      "bytes": 4289,
+      "sha256": "6cfaceb8f4b4dbf4b712da9acf75b0bab5073271ce26ce48596e1273911a324f"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/binding-author-03/seal-selected-auth-02.cjs",
+      "bytes": 5666,
+      "sha256": "b47edd2ac701d00edc2aea4404668b55835d22734bc54dd29bbe6fb1991cec7e"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/binding-author-03/selected-auth-run-02.json",
+      "bytes": 9887,
+      "sha256": "4e5dcbac09220aab8cadd04243068521c2ab866a92fbef8a8c5c197d9e0cb6be"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/binding-author-03/test-selected-auth-01.cjs",
+      "bytes": 27917,
+      "sha256": "2e1a273378c70bd63c0ecbd2f9a06664c353918afd642ea8269b8c341c3bd73d"
+    }
+  ],
+  "passed": 4,
+  "foreignRefusals": 120,
+  "sourceOverrides": 0,
+  "sourcePinStillExact": {
+    "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/candidate-03/source/biome-service/native/main-texture-binding-owner.js",
+    "bytes": 99452,
+    "sha256": "234d212e4de8589520672085bdbaa071ba662b461f3ac196b468fe13983b077d"
+  },
+  "heldQAfterClose": 37542,
+  "remainingRLeases": 0,
+  "sourceEdits": 0,
+  "historicalEdits": 0,
+  "Main": "HELD",
+  "P05": "OPEN"
+}

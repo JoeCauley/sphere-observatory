@@ -1,0 +1,120 @@
+{
+  "format": "sphere-texture-handoff-selected-component-receipt/1",
+  "status": "PASS_BOUNDED_SELECTED_SOURCE_COMPONENT",
+  "utc": "2026-10-23T11:16:12.965783+00:00",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\texture-handoff-split-2026-10-23-01\\candidate-03\\source",
+  "sourceFiles": 521,
+  "javaScriptParses": 425,
+  "onlyChanged": [
+    "biome-service/native/main-baseline-owner.js",
+    "biome-service/native/main-texture-binding-owner.js",
+    "owned-main-bootstrap.js"
+  ],
+  "checks": {
+    "bindingSelectedFeeModels": 28,
+    "baseExactBodyModels": 19,
+    "appLoaderRegressionModes": 21,
+    "loaderFundingPrefixModels": 3,
+    "selectedSourceAuthModes": 4,
+    "selectedSourceForeignRefusals": 120
+  },
+  "modelBoundaries": "Genuine Q/S/R/G with authenticated mocked Base/Construction/Demand/Renderer and modeled GL for Binding. Base operation models use named parents. App uses disclosed DOM/GL/scheduler models and diagnostic App dispatch; legacy control allows one modeled App frame. No new native browser/Main evidence.",
+  "logicalFees": {
+    "bindingPhases": [
+      632,
+      586,
+      589,
+      592,
+      595,
+      590
+    ],
+    "baseVisit": 117,
+    "bindingCancel": 88,
+    "baseClose": 18
+  },
+  "newRequestedLogicalBytes": {
+    "module": 65536,
+    "loader": 8192,
+    "baseInstance": 12288,
+    "bindingInstance": 32768,
+    "pending": 4096,
+    "readerUnchanged": 16384
+  },
+  "lifetime": "Every-create added control/callable Q stays held with closed APIs/realm. One closed Binding fixture retains37542 including one shared Q base and real bookkeeping;0leases does not mean0CPU/Q/VM. Inherited closed-reader/full-instance/caller ownership remains held.",
+  "limits": {
+    "prepare": 4096,
+    "uploadBytes": 262144,
+    "jobs": 2,
+    "readers": 64
+  },
+  "following": {
+    "newTail": 768,
+    "freshSurfaceDebitExtraReserved": 128,
+    "isolatedMaxLiteralDebits": 1013,
+    "completeCallerQualification": "HELD"
+  },
+  "feesQualification": "Explicit named resource/API/record vocabulary and increment-only source graph; no statement/AST count tariff, physical time or whole-Main qualification.",
+  "historical": "All initial drafts, foreign-mutation counterexample, storage/lifetime/following corrections, model-setup failures and earlier seals preserved.",
+  "productAppGate": false,
+  "ordinaryBridgeWork": null,
+  "coldConstructorHoistAndCaller": "HELD",
+  "wholeHost": "HELD",
+  "nativeMain": "NOT_RUN",
+  "browserActions": 0,
+  "serverActions": 0,
+  "P05": "OPEN",
+  "P06_P08": "NOT_STARTED",
+  "PhaseOne": "NOT_ACCEPTED_NOT_RELEASED",
+  "artifacts": {
+    "sourceValidation": {
+      "path": "candidate-03/source-validation-22.json",
+      "bytes": 2715,
+      "sha256": "e9335c3347a59c53e2b89f0a1f8c8a1493d3d2ede59a8c8c78144a8621735623"
+    },
+    "selection": {
+      "path": "candidate-03/selection-receipt-15.json",
+      "bytes": 127285,
+      "sha256": "64734cbb2cb16c96726c2b121ae59314db20513f04f9e02fb4cdbd950d6ad0e4"
+    },
+    "binding": {
+      "path": "funded-controls-01/control-run-12.json",
+      "bytes": 26046,
+      "sha256": "27998b3b626f3cf28e479412e36b7d914197366ed42cc0bf03b32f9a02999a4c"
+    },
+    "base": {
+      "path": "funded-controls-01/base-results-12.json",
+      "bytes": 2707,
+      "sha256": "87d3a72d7cde9ae55fd24e07bca49a03bb736633d6672d0b790999bee0e91830"
+    },
+    "app": {
+      "path": "candidate-03/app-regression-19.json",
+      "bytes": 5604,
+      "sha256": "619a942cc6a6375a2275eb40872ddebcacebe6af36af11a1477ca6cb497febc7"
+    },
+    "prefix": {
+      "path": "candidate-03/loader-prefix-results-18.json",
+      "bytes": 625,
+      "sha256": "13156256ab8a3d747b5a30a27c0cdf920a3d35c21ed9b9d54d8915c7c3c752f2"
+    },
+    "auth": {
+      "path": "binding-author-03/CHECK-02.json",
+      "bytes": 2604,
+      "sha256": "185b55f3b63993af7f814df634bbf53e8021f72abcbff2fa3bbe645837d37a20"
+    },
+    "feePeer": {
+      "path": "split-independent-review-01/CHECK-05.json",
+      "bytes": 7954,
+      "sha256": "8103efde1b2d71f3d01cd7dda3bca1a7cc9d4beda6f1d5732a3ddfcbf983faa9"
+    },
+    "selectedSourceReview": {
+      "path": "fee-review-03/CHECK.json",
+      "bytes": 5121,
+      "sha256": "be3ce94b8cb7a20196125b782ef6b576ba96f51b05f6c76b67e9cfc62a046fb8"
+    },
+    "v8Ledger": {
+      "path": "v8-bridge-ledger-01/CHECK-01.json",
+      "bytes": 5985,
+      "sha256": "782eebfa552f935d9eb8c57e66dab026fcdb491efb51a687d40ca364d13ae398"
+    }
+  }
+}

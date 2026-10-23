@@ -1,3 +1,5 @@
+> **Texture handoff component — 23 October 2026:** Main now transfers its four textures across six visits, retaining fresh checks, original reader limits and paid cleanup. Selected source and scoped component controls pass independent review; the delivered walk and simulation are unchanged. Complete cold/caller/host and native Main proof remain open, so P05 is OPEN. Read the [handoff report](Observatory-Main-Texture-Handoff-2026-10-23.md) and [current work plan](Observatory-Current-Work-Plan.md). Earlier dated records below retain their original scopes.
+
 > **Main startup component — 22 October 2026:** The genuine drawing helper and owned App/loader handoff pass 52 targeted model checks and a real Chrome startup/cleanup check. Complete Main remains held; P05 is OPEN. The next gate is the exact current four-key content-bridge work contract. See the [startup report](Observatory-Main-Startup-2026-10-22.md) and [current work plan](Observatory-Current-Work-Plan.md). Earlier evidence below keeps its original scope.
 
 # Sphere Observatory project checkpoint — 20 October 2026
