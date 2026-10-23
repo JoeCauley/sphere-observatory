@@ -1,0 +1,24 @@
+{
+  "status": "PRECISE_ORIGINAL_FIRST_ADMISSION_FOUNDATION_SCOPE_NO_SOURCE_OR_SEAL_CHANGE",
+  "utc": "2026-10-23T16:10:44.105986+00:00",
+  "proposal": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\entry-storage-08.json",
+    "sha256": "2636d854368f5b24cb3562cdb485a7b0e84d71e28b47aa1b4b9d9a3649535cea"
+  },
+  "functionalSeal": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\CHECK-13.json",
+    "sha256": "7d2d8b09ef77dc4e78b0ab9e2f4eb16ea1b12c30d00b8343abc2af66ff75bba8"
+  },
+  "scope": "The candidate02 new paid entry prefix is reached only after the ORIGINAL first Q.reserve returns successfully. Entry08 positively includes11 complete returned-Q facades and a conservative reserve transient for the paid prefix union; it does not retroactively prove admission of the original first request.",
+  "inheritedUnqualifiedFoundation": [
+    "Original Q.create work/storage before the first original controller reserve",
+    "Original first Q.reserve argument evaluation, validation, scalar helper/function births, failure paths and any other pre-admission work/storage"
+  ],
+  "preciseCorrection": "Entry08 unqualified pre-original-Q.create wording should be read as this complete original first-admission foundation boundary. This append records the precision without rewriting frozen08/13 or the original Q/source.",
+  "sourceEdits": 0,
+  "newPrefixAndFailureRetentionProofsPreserved": true,
+  "noNewFoundationQualification": true,
+  "fundingSelected": false,
+  "Main": false,
+  "P05": "OPEN"
+}

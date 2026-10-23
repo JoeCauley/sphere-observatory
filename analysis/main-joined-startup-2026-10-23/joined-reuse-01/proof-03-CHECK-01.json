@@ -1,0 +1,179 @@
+{
+  "status": "REVIEWED_C2_FAILED_ENTRY_RETENTION_AND_STORAGE08_FOUNDATION_HELD_NOT_SELECTED",
+  "source": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01/candidate-02/source/owned-main-bootstrap.js",
+    "bytes": 162093,
+    "sha256": "268ddd527d045284fd441f34fc33d25ca8e50c42aece8ee4237999463dda4cca"
+  },
+  "rootFunctionalSeal": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01/CHECK-13.json",
+    "sha256": "7d2d8b09ef77dc4e78b0ab9e2f4eb16ea1b12c30d00b8343abc2af66ff75bba8"
+  },
+  "entryProposal": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\independent-review-01/replayed-entry-storage-08.json",
+    "sha256": "2636d854368f5b24cb3562cdb485a7b0e84d71e28b47aa1b4b9d9a3649535cea",
+    "raw": 115968,
+    "additional": 118784,
+    "combinedWithOriginal389120": 507904,
+    "selected": null
+  },
+  "evidence": {
+    "entryFailureRefusalGroups": 33,
+    "independentBasisGroups": 5,
+    "fullSourceFilesRehashed": 521,
+    "unchangedOtherFiles": 520,
+    "unchangedActualDeclarations": 144,
+    "exactVectorReproduction": true,
+    "rootUnchangedParsesAndFreshProfilesBound": true
+  },
+  "findings": [
+    {
+      "kind": "C2_RETENTION_CONFIRMED",
+      "message": "Three direct raw catches keep all admitted accounts through unwind; C1 premature-release counter preserved."
+    },
+    {
+      "kind": "PREFIX_PROSPECTIVE_ORDER_CONFIRMED",
+      "message": "New prefix follows successful original first reserve. Every child request precedes heavy block and no new functions are born in the prefix."
+    },
+    {
+      "kind": "FOUNDATION_SCOPE_CLARIFIED",
+      "message": "Original Q.create and original first Q.reserve pre-admission scalar/helper/work/storage remain unqualified. The post-return vector cannot fund its own earlier first admission. Root acknowledged; no08/13 source/report rewrite."
+    },
+    {
+      "kind": "NO_FULL_FUNDING_PROMOTION",
+      "message": "507904 is a positive storage proposal only; first NaN/nine nulls/Mainfalse persist. Source-specific caller/whole heavy/caller work/native/R/Main remain separate."
+    }
+  ],
+  "sourceEdits": 0,
+  "selected": null,
+  "Main": false,
+  "Frame": false,
+  "P05": "OPEN",
+  "manifest": [
+    {
+      "path": "input-register-01.json",
+      "bytes": 5251,
+      "sha256": "f3b9342689b26c671b391638230b875c25c5faaa32a6179cfa720f0146a581be"
+    },
+    {
+      "path": "inputs/CHECK-13.json",
+      "bytes": 20287,
+      "sha256": "7d2d8b09ef77dc4e78b0ab9e2f4eb16ea1b12c30d00b8343abc2af66ff75bba8"
+    },
+    {
+      "path": "inputs/derive-entry-storage-08.cjs",
+      "bytes": 5776,
+      "sha256": "6daf6b8772e56fcbd4a70715301dfd9635299f9de4700a3b52e676730121fa80"
+    },
+    {
+      "path": "inputs/entry-controls-11.json",
+      "bytes": 6948,
+      "sha256": "078a302ec3631639d2af2ea44bf0fe800133de67d56ddf229e358465b502fdd5"
+    },
+    {
+      "path": "inputs/entry-harness-disposition-11.json",
+      "bytes": 503,
+      "sha256": "fbf544b6e5fe07db5ccf8e6355aa09152f03a639035d445fb7d5adc155fc7fdf"
+    },
+    {
+      "path": "inputs/entry-retention-edits-07.json",
+      "bytes": 2502,
+      "sha256": "f12d5f680ee107f2b664669fbd623435082bdfb8e3d071c56b37527c3fa0f902"
+    },
+    {
+      "path": "inputs/entry-storage-08.json",
+      "bytes": 24983,
+      "sha256": "2636d854368f5b24cb3562cdb485a7b0e84d71e28b47aa1b4b9d9a3649535cea"
+    },
+    {
+      "path": "inputs/inventory-07.json",
+      "bytes": 88363,
+      "sha256": "2d8537006162668e43b80a73554ac664dfb7bd13063b5bbaa0049e56775f3522"
+    },
+    {
+      "path": "inputs/READ-FIRST-13.md",
+      "bytes": 1397,
+      "sha256": "c2038ab98f1e00f373cfb1d9a42f27a179b24c2818451d8d3d3c99c1ae35dcd7"
+    },
+    {
+      "path": "inputs/source-verification-12.json",
+      "bytes": 2374,
+      "sha256": "d54d79d24dd7458ef07b43b5d03a9769c3160a532145b27565624269e7006808"
+    },
+    {
+      "path": "inputs/test-entry-11.cjs",
+      "bytes": 5783,
+      "sha256": "c7e7f77e3f0855d3f71f081a51a2489af84c69fa408d572edb589a4ab809cbda"
+    },
+    {
+      "path": "prefix-basis-controls-01.json",
+      "bytes": 1804,
+      "sha256": "c8038152d635f434ae7de2ac07167c13e890f3375924743333b1fd5c434a01fd"
+    },
+    {
+      "path": "prepare-replays-01.cjs",
+      "bytes": 1950,
+      "sha256": "2667c9b2db174ca6c5d8edbb2ab26c947e552e76ef09b67fc0e17e8b1b102016"
+    },
+    {
+      "path": "READ-FIRST-01.md",
+      "bytes": 3046,
+      "sha256": "ee61f65d9d84ebc23976fa22b4a814147e9df8bcb1be7337300baccbb8161ffc"
+    },
+    {
+      "path": "replay-derive-entry-storage-08.cjs",
+      "bytes": 6001,
+      "sha256": "d1b4569c0a02205d308cb4d6e7637f6d4af32960d8151baf87698f9539f64e04"
+    },
+    {
+      "path": "replay-test-entry-11.cjs",
+      "bytes": 6008,
+      "sha256": "e1c80fa57a385cc2e5ab215de82771924df45bd918c320b5760a53aaa7ea6259"
+    },
+    {
+      "path": "replayed-entry-controls-11.json",
+      "bytes": 6948,
+      "sha256": "078a302ec3631639d2af2ea44bf0fe800133de67d56ddf229e358465b502fdd5"
+    },
+    {
+      "path": "replayed-entry-storage-08.json",
+      "bytes": 24983,
+      "sha256": "2636d854368f5b24cb3562cdb485a7b0e84d71e28b47aa1b4b9d9a3649535cea"
+    },
+    {
+      "path": "seal-review-01.cjs",
+      "bytes": 5974,
+      "sha256": "bd2117d733828d93428da380c92cc0bbb022e345b0d4a8500befcfca334ae798"
+    },
+    {
+      "path": "source/app.js",
+      "bytes": 38440,
+      "sha256": "127859b3d22aa5ca4d16b6541a8b16968155758b9f2e0e9fe05d773f484d0573"
+    },
+    {
+      "path": "source/biome-service__metadata-budget.js",
+      "bytes": 4137,
+      "sha256": "9318446452e9a99fee2873eaf0d072bd76c39f714e4d1bceadf6057d04df6635"
+    },
+    {
+      "path": "source/biome-service__native__source-admission.js",
+      "bytes": 45712,
+      "sha256": "30d3c8fed3b315c926b90942e8a6413e048c70a3790323f8c60362f0f4f33f11"
+    },
+    {
+      "path": "source/biome-service__records.js",
+      "bytes": 24045,
+      "sha256": "70dbb2302f88f5f950de3eb2d3e94951a1537fdeab54640e7bb95746d69c1556"
+    },
+    {
+      "path": "source/owned-main-bootstrap.js",
+      "bytes": 162093,
+      "sha256": "268ddd527d045284fd441f34fc33d25ca8e50c42aece8ee4237999463dda4cca"
+    },
+    {
+      "path": "test-prefix-basis-01.cjs",
+      "bytes": 5871,
+      "sha256": "a83d0b8196f78ad6b3a3d65b4e178689ccbb24326e340350d90f819583018e22"
+    }
+  ]
+}

@@ -1,0 +1,358 @@
+{
+  "status": "PASS_BOUNDED_INDEPENDENT_C09_AND_ROOT_C3_FUNCTIONAL_REVIEW",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01/candidate-03/source",
+  "loader": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01/candidate-03/source/owned-main-bootstrap.js",
+    "bytes": 162077,
+    "sha256": "a64d6e8add43964798e6bed0d1c59b0e509cf31e1329b831fb07476c2a4e4a5a"
+  },
+  "rootSeal": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01/CHECK-18.json",
+    "bytes": 6550,
+    "sha256": "8a882bf0794a831bd48aa7e8a938bf6d5be3ea7b245e28807fc3e6b7b75465d8"
+  },
+  "parentIndependentC2": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01/independent-review-01/CHECK-01.json",
+    "bytes": 6461,
+    "sha256": "192bfd919251ab06bb5710893ad8d3fe4942db006d0420b367b95c828ef7d54e"
+  },
+  "parentC09": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00/main-v8-surface-g-preparation-2026-10-23-01/caller-02/FUNCTIONAL-09.json",
+    "bytes": 6163,
+    "sha256": "e8fc99c08a0922c165bfaddcecc02ae96f640b0a9b3827be34a3726c6caa6afc"
+  },
+  "static": {
+    "status": "PASS_INDEPENDENT_STATIC_C09_EXACT_JOIN",
+    "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01/candidate-03/source",
+    "files": 521,
+    "parses": 425,
+    "other520ExactC2": true,
+    "oneHunkInverseExactC2": true,
+    "unchangedFunctions": [
+      "surfaceClean",
+      "surfaceMainCurrent",
+      "surfaceCapture",
+      "initializerHelperCurrent",
+      "initializerWake",
+      "initializerBegin",
+      "initializerQueue",
+      "initializerScope",
+      "runAppStartup"
+    ],
+    "originalInitialFactsStillObservesSynchronously": true,
+    "descriptorValidationRetained": true,
+    "noAddedFunctionOrBinding": true,
+    "inputPins": [
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01/CHECK-18.json",
+        "bytes": 6550,
+        "sha256": "8a882bf0794a831bd48aa7e8a938bf6d5be3ea7b245e28807fc3e6b7b75465d8"
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01/surface-reuse-edits-15.json",
+        "bytes": 1542,
+        "sha256": "a6945f07f20709501e79507fe0bf6e74562d9d960b9c248037bde67f22818cb6"
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01/source-verification-17.json",
+        "bytes": 2454,
+        "sha256": "043de843dc533a6e48fa66401ce2407fdbb09d6510d1c783d8059d4fa5e6b242"
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01/inventory-15.json",
+        "bytes": 88363,
+        "sha256": "d631d910c1532516b0fd951ecbcb0b0c44ee31483c06cba6b61f0069a45d9a93"
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01/foundation-scope-14.json",
+        "bytes": 1637,
+        "sha256": "b0646322f75dd6a3fa409fa873a4f2e8fe59f705ad9fce6e4cc97f58b99df996"
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01/independent-review-01/CHECK-01.json",
+        "bytes": 6461,
+        "sha256": "192bfd919251ab06bb5710893ad8d3fe4942db006d0420b367b95c828ef7d54e"
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01/test-real-surface-16.cjs",
+        "bytes": 45218,
+        "sha256": "6e09a1537f6549a020a07efbec7da9d40f4e1b9dd55649f34dee76bd679660d5"
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01/candidate-03/source/biome-service/native/main-default-surface-facts.js",
+        "bytes": 31763,
+        "sha256": "34e6b98a2b32d54d6eda0b5521858ff2cd4df241dbb7291a384f4fc981fb8115"
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01/candidate-03/source/owned-main-bootstrap.js",
+        "bytes": 162077,
+        "sha256": "a64d6e8add43964798e6bed0d1c59b0e509cf31e1329b831fb07476c2a4e4a5a"
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01/candidate-02/source/owned-main-bootstrap.js",
+        "bytes": 162093,
+        "sha256": "268ddd527d045284fd441f34fc33d25ca8e50c42aece8ee4237999463dda4cca"
+      }
+    ],
+    "runnerRelocation": {
+      "old": "const OUT=__dirname,NEW=__dirname,source=path.join(NEW,process.env.CALLER_CANDIDATE||'candidate-03/source'),which=",
+      "new": "const OUT=__dirname,NEW=\"I:\\\\Sphere\\\\work\\\\biome-pack-service-main-2026-10-20T10-35-00\\\\main-v10-helper-app-join-2026-10-23-01\",source=path.join(NEW,process.env.CALLER_CANDIDATE||'candidate-03/source'),which=",
+      "sourceBodyUnmodified": true
+    },
+    "fundingSelected": false,
+    "Main": false,
+    "Frame": false,
+    "P05": "OPEN"
+  },
+  "profiles": {
+    "status": "PASS",
+    "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01/candidate-03/source",
+    "profiles": [
+      {
+        "name": "buildGraph",
+        "rows": 219,
+        "digest": "2b6ef286f4f629c908349b357a2f1494e1610bc79901c98340ce7147d92cd3b0"
+      },
+      {
+        "name": "buildSurfaceEnvelope",
+        "rows": 5,
+        "digest": "b5e069d75713c63153216e3d9021812d3da66117eb9887f56554fb6e348c078d"
+      },
+      {
+        "name": "buildStartupEnvelope",
+        "rows": 9,
+        "digest": "0dcedabc145ede790e6072f7325d20058d6e9978319813cff5ffb089c68ed908"
+      }
+    ],
+    "freshReads": 233,
+    "held": {
+      "sourceCopies": 219,
+      "sourceBytes": 6362897,
+      "logicalReferences": 233,
+      "borrowers": 3,
+      "admitting": false,
+      "disposed": false,
+      "ownership": "PRIVATE_SOURCE_BYTES_AND_COMPLETE_LOGICAL_READERS",
+      "nativeHeap": "UNMEASURED",
+      "storageProfile": "private-source-copy-serial-scratch-v2",
+      "persistentSourcePayloadBytes": 6362897,
+      "scratchPayloadBytes": 0,
+      "peakScratchPayloadBytes": 3328186,
+      "scratchAllocations": 233,
+      "incomingBacking": "EXACT_ROW_SIZE_OFFSET0_UINT8_ARRAY",
+      "scratchLifetime": "PREPAID_SERIAL_READ_COPY_HASH_CLEARED_BEFORE_RELEASE"
+    },
+    "released": {
+      "sourceCopies": 0,
+      "sourceBytes": 0,
+      "logicalReferences": 0,
+      "borrowers": 0,
+      "admitting": false,
+      "disposed": false,
+      "ownership": "PRIVATE_SOURCE_BYTES_AND_COMPLETE_LOGICAL_READERS",
+      "nativeHeap": "UNMEASURED",
+      "storageProfile": "private-source-copy-serial-scratch-v2",
+      "persistentSourcePayloadBytes": 0,
+      "scratchPayloadBytes": 0,
+      "peakScratchPayloadBytes": 3328186,
+      "scratchAllocations": 233,
+      "incomingBacking": "EXACT_ROW_SIZE_OFFSET0_UINT8_ARRAY",
+      "scratchLifetime": "PREPAID_SERIAL_READ_COPY_HASH_CLEARED_BEFORE_RELEASE"
+    },
+    "finalQ": {
+      "heldBytes": 0,
+      "requestedBytes": 0,
+      "bookkeepingBytes": 0,
+      "peakBytes": 13191317,
+      "limitBytes": 33554432,
+      "liveReservations": 0,
+      "maximumReservations": 4096,
+      "owners": [],
+      "scope": "CONSERVATIVE_LOGICAL_METADATA_ADMISSION",
+      "nativeHeap": "UNMEASURED"
+    },
+    "scope": "Actual original Records/Q/S source admission only. No scheduled fees, shared caller, native GL, funding selection, or Main permission."
+  },
+  "controls": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\independent-review-02/control-positive-independent01.json",
+      "bytes": 7898,
+      "sha256": "d3e9442c1369f1f72518f8ff00ac92186501b2582adf97f358e4166565e0f4e4",
+      "case": "positive",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual unchanged Surface.initialFacts already performs one complete original observation before returning its genuine frozen handle; immutable own check descriptor validation performs no second native observation",
+        "Actual copied Renderer constructor and its private canonical program record populate the reciprocal source-currentScript reader",
+        "Actual copied runAppStartup drives private scheduled Source9 admission, schema/two native hash start-finish steps, original16steps/helper G, then17 Local program/VAO/G phases in real captured Node timer visits",
+        "Separate original G instances and original program identities remain distinct; all four post-constructor shaderSource operand attempts accumulate without per-wake reset; first Main frame remains blocked"
+      ],
+      "counts": {
+        "reads": 233,
+        "shaderQueries": 98,
+        "facts": 0
+      }
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\independent-review-02/control-field-independent01.json",
+      "bytes": 7895,
+      "sha256": "f0f4d540c556a14fef51d8db03059f0f48d5fe1ea7004eb05a2bd689ecc76232",
+      "case": "field",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual unchanged Surface.initialFacts already performs one complete original observation before returning its genuine frozen handle; immutable own check descriptor validation performs no second native observation",
+        "Actual copied Renderer constructor and its private canonical program record populate the reciprocal source-currentScript reader",
+        "Actual copied runAppStartup drives private scheduled Source9 admission, schema/two native hash start-finish steps, original16steps/helper G, then17 Local program/VAO/G phases in real captured Node timer visits",
+        "Separate original G instances and original program identities remain distinct; all four post-constructor shaderSource operand attempts accumulate without per-wake reset; first Main frame remains blocked"
+      ],
+      "counts": {
+        "reads": 233,
+        "shaderQueries": 98,
+        "facts": 0
+      }
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\independent-review-02/control-composite-independent01.json",
+      "bytes": 7899,
+      "sha256": "9864ad4ed2728650d0e556d4847c1e54fb134cec4f2b34823f4a5b5e5190f483",
+      "case": "composite",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual unchanged Surface.initialFacts already performs one complete original observation before returning its genuine frozen handle; immutable own check descriptor validation performs no second native observation",
+        "Actual copied Renderer constructor and its private canonical program record populate the reciprocal source-currentScript reader",
+        "Actual copied runAppStartup drives private scheduled Source9 admission, schema/two native hash start-finish steps, original16steps/helper G, then17 Local program/VAO/G phases in real captured Node timer visits",
+        "Separate original G instances and original program identities remain distinct; all four post-constructor shaderSource operand attempts accumulate without per-wake reset; first Main frame remains blocked"
+      ],
+      "counts": {
+        "reads": 233,
+        "shaderQueries": 98,
+        "facts": 0
+      }
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\independent-review-02/control-surfaceBeforeNativeMutation-independent01.json",
+      "bytes": 5359,
+      "sha256": "dc6cfe8a5dd6510040f4738ea1d4d9b5878d8408f09e236fc78623eef2c31533",
+      "case": "surfaceBeforeNativeMutation",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual unchanged Surface.initialFacts already performs one complete original observation before returning its genuine frozen handle; immutable own check descriptor validation performs no second native observation",
+        "Actual copied Renderer constructor and its private canonical program record populate the reciprocal source-currentScript reader",
+        "Original genuine Surface observation still rejects changed native canvas facts at the entry or post-native parent barrier; no original G admission or Main frame occurs"
+      ],
+      "counts": {
+        "reads": 233,
+        "shaderQueries": 12,
+        "facts": 0
+      }
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\independent-review-02/control-surfacePostNativeMutation-independent01.json",
+      "bytes": 5356,
+      "sha256": "da754cecc3da9da9992d280332350631cda678163d9b78b8192b0b315a68c1f5",
+      "case": "surfacePostNativeMutation",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual unchanged Surface.initialFacts already performs one complete original observation before returning its genuine frozen handle; immutable own check descriptor validation performs no second native observation",
+        "Actual copied Renderer constructor and its private canonical program record populate the reciprocal source-currentScript reader",
+        "Original genuine Surface observation still rejects changed native canvas facts at the entry or post-native parent barrier; no original G admission or Main frame occurs"
+      ],
+      "counts": {
+        "reads": 233,
+        "shaderQueries": 14,
+        "facts": 0
+      }
+    }
+  ],
+  "findings": [],
+  "reasoning": [
+    "The one exact C3 loader inverse restores C2; all other 520 files are byte-identical. 521 fresh file hashes and 425 parses passed.",
+    "The actual unchanged original Surface.initialFacts synchronously calls factsCheck, which calls observe/observeNative before returning the same genuine frozen WeakMap-backed facts handle. The own immutable check descriptor validation remains. Its descriptor observation does not invoke a callback or await on this genuine ordinary handle, so there is no interval needing the duplicate complete observation.",
+    "Fresh source/Surface/Construction/Renderer/native/program/currentness barriers remain exact. The separate createMainColdProfileBuilders.current facts check is outside this edit and remains unchanged.",
+    "C2 paid-entry prefix, three failed-realm retention catches, helper shared caller and App/source functions are exact. New C3 introduces no function, binding, reader, revision, persistent record, or extra permission.",
+    "Five copied actual-body models passed: canonical/field/composite completion, pre-native mutation refusal, post-native mutation refusal. Actual original Surface/Renderer/helper/Local/Construction/G/Positions/Q/S/Records execute with disclosed GL/Canvas/Document/child/native/funding/work models; these are not native Main tests.",
+    "233 independent fresh genuine original Records/Q/S profile reads passed for 219/5/9 exact source closures, followed by actual Source borrower release and Q zero after disposal. This validates admission compatibility only.",
+    "Removed duplicated observations and raw native-call counts are execution evidence only, not priced Source37 work, a performance measurement, or a selected fee. Complete helper/shared/Surface work and storage still require their frozen source-derived caller union review."
+  ],
+  "holds": [
+    "All new funding/work/metadata tables and inline NaN/APPfalse product gates remain held and unchanged.",
+    "Original first Q.create and first Q.reserve pre-admission validation/scalar-helper/work/storage remain inherited trusted-foundation obligations, unqualified by post-return entry08 or its 11-facade union.",
+    "Complete entry/caller/Surface/G/native worker/whole-host admission and actual native ordinary Main integration remain outside this receipt.",
+    "No native performance, VM/engine heap, Frame or P05 approval."
+  ],
+  "scope": "C09 immediate observation reuse and exact root C3 join only; conservative prior fees are not reduced or selected by this review.",
+  "fundingSelected": false,
+  "Main": false,
+  "Frame": false,
+  "P05": "OPEN",
+  "sourceFilesChanged": 0,
+  "browserServerOperated": false,
+  "artifacts": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\independent-review-02/prepare-review-01.cjs",
+      "bytes": 4365,
+      "sha256": "d06b30a437ea17e70f24a31f60fedd59b77d4a2c54868e14882235272e44e99f"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\independent-review-02/prepare-review-02.cjs",
+      "bytes": 4346,
+      "sha256": "7c36b189fbe5b1304a8a1946185499a95faca8072a3bc9f57043a02ec0110a59"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\independent-review-02/prepare-review-03.cjs",
+      "bytes": 4342,
+      "sha256": "4e780f96e2b3b5305888362a930f8c45b06f70eda3c8aad4c8fb5490e67c56d2"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\independent-review-02/static-review-01.json",
+      "bytes": 3892,
+      "sha256": "5d31ee242a8e3f55d4fb266bf045ccaf287103fdea252b8bcdf34af1f0de5ac3"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\independent-review-02/test-real-surface-01.cjs",
+      "bytes": 45312,
+      "sha256": "30fe186174b7517d8566916dfbfaeab0e4d1f3b4014ffa7962da8bca4ec5c94e"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\independent-review-02/check-profiles-01.cjs",
+      "bytes": 2048,
+      "sha256": "ff3b4f6227c0885a51bc97a5c48590e3f831981b11a6133f208a30a086e34a46"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\independent-review-02/check-profiles-02.cjs",
+      "bytes": 2142,
+      "sha256": "0fe6b220d115a5fbd74f036d65a4fa90e71d5110641c32ea018928a12efa9807"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\independent-review-02/profile-review-01.json",
+      "bytes": 2328,
+      "sha256": "da197aec89cb1ff3f91187c8b277285fbc223d7507028ae5a4d3277d6e77e952"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\independent-review-02/attempt-dispositions-01.json",
+      "bytes": 848,
+      "sha256": "434731c8417afe26f5042c1afe8b8b60f2aeb01db5eb04949690b2af130d8582"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\independent-review-02/seal-review-01.cjs",
+      "bytes": 5369,
+      "sha256": "a04cc5a1db04f666b6499587bf7030b99774981bb83ef5880e41fde2a1f6409e"
+    }
+  ],
+  "failureDispositions": [
+    {
+      "attempt": "prepare-review-01.cjs",
+      "finding": "Harness-only expected nonexistent initializerVisit declaration. No report or product mutation occurred.",
+      "correction": "prepare-review-02.cjs removed that nonexistent declaration expectation."
+    },
+    {
+      "attempt": "prepare-review-02.cjs",
+      "finding": "Harness-only also expected nonexistent initializerCreate declaration.",
+      "correction": "prepare-review-03.cjs names actual initializerBegin/initializerQueue declarations. Exact inverse and full inventory already passed in every attempt."
+    },
+    {
+      "attempt": "check-profiles-01.cjs",
+      "finding": "Harness-only expected Q heldBytes=0 before Q.dispose, ignoring original 4096 BASE_BYTES.",
+      "correction": "check-profiles-02.cjs checks BASE_BYTES/no reservations before dispose, then actual zero afterward."
+    }
+  ]
+}

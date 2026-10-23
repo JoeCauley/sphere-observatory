@@ -1,0 +1,248 @@
+{
+  "status": "REVIEWED_CORRECTED_C03_POSITIVE_STORAGE_PROPOSAL13_NOT_SELECTED",
+  "reviewRoot": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\independent-review-03",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01/candidate-03/source",
+  "files": {
+    "app.js": {
+      "bytes": 38440,
+      "sha256": "127859b3d22aa5ca4d16b6541a8b16968155758b9f2e0e9fe05d773f484d0573"
+    },
+    "owned-main-bootstrap.js": {
+      "bytes": 156981,
+      "sha256": "6bfa9ee8e630f63d3d1ba03af6c5b8f3fa381e0ca5fe6920bd2bf9b09131b0f2"
+    }
+  },
+  "previousFunctionalSeal": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01/independent-review-02/CHECK-01.json",
+    "sha256": "30f21e5bb5481e4d5de2dde26f962581458f7fda0b43d30c858d912fceace3c6"
+  },
+  "originalStorage12": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01/storage-proposal-12.json",
+    "sha256": "344b99ae54334946dd16062ed3d7bc152762abc8a01585e39a385f18fbd73a76",
+    "raw": 157696,
+    "rounded": 159744,
+    "disposition": "Preserved; exact replay passes. Coarse rows/false-positive anonymous comparisons replaced in numbered13."
+  },
+  "correctedStorage13": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\independent-review-03/storage-proposal-13.json",
+    "sha256": "2edd77aa9c61c06f2aa2f50cd93e023cd588965de936c295a8f360e3750e0caa",
+    "raw": 163808,
+    "rounded": 163840,
+    "fields": 29,
+    "roundingMargin": 32,
+    "selected": null
+  },
+  "evidence": {
+    "originalReproduction": "PASS_EXACT_STORAGE12_REPRODUCTION",
+    "lifetime": 4,
+    "staticBoundaries": 7
+  },
+  "findings": [
+    {
+      "kind": "CORRECTED_PROPOSAL_MAPPING",
+      "message": "Named positive source cells/scopes/native argument/descriptor unions replace coarse rows. Only224 actual changed-claim capture bytes; anonymous shifted source labels are not claimed actual new allocation."
+    },
+    {
+      "kind": "LABEL_BOUNDARY",
+      "message": "133920 authored-occurrence budget is conservative contingency, not proof of runtime lexical string allocations, necessary lower bound, native heap or work."
+    },
+    {
+      "kind": "PROSPECTIVE_ENTRY_HELD",
+      "message": "Pre-pool prefix/first reserve transient/entry failure unwind and complete caller union remain separate; pool cannot fund its own unborn reserve."
+    },
+    {
+      "kind": "FUNCTIONAL_LIFETIME_SCOPE",
+      "message": "Fixed private weak latest record and synchronous exact currentness checks only; no immutable-Core, public arbitrary reader/history, native WeakRef/DOM/VM heap, GC or Main authority."
+    }
+  ],
+  "newBlockingFunctionalFinding": false,
+  "sourceEdits": 0,
+  "selectedFunding": null,
+  "entry": null,
+  "work": null,
+  "Main": false,
+  "Frame": false,
+  "P05": "OPEN",
+  "manifest": [
+    {
+      "path": "bounded-record-lifetime-controls-04.json",
+      "bytes": 1852,
+      "sha256": "9627d4063c03ed00897e843ec0ab9f60dc11e426324f87738bb96a2416538b90"
+    },
+    {
+      "path": "build-and-run-lifetime-controls-03.cjs",
+      "bytes": 1535,
+      "sha256": "82b52674063311426caa9026a9364ea0a508f424f3d5b545f3284fa037d24394"
+    },
+    {
+      "path": "build-and-run-lifetime-controls-04.cjs",
+      "bytes": 1484,
+      "sha256": "2efa18f4c4d15505985dc7fcdebccfe1de130afb30c203713186a787859c4b29"
+    },
+    {
+      "path": "build-lifetime-controls-01.cjs",
+      "bytes": 4971,
+      "sha256": "c5bde8f454a6c5b19cc932c9312a2424958b5703efae4409802fd931907f23c0"
+    },
+    {
+      "path": "build-lifetime-controls-02.cjs",
+      "bytes": 1765,
+      "sha256": "c1a7b83394e57bcae11a70aa311cd99232a5eabdafedc758d96796dc2054f0c9"
+    },
+    {
+      "path": "census-storage-06.cjs",
+      "bytes": 9305,
+      "sha256": "317110f9afed25fd907692e340eacd8197c66e3ece6771ca6a9fc648f2455623"
+    },
+    {
+      "path": "derivation-failed-execution-01.json",
+      "bytes": 1292,
+      "sha256": "7f81978e0d5aad526ad593a88d4377964cf7f26829b9ca8a0154deb525fcf896"
+    },
+    {
+      "path": "derive-storage-proposal-13-02.cjs",
+      "bytes": 13719,
+      "sha256": "7b44fcee1656e28720e4d011b91b0cfeca4bcf823760bc2163887334a76f23d3"
+    },
+    {
+      "path": "derive-storage-proposal-13.cjs",
+      "bytes": 13719,
+      "sha256": "0b29029a5a74712249737211ca3f0438d2cf4d434118f64acb5a2be894186312"
+    },
+    {
+      "path": "input-register-01.json",
+      "bytes": 5868,
+      "sha256": "167a29e7d3d9f02651caf683e5df803ddb2b5253eb5f9793c6875890c424c0b8"
+    },
+    {
+      "path": "inputs/census-storage-06.cjs",
+      "bytes": 9210,
+      "sha256": "44c15f7b30af15d3bec645d8c8eeaae2b4d8c5653c71bbdc9682bb1486b7e5da"
+    },
+    {
+      "path": "inputs/census-storage-12.cjs",
+      "bytes": 1551,
+      "sha256": "930ae2a4e1f9b7d450037ef879b55b3dcc393bc203f9113e810a403793f09734"
+    },
+    {
+      "path": "inputs/early-native-edits-08.json",
+      "bytes": 79980,
+      "sha256": "7854ad869f62438dbe786eb9dbe4ba75ec3bcb66fc9cf2a06a2c771617fae498"
+    },
+    {
+      "path": "inputs/exact-edits-01.json",
+      "bytes": 82722,
+      "sha256": "31160fd4c89550c44a6ec733b36e445eac91ac628a795ee2b377f2d199d23029"
+    },
+    {
+      "path": "inputs/independent-review-02__CHECK-01.json",
+      "bytes": 8207,
+      "sha256": "30f21e5bb5481e4d5de2dde26f962581458f7fda0b43d30c858d912fceace3c6"
+    },
+    {
+      "path": "inputs/input-controls-09.json",
+      "bytes": 3585,
+      "sha256": "779fe6205207221f5f829975bcf06449b7761517e06de65038141ceac7dc9f28"
+    },
+    {
+      "path": "inputs/q-entry-basis-09.json",
+      "bytes": 15875,
+      "sha256": "20f34603a0c2ed72b5e921b189e313d6ce669e7822e649da19d4a277fc486c62"
+    },
+    {
+      "path": "inputs/source-inventory-08.json",
+      "bytes": 88363,
+      "sha256": "4be69871e8863d01583ece1a12511eb6db0f847f8ba754f5a8ae24847c190342"
+    },
+    {
+      "path": "inputs/storage-proposal-12.json",
+      "bytes": 1301865,
+      "sha256": "344b99ae54334946dd16062ed3d7bc152762abc8a01585e39a385f18fbd73a76"
+    },
+    {
+      "path": "inputs/weak-input-edits-02.json",
+      "bytes": 76065,
+      "sha256": "4485db3b1477bbd9212c57fd7d3d5dbcb9e2ce41be9c0719906e12c0c2f5dd32"
+    },
+    {
+      "path": "lifetime-execution-04.json",
+      "bytes": 845,
+      "sha256": "9a9574675dc242a24bc23a7ad0ba525fdc1a3cfb3bc3bb2c085d22f7316ffe50"
+    },
+    {
+      "path": "lifetime-failed-execution-01.json",
+      "bytes": 1580,
+      "sha256": "5fd11cf37d62156c0adfe1fc471e5a9de2070c4cbe2f4260f8d3de5ad49a1133"
+    },
+    {
+      "path": "lifetime-harness-relocation-01.json",
+      "bytes": 720,
+      "sha256": "c50f7862eebb46954fc10cbc06a1c14d3fa1b98cd7d05ab385f5b7a74935223b"
+    },
+    {
+      "path": "prepare-and-replay-01.cjs",
+      "bytes": 2838,
+      "sha256": "f4fdb5defd0b8dc2264d2cba6bec921d764451c848de8fc1e140a0c64cf78296"
+    },
+    {
+      "path": "READ-FIRST-01.md",
+      "bytes": 3609,
+      "sha256": "2adeddc244d3ebe77040f2f0ab6849dfa21b7f1f07cd95abe13d2be816150413"
+    },
+    {
+      "path": "replay-census-storage-12.cjs",
+      "bytes": 1695,
+      "sha256": "1b1090372c5b40f658e61a423baccc81d9b272dac7d80cd8900149631a17fd53"
+    },
+    {
+      "path": "replay-execution-01.json",
+      "bytes": 1036,
+      "sha256": "8088d65e9b7ece002bbe64c149144bb6456e063a37d57fb7fe413658a9b172e2"
+    },
+    {
+      "path": "replayed-storage-proposal-12.json",
+      "bytes": 1301865,
+      "sha256": "344b99ae54334946dd16062ed3d7bc152762abc8a01585e39a385f18fbd73a76"
+    },
+    {
+      "path": "seal-review-01.cjs",
+      "bytes": 7173,
+      "sha256": "aed89734a394c44f1a58fcd9d9ddb34d54aa11f4d3bee0be673438e82639be96"
+    },
+    {
+      "path": "source/app.js",
+      "bytes": 38440,
+      "sha256": "127859b3d22aa5ca4d16b6541a8b16968155758b9f2e0e9fe05d773f484d0573"
+    },
+    {
+      "path": "source/owned-main-bootstrap.js",
+      "bytes": 156981,
+      "sha256": "6bfa9ee8e630f63d3d1ba03af6c5b8f3fa381e0ca5fe6920bd2bf9b09131b0f2"
+    },
+    {
+      "path": "static-boundaries-01.json",
+      "bytes": 2469,
+      "sha256": "314e6cb206c25635512663e8f53682277cfe4b3584c6c2722f343ce7e14f5289"
+    },
+    {
+      "path": "storage-proposal-13.json",
+      "bytes": 16982,
+      "sha256": "2edd77aa9c61c06f2aa2f50cd93e023cd588965de936c295a8f360e3750e0caa"
+    },
+    {
+      "path": "test-bounded-record-lifetime-01.cjs",
+      "bytes": 9840,
+      "sha256": "35c1b2f1e83a52ad8ded429b15b8655ebbea46ec5633e78831af695f0e0a051c"
+    },
+    {
+      "path": "test-bounded-record-lifetime-04.cjs",
+      "bytes": 9828,
+      "sha256": "1b701309018258ae1599955b4baf32769882879aafd7e605a64c563028230661"
+    },
+    {
+      "path": "verify-static-boundaries-01.cjs",
+      "bytes": 7066,
+      "sha256": "3793abef0952bcfb17acde4b653fb2eb21fd2017a57b8181bfec508aed57db96"
+    }
+  ]
+}

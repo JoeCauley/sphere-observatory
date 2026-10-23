@@ -1,0 +1,221 @@
+{
+  "status": "AUTHOR_PASS_COMPLETE_FIXED_HELPER_SOURCE_CHILD_PROPOSAL_PENDING_INDEPENDENT_AND_SHARED_JOIN_REVIEW",
+  "utc": "2026-10-23T16:07:25.850Z",
+  "source": {
+    "sha256": "30d3c8fed3b315c926b90942e8a6413e048c70a3790323f8c60362f0f4f33f11",
+    "bytes": 45712,
+    "parent": "90a572d5f2386feb7b367c14ba7cf9e506a1e41cf554acf915e15304985fb706",
+    "Records": "70dbb2302f88f5f950de3eb2d3e94951a1537fdeab54640e7bb95746d69c1556",
+    "Q": "9318446452e9a99fee2873eaf0d072bd76c39f714e4d1bceadf6057d04df6635"
+  },
+  "proposedSourceFees": {
+    "graph": {
+      "visit": 34,
+      "completion": 16,
+      "header": 82,
+      "scan": 4,
+      "row": 45,
+      "canonical": 727,
+      "profileHash": 741,
+      "profileDigest": 123,
+      "open": 321,
+      "response": 12,
+      "read": 19,
+      "chunk": 18,
+      "copy": 27,
+      "rowDigest": 105,
+      "commit": 13,
+      "publish": 23,
+      "rollback": 9,
+      "cleanup": 18
+    },
+    "helper": {
+      "visit": 42,
+      "completion": 16,
+      "header": 235,
+      "scan": 4,
+      "row": 45,
+      "canonical": 727,
+      "profileHash": 5,
+      "profileDigest": 123,
+      "open": 321,
+      "response": 12,
+      "read": 19,
+      "chunk": 18,
+      "copy": 27,
+      "rowDigest": 105,
+      "commit": 13,
+      "publish": 23,
+      "rollback": 9,
+      "cleanup": 18,
+      "helperHeader": 729,
+      "helperLimit": 729,
+      "helperHash": 16
+    },
+    "graphMax791": 791,
+    "helperMax787": 787,
+    "currentSuccess10SharedException4Once": true,
+    "constructor179": 179,
+    "helperAdmit148": 148,
+    "original9release91": 91
+  },
+  "proposedMetadata": {
+    "newStatic": 69632,
+    "newPending": 4096,
+    "callerWholePositive": 69632,
+    "combinedSourceStatic": 1310720,
+    "helperPending": 53248,
+    "combinedDedicatedSourceCaller": 2678784,
+    "closedThreeRequestedTotal": 3989504,
+    "rootOwner": "existing dedicated prospective Source caller/hook account before Source.create"
+  },
+  "futureLiteralCheck": {
+    "sourceWritten": false,
+    "onlyTwoConstantClauses": true,
+    "tables18and21": true,
+    "tableRecordBytes": 1504,
+    "tableKeyBytes": 6240,
+    "total": 7744,
+    "functionBirthSitesUnchanged": true,
+    "sourceModuleBindingsAndCaptureListsUnchanged": true,
+    "fullSelectedJoinedRecensusStillRequired": true
+  },
+  "diagnosticControls": {
+    "functionalCheckpoint35": "author-01/CHECK-01.json",
+    "newNumericReplayHelper17": "PASS_PROPOSED_HELPER_SOURCE_NUMERIC_DIAGNOSTIC_MODELS_UNSELECTED",
+    "newNumericReplayBootstrap19": "PASS_PROPOSED_SOURCE_BOOTSTRAP_GRAPH219_WITH_HELPER_DELTA_DIAGNOSTIC_UNSELECTED",
+    "replayCount36Not36NewIndependentCases": true,
+    "SourcePricesProductNull": true,
+    "SourceFundingProductNull": true,
+    "privateCurrent10ProofIsSeparateActualChildDAG": true,
+    "modelCurrentAndObservationAdaptersDisclosed": true,
+    "notCPUOrNativeMain": true
+  },
+  "ownership": {
+    "helperPathsHeldStatic": true,
+    "secondClosedProfileAndPUBLISHScopesAndQFacadesHeldCaller": true,
+    "finishPendingReleaseOverlapCallerBeforeBirth": true,
+    "originalQFacades6624": true,
+    "profileScratchAndProfileHeldTwoHandlesAlreadyPaidByBasePending": true,
+    "constructorFailedSecondAndThirdReservationsTested": true,
+    "sourceOriginalBytesAndRowsPaidOnce": true,
+    "noExtraHelperAttemptSourceCharge": true,
+    "allOtherCallerAndModuleOwnersSeparate": true
+  },
+  "inputs": [
+    {
+      "path": "author-01/CHECK-01.json",
+      "bytes": 7507,
+      "sha256": "10fbf0c00541ccc5bf46390b02dff751be16826d3f69f14d474a1da7210b3c1f"
+    },
+    {
+      "path": "candidate-01/source/biome-service/native/source-admission.js",
+      "bytes": 45712,
+      "sha256": "30d3c8fed3b315c926b90942e8a6413e048c70a3790323f8c60362f0f4f33f11"
+    },
+    {
+      "path": "author-01/exact-source-extension-01.json",
+      "bytes": 15029,
+      "sha256": "fa688e37cdb795f42369f24b2d7bee725c25c0cb53d6a0b245762aeb33a31b6d"
+    },
+    {
+      "path": "census-01/storage-basis-01.json",
+      "bytes": 1445599,
+      "sha256": "30e1d6a25c7d9d3098dae9ac033ade01339ec381dcec0e5c0695b5f3e19b7538"
+    },
+    {
+      "path": "census-01/census-helper-storage-01.cjs",
+      "bytes": 10208,
+      "sha256": "961127a7424b110b2bb279297957a43e905cf630d60a8386d8c405ab8af75cec"
+    },
+    {
+      "path": "review-01/derive-work-01.cjs",
+      "bytes": 12690,
+      "sha256": "6bf2a54ac38cc5d4a002e944bc3555fc290cba6b503ba24c9f2287d988ba256e"
+    },
+    {
+      "path": "review-01/helper-source-work-01.json",
+      "bytes": 27376,
+      "sha256": "a127837ba2216bd01762b606140d7c911329b1c78042b489c0f12559aa70aa14"
+    },
+    {
+      "path": "review-01/compose-current-03.cjs",
+      "bytes": 2651,
+      "sha256": "051e4846d3ff28bca4f63abe1db3de920bebf372d5ea1edc900cf5f480e0cd6e"
+    },
+    {
+      "path": "review-01/helper-source-work-03.json",
+      "bytes": 29367,
+      "sha256": "857ba87f3d150cb21e4b5b32c10b9104286e49a9b55dd8bca9c9eb6754d8343b"
+    },
+    {
+      "path": "review-01/derive-storage-03.cjs",
+      "bytes": 14790,
+      "sha256": "5293fd3888c2c758571d3ca66eee00e14154550588fa0a8091dbc799f39a3b40"
+    },
+    {
+      "path": "review-01/helper-source-storage-01.json",
+      "bytes": 27721,
+      "sha256": "6d6021f056c759f3ad5478796066818dc9cb8e68632dab1d9e8ee18c35d42f37"
+    },
+    {
+      "path": "review-01/OWNER-PARTITION-02.json",
+      "bytes": 980,
+      "sha256": "3cc4d29b261240b6acc3b49bde1e26a47a35a145091c5ff042d978af2e56b1ae"
+    },
+    {
+      "path": "review-01/STATUS-EXTENSION-01.json",
+      "bytes": 648,
+      "sha256": "dc30cc28f6c64c6077f912b97f8dd214b922a6815da3e70308089bb5dae2063f"
+    },
+    {
+      "path": "review-01/prepare-selection-proposal-01.cjs",
+      "bytes": 2971,
+      "sha256": "88f0c89d7665a5209bfbcecc0a6ea9e48731e2e88ec9b74e5d392b6eaf4f893a"
+    },
+    {
+      "path": "review-01/helper-source-selection-proposal-01.json",
+      "bytes": 3758,
+      "sha256": "1b68689b1595c05eb839ef65f8c1e205b3a2c8f6a82cf2d27be6ec2faca036fd"
+    },
+    {
+      "path": "review-01/STORAGE-ATTEMPT-02.json",
+      "bytes": 787,
+      "sha256": "127cf1b72757877a079643a30585b68b7dce6400f33d0c9fec4e88e5bccc8ad2"
+    },
+    {
+      "path": "review-01/CURRENT-COMPOSITION-ATTEMPT-02.json",
+      "bytes": 564,
+      "sha256": "3133fa8295fdf9fa76a1d943dbf0fa0735810a42e94d21c93a8e277d4ae75798"
+    },
+    {
+      "path": "controls-01/test-helper-source-proposal-04.cjs",
+      "bytes": 25463,
+      "sha256": "3c98f84e8ab13bdf14be69c6d51555d0e73105e9db7634cc581be47ac851b6ae"
+    },
+    {
+      "path": "controls-01/control-run-04.json",
+      "bytes": 20857,
+      "sha256": "56338f85c30edb732e458ffb0aec4f013a3285041fd9959c973c8756b60b69cf"
+    },
+    {
+      "path": "controls-01/test-bootstrap-proposal-05.cjs",
+      "bytes": 28354,
+      "sha256": "c97730f16d85d90fc7b49d37e5f7d4608cc352855019a6e88b856d8eb268230e"
+    },
+    {
+      "path": "controls-01/control-run-05.json",
+      "bytes": 23151,
+      "sha256": "7a333ea7ddd40a318198fd56bd58cc71f1ae6d56f16e9104852d553eb748fcc4"
+    }
+  ],
+  "remaining": [
+    "Independent exact Source work/ownership/current seal",
+    "Root exact current combined loader/helper/App/Surface graph and all3 domain-hash repins",
+    "Source caller increment before Source.create and separate actual entry/common caller/module funding/callee graphs",
+    "Source-profile helper path subset and whole current Q/Source joint census",
+    "Actual selected-source controls after numeric-only successor if root authorizes; this source remains allnull",
+    "Any R/Root/Target/PB/Base/cold/Kernel/host/DOM/Main/native physical or CPU acceptance"
+  ],
+  "selected": false
+}

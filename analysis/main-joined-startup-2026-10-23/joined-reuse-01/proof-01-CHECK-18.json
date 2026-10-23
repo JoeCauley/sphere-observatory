@@ -1,0 +1,127 @@
+{
+  "status": "FROZEN_ROOT_JOINED_IMMEDIATE_SURFACE_OBSERVATION_REUSE_FUNCTIONAL_ONLY",
+  "utc": "2026-10-23T16:16:42.330002+00:00",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\candidate-03\\source",
+  "files": 521,
+  "parses": 425,
+  "freshProfileReads": 233,
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "rows": 219,
+      "digest": "2b6ef286f4f629c908349b357a2f1494e1610bc79901c98340ce7147d92cd3b0"
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "rows": 5,
+      "digest": "b5e069d75713c63153216e3d9021812d3da66117eb9887f56554fb6e348c078d"
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "rows": 9,
+      "digest": "0dcedabc145ede790e6072f7325d20058d6e9978319813cff5ffb089c68ed908"
+    }
+  ],
+  "loader": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\candidate-03\\source\\owned-main-bootstrap.js",
+    "bytes": 162077,
+    "sha256": "a64d6e8add43964798e6bed0d1c59b0e509cf31e1329b831fb07476c2a4e4a5a"
+  },
+  "recipe": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\surface-reuse-edits-15.json",
+    "bytes": 1542,
+    "sha256": "a6945f07f20709501e79507fe0bf6e74562d9d960b9c248037bde67f22818cb6"
+  },
+  "sourceVerification": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\source-verification-17.json",
+    "bytes": 2454,
+    "sha256": "043de843dc533a6e48fa66401ce2407fdbb09d6510d1c783d8059d4fa5e6b242"
+  },
+  "actualFunctions": 144,
+  "unchangedFromC01": 143,
+  "onlyChangedFunction": "surfaceParents exact16byte immediate double-observation removal",
+  "paidPrefixAndAllFundingFailureCatchesExactC2": true,
+  "entryProposalSamePositive507904ButNotSelected": true,
+  "entryFoundationScope": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\foundation-scope-14.json",
+    "bytes": 1637,
+    "sha256": "b0646322f75dd6a3fa409fa873a4f2e8fe59f705ad9fce6e4cc97f58b99df996"
+  },
+  "controls": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\control-positive-c03-real01.json",
+      "bytes": 7898,
+      "sha256": "d3e9442c1369f1f72518f8ff00ac92186501b2582adf97f358e4166565e0f4e4"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\control-field-c03-real01.json",
+      "bytes": 7895,
+      "sha256": "f0f4d540c556a14fef51d8db03059f0f48d5fe1ea7004eb05a2bd689ecc76232"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\control-composite-c03-real01.json",
+      "bytes": 7899,
+      "sha256": "9864ad4ed2728650d0e556d4847c1e54fb134cec4f2b34823f4a5b5e5190f483"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\control-surfaceBeforeNativeMutation-c03-real01.json",
+      "bytes": 5359,
+      "sha256": "dc6cfe8a5dd6510040f4738ea1d4d9b5878d8408f09e236fc78623eef2c31533"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\control-surfacePostNativeMutation-c03-real01.json",
+      "bytes": 5356,
+      "sha256": "da754cecc3da9da9992d280332350631cda678163d9b78b8192b0b315a68c1f5"
+    }
+  ],
+  "parents": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\FUNCTIONAL-09.json",
+      "bytes": 6163,
+      "sha256": "e8fc99c08a0922c165bfaddcecc02ae96f640b0a9b3827be34a3726c6caa6afc"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\CHECK-13.json",
+      "bytes": 20287,
+      "sha256": "7d2d8b09ef77dc4e78b0ab9e2f4eb16ea1b12c30d00b8343abc2af66ff75bba8"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\independent-review-01\\CHECK-01.json",
+      "bytes": 6461,
+      "sha256": "192bfd919251ab06bb5710893ad8d3fe4942db006d0420b367b95c828ef7d54e"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-helper-source-scheduling-2026-10-23-01\\review-01\\CHECK-04.json",
+      "bytes": 7650,
+      "sha256": "d7fb47b5d6dc5b41d3993b56b4cf89e0cc8baacc1620c454859a81c62a958cac"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-helper-source-scheduling-2026-10-23-01\\independent-review-01\\CHECK-01.json",
+      "bytes": 12174,
+      "sha256": "fa580edd1e6a917cb8ae906f15f8bf3e80b542ddae2122dfeb237b80cedc6059"
+    }
+  ],
+  "proof": "Original genuine Surface.initialFacts still synchronously invokes factsCheck/observe at every original parent barrier. The immediate returned own immutable check descriptor still validates; no callback/native interval occurs before previously duplicated call. Exact original Surface, helper, Renderer, Local, Construction, Positions, G, Q, Records, SourceX, AppA03, Target02, Preview04 remain unchanged.",
+  "observationCensus": {
+    "parent174": 174,
+    "next92": 92,
+    "removedImmediateDuplicateFullObservations": 41,
+    "kind": "Actual-body instrumented execution count only; not Source37 tariff or timing"
+  },
+  "modelBoundary": [
+    "Actual Surface/Renderer/Source/Q/Records/helper/G/Construction/Local bodies; named GL/Canvas/Document/child constructor/native capability/budget/work models remain",
+    "Five fresh root integration cases reuse the exact parent controls on current Source/App code; C2 entry33/App16 and all26helper cases remain their exact prior scopes, not new native integration"
+  ],
+  "holds": [
+    "All combined memory/work/module/entry selection is still unqualified and gates remainNaN/null/APPfalse",
+    "Original first Q.create/reserve pre-admission foundation remains unqualified",
+    "Full seven host byte fields, actual same-Surface-G R/Host/Kernel/PH/PB/Base, demanded Root/content/active-weather and required ordinary native Main remain open"
+  ],
+  "selectedMainStartupComponent": "main-texture-handoff-funded-c3",
+  "fundingSelected": false,
+  "Main": false,
+  "Frame": false,
+  "P05": "OPEN",
+  "runtimeFilesChanged": 0,
+  "browserServerOperated": false
+}

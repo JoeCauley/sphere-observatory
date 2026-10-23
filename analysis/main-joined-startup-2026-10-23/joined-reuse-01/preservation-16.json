@@ -1,0 +1,28 @@
+{
+  "pass": true,
+  "cutoff": 16,
+  "snapshots": 73,
+  "archiveEntriesVerified": 37419,
+  "recordsVerified": 5552,
+  "recordsAdded": 386,
+  "recordBytes": 192641731,
+  "freshRestore": {
+    "snapshot": "main-joined-helper-source-app-unselected-c3",
+    "destination": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-joined-startup-progress-2026-10-23-01\\restored-check-16\\source",
+    "files": 521,
+    "verified": true
+  },
+  "earlierRowsExact": true,
+  "restorerUnchanged": true,
+  "currentReadmeUTF8": true,
+  "historicalReadmeBytesExact": true,
+  "selectedMainComponent": "main-texture-handoff-funded-c3",
+  "joinedMainStartupSelected": false,
+  "appInputsSelected": false,
+  "P05": "OPEN",
+  "excludedActive": [
+    "Complete shared/helper/Surface cost derivation",
+    "Resource-host seam successor WIP"
+  ],
+  "rawArchivesRemainLocal": true
+}

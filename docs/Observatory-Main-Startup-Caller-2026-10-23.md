@@ -1,3 +1,5 @@
+> Current joined-startup record: [Surface observation reuse and reviewed Source child](Observatory-Main-Joined-Startup-2026-10-23.md). Fresh checks remain; complete shared funding/host/native Main are held and P05 OPEN.
+
 # Main startup caller and App inputs - 23 October 2026
 
 The private startup caller now drives the actual219-file Source path and the original drawing helper plus actual Local/G preparation bodies in controlled checks. A separate corrected App handoff supplies its real world identity, private change counter, time/playing state and desired viewport. **P05 remains OPEN.** Complete shared work/ownership, helper loading, real host admission and native Main are still unfinished. The selected six-visit texture handoff and delivered Meadow-Industry walk remain unchanged.

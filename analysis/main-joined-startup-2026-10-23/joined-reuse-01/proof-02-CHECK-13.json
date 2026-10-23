@@ -1,0 +1,496 @@
+{
+  "status": "FROZEN_FUNCTIONAL_HELPER_SOURCE_APP_JOIN_AND_FAILED_ENTRY_RETENTION_ALL_COMBINED_PRICING_HELD",
+  "utc": "2026-10-23T16:03:08.365011+00:00",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\candidate-02\\source",
+  "candidate01": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\candidate-01\\source",
+  "files": 521,
+  "parses": 425,
+  "freshSourceReads": 233,
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "rows": 219,
+      "digest": "2b6ef286f4f629c908349b357a2f1494e1610bc79901c98340ce7147d92cd3b0"
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "rows": 5,
+      "digest": "b5e069d75713c63153216e3d9021812d3da66117eb9887f56554fb6e348c078d"
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "rows": 9,
+      "digest": "0dcedabc145ede790e6072f7325d20058d6e9978319813cff5ffb089c68ed908"
+    }
+  ],
+  "loader": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\candidate-02\\source\\owned-main-bootstrap.js",
+    "bytes": 162093,
+    "sha256": "268ddd527d045284fd441f34fc33d25ca8e50c42aece8ee4237999463dda4cca"
+  },
+  "unchangedActualFunctionsFromC01": 144,
+  "helperBodyExactG08": true,
+  "SourceBodyExactX01": true,
+  "AppBodyExactA03": true,
+  "originalQAndRecordsExact": true,
+  "Target02Preview04AndModule1328224Exact": true,
+  "focusedHelperCases": [
+    {
+      "case": "positive",
+      "exit": 0,
+      "status": "PASS",
+      "report": "control-positive-c01-final01.json",
+      "stdout": "",
+      "stderr": "",
+      "proof": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\control-positive-c01-final01.json",
+        "bytes": 7368,
+        "sha256": "38c21a6631c35227771409b5d2d0e7bab82d0a51ba9d6b52340a017e7450ecd3"
+      }
+    },
+    {
+      "case": "field",
+      "exit": 0,
+      "status": "PASS",
+      "report": "control-field-c01-final01.json",
+      "stdout": "",
+      "stderr": "",
+      "proof": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\control-field-c01-final01.json",
+        "bytes": 7365,
+        "sha256": "d606a7a30edd893252a35070e6e7f375d6b25462b1c2d235eaf30984c97d1512"
+      }
+    },
+    {
+      "case": "composite",
+      "exit": 0,
+      "status": "PASS",
+      "report": "control-composite-c01-final01.json",
+      "stdout": "",
+      "stderr": "",
+      "proof": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\control-composite-c01-final01.json",
+        "bytes": 7369,
+        "sha256": "067cc266421ef9418285613a9f52dbc8bc79b7befdc4429b081d4770be37e3b2"
+      }
+    },
+    {
+      "case": "helperRestoreNull",
+      "exit": 0,
+      "status": "PASS",
+      "report": "control-helperRestoreNull-c01-final01.json",
+      "stdout": "",
+      "stderr": "",
+      "proof": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\control-helperRestoreNull-c01-final01.json",
+        "bytes": 4686,
+        "sha256": "2e1624c8f38d653055f5e63e60bd262169de157bc99833f8fe7c765e2b7216d1"
+      }
+    },
+    {
+      "case": "helperRestoreUndefined",
+      "exit": 0,
+      "status": "PASS",
+      "report": "control-helperRestoreUndefined-c01-final01.json",
+      "stdout": "",
+      "stderr": "",
+      "proof": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\control-helperRestoreUndefined-c01-final01.json",
+        "bytes": 4691,
+        "sha256": "1c0d7e8b20cb555d708ba3a2d9276a3fceef0ea129560e58777d9f89015b8a66"
+      }
+    },
+    {
+      "case": "helperRestoreFalse",
+      "exit": 0,
+      "status": "PASS",
+      "report": "control-helperRestoreFalse-c01-final01.json",
+      "stdout": "",
+      "stderr": "",
+      "proof": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\control-helperRestoreFalse-c01-final01.json",
+        "bytes": 4687,
+        "sha256": "18f9b12f37e23b19dc0afb24a16904140a6c5b26eb3c78ad98ae35894b4d7c28"
+      }
+    },
+    {
+      "case": "surfaceRestoreNull",
+      "exit": 0,
+      "status": "PASS",
+      "report": "control-surfaceRestoreNull-c01-final01.json",
+      "stdout": "",
+      "stderr": "",
+      "proof": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\control-surfaceRestoreNull-c01-final01.json",
+        "bytes": 5472,
+        "sha256": "1cdcd93e8a394355588b44e17496c79dc16b42a780b4471d358ba3ae17b40c76"
+      }
+    },
+    {
+      "case": "surfaceCompileFalse",
+      "exit": 0,
+      "status": "PASS",
+      "report": "control-surfaceCompileFalse-c01-final01.json",
+      "stdout": "",
+      "stderr": "",
+      "proof": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\control-surfaceCompileFalse-c01-final01.json",
+        "bytes": 5473,
+        "sha256": "d0e8f1e58c0c8d0c84ae14e72004800907834baac448980d248ad2acd656a002"
+      }
+    },
+    {
+      "case": "helperCompileNull",
+      "exit": 0,
+      "status": "PASS",
+      "report": "control-helperCompileNull-c01-final01.json",
+      "stdout": "",
+      "stderr": "",
+      "proof": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\control-helperCompileNull-c01-final01.json",
+        "bytes": 4773,
+        "sha256": "060602da645ba6cdf20e194bb4c24392ea721b4647bc31fa6c0504ff8d3ba90b"
+      }
+    },
+    {
+      "case": "hashRejectNull",
+      "exit": 0,
+      "status": "PASS",
+      "report": "control-hashRejectNull-c01-final01.json",
+      "stdout": "",
+      "stderr": "",
+      "proof": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\control-hashRejectNull-c01-final01.json",
+        "bytes": 7437,
+        "sha256": "a59ece2ab0f96bcf5e093feeb313f487a04e8c20e6e2dc7bcd664c1b7e64714b"
+      }
+    },
+    {
+      "case": "hashRejectUndefined",
+      "exit": 0,
+      "status": "PASS",
+      "report": "control-hashRejectUndefined-c01-final01.json",
+      "stdout": "",
+      "stderr": "",
+      "proof": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\control-hashRejectUndefined-c01-final01.json",
+        "bytes": 7446,
+        "sha256": "9e48e41fe48a6ee21c5520c8d78b0fdf6a41f55746e9e0bd01755bc3faa167a0"
+      }
+    },
+    {
+      "case": "hashRejectFalse",
+      "exit": 0,
+      "status": "PASS",
+      "report": "control-hashRejectFalse-c01-final01.json",
+      "stdout": "",
+      "stderr": "",
+      "proof": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\control-hashRejectFalse-c01-final01.json",
+        "bytes": 7440,
+        "sha256": "c86edd25507745e68f69a96c3cf59368317611d3d7a4387db7700bac5cc743cf"
+      }
+    },
+    {
+      "case": "hashBadResult",
+      "exit": 0,
+      "status": "PASS",
+      "report": "control-hashBadResult-c01-final01.json",
+      "stdout": "",
+      "stderr": "",
+      "proof": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\control-hashBadResult-c01-final01.json",
+        "bytes": 7437,
+        "sha256": "fee94e40706fc459ff1b698641b41c6f42ca31981db006a16483ae48a100a182"
+      }
+    },
+    {
+      "case": "hashStartThrowFalse",
+      "exit": 0,
+      "status": "PASS",
+      "report": "control-hashStartThrowFalse-c01-final01.json",
+      "stdout": "",
+      "stderr": "",
+      "proof": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\control-hashStartThrowFalse-c01-final01.json",
+        "bytes": 7590,
+        "sha256": "bd7c7a385ced272aef6f962f528dc654980f6a16128149eaf78c6d6909f9faa9"
+      }
+    },
+    {
+      "case": "hashParentStop",
+      "exit": 0,
+      "status": "PASS",
+      "report": "control-hashParentStop-c01-final01.json",
+      "stdout": "",
+      "stderr": "",
+      "proof": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\control-hashParentStop-c01-final01.json",
+        "bytes": 7438,
+        "sha256": "effd41dc1dfedcc79be65a48e69b81e26106d906ebd33a3bfbe817ba12d32d00"
+      }
+    },
+    {
+      "case": "hashObserverHold",
+      "exit": 0,
+      "status": "PASS",
+      "report": "control-hashObserverHold-c01-final01.json",
+      "stdout": "",
+      "stderr": "",
+      "proof": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\control-hashObserverHold-c01-final01.json",
+        "bytes": 5160,
+        "sha256": "c4b9e1e4a7ecb482993d26f291440fa53bd85dc6101164ec4b587aa41e6d2a81"
+      }
+    },
+    {
+      "case": "helperAttemptFunding",
+      "exit": 0,
+      "status": "PASS",
+      "report": "control-helperAttemptFunding-c01-final01.json",
+      "stdout": "",
+      "stderr": "",
+      "proof": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\control-helperAttemptFunding-c01-final01.json",
+        "bytes": 6878,
+        "sha256": "2299183fb73ce96a4990b5362f3e6eca8ec7c495c865c28ad1a9b5124d588c0e"
+      }
+    },
+    {
+      "case": "foreignHelperRegistration",
+      "exit": 0,
+      "status": "PASS",
+      "report": "control-foreignHelperRegistration-c01-final01.json",
+      "stdout": "",
+      "stderr": "",
+      "proof": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\control-foreignHelperRegistration-c01-final01.json",
+        "bytes": 7498,
+        "sha256": "8069286023a4edbe3dd78509a5f736f104a39eba22c56d9118739dbf75cce853"
+      }
+    },
+    {
+      "case": "duplicateHelperRegistration",
+      "exit": 0,
+      "status": "PASS",
+      "report": "control-duplicateHelperRegistration-c01-final02.json",
+      "stdout": "",
+      "stderr": "",
+      "correctedAdapter": "harness-disposition-06.json",
+      "proof": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\control-duplicateHelperRegistration-c01-final02.json",
+        "bytes": 3196,
+        "sha256": "94e9917a08627d1e8fd3922442f509c7f8b86c05cf7212c22cb132175d874ebe"
+      }
+    },
+    {
+      "case": "helperNamespaceSetter",
+      "exit": 0,
+      "status": "PASS",
+      "report": "control-helperNamespaceSetter-c01-final01.json",
+      "stdout": "",
+      "stderr": "",
+      "proof": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\control-helperNamespaceSetter-c01-final01.json",
+        "bytes": 3180,
+        "sha256": "2cb41b0e2b9a03be80eb8cf3298b0330e524f38ede21ea65d0f1f5a0c37e9c6a"
+      }
+    },
+    {
+      "case": "publishedCleanup",
+      "exit": 0,
+      "status": "PASS",
+      "report": "control-publishedCleanup-c01-final01.json",
+      "stdout": "",
+      "stderr": "",
+      "proof": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\control-publishedCleanup-c01-final01.json",
+        "bytes": 6831,
+        "sha256": "d3df79ef849e1d6c609c028b724da2e6c61225166d1a250f47b9893cb62baf8b"
+      }
+    },
+    {
+      "case": "sourcePendingClose",
+      "exit": 0,
+      "status": "PASS",
+      "report": "control-sourcePendingClose-c01-final01.json",
+      "stdout": "",
+      "stderr": "",
+      "proof": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\control-sourcePendingClose-c01-final01.json",
+        "bytes": 7729,
+        "sha256": "149a4b05638677f13a60545ecb1978758b34a526d795ca56bb1d2926d04ab6c0"
+      }
+    },
+    {
+      "case": "helperChangedSource",
+      "exit": 0,
+      "status": "PASS",
+      "report": "control-helperChangedSource-c01-final01.json",
+      "stdout": "",
+      "stderr": "",
+      "proof": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\control-helperChangedSource-c01-final01.json",
+        "bytes": 7267,
+        "sha256": "73f79670541cfa7e33fe1b2e0fb205066888eaa4876d132de43f925fd733ef58"
+      }
+    },
+    {
+      "case": "helperQPressure",
+      "exit": 0,
+      "status": "PASS",
+      "report": "control-helperQPressure-c01-final01.json",
+      "stdout": "",
+      "stderr": "",
+      "proof": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\control-helperQPressure-c01-final01.json",
+        "bytes": 6873,
+        "sha256": "7999cb91a69b791d49fda4e116df029514a2b245166a6b2ab4850f07610be1e3"
+      }
+    },
+    {
+      "case": "helperCloseRetry",
+      "exit": 0,
+      "status": "PASS",
+      "report": "control-helperCloseRetry-c01-final01.json",
+      "stdout": "",
+      "stderr": "",
+      "proof": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\control-helperCloseRetry-c01-final01.json",
+        "bytes": 7589,
+        "sha256": "af2116667ee7a3145b0c8514097367425b0b7468adbde860488d8d8de486d5d3"
+      }
+    },
+    {
+      "case": "legacyPublic",
+      "exit": 0,
+      "status": "PASS",
+      "report": "control-legacyPublic-c01-final01.json",
+      "stdout": "",
+      "stderr": "",
+      "proof": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\control-legacyPublic-c01-final01.json",
+        "bytes": 4276,
+        "sha256": "c08964b4368f1e6181823bd5aa651a77358ec4927aa82538a31ed2b2de5d2f53"
+      }
+    }
+  ],
+  "actualAppInputControls": 16,
+  "entryControls": 33,
+  "priorReleasedBeforeUnwindCounterPreserved": true,
+  "proofs": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\BUILD-02.json",
+      "bytes": 1015,
+      "sha256": "16032707dd735f01c39111f2165da1664663d13e218fe463431f2b60a2f1f458"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\exact-helper-join-edits-01.json",
+      "bytes": 29968,
+      "sha256": "084694875b23e763e663e0ced18174e1817b479fc304eb5b43b74f0da99f86d1"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\profile-edits-01.json",
+      "bytes": 72673,
+      "sha256": "3e207ab5c7c4ff96dc818d378f75a1bf19dfedc11b91cd418ad70f6d3fcf740c"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\inventory-02.json",
+      "bytes": 88363,
+      "sha256": "989df4e6dd54ed0640ccee31e8020cbe5cccd3439f98e9cb0fd0f732d115e578"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\source-verification-05.json",
+      "bytes": 2286,
+      "sha256": "8053a2a0e121b381c5bc80d3cf4c744ec522178f632e6aeca7353c3e1a33267c"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\input-controls-04.json",
+      "bytes": 3584,
+      "sha256": "ca6292eab697295a24831984e604d9d3cf4041e77a043a0cc5c04e2f37dc5ce7"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\controls-run-04.json",
+      "bytes": 5362,
+      "sha256": "dc457120aa8a410a250787c167229f2537c4719e2f21ff8934bb45dab05567ca"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\harness-disposition-06.json",
+      "bytes": 752,
+      "sha256": "8c4a8810ba02d942446af2e112225d3dae6ac500676c82b46f0986ee52d4dc0e"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\entry-retention-edits-07.json",
+      "bytes": 2502,
+      "sha256": "f12d5f680ee107f2b664669fbd623435082bdfb8e3d071c56b37527c3fa0f902"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\inventory-07.json",
+      "bytes": 88363,
+      "sha256": "2d8537006162668e43b80a73554ac664dfb7bd13063b5bbaa0049e56775f3522"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\entry-storage-08.json",
+      "bytes": 24983,
+      "sha256": "2636d854368f5b24cb3562cdb485a7b0e84d71e28b47aa1b4b9d9a3649535cea"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\entry-controls-11.json",
+      "bytes": 6948,
+      "sha256": "078a302ec3631639d2af2ea44bf0fe800133de67d56ddf229e358465b502fdd5"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\source-verification-12.json",
+      "bytes": 2374,
+      "sha256": "d54d79d24dd7458ef07b43b5d03a9769c3160a532145b27565624269e7006808"
+    }
+  ],
+  "parents": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\FUNCTIONAL-08.json",
+      "bytes": 17969,
+      "sha256": "7ccddb75ff47b55b0c0bb41f5bd4a43d0222d15ecee8de97df65e525b940c13a"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\independent-review-03\\CHECK-01.json",
+      "bytes": 8985,
+      "sha256": "bc88f545ce994d7f297602976f43f316528d8e04c6df74990e32c1508dc5df02"
+    }
+  ],
+  "entryStorageProposal": {
+    "raw": 115968,
+    "additional": 118784,
+    "combined": 507904,
+    "selected": null,
+    "review": "pending independent exact joined-prefix review"
+  },
+  "completedBoundary": [
+    "Original scheduled helper9 fresh Source admission and2 native Node SHA checks then16 original helper steps plus17 actual Local phases execute under shared fixed timer in instrumented source models",
+    "All evaluated Main/helper/Surface source provenance and currentness checks remain fresh; actual G owners/programs remain distinct",
+    "Actual App private weak inputs/serial/time/playing/original viewport policy are preserved and independently body-tested; this reader is not yet called by production Main",
+    "Three synchronous funding catches retain every admitted owner until failed-realm retirement; original raw falsy throw identities preserved",
+    "No new production function/binding born for catch fix; all actual C01 functions remain exact in C02"
+  ],
+  "holds": [
+    "First entry remainsNaN; all newSource/helper/Surface/initializer/App pools and work remainnull; APPfalse and final Main incomplete gate remain",
+    "Exact complete joined entry/per-phase work/pending/controller/module/closed ownership and selection",
+    "Actual R same Surface backend with genuine full-host envelope; genuine Host/Kernel/PH verifier; original PB/Base split handoff",
+    "Original demanded Root/content/active-weather and Main assigned surfaces/whole-view/Frame/support native integration",
+    "Native DOM/WebGL/cold/compiler/timing/driver heap and all P08 acceptance gates"
+  ],
+  "caps": {
+    "work": 4096,
+    "upload": 262144,
+    "jobs": 2,
+    "textureSlots": 64,
+    "serviceCpu": 33554432,
+    "serviceGpu": 10485760
+  },
+  "selectedMainStartupComponent": "main-texture-handoff-funded-c3",
+  "fundingSelected": false,
+  "Main": false,
+  "Frame": false,
+  "P05": "OPEN",
+  "browserServerOperated": false,
+  "runtimeFilesChanged": 0
+}

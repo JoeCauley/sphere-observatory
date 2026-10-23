@@ -1,0 +1,78 @@
+{
+  "status": "JOINED_STARTUP_SURFACE_REUSE_AND_SOURCE_COMPONENT_COST_REVIEWS_COMPLETE_FULL_MAIN_HELD",
+  "proofs": [
+    {
+      "path": "proof-01-CHECK-18.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\CHECK-18.json",
+        "bytes": 6550,
+        "sha256": "8a882bf0794a831bd48aa7e8a938bf6d5be3ea7b245e28807fc3e6b7b75465d8"
+      }
+    },
+    {
+      "path": "proof-02-CHECK-13.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\CHECK-13.json",
+        "bytes": 20287,
+        "sha256": "7d2d8b09ef77dc4e78b0ab9e2f4eb16ea1b12c30d00b8343abc2af66ff75bba8"
+      }
+    },
+    {
+      "path": "proof-03-CHECK-01.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\independent-review-01\\CHECK-01.json",
+        "bytes": 6461,
+        "sha256": "192bfd919251ab06bb5710893ad8d3fe4942db006d0420b367b95c828ef7d54e"
+      }
+    },
+    {
+      "path": "proof-04-CHECK-01.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\independent-review-02\\CHECK-01.json",
+        "bytes": 20656,
+        "sha256": "40ae14f58cb8efd8ad7230e15fcfa16e7e64756817f2186de319d3c2ba0fe3ac"
+      }
+    },
+    {
+      "path": "proof-05-foundation-scope-14.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\foundation-scope-14.json",
+        "bytes": 1637,
+        "sha256": "b0646322f75dd6a3fa409fa873a4f2e8fe59f705ad9fce6e4cc97f58b99df996"
+      }
+    },
+    {
+      "path": "proof-06-CHECK-04.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-helper-source-scheduling-2026-10-23-01\\review-01\\CHECK-04.json",
+        "bytes": 7650,
+        "sha256": "d7fb47b5d6dc5b41d3993b56b4cf89e0cc8baacc1620c454859a81c62a958cac"
+      }
+    },
+    {
+      "path": "proof-07-CHECK-01.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-helper-source-scheduling-2026-10-23-01\\independent-review-01\\CHECK-01.json",
+        "bytes": 12174,
+        "sha256": "fa580edd1e6a917cb8ae906f15f8bf3e80b542ddae2122dfeb237b80cedc6059"
+      }
+    },
+    {
+      "path": "proof-08-CHECK-01.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-app-input-handoff-2026-10-23-01\\independent-review-03\\CHECK-01.json",
+        "bytes": 8985,
+        "sha256": "bc88f545ce994d7f297602976f43f316528d8e04c6df74990e32c1508dc5df02"
+      }
+    },
+    {
+      "path": "proof-09-FUNCTIONAL-09.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\FUNCTIONAL-09.json",
+        "bytes": 6163,
+        "sha256": "e8fc99c08a0922c165bfaddcecc02ae96f640b0a9b3827be34a3726c6caa6afc"
+      }
+    }
+  ],
+  "rawArchives": "Preserved locally; no raw archives uploaded"
+}

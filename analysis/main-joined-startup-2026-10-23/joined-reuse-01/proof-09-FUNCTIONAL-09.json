@@ -1,0 +1,115 @@
+{
+  "status": "FROZEN_NARROW_SURFACE_OBSERVATION_REUSE_FUNCTIONAL_MODEL_PASS",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\candidate-09\\source",
+  "loader": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\candidate-09\\source\\owned-main-bootstrap.js",
+    "bytes": 158710,
+    "sha256": "dffc952f6e584035ab579ba1bafe5a8c3ebe3b4a436ac67671941e6cf1ef9bf5"
+  },
+  "parent": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\FUNCTIONAL-08.json",
+    "bytes": 17969,
+    "sha256": "7ccddb75ff47b55b0c0bb41f5bd4a43d0222d15ecee8de97df65e525b940c13a"
+  },
+  "files": 521,
+  "parses": 425,
+  "changed": [
+    "owned-main-bootstrap.js"
+  ],
+  "recipe": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\exact-byte-edits-09.json",
+    "bytes": 215735,
+    "sha256": "1dbf9f8cad1727d47745afe4ce0458f536d8ecd8c8d7b6f61d9accd830571824"
+  },
+  "hunks": 1,
+  "exactInverseToC08": true,
+  "inventory": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\inventory-caller-09.json",
+    "bytes": 93744,
+    "sha256": "fc399e3ff4f2e8febc0b4362db41bd931152b0f6d40d9b68c1a788e6116d725c"
+  },
+  "profiles": {
+    "rows": [
+      {
+        "name": "buildGraph",
+        "rows": 219,
+        "digest": "3644bb570144957519b72934659664d770769bdd4287e6a305e60efd939d2983"
+      },
+      {
+        "name": "buildSurfaceEnvelope",
+        "rows": 5,
+        "digest": "45e96edbf8a8525fcb7cdbec054a7ba677565b8c9a16339589012ba8d033c0de"
+      },
+      {
+        "name": "buildStartupEnvelope",
+        "rows": 9,
+        "digest": "30f075c095ca3dbd8574ceda9d2698cf1cd08c9b499d308bf615d7a82d3aa402"
+      }
+    ],
+    "reads": 233,
+    "sourceCopies": 219,
+    "scope": "GENUINE_SOURCE_ADMISSION_ONLY"
+  },
+  "controls": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\control-positive-c09-real01.json",
+      "bytes": 7763,
+      "sha256": "a2a7e01c34c94e197d04a36d71607a3ef2d2fafb94c05c2535a2e4ef91830964"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\control-field-c09-real01.json",
+      "bytes": 7760,
+      "sha256": "f575b62a04dd54e58d3d583fb7cee1bea54773a24854a0af4dd95cceb739a7e9"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\control-composite-c09-real01.json",
+      "bytes": 7764,
+      "sha256": "92668b31c75aef3b9b79a96a5c088a3e584b75c358752fbd71cedda64d1eec30"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\control-surfaceBeforeNativeMutation-c09-real01.json",
+      "bytes": 5224,
+      "sha256": "815e159fe142c545d8c426aab0e3876d3880945f5f5401a1a97c739d418e51c4"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\control-surfacePostNativeMutation-c09-real01.json",
+      "bytes": 5221,
+      "sha256": "151fdaf9cf65e16bdd2d59eb5e05e19e4d9a6cbb4630bd2f574f074d53733fde"
+    }
+  ],
+  "priorReference": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\control-positive-c08-real-reference01.json",
+    "bytes": 7764,
+    "sha256": "682d4581e06ff4a64f28ce85401a3b7782f7d65bf7c7b5bb0190996111e79314"
+  },
+  "actualObservationReuse": {
+    "priorNativeAttributesRequests": 174,
+    "nextNativeAttributesRequests": 92,
+    "removedDuplicateOriginalObservations": 41,
+    "scope": "Diagnostic actual-body execution census, not a selected tariff, native timing or complete work upper"
+  },
+  "harness": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\test-real-surface-16.cjs",
+    "bytes": 45090,
+    "sha256": "dbf8f0204dab94d8567465886eff557c2ed847395cf908645c1bf222c6cf409c"
+  },
+  "harnessRecipe": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\model-edits-16.json",
+    "bytes": 8322,
+    "sha256": "3a1455039833a31252c053821b95a2a2dfb1caa9ffa987e164e49eeab459640f"
+  },
+  "preserved": [
+    "All original Surface/helper/Renderer/Q/S/Records/G/Construction/Local module bytes exact C08.",
+    "Every original entry/post-native parent invocation remains. Fresh original Surface.initialFacts synchronously executes genuine factsCheck/observe; only the immediate repeated new facts.check invocation is removed. Its immutable own check-method descriptor still validates with no callback/native interval.",
+    "Actual unchanged Surface source, original Renderer constructor, Q/S/Records/Construction/Positions/G/Local bodies execute. GL/Canvas classes, required child constructors, Document and diagnostic budgets/unit fees remain named model substitutions.",
+    "Before-native changed canvas facts reject before shader birth; post-native changed facts reject after one rooted shader birth. Both stop before G entry and0Main frames.",
+    "Closed Main permission, inline NaN entry, null complete work/metadata tables and unchanged service limits remain. Current source candidate inherits C08 foundation; root applies exact same function hunk on its separate current joined source.",
+    "Native observations counted here demonstrate the exact repeated work removed, not a priced4096 obstruction/fit, physical heap/native/compiler/driver timing or full Main proof."
+  ],
+  "holds": {
+    "completeWork": null,
+    "metadataFunding": null,
+    "MainPermission": false,
+    "APP_EXECUTION_ENABLED": false
+  }
+}
