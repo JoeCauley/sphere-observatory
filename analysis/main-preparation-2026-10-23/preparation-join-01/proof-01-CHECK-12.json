@@ -1,0 +1,83 @@
+{
+  "status": "FROZEN_REVIEWED_FUNCTIONAL_PREPARATION_JOIN_COMPLETE_MAIN_HELD",
+  "utc": "2026-10-23T14:32:21.253662+00:00",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-preparation-join-2026-10-23-01\\candidate-02\\source",
+  "loaderSha256": "fdc1fb3fe2f6cc7cc7b37ba00d99c6b640a3dcea517c8b6773dd4cfbefffeff8",
+  "files": 521,
+  "parses": 425,
+  "allThreeProfilesFresh": true,
+  "genuineSourceReads": 233,
+  "exactComponentLineage": "M + frozen L03 + G02 + F02 + D04; failed joined01/G01 remain preserved and corrected by exactly five source hunks",
+  "proofs": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-preparation-join-2026-10-23-01\\independent-review-01\\CHECK-01.json",
+      "bytes": 5041,
+      "sha256": "c0da5c89c8e2d213b8b5da2de8dcb2b7dd3db74e740949723d8cee4f0c33cf9a"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\independent-review-01\\CHECK-01.json",
+      "bytes": 4882,
+      "sha256": "7f1d5b1dc6102e3983b1a9c458b147f47a7053ea82566cbc25f5284ae8cde64a"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\independent-review-01\\CHECK-01.json",
+      "bytes": 9133,
+      "sha256": "da226817fe605138212c40ca47375db96e63a9cc7240610aa55b0d89fbbce054"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\independent-review-02\\CHECK-01.json",
+      "bytes": 9273,
+      "sha256": "2a89d1786ef0b1ca2944e0a9d8bca6476744acb5d48c5c2c8f397c4adb5007da"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-finite-target-join-2026-10-23-01\\independent-review-02\\CHECK-01.json",
+      "bytes": 2968,
+      "sha256": "404fc0285984060a896ff2f2880108bb5c74211bf064c12cc03eaad2ec94a0bd"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-preview-demand-2026-10-23-01\\independent-review-02\\CHECK-01.json",
+      "bytes": 3934,
+      "sha256": "92d1537b90f734c27c1a996d48f1e5138f0799962cf0925119ab558f5391b052"
+    }
+  ],
+  "checks": {
+    "retainedExactSourceRuntime": 20,
+    "retainedExactFiniteTarget": 11,
+    "retainedExactPreview": 11,
+    "freshJoinedG02": 29,
+    "freshJoinedPrefix": 8,
+    "freshSourceBirth": 4,
+    "separateRawErrorCombinations": 64
+  },
+  "reuseBoundary": "Source/Preview/Target files and Source BYOB reader/selector are byte-exact to tested joined01; only five G02 helper hunks changed. Original complete Source runtime tests are reused explicitly, not counted as a fresh native Main run.",
+  "PreviewLogicalModuleIncrement": {
+    "reviewedBytes": 4096,
+    "newActualReserve": 1328224,
+    "oneOwnedStartupPreviewScopeOnly": true,
+    "completeMainOrNativeWorkerCoverage": false
+  },
+  "functionalG": "Fresh native/source/Surface/Construction checks remain; uncertain restoration/read failures block advance, G creation and draw-object export. Distinct helperG and actualsurfaceG remain separate.",
+  "actualCaller": "Private staged Source/helper/Surface dispatcher is active unintegrated work elsewhere, excluded from this frozen component. G factory is not yet invoked by actual Main.",
+  "completeNewFundingSelected": false,
+  "completeNewWorkSelected": false,
+  "fullHostLimitsSelected": false,
+  "nativeMain": false,
+  "MainPermission": false,
+  "P05": "OPEN",
+  "selectedMainStartupComponent": "main-texture-handoff-funded-c3",
+  "limitsPreserved": {
+    "metadata": 33554432,
+    "serviceGPU": 10485760,
+    "work": 4096,
+    "upload": 262144,
+    "jobs": 2,
+    "readers": 64,
+    "finiteGenerations": 2
+  },
+  "closedControllerSourceQ": {
+    "requested": 1048576,
+    "held": 1053338,
+    "liveReservations": 1
+  },
+  "scope": "Source/native Node operations and named GL/Surface/Document/child models are not browser Frame/appearance/performance/native peak evidence. No simulation/assets/live walking/browser/server changed."
+}

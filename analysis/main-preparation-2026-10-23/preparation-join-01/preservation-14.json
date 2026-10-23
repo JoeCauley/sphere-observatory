@@ -1,0 +1,27 @@
+{
+  "pass": true,
+  "cutoff": 14,
+  "snapshots": 57,
+  "archiveEntriesVerified": 29603,
+  "recordsVerified": 4804,
+  "recordsAdded": 583,
+  "recordBytes": 165199059,
+  "freshRestore": {
+    "snapshot": "main-preparation-reuse-joined-c2",
+    "destination": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-preparation-progress-2026-10-23-01\\restored-check-14\\source",
+    "files": 521,
+    "verified": true
+  },
+  "earlierRowsExact": true,
+  "restorerUnchanged": true,
+  "currentReadmeUTF8": true,
+  "historicalReadmeBytesExact": true,
+  "selectedMainComponent": "main-texture-handoff-funded-c3",
+  "preparationJoinSelected": false,
+  "P05": "OPEN",
+  "excludedActive": [
+    "Source work-ownership-review-02 including active peer work review",
+    "Surface caller-02"
+  ],
+  "rawArchivesRemainLocal": true
+}

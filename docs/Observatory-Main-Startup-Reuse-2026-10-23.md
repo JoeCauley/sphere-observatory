@@ -1,3 +1,5 @@
+> Current continuation: corrected Source/surface/Target/Preview preparation joins pass scoped independent review; failed restoration witnesses are preserved. Actual scheduled caller, full ownership/work/host and native Main remain open. P05 OPEN. See [the preparation report](Observatory-Main-Preparation-Join-2026-10-23.md).
+
 # Main startup source reuse - 23 October 2026
 
 The texture handoff split is complete in its verified component scope. The next narrow-builder and scheduled-source changes now work together in one independently checked source copy. They remain an **unselected proposal** while their complete startup work and ownership are qualified. Formal **P05 remains OPEN**.

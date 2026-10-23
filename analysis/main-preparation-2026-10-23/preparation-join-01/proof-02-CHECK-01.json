@@ -1,0 +1,159 @@
+{
+  "status": "PASS_BOUNDED_CORRECTED_PREPARATION_JOIN_UNSELECTED",
+  "utc": "2026-10-23T14:31:42.688Z",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-preparation-join-2026-10-23-01\\independent-review-01/source",
+  "loader": {
+    "bytes": 125376,
+    "sha256": "fdc1fb3fe2f6cc7cc7b37ba00d99c6b640a3dcea517c8b6773dd4cfbefffeff8"
+  },
+  "files": 521,
+  "parsed": 425,
+  "exactFiveG02Hunks": true,
+  "other520FilesExact": true,
+  "exactL03_G02_F02_D04AndMLineage": true,
+  "byteExactGFunctions": 31,
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "rows": 219,
+      "digest": "2eaf19a7fe3a4138acc89168387ea2e8058410255e6a5d2542832bd2f3db0f01"
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "rows": 5,
+      "digest": "374c65fd54f6df0fed5f57311e9b80a4eed3d84208e4e3b6aa541d28646e2bc7"
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "rows": 9,
+      "digest": "dc1e6c9b974cbce894aaff4b0d1bad2b4c385d277ff8469992dba1b93ad10fcd"
+    }
+  ],
+  "independentGenuineFreshSourceReads": 233,
+  "standaloneLegacyProfileQFinal": 0,
+  "rootCasesBound": {
+    "source20Retained": true,
+    "finiteTarget11ExactFilesRetained": true,
+    "Preview11ExactFileRetained": true,
+    "G29Fresh": true,
+    "birth4Fresh": true,
+    "prefix8Fresh": true,
+    "total83": true
+  },
+  "rootRawMatrixSeparate": {
+    "cases": 64,
+    "throwing": 63
+  },
+  "independentFreshFailureCases": {
+    "joinedPrefix8": true,
+    "addedRawNullPrefix4": true,
+    "priorGraphicsRegressions2": true,
+    "total": 14
+  },
+  "rejectedJoin01Preserved": {
+    "path": "../CHECK-06.json",
+    "sha256": "6b8da1aec33de9c5d71538bdd47dd9108a47c66ac7339356f3480a99bc0dfb68",
+    "counter": "../controls-01/control-nullRestore-joined01.json",
+    "counterSha256": "9f601545b52a22b006b45f3400c35e0133b52184dedba519702c17e93df7159d"
+  },
+  "privateSurfaceFactoryUnused": true,
+  "MainPermission": false,
+  "completeFunding": null,
+  "completeWork": null,
+  "wholeHost": null,
+  "nativeGL": false,
+  "P05": "OPEN",
+  "held": [
+    "shared Source/G actual pre-R caller and complete work/ownership pricing",
+    "complete inherited bootstrap/module/profile/caller funding",
+    "actual original Surface/native GL/compiler/VM backing",
+    "exact full host admission/R/PB/Base/public Main/Frame"
+  ],
+  "artifacts": [
+    {
+      "path": "REVIEW.md",
+      "bytes": 4362,
+      "sha256": "ed854ff7b3ff24973dac694b6d55c535c52e45f2a2606c7b60c14881407da920"
+    },
+    {
+      "path": "control-nullRestore-joinedind.json",
+      "bytes": 3734,
+      "sha256": "01687bec158a22d42b87010f9fc8c727e8d1581dc5727086cc5e3bee3a353c8a"
+    },
+    {
+      "path": "control-readUncertainty-joinedind.json",
+      "bytes": 3888,
+      "sha256": "7926e7208a969dce5fc0d8ff2f4aae9188c99186a05cf05739852eaa85d47c01"
+    },
+    {
+      "path": "evidence-binding-01.json",
+      "bytes": 8495,
+      "sha256": "344436c01f92e3c18d9687cc694cdb9c6419033523464ac786dce38e0ba371fa"
+    },
+    {
+      "path": "harness-failure-01.json",
+      "bytes": 336,
+      "sha256": "46d037477c2a849bcfe6f09e0e0f1e8c1b9bc8e7410d180620839edf84564feb"
+    },
+    {
+      "path": "join-verification-02.json",
+      "bytes": 97474,
+      "sha256": "a4ef69f08001b80c59f865871e3d1a44f9fdbf5bb3d5d826534c74860fb0f683"
+    },
+    {
+      "path": "prefix-controls-02-07.json",
+      "bytes": 4975,
+      "sha256": "5555da1f9ff22210d5f43be6dc421f5401ff28dbe3b2471b8a547e0d107dc57f"
+    },
+    {
+      "path": "prefix-null-02-01.json",
+      "bytes": 3085,
+      "sha256": "0a5aab4c96cd9884b6f9de3ddbafd4fcf000c79380ee95e0bc9a680a83a15f5f"
+    },
+    {
+      "path": "runner-relocations-01.json",
+      "bytes": 1307,
+      "sha256": "d6e16a4b3c7d6224db25005276f0b38db7c308d6b1e631ac18dd4f37592c7c03"
+    },
+    {
+      "path": "seal-01.cjs",
+      "bytes": 2610,
+      "sha256": "b02200a3194eda22f88eeba107b96b3c22c85ec00fd137f0470db610d54e6143"
+    },
+    {
+      "path": "test-null-restore-regression-01.cjs",
+      "bytes": 33111,
+      "sha256": "b4e4656aa7baf85aa45422de755a46598667ef2e97a7255151b6db7d4defd945"
+    },
+    {
+      "path": "test-prefix-01.cjs",
+      "bytes": 3085,
+      "sha256": "1752227411062552e90abb7a58660d395f76986bc60efd2775d632667573bb3a"
+    },
+    {
+      "path": "test-prefix-null-02.cjs",
+      "bytes": 3070,
+      "sha256": "0f5dc54c467998228c935dd1975202615dd0f89f7020bb470ac8a34aacf520d5"
+    },
+    {
+      "path": "test-read-uncertainty-regression-01.cjs",
+      "bytes": 32926,
+      "sha256": "722702771a2b88c3dd9cc3101f9bc9b9335a44d530ee64be2ea23ea43ffd47ca"
+    },
+    {
+      "path": "verify-evidence-01.cjs",
+      "bytes": 4644,
+      "sha256": "4b9af8b1974a4cc96e6763afd24c60c5dccb90698aa62ae81b510a57044f1a29"
+    },
+    {
+      "path": "verify-join-01.cjs",
+      "bytes": 9308,
+      "sha256": "f9ee125f3b5a66c63b3c42c7655192c0eb9b938e7c5006a125433bf693fde5d3"
+    },
+    {
+      "path": "verify-join-02.cjs",
+      "bytes": 9230,
+      "sha256": "66406c05821b6a564dd2d846cca6ab73aa7d2b008a29f6dfe7b07759c97259b0"
+    }
+  ]
+}

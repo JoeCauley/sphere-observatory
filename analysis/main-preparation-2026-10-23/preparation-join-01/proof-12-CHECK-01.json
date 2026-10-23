@@ -1,0 +1,123 @@
+{
+  "status": "PASS_BOUNDED_PREVIEW_MODULE_ADDITIVE_FUNDING_COMPONENT",
+  "utc": "2026-10-23T14:12:47.491Z",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-preview-demand-2026-10-23-01\\independent-review-02/source",
+  "priorD03Review": {
+    "path": "../independent-review-01/CHECK-01.json",
+    "sha256": "837bd3ea7d1e31f55b71dc1026ef37b9b430c8f69eb35b44e59de0addd18002a"
+  },
+  "proposal": {
+    "path": "../module-funding-04.json",
+    "sha256": "590673725996cb6773e79de9e9c71466453702abd436f3ac997e147d25d833a5"
+  },
+  "sourcePins": [
+    {
+      "path": "owned-main-bootstrap.js",
+      "bytes": 100698,
+      "sha256": "9256d226dbdc2dfdba664548df118c311924e58e4400c1056841e9ecb4baf52c"
+    },
+    {
+      "path": "preview-light.js",
+      "bytes": 2421,
+      "sha256": "b6d6a6c5f51fc90e4db1b805815704a0204574da28f5829625c9da70ef89713b"
+    }
+  ],
+  "files": 521,
+  "parsedJavaScript": 425,
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "rows": 219,
+      "id": "owned-startup-deferred-preview-bootstrap-v9",
+      "digest": "3ac13fa187b30bf9add67efc7c25ed5887e612f027a034990d1fd606edc9cd61"
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "rows": 5,
+      "id": "main-owned-default-surface-facts-v2",
+      "digest": "45e96edbf8a8525fcb7cdbec054a7ba677565b8c9a16339589012ba8d033c0de"
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "rows": 9,
+      "id": "main-startup-draw-owner-v1",
+      "digest": "608c8c5d670cd81edc377ce9e657a8929aaf5748c4a22d54469217e2ce067157"
+    }
+  ],
+  "exactInverseD03": true,
+  "PreviewD03Exact": true,
+  "freshGroups": 15,
+  "moduleAllowance": {
+    "before": 1324128,
+    "after": 1328224,
+    "additive": 4096,
+    "reviewedPreviewOneInstanceAndHelper": 2656,
+    "margin": 1440
+  },
+  "actualReservationBeforeModuleEvaluation": true,
+  "retainedRealmCharge": true,
+  "scope": "One exact source-owned startup Renderer/Preview instance and one helper attempt. Full original module allowance, bootstrap/caller literals, Worker/native/queue/termination and work remain separately held.",
+  "completeQFit": null,
+  "completeWork": null,
+  "actualWorker": false,
+  "nativeMain": false,
+  "MainGate": false,
+  "P05": "OPEN",
+  "artifacts": [
+    {
+      "path": "REVIEW.md",
+      "bytes": 3366,
+      "sha256": "b19c05615abb068ef9c2a94e93fbdfdc6d85a780d9994d68ad8ae38c4e90a730"
+    },
+    {
+      "path": "controls-04.json",
+      "bytes": 2171,
+      "sha256": "6c1bda2da92c47a78677f0441bb1ed9cc455b3259116cd9fdb5f3dd42156a3cb"
+    },
+    {
+      "path": "funding-verification-02.json",
+      "bytes": 96094,
+      "sha256": "44d40afb6b798694dbc7da7301d58ad8a51aabcc48abfac7dafa003cc1cb2c97"
+    },
+    {
+      "path": "harness-failure-01.json",
+      "bytes": 400,
+      "sha256": "d3d8705c1ed032a47ac8f06af59a41d14de7508ba7082d5030127a7fa2d496d8"
+    },
+    {
+      "path": "runner-relocations-01.json",
+      "bytes": 319,
+      "sha256": "08d81d8ca8c331e9683ca0102ab20269f88981d00cedf30f14384505c35e56c0"
+    },
+    {
+      "path": "seal-01.cjs",
+      "bytes": 1908,
+      "sha256": "adff72bbc68b98511bf4595e4efa397c507e90d2fce96a0d8e65c378e0856e7d"
+    },
+    {
+      "path": "seal-02.cjs",
+      "bytes": 1918,
+      "sha256": "8bfb220a9873ffed6212845a3eaeddf46eac72a4154ba6d8176f6e9d18006a9a"
+    },
+    {
+      "path": "seal-failure-01.json",
+      "bytes": 243,
+      "sha256": "d03fe82924cb46b896da5d903b3b54d5592bf59a89bf375757a814749f0b381d"
+    },
+    {
+      "path": "test-worker-01.cjs",
+      "bytes": 5935,
+      "sha256": "e959c994c4dbf73c801330cc76be307e314ab028acff70f3a6f25533401bd24a"
+    },
+    {
+      "path": "verify-funding-01.cjs",
+      "bytes": 7789,
+      "sha256": "9567a0db1c5d66d2f1d03e2a9bb502c2a098000d7f31950fc080b3abe85bcfbf"
+    },
+    {
+      "path": "verify-funding-02.cjs",
+      "bytes": 7803,
+      "sha256": "e8bd75aae0195f8cab2295b2f05d7ee1b9fb027daa0c12acb4b6af96e54261e4"
+    }
+  ]
+}

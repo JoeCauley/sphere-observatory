@@ -1,0 +1,36 @@
+{
+  "status": "FROZEN_REVIEWED_SMALL_PREVIEW_LOGICAL_INCREMENT_FULL_MAIN_HELD",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-preview-demand-2026-10-23-01\\candidate-04\\source",
+  "peer": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-preview-demand-2026-10-23-01\\independent-review-02\\CHECK-01.json",
+    "bytes": 3934,
+    "sha256": "92d1537b90f734c27c1a996d48f1e5138f0799962cf0925119ab558f5391b052"
+  },
+  "files": 521,
+  "parses": 425,
+  "profilesFresh": 3,
+  "groups": 15,
+  "funding": {
+    "parentModuleBytes": 1324128,
+    "moduleIncrementBytes": 4096,
+    "newActualModuleReserveBytes": 1328224,
+    "positivePreviewAndSingleHelperScopeBytes": 2656,
+    "margin": 1440,
+    "borrowedTextureHandoffSlack": 0,
+    "birth": "Actual existing reserve precedes graph and every classic load",
+    "lifetime": "Retained by evaluated or installed cold-controller realm"
+  },
+  "scope": "Exactly one source-owned startup Renderer/Preview instance and its one first-request helper attempt. Not arbitrary public Preview instances, native Worker queues/backing, inherited pointed owner/input graphs, complete helper/native/caller work, or separate new loader/profile literal/controller derivation.",
+  "limits": {
+    "metadataOwnerBytes": 33554432,
+    "work": 4096,
+    "upload": 262144,
+    "jobs": 2,
+    "textureHandoffModuleBytes": 65536
+  },
+  "fullMainFunding": null,
+  "fullMainWork": null,
+  "MainPermission": false,
+  "P05": "OPEN",
+  "originalSelectedMainStartup": "main-texture-handoff-funded-c3"
+}

@@ -1,3 +1,5 @@
+> Current continuation: corrected Source/surface/Target/Preview preparation joins pass scoped independent review; failed restoration witnesses are preserved. Actual scheduled caller, full ownership/work/host and native Main remain open. P05 OPEN. See [the preparation report](Observatory-Main-Preparation-Join-2026-10-23.md).
+
 > Current continuation: immutable-state reuse and actual scheduled Source loading are joined and independently component-checked. Complete startup ownership/work and genuine Main resource/drawing integration remain open; P05 is OPEN. See [the startup reuse report](Observatory-Main-Startup-Reuse-2026-10-23.md).
 
 > Current continuation: private cold-profile builders pass independent component checks; actual scheduled Source integration and complete builder funding are now active. P05 remains OPEN. See [the builder report](Observatory-Main-Cold-Builders-2026-10-23.md).

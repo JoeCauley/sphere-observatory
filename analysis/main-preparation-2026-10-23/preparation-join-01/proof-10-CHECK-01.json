@@ -1,0 +1,96 @@
+{
+  "status": "PASS_FINITE_TARGET_FUNCTIONAL_BIRTH_CORRECTION_UNSELECTED",
+  "utc": "2026-10-23T14:08:27.192Z",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-finite-target-join-2026-10-23-01\\independent-review-02/source",
+  "files": 521,
+  "parsed": 425,
+  "changes": [
+    {
+      "path": "biome-service/native/main-target-owner.js",
+      "bytes": 31992,
+      "sha256": "4075fddbcf771ffe3690826814b17a85fc4107f605a8c330115588333bd7b976"
+    },
+    {
+      "path": "owned-main-bootstrap.js",
+      "bytes": 100701,
+      "sha256": "468d7b588f676cdffff57692bade8e1532abd0899941f9dd4a3dc43b04383a6d"
+    }
+  ],
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "rows": 219,
+      "digest": "aa4e2ddea2dcff1b0cbf6476a976abbdb6d3c9b2445b93aef73ab383755decb2"
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "rows": 5,
+      "digest": "45e96edbf8a8525fcb7cdbec054a7ba677565b8c9a16339589012ba8d033c0de"
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "rows": 9,
+      "digest": "608c8c5d670cd81edc377ce9e657a8929aaf5748c4a22d54469217e2ce067157"
+    }
+  ],
+  "inverseToF01": true,
+  "priorIndependentReceipt": {
+    "path": "../independent-review-01/CHECK-01.json",
+    "sha256": "342e28c8ae08485f2b5b44854b3c822088ac2e280d249fb8b81bae79ecba64d1"
+  },
+  "freshGroups": 18,
+  "birthOrderFixed": true,
+  "QualifiedFiniteAndLegacyContentApplicabilitySeparate": true,
+  "completeStorageAllowance": null,
+  "completeWork": null,
+  "finiteCostsPinned": false,
+  "MainGate": false,
+  "P05": "OPEN",
+  "artifacts": [
+    {
+      "path": "REVIEW.md",
+      "bytes": 2902,
+      "sha256": "efbb721f7c8b77e27fa1faaa1a1c921e385e9612f37da8f4cdc9b1b60d6dd8a3"
+    },
+    {
+      "path": "birth-factory-02.json",
+      "bytes": 7482,
+      "sha256": "4437e361a430e0068cce3544141cb45d898a0a620f8c06d0087ae99ecc263952"
+    },
+    {
+      "path": "birth-verification-02.json",
+      "bytes": 1422,
+      "sha256": "88d9d72e922413b9a11a04b5e9046479a5bdf111127e8d7cd9c1d776383087f7"
+    },
+    {
+      "path": "focused-control-02.json",
+      "bytes": 12624,
+      "sha256": "5f5ee1d1726cba46af5fff4e962ef64c556ff0953a0fd1441ec4b065068a7adf"
+    },
+    {
+      "path": "runner-relocations-01.json",
+      "bytes": 1179,
+      "sha256": "ff42a82eaa21c7feb4f4894147875ff5c8ea9baf65cafadac99780d2b92c7a0f"
+    },
+    {
+      "path": "seal-01.cjs",
+      "bytes": 1908,
+      "sha256": "3ba9ae9608fd5e0a1508ff7463b380fd8f64cf99ebfab447ff640be0086f5974"
+    },
+    {
+      "path": "test-birth-factory-02.cjs",
+      "bytes": 8264,
+      "sha256": "86e765335125783b0bd3b5806f3a6f79882d8542d2f41f732d6d2ddbde93a0e4"
+    },
+    {
+      "path": "test-focused-02.cjs",
+      "bytes": 17914,
+      "sha256": "d55a379fccafdc127fa289c3b37acd3d3613071c4f49493654aaeb4a5f5ce14c"
+    },
+    {
+      "path": "verify-birth-02.cjs",
+      "bytes": 4999,
+      "sha256": "11e6affa0952b33952c195e388eee26a64bde38b7215e1d0594db6964dff0661"
+    }
+  ]
+}

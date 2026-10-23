@@ -1,0 +1,50 @@
+{
+  "status": "FROZEN_UNSELECTED_FINITE_TARGET_BIRTH_ORDER_COMPONENT",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-finite-target-join-2026-10-23-01\\candidate-02\\source",
+  "checks": [
+    {
+      "path": "birth-verification-02.json",
+      "bytes": 1422,
+      "sha256": "88d9d72e922413b9a11a04b5e9046479a5bdf111127e8d7cd9c1d776383087f7"
+    },
+    {
+      "path": "focused-control-02.json",
+      "bytes": 12334,
+      "sha256": "a9e4d796a6c0f5122580797a77398a3429248d8803b6f55c55f221c3d37ce74e"
+    },
+    {
+      "path": "birth-factory-02.json",
+      "bytes": 7482,
+      "sha256": "4437e361a430e0068cce3544141cb45d898a0a620f8c06d0087ae99ecc263952"
+    },
+    {
+      "path": "independent-review-01/CHECK-01.json",
+      "bytes": 9491,
+      "sha256": "342e28c8ae08485f2b5b44854b3c822088ac2e280d249fb8b81bae79ecba64d1"
+    },
+    {
+      "path": "independent-review-02/CHECK-01.json",
+      "bytes": 2968,
+      "sha256": "404fc0285984060a896ff2f2880108bb5c74211bf064c12cc03eaad2ec94a0bd"
+    }
+  ],
+  "files": 521,
+  "parses": 425,
+  "profilesFresh": 3,
+  "focusedGroups": 11,
+  "genuineFactoryGroups": 7,
+  "helperBirthsAfterReservation": 2,
+  "tryEntryHelperDeclarations": 0,
+  "gates": {
+    "FINITE_COSTS_PINNED": false,
+    "FINITE_WORK": null,
+    "maximumLiveGenerations": 2,
+    "metadataBytes": 4096,
+    "completeCurrentOwnership": null,
+    "MainPermission": false,
+    "P05": "OPEN"
+  },
+  "applicability": "Finite Qualified Root plus CLOSED_SOURCE_PATHS. Legacy Content format/full closure remains a distinct preserved path; finite+Content still refuses.",
+  "preservation": "Current M R canonical GPU reader and logical default Surface accounting are unchanged. Full source and fresh native/scope checks remain. Refused ticket/physical retirement retains helpers/Q; actual successful close clears helper roots before releasing fixed charge.",
+  "logicalLimit": "Exact helper birth ordering is proved, but module/nullable binding/capture/helper activation/caller fees are not yet fully admitted. The original4096 is unchanged and no completeness claim is made."
+}

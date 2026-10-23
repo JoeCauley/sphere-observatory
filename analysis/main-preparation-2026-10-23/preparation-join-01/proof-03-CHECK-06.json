@@ -1,0 +1,263 @@
+{
+  "status": "FROZEN_JOINED_CANDIDATE_REJECTED_FOR_G01_RESTORE_DEFECT",
+  "utc": "2026-10-23T14:17:27.360336+00:00",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-preparation-join-2026-10-23-01\\candidate-01\\source",
+  "loaderSha256": "b837a019404ca40813c87f6b4dab61e63f045fba8eba759bb506ea2787487e9c",
+  "sourceInventoryFrozen": true,
+  "files": 521,
+  "parses": 425,
+  "freshProfiles": 3,
+  "genuineFreshSourceReads": 233,
+  "priorFocusedPasses": {
+    "SourceRuntime": 20,
+    "surface": 23,
+    "finiteTarget": 11,
+    "preview": 11
+  },
+  "counter": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-preparation-join-2026-10-23-01\\controls-01\\control-nullRestore-joined01.json",
+    "sha256": "9f601545b52a22b006b45f3400c35e0133b52184dedba519702c17e93df7159d",
+    "status": "PASS_DEFECT_CONFIRMED"
+  },
+  "finding": "Actual G01 owner swallows raw null restore error through sentinel collision and can reach completePreparation/export while uncertain and restorationOwed. The joined copy reproduces it. No native claim.",
+  "disposition": "Do not use candidate01 as accepted Surface or Main. Keep it and counter unchanged; join the separately reviewed G02 successor next. Source-only/profile/inverse results remain separately valid.",
+  "SourceQ": {
+    "diagnosticPeak": 11624013,
+    "reachableClosedController": {
+      "requested": 1048576,
+      "held": 1053338,
+      "liveReservations": 1
+    }
+  },
+  "fullWorkSelected": null,
+  "MainPermission": false,
+  "P05": "OPEN",
+  "selectedMainCheckpoint": "main-texture-handoff-funded-c3",
+  "records": [
+    {
+      "path": "control-relocations-04.json",
+      "bytes": 3099,
+      "sha256": "72e40f2b597984fd2e8740fb208ed02476dc2b043eeb10b134617e9a55243df3"
+    },
+    {
+      "path": "controls-01/control-appDispose-join01.json",
+      "bytes": 4280,
+      "sha256": "386a04f6ffb4927bfa18f849e74721fbbad045f019ccdcdca9a476affb9b13ad"
+    },
+    {
+      "path": "controls-01/control-appDisposeHold-join01.json",
+      "bytes": 4284,
+      "sha256": "4b1d71be4db6437be9d52c34560aebaddbdcee58ca4796234eac4a4e1e755e73"
+    },
+    {
+      "path": "controls-01/control-cancelBeforeG-join01.json",
+      "bytes": 3908,
+      "sha256": "c8d9715bc6f2c47c5d8b458c73e592b6a8d788af85bcde2e4614da41cec058e9"
+    },
+    {
+      "path": "controls-01/control-composite-join01.json",
+      "bytes": 4860,
+      "sha256": "c8dfad09200883532b4a75a82055b6c26e04e76acfb4064d01331255111a8ccf"
+    },
+    {
+      "path": "controls-01/control-field-join01.json",
+      "bytes": 4856,
+      "sha256": "17fbb635dbe5d75a4425b3350b1c7ab889c993f4552c19a226fedacbab490934"
+    },
+    {
+      "path": "controls-01/control-foreign-join01.json",
+      "bytes": 2208,
+      "sha256": "96ac54026c713976d5b15d24211e4a2ac1b22d915957dcc52004b468298950f2"
+    },
+    {
+      "path": "controls-01/control-frame-join01.json",
+      "bytes": 2210,
+      "sha256": "8de806bf37de40d0115521aad8bddf0cb8422cd4949a42a968c7931240babd9b"
+    },
+    {
+      "path": "controls-01/control-frameDuringCreate-join01.json",
+      "bytes": 3178,
+      "sha256": "f9e595abccd1f744ba7bb9e5549a929a5fc056e3a70dd41666a5c72c58b5bf8f"
+    },
+    {
+      "path": "controls-01/control-gThrow-join01.json",
+      "bytes": 4065,
+      "sha256": "35c3cde7694ca36179da318da61bb2853f28c9a2da6da411493f324be6491e45"
+    },
+    {
+      "path": "controls-01/control-instanceFunding-join01.json",
+      "bytes": 3329,
+      "sha256": "d7fc97692f3fadb00a99117a6bc14ba70b7fa8f345bd2f819382ba7140d3e7db"
+    },
+    {
+      "path": "controls-01/control-localNamespace-join01.json",
+      "bytes": 2245,
+      "sha256": "b0d06d14b08e01aa7fec44aa879eaab31f50cb5907c80dc599f2cc26ff28a0ce"
+    },
+    {
+      "path": "controls-01/control-nativeChange-join01.json",
+      "bytes": 2220,
+      "sha256": "7584f538d2449d4977d8fc818c5da986b6e808f0ea1ee12a31ed22056a3cdc50"
+    },
+    {
+      "path": "controls-01/control-nullRestore-joined01.json",
+      "bytes": 4047,
+      "sha256": "9f601545b52a22b006b45f3400c35e0133b52184dedba519702c17e93df7159d"
+    },
+    {
+      "path": "controls-01/control-oversizeSource-join01.json",
+      "bytes": 3812,
+      "sha256": "2e7c789905109360d337a3935196b1b28188ca83169466b92a72ceaf8841f9de"
+    },
+    {
+      "path": "controls-01/control-parentChange-join01.json",
+      "bytes": 2230,
+      "sha256": "8cea98bf7154e0a98a130a37f4db36983be1e3effa733237452a0cb1870c8d2e"
+    },
+    {
+      "path": "controls-01/control-partialThrow-join01.json",
+      "bytes": 3891,
+      "sha256": "8963dabca3f45b3026c59cb3526958175fdc3af41f38c2fb64ec6e3894b3638c"
+    },
+    {
+      "path": "controls-01/control-positive-join01.json",
+      "bytes": 4859,
+      "sha256": "0ee363b8b69202ed1734598e4fe78dee2f8328153b695b3c1d53843c1eb11cdb"
+    },
+    {
+      "path": "controls-01/control-prepareFault-join01.json",
+      "bytes": 3789,
+      "sha256": "3d44104bae2517bd55c91dca3f87af19620505b2cb1490e97726b0214fc9b3ee"
+    },
+    {
+      "path": "controls-01/control-reentry-join01.json",
+      "bytes": 4858,
+      "sha256": "e38a3a78674cc0b3985214d6b162b7a07a69a68cc03de80c6c83605699c5c870"
+    },
+    {
+      "path": "controls-01/control-relink-join01.json",
+      "bytes": 2216,
+      "sha256": "a85a884d1892e461f342e94a320caaba740f084e8a675de1991f2ee5159179a0"
+    },
+    {
+      "path": "controls-01/control-restoreFailure-join01.json",
+      "bytes": 3894,
+      "sha256": "0d1d8b03baaf5815fd248dd1d842ba84058e643bcd483c60d1d8427cf0aa5e8b"
+    },
+    {
+      "path": "controls-01/control-run-01.json",
+      "bytes": 20749,
+      "sha256": "64694382b4699ec397aabfe26408a4af6ea7b238be825c789b1dcbbbc8683a69"
+    },
+    {
+      "path": "controls-01/control-stop-join01.json",
+      "bytes": 2444,
+      "sha256": "8872d3416880ee8c4f4e7d6df5c8f87872d43a9823fdf367dcd80046097967a7"
+    },
+    {
+      "path": "controls-01/control-workFunding-join01.json",
+      "bytes": 3056,
+      "sha256": "83ddef2542a3cc8c6351946b14314bee0a6a9a0dbc0dcfe02aeb49cb16797774"
+    },
+    {
+      "path": "controls-01/control-workLimit-join01.json",
+      "bytes": 3218,
+      "sha256": "c52b59a2e9bf876a5554c722820dedb92a54c82ff8f0b38ab23d1b93104466f1"
+    },
+    {
+      "path": "controls-01/counter-null-restore-01.cjs",
+      "bytes": 33144,
+      "sha256": "807b781d1e4e11ed3f2522fed17ec59456492e4677c55c796fe49141fcf1a063"
+    },
+    {
+      "path": "controls-01/finite-focused-01.json",
+      "bytes": 12276,
+      "sha256": "0161951eddb821c4a6ccae72bca8fd705fe937e551cb0b3f99e28f4b0c2e649a"
+    },
+    {
+      "path": "controls-01/finite-target-01.cjs",
+      "bytes": 17828,
+      "sha256": "9a6d80837344ed7ca5b5c70e3a6c55799402b378125f1875814fd6ab5997d5f5"
+    },
+    {
+      "path": "controls-01/preview-controls-01.json",
+      "bytes": 2164,
+      "sha256": "2b869a774bebb55e60afe16f3fdf1913412cf3424d9720505b501a0140fa33f4"
+    },
+    {
+      "path": "controls-01/preview-worker-01.cjs",
+      "bytes": 5970,
+      "sha256": "9ad1da3f05d0b6da7c07efb9ef68346b3bb042412178606f84c0b399d2771816"
+    },
+    {
+      "path": "controls-01/source-runtime-01.cjs",
+      "bytes": 27026,
+      "sha256": "b5692a36c1f41953156ca1a1f2b6e7ad0d709ab850cf1e4a1017e17c42392a77"
+    },
+    {
+      "path": "controls-01/surface-stage-01.cjs",
+      "bytes": 32116,
+      "sha256": "096f80697d395cc3b0bd3d5603e7579e41de137c1037d3bbdd1d97f6509682a9"
+    },
+    {
+      "path": "counter-relocation-05.json",
+      "bytes": 999,
+      "sha256": "678718e426ba1b6c4f9a87c9c34cfe6994e33e46b6f5e22e6f5b6512045cd1d2"
+    },
+    {
+      "path": "exact-join-02.json",
+      "bytes": 389599,
+      "sha256": "046c3b7288643db768684ecb35a313a38f3b42dafd1dc1169e0d35801df81db4"
+    },
+    {
+      "path": "inspect-hunks-01.py",
+      "bytes": 518,
+      "sha256": "180094404acc7a70a99d584e9cb3863b7de82a688e0aa594c32e5b6ff8ec2e3a"
+    },
+    {
+      "path": "join-verification-03.json",
+      "bytes": 1682,
+      "sha256": "0251812f4a8adee440b83865d16e15fe4a375829ad41be24a3c6237c140f63a0"
+    },
+    {
+      "path": "preparation-disposition-01.json",
+      "bytes": 558,
+      "sha256": "a1827465bc9b4a6276ae267306c2c37396407e62202858a68c83ba6122c244e1"
+    },
+    {
+      "path": "prepare-controls-04.py",
+      "bytes": 2127,
+      "sha256": "8f4e62ac0c23e8c9b12d9a2c6de6914d1376b39699835ca06b78bc9bf4fefd7e"
+    },
+    {
+      "path": "prepare-counter-05.py",
+      "bytes": 1371,
+      "sha256": "99cabeb409bd9e4760f690f16f0d8d7f9b4a85876f922a3b69e77364d2ac13ae"
+    },
+    {
+      "path": "prepare-join-01.py",
+      "bytes": 6304,
+      "sha256": "9db6cccdfd46ebe650ba6611c71a35a41cc2fb245544fc21c12172f20ab9eb26"
+    },
+    {
+      "path": "prepare-join-02.py",
+      "bytes": 1293,
+      "sha256": "f02548e28a5f7348f25a5d84529ab34e9710ee1fac00e79c1502de2e7db28de9"
+    },
+    {
+      "path": "seal-rejected-06.py",
+      "bytes": 3962,
+      "sha256": "6d81fb7ab9ef4512fd4afa2f10d691728addac1dc7b08aa006eac2b34e2d81f6"
+    },
+    {
+      "path": "source-inventory-02.json",
+      "bytes": 82111,
+      "sha256": "8f03af6d65bea4019705e3750e51de6816f1b29d86b7c6de7200fe2e29be6794"
+    },
+    {
+      "path": "verify-join-03.cjs",
+      "bytes": 5486,
+      "sha256": "f376391e1870afbfbed3a525dc71665b1cd88f3dd57077bf33d4b435d1b606b4"
+    }
+  ]
+}

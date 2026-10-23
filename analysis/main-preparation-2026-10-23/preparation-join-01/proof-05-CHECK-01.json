@@ -1,0 +1,154 @@
+{
+  "format": "sphere-independent-localized-source-functional-review/1",
+  "status": "PASS_COMPONENT_FUNCTIONAL_REVIEW_UNSELECTED",
+  "utc": "2026-10-23T14:06:51.932Z",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\independent-review-01\\source",
+  "authorSeal": {
+    "path": "../author-01/CHECK-06.json",
+    "sha256": "5f33b7acca2a07072cae2c102d3c8f42c7b4607fe6843d2f7da361cf936405d7"
+  },
+  "pins": [
+    {
+      "path": "biome-service/metadata-budget.js",
+      "bytes": 4137,
+      "sha256": "9318446452e9a99fee2873eaf0d072bd76c39f714e4d1bceadf6057d04df6635"
+    },
+    {
+      "path": "biome-service/native/source-admission.js",
+      "bytes": 37748,
+      "sha256": "90a572d5f2386feb7b367c14ba7cf9e506a1e41cf554acf915e15304985fb706"
+    },
+    {
+      "path": "biome-service/records.js",
+      "bytes": 24045,
+      "sha256": "70dbb2302f88f5f950de3eb2d3e94951a1537fdeab54640e7bb95746d69c1556"
+    },
+    {
+      "path": "owned-main-bootstrap.js",
+      "bytes": 100612,
+      "sha256": "e3e9f6427894a97c9640874da07ee228d76986e196231edcfc7a0a5c4e6ecb4c"
+    }
+  ],
+  "files": 521,
+  "parsedJavaScript": 425,
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "rows": 219,
+      "digest": "adc5052867c2944fc25d4ebe9694c64d03e3c5e3e3c04e70837294ccc4a5466a"
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "rows": 5,
+      "digest": "374c65fd54f6df0fed5f57311e9b80a4eed3d84208e4e3b6aa541d28646e2bc7"
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "rows": 9,
+      "digest": "dc1e6c9b974cbce894aaff4b0d1bad2b4c385d277ff8469992dba1b93ad10fcd"
+    }
+  ],
+  "exactInverseM": true,
+  "originalSourceReconstructed": true,
+  "unchangedOriginalBodies": 23,
+  "groups": 28,
+  "nativeObserverUncertaintyHolds": [
+    {
+      "name": "uncertain-PROFILE_HASH retained-evidence",
+      "QHeld": 6572504,
+      "scope": 17,
+      "completions": 0,
+      "externallySucceeded": true,
+      "sourceReceipt": false
+    },
+    {
+      "name": "uncertain-READ retained-evidence",
+      "QHeld": 1354728,
+      "scope": 21,
+      "completions": 2,
+      "externallySucceeded": true,
+      "sourceReceipt": false
+    }
+  ],
+  "fullGraphDiagnostic": {
+    "rows": 219,
+    "timerVisits": 3745,
+    "completions": 991,
+    "QPeak": 11616763,
+    "retainedAfterClose": {
+      "requested": 1048576,
+      "held": 1053338,
+      "liveReservations": 1
+    }
+  },
+  "addedFunctionBirth": "entered strict constructor block after extra controller and original base reservations",
+  "pricesSelected": false,
+  "fundingSelected": false,
+  "MainGate": false,
+  "P05": "OPEN",
+  "held": [
+    "prospective factory/admit selector and caller activation/capture/literal obligations",
+    "complete controller/pending/loader ownership and work prices",
+    "original returned-release caller and externally retained result lifetime",
+    "generic legacy input/admission and foreign current/reader adapter work",
+    "unobservable native operation recovery; exact holds remain until genuine callback",
+    "whole cold/host/browser/DOM/native Main/Frame"
+  ],
+  "artifacts": [
+    {
+      "path": "REVIEW.md",
+      "bytes": 4117,
+      "sha256": "e80fed9c4d2c1403c8c51f511a6281deb5a315e002416006b3a423596a39b9e2"
+    },
+    {
+      "path": "runner-relocations-01.json",
+      "bytes": 1566,
+      "sha256": "67e723be9acff413183e21474fd86b414b408c91a20b81c538495701a11e57f4"
+    },
+    {
+      "path": "verify-source-01.cjs",
+      "bytes": 7340,
+      "sha256": "f59b70f33bedb71b85b7dc58b6e6260a42a71686364c21587b1c099dc133a4e0"
+    },
+    {
+      "path": "source-verification-01.json",
+      "bytes": 96136,
+      "sha256": "fa766dc820f7287af97d7f99f1aa444f6d2418dfe3bcda79b6f754d7cd8930e4"
+    },
+    {
+      "path": "test-runtime-01.cjs",
+      "bytes": 27007,
+      "sha256": "d81a595e9d096d7388f2bc1212cec0cb52bef240e63defec5caa50464b157c08"
+    },
+    {
+      "path": "test-prefix-01.cjs",
+      "bytes": 4269,
+      "sha256": "ac4f85a96b111c7e0fb4893053ac9c7e8069f91aa8c4f61fc5bc3ef4ff985af7"
+    },
+    {
+      "path": "test-boundary-01.cjs",
+      "bytes": 6103,
+      "sha256": "b9e58257146dd4d988e94363cb43673685b9fa854e13dc7edd22640f38758e66"
+    },
+    {
+      "path": "control-run-01.json",
+      "bytes": 20761,
+      "sha256": "9f7205a6216151ff6e3b0757c27fa4411f4d5f3b73394cbaddb5f486b186e873"
+    },
+    {
+      "path": "loader-prefix-run-02-independent.json",
+      "bytes": 3013,
+      "sha256": "0f46fca3c1b205612077591cebabd41710a99ea4aa1bf9a4ac98aa8eadcb9df0"
+    },
+    {
+      "path": "localization-boundary-run-01-independent.json",
+      "bytes": 2437,
+      "sha256": "00dffc521224545f00cddfc9493e595af1154ee6f53c521167bc4930e613164b"
+    },
+    {
+      "path": "seal-01.cjs",
+      "bytes": 3769,
+      "sha256": "71e52403f936b3b13403e435e4b3fcef81cd58be3e98d4a3998c9e49c0b3751d"
+    }
+  ]
+}

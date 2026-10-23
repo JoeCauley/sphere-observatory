@@ -1,0 +1,190 @@
+{
+  "format": "sphere-source-localization-component-check/1",
+  "status": "PASS_ACTUAL_SOURCE_COMPONENT_UNSELECTED",
+  "utc": "2026-10-23T13:50:03.616Z",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\candidate-01\\source",
+  "parent": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-reuse-join-2026-10-23-01\\candidate-01\\source",
+  "files": 521,
+  "parsedJavaScript": 425,
+  "pins": [
+    {
+      "path": "biome-service/metadata-budget.js",
+      "bytes": 4137,
+      "sha256": "9318446452e9a99fee2873eaf0d072bd76c39f714e4d1bceadf6057d04df6635"
+    },
+    {
+      "path": "biome-service/native/source-admission.js",
+      "bytes": 37748,
+      "sha256": "90a572d5f2386feb7b367c14ba7cf9e506a1e41cf554acf915e15304985fb706"
+    },
+    {
+      "path": "biome-service/records.js",
+      "bytes": 24045,
+      "sha256": "70dbb2302f88f5f950de3eb2d3e94951a1537fdeab54640e7bb95746d69c1556"
+    },
+    {
+      "path": "owned-main-bootstrap.js",
+      "bytes": 100612,
+      "sha256": "e3e9f6427894a97c9640874da07ee228d76986e196231edcfc7a0a5c4e6ecb4c"
+    }
+  ],
+  "inventory": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\author-01\\source-inventory-06.json",
+    "bytes": 101089,
+    "sha256": "49e03fe786056d35213f363e23deb7c515291bb31e4050c39f6b78f89795cec1"
+  },
+  "artifacts": [
+    {
+      "path": "controls-01/control-run-02.json",
+      "bytes": 20752,
+      "sha256": "d58fe6c650ffd27ced7fbb9ea10f59a9abddbfc2b9ef8c4bb31478a21ccde890"
+    },
+    {
+      "path": "controls-01/loader-prefix-run-02.json",
+      "bytes": 3013,
+      "sha256": "720f9a7d0e5aa8a2ada3ab35118c5ea78b9ea908d5bde72a06cfeaa357471350"
+    },
+    {
+      "path": "controls-01/localization-boundary-run-01.json",
+      "bytes": 2428,
+      "sha256": "30b78ccbf6d09291fec14962e817ce24601f720cecd80878f080f62eb12477e5"
+    },
+    {
+      "path": "census-01/storage-raw-02.json",
+      "bytes": 1128147,
+      "sha256": "ebe49387cc922ac2ec5376f0500b74d2c2400f108072e2664673ec5664be49bb"
+    },
+    {
+      "path": "author-01/exact-localization-01.json",
+      "bytes": 193344,
+      "sha256": "b48916babeaac8dd2a5b7e93b82e71dacce47fdb7d0fbf3465dd0fe57ff110a3"
+    },
+    {
+      "path": "author-01/exact-profile-repins-02.json",
+      "bytes": 75699,
+      "sha256": "807335fe07ce07a2179e424c35a4a2626579ea2f59bb540a3b3bf5460867bc94"
+    },
+    {
+      "path": "author-01/exact-localization-03.json",
+      "bytes": 1176,
+      "sha256": "2c14745c06f9b804378778c85da92edcf452047718d76b0fcc502a455d51d74b"
+    },
+    {
+      "path": "author-01/exact-profile-repins-04.json",
+      "bytes": 74781,
+      "sha256": "b64c07bd55beb64122768596d205b507834c897415eb854ca7b2ff1ca432a6f1"
+    },
+    {
+      "path": "author-01/author-attempt-01.json",
+      "bytes": 202,
+      "sha256": "8fa8fcdd937d6c46f86b2b36c74949965d9d0731919e0a676b1fad6b3d12a029"
+    },
+    {
+      "path": "author-01/draft-source-01.js",
+      "bytes": 37705,
+      "sha256": "e418f6e59b062639aaec5150f4e169e1a82e01ac48acdbfcf2f9e0c84824820c"
+    },
+    {
+      "path": "author-01/draft-loader-01.js",
+      "bytes": 100612,
+      "sha256": "9f5886a81395e904b2a0854cf18b60a38b7f1e04a778bf5302c230117458f3c1"
+    }
+  ],
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "rows": 219,
+      "id": "owned-startup-texture-handoff-held-bootstrap-v7",
+      "digest": "adc5052867c2944fc25d4ebe9694c64d03e3c5e3e3c04e70837294ccc4a5466a",
+      "changedRows": [
+        "biome-service/native/source-admission.js",
+        "biome-service/records.js"
+      ],
+      "orderAndAllOtherFieldsExact": true,
+      "exactCurrentSource": true
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "rows": 5,
+      "id": "main-owned-default-surface-facts-v2",
+      "digest": "374c65fd54f6df0fed5f57311e9b80a4eed3d84208e4e3b6aa541d28646e2bc7",
+      "changedRows": [
+        "biome-service/native/source-admission.js",
+        "biome-service/records.js"
+      ],
+      "orderAndAllOtherFieldsExact": true,
+      "exactCurrentSource": true
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "rows": 9,
+      "id": "main-startup-draw-owner-v1",
+      "digest": "dc1e6c9b974cbce894aaff4b0d1bad2b4c385d277ff8469992dba1b93ad10fcd",
+      "changedRows": [
+        "biome-service/native/source-admission.js",
+        "biome-service/records.js"
+      ],
+      "orderAndAllOtherFieldsExact": true,
+      "exactCurrentSource": true
+    }
+  ],
+  "exactInverseM": true,
+  "originalConstructorAndAdmitBodiesExtractByteExact": true,
+  "constructorExtractionIncludesOneInitialIndentByte": true,
+  "originalSourceModuleReconstructsByteExactB05": true,
+  "unchangedHelperBodies": 23,
+  "Records70dbAndQ931844Exact": true,
+  "SourceModuleLiveABI": {
+    "functions": 11,
+    "captureSlots": 44,
+    "callableBytes": 2816,
+    "moduleBindings": 31,
+    "deltaFunctions": 0,
+    "deltaCaptures": 0,
+    "deltaBindings": 0,
+    "allCaptureSetsExact": true,
+    "newExports": false
+  },
+  "controls": {
+    "actualSource20": true,
+    "actualLoaderPrefix4": true,
+    "localizedBirthBoundary4": true,
+    "groups": 28,
+    "nativeObservationUncertaintyControls": 2,
+    "diagnosticPricesAndStorageOnly": true
+  },
+  "scope": {
+    "actualOriginalEntriesBorrowersDrop": true,
+    "privateSameQAndCapturedTimer": true,
+    "originalRecordsNoAddedCompanions": true,
+    "newHelpersAndHashCapturesAfterControllerQ": true,
+    "fullFreshReadCopyHashOnCacheHit": true,
+    "privateFixedBacking": true,
+    "sharedInheritedScan4096": true,
+    "rollbackOneDropPerActualVisit": true,
+    "undefinedFalsePrimaryPreserved": true,
+    "unobservableNativeRequestsRetainedUntilGenuineCallback": true,
+    "closedControllerQRetained": true,
+    "preQAdditiveSourceModuleLiveObjects": "NONE under authored live-object ABI; source/code/VM compilation UNMEASURED",
+    "literalPool": "Per funded constructor/start/visit/caller occurrence ownership must be derived; no interning/free-string assumption",
+    "entrySelectorGuardActivationAndChangedCaptures": "Prospective caller liability; not paid retroactively by controller reserve",
+    "allFundingAndWorkNull": true,
+    "loaderPrivateColdBuildersByteExactM": true,
+    "fullCold": false,
+    "genericLegacyAdmission": false,
+    "wholeHost": false,
+    "browserDOM": false,
+    "nativeMain": false,
+    "MainGate": false,
+    "P05": "OPEN"
+  },
+  "next": "Complete bootstrap219 component named work and logical ownership/caller proposal, independently review, then select only that bounded successor; no original R reset or future prepayment",
+  "knownHeld": [
+    "Complete Source/controller/pending/caller/loader allowances and work rows not yet derived or selected",
+    "Actual original loader/caller initial prefix funding and native callback scope are separate prospective obligations",
+    "Generic legacy Source shape/ownRecord/admission and post-R PB/Host are not qualified by this opt-in protocol",
+    "Returned synchronous release facade caller work/lifetime remains to be derived",
+    "Unobservable post-return native work has no force-repair path and deliberately retains job/input/Q/scope",
+    "Root builder/surface/G integrations and fullMain remain separately held"
+  ]
+}

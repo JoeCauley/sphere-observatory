@@ -1,0 +1,110 @@
+{
+  "status": "REVIEWED_CORRECTED_FUNCTIONAL_PREPARATION_JOIN_FULL_MAIN_HELD",
+  "proofs": [
+    {
+      "path": "proof-01-CHECK-12.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-preparation-join-2026-10-23-01\\CHECK-12.json",
+        "bytes": 4115,
+        "sha256": "100a1297bf121e48892f2c05292421b799406b6229f9cfc100a31532f61c561c"
+      }
+    },
+    {
+      "path": "proof-02-CHECK-01.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-preparation-join-2026-10-23-01\\independent-review-01\\CHECK-01.json",
+        "bytes": 5041,
+        "sha256": "c0da5c89c8e2d213b8b5da2de8dcb2b7dd3db74e740949723d8cee4f0c33cf9a"
+      }
+    },
+    {
+      "path": "proof-03-CHECK-06.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v9-preparation-join-2026-10-23-01\\CHECK-06.json",
+        "bytes": 9298,
+        "sha256": "6b8da1aec33de9c5d71538bdd47dd9108a47c66ac7339356f3480a99bc0dfb68"
+      }
+    },
+    {
+      "path": "proof-04-CHECK-06.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\author-01\\CHECK-06.json",
+        "bytes": 7308,
+        "sha256": "5f33b7acca2a07072cae2c102d3c8f42c7b4607fe6843d2f7da361cf936405d7"
+      }
+    },
+    {
+      "path": "proof-05-CHECK-01.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-source-localization-2026-10-23-01\\independent-review-01\\CHECK-01.json",
+        "bytes": 4882,
+        "sha256": "7f1d5b1dc6102e3983b1a9c458b147f47a7053ea82566cbc25f5284ae8cde64a"
+      }
+    },
+    {
+      "path": "proof-06-CHECK-02.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\CHECK-02.json",
+        "bytes": 19366,
+        "sha256": "044403597d345620f34571f0c5ae4f2f894fee180959678c51bb2b1b42aa2397"
+      }
+    },
+    {
+      "path": "proof-07-CHECK-01.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\independent-review-01\\CHECK-01.json",
+        "bytes": 9133,
+        "sha256": "da226817fe605138212c40ca47375db96e63a9cc7240610aa55b0d89fbbce054"
+      }
+    },
+    {
+      "path": "proof-08-CHECK-01.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\independent-review-02\\CHECK-01.json",
+        "bytes": 9273,
+        "sha256": "2a89d1786ef0b1ca2944e0a9d8bca6476744acb5d48c5c2c8f397c4adb5007da"
+      }
+    },
+    {
+      "path": "proof-09-CHECK-02.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-finite-target-join-2026-10-23-01\\CHECK-02.json",
+        "bytes": 2124,
+        "sha256": "929cc8f92a65d966916df089c7eed27fac0e54f2b18d38110370966c5d67f9ed"
+      }
+    },
+    {
+      "path": "proof-10-CHECK-01.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-finite-target-join-2026-10-23-01\\independent-review-02\\CHECK-01.json",
+        "bytes": 2968,
+        "sha256": "404fc0285984060a896ff2f2880108bb5c74211bf064c12cc03eaad2ec94a0bd"
+      }
+    },
+    {
+      "path": "proof-11-CHECK-04.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-preview-demand-2026-10-23-01\\CHECK-04.json",
+        "bytes": 1588,
+        "sha256": "8a27c03a1a815a1e3ab8e4622a48ac2be2543c826f439917b17506c568a0559f"
+      }
+    },
+    {
+      "path": "proof-12-CHECK-01.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-preview-demand-2026-10-23-01\\independent-review-02\\CHECK-01.json",
+        "bytes": 3934,
+        "sha256": "92d1537b90f734c27c1a996d48f1e5138f0799962cf0925119ab558f5391b052"
+      }
+    },
+    {
+      "path": "proof-13-CHECK-03.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-full-host-vector-2026-10-23-01\\CHECK-03.json",
+        "bytes": 8087,
+        "sha256": "8791b81b8622a9eb81c8f925fb5af068cb3ed0bb8c072419f038dffc0b7151ad"
+      }
+    }
+  ],
+  "rawArchives": "Preserved locally; only selected source/progress records published"
+}

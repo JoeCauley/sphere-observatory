@@ -1,0 +1,160 @@
+{
+  "status": "PASS_BOUNDED_READ_ONLY_HOST_VECTOR_DERIVATION_WITH_EXPLICIT_UNFILLED_PARENT_INPUTS",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00/main-v8-reuse-join-2026-10-23-01/candidate-01/source",
+  "sourceFiles": 521,
+  "exactCurrentSourceUnchanged": true,
+  "modelGroups": 14,
+  "plan": "Actual current source pure plan; saved initial Core/aspect observation only",
+  "knownBytes": {
+    "content": 135570668,
+    "imageSerialNormalPhaseSubtotal": 22095878,
+    "selectedImageAllocationUnion": 67480236,
+    "FinishTransient": 1572864,
+    "hostCpuCacheUpperUnion": 119296,
+    "publicBindingHostCpu": 420
+  },
+  "newConcreteInputs": [
+    "actual native viewport/linear support/Surface channel bits",
+    "finite Root generation owner join plus all current/preparing/retiring descriptors",
+    "active selected cavity dust draw/use ownership and complete Atmo held-row budget",
+    "PreviewLight constructor worker/realm/source/clone/lifetime admission",
+    "whole joined Q/foundation/controller/caller source reservations",
+    "actual admitted provider owner set and retained preparation vectors"
+  ],
+  "authority": "Pure formulas do not authenticate caller data; forthcoming private builder must get values from original retained Renderer/Surface/Root/PH/Base/Input parents. No arbitrary cap or missing-owner zero is selected.",
+  "preservedFailures": [
+    "supersede-vector-02.cjs: exact needle case typo before new output writes; supersede03 corrects only case",
+    "test-stage-formulas-01.cjs: hand expected6461287 wrong; actual7*(640*480+641*480+641*481)=6462407; test02 corrects expected only",
+    "exploratory reads of nonexistent main-geometry-snapshot-owner.js and main-local-shadow-owner.js; actual modules are main-prepared-geometry-snapshot.js and local-shadows.js, no product finding"
+  ],
+  "scope": {
+    "sourceEdits": 0,
+    "browser": 0,
+    "server": 0,
+    "Git": 0,
+    "actualMainRuns": 0,
+    "nativeHeap": null,
+    "driverBytes": null,
+    "hostLimitSelection": null,
+    "workPrices": null,
+    "Frame": "UNQUALIFIED",
+    "P05": "OPEN"
+  },
+  "artifacts": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-full-host-vector-2026-10-23-01/CHECK-01.json",
+      "bytes": 2422,
+      "sha256": "345dd337d3f8b736838ae87be6b64052795eb58cb1ada785f179183149e4eb8d"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-full-host-vector-2026-10-23-01/CHECK-02.json",
+      "bytes": 2422,
+      "sha256": "19a183f9a3712973fe1f758acb977c56aa16e0f13c9e0c2e10402111d6269d70"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-full-host-vector-2026-10-23-01/READ-FIRST.md",
+      "bytes": 12204,
+      "sha256": "2648bfc097c960f1186849fc218bdc7f872271620b73f8a855fd2559e7d7792d"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-full-host-vector-2026-10-23-01/controls-01.json",
+      "bytes": 740,
+      "sha256": "a4ef2d6a36b323c2c9c08e979efe3dc091f738b345bfff9d3409b349d330baa8"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-full-host-vector-2026-10-23-01/controls-02.json",
+      "bytes": 839,
+      "sha256": "8f6746fcdad407c07398208094aa4012f019d393f877f1cb8090a95202555033"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-full-host-vector-2026-10-23-01/derive-vector-01.cjs",
+      "bytes": 21170,
+      "sha256": "50e8d35ff10742ac1a815b1fc027c671bc3e521c1275c1f260c18da2443e7f94"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-full-host-vector-2026-10-23-01/derive-vector-02.cjs",
+      "bytes": 22757,
+      "sha256": "010a43af5505a585b0e239116a08813c92e07e690f406058d9e50968b155831f"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-full-host-vector-2026-10-23-01/formula-controls-02.json",
+      "bytes": 2260,
+      "sha256": "8d9e2420aca6a502b69d785a8435d448793082cb84c912bd29733544b691f294"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-full-host-vector-2026-10-23-01/formula-test-disposition-02.json",
+      "bytes": 283,
+      "sha256": "38d082596c85848e2f21e05900887a7336d4a30a7ad9a1bb4a5f4a3ae872ebd1"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-full-host-vector-2026-10-23-01/preparation-failure-disposition-03.json",
+      "bytes": 295,
+      "sha256": "53ef3b7590f2bec897c80d543e2caf178b57ce7a0acb5d773db34cced7287764"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-full-host-vector-2026-10-23-01/seal-03.cjs",
+      "bytes": 3050,
+      "sha256": "490148205788c7aa0480a409cc65f108ae845c3fd10f46ca0a3bef694ed2a2ab"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-full-host-vector-2026-10-23-01/source-pins-01.json",
+      "bytes": 151538,
+      "sha256": "2f5a3650cf2bf6c0374a127e3edf47cfd4a60734a3f4a1a0232ce8445b02ed51"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-full-host-vector-2026-10-23-01/source-pins-02.json",
+      "bytes": 151538,
+      "sha256": "2f5a3650cf2bf6c0374a127e3edf47cfd4a60734a3f4a1a0232ce8445b02ed51"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-full-host-vector-2026-10-23-01/source-pointers-01.json",
+      "bytes": 8115,
+      "sha256": "10543cd09db9d0ab21732d6a3e31117b669802226ddc0e0d6adb6f0b54877c03"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-full-host-vector-2026-10-23-01/source-pointers-02.json",
+      "bytes": 8115,
+      "sha256": "10543cd09db9d0ab21732d6a3e31117b669802226ddc0e0d6adb6f0b54877c03"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-full-host-vector-2026-10-23-01/stage-admission-formulas-01.cjs",
+      "bytes": 3303,
+      "sha256": "560f3fd6219d33b09bb992f83c9ae9f6d7c6c63a5e984abe2ffd04ed94fba5f0"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-full-host-vector-2026-10-23-01/stage-vector-01.json",
+      "bytes": 16762,
+      "sha256": "3e2ef571f2648eef42bad128255943a49107a7070b61cb6d6305014a9efa0148"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-full-host-vector-2026-10-23-01/stage-vector-02.json",
+      "bytes": 18041,
+      "sha256": "274768b013eb9b92ca557bf8731ed37d2bd41a576f6a080fa9e06e5a0f49e21b"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-full-host-vector-2026-10-23-01/supersede-vector-02.cjs",
+      "bytes": 4719,
+      "sha256": "45b87c7eb5d84413e7e14fa5ef8a88fa955be9489a2f9419d84b073fc05582e7"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-full-host-vector-2026-10-23-01/supersede-vector-03.cjs",
+      "bytes": 878,
+      "sha256": "b7cdf4666ec846185e3e5cb16e95c4520d57ea885ef215869f65aef0a494da1f"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-full-host-vector-2026-10-23-01/superseder-disposition-02.json",
+      "bytes": 4003,
+      "sha256": "d24317c40269ba0cce6c45edb6ce6b20e78487bf1ba92a7894d1504365f494d6"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-full-host-vector-2026-10-23-01/test-stage-formulas-01.cjs",
+      "bytes": 2159,
+      "sha256": "576469057bd3df08ad725791303d1ed22d2e31bfab39440b1afe84c58c1e63d1"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-full-host-vector-2026-10-23-01/test-stage-formulas-02.cjs",
+      "bytes": 822,
+      "sha256": "73a0090a6a3e52feb2128f173056fa4843a0f9e957d8137f0b02e7a21d3fbb13"
+    }
+  ]
+}
