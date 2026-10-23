@@ -1,0 +1,68 @@
+{
+  "status": "PASS_UNSELECTED_ROOT22_COMBINED_SOURCE_AND_DEFINITION_MODEL",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v22-staged-reuse-resource-join-2026-10-23-01\\candidate-02\\source",
+  "files": 522,
+  "parses": 426,
+  "changed": [
+    "biome-service/native/resource-leases.js",
+    "biome-service/native/strict-record-owner.js",
+    "biome-service/numeric-profile.js",
+    "owned-main-bootstrap.js"
+  ],
+  "other518ParentFilesExact": true,
+  "sequentialLoaderInverseHunks": 55,
+  "loader": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v22-staged-reuse-resource-join-2026-10-23-01\\candidate-02\\source\\owned-main-bootstrap.js",
+    "bytes": 258155,
+    "sha256": "e2296dee91aa19efe812ca2bef33a3568edd9142a22f305e689b7767a8d01a69"
+  },
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "rows": 222,
+      "digest": "fdbc104059d03c6f0f3ba8b0890ab600be8ec59fe61a9e4f5b0036d17c8a0551"
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "rows": 5,
+      "digest": "723bcf2764bdb0307bc0044823bd5efa17434e0bde352a654e20c5dbbdc37d66"
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "rows": 9,
+      "digest": "ef3e0c2a8e6b3a4123cbb23f29243f888e6bd7cc7692cbc6baf67243f2616f6b"
+    }
+  ],
+  "freshSourceReads": 236,
+  "sourceCopies": 222,
+  "sourceOnlyPeak": 13394916,
+  "sourceOnlyFinalQ": {
+    "heldBytes": 0,
+    "requestedBytes": 0,
+    "bookkeepingBytes": 0,
+    "peakBytes": 13394916,
+    "limitBytes": 33554432,
+    "liveReservations": 0,
+    "maximumReservations": 4096,
+    "owners": [],
+    "scope": "CONSERVATIVE_LOGICAL_METADATA_ADMISSION",
+    "nativeHeap": "UNMEASURED"
+  },
+  "orderRows": 218,
+  "storageIndex": 172,
+  "control": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v22-staged-reuse-resource-join-2026-10-23-01\\missing-module-controls-07.json",
+    "bytes": 1606,
+    "sha256": "d787ff564cfbe9afd1643130977f232138b05618dc70944000b080ded860c515"
+  },
+  "sourceByteAndCaptureProofOnly": true,
+  "diagnosticDefinitionModuleGuardProjection": 1,
+  "trustedFoundationCountInModel": 6,
+  "prepareOpsPerSlice": 4096,
+  "uploadBytesPerFrame": 262144,
+  "jobs": 2,
+  "metadataCap": 33554432,
+  "allNewAmounts": null,
+  "Main": false,
+  "P05": "OPEN"
+}

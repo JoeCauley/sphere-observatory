@@ -1,3 +1,5 @@
+> Current progress: [Main staged state reuse and bounded display preparation](docs/Observatory-Main-Staged-State-Reuse-2026-10-23.md). Current222-row source join and scoped controls pass; complete work/ownership/native Main remain held and P05 OPEN.
+
 > Current progress: [Main retained-state startup and Kernel handoff](docs/Observatory-Main-Retained-State-Startup-2026-10-23.md). Original Host/Binding/Kernel handoffs pass scoped checks; complete work/ownership/native Main remain held and P05 OPEN.
 
 > Current progress: [Main resource inputs, completion and reuse](docs/Observatory-Main-Resource-Startup-2026-10-23.md). The joined source is functionally checked; complete funding/native Main remain held and P05 OPEN.

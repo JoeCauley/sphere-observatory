@@ -1,0 +1,431 @@
+{
+  "status": "PASS_UNSELECTED_PRIVATE_OWNED_HOST_COMPONENT",
+  "physicalOverlay": {
+    "root": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-host-consumer-2026-10-23-01\\candidate-03\\source",
+    "files": 1
+  },
+  "readOnlyAssembly": {
+    "base": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\candidate-02\\source",
+    "bridge": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-host-kernel-reuse-bridge-2026-10-23-01\\candidate-02\\source",
+    "numeric": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-02\\candidate-01\\source",
+    "assembled": 522,
+    "parses": {
+      "js": 387,
+      "cjs": 38,
+      "mjs": 1,
+      "total": 426
+    },
+    "notCurrentRootV17": true
+  },
+  "host": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-host-consumer-2026-10-23-01\\candidate-03\\source\\biome-service\\host-world.js",
+    "bytes": 71645,
+    "sha256": "5bb10ee14f775c2d041b9e4ea444a6cf98a25263d8e4c656aa6a0896c2903c00"
+  },
+  "inverseToExactBridge": true,
+  "preservedOriginalFunctions": [
+    {
+      "name": "fail",
+      "type": "FunctionDeclaration",
+      "sha256": "b971af0f5f5b79817051285f4f0120cb48897b8727c0f382b53091716e2e6a40"
+    },
+    {
+      "name": "exactKeys",
+      "type": "FunctionDeclaration",
+      "sha256": "4455ae2e07f5c1b204e6578a7c9919b5181ae09408069e346798df03619a5603"
+    },
+    {
+      "name": "scalar",
+      "type": "FunctionDeclaration",
+      "sha256": "5f5f37e630176f98afc046bf1df19f963b41209bf8c07567e7dea741f3c81459"
+    },
+    {
+      "name": "vector",
+      "type": "FunctionDeclaration",
+      "sha256": "91b514bafa127a7fe36f9307f762f520c43e7326805b549e8d76b9af991e0c2c"
+    },
+    {
+      "name": "level",
+      "type": "FunctionDeclaration",
+      "sha256": "3b403f053133a8370ab2f78361dd8a340e64a76df0984c51525c81039822d8c7"
+    },
+    {
+      "name": "profileShape",
+      "type": "FunctionDeclaration",
+      "sha256": "2a453a72a98e58de5496d119dee1969697b71cf7661848aff9d9b14cdab69e0f"
+    },
+    {
+      "name": "originalHostOwn",
+      "type": "FunctionDeclaration",
+      "sha256": "ffd29645f8baffd4759d56e3d3aa2e3b6e202094183350790ce8bcc0d01e9eb3"
+    },
+    {
+      "name": "originalHostDataSnapshot",
+      "type": "FunctionDeclaration",
+      "sha256": "8d41a4078d0e96697badf47f9faac4d1aee04e4cb884738d6b5c843964def396"
+    },
+    {
+      "name": "remember",
+      "type": "FunctionDeclaration",
+      "sha256": "735763ce8ba375e6f59764cf438545db93f330c78e56d67e2140a612577e206b"
+    },
+    {
+      "name": "number",
+      "type": "FunctionDeclaration",
+      "sha256": "37bc7682bb84e7f9ba18180878e5d35629bbb668acd03585389b562f1e175522"
+    },
+    {
+      "name": "vector",
+      "type": "FunctionDeclaration",
+      "sha256": "009878c6192adc2f0fdd985590692c4b179bff1acde521f076a4c6f53ebb4435"
+    },
+    {
+      "name": "originalHostDataCurrent",
+      "type": "FunctionDeclaration",
+      "sha256": "1710efb80f67eb4390645ce80f61d03e6959e44490356278d104fc0e830a5bea"
+    },
+    {
+      "name": "beginOriginalHostReuse",
+      "type": "FunctionDeclaration",
+      "sha256": "387c87122aec0032d02bd38e2ca4026b8c67641e8baab3c4393b8d91d1fcaf3d"
+    },
+    {
+      "name": "publishOriginalHostReuse",
+      "type": "FunctionDeclaration",
+      "sha256": "58abc0ebd53c73bf3e835874c541bd3ca2d31dccb0a427f64925eaa9fff6388f"
+    },
+    {
+      "name": "failOriginalHostReuse",
+      "type": "FunctionDeclaration",
+      "sha256": "fd07f838e4b8dc1929a4c0b5d2d6769d92521af801a79fab8a9bf0eeb59851c4"
+    },
+    {
+      "name": "originalHostReuseCurrent",
+      "type": "FunctionDeclaration",
+      "sha256": "2875bc3a84cf3f09aac5f67f23e056d4ec0b4fcfb2458f917106944bc3158fee"
+    },
+    {
+      "name": "originalHostReuseAcquire",
+      "type": "FunctionDeclaration",
+      "sha256": "685d5d175eb6967eed6822a6de7523b37b2608e911cd48cbceda6596a7f9c886"
+    },
+    {
+      "name": "releaseOriginalHostReuse",
+      "type": "FunctionDeclaration",
+      "sha256": "1fecb75339ce688c19fc437bee611a7662b78f61f00421a801b656f9eca2d83c"
+    },
+    {
+      "name": "closeOriginalHostReuse",
+      "type": "FunctionDeclaration",
+      "sha256": "aa59bc1e288bfc122ecf913d700d37a61670dd32ef8d06544a05a0346471c3a0"
+    },
+    {
+      "name": "create",
+      "type": "FunctionExpression",
+      "sha256": "923ff8cad52eecba06ff9cac576f6067878f229b0b8820a2b8243389beb9f6d1"
+    },
+    {
+      "name": "check",
+      "type": "FunctionExpression",
+      "sha256": "61f348ffa3559ffe895bfd64da0ac822a9bd2969f98ef91c1d4c32f17a9e515d"
+    },
+    {
+      "name": "isCreated",
+      "type": "ArrowFunctionExpression",
+      "sha256": "f4d1fc1b050667393efcfd7a0786737a408d0ab744d31a19a99a0d4a138c7bb0"
+    },
+    {
+      "name": "inspect",
+      "type": "FunctionExpression",
+      "sha256": "b8ed163d4113df488ffbd6e85d30d9be108e324194b0fbefc5e55bd95ac558d0"
+    },
+    {
+      "name": "create",
+      "type": "FunctionDeclaration",
+      "sha256": "55b4836b0ee488b235ce6e9022679a6d65adefee6d1afc24319d5c4cb2e27c94"
+    },
+    {
+      "name": "staticFromCore",
+      "type": "FunctionDeclaration",
+      "sha256": "9e37da68bee5915ac9a164a9cb7fc6b8de432a1566eb5a7525f9e962393e3fee"
+    },
+    {
+      "name": "restoreStatic",
+      "type": "FunctionDeclaration",
+      "sha256": "5f2a8d5342174be001e57696a459bf617cb2824d49561ede88a0b1cb8d988650"
+    },
+    {
+      "name": "geographyProfile",
+      "type": "FunctionDeclaration",
+      "sha256": "a3bd9c2af641d1369155e4f8d539b3cba92f660efbf5afe7cbdecf35cc349712"
+    },
+    {
+      "name": "trackProfile",
+      "type": "FunctionDeclaration",
+      "sha256": "c804fcca889c19bdbe830354773f5fd3d9f1f90af9b9f5a35f08c36375f5546f"
+    },
+    {
+      "name": "protectionProfile",
+      "type": "FunctionDeclaration",
+      "sha256": "2a8acfed8f2313f13a8f941e7d4c165293dfe6acd5d6f86aca676210ebe98377"
+    },
+    {
+      "name": "metadataFor",
+      "type": "FunctionDeclaration",
+      "sha256": "2af04d86733ba853529987d75ccd0cac62c791b7f69db95234439fb2ee451a59"
+    },
+    {
+      "name": "targetId",
+      "type": "FunctionDeclaration",
+      "sha256": "9a5ba4afa608b320a8e368b951db67b2efa19ce248145a5a985c5ec103f9f037"
+    },
+    {
+      "name": "captureCurrentWorld",
+      "type": "FunctionDeclaration",
+      "sha256": "073606bd15ff8ad999989ac9fdb51adb36615fa6024b9058929dac522c148ee1"
+    },
+    {
+      "name": "validateSnapshot",
+      "type": "FunctionDeclaration",
+      "sha256": "311b7ef2d260d2adacff14e7219d5e4f25aaa467954d743949de8ddaabe2d192"
+    },
+    {
+      "name": "context",
+      "type": "FunctionDeclaration",
+      "sha256": "9e956d7bb842bb32cfa1f05804d4a8e91a1557965debef66a600c98e282d5497"
+    },
+    {
+      "name": "metadata",
+      "type": "FunctionDeclaration",
+      "sha256": "ae55360c0196b69082651fe9ec7f0d77d0a51bb6c1fb89a6c62037cf92733a8a"
+    },
+    {
+      "name": "canonicalizeShellAddress",
+      "type": "FunctionDeclaration",
+      "sha256": "17d4f77fa7225d2b20b524d88161f7cd8fada1eee6c18e150f92d20740f0dad3"
+    },
+    {
+      "name": "addressForDirection",
+      "type": "FunctionDeclaration",
+      "sha256": "d1c3db082c973934fae46a20e739e4961063b1d96ebf6be284c164b008b92c11"
+    },
+    {
+      "name": "addressFromCorePose",
+      "type": "FunctionDeclaration",
+      "sha256": "c2df732d059d5a656d4e07c725beb1d6f3cd0681a571272d908d6f2f9fa51abd"
+    },
+    {
+      "name": "corePoseFromAddress",
+      "type": "FunctionDeclaration",
+      "sha256": "07ae26b09ea3187815f8b05c3855734a80ea99eea2a8ca8db6c062abf14ebebd"
+    },
+    {
+      "name": "fixedRegionFrame",
+      "type": "FunctionDeclaration",
+      "sha256": "4a846b9261af0fa1833770bef921497bda342cffaecedc9f0c7794095f19b13b"
+    },
+    {
+      "name": "direction",
+      "type": "ArrowFunctionExpression",
+      "sha256": "773d4a129488ae89436803415b8606b6fee646d89765b0d9b3f4d894a0b48fc6"
+    },
+    {
+      "name": "checkFrame",
+      "type": "FunctionDeclaration",
+      "sha256": "d5dc5cd3b693c5cb7f872122954cf0a0564a548d31abb984f330461694b582ec"
+    },
+    {
+      "name": "direction",
+      "type": "ArrowFunctionExpression",
+      "sha256": "f9c9fa2c66bc2116815c2b2f1d271e0ffeae85ad75dcb034b60fc65cd750ba24"
+    },
+    {
+      "name": "generatorCoordinates",
+      "type": "FunctionDeclaration",
+      "sha256": "ec1c407e610a61fc12167bcef51089a51de06730cd45c77c13a881c6bd3d323e"
+    },
+    {
+      "name": "directionFromGenerator",
+      "type": "FunctionDeclaration",
+      "sha256": "9efef2f480382ec5cffbff9db0e6a7533f3cc05e77f56a479a7f9dfb229def69"
+    },
+    {
+      "name": "surfacePointM",
+      "type": "FunctionDeclaration",
+      "sha256": "3227eb019635e3c5a7a99ef0e15493060771157033aa21b8f6c28b25563acc19"
+    },
+    {
+      "name": "gpuDelta",
+      "type": "FunctionDeclaration",
+      "sha256": "e2b0a48e2efab16afe4328b0080f05fecb85ad37134b4589da33efba4f9ffa23"
+    },
+    {
+      "name": "legacySurface",
+      "type": "FunctionDeclaration",
+      "sha256": "f0e873b73200c307ec8c1f7f58a12350ca820feb9a40375d9f8d143664a2a4b4"
+    },
+    {
+      "name": "lightAt",
+      "type": "FunctionDeclaration",
+      "sha256": "ee6bb903fc621c75ae844f4b0c205fe78947f8ba909e467584980bc17f6eb6f8"
+    },
+    {
+      "name": "windAt",
+      "type": "FunctionDeclaration",
+      "sha256": "a6edb7680c00135c2954b6112367e7c3af8cbf5c39ae086b6fbf9a708d517904"
+    },
+    {
+      "name": "retainedInputs",
+      "type": "FunctionExpression",
+      "sha256": "f54b389fb481fe6a080f96749443962cee798bae7b66eadbb7896fd97516274c"
+    }
+  ],
+  "copiedOriginalFactory": {
+    "sha256": "9c8f94b6fa4379319764d5812dedbea0b79c8628500459aafb449c74fe5eee3c",
+    "bytes": 17080,
+    "exact": true
+  },
+  "functional": {
+    "cases": 19,
+    "controls": [
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-host-consumer-2026-10-23-01\\controls-02\\control-happy-03.json",
+        "sha256": "5a7588f305ac3b09e139e31c65aa0c4692190c949597d4ce7cf11810135cd7a1",
+        "case": "happy",
+        "groups": 4
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-host-consumer-2026-10-23-01\\controls-02\\control-nullGuard-03.json",
+        "sha256": "cb355ee7ab600fd46be84ab5f78008e1c5ca756765b593de6376ee49213b9f07",
+        "case": "nullGuard",
+        "groups": 1
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-host-consumer-2026-10-23-01\\controls-02\\control-sourceChanged-03.json",
+        "sha256": "331ab8300e67e7b6dd4775d8d79d00dac94f0c1946561eedf7906ffd9bc3cc49",
+        "case": "sourceChanged",
+        "groups": 3
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-host-consumer-2026-10-23-01\\controls-02\\control-pendingClose-03.json",
+        "sha256": "1f4f2ba6df9a9025c373732b379d1668eb06409d7159349b25fca3e3f859bd95",
+        "case": "pendingClose",
+        "groups": 3
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-host-consumer-2026-10-23-01\\controls-02\\control-rejectNull-03.json",
+        "sha256": "4cfe5c9fd332810c6ad93f2b1cd79071005267cad3c1e4593d248fe350355c5c",
+        "case": "rejectNull",
+        "groups": 3
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-host-consumer-2026-10-23-01\\controls-02\\control-rejectFalse-03.json",
+        "sha256": "8ca629d8797a1e03a411aa0d282d2b6efa563fb12fd9b6019ecfbc116fa2ee15",
+        "case": "rejectFalse",
+        "groups": 3
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-host-consumer-2026-10-23-01\\controls-02\\control-rejectUndefined-03.json",
+        "sha256": "401b287cba90546cf44b505971cbd724af6c5fa0558fea2398c34189c4fbcf2e",
+        "case": "rejectUndefined",
+        "groups": 3
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-host-consumer-2026-10-23-01\\controls-03\\control-wrongQ-04.json",
+        "sha256": "4ceb14055badf6f37c1798debd9211faa2d48354712d492c601f3aa6e9773521",
+        "case": "wrongQ",
+        "groups": 3
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-host-consumer-2026-10-23-01\\controls-03\\control-wrongOperation-04.json",
+        "sha256": "7c38b852c15973cacbd549d9c0796eb1b07655bb8dd86c0a275b74cf62547602",
+        "case": "wrongOperation",
+        "groups": 2
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-host-consumer-2026-10-23-01\\controls-03\\control-nestedIdentity-04.json",
+        "sha256": "822c724c64503ad19eaf2a16e42a9ad2b2bede0d63139aab5b7114615a34127d",
+        "case": "nestedIdentity",
+        "groups": 2
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-host-consumer-2026-10-23-01\\controls-03\\control-badHeader-04.json",
+        "sha256": "ccb4bed5f6f3d75e9fa981c846845505b8b51468099788d87b446a9e404a6194",
+        "case": "badHeader",
+        "groups": 3
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-host-consumer-2026-10-23-01\\controls-03\\control-badCapability-04.json",
+        "sha256": "67063f0b2b198ad881f8844f5b9b48c736b3edfe841ae8a543aee1aff1b28379",
+        "case": "badCapability",
+        "groups": 3
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-host-consumer-2026-10-23-01\\controls-03\\control-badClosure-04.json",
+        "sha256": "b16acdb9ddeeda6032d3f09948e7ab0c635735957ab10490ca58c9d6465e38f1",
+        "case": "badClosure",
+        "groups": 3
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-host-consumer-2026-10-23-01\\controls-03\\control-dependencyChanged-04.json",
+        "sha256": "305cb1b72843729d8c392d555307f08765c6f0be675719daa6ece0f36211f629",
+        "case": "dependencyChanged",
+        "groups": 3
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-host-consumer-2026-10-23-01\\controls-03\\control-dataChanged-04.json",
+        "sha256": "72c315f924f07332c20b8ee0ab5456b2e4245d4155389d3f7e658536da379333",
+        "case": "dataChanged",
+        "groups": 3
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-host-consumer-2026-10-23-01\\controls-03\\control-moduleChanged-04.json",
+        "sha256": "d0ac93983825751b7d8cd07ca27b05df10539aed9913ad8755cad20024a6ef64",
+        "case": "moduleChanged",
+        "groups": 3
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-host-consumer-2026-10-23-01\\controls-03\\control-hashObservationFailure-04.json",
+        "sha256": "44f2358bdefd9c2b3ff34d5c07662afbecfbde91174090821783354fc36e432f",
+        "case": "hashObservationFailure",
+        "groups": 3
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-host-consumer-2026-10-23-01\\controls-03\\control-fetchObservationFailure-04.json",
+        "sha256": "a612fe3c952055b2e2e36f64b99f29d12cc6d6a2ec4f92a5adc6b368f1a30fd5",
+        "case": "fetchObservationFailure",
+        "groups": 3
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-host-consumer-2026-10-23-01\\controls-03\\control-kernelRefusal-04.json",
+        "sha256": "3427eabdc69ddfd8b16c548a74925c3e4ef667f8926adcc2b72667f053003356",
+        "case": "kernelRefusal",
+        "groups": 5
+      }
+    ],
+    "adapters": "Registration recipient and fixed Node source-reader; actual private DOM loader/timer/caller not integrated",
+    "actualOriginal": "Host/StrictC4/NumericC2/Source/Q/Records bodies; actual native WebCrypto/Promise under Node",
+    "nativeMain": false
+  },
+  "profiles": {
+    "metadataRecordsOnly": true,
+    "graph": 221,
+    "Surface": 5,
+    "helper": 9,
+    "freshReads": 235,
+    "allSourceOwnedStateDisposedOnlyAtEnd": true,
+    "loaderProductLiteralsStale": true
+  },
+  "sourceOwnerOriginalCounts": "522files/426JS family is this exact virtual component assembly only; physical candidate03 is one Host file. Later current root composition requires all profile/order/module additions and fresh source pins.",
+  "storage": "review-01/positive-storage-01.json distinguishes actual positive records/captures from arbitrary test reservations. No complete funding or32MiB current startup certificate.",
+  "work": "review-01/work-boundaries-01.json exact executable phases and held children; no selected prices.",
+  "Main": false,
+  "P05": "OPEN",
+  "holds": [
+    "Genuine private loader binding/paid stage/native observer/caller/close composition",
+    "Complete current Strict/Numeric/Host module/controller/entry/instance/caller/storage/work union",
+    "Post-R staged Kernel reuse required; old synchronous route refuses this new Host",
+    "Current root profiles/source/evaluation order and all original mutable/native/lease constraints",
+    "Native/VM/compiler/backing/physical heap, full host/wholeMain/P05"
+  ]
+}

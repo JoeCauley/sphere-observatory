@@ -1,0 +1,71 @@
+{
+  "status": "PASS_UNSELECTED_DUST_RESOLVE_SOURCE_COMPONENT",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v20-dust-resolve-scope-2026-10-23-01\\candidate-02\\source",
+  "sourceFiles": 522,
+  "parses": 426,
+  "changed": [
+    "atmosphere.js",
+    "biome-service/native/main-atmosphere-storage-owner.js",
+    "biome-service/native/main-baseline-resource-records.js",
+    "owned-main-bootstrap.js",
+    "renderer.js"
+  ],
+  "other517ParentFilesExact": true,
+  "allSequentialInverseHunks": 30,
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "rows": 221,
+      "digest": "bdbf248b5572fe2e1ff1d9558e24bfa1df2bc335f9f0e419aa69d13db5215388"
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "rows": 5,
+      "digest": "7fc38d82701342f73c6091989c0b613b7d6af9cce8677fde6dbae36e5ca8a286"
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "rows": 9,
+      "digest": "165eed39f1d2b73bb2ac2ed37412fe53cb940ff25d25325863b1e43cfc980902"
+    }
+  ],
+  "freshSourceReads": 235,
+  "sourceCopies": 221,
+  "sourceOnlyPeak": 13337503,
+  "sourceOnlyQAfterExplicitDisposal": {
+    "heldBytes": 0,
+    "requestedBytes": 0,
+    "bookkeepingBytes": 0,
+    "peakBytes": 13337503,
+    "limitBytes": 33554432,
+    "liveReservations": 0,
+    "maximumReservations": 4096,
+    "owners": [],
+    "scope": "CONSERVATIVE_LOGICAL_METADATA_ADMISSION",
+    "nativeHeap": "UNMEASURED"
+  },
+  "modelCases": 16,
+  "control": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v20-dust-resolve-scope-2026-10-23-01\\dust-controls-06.json",
+    "bytes": 3028,
+    "sha256": "57ffe667a432a1f19127fd888b6c2ba970b4bb4c98b9274f4621093144302a00"
+  },
+  "liabilities": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v20-dust-resolve-scope-2026-10-23-01\\ownership-and-work-liabilities-07.json",
+    "bytes": 2212,
+    "sha256": "fffb23c7a1758f657e42a30019de4fcf9a15e2394d58de6b663b955a715a5440"
+  },
+  "existingLimitsUnchanged": {
+    "prepareOpsPerSlice": 4096,
+    "uploadBytesPerFrame": 262144,
+    "jobs": 2,
+    "storageRecords": 198,
+    "readers": 64
+  },
+  "simulationChanged": false,
+  "sourceGraphRows": 221,
+  "allProductFundingAndWork": null,
+  "programAndNativeFrame": "UNQUALIFIED",
+  "Main": false,
+  "P05": "OPEN"
+}

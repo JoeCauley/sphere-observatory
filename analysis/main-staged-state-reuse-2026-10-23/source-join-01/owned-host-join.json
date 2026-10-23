@@ -1,0 +1,91 @@
+{
+  "status": "PASS_UNSELECTED_FROZEN_OWNED_PROFILE_SOURCE_JOIN",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v19-owned-host-source-join-2026-10-23-01\\candidate-01\\source",
+  "files": 522,
+  "parses": 426,
+  "added": [
+    "biome-service/native/strict-record-owner.js"
+  ],
+  "changed": [
+    "biome-service/host-world.js",
+    "biome-service/native/surface-kernel.js",
+    "biome-service/numeric-profile.js",
+    "owned-main-bootstrap.js"
+  ],
+  "other517ParentFilesExact": true,
+  "exactFrozenOverlayPins": [
+    {
+      "path": "biome-service/numeric-profile.js",
+      "original": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-02\\candidate-01\\source\\biome-service\\numeric-profile.js",
+      "sha256": "7a9efc75bf4adbe4ecb3ab33f9a37cbb48f1a3c68dcf7479fcd59c8d0c787d4e",
+      "bytes": 33964,
+      "newFile": false
+    },
+    {
+      "path": "biome-service/native/strict-record-owner.js",
+      "original": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-02\\candidate-01\\source\\biome-service\\native\\strict-record-owner.js",
+      "sha256": "2f139cbb9edc759d6d237978db6375dbd57067f4cc4a437592631f34ace16f97",
+      "bytes": 13771,
+      "newFile": true
+    },
+    {
+      "path": "biome-service/host-world.js",
+      "original": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\candidate-02\\source\\biome-service\\host-world.js",
+      "sha256": "47d05a87cfd8ca3459503dfc16a7ca24cb8eb2e17d1a0a779b6ac63b33811fae",
+      "bytes": 75066,
+      "newFile": false
+    },
+    {
+      "path": "biome-service/native/surface-kernel.js",
+      "original": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\candidate-02\\source\\biome-service\\native\\surface-kernel.js",
+      "sha256": "80d3e0a19de15494fb809e65e76e1b92c7d586a69d62e35c4625f3da3c9dbc62",
+      "bytes": 73433,
+      "newFile": false
+    }
+  ],
+  "exactLoaderInverseHunks": 6,
+  "orderRows": 216,
+  "graphRows": 221,
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "rows": 221,
+      "digest": "dad29a3cb19c7e42dd7ccde2fdaeb15c4cf1ecb6ce9040a7f16af12072f5916c"
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "rows": 5,
+      "digest": "04cff510ad4d20ec09d314707774ca6fbcfbfc2f4745a6716322db8504a6caf0"
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "rows": 9,
+      "digest": "02e425626b14429ca05a570cc83fde590b505408cc882d07c19f8c9f22a6b69f"
+    }
+  ],
+  "freshSourceReads": 235,
+  "sourceCopies": 221,
+  "sourceOnlyPeak": 13335461,
+  "sourceOnlyQAfterExplicitDisposal": {
+    "heldBytes": 0,
+    "requestedBytes": 0,
+    "bookkeepingBytes": 0,
+    "peakBytes": 13335461,
+    "limitBytes": 33554432,
+    "liveReservations": 0,
+    "maximumReservations": 4096,
+    "owners": [],
+    "scope": "CONSERVATIVE_LOGICAL_METADATA_ADMISSION",
+    "nativeHeap": "UNMEASURED"
+  },
+  "scope": "Fresh actual Source admissions and exact frozen module composition. Source-only Q diagnostic excludes Module/entry/caller/Strict/Numeric/Host/Kernel/controller/pending/native lifetimes; it is not whole Main funding.",
+  "newModuleFundSeparateAndNull": true,
+  "oldModuleBaselineNotUsedAsSlack": true,
+  "stagedPrivateCallerWired": false,
+  "providerAggregateIncluded": false,
+  "futureStrictC5Included": false,
+  "completeWorkAndFundingSelected": false,
+  "allExistingLimitsUnchanged": true,
+  "Main": false,
+  "P05": "OPEN"
+}

@@ -1,0 +1,30 @@
+{
+  "pass": true,
+  "cutoff": 19,
+  "snapshots": 142,
+  "archiveEntriesVerified": 62484,
+  "recordsVerified": 7520,
+  "recordsAdded": 794,
+  "recordBytes": 266168468,
+  "freshRestore": {
+    "snapshot": "main-staged-resource-join-unselected-c2",
+    "destination": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v22-staged-reuse-progress-2026-10-23-01\\restored-check-19\\source",
+    "files": 522,
+    "verified": true
+  },
+  "earlier108Snapshots6726RecordsExact": true,
+  "restorerUnchanged": true,
+  "currentReadmeUTF8": true,
+  "historicalReadmeBytesExact": true,
+  "selectedMainComponent": "main-texture-handoff-funded-c3",
+  "latestJoinedMainStartup": "main-staged-resource-join-unselected-c2",
+  "joinedMainStartupSelected": false,
+  "P05": "OPEN",
+  "excludedActive": [
+    "Full named Numeric/Strict WORK and metadata derivation author08",
+    "Native once-notification caller successor and full current Host/Kernel WORK/storage",
+    "Versioned current CommonBoundary support equivalence/nonempty Binding prerequisite",
+    "Complete coupled Main/provider demand admission, full Q/work and native Main proof"
+  ],
+  "rawArchivesRemainLocal": true
+}

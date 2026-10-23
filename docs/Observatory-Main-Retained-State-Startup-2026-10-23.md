@@ -1,3 +1,5 @@
+> Current progress: [Main staged state reuse and bounded display preparation](Observatory-Main-Staged-State-Reuse-2026-10-23.md). Current222-row source join and scoped controls pass; complete work/ownership/native Main remain held and P05 OPEN.
+
 # Main retained-state startup and Kernel handoff
 
 Main's private startup can now retain the original Host, construct the original Binding, and pass the producer's real verified release-store instance into the original Kernel. The Kernel borrows that same Host rather than rebuilding it. Its live borrow prevents the Host from closing. Separate startup phases own launch and completion, including pending promises, foreign results and failures whose raw values are false, null or undefined.

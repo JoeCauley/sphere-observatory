@@ -1,0 +1,40 @@
+{
+  "status": "READ_ONLY_POLICY_COMPLETE_EXACT_SOURCE_JOIN_PASS_NO_SELECTION",
+  "inputs": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v19-provider-host-policy-review-2026-10-23-01\\READ-ONLY-POLICY-01.md",
+      "bytes": 17383,
+      "sha256": "799ddf94faaa82e1aac2a9d8516e628b547952ae8faa827ad264d41a15fd88ac"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v19-provider-host-policy-review-2026-10-23-01\\root19-source-review-01.json",
+      "bytes": 9281,
+      "sha256": "b42a18571024720e1294bb39ef8efe4beceae0fb5e0cfce5a9ba0a5686a8ddb0"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v19-provider-host-policy-review-2026-10-23-01\\verify-root19-01.cjs",
+      "bytes": 5542,
+      "sha256": "01ca1d66bd8d9bd4dc48fb503d4f0f00dc330a000f7c700442f395d7fd59faaa"
+    }
+  ],
+  "concreteMissingEnforcement": "Current R host-target owner has the complete host caps, so provider bucket alone does not protect Main/provider headroom symmetrically.",
+  "proposal": "One R, separate seven-field Main and provider physical first-adoption partitions, unchanged singleton service; H conservatively covers M+P+S; complete authentic prospective demand ticket and paid drain/backpressure.",
+  "notEstablished": [
+    "Numeric M/P/H policy",
+    "complete local demand to Main bridge",
+    "whole Q/caller/native-prefix funding",
+    "active dust and future ordinary demand coverage",
+    "Main/native/Frame/P05"
+  ],
+  "limitsUnchanged": [
+    4096,
+    262144,
+    2,
+    33554432,
+    10485760
+  ],
+  "P05": "OPEN",
+  "sourceEdits": false,
+  "browserServerGitActions": false,
+  "harnessDisposition": "One initial read-only rg command incorrectly passed a PowerShell wildcard as a path. It returned path syntax errors; corrected -g search followed. No source or report was written by the failed search."
+}

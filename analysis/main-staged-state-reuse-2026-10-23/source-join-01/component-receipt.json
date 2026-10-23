@@ -1,0 +1,160 @@
+{
+  "status": "FROZEN_STAGED_STATE_REUSE_AND_BOUNDED_DUST_SOURCE_JOIN_MAIN_HELD",
+  "utc": "2026-10-23T20:15:26.046301+00:00",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v22-staged-reuse-resource-join-2026-10-23-01\\candidate-02\\source",
+  "loaderSha256": "e2296dee91aa19efe812ca2bef33a3568edd9142a22f305e689b7767a8d01a69",
+  "files": 522,
+  "parses": 426,
+  "sourceRows": 222,
+  "sourceReads": 236,
+  "orderRows": 218,
+  "exactLoaderInverseHunks": 55,
+  "proofs": [
+    {
+      "path": "joined-source.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v22-staged-reuse-resource-join-2026-10-23-01\\CHECK-08.json",
+        "bytes": 2300,
+        "sha256": "dbeb794cb2901dec8c2eea54697202f831531b1ca100fdf3e96c4ffa656d2160"
+      }
+    },
+    {
+      "path": "dust-generations.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v21-dust-generation-preflight-2026-10-23-01\\CHECK-08.json",
+        "bytes": 2093,
+        "sha256": "a5d1c629f12a78d6a11815ab21d4de1bd141e18379a024f0f29544edb96e50c2"
+      }
+    },
+    {
+      "path": "dust-resolve.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v20-dust-resolve-scope-2026-10-23-01\\CHECK-07.json",
+        "bytes": 2309,
+        "sha256": "c80968d2008db20322f2d1460fc5a4e6c20e624f527936102ef4374a0b698882"
+      }
+    },
+    {
+      "path": "owned-host-join.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v19-owned-host-source-join-2026-10-23-01\\CHECK-02.json",
+        "bytes": 3594,
+        "sha256": "204c4e1fa47c6421b23b074ce4c41653fcdb7105bf7cd3bf308df3c932335dad"
+      }
+    },
+    {
+      "path": "atmosphere-preparation.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v18-atmosphere-preparation-2026-10-23-01\\CHECK-04.json",
+        "bytes": 3161,
+        "sha256": "443bf4ba7371e92fcf095f869d74f74666b3751124661097b11954fde0433803"
+      }
+    },
+    {
+      "path": "strict-workspace.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-05\\FREEZE-WORKSPACE-01.json",
+        "bytes": 222700,
+        "sha256": "431d82d668efa1d2c7e0c839218cfa8b538ad1fc6c2de2c6e2b63afffa8a418f"
+      }
+    },
+    {
+      "path": "numeric-workspace.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-06\\FREEZE-NUMERIC-FORWARD-01.json",
+        "bytes": 111681,
+        "sha256": "0197b17acfb8ed8b9194060e831d8333119a42c1ca3e2baa812c6c861ac3073b"
+      }
+    },
+    {
+      "path": "pending-native-port.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-07\\FREEZE-PENDING-PROMISE-01.json",
+        "bytes": 112841,
+        "sha256": "ae374f745a7441108f955d1f4fbfa2c036bc40c55fe776c4d465c3cc0e383941"
+      }
+    },
+    {
+      "path": "owned-host-consumer.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-host-consumer-2026-10-23-01\\author-01\\CHECK-01.json",
+        "bytes": 17509,
+        "sha256": "135b18ed40c96c06cd909ea93451af3744b77fe96b633ed0e75b7deb531ed3db"
+      }
+    },
+    {
+      "path": "staged-host-kernel.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\author-01\\CHECK-01.json",
+        "bytes": 19984,
+        "sha256": "5426ed7dd84938bb1f919f42a556ba8bb23c3b93ed01a36b87707bbe1047af14"
+      }
+    },
+    {
+      "path": "staged-caller.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v19-staged-host-caller-2026-10-23-01\\CHECK-01.json",
+        "bytes": 11241,
+        "sha256": "ce25d9f65da166fae6a9bb5a5820bb61593fa7342490e37fe4515829b89b3fb7"
+      }
+    },
+    {
+      "path": "provider-aggregate.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v18-provider-aggregate-2026-10-23-01\\CHECK-11.json",
+        "bytes": 3434,
+        "sha256": "77c75377e40265ab110da2dadc32df66d4c5b9b6e5aef75d22f6cb04950c5a05"
+      }
+    },
+    {
+      "path": "main-target-aggregate.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v19-host-target-aggregate-2026-10-23-01\\CHECK-06.json",
+        "bytes": 3352,
+        "sha256": "f342d3edd8f2b91d82a15b9a647f87a757b060f1e43b90082f072e3e7651ac6a"
+      }
+    },
+    {
+      "path": "partition-policy-review.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v19-provider-host-policy-review-2026-10-23-01\\CHECK-01.json",
+        "bytes": 1938,
+        "sha256": "2441cc6c65848b3ed09628254a1ae95ec88647005d54cdbc8bcbfaa6fecd5155"
+      }
+    },
+    {
+      "path": "dust-peer.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v21-dust-generation-peer-review-2026-10-23-01\\CHECK-06.json",
+        "bytes": 2825,
+        "sha256": "8c67c18300916b6e162ec3b9010964c5d64e3f860ff7a1ec12acf9cca3a8a46d"
+      }
+    },
+    {
+      "path": "binding-inputs.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-resolved-binding-admission-inputs-2026-10-23-01\\CHECK-07.json",
+        "bytes": 9012,
+        "sha256": "c979dee92d76ca27d3f98978f397fd012e6f8537b6fca2eac15fff6e6b2e601c"
+      }
+    }
+  ],
+  "selectedMainStartupComponent": "main-texture-handoff-funded-c3",
+  "joinedMainStartupSelected": false,
+  "completeFundingSelected": false,
+  "hostAdmission": null,
+  "providerBridge": null,
+  "APP_EXECUTION_ENABLED": false,
+  "P05": "OPEN",
+  "P06_P08": "NOT_STARTED",
+  "PhaseOne": "NOT_ACCEPTED_NOT_RELEASED",
+  "runtimeFilesChanged": 0,
+  "browserServerOperated": false,
+  "rawArchivesRemainLocal": true,
+  "excludedActive": [
+    "Full named Numeric/Strict WORK and metadata derivation author08",
+    "Native once-notification caller successor and full current Host/Kernel WORK/storage",
+    "Versioned current CommonBoundary support equivalence/nonempty Binding prerequisite",
+    "Complete coupled Main/provider demand admission, full Q/work and native Main proof"
+  ]
+}

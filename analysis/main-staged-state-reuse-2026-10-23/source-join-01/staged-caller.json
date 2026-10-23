@@ -1,0 +1,226 @@
+{
+  "status": "PASS_FROZEN_UNSELECTED_STAGED_CALLER_COMPONENT",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v19-staged-host-caller-2026-10-23-01\\candidate-04\\source",
+  "loader": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v19-staged-host-caller-2026-10-23-01\\candidate-04\\source\\owned-main-bootstrap.js",
+    "bytes": 254537,
+    "sha256": "95faa948125cc8573edb833521b5c61887d6492a998a7c9f2890a9a2961a59cc"
+  },
+  "strictC5": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v19-staged-host-caller-2026-10-23-01\\candidate-04\\source\\biome-service\\native\\strict-record-owner.js",
+    "bytes": 14568,
+    "sha256": "31bff8c14ffbf672c764677c9cce600561ea9a76d332cd0e5157bc40d676384a"
+  },
+  "sourceCheck": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v19-staged-host-caller-2026-10-23-01\\author-01\\source-check-01.json",
+    "bytes": 3740,
+    "sha256": "763d9fe221ef9c91166d93372da12ae4915c8d78be2c7fce2d1b45f76d8c293d"
+  },
+  "files": 522,
+  "parses": 426,
+  "other520ExactRoot19": true,
+  "exactInverseHunks": 40,
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "digest": "429d5178a7202a9139bfc32203dff336371b1176b01fe5fae9cf89ffc3bd5a6e",
+      "rows": 221
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "digest": "04cff510ad4d20ec09d314707774ca6fbcfbfc2f4745a6716322db8504a6caf0",
+      "rows": 5
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "digest": "02e425626b14429ca05a570cc83fde590b505408cc882d07c19f8c9f22a6b69f",
+      "rows": 9
+    }
+  ],
+  "freshSourceReads": 235,
+  "sourceCopies": 221,
+  "sourceOnlyPeak": 13336338,
+  "sourceOnlyFinalQ": 0,
+  "controls": {
+    "sourceCases": 16,
+    "sourceGroupRows": 97,
+    "sourceReports": [
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v19-staged-host-caller-2026-10-23-01\\controls-01\\control-ownedHostHappy-08.json",
+        "bytes": 98410,
+        "sha256": "eed123c2881f99de89ba51eab236e0fd284da868107d278f15ed107be60e9b8a",
+        "case": "ownedHostHappy",
+        "groups": 4
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v19-staged-host-caller-2026-10-23-01\\controls-01\\control-ownedHostPendingClose-08.json",
+        "bytes": 5852,
+        "sha256": "4225c85ffa982b22f6f4b9c4ef87f4352a54fc66cef73ca2071a4d46a3371388",
+        "case": "ownedHostPendingClose",
+        "groups": 2
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v19-staged-host-caller-2026-10-23-01\\controls-01\\control-ownedHostRejectUndefined-08.json",
+        "bytes": 5684,
+        "sha256": "6985f62cec4c4f3b661881fcc6e152f9f059ea39f6db87d9da67f90f42bc5e22",
+        "case": "ownedHostRejectUndefined",
+        "groups": 3
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v19-staged-host-caller-2026-10-23-01\\controls-01\\control-ownedHostRejectFalse-08.json",
+        "bytes": 5680,
+        "sha256": "963d31077595ac5c2fab5b63ace9989b4463ec8736abc54fa6d83bd01ed81dfd",
+        "case": "ownedHostRejectFalse",
+        "groups": 3
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v19-staged-host-caller-2026-10-23-01\\controls-01\\control-ownedHostRejectNull-08.json",
+        "bytes": 5679,
+        "sha256": "49f0f8118f4b2d56838e501365ae5f67a5e9ea8b9e33663ca1d4809fce8ae55e",
+        "case": "ownedHostRejectNull",
+        "groups": 3
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v19-staged-host-caller-2026-10-23-01\\controls-01\\control-ownedHostSourceChanged-08.json",
+        "bytes": 5683,
+        "sha256": "4505c2fd34edb5ae51c37d9e79ef11205974360deaf4fe8483120c0b0c082807",
+        "case": "ownedHostSourceChanged",
+        "groups": 3
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v19-staged-host-caller-2026-10-23-01\\controls-01\\control-ownedHostObservation-08.json",
+        "bytes": 5653,
+        "sha256": "c571c983bea531c88a987abe9cfbf51cb374026213fb49ff1715f7ab6bccce74",
+        "case": "ownedHostObservation",
+        "groups": 3
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v19-staged-host-caller-2026-10-23-01\\controls-01\\control-releaseBindingKernelReal-08.json",
+        "bytes": 7539,
+        "sha256": "6fc031ae2925a29a20fb082abe031229bb326f326b2521379ace9f0f99553c53",
+        "case": "releaseBindingKernelReal",
+        "groups": 10
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v19-staged-host-caller-2026-10-23-01\\controls-01\\control-releaseBindingKernelRealForeignBinding-08.json",
+        "bytes": 5574,
+        "sha256": "3733c18c3cae3000c4b242e73b2a43030a48202d43521d58ca6221158a9374ab",
+        "case": "releaseBindingKernelRealForeignBinding",
+        "groups": 8
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v19-staged-host-caller-2026-10-23-01\\controls-01\\control-releaseBindingKernelRealPending-08.json",
+        "bytes": 7268,
+        "sha256": "7f5027625654ca9a9a8276ff82e74764b94af2e8130df5bb4e864924c230c557",
+        "case": "releaseBindingKernelRealPending",
+        "groups": 9
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v19-staged-host-caller-2026-10-23-01\\controls-01\\control-releaseBindingKernelRealRejectUndefined-08.json",
+        "bytes": 7317,
+        "sha256": "2d3b09029bc259687529daa7709a07459086a8ddd18d560cdfc73d00483db3cb",
+        "case": "releaseBindingKernelRealRejectUndefined",
+        "groups": 9
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v19-staged-host-caller-2026-10-23-01\\controls-01\\control-releaseBindingKernelRealRejectFalse-08.json",
+        "bytes": 7313,
+        "sha256": "c71da84f5928c0aca817202646ff66fc97a7015c9c8f26e6994e1d64d5213cfb",
+        "case": "releaseBindingKernelRealRejectFalse",
+        "groups": 9
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v19-staged-host-caller-2026-10-23-01\\controls-01\\control-releaseBindingKernelRealRejectNull-08.json",
+        "bytes": 7312,
+        "sha256": "821c7161a06eb9f6faa6bffa7b54b078c24b985276bef61e3ebed29dc95f8eba",
+        "case": "releaseBindingKernelRealRejectNull",
+        "groups": 9
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v19-staged-host-caller-2026-10-23-01\\controls-01\\control-releaseBindingKernelRealSourceChanged-08.json",
+        "bytes": 7321,
+        "sha256": "1a073dfe17004d11697f0b7874c05cc04ad19ec8cc9b3008d3ac472a370cd6dc",
+        "case": "releaseBindingKernelRealSourceChanged",
+        "groups": 9
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v19-staged-host-caller-2026-10-23-01\\controls-01\\control-releaseBindingKernelRealObservation-08.json",
+        "bytes": 7550,
+        "sha256": "2980f77467e942f5efba6777eeecbffd33605a2ec5f0cab3e105bc7d6eae59dd",
+        "case": "releaseBindingKernelRealObservation",
+        "groups": 10
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v19-staged-host-caller-2026-10-23-01\\controls-01\\control-ownedHostNativeChanged-08.json",
+        "bytes": 5325,
+        "sha256": "c96fcaf538af7c45c23519366c9ee363ba5888d8967e5305570b9b901ced2581",
+        "case": "ownedHostNativeChanged",
+        "groups": 3
+      }
+    ],
+    "privatePollCases": 10,
+    "pollGroups": 11,
+    "poll": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v19-staged-host-caller-2026-10-23-01\\controls-01\\owned-poll-controls-01.json",
+      "bytes": 4441,
+      "sha256": "e246d180b46e8bdae917731036d5dd6a8ad28c1bcf8cafb2b06f33c2b8ce46b7"
+    },
+    "exactTestSource": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v19-staged-host-caller-2026-10-23-01\\controls-01\\test-staged-caller-06.cjs",
+      "bytes": 79801,
+      "sha256": "2c82f1ed104138c62a2103fbf1f650f4d346a18bbb61c19cedfb0d1df8ef4900"
+    },
+    "exactPollSource": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v19-staged-host-caller-2026-10-23-01\\controls-01\\test-owned-poll-01.cjs",
+      "bytes": 7001,
+      "sha256": "963971ba0289e41be7dfc011a327a4076456611987b6c3ac0db0c716c517c9df"
+    }
+  },
+  "diagnosticSubsetPeak": 23084246,
+  "diagnosticSubsetScope": "Arbitrary literal-only metadata/work setup with full current221Source input, original Binding/ReleaseStore, actual StrictC5/NumericC2/Host/Kernel, nativeNode Response/BYOB/WebCrypto, modeled GL/Surface/G/App-current/Storage. No wholeQ/currentcap/price/nativeMain claim.",
+  "protocol": {
+    "synchronousStepBodies": true,
+    "rawNativePromiseAndObserverOwnedByOriginalChildren": true,
+    "privateTimerInspectorOnlyWhilePending": true,
+    "originalNativeScopeHeldUntilGenuineChildStatusInactive": true,
+    "uncertainHoldNeverRetiredByExternalHashSuccess": true,
+    "falsyFailureOccurrenceSentinels": true,
+    "noLegacyCloneCaptureFallbackInNewStagedBodies": true,
+    "sameGenuineHostBindingReleaseStore": true,
+    "closedCertificatesOwnersAndChargesRetained": true,
+    "originalBYOBReaderExact": true,
+    "workspaceReleased": false
+  },
+  "held": {
+    "entryAndModule": true,
+    "allNewStorageAndWork": true,
+    "actualRFrameSliceJobCallback": true,
+    "fullHostVector": true,
+    "wholeQ": true,
+    "legacyGenericAdmission": true,
+    "preparedProviderBridge": true,
+    "Main": true
+  },
+  "funding": null,
+  "work": null,
+  "Main": false,
+  "P05": "OPEN",
+  "corrections": [
+    "C1/C2 direct status union asked coldData for absent original child schema fields; C3 selects exact Strict.hashActive or other.activeNative.",
+    "C3 repeated Host.close even after original Host.advance reachedclosed status; C4 consumes genuineclosed status and preserves all owner roots.",
+    "Harness01 compiledNumeric before browser math modules; harness02 loadsactualoriginalmath first. All failed reports preserved.",
+    "Source checker01 expectedone exactRead by name; checker02 compares both original scoped exact bodies toRoot19."
+  ],
+  "merge": {
+    "recipe": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v19-staged-host-caller-2026-10-23-01\\author-01\\root19-loader-combined-delta-01.json",
+      "bytes": 98071,
+      "sha256": "e27cbc6cf9d9c2fd5c42a07b6eee9e539695f379ceb576e27c1839fbd7dfb088"
+    },
+    "StrictC5OverlayOnly": true,
+    "excludeOldProfileLiteralHunkWhenMergingOtherRoot": true,
+    "freshAllThreeProfileRepinsRequired": true,
+    "RootDustRProviderOverlaysNotIncluded": true
+  },
+  "next": "Fee/storage/caller-liability basis continues only under new review-02; do not edit this frozen source/author/control receipt."
+}

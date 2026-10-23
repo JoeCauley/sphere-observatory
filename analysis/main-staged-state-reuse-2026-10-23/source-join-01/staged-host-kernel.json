@@ -1,0 +1,399 @@
+{
+  "status": "PASS_UNSELECTED_PRIVATE_STAGED_HOST_KERNEL_COMPONENT",
+  "pins": [
+    {
+      "path": "biome-service/host-world.js",
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\candidate-02\\source\\biome-service\\host-world.js",
+      "bytes": 75066,
+      "sha256": "47d05a87cfd8ca3459503dfc16a7ca24cb8eb2e17d1a0a779b6ac63b33811fae",
+      "parent": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-host-consumer-2026-10-23-01\\candidate-03\\source\\biome-service\\host-world.js",
+        "bytes": 71645,
+        "sha256": "5bb10ee14f775c2d041b9e4ea444a6cf98a25263d8e4c656aa6a0896c2903c00"
+      },
+      "legacyCreateExact": true
+    },
+    {
+      "path": "biome-service/native/surface-kernel.js",
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\candidate-02\\source\\biome-service\\native\\surface-kernel.js",
+      "bytes": 73433,
+      "sha256": "80d3e0a19de15494fb809e65e76e1b92c7d586a69d62e35c4625f3da3c9dbc62",
+      "parent": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-host-kernel-reuse-bridge-2026-10-23-01\\candidate-02\\source\\biome-service\\native\\surface-kernel.js",
+        "bytes": 40694,
+        "sha256": "b74257a2634e359423fac350fc5eb95b8d741e17c8cfb899fc692f9c6d1aa8d5"
+      },
+      "legacyCreateExact": true
+    }
+  ],
+  "physicalOverlayFiles": 2,
+  "readOnlyAssembly": {
+    "base": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\candidate-02\\source",
+    "bridge": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-host-kernel-reuse-bridge-2026-10-23-01\\candidate-02\\source",
+    "numeric": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-02\\candidate-01\\source",
+    "files": 522,
+    "parsed": {
+      "js": 387,
+      "cjs": 38,
+      "mjs": 1,
+      "total": 426
+    },
+    "currentRootNotClaimed": true
+  },
+  "inverseToExactSeparateParents": true,
+  "legacyHostAndKernelCreateBodiesExact": true,
+  "originalKernelSemanticFactoryCopy": {
+    "bytes": 27186,
+    "sha256": "32e7bb3241ecffed17dcc48105c86b77c693f22106055ef652fee0118bf011ee",
+    "exact": true
+  },
+  "originalKernelPublicAPIAndFooterExact": true,
+  "controls": {
+    "cases": 44,
+    "reports": [
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\controls-01\\control-kernelHappy-01.json",
+        "bytes": 6670,
+        "sha256": "e64510dee8bb675165088756952823c981b0d554bb76d6b94f7ee64a475d533b",
+        "case": "kernelHappy",
+        "groups": 5
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\controls-01\\control-kernelNull-01.json",
+        "bytes": 6143,
+        "sha256": "74273ff017d120d56cda5dfcd7c4931c76a640f89ba687bd9f19016f0a50241a",
+        "case": "kernelNull",
+        "groups": 4
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\controls-01\\control-kernelForeignToken-01.json",
+        "bytes": 6330,
+        "sha256": "1fb72ae0cb6cf134d0d2b08b4db009d0e75824ef132bd2920da933e60a16fff2",
+        "case": "kernelForeignToken",
+        "groups": 4
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\controls-01\\control-kernelForeignBinding-01.json",
+        "bytes": 6321,
+        "sha256": "b372e1205756e12e787545a90145296713f0120bfb53da6ec8ea0b8b75e3e79d",
+        "case": "kernelForeignBinding",
+        "groups": 4
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\controls-01\\control-kernelProfileIdentity-01.json",
+        "bytes": 6548,
+        "sha256": "b59065d9ab23b9f8622c03fc6599655255c300ed05e27aa4663d2601b181ab96",
+        "case": "kernelProfileIdentity",
+        "groups": 4
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\controls-01\\control-kernelPendingClose-01.json",
+        "bytes": 6562,
+        "sha256": "cbc35e3e58aea069bf0719b43d8bb9afc741590f5276a83fb0ca081303f87098",
+        "case": "kernelPendingClose",
+        "groups": 4
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\controls-01\\control-kernelParentChanged-01.json",
+        "bytes": 6550,
+        "sha256": "ce6a340b8a63842db7ce629812c537c9e2de09a424e4f77c7e134b51dcb45a66",
+        "case": "kernelParentChanged",
+        "groups": 4
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\controls-01\\control-kernelSourceChanged-01.json",
+        "bytes": 6551,
+        "sha256": "a6bbcef5db44d48965c4f4fe6978d9ac6faa2ee9970d286c611637c469555341",
+        "case": "kernelSourceChanged",
+        "groups": 4
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\controls-01\\control-kernelRejectNull-01.json",
+        "bytes": 6547,
+        "sha256": "d0ec03316faeae19967d43829404a662590e2924f2ce42b279f5fbe93d523a36",
+        "case": "kernelRejectNull",
+        "groups": 4
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\controls-01\\control-kernelRejectFalse-01.json",
+        "bytes": 6548,
+        "sha256": "5a247478859a706815c13dea10d8ab0265ef5d2f2f4f35c805017b893a896d78",
+        "case": "kernelRejectFalse",
+        "groups": 4
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\controls-01\\control-kernelRejectUndefined-01.json",
+        "bytes": 6552,
+        "sha256": "ecf4dfdd35b9a46b832b1c4a05032a83ba153ac7365a5c61213010c8c9b1e9ef",
+        "case": "kernelRejectUndefined",
+        "groups": 4
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\controls-01\\control-kernelObservationFailure-01.json",
+        "bytes": 6548,
+        "sha256": "40f438096f7dbdfde7886c897d30b6d3b039b3d9340885833b2a3b80c3d841a1",
+        "case": "kernelObservationFailure",
+        "groups": 4
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\controls-01\\control-happy-01.json",
+        "bytes": 6253,
+        "sha256": "c199679c458c05dfabecf56b9cd2180cb0b0b19f8fd9ffdf26dc0c363e1aabc5",
+        "case": "happy",
+        "groups": 4
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\controls-01\\control-nullGuard-01.json",
+        "bytes": 4971,
+        "sha256": "2202fdecfdb7eafa302be61410bad1f39a7423e9fdb0b342ffbd64d83698eb66",
+        "case": "nullGuard",
+        "groups": 1
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\controls-01\\control-sourceChanged-01.json",
+        "bytes": 6030,
+        "sha256": "bc96ae94766dbdbeabc3be99b37e9d402f2e552febd2a33e74135eddf2c9d9c0",
+        "case": "sourceChanged",
+        "groups": 3
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\controls-01\\control-pendingClose-01.json",
+        "bytes": 6029,
+        "sha256": "dacec277fcbece2663694ac5f726ca448d26d07e03e4400abdd57efd1756a2b1",
+        "case": "pendingClose",
+        "groups": 3
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\controls-01\\control-rejectNull-01.json",
+        "bytes": 6021,
+        "sha256": "4d9b973f4febecffe655f5bd63a92e051b96821c94173527d0cd43392781bfd0",
+        "case": "rejectNull",
+        "groups": 3
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\controls-01\\control-rejectFalse-01.json",
+        "bytes": 6022,
+        "sha256": "5486db86d548fc2fbcfe4b7b43d81d20208e34bb5e202ebd1a23eb89ca074893",
+        "case": "rejectFalse",
+        "groups": 3
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\controls-01\\control-rejectUndefined-01.json",
+        "bytes": 6026,
+        "sha256": "4de0ab1008ab9b60483f84388bfcd41fd9d1422054f3081adf81244fe22263a5",
+        "case": "rejectUndefined",
+        "groups": 3
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\controls-02\\control-reuse-01.json",
+        "bytes": 1976,
+        "sha256": "f87bc5314c6f2f3774c7fa3f6f60dd93b61777cd6665bfee9066cf89b2f0bed9",
+        "case": "reuse",
+        "groups": 4
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\controls-02\\control-legacy-01.json",
+        "bytes": 1447,
+        "sha256": "038b6ee51655fc6bc90df338f44641d5aac221b932285c7049abe4a7eb98cbd2",
+        "case": "legacy",
+        "groups": 1
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\controls-02\\control-nullHostFunding-01.json",
+        "bytes": 1438,
+        "sha256": "03863d38ee5c81d2bd2a2da56d026dad3afb8c35dcc88b22e8d8b707c7256827",
+        "case": "nullHostFunding",
+        "groups": 1
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\controls-02\\control-foreignHost-01.json",
+        "bytes": 1767,
+        "sha256": "39204a4a713fe8280dba1e809011f98c0d14f809c1c853a22eb4a46ac813272a",
+        "case": "foreignHost",
+        "groups": 2
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\controls-02\\control-foreignQ-01.json",
+        "bytes": 1640,
+        "sha256": "9d54cd56725f0c5829f1d81190ddfac2db832bf3c9f9e84aa13f614c2be68d99",
+        "case": "foreignQ",
+        "groups": 2
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\controls-02\\control-nullKernelFunding-01.json",
+        "bytes": 1666,
+        "sha256": "38c74fcbe2cee1366af331a5559bfb9e109fddb6d95cd15effbde8e96bfcc4ec",
+        "case": "nullKernelFunding",
+        "groups": 2
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\controls-02\\control-closeBeforeClaim-01.json",
+        "bytes": 1740,
+        "sha256": "ae213c08a12e4bcea2cbf65328dd7609312a1b1fed69e262040e99c545bd14b8",
+        "case": "closeBeforeClaim",
+        "groups": 2
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\controls-02\\control-methodChanged-01.json",
+        "bytes": 1770,
+        "sha256": "cbdee221044308ba1692eaad14882bdedf299d56fbb944370fa197f520465cb7",
+        "case": "methodChanged",
+        "groups": 2
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\controls-02\\control-dataChanged-01.json",
+        "bytes": 1767,
+        "sha256": "4e80bc3ff748e6208dcdb8e3a8c1c94055e7632d622d3ae75f75bb76a985c053",
+        "case": "dataChanged",
+        "groups": 2
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\controls-02\\control-capsules-01.json",
+        "bytes": 1979,
+        "sha256": "2464a13efdcae994628d72d3fd68764092948e35cac74b226c50363fd9941286",
+        "case": "capsules",
+        "groups": 4
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\controls-02\\control-foreignToken-01.json",
+        "bytes": 1781,
+        "sha256": "76bdbb5c687db17f1136f29b2c30d85b5493ca1a40f66b4efeb8627b12a051da",
+        "case": "foreignToken",
+        "groups": 2
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\controls-02\\control-profileChanged-01.json",
+        "bytes": 1881,
+        "sha256": "6541757978116ce351fd3a983449c9e7159213f67fbb6872fa5c835d96788d61",
+        "case": "profileChanged",
+        "groups": 2
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\controls-02\\control-sourceChanged-01.json",
+        "bytes": 1881,
+        "sha256": "68cfde280b8cf5621eac0ceaf71d3fef375649d91400fa33cae07e38b11d1144",
+        "case": "sourceChanged",
+        "groups": 2
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\controls-02\\control-numericChanged-01.json",
+        "bytes": 1881,
+        "sha256": "307344272e94b77d0f31c33a4c6d07f3222fc0f5d5cdac57386d40b53c9624ce",
+        "case": "numericChanged",
+        "groups": 2
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\controls-02\\control-parentChanged-01.json",
+        "bytes": 1797,
+        "sha256": "04d22957d7174bc0f1558e25d398ea73d1c4c6f2bf099e705f5a0d540ea22351",
+        "case": "parentChanged",
+        "groups": 2
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\controls-02\\control-rejectNull-01.json",
+        "bytes": 1877,
+        "sha256": "37b5843a09707a33d447c25110506a9d33c510691aca80f8545f13bc112fbdbc",
+        "case": "rejectNull",
+        "groups": 2
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\controls-02\\control-rejectFalse-01.json",
+        "bytes": 1878,
+        "sha256": "8b077b0c1fafa0769f06a17dfda8694d5a6253be4c407f6fd1d64cc0a02aa465",
+        "case": "rejectFalse",
+        "groups": 2
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\controls-02\\control-rejectUndefined-01.json",
+        "bytes": 1882,
+        "sha256": "33d2a33d153917e33cdc159a82d5c6c234f7ab89a474f5c61491e3cb7df45d12",
+        "case": "rejectUndefined",
+        "groups": 2
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\controls-02\\control-pending-01.json",
+        "bytes": 2078,
+        "sha256": "cf3012561f08813519598b4de047cff75a95531c72571a88c95f8b6b77bc0612",
+        "case": "pending",
+        "groups": 5
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\controls-03\\control-kernelReleaseChanged-02.json",
+        "bytes": 6513,
+        "sha256": "b57575924fa7386d8106fad737fea5000baaf988a12f690c4f1463628838aea5",
+        "case": "kernelReleaseChanged",
+        "groups": 4
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\controls-03\\control-kernelDataChanged-02.json",
+        "bytes": 6515,
+        "sha256": "aa7740b814c9cef623ba202a1cd4ba805f847cd54623a9ed6e1d4b93f3c40218",
+        "case": "kernelDataChanged",
+        "groups": 4
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\controls-03\\control-kernelNumericNativeChanged-02.json",
+        "bytes": 6537,
+        "sha256": "3ee03ebe829bfe8f384fc51c5b85f4ee051baa175b4bc9173148d2c968461f8f",
+        "case": "kernelNumericNativeChanged",
+        "groups": 4
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\controls-03\\control-kernelReplayPending-02.json",
+        "bytes": 6805,
+        "sha256": "b93273829474ea60cfc0d11cfb3d9804a3f30a98152a9966cac3b4a8bab6fa7c",
+        "case": "kernelReplayPending",
+        "groups": 6
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\controls-03\\control-kernelStrictChanged-02.json",
+        "bytes": 6551,
+        "sha256": "070fe35b26139af558056e40d52a54f0bf38470faaab1a06789aa0543f82d0e5",
+        "case": "kernelStrictChanged",
+        "groups": 4
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-staged-host-kernel-reuse-2026-10-23-01\\controls-03\\control-kernelCapsules-02.json",
+        "bytes": 6673,
+        "sha256": "3724c37466b46bf44c0a0306bf938e0b774b121178585352df504d1be17be371",
+        "case": "kernelCapsules",
+        "groups": 5
+      }
+    ],
+    "stagedNew": 18,
+    "ownedHostInitial": 7,
+    "legacyDirect": 19,
+    "actualBodies": "Original Host/Kernel/StrictC4/NumericC2/Source/Q/Records; actual native Promise/WebCrypto under Node",
+    "adapters": "Binding WeakSet brand, source-reader/registration recipient and parent guard are explicit component adapters; no DOM/private real paid caller/actual Binding constructor/nativeMain claim"
+  },
+  "freshness": {
+    "HostThenKernel": 48,
+    "originalHostRows": 23,
+    "addedStrictRow": 1,
+    "sourceHashesPerKernel": 24,
+    "newNumericVerificationAfterEverySourcePass": true,
+    "profileIdentityExact": true,
+    "originalHostControllerReused": true,
+    "priorNumericRootsExplicit": true
+  },
+  "profiles": {
+    "metadataOnly": true,
+    "graph": 221,
+    "Surface": 5,
+    "helper": 9,
+    "freshReads": 235,
+    "sourceOnlyPeak": 13334914,
+    "actualProductLoaderUnrepinned": true
+  },
+  "storage": "review-01/positive-storage-01.json logical positive source basis; arbitrary diagnostic15,540,866 peak is not a whole-root or accepted Q certificate",
+  "work": "review-01/work-boundaries-01.json complete new phase/dependency map; actual child/current/caller/entry/native-job budget still held",
+  "Main": false,
+  "P05": "OPEN",
+  "holds": [
+    "Actual current root private paid begin/advance/status/read/close/native completion/cleanup, including post-R native-job authority",
+    "Complete exact current Host/Kernel/Strict/Numeric module/controller/instance/caller/storage/work union under unchanged limits",
+    "Current root graph/module/order/source repins and positive Source/literal/profile ownership",
+    "Original future Kernel semantic/native/source/Binding/Release/resource operations remain exact and unqualified here",
+    "Native/VM/compiler/physical allocation, complete seven-field wholeHost/Main/P05"
+  ]
+}

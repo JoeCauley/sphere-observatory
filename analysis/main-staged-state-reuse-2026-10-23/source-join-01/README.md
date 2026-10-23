@@ -1,0 +1,1 @@
+Exact frozen source/component receipts. Combined source checks and explicitly scoped models pass; complete original Main funding/work/provider/frame/native acceptance remains held. Raw archives and runtime unchanged.

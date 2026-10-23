@@ -1,0 +1,79 @@
+{
+  "status": "PASS_UNSELECTED_AIR_ONLY_DISPLAY_PREPARATION",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v18-atmosphere-preparation-2026-10-23-01\\candidate-01\\source",
+  "changed": [
+    "atmosphere.js",
+    "owned-main-bootstrap.js"
+  ],
+  "files": 521,
+  "parses": 425,
+  "other519FilesExact": true,
+  "exactInverseHunks": 2,
+  "originalFunctionCount": 27,
+  "unchangedOriginalFunctions": 25,
+  "newFunctions": 0,
+  "shaderAndSimulationSourceUnchanged": true,
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "rows": 220,
+      "digest": "b78f7dacb974df8b65141b577597d0c2f2e5c25b83f5ed297f0cd31662d6ab76"
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "rows": 5,
+      "digest": "04cff510ad4d20ec09d314707774ca6fbcfbfc2f4745a6716322db8504a6caf0"
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "rows": 9,
+      "digest": "02e425626b14429ca05a570cc83fde590b505408cc882d07c19f8c9f22a6b69f"
+    }
+  ],
+  "freshSourceReads": 234,
+  "sourceCopies": 220,
+  "sourceOnlyQAfterExplicitDisposal": {
+    "heldBytes": 0,
+    "requestedBytes": 0,
+    "bookkeepingBytes": 0,
+    "peakBytes": 13217534,
+    "limitBytes": 33554432,
+    "liveReservations": 0,
+    "maximumReservations": 4096,
+    "owners": [],
+    "scope": "CONSERVATIVE_LOGICAL_METADATA_ADMISSION",
+    "nativeHeap": "UNMEASURED"
+  },
+  "displayControls": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v18-atmosphere-preparation-2026-10-23-01\\display-controls-03.json",
+    "bytes": 6255,
+    "sha256": "72fe1405c5be47f7d995fb39f4bf78a6cbdfe9b49627d79fb1112c53729d8005"
+  },
+  "pairedDrawCases": 7,
+  "rawEntryGuardCases": 3,
+  "scope": "Actual original/successor Atmosphere.draw, Math/World/Collection and unchanged GLSL; GL/program reflection, baseline resource port and noise/climate upload methods are explicit models. No actual GPU rendering, native pixels/timing or full Main/Q proof.",
+  "avoidedPerDustDraw": {
+    "float32PayloadBytes": 864,
+    "typedArrays": 3,
+    "platePacking": true,
+    "weatherPhasePreparation": true
+  },
+  "simulationStateUnchanged": true,
+  "persistentCacheAdded": false,
+  "positiveOwnership": {
+    "newAirBlockScope": "At least one positive block/context with5 moved bindings; additive known logical basis128+5*32=288, not a complete physical/parent/transient allowance or old slack credit",
+    "changedModuleSource": "Actual new source/profile bytes included in fresh admission; complete Source/controller/module proposals must be rebased on the final cohort",
+    "work": "Guard plus branch/caller work remains within separately unselected full Main weather/caller work; no new number selected"
+  },
+  "preservedHarnessFailure": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v18-atmosphere-preparation-2026-10-23-01\\model-count-disposition-03.json",
+    "bytes": 1527,
+    "sha256": "9c25c3527139a1558e75f03388383ae12de990a8e45096adb6112c2c2109fa57"
+  },
+  "completeWorkAndOwnershipSelected": false,
+  "allExistingLimitsUnchanged": true,
+  "nativePixels": false,
+  "nativeTiming": false,
+  "Main": false,
+  "P05": "OPEN"
+}

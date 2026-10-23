@@ -1,0 +1,77 @@
+{
+  "status": "SEALED_UNSELECTED_R_HOST_TARGET_AGGREGATE_COMPONENT",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v19-host-target-aggregate-2026-10-23-01\\candidate-01\\source",
+  "resource": {
+    "path": "biome-service/native/resource-leases.js",
+    "bytes": 125374,
+    "sha256": "1a9fb349e0a463673c1935e01bf7c7b93cd6e5da7a8082de5629ce31000b8bf2"
+  },
+  "parent": {
+    "root": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v18-provider-aggregate-2026-10-23-01\\candidate-03\\source",
+    "sha256": "7ce353dc2f68a7f926ece923289a52a91918231515c0045d8c35cf78feaa5e36"
+  },
+  "files": 521,
+  "parses": 425,
+  "other520Exact": true,
+  "forwardInverseHunks": 10,
+  "newGroups": 29,
+  "inheritedProviderGroups": 31,
+  "total60": true,
+  "helpers": 10,
+  "captureReferences": 63,
+  "allNewAmountsAndWorkNull": true,
+  "numericPolicySelected": false,
+  "serviceCapsUnchanged": true,
+  "sourceProfilesStaleRefusalPassed": true,
+  "heldNativeNegative": {
+    "bytes": 16,
+    "jobs": 1,
+    "cleanupClaim": false
+  },
+  "fixedRealmQRetained": true,
+  "browserServerGit": false,
+  "Main": false,
+  "P05": "OPEN",
+  "inputs": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v19-host-target-aggregate-2026-10-23-01\\proposal-register-01.json",
+      "bytes": 7054,
+      "sha256": "378476c806b5cad7ff8dcb6988b91b02360d95751223e7d3e27fc13ca6c2491a"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v19-host-target-aggregate-2026-10-23-01\\source-inventory-05.json",
+      "bytes": 93732,
+      "sha256": "d435c4115710e7e692b47ffe2444ddc3021b974b6db93e14b89b3577eeeeaf06"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v19-host-target-aggregate-2026-10-23-01\\root-merge-recipe-05.json",
+      "bytes": 12447,
+      "sha256": "9bad51b67381acf3ef01457e3310916fd062e27c9e251991ce704fb31e97df29"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v19-host-target-aggregate-2026-10-23-01\\private-helper-archive-05.json",
+      "bytes": 7400,
+      "sha256": "4c23b6ccb925b1b0bce3f981073089d1368df81ae67361d3bbf493e35cfd9636"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v19-host-target-aggregate-2026-10-23-01\\ownership-and-work-liabilities-05.json",
+      "bytes": 3302,
+      "sha256": "2a8e10b7b3c8246a56fd469e2250a77c5b168bc78a0df498410a718ea0676d41"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v19-host-target-aggregate-2026-10-23-01\\READ-FIRST-01.txt",
+      "bytes": 5240,
+      "sha256": "8a038c5eae40337b0d7850e6eca83cb79daf86d0e749197d9e680a258d6a1096"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v19-host-target-aggregate-2026-10-23-01\\verify-component-05.cjs",
+      "bytes": 13424,
+      "sha256": "04ebefc86beee55ba320251eb33d238e7e425014219689c9daf51e63d32c7448"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v19-host-target-aggregate-2026-10-23-01\\verification-disposition-05.json",
+      "bytes": 385,
+      "sha256": "16febb2feba3f6ef15deb8d358b62be86619a7c6895b42a02640fb8e868bda29"
+    }
+  ]
+}

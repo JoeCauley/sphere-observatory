@@ -1,0 +1,271 @@
+{
+  "status": "FROZEN_PRIVATE_FRAGMENT_FUNCTIONAL_COMPONENT_WITH_EXPLICIT_PREREQUISITES",
+  "fragment": {
+    "path": "source/resolved-binding-admission-inputs-04.inc.js",
+    "bytes": 13677,
+    "sha256": "7ccbc2948a9ca79099b9afb550e9b55a7dc41147a23d2d5caeae749e7e423903"
+  },
+  "parent": {
+    "source": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v19-staged-host-caller-2026-10-23-01/candidate-04/source",
+    "pins": [
+      {
+        "path": "owned-main-bootstrap.js",
+        "bytes": 254537,
+        "sha256": "95faa948125cc8573edb833521b5c61887d6492a998a7c9f2890a9a2961a59cc"
+      },
+      {
+        "path": "biome-service/binding-builder.js",
+        "bytes": 54392,
+        "sha256": "57103c00d9a49600b099668d0da893a7c2128fc70bec2a3fad2a4ef230050500"
+      },
+      {
+        "path": "biome-service/release-store.js",
+        "bytes": 17507,
+        "sha256": "fe25c7809fadac26918305ec69974f0b21eded0905a76e0e8665680610554627"
+      },
+      {
+        "path": "biome-service/commonboundary-adapter.js",
+        "bytes": 26994,
+        "sha256": "77f739ae2065244323740c011d1875990a657123f9aca8c130254a648d8683b1"
+      },
+      {
+        "path": "biome-service/records.js",
+        "bytes": 24045,
+        "sha256": "70dbb2302f88f5f950de3eb2d3e94951a1537fdeab54640e7bb95746d69c1556"
+      },
+      {
+        "path": "biome-service/metadata-budget.js",
+        "bytes": 4137,
+        "sha256": "9318446452e9a99fee2873eaf0d072bd76c39f714e4d1bceadf6057d04df6635"
+      },
+      {
+        "path": "biome-service/provider-profiles.js",
+        "bytes": 8263,
+        "sha256": "2538836f3de836a39cb08018dc42be230104178a713b845bf1e7318e7ff142d9"
+      },
+      {
+        "path": "biome-service/schemas/world-binding.schema.json",
+        "bytes": 4393,
+        "sha256": "1a34b12613f31c2ffdda35f09eabf761ecf1d0d78b94c9b418c78d1fe3ee52ce"
+      },
+      {
+        "path": "world.js",
+        "bytes": 20538,
+        "sha256": "82877ee7543aef2336d3a4dc94b5e42aa55f2eee9f9eb24ef02ece2b0eea861a"
+      },
+      {
+        "path": "watershed-province.js",
+        "bytes": 19962,
+        "sha256": "75334be87b9aeba3893abe5fcf05793dab251bbe745c6f290ee6c290fe9fc50d"
+      }
+    ]
+  },
+  "controls": [
+    {
+      "path": "control-genuineEmpty-06.json",
+      "bytes": 3663,
+      "sha256": "db9948fbea77fce80be024069601c6f1676a46e6020aef79a32d2bff5a52e6aa",
+      "case": "genuineEmpty",
+      "groups": 2,
+      "nonemptyBindingAuthorityModel": false
+    },
+    {
+      "path": "control-positive-06.json",
+      "bytes": 3883,
+      "sha256": "9e740bbb9627724ccebcdb0dc3195cadc3ea823d39ecc989493df7ab2fac23ef",
+      "case": "positive",
+      "groups": 2,
+      "nonemptyBindingAuthorityModel": true
+    },
+    {
+      "path": "control-repeated-06.json",
+      "bytes": 3856,
+      "sha256": "fb94a107193938462ff1cf7d9d44aafee3b9b1a7a16b24e2087be168b7c8ea62",
+      "case": "repeated",
+      "groups": 2,
+      "nonemptyBindingAuthorityModel": true
+    },
+    {
+      "path": "control-capacity128-06.json",
+      "bytes": 3893,
+      "sha256": "417f72b5c1a95856a7b3e4803bc3ef84ae68d598075fb2dcd3b75df6b0fd0f8f",
+      "case": "capacity128",
+      "groups": 2,
+      "nonemptyBindingAuthorityModel": true
+    },
+    {
+      "path": "control-foreign-06.json",
+      "bytes": 3443,
+      "sha256": "f134c8db62b4ae5b7b2a0d5edec4d5fe2388e982d46b9fc95aa2cd4fa3e73b05",
+      "case": "foreign",
+      "groups": 1,
+      "nonemptyBindingAuthorityModel": false
+    },
+    {
+      "path": "control-wrongQ-06.json",
+      "bytes": 3415,
+      "sha256": "4f3c503edaae44ddcb094dc0c0e96e801c6ba7ad100c71f8e3cc1c5b5d22d4b4",
+      "case": "wrongQ",
+      "groups": 1,
+      "nonemptyBindingAuthorityModel": false
+    },
+    {
+      "path": "control-closedReader-06.json",
+      "bytes": 3438,
+      "sha256": "b6d0405cfc79a4d1324f9af675ccfd59f700c77fe1d08c3151d86b16c3d6a605",
+      "case": "closedReader",
+      "groups": 1,
+      "nonemptyBindingAuthorityModel": false
+    },
+    {
+      "path": "control-sourceChanged-06.json",
+      "bytes": 3460,
+      "sha256": "e3573b38c76a88a90d3f4d9c73549ae6011c1bb6bb4a96cad0f52f64329d5e68",
+      "case": "sourceChanged",
+      "groups": 1,
+      "nonemptyBindingAuthorityModel": false
+    },
+    {
+      "path": "control-pending-06.json",
+      "bytes": 3701,
+      "sha256": "c70896fb1cf9335e3297b4eb083913524f0910348ced85939b1d9c817c211fa5",
+      "case": "pending",
+      "groups": 1,
+      "nonemptyBindingAuthorityModel": true
+    },
+    {
+      "path": "control-observer-06.json",
+      "bytes": 3918,
+      "sha256": "5d7e0aa65b4a440410a606b43388a6bb73cb2114094aaf657458ee7072b3d880",
+      "case": "observer",
+      "groups": 1,
+      "nonemptyBindingAuthorityModel": true
+    },
+    {
+      "path": "control-rawNull-06.json",
+      "bytes": 3694,
+      "sha256": "78c4b81a0f45f13f35088a4a0933438c4018f6ddfe862ad9caa10c4d6ae7699b",
+      "case": "rawNull",
+      "groups": 1,
+      "nonemptyBindingAuthorityModel": true
+    },
+    {
+      "path": "control-rawFalse-06.json",
+      "bytes": 3695,
+      "sha256": "199b8fbad357f9ce3cc6d73bf16aa4b80476feaebfe4bc573a5e13dcf46b118f",
+      "case": "rawFalse",
+      "groups": 1,
+      "nonemptyBindingAuthorityModel": true
+    },
+    {
+      "path": "control-rawUndefined-06.json",
+      "bytes": 3699,
+      "sha256": "873a31f2beb42d0fb8aba1ba71dd74aa224e530c398c82592671dd82bc7ea26b",
+      "case": "rawUndefined",
+      "groups": 1,
+      "nonemptyBindingAuthorityModel": true
+    },
+    {
+      "path": "control-missingRelease-06.json",
+      "bytes": 3733,
+      "sha256": "fb605113dc311dcc03369284986962869bda7d5c44bb0a5f74edd05c3591494c",
+      "case": "missingRelease",
+      "groups": 1,
+      "nonemptyBindingAuthorityModel": true
+    },
+    {
+      "path": "control-duplicateFact-06.json",
+      "bytes": 3713,
+      "sha256": "fca008daaacab5b7d609f34a82d356b1ae1f0883644356b85c1d45b48f05c46a",
+      "case": "duplicateFact",
+      "groups": 1,
+      "nonemptyBindingAuthorityModel": true
+    },
+    {
+      "path": "control-providerMismatch-06.json",
+      "bytes": 3719,
+      "sha256": "f3e1fecfb432eb193dfdc2c2f06328fd9a36d27c822c496a10c2b769abef13a0",
+      "case": "providerMismatch",
+      "groups": 1,
+      "nonemptyBindingAuthorityModel": true
+    },
+    {
+      "path": "control-vectorOverflow-06.json",
+      "bytes": 3715,
+      "sha256": "83352bd53aa5b9d4ea6065af0c5b72b0e60c17b67935326261fb24111a2919f5",
+      "case": "vectorOverflow",
+      "groups": 1,
+      "nonemptyBindingAuthorityModel": true
+    },
+    {
+      "path": "control-statusAccessor-06.json",
+      "bytes": 3700,
+      "sha256": "20363172d798c4926b41c280112ab2d5b99595823d8a1908467c604c8b844ea3",
+      "case": "statusAccessor",
+      "groups": 1,
+      "nonemptyBindingAuthorityModel": true
+    },
+    {
+      "path": "control-retired-06.json",
+      "bytes": 3882,
+      "sha256": "8c46624ad67192b7bdcf5efda4da714c8f03fec8fe3fb3e9b285f43e6007246b",
+      "case": "retired",
+      "groups": 2,
+      "nonemptyBindingAuthorityModel": true
+    },
+    {
+      "path": "control-capacity129-06.json",
+      "bytes": 3685,
+      "sha256": "435510d39240b40c4f28dba70a0aa51d67930f6b204b0ae6b3497c17f463fe70",
+      "case": "capacity129",
+      "groups": 1,
+      "nonemptyBindingAuthorityModel": true
+    },
+    {
+      "path": "control-qPressure-06.json",
+      "bytes": 3575,
+      "sha256": "712ef473e46f0bbdf8928b81a02401df26667cd2acf65f77013a8c92a58c7f03",
+      "case": "qPressure",
+      "groups": 1,
+      "nonemptyBindingAuthorityModel": true
+    },
+    {
+      "path": "control-pendingSourceChanged-06.json",
+      "bytes": 3714,
+      "sha256": "8da58b88b87b19a2a666f205d1007ab0eed55b345674c1f61327e5ae55375024",
+      "case": "pendingSourceChanged",
+      "groups": 1,
+      "nonemptyBindingAuthorityModel": true
+    }
+  ],
+  "groups": 27,
+  "nullModuleGuard": {
+    "code": "RESOLVED_BINDING_MODULE_NOT_DERIVED",
+    "actualQUnchanged": true,
+    "afterDisposeQ0": true
+  },
+  "scope": {
+    "genuineEmptyReader": true,
+    "realQ": true,
+    "originalReleaseStoreMetadataVerificationInSetup": true,
+    "originalGetStatusNormalBody": true,
+    "nonemptyBindingAuthority": "EXPLICIT_MODEL_ONLY",
+    "privateCatalogueAndPaidCaller": "NAMED_MODELS_ONLY",
+    "actualLoaderIntegration": false,
+    "selectedBindingIdentity": false,
+    "pricing": null,
+    "funding": null,
+    "nativeMain": false,
+    "Main": false
+  },
+  "liabilities": "positive-liabilities-07.json",
+  "prerequisite": "prerequisite-finding-07.json",
+  "preserved": [
+    "source drafts01/02/03 (unselected)",
+    "control-positive-01 actual unchanged support refusal",
+    "control-genuineEmpty-02/control-positive-02 close helper returned undefined (harness-only)",
+    "control-genuineEmpty-03/control-positive-03 original Q label bookkeeping omitted in expectation (harness-only)",
+    "build-controls02 authoring command failed absent final needle before output (no source execution)"
+  ],
+  "allAuthorProductSourcesUntouched": true
+}

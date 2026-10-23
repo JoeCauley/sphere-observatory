@@ -1,0 +1,43 @@
+{
+  "status": "BOUNDED_DUST_REVIEW_COMPLETE_WITH_TWO_ACTIONABLE_FINDINGS",
+  "root20": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v20-dust-resolve-scope-2026-10-23-01\\CHECK-07.json",
+    "bytes": 2309,
+    "sha256": "c80968d2008db20322f2d1460fc5a4e6c20e624f527936102ef4374a0b698882"
+  },
+  "oldRawCounter": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v21-dust-generation-peer-review-2026-10-23-01\\raw-presence-counter-01.json",
+    "bytes": 40942,
+    "sha256": "d1d9483e929ed2cd2ba1a14ba78420b8622f751da05962fe610992cec82796c8"
+  },
+  "fixedPresence": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v21-atmosphere-error-presence-2026-10-23-01\\CHECK-10.json",
+    "bytes": 5614,
+    "sha256": "2c23fb5ccbb88e266bf1ba3ea6d08df0f4690d0f89c8f24d5d6f7cdfbe733e3f"
+  },
+  "primitiveCompletion": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v21-atmosphere-error-presence-2026-10-23-01\\FINDING-12.json",
+    "bytes": 1234,
+    "sha256": "18d87586754831b0240230adabbac6960b8035e91ad454bf841bc59a190307e9"
+  },
+  "dependencyAudit": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v21-dust-generation-peer-review-2026-10-23-01\\dependency-audit-05.json",
+    "bytes": 17890,
+    "sha256": "2b84e431ac499f9ddb4dccaf11654d797a0fe1b3de072838f21a01e9918d4f1d"
+  },
+  "reviewScope": "Physical-generation preflight and actual private constructor/Main/R scope under exact disclosed Root models. No atomic whole-triple byte/publication reservation, fee/funding, native GPU, program/uniform/full source freshness, Main or Frame claim.",
+  "findings": [
+    "Falsy native failure occurrence: confirmed28 site/value cases; five-hunk fix portable over Root20c02/21c01/21c02 and verified separately.",
+    "Truthy primitive GPU callback completion: actual1 Boolean.then getter can change realR slice after final callback checks; Root successor required.",
+    "Storage absent from current top graph/order and ResourceHostStage definition load; Root22 must add full module/source/order/funding, not a preloaded global. Other11 ResourceHost original modules and all8 Atmo runtime reads resolve; GLProgram is through authentic Baseline geometry source."
+  ],
+  "preservedHarnessCorrections": [
+    "Initial guessed Root20 folder did not exist; exact parent was read from Root21 recipe.",
+    "First source-negative assumption wrong because module absent; preserved verifier09 and corrected exact component source-only test.",
+    "Audit02 foundation classification and audit03 indirect GLProgram export lookup preserved/refined without source changes."
+  ],
+  "SourceAndLimitsSelected": false,
+  "RootSourcesEdited": false,
+  "Main": false,
+  "P05": "OPEN"
+}
