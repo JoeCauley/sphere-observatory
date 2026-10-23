@@ -1,0 +1,239 @@
+{
+  "status": "PASS_FUNCTIONAL_COMPONENT_PROPOSAL_UNSELECTED",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v24-binding-selection-route-2026-10-23-01\\candidate-07\\source",
+  "parent": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v23-validated-workspace-handoff-2026-10-23-01\\candidate-03\\source",
+  "changed": [
+    {
+      "path": "biome-service/commonboundary-adapter.js",
+      "bytes": 30523,
+      "sha256": "622302a13e64930372f5f721288ec3de889ca799a8b453a218bfb35580a3dd43"
+    },
+    {
+      "path": "owned-main-bootstrap.js",
+      "bytes": 293878,
+      "sha256": "d3a7bcaeedd85577040edcdefb83469e3620014a840bef75e136cca9c27bef85"
+    }
+  ],
+  "files": 522,
+  "parsedScriptFiles": 425,
+  "nonprofileLoaderHunks": 26,
+  "currentSupportHunks": 13,
+  "other520Exact": true,
+  "controls": {
+    "runs": 21,
+    "rawGroups": 49,
+    "controls": [
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v24-binding-selection-route-2026-10-23-01\\control-positive-10.json",
+        "bytes": 5950,
+        "sha256": "241ee998e1577bbf09671c725cd14c0886c5386fd99deb11c4a34706c2be477c"
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v24-binding-selection-route-2026-10-23-01\\control-noIntent-10.json",
+        "bytes": 5474,
+        "sha256": "6e7278fb8024eaa8ddea235f01934db81717a2f67d63b4e525021b1bb88e991d"
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v24-binding-selection-route-2026-10-23-01\\control-pinnedSession-10.json",
+        "bytes": 5479,
+        "sha256": "c2a952a079d2e7b05f5649ccc271eb3a22b8897ab86d58f0af7a1b66d49969ca"
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v24-binding-selection-route-2026-10-23-01\\control-pinnedView-10.json",
+        "bytes": 5476,
+        "sha256": "97a426444182f7a97d8a2a30c7b9b213f3f8406a7b101f9b70ab4c24711ed41f"
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v24-binding-selection-route-2026-10-23-01\\control-unpriced-10.json",
+        "bytes": 5474,
+        "sha256": "bd93dcb66f8f9f0198b0f71318d70a171c874df33d38193fac5de7e8bf4748f5"
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v24-binding-selection-route-2026-10-23-01\\control-missing-10.json",
+        "bytes": 5365,
+        "sha256": "3edb9ad4a052e8a4706e8b2f3260f17e139387ca77764381f85cbafd3a7f9152"
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v24-binding-selection-route-2026-10-23-01\\control-malformed-10.json",
+        "bytes": 5473,
+        "sha256": "06f5c919870fcd44beeb15a82240aa2ad64a5a8442d30a8195a915e3ac0085a1"
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v24-binding-selection-route-2026-10-23-01\\control-pending-10.json",
+        "bytes": 5470,
+        "sha256": "c7122bde8ec62d71699767d7c83075d0b94b9a07cfe1d488740e9cd72536a2bf"
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v24-binding-selection-route-2026-10-23-01\\control-sourceChanged-10.json",
+        "bytes": 5431,
+        "sha256": "86629f66c06df18f7dd89bf4462a3c95d1e032e376f48db245394e3d0a7ab3ed"
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v24-binding-selection-route-2026-10-23-01\\control-changed-10.json",
+        "bytes": 5550,
+        "sha256": "429787ac013fe916d7fe1508beffb50d6eab8076a873fa13ae1e6cfb6efddda5"
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v24-binding-selection-route-2026-10-23-01\\control-closedReader-10.json",
+        "bytes": 5513,
+        "sha256": "b2640fb5374fc15634a62adbb77c95c393e57e65ac2fb32ab880ea4935153739"
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v24-binding-selection-route-2026-10-23-01\\control-rawNull-10.json",
+        "bytes": 5462,
+        "sha256": "c6cf0d4c92ead9fef703a21ae126ba454088e48c411cc345d4609307f8c11b33"
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v24-binding-selection-route-2026-10-23-01\\control-rawFalse-10.json",
+        "bytes": 5463,
+        "sha256": "5131a66533dd5e510830e9662c769c39a2ebf29122c3bdca5d436e93c42e37c8"
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v24-binding-selection-route-2026-10-23-01\\control-rawUndefined-10.json",
+        "bytes": 5467,
+        "sha256": "780d11e8c6c0fafc9458580ac15ad6cea98f076971698a841010ac87f1fe5c8e"
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v24-binding-selection-route-2026-10-23-01\\control-badStatus-10.json",
+        "bytes": 5380,
+        "sha256": "1104b1eb33fbac910c9b99a71bf963b4eac0bf33fa884660523c6f42ddb7f0b1"
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v24-binding-selection-route-2026-10-23-01\\control-foreignCompletion-10.json",
+        "bytes": 5463,
+        "sha256": "2e7501d0d5dcf92e3220e3ed03aeb5fcfce5e766d8a5600f380ec052d745572c"
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v24-binding-selection-route-2026-10-23-01\\control-headAccessor-10.json",
+        "bytes": 5476,
+        "sha256": "dfd9955efc38716f7ec21bf77dc4fb9e5e4c9258da95fd896620e708f6a15c3f"
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v24-binding-selection-route-2026-10-23-01\\control-finalChanged-10.json",
+        "bytes": 5850,
+        "sha256": "fa6ca568e40bbfa84a39915aa784a9df7116e116e462ccbc37171de80c5b78c4"
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v24-binding-selection-route-2026-10-23-01\\control-retired-10.json",
+        "bytes": 6207,
+        "sha256": "96d37d82c8ebb371dc85b08dddf60fcab9171067a9011c1130b936178852377a"
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v24-binding-selection-route-2026-10-23-01\\control-catalogue-09.json",
+        "bytes": 3825,
+        "sha256": "ef6bcce265437e0bed733be288a88b8e48f20dd1fe16f6af36b4aa16e297ffa3"
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v24-binding-selection-route-2026-10-23-01\\control-catalogueRetired-09.json",
+        "bytes": 3832,
+        "sha256": "6e13774427b972f0db002fb703ce23e8ab088055fd1498b85fb914db1b62b839"
+      }
+    ]
+  },
+  "sourceOnly": {
+    "actualCurrentReads": 245,
+    "freshProfiles": 3,
+    "productionEmbeddedProfilesUnchanged": true,
+    "changedCStaleGraphRefuses": true,
+    "qFinal0": true
+  },
+  "entries": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v24-binding-selection-route-2026-10-23-01\\exact-component-07.json",
+      "bytes": 36175,
+      "sha256": "702a8ee96fc9ccae0b263b97053013c5f6e5ee02a9da14263bbfe496294504b1"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v24-binding-selection-route-2026-10-23-01\\source-verification-12.json",
+      "bytes": 8909,
+      "sha256": "6f1dc6860f08a39b1f8d216e22d4fc6eed912128746140ab2773afdcaebecd71"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v24-binding-selection-route-2026-10-23-01\\source-inventory-12.json",
+      "bytes": 94305,
+      "sha256": "b6ebf97742fde7f4508552d86ceed8b808c3369f4d653875b71f40a736bb3c5e"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v24-binding-selection-route-2026-10-23-01\\original-route-graph-01.json",
+      "bytes": 14355,
+      "sha256": "d7dfc503b897727a48c870cf3b380be23558a5bef8d8e5b909bd469636498eab"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v24-binding-selection-route-2026-10-23-01\\original-function-archive-01.json",
+      "bytes": 43173,
+      "sha256": "9ba679ad8093b1e54ebc6eb04bab32aa0bf5595030f01056d58911da33f86502"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v24-binding-selection-route-2026-10-23-01\\positive-liabilities-13.json",
+      "bytes": 3941,
+      "sha256": "8a806f99cf8ecc16ceba91a34e248b1046375cefc588cd867180eb377c09109d"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v24-binding-selection-route-2026-10-23-01\\selection-authority-and-boundary-13.json",
+      "bytes": 3780,
+      "sha256": "15ff9a318e4781f93005e34464df45f6ee6bd5ac195ec49661700f168a4be7e4"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v24-binding-selection-route-2026-10-23-01\\attempt-dispositions-13.json",
+      "bytes": 2109,
+      "sha256": "4c20f2414c821810de6a6c517eb59c1f26a10c1fef375dc6a33779d9d743b16a"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v24-binding-selection-route-2026-10-23-01\\build-component-07.cjs",
+      "bytes": 14158,
+      "sha256": "6b4859f1c111104fcbb8843d508f7c5c2f6354fdd64eef2ef78cce235a2931af"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v24-binding-selection-route-2026-10-23-01\\verify-component-12.cjs",
+      "bytes": 6487,
+      "sha256": "134b7c3ad6a58f7779a5d9455b7977d27c4b2c2bdcc3611e2805b0bb18cc374d"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v24-binding-selection-route-2026-10-23-01\\derive-original-route-01.cjs",
+      "bytes": 14692,
+      "sha256": "034b20bc39dbc61b662cb18b4194be634cb1225e7056901ef613bcfc0b767213"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v24-binding-selection-route-2026-10-23-01\\test-current-binding-07.cjs",
+      "bytes": 25224,
+      "sha256": "a5a662146d858e3f065284028f43ba51fdd3456498a29174e295f4b1e765db4c"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v24-binding-selection-route-2026-10-23-01\\test-full-catalogue-03.cjs",
+      "bytes": 19724,
+      "sha256": "122325268a36cfea51e0b949ffeb0c4dd9113815d98362e78a8ae0c87ede2ae9"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-current-base-support-profile-2026-10-23-01\\CHECK-18.json",
+      "bytes": 5520,
+      "sha256": "59ea9d04e2f91a7ffc80f968c6a6ad1e13879315be54ca144de72cfceccb5f86"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-current-base-support-profile-2026-10-23-01\\exact-edits-14.json",
+      "bytes": 9262,
+      "sha256": "9b8e46d3300186204bacb1c12ea26169d9d89cebfa7947dcda41b77e76d45fbc"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-resolved-binding-admission-inputs-2026-10-23-01\\CHECK-07.json",
+      "bytes": 9012,
+      "sha256": "c979dee92d76ca27d3f98978f397fd012e6f8537b6fca2eac15fff6e6b2e601c"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-resolved-binding-admission-inputs-2026-10-23-01\\source\\resolved-binding-admission-inputs-04.inc.js",
+      "bytes": 13677,
+      "sha256": "7ccbc2948a9ca79099b9afb550e9b55a7dc41147a23d2d5caeae749e7e423903"
+    }
+  ],
+  "product": {
+    "funding": null,
+    "work": null,
+    "metadata": null,
+    "hostAdmission": null,
+    "providerBridge": null,
+    "AppExecution": false,
+    "Main": false,
+    "native": false,
+    "P05": "OPEN"
+  },
+  "review": "Actual entire private catalogue + original real source/Pub/Binding/Boundary/Release/Storage component bodies under explicit parent/caller/fakeIDB models. No whole loader/bootstrap/native Main or complete scheduling/physical budget claim."
+}

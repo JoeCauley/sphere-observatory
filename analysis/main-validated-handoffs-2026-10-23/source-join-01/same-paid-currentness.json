@@ -1,0 +1,265 @@
+{
+  "usedEligibility": {
+    "primitiveSlots": 31,
+    "errorWriteTargetRows": 15,
+    "rawRefusal": "Captured Freeze of a fixed own-data literal; no Records.error/Error/ordinary ToPropertyDescriptor path",
+    "pairedCounter": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v24-currentness-scope-2026-10-23-01\\controls-01\\paired-eligibility-12.json",
+      "bytes": 1199,
+      "sha256": "5319b0b008601341471b0c3d07b1f2736f444440c425c9b6eb41dc8d3e1df21f"
+    },
+    "scope": "Only actual original R.matchesLimits/Constructor iteration and original ServiceError identities/super/assigned-field targets. New private fact is created after checks, retained only in one synchronous scope and cleared on exit. Actual common R/pre-debit prefix eligibility remains separate."
+  },
+  "status": "PASS_FROZEN_UNSELECTED_USED_ELIGIBILITY_AND_SAME_PAID_CURRENTNESS_COMPONENT",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v24-currentness-scope-2026-10-23-01\\candidate-09\\source",
+  "parent": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v23-validated-workspace-handoff-2026-10-23-01\\candidate-03\\source",
+  "files": 522,
+  "parses": 426,
+  "changed": [
+    "biome-service/host-world.js",
+    "biome-service/native/surface-kernel.js",
+    "owned-main-bootstrap.js"
+  ],
+  "other519Exact": true,
+  "parent522StillExact": true,
+  "rawSequentialInverseHunks": 79,
+  "nonProfileCodeHunks": 73,
+  "sourcePins": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v24-currentness-scope-2026-10-23-01\\candidate-09\\source\\biome-service\\host-world.js",
+      "bytes": 80020,
+      "sha256": "80b96698b7c3fd9879a851673809fb5c2021ac5b56a6783578dd9da361c96409"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v24-currentness-scope-2026-10-23-01\\candidate-09\\source\\biome-service\\native\\surface-kernel.js",
+      "bytes": 74473,
+      "sha256": "12bd737201195d007ab675a72d58c76d1b951037a0017c50c89f3304896f7339"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v24-currentness-scope-2026-10-23-01\\candidate-09\\source\\owned-main-bootstrap.js",
+      "bytes": 280734,
+      "sha256": "d570c8f94678bbc260df6205864c7646b9cc6fd9bb0fe445f9657fcd0e07d46e"
+    }
+  ],
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "rows": 222,
+      "digest": "263c6f3fb6fa15f28fc724d2a33b4b781a0b06cac73b379c55bfc3850ed5cd37"
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "rows": 5,
+      "digest": "723bcf2764bdb0307bc0044823bd5efa17434e0bde352a654e20c5dbbdc37d66"
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "rows": 9,
+      "digest": "ef3e0c2a8e6b3a4123cbb23f29243f888e6bd7cc7692cbc6baf67243f2616f6b"
+    }
+  ],
+  "freshSourceReads": 236,
+  "sourceCopies": 222,
+  "sourceOnlyPeak": 13403689,
+  "sourceOnlyFinalQ": {
+    "heldBytes": 0,
+    "requestedBytes": 0,
+    "bookkeepingBytes": 0,
+    "peakBytes": 13403689,
+    "limitBytes": 33554432,
+    "liveReservations": 0,
+    "maximumReservations": 4096,
+    "owners": [],
+    "scope": "CONSERVATIVE_LOGICAL_METADATA_ADMISSION",
+    "nativeHeap": "UNMEASURED"
+  },
+  "orderRows": 218,
+  "componentCases": 18,
+  "componentGroups": 103,
+  "boundaryGroups": 58,
+  "diagnosticReceiptEntries": 485301,
+  "diagnosticReceiptEnds": 485301,
+  "diagnosticCountsArePrices": false,
+  "preservedOriginalBodies": [
+    {
+      "file": "biome-service/host-world.js",
+      "name": "create",
+      "sha256": [
+        "55b4836b0ee488b235ce6e9022679a6d65adefee6d1afc24319d5c4cb2e27c94"
+      ]
+    },
+    {
+      "file": "biome-service/host-world.js",
+      "name": "profileShape",
+      "sha256": [
+        "2a453a72a98e58de5496d119dee1969697b71cf7661848aff9d9b14cdab69e0f"
+      ]
+    },
+    {
+      "file": "biome-service/host-world.js",
+      "name": "originalHostDataCurrent",
+      "sha256": [
+        "1710efb80f67eb4390645ce80f61d03e6959e44490356278d104fc0e830a5bea"
+      ]
+    },
+    {
+      "file": "biome-service/host-world.js",
+      "name": "originalHostReuseCurrent",
+      "sha256": [
+        "2875bc3a84cf3f09aac5f67f23e056d4ec0b4fcfb2458f917106944bc3158fee"
+      ]
+    },
+    {
+      "file": "biome-service/host-world.js",
+      "name": "beginOriginalHostReuse",
+      "sha256": [
+        "387c87122aec0032d02bd38e2ca4026b8c67641e8baab3c4393b8d91d1fcaf3d"
+      ]
+    },
+    {
+      "file": "biome-service/host-world.js",
+      "name": "verifyOriginalHostReuse",
+      "sha256": [
+        "c34cd1bf29f1341f4c8e6d0a7272e6a17150ad7a1c63a8985d5de9dbfe418198"
+      ]
+    },
+    {
+      "file": "biome-service/host-world.js",
+      "name": "releaseOriginalHostReuse",
+      "sha256": [
+        "1fecb75339ce688c19fc437bee611a7662b78f61f00421a801b656f9eca2d83c"
+      ]
+    },
+    {
+      "file": "biome-service/host-world.js",
+      "name": "closeOriginalHostReuse",
+      "sha256": [
+        "aa59bc1e288bfc122ecf913d700d37a61670dd32ef8d06544a05a0346471c3a0"
+      ]
+    },
+    {
+      "file": "biome-service/native/surface-kernel.js",
+      "name": "create",
+      "sha256": [
+        "d6e174188a839ee6e8a2d418e70b2e4b0d1a6ccf0e3c0db3c7525bc4575f66be"
+      ]
+    },
+    {
+      "file": "biome-service/native/surface-kernel.js",
+      "name": "claimKernelHostReuse",
+      "sha256": [
+        "e9660bbd3f655ee1a86dafbbb882201531a922079b0836148afb4fdb120b7954"
+      ]
+    },
+    {
+      "file": "biome-service/native/surface-kernel.js",
+      "name": "consumeKernelHostReuse",
+      "sha256": [
+        "4399fb6aef2cfc642e1bd1062c1a63e9a52c4948b3ef24a1b8460feb59cb19a8"
+      ]
+    },
+    {
+      "file": "biome-service/native/surface-kernel.js",
+      "name": "verifyKernelHostReuse",
+      "sha256": [
+        "4610438d00b87c3d5dbbad66971c368fdf66ddfc6f4364156eddbaf87b34525e"
+      ]
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "name": "sourceOwnedCreate",
+      "sha256": [
+        "f9c0272af330504e73affa50572c112319582c651a623e66fff56e0fd3900f9f"
+      ]
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "name": "sourceOwnedStart",
+      "sha256": [
+        "167cfff1ca436c35eb0b20d7fe7e2d2c271cb2ad8b355e3ad3f4a0e6b45212b2"
+      ]
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "name": "sourceOwnedAccept",
+      "sha256": [
+        "df6ce3922e0710b79e2abc37eb988dceffc9a7b0c659e3c1a1ee2887ce91959c"
+      ]
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "name": "sourceOwnedRelease",
+      "sha256": [
+        "68e491a6fecb0e1c4e6130522795f475d8bcac967e2660b8ec93a25f6a3be302"
+      ]
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "name": "sourceOwnedDispose",
+      "sha256": [
+        "cbecc21115de85d719d6d0c4e23cfc135b4c596ce950f233acac5e51e6d482e3"
+      ]
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "name": "createScheduledSourceReader",
+      "sha256": [
+        "cd223f74d155e0d6283c13a89cd0e68a3b6f0cdeb29eed190f441e53127386b1"
+      ]
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "name": "readSource",
+      "sha256": [
+        "214b785e01cbbf93d8516e8321d8dcf603d94832fa05038b512aae1cea9ea69f"
+      ]
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "name": "buildOrder",
+      "sha256": [
+        "70edc91b5ec0dcd827394da9ffe5476cc7d51f5b33b3400f4cde140a6fcc2805"
+      ]
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "name": "coldRowCurrent",
+      "sha256": [
+        "bd476baff50f30e41d998e2594b4dab5fa057325ca2082d28e2c3b7569d4e07e"
+      ]
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "name": "coldOriginal",
+      "sha256": [
+        "c5b09d16d61e2cb82b83085d71f5f37bb74cdf5f4d889ce5ef04a4faf6a9b4ef"
+      ]
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "name": "assertPrivateSurfaceBackend",
+      "sha256": [
+        "7fd9592f27d2dbe20dfa650189cf83618647f4277e8a2ffb2c5035f6cbf4b70b"
+      ]
+    }
+  ],
+  "privateProtocol": {
+    "authority": "Original source-authenticated loader→Host source binding and private Kernel registration; fixed immutable lexical driver bridge, never a public ready value/callback",
+    "scope": "Exact STARTUP state, original paid object/serial/phase/step and original Resource/App/Surface tuple; HOST_BUILD_STEP or KERNEL_OWNER_STEP only",
+    "freshness": "Outer full Resource parent/source/App weak input/native dimensions and one full Builder current. Nested checks repeat exact scope plus actual Surface/G/native liveness boundaries; descriptor/capability tables are reused only inside this synchronous callback-free preflight.",
+    "expiration": "Before every non-Host child phase; inside Host before its semantic/native body; before Kernel publication; any reentry, throw, return, native-wait observation, next visit, close or uncertain state",
+    "legacy": "Outside the private active scope full existing current checks execute; original legacy Host/Kernel create/claim/verify bodies preserved",
+    "closedOwnership": "New driver/helper/capture rows and Kernel boundary map stay realm/owner reachable. No Q/GC/native retirement inference."
+  },
+  "knownHeld": [
+    "Complete named own/caller/child work and fit with actual G A12/author13 children, not old396/3183",
+    "All positive module/controller/every-instance/active scope/prefix/closed/Q-facade storage and exact whole32MiB union",
+    "Source24/26/28 and G09/12 are separate overlays; this parent uses exact frozen Root23 G08/Source30d3",
+    "Actual used-native method provenance and independent currentness scope review; modeled GL/Surface/App/timer/R parts are not NativeMain proof",
+    "Actual after-R services/job/following clock authority and full37STARTUP/private Main/selected-world/Host vector"
+  ],
+  "funding": null,
+  "work": null,
+  "Main": false,
+  "P05": "OPEN"
+}

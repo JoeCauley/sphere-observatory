@@ -1,0 +1,179 @@
+{
+  "status": "FROZEN_VALIDATED_HANDOFFS_CURRENTNESS_AND_NATIVE_SOURCE_COMPONENT_MAIN_HELD",
+  "utc": "2026-10-23T21:56:24.247035+00:00",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-current-validated-state-join-2026-10-23-01\\candidate-01\\source",
+  "loaderSha256": "85d2bef2c9f2706639828c3eb91763bd6b485a9ce0ce0215ad4ff1cc5a8b3884",
+  "files": 522,
+  "parses": 426,
+  "sourceRows": 222,
+  "sourceReads": 236,
+  "orderRows": 218,
+  "exactInverseHunks": 100,
+  "combinedCases": 18,
+  "combinedGroups": 103,
+  "boundaryGroups": 58,
+  "proofs": [
+    {
+      "path": "workspace-caller.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v23-validated-workspace-handoff-2026-10-23-01\\CHECK-09.json",
+        "bytes": 2148,
+        "sha256": "159b19d84835909ab8ee37e1f12f4bd0263fd7c800697edbf7a523b2456d5cdc"
+      }
+    },
+    {
+      "path": "promise-guard.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v24-scheduled-source-observer-guard-2026-10-23-01\\CHECK-06.json",
+        "bytes": 2135,
+        "sha256": "8ba587c47228f329c5b0c5c1cf0faa995c0aa8876a2569a310ca5bcab182d6e9"
+      }
+    },
+    {
+      "path": "records-join.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v25-validated-records-join-2026-10-23-01\\CHECK-04.json",
+        "bytes": 2516,
+        "sha256": "ecc67542d2a3ed6980d1fd6af1c430e8a318726257c0c229b57e90b4bc9c703c"
+      }
+    },
+    {
+      "path": "source-used-runtime.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v26-source-used-runtime-2026-10-23-01\\CHECK-11.json",
+        "bytes": 2327,
+        "sha256": "217bf7cee4cecbb4ef3bc65db279ee26c22fc7ec37426168ca3cdb969d4b5eb2"
+      }
+    },
+    {
+      "path": "current-binding-join.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v27-explicit-binding-route-2026-10-23-01\\CHECK-03.json",
+        "bytes": 2297,
+        "sha256": "b1a39924bdb56cb606fe054fcad1fbf9f1a72bbec01a973d984e9f027f8d5e10"
+      }
+    },
+    {
+      "path": "direct-source-entry.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v28-direct-scheduled-source-entry-2026-10-23-01\\CHECK-05.json",
+        "bytes": 2814,
+        "sha256": "58ed13fa43a7ea64bb8a13bda336374bea938dea136e6d17fc5fbf86eb144bb2"
+      }
+    },
+    {
+      "path": "native-source-guard.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v29-native-regexp-guard-2026-10-23-01\\CHECK-05.json",
+        "bytes": 2768,
+        "sha256": "d8418278e027eb89aac21bc7d90f64a3c4dcdd51d23976f17048822920b97c57"
+      }
+    },
+    {
+      "path": "joined-state.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-current-validated-state-join-2026-10-23-01\\CHECK-06.json",
+        "bytes": 3620,
+        "sha256": "cf97d1fe6dff5597b26b4df9cfc1b7fce4b1e6bb0b908c37983b1a7a9f6e2c92"
+      }
+    },
+    {
+      "path": "same-paid-currentness.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v24-currentness-scope-2026-10-23-01\\CHECK-12.json",
+        "bytes": 9851,
+        "sha256": "027816b9ddd4f211801001ddcdcf144b36c36e45d07b7de2bcdbb194e0eea771"
+      }
+    },
+    {
+      "path": "strict-descriptor.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-14\\FREEZE-DATA-DESCRIPTOR-01.json",
+        "bytes": 1085,
+        "sha256": "1d7a6beb7571270845f67dc9a7c85247aa519c67e45a0f79028a67823332a8ec"
+      }
+    },
+    {
+      "path": "numeric-arithmetic.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-15\\CHECK-ARITHMETIC-01.json",
+        "bytes": 17576,
+        "sha256": "c6126409a3b3ebf31e306120f0cda4cc6678dd8da62b937056a57ee2417e9a02"
+      }
+    },
+    {
+      "path": "source-delta-arithmetic.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v29-native-regexp-guard-2026-10-23-01\\arithmetic-review-01\\CHECK-DELTA-01.json",
+        "bytes": 9934,
+        "sha256": "c1b77167f70182600cf36a949d48b93551694d10494b6be330da76733d698a48"
+      }
+    },
+    {
+      "path": "capture-receipt.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v29-owned-host-capture-receipt-2026-10-23-01\\CHECK-01.json",
+        "bytes": 3405,
+        "sha256": "476e154bb3a89ed09e549fee7b565192f68c5d566b421d87b870db2d8068392b"
+      }
+    },
+    {
+      "path": "binding-selection.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v24-binding-selection-route-2026-10-23-01\\CHECK-13.json",
+        "bytes": 12186,
+        "sha256": "bfbbe32351d5222d6c18030f7780f3a9297b7482a1db60bcd68187f708133729"
+      }
+    },
+    {
+      "path": "current-base-support.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-current-base-support-profile-2026-10-23-01\\CHECK-18.json",
+        "bytes": 5520,
+        "sha256": "59ea9d04e2f91a7ffc80f968c6a6ad1e13879315be54ca144de72cfceccb5f86"
+      }
+    },
+    {
+      "path": "chrome-source-pass.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v29-native-regexp-guard-2026-10-23-01\\native-chrome-01\\browser-report-01.json",
+        "bytes": 18156,
+        "sha256": "2e76c9a3831f13bc03571f6c0b7353dc84853c16670a7e497d52df147cdfc4fd"
+      }
+    },
+    {
+      "path": "chrome-source-prior-failure.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v28-direct-scheduled-source-entry-2026-10-23-01\\native-chrome-01\\browser-report-01.json",
+        "bytes": 13682,
+        "sha256": "3ceac5d0112888e6f0c92562cecc4ac15ad2d2f5a71094f02ee62e8d4c6acbbc"
+      }
+    }
+  ],
+  "selectedMainStartupComponent": "main-texture-handoff-funded-c3",
+  "joinedMainStartupSelected": false,
+  "completeFundingSelected": false,
+  "hostAdmission": null,
+  "providerBridge": null,
+  "APP_EXECUTION_ENABLED": false,
+  "P05": "OPEN",
+  "P06_P08": "NOT_STARTED",
+  "PhaseOne": "NOT_ACCEPTED_NOT_RELEASED",
+  "deliveredRuntimeFilesChanged": 0,
+  "nativeChromeSourceOnly": {
+    "tests": 7,
+    "version": "155.0.0.0",
+    "syntheticGraphRows": 3,
+    "actualHelperRows": 9,
+    "notOrdinaryMain": true
+  },
+  "temporaryChromeTabAndTwoOwnServersClosed": true,
+  "existingUserTabsAndServersChanged": false,
+  "rawArchivesRemainLocal": true,
+  "excludedActive": [
+    "Complete whole-parent phase fee and current Q union review in main-v24-currentness-scope/review-02",
+    "Source-private defaults port and staged normalization successor; frozen capture receipt remains unjoined",
+    "FirstQ/foundation gate audit active follow-up",
+    "Complete coupled Main/provider demand, complete bundle retirement and native program/whole-view/fragment/Frame/support/ordinary Main"
+  ]
+}

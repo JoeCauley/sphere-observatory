@@ -1,0 +1,101 @@
+{
+  "status": "PASS_FROZEN_UNSELECTED_CURRENT_VALIDATED_STATE_JOIN",
+  "sourceRoot": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-current-validated-state-join-2026-10-23-01\\candidate-01\\source",
+  "loader": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-current-validated-state-join-2026-10-23-01\\candidate-01\\source\\owned-main-bootstrap.js",
+    "bytes": 309292,
+    "sha256": "85d2bef2c9f2706639828c3eb91763bd6b485a9ce0ce0215ad4ff1cc5a8b3884"
+  },
+  "files": 522,
+  "parses": 426,
+  "changed": [
+    "biome-service/host-world.js",
+    "biome-service/native/strict-record-owner.js",
+    "biome-service/native/surface-kernel.js",
+    "biome-service/numeric-profile.js",
+    "biome-service/records.js",
+    "owned-main-bootstrap.js"
+  ],
+  "other516Root29FilesExact": true,
+  "inverseHunks": 100,
+  "nonProfileHunks": 97,
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "rows": 222,
+      "digest": "002a0d82a0ecdab9665990976f5afcab2f32e729d3c15a1276dda23060297192"
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "rows": 5,
+      "digest": "95600ffa007cdd056cd8939871d24209c6aac95c04e79a436e7a81ddc783d40c"
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "rows": 9,
+      "digest": "b24f9a2a56dc78482c0b7bdf902e439694358ab14fda13fc502a310f3e9abae1"
+    }
+  ],
+  "freshSourceReads": 236,
+  "sourceCopies": 222,
+  "sourceOnlyPeak": 13421824,
+  "sourceOnlyFinalQ": {
+    "heldBytes": 0,
+    "requestedBytes": 0,
+    "bookkeepingBytes": 0,
+    "peakBytes": 13421824,
+    "limitBytes": 33554432,
+    "liveReservations": 0,
+    "maximumReservations": 4096,
+    "owners": [],
+    "scope": "CONSERVATIVE_LOGICAL_METADATA_ADMISSION",
+    "nativeHeap": "UNMEASURED"
+  },
+  "orderRows": 218,
+  "componentCases": 18,
+  "componentGroups": 103,
+  "boundaryGroups": 58,
+  "receiptEntries": 485301,
+  "receiptEnds": 485301,
+  "countsArePrices": false,
+  "fullControls": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-current-validated-state-join-2026-10-23-01\\controls-04\\full-regressions-10.json",
+    "bytes": 9121,
+    "sha256": "ccd3b9a79fafdea949e845c19a2379d4709bc69a3b055322bc70d5051bf01415"
+  },
+  "boundaryControls": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-current-validated-state-join-2026-10-23-01\\controls-03\\current-scope-controls-09.json",
+    "bytes": 19712,
+    "sha256": "229edb0c83cc612b181a47951a7b5c36627c32842220724e1bfb98d748a1908f"
+  },
+  "componentLineage": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-15\\CHECK-ARITHMETIC-01.json",
+      "bytes": 17576,
+      "sha256": "c6126409a3b3ebf31e306120f0cda4cc6678dd8da62b937056a57ee2417e9a02"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v24-currentness-scope-2026-10-23-01\\CHECK-12.json",
+      "bytes": 9851,
+      "sha256": "027816b9ddd4f211801001ddcdcf144b36c36e45d07b7de2bcdbb194e0eea771"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v29-native-regexp-guard-2026-10-23-01\\CHECK-05.json",
+      "bytes": 2768,
+      "sha256": "d8418278e027eb89aac21bc7d90f64a3c4dcdd51d23976f17048822920b97c57"
+    }
+  ],
+  "nativeSourceEvidenceInheritedOnly": true,
+  "completeCosts": null,
+  "limits": {
+    "prepare": 4096,
+    "upload": 262144,
+    "jobs": 2,
+    "slots": 64,
+    "serviceCPU": 33554432,
+    "serviceGPU": 10485760,
+    "commonQ": 33554432
+  },
+  "Main": false,
+  "P05": "OPEN"
+}

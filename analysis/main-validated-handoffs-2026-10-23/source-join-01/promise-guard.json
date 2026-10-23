@@ -1,0 +1,68 @@
+{
+  "status": "PASS_FROZEN_UNSELECTED_SCHEDULED_SOURCE_USED_PROMISE_GUARD",
+  "source": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v24-scheduled-source-observer-guard-2026-10-23-01\\candidate-02\\source\\biome-service\\native\\source-admission.js",
+    "bytes": 47245,
+    "sha256": "ce2698058f982e2cbd4371d47ecb3809e88ab16403a60874bdfbd9b279fbf34c"
+  },
+  "files": 522,
+  "parses": 426,
+  "changed": [
+    "biome-service/native/source-admission.js",
+    "owned-main-bootstrap.js"
+  ],
+  "other520Root23FilesExact": true,
+  "loader": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v24-scheduled-source-observer-guard-2026-10-23-01\\candidate-02\\source\\owned-main-bootstrap.js",
+    "bytes": 265334,
+    "sha256": "6d797aa02358eda1e7e60c59c5c836fe5b1d1818edacbd410b220a3d2a97a5c5"
+  },
+  "inverseHunks": 10,
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "rows": 222,
+      "digest": "7161dfb631dc955896b5c28cd227c14933b9ed8927f38171f33f968008a25ce2"
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "rows": 5,
+      "digest": "1b9b77bc7121560c437664887070b1d7943fb19e8772be9db4a4b29901b9f783"
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "rows": 9,
+      "digest": "13c6a655d90eef3ef088200a93401a51037c71741cc1f5d623b6f03d68746285"
+    }
+  ],
+  "freshSourceReads": 236,
+  "sourceCopies": 222,
+  "sourceOnlyPeak": 13402746,
+  "sourceOnlyFinalQ": {
+    "heldBytes": 0,
+    "requestedBytes": 0,
+    "bookkeepingBytes": 0,
+    "peakBytes": 13402746,
+    "limitBytes": 33554432,
+    "liveReservations": 0,
+    "maximumReservations": 4096,
+    "owners": [],
+    "scope": "CONSERVATIVE_LOGICAL_METADATA_ADMISSION",
+    "nativeHeap": "UNMEASURED"
+  },
+  "orderRows": 218,
+  "tests": 41,
+  "actualNativePromiseMutationCases": 8,
+  "uncertainNativeOwnersHeld": 8,
+  "unknownGetterCalls": 0,
+  "mandatoryWorkTables": {
+    "bootstrap": 19,
+    "helper": 22,
+    "newField": "promiseGuard",
+    "guardAdmittedBeforeNativeRequest": true
+  },
+  "allCompleteAmounts": null,
+  "APP_EXECUTION_ENABLED": false,
+  "Main": false,
+  "P05": "OPEN"
+}

@@ -1,0 +1,1 @@
+Frozen source/component evidence only. Includes native Chrome Source success and the preserved prior failure; no ordinary Main, full funding or Phase One acceptance. Source snapshots and complete historical attempts are in the private checkpoint. Raw capture archives remain local.

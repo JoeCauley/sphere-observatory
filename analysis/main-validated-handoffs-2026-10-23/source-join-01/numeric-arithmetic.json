@@ -1,0 +1,440 @@
+{
+  "status": "FROZEN_READONLY_A14_ARITHMETIC_AND_LOGICAL_OWNERSHIP_UNSELECTED",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-14\\candidate-01\\source",
+  "componentFreeze": {
+    "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-14\\FREEZE-DATA-DESCRIPTOR-01.json",
+    "bytes": 1085,
+    "sha256": "1d7a6beb7571270845f67dc9a7c85247aa519c67e45a0f79028a67823332a8ec"
+  },
+  "componentFunctionalReceipt": {
+    "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-14\\FUNCTIONAL-DATA-DESCRIPTOR-01.json",
+    "bytes": 8706,
+    "sha256": "aaa4d600c98157742ab839771d1b7b6a2f07155197a6a999b4adaea81911ac63"
+  },
+  "sourceRows": 522,
+  "sourceUnchanged": true,
+  "additionalProductTests": 0,
+  "productRuntimeExecution": false,
+  "arithmeticReproduction": {
+    "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-15\\arithmetic-reproduction-01.json",
+    "bytes": 9908,
+    "sha256": "6e2d8007a7c10ded8c149de5acaa00b618d3a26d5719f13b8c51232fa8adb36e"
+  },
+  "results": {
+    "work": {
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-15\\named-work-graph-02.json",
+      "bytes": 130612,
+      "sha256": "f78bbbf51df0a602df0312185d2948da222c36ddb0c4015ce9e77577b44f5210"
+    },
+    "storage": {
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-15\\complete-storage-05.json",
+      "bytes": 127053,
+      "sha256": "5141e1c43a4ad066b40f134c4b51c47be5d787d3093214955e8cbabd843f285c"
+    },
+    "cohort": {
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-15\\simultaneous-lifetime-01.json",
+      "bytes": 3456,
+      "sha256": "0c28c4bec9c2577239fba26030b356f92d8370c7853ee1722b4e9a34c6bdaa1d"
+    }
+  },
+  "positiveWork": [
+    {
+      "node": "Attach",
+      "before": 5,
+      "after": 6,
+      "delta": 1
+    },
+    {
+      "node": "ScalarDone",
+      "before": 9,
+      "after": 10,
+      "delta": 1
+    },
+    {
+      "node": "NODE",
+      "before": 66,
+      "after": 68,
+      "delta": 2
+    },
+    {
+      "node": "STRING",
+      "before": 38,
+      "after": 39,
+      "delta": 1
+    },
+    {
+      "node": "RecordsAddressCurrent",
+      "before": 40,
+      "after": 43,
+      "delta": 3
+    },
+    {
+      "node": "AssertAddressValidation",
+      "before": 50,
+      "after": 53,
+      "delta": 3
+    },
+    {
+      "node": "SemAddress",
+      "before": 1028,
+      "after": 1034,
+      "delta": 6
+    },
+    {
+      "node": "SemAddressFailure",
+      "before": 2410,
+      "after": 2413,
+      "delta": 3
+    },
+    {
+      "node": "SemanticStepFailure",
+      "before": 2426,
+      "after": 2429,
+      "delta": 3
+    },
+    {
+      "node": "StrictStep",
+      "before": 101,
+      "after": 103,
+      "delta": 2
+    },
+    {
+      "node": "NumericCreate",
+      "before": 136,
+      "after": 139,
+      "delta": 3
+    }
+  ],
+  "tableProposal": {
+    "Strict": {
+      "create": 93,
+      "begin": 18,
+      "advance": {
+        "NODE": 78,
+        "SCAN": 25,
+        "OWN_KEY": 20,
+        "PARENT": 30,
+        "CHILD": 28,
+        "STRING": 49,
+        "CANONICAL": 36,
+        "HASH_START": 50,
+        "HASH_WAIT": 19,
+        "HASH_HEX": 40,
+        "PUBLISH": 29,
+        "COMPLETE": 10
+      },
+      "completion": 3,
+      "status": 6,
+      "pendingPromise": 2,
+      "read": 7,
+      "readRecord": 7,
+      "readVerifiedEnvelope": 7,
+      "isOwner": 4,
+      "close": 10,
+      "releaseWorkspace": 49
+    },
+    "Numeric": {
+      "Node": {
+        "create": 139,
+        "beginCapture": 634,
+        "beginVerify": 1247,
+        "advance": {
+          "EXPECTED_SEMANTIC": 3048,
+          "ACTUAL_SEMANTIC": 3048,
+          "ENGINE_START": 1269,
+          "ENGINE_WAIT": 1236,
+          "ENGINE_BRAND": 1484,
+          "CORPUS_INIT": 1237,
+          "PRIMITIVE": 1252,
+          "VECTOR": 1276,
+          "SAMPLE": 1394,
+          "ADDRESS": 2966,
+          "STRICT": 1331,
+          "COMPARE": 1239,
+          "COMPLETE": 1228
+        },
+        "completion": 3,
+        "status": 11,
+        "pendingPromise": 16,
+        "read": 616,
+        "readVerified": 616,
+        "close": 15,
+        "releaseWorkspace": 1317
+      },
+      "Browser": {
+        "create": 139,
+        "beginCapture": 956,
+        "beginVerify": 1891,
+        "advance": {
+          "EXPECTED_SEMANTIC": 3370,
+          "ACTUAL_SEMANTIC": 3370,
+          "ENGINE_START": 1913,
+          "ENGINE_WAIT": 1880,
+          "ENGINE_BRAND": 2128,
+          "CORPUS_INIT": 1881,
+          "PRIMITIVE": 1896,
+          "VECTOR": 1920,
+          "SAMPLE": 2038,
+          "ADDRESS": 3610,
+          "STRICT": 1975,
+          "COMPARE": 1883,
+          "COMPLETE": 1872
+        },
+        "completion": 3,
+        "status": 11,
+        "pendingPromise": 16,
+        "read": 938,
+        "readVerified": 938,
+        "close": 15,
+        "releaseWorkspace": 1961
+      }
+    }
+  },
+  "pools": {
+    "RecordsModule": {
+      "raw": 23520,
+      "roundedProposal": 24576,
+      "selected": null
+    },
+    "StrictModule": {
+      "raw": 114432,
+      "roundedProposal": 114688,
+      "selected": null
+    },
+    "StrictInstance": {
+      "raw": 91936,
+      "roundedProposal": 94208,
+      "selected": null
+    },
+    "StrictGenericWorkspace": {
+      "raw": 6453052,
+      "roundedProposal": 6455296,
+      "selected": null
+    },
+    "NumericModule": {
+      "raw": 390240,
+      "roundedProposal": 393216,
+      "selected": null
+    },
+    "NumericInstance": {
+      "raw": 130816,
+      "roundedProposal": 131072,
+      "selected": null
+    },
+    "NumericProducer": {
+      "raw": 1502240,
+      "roundedProposal": 1503232,
+      "selected": null
+    }
+  },
+  "parentCurrentness": {
+    "Error4": "Conditional original factory/class/prototype/super/5write-target genuine same-paid-sync-chain fact; actual A14 counter preserved. No unqualified callback interval, fresh afterpause/reentry. Parent fixed own-data raw refusal avoids factory.",
+    "native": "All actual local before/after source/namespace/native/Promise/address current checks remain exact. Caller/provenance/scopes/observer completion+inactive barrier are additional.",
+    "wholeCallerFee": null,
+    "wholeQ": false
+  },
+  "files": [
+    {
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-15\\arithmetic-reproduction-01.json",
+      "bytes": 9908,
+      "sha256": "6e2d8007a7c10ded8c149de5acaa00b618d3a26d5719f13b8c51232fa8adb36e"
+    },
+    {
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-15\\callee-census-attempt-01.json",
+      "bytes": 476,
+      "sha256": "c77da795aaa2af29196c6db99f7bc0026bd7b4ef1c66f5bec109ab3277dc92e5"
+    },
+    {
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-15\\complete-storage-03.json",
+      "bytes": 103123,
+      "sha256": "add1e09364017bcfc616fb5f164108492c0d2a9cde376efc46f932b9fe84b219"
+    },
+    {
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-15\\complete-storage-05.json",
+      "bytes": 127053,
+      "sha256": "5141e1c43a4ad066b40f134c4b51c47be5d787d3093214955e8cbabd843f285c"
+    },
+    {
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-15\\derive-cohort-ledger-01.cjs",
+      "bytes": 3904,
+      "sha256": "9b2eff49049aadcfc85a05f1b379f34dedf8a090a0939ee8ab63b0bc6b838d36"
+    },
+    {
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-15\\derive-complete-storage-01.cjs",
+      "bytes": 27828,
+      "sha256": "ba0f5ffa2ef988e6fa332cfdc1800bc8c70a217ee516d1cb74a2b1dc59872ba4"
+    },
+    {
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-15\\derive-complete-storage-02.cjs",
+      "bytes": 27954,
+      "sha256": "548236d6648388207eb63d68b71fb33c119932ab84783bbb06ff638a0028d351"
+    },
+    {
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-15\\derive-complete-storage-03.cjs",
+      "bytes": 28217,
+      "sha256": "7fa5068673ae5f3b53b43d0da98e6dd4eb2563115cdf5c35d9b08f8602d9b645"
+    },
+    {
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-15\\derive-complete-storage-04.cjs",
+      "bytes": 31640,
+      "sha256": "e211659cdb41569d289415e87df80189fcb9832aa604e61e1af9606b1d85f706"
+    },
+    {
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-15\\derive-complete-storage-05.cjs",
+      "bytes": 31643,
+      "sha256": "820549516ea70cecc878b23f0de240d536e10dcaf770c7c89dd0d06a0b8c5388"
+    },
+    {
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-15\\derive-lexical-census-01.cjs",
+      "bytes": 6219,
+      "sha256": "99af6a10612f7b1073232db3c2a723f93077a4f18bbaf802d32ed729e0bafbc0"
+    },
+    {
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-15\\derive-linked-callee-census-01.cjs",
+      "bytes": 3450,
+      "sha256": "1b9d1bc8e95cc30e14f88fa3c589b0c89875eef10052c4fb902c9e94c14e5301"
+    },
+    {
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-15\\derive-linked-callee-census-02.cjs",
+      "bytes": 3998,
+      "sha256": "66c19bac9eec7a5b434b5c83edf3591961acfe4f5a1f6859c100e5844335c846"
+    },
+    {
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-15\\derive-literal-inventory-01.cjs",
+      "bytes": 3014,
+      "sha256": "6f44504372776978b1436aadfdc74dc59b9e66a54c207ffe66cb0fb7e03d4cc8"
+    },
+    {
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-15\\derive-named-work-final-01.cjs",
+      "bytes": 15881,
+      "sha256": "dad9827717681386d9a3ea010f6a9be4f8815d2b8ddae01bd681da96c3152ae6"
+    },
+    {
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-15\\derive-named-work-final-02.cjs",
+      "bytes": 15881,
+      "sha256": "f5300ee44861a7b9de117c9b98e828af59da52f25063379a4547e7611b606359"
+    },
+    {
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-15\\lexical-census-01.json",
+      "bytes": 472702,
+      "sha256": "0f84df5b0bff3ff41f021899041e2753237195c80adf6cd5164744744d19fb6f"
+    },
+    {
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-15\\lexical-census-raw-01.json",
+      "bytes": 867152,
+      "sha256": "92c67e289d2517f8dae29118e0c076bd4bad74203b0070d7cf957c7dbe706de5"
+    },
+    {
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-15\\linked-callee-census-02.json",
+      "bytes": 364598,
+      "sha256": "07e24e1bb2232b45fc305a5f46b6a8e606f61951d36557e751ae4c84f66791ee"
+    },
+    {
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-15\\literal-inventory-01.json",
+      "bytes": 66708,
+      "sha256": "72323f6027172ec7fc3c4406f8a31298528e2f2066e0dc04f1f048b5858deacd"
+    },
+    {
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-15\\named-work-fixed-records-01.cjs",
+      "bytes": 6580,
+      "sha256": "f72b9869217b738fdfc9dc1f075de5327f0ecb68f6b4b569afdbab1ff8958d16"
+    },
+    {
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-15\\named-work-fixed-records-02.cjs",
+      "bytes": 3042,
+      "sha256": "1aebbbadf2027fcd866a5796fe4ffe9218f1998b6b61d40b60db83700ddd4728"
+    },
+    {
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-15\\named-work-graph-01.json",
+      "bytes": 130612,
+      "sha256": "d0e6fc7aa1bc5a8dabdc91362d894c499f8b00e535e8782560c0f7ebd4eff497"
+    },
+    {
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-15\\named-work-graph-02.json",
+      "bytes": 130612,
+      "sha256": "f78bbbf51df0a602df0312185d2948da222c36ddb0c4015ce9e77577b44f5210"
+    },
+    {
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-15\\named-work-numeric-children-final-01.cjs",
+      "bytes": 27641,
+      "sha256": "c1240edd4c8a7f9f051851973f9a3bc1619955b1ddfaf1be3573433dff852068"
+    },
+    {
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-15\\named-work-numeric-children-final-02.cjs",
+      "bytes": 27641,
+      "sha256": "8ea08714fd969c28a606d5f6612a1adf0aba8f5a1342d7ac0af1d5e94265be10"
+    },
+    {
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-15\\prepare-callee-census-02.py",
+      "bytes": 846,
+      "sha256": "bd986bf8ab580f0ab878e7c0b7a4fb460d1de19c66c3795daf2ca311d9d72d8c"
+    },
+    {
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-15\\prepare-final-source-basis-01.py",
+      "bytes": 2922,
+      "sha256": "14b2adf7cadcf5591136d973f7390a8e0d22ffd4b14724036b9d0b38831c1848"
+    },
+    {
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-15\\prepare-readonly-work-02.py",
+      "bytes": 2099,
+      "sha256": "617abae5cbdee22e28e4a1a31c35eb45f80f2e789dcaca7ec6bcf7da09c9b835"
+    },
+    {
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-15\\prepare-storage-02.py",
+      "bytes": 322,
+      "sha256": "0e6f41c8debad80aa4ea7e0a5606da79fbc8c3d319ef006d8a4868638e9a490c"
+    },
+    {
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-15\\prepare-storage-03.py",
+      "bytes": 935,
+      "sha256": "5fb83a000c09ef4b5739e2e6a311fef29fa2aeb979a09935b7fe92ad7ac4b6de"
+    },
+    {
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-15\\prepare-storage-04.py",
+      "bytes": 4586,
+      "sha256": "3878a366b67cba749048b24ca63835fe561249ccb6ced7a6e5c91e6830cf6925"
+    },
+    {
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-15\\prepare-storage-05.py",
+      "bytes": 306,
+      "sha256": "30991e8f71c8da7ade2ef5a612c5f4ddc07fb89c1200bf62f06a27ba7ed0c1b3"
+    },
+    {
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-15\\READ-FIRST.md",
+      "bytes": 6024,
+      "sha256": "ce063c4808a5739d43332645c5f68308ea01d2c0a5fd4557b65bfb5dd9f34573"
+    },
+    {
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-15\\seal-arithmetic-01.cjs",
+      "bytes": 3122,
+      "sha256": "77e6c3950c6387b0e72d20983d16e587b37c42b4790b1a31625a70f52f2c4f76"
+    },
+    {
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-15\\simultaneous-lifetime-01.json",
+      "bytes": 3456,
+      "sha256": "0c28c4bec9c2577239fba26030b356f92d8370c7853ee1722b4e9a34c6bdaa1d"
+    },
+    {
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-15\\storage-attempt-01.json",
+      "bytes": 397,
+      "sha256": "0d4f66447c74cc4edaec3a15bad3e0b9a644491552f2f370777624cb6b951f56"
+    },
+    {
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-15\\storage-attempt-02.json",
+      "bytes": 505,
+      "sha256": "fd216525a4466b7a3919484e8b4cfce322181e4d59885f0ece4642397be743ba"
+    },
+    {
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-15\\storage-attempt-04.json",
+      "bytes": 337,
+      "sha256": "5e2510d220a838869c828c7b21ab9832877ea6938849271379b2dbcf6f30b11f"
+    },
+    {
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-15\\verify-arithmetic-01.cjs",
+      "bytes": 4528,
+      "sha256": "a51b6fb800a00ba3128202dbba9124e1860efee4274dfad2996c7233ff99545e"
+    }
+  ],
+  "selection": null,
+  "MainPermission": false
+}

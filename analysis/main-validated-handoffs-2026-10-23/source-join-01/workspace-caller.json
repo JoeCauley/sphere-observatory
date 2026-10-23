@@ -1,0 +1,67 @@
+{
+  "status": "PASS_FROZEN_UNSELECTED_ALL_VALIDATED_WORKSPACE_TRANSFERS",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v23-validated-workspace-handoff-2026-10-23-01\\candidate-03\\source",
+  "files": 522,
+  "parses": 426,
+  "changed": [
+    "biome-service/host-world.js",
+    "biome-service/native/strict-record-owner.js",
+    "biome-service/native/surface-kernel.js",
+    "biome-service/numeric-profile.js",
+    "owned-main-bootstrap.js"
+  ],
+  "other517Root22FilesExact": true,
+  "sequentialLoaderInverseHunks": 28,
+  "loader": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v23-validated-workspace-handoff-2026-10-23-01\\candidate-03\\source\\owned-main-bootstrap.js",
+    "bytes": 265332,
+    "sha256": "097c0017fd7f3e5597487407a842de26abc875e0caae9289e7696166e5c821b1"
+  },
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "rows": 222,
+      "digest": "ac28dde871f0348344ab986a8c2f3c2be0828b7adc816b25c1a08f70edfaf2f0"
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "rows": 5,
+      "digest": "723bcf2764bdb0307bc0044823bd5efa17434e0bde352a654e20c5dbbdc37d66"
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "rows": 9,
+      "digest": "ef3e0c2a8e6b3a4123cbb23f29243f888e6bd7cc7692cbc6baf67243f2616f6b"
+    }
+  ],
+  "freshSourceReads": 236,
+  "sourceCopies": 222,
+  "sourceOnlyPeak": 13401197,
+  "sourceOnlyFinalQ": {
+    "heldBytes": 0,
+    "requestedBytes": 0,
+    "bookkeepingBytes": 0,
+    "peakBytes": 13401197,
+    "limitBytes": 33554432,
+    "liveReservations": 0,
+    "maximumReservations": 4096,
+    "owners": [],
+    "scope": "CONSERVATIVE_LOGICAL_METADATA_ADMISSION",
+    "nativeHeap": "UNMEASURED"
+  },
+  "orderRows": 218,
+  "focusedCases": 14,
+  "fullSourceCases": 18,
+  "fullSourceGroups": 103,
+  "threeNumericFourStrictControllersCovered": true,
+  "kernelByteExactFrozenNativeWait": true,
+  "genuineSourceHashesPerCombinedHostKernel": 48,
+  "resourcePayloadReads": 0,
+  "prepareOpsPerSlice": 4096,
+  "uploadBytesPerFrame": 262144,
+  "jobs": 2,
+  "metadataCap": 33554432,
+  "allNewAmounts": null,
+  "Main": false,
+  "P05": "OPEN"
+}

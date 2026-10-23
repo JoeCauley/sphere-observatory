@@ -1,0 +1,260 @@
+{
+  "status": "PASS_READONLY_SOURCE37_AND_LOGICAL_ABI_TWO_ROW_DELTA_REVIEW_UNSELECTED",
+  "parent": {
+    "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v28-direct-scheduled-source-entry-2026-10-23-01\\candidate-01\\source\\biome-service\\native\\source-admission.js",
+    "bytes": 54188,
+    "sha256": "045648102db6e848e484df1bd0f96628a03ef2b3e96dce25f65000758431419f"
+  },
+  "source": {
+    "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v29-native-regexp-guard-2026-10-23-01\\candidate-01\\source\\biome-service\\native\\source-admission.js",
+    "bytes": 54286,
+    "sha256": "dd8f4e2371bf82c01b0fa16c017537d6d55b9668a3387b98bbf174f066a68d6d"
+  },
+  "recipe": {
+    "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v29-native-regexp-guard-2026-10-23-01\\exact-component-01.json",
+    "bytes": 76358,
+    "sha256": "08582c49474a8bcefe6b8c9ecb07545d61def09e097538aad5eefba601ddf706"
+  },
+  "vocabulary": {
+    "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\ordinary-main-demand-work-contract-01\\resource-api-coverage-02.json",
+    "bytes": 105601,
+    "sha256": "9bdbf2951a6b8252e472ef667fbfbcdadeac148855f4b619c80fb178345b7102"
+  },
+  "oldWork": {
+    "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v28-direct-scheduled-source-entry-2026-10-23-01\\independent-review-01\\source-work-proposal-09.json",
+    "bytes": 24957,
+    "sha256": "f57bc705bcbce040c84b238813f07fd0a4bb0535f54d914679f9e24e3c430d73"
+  },
+  "oldStorage": {
+    "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v28-direct-scheduled-source-entry-2026-10-23-01\\independent-review-01\\source-storage-proposal-07.json",
+    "bytes": 153815,
+    "sha256": "d60f4a151b04e774661a468793cf0048197e06736eaa8028f5a6f63d4d7816f4"
+  },
+  "existingNativeEvidence": {
+    "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v29-native-regexp-guard-2026-10-23-01\\native-chrome-01\\browser-report-01.json",
+    "bytes": 18156,
+    "sha256": "2e76c9a3831f13bc03571f6c0b7353dc84853c16670a7e497d52df147cdfc4fd"
+  },
+  "files": {
+    "count": 522,
+    "changed": [
+      "biome-service/native/source-admission.js",
+      "owned-main-bootstrap.js"
+    ],
+    "other520Exact": true,
+    "fourHunkInverse": true
+  },
+  "sourceOnly": {
+    "newFixedCalls": [
+      "captureUsedSlot(usedRegExp.prototype,'unicodeSets');",
+      "captureUsedSlot(usedRegExp.prototype,'flags');"
+    ],
+    "bodyPins": [
+      {
+        "name": "captureUsedSlot",
+        "sha256": "c4298b8c8f1ab09370c72d1e3c9adc90e49870919afb71aada23465989cd4c74",
+        "exact": true
+      },
+      {
+        "name": "captureUsedChain",
+        "sha256": "ec4656977ce47940f54a35e1bc63f3bf60b87de60722a3f9cc867a9431c8c693",
+        "exact": true
+      },
+      {
+        "name": "usedCurrent",
+        "sha256": "656fdf78cb9fc43ab709574f964c8ad7e5c1bc969da02ac265a467a84613aedf",
+        "exact": true
+      },
+      {
+        "name": "usedRefuse",
+        "sha256": "26d199037009438f34d00237ddef3a071db25b73dad18c65da340ffbcc7f2eff",
+        "exact": true
+      },
+      {
+        "name": "promiseCurrent",
+        "sha256": "e48ed817e08b30706389dc380ca7939739e3b5054ee9ad1cc9b4f613270db0f5",
+        "exact": true
+      },
+      {
+        "name": "admit",
+        "sha256": "af520d489d6236a8f039dec0e32ec63852134d86dfc853be1be288f3b2ae0515",
+        "exact": true
+      },
+      {
+        "name": "request",
+        "sha256": "0b638d66cb7e746914bacb988962a157f4c1082a3e66e60cc183291f3ead834b",
+        "exact": true
+      },
+      {
+        "name": "step",
+        "sha256": "2a68fa5e0cd4eddb3969ac1f764887e17e56749f2eae0474aab5359a073c0bef",
+        "exact": true
+      },
+      {
+        "name": "start",
+        "sha256": "6988962d6a12474bb5dd355e0cfd4b2953a32b05571a5cf8da25892744695f2b",
+        "exact": true
+      }
+    ],
+    "functionsBefore": 82,
+    "functionsAfter": 82,
+    "bindingsBefore": 306,
+    "bindingsAfter": 306,
+    "newFunctionObjects": 0,
+    "newCaptures": 0,
+    "newScopes": 0,
+    "positiveStrings": [
+      {
+        "kind": "literal",
+        "value": "unicodeSets",
+        "bytes": 160
+      },
+      {
+        "kind": "literal",
+        "value": "flags",
+        "bytes": 160
+      },
+      {
+        "kind": "member-key",
+        "value": "prototype",
+        "bytes": 160
+      },
+      {
+        "kind": "member-key",
+        "value": "prototype",
+        "bytes": 160
+      }
+    ],
+    "positiveSourceStringBytes": 640
+  },
+  "workDelta": {
+    "freshUsedRuntimeCheck": 14,
+    "constructorCaptureTables": 12,
+    "UsedRuntimeCheck": 836,
+    "UsedRuntimePhase": 838,
+    "RuntimeCaptureTables": 788,
+    "constructor": {
+      "oldReviewed": 179,
+      "positive": 897,
+      "proposed": 1076
+    },
+    "directEntry": {
+      "graph": 932,
+      "helper": 991,
+      "selected": false
+    },
+    "maxGraphUsingInheritedCurrent": 1646,
+    "maxHelperUsingInheritedCurrent": 1625,
+    "parentCurrent": "Actual C_parent_current must be independently derived/paid. Old2/10 figures are historical comparison only, never currentMain permission."
+  },
+  "storageDelta": {
+    "status": "PROPOSED_SOURCE_ONLY_POSITIVE_LOGICAL_STORAGE_V29_TWO_REGEXP_ROWS_NOT_SELECTED",
+    "source": {
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v29-native-regexp-guard-2026-10-23-01\\candidate-01\\source\\biome-service\\native\\source-admission.js",
+      "bytes": 54286,
+      "sha256": "dd8f4e2371bf82c01b0fa16c017537d6d55b9668a3387b98bbf174f066a68d6d"
+    },
+    "basis": {
+      "file": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v28-direct-scheduled-source-entry-2026-10-23-01\\independent-review-01\\source-storage-proposal-07.json",
+      "bytes": 153815,
+      "sha256": "d60f4a151b04e774661a468793cf0048197e06736eaa8028f5a6f63d4d7816f4"
+    },
+    "ABI": {
+      "header": 128,
+      "slot": 32,
+      "callable": "128+32*distinctLexicalCaptureRefs",
+      "ordinaryPrototype": 160,
+      "string": "128+round32(2UTF16)",
+      "records": "128+32*actualOwnSlots",
+      "noInterning": true,
+      "nativeVMHeap": "UNMEASURED"
+    },
+    "positiveRows": [
+      {
+        "name": "all positive source literal/member-key occurrences",
+        "bytes": 640,
+        "proof": "Two exact new literal keys and two prototype member-key occurrences; conservative occurrence basis, no interning."
+      },
+      {
+        "name": "two actual frozen slot3 records and their three own key strings",
+        "bytes": 1408,
+        "proof": "Both additional dynamic rows are beyond the single source literal record already in Root28."
+      },
+      {
+        "name": "two retained native4field descriptor records and own keys",
+        "bytes": 1792,
+        "proof": "Actual Chrome155 saved probes show both accessors exist. Four native descriptor fields with<=12UTF16 own keys use the unchanged896 envelope; unexpected native backing outside logical ABI."
+      },
+      {
+        "name": "two additional usedSlots array cells and own108/109 index strings",
+        "bytes": 384,
+        "proof": "Table grows108→110. Existing array header/length/21chains unchanged."
+      }
+    ],
+    "positiveRaw": 4224,
+    "static": {
+      "oldRaw": 257408,
+      "newRaw": 261632,
+      "oldRounded": 258048,
+      "newRounded": 262144,
+      "roundedIncrement": 4096,
+      "combinedSourceInstanceBefore": 1581056,
+      "combinedSourceInstanceProposal": 1585152
+    },
+    "unchanged": {
+      "functionObjects": 0,
+      "captures": 0,
+      "functionAutomaticNamesPrototypes": 0,
+      "lexicalScopesAndBindings": 0,
+      "authoredAggregateSites": 0,
+      "currentScratchPeakIncrement": 0,
+      "pendingPoolIncrement": 0,
+      "callerPrefixPoolIncrement": 0,
+      "chainRowsIncrement": 0,
+      "QFacadesIncrement": 0,
+      "QRequestCountIncrement": 0
+    },
+    "profileTrees": [
+      {
+        "name": "buildGraph",
+        "old": 270464,
+        "current": 270432,
+        "positive": 0,
+        "oldRows": 222,
+        "currentRows": 222
+      },
+      {
+        "name": "buildSurfaceEnvelope",
+        "old": 11200,
+        "current": 11200,
+        "positive": 0,
+        "oldRows": 5,
+        "currentRows": 5
+      },
+      {
+        "name": "buildStartupEnvelope",
+        "old": 16992,
+        "current": 16992,
+        "positive": 0,
+        "oldRows": 9,
+        "currentRows": 9
+      }
+    ],
+    "profileKeyMetadata": "Source key path:five-digit byte-length:64hex has unchanged logical extent. All three profile data trees have zero positive32aligned ABI delta; no negative credit.",
+    "sourceBytePrincipals": {
+      "sourceGrowth": 98,
+      "persistentBPlus4096Increment": 98,
+      "serialScratch3BPlus4096Increment": 294,
+      "policy": "These are the original source-byte principals as functions of actual row.bytes, separate from the4224 logical metadata/controller delta. Persistent copy once per same-Q cache entry; each fresh admission still uses its own original serial read/copy/hash scratch. No simultaneous triple-admission scratch or elapsed/byte WORK tariff inferred."
+    },
+    "lifetime": "New immutable rows/descriptors/key strings/table indices remain rooted in the same usedSlots/Source/API/closed realm. Existing instance reservation must prospectively include them before capture. Source.dispose does not release this controller union. Single current native descriptor scratch maximum unchanged; no per-row GC argument.",
+    "notIncluded": "Full current parent/module/first-Q/caller scope/native physical/wall/whole-Q/Main; original262144/4096 and all work/storage null guards unchanged.",
+    "selection": null,
+    "MainPermission": false
+  },
+  "noRuntimeExecution": true,
+  "noBehaviorTests": true,
+  "noProductOrHistoricalEdits": true,
+  "selection": null,
+  "MainPermission": false
+}

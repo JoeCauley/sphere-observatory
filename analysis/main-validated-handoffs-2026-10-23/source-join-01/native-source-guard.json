@@ -1,0 +1,91 @@
+{
+  "status": "PASS_FROZEN_UNSELECTED_NATIVE_REGEXP_PROTOCOL_GUARD",
+  "sourceRoot": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v29-native-regexp-guard-2026-10-23-01\\candidate-01\\source",
+  "source": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v29-native-regexp-guard-2026-10-23-01\\candidate-01\\source\\biome-service\\native\\source-admission.js",
+    "bytes": 54286,
+    "sha256": "dd8f4e2371bf82c01b0fa16c017537d6d55b9668a3387b98bbf174f066a68d6d"
+  },
+  "loader": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v29-native-regexp-guard-2026-10-23-01\\candidate-01\\source\\owned-main-bootstrap.js",
+    "bytes": 293887,
+    "sha256": "869c6197f10e0e0f46e144389e93248e9aa2812c0482d6f61bf829016bbc8f3f"
+  },
+  "files": 522,
+  "parses": 426,
+  "changed": [
+    "biome-service/native/source-admission.js",
+    "owned-main-bootstrap.js"
+  ],
+  "other520Root28FilesExact": true,
+  "inverseHunks": 4,
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "rows": 222,
+      "digest": "cbab49953591229e59a5723ce2884a68642404a5eaf2c5fe16731c14c7c3a105"
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "rows": 5,
+      "digest": "1ac0a05652928278ffd573e738f24a815bbe05feb036589415795331a9a2f679"
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "rows": 9,
+      "digest": "fe713c9e027bf6ad02e6811f24baadf15753aea7554b76b28aa7aaf869748087"
+    }
+  ],
+  "freshSourceReads": 236,
+  "sourceCopies": 222,
+  "sourceOnlyPeak": 13416996,
+  "sourceOnlyFinalQ": {
+    "heldBytes": 0,
+    "requestedBytes": 0,
+    "bookkeepingBytes": 0,
+    "peakBytes": 13416996,
+    "limitBytes": 33554432,
+    "liveReservations": 0,
+    "maximumReservations": 4096,
+    "owners": [],
+    "scope": "CONSERVATIVE_LOGICAL_METADATA_ADMISSION",
+    "nativeHeap": "UNMEASURED"
+  },
+  "orderRows": 218,
+  "tests": 65,
+  "nativeTests": 7,
+  "nativeSourceComponent": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v29-native-regexp-guard-2026-10-23-01\\native-chrome-01\\browser-report-01.json",
+    "bytes": 18156,
+    "sha256": "2e76c9a3831f13bc03571f6c0b7353dc84853c16670a7e497d52df147cdfc4fd"
+  },
+  "nativeChrome": "155.0.0.0",
+  "nativeRows": {
+    "syntheticGraph": 3,
+    "actualStartupHelper": 9
+  },
+  "nativeChecks": [
+    "global",
+    "unicode",
+    "unicodeSets",
+    "flags"
+  ],
+  "unknownGetterCalls": 0,
+  "positiveWorkDelta": {
+    "freshCheck": 14,
+    "birth": 12
+  },
+  "positiveStorage": null,
+  "limits": {
+    "prepare": 4096,
+    "upload": 262144,
+    "jobs": 2,
+    "slots": 64,
+    "serviceCPU": 33554432,
+    "serviceGPU": 10485760,
+    "commonQ": 33554432
+  },
+  "completeCosts": null,
+  "Main": false,
+  "P05": "OPEN"
+}

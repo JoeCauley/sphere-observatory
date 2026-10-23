@@ -1,0 +1,30 @@
+{
+  "status": "FROZEN_FUNCTIONAL_NATIVE_DATA_DESCRIPTOR_COMPONENT_UNSELECTED",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-numeric-2026-10-23-01\\author-14\\candidate-01\\source",
+  "pins": [
+    {
+      "path": "biome-service/native/strict-record-owner.js",
+      "bytes": 18312,
+      "sha256": "cc14acd7b82de8631e73c7e32a69cf58d0751389d94f899ff91b10b0b2c52c77"
+    },
+    {
+      "path": "biome-service/records.js",
+      "bytes": 26889,
+      "sha256": "193b457a792fd9504a7f0b6e81937b31230ddb51232684160c95c17d88967629"
+    }
+  ],
+  "recipe": {
+    "file": "exact-data-descriptor-edits-01.json",
+    "sha256": "83d9fba449ae80c261be2978af7e800423b1897aa19acb01fbf06b6cbf8c8f16",
+    "hunks": 2,
+    "inverseExact": true
+  },
+  "receipt": {
+    "file": "FUNCTIONAL-DATA-DESCRIPTOR-01.json",
+    "sha256": "aaa4d600c98157742ab839771d1b7b6a2f07155197a6a999b4adaea81911ac63"
+  },
+  "inventory": {
+    "file": "data-descriptor-source-inventory-01.json",
+    "sha256": "05a92213695a81aa03c67c3106cc0817ee74763b23bb0c86b1de4782a3926478"
+  }
+}

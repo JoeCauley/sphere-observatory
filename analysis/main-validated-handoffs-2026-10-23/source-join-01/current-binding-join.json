@@ -1,0 +1,67 @@
+{
+  "status": "PASS_FROZEN_UNSELECTED_EXPLICIT_WORLD_BINDING_ROUTE_ROOT_JOIN",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v27-explicit-binding-route-2026-10-23-01\\candidate-01\\source",
+  "files": 522,
+  "parses": 426,
+  "changed": [
+    "biome-service/commonboundary-adapter.js",
+    "owned-main-bootstrap.js"
+  ],
+  "other520Root26C05FilesExact": true,
+  "loader": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v27-explicit-binding-route-2026-10-23-01\\candidate-01\\source\\owned-main-bootstrap.js",
+    "bytes": 293871,
+    "sha256": "f3440b5296ac8a85f3f6e43eb5d3e7d61aa78c816041b725a3e8d54f9e7025c7"
+  },
+  "boundary": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v27-explicit-binding-route-2026-10-23-01\\candidate-01\\source\\biome-service\\commonboundary-adapter.js",
+    "bytes": 30523,
+    "sha256": "622302a13e64930372f5f721288ec3de889ca799a8b453a218bfb35580a3dd43"
+  },
+  "bindingNonprofileHunks": 26,
+  "commonBoundaryHunks": 13,
+  "profileHunks": 1,
+  "exactInverse": true,
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "rows": 222,
+      "digest": "c811f04ba75cd4c9ca3693df36b969bd5d8480983eaf4984a1a93c171d433267"
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "rows": 5,
+      "digest": "2bd9505294deef3c5eb4518913c414b8e56fac480cb6a80d6276b83384af7a10"
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "rows": 9,
+      "digest": "89b9be2c563529992f9f69be8bd798e45cfedd1b4dfacb7a1e69dabb8fddc7a5"
+    }
+  ],
+  "freshSourceReads": 236,
+  "sourceCopies": 222,
+  "sourceOnlyPeak": 13416077,
+  "sourceOnlyFinalQ": {
+    "heldBytes": 0,
+    "requestedBytes": 0,
+    "bookkeepingBytes": 0,
+    "peakBytes": 13416077,
+    "limitBytes": 33554432,
+    "liveReservations": 0,
+    "maximumReservations": 4096,
+    "owners": [],
+    "scope": "CONSERVATIVE_LOGICAL_METADATA_ADMISSION",
+    "nativeHeap": "UNMEASURED"
+  },
+  "cases": 21,
+  "groups": 49,
+  "selection": "EXPLICIT_PRIVATE_FRESH_CURRENT_WORLD_HEAD_ONLY",
+  "originalPublicationAndOriginalUncachedBindingResolve": true,
+  "actualRetiredExistingBindingPositive": true,
+  "notAtomicHeadLock": true,
+  "allCompleteWork": null,
+  "allCompleteFunding": null,
+  "Main": false,
+  "P05": "OPEN"
+}

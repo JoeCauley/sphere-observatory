@@ -1,0 +1,560 @@
+{
+  "status": "PASS_NATIVE_CHROME_SOURCE_COMPONENT",
+  "started": "2026-10-23T21:46:13.347Z",
+  "finished": "2026-10-23T21:46:14.651Z",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+  "visible": "visible",
+  "source": {
+    "bytes": 54286,
+    "sha256": "dd8f4e2371bf82c01b0fa16c017537d6d55b9668a3387b98bbf174f066a68d6d"
+  },
+  "diagnostic": {
+    "bytes": 54876,
+    "sha256": "e34ae027b83d8e0c9c1d41737dd573f671a619a71bcd42fbc0fd4414a4832b38"
+  },
+  "tests": 7,
+  "results": [
+    {
+      "name": "Observe the actual canonical child’s native RegExp lookups",
+      "status": "PASS",
+      "detail": {
+        "global": 4,
+        "unicode": 4,
+        "unicodeSets": 4,
+        "flags": 4
+      }
+    },
+    {
+      "name": "Load three fresh source rows through the original scheduled reader",
+      "status": "PASS",
+      "detail": {
+        "before": {
+          "Q": {
+            "heldBytes": 4352531,
+            "requestedBytes": 4342975,
+            "bookkeepingBytes": 9556,
+            "peakBytes": 9648910,
+            "limitBytes": 33554432,
+            "liveReservations": 9,
+            "maximumReservations": 4096,
+            "owners": [
+              {
+                "name": "biome-native-source-owner",
+                "bytes": 1614207
+              },
+              {
+                "name": "native-source-component",
+                "bytes": 13860
+              },
+              {
+                "name": "native-source-component-caller",
+                "bytes": 2720368
+              }
+            ],
+            "scope": "CONSERVATIVE_LOGICAL_METADATA_ADMISSION",
+            "nativeHeap": "UNMEASURED"
+          },
+          "source": {
+            "sourceCopies": 3,
+            "sourceBytes": 231,
+            "logicalReferences": 3,
+            "borrowers": 1,
+            "admitting": false,
+            "disposed": false,
+            "ownership": "PRIVATE_SOURCE_BYTES_AND_COMPLETE_LOGICAL_READERS",
+            "nativeHeap": "UNMEASURED",
+            "storageProfile": "private-source-copy-serial-scratch-v2",
+            "persistentSourcePayloadBytes": 231,
+            "scratchPayloadBytes": 0,
+            "peakScratchPayloadBytes": 4360,
+            "scratchAllocations": 3,
+            "incomingBacking": "EXACT_ROW_SIZE_OFFSET0_UINT8_ARRAY",
+            "scratchLifetime": "PREPAID_SERIAL_READ_COPY_HASH_CLEARED_BEFORE_RELEASE"
+          },
+          "status": {
+            "active": false,
+            "phase": null,
+            "pending": null,
+            "nativeReturnCaptured": false,
+            "observationUncertain": false,
+            "closing": false,
+            "scope": 61,
+            "work": 895,
+            "visits": 61,
+            "completions": 13,
+            "failed": 0,
+            "scheduleFailed": false,
+            "workPerVisit": 4096,
+            "instanceMetadataRetained": true,
+            "instanceMetadataBytes": 1515520,
+            "pricesSelected": true,
+            "helperMetadataRetained": true,
+            "helperMetadataBytes": 69632,
+            "admissionProfile": false,
+            "foundationModuleFunding": "NO_ADDITIVE_MODULE_OBJECTS_CENSUS_HELD",
+            "returnedReleaseWork": "UNQUALIFIED_CALLER_BOUNDARY"
+          },
+          "phases": [
+            "HEADER",
+            "SCAN_HEADER",
+            "ROW",
+            "SCAN_ROW",
+            "CANONICAL",
+            "PROFILE_HASH",
+            "PROFILE_DIGEST",
+            "OPEN",
+            "RESPONSE",
+            "READ",
+            "CHUNK",
+            "COPY",
+            "ROW_DIGEST",
+            "COMMIT",
+            "PUBLISH"
+          ],
+          "events": 24,
+          "observedVisits": 44,
+          "peakObservedWork": 1646
+        },
+        "after": {
+          "source": {
+            "sourceCopies": 0,
+            "sourceBytes": 0,
+            "logicalReferences": 0,
+            "borrowers": 0,
+            "admitting": false,
+            "disposed": false,
+            "ownership": "PRIVATE_SOURCE_BYTES_AND_COMPLETE_LOGICAL_READERS",
+            "nativeHeap": "UNMEASURED",
+            "storageProfile": "private-source-copy-serial-scratch-v2",
+            "persistentSourcePayloadBytes": 0,
+            "scratchPayloadBytes": 0,
+            "peakScratchPayloadBytes": 4360,
+            "scratchAllocations": 3,
+            "incomingBacking": "EXACT_ROW_SIZE_OFFSET0_UINT8_ARRAY",
+            "scratchLifetime": "PREPAID_SERIAL_READ_COPY_HASH_CLEARED_BEFORE_RELEASE"
+          },
+          "held": {
+            "heldBytes": 4310920,
+            "requestedBytes": 4304896,
+            "bookkeepingBytes": 6024,
+            "peakBytes": 9648910,
+            "limitBytes": 33554432,
+            "liveReservations": 3,
+            "maximumReservations": 4096,
+            "owners": [
+              {
+                "name": "biome-native-source-owner",
+                "bytes": 1586456
+              },
+              {
+                "name": "native-source-component-caller",
+                "bytes": 2720368
+              }
+            ],
+            "scope": "CONSERVATIVE_LOGICAL_METADATA_ADMISSION",
+            "nativeHeap": "UNMEASURED"
+          },
+          "closedScopesRetained": true
+        }
+      }
+    },
+    {
+      "name": "Load the actual nine-row startup helper profile",
+      "status": "PASS",
+      "detail": {
+        "before": {
+          "Q": {
+            "heldBytes": 4851229,
+            "requestedBytes": 4838133,
+            "bookkeepingBytes": 13096,
+            "peakBytes": 9694222,
+            "limitBytes": 33554432,
+            "liveReservations": 15,
+            "maximumReservations": 4096,
+            "owners": [
+              {
+                "name": "biome-native-source-owner",
+                "bytes": 2092297
+              },
+              {
+                "name": "native-source-component",
+                "bytes": 34468
+              },
+              {
+                "name": "native-source-component-caller",
+                "bytes": 2720368
+              }
+            ],
+            "scope": "CONSERVATIVE_LOGICAL_METADATA_ADMISSION",
+            "nativeHeap": "UNMEASURED"
+          },
+          "source": {
+            "sourceCopies": 9,
+            "sourceBytes": 450205,
+            "logicalReferences": 9,
+            "borrowers": 1,
+            "admitting": false,
+            "disposed": false,
+            "ownership": "PRIVATE_SOURCE_BYTES_AND_COMPLETE_LOGICAL_READERS",
+            "nativeHeap": "UNMEASURED",
+            "storageProfile": "private-source-copy-serial-scratch-v2",
+            "persistentSourcePayloadBytes": 450205,
+            "scratchPayloadBytes": 0,
+            "peakScratchPayloadBytes": 472528,
+            "scratchAllocations": 9,
+            "incomingBacking": "EXACT_ROW_SIZE_OFFSET0_UINT8_ARRAY",
+            "scratchLifetime": "PREPAID_SERIAL_READ_COPY_HASH_CLEARED_BEFORE_RELEASE"
+          },
+          "status": {
+            "active": false,
+            "phase": null,
+            "pending": null,
+            "nativeReturnCaptured": false,
+            "observationUncertain": false,
+            "closing": false,
+            "scope": 207,
+            "work": 903,
+            "visits": 207,
+            "completions": 45,
+            "failed": 0,
+            "scheduleFailed": false,
+            "workPerVisit": 4096,
+            "instanceMetadataRetained": true,
+            "instanceMetadataBytes": 1515520,
+            "pricesSelected": true,
+            "helperMetadataRetained": true,
+            "helperMetadataBytes": 69632,
+            "admissionProfile": false,
+            "foundationModuleFunding": "NO_ADDITIVE_MODULE_OBJECTS_CENSUS_HELD",
+            "returnedReleaseWork": "UNQUALIFIED_CALLER_BOUNDARY"
+          },
+          "phases": [
+            "HEADER",
+            "SCAN_HEADER",
+            "ROW",
+            "SCAN_ROW",
+            "CANONICAL",
+            "PROFILE_HASH",
+            "HELPER_HEADER",
+            "HELPER_LIMIT",
+            "HELPER_HASH",
+            "PROFILE_DIGEST",
+            "OPEN",
+            "RESPONSE",
+            "READ",
+            "CHUNK",
+            "COPY",
+            "ROW_DIGEST",
+            "COMMIT",
+            "PUBLISH"
+          ],
+          "events": 88,
+          "observedVisits": 150,
+          "peakObservedWork": 1609
+        },
+        "after": {
+          "source": {
+            "sourceCopies": 0,
+            "sourceBytes": 0,
+            "logicalReferences": 0,
+            "borrowers": 0,
+            "admitting": false,
+            "disposed": false,
+            "ownership": "PRIVATE_SOURCE_BYTES_AND_COMPLETE_LOGICAL_READERS",
+            "nativeHeap": "UNMEASURED",
+            "storageProfile": "private-source-copy-serial-scratch-v2",
+            "persistentSourcePayloadBytes": 0,
+            "scratchPayloadBytes": 0,
+            "peakScratchPayloadBytes": 472528,
+            "scratchAllocations": 9,
+            "incomingBacking": "EXACT_ROW_SIZE_OFFSET0_UINT8_ARRAY",
+            "scratchLifetime": "PREPAID_SERIAL_READ_COPY_HASH_CLEARED_BEFORE_RELEASE"
+          },
+          "held": {
+            "heldBytes": 4310920,
+            "requestedBytes": 4304896,
+            "bookkeepingBytes": 6024,
+            "peakBytes": 9694222,
+            "limitBytes": 33554432,
+            "liveReservations": 3,
+            "maximumReservations": 4096,
+            "owners": [
+              {
+                "name": "biome-native-source-owner",
+                "bytes": 1586456
+              },
+              {
+                "name": "native-source-component-caller",
+                "bytes": 2720368
+              }
+            ],
+            "scope": "CONSERVATIVE_LOGICAL_METADATA_ADMISSION",
+            "nativeHeap": "UNMEASURED"
+          },
+          "closedScopesRetained": true
+        }
+      }
+    },
+    {
+      "name": "Refuse a changed used RegExp global slot before invoking its getter",
+      "status": "PASS",
+      "detail": {
+        "key": "global",
+        "unknownGetterCalls": 0,
+        "heldVisits": 3,
+        "restored": true,
+        "code": "SOURCE_USED_RUNTIME_CHANGED",
+        "after": {
+          "source": {
+            "sourceCopies": 0,
+            "sourceBytes": 0,
+            "logicalReferences": 0,
+            "borrowers": 0,
+            "admitting": false,
+            "disposed": false,
+            "ownership": "PRIVATE_SOURCE_BYTES_AND_COMPLETE_LOGICAL_READERS",
+            "nativeHeap": "UNMEASURED",
+            "storageProfile": "private-source-copy-serial-scratch-v2",
+            "persistentSourcePayloadBytes": 0,
+            "scratchPayloadBytes": 0,
+            "peakScratchPayloadBytes": 0,
+            "scratchAllocations": 0,
+            "incomingBacking": "EXACT_ROW_SIZE_OFFSET0_UINT8_ARRAY",
+            "scratchLifetime": "PREPAID_SERIAL_READ_COPY_HASH_CLEARED_BEFORE_RELEASE"
+          },
+          "held": {
+            "heldBytes": 4310920,
+            "requestedBytes": 4304896,
+            "bookkeepingBytes": 6024,
+            "peakBytes": 9621174,
+            "limitBytes": 33554432,
+            "liveReservations": 3,
+            "maximumReservations": 4096,
+            "owners": [
+              {
+                "name": "biome-native-source-owner",
+                "bytes": 1586456
+              },
+              {
+                "name": "native-source-component-caller",
+                "bytes": 2720368
+              }
+            ],
+            "scope": "CONSERVATIVE_LOGICAL_METADATA_ADMISSION",
+            "nativeHeap": "UNMEASURED"
+          },
+          "closedScopesRetained": true
+        }
+      }
+    },
+    {
+      "name": "Refuse a changed used RegExp unicode slot before invoking its getter",
+      "status": "PASS",
+      "detail": {
+        "key": "unicode",
+        "unknownGetterCalls": 0,
+        "heldVisits": 3,
+        "restored": true,
+        "code": "SOURCE_USED_RUNTIME_CHANGED",
+        "after": {
+          "source": {
+            "sourceCopies": 0,
+            "sourceBytes": 0,
+            "logicalReferences": 0,
+            "borrowers": 0,
+            "admitting": false,
+            "disposed": false,
+            "ownership": "PRIVATE_SOURCE_BYTES_AND_COMPLETE_LOGICAL_READERS",
+            "nativeHeap": "UNMEASURED",
+            "storageProfile": "private-source-copy-serial-scratch-v2",
+            "persistentSourcePayloadBytes": 0,
+            "scratchPayloadBytes": 0,
+            "peakScratchPayloadBytes": 0,
+            "scratchAllocations": 0,
+            "incomingBacking": "EXACT_ROW_SIZE_OFFSET0_UINT8_ARRAY",
+            "scratchLifetime": "PREPAID_SERIAL_READ_COPY_HASH_CLEARED_BEFORE_RELEASE"
+          },
+          "held": {
+            "heldBytes": 4310920,
+            "requestedBytes": 4304896,
+            "bookkeepingBytes": 6024,
+            "peakBytes": 9621174,
+            "limitBytes": 33554432,
+            "liveReservations": 3,
+            "maximumReservations": 4096,
+            "owners": [
+              {
+                "name": "biome-native-source-owner",
+                "bytes": 1586456
+              },
+              {
+                "name": "native-source-component-caller",
+                "bytes": 2720368
+              }
+            ],
+            "scope": "CONSERVATIVE_LOGICAL_METADATA_ADMISSION",
+            "nativeHeap": "UNMEASURED"
+          },
+          "closedScopesRetained": true
+        }
+      }
+    },
+    {
+      "name": "Refuse a changed used RegExp unicodeSets slot before invoking its getter",
+      "status": "PASS",
+      "detail": {
+        "key": "unicodeSets",
+        "unknownGetterCalls": 0,
+        "heldVisits": 3,
+        "restored": true,
+        "code": "SOURCE_USED_RUNTIME_CHANGED",
+        "after": {
+          "source": {
+            "sourceCopies": 0,
+            "sourceBytes": 0,
+            "logicalReferences": 0,
+            "borrowers": 0,
+            "admitting": false,
+            "disposed": false,
+            "ownership": "PRIVATE_SOURCE_BYTES_AND_COMPLETE_LOGICAL_READERS",
+            "nativeHeap": "UNMEASURED",
+            "storageProfile": "private-source-copy-serial-scratch-v2",
+            "persistentSourcePayloadBytes": 0,
+            "scratchPayloadBytes": 0,
+            "peakScratchPayloadBytes": 0,
+            "scratchAllocations": 0,
+            "incomingBacking": "EXACT_ROW_SIZE_OFFSET0_UINT8_ARRAY",
+            "scratchLifetime": "PREPAID_SERIAL_READ_COPY_HASH_CLEARED_BEFORE_RELEASE"
+          },
+          "held": {
+            "heldBytes": 4310920,
+            "requestedBytes": 4304896,
+            "bookkeepingBytes": 6024,
+            "peakBytes": 9621174,
+            "limitBytes": 33554432,
+            "liveReservations": 3,
+            "maximumReservations": 4096,
+            "owners": [
+              {
+                "name": "biome-native-source-owner",
+                "bytes": 1586456
+              },
+              {
+                "name": "native-source-component-caller",
+                "bytes": 2720368
+              }
+            ],
+            "scope": "CONSERVATIVE_LOGICAL_METADATA_ADMISSION",
+            "nativeHeap": "UNMEASURED"
+          },
+          "closedScopesRetained": true
+        }
+      }
+    },
+    {
+      "name": "Refuse a changed used RegExp flags slot before invoking its getter",
+      "status": "PASS",
+      "detail": {
+        "key": "flags",
+        "unknownGetterCalls": 0,
+        "heldVisits": 3,
+        "restored": true,
+        "code": "SOURCE_USED_RUNTIME_CHANGED",
+        "after": {
+          "source": {
+            "sourceCopies": 0,
+            "sourceBytes": 0,
+            "logicalReferences": 0,
+            "borrowers": 0,
+            "admitting": false,
+            "disposed": false,
+            "ownership": "PRIVATE_SOURCE_BYTES_AND_COMPLETE_LOGICAL_READERS",
+            "nativeHeap": "UNMEASURED",
+            "storageProfile": "private-source-copy-serial-scratch-v2",
+            "persistentSourcePayloadBytes": 0,
+            "scratchPayloadBytes": 0,
+            "peakScratchPayloadBytes": 0,
+            "scratchAllocations": 0,
+            "incomingBacking": "EXACT_ROW_SIZE_OFFSET0_UINT8_ARRAY",
+            "scratchLifetime": "PREPAID_SERIAL_READ_COPY_HASH_CLEARED_BEFORE_RELEASE"
+          },
+          "held": {
+            "heldBytes": 4310920,
+            "requestedBytes": 4304896,
+            "bookkeepingBytes": 6024,
+            "peakBytes": 9621174,
+            "limitBytes": 33554432,
+            "liveReservations": 3,
+            "maximumReservations": 4096,
+            "owners": [
+              {
+                "name": "biome-native-source-owner",
+                "bytes": 1586456
+              },
+              {
+                "name": "native-source-component-caller",
+                "bytes": 2720368
+              }
+            ],
+            "scope": "CONSERVATIVE_LOGICAL_METADATA_ADMISSION",
+            "nativeHeap": "UNMEASURED"
+          },
+          "closedScopesRetained": true
+        }
+      }
+    }
+  ],
+  "tables": {
+    "graph": {
+      "visit": 34,
+      "completion": 16,
+      "header": 82,
+      "scan": 5,
+      "row": 45,
+      "canonical": 727,
+      "profileHash": 741,
+      "profileDigest": 123,
+      "open": 321,
+      "response": 12,
+      "read": 19,
+      "chunk": 18,
+      "copy": 27,
+      "rowDigest": 105,
+      "commit": 13,
+      "publish": 23,
+      "rollback": 9,
+      "cleanup": 18,
+      "promiseGuard": 17,
+      "usedRuntime": 838
+    },
+    "helper": {
+      "visit": 42,
+      "completion": 16,
+      "header": 235,
+      "scan": 5,
+      "row": 45,
+      "canonical": 727,
+      "profileHash": 5,
+      "profileDigest": 123,
+      "open": 321,
+      "response": 12,
+      "read": 19,
+      "chunk": 18,
+      "copy": 27,
+      "rowDigest": 105,
+      "commit": 13,
+      "publish": 23,
+      "rollback": 9,
+      "cleanup": 18,
+      "helperHeader": 729,
+      "helperLimit": 729,
+      "helperHash": 16,
+      "promiseGuard": 17,
+      "usedRuntime": 838
+    }
+  },
+  "scope": "SOURCE_COMPONENT_ONLY_PROPOSED_WORK_AND_STORAGE_NO_MAIN_OR_FOUNDATION_QUALIFICATION",
+  "allSourceAndCallerPricesProposedOnly": true,
+  "Main": false,
+  "P05": "OPEN"
+}

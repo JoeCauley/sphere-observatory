@@ -1,0 +1,77 @@
+{
+  "status": "PASS_FROZEN_UNSELECTED_DIRECT_PRIVATE_SOURCE_ENTRY",
+  "sourceRoot": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v28-direct-scheduled-source-entry-2026-10-23-01\\candidate-01\\source",
+  "source": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v28-direct-scheduled-source-entry-2026-10-23-01\\candidate-01\\source\\biome-service\\native\\source-admission.js",
+    "bytes": 54188,
+    "sha256": "045648102db6e848e484df1bd0f96628a03ef2b3e96dce25f65000758431419f"
+  },
+  "helper": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v28-direct-scheduled-source-entry-2026-10-23-01\\candidate-01\\source\\biome-service\\native\\main-startup-draw-owner.js",
+    "bytes": 30114,
+    "sha256": "42fee72da225f2daf00e17ff69f7c9fb9cccd5fafad9c8b509a13da6b44dca6d"
+  },
+  "loader": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v28-direct-scheduled-source-entry-2026-10-23-01\\candidate-01\\source\\owned-main-bootstrap.js",
+    "bytes": 293890,
+    "sha256": "8051c3287daebbdf36797ab940d8ba91234c6f96414c65c66e829ac7579cd87d"
+  },
+  "files": 522,
+  "parses": 426,
+  "changed": [
+    "biome-service/native/main-startup-draw-owner.js",
+    "biome-service/native/source-admission.js",
+    "owned-main-bootstrap.js"
+  ],
+  "other519Root27FilesExact": true,
+  "inverseHunks": 12,
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "rows": 222,
+      "digest": "4fd2d88b7f4f83b7873f0a06267878beb2c7be88c4b8372795ce3d146493c127"
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "rows": 5,
+      "digest": "a352af652a72a79e83717b248b01e8de0905777689094d4080a33e6873455d14"
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "rows": 9,
+      "digest": "f5f664a6b3cdc001227888ccecc6cb0ddd82bf24b1c5a026c932eb1f0ce29a43"
+    }
+  ],
+  "freshSourceReads": 236,
+  "sourceCopies": 222,
+  "sourceOnlyPeak": 13416922,
+  "sourceOnlyFinalQ": {
+    "heldBytes": 0,
+    "requestedBytes": 0,
+    "bookkeepingBytes": 0,
+    "peakBytes": 13416922,
+    "limitBytes": 33554432,
+    "liveReservations": 0,
+    "maximumReservations": 4096,
+    "owners": [],
+    "scope": "CONSERVATIVE_LOGICAL_METADATA_ADMISSION",
+    "nativeHeap": "UNMEASURED"
+  },
+  "orderRows": 218,
+  "tests": 63,
+  "peerCases": 7,
+  "unknownGetterCalls": 0,
+  "uncertainNativeOwnersHeld": 8,
+  "entryMethod": "Original funded scheduled SourceOwner.beginScheduled returns original native Promise directly; default SourceOwner and async admit tail unchanged",
+  "mandatoryNewEntryWork": null,
+  "prepareOpsPerVisit": 4096,
+  "uploadBytesPerFrame": 262144,
+  "jobs": 2,
+  "slots": 64,
+  "serviceCPU": 33554432,
+  "serviceGPU": 10485760,
+  "commonQ": 33554432,
+  "completeCosts": null,
+  "Main": false,
+  "P05": "OPEN"
+}

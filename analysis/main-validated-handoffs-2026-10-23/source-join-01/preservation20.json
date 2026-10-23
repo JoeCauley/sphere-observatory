@@ -1,0 +1,30 @@
+{
+  "pass": true,
+  "cutoff": 20,
+  "snapshots": 194,
+  "archiveEntriesVerified": 87022,
+  "recordsVerified": 9260,
+  "recordsAdded": 1740,
+  "recordBytes": 321630740,
+  "freshRestore": {
+    "snapshot": "main-current-validated-state-join-unselected-c1",
+    "destination": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-current-state-progress-2026-10-23-01\\restored-check-20\\source",
+    "files": 522,
+    "verified": true
+  },
+  "earlier142Snapshots7520RecordsExact": true,
+  "restorerUnchanged": true,
+  "currentReadmeUTF8": true,
+  "historicalReadmeBytesExact": true,
+  "selectedMainComponent": "main-texture-handoff-funded-c3",
+  "latestJoinedMainStartup": "main-current-validated-state-join-unselected-c1",
+  "joinedMainStartupSelected": false,
+  "P05": "OPEN",
+  "excludedActive": [
+    "Complete whole-parent phase fee and current Q union review in main-v24-currentness-scope/review-02",
+    "Source-private defaults port and staged normalization successor; frozen capture receipt remains unjoined",
+    "FirstQ/foundation gate audit active follow-up",
+    "Complete coupled Main/provider demand, complete bundle retirement and native program/whole-view/fragment/Frame/support/ordinary Main"
+  ],
+  "rawArchivesRemainLocal": true
+}

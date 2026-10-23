@@ -1,0 +1,155 @@
+{
+  "status": "FROZEN_COMPONENT_FUNCTIONAL_SOURCE_EQUIVALENCE_WITH_UNSELECTED_CURRENT_BASE_PROFILE",
+  "source": {
+    "path": "candidate-04/source",
+    "file": "biome-service/commonboundary-adapter.js",
+    "bytes": 30523,
+    "sha256": "622302a13e64930372f5f721288ec3de889ca799a8b453a218bfb35580a3dd43"
+  },
+  "files": 522,
+  "parsed": 426,
+  "otherFilesExact": 521,
+  "sourceEquivalence": [
+    "original-source-search-01.json",
+    "equivalence-source-02.json",
+    "equivalence-runtime-02.json"
+  ],
+  "controls": [
+    {
+      "path": "control-positive-14.json",
+      "bytes": 4258,
+      "sha256": "710b2745fa43914166a33f3a06820581fe4db88e2505157e70cc6a0911164261",
+      "case": "positive",
+      "groups": 3
+    },
+    {
+      "path": "control-repeated-14.json",
+      "bytes": 4232,
+      "sha256": "7b0a57fc5da204472ea247be9e9156b63d0737b8ef8b6312d7217e9419577214",
+      "case": "repeated",
+      "groups": 3
+    },
+    {
+      "path": "control-restore-14.json",
+      "bytes": 4401,
+      "sha256": "e1bbfa7f1c6ba7f14c00cb2ecbd6b3ee54fb472bf3e2224b05249aa9b13168f7",
+      "case": "restore",
+      "groups": 4
+    },
+    {
+      "path": "control-support-16.json",
+      "bytes": 4621,
+      "sha256": "321820c3527bb42b5494b130b6c26afd6f2e9a039a9c81931374d7ac6a68a070",
+      "case": "support",
+      "groups": 5
+    },
+    {
+      "path": "control-guards-14.json",
+      "bytes": 4447,
+      "sha256": "7f7dec026aad73337f53b1da7a3879064e5fdfba05a50a487dc52d5fd4a44044",
+      "case": "guards",
+      "groups": 4
+    },
+    {
+      "path": "control-foreign-14.json",
+      "bytes": 4041,
+      "sha256": "63aceb5a36ff2eecfdbda6e066bf094b6ac1bee6478674d97e5b8bf2630d0f30",
+      "case": "foreign",
+      "groups": 2
+    },
+    {
+      "path": "control-wrongQ-14.json",
+      "bytes": 4013,
+      "sha256": "35f07061b312f8d9a057034b045892a2495c1fd09ace53ff44091bd5dfe538d7",
+      "case": "wrongQ",
+      "groups": 2
+    },
+    {
+      "path": "control-closedReader-14.json",
+      "bytes": 4036,
+      "sha256": "5278a1e903e64a231b37cb31d065be5ca3051f681adb11e9bdaf95dc0c178d83",
+      "case": "closedReader",
+      "groups": 2
+    },
+    {
+      "path": "control-sourceChanged-14.json",
+      "bytes": 4058,
+      "sha256": "9b33c1cd44f3e52307281c436b2ec79e58279a91fb6a5812d1e773953807fd16",
+      "case": "sourceChanged",
+      "groups": 2
+    },
+    {
+      "path": "control-pending-14.json",
+      "bytes": 4076,
+      "sha256": "04cc9dc12564c97a8d61f2d4e6207f0f054b00f40c3c50a6e53698d36fbed9aa",
+      "case": "pending",
+      "groups": 2
+    },
+    {
+      "path": "control-observer-14.json",
+      "bytes": 4291,
+      "sha256": "617e73ea591221c01b3c64fa1c39750bc017827fb6d5a73461b438ba5328a04f",
+      "case": "observer",
+      "groups": 2
+    },
+    {
+      "path": "control-rawNull-14.json",
+      "bytes": 4069,
+      "sha256": "146220ccb0f06f16aaa8db26f7affe63d6f77a33d27b94162ec1ecf4c380bfee",
+      "case": "rawNull",
+      "groups": 2
+    },
+    {
+      "path": "control-rawFalse-14.json",
+      "bytes": 4070,
+      "sha256": "f6afc51fd3daa2c984fb7d384e07f20785d7d100598f94b7da4ee038c0aa58a4",
+      "case": "rawFalse",
+      "groups": 2
+    },
+    {
+      "path": "control-rawUndefined-14.json",
+      "bytes": 4074,
+      "sha256": "589e7f8e84fccb9206cd344a402bde1796a4fe162240bfac91e4cc5d3d496bb6",
+      "case": "rawUndefined",
+      "groups": 2
+    }
+  ],
+  "actualCurrentBodyGroups": 37,
+  "additional": {
+    "legacyOriginalGroups": 3,
+    "legacyCurrentExpectedRefusal": 1,
+    "constructorAccessorGroups": 4,
+    "pointSamples": 3855
+  },
+  "inverse": "exact-edits-14.json",
+  "liabilities": "positive-liabilities-18.json",
+  "sourceVerification": "source-verification-18.json",
+  "scope": {
+    "originalNonemptyBindingPrepareResolveRetain": true,
+    "freshEmptyCacheOwnerRestore": true,
+    "genuineFrozenProducerPositive": true,
+    "repeatedReleaseOriginalAssignments": true,
+    "privateCatalogueAndPaidCaller": "NAMED_MODELS_ONLY",
+    "storage": "FAKE_INDEXEDDB_WITH_ORIGINAL_OWNERS",
+    "nativeGL": false,
+    "funding": null,
+    "work": null,
+    "policy": null,
+    "Main": false
+  },
+  "held": [
+    "Actual selected installed/current world head; prepared/stored record is not geographic publication.",
+    "Original resolve/prepare/native/support full work and complete module/entry/caller/closed-root metadata.",
+    "Fresh combined Main envelopes/loader route, genuine private constructor/caller attachment and actual R/PH/Frame integration."
+  ],
+  "preservedAttempts": [
+    "01 VM lacked URL, corrected02 without source changes",
+    "03 builder owner/API needle assertion before C source write; copied candidate01 stayed parent-exact",
+    "05 manual Node module cache missing loaded flag; corrected06 (harness only)",
+    "FORMAT2 draft candidate02 rejected by unchanged typed VerifiedRecordStore; replaced with explicit versioned base field under original typed FORMAT1, no V/Records change",
+    "07 builder substitution order failed before output, then dependent invocation lacked generated files; corrected09 builder, candidate03 created once",
+    "09 expected wrapper assignment identity rather than actual retained-reader assignment; corrected10 only expectation",
+    "11 endpoint derivative expected decimal -0.4 exactly instead of original binary64 -0.4000000000000001; corrected12 tolerance, original formula unchanged",
+    "candidate03 option accessor counter1; candidate04 own-data descriptor refusal0, all13 parent inverse hunks recorded"
+  ]
+}

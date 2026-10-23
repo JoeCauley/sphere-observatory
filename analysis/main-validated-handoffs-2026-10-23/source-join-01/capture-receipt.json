@@ -1,0 +1,49 @@
+{
+  "status": "PASS_SCOPED_FUNCTIONAL_COMPONENT",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v29-owned-host-capture-receipt-2026-10-23-01\\candidate-03\\source",
+  "sourceFiles": 522,
+  "parsed": 425,
+  "changes": [
+    {
+      "path": "biome-service/host-world.js",
+      "bytes": 86214,
+      "sha256": "e09e4ff926f465ee08068b48ea3ab80014c3336e85e97f627c89a39fb7d088eb"
+    }
+  ],
+  "sourceProfiles": "PARENT_STALE_INTENTIONALLY; test-only fresh exact profile envelopes, no source loader change",
+  "legacy": {
+    "originalCreateByteExact": true,
+    "ownedPublicCaptureByteExact": true,
+    "legacyPublicCaptureByteExact": true
+  },
+  "recipe": "root-safe-recipe-01.json",
+  "controls": [
+    "Exact original capture canonical bytes/digests including geography/tracks/protection/world and original validated snapshot context",
+    "Actual original legacy Numeric.verify calls exactly1; private repeated captures add0",
+    "Foreign adapter and wrongQ/profile refuse",
+    "Reentry and close while original async capture pending refuse",
+    "Same actual retained certificate/profile checked; used Math/source changes refuse before/after awaits",
+    "Original null,false,undefined native hash rejections preserved with explicit occurrence flag",
+    "Prospective Q32MiB pressure refuses before capture activity/native work",
+    "Close clears private parent roots and prevents later capture; metadata deliberately retained"
+  ],
+  "test": {
+    "path": "test-capture-10.cjs",
+    "sha256": "80a424e361c186d3f16e9ca9f23c8606b70f25a0a10965f017b3bbea27beb7bb",
+    "result": "control-ownedHostCapture-10.json",
+    "resultSha256": "83d0b23d77517ebbc4ace40d8794c6f35cdd96f5ffae6157aa0166fc4a44b897"
+  },
+  "liabilities": {
+    "module": "Private five API leaf functions/three receipt helpers, format/null cells, captured WeakMap/Set state, own method/name/key/literal/capture metadata are new prospective module foundation liabilities; no old pool credit.",
+    "instance": "Receipt row, frozen opaque handle, private registry row and Set-held closed-control record, original sameQ charge facade; all null.",
+    "perCapture": "Separate scratch and result charges before original prefix/native/envelope birth. Original normalization/envelope/target/schema/output graph and four variable envelope work remain held, no API1 waiver.",
+    "closed": "Row stays realm-held and charged. close drops Host/profile/certificate/promise/raw-failure roots before deleting brand. Output/scratch Q facades remain charged because original validated WeakMap/caller output aliases have no selected release contract.",
+    "parent": "captureReaders blocks owned Host close, original reuse close and Kernel validation transition while receipt open. No replacement certificate/profile admitted.",
+    "scope": "Actual original Host/Numeric/Strict/Q/S/Records bodies with disclosed old private builder/Renderer/Surface/source transport models. No whole-current-loader, Main integration, browser/native, 4096 fee or fullQ certificate."
+  },
+  "failures": "Build01 duplicate owned/legacy needle and controls01-09 setup/expectation failures preserved. Test old Numeric.verify mutation failed because original API is frozen, corrected to disclosed original-source counter. Original source never changed during controls.",
+  "funding": null,
+  "work": null,
+  "Main": false,
+  "P05": "OPEN"
+}

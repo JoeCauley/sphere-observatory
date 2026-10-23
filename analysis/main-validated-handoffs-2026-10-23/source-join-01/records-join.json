@@ -1,0 +1,71 @@
+{
+  "status": "PASS_FROZEN_UNSELECTED_VALIDATED_RECORDS_NUMERIC_ROOT25_JOIN",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v25-validated-records-join-2026-10-23-01\\candidate-01\\source",
+  "files": 522,
+  "parses": 426,
+  "changed": [
+    "biome-service/numeric-profile.js",
+    "biome-service/records.js",
+    "owned-main-bootstrap.js"
+  ],
+  "other519Root24FilesExact": true,
+  "childInverseHunks": 7,
+  "profileInverseHunks": 3,
+  "loader": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v25-validated-records-join-2026-10-23-01\\candidate-01\\source\\owned-main-bootstrap.js",
+    "bytes": 265320,
+    "sha256": "66e33c04f57df4f9df0c1fb02d54255224ec302e804ba77f8362dae9be26405e"
+  },
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "rows": 222,
+      "digest": "f90894490aa68c36f27241cf0c2093a3b8ad13b50a7d9a346dbc40fdfa918c78"
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "rows": 5,
+      "digest": "a31f6fdb92282b58931515ce5c98f2ceddc842e65eca00f8345844b988917367"
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "rows": 9,
+      "digest": "794849527c74a8cd2f24ece44d31617ce928f0f17f6f5090ad32d55897a95390"
+    }
+  ],
+  "freshSourceReads": 236,
+  "sourceCopies": 222,
+  "sourceOnlyPeak": 13406396,
+  "sourceOnlyFinalQ": {
+    "heldBytes": 0,
+    "requestedBytes": 0,
+    "bookkeepingBytes": 0,
+    "peakBytes": 13406396,
+    "limitBytes": 33554432,
+    "liveReservations": 0,
+    "maximumReservations": 4096,
+    "owners": [],
+    "scope": "CONSERVATIVE_LOGICAL_METADATA_ADMISSION",
+    "nativeHeap": "UNMEASURED"
+  },
+  "orderRows": 218,
+  "childFunctionalCases": 158,
+  "combinedOriginalCases": 18,
+  "combinedOriginalGroups": 103,
+  "allThreeNumericFourStrictControllersCovered": true,
+  "records": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v25-validated-records-join-2026-10-23-01\\candidate-01\\source\\biome-service\\records.js",
+    "bytes": 26760,
+    "sha256": "2a68036e75d55f18d694ad3b978914c73345ae88f13877a3b8c1f7fc2c0fd858"
+  },
+  "numeric": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v25-validated-records-join-2026-10-23-01\\candidate-01\\source\\biome-service\\numeric-profile.js",
+    "bytes": 38900,
+    "sha256": "f4141645c17bc92db31c59bfad783f20d37f953ad53b86cf6dad9629cb6d17a9"
+  },
+  "allNewAmounts": null,
+  "completeWorkSelected": false,
+  "completeQSelected": false,
+  "Main": false,
+  "P05": "OPEN"
+}
