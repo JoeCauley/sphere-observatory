@@ -1,0 +1,393 @@
+{
+  "format": "sphere-cold-shape-source-controls/1",
+  "utc": "2026-10-23T11:24:51.565Z",
+  "status": "PASS_LOCAL_COLD_SHAPE_CONTROLS_NO_FULL_COLD_QUALIFICATION",
+  "passed": 11,
+  "parentSource": {
+    "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/candidate-03/source/biome-service/native/source-admission.js",
+    "bytes": 16839,
+    "sha256": "d1676c985688bb3330ae2e35e1194c8b2c05116652939e1b183e0047751d8a7f"
+  },
+  "candidateSource": {
+    "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/initializer-01/cold-shape-candidate-01/source/biome-service/native/source-admission.js",
+    "bytes": 16948,
+    "sha256": "15495ba84a47113bcc10c2e5b2fba4057ead1a420222f016c45b886fe222fea3"
+  },
+  "actualBodies": [
+    "S.ownRecord/shape/admit/source-owner-v2",
+    "Q",
+    "Records"
+  ],
+  "observationalSubstitution": "During ownRecord only, Object.hasOwn is temporarily wrapped with exact original native delegation to count inherited-prefix queries; its full descriptor and every prototype property are restored before the next case/return. Isolated Node process only.",
+  "modelsArePrices": false,
+  "workOrStorageSelection": false,
+  "nativeOrMain": false,
+  "tests": [
+    {
+      "name": "Current source reproduces inherited scan outside own-node limit",
+      "status": "PASS",
+      "maxNodes": 4,
+      "parent": {
+        "accepted": true,
+        "errorCode": null,
+        "errorMessage": null,
+        "nodes": 2,
+        "bytes": 11,
+        "inheritedHasOwnVisits": 8192,
+        "scratchReleased": true,
+        "QAfterDispose": 0
+      },
+      "candidate": {
+        "accepted": false,
+        "errorCode": "RESOURCE_LIMIT",
+        "errorMessage": "Owned metadata enumeration ceiling exceeded",
+        "nodes": null,
+        "bytes": null,
+        "inheritedHasOwnVisits": 3,
+        "scratchReleased": true,
+        "QAfterDispose": 0
+      }
+    },
+    {
+      "name": "Candidate global4096 scan limit includes inherited rows",
+      "status": "PASS",
+      "accepted": false,
+      "errorCode": "RESOURCE_LIMIT",
+      "errorMessage": "Owned metadata enumeration ceiling exceeded",
+      "nodes": null,
+      "bytes": null,
+      "inheritedHasOwnVisits": 4095,
+      "scratchReleased": true,
+      "QAfterDispose": 0
+    },
+    {
+      "name": "One shared counter across nested objects and arrays",
+      "status": "PASS",
+      "maxNodes": 64,
+      "parent": {
+        "accepted": true,
+        "errorCode": null,
+        "errorMessage": null,
+        "nodes": 18,
+        "bytes": 106,
+        "inheritedHasOwnVisits": 320,
+        "scratchReleased": true,
+        "QAfterDispose": 0
+      },
+      "candidate": {
+        "accepted": false,
+        "errorCode": "RESOURCE_LIMIT",
+        "errorMessage": "Owned metadata enumeration ceiling exceeded",
+        "nodes": null,
+        "bytes": null,
+        "inheritedHasOwnVisits": 59,
+        "scratchReleased": true,
+        "QAfterDispose": 0
+      }
+    },
+    {
+      "name": "Clean exact4096 own-node object boundary remains accepted",
+      "status": "PASS",
+      "parent": {
+        "accepted": true,
+        "errorCode": null,
+        "errorMessage": null,
+        "nodes": 4096,
+        "bytes": 51016,
+        "inheritedHasOwnVisits": 0,
+        "scratchReleased": true,
+        "QAfterDispose": 0
+      },
+      "candidate": {
+        "accepted": true,
+        "errorCode": null,
+        "errorMessage": null,
+        "nodes": 4096,
+        "bytes": 51016,
+        "inheritedHasOwnVisits": 0,
+        "scratchReleased": true,
+        "QAfterDispose": 0
+      }
+    },
+    {
+      "name": "Clean exact4096 own-node array boundary remains accepted",
+      "status": "PASS",
+      "parent": {
+        "accepted": true,
+        "errorCode": null,
+        "errorMessage": null,
+        "nodes": 4096,
+        "bytes": 19366,
+        "inheritedHasOwnVisits": 0,
+        "scratchReleased": true,
+        "QAfterDispose": 0
+      },
+      "candidate": {
+        "accepted": true,
+        "errorCode": null,
+        "errorMessage": null,
+        "nodes": 4096,
+        "bytes": 19366,
+        "inheritedHasOwnVisits": 0,
+        "scratchReleased": true,
+        "QAfterDispose": 0
+      }
+    },
+    {
+      "name": "Original4097 own-node refusal remains",
+      "status": "PASS",
+      "parent": {
+        "accepted": false,
+        "errorCode": "RESOURCE_LIMIT",
+        "errorMessage": "Owned array node ceiling exceeded",
+        "nodes": null,
+        "bytes": null,
+        "inheritedHasOwnVisits": 0,
+        "scratchReleased": true,
+        "QAfterDispose": 0
+      },
+      "candidate": {
+        "accepted": false,
+        "errorCode": "RESOURCE_LIMIT",
+        "errorMessage": "Owned array node ceiling exceeded",
+        "nodes": null,
+        "bytes": null,
+        "inheritedHasOwnVisits": 0,
+        "scratchReleased": true,
+        "QAfterDispose": 0
+      }
+    },
+    {
+      "name": "Depth32 and oversized own string guards remain",
+      "status": "PASS",
+      "parent": {
+        "accepted": false,
+        "errorCode": "RESOURCE_LIMIT",
+        "errorMessage": "Owned metadata node/depth ceiling exceeded",
+        "nodes": null,
+        "bytes": null,
+        "inheritedHasOwnVisits": 0,
+        "scratchReleased": true,
+        "QAfterDispose": 0
+      },
+      "candidate": {
+        "accepted": false,
+        "errorCode": "RESOURCE_LIMIT",
+        "errorMessage": "Owned metadata node/depth ceiling exceeded",
+        "nodes": null,
+        "bytes": null,
+        "inheritedHasOwnVisits": 0,
+        "scratchReleased": true,
+        "QAfterDispose": 0
+      },
+      "oversizedString": {
+        "accepted": false,
+        "errorCode": "RESOURCE_LIMIT",
+        "errorMessage": "Owned metadata string ceiling exceeded",
+        "nodes": null,
+        "bytes": null,
+        "inheritedHasOwnVisits": 0,
+        "scratchReleased": true,
+        "QAfterDispose": 0
+      }
+    },
+    {
+      "name": "Own accessors refuse without invoking getter",
+      "status": "PASS",
+      "getterCalls": 0,
+      "parent": {
+        "accepted": false,
+        "errorCode": "INVALID_DESCRIPTOR",
+        "errorMessage": "Owned metadata accessors refuse",
+        "nodes": null,
+        "bytes": null,
+        "inheritedHasOwnVisits": 0,
+        "scratchReleased": true,
+        "QAfterDispose": 0
+      },
+      "candidate": {
+        "accepted": false,
+        "errorCode": "INVALID_DESCRIPTOR",
+        "errorMessage": "Owned metadata accessors refuse",
+        "nodes": null,
+        "bytes": null,
+        "inheritedHasOwnVisits": 0,
+        "scratchReleased": true,
+        "QAfterDispose": 0
+      }
+    },
+    {
+      "name": "Original holes, symbols and hidden own properties refuse",
+      "status": "PASS",
+      "rows": [
+        {
+          "parent": {
+            "accepted": false,
+            "errorCode": "INVALID_DESCRIPTOR",
+            "errorMessage": "Owned array holes refuse",
+            "nodes": null,
+            "bytes": null,
+            "inheritedHasOwnVisits": 0,
+            "scratchReleased": true,
+            "QAfterDispose": 0
+          },
+          "candidate": {
+            "accepted": false,
+            "errorCode": "INVALID_DESCRIPTOR",
+            "errorMessage": "Owned array holes refuse",
+            "nodes": null,
+            "bytes": null,
+            "inheritedHasOwnVisits": 0,
+            "scratchReleased": true,
+            "QAfterDispose": 0
+          }
+        },
+        {
+          "parent": {
+            "accepted": false,
+            "errorCode": "INVALID_DESCRIPTOR",
+            "errorMessage": "Owned metadata symbols/hidden properties refuse",
+            "nodes": null,
+            "bytes": null,
+            "inheritedHasOwnVisits": 0,
+            "scratchReleased": true,
+            "QAfterDispose": 0
+          },
+          "candidate": {
+            "accepted": false,
+            "errorCode": "INVALID_DESCRIPTOR",
+            "errorMessage": "Owned metadata symbols/hidden properties refuse",
+            "nodes": null,
+            "bytes": null,
+            "inheritedHasOwnVisits": 0,
+            "scratchReleased": true,
+            "QAfterDispose": 0
+          }
+        },
+        {
+          "parent": {
+            "accepted": false,
+            "errorCode": "INVALID_DESCRIPTOR",
+            "errorMessage": "Owned metadata symbols/hidden properties refuse",
+            "nodes": null,
+            "bytes": null,
+            "inheritedHasOwnVisits": 0,
+            "scratchReleased": true,
+            "QAfterDispose": 0
+          },
+          "candidate": {
+            "accepted": false,
+            "errorCode": "INVALID_DESCRIPTOR",
+            "errorMessage": "Owned metadata symbols/hidden properties refuse",
+            "nodes": null,
+            "bytes": null,
+            "inheritedHasOwnVisits": 0,
+            "scratchReleased": true,
+            "QAfterDispose": 0
+          }
+        }
+      ]
+    },
+    {
+      "name": "Clean actual C03 graph/helper/Surface envelopes preserve shape and exact canonical bytes",
+      "status": "PASS",
+      "profiles": [
+        {
+          "name": "buildGraph",
+          "digest": "f0fcf485eea4dc61d6db859a2399db84d8a74c71b4dd8ad35751e0d41d1a6c9e",
+          "closureRows": 219,
+          "builderSha256": "bb34d2c0149ed9992158ce1b47d7bb088e7e1cf896ebc49d42a31ec79435ac7e",
+          "parent": {
+            "accepted": true,
+            "errorCode": null,
+            "errorMessage": null,
+            "nodes": 883,
+            "bytes": 30422,
+            "inheritedHasOwnVisits": 0,
+            "scratchReleased": true,
+            "QAfterDispose": 0
+          },
+          "candidate": {
+            "accepted": true,
+            "errorCode": null,
+            "errorMessage": null,
+            "nodes": 883,
+            "bytes": 30422,
+            "inheritedHasOwnVisits": 0,
+            "scratchReleased": true,
+            "QAfterDispose": 0
+          }
+        },
+        {
+          "name": "buildSurfaceEnvelope",
+          "digest": "7751dd2a8a392292cf3626723edbe755976bfc3398d4c77cff5f02e5a4d59c6c",
+          "closureRows": 5,
+          "builderSha256": "c900a8148b8aa5cfc84949927c0ed8eea393585cdf3b2f7c0bafbf75b7727470",
+          "parent": {
+            "accepted": true,
+            "errorCode": null,
+            "errorMessage": null,
+            "nodes": 37,
+            "bytes": 1196,
+            "inheritedHasOwnVisits": 0,
+            "scratchReleased": true,
+            "QAfterDispose": 0
+          },
+          "candidate": {
+            "accepted": true,
+            "errorCode": null,
+            "errorMessage": null,
+            "nodes": 37,
+            "bytes": 1196,
+            "inheritedHasOwnVisits": 0,
+            "scratchReleased": true,
+            "QAfterDispose": 0
+          }
+        },
+        {
+          "name": "buildStartupEnvelope",
+          "digest": "987bf7095c3da5ab6ac39fae2fb03409c87f12c40f8e4993f24aea7a400b1021",
+          "closureRows": 9,
+          "builderSha256": "162b7d77d3d00adb92b1adcb35b4962cf45ff3afd7caa6c120f83986e805798b",
+          "parent": {
+            "accepted": true,
+            "errorCode": null,
+            "errorMessage": null,
+            "nodes": 57,
+            "bytes": 1899,
+            "inheritedHasOwnVisits": 0,
+            "scratchReleased": true,
+            "QAfterDispose": 0
+          },
+          "candidate": {
+            "accepted": true,
+            "errorCode": null,
+            "errorMessage": null,
+            "nodes": 57,
+            "bytes": 1899,
+            "inheritedHasOwnVisits": 0,
+            "scratchReleased": true,
+            "QAfterDispose": 0
+          }
+        }
+      ]
+    },
+    {
+      "name": "Changed S foundation fails unchanged C03 graph source admission and rolls back exact Q/S",
+      "status": "PASS",
+      "errorCode": "SOURCE_PROFILE_MISMATCH",
+      "readRows": 135,
+      "failedSource": "biome-service/native/source-admission.js",
+      "QAfterDispose": 0,
+      "sourceCopies": 0,
+      "profileUpdated": false
+    }
+  ],
+  "remainingHolds": [
+    "Added scanned-key activation storage/module delta and complete caller/cold work unselected.",
+    "Explicit for-in body rows are bounded. Native enumeration internals, Reflect.ownKeys oversized native result and caller Proxy payloads are not qualified by this local fix.",
+    "Candidate graph/profile foundation pins intentionally stale; root owns any future reprofiling after independent review."
+  ],
+  "sourceEditsOutsidePrivateCandidate": 0,
+  "TOrC03Edits": 0
+}

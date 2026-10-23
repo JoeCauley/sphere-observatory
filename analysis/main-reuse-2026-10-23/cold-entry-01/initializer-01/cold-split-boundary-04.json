@@ -1,0 +1,141 @@
+{
+  "format": "sphere-v8-minimum-cold-staging-boundary/1",
+  "utc": "2026-10-23T11:37:13.664Z",
+  "status": "SOURCE_DERIVED_LOWER_BOUNDS_REQUIRE_SOURCE_PLUS_CONTROL_IMPORT_STAGING_NO_PRICES_SELECTED",
+  "basis": {
+    "source": [
+      {
+        "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/candidate-03/source/biome-service/native/main-baseline-owner.js",
+        "bytes": 99101,
+        "sha256": "b4889a954e2e00fb86cab8ae01d589c067c7dc52bf385c146acc4577ef68b9c6"
+      },
+      {
+        "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/candidate-03/source/biome-service/native/main-default-surface-facts.js",
+        "bytes": 31763,
+        "sha256": "34e6b98a2b32d54d6eda0b5521858ff2cd4df241dbb7291a384f4fc981fb8115"
+      },
+      {
+        "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/candidate-03/source/biome-service/native/source-admission.js",
+        "bytes": 16839,
+        "sha256": "d1676c985688bb3330ae2e35e1194c8b2c05116652939e1b183e0047751d8a7f"
+      },
+      {
+        "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/candidate-03/source/biome-service/records.js",
+        "bytes": 24045,
+        "sha256": "70dbb2302f88f5f950de3eb2d3e94951a1537fdeab54640e7bb95746d69c1556"
+      }
+    ],
+    "vocabulary": {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/ordinary-main-demand-work-contract-01/resource-api-coverage-02.json",
+      "bytes": 105601,
+      "sha256": "9bdbf2951a6b8252e472ef667fbfbcdadeac148855f4b619c80fb178345b7102"
+    },
+    "priorBridgeGraph": {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-ordinary-bridge-work-2026-10-22-01/current-named-operation-graph.json",
+      "bytes": 12631,
+      "sha256": "6959b0615bd5d7931c02e3d9bb4f4a8ec345231da1f6758a1c69d9ed1083f732"
+    },
+    "peer": "Separate cold-review agent derived the mandatory subset and confirmed the no-check-waiver boundary; peer final artifact is independently owned."
+  },
+  "minimumClosure": {
+    "rows": 33,
+    "paths": [
+      "asset-plan.js",
+      "atmosphere.js",
+      "biome-service/metadata-budget.js",
+      "biome-service/native/main-baseline-owner.js",
+      "biome-service/native/main-baseline-resource-records.js",
+      "biome-service/native/main-default-surface-facts.js",
+      "biome-service/native/main-demand-image-asset-manifest.js",
+      "biome-service/native/main-demanded-array-content-owner.js",
+      "biome-service/native/main-finish-storage-owner.js",
+      "biome-service/native/main-texture-binding-owner.js",
+      "biome-service/native/overview-index.js",
+      "biome-service/native/positions-backend.js",
+      "biome-service/native/resource-leases.js",
+      "biome-service/native/retained-demand-plan.js",
+      "biome-service/native/root-program-binding.js",
+      "biome-service/native/shared-gpu-backend.js",
+      "biome-service/native/source-admission.js",
+      "biome-service/records.js",
+      "biomes.js",
+      "collection.js",
+      "edge-stream.js",
+      "geometry-renderer.js",
+      "hero-textures.js",
+      "instanced-environment.js",
+      "local-shadows.js",
+      "meadow-canopy.js",
+      "renderer.js",
+      "surface-lighting.js",
+      "world-address.js",
+      "world-textures.js",
+      "world-topology.js",
+      "world.js",
+      "wound-textures.js"
+    ],
+    "meaning": "Exact demanded Base source paths union managed Surface source paths. Any actual PB parent closure can only add rows; no missing actual profile is fabricated."
+  },
+  "sourceAdmissionNecessity": {
+    "hashOnlyMinimum": 1089,
+    "terms": "33 rows*(one nativeSHA +32 fixed hex conversion rows). V2 reads/copies/hashes even a cache hit; all profile/copy/IO/Q/post-await work is omitted from this lower.",
+    "fullCurrentSameSliceConstraint": "Cprefix +A <=280",
+    "conclusion": "Hash-only1089 already exceeds280. Moving S to its own genuine scheduled paid stage is necessary under the stated vocabulary; no native-time/heap bound or full prelude fee is inferred."
+  },
+  "sourceOnlySplitStillFails": {
+    "A": {
+      "minimum": 92,
+      "terms": {
+        "payTransaction": 12,
+        "coldNativeRows": 15,
+        "twoPBUsesDrawObjects": 8,
+        "sixNativeUniformLocation": 6,
+        "sixScopeChecks": 30,
+        "nativeGetError": 1,
+        "hotNativeRows": 15,
+        "finalScope": 5
+      },
+      "omitted": "All Q records, own bridge/native/location state allocation and demanded metadata, and later failure disposal."
+    },
+    "P": {
+      "minimum": 189,
+      "terms": {
+        "postAdmissionConstructionCheck": 54,
+        "ConstructionBindCheck": 54,
+        "finalBindRendererLiveExcludingSurface": 81
+      },
+      "coldBaseLiveOwn18": "one own/lifecycle row +native loss1 +8 current physical rows +8 R inspect =18; Surface pay/current body excluded.",
+      "omitted": "Profile/closure/host/native guards, all Q/control work, pure inventory, parent calls and other caller/failure work."
+    },
+    "minimumTotal": 281,
+    "availableAfterFixedAndTail": 280,
+    "conclusion": "Even after source admission moves out, resuming unchanged Base80+ suffix in one4096 import slice cannot qualify. Pure profile/inventory relocation alone does not remove these mandatory construction/currentness invocations."
+  },
+  "minimumNoWaiverBoundary": {
+    "priorColdControlVisit": "Preserve original source/profile checks and retain actual Base loss capture128 plus Star cold1024 in an earlier real paid cold-control visit. Pause after Base110 and before the111/164 admission/import region.",
+    "laterRealImportVisit": "A separate genuinely scheduled shared-R visit revalidates original Renderer/frame0/gl/program, real PB/G/Construction, actual host-zero, and captured Star holder/cookie/epoch state. Then keep original cold native/location admission and all final Construction.check/bind/attach.live invocations.",
+    "remainingLiteralImport": 2632,
+    "remainingActualTerms": "Surface capture1024 +eight*(factory32+Rallocation1) +Surface factory128 +Surface check1024 +managed activate64 +final attach Surface128.",
+    "necessaryConstraint": "A +fresh-prefix +all other import work <=1432 (4096-2632-32); merely a ceiling, never a price.",
+    "noCheckSharing": true,
+    "noPublicReadyTicket": true,
+    "noInternalSameFrameClockReset": true,
+    "noEarlierPaymentForFutureWork": true
+  },
+  "implementationReadyContract": {
+    "owner": "One private bootstrap App/Renderer/nonce operation and its same Q/S/R/PB roots. Original async Base create continuation and retained admitted source borrower remain unexposed; one authenticated single-use continuation, no caller-selected callback.",
+    "prospectiveOwnership": "A caller-owned metadata/work/realm allowance must precede invoking original constructors and their hoisted declarations/captures. C03 helper/controller/module/Base12288/Binding32768 increments do not prove or fund the inherited R/PB/Base factory/API/closed-facade graph.",
+    "pauses": "Original source/native/parent checks remain. Recheck all mutable identities and paying scope after every read/SHA await and after each real scheduled pause. Only genuinely immutable admitted profile/validation records may be reused privately, once.",
+    "failure": "Keep source borrower, prospective charges, captured constructor references, genuine R/PB/Base and partial physical roots until source settlement and paid disposal finish. Unknown/partial failures seal the operation; no publication replay or successful-ready result.",
+    "coldClock": "Before Main Target exists, qualify a genuine cold-root clock owner on the actual common R. A real scheduled visit may advance only with no previous paid scope pending. Source-owner busy alone does not own the shared R clock."
+  },
+  "missingBeforeStagingCodeOrFees": [
+    "Freeze actual concrete common-host, PB and Base profiles/program role source instead of borrowing historical component limits/fake refs.",
+    "Complete source profile ownRecord/canonical clone/parse/verify and post-await/read/copy/hash/cancel work, plus original inherited source/module/API/activation/closed-facade ownership. Generic node/byte bounds do not establish one-visit fee.",
+    "Derive complete cold-control visit and fresh import visit upper envelopes, including actual A and exact failure/retirement behavior.",
+    "Independently review clock/capability/profile/currentness/retained validation and prospective caller funding before enabling any new stage."
+  ],
+  "sourceOrTableEdits": 0,
+  "Main": "HELD",
+  "P05": "OPEN"
+}

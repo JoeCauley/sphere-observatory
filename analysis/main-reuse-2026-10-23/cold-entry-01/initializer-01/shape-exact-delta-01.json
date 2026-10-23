@@ -1,0 +1,35 @@
+{
+  "status": "PRIVATE_UNINSTALLED_CANDIDATE_NO_FUNDING_SELECTION",
+  "parent": {
+    "path": "biome-service/native/source-admission.js",
+    "bytes": 16839,
+    "sha256": "d1676c985688bb3330ae2e35e1194c8b2c05116652939e1b183e0047751d8a7f"
+  },
+  "candidate": {
+    "path": "biome-service/native/source-admission.js",
+    "bytes": 16948,
+    "sha256": "15495ba84a47113bcc10c2e5b2fba4057ead1a420222f016c45b886fe222fea3"
+  },
+  "hunks": [
+    {
+      "old": "let nodes=0;const active=new Set();",
+      "new": "let nodes=0,scannedKeys=0;const active=new Set();",
+      "oldHex": "6c6574206e6f6465733d303b636f6e7374206163746976653d6e65772053657428293b",
+      "newHex": "6c6574206e6f6465733d302c7363616e6e65644b6579733d303b636f6e7374206163746976653d6e65772053657428293b"
+    },
+    {
+      "old": "for(const key in item){if(!Object.hasOwn(item,key))continue;",
+      "new": "for(const key in item){if(++scannedKeys>maxNodes)fail('RESOURCE_LIMIT','Owned metadata enumeration ceiling exceeded');if(!Object.hasOwn(item,key))continue;",
+      "oldHex": "666f7228636f6e7374206b657920696e206974656d297b696628214f626a6563742e6861734f776e286974656d2c6b65792929636f6e74696e75653b",
+      "newHex": "666f7228636f6e7374206b657920696e206974656d297b6966282b2b7363616e6e65644b6579733e6d61784e6f646573296661696c28275245534f555243455f4c494d4954272c274f776e6564206d6574616461746120656e756d65726174696f6e206365696c696e6720657863656564656427293b696628214f626a6563742e6861734f776e286974656d2c6b65792929636f6e74696e75653b"
+    }
+  ],
+  "inverseExact": true,
+  "originalSchemaChecksPreserved": true,
+  "maximumOwnNodes": 4096,
+  "maximumScannedRows": "maxNodes per entire shape call, including inherited enumerable rows before skip",
+  "workAndActivationStorage": "NOT_YET_DERIVED_UNSELECTED",
+  "embeddedSourceProfiles": "Unmodified and intentionally stale for changed S row; candidate is not source-admitted for product graph evaluation. Fresh closure gate must refuse until separately repinned/reviewed.",
+  "MainExecutionEnabled": false,
+  "sourceEditsOutsideNewCandidate": 0
+}

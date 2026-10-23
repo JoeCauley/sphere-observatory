@@ -1,0 +1,85 @@
+{
+  "format": "sphere-v8-cold-entry-continuation/1",
+  "status": "PASS_LOCAL_REPAIR_FRESH_SOURCE_AND_NECESSARY_COLD_BOUNDARY_ONLY",
+  "utc": "2026-10-23T11:42:52.194254+00:00",
+  "selectedMainComponent": "main-texture-handoff-funded-c3",
+  "unselectedSourceRepairProposal": "main-cold-shape-profiled-unselected-c3",
+  "controls": {
+    "authorShapeGroups": 11,
+    "independentShapeGroups": 14,
+    "authorShapeReplays": 11,
+    "sourceProfileControls": 9,
+    "independentSourceProfileReplays": 9,
+    "overlap": "Author replays and source-profile replays are not additional distinct scenarios."
+  },
+  "inventory": {
+    "files": 521,
+    "JavaScriptFamilyParses": 425
+  },
+  "sourceChangesFromSelectedC03": [
+    "biome-service/native/source-admission.js",
+    "owned-main-bootstrap.js"
+  ],
+  "sourceShapeScope": "Explicit own/inherited for-in rows bounded by existing maxNodes across the whole call; old own-node/depth/schema/accessor guards remain. Native enumeration/ownKeys/Proxy/full caller are not qualified.",
+  "sourceRepairCostStorage": "UNSELECTED",
+  "coldBound": {
+    "vocabulary": "Conditional source-derived lower subsets under pinned named-resource/record vocabulary; not complete prices or time.",
+    "currentLiteralDebits": 3784,
+    "necessaryPrefixPlusAdmissionCeiling": 280,
+    "minimumSourceHashSubset": 1089,
+    "disjointAdmissionAndMandatoryNonSourceSubset": 281,
+    "confirmedEarlierActualLossAndStarDebits": 1152,
+    "remainingImportLiteralDebits": 2632,
+    "necessaryRemainingAdmissionAndPrefixCeiling": 1432,
+    "ceilingsAreNotFees": true
+  },
+  "coldStageImplementation": "NOT_IMPLEMENTED",
+  "nextEdit": "Private actual cold host/PB/Base profile builders, then prospectively funded privately retained source/capture/import stages under genuine scheduled scopes.",
+  "workingSibling": "../main-v8-cold-profiles-2026-10-23-01",
+  "fullColdCallerOwnership": "HELD",
+  "fullHost": "HELD",
+  "nativeMain": "NOT_RUN",
+  "productMainPermission": false,
+  "P05": "OPEN",
+  "P06_P08": "NOT_STARTED",
+  "PhaseOne": "NOT_ACCEPTED_NOT_RELEASED",
+  "browserActions": 0,
+  "serverActions": 0,
+  "artifacts": {
+    "initializer": {
+      "path": "initializer-01/CHECK-05.json",
+      "bytes": 6447,
+      "sha256": "fee45297aa29fb629a33c29112622ccec5f185515285fff100b753cabad125b4"
+    },
+    "repairPeer": {
+      "path": "s-shape-independent-review-01/CHECK-01.json",
+      "bytes": 3962,
+      "sha256": "c4e91a25fbf6ad9ba38d9949c5092700157a2898b307639060d151e12416f8c4"
+    },
+    "profilePeer": {
+      "path": "s-shape-profile-review-01/CHECK-01.json",
+      "bytes": 3865,
+      "sha256": "8beb9c412c29563312cd182d063355a23f4a5a8bfa43ef7d84c915d49d01d93b"
+    },
+    "P05Audit": {
+      "path": "p05-exit-audit-01/CHECK-01.json",
+      "bytes": 4488,
+      "sha256": "d3ea2cecf0ea300261b3d550374cca30395fb36776e5e3fd8e0372a98d9a6790"
+    },
+    "sourceProfiles": {
+      "path": "profiled-shape-candidate-03/source-profile-controls-04.json",
+      "bytes": 4170,
+      "sha256": "33b00e4f6f359039cfc462eae1bc0a42fb55e42ef35abacfa9086817d4dce377"
+    },
+    "coldSource": {
+      "path": "cold-review-01/source-check.json",
+      "bytes": 1181,
+      "sha256": "d7c3dcf62ff049f8edd8255bd3e3463c1b8672b2f55be727cd10a212c6670b61"
+    },
+    "coldPeer": {
+      "path": "cold-review-01/CHECK.json",
+      "bytes": 3309,
+      "sha256": "91aeedb9ff75a2d90c3b770f68b040b2ad57072ec88c6d44b691e1d051e7834c"
+    }
+  }
+}

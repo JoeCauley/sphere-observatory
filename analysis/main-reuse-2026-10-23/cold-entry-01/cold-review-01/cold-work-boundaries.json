@@ -1,0 +1,249 @@
+{
+  "status": "SOURCE_DERIVED_NECESSARY_BOUNDS_NOT_SELECTED_FEES_OR_COMPLETE_UPPERS",
+  "qualification": "Conditional on the explicitly pinned Source37/current named-record vocabulary. No AST/event count tariff or physical CPU/timing bound.",
+  "currentActualBehavior": "ORDINARY_BRIDGE_WORK remains null: a hypothetical valid v8 caller refuses at Base165 before the Base facade. No current successful Main path is asserted.",
+  "actualDebitRows": [
+    {
+      "id": "LossFactoryCapture",
+      "actualDebit": 128,
+      "source": "Base95",
+      "scope": "existing source loss-factory capture only"
+    },
+    {
+      "id": "StarCold",
+      "actualDebit": 1024,
+      "source": "Base110; starContentLimits51",
+      "scope": "existing Star cold state/native captures only"
+    },
+    {
+      "id": "SurfaceCapture",
+      "actualDebit": 1024,
+      "source": "Base307; Surface16",
+      "scope": "actual original Surface capture"
+    },
+    {
+      "id": "EightPhysicalFactoryAdmissions",
+      "actualDebit": 256,
+      "source": "Base115/273/308",
+      "scope": "8 original physicalFactory controls"
+    },
+    {
+      "id": "EightRAllocations",
+      "actualDebit": 8,
+      "source": "R178-197, consume189",
+      "scope": "8 genuine R allocations; no fictitious share/release debit"
+    },
+    {
+      "id": "SurfaceFactory",
+      "actualDebit": 128,
+      "source": "Base273; Surface16",
+      "scope": "original Surface factory"
+    },
+    {
+      "id": "SurfaceCheck",
+      "actualDebit": 1024,
+      "source": "Base309; Surface16",
+      "scope": "original Surface check"
+    },
+    {
+      "id": "ManagedActivation",
+      "actualDebit": 64,
+      "source": "Base310; MANAGED_SURFACE_WORK13",
+      "scope": "managed v8 activation"
+    },
+    {
+      "id": "AttachSurfaceCurrent",
+      "actualDebit": 128,
+      "source": "Renderer120 -> Base276 -> Base252",
+      "scope": "actual live Surface.current payment during attach"
+    }
+  ],
+  "successfulPathFixedDebitSubtotal": 3784,
+  "unknownAdmissionFeeSymbol": "A",
+  "unknownOtherSameSliceCallerPrefixSymbol": "C",
+  "literalLateQuote": {
+    "source": "Base307",
+    "formula": "8*(32+1)+128+1024+128+64+32",
+    "value": 1640
+  },
+  "singleImportSliceCeiling": {
+    "formula": "A+C <=4096-3784-32",
+    "value": 280,
+    "kind": "necessary ceiling, never a derived fee"
+  },
+  "sourcePrefixLower": {
+    "baseOriginalPaths": 23,
+    "ordinaryPaths": 25,
+    "demandedPaths": 32,
+    "surfaceAdditionalPaths": [
+      "biome-service/native/main-default-surface-facts.js"
+    ],
+    "minimumBaseUnionRows": 33,
+    "minimumPaths": [
+      "asset-plan.js",
+      "atmosphere.js",
+      "biome-service/metadata-budget.js",
+      "biome-service/native/main-baseline-owner.js",
+      "biome-service/native/main-baseline-resource-records.js",
+      "biome-service/native/main-default-surface-facts.js",
+      "biome-service/native/main-demand-image-asset-manifest.js",
+      "biome-service/native/main-demanded-array-content-owner.js",
+      "biome-service/native/main-finish-storage-owner.js",
+      "biome-service/native/main-texture-binding-owner.js",
+      "biome-service/native/overview-index.js",
+      "biome-service/native/positions-backend.js",
+      "biome-service/native/resource-leases.js",
+      "biome-service/native/retained-demand-plan.js",
+      "biome-service/native/root-program-binding.js",
+      "biome-service/native/shared-gpu-backend.js",
+      "biome-service/native/source-admission.js",
+      "biome-service/records.js",
+      "biomes.js",
+      "collection.js",
+      "edge-stream.js",
+      "geometry-renderer.js",
+      "hero-textures.js",
+      "instanced-environment.js",
+      "local-shadows.js",
+      "meadow-canopy.js",
+      "renderer.js",
+      "surface-lighting.js",
+      "world-address.js",
+      "world-textures.js",
+      "world-topology.js",
+      "world.js",
+      "wound-textures.js"
+    ],
+    "parentUnionCanOnlyEnlarge": true,
+    "perHashLower": {
+      "nativeSHARequest": 1,
+      "ownedByteToHexRows": 32,
+      "total": 33
+    },
+    "formula": "at least33 source rows * (1 native SHA +32 owned hex rows)",
+    "lower": 1089,
+    "strictlyAboveCeiling": true,
+    "omits": [
+      "source IO/BYOB payload",
+      "typed copy/getters",
+      "profile shape/canonical/parser/string payload",
+      "envelope hash",
+      "Q/source reader accounting",
+      "all actual caller and Base prefix work"
+    ],
+    "cacheHitDoesNotRemove": "S.acquireSplit55-60 still invokes readSource, exact copy and sha256 on cache hit"
+  },
+  "sourceOnlySplitStillInsufficient": {
+    "admissionNamedLowerRows": [
+      {
+        "id": "PayContent",
+        "count": 1,
+        "per": 12,
+        "total": 12,
+        "source": "Base164; dependency PayContent = own3+ScopeRead4+ScopeRequire5"
+      },
+      {
+        "id": "ColdNativeHolderRow",
+        "count": 15,
+        "per": 1,
+        "total": 15,
+        "source": "Base165 first15-name capture loop; each row depth<=8"
+      },
+      {
+        "id": "PBUsesDrawObjects",
+        "count": 2,
+        "per": 4,
+        "total": 8,
+        "source": "Base165 -> PB72/76, private record+3 native queries"
+      },
+      {
+        "id": "NativeGetUniformLocation",
+        "count": 6,
+        "per": 1,
+        "total": 6,
+        "source": "Base165 six fixed sampler names"
+      },
+      {
+        "id": "LocationScopeRequire",
+        "count": 6,
+        "per": 5,
+        "total": 30,
+        "source": "Base165 after each actual location"
+      },
+      {
+        "id": "NativeGetError",
+        "count": 1,
+        "per": 1,
+        "total": 1,
+        "source": "Base165 actual getError"
+      },
+      {
+        "id": "FreshNativeHolderRow",
+        "count": 15,
+        "per": 1,
+        "total": 15,
+        "source": "Base165 second15-name holder loop"
+      },
+      {
+        "id": "FinalScopeRequire",
+        "count": 1,
+        "per": 5,
+        "total": 5,
+        "source": "Base165 final starRequireScope"
+      }
+    ],
+    "admissionWholeEntryLower": 92,
+    "disjointAttribution": {
+      "callerBeforeOwnDebit": 6,
+      "afterDebitAdmissionSubset": 86,
+      "union": 92,
+      "explanation": "PayContent12 has selection/scope/available prelude6 before consume; assign it prospectively to the original caller rather than claiming later A pays it retroactively."
+    },
+    "postSourceSuffixSubset": [
+      {
+        "id": "FreshPostAwaitConstructionCheck",
+        "value": 54,
+        "source": "Base91 -> Construction57"
+      },
+      {
+        "id": "FinalConstructionBindCheck",
+        "value": 54,
+        "source": "Base311 -> Construction59 -> Construction57"
+      },
+      {
+        "id": "FinalAttachLiveWithoutSurface",
+        "value": 81,
+        "source": "Renderer120 -> Base276 -> Base252",
+        "expression": "lifecycle record1+native loss1+8 physical rows+8 R inspections+Construction54+PBReader2+PBUses4+G3",
+        "excludes": "all SurfacePay/current body; actual Surface128 debit already counted above"
+      }
+    ],
+    "postSourceSubset": 189,
+    "unionLower": 281,
+    "inequality": "6+86+54+54+81=281 >280",
+    "scope": "These payloads belong to their caller/full cold contract. Existing capture128/Star1024/Surface/factory/managed fees have named different bodies; no arbitrary reassignment of their alleged slack.",
+    "notUpperAsLower": "Cold live uses8 actual successful rows, not the inherited14-row possible dynamic maximum. Every lower row is executed on this successful control-flow branch."
+  },
+  "minimalNoCheckWaiverSplit": {
+    "completedPriorRealVisit": {
+      "lossCapture": 128,
+      "StarCold": 1024,
+      "actualMovedDebit": 1152,
+      "boundary": "after Base110, before bridge admission and first physical import"
+    },
+    "finalImportLiteralSubtotal": 2632,
+    "necessaryFinalCeiling": {
+      "formula": "A+freshFinalCallerPrefix <=4096-2632-32",
+      "value": 1432,
+      "kind": "necessary ceiling only; no fee selected"
+    },
+    "allOriginalConstructionChecksRetained": true,
+    "sourcePreludeUpper": "NOT_ESTABLISHED: exact genuine Base/PB profile builders and complete profile/string/parser/source/caller graph are absent from the current loader."
+  },
+  "preRLoaderSourceBoundary": {
+    "source": "loader150-151 before Renderer/App/G/R",
+    "exactGraphRows": 219,
+    "hashOnlyVocabularyLower": 7227,
+    "scope": "Cannot be paid retroactively by a later R. Either derive actual prospective billed foundation scheduling, or retain an explicit trusted pre-R foundation boundary. Splitting Base33 does not close full startup."
+  }
+}

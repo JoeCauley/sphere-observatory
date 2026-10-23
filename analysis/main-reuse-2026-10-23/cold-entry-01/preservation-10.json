@@ -1,0 +1,52 @@
+{
+  "status": "PASS_SOURCE_PROGRESS_PRESERVATION_AND_PUBLICATION",
+  "utc": "2026-10-23T11:47:21.000078+00:00",
+  "checkpointFormat": 11,
+  "manifestSHA256": "1cd6e06051f71009fe9d70f6d5954f255346dca4939b428a7c5c3aaf1bd17cc0",
+  "verificationSHA256": "ddbc74856a6016e60c25f88a9bd82853cb81dcb27c7932386e0f95bc0ddf96a6",
+  "verification": {
+    "pass": true,
+    "snapshots": 32,
+    "archiveEntriesVerified": 16578,
+    "recordsVerified": 3421,
+    "recordsAdded": 73,
+    "recordsBytes": 123686981,
+    "freshRestore": {
+      "snapshot": "main-cold-shape-profiled-unselected-c3",
+      "destination": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-join-2026-10-23-01\\restored-check-11\\source",
+      "files": 521,
+      "verified": true
+    },
+    "restorerUnchanged": true,
+    "earlierSnapshotAndRecordRowsExact": true,
+    "selectedMainComponent": "main-texture-handoff-funded-c3",
+    "sourceRepairSelected": false,
+    "duplicateReviewSourceCopiesPreservedLocally": true,
+    "scope": "Exact source/progress preservation only; scoped controls and conditional necessary cold lower bounds do not supply complete work/caller/host/native Main or P05 acceptance.",
+    "currentReadmeUTF8": true,
+    "historicalReadmeBytesExact": true,
+    "historicalReadmePath": "README-cutoff-10.md",
+    "historicalReadmeSHA256": "2895157f2ee66f9dae12b4872126066a973a601bdf67294b93d0491cf2af19ca"
+  },
+  "privateUnrelatedExact": true,
+  "oldReadmeCheckpointBodiesExact": true,
+  "currentPlanOnlyOneByteReplacement": true,
+  "publicationNewlineNormalizationCorrected": true,
+  "publicReadmeUTF8": true,
+  "checkpointReadmeUTF8": true,
+  "historicalReadmeBytesExact": true,
+  "curatedReceiptCopiesExact": 23,
+  "newReportLinksResolve": true,
+  "trackedPublicRuntimeFilesUnchanged": true,
+  "stagedPrivatePathsOnlyCheckpoint": true,
+  "sealedWhitespaceExceptions": [
+    "records/main-ordinary-bridge-work-2026-10-22-01/source-excerpts.md",
+    "records/main-ordinary-bridge-work-review-2026-10-22-01/amend-input-pins-02.cjs",
+    "records/texture-handoff-split-2026-10-23-01/dependency-review-01/source-excerpts.md",
+    "records/main-v8-join-2026-10-23-01/cold-review-01/source-excerpts.md"
+  ],
+  "selectedMainComponent": "main-texture-handoff-funded-c3",
+  "sourceRepairSelected": false,
+  "P05": "OPEN",
+  "nativeMain": "NOT_RUN"
+}

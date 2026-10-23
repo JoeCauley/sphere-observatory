@@ -1,0 +1,170 @@
+{
+  "status": "PASS_NARROW_S_SHAPE_ENUMERATION_REPAIR",
+  "groups": 14,
+  "originalDefectCases": 2,
+  "sourcePins": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-join-2026-10-23-01\\s-shape-independent-review-01\\before-source\\biome-service\\native\\source-admission.js",
+      "bytes": 16839,
+      "sha256": "d1676c985688bb3330ae2e35e1194c8b2c05116652939e1b183e0047751d8a7f"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-join-2026-10-23-01\\s-shape-independent-review-01\\after-source\\biome-service\\native\\source-admission.js",
+      "bytes": 16948,
+      "sha256": "15495ba84a47113bcc10c2e5b2fba4057ead1a420222f016c45b886fe222fea3"
+    }
+  ],
+  "results": [
+    {
+      "which": "before",
+      "mode": "inherited-over",
+      "inheritedCalls": 4097,
+      "calls": 4097,
+      "admitted": true,
+      "code": null,
+      "getterCalls": 0,
+      "afterReleaseBytes": 4096,
+      "peakBytes": 5256596,
+      "finalQ": 0
+    },
+    {
+      "which": "before",
+      "mode": "nested-over",
+      "calls": 4098,
+      "inheritedCalls": 4096,
+      "admitted": true,
+      "code": null,
+      "sharedAcrossNestedArrays": true,
+      "afterReleaseBytes": 4096,
+      "peakBytes": 5257212,
+      "finalQ": 0
+    },
+    {
+      "which": "after",
+      "mode": "inherited-boundary",
+      "inheritedCalls": 4096,
+      "calls": 4096,
+      "admitted": true,
+      "code": null,
+      "getterCalls": 0,
+      "afterReleaseBytes": 4096,
+      "peakBytes": 5256596,
+      "finalQ": 0
+    },
+    {
+      "which": "after",
+      "mode": "inherited-over",
+      "inheritedCalls": 4096,
+      "calls": 4096,
+      "admitted": false,
+      "code": "RESOURCE_LIMIT",
+      "getterCalls": 0,
+      "afterReleaseBytes": 4096,
+      "peakBytes": 5251658,
+      "finalQ": 0
+    },
+    {
+      "which": "after",
+      "mode": "inherited-getters",
+      "inheritedCalls": 4096,
+      "calls": 4096,
+      "admitted": false,
+      "code": "RESOURCE_LIMIT",
+      "getterCalls": 0,
+      "afterReleaseBytes": 4096,
+      "peakBytes": 5251658,
+      "finalQ": 0
+    },
+    {
+      "which": "after",
+      "mode": "nested-boundary",
+      "calls": 4096,
+      "inheritedCalls": 4094,
+      "admitted": true,
+      "code": null,
+      "sharedAcrossNestedArrays": true,
+      "afterReleaseBytes": 4096,
+      "peakBytes": 5257212,
+      "finalQ": 0
+    },
+    {
+      "which": "after",
+      "mode": "nested-over",
+      "calls": 4096,
+      "inheritedCalls": 4094,
+      "admitted": false,
+      "code": "RESOURCE_LIMIT",
+      "sharedAcrossNestedArrays": true,
+      "afterReleaseBytes": 4096,
+      "peakBytes": 5251658,
+      "finalQ": 0
+    },
+    {
+      "which": "after",
+      "mode": "own-node-boundary",
+      "nodes": 4096,
+      "calls": 4095,
+      "code": null,
+      "afterReleaseBytes": 4096,
+      "peakBytes": 6370428,
+      "finalQ": 0
+    },
+    {
+      "which": "after",
+      "mode": "own-node-over",
+      "nodes": null,
+      "calls": 0,
+      "code": "RESOURCE_LIMIT",
+      "afterReleaseBytes": 4096,
+      "peakBytes": 5251658,
+      "finalQ": 0
+    },
+    {
+      "which": "after",
+      "mode": "schema-guards",
+      "refusals": 6,
+      "getterCalls": 0,
+      "afterReleaseBytes": 4096,
+      "peakBytes": 5251658,
+      "finalQ": 0
+    },
+    {
+      "which": "after",
+      "mode": "depth-boundary",
+      "nodes": 33,
+      "code": null,
+      "afterReleaseBytes": 4096,
+      "peakBytes": 5266316,
+      "finalQ": 0
+    },
+    {
+      "which": "after",
+      "mode": "depth-over",
+      "nodes": null,
+      "code": "RESOURCE_LIMIT",
+      "afterReleaseBytes": 4096,
+      "peakBytes": 5251658,
+      "finalQ": 0
+    },
+    {
+      "which": "after",
+      "mode": "q-pressure",
+      "calls": 0,
+      "code": "RESOURCE_LIMIT",
+      "reservationBeforeInspection": true,
+      "afterReleaseBytes": 4096,
+      "peakBytes": 33550898,
+      "finalQ": 0
+    },
+    {
+      "which": "after",
+      "mode": "ordinary-equivalence",
+      "nodes": 9,
+      "bytes": 53,
+      "afterReleaseBytes": 4096,
+      "peakBytes": 5259052,
+      "finalQ": 0
+    }
+  ],
+  "scope": "Actual copied S/Q/Records ownRecord. Temporary Object.hasOwn observer counts only exact input subjects and returns original results. No Main caller/cold work or source-profile admission/native qualification."
+}

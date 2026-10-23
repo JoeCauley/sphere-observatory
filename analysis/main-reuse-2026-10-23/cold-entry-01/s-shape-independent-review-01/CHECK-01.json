@@ -1,0 +1,84 @@
+{
+  "utc": "2026-10-23T11:27:22.420Z",
+  "status": "PASS_NARROW_FUNCTIONAL_SOURCE_REPAIR_COMPLETE_COLD_HELD",
+  "sourceFilesPerCopy": 521,
+  "onlyChanged": [
+    {
+      "relative": "biome-service/native/source-admission.js",
+      "before": {
+        "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/s-shape-independent-review-01/before-source/biome-service/native/source-admission.js",
+        "bytes": 16839,
+        "sha256": "d1676c985688bb3330ae2e35e1194c8b2c05116652939e1b183e0047751d8a7f"
+      },
+      "after": {
+        "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/s-shape-independent-review-01/after-source/biome-service/native/source-admission.js",
+        "bytes": 16948,
+        "sha256": "15495ba84a47113bcc10c2e5b2fba4057ead1a420222f016c45b886fe222fea3"
+      }
+    }
+  ],
+  "exactTwoHunks": true,
+  "parentAndAuthorSourceBeforeAfterExact": true,
+  "independentGroups": 14,
+  "authorReplayGroups": 11,
+  "rawInvocations": 25,
+  "overlapNotDeduplicated": true,
+  "originalFailureReproduced": true,
+  "global4096Boundary": true,
+  "nestedSharedCounter": true,
+  "ownDataDomainUnchanged": true,
+  "schemaAndAccessorGuardsPreserved": true,
+  "QAndSourceRollback": true,
+  "addedCallableCount": 0,
+  "addedActivation": "One invocation-wide numeric scannedKeys cell; nonescaping; exact logical/storage attribution still unselected.",
+  "workQualification": "UNSELECTED: additional real increment/check/failure path must be attributed in full cold/caller contract. Functional row counts are not a fee.",
+  "remainingHolds": [
+    "Full cold constructor/caller/module/API/storage/work contract",
+    "Native enumeration internals/Reflect.ownKeys result/Proxy input scope",
+    "Coherent source/profile foundation reprofiling before integration"
+  ],
+  "TSourceEdits": 0,
+  "candidateSourceEditsByReviewer": 0,
+  "browserActions": 0,
+  "serverActions": 0,
+  "nativeClaims": false,
+  "MainPromotion": false,
+  "P05": "OPEN",
+  "artifacts": [
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/s-shape-independent-review-01/REVIEW.md",
+      "bytes": 5323,
+      "sha256": "50c4361b28ef34cf7f76561f31dae04e7d72553748b980f302ddfd59561efde5"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/s-shape-independent-review-01/test-shape.cjs",
+      "bytes": 6510,
+      "sha256": "afdc2778fd9a1de08a97d175da3e80f37a4f7aa78aee4e301f260534b2ccf61a"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/s-shape-independent-review-01/execution-01.json",
+      "bytes": 4166,
+      "sha256": "0d14066458e56c225207016e6d5a46e51ca87a838cd2fcba6c41c04d4214fccc"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/s-shape-independent-review-01/results-01.json",
+      "bytes": 4389,
+      "sha256": "bafefda25f478df52e78421e73ee6bc720e9fb652c9aff4206db78d002e0202b"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/s-shape-independent-review-01/author-replay-01/test-cold-shape-02.cjs",
+      "bytes": 10958,
+      "sha256": "aa00ea91d442bd8610013963ba970850a3d9c7f17653cde7ae8ba68d397e6ffb"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/s-shape-independent-review-01/author-replay-01/cold-shape-controls-02.json",
+      "bytes": 12590,
+      "sha256": "91db7fce6735e58a57d27b52908c72af302f92f0e2c372e07d6f65e2a3e14040"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/s-shape-independent-review-01/seal-review.cjs",
+      "bytes": 3662,
+      "sha256": "e9425241581b39f695c4bb7885d352b40d08af202ccb0d81b676661e4e0c310d"
+    }
+  ]
+}

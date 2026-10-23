@@ -1,0 +1,11 @@
+{
+  "status": "PRESERVED_PROFILE_FIXTURE_ASSUMPTION_FAILURE",
+  "failedScript": "profile-shape-02.py",
+  "failure": "AssertionError: Unchanged Surface/helper profiles must stay exact",
+  "reason": "S is a shared foundation in all three envelopes. Editing S requires current byte/hash rows and canonical-domain digests in all three.",
+  "failedCandidateSourceStillExactToUnprofiledShapeC1": true,
+  "files": 521,
+  "sourceEditsBeforeFailure": 0,
+  "replacement": "profile-shape-03.py / profiled-shape-candidate-03",
+  "MainPermission": false
+}

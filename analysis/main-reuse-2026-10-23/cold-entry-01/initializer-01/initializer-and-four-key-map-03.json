@@ -1,0 +1,387 @@
+{
+  "format": "sphere-v8-current-initializer-and-cold-boundary/1",
+  "utc": "2026-10-23T11:33:42.916Z",
+  "status": "EXACT_ABSENT_INITIALIZER_AND_IMPLEMENTATION_READY_RETAINED_STAGE_BOUNDARY_NO_FEE_SELECTION",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\texture-handoff-split-2026-10-23-01\\candidate-03\\source",
+  "sourcePins": [
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/candidate-03/source/owned-main-bootstrap.js",
+      "bytes": 67631,
+      "sha256": "a29fd0953fa0560eef5b790647de00704b79cc220e17686b472e49bfd9132716"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/candidate-03/source/app.js",
+      "bytes": 35890,
+      "sha256": "ea40b2952058757fd7773db9c3f0e983a9903738bde34e8ca210fc62490bf727"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/candidate-03/source/renderer.js",
+      "bytes": 154345,
+      "sha256": "e513ac215b5c4a6c731664a703ddd54061224d751d891c53b5b1a3f16389500d"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/candidate-03/source/biome-service/native/source-admission.js",
+      "bytes": 16839,
+      "sha256": "d1676c985688bb3330ae2e35e1194c8b2c05116652939e1b183e0047751d8a7f"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/candidate-03/source/biome-service/native/resource-leases.js",
+      "bytes": 108311,
+      "sha256": "f805286612250ce24c6e8105141da52169c72599a2abb5ef455c79b116f95ed7"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/candidate-03/source/biome-service/native/root-program-binding.js",
+      "bytes": 58784,
+      "sha256": "39616fb243e7968243ecfe4599ded05ff65635aa351bd19d541ff01e24302f7e"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/candidate-03/source/biome-service/native/main-baseline-owner.js",
+      "bytes": 99101,
+      "sha256": "b4889a954e2e00fb86cab8ae01d589c067c7dc52bf385c146acc4577ef68b9c6"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/candidate-03/source/biome-service/native/main-default-surface-facts.js",
+      "bytes": 31763,
+      "sha256": "34e6b98a2b32d54d6eda0b5521858ff2cd4df241dbb7291a384f4fc981fb8115"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/candidate-03/source/biome-service/native/main-startup-draw-owner.js",
+      "bytes": 18111,
+      "sha256": "422a8a07ed168ad741ef43f922b0ef231302e9dfc7eebd5ea58177827147a3aa"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/candidate-03/source/biome-service/native/main-texture-binding-owner.js",
+      "bytes": 99452,
+      "sha256": "234d212e4de8589520672085bdbaa071ba662b461f3ac196b468fe13983b077d"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/candidate-03/source/biome-service/native/main-demanded-array-content-owner.js",
+      "bytes": 36686,
+      "sha256": "a92f1e4572c99fb688a5e3fe301d7fa83470919f6b97523a357b6b130db6ca31"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/candidate-03/source/biome-service/native/retained-demand-plan.js",
+      "bytes": 18614,
+      "sha256": "ab9d99f676169b7b645c9d4efd38f4d2d85d25faa1268edc855e81602024f730"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/candidate-03/source/biome-service/native/root-target-backend.js",
+      "bytes": 118511,
+      "sha256": "b0efa9271d94fef061f293fdd55f051fd266cc42b8b471174f2bc54ea43497cc"
+    }
+  ],
+  "identities": {
+    "startup": {
+      "name": "runAppStartup",
+      "line": 67,
+      "endLine": 78,
+      "bytes": 1197,
+      "sha256": "78337fe2484f31172975c299efd66e953d6a2b37e55e4c9dfb44028673ad220f"
+    },
+    "RCreate": {
+      "name": "createHost",
+      "line": 71,
+      "endLine": 745,
+      "bytes": 99751,
+      "sha256": "7503bbdaa02c87277b7f6cdb11544f231a0ec9694e20ed359484bd41939273fd"
+    },
+    "PBCreate": {
+      "name": "create",
+      "line": 58,
+      "endLine": 178,
+      "bytes": 43867,
+      "sha256": "ea908300ab2fa659da7ce898945c2b31b4b9198a9c79e5eb7af759391376ae80"
+    },
+    "PBProgramAdmit": {
+      "name": "admit",
+      "line": 79,
+      "endLine": 80,
+      "bytes": 3489,
+      "sha256": "716692894f54a78f3cc1f835480f7ca9ab79ce6a48dbbbe555178c17feff5041"
+    },
+    "BaseCreate": {
+      "name": "create",
+      "line": 69,
+      "endLine": 317,
+      "bytes": 86732,
+      "sha256": "09b5e501cce02aaeb6f5274da854065a0b22ba6910c90b49a15c17469e3977af"
+    },
+    "ordinaryWork": {
+      "name": "ordinaryWork",
+      "line": 164,
+      "endLine": 164,
+      "bytes": 427,
+      "sha256": "38f354312d29c656d3d78720acedce037a96eda8f3d9c6dc9833e9a6c21e773c"
+    },
+    "non7Visit": {
+      "name": "advanceOrdinaryContentFromMain",
+      "line": 168,
+      "endLine": 168,
+      "bytes": 1339,
+      "sha256": "13a99bd33505614af642473eb9f8b1753f367edae49a456a608371780ce84bc4"
+    },
+    "demandedStages": {
+      "name": "advanceDemandedContent",
+      "line": 167,
+      "endLine": 167,
+      "bytes": 1402,
+      "sha256": "d7f536e4fe28ffc7c823dd50289e86e677999653fcc0a6f3bccb102bc5eef155"
+    },
+    "use": {
+      "name": "withOrdinaryNativeFromMain",
+      "line": 198,
+      "endLine": 198,
+      "bytes": 1624,
+      "sha256": "5a0128be1139d95b1ebbfe1afbdfb16160ec9b8082e5cb0de419d3f5e249df5a"
+    },
+    "close": {
+      "name": "closeOrdinaryBridge",
+      "line": 199,
+      "endLine": 199,
+      "bytes": 907,
+      "sha256": "97f9f80d164c221959f290167cc243647b825c3b4f04242bca3ee7942266abd1"
+    },
+    "newPaidCancelPrefix": {
+      "name": "closeSplitHandoff",
+      "line": 191,
+      "endLine": 195,
+      "bytes": 423,
+      "sha256": "d82149c4011880d0e69b77c70af31bedf83fefd77c6ca3c145aefb58403f3fe2"
+    }
+  },
+  "current": {
+    "AppAndLoader": "Both await the same private owned operation. Actual authentic Renderer is registered before UI; startup helper owns native112-call/16-step setup and creates genuine G.",
+    "stop": "runAppStartup immediately rejects HELD_MAIN_GRAPH_INCOMPLETE after G. No actual R/PB/Base create call is present.",
+    "profileBuilders": [
+      {
+        "name": "buildGraph",
+        "builderSha256": "bb34d2c0149ed9992158ce1b47d7bb088e7e1cf896ebc49d42a31ec79435ac7e",
+        "digest": "f0fcf485eea4dc61d6db859a2399db84d8a74c71b4dd8ad35751e0d41d1a6c9e",
+        "closureRows": 219,
+        "sourceAdmissionRow": {
+          "bytes": 16839,
+          "path": "biome-service/native/source-admission.js",
+          "sha256": "d1676c985688bb3330ae2e35e1194c8b2c05116652939e1b183e0047751d8a7f"
+        }
+      },
+      {
+        "name": "buildSurfaceEnvelope",
+        "builderSha256": "c900a8148b8aa5cfc84949927c0ed8eea393585cdf3b2f7c0bafbf75b7727470",
+        "digest": "7751dd2a8a392292cf3626723edbe755976bfc3398d4c77cff5f02e5a4d59c6c",
+        "closureRows": 5,
+        "sourceAdmissionRow": {
+          "bytes": 16839,
+          "path": "biome-service/native/source-admission.js",
+          "sha256": "d1676c985688bb3330ae2e35e1194c8b2c05116652939e1b183e0047751d8a7f"
+        }
+      },
+      {
+        "name": "buildStartupEnvelope",
+        "builderSha256": "162b7d77d3d00adb92b1adcb35b4962cf45ff3afd7caa6c120f83986e805798b",
+        "digest": "987bf7095c3da5ab6ac39fae2fb03409c87f12c40f8e4993f24aea7a400b1021",
+        "closureRows": 9,
+        "sourceAdmissionRow": {
+          "bytes": 16839,
+          "path": "biome-service/native/source-admission.js",
+          "sha256": "d1676c985688bb3330ae2e35e1194c8b2c05116652939e1b183e0047751d8a7f"
+        }
+      }
+    ],
+    "missingProfiles": "No actual common-R host limits/hostProfileRef, PB program envelope, Basev8 envelope or descendant owner envelopes are constructed by this loader. The source graph is a module evaluation closure, not the initialized Main owner graph.",
+    "MainExecutionEnabled": false
+  },
+  "minimalParentOrder": [
+    {
+      "step": 1,
+      "operation": "R.createHost",
+      "inputs": "Original startup G.backend; unchanged canonical actual host limits; original preparation verifier; defaultSurfaceAdmission {format:R.DEFAULT_SURFACE_FORMAT,id:R.DEFAULT_SURFACE_ID,metadataOwner:Q}.",
+      "retention": "Retain the returned real host before callback-capable postchecks. R583 owns separate8192 default-surface metadata and charges host-birth1. Inherited R host/API/closure and native retirement capture have no complete caller qualification supplied by helper/phase fees.",
+      "clock": "No Main Target exists yet; do not borrow Target clock authority or a manual fixture reset."
+    },
+    {
+      "step": 2,
+      "operation": "PB.create → PB.owner.admit(overview actual program/source)",
+      "inputs": "Actual existing Renderer modernProgram, original exact shader source hashes/profile, same Q/S/context. Full composite/Field/surface program roles require the actually selected Main route.",
+      "freshness": "PB.current rechecks captured source/native rows after S.admit; actual program admission freshly checks original linked program/uniform schema and original shader hashes after await. No fake hostProfileRef or arbitrary role/caps inherited from a model.",
+      "retention": "Retain PB and pending/program token roots until actual reader/token closure; prospective factory/failure/callable/closed API ownership remains required."
+    },
+    {
+      "step": 3,
+      "operation": "Base.create(v8)",
+      "inputs": "Exact original Renderer/Surface/commonR/G/PB/token/Q/S and v8 profile referencing current Surface and PB envelopes.",
+      "order": "Capture renderer/gl/program/frame0 and Constructor snapshot before awaited S.admit. After admission: reserve control metadata, validate exact frozen profile/parent closures/limits, recheck frame0/zero/Constructor/PB currentness, snapshot7 texture+23 auxiliary rows, then capture128/Star1024 and global admission selector.",
+      "firstCurrentRefusal": "ORDINARY_BRIDGE_WORK.admission is null. This occurs before the Base facade and before physical imports; it does not define a complete caller/cold fee.",
+      "lateImport": "Actual Surface capture1024, eight factory32/Rallocation1 rows, Surface factory128/check1024, managed activate64 and final attach Surface128. Original partial failure retains actual owner for paid cleanup."
+    },
+    {
+      "step": 4,
+      "operation": "Actual Target/World/App origin + Binding(v13)/Finish/Demand and rest of Main graph",
+      "order": "Base must import before any other physical common-R allocation. Binding and Finish attach before Demand; real Target owns later demanded preparation clock. Full World/K/Root/Field/Mask/Scene/Geometry/provider and H route are separate actual factory/profile/ownership operations.",
+      "source": "Historical frozen model gives API/order templates only. Its manual clocks, componentGPU135570668/fake host ref/diagnostic tables are not current selected initializer authority."
+    }
+  ],
+  "currentFourKeys": {
+    "admission": {
+      "selected": false,
+      "complete": false,
+      "contract": "A must cover its exact own selector/postdebit bridge transaction; actual prospective factory/source/caller prefix and failure/lifetime remain separate. No choice from A ceiling280."
+    },
+    "visit": {
+      "selected": false,
+      "complete": false,
+      "contract": "Only new stage7 has independently selected117/Hi. Non7 stages0..6/8 still use global V and every original planner/Binding/Finish/Demand/currentness/caller body; PLAN_TOKEN_WORK and DEMANDED_CONTENT_WORK remain null."
+    },
+    "use": {
+      "selected": false,
+      "complete": false,
+      "contract": "Exact original H route is absent, so old proposed1426 is not a complete U. Preserve five fresh Surface128, three real R GPU-use debits, twelve tuple checks/restoration and actual Root/Scene/Field/Mask/Target/upload/job source payload. A closed-content route bypasses U at Renderer477 only under its own still-unqualified full-content contract."
+    },
+    "close": {
+      "selected": false,
+      "complete": false,
+      "contract": "Selected new Base18 +Binding cancel88 precede null global C, followed by original Finish128/batch512/Star128. Same-slice full stage8 sufficient inequality Dclose+C+938<=4096, so caller-free C ceiling3158 is not a derived fee. Full Base/R/native retirement remains separate."
+    }
+  },
+  "unchangedCaps": {
+    "prepareWork4096": true,
+    "upload262144": true,
+    "jobs2": true,
+    "originalReaderSlots64": true,
+    "publicBatchRetain3584": true,
+    "freshSurface128": true,
+    "newTail768": true
+  },
+  "selectedStage7Budget": [
+    {
+      "phase": 0,
+      "TargetClock": 8,
+      "BaseVisit": 117,
+      "BaseSurface": 128,
+      "BindingPhase": 632,
+      "DemandSurface": 128,
+      "actualDebitsBeforeOtherCallerWork": 1013,
+      "following": 768,
+      "requiredWithFollowingBeforeOtherCallerWork": 1781
+    },
+    {
+      "phase": 1,
+      "TargetClock": 8,
+      "BaseVisit": 117,
+      "BaseSurface": 128,
+      "BindingPhase": 586,
+      "DemandSurface": 128,
+      "actualDebitsBeforeOtherCallerWork": 967,
+      "following": 768,
+      "requiredWithFollowingBeforeOtherCallerWork": 1735
+    },
+    {
+      "phase": 2,
+      "TargetClock": 8,
+      "BaseVisit": 117,
+      "BaseSurface": 128,
+      "BindingPhase": 589,
+      "DemandSurface": 128,
+      "actualDebitsBeforeOtherCallerWork": 970,
+      "following": 768,
+      "requiredWithFollowingBeforeOtherCallerWork": 1738
+    },
+    {
+      "phase": 3,
+      "TargetClock": 8,
+      "BaseVisit": 117,
+      "BaseSurface": 128,
+      "BindingPhase": 592,
+      "DemandSurface": 128,
+      "actualDebitsBeforeOtherCallerWork": 973,
+      "following": 768,
+      "requiredWithFollowingBeforeOtherCallerWork": 1741
+    },
+    {
+      "phase": 4,
+      "TargetClock": 8,
+      "BaseVisit": 117,
+      "BaseSurface": 128,
+      "BindingPhase": 595,
+      "DemandSurface": 128,
+      "actualDebitsBeforeOtherCallerWork": 976,
+      "following": 768,
+      "requiredWithFollowingBeforeOtherCallerWork": 1744
+    },
+    {
+      "phase": 5,
+      "TargetClock": 8,
+      "BaseVisit": 117,
+      "BaseSurface": 128,
+      "BindingPhase": 590,
+      "DemandSurface": 128,
+      "actualDebitsBeforeOtherCallerWork": 971,
+      "following": 768,
+      "requiredWithFollowingBeforeOtherCallerWork": 1739
+    }
+  ],
+  "coldNecessity": {
+    "fixedBaseDebits": 3784,
+    "lateTail": 32,
+    "necessarySameSliceConstraint": "Cprefix +A <=280 when all other debits omitted. Fresh R Surface-account birth1 and every other caller debit reduce this further.",
+    "peerMinimum": "Minimum Basev8 closure33 rows, V2 always hashes even cache hit. Established Source37 vocabulary nativeSHA1+32hex rows gives hash-only Cprefix>=1089.",
+    "conclusion": "A complete single-slice current Base.create cold caller cannot fit by selecting A. A genuine paid source/cold split is necessary; scan repair alone is insufficient.",
+    "qualification": "Peer exact source bound is separate from native duration/heap, full prelude fee or a selected A. Do not price from room."
+  },
+  "retainedStagingBoundary": {
+    "implementationStatus": "NO_BASE_OR_SOURCE_STAGING_API_ENABLED_OR_PRICED",
+    "desiredOwnership": "One private operation under actual bootstrap App/Renderer/nonce and same Q/S, retaining real R/PB/Base/admission roots immediately. One synchronous entry latch and fixed private failure code; no caller-picked callback, public-ready flag or replayable ticket.",
+    "sourceVisit": "A real scheduled cold visit owns the actual R scope exclusively through original awaited S.admit/typed copy/SHA completion, with all source/profile checks intact and prospective fee/failure/metadata charge before entry. If row staged, every post-read and post-SHA continuation requires that same actual paying-scope proof.",
+    "importVisit": "Only a later real scheduled visit may resume import. Keep original admitted immutable profile/source borrower privately alive; consume it once as the same operation continuation. Freshly verify original Renderer/PB/G/Construction/context/epoch/frame0/zero-R before mutation; retain original final surface and linked-program checks.",
+    "profileValidation": "Frozen-profile closure/equality validation may be retained only inside that authenticated continuation. Every mutable source/native/constructor/Renderer/root identity must be refreshed after any pause. No public prechecked ticket or wholesale source-check removal.",
+    "failure": "Closing waits for/aborts actual admitted operation using captured source IO authority; retains source borrower, prospective metadata, pending physical/native objects and any actual host/program/Base until paid disposal. Unknown/partial publication does not become success or lose its root.",
+    "missingProofBeforeImplementation": [
+      "Freeze the genuine concrete PB/Base/host profile and exact selected shader/program route; only graph/Surface/helper envelopes exist today.",
+      "Price full S.ownRecord/canonicalization/Records parse/profile verify/S read/copy/hash/prelude and inherited source-owner/API/closed-facade/module/activation ownership. Generic4096 nodes/262144B are payload bounds, not a reviewed4096 work fee.",
+      "Derive original post-S profile/constructor/native/Q/caller work plus A to determine whether source/import2-stage split suffices or validation/import need one further retained boundary.",
+      "Authenticate the cold root clock before Target exists and derive each real scheduled entry/await continuation/failure path; no internal same-frame beginSlice or payment for future work."
+    ]
+  },
+  "localRepair": {
+    "source": {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/initializer-01/cold-shape-candidate-01/source/biome-service/native/source-admission.js",
+      "bytes": 16948,
+      "sha256": "15495ba84a47113bcc10c2e5b2fba4057ead1a420222f016c45b886fe222fea3"
+    },
+    "candidate": "cold-shape-candidate-01",
+    "scope": "One shape-call-wide scannedKeys scalar counts all own/inherited for-in rows before skip; original own-node/depth/schema checks preserved. Candidate only fixes this explicit row path.",
+    "authorControls": {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/initializer-01/cold-shape-controls-02.json",
+      "bytes": 12578,
+      "sha256": "01c6a62a3ca5b4310a695bb3eb1573e6a75eb37a95500f44d8188a341f4a116b"
+    },
+    "functionalControls": 11,
+    "fullyCurrentProfiles": false,
+    "profileImpact": "All three loader envelopes include old S. Reprofile their row bytes/hash and canonical digests; later Base.defaultSurfaceProfileRef and all descendant closure/ref records must propagate the new actual Surface/PB refs.",
+    "funding": "Added work/module/activation/failure and complete S/cold accounting UNSELECTED. Native enumeration internals/Reflect.ownKeys result/Proxy payload remain separately unqualified."
+  },
+  "sourceEditsOutsidePrivateCandidate": 0,
+  "TOrC03Edits": 0,
+  "browserServerRuntimeCheckpointGitActions": 0,
+  "Main": "HELD",
+  "P05": "OPEN",
+  "freshPinSet": {
+    "currentHashOccurrences": [
+      {
+        "path": "owned-main-bootstrap.js",
+        "needle": "7751dd2a8a392292cf3626723edbe755976bfc3398d4c77cff5f02e5a4d59c6c"
+      },
+      {
+        "path": "owned-main-bootstrap.js",
+        "needle": "987bf7095c3da5ab6ac39fae2fb03409c87f12c40f8e4993f24aea7a400b1021"
+      },
+      {
+        "path": "owned-main-bootstrap.js",
+        "needle": "d1676c985688bb3330ae2e35e1194c8b2c05116652939e1b183e0047751d8a7f"
+      }
+    ],
+    "BaseNoHardcodedSurfaceDigest": true,
+    "BaseDynamicGuard": "Base88 compares p.defaultSurfaceProfileRef to reference(surfacePort.profile(renderer)); Base86 compares programProfileRef to actual PB profile.",
+    "earlyMinimal": "Update all3 embedded loader closure S rows and digests. Surface/helper modules use exact path/limits/source admission checks with no additional hardcoded64hex digest. Loader is not itself in its buildGraph closure.",
+    "scope": "Only source-admission coherence, not full current cold accounting or permission."
+  }
+}

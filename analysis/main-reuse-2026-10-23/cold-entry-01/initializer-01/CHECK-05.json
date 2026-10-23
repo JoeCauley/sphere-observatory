@@ -1,0 +1,141 @@
+{
+  "format": "sphere-v8-join-initializer-source-and-boundary-seal/1",
+  "utc": "2026-10-23T11:38:57.857Z",
+  "status": "PASS_LOCAL_REPAIR_AND_EXACT_INITIALIZER_COLD_BOUNDARY_FULL_STAGING_UNIMPLEMENTED",
+  "artifactPins": [
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/initializer-01/READ-FIRST-04.md",
+      "bytes": 5615,
+      "sha256": "c734c66ede44bf18e28cee17bbd331ec72b6184a715a0899857c2cd16486757f"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/initializer-01/candidate-copy-manifest-01.json",
+      "bytes": 187815,
+      "sha256": "33be8763fba7a30e95e17fa0972adcf43d6020c717e06031c975d5ed0f09b51a"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/initializer-01/cold-shape-controls-02.json",
+      "bytes": 12578,
+      "sha256": "01c6a62a3ca5b4310a695bb3eb1573e6a75eb37a95500f44d8188a341f4a116b"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/initializer-01/cold-split-boundary-04.cjs",
+      "bytes": 8135,
+      "sha256": "4ed9ede103f8cfe974e500e3c74b5ba99f8a53c0f4521b2fd2f3aee085aec5f4"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/initializer-01/cold-split-boundary-04.json",
+      "bytes": 8730,
+      "sha256": "39c3419e839949ee293b9b1bd8eb22a7f6173f70e36d6538f3c5513860650073"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/initializer-01/derive-initializer-map-03.cjs",
+      "bytes": 15206,
+      "sha256": "ee618a3f4c7c915a65ed6ad9c19aca9aa5164a16a7e3872bf77dc94c108296bd"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/initializer-01/initializer-and-four-key-map-03.json",
+      "bytes": 20792,
+      "sha256": "0e3dcac90fd4164abf240167d4889c1938dc41067dcb55a729a9830539216118"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/initializer-01/prepare-cold-shape-candidate-01.cjs",
+      "bytes": 3540,
+      "sha256": "1d9266029a752e369169ee9dbe4b4bbc581fc76ef6d244f1beb97af57d29d8b1"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/initializer-01/seal-initializer-05.cjs",
+      "bytes": 5253,
+      "sha256": "13fdaa6fa0e8f53b6ab4dca9774e88e0f0017175244699afc9ccb3ad4b3cf802"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/initializer-01/shape-exact-delta-01.json",
+      "bytes": 2056,
+      "sha256": "8b37b247a2accf7a62fb8d585550e6d7172d6e53d5b65549a8c9de8bb06f8ffd"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/initializer-01/test-cold-shape-02.cjs",
+      "bytes": 11055,
+      "sha256": "864c806906b16cf0df85227456070431f28c08fa6a204b8d3fce266c4a4fc6bd"
+    }
+  ],
+  "parent": {
+    "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\texture-handoff-split-2026-10-23-01\\candidate-03\\source",
+    "files": 521,
+    "inventorySha256": "e41af9e24c45a90b62eec92dd8a7847426085a867bd3e2787b312254351468a1",
+    "unchanged": true
+  },
+  "candidate": {
+    "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-join-2026-10-23-01\\initializer-01\\cold-shape-candidate-01\\source",
+    "files": 521,
+    "inventorySha256": "5e1067cffca883457cc7813e61e420f18dcacbdf061572f2473d5e8a05dfed3d",
+    "changedFiles": 1,
+    "changedSource": {
+      "path": "biome-service/native/source-admission.js",
+      "bytes": 16948,
+      "sha256": "15495ba84a47113bcc10c2e5b2fba4057ead1a420222f016c45b886fe222fea3"
+    },
+    "exactTwoHunks": true,
+    "inverseExact": true,
+    "nodeSyntaxCheck": {
+      "command": "node --check candidate source-admission.js",
+      "exitCode": 0
+    },
+    "allOther520SourceRowsExact": true,
+    "profilesIntentionallyStale": true
+  },
+  "functional": {
+    "authorPassed": 11,
+    "independentReview": {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/s-shape-independent-review-01/CHECK-01.json",
+      "bytes": 3962,
+      "sha256": "c4e91a25fbf6ad9ba38d9949c5092700157a2898b307639060d151e12416f8c4"
+    },
+    "independentGroups": 14,
+    "exactAuthorReplay": 11,
+    "groupsOverlapNotDeduplicated": true,
+    "originalInheritedRowsFailureReproduced": true,
+    "clean4096AndOriginalGuardsPreserved": true,
+    "actualC03ThreeEnvelopeShapesExact": true,
+    "staleFoundationRefusesWithQSRollback": true,
+    "newCallables": 0,
+    "newActivation": "one nonescaping per-shape numeric scannedKeys cell"
+  },
+  "absentInitializer": {
+    "currentActualStartupStopsAfterG": true,
+    "R_PB_BaseFactoriesAbsent": true,
+    "actualPBBaseProfilesAbsent": true,
+    "allFourOrdinaryGlobalKeysStillNull": true
+  },
+  "coldBoundary": {
+    "sourceRowsMinimum": 33,
+    "hashOnlyProspectiveLower": 1089,
+    "admissionLower": 92,
+    "mandatoryNonSourceLower": 189,
+    "sourceImportAloneMinimum281Exceeds280": true,
+    "retainEarlierColdControl": {
+      "capture": 128,
+      "Star": 1024
+    },
+    "pauseAfterBaseLine": 110,
+    "laterActualImportLiteral": 2632,
+    "necessaryRemainingCeilingNotFee": 1432,
+    "noOriginalChecksRemoved": true,
+    "stagingImplemented": false,
+    "stagingEnabled": false
+  },
+  "firstNextEdit": "Private cold Main host/PB/Basev8 profile builder using actual original program, current Surface/PB refs and source rows; prospective builder/constructor owner before invocation. Then derive/implement real scheduled privately retained Source→cold-control→import stages, without public ready ticket or internal reset.",
+  "unselected": [
+    "complete S/cold source/profile/parser/await/copy/hash/control/failure work",
+    "new S module/activation/failure logical attribution",
+    "inherited R/PB/Base/module/API/constructor-hoist/closed-facade ownership",
+    "genuine cold clock/caller and actual PB/Base profile payload",
+    "global ordinary admission/visit/use/close"
+  ],
+  "TOrC03Edits": 0,
+  "historicalEdits": 0,
+  "browserServerRuntimeCheckpointGitActions": 0,
+  "nativeClaims": false,
+  "Main": "HELD",
+  "P05": "OPEN"
+}

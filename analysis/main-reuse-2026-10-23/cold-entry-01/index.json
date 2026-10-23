@@ -1,0 +1,143 @@
+{
+  "status": "PINNED_EXACT_COLD_CONTINUATION_RECEIPTS_NOT_MAIN_ACCEPTANCE",
+  "files": [
+    {
+      "path": "combined-receipt-06.json",
+      "bytes": 3529,
+      "sha256": "50848b35051c1d65ce14728adb4ce92552f732946881509e3dbc2ed20091324c",
+      "source": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/combined-receipt-06.json"
+    },
+    {
+      "path": "profile-failure-disposition-02.json",
+      "bytes": 554,
+      "sha256": "d7ae5566791ffc654f627cde8de5b0c8107eb4528566d130df98e44a5ea6edcf",
+      "source": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/profile-failure-disposition-02.json"
+    },
+    {
+      "path": "initializer-01/CHECK-05.json",
+      "bytes": 6447,
+      "sha256": "fee45297aa29fb629a33c29112622ccec5f185515285fff100b753cabad125b4",
+      "source": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/initializer-01/CHECK-05.json"
+    },
+    {
+      "path": "initializer-01/READ-FIRST-04.md",
+      "bytes": 5615,
+      "sha256": "c734c66ede44bf18e28cee17bbd331ec72b6184a715a0899857c2cd16486757f",
+      "source": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/initializer-01/READ-FIRST-04.md"
+    },
+    {
+      "path": "initializer-01/shape-exact-delta-01.json",
+      "bytes": 2056,
+      "sha256": "8b37b247a2accf7a62fb8d585550e6d7172d6e53d5b65549a8c9de8bb06f8ffd",
+      "source": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/initializer-01/shape-exact-delta-01.json"
+    },
+    {
+      "path": "initializer-01/cold-shape-controls-02.json",
+      "bytes": 12578,
+      "sha256": "01c6a62a3ca5b4310a695bb3eb1573e6a75eb37a95500f44d8188a341f4a116b",
+      "source": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/initializer-01/cold-shape-controls-02.json"
+    },
+    {
+      "path": "initializer-01/initializer-and-four-key-map-03.json",
+      "bytes": 20792,
+      "sha256": "0e3dcac90fd4164abf240167d4889c1938dc41067dcb55a729a9830539216118",
+      "source": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/initializer-01/initializer-and-four-key-map-03.json"
+    },
+    {
+      "path": "initializer-01/cold-split-boundary-04.json",
+      "bytes": 8730,
+      "sha256": "39c3419e839949ee293b9b1bd8eb22a7f6173f70e36d6538f3c5513860650073",
+      "source": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/initializer-01/cold-split-boundary-04.json"
+    },
+    {
+      "path": "p05-exit-audit-01/CHECK-01.json",
+      "bytes": 4488,
+      "sha256": "d3ea2cecf0ea300261b3d550374cca30395fb36776e5e3fd8e0372a98d9a6790",
+      "source": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/p05-exit-audit-01/CHECK-01.json"
+    },
+    {
+      "path": "p05-exit-audit-01/AUDIT.md",
+      "bytes": 14432,
+      "sha256": "b6766f256172b3b560ee57bdbe977db3f55597e36fbe13f68d4bc4ab518f2ddd",
+      "source": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/p05-exit-audit-01/AUDIT.md"
+    },
+    {
+      "path": "s-shape-independent-review-01/CHECK-01.json",
+      "bytes": 3962,
+      "sha256": "c4e91a25fbf6ad9ba38d9949c5092700157a2898b307639060d151e12416f8c4",
+      "source": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/s-shape-independent-review-01/CHECK-01.json"
+    },
+    {
+      "path": "s-shape-independent-review-01/REVIEW.md",
+      "bytes": 5323,
+      "sha256": "50c4361b28ef34cf7f76561f31dae04e7d72553748b980f302ddfd59561efde5",
+      "source": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/s-shape-independent-review-01/REVIEW.md"
+    },
+    {
+      "path": "s-shape-independent-review-01/results-01.json",
+      "bytes": 4389,
+      "sha256": "bafefda25f478df52e78421e73ee6bc720e9fb652c9aff4206db78d002e0202b",
+      "source": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/s-shape-independent-review-01/results-01.json"
+    },
+    {
+      "path": "s-shape-profile-review-01/CHECK-01.json",
+      "bytes": 3865,
+      "sha256": "8beb9c412c29563312cd182d063355a23f4a5a8bfa43ef7d84c915d49d01d93b",
+      "source": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/s-shape-profile-review-01/CHECK-01.json"
+    },
+    {
+      "path": "s-shape-profile-review-01/REVIEW.md",
+      "bytes": 2543,
+      "sha256": "54185ca279e03c9ae84023c8e24bc4f8ac5e299fe6e9e82efaeb1d4d5529be8b",
+      "source": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/s-shape-profile-review-01/REVIEW.md"
+    },
+    {
+      "path": "s-shape-profile-review-01/candidate-copy/source-profile-controls-replay-05.json",
+      "bytes": 4170,
+      "sha256": "02e6560d7fa079a3a3ad658f21f497eb231598e11c2c0c86c240a3b3b9a3591c",
+      "source": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/s-shape-profile-review-01/candidate-copy/source-profile-controls-replay-05.json"
+    },
+    {
+      "path": "profiled-shape-candidate-03/profile-receipt-01.json",
+      "bytes": 136403,
+      "sha256": "bd5e18e8a5a31d1701b7943e90fca42f57e516f076a3b53d3c150158532a8798",
+      "source": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/profiled-shape-candidate-03/profile-receipt-01.json"
+    },
+    {
+      "path": "profiled-shape-candidate-03/source-profile-controls-04.json",
+      "bytes": 4170,
+      "sha256": "33b00e4f6f359039cfc462eae1bc0a42fb55e42ef35abacfa9086817d4dce377",
+      "source": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/profiled-shape-candidate-03/source-profile-controls-04.json"
+    },
+    {
+      "path": "cold-review-01/source-check.json",
+      "bytes": 1181,
+      "sha256": "d7c3dcf62ff049f8edd8255bd3e3463c1b8672b2f55be727cd10a212c6670b61",
+      "source": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/cold-review-01/source-check.json"
+    },
+    {
+      "path": "cold-review-01/cold-work-boundaries.json",
+      "bytes": 8834,
+      "sha256": "0081edaf82153a8734233c12ccb5ae43eeba785ca0c459105c5ac886202fa6db",
+      "source": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/cold-review-01/cold-work-boundaries.json"
+    },
+    {
+      "path": "cold-review-01/prospective-ownership.json",
+      "bytes": 5193,
+      "sha256": "4dd560ed29396044d2943fe29d39353980b557f7c342de951210358554f4bd8f",
+      "source": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/cold-review-01/prospective-ownership.json"
+    },
+    {
+      "path": "cold-review-01/CHECK.json",
+      "bytes": 3309,
+      "sha256": "91aeedb9ff75a2d90c3b770f68b040b2ad57072ec88c6d44b691e1d051e7834c",
+      "source": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/cold-review-01/CHECK.json"
+    },
+    {
+      "path": "cold-review-01/READ-FIRST.md",
+      "bytes": 11973,
+      "sha256": "901858c38381f8780ec8fcf8e25f098286efc915192060625ed6159f790a2273",
+      "source": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/cold-review-01/READ-FIRST.md"
+    }
+  ]
+}

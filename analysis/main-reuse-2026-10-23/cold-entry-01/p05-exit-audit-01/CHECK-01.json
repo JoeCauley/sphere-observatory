@@ -1,0 +1,101 @@
+{
+  "utc": "2026-10-23T11:22:26.042Z",
+  "status": "COMPLETE_READ_ONLY_NEXT_STEP_AUDIT_P05_OPEN",
+  "selectedSource": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\texture-handoff-split-2026-10-23-01\\candidate-03\\source",
+  "sourceFiles": 521,
+  "sourceBytesChanged": 0,
+  "sourceInventoryBeforeAfterExact": true,
+  "originalInputsBeforeAfterExact": true,
+  "productExecution": 0,
+  "modelsRun": 0,
+  "browserActions": 0,
+  "serverActions": 0,
+  "gitActions": 0,
+  "canonicalExit": "Main overview and local views resolve the same actual assigned surfaces",
+  "currentHardStops": [
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 173,
+      "code": "APP_EXECUTION_ENABLED=false"
+    },
+    {
+      "file": "biome-service/native/main-baseline-owner.js",
+      "line": 300,
+      "code": "ORDINARY_MAIN_HOST_ENVELOPE_UNQUALIFIED"
+    }
+  ],
+  "nextSequence": [
+    {
+      "step": 1,
+      "work": "Exact current cold constructor/module/API/caller funding and global admission; existing debit subtotal is not a work tariff."
+    },
+    {
+      "step": 2,
+      "work": "Global non7 visit/use/close and actual planner/Demand/Finish/Binding transitive contracts; preserve selected six-phase handoff."
+    },
+    {
+      "step": 3,
+      "work": "Choose one existing Main continuation: ordinary U/H around qualified Root v11/Joint80 first; do not reopen all legacy null profiles."
+    },
+    {
+      "step": 4,
+      "work": "Admit actual required simultaneous Main/provider/support/content/target/field graph and active branch; enable only new complete qualified profile."
+    },
+    {
+      "step": 5,
+      "work": "Exact-source complete-graph controls then authentic native overview/local assigned-surface and support/fragment/appearance evidence."
+    }
+  ],
+  "laterPhaseBoundaries": {
+    "P06": "Public install/visit, continuous travel, location and capability-driven UI",
+    "P07": "Binding-aware sessions, export/import, retirement and recovery",
+    "P08": "Full conformance, long quiet timing/native peaks and final delivery"
+  },
+  "impossibilityEstablished": false,
+  "P05": "OPEN_IN_PROGRESS",
+  "P06_P08": "NOT_STARTED",
+  "PhaseOne": "NOT_ACCEPTED_NOT_RELEASED",
+  "scope": "Source/retained-record audit only. No whole-source arithmetic/cost qualification or native/Frame/appearance/heap/performance acceptance. Prior component evidence remains bounded.",
+  "artifacts": [
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/p05-exit-audit-01/AUDIT.md",
+      "bytes": 14432,
+      "sha256": "b6766f256172b3b560ee57bdbe977db3f55597e36fbe13f68d4bc4ab518f2ddd"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/p05-exit-audit-01/inputs-01.json",
+      "bytes": 2866,
+      "sha256": "cbb194e5e38d308fdadf7b04551cf3a02a59dda1957f586ad867d2a7b330d184"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/p05-exit-audit-01/source-excerpts-01.json",
+      "bytes": 68547,
+      "sha256": "486bec1e47d3cf7e21d3056693a876071caa660c306230208a771957c2052633"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/p05-exit-audit-01/collect-evidence.cjs",
+      "bytes": 4073,
+      "sha256": "350ecfd31269298f91dd69222b95705ccd7dce03b07b8868bace8c5b7f74248d"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/p05-exit-audit-01/seal-audit.cjs",
+      "bytes": 3655,
+      "sha256": "ecd1109a38b521afc2dc9ca61fa394ff27b8651c54d1310736937638a5ad222a"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/p05-exit-audit-01/seal-audit-rejected-01.cjs",
+      "bytes": 3597,
+      "sha256": "3354dde018825c9d946d98ffdbd4967cbc0a159bc8cb7b24e7bed267c8059dc1"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/p05-exit-audit-01/census-failure-01.json",
+      "bytes": 409,
+      "sha256": "7b94ab72c274bd2b63ec4760dc20fb230d76bb40b6aeb79cf20a7e401b6774f6"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/p05-exit-audit-01/census-disposition-02.json",
+      "bytes": 684,
+      "sha256": "f0fa66b67e6caa5b0f68a3c99ffa3f3f9ed1f86cb3f3ced5a276ee846ed777e1"
+    }
+  ]
+}

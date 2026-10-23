@@ -1,0 +1,40 @@
+{
+  "status": "PASS_READ_ONLY_DATA_EXTRACTION_AND_ARITHMETIC",
+  "sourceFiles": 521,
+  "all521MatchSealedC03": true,
+  "allSourceHashesUnchangedDuringReview": true,
+  "profiles": {
+    "buildGraph": {
+      "rows": 219,
+      "digest": "f0fcf485eea4dc61d6db859a2399db84d8a74c71b4dd8ad35751e0d41d1a6c9e"
+    },
+    "buildSurfaceEnvelope": {
+      "rows": 5,
+      "digest": "7751dd2a8a392292cf3626723edbe755976bfc3398d4c77cff5f02e5a4d59c6c"
+    },
+    "buildStartupEnvelope": {
+      "rows": 9,
+      "digest": "987bf7095c3da5ab6ac39fae2fb03409c87f12c40f8e4993f24aea7a400b1021"
+    }
+  },
+  "basePathCounts": [
+    23,
+    25,
+    32,
+    33
+  ],
+  "actualDebitSubtotal": 3784,
+  "quoteCeiling": 280,
+  "sourceHashOnlyLower": 1089,
+  "admissionDisjointUnionLower": 92,
+  "nonSourceSuffixSubsetLower": 189,
+  "importUnionLower": 281,
+  "splitActualPriorDebit": 1152,
+  "splitFinalLiteralDebit": 2632,
+  "splitNecessaryCeiling": 1432,
+  "MainGateFalse": true,
+  "globalOrdinaryAndClosedContentWorkNull": true,
+  "SShapeInheritedScanHoldStillPresentInFrozenC03": true,
+  "noSourceOrHistoricalRecordChanges": true,
+  "noBrowserServerGit": true
+}

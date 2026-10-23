@@ -1,0 +1,100 @@
+{
+  "status": "REQUESTED_Q_PATH_IDENTIFIED_NOT_A_COMPLETE_INSTANCE_OR_NATIVE_ENVELOPE",
+  "fixedRequestedQRows": [
+    {
+      "id": "owned-retirement",
+      "bytes": 4096,
+      "source": "Base81"
+    },
+    {
+      "id": "new retained handoff increment",
+      "bytes": 12288,
+      "source": "Base83"
+    },
+    {
+      "id": "30 unique constructor/aux identities",
+      "bytes": 23552,
+      "source": "Base92-95"
+    },
+    {
+      "id": "PB retained program reader",
+      "bytes": 4096,
+      "source": "Base95 -> PB74/77"
+    },
+    {
+      "id": "Star state",
+      "bytes": 4096,
+      "source": "Base110"
+    },
+    {
+      "id": "bridge state",
+      "bytes": 8192,
+      "source": "Base165"
+    },
+    {
+      "id": "six retained locations",
+      "bytes": 2592,
+      "source": "Base165"
+    },
+    {
+      "id": "demand bridge",
+      "bytes": 14976,
+      "source": "Base165"
+    },
+    {
+      "id": "Surface import",
+      "bytes": 4096,
+      "source": "Base307 -> Surface175"
+    },
+    {
+      "id": "managed Surface state",
+      "bytes": 32768,
+      "source": "Base310"
+    }
+  ],
+  "fixedRequestedQSubtotal": 110752,
+  "sourceAdmission": {
+    "P": "exact encoded immutable Base profile bytes<=262144",
+    "N": "profile own nodes<=4096",
+    "ownRecordScratchRequested": "12*262144+512*4096+4096 =5246976 before shape/serialization",
+    "ownRecordRetainedRequested": "8*P+256*N+4096",
+    "BaseAdmissionLocalRequested": "8*P+256*N+4096+32768",
+    "profileOverlapBeforeRelease": "ownRecord retained plus admission local coexist before source admission settles",
+    "sourceOwnerBaseRequested": 8192,
+    "oneBorrowerRequested": 4096,
+    "newSourceEntryRequested": "row.bytes+4096 each new immutable entry; shared existing entry is not charged twice",
+    "oneSerialRowScratchRequested": "3*row.bytes+4096 even on a cache hit",
+    "fixedPlusLocalAndBorrowerAfterSuccess": "151712+8*P+256*N; excludes shared source-owner/entry charges already owned by loader/PB, Q bookkeeping, R/G/PB factories, full instance/caller/module storage, native backing"
+  },
+  "actualQChargedBytes": "For each requested reservation Q adds512+2*(ownerLabel.length+phaseLabel.length). Requested totals are not inspect().heldBytes. Q base4096, max33554432 and max4096 reservations remain unchanged.",
+  "prospectivePrefix": [
+    "Original initializer owns and funds call arguments, Base activation and hoisted function/capture/record births BEFORE calling Base.create; in-body reserves do not retroactively fund them.",
+    "Construction snapshot/group and initial inspect occur before await S.admit and before Base81. A genuine bounded caller/pre-create allowance must own these records through source settlement and all failures.",
+    "S ownRecord reserves scratch before shape; every await retains current profile/local/source/scratch charges. Proposed phase/job roots must be reserved before scheduling or invoking the async operation.",
+    "No alias to arbitrary caller Proxy/getter/callback or mutable exception graph is admitted by a fixed metadata row. Original frozen own-data builders and captured genuine APIs are the billing boundary.",
+    "New stage/controller/module/API/capture metadata is additive and must be prospectively censused. Do not borrow accepted handoff32768/12288 or loader/module allowance slack for new code."
+  ],
+  "failureAndLifetime": [
+    {
+      "path": "Before S settlement/Base80",
+      "rule": "S catches release its owned profile/local/source reservations. The genuine caller still owns its pending job, original Construction snapshot, continuation/control state and bounded error disposition; no later pay retroactively owns these."
+    },
+    {
+      "path": "Base314 no physical keys",
+      "rule": "Surface lease/program reader and original listed Q/source charges release. New handoff increment releases only if owner has not been born. After owner birth the instance increment remains retained; do not claim zero Q or GC as cleanup proof."
+    },
+    {
+      "path": "Base313 any physical key",
+      "rule": "Set closing; bind/attach actual owner if needed; retain owner on exception for paid cleanup. Existing Renderer map/internal roots also matter. Caller keeps a private pending root until transfer/close is proved, including secondary binding failure."
+    },
+    {
+      "path": "New pause after loss/Star capture",
+      "rule": "Private stage record holds Renderer/gl/program/Construction, R/G/PB/Q/S, programReader, admitted source reader, exact original capture records, cookie/epoch and every existing Q charge. At most one transaction; no replay or exposed ready receipt."
+    },
+    {
+      "path": "Closed successful Base",
+      "rule": "New12288 increment remains attached to reachable closed API/Renderer/realm. Renderer mainBaselines is not ordinarily deleted by dispose; Base may retain Binding. No arbitrary closed-owner GC/realm-exit inference."
+    }
+  ],
+  "nativePhysical": "VM/engine wrappers/native source IO/heap/GL/driver/default-surface backing/initial constructor peak remain UNMEASURED and separate."
+}

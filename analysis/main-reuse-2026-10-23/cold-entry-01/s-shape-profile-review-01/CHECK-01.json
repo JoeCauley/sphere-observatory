@@ -1,0 +1,92 @@
+{
+  "utc": "2026-10-23T11:32:50.934Z",
+  "status": "PASS_UNSELECTED_PROFILE_SOURCE_ADMISSION_ONLY",
+  "sourceFiles": 521,
+  "javaScriptFamilyParses": 425,
+  "onlyChangedFromC03": [
+    "biome-service/native/source-admission.js",
+    "owned-main-bootstrap.js"
+  ],
+  "SExactTwoHunks": true,
+  "threeProfileHunksExactInverse": true,
+  "allOtherLoaderBytesExact": true,
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "oldDigest": "f0fcf485eea4dc61d6db859a2399db84d8a74c71b4dd8ad35751e0d41d1a6c9e",
+      "digest": "10640785014a7869a9764e528f477e47dc29aa46de94a8f621ad04cdbafd6960",
+      "closureRows": 219,
+      "onlySourceRowChanged": "biome-service/native/source-admission.js"
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "oldDigest": "7751dd2a8a392292cf3626723edbe755976bfc3398d4c77cff5f02e5a4d59c6c",
+      "digest": "7e2a7b9849a7d7b2c4ad33c57c9e582caec38305b1e344e8b4f170ccb4b2803d",
+      "closureRows": 5,
+      "onlySourceRowChanged": "biome-service/native/source-admission.js"
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "oldDigest": "987bf7095c3da5ab6ac39fae2fb03409c87f12c40f8e4993f24aea7a400b1021",
+      "digest": "33be6d24fbffd26c2c53cee0fbd5c57437742df1b9e27471cd878913a1d50d55",
+      "closureRows": 9,
+      "onlySourceRowChanged": "biome-service/native/source-admission.js"
+    }
+  ],
+  "referenceScan": [
+    {
+      "profile": "buildSurfaceEnvelope",
+      "oldDigest": "7751dd2a8a392292cf3626723edbe755976bfc3398d4c77cff5f02e5a4d59c6c",
+      "oldDigestLiteralReferencesOutsideBootstrap": []
+    },
+    {
+      "profile": "buildStartupEnvelope",
+      "oldDigest": "987bf7095c3da5ab6ac39fae2fb03409c87f12c40f8e4993f24aea7a400b1021",
+      "oldDigestLiteralReferencesOutsideBootstrap": []
+    }
+  ],
+  "actualSourceAdmissionReplays": 9,
+  "actualBodies": [
+    "Copied genuine S.admit/source owner V2",
+    "Q",
+    "Records"
+  ],
+  "positiveSource": "Exact copied files read from disk. No source/fee/observer override.",
+  "negativeSource": "Old exact profiles and a deliberate one-byte corruption of the actual returned S file bytes; no product file changed.",
+  "allSuccessfulProfilesAdmit": true,
+  "allStaleProfilesRefuse": true,
+  "allOneByteMismatchesRefuse": true,
+  "finalQEveryCase": 0,
+  "originalAndCandidateBeforeAfterExact": true,
+  "retentionDisposition": "Source-admission-only successor may be retained unselected; complete S increment/cold/caller/storage/work selection is a separate held gate, not a prerequisite for retaining this proposal.",
+  "SIncrementWorkAndStorage": "UNSELECTED",
+  "coldCallerWholeHost": "HELD",
+  "productMainPermission": false,
+  "P05": "OPEN",
+  "TSourceEdits": 0,
+  "sourceEditsByReviewer": 0,
+  "browserActions": 0,
+  "serverActions": 0,
+  "artifacts": [
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/s-shape-profile-review-01/test-profiled-shape-replay-05.cjs",
+      "bytes": 5455,
+      "sha256": "f064212be43d949a56c576bef095da9daef8afab54502afce308c51115a104e5"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/s-shape-profile-review-01/candidate-copy/source-profile-controls-replay-05.json",
+      "bytes": 4170,
+      "sha256": "02e6560d7fa079a3a3ad658f21f497eb231598e11c2c0c86c240a3b3b9a3591c"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/s-shape-profile-review-01/verify-review-01.cjs",
+      "bytes": 5899,
+      "sha256": "2c983ff4370d53e2896e0f69e5df41731329dd9d5c444c982b6a6d29d4c931d2"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-v8-join-2026-10-23-01/s-shape-profile-review-01/REVIEW.md",
+      "bytes": 2543,
+      "sha256": "54185ca279e03c9ae84023c8e24bc4f8ac5e299fe6e9e82efaeb1d4d5529be8b"
+    }
+  ]
+}

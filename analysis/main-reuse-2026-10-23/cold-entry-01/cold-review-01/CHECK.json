@@ -1,0 +1,80 @@
+{
+  "status": "PASS_READ_ONLY_NECESSARY_COLD_SPLIT_DERIVATION_WITH_COMPLETE_UPPER_HELD",
+  "sourceRoot": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/texture-handoff-split-2026-10-23-01/candidate-03/source",
+  "sourceCount": 521,
+  "allSealedSourceBytesUnchanged": true,
+  "workVocabulary": "Explicit pinned Source37/current named fixed resource/metadata/native/row vocabulary. No AST/event-count/available-room pricing.",
+  "conclusions": {
+    "literalImportCeiling": 280,
+    "sourceHashOnlyPrefixLower": 1089,
+    "sourceOnlySplitImportUnionLower": 281,
+    "importLowerDisjointExpression": "caller6+admission86+post-await Construction54+bind Construction54+attach live without Surface81",
+    "minimumNoCheckWaiverMove": 1152,
+    "finalLiteralImportSubtotal": 2632,
+    "necessaryNewFinalCeilingNotFee": 1432,
+    "earliestExecutableDependency": "Actual genuine original R/PB/Base/source-profile initializer builders; full prelude/caller/ownership upper before selecting a contract."
+  },
+  "currentBehavior": "loader stops after helper/G; ORDINARY_BRIDGE_WORK remains null and original factory refuses before API birth; Main permission false.",
+  "held": [
+    "complete profile/source-prelude upper",
+    "actual caller and staged API work/storage",
+    "inherited full instance/module cold envelope",
+    "PB genuine shader/reflection bound",
+    "pre-R foundation work",
+    "all mandatory non7/global route contracts not independently closed",
+    "simultaneous host/native/Frame/appearance/P05"
+  ],
+  "scope": "Read-only source, exact data extraction and conditional numerical lower bounds. No table/price selected, no product execution, no native acceptance.",
+  "records": [
+    {
+      "path": "derive-cold-review-01.py",
+      "bytes": 18786,
+      "sha256": "a795f23624b271f63d584cb0fc1f0aa551025cff0de7adb468535101dbb269fe"
+    },
+    {
+      "path": "source-inventory.json",
+      "bytes": 90969,
+      "sha256": "9bfd30b64c75e9c12d4cb1ff6ff433bd0bb775c8172d8b5e681347cc58a5e70e"
+    },
+    {
+      "path": "source-pins.json",
+      "bytes": 4073,
+      "sha256": "ab63a29c2a299f63de86044ef053eeabe9c6342eeb9e77eb17eae9a6f9118359"
+    },
+    {
+      "path": "cold-work-boundaries.json",
+      "bytes": 8834,
+      "sha256": "0081edaf82153a8734233c12ccb5ae43eeba785ca0c459105c5ac886202fa6db"
+    },
+    {
+      "path": "prospective-ownership.json",
+      "bytes": 5193,
+      "sha256": "4dd560ed29396044d2943fe29d39353980b557f7c342de951210358554f4bd8f"
+    },
+    {
+      "path": "source-excerpts.md",
+      "bytes": 60389,
+      "sha256": "22a3e4594918b6b0b0d304a27a287621ddd6c7d6e22294b49187c8900047c84b"
+    },
+    {
+      "path": "source-check.json",
+      "bytes": 1181,
+      "sha256": "d7c3dcf62ff049f8edd8255bd3e3463c1b8672b2f55be727cd10a212c6670b61"
+    },
+    {
+      "path": "READ-FIRST.md",
+      "bytes": 11973,
+      "sha256": "901858c38381f8780ec8fcf8e25f098286efc915192060625ed6159f790a2273"
+    },
+    {
+      "path": "seal-cold-review-01.py",
+      "bytes": 2765,
+      "sha256": "8277557a445a6fd18f9262dcb3f47c8ce6640fefece39d99cf1f33e426833cd7"
+    }
+  ],
+  "preservation": {
+    "newArtifactsOnly": true,
+    "archivedTUnchanged": true,
+    "noBrowserServerGit": true
+  }
+}
