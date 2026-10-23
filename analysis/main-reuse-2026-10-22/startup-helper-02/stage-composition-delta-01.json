@@ -1,0 +1,54 @@
+{
+  "status": "EXACT_THREE_HUNK_C3_STAGE_SUCCESSOR",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\source",
+  "parent": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\app-startup-candidate-03\\source",
+  "byteHunks": [
+    {
+      "path": "biome-service/native/main-baseline-owner.js",
+      "label": "align-final-beforeNativeDraw-demanded8-ordinary6-only",
+      "offset": 85847,
+      "oldHex": "6272696467652e7374616765213d3d36",
+      "newHex": "6272696467652e7374616765213d3d2864656d616e6450726f66696c653f383a3629",
+      "beforeSha256": "0c355aa169f728b840517b818b13ca251c286135c18c12d24bbcf1257133a58f",
+      "afterSha256": "136491ef9d5f7796a0d6328b2c0affe007c984c396eb282fed094812fce61070"
+    },
+    {
+      "path": "owned-main-bootstrap.js",
+      "label": "buildGraph-update-only-Base-byte-length-and-sha256-row",
+      "offset": 34896,
+      "oldHex": "7b226279746573223a39333933362c2270617468223a2262696f6d652d736572766963652f6e61746976652f6d61696e2d626173656c696e652d6f776e65722e6a73222c22736861323536223a2230633335356161313639663732386238343035313762383138623133636132353163323836313335633138633132643234626263663132353731333361353866227d",
+      "newHex": "7b226279746573223a39333935342c2270617468223a2262696f6d652d736572766963652f6e61746976652f6d61696e2d626173656c696e652d6f776e65722e6a73222c22736861323536223a2231333634393165663964356637373936613064363332386232633061666665303037633938346333393665623238326665643039343831326663653631303730227d",
+      "beforeSha256": "d93d453a2a9a39e9fd613308b61181b9ce6f501ab88d2c6ffaca578a38777da9",
+      "afterSha256": "310949f9b4e441a57fe8b1407a75a36ca4dc7bfeecf8a04f71438b6f7a585ae2"
+    },
+    {
+      "path": "owned-main-bootstrap.js",
+      "label": "buildGraph-resultant-domain-prefixed-Records-envelope-digest",
+      "offset": 54488,
+      "oldHex": "22646967657374223a226132396230663734653431316561643133323161343335393061646432313761386661353361653331643661656532656332393136343138353032666534323422",
+      "newHex": "22646967657374223a223961303963303938326365366263393632306664613837333239393937396538383666656238646232363264646138653462626636386537303735363036373822",
+      "beforeSha256": "310949f9b4e441a57fe8b1407a75a36ca4dc7bfeecf8a04f71438b6f7a585ae2",
+      "afterSha256": "aa559fb41b120473db11d4d9ec1319e354fba4e01623ba274a23370138ad4146"
+    }
+  ],
+  "changedFiles": [
+    "biome-service/native/main-baseline-owner.js",
+    "owned-main-bootstrap.js"
+  ],
+  "unchangedFiles": 519,
+  "baselineAddedBytes": 18,
+  "bootstrapAddedBytes": 0,
+  "domainPrefix": "sphere-service-record/1\n",
+  "oldGraphDigest": "a29b0f74e411ead1321a43590add217a8fa53ae31d6aee2ec2916418502fe424",
+  "newGraphDigest": "9a09c0982ce6bc9620fda873299979e886feb8db262dda8e4bbf68e707560678",
+  "profileIDsUnchanged": true,
+  "controllerCodeOrderAndFundingUnchanged": true,
+  "productAppGate": false,
+  "graphComplete": false,
+  "mainPermission": false,
+  "isolatedFix": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-content-final-stage-fix-2026-10-22-01\\CHECK.json",
+    "bytes": 6079,
+    "sha256": "afc4219f5285bf23a097097f155137fc8add33711f91b062f60d23452049c499"
+  }
+}

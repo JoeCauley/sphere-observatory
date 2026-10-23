@@ -1,0 +1,739 @@
+{
+  "format": "sphere-independent-v7-ordinary-bridge-stage7-review/1",
+  "utc": "2026-10-23T00:31:55.355Z",
+  "status": "CONFIRMED_CONDITIONAL_V7_SOURCE_SCHEDULING_OBSTRUCTION",
+  "source": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-startup-draw-helper-2026-10-22-01/main-startup-stage-candidate-04/source",
+  "sourcePins": [
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-startup-draw-helper-2026-10-22-01/main-startup-stage-candidate-04/source/atmosphere.js",
+      "bytes": 16008,
+      "sha256": "32cd0b34e31f7581d8961152f074ef958191bfd080369e40f8f5533594cccc55",
+      "relative": "atmosphere.js"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-startup-draw-helper-2026-10-22-01/main-startup-stage-candidate-04/source/biome-service/native/main-baseline-owner.js",
+      "bytes": 93954,
+      "sha256": "136491ef9d5f7796a0d6328b2c0affe007c984c396eb282fed094812fce61070",
+      "relative": "biome-service/native/main-baseline-owner.js"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-startup-draw-helper-2026-10-22-01/main-startup-stage-candidate-04/source/biome-service/native/main-baseline-resource-records.js",
+      "bytes": 36785,
+      "sha256": "ce402c73b6b61f5384e30d995e044aa083d9b32b5b02d50ba1ce2dd699628a0b",
+      "relative": "biome-service/native/main-baseline-resource-records.js"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-startup-draw-helper-2026-10-22-01/main-startup-stage-candidate-04/source/biome-service/native/main-default-surface-facts.js",
+      "bytes": 31763,
+      "sha256": "34e6b98a2b32d54d6eda0b5521858ff2cd4df241dbb7291a384f4fc981fb8115",
+      "relative": "biome-service/native/main-default-surface-facts.js"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-startup-draw-helper-2026-10-22-01/main-startup-stage-candidate-04/source/biome-service/native/main-demanded-array-content-owner.js",
+      "bytes": 36686,
+      "sha256": "a92f1e4572c99fb688a5e3fe301d7fa83470919f6b97523a357b6b130db6ca31",
+      "relative": "biome-service/native/main-demanded-array-content-owner.js"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-startup-draw-helper-2026-10-22-01/main-startup-stage-candidate-04/source/biome-service/native/main-texture-binding-owner.js",
+      "bytes": 87804,
+      "sha256": "34aff7fed1a73c67afcd59eba1620ae5b2ce1be76588dbdfbdd391c021d2b8dc",
+      "relative": "biome-service/native/main-texture-binding-owner.js"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-startup-draw-helper-2026-10-22-01/main-startup-stage-candidate-04/source/biome-service/native/positions-backend.js",
+      "bytes": 31960,
+      "sha256": "f212f18d8fefa60dc25b5f1c3cf3689da1beb53e3a365c5bd7f05de16c4c6421",
+      "relative": "biome-service/native/positions-backend.js"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-startup-draw-helper-2026-10-22-01/main-startup-stage-candidate-04/source/biome-service/native/resource-leases.js",
+      "bytes": 108311,
+      "sha256": "f805286612250ce24c6e8105141da52169c72599a2abb5ef455c79b116f95ed7",
+      "relative": "biome-service/native/resource-leases.js"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-startup-draw-helper-2026-10-22-01/main-startup-stage-candidate-04/source/biome-service/native/root-program-binding.js",
+      "bytes": 58784,
+      "sha256": "39616fb243e7968243ecfe4599ded05ff65635aa351bd19d541ff01e24302f7e",
+      "relative": "biome-service/native/root-program-binding.js"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-startup-draw-helper-2026-10-22-01/main-startup-stage-candidate-04/source/biome-service/native/shared-gpu-backend.js",
+      "bytes": 76077,
+      "sha256": "6699c52a359d14ee5aab85dc0dd8d305ff955e7b87ea5bc7d8a547c9d8b53251",
+      "relative": "biome-service/native/shared-gpu-backend.js"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-startup-draw-helper-2026-10-22-01/main-startup-stage-candidate-04/source/biomes.js",
+      "bytes": 10063,
+      "sha256": "01924bec4da4ebb9cd1a8e648193d7e4de8be8edaa91104da8824b1e2bdcc439",
+      "relative": "biomes.js"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-startup-draw-helper-2026-10-22-01/main-startup-stage-candidate-04/source/hero-textures.js",
+      "bytes": 6848,
+      "sha256": "3c468b7b93e8a69ac18056d6dc0ac666e51b42ef62f00eb5bbad05649bd7f4ac",
+      "relative": "hero-textures.js"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-startup-draw-helper-2026-10-22-01/main-startup-stage-candidate-04/source/instanced-environment.js",
+      "bytes": 60890,
+      "sha256": "38da69ae1da12145306b6e37540c097e85de41b6beb10d547e154f77957783e6",
+      "relative": "instanced-environment.js"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-startup-draw-helper-2026-10-22-01/main-startup-stage-candidate-04/source/local-shadows.js",
+      "bytes": 8293,
+      "sha256": "2866cee95f72fd842005ddb36c416d1a2715a735fca058d8b6cb0b704f337104",
+      "relative": "local-shadows.js"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-startup-draw-helper-2026-10-22-01/main-startup-stage-candidate-04/source/meadow-canopy.js",
+      "bytes": 23946,
+      "sha256": "0e5ee0316a13ab07d6260f201be7d1db85331d8a5995de0845b2f5b1b6933c95",
+      "relative": "meadow-canopy.js"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-startup-draw-helper-2026-10-22-01/main-startup-stage-candidate-04/source/owned-main-bootstrap.js",
+      "bytes": 66330,
+      "sha256": "aa559fb41b120473db11d4d9ec1319e354fba4e01623ba274a23370138ad4146",
+      "relative": "owned-main-bootstrap.js"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-startup-draw-helper-2026-10-22-01/main-startup-stage-candidate-04/source/renderer.js",
+      "bytes": 154345,
+      "sha256": "e513ac215b5c4a6c731664a703ddd54061224d751d891c53b5b1a3f16389500d",
+      "relative": "renderer.js"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-startup-draw-helper-2026-10-22-01/main-startup-stage-candidate-04/source/surface-lighting.js",
+      "bytes": 14352,
+      "sha256": "0b5b89dbc5d19bb19a3a944924d58323c9c2a65e7175941d416693faae7fa063",
+      "relative": "surface-lighting.js"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-startup-draw-helper-2026-10-22-01/main-startup-stage-candidate-04/source/world-textures.js",
+      "bytes": 8540,
+      "sha256": "d424815ad1af9f10ad61c59408243c8862e4b633d7ff1c35d6460c3f87265e41",
+      "relative": "world-textures.js"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-startup-draw-helper-2026-10-22-01/main-startup-stage-candidate-04/source/wound-textures.js",
+      "bytes": 8027,
+      "sha256": "068a6c89cd7207b0217b0ead8b3ea1294fe94546ec7b672a9c64d44277d2a5d4",
+      "relative": "wound-textures.js"
+    }
+  ],
+  "vocabularyPin": {
+    "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/ordinary-main-demand-work-contract-01/resource-api-coverage-02.json",
+    "bytes": 105601,
+    "sha256": "9bdbf2951a6b8252e472ef667fbfbcdadeac148855f4b619c80fb178345b7102"
+  },
+  "vocabulary": {
+    "resourceAPI": "One genuine fixed resource/API request includes its bounded private map/tuple/lifecycle/argument/primitive-completion/error administration. Separately invoked child API and callback payload is not free.",
+    "metadataRecord": "One explicitly named owned fixed-width state/capability/publication/error/finally transaction. Source syntax is used only to enumerate its finite record/loop/operand width; no global AST=credit rule.",
+    "row": "One visited fixed source row/copy span/capability record with stated width and loop bound. A capability row explicitly includes <=8 prototype and<=10 cold/9hot descriptor operations; GL/Image/Canvas/stream/resource calls remain separate.",
+    "native": "One real external native request/attempt; <=5 arguments by base vocabulary. Wider calls add one separately named fixed operand record, max12 upload arguments/max9 Canvas draw arguments. Native pure arithmetic intrinsic requests are explicitly counted in Finish numeric hash/noise; fixed typed-view/Object/Map operations are stated in metadata rows.",
+    "errors": "Primitive error/cause records and primary/finally/refusal branches belong to the named bounded record. No arbitrary getters/caller callbacks are thereby admitted.",
+    "qualification": "Explicit proposed operation vocabulary and source counts only. Not a source-selected price, admission, aggregate host/heap/native CPU/GPU/.5ms or semantic all-nine content claim."
+  },
+  "derivationPins": [
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-ordinary-bridge-work-2026-10-22-01/scheduling-obstruction.json",
+      "bytes": 2589,
+      "sha256": "d2dc293ec036726a79d218fe7b7250dd377297c53fe3f3caa5d64f7952a4d5b0"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-ordinary-bridge-work-2026-10-22-01/current-named-operation-graph.json",
+      "bytes": 12631,
+      "sha256": "e2aa95df0bcd8543652102fb89fb6d2921c01fa164e230671e0566309b613f29"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-ordinary-bridge-work-2026-10-22-01/derivation-attempts.json",
+      "bytes": 556,
+      "sha256": "2624f4ab2f6fc65019b39c10a1eaa54e71d7e269a4403102357a329fe6117be4"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-ordinary-bridge-work-2026-10-22-01/source-check.json",
+      "bytes": 1294,
+      "sha256": "7c5f71832392468a1b8e3fcea6aa96d85420211d13a1903b2d27c2ed7347b8f3"
+    }
+  ],
+  "c4Inventory": {
+    "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-startup-draw-helper-2026-10-22-01/main-startup-stage-candidate-04/source-inventory-01.json",
+    "bytes": 88362,
+    "sha256": "0e29c74c18c8cb52debd2664865b794e4903f9c6150fabbe3035883a23361271"
+  },
+  "c4Seal": {
+    "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-startup-draw-helper-2026-10-22-01/main-startup-stage-candidate-04/functional-seal-01.json",
+    "bytes": 21268,
+    "sha256": "da86a68763b09d80db3982a958e24ca568b3a23bfdd7535ba6fcc5b407593591"
+  },
+  "scope": {
+    "profile": "sphere-main-managed-demanded-closed-content-baseline/7 / main-managed-demanded-closed-content-baseline-v7",
+    "whySurfaceFeesApply": "Base80 jointSurfaceDemand implies managedSurfaceProfile and surfaceProfile; successful v7 creation captures a real surfaceLease before ordinary visits.",
+    "excludedProfile": "Standalone demanded bridge v6 has demandProfile but no surfaceProfile; the192 upper does not follow there. Its analogous optimistic bound without Surface fees is448, which does not by itself conflict with200.",
+    "table": "ORDINARY_BRIDGE_WORK remains null",
+    "hostGate": "beforeNativeDraw retains ORDINARY_MAIN_HOST_ENVELOPE_UNQUALIFIED",
+    "Main": "HELD",
+    "P05": "OPEN"
+  },
+  "callGraph": [
+    {
+      "from": "Base.advanceOrdinaryContentFromMain",
+      "to": "bridgeScope→Base.live→surfacePay128",
+      "source": "main-baseline-owner.js161,163,220",
+      "timing": "Before ordinaryWork visit debit"
+    },
+    {
+      "from": "Base.advanceDemandedContent stage7",
+      "to": "Binding.demandedStateFromBaseline(...,true)→readyFromBaseline",
+      "source": "main-baseline-owner.js162; main-texture-binding-owner.js231,235"
+    },
+    {
+      "from": "Binding.readyFromBaseline",
+      "to": "Binding.live once; Demand.completeFromBinding→Demand.live; four contentState→Binding.live",
+      "source": "main-texture-binding-owner.js121,179,235; main-demanded-array-content-owner.js39,93",
+      "successMultiplicity": "Five Binding.live executions"
+    },
+    {
+      "from": "Demand.live",
+      "to": "native.check57 subset; baselineReader.check→Base.live→surfacePay128 and Construction.check54; port.check→demandedGroup→demandedRows→fresh Renderer checkState14",
+      "source": "main-demanded-array-content-owner.js26,39,93; main-baseline-owner.js220,269; main-baseline-resource-records.js54,57,84-86"
+    },
+    {
+      "from": "Base.advanceDemandedContent stage7",
+      "to": "Binding.retainContentBatch→payContent3584 with following64; stage8 only after child returns reader",
+      "source": "main-baseline-owner.js162; main-texture-binding-owner.js32,116,131-134"
+    }
+  ],
+  "actualDebitNecessaryCondition": {
+    "cap": 4096,
+    "surfacePayments": 2,
+    "surfaceEach": 128,
+    "batchRetention": 3584,
+    "childFollowing": 64,
+    "optimisticVisitUpper": 192,
+    "equation": "128+V+128+3584+64<=4096 implies V<=192. Other callers/debits are omitted optimistically."
+  },
+  "conditionalLower": {
+    "assumption": "The visit tariff must own these unpaid readiness payloads, each named operation contributing at least one logical unit under the pinned proposed vocabulary. This is not an actual selected fee, timing measurement, AST tariff or observed product stall.",
+    "nativeCapabilitySubset": {
+      "count": 57,
+      "rows": [
+        {
+          "receiver": "root",
+          "name": "fetch",
+          "mode": "value",
+          "line": 17
+        },
+        {
+          "receiver": "root",
+          "name": "Blob",
+          "mode": "value",
+          "line": 17
+        },
+        {
+          "receiver": "root",
+          "name": "URL",
+          "mode": "value",
+          "line": 17
+        },
+        {
+          "receiver": "root",
+          "name": "AbortController",
+          "mode": "value",
+          "line": 17
+        },
+        {
+          "receiver": "root",
+          "name": "ArrayBuffer",
+          "mode": "value",
+          "line": 17
+        },
+        {
+          "receiver": "root",
+          "name": "Uint8Array",
+          "mode": "value",
+          "line": 17
+        },
+        {
+          "receiver": "Promise.prototype",
+          "name": "then",
+          "mode": "value",
+          "line": 18
+        },
+        {
+          "receiver": "root.crypto.subtle",
+          "name": "digest",
+          "mode": "value",
+          "line": 18
+        },
+        {
+          "receiver": "URL.prototype",
+          "name": "href",
+          "mode": "get",
+          "line": 18
+        },
+        {
+          "receiver": "root.document",
+          "name": "createElement",
+          "mode": "value",
+          "line": 18
+        },
+        {
+          "receiver": "HTMLCanvasElement.prototype",
+          "name": "width",
+          "mode": "get",
+          "line": 19
+        },
+        {
+          "receiver": "HTMLCanvasElement.prototype",
+          "name": "width",
+          "mode": "set",
+          "line": 19
+        },
+        {
+          "receiver": "HTMLCanvasElement.prototype",
+          "name": "height",
+          "mode": "get",
+          "line": 19
+        },
+        {
+          "receiver": "HTMLCanvasElement.prototype",
+          "name": "height",
+          "mode": "set",
+          "line": 19
+        },
+        {
+          "receiver": "HTMLCanvasElement.prototype",
+          "name": "getContext",
+          "mode": "value",
+          "line": 19
+        },
+        {
+          "receiver": "ImageData.prototype",
+          "name": "data",
+          "mode": "get",
+          "line": 20
+        },
+        {
+          "receiver": "Blob.prototype",
+          "name": "size",
+          "mode": "get",
+          "line": 20
+        },
+        {
+          "receiver": "ArrayBuffer.prototype",
+          "name": "byteLength",
+          "mode": "get",
+          "line": 20
+        },
+        {
+          "receiver": "ArrayBuffer.prototype",
+          "name": "transfer",
+          "mode": "value",
+          "line": 20
+        },
+        {
+          "receiver": "ReadableStream.prototype",
+          "name": "getReader",
+          "mode": "value",
+          "line": 21
+        },
+        {
+          "receiver": "ReadableStream.prototype",
+          "name": "cancel",
+          "mode": "value",
+          "line": 21
+        },
+        {
+          "receiver": "ReadableStreamBYOBReader.prototype",
+          "name": "read",
+          "mode": "value",
+          "line": 21
+        },
+        {
+          "receiver": "ReadableStreamBYOBReader.prototype",
+          "name": "cancel",
+          "mode": "value",
+          "line": 21
+        },
+        {
+          "receiver": "ReadableStreamBYOBReader.prototype",
+          "name": "releaseLock",
+          "mode": "value",
+          "line": 21
+        },
+        {
+          "receiver": "Response.prototype",
+          "name": "body",
+          "mode": "get",
+          "line": 22
+        },
+        {
+          "receiver": "Response.prototype",
+          "name": "status",
+          "mode": "get",
+          "line": 22
+        },
+        {
+          "receiver": "Response.prototype",
+          "name": "url",
+          "mode": "get",
+          "line": 22
+        },
+        {
+          "receiver": "typed",
+          "name": "buffer",
+          "mode": "get",
+          "line": 23
+        },
+        {
+          "receiver": "typed",
+          "name": "byteLength",
+          "mode": "get",
+          "line": 23
+        },
+        {
+          "receiver": "typed",
+          "name": "byteOffset",
+          "mode": "get",
+          "line": 23
+        },
+        {
+          "receiver": "typed",
+          "name": "Symbol.toStringTag",
+          "mode": "get",
+          "line": 23
+        },
+        {
+          "receiver": "typed",
+          "name": "set",
+          "mode": "value",
+          "line": 23
+        },
+        {
+          "receiver": "Object",
+          "name": "freeze",
+          "mode": "value",
+          "line": 24
+        },
+        {
+          "receiver": "Object",
+          "name": "getOwnPropertyDescriptor",
+          "mode": "value",
+          "line": 24
+        },
+        {
+          "receiver": "Object",
+          "name": "getPrototypeOf",
+          "mode": "value",
+          "line": 24
+        },
+        {
+          "receiver": "Reflect",
+          "name": "apply",
+          "mode": "value",
+          "line": 24
+        },
+        {
+          "receiver": "Number",
+          "name": "isInteger",
+          "mode": "value",
+          "line": 24
+        },
+        {
+          "receiver": "root",
+          "name": "Image",
+          "mode": "value",
+          "line": 27
+        },
+        {
+          "receiver": "root",
+          "name": "Promise",
+          "mode": "value",
+          "line": 27
+        },
+        {
+          "receiver": "root",
+          "name": "HTMLImageElement",
+          "mode": "value",
+          "line": 27
+        },
+        {
+          "receiver": "F.imagePrototype",
+          "name": "naturalWidth",
+          "mode": "get",
+          "line": 27
+        },
+        {
+          "receiver": "F.imagePrototype",
+          "name": "naturalHeight",
+          "mode": "get",
+          "line": 27
+        },
+        {
+          "receiver": "F.imagePrototype",
+          "name": "src",
+          "mode": "set",
+          "line": 27
+        },
+        {
+          "receiver": "F.imagePrototype",
+          "name": "onload",
+          "mode": "set",
+          "line": 27
+        },
+        {
+          "receiver": "F.imagePrototype",
+          "name": "onerror",
+          "mode": "set",
+          "line": 27
+        },
+        {
+          "receiver": "F.URL",
+          "name": "createObjectURL",
+          "mode": "value",
+          "line": 27
+        },
+        {
+          "receiver": "F.URL",
+          "name": "revokeObjectURL",
+          "mode": "value",
+          "line": 27
+        },
+        {
+          "receiver": "gl",
+          "name": "isContextLost",
+          "mode": "value",
+          "line": 27
+        },
+        {
+          "receiver": "F.Abort.prototype",
+          "name": "abort",
+          "mode": "value",
+          "line": 27
+        },
+        {
+          "receiver": "F.Abort.prototype",
+          "name": "signal",
+          "mode": "get",
+          "line": 27
+        },
+        {
+          "receiver": "CanvasRenderingContext2D.prototype",
+          "name": "save",
+          "mode": "value",
+          "line": 23
+        },
+        {
+          "receiver": "CanvasRenderingContext2D.prototype",
+          "name": "restore",
+          "mode": "value",
+          "line": 23
+        },
+        {
+          "receiver": "CanvasRenderingContext2D.prototype",
+          "name": "beginPath",
+          "mode": "value",
+          "line": 23
+        },
+        {
+          "receiver": "CanvasRenderingContext2D.prototype",
+          "name": "rect",
+          "mode": "value",
+          "line": 23
+        },
+        {
+          "receiver": "CanvasRenderingContext2D.prototype",
+          "name": "clip",
+          "mode": "value",
+          "line": 23
+        },
+        {
+          "receiver": "CanvasRenderingContext2D.prototype",
+          "name": "drawImage",
+          "mode": "value",
+          "line": 23
+        },
+        {
+          "receiver": "CanvasRenderingContext2D.prototype",
+          "name": "getImageData",
+          "mode": "value",
+          "line": 23
+        }
+      ],
+      "excluded": "All collection/iterator slots and the extra Array iterator row; no descriptor/native request per syntax multiplication."
+    },
+    "construction": {
+      "groupRecord": 1,
+      "constructorStateTransactions": 10,
+      "fixedFieldRows": 28,
+      "groundInitialRows": 7,
+      "groundInfoRows": 7,
+      "atmosphereNoiseState": 1,
+      "total": 54
+    },
+    "constructorRows": [
+      {
+        "file": "renderer.js",
+        "tag": "renderer",
+        "line": 337,
+        "resourceFields": 4,
+        "childFields": 9,
+        "totalFieldRows": 13
+      },
+      {
+        "file": "biomes.js",
+        "tag": "biomes-textures",
+        "line": 39,
+        "resourceFields": 1,
+        "childFields": 0,
+        "totalFieldRows": 1
+      },
+      {
+        "file": "hero-textures.js",
+        "tag": "hero-textures",
+        "line": 10,
+        "resourceFields": 1,
+        "childFields": 0,
+        "totalFieldRows": 1
+      },
+      {
+        "file": "world-textures.js",
+        "tag": "world-textures",
+        "line": 33,
+        "resourceFields": 1,
+        "childFields": 0,
+        "totalFieldRows": 1
+      },
+      {
+        "file": "wound-textures.js",
+        "tag": "wound-textures",
+        "line": 12,
+        "resourceFields": 1,
+        "childFields": 0,
+        "totalFieldRows": 1
+      },
+      {
+        "file": "surface-lighting.js",
+        "tag": "surface-finishes",
+        "line": 152,
+        "resourceFields": 1,
+        "childFields": 0,
+        "totalFieldRows": 1
+      },
+      {
+        "file": "local-shadows.js",
+        "tag": "local-shadows",
+        "line": 30,
+        "resourceFields": 1,
+        "childFields": 0,
+        "totalFieldRows": 1
+      },
+      {
+        "file": "atmosphere.js",
+        "tag": "atmosphere",
+        "line": 30,
+        "resourceFields": 7,
+        "childFields": 0,
+        "totalFieldRows": 7
+      },
+      {
+        "file": "instanced-environment.js",
+        "tag": "instanced-environment",
+        "line": 218,
+        "resourceFields": 2,
+        "childFields": 0,
+        "totalFieldRows": 2
+      },
+      {
+        "file": "meadow-canopy.js",
+        "tag": "meadow-ground",
+        "line": 110,
+        "resourceFields": 0,
+        "childFields": 0,
+        "totalFieldRows": 0
+      }
+    ],
+    "groundInfoKeys": [
+      "revision",
+      "ready",
+      "uploadedBytes",
+      "frameUploadedBytes",
+      "allocations",
+      "stale",
+      "prepareMs"
+    ],
+    "bindingLive": {
+      "multiplicity": 5,
+      "each": {
+        "own": {
+          "bindingLifecycle": 1,
+          "creditsCheckContext": 1,
+          "creditsCurrentContextGeneration": 1,
+          "closedContextCapabilityRow": 1,
+          "nativeBindingContextLoss": 1
+        },
+        "basePublishedParent": {
+          "ownChildContextTransaction": 1,
+          "fourRendererChildRows": 4,
+          "pbReaderCheck": {
+            "ownedReaderTransaction": 1,
+            "nativeContextLoss": 1
+          },
+          "gCheckAvailable": {
+            "ownedAvailabilityTransaction": 1,
+            "nativeContextLoss": 1,
+            "positionsStatusChildRequest": 1
+          }
+        },
+        "total": 15
+      },
+      "total": 75
+    },
+    "freshPortRenderer": {
+      "stateTransaction": 1,
+      "fieldRows": 13,
+      "total": 14
+    },
+    "sum": 200,
+    "comparison": "200>192; no positive single full-visit V satisfies both conditions.",
+    "disjointness": "The subset occurs in successful readiness before retainContentBatch. Surface bodies/pay logic and batch-retain bodies are excluded because separate actual child fees cover them. Fresh Renderer checkState in DemandPort is a second actual execution after Construction.check, not a second price for the same invocation."
+  },
+  "corrections": [
+    {
+      "id": "UPPER_AS_LOWER",
+      "finding": "The prior228 message used DemandPort42, a maximum search envelope. It is invalid as a lower bound. Revised200 uses only the unavoidable fresh Renderer state14 and excludes all searches."
+    },
+    {
+      "id": "PROFILE_ATTRIBUTION",
+      "finding": "The two Surface fees require joint managed demanded v7. Do not state this bound for every demandProfile or standalone demanded v6."
+    },
+    {
+      "id": "NAMED_BINDING_PAYLOAD",
+      "finding": "Binding15 is own5 +BasePublishedParent5 +PBReader2 +G3, with G3 explicitly including the separate positions.status child query. It is not fifteen syntax statements."
+    }
+  ],
+  "safeNextStep": {
+    "status": "SOURCE_SUCCESSOR_DESIGN_AND_INDEPENDENT_SIMULATION_ONLY_NO_TABLE_SELECTION",
+    "requirement": "The atomic v7 stage7 body cannot be fixed by choosing a larger globally shared visit price or by renaming a fee alone.",
+    "minimalCandidate": "Use an explicit versioned readiness/publication checkpoint and separate the heavy readiness visit from the compound-retention visit. Existing stages6/7 already yield, but stage7 currently replays the full heavy readiness; a useful split must actually remove that replay or make retention itself resumable.",
+    "freshness": "The commit visit must freshly validate the exact paid frame/slice/context scope, authenticated parent/Renderer/Canvas/program identities, all publication cookies/serials/physical generation keys and any source origin/version needed by its contract. A stored ready boolean is insufficient. Derive the narrowed guard from actual source; do not assert that a cached epoch notices arbitrary external field/native changes.",
+    "failure": "Insufficient credits defer before the associated child mutation and preserve a bounded owner/cursor. A changed version/source tuple invalidates the checkpoint and yields or fails stale. Native mutation uncertainty retains owned resources until the existing verified cleanup/loss rule; no automatic replay or synthetic completion.",
+    "validation": "Independently simulate exact debit/control ordering for normal progress, repeated deferral, changed generations/cookies, slice/frame/context changes, reentry, partial-retain failure and cleanup; then derive its complete source/work/storage envelope before any implementation/table/gate selection.",
+    "limit": "A readiness/commit split may enlarge the optimistic commit capacity from192 to320 if it removes the second Surface payment, but the fresh guard and every remaining child debit must still be independently bounded. No feasible successor is certified here."
+  },
+  "noChanges": {
+    "productSource": true,
+    "fixtures": true,
+    "tables": true,
+    "limits": true,
+    "browser": true,
+    "server": true,
+    "git": true
+  },
+  "qualification": "This establishes a concrete source scheduling obstruction for the specified payer partition and proposed operation vocabulary on C4 v7. It is not a technology impossibility, complete ordinary Main host contract, native/cold/performance result, P05 closure, Main draw permission or PhaseOne acceptance/release."
+}

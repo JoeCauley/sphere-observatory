@@ -1,0 +1,80 @@
+{
+  "format": "sphere-startup-funded-selection-independent-receipt/1",
+  "utc": "2026-10-23T00:02:24.488Z",
+  "status": "PASS_EXACT_CONSTANT_COMMENT_SELECTION_AND_COMPLETE_SOURCE_PIN_COMPARISON",
+  "before": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\app-startup-candidate-02\\source",
+  "after": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\app-startup-candidate-03\\source",
+  "priorSeal": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\app-startup-review-01\\independent-review-seal-05.json",
+    "bytes": 5771,
+    "sha256": "cc615c9d057a7bb837de088931ad1cc2e67b261f1f739caa9e6843fa87bd01d1"
+  },
+  "fundingPin": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\app-startup-review-01\\funding-derivation-05.json",
+    "bytes": 41825,
+    "sha256": "aa97becc63a58c23a3d1c68f51c7692dffc8b0cf1815356e57eeb536866249d5"
+  },
+  "ownershipPin": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\app-startup-review-01\\closed-owner-lifetime-supplement-05.json",
+    "bytes": 6388,
+    "sha256": "6d69cb586b7d0f81713b5eb86af8ad054994db314e28bbfe4dd192c62f701c3c"
+  },
+  "modelControls": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\app-startup-candidate-03\\control-run-01.json",
+    "bytes": 5690,
+    "sha256": "ff4f647505276271e87f5fa035504c0a357f35d219a92bca3a86d827115cf5dc"
+  },
+  "parentFunctionalSeal": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\app-startup-candidate-03\\functional-seal-02.json",
+    "bytes": 13642,
+    "sha256": "dbb795ba3e854157633b4fbae543b25c51a14586553eb43e5a0def06ef5ebb99"
+  },
+  "sourceComparison": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\app-startup-review-01\\funded-source-comparison-06.json",
+    "bytes": 402735,
+    "sha256": "f14a44c56989b9cb4e47108ab8229a03e928bc55c32ccbe9530c3224af45fd1f"
+  },
+  "validation": {
+    "sourceFilesBefore": 521,
+    "sourceFilesAfter": 521,
+    "identicalOtherFiles": 520,
+    "changedFiles": [
+      "owned-main-bootstrap.js"
+    ],
+    "exactHunks": 2,
+    "constant": {
+      "before": null,
+      "after": 368640,
+      "moduleUnchanged": 176128
+    },
+    "commentChange": "Explicit authored logical funding scope; native VM/cold/full Main still unqualified",
+    "inverseSha256": "e0e1f0b440bdf346d4251dd82a7b192487401cbcf694a3ac6d0c865113e904a4",
+    "beforeSha256": "e0e1f0b440bdf346d4251dd82a7b192487401cbcf694a3ac6d0c865113e904a4",
+    "afterSha256": "d93d453a2a9a39e9fd613308b61181b9ce6f501ab88d2c6ffaca578a38777da9",
+    "inverseBytesExactlyEqual": true,
+    "sourceShapeChange": false,
+    "productAppExecutionEnabled": false,
+    "sourcePriceChanges": false,
+    "otherGateChanges": false
+  },
+  "reviewedFunding": {
+    "newLogical": 367104,
+    "newReservation": 368640,
+    "newHeadroom": 1536,
+    "oldLogical": 387808,
+    "oldReservation": 389120,
+    "completeLogical": 754912,
+    "combinedSeparateControllerRequested": 757760,
+    "moduleLogical": 172320,
+    "moduleReservation": 176128,
+    "retirementModuleAdditional": 16384,
+    "pureModuleAdditional": 1324128,
+    "actualQSBookkeepingAdditional": true
+  },
+  "modelEvidence": {
+    "status": "PASS",
+    "cases": 21,
+    "scope": "Read-only report inspection of root-run disclosed actual App/loader source models. No tests rerun by this reviewer; no model result promoted to native/full Main."
+  },
+  "qualification": "The fixed scalar number uses the same one logical slot as null; comments carry no authored runtime record. No string literal, generated profile, source row, closure/capture, prototype, adapter branch, root handoff, reservation order, fee or product App gate changed. This is a finite selection validation of the prior review, not a rerun/requalification of other libraries or full cold/native Main. P05 remains open and PhaseOne is not accepted/released."
+}

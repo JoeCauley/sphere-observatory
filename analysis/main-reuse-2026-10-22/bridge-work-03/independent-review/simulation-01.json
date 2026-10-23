@@ -1,0 +1,175 @@
+{
+  "kind": "INDEPENDENT_ABSTRACT_DEBIT_ADMISSION_ONLY",
+  "assumptions": "Source fees128/3584 and following64 are actual constants; V is a symbolic variable, never a selected table entry. All other shared caller debits are optimistically zero. Node lower200 is conditional on the proposed named-operation vocabulary.",
+  "feasiblePositiveIntegerVisitFees": [],
+  "atLower": {
+    "V": 200,
+    "surfaces": 2,
+    "stage": 7,
+    "admitted": false,
+    "at": "batch retain payContent",
+    "available": 3640,
+    "required": 3648,
+    "shortfall": 8,
+    "events": [
+      {
+        "name": "bridgeScope Base.live Surface current",
+        "debit": 128,
+        "remaining": 3968
+      },
+      {
+        "name": "ordinaryWork visit",
+        "debit": 200,
+        "remaining": 3768
+      },
+      {
+        "name": "Demand.live Base reader Surface current",
+        "debit": 128,
+        "remaining": 3640
+      }
+    ]
+  },
+  "atCapacityUpper": {
+    "V": 192,
+    "surfaces": 2,
+    "stage": "UNSIMULATED_CHILD_BODY",
+    "admitted": true,
+    "available": 64,
+    "events": [
+      {
+        "name": "bridgeScope Base.live Surface current",
+        "debit": 128,
+        "remaining": 3968
+      },
+      {
+        "name": "ordinaryWork visit",
+        "debit": 192,
+        "remaining": 3776
+      },
+      {
+        "name": "Demand.live Base reader Surface current",
+        "debit": 128,
+        "remaining": 3648
+      },
+      {
+        "name": "batchContentLimits.retainWork",
+        "debit": 3584,
+        "remaining": 64
+      }
+    ],
+    "qualification": "Admission only; no batch shares/native/currentness body is simulated."
+  },
+  "repeatedFreshSliceAtLower": [
+    {
+      "V": 200,
+      "surfaces": 2,
+      "stage": 7,
+      "admitted": false,
+      "at": "batch retain payContent",
+      "available": 3640,
+      "required": 3648,
+      "shortfall": 8,
+      "events": [
+        {
+          "name": "bridgeScope Base.live Surface current",
+          "debit": 128,
+          "remaining": 3968
+        },
+        {
+          "name": "ordinaryWork visit",
+          "debit": 200,
+          "remaining": 3768
+        },
+        {
+          "name": "Demand.live Base reader Surface current",
+          "debit": 128,
+          "remaining": 3640
+        }
+      ]
+    },
+    {
+      "V": 200,
+      "surfaces": 2,
+      "stage": 7,
+      "admitted": false,
+      "at": "batch retain payContent",
+      "available": 3640,
+      "required": 3648,
+      "shortfall": 8,
+      "events": [
+        {
+          "name": "bridgeScope Base.live Surface current",
+          "debit": 128,
+          "remaining": 3968
+        },
+        {
+          "name": "ordinaryWork visit",
+          "debit": 200,
+          "remaining": 3768
+        },
+        {
+          "name": "Demand.live Base reader Surface current",
+          "debit": 128,
+          "remaining": 3640
+        }
+      ]
+    },
+    {
+      "V": 200,
+      "surfaces": 2,
+      "stage": 7,
+      "admitted": false,
+      "at": "batch retain payContent",
+      "available": 3640,
+      "required": 3648,
+      "shortfall": 8,
+      "events": [
+        {
+          "name": "bridgeScope Base.live Surface current",
+          "debit": 128,
+          "remaining": 3968
+        },
+        {
+          "name": "ordinaryWork visit",
+          "debit": 200,
+          "remaining": 3768
+        },
+        {
+          "name": "Demand.live Base reader Surface current",
+          "debit": 128,
+          "remaining": 3640
+        }
+      ]
+    }
+  ],
+  "standaloneV6WithoutSurface": {
+    "V": 200,
+    "surfaces": 0,
+    "stage": "UNSIMULATED_CHILD_BODY",
+    "admitted": true,
+    "available": 312,
+    "events": [
+      {
+        "name": "bridgeScope Base.live Surface current",
+        "debit": 0,
+        "remaining": 4096
+      },
+      {
+        "name": "ordinaryWork visit",
+        "debit": 200,
+        "remaining": 3896
+      },
+      {
+        "name": "batchContentLimits.retainWork",
+        "debit": 3584,
+        "remaining": 312
+      }
+    ],
+    "qualification": "Admission only; no batch shares/native/currentness body is simulated."
+  },
+  "newSplitCapacityOnly": {
+    "readyLowerNecessary": 200,
+    "commitOptimisticUpperIfOnlyOneSurface": 320,
+    "qualification": "Separate currentness work must be independently derived and fit this bound. No new fee, guarantee or implementation is selected by this arithmetic."
+  }
+}

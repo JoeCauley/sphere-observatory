@@ -1,0 +1,172 @@
+{
+  "schema": "main-content-final-stage-fix-seal/1",
+  "checkedAt": "2026-10-22T23:55:23.810Z",
+  "status": "PASS_SOURCE_PREDICATE_ONLY_NO_MAIN_PERMISSION",
+  "scope": "One isolated beforeNativeDraw ready-stage predicate; exact-source method unit models and negative original-factory fixture controls.",
+  "sourcePath": "biome-service/native/main-baseline-owner.js",
+  "parentSha256": "0c355aa169f728b840517b818b13ca251c286135c18c12d24bbcf1257133a58f",
+  "successorSha256": "136491ef9d5f7796a0d6328b2c0affe007c984c396eb282fed094812fce61070",
+  "byteDelta": 18,
+  "line": 268,
+  "checks": {
+    "all1041SealedJAndC1SourceFilesUnchanged": true,
+    "allThreeInputBaselineFilesUnchanged": true,
+    "activeExternalC2DeltasSeparatelyEnumerated": true,
+    "singleFileSinglePredicateOnly": true,
+    "inverseExactlyRestoresParent": true,
+    "sourceParsesParentAndSuccessor": true,
+    "all36ExactSourceMethodExecutionsRefuse": true,
+    "demanded6And8ClassificationOnlyChanges": true,
+    "originalFactoryRefusalParentAndSuccessor": true,
+    "originalFactoryModelCleanupZero": true,
+    "hostRefusalWorkTablesPricesAndCapsUnchanged": true,
+    "noGraphRepinOrBroadSourceCopy": true,
+    "noBrowserServerGitOperation": true
+  },
+  "frozenSourceCounts": {
+    "J": 520,
+    "C1": 521,
+    "C2": 521
+  },
+  "externalC2Changes": [
+    {
+      "file": "owned-main-bootstrap.js",
+      "before": {
+        "file": "owned-main-bootstrap.js",
+        "bytes": 63941,
+        "sha256": "411306f86458219a74eef61bc7272792ab41ec135bf00c8f7276da68ba7d5bae"
+      },
+      "after": {
+        "file": "owned-main-bootstrap.js",
+        "bytes": 66320,
+        "sha256": "e0e1f0b440bdf346d4251dd82a7b192487401cbcf694a3ac6d0c865113e904a4"
+      }
+    }
+  ],
+  "externalC2Classification": "Active external parent startup-guard work confirmed by root coordination; this subtask wrote no C2 source. Strict all-tree equality failure preserved, never reset or relabeled equal.",
+  "methodCases": 18,
+  "methodExecutions": 36,
+  "originalFactoryRefusal": "ORDINARY_BRIDGE_COST_UNQUALIFIED",
+  "pricesSelected": 0,
+  "workTablesSelected": 0,
+  "limitsChanged": 0,
+  "graphRepinned": false,
+  "broadSourceCopy": false,
+  "actualAppOrNativeMainRun": false,
+  "fullColdQualified": false,
+  "fullWorkQualified": false,
+  "P05": "OPEN_NOT_ACCEPTED",
+  "metadataQualification": "One additional reference to existing demandProfile; full-owner metadata admission remains a separate composition obligation.",
+  "artifacts": [
+    {
+      "file": "byte-delta.json",
+      "bytes": 1843,
+      "sha256": "78564da3af42bfefb24e709a8e4376b35b9b7226727030ff1bf9969c90ada842"
+    },
+    {
+      "file": "controls-factory-parent-01/results.json",
+      "bytes": 2324,
+      "sha256": "afef32bf094c7855b24b976098735ed9ec2a55d5b8b4b4e6d70f284e514aee61"
+    },
+    {
+      "file": "controls-factory-successor-01/results.json",
+      "bytes": 2324,
+      "sha256": "61b522a830bfb170266fe4ed9761bd69eb8829902a2920dc607d88925a0a21c2"
+    },
+    {
+      "file": "external-c2-coordination.json",
+      "bytes": 799,
+      "sha256": "7668169e5d79a5c2f96205bda889b75032569c93287972ff6fff57daed9d9042"
+    },
+    {
+      "file": "factory-parent-provenance.json",
+      "bytes": 2249,
+      "sha256": "d791c66016fa293fea4b8688b461d73a3f35ee889fca1d4d6c3a4b444ab12eed"
+    },
+    {
+      "file": "factory-parent-summary.json",
+      "bytes": 471,
+      "sha256": "0a6f41d8cd8d99dd3de2f57ccf0970299b65d7dc17608969696e86ce29717ebc"
+    },
+    {
+      "file": "factory-successor-provenance.json",
+      "bytes": 2255,
+      "sha256": "08715f776bfa34178f92cdf6144bed898d22a94dc142b4e56c6171f431424c3e"
+    },
+    {
+      "file": "factory-successor-summary.json",
+      "bytes": 474,
+      "sha256": "6c05d0fa8c12cb4a78a9b0aae4514f4871513d4ec7b57d93333b617dd32db608"
+    },
+    {
+      "file": "frozen-source-after-attempt-01.json",
+      "bytes": 296653,
+      "sha256": "c199e8be5343628beca39678f94ca78536dcd57705a698c2abc19b4f86c19d07"
+    },
+    {
+      "file": "frozen-source-after.json",
+      "bytes": 296653,
+      "sha256": "c199e8be5343628beca39678f94ca78536dcd57705a698c2abc19b4f86c19d07"
+    },
+    {
+      "file": "frozen-source-before.json",
+      "bytes": 296653,
+      "sha256": "15a09a60d5288b1e8744af2c0ca966889bda0f569388d1f3005e697678e16dfb"
+    },
+    {
+      "file": "method-controls.json",
+      "bytes": 12511,
+      "sha256": "4528a6bfc85fd787d8f2d2925ac67d9461de7d94c30b2314b6158ca1a7ba0bec"
+    },
+    {
+      "file": "parent/biome-service/native/main-baseline-owner.js",
+      "bytes": 93936,
+      "sha256": "0c355aa169f728b840517b818b13ca251c286135c18c12d24bbcf1257133a58f"
+    },
+    {
+      "file": "prepare-fix.cjs",
+      "bytes": 4479,
+      "sha256": "0ebc158e0349c2a288e33b6c1d45e3127fd3d1bb034a25d0f8f42a8605d4c4b1"
+    },
+    {
+      "file": "READ-FIRST.md",
+      "bytes": 4464,
+      "sha256": "57643911fc4ad45df6d575f0afd88d41ba79135c5ce8de6153554c65820a0df2"
+    },
+    {
+      "file": "seal-attempt-01.json",
+      "bytes": 657,
+      "sha256": "db1a1de9cbecec9c790ba389af54490924909568b8930eae1920c23ff837a6b3"
+    },
+    {
+      "file": "single-file.patch",
+      "bytes": 1996,
+      "sha256": "3e796b79f39938c6831debffe1f92d9d05c4fc905c7ae5eb1b37ff8d4595e6d2"
+    },
+    {
+      "file": "source/biome-service/native/main-baseline-owner.js",
+      "bytes": 93954,
+      "sha256": "136491ef9d5f7796a0d6328b2c0affe007c984c396eb282fed094812fce61070"
+    },
+    {
+      "file": "test-factory-refusal.cjs",
+      "bytes": 3668,
+      "sha256": "c078e42e73a179a4971d7f875a534fee4598f5b9642b6647ad322cbfc4a591c2"
+    },
+    {
+      "file": "test-source-method.cjs",
+      "bytes": 6209,
+      "sha256": "62bc26d1c9f42778336fd05ba4d92d6f42d9ea68852277e44921866e648c950c"
+    },
+    {
+      "file": "verify-and-seal-attempt-01.cjs",
+      "bytes": 4649,
+      "sha256": "2a05b0410b51c94bf498bd233198cf9c213ba14fec63fdf0ac2d553dafdc2d60"
+    },
+    {
+      "file": "verify-and-seal.cjs",
+      "bytes": 5778,
+      "sha256": "c6af3784b409b1ad077ddcf2294cd3e2248a39d893a13c74687c98ba1a8bb219"
+    }
+  ]
+}

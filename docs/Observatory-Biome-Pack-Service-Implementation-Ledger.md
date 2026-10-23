@@ -1,3 +1,5 @@
+> **Main startup component — 22 October 2026:** The genuine drawing helper and owned App/loader handoff pass 52 targeted model checks and a real Chrome startup/cleanup check. Complete Main remains held; P05 is OPEN. The next gate is the exact current four-key content-bridge work contract. See the [startup report](Observatory-Main-Startup-2026-10-22.md) and [current work plan](Observatory-Current-Work-Plan.md). Earlier evidence below keeps its original scope.
+
 <!-- repository-safety-checkpoint-2026-10-20 -->
 > **Project safety checkpoint — 20 October 2026:** Meadow–Industry walking is delivered; formal P05 remains OPEN. The latest Main candidate completes input compilation but defers before drawing on its unqualified work contract. Read [current status and completion path](Observatory-Project-Checkpoint-2026-10-20.md). Source/progress backups preserve the unfinished candidates separately from the working application; raw archives remain local by owner selection.
 

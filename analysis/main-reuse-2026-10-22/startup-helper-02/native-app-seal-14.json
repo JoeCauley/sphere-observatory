@@ -1,0 +1,58 @@
+{
+  "format": "sphere-native-app-startup-component-seal/2",
+  "utc": "2026-10-23T00:15:32.083Z",
+  "status": "PASS_NATIVE_ACTUAL_APP_STARTUP_HELD_AND_DISPOSED",
+  "sourceFilesVerified": 521,
+  "productControllerSha256": "aa559fb41b120473db11d4d9ec1319e354fba4e01623ba274a23370138ad4146",
+  "diagnosticControllerSha256": "43e4783701d12d3e05d43b2b88799098bcb6965a62ad25705dee2959f4381417",
+  "copiedSourceGateChanges": 1,
+  "productSourceChanges": 0,
+  "priceOverrides": 0,
+  "productMainGate": false,
+  "actualApp": true,
+  "actualCanvasWebGL": true,
+  "modeledNativeSubstitutions": 0,
+  "mainFrames": 0,
+  "helperSteps": 16,
+  "actualG": true,
+  "observedNativeLoss": true,
+  "enteredGRealmOwnership": "RETAINED",
+  "functionalSeal": {
+    "path": "functional-seal-01.json",
+    "bytes": 21268,
+    "sha256": "da86a68763b09d80db3982a958e24ca568b3a23bfdd7535ba6fcc5b407593591"
+  },
+  "pins": [
+    {
+      "path": "index.html",
+      "bytes": 23280,
+      "sha256": "b34a2d167541e6603f747c966d4e1338677e61b690f728003c1b50d857c65cc7"
+    },
+    {
+      "path": "observe.js",
+      "bytes": 3853,
+      "sha256": "1652e3e04239a70c3140eff358996a6459d1249b543690c94ed0e67d77fe6d10"
+    },
+    {
+      "path": "provenance-01.json",
+      "bytes": 2283,
+      "sha256": "08a959e7ca71a0c33c8233f2565cf9965748307683975304b47009fd1a9679c0"
+    },
+    {
+      "path": "owned-main-bootstrap-diagnostic-01.js",
+      "bytes": 66329,
+      "sha256": "43e4783701d12d3e05d43b2b88799098bcb6965a62ad25705dee2959f4381417"
+    },
+    {
+      "path": "actual-app-startup-native-02.png",
+      "bytes": 211125,
+      "sha256": "3af3be5d7b5dc365faacced07c987eec703eb2f7f0ae7a05d4dc59216bc291b6"
+    },
+    {
+      "path": "reports/run-3e5a4f47-24fa-467e-83dc-11a16e44be10.json",
+      "bytes": 4277,
+      "sha256": "15ce96753b9617c04e150622e59a7aceae0f5d2c6edc31ae08499945feea842d"
+    }
+  ],
+  "scope": "Current C4 actual App startup handoff, helper and native cleanup only. No complete Main frame, required public fixture/native Main/whole-view/fragment/Frame proof, physical host peaks or quiet timing. Full cold/caller/work/resource host and original constructor branches remain unqualified. P05 OPEN."
+}

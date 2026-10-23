@@ -1,3 +1,5 @@
+> **Main startup component — 22 October 2026:** The genuine drawing helper and owned App/loader handoff pass 52 targeted model checks and a real Chrome startup/cleanup check. Complete Main remains held; P05 is OPEN. The next gate is the exact current four-key content-bridge work contract. See the [startup report](Observatory-Main-Startup-2026-10-22.md) and [current work plan](Observatory-Current-Work-Plan.md). Earlier evidence below keeps its original scope.
+
 # Sphere Observatory project checkpoint — 20 October 2026
 
 This is a source and progress safety checkpoint, not a release or acceptance record. The working Meadow–Industry experience is preserved. Formal Biome Pack Service P05 remains OPEN; P06–P08 remain NOT_STARTED and Phase One remains NOT_ACCEPTED / NOT_RELEASED.

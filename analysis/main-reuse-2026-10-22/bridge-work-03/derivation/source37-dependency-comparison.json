@@ -1,0 +1,146 @@
+{
+  "template": {
+    "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/ordinary-main-demand-work-contract-01/resource-api-coverage-02.json",
+    "bytes": 105601,
+    "sha256": "9bdbf2951a6b8252e472ef667fbfbcdadeac148855f4b619c80fb178345b7102"
+  },
+  "qualification": "Dependency template only; no numerical node or selected tariff inherited automatically.",
+  "comparison": [
+    {
+      "path": "biome-service/native/main-demanded-array-content-owner.js",
+      "templateBytes": 31524,
+      "templateSha256": "b1d867721286761d2d8d6cb75719b8814de0202a7ad0f806b7e4bec172eefd94",
+      "currentBytes": 36686,
+      "currentSha256": "a92f1e4572c99fb688a5e3fe301d7fa83470919f6b97523a357b6b130db6ca31",
+      "wholeFileExact": false
+    },
+    {
+      "path": "biome-service/native/main-baseline-owner.js",
+      "templateBytes": 68038,
+      "templateSha256": "138984aabcaf788a9fe3e3f9ac7c3f87a39b993c6c088a5d78712d5f4a4ba47e",
+      "currentBytes": 93954,
+      "currentSha256": "136491ef9d5f7796a0d6328b2c0affe007c984c396eb282fed094812fce61070",
+      "wholeFileExact": false
+    },
+    {
+      "path": "biome-service/native/main-texture-binding-owner.js",
+      "templateBytes": 81542,
+      "templateSha256": "a268586f05a67995fbb08a4949ec8bc6f5b00b00414b1738d9a4fc07696a5e5e",
+      "currentBytes": 87804,
+      "currentSha256": "34aff7fed1a73c67afcd59eba1620ae5b2ce1be76588dbdfbdd391c021d2b8dc",
+      "wholeFileExact": false
+    },
+    {
+      "path": "biome-service/native/main-baseline-resource-records.js",
+      "templateBytes": 36785,
+      "templateSha256": "ce402c73b6b61f5384e30d995e044aa083d9b32b5b02d50ba1ce2dd699628a0b",
+      "currentBytes": 36785,
+      "currentSha256": "ce402c73b6b61f5384e30d995e044aa083d9b32b5b02d50ba1ce2dd699628a0b",
+      "wholeFileExact": true
+    },
+    {
+      "path": "biome-service/native/main-finish-storage-owner.js",
+      "templateBytes": 31555,
+      "templateSha256": "b224004363092277baa24990f53997c01c618b0e9d5e8ab364dfb87b8d3ca8de",
+      "currentBytes": 36631,
+      "currentSha256": "25c39c66f199f9ea8d12976f574e704f4818d58f3f98a68c32b6d4a8311aae6a",
+      "wholeFileExact": false
+    },
+    {
+      "path": "surface-lighting.js",
+      "templateBytes": 14352,
+      "templateSha256": "0b5b89dbc5d19bb19a3a944924d58323c9c2a65e7175941d416693faae7fa063",
+      "currentBytes": 14352,
+      "currentSha256": "0b5b89dbc5d19bb19a3a944924d58323c9c2a65e7175941d416693faae7fa063",
+      "wholeFileExact": true
+    },
+    {
+      "path": "renderer.js",
+      "templateBytes": 144884,
+      "templateSha256": "3a5816360a3d6a40def9d3fefa61a57ab75a360df3d0eaef9db459571405e01a",
+      "currentBytes": 154345,
+      "currentSha256": "e513ac215b5c4a6c731664a703ddd54061224d751d891c53b5b1a3f16389500d",
+      "wholeFileExact": false
+    },
+    {
+      "path": "app.js",
+      "templateBytes": 34093,
+      "templateSha256": "ad5530ed7632d55730df7c7bf61e987ede3752e2ba5bff339b11d9d25882c3ca",
+      "currentBytes": 35890,
+      "currentSha256": "ea40b2952058757fd7773db9c3f0e983a9903738bde34e8ca210fc62490bf727",
+      "wholeFileExact": false
+    },
+    {
+      "path": "biome-service/native/main-world-state-snapshot.js",
+      "templateBytes": 91205,
+      "templateSha256": "710012f55293105baecd499ec5df877f125b9f8e9a1581607f2bd80cea355d2a",
+      "currentBytes": 91205,
+      "currentSha256": "710012f55293105baecd499ec5df877f125b9f8e9a1581607f2bd80cea355d2a",
+      "wholeFileExact": true
+    },
+    {
+      "path": "biome-service/native/main-app-snapshot-ingress.js",
+      "templateBytes": 41567,
+      "templateSha256": "1919de92f23febba789b8ce96f6a23e552aa64dbb04d72bde00d464d7499ac9f",
+      "currentBytes": 41567,
+      "currentSha256": "1919de92f23febba789b8ce96f6a23e552aa64dbb04d72bde00d464d7499ac9f",
+      "wholeFileExact": true
+    },
+    {
+      "path": "biome-service/native/source-admission.js",
+      "templateBytes": 16839,
+      "templateSha256": "d1676c985688bb3330ae2e35e1194c8b2c05116652939e1b183e0047751d8a7f",
+      "currentBytes": 16839,
+      "currentSha256": "d1676c985688bb3330ae2e35e1194c8b2c05116652939e1b183e0047751d8a7f",
+      "wholeFileExact": true
+    },
+    {
+      "path": "biome-service/native/resource-leases.js",
+      "templateBytes": 100767,
+      "templateSha256": "fca9446436f1a41d844035ca9ac76d96d7229f08d81cfc274628b1ecc954802a",
+      "currentBytes": 108311,
+      "currentSha256": "f805286612250ce24c6e8105141da52169c72599a2abb5ef455c79b116f95ed7",
+      "wholeFileExact": false
+    },
+    {
+      "path": "biome-service/metadata-budget.js",
+      "templateBytes": 4137,
+      "templateSha256": "9318446452e9a99fee2873eaf0d072bd76c39f714e4d1bceadf6057d04df6635",
+      "currentBytes": 4137,
+      "currentSha256": "9318446452e9a99fee2873eaf0d072bd76c39f714e4d1bceadf6057d04df6635",
+      "wholeFileExact": true
+    },
+    {
+      "path": "biome-service/records.js",
+      "templateBytes": 24045,
+      "templateSha256": "70dbb2302f88f5f950de3eb2d3e94951a1537fdeab54640e7bb95746d69c1556",
+      "currentBytes": 24045,
+      "currentSha256": "70dbb2302f88f5f950de3eb2d3e94951a1537fdeab54640e7bb95746d69c1556",
+      "wholeFileExact": true
+    },
+    {
+      "path": "biomes.js",
+      "templateBytes": 10063,
+      "templateSha256": "01924bec4da4ebb9cd1a8e648193d7e4de8be8edaa91104da8824b1e2bdcc439",
+      "currentBytes": 10063,
+      "currentSha256": "01924bec4da4ebb9cd1a8e648193d7e4de8be8edaa91104da8824b1e2bdcc439",
+      "wholeFileExact": true
+    },
+    {
+      "path": "hero-textures.js",
+      "templateBytes": 6848,
+      "templateSha256": "3c468b7b93e8a69ac18056d6dc0ac666e51b42ef62f00eb5bbad05649bd7f4ac",
+      "currentBytes": 6848,
+      "currentSha256": "3c468b7b93e8a69ac18056d6dc0ac666e51b42ef62f00eb5bbad05649bd7f4ac",
+      "wholeFileExact": true
+    },
+    {
+      "path": "biome-service/native/positions-backend.js",
+      "templateBytes": 31960,
+      "templateSha256": "f212f18d8fefa60dc25b5f1c3cf3689da1beb53e3a365c5bd7f05de16c4c6421",
+      "currentBytes": 31960,
+      "currentSha256": "f212f18d8fefa60dc25b5f1c3cf3689da1beb53e3a365c5bd7f05de16c4c6421",
+      "wholeFileExact": true
+    }
+  ]
+}

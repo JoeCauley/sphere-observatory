@@ -1,0 +1,132 @@
+[
+  {
+    "path": "app.js",
+    "bytes": 35890,
+    "sha256": "ea40b2952058757fd7773db9c3f0e983a9903738bde34e8ca210fc62490bf727"
+  },
+  {
+    "path": "atmosphere.js",
+    "bytes": 16008,
+    "sha256": "32cd0b34e31f7581d8961152f074ef958191bfd080369e40f8f5533594cccc55"
+  },
+  {
+    "path": "biome-service/metadata-budget.js",
+    "bytes": 4137,
+    "sha256": "9318446452e9a99fee2873eaf0d072bd76c39f714e4d1bceadf6057d04df6635"
+  },
+  {
+    "path": "biome-service/native/main-baseline-owner.js",
+    "bytes": 93954,
+    "sha256": "136491ef9d5f7796a0d6328b2c0affe007c984c396eb282fed094812fce61070"
+  },
+  {
+    "path": "biome-service/native/main-baseline-resource-records.js",
+    "bytes": 36785,
+    "sha256": "ce402c73b6b61f5384e30d995e044aa083d9b32b5b02d50ba1ce2dd699628a0b"
+  },
+  {
+    "path": "biome-service/native/main-default-surface-facts.js",
+    "bytes": 31763,
+    "sha256": "34e6b98a2b32d54d6eda0b5521858ff2cd4df241dbb7291a384f4fc981fb8115"
+  },
+  {
+    "path": "biome-service/native/main-demanded-array-content-owner.js",
+    "bytes": 36686,
+    "sha256": "a92f1e4572c99fb688a5e3fe301d7fa83470919f6b97523a357b6b130db6ca31"
+  },
+  {
+    "path": "biome-service/native/main-finish-storage-owner.js",
+    "bytes": 36631,
+    "sha256": "25c39c66f199f9ea8d12976f574e704f4818d58f3f98a68c32b6d4a8311aae6a"
+  },
+  {
+    "path": "biome-service/native/main-texture-binding-owner.js",
+    "bytes": 87804,
+    "sha256": "34aff7fed1a73c67afcd59eba1620ae5b2ce1be76588dbdfbdd391c021d2b8dc"
+  },
+  {
+    "path": "biome-service/native/positions-backend.js",
+    "bytes": 31960,
+    "sha256": "f212f18d8fefa60dc25b5f1c3cf3689da1beb53e3a365c5bd7f05de16c4c6421"
+  },
+  {
+    "path": "biome-service/native/resource-leases.js",
+    "bytes": 108311,
+    "sha256": "f805286612250ce24c6e8105141da52169c72599a2abb5ef455c79b116f95ed7"
+  },
+  {
+    "path": "biome-service/native/retained-demand-plan.js",
+    "bytes": 18614,
+    "sha256": "ab9d99f676169b7b645c9d4efd38f4d2d85d25faa1268edc855e81602024f730"
+  },
+  {
+    "path": "biome-service/native/root-program-binding.js",
+    "bytes": 58784,
+    "sha256": "39616fb243e7968243ecfe4599ded05ff65635aa351bd19d541ff01e24302f7e"
+  },
+  {
+    "path": "biome-service/native/shared-gpu-backend.js",
+    "bytes": 76077,
+    "sha256": "6699c52a359d14ee5aab85dc0dd8d305ff955e7b87ea5bc7d8a547c9d8b53251"
+  },
+  {
+    "path": "biome-service/native/source-admission.js",
+    "bytes": 16839,
+    "sha256": "d1676c985688bb3330ae2e35e1194c8b2c05116652939e1b183e0047751d8a7f"
+  },
+  {
+    "path": "biome-service/records.js",
+    "bytes": 24045,
+    "sha256": "70dbb2302f88f5f950de3eb2d3e94951a1537fdeab54640e7bb95746d69c1556"
+  },
+  {
+    "path": "biomes.js",
+    "bytes": 10063,
+    "sha256": "01924bec4da4ebb9cd1a8e648193d7e4de8be8edaa91104da8824b1e2bdcc439"
+  },
+  {
+    "path": "hero-textures.js",
+    "bytes": 6848,
+    "sha256": "3c468b7b93e8a69ac18056d6dc0ac666e51b42ef62f00eb5bbad05649bd7f4ac"
+  },
+  {
+    "path": "instanced-environment.js",
+    "bytes": 60890,
+    "sha256": "38da69ae1da12145306b6e37540c097e85de41b6beb10d547e154f77957783e6"
+  },
+  {
+    "path": "local-shadows.js",
+    "bytes": 8293,
+    "sha256": "2866cee95f72fd842005ddb36c416d1a2715a735fca058d8b6cb0b704f337104"
+  },
+  {
+    "path": "meadow-canopy.js",
+    "bytes": 23946,
+    "sha256": "0e5ee0316a13ab07d6260f201be7d1db85331d8a5995de0845b2f5b1b6933c95"
+  },
+  {
+    "path": "owned-main-bootstrap.js",
+    "bytes": 66330,
+    "sha256": "aa559fb41b120473db11d4d9ec1319e354fba4e01623ba274a23370138ad4146"
+  },
+  {
+    "path": "renderer.js",
+    "bytes": 154345,
+    "sha256": "e513ac215b5c4a6c731664a703ddd54061224d751d891c53b5b1a3f16389500d"
+  },
+  {
+    "path": "surface-lighting.js",
+    "bytes": 14352,
+    "sha256": "0b5b89dbc5d19bb19a3a944924d58323c9c2a65e7175941d416693faae7fa063"
+  },
+  {
+    "path": "world-textures.js",
+    "bytes": 8540,
+    "sha256": "d424815ad1af9f10ad61c59408243c8862e4b633d7ff1c35d6460c3f87265e41"
+  },
+  {
+    "path": "wound-textures.js",
+    "bytes": 8027,
+    "sha256": "068a6c89cd7207b0217b0ead8b3ea1294fe94546ec7b672a9c64d44277d2a5d4"
+  }
+]

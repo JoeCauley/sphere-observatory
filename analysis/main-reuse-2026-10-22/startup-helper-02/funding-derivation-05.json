@@ -1,0 +1,1190 @@
+{
+  "format": "sphere-app-startup-controller-funding-derivation/1",
+  "status": "SOURCE_DERIVED_FIXED_LOGICAL_CONTROLLER_APP_DELTA_NO_PHYSICAL_OR_FULL_ENTRY_CLAIM",
+  "utc": "2026-10-23T00:00:40.322Z",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\app-startup-candidate-02\\source",
+  "ABI": {
+    "header": 128,
+    "slot": 32,
+    "string": "128+UTF16 occurrence rounded32",
+    "function": "128+32 distinct lexical captures",
+    "ordinaryPrototype": 160,
+    "nativeVMBacking": "UNMEASURED"
+  },
+  "pins": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\owned-context-retirement-join-2026-10-22-01\\source\\owned-main-bootstrap.js",
+      "bytes": 52590,
+      "sha256": "79bc17d8bc8a0deffa0a2232cfda7748e04fbe57341c1bbc0b9224fd7083631d"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\app-startup-candidate-02\\source\\owned-main-bootstrap.js",
+      "bytes": 66320,
+      "sha256": "e0e1f0b440bdf346d4251dd82a7b192487401cbcf694a3ac6d0c865113e904a4"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\owned-context-retirement-join-2026-10-22-01\\source\\app.js",
+      "bytes": 34277,
+      "sha256": "47906f9052dd8f690e9d4e92538befa7465ecda44f2865ae800b22f9685a97a3"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\app-startup-candidate-02\\source\\app.js",
+      "bytes": 35890,
+      "sha256": "ea40b2952058757fd7773db9c3f0e983a9903738bde34e8ca210fc62490bf727"
+    }
+  ],
+  "inheritedLogical": 387808,
+  "inheritedReservation": 389120,
+  "inheritedGeneratedKeySupplement": 110752,
+  "rows": [
+    {
+      "name": "Inherited complete controller06 preserved without a subtraction",
+      "bytes": 387808,
+      "group": "inherited"
+    },
+    {
+      "name": "Separate inherited generated graph and Surface property-key occurrence supplement",
+      "bytes": 110752,
+      "group": "delta",
+      "formula": "105632+5120; inherited value-only tree fees remain unchanged"
+    },
+    {
+      "name": "Positive complete generated graph, order and new nine-row helper envelope storage",
+      "bytes": 18432,
+      "group": "delta",
+      "formula": "1184+0+256+16992"
+    },
+    {
+      "name": "Positive controller and App source literal/member-key/record-key occurrence strings",
+      "bytes": 43808,
+      "group": "delta",
+      "formula": "230 controller + 30 App occurrences; no interning discount"
+    },
+    {
+      "name": "New function/closure envelopes and positive existing closure capture growth",
+      "bytes": 7168,
+      "group": "delta",
+      "formula": "Exact data-only lexical-capture census"
+    },
+    {
+      "name": "New ordinary-function prototype records, conservatively including async declarations",
+      "bytes": 1600,
+      "group": "delta",
+      "formula": "10*(128+32)"
+    },
+    {
+      "name": "New source function name and automatic name/length/prototype key string occurrences",
+      "bytes": 8416,
+      "group": "delta",
+      "formula": "13 function occurrences"
+    },
+    {
+      "name": "Positive module, guard, async loop and added App binding slots",
+      "bytes": 1760,
+      "group": "delta",
+      "formula": "55*32"
+    },
+    {
+      "name": "New controller try environment and additional App environment headers",
+      "bytes": 256,
+      "group": "delta",
+      "formula": "2*128"
+    },
+    {
+      "name": "Positive complete source object and argument-vector structures outside generated envelopes",
+      "bytes": 6432,
+      "group": "delta",
+      "formula": "31 object/vector occurrences, old replaced objects are conservatively retained too"
+    },
+    {
+      "name": "All complete current native own-property descriptor sites, both bounded eight-row Document loops and repeated method/error inspection replies, including three persistent App descriptors",
+      "bytes": 20992,
+      "group": "delta",
+      "formula": "64 sites +14 bounded-loop repeats +4 repeated method/code replies =82*(128+4*32); conservatively includes inherited sites too"
+    },
+    {
+      "name": "Four simultaneous authored startup/App/refusal error and code-definition envelopes",
+      "bytes": 2048,
+      "group": "delta",
+      "formula": "4*512; raw native/host error object graphs remain external UNMEASURED"
+    },
+    {
+      "name": "Fifteen further timer executor closures and automatic function strings beyond first census exemplar",
+      "bytes": 12960,
+      "group": "delta",
+      "formula": "15*(224+160+160+160+160); all sixteen allocations retained conservatively"
+    },
+    {
+      "name": "Nineteen promise, capability and shared-resolution control records",
+      "bytes": 14592,
+      "group": "delta",
+      "formula": "19*(384+224+160); run return1 + timers16 + stopped claim1 + App then result1"
+    },
+    {
+      "name": "Both resolving functions and own strings for all nineteen promise capabilities",
+      "bytes": 32832,
+      "group": "delta",
+      "formula": "38*(224+160+160+160+160); includes rejected construction path"
+    },
+    {
+      "name": "Fulfilled and rejected reaction records for eighteen awaits plus one App then",
+      "bytes": 10944,
+      "group": "delta",
+      "formula": "38*288; helper await1 + timer awaits16 + loader await1 + App then1"
+    },
+    {
+      "name": "Both logical fulfilled/rejected continuation function records and their own strings for all nineteen reaction sites",
+      "bytes": 34048,
+      "group": "delta",
+      "formula": "38*(256+160+160+160+160); App source callbacks also paid independently"
+    },
+    {
+      "name": "Nineteen logical queue/job settlement envelopes",
+      "bytes": 7296,
+      "group": "delta",
+      "formula": "19*384; job/operation/handler/result/realm/context/settled/error"
+    },
+    {
+      "name": "All sixteen timer request/result controls and argument vectors",
+      "bytes": 9216,
+      "group": "delta",
+      "formula": "16*(384+192); allocation sum, not a GC or single-live-request discount"
+    },
+    {
+      "name": "Fifteen further empty step invocation vectors beyond source occurrence",
+      "bytes": 1920,
+      "group": "delta",
+      "formula": "15*128; source exemplar plus fifteen repeats"
+    },
+    {
+      "name": "All nineteen suspend/resume frame snapshots with sixteen logical slots each",
+      "bytes": 12160,
+      "group": "delta",
+      "formula": "19*640; snapshots summed conservatively across all branches"
+    },
+    {
+      "name": "New adapter active-stack union: twelve activations up to sixteen slots each",
+      "bytes": 7680,
+      "group": "delta",
+      "formula": "12*640; requires synchronous registration, claim and disposal reentry guards"
+    },
+    {
+      "name": "One bootstrap-held closed helper facade and owner-brand WeakSet entry after Renderer map deletion",
+      "bytes": 416,
+      "group": "delta",
+      "formula": "256+160; startupOwner remains one internal realm root after disposeAppStartup"
+    },
+    {
+      "name": "One bootstrap-held closed Surface preparation, its WeakMap entry and complete up-to27-field closed state",
+      "bytes": 1376,
+      "group": "delta",
+      "formula": "192+192+(128+27*32); surfacePreparation remains one internal realm root after evaluated disposal"
+    }
+  ],
+  "allocationRows": [
+    {
+      "kind": "ObjectExpression",
+      "line": 10,
+      "fields": 2,
+      "bytes": 192,
+      "code": "{value:'STARTUP_CONTROLLER_FUNDING_NOT_YET_DERIVED',enumerable:true}",
+      "file": "owned-main-bootstrap.js"
+    },
+    {
+      "kind": "ObjectExpression",
+      "line": 16,
+      "fields": 2,
+      "bytes": 192,
+      "code": "{owner:'owned-app-startup-controller',phase:'before-new-controller-capture'}",
+      "file": "owned-main-bootstrap.js"
+    },
+    {
+      "kind": "ObjectExpression",
+      "line": 59,
+      "fields": 2,
+      "bytes": 192,
+      "code": "{value:code,enumerable:true}",
+      "file": "owned-main-bootstrap.js"
+    },
+    {
+      "kind": "ArrayExpression",
+      "line": 65,
+      "fields": 1,
+      "bytes": 160,
+      "code": "[{renderer:startupRenderer,metadataOwner,sourceOwner,profileEnvelope:startupEnvelope,readSource}]",
+      "file": "owned-main-bootstrap.js"
+    },
+    {
+      "kind": "ObjectExpression",
+      "line": 65,
+      "fields": 5,
+      "bytes": 288,
+      "code": "{renderer:startupRenderer,metadataOwner,sourceOwner,profileEnvelope:startupEnvelope,readSource}",
+      "file": "owned-main-bootstrap.js"
+    },
+    {
+      "kind": "ArrayExpression",
+      "line": 66,
+      "fields": 1,
+      "bytes": 160,
+      "code": "[startupOwner]",
+      "file": "owned-main-bootstrap.js"
+    },
+    {
+      "kind": "ArrayExpression",
+      "line": 68,
+      "fields": 2,
+      "bytes": 192,
+      "code": "[resolve,0]",
+      "file": "owned-main-bootstrap.js"
+    },
+    {
+      "kind": "ArrayExpression",
+      "line": 78,
+      "fields": 1,
+      "bytes": 160,
+      "code": "[renderer]",
+      "file": "owned-main-bootstrap.js"
+    },
+    {
+      "kind": "ArrayExpression",
+      "line": 78,
+      "fields": 4,
+      "bytes": 256,
+      "code": "[renderer,metadataOwner,sourceOwner,context.value]",
+      "file": "owned-main-bootstrap.js"
+    },
+    {
+      "kind": "ArrayExpression",
+      "line": 78,
+      "fields": 0,
+      "bytes": 128,
+      "code": "[]",
+      "file": "owned-main-bootstrap.js"
+    },
+    {
+      "kind": "ArrayExpression",
+      "line": 78,
+      "fields": 0,
+      "bytes": 128,
+      "code": "[]",
+      "file": "owned-main-bootstrap.js"
+    },
+    {
+      "kind": "ArrayExpression",
+      "line": 82,
+      "fields": 0,
+      "bytes": 128,
+      "code": "[]",
+      "file": "owned-main-bootstrap.js"
+    },
+    {
+      "kind": "ArrayExpression",
+      "line": 82,
+      "fields": 0,
+      "bytes": 128,
+      "code": "[]",
+      "file": "owned-main-bootstrap.js"
+    },
+    {
+      "kind": "ArrayExpression",
+      "line": 90,
+      "fields": 1,
+      "bytes": 160,
+      "code": "[renderer]",
+      "file": "owned-main-bootstrap.js"
+    },
+    {
+      "kind": "ArrayExpression",
+      "line": 90,
+      "fields": 0,
+      "bytes": 128,
+      "code": "[]",
+      "file": "owned-main-bootstrap.js"
+    },
+    {
+      "kind": "ArrayExpression",
+      "line": 90,
+      "fields": 0,
+      "bytes": 128,
+      "code": "[]",
+      "file": "owned-main-bootstrap.js"
+    },
+    {
+      "kind": "ArrayExpression",
+      "line": 92,
+      "fields": 0,
+      "bytes": 128,
+      "code": "[]",
+      "file": "owned-main-bootstrap.js"
+    },
+    {
+      "kind": "ArrayExpression",
+      "line": 92,
+      "fields": 0,
+      "bytes": 128,
+      "code": "[]",
+      "file": "owned-main-bootstrap.js"
+    },
+    {
+      "kind": "ArrayExpression",
+      "line": 102,
+      "fields": 0,
+      "bytes": 128,
+      "code": "[]",
+      "file": "owned-main-bootstrap.js"
+    },
+    {
+      "kind": "ArrayExpression",
+      "line": 103,
+      "fields": 0,
+      "bytes": 128,
+      "code": "[]",
+      "file": "owned-main-bootstrap.js"
+    },
+    {
+      "kind": "ObjectExpression",
+      "line": 108,
+      "fields": 14,
+      "bytes": 576,
+      "code": "{phase,busy,closing,evaluationPossible,evaluatedScripts,claimed,failedCode,moduleBytes:1324128,retirementModuleBytes:16384,startupModuleBytes:STARTUP_MODULE_METADATA_BYTES,startupControllerBytes:STARTUP_CONTROLLER_METADATA_BYTES,mainPermission:false,lifetime:evaluationPossible?'REALM_RETAINED':'PRE_EVALUATION',startup:Freeze({state:startupState,registered:startupRegistered,registering:startupRegistering,claiming:startupClaiming,disposing:startupDisposing,claimed:startupClaimed,busy:startupBusy,closing:startupClosing,disposed:startupDisposed,failureCode:startupFailure?startupCode(startupFailure):null,cleanupFailureCode:startupCleanupFailure?startupCode(startupCleanupFailure):null,rendererRetained:startupRenderer!==null,backendRetained:startupBackend!==null,helper:startupOwner&&startupOwnerInspect?Apply(startupOwnerInspect,startupOwner,[]):null})}",
+      "file": "owned-main-bootstrap.js"
+    },
+    {
+      "kind": "ObjectExpression",
+      "line": 108,
+      "fields": 14,
+      "bytes": 576,
+      "code": "{state:startupState,registered:startupRegistered,registering:startupRegistering,claiming:startupClaiming,disposing:startupDisposing,claimed:startupClaimed,busy:startupBusy,closing:startupClosing,disposed:startupDisposed,failureCode:startupFailure?startupCode(startupFailure):null,cleanupFailureCode:startupCleanupFailure?startupCode(startupCleanupFailure):null,rendererRetained:startupRenderer!==null,backendRetained:startupBackend!==null,helper:startupOwner&&startupOwnerInspect?Apply(startupOwnerInspect,startupOwner,[]):null}",
+      "file": "owned-main-bootstrap.js"
+    },
+    {
+      "kind": "ArrayExpression",
+      "line": 108,
+      "fields": 0,
+      "bytes": 128,
+      "code": "[]",
+      "file": "owned-main-bootstrap.js"
+    },
+    {
+      "kind": "ObjectExpression",
+      "line": 115,
+      "fields": 8,
+      "bytes": 384,
+      "code": "{FORMAT:'sphere-main-owned-bootstrap/1',claimSurfacePreparation,retainAppStartupRenderer,claimAppStartup,disposeAppStartup,inspect,close,mainPermission:false}",
+      "file": "owned-main-bootstrap.js"
+    },
+    {
+      "kind": "ArrayExpression",
+      "line": 122,
+      "fields": 0,
+      "bytes": 128,
+      "code": "[]",
+      "file": "owned-main-bootstrap.js"
+    },
+    {
+      "kind": "ArrayExpression",
+      "line": 126,
+      "fields": 0,
+      "bytes": 128,
+      "code": "[]",
+      "file": "owned-main-bootstrap.js"
+    },
+    {
+      "kind": "ObjectExpression",
+      "line": 140,
+      "fields": 2,
+      "bytes": 192,
+      "code": "{owner:'owned-startup-module-delta',phase:'additive-before-helper-renderer-surface-evaluation'}",
+      "file": "owned-main-bootstrap.js"
+    },
+    {
+      "kind": "ArrayExpression",
+      "line": 18,
+      "fields": 9,
+      "bytes": 416,
+      "code": "[appStartupRetain,appDraw,appClaim,appStatus,appGeometryPreparing,appAttach,appIsOwner,appLossObserve,appLossAdvance]",
+      "file": "app.js"
+    },
+    {
+      "kind": "ArrayExpression",
+      "line": 26,
+      "fields": 3,
+      "bytes": 224,
+      "code": "[AppRenderer,renderer,appNonce]",
+      "file": "app.js"
+    },
+    {
+      "kind": "ArrayExpression",
+      "line": 136,
+      "fields": 4,
+      "bytes": 256,
+      "code": "[AppRenderer,app,renderer,appNonce]",
+      "file": "app.js"
+    },
+    {
+      "kind": "ArrayExpression",
+      "line": 136,
+      "fields": 2,
+      "bytes": 192,
+      "code": "[()=>holdAppStartup(Error('Owned startup is held until the complete Main graph is integrated.')),holdAppStartup]",
+      "file": "app.js"
+    }
+  ],
+  "ownSites": [
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 21,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 21,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 22,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 23,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 24,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 24,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 24,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 24,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 25,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 25,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 26,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 26,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 30,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 33,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 34,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 34,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 39,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 39,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 39,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 40,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 40,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 40,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 41,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 41,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 41,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 41,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 53,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 58,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 60,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 77,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 77,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 77,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 77,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 77,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 81,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 81,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 81,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 81,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 81,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 89,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 89,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 89,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 89,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 89,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 89,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 91,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 91,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 91,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 91,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 91,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 91,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 103,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 116,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 139,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 139,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 139,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 139,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 139,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 139,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 151,
+      "callee": "Own"
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 152,
+      "callee": "Own"
+    },
+    {
+      "file": "app.js",
+      "line": 11,
+      "callee": "appStartupOwn"
+    },
+    {
+      "file": "app.js",
+      "line": 11,
+      "callee": "appStartupOwn"
+    },
+    {
+      "file": "app.js",
+      "line": 12,
+      "callee": "appStartupOwn"
+    }
+  ],
+  "descriptorUpper": 82,
+  "newFunctions": [
+    {
+      "sourceCode": "function startupCode(error){const d=error&&(typeof error==='object'||typeof error==='function')?Own(error,'code'):null;return d&&Has(d,'value')&&typeof d.value==='string'?d.value:'OWNED_APP_STARTUP_FAILED';}",
+      "name": "startupCode",
+      "type": "FunctionDeclaration",
+      "ordinaryConstructible": true,
+      "line": 58,
+      "column": 0,
+      "endLine": 58,
+      "constructorOnly": false,
+      "captures": [
+        "Has",
+        "Own"
+      ],
+      "unresolvedGlobals": [],
+      "bytes": 192,
+      "kind": "new-function",
+      "prior": null,
+      "file": "owned-main-bootstrap.js"
+    },
+    {
+      "sourceCode": "function startupError(code){const e=new ErrorType('Owned startup is held until the complete Main graph is integrated');Define(e,'code',{value:code,enumerable:true});return e;}",
+      "name": "startupError",
+      "type": "FunctionDeclaration",
+      "ordinaryConstructible": true,
+      "line": 59,
+      "column": 0,
+      "endLine": 59,
+      "constructorOnly": false,
+      "captures": [
+        "Define",
+        "ErrorType"
+      ],
+      "unresolvedGlobals": [],
+      "bytes": 192,
+      "kind": "new-function",
+      "prior": null,
+      "file": "owned-main-bootstrap.js"
+    },
+    {
+      "sourceCode": "function ownerMethod(owner,name){const d=Own(owner,name);if(!d||!Has(d,'value')||d.writable||d.configurable||typeof d.value!=='function')throw startupError('FOREIGN_STARTUP_OPERATION');return d.value;}",
+      "name": "ownerMethod",
+      "type": "FunctionDeclaration",
+      "ordinaryConstructible": true,
+      "line": 60,
+      "column": 0,
+      "endLine": 60,
+      "constructorOnly": false,
+      "captures": [
+        "Has",
+        "Own",
+        "startupError"
+      ],
+      "unresolvedGlobals": [],
+      "bytes": 224,
+      "kind": "new-function",
+      "prior": null,
+      "file": "owned-main-bootstrap.js"
+    },
+    {
+      "sourceCode": "function checkStartup(){check();if(startupClosing)throw startupError('APP_STARTUP_CLOSING');}",
+      "name": "checkStartup",
+      "type": "FunctionDeclaration",
+      "ordinaryConstructible": true,
+      "line": 61,
+      "column": 0,
+      "endLine": 61,
+      "constructorOnly": false,
+      "captures": [
+        "check",
+        "startupClosing",
+        "startupError"
+      ],
+      "unresolvedGlobals": [],
+      "bytes": 224,
+      "kind": "new-function",
+      "prior": null,
+      "file": "owned-main-bootstrap.js"
+    },
+    {
+      "sourceCode": "async function runAppStartup(){\n startupBusy=true;startupState='SOURCE_ADMISSION';\n try{\n  checkStartup();startupOwner=await Apply(startupPrepare,startupModule,[{renderer:startupRenderer,metadataOwner,sourceOwner,profileEnvelope:startupEnvelope,readSource}]);checkStartup();\n  if(Apply(startupBrand,startupModule,[startupOwner])!==true)throw startupError('FOREIGN_STARTUP_OPERATION');\n  startupStep=ownerMethod(startupOwner,'step');startupBackendCreate=ownerMethod(startupOwner,'createSharedBackend');startupOwnerInspect=ownerMethod(startupOwner,'inspect');startupState='HELPER_STEPS';\n  for(let i=0;i<16;i++){await new PromiseType(resolve=>Apply(startupSchedule,root,[resolve,0]));checkStartup();const done=Apply(startupStep,startupOwner,[]);if(done!==(i===15))throw startupError('STARTUP_STEP_CONTRACT');}\n  startupState='G_CONSTRUCTION';checkStartup();startupBackend=Apply(startupBackendCreate,startupOwner,[]);checkStartup();\n  startupState='HELD_MAIN_GRAPH_INCOMPLETE';throw startupError('HELD_MAIN_GRAPH_INCOMPLETE');\n }catch(error){startupFailure=error;if(startupState!=='HELD_MAIN_GRAPH_INCOMPLETE')startupState='REJECTED_RETAINED_FOR_DISPOSAL';throw error;}\n finally{startupBusy=false;}\n}",
+      "name": "runAppStartup",
+      "type": "FunctionDeclaration",
+      "ordinaryConstructible": true,
+      "line": 62,
+      "column": 0,
+      "endLine": 73,
+      "constructorOnly": false,
+      "captures": [
+        "Apply",
+        "PromiseType",
+        "checkStartup",
+        "metadataOwner",
+        "ownerMethod",
+        "readSource",
+        "root",
+        "sourceOwner",
+        "startupBackend",
+        "startupBackendCreate",
+        "startupBrand",
+        "startupBusy",
+        "startupEnvelope",
+        "startupError",
+        "startupFailure",
+        "startupModule",
+        "startupOwner",
+        "startupOwnerInspect",
+        "startupPrepare",
+        "startupRenderer",
+        "startupSchedule",
+        "startupState",
+        "startupStep"
+      ],
+      "unresolvedGlobals": [],
+      "bytes": 864,
+      "kind": "new-function",
+      "prior": null,
+      "file": "owned-main-bootstrap.js"
+    },
+    {
+      "sourceCode": "resolve=>Apply(startupSchedule,root,[resolve,0])",
+      "name": "callback:46",
+      "type": "ArrowFunctionExpression",
+      "ordinaryConstructible": false,
+      "line": 68,
+      "column": 46,
+      "endLine": 68,
+      "constructorOnly": false,
+      "captures": [
+        "Apply",
+        "root",
+        "startupSchedule"
+      ],
+      "unresolvedGlobals": [],
+      "bytes": 224,
+      "kind": "new-function",
+      "prior": null,
+      "file": "owned-main-bootstrap.js"
+    },
+    {
+      "sourceCode": "function retainAppStartupRenderer(Renderer,renderer,nonce){\n if(startupRegistering)fail('APP_STARTUP_REGISTRATION_BUSY');startupRegistering=true;\n try{\n checkDocument();const r=Own(root,'SphereRenderer'),canvas=renderer&&Own(renderer,'canvas'),context=renderer&&Own(renderer,'gl'),brand=Renderer&&Own(Renderer,'isRenderer'),dispose=Renderer&&Own(Renderer.prototype,'dispose');\n if(phase!=='app-script'||!claimed||startupRegistered||Renderer!==expectedRenderer||!r||!Has(r,'value')||r.value!==expectedRenderer||!canvas||!Has(canvas,'value')||canvas.value!==surfaceCanvas||!context||!Has(context,'value')||nonce!==surfaceNonce||!brand||!Has(brand,'value')||brand.value!==rendererBrand||!dispose||!Has(dispose,'value')||dispose.value!==rendererDispose||Apply(rendererBrand,Renderer,[renderer])!==true||Apply(surfaceMatches,expectedSurface,[renderer,metadataOwner,sourceOwner,context.value])!==true||activePath!=='app.js'||!activeNode||Apply(currentScript,doc,[])!==activeNode||Apply(src.get,activeNode,[])!==activeUrl)fail('FOREIGN_BOOTSTRAP_APP_RENDERER');\n // Recheck the source tuple after the original Renderer brand call, which may\n // consult a realm method. A stopped constructor still retains its teardown root.\n checkDocument();const finalRenderer=Own(root,'SphereRenderer'),finalCanvas=Own(renderer,'canvas'),finalContext=Own(renderer,'gl'),finalBrand=Own(Renderer,'isRenderer'),finalDispose=Own(Renderer.prototype,'dispose');\n if(startupRegistered||phase!=='app-script'||!claimed||nonce!==surfaceNonce||!finalRenderer||!Has(finalRenderer,'value')||finalRenderer.value!==expectedRenderer||!finalCanvas||!Has(finalCanvas,'value')||finalCanvas.value!==surfaceCanvas||!finalContext||!Has(finalContext,'value')||finalContext.value!==context.value||!finalBrand||!Has(finalBrand,'value')||finalBrand.value!==rendererBrand||!finalDispose||!Has(finalDispose,'value')||finalDispose.value!==rendererDispose||activePath!=='app.js'||Apply(currentScript,doc,[])!==activeNode||Apply(src.get,activeNode,[])!==activeUrl)fail('FOREIGN_BOOTSTRAP_APP_RENDERER');\n startupRenderer=renderer;startupRegistered=true;startupDisposed=false;startupState='RENDERER_RETAINED_BEFORE_UI';if(closing||startupClosing)throw startupError('APP_STARTUP_CLOSING');\n }finally{startupRegistering=false;}\n}",
+      "name": "retainAppStartupRenderer",
+      "type": "FunctionDeclaration",
+      "ordinaryConstructible": true,
+      "line": 74,
+      "column": 0,
+      "endLine": 85,
+      "constructorOnly": false,
+      "captures": [
+        "Apply",
+        "Has",
+        "Own",
+        "activeNode",
+        "activePath",
+        "activeUrl",
+        "checkDocument",
+        "claimed",
+        "closing",
+        "currentScript",
+        "doc",
+        "expectedRenderer",
+        "expectedSurface",
+        "fail",
+        "metadataOwner",
+        "phase",
+        "rendererBrand",
+        "rendererDispose",
+        "root",
+        "sourceOwner",
+        "src",
+        "startupClosing",
+        "startupDisposed",
+        "startupError",
+        "startupRegistered",
+        "startupRegistering",
+        "startupRenderer",
+        "startupState",
+        "surfaceCanvas",
+        "surfaceMatches",
+        "surfaceNonce"
+      ],
+      "unresolvedGlobals": [],
+      "bytes": 1120,
+      "kind": "new-function",
+      "prior": null,
+      "file": "owned-main-bootstrap.js"
+    },
+    {
+      "sourceCode": "function claimAppStartup(Renderer,app,renderer,nonce){\n if(startupClaiming)fail('APP_STARTUP_CLAIM_BUSY');startupClaiming=true;\n try{\n checkDocument();const r=Own(root,'SphereRenderer'),a=Own(root,'SphereApp'),ar=app&&Own(app,'renderer'),canvas=renderer&&Own(renderer,'canvas'),brand=Renderer&&Own(Renderer,'isRenderer'),dispose=Renderer&&Own(Renderer.prototype,'dispose');\n if(phase!=='app-script'||!claimed||!startupRegistered||startupRenderer!==renderer||startupClaimed||!startupEnvelope||!startupModule||Renderer!==expectedRenderer||!r||!Has(r,'value')||r.value!==expectedRenderer||!a||!Has(a,'value')||a.value!==app||!ar||!Has(ar,'value')||ar.value!==renderer||!canvas||!Has(canvas,'value')||canvas.value!==surfaceCanvas||nonce!==surfaceNonce||!brand||!Has(brand,'value')||brand.value!==rendererBrand||!dispose||!Has(dispose,'value')||dispose.value!==rendererDispose||Apply(rendererBrand,Renderer,[renderer])!==true||activePath!=='app.js'||!activeNode||Apply(currentScript,doc,[])!==activeNode||Apply(src.get,activeNode,[])!==activeUrl)fail('FOREIGN_BOOTSTRAP_APP_STARTUP');\n checkDocument();const finalRenderer=Own(root,'SphereRenderer'),finalApp=Own(root,'SphereApp'),finalAppRenderer=Own(app,'renderer'),finalCanvas=Own(renderer,'canvas'),finalBrand=Own(Renderer,'isRenderer'),finalDispose=Own(Renderer.prototype,'dispose');\n if(startupClaimed||!startupRegistered||startupRenderer!==renderer||phase!=='app-script'||nonce!==surfaceNonce||!finalRenderer||!Has(finalRenderer,'value')||finalRenderer.value!==expectedRenderer||!finalApp||!Has(finalApp,'value')||finalApp.value!==app||!finalAppRenderer||!Has(finalAppRenderer,'value')||finalAppRenderer.value!==renderer||!finalCanvas||!Has(finalCanvas,'value')||finalCanvas.value!==surfaceCanvas||!finalBrand||!Has(finalBrand,'value')||finalBrand.value!==rendererBrand||!finalDispose||!Has(finalDispose,'value')||finalDispose.value!==rendererDispose||activePath!=='app.js'||Apply(currentScript,doc,[])!==activeNode||Apply(src.get,activeNode,[])!==activeUrl)fail('FOREIGN_BOOTSTRAP_APP_STARTUP');\n startupClaimed=true;startupApp=app;startupRenderer=renderer;\n if(closing||startupClosing||startupDisposed){startupDisposed=false;startupState='REJECTED_PRECLAIM_STOP_RETAINED';startupFailure=startupError('APP_STARTUP_CLOSING');startupOperation=new PromiseType((_resolve,reject)=>reject(startupFailure));return startupOperation;}\n startupOperation=runAppStartup();return startupOperation;\n }finally{startupClaiming=false;}\n}",
+      "name": "claimAppStartup",
+      "type": "FunctionDeclaration",
+      "ordinaryConstructible": true,
+      "line": 86,
+      "column": 0,
+      "endLine": 97,
+      "constructorOnly": false,
+      "captures": [
+        "Apply",
+        "Has",
+        "Own",
+        "PromiseType",
+        "activeNode",
+        "activePath",
+        "activeUrl",
+        "checkDocument",
+        "claimed",
+        "closing",
+        "currentScript",
+        "doc",
+        "expectedRenderer",
+        "fail",
+        "phase",
+        "rendererBrand",
+        "rendererDispose",
+        "root",
+        "runAppStartup",
+        "src",
+        "startupApp",
+        "startupClaimed",
+        "startupClaiming",
+        "startupClosing",
+        "startupDisposed",
+        "startupEnvelope",
+        "startupError",
+        "startupFailure",
+        "startupModule",
+        "startupOperation",
+        "startupRegistered",
+        "startupRenderer",
+        "startupState",
+        "surfaceCanvas",
+        "surfaceNonce"
+      ],
+      "unresolvedGlobals": [],
+      "bytes": 1248,
+      "kind": "new-function",
+      "prior": null,
+      "file": "owned-main-bootstrap.js"
+    },
+    {
+      "sourceCode": "(_resolve,reject)=>reject(startupFailure)",
+      "name": "callback:199",
+      "type": "ArrowFunctionExpression",
+      "ordinaryConstructible": false,
+      "line": 94,
+      "column": 199,
+      "endLine": 94,
+      "constructorOnly": false,
+      "captures": [
+        "startupFailure"
+      ],
+      "unresolvedGlobals": [],
+      "bytes": 160,
+      "kind": "new-function",
+      "prior": null,
+      "file": "owned-main-bootstrap.js"
+    },
+    {
+      "sourceCode": "function disposeAppStartup(){\n if(startupDisposing)return false;startupDisposing=true;\n try{\n startupClosing=true;if(!startupClaimed)closing=true;if(startupBusy)return false;if(startupDisposed&&startupRenderer===null)return true;\n if(!startupRenderer){if(busy)return false;const surface=surfacePreparation?Apply(ownerMethod(surfacePreparation,'inspect'),surfacePreparation,[]):null;if(surface?.open&&(surface.consumed||surface.published||surface.hasRenderer)){startupState='HELD_SURFACE_WITHOUT_REGISTERED_RENDERER';return false;}startupDisposed=true;startupState='DISPOSED_BEFORE_CLAIM';return true;}\n try{Apply(rendererDispose,startupRenderer,[]);if(Own(startupRenderer,'disposalComplete')?.value!==true)return false;}\n catch(error){startupCleanupFailure=error;return false;}\n startupRenderer=null;startupApp=null;startupBackend=null;surfaceNonce=null;surfaceCanvas=null;startupDisposed=true;startupState='DISPOSED_EVALUATED_REALM_RETAINED';return true;\n }finally{startupDisposing=false;}\n}",
+      "name": "disposeAppStartup",
+      "type": "FunctionDeclaration",
+      "ordinaryConstructible": true,
+      "line": 98,
+      "column": 0,
+      "endLine": 107,
+      "constructorOnly": false,
+      "captures": [
+        "Apply",
+        "Own",
+        "busy",
+        "closing",
+        "ownerMethod",
+        "rendererDispose",
+        "startupApp",
+        "startupBackend",
+        "startupBusy",
+        "startupClaimed",
+        "startupCleanupFailure",
+        "startupClosing",
+        "startupDisposed",
+        "startupDisposing",
+        "startupRenderer",
+        "startupState",
+        "surfaceCanvas",
+        "surfaceNonce",
+        "surfacePreparation"
+      ],
+      "unresolvedGlobals": [],
+      "bytes": 736,
+      "kind": "new-function",
+      "prior": null,
+      "file": "owned-main-bootstrap.js"
+    },
+    {
+      "sourceCode": "function buildStartupEnvelope(){return {\"body\":{\"closure\":[{\"bytes\":4137,\"path\":\"biome-service/metadata-budget.js\",\"sha256\":\"9318446452e9a99fee2873eaf0d072bd76c39f714e4d1bceadf6057d04df6635\"},{\"bytes\":36785,\"path\":\"biome-service/native/main-baseline-resource-records.js\",\"sha256\":\"ce402c73b6b61f5384e30d995e044aa083d9b32b5b02d50ba1ce2dd699628a0b\"},{\"bytes\":31763,\"path\":\"biome-service/native/main-default-surface-facts.js\",\"sha256\":\"34e6b98a2b32d54d6eda0b5521858ff2cd4df241dbb7291a384f4fc981fb8115\"},{\"bytes\":18111,\"path\":\"biome-service/native/main-startup-draw-owner.js\",\"sha256\":\"422a8a07ed168ad741ef43f922b0ef231302e9dfc7eebd5ea58177827147a3aa\"},{\"bytes\":31960,\"path\":\"biome-service/native/positions-backend.js\",\"sha256\":\"f212f18d8fefa60dc25b5f1c3cf3689da1beb53e3a365c5bd7f05de16c4c6421\"},{\"bytes\":76077,\"path\":\"biome-service/native/shared-gpu-backend.js\",\"sha256\":\"6699c52a359d14ee5aab85dc0dd8d305ff955e7b87ea5bc7d8a547c9d8b53251\"},{\"bytes\":16839,\"path\":\"biome-service/native/source-admission.js\",\"sha256\":\"d1676c985688bb3330ae2e35e1194c8b2c05116652939e1b183e0047751d8a7f\"},{\"bytes\":24045,\"path\":\"biome-service/records.js\",\"sha256\":\"70dbb2302f88f5f950de3eb2d3e94951a1537fdeab54640e7bb95746d69c1556\"},{\"bytes\":154345,\"path\":\"renderer.js\",\"sha256\":\"e513ac215b5c4a6c731664a703ddd54061224d751d891c53b5b1a3f16389500d\"}],\"format\":\"sphere-main-startup-draw-owner/1\",\"fragmentSha256\":\"6fced3602e1961f933f812a863cf193dfa3a7affcb91f417060b3b296bea5017\",\"id\":\"main-startup-draw-owner-v1\",\"limits\":{\"backendLifetime\":\"EVALUATED_REALM\",\"backendMetadataBytes\":131072,\"mainPermission\":false,\"maxBackendsPerRealm\":1,\"maxPrograms\":1,\"maxPrototypeDepth\":8,\"maxShaders\":2,\"maxSteps\":16,\"maxVertexArrays\":1,\"metadataBytes\":131072,\"nativeBytes\":\"UNMEASURED\",\"shader\":\"positions-simple-light-v1\"},\"vertexSha256\":\"d34503379a3f4f52fc2a7f9aa3eba173507a474d53108fcefb7ad4ca2ec1ca3f\"},\"digest\":\"987bf7095c3da5ab6ac39fae2fb03409c87f12c40f8e4993f24aea7a400b1021\"};}",
+      "name": "buildStartupEnvelope",
+      "type": "FunctionDeclaration",
+      "ordinaryConstructible": true,
+      "line": 170,
+      "column": 0,
+      "endLine": 170,
+      "constructorOnly": false,
+      "captures": [],
+      "unresolvedGlobals": [],
+      "bytes": 128,
+      "kind": "new-function",
+      "prior": null,
+      "file": "owned-main-bootstrap.js"
+    },
+    {
+      "sourceCode": "function holdAppStartup(error){capturing=true;$('error').hidden=false;$('error').textContent=error?.message||'Owned startup is held until the complete Main graph is integrated.';}",
+      "name": "holdAppStartup",
+      "type": "FunctionDeclaration",
+      "ordinaryConstructible": true,
+      "line": 14,
+      "column": 1,
+      "endLine": 14,
+      "constructorOnly": false,
+      "captures": [
+        "$",
+        "capturing"
+      ],
+      "unresolvedGlobals": [],
+      "bytes": 192,
+      "kind": "new-function",
+      "prior": null,
+      "file": "app.js"
+    },
+    {
+      "sourceCode": "()=>holdAppStartup(Error('Owned startup is held until the complete Main graph is integrated.'))",
+      "name": "callback:258",
+      "type": "ArrowFunctionExpression",
+      "ordinaryConstructible": false,
+      "line": 136,
+      "column": 258,
+      "endLine": 136,
+      "constructorOnly": false,
+      "captures": [
+        "holdAppStartup"
+      ],
+      "unresolvedGlobals": [
+        "Error"
+      ],
+      "bytes": 160,
+      "kind": "new-function",
+      "prior": null,
+      "file": "app.js"
+    }
+  ],
+  "functionOwnStrings": [
+    {
+      "name": "startupCode",
+      "file": "owned-main-bootstrap.js",
+      "bytes": 640
+    },
+    {
+      "name": "startupError",
+      "file": "owned-main-bootstrap.js",
+      "bytes": 640
+    },
+    {
+      "name": "ownerMethod",
+      "file": "owned-main-bootstrap.js",
+      "bytes": 640
+    },
+    {
+      "name": "checkStartup",
+      "file": "owned-main-bootstrap.js",
+      "bytes": 640
+    },
+    {
+      "name": "runAppStartup",
+      "file": "owned-main-bootstrap.js",
+      "bytes": 640
+    },
+    {
+      "name": "callback:46",
+      "file": "owned-main-bootstrap.js",
+      "bytes": 640
+    },
+    {
+      "name": "retainAppStartupRenderer",
+      "file": "owned-main-bootstrap.js",
+      "bytes": 672
+    },
+    {
+      "name": "claimAppStartup",
+      "file": "owned-main-bootstrap.js",
+      "bytes": 640
+    },
+    {
+      "name": "callback:199",
+      "file": "owned-main-bootstrap.js",
+      "bytes": 640
+    },
+    {
+      "name": "disposeAppStartup",
+      "file": "owned-main-bootstrap.js",
+      "bytes": 672
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "file": "owned-main-bootstrap.js",
+      "bytes": 672
+    },
+    {
+      "name": "holdAppStartup",
+      "file": "app.js",
+      "bytes": 640
+    },
+    {
+      "name": "callback:258",
+      "file": "app.js",
+      "bytes": 640
+    }
+  ],
+  "deltaLogical": 367104,
+  "deltaRounded4096": 368640,
+  "deltaHeadroom": 1536,
+  "completeLogical": 754912,
+  "completeSeparateRequested": 757760,
+  "startupHelperRendererSurfaceModuleSeparate": 176128,
+  "pureModuleSeparate": 1324128,
+  "retirementModuleSeparate": 16384,
+  "actualQSBookkeepingAdditional": true,
+  "requirements": [
+    "Prospectively reserve the rounded additive controller/App amount before added captures, generated envelopes or App evaluation.",
+    "Keep old389120 controller, old1324128 pure module and old16384 retirement module reservations separate and intact.",
+    "Keep176128 helper/Renderer/Surface module reservation independent of this controller/App delta.",
+    "Accept at most one startup registration and operation, with synchronous private guards against callback reentry; at most one active disposal adapter.",
+    "Diagnostics and closed opaque handles retained by external callers require their own explicit caller ownership contract."
+  ],
+  "scope": "Fixed authored logical ABI, including conservative semantic promise/job/continuation shapes. Native VM allocation/layout/GC/JIT/function internals, raw host/native exceptions, driver/compiler/backing and full ordinary-host/native Main envelopes remain UNMEASURED or separate. No AST operator count, fee, gate, source price, or native timing claim is changed."
+}

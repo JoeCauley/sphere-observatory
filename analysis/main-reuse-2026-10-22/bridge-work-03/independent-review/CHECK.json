@@ -1,0 +1,70 @@
+{
+  "format": "sphere-independent-bounded-bridge-review-check/1",
+  "utc": "2026-10-23T00:31:55.361Z",
+  "status": "PASS_CONDITIONAL_V7_OBSTRUCTION_REVIEW",
+  "reviewSource": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-startup-draw-helper-2026-10-22-01/main-startup-stage-candidate-04",
+  "reviewedSourceFiles": 20,
+  "allReviewedPinsMatchC4Inventory": true,
+  "artifacts": [
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-ordinary-bridge-work-review-2026-10-22-01/audit-01.cjs",
+      "bytes": 18191,
+      "sha256": "ea4e49286f8e78e2f0e7ff31f9485eb3d09901171ef89c5841fea0568795489e"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-ordinary-bridge-work-review-2026-10-22-01/REVIEW.json",
+      "bytes": 28648,
+      "sha256": "0feb53c440761229f82492cc101f25cd42e56d9c4453e05c94e6711e1875d128"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-ordinary-bridge-work-review-2026-10-22-01/READ-FIRST.md",
+      "bytes": 1970,
+      "sha256": "028180865face3b8cd3e7f5e774dcffd7f5c7d11cbcf4e96bd75dde041373077"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-ordinary-bridge-work-review-2026-10-22-01/simulation-01.json",
+      "bytes": 4398,
+      "sha256": "256dc4c794f7a2471353424c8f23568e6ec441da6d95f0163cf4f5d29f406963"
+    }
+  ],
+  "inputs": [
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/ordinary-main-demand-work-contract-01/resource-api-coverage-02.json",
+      "bytes": 105601,
+      "sha256": "9bdbf2951a6b8252e472ef667fbfbcdadeac148855f4b619c80fb178345b7102"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-ordinary-bridge-work-2026-10-22-01/scheduling-obstruction.json",
+      "bytes": 2589,
+      "sha256": "d2dc293ec036726a79d218fe7b7250dd377297c53fe3f3caa5d64f7952a4d5b0"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-ordinary-bridge-work-2026-10-22-01/current-named-operation-graph.json",
+      "bytes": 12631,
+      "sha256": "e2aa95df0bcd8543652102fb89fb6d2921c01fa164e230671e0566309b613f29"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-ordinary-bridge-work-2026-10-22-01/derivation-attempts.json",
+      "bytes": 556,
+      "sha256": "2624f4ab2f6fc65019b39c10a1eaa54e71d7e269a4403102357a329fe6117be4"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-ordinary-bridge-work-2026-10-22-01/source-check.json",
+      "bytes": 1294,
+      "sha256": "7c5f71832392468a1b8e3fcea6aa96d85420211d13a1903b2d27c2ed7347b8f3"
+    }
+  ],
+  "actualDebitsUpper": 192,
+  "conditionalNamedPayloadLower": 200,
+  "invalidInterim228Excluded": true,
+  "standaloneV6NotCovered": true,
+  "sourceChanged": false,
+  "tableSelected": false,
+  "limitsChanged": false,
+  "browserActions": 0,
+  "serverActions": 0,
+  "gitActions": 0,
+  "P05": "OPEN",
+  "Main": "HELD",
+  "physicalNativeColdWork": "UNQUALIFIED"
+}

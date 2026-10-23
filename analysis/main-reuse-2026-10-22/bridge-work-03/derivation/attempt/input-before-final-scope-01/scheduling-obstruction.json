@@ -1,0 +1,32 @@
+{
+  "status": "CURRENT_DEMANDED_STAGE7_CANNOT_BE_QUALIFIED_BY_ONE_FULL_VISIT_FEE_UNDER_STATED_VOCABULARY",
+  "sourceClaimScope": "Exact C4 code; read-only arithmetic and source-path check. No actual Main execution/native timing/technology impossibility claim.",
+  "actualDebits": {
+    "cap": 4096,
+    "surfaceFee": 128,
+    "stage7SurfacePayments": 2,
+    "batchFee": 3584,
+    "following": 64,
+    "remainingForVisitAtBest": 192,
+    "formula": "4096-128(prefix Surface)-128(Demand.live Base Surface)-3584(batch retain)-64(child following)=192; all other caller/shared-slice debits omitted optimistically."
+  },
+  "proposedVocabularyLowerBound": {
+    "terms": {
+      "unconditionalDemandNativeRows": 57,
+      "baseConstructionCheck": 54,
+      "fiveBindingLive": 75,
+      "repeatedPortRendererState": 14
+    },
+    "total": 200,
+    "excludes": "All Surface body/pay work, all caller pre-debit Base work, R/capability/port searches not named in the subset, RendererOrigin, scope control, content row/native checks and every batch-retain body operation.",
+    "nativeRowsDerivation": "27 initial native slot captures +5 typed-array slots +7 Canvas slots +5 Object/Reflect/Number slots +13 final Image/URL/gl/Abort slots=57 unconditional; all conditional collection/iterator slots excluded.",
+    "constructionDerivation": "group1+10 exact state records+28 exact field rows+7 Ground initial+7 Ground info+1 Atmosphere noise=54.",
+    "bindingLiveDerivation": "Each exact closed Binding.live: own record1+R checkContext/currentEpoch2+bounded context method row1+native loss1+BasePublishedParent10=15. readyFromBaseline calls live once and contentState four times, each calls live; all five execute on success.",
+    "portRendererDerivation": "Demand.live port.check→demandedGroup→demandedRows→checkState(Renderer): own state1+13 captured Renderer fields=14; excludes all searches and all other port rows.",
+    "conclusion": "No positive V both >=200 and <=192. This proves a scheduling obstruction for this all-readiness-to-visit payment partition and explicit proposed vocabulary. A new disjoint payer/phase implementation must be source-derived; arbitrary unqualified caller prepayment is not a closure."
+  },
+  "correction": "An early message used the Source37 DemandPort42 upper envelope in a lower subset228. Corrected before final receipt:42 is not a lower bound. Final200 uses only14 unavoidable fresh Renderer state rows and excludes both child searches. See derivation-attempts.json.",
+  "noTableSelected": true,
+  "noLimitsChanged": true,
+  "noSourcesChanged": true
+}

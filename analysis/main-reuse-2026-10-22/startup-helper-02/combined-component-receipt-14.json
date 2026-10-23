@@ -1,0 +1,91 @@
+{
+  "format": "sphere-main-startup-combined-component/1",
+  "utc": "2026-10-23T00:15:32.085Z",
+  "status": "PASS_BOUNDED_COMPONENT_MAIN_HELD",
+  "source": "main-startup-stage-candidate-04/source",
+  "sourceFilesVerified": 521,
+  "javascriptParses": 425,
+  "modelCases": {
+    "helper": 31,
+    "appLoader": 21,
+    "total": 52
+  },
+  "stageControls": {
+    "cases": 18,
+    "parentSuccessorExecutions": 36,
+    "negativeOriginalFactories": 2,
+    "allRefuse": true
+  },
+  "native": {
+    "seal": {
+      "path": "native-app-seal-14.json",
+      "bytes": 2187,
+      "sha256": "591af5463dba848f1829c485542b3b1afbb7590a03f6968b8dbf68319112d150"
+    },
+    "case": "PASS_NATIVE_ACTUAL_APP_STARTUP_HELD_AND_DISPOSED",
+    "mainFrames": 0,
+    "helperSteps": 16
+  },
+  "sourceChangesFromC3": [
+    "Baseline final-stage classification",
+    "bootstrap Baseline row and Records digest"
+  ],
+  "funding": {
+    "newControllerLogical": 367104,
+    "newControllerReservation": 368640,
+    "inheritedControllerLogical": 387808,
+    "inheritedControllerReservation": 389120,
+    "newModuleLogical": 172320,
+    "newModuleReservation": 176128,
+    "helperLogical": 114848,
+    "helperReservation": 131072,
+    "backendAndRealmLogical": 116576,
+    "backendReservation": 131072,
+    "surfaceLogical": 79232,
+    "surfaceReservation": 131072,
+    "ABIOnly": true,
+    "fullHostQualified": false,
+    "nativeBytes": null
+  },
+  "productMainGate": false,
+  "mainPermission": false,
+  "p05": "OPEN",
+  "next": "Derive current combined Baseline v7 ORDINARY_BRIDGE_WORK admission/visit/use/close, with prepaid caller coverage and original-owner partial cleanup; independently review before any source selection.",
+  "nativeCleanup": {
+    "server": {
+      "path": "completed-test-server-cleanup-02.json",
+      "bytes": 298,
+      "sha256": "8a697626d5e392fbf34f382f9336833107092793a0a16f3056518153373c90c2"
+    },
+    "testTabClose": "ATTEMPTED_BUT_UNCONFIRMED_BROWSER_CONTROL_BECAME_UNAVAILABLE_AFTER_SAVED_PASS_SCREENSHOT",
+    "preexistingTabsAndServersUntouched": true
+  },
+  "pins": [
+    {
+      "path": "source-inventory-01.json",
+      "bytes": 88362,
+      "sha256": "0e29c74c18c8cb52debd2664865b794e4903f9c6150fabbe3035883a23361271"
+    },
+    {
+      "path": "functional-seal-01.json",
+      "bytes": 21268,
+      "sha256": "da86a68763b09d80db3982a958e24ca568b3a23bfdd7535ba6fcc5b407593591"
+    },
+    {
+      "path": "control-helper-run-13.json",
+      "bytes": 7217,
+      "sha256": "6e108b446113bdc3a2233624ff0830c9ce0710575220c806dff0237b4aa910c2"
+    },
+    {
+      "path": "control-run-01.json",
+      "bytes": 5690,
+      "sha256": "ff4f647505276271e87f5fa035504c0a357f35d219a92bca3a86d827115cf5dc"
+    },
+    {
+      "path": "storage-shape-transfer-01.json",
+      "bytes": 1734,
+      "sha256": "5778f03e90893037ace1db984dfea3890f27d2d94866621f859a29f4ec360e5b"
+    }
+  ],
+  "scope": "The helper and actual App startup component are verified. Product Main remains held. Models are not native tests; the native case is not complete Main/P05 acceptance. The walking experience, simulation and original pack/runtime sources are unchanged."
+}

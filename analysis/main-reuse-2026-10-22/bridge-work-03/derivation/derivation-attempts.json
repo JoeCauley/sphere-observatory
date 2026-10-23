@@ -1,0 +1,18 @@
+{
+  "attempts": [
+    {
+      "id": 1,
+      "status": "CORRECTED_INTERIM_UPPER_AS_LOWER",
+      "interimLower": 228,
+      "problem": "DemandPort42 contains maximum search widths and is an upper envelope, not a lower bound.",
+      "communicatedCorrection": true
+    },
+    {
+      "id": 2,
+      "status": "FINAL_SOURCE_SUBSET_LOWER",
+      "lower": 200,
+      "upperV": 192,
+      "reason": "Uses only57 unconditional native rows +54 exact Base construction +5*15 Binding live +14 mandatory fresh Renderer state; all port searches omitted."
+    }
+  ]
+}

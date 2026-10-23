@@ -1,0 +1,179 @@
+{
+  "format": "sphere-main-startup-safety-preservation/1",
+  "utc": "2026-10-23T00:39:51.944275+00:00",
+  "status": "PASS_CURRENT_STARTUP_COMPONENT_AND_PRESERVATION",
+  "privateCheckpoint": "I:/Sphere/checkpoints/observatory-main-joint80-2026-10-21",
+  "manifestSha256": "f0c8c69615f324e2a28a6176a6d7b592167019cefd9c6f32c90bd12a333a8cd4",
+  "verification": {
+    "snapshots": 26,
+    "archiveEntriesVerified": 13452,
+    "recordsVerified": 2945,
+    "recordsAdded": 475,
+    "recordsBytes": 100781679,
+    "freshRestore": {
+      "snapshot": "main-startup-stage-current-c4",
+      "destination": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\restored-current-startup-check-09",
+      "files": 521,
+      "verified": true
+    },
+    "restorerUnchanged": true,
+    "earlierSnapshotAndRecordRowsExact": true,
+    "successorAliases": [],
+    "scope": "Exact source/progress preservation plus referenced bounded functional and conditional logical record review; no full Main/P05/cold/physical/timing acceptance.",
+    "pass": true
+  },
+  "earlierSnapshotAndRecordRowsExact": true,
+  "publicCopiedRecordsVerified": 45,
+  "historicalPublicBodiesExact": true,
+  "localReportLinksVerified": 19,
+  "sourcePreservation": {
+    "utc": "2026-10-23T00:25:35.585965+00:00",
+    "status": "PASS_EXACT_SOURCE_AND_HISTORICAL_PRESERVATION",
+    "sources": [
+      {
+        "name": "inherited-owned-context",
+        "files": 520,
+        "exact": true,
+        "inventorySha256": "e5f6c09058c36ff574815dc9aa93e1a08c9db76b0b76d015993f1fe75e845b29"
+      },
+      {
+        "name": "helper-C1",
+        "files": 521,
+        "exact": true,
+        "inventorySha256": "c1362e63dd9b0027c2d76b0273704d1e9cebe7bef92115aa8ffdf14927615543"
+      },
+      {
+        "name": "unselected-C2",
+        "files": 521,
+        "exact": true,
+        "inventorySha256": "77c6614ddc7860c18b396d4a98a19ce8e5284c68d80082deb1bb7c378c18b05a"
+      },
+      {
+        "name": "funded-C3",
+        "files": 521,
+        "exact": true,
+        "inventorySha256": "05e1b44df08a4d41dbb8d9870861e2e2674322b21c272d8ecf7198a76bbcdaf1"
+      },
+      {
+        "name": "current-C4",
+        "files": 521,
+        "exact": true,
+        "inventorySha256": "0e29c74c18c8cb52debd2664865b794e4903f9c6150fabbe3035883a23361271"
+      }
+    ],
+    "totalSourceFilesVerified": 2604,
+    "publicRuntimeTrackedChanges": [],
+    "productMainGate": false,
+    "ordinaryWork": "UNSELECTED",
+    "P05": "OPEN",
+    "unrelatedPrivateAtlasFiles": "NOT_OPERATED",
+    "walkingRuntimeAndSimulation": "NOT_EDITED"
+  },
+  "currentStartup": {
+    "format": "sphere-main-startup-combined-component/1",
+    "utc": "2026-10-23T00:15:32.085Z",
+    "status": "PASS_BOUNDED_COMPONENT_MAIN_HELD",
+    "source": "main-startup-stage-candidate-04/source",
+    "sourceFilesVerified": 521,
+    "javascriptParses": 425,
+    "modelCases": {
+      "helper": 31,
+      "appLoader": 21,
+      "total": 52
+    },
+    "stageControls": {
+      "cases": 18,
+      "parentSuccessorExecutions": 36,
+      "negativeOriginalFactories": 2,
+      "allRefuse": true
+    },
+    "native": {
+      "seal": {
+        "path": "native-app-seal-14.json",
+        "bytes": 2187,
+        "sha256": "591af5463dba848f1829c485542b3b1afbb7590a03f6968b8dbf68319112d150"
+      },
+      "case": "PASS_NATIVE_ACTUAL_APP_STARTUP_HELD_AND_DISPOSED",
+      "mainFrames": 0,
+      "helperSteps": 16
+    },
+    "sourceChangesFromC3": [
+      "Baseline final-stage classification",
+      "bootstrap Baseline row and Records digest"
+    ],
+    "funding": {
+      "newControllerLogical": 367104,
+      "newControllerReservation": 368640,
+      "inheritedControllerLogical": 387808,
+      "inheritedControllerReservation": 389120,
+      "newModuleLogical": 172320,
+      "newModuleReservation": 176128,
+      "helperLogical": 114848,
+      "helperReservation": 131072,
+      "backendAndRealmLogical": 116576,
+      "backendReservation": 131072,
+      "surfaceLogical": 79232,
+      "surfaceReservation": 131072,
+      "ABIOnly": true,
+      "fullHostQualified": false,
+      "nativeBytes": null
+    },
+    "productMainGate": false,
+    "mainPermission": false,
+    "p05": "OPEN",
+    "next": "Derive current combined Baseline v7 ORDINARY_BRIDGE_WORK admission/visit/use/close, with prepaid caller coverage and original-owner partial cleanup; independently review before any source selection.",
+    "nativeCleanup": {
+      "server": {
+        "path": "completed-test-server-cleanup-02.json",
+        "bytes": 298,
+        "sha256": "8a697626d5e392fbf34f382f9336833107092793a0a16f3056518153373c90c2"
+      },
+      "testTabClose": "ATTEMPTED_BUT_UNCONFIRMED_BROWSER_CONTROL_BECAME_UNAVAILABLE_AFTER_SAVED_PASS_SCREENSHOT",
+      "preexistingTabsAndServersUntouched": true
+    },
+    "pins": [
+      {
+        "path": "source-inventory-01.json",
+        "bytes": 88362,
+        "sha256": "0e29c74c18c8cb52debd2664865b794e4903f9c6150fabbe3035883a23361271"
+      },
+      {
+        "path": "functional-seal-01.json",
+        "bytes": 21268,
+        "sha256": "da86a68763b09d80db3982a958e24ca568b3a23bfdd7535ba6fcc5b407593591"
+      },
+      {
+        "path": "control-helper-run-13.json",
+        "bytes": 7217,
+        "sha256": "6e108b446113bdc3a2233624ff0830c9ce0710575220c806dff0237b4aa910c2"
+      },
+      {
+        "path": "control-run-01.json",
+        "bytes": 5690,
+        "sha256": "ff4f647505276271e87f5fa035504c0a357f35d219a92bca3a86d827115cf5dc"
+      },
+      {
+        "path": "storage-shape-transfer-01.json",
+        "bytes": 1734,
+        "sha256": "5778f03e90893037ace1db984dfea3890f27d2d94866621f859a29f4ec360e5b"
+      }
+    ],
+    "scope": "The helper and actual App startup component are verified. Product Main remains held. Models are not native tests; the native case is not complete Main/P05 acceptance. The walking experience, simulation and original pack/runtime sources are unchanged."
+  },
+  "currentBridgeReview": {
+    "author": "60aa0a234480b752531ab2f7046864e7b83f79182ae0bb2ed09b6c6dc08b0dd4",
+    "independent": "b7db692e9fa94911ff6c774d6eff193ac9d58bb70d6a668d437a3dc12f76a1d1",
+    "historicalInputsRecovered": 3,
+    "conditionalV7SchedulingObstruction": true,
+    "pricesSelected": false
+  },
+  "deliveredWalk": "UNCHANGED",
+  "independentSimulation": "UNCHANGED",
+  "publicRuntimeSourceChanges": 0,
+  "unrelatedPrivateAtlas": "NOT_OPERATED",
+  "rawArchives": "PRESERVED_LOCALLY",
+  "P05": "OPEN",
+  "P06_P08": "NOT_STARTED",
+  "PhaseOne": "NOT_ACCEPTED_NOT_RELEASED",
+  "next": "Exact-profile readiness/retention scheduling successor with fresh validity checks and independently qualified work partition; then remaining current-content/Main host integration and required native P05 proof."
+}

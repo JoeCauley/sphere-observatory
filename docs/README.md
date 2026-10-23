@@ -1,3 +1,5 @@
+> **Main startup component — 22 October 2026:** The genuine drawing helper and owned App/loader handoff pass 52 targeted model checks and a real Chrome startup/cleanup check. Complete Main remains held; P05 is OPEN. The next gate is the exact current four-key content-bridge work contract. See the [startup report](Observatory-Main-Startup-2026-10-22.md) and [current work plan](Observatory-Current-Work-Plan.md). Earlier evidence below keeps its original scope.
+
 <!-- main-reuse-progress-2026-10-21 -->
 > **Current progress — 21 October 2026:** Industry camera-dependent preparation is delivered and functionally checked. Main's joined indexed/parent-reader model completes all810drawing sections and publication, with fault/loss cleanup verified in its disclosed model scope. New paid compiler and completed-generation reuse are staged; full operation/native/content/memory/timing gates remain open. Read [current reuse progress](Observatory-Main-Reuse-Progress-2026-10-21.md) and the [forward plan](Observatory-Current-Work-Plan.md). P05 remains OPEN; earlier dated reports below retain their original results.
 

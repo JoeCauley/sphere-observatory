@@ -1,0 +1,46 @@
+{
+  "format": "sphere-historical-peer-input-reconstruction/1",
+  "status": "ALL_THREE_EXACT_OLD_INPUTS_RECOVERED",
+  "utc": "2026-10-23T00:36:13.766Z",
+  "oldPeerSeal": {
+    "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-ordinary-bridge-work-review-2026-10-22-01/CHECK.json",
+    "sha256": "a90764493492d099c91a019bcda365e332eb3216545ea5b1d75a07d33eaf0c89"
+  },
+  "finalCheck": {
+    "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-ordinary-bridge-work-2026-10-22-01/CHECK.json",
+    "sha256": "60aa0a234480b752531ab2f7046864e7b83f79182ae0bb2ed09b6c6dc08b0dd4"
+  },
+  "finalInputsUnchanged": true,
+  "sourceWrites": 0,
+  "qualification": "Recovered files are archived historical inputs only. Old peer paths pointed to mutable draft author inputs; this archive restores exact sealed old bytes under a new path. Final CHECK and final input hashes remain separate and frozen; old and new hashes are not interchangeable.",
+  "timestampCandidatesTried": 478399,
+  "results": [
+    {
+      "path": "scheduling-obstruction.json",
+      "method": "Inverse of documented final joint-v7/v6 scope-only JSON patch; exact old peer SHA required before writing.",
+      "expectedBytes": 2589,
+      "expectedSha256": "d2dc293ec036726a79d218fe7b7250dd377297c53fe3f3caa5d64f7952a4d5b0",
+      "reconstructedBytes": 2589,
+      "reconstructedSha256": "d2dc293ec036726a79d218fe7b7250dd377297c53fe3f3caa5d64f7952a4d5b0",
+      "exactHistoricalBytesRecovered": true
+    },
+    {
+      "path": "current-named-operation-graph.json",
+      "method": "Inverse of documented BasePublishedParent line-reference256→260 patch; all logical values unchanged; exact old peer SHA required.",
+      "expectedBytes": 12631,
+      "expectedSha256": "e2aa95df0bcd8543652102fb89fb6d2921c01fa164e230671e0566309b613f29",
+      "reconstructedBytes": 12631,
+      "reconstructedSha256": "e2aa95df0bcd8543652102fb89fb6d2921c01fa164e230671e0566309b613f29",
+      "exactHistoricalBytesRecovered": true
+    },
+    {
+      "path": "source-check.json",
+      "method": "Identical frozen source/check fields; bounded search of original ISO millisecond timestamp00:20:00..old peer seal time; exact old peer SHA verifies recovery.",
+      "expectedBytes": 1294,
+      "expectedSha256": "7c5f71832392468a1b8e3fcea6aa96d85420211d13a1903b2d27c2ed7347b8f3",
+      "reconstructedBytes": 1294,
+      "reconstructedSha256": "7c5f71832392468a1b8e3fcea6aa96d85420211d13a1903b2d27c2ed7347b8f3",
+      "exactHistoricalBytesRecovered": true
+    }
+  ]
+}

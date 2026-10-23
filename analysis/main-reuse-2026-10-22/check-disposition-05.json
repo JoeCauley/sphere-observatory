@@ -1,0 +1,27 @@
+{
+  "format": "sphere-startup-closeout-check-disposition/1",
+  "utc": "2026-10-23T00:41:24.6976118Z",
+  "privateSafetyCommit": "a7f85f66a14161d33093dd28214484c3bc945ecf",
+  "privateSafetyBranch": "codex/observatory-safety-2026-10-20",
+  "privateSafetyPush": "SUCCEEDED",
+  "privateRepoOtherChanges": "Preserved unrelated Atlas work only",
+  "sourceAndProgressArchive": "26 source snapshots;13452 source entries;2945 records;fresh521-file C4 restore verified",
+  "frozenWhitespaceExceptions": [
+    {
+      "path": "bridge-work-03/derivation/source-excerpts.md",
+      "sha256": "cff2219f8a9272b146db0074823bb9eaa1c47490769d51ad3dab5dee3e3b1562",
+      "disposition": "PRESERVE_SEALED_BYTES",
+      "reason": "Captured line-number separators or a sealed review script retain original trailing spaces. Source/record hashes must not be changed for whitespace cleanup."
+    },
+    {
+      "path": "bridge-work-03/independent-review/amend-input-pins-02.cjs",
+      "sha256": "d0c1e01abef82d11a146f49592a1b4ab6d54fee00e40fcd5771d40d2e0222219",
+      "disposition": "PRESERVE_SEALED_BYTES",
+      "reason": "Captured line-number separators or a sealed review script retain original trailing spaces. Source/record hashes must not be changed for whitespace cleanup."
+    }
+  ],
+  "otherChangedTextWhitespace": "PASS with original CRLF and historical EOF preservation",
+  "runtimeSourceChanges": 0,
+  "P05": "OPEN",
+  "PhaseOne": "NOT_ACCEPTED_NOT_RELEASED"
+}

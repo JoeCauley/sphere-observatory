@@ -1,0 +1,29 @@
+{
+  "status": "PASS_READ_ONLY_CURRENT_C4_PIN_CHECK",
+  "utc": "2026-10-23T00:27:58.398Z",
+  "source": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-startup-draw-helper-2026-10-22-01/main-startup-stage-candidate-04/source",
+  "sourceFiles": 521,
+  "all521MatchC4Inventory": true,
+  "inventory": {
+    "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-ordinary-bridge-work-2026-10-22-01/source-inventory.json",
+    "bytes": 88362,
+    "sha256": "6c4478954ce4fd3bd3deb580728a577a4345762ff05737609c5f8429d0817b98"
+  },
+  "c4Seal": {
+    "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-startup-draw-helper-2026-10-22-01/main-startup-stage-candidate-04/functional-seal-01.json",
+    "bytes": 21268,
+    "sha256": "da86a68763b09d80db3982a958e24ca568b3a23bfdd7535ba6fcc5b407593591"
+  },
+  "source37Comparison": {
+    "path": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-ordinary-bridge-work-2026-10-22-01/source37-dependency-comparison.json",
+    "bytes": 6129,
+    "sha256": "8514039b6abb11cc70705daaee7b8bac7bf144fb18db5ddd41c7bf57816f13df"
+  },
+  "nullTable": true,
+  "unconditionalHostGate": true,
+  "mainPermission": false,
+  "sourceWrites": 0,
+  "browserActions": 0,
+  "serverActions": 0,
+  "gitActions": 0
+}

@@ -1,0 +1,590 @@
+{
+  "qualification": "AST used only to find and hash named function source, never to price syntax or model callbacks.",
+  "functions": [
+    {
+      "path": "biome-service/native/main-baseline-owner.js",
+      "name": "starProperty",
+      "line": 50,
+      "endLine": 50,
+      "bytes": 226,
+      "sha256": "b8a3480c9607e47f7b801a77d2cb3cfa7c93e85da187302931da7b80b61822e7",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/main-baseline-owner.js",
+      "name": "starSameProperty",
+      "line": 51,
+      "endLine": 51,
+      "bytes": 267,
+      "sha256": "1f3855da0bd9779a55f015fa15c90fc4273fb3ac13bb79b453f192ad38c98c23",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/main-baseline-owner.js",
+      "name": "starScope",
+      "line": 92,
+      "endLine": 92,
+      "bytes": 137,
+      "sha256": "51ef0b3a1a9dec643b29d39fca19123a3fc5919e1d1c952bbfcbebd3eee8658b",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/main-baseline-owner.js",
+      "name": "starScopeCurrent",
+      "line": 93,
+      "endLine": 93,
+      "bytes": 196,
+      "sha256": "362e634fd44b90396ac96bd0642853e702243c2406cfc3e12073fbaf72fdd7a6",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/main-baseline-owner.js",
+      "name": "starRequireScope",
+      "line": 94,
+      "endLine": 94,
+      "bytes": 144,
+      "sha256": "26c29d4d3be66edd0268bbb55b5129fc48bee7c7edf17adb2bf025d26899c252",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/main-baseline-owner.js",
+      "name": "starRequireRetirementScope",
+      "line": 95,
+      "endLine": 95,
+      "bytes": 243,
+      "sha256": "fd7de3c8d43b84dc259387480efee108b9b07d3e630194d5ddc9c36af5e99965",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/main-baseline-owner.js",
+      "name": "payStar",
+      "line": 96,
+      "endLine": 96,
+      "bytes": 270,
+      "sha256": "6a18956299de79db7fda1b4a1a47f28dd67bdd457d9e7f05a9f14708834b86b6",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/main-baseline-owner.js",
+      "name": "starNativeCurrent",
+      "line": 97,
+      "endLine": 97,
+      "bytes": 237,
+      "sha256": "9837e566a89d4c80395755d8ebd7f187cca000e50103592f57428f536fa0bfb9",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/main-baseline-owner.js",
+      "name": "starPublicationCurrent",
+      "line": 99,
+      "endLine": 99,
+      "bytes": 394,
+      "sha256": "66ed93fa7181ad366ce81ed2799fa1c6fbfb760372535feb3447355302a90414",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/main-baseline-owner.js",
+      "name": "starLive",
+      "line": 100,
+      "endLine": 100,
+      "bytes": 1106,
+      "sha256": "dfe77938059b065c7864fc3f9e7fec467e969622cb09da508d91d1f5ea5719a4",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/main-baseline-owner.js",
+      "name": "retainStarContent",
+      "line": 103,
+      "endLine": 103,
+      "bytes": 1178,
+      "sha256": "7602be8a0e3e8368a7c2fe9ab6d85f35178bd2aa28da9a59758e2febad281f4f",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/main-baseline-owner.js",
+      "name": "closeStarRecord",
+      "line": 102,
+      "endLine": 102,
+      "bytes": 604,
+      "sha256": "22b74d283199e01fada3f1926704624882aab83f74958241cb72095788305e5a",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/main-baseline-owner.js",
+      "name": "ordinaryWork",
+      "line": 159,
+      "endLine": 159,
+      "bytes": 427,
+      "sha256": "38f354312d29c656d3d78720acedce037a96eda8f3d9c6dc9833e9a6c21e773c",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/main-baseline-owner.js",
+      "name": "bridgeScope",
+      "line": 161,
+      "endLine": 161,
+      "bytes": 339,
+      "sha256": "c6cc4515ba6f96b933904943924afbb959b77e0268b5c4d6b45189bf365613d4",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/main-baseline-owner.js",
+      "name": "advanceDemandedContent",
+      "line": 162,
+      "endLine": 162,
+      "bytes": 1402,
+      "sha256": "d7f536e4fe28ffc7c823dd50289e86e677999653fcc0a6f3bccb102bc5eef155",
+      "source37BodyExact": false
+    },
+    {
+      "path": "biome-service/native/main-baseline-owner.js",
+      "name": "advanceOrdinaryContentFromMain",
+      "line": 163,
+      "endLine": 163,
+      "bytes": 1339,
+      "sha256": "13a99bd33505614af642473eb9f8b1753f367edae49a456a608371780ce84bc4",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/main-baseline-owner.js",
+      "name": "bridgeUniform",
+      "line": 164,
+      "endLine": 164,
+      "bytes": 413,
+      "sha256": "e946df7718c72bd83282bbaef7fff94e1f6c536b35c2761758a478207abb6d01",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/main-baseline-owner.js",
+      "name": "bridgeTuple",
+      "line": 165,
+      "endLine": 165,
+      "bytes": 1443,
+      "sha256": "3a24c2b51e9731a9d2213cdf8bcec515274b8b25650727db996c54bfa224ba7a",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/main-baseline-owner.js",
+      "name": "withOrdinaryNativeFromMain",
+      "line": 166,
+      "endLine": 166,
+      "bytes": 1624,
+      "sha256": "5a0128be1139d95b1ebbfe1afbdfb16160ec9b8082e5cb0de419d3f5e249df5a",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/main-baseline-owner.js",
+      "name": "closeOrdinaryBridge",
+      "line": 167,
+      "endLine": 167,
+      "bytes": 849,
+      "sha256": "0d6e1cd7b2142a9625ea2e52a9ff43d39bd9143a4d8fab598d1efcdbec0abcc8",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/main-baseline-owner.js",
+      "name": "live",
+      "line": 220,
+      "endLine": 220,
+      "bytes": 801,
+      "sha256": "d78f2c5e0c39a1e750de1b058c66c75ac0f7568e38d68da126d4ce257d910bc0",
+      "source37BodyExact": false
+    },
+    {
+      "path": "biome-service/native/main-baseline-owner.js",
+      "name": "beginOwnedClosing",
+      "line": 240,
+      "endLine": 240,
+      "bytes": 745,
+      "sha256": "3371b022b6e38b8edc7fdf0e57d2e5a67a22f8a25b9b983f1b720ac1c1ce4ba4",
+      "source37BodyExact": false
+    },
+    {
+      "path": "biome-service/native/main-baseline-owner.js",
+      "name": "collect",
+      "line": 239,
+      "endLine": 239,
+      "bytes": 2183,
+      "sha256": "934bb97afa7ee346e8cb8c4025317dac7921e576952a894b3f0a03831eefdfdb",
+      "source37BodyExact": false
+    },
+    {
+      "path": "biome-service/native/main-texture-binding-owner.js",
+      "name": "checkClosedSlot",
+      "line": 29,
+      "endLine": 29,
+      "bytes": 227,
+      "sha256": "894370c88c3f4564395bf5d41dc459fcf41a77d1d15cb6c06bed95f3e0fc4857",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/main-texture-binding-owner.js",
+      "name": "contentScope",
+      "line": 113,
+      "endLine": 113,
+      "bytes": 140,
+      "sha256": "231889e2032b1a926db3781030e64c9b2b0bfe5186164d556f55cc5fa6beb843",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/main-texture-binding-owner.js",
+      "name": "contentScopeSame",
+      "line": 114,
+      "endLine": 114,
+      "bytes": 157,
+      "sha256": "086b7f2da0ccb24df2f49a6a9d44f9fc3878c9d9de11f23e46f962ad5eae6748",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/main-texture-binding-owner.js",
+      "name": "requireContentScope",
+      "line": 115,
+      "endLine": 115,
+      "bytes": 188,
+      "sha256": "00569275ea1e0f64ada78b8ff4cd380f91d38454a7eb55b118b6bc695631a286",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/main-texture-binding-owner.js",
+      "name": "payContent",
+      "line": 116,
+      "endLine": 116,
+      "bytes": 265,
+      "sha256": "7bfaf243f38d47494ab14b43e97a92d8a6e5e107fc941677fc783942db92777b",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/main-texture-binding-owner.js",
+      "name": "contentState",
+      "line": 121,
+      "endLine": 121,
+      "bytes": 515,
+      "sha256": "f7461e510350d898b0ae6e73224bbae6b1c93dc4a086dae1729203abd4e52596",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/main-texture-binding-owner.js",
+      "name": "batchContentGate",
+      "line": 125,
+      "endLine": 125,
+      "bytes": 200,
+      "sha256": "1dd4a17816e3df548b7a5f152a28b03c0d498d92307f5dccc575719c56b051cb",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/main-texture-binding-owner.js",
+      "name": "batchContentParent",
+      "line": 126,
+      "endLine": 126,
+      "bytes": 225,
+      "sha256": "0b3405302798147dc988b3fee6e8bedbe9cd36f1be0d87e92036ec9c116ab7fa",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/main-texture-binding-owner.js",
+      "name": "batchContentState",
+      "line": 127,
+      "endLine": 127,
+      "bytes": 695,
+      "sha256": "79d340475eeef5ab96b338a4d987787df48b6adbc8c5c91ee0fc9461fa434bc8",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/main-texture-binding-owner.js",
+      "name": "batchNativeTextures",
+      "line": 128,
+      "endLine": 128,
+      "bytes": 308,
+      "sha256": "8879a414cecfc2b37ebd6c4d29e7edd75fe4ff140b99615c544df93315f94dd9",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/main-texture-binding-owner.js",
+      "name": "retainContentBatch",
+      "line": 131,
+      "endLine": 134,
+      "bytes": 2778,
+      "sha256": "038d1730ccb90ef251a46890ee1d4f897ade27590d768093412a0f2837f91ba0",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/main-texture-binding-owner.js",
+      "name": "closeContentBatch",
+      "line": 130,
+      "endLine": 130,
+      "bytes": 1170,
+      "sha256": "b2dd4a0fc0d86ef023b03befabbd93c879bc1bea05f1ddc4a2209e52cf17e634",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/main-texture-binding-owner.js",
+      "name": "withContentBatchFromBaseline",
+      "line": 171,
+      "endLine": 171,
+      "bytes": 1401,
+      "sha256": "8d99d22936b20ac34ad6e7bc245a6739699590a95e4c73cc737bcddec38f8ab8",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/main-texture-binding-owner.js",
+      "name": "live",
+      "line": 179,
+      "endLine": 179,
+      "bytes": 1063,
+      "sha256": "903b3b19d15f7a26c57e1b5dfc6ceba55d74b4b6f3c199481eb8fabcdfb30a6b",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/main-finish-storage-owner.js",
+      "name": "nativeCurrent",
+      "line": 42,
+      "endLine": 42,
+      "bytes": 389,
+      "sha256": "1630d732c31912f0493138d3fda1fb3112797de5e3362c7939675fbf169e6958",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/main-finish-storage-owner.js",
+      "name": "numericScope",
+      "line": 48,
+      "endLine": 48,
+      "bytes": 140,
+      "sha256": "1daea8435b1c13f04e672e3c3d41cce1b737b324bb0bf7ef6313122bc72a31d5",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/main-finish-storage-owner.js",
+      "name": "matchesNumericScope",
+      "line": 49,
+      "endLine": 49,
+      "bytes": 172,
+      "sha256": "685b0b78da6c6003490f34de57ef745a4e195df56de95d954be14f124b07166f",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/main-finish-storage-owner.js",
+      "name": "requireContentScope",
+      "line": 50,
+      "endLine": 50,
+      "bytes": 217,
+      "sha256": "fd02857966120589c568c2c673f67b689349df525141739006d43c8fa3610488",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/main-finish-storage-owner.js",
+      "name": "payContent",
+      "line": 51,
+      "endLine": 51,
+      "bytes": 280,
+      "sha256": "54b19ea2b86547a56bb25b57273657e2a97674e74b3e8fa1ebfef5f7254b0f42",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/main-finish-storage-owner.js",
+      "name": "retainContent",
+      "line": 56,
+      "endLine": 56,
+      "bytes": 1472,
+      "sha256": "59f5150efafd79b10043954682f79dd505e000d949db754147f497941c1b4969",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/main-finish-storage-owner.js",
+      "name": "closeContent",
+      "line": 55,
+      "endLine": 55,
+      "bytes": 844,
+      "sha256": "2f1539f7bf9d08cbd15e8324188b2a61d70ae6c7046eafc8aa6df3730b08e481",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/main-finish-storage-owner.js",
+      "name": "withContentFromBaseline",
+      "line": 74,
+      "endLine": 74,
+      "bytes": 1398,
+      "sha256": "6354fc3f510f04f9cb9ef371a6196e6cd42945ce6655e10362695031cca38074",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/main-finish-storage-owner.js",
+      "name": "live",
+      "line": 80,
+      "endLine": 80,
+      "bytes": 835,
+      "sha256": "278a6baa522d049ffc741c36d22497b700daafff6f4061d8a75c8e8a6a79e28a",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/main-baseline-resource-records.js",
+      "name": "checkNoiseState",
+      "line": 53,
+      "endLine": 53,
+      "bytes": 300,
+      "sha256": "45d2c6615c083597809839912ebf9462dbe327c43cc2528c76865108068a86c3",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/main-baseline-resource-records.js",
+      "name": "checkState",
+      "line": 54,
+      "endLine": 54,
+      "bytes": 694,
+      "sha256": "24b63432bb0ca260f862d6fd1ef134e12b3f75e2814c88feea276698fcc4b575",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/main-baseline-resource-records.js",
+      "name": "check",
+      "line": 57,
+      "endLine": 57,
+      "bytes": 91,
+      "sha256": "08af54b38b006861f3a3ee6ce603d32050e522962d67b8ed58b725328c85e505",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/main-baseline-resource-records.js",
+      "name": "demandedRows",
+      "line": 84,
+      "endLine": 84,
+      "bytes": 562,
+      "sha256": "cd3d27cc5d4e76a9280eab1305136808a702bbd4d1fdb111571f2b887f60a831",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/main-baseline-resource-records.js",
+      "name": "demandedGroup",
+      "line": 85,
+      "endLine": 85,
+      "bytes": 457,
+      "sha256": "5d22d5fb2e725a10a640edef8d87d822f5afba76e5e6748e8e802a5727f586ad",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/main-baseline-resource-records.js",
+      "name": "finishStorageInputs",
+      "line": 77,
+      "endLine": 77,
+      "bytes": 498,
+      "sha256": "10dbed7c9709e8c4d89713d0d3b50dc75586eed0392f4a3ebf9ea61260a5c94e",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/root-program-binding.js",
+      "name": "live",
+      "line": 72,
+      "endLine": 72,
+      "bytes": 283,
+      "sha256": "039602c9ecfa195dd938c43e9a0d18e67a6955ed3b9c964366cef20916678b00",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/root-program-binding.js",
+      "name": "call",
+      "line": 65,
+      "endLine": 65,
+      "bytes": 59,
+      "sha256": "a7d8f9871bcc7b099f4ff580d4deb0a0e529d60776b4ded563878a55485fd3b0",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/root-program-binding.js",
+      "name": "actualLost",
+      "line": 65,
+      "endLine": 65,
+      "bytes": 190,
+      "sha256": "099bd40040be008e71a34f2b37026b70be2d11edfdd2bee4418d174be9ee4931",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/root-program-binding.js",
+      "name": "usesDrawObjects",
+      "line": 76,
+      "endLine": 76,
+      "bytes": 247,
+      "sha256": "fbd0c0f419bf11bc7d7ad7e6c6c05ec1a84a24b29f60a8ed371bab2658251e9c",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/root-program-binding.js",
+      "name": "retainProgram",
+      "line": 77,
+      "endLine": 77,
+      "bytes": 551,
+      "sha256": "d4d1627948d65b0adf4297a63030de14e48080619fc10a4bc0f3c8de84dbf5fe",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/shared-gpu-backend.js",
+      "name": "live",
+      "line": 42,
+      "endLine": 42,
+      "bytes": 226,
+      "sha256": "5ab548f712e636c63d560ec6852acaa7a3e347b8a6540bbd0dd72acb74532122",
+      "source37BodyExact": true
+    },
+    {
+      "path": "biome-service/native/main-default-surface-facts.js",
+      "name": "current",
+      "line": 22,
+      "endLine": 22,
+      "bytes": 410,
+      "sha256": "dba4ba6a634d1a12635a483849d228b110680e9df76938d415723b331c347cc7",
+      "source37BodyExact": false
+    },
+    {
+      "path": "biome-service/native/main-default-surface-facts.js",
+      "name": "invoke",
+      "line": 23,
+      "endLine": 23,
+      "bytes": 96,
+      "sha256": "28d28221bfb9cc3b6f36166ac37436242c65390ace8dfb41e19d2527e6b1db76",
+      "source37BodyExact": false
+    },
+    {
+      "path": "biome-service/native/main-default-surface-facts.js",
+      "name": "get",
+      "line": 24,
+      "endLine": 24,
+      "bytes": 59,
+      "sha256": "081abcb16ec133ff928e1995547f11ecdbdd3726c66442d8d89e346f64b619ff",
+      "source37BodyExact": false
+    },
+    {
+      "path": "biome-service/native/main-default-surface-facts.js",
+      "name": "importRecord",
+      "line": 91,
+      "endLine": 91,
+      "bytes": 151,
+      "sha256": "498de4de801c62ab24dff251e44e9107be5e27ae299f94550ffbca837f53d14a",
+      "source37BodyExact": false
+    },
+    {
+      "path": "biome-service/native/main-default-surface-facts.js",
+      "name": "importCurrent",
+      "line": 92,
+      "endLine": 92,
+      "bytes": 781,
+      "sha256": "d0830871f131959c72af0d28fc45af39d78b7d19a046dab08fbc31abc3bc42d9",
+      "source37BodyExact": false
+    },
+    {
+      "path": "biome-service/native/main-default-surface-facts.js",
+      "name": "managedState",
+      "line": 109,
+      "endLine": 109,
+      "bytes": 196,
+      "sha256": "e71df3159f507f083b764f2b20225c5d4ca698bb8f6f90baa1023590f5800245",
+      "source37BodyExact": false
+    },
+    {
+      "path": "biome-service/native/main-default-surface-facts.js",
+      "name": "managedCookie",
+      "line": 163,
+      "endLine": 163,
+      "bytes": 75,
+      "sha256": "4433743d998a7d28418c1fd9813389826758e52db85ab8edceb8c64d4d9bfbc4",
+      "source37BodyExact": false
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "utc": "2026-10-23T00:14:51.1588402Z",
+  "status": "STOPPED_OWN_TEST_SERVER",
+  "port": 9150,
+  "pid": 13992,
+  "script": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\native-app-server-02.py",
+  "otherServersUntouched": true
+}

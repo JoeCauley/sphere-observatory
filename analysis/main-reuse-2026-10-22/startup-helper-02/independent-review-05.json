@@ -1,0 +1,106 @@
+{
+  "format": "sphere-app-startup-independent-review/1",
+  "utc": "2026-10-23T00:00:40.624Z",
+  "sourcePins": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\app-startup-candidate-02\\source\\owned-main-bootstrap.js",
+      "bytes": 66320,
+      "sha256": "e0e1f0b440bdf346d4251dd82a7b192487401cbcf694a3ac6d0c865113e904a4",
+      "relative": "owned-main-bootstrap.js"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\app-startup-candidate-02\\source\\app.js",
+      "bytes": 35890,
+      "sha256": "ea40b2952058757fd7773db9c3f0e983a9903738bde34e8ca210fc62490bf727",
+      "relative": "app.js"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\app-startup-candidate-02\\source\\renderer.js",
+      "bytes": 154345,
+      "sha256": "e513ac215b5c4a6c731664a703ddd54061224d751d891c53b5b1a3f16389500d",
+      "relative": "renderer.js"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\app-startup-candidate-02\\source\\biome-service\\native\\main-startup-draw-owner.js",
+      "bytes": 18111,
+      "sha256": "422a8a07ed168ad741ef43f922b0ef231302e9dfc7eebd5ea58177827147a3aa",
+      "relative": "biome-service/native/main-startup-draw-owner.js"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\app-startup-candidate-02\\source\\biome-service\\native\\main-default-surface-facts.js",
+      "bytes": 31763,
+      "sha256": "34e6b98a2b32d54d6eda0b5521858ff2cd4df241dbb7291a384f4fc981fb8115",
+      "relative": "biome-service/native/main-default-surface-facts.js"
+    }
+  ],
+  "inheritedController": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\owned-context-retirement-join-2026-10-22-01\\controller-storage-bound-06.json",
+    "bytes": 2774,
+    "sha256": "20652d842e73ad0e0fca58499bc653e11862a565f8efc093e82451ea3d3f0baa"
+  },
+  "storageCensus": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\app-startup-review-01\\storage-census-04.json",
+    "bytes": 753757,
+    "sha256": "a88526d46d582a0f5fe17c085f495323c5b6de60c769d8b35e22cbf465d58a47"
+  },
+  "funding": {
+    "priorLogical": 387808,
+    "priorReservation": 389120,
+    "additiveLogical": 367104,
+    "additiveRounded": 368640,
+    "completeLogical": 754912,
+    "totalSeparateRequested": 757760,
+    "additiveHeadroom": 1536,
+    "helperRendererSurfaceModule": 176128,
+    "oldPureModule": 1324128,
+    "oldRetirementModule": 16384
+  },
+  "ownership": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\app-startup-review-01\\closed-owner-lifetime-supplement-05.json",
+    "bytes": 6388,
+    "sha256": "6d69cb586b7d0f81713b5eb86af8ad054994db314e28bbfe4dd192c62f701c3c"
+  },
+  "findings": [
+    {
+      "id": "APP-AUTH",
+      "status": "SOURCE_CONDITIONAL_FIXED_BOUND",
+      "lines": "bootstrap51-57,74-97; App11-26,136",
+      "finding": "Surface claim uses original Document/currentScript, actual active App node/URL, captured Canvas receiver and private nonce. Early Renderer retention validates actual brand, original dispose, private same-Q/S Surface and exact own Canvas/GL before UI; post-brand commit repeats identity/source checks. Final App claim is distinct and verifies genuine App.renderer and exact registered Renderer."
+    },
+    {
+      "id": "APP-FAILURE-ROOTS",
+      "status": "FIXED_OR_TRUTHFULLY_HELD",
+      "finding": "A failure after successful early registration retains the authentic Renderer so explicit disposal can close it. Failure before registration inspects the original Surface preparation and reports HELD_SURFACE_WITHOUT_REGISTERED_RENDERER while open/consumed/published/hasRenderer, never a false completed disposal."
+    },
+    {
+      "id": "APP-REENTRY",
+      "status": "SOURCE_GUARDS_PRESENT_CONTROLS_SEPARATE",
+      "finding": "Private registration/claim/disposal flags are set before callback-capable authentication/cleanup, cleared in finally, and commit-time source tuples are rechecked. They bound one startup operation and one active disposal adapter; source exceptions preserve retained teardown roots."
+    },
+    {
+      "id": "APP-HELD-GATE",
+      "status": "INTENTIONAL",
+      "finding": "Source executes sixteen paid helper steps and genuine G construction only after separately owned helper admission, then rejects HELD_MAIN_GRAPH_INCOMPLETE. Native App schedules no frame loop. Product App gate remains false, controller fund null refuses before Q creation, and no Main permission is granted."
+    },
+    {
+      "id": "FUNDING",
+      "status": "FIXED_ROUNDED_VALUE_REVIEWED_NOT_SELECTED",
+      "finding": "368640 is the additive controller/App allowance; preserve old389120 and independent176128 module. It includes old generated-key supplement110752, complete new helper envelope16992, both promise outcomes and all sixteen timer/executor allocations without GC discounts, and explicit internal closed roots1792."
+    },
+    {
+      "id": "INHERITED",
+      "status": "NOT_REQUALIFIED",
+      "finding": "Old complete controller387808 remains intact. Existing source admission, pure-module1324128 and retirement-module16384 retain their prior scope. Full ordinary-host/caller, cold/native Main entry and physical native/VM peaks remain open; no P05 closure, P06-P08 advance or PhaseOne acceptance/release follows."
+    }
+  ],
+  "controls": {
+    "status": "ROOT_IMPLEMENTER_CONTROLS_SEPARATE_NOT_RUN_BY_INDEPENDENT_REVIEWER",
+    "qualification": "This receipt seals storage/source review only; it does not assert actual App/native Main or broaden prior model/native component results."
+  },
+  "selectionValidation": {
+    "reviewedNullBootstrapSha256": "e0e1f0b440bdf346d4251dd82a7b192487401cbcf694a3ac6d0c865113e904a4",
+    "requiredNewControllerFund": 368640,
+    "requiredModuleFund": 176128,
+    "method": "Exactly replace the one null controller constant with368640 and verify all remaining bytes and App/Renderer/helper/Surface pins. Re-normalizing funded bytes back to null must hash to this reviewed pin. Numeric width changes no record shape, literal string occurrence, function capture or generated envelope storage."
+  }
+}

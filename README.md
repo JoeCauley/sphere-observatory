@@ -1,3 +1,5 @@
+> **Main startup component — 22 October 2026:** The genuine drawing helper and owned App/loader handoff pass 52 targeted model checks and a real Chrome startup/cleanup check. Complete Main remains held; P05 is OPEN. The next gate is the exact current four-key content-bridge work contract. See the [startup report](docs/Observatory-Main-Startup-2026-10-22.md) and [current work plan](docs/Observatory-Current-Work-Plan.md). Earlier evidence below keeps its original scope.
+
 > **Bounded continuation - 22 October 2026:** Owned Canvas shutdown is reviewed, explicitly funded and connected to the combined candidate; 52 controlled scenarios pass. The delivered Meadow-Industry walk is unchanged. See the [integration report](docs/Observatory-Owned-Context-Retirement-2026-10-22.md). P05 remains OPEN.
 
 <!-- main-reuse-advancement-2026-10-21 -->

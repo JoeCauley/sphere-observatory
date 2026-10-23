@@ -1,0 +1,423 @@
+{
+  "status": "PROPOSED_RESOURCE_API_ENVELOPES_NOT_SELECTED_FEES",
+  "qualification": "Only logical named fixed resource/API/row/transaction vocabulary. No AST count, callback event count, headroom rule, native duration or heap price. All child payloads expressly named. The physical-row bound applies to the exact genuine v7 constructor/managed-surface graph; unqualified cold/native provenance is not supplied by this arithmetic.",
+  "nodes": [
+    {
+      "id": "ScopeRead",
+      "own": 4,
+      "terms": {},
+      "total": 4,
+      "proof": "One fixed frame/slice/epoch tuple +3 real R readers, Base92/Binding113/Finish48."
+    },
+    {
+      "id": "ScopeRequire",
+      "own": 5,
+      "terms": {},
+      "total": 5,
+      "proof": "One fixed tuple predicate +3 R readers +matchesScope; Base93-94/Binding114-115/Finish49-50."
+    },
+    {
+      "id": "RetirementScopeRequire",
+      "own": 4,
+      "terms": {},
+      "total": 4,
+      "proof": "One tuple predicate +3 R readers; no matchesScope on retirement."
+    },
+    {
+      "id": "PayContent",
+      "own": 3,
+      "terms": {
+        "ScopeRead": 1,
+        "ScopeRequire": 1
+      },
+      "total": 12,
+      "proof": "One fixed fee/counter transaction +available +consume; Base96,159. Prelude6 occurs before debit."
+    },
+    {
+      "id": "SurfacePay",
+      "own": 3,
+      "terms": {
+        "ScopeRead": 1,
+        "RetirementScopeRequire": 1
+      },
+      "total": 11,
+      "proof": "One fixed surface counter transaction +available +consume; Base109."
+    },
+    {
+      "id": "SurfaceCurrent",
+      "own": 17,
+      "terms": {},
+      "total": 17,
+      "proof": "Import record1 +fixed state/final transaction1 +Renderer own canvas/gl identity transaction1 +7 bounded slot-current rows +7 native requests; Surface91-92,178."
+    },
+    {
+      "id": "ManagedCookie",
+      "own": 2,
+      "terms": {},
+      "total": 2,
+      "proof": "Original Surface importRecord +fixed managedState/cookie result transaction; Surface109,163."
+    },
+    {
+      "id": "ConstructionCheck",
+      "own": 54,
+      "terms": {},
+      "total": 54,
+      "proof": "Group1 +10 exact constructor-state records +28 exact field/path rows +14 Ground initial/info rows +1 Atmosphere noise row; current constructor captures pinned."
+    },
+    {
+      "id": "PBReaderCheck",
+      "own": 2,
+      "terms": {},
+      "total": 2,
+      "proof": "Retained PB API fixed record +actual native context loss query; PB72,77."
+    },
+    {
+      "id": "PBUsesDrawObjects",
+      "own": 4,
+      "terms": {},
+      "total": 4,
+      "proof": "PB tuple fixed record +loss/isProgram/LINK_STATUS native requests3; PB72,76."
+    },
+    {
+      "id": "GCheckAvailable",
+      "own": 3,
+      "terms": {},
+      "total": 3,
+      "proof": "G API fixed record +native loss +original fixed positions.status; G42,331."
+    },
+    {
+      "id": "BaseLiveWithoutSurface",
+      "own": 24,
+      "terms": {
+        "ConstructionCheck": 1,
+        "PBReaderCheck": 1,
+        "PBUsesDrawObjects": 1,
+        "GCheckAvailable": 1
+      },
+      "total": 87,
+      "proof": "Own1 +native loss1 +<=14 physical rows +<=8 current-key R inspect. Seven original texture rows +at most4 once-only array replacements +at most3 managed surface rows. Base87,192-194,220-226; Surface123-126."
+    },
+    {
+      "id": "BaseLive",
+      "own": 0,
+      "terms": {
+        "BaseLiveWithoutSurface": 1,
+        "SurfacePay": 1,
+        "SurfaceCurrent": 1
+      },
+      "total": 115,
+      "proof": "Current v7 live always refreshes Surface first; actual Surface debit128 remains separate."
+    },
+    {
+      "id": "BaseReaderCheck",
+      "own": 1,
+      "terms": {
+        "ManagedCookie": 1,
+        "BaseLive": 1
+      },
+      "total": 118,
+      "proof": "Open guard +fresh managed cookie +full live; Base269."
+    },
+    {
+      "id": "BasePublishedParent",
+      "own": 5,
+      "terms": {
+        "PBReaderCheck": 1,
+        "GCheckAvailable": 1
+      },
+      "total": 10,
+      "proof": "Own exact child/context record +four actual Renderer child rows; Base256."
+    },
+    {
+      "id": "BindingLive",
+      "own": 5,
+      "terms": {
+        "BasePublishedParent": 1
+      },
+      "total": 15,
+      "proof": "Own1 +R checkContext/currentEpoch2 +one <=8 closed native slot row +native loss1; Binding179."
+    },
+    {
+      "id": "StarNativeCurrent",
+      "own": 4,
+      "terms": {},
+      "total": 4,
+      "proof": "One controller +three <=8 native holder rows; Base97."
+    },
+    {
+      "id": "StarPublication",
+      "own": 2,
+      "terms": {
+        "StarNativeCurrent": 1
+      },
+      "total": 6,
+      "proof": "Own texture/cookie transaction +R inspect; Base99."
+    },
+    {
+      "id": "StarLive",
+      "own": 20,
+      "terms": {
+        "StarNativeCurrent": 1,
+        "BaseLive": 1,
+        "StarPublication": 1
+      },
+      "total": 145,
+      "proof": "Own fixed records2 +native loss/isTexture2 +R epoch/inspect2 +<=14 physical search rows; Base100."
+    },
+    {
+      "id": "StarRetain",
+      "own": 7,
+      "terms": {
+        "PayContent": 1,
+        "StarLive": 1,
+        "ScopeRequire": 2,
+        "StarPublication": 2
+      },
+      "total": 186,
+      "proof": "Own reader publication2 +Q/R share2 +failure Rinspect/release/Q3; Base103. Historical3072 debit retained."
+    },
+    {
+      "id": "BatchGate",
+      "own": 1,
+      "terms": {},
+      "total": 1,
+      "proof": "Fixed source busy/lifecycle transaction; Binding125."
+    },
+    {
+      "id": "BatchParent",
+      "own": 2,
+      "terms": {
+        "BatchGate": 2,
+        "BindingLive": 1,
+        "ScopeRequire": 1
+      },
+      "total": 24,
+      "proof": "One parent record +one <=8 captured native slot row; Binding126."
+    },
+    {
+      "id": "BatchStateShared",
+      "own": 13,
+      "terms": {
+        "BatchGate": 1
+      },
+      "total": 14,
+      "proof": "One fixed record +4*(owned row +source Rinspect +shared Rinspect); Binding127."
+    },
+    {
+      "id": "BatchStateUnshared",
+      "own": 9,
+      "terms": {
+        "BatchGate": 1
+      },
+      "total": 10,
+      "proof": "One fixed record +4*(owned row +source Rinspect); Binding127."
+    },
+    {
+      "id": "BatchNative",
+      "own": 9,
+      "terms": {
+        "BatchGate": 4,
+        "ScopeRequire": 8
+      },
+      "total": 53,
+      "proof": "Loop controller1 +4 rows +4 native isTexture calls; pre/post scope per row; Binding128."
+    },
+    {
+      "id": "RevokeAll",
+      "own": 5,
+      "terms": {},
+      "total": 5,
+      "proof": "One controller +four cookie-clear rows; Binding120."
+    },
+    {
+      "id": "BatchRetain",
+      "own": 32,
+      "terms": {
+        "PayContent": 1,
+        "BatchParent": 3,
+        "ScopeRequire": 8,
+        "BatchStateUnshared": 1,
+        "BatchStateShared": 3,
+        "BatchNative": 1,
+        "RevokeAll": 1
+      },
+      "total": 266,
+      "proof": "Exact Binding131-134. Fixed entry/Q/gate5 +shares4 +share rows4 +reader publication1 +registrations4 +failure4*(row+inspect+release)12 +Qrollback1 +facade1. Historical3584 debit retained."
+    },
+    {
+      "id": "BridgeScope",
+      "own": 2,
+      "terms": {
+        "BaseLive": 1,
+        "ScopeRead": 1
+      },
+      "total": 121,
+      "proof": "Private Main guard1 +original Renderer capability request1; full fresh live and tuple before visit/use debit; Base161."
+    },
+    {
+      "id": "BridgeTuple",
+      "own": 28,
+      "terms": {
+        "PBUsesDrawObjects": 1
+      },
+      "total": 32,
+      "proof": "Controller1 +15 <=8 holder rows +tuple/location records2 +10 native requests including finally restore; Base164-165."
+    },
+    {
+      "id": "BaseBridgeUseOwn",
+      "own": 10,
+      "terms": {
+        "BridgeScope": 1,
+        "PayContent": 1,
+        "StarLive": 2,
+        "BridgeTuple": 2,
+        "ScopeRequire": 1
+      },
+      "total": 502,
+      "proof": "R inspect/GPUuse/lifecycle3 +failure native loss1 +Renderer capability1 +five source result/error/finally/callback controller records; Binding/Finish/H separate. Base166."
+    },
+    {
+      "id": "BindingBridgeUseOwn",
+      "own": 18,
+      "terms": {
+        "ScopeRead": 1,
+        "BatchParent": 2,
+        "BatchStateShared": 2,
+        "BatchNative": 2,
+        "BridgeTuple": 8,
+        "ScopeRequire": 1,
+        "RevokeAll": 1
+      },
+      "total": 470,
+      "proof": "Exact current Binding171: own7 source/frame/callback/finally records +RgpuUse/lifecycle2 +8 tuple row controllers +final dispatch1. Finish/H separate."
+    },
+    {
+      "id": "FinishNativeCurrent",
+      "own": 49,
+      "terms": {},
+      "total": 49,
+      "proof": "Controller1 +17 function +29 constant +2 optional anisotropy <=8 holder rows; Finish38-43."
+    },
+    {
+      "id": "FinishInputs",
+      "own": 5,
+      "terms": {},
+      "total": 5,
+      "proof": "Private capability/source1 +checkState2 +ready/three-field result2; Construction77."
+    },
+    {
+      "id": "FinishLive",
+      "own": 6,
+      "terms": {
+        "FinishNativeCurrent": 1,
+        "BaseReaderCheck": 1,
+        "GCheckAvailable": 1,
+        "FinishInputs": 1
+      },
+      "total": 181,
+      "proof": "Own1 +R context/epoch2 +Rlife/nativeLoss2 +preparing/current key inspect1; Finish80."
+    },
+    {
+      "id": "FinishCurrentForBridge",
+      "own": 3,
+      "terms": {
+        "FinishLive": 1,
+        "ScopeRequire": 1
+      },
+      "total": 189,
+      "proof": "Own Finish cookie/key/frame record +R inspect1 +native isTexture1; Finish74."
+    },
+    {
+      "id": "FinishBridgeUseOwn",
+      "own": 8,
+      "terms": {
+        "ScopeRead": 1,
+        "FinishCurrentForBridge": 2,
+        "BridgeTuple": 2
+      },
+      "total": 454,
+      "proof": "Baseline-match/contentRecord requests2 +RgpuUse1 +failure Rlife/nativeLoss2 +outer/callback/finally records3; Finish74. External exact H separately required."
+    },
+    {
+      "id": "WholeBridgeAroundMain",
+      "own": 0,
+      "terms": {
+        "BaseBridgeUseOwn": 1,
+        "BindingBridgeUseOwn": 1,
+        "FinishBridgeUseOwn": 1
+      },
+      "total": 1426,
+      "proof": "Proposed finite source-owned envelope only, adds H. Includes caller prefix; includes5 SurfacePay/Current bodies separately debited128 each. Not a selected use price."
+    },
+    {
+      "id": "FinishRetain",
+      "own": 8,
+      "terms": {
+        "PayContent": 1,
+        "FinishLive": 3,
+        "ScopeRequire": 2
+      },
+      "total": 573,
+      "proof": "Reader/lifecycle/finally2 +Q/Rshare2 +failure inspect/release/Q3 +facade1; Finish56. Historical256 alone does not certify full parent work."
+    },
+    {
+      "id": "StarClose",
+      "own": 7,
+      "terms": {
+        "ScopeRead": 1,
+        "RetirementScopeRequire": 2
+      },
+      "total": 19,
+      "proof": "Available/retirement/inspect/release/Q5 +reader ref/set record1 +original facade1; Base102,55."
+    },
+    {
+      "id": "BatchClose",
+      "own": 25,
+      "terms": {
+        "ScopeRead": 1,
+        "RetirementScopeRequire": 6
+      },
+      "total": 53,
+      "proof": "Available/retirement/Q3 +4 Rinspect/release pairs8 +three4-row loops12 +fixed facade/ref records2; Binding130,36."
+    },
+    {
+      "id": "FinishClose",
+      "own": 7,
+      "terms": {
+        "ScopeRead": 1,
+        "RetirementScopeRequire": 2
+      },
+      "total": 19,
+      "proof": "Available/retirement/inspect/release/Q5 +reader ref/set record1 +facade1; Finish55,14."
+    },
+    {
+      "id": "BridgeCloseOwn",
+      "own": 12,
+      "terms": {
+        "ScopeRead": 1,
+        "RetirementScopeRequire": 1
+      },
+      "total": 20,
+      "proof": "Available/retirement2 +three reader rows3 +Qreleases2 +entry/closing/clear3 +Main wrapper/capability2; Base167,262."
+    },
+    {
+      "id": "WholeBridgeClose",
+      "own": 0,
+      "terms": {
+        "BridgeCloseOwn": 1,
+        "FinishClose": 1,
+        "BatchClose": 1,
+        "StarClose": 1
+      },
+      "total": 111,
+      "proof": "One successful Finish→Batch→Star close, includes bound for partial/deferral prefix. Full parent disposal/collect is separate."
+    }
+  ],
+  "external": [
+    "H: exact current original Main/Root/Scene/Field/Binding source callback body and its entry/host payer",
+    "COLD: Base pre-admission and full factory/source/module admission",
+    "VISIT: stage-specific original child work contracts, pre-debit caller and every real slice aggregate",
+    "NATIVE: provenance/currentness of direct mutable calls and actual duration/backing",
+    "M: any R maintenance/physical destructor triggered outside the retained-primary close/use precondition"
+  ]
+}

@@ -1,0 +1,631 @@
+{
+  "schema": "main-content-next-readonly-route/1",
+  "checkedAt": "2026-10-22T23:46:58.542Z",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\app-startup-candidate-02\\source",
+  "parent": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\owned-context-retirement-join-2026-10-22-01\\source",
+  "pins": [
+    {
+      "file": "biome-service/native/main-baseline-owner.js",
+      "bytes": 93936,
+      "sha256": "0c355aa169f728b840517b818b13ca251c286135c18c12d24bbcf1257133a58f",
+      "parentSha256": "0c355aa169f728b840517b818b13ca251c286135c18c12d24bbcf1257133a58f",
+      "equalParent": true
+    },
+    {
+      "file": "biome-service/native/main-demanded-array-content-owner.js",
+      "bytes": 36686,
+      "sha256": "a92f1e4572c99fb688a5e3fe301d7fa83470919f6b97523a357b6b130db6ca31",
+      "parentSha256": "a92f1e4572c99fb688a5e3fe301d7fa83470919f6b97523a357b6b130db6ca31",
+      "equalParent": true
+    },
+    {
+      "file": "biome-service/native/main-texture-binding-owner.js",
+      "bytes": 87804,
+      "sha256": "34aff7fed1a73c67afcd59eba1620ae5b2ce1be76588dbdfbdd391c021d2b8dc",
+      "parentSha256": "34aff7fed1a73c67afcd59eba1620ae5b2ce1be76588dbdfbdd391c021d2b8dc",
+      "equalParent": true
+    },
+    {
+      "file": "biome-service/native/main-finish-storage-owner.js",
+      "bytes": 36631,
+      "sha256": "25c39c66f199f9ea8d12976f574e704f4818d58f3f98a68c32b6d4a8311aae6a",
+      "parentSha256": "25c39c66f199f9ea8d12976f574e704f4818d58f3f98a68c32b6d4a8311aae6a",
+      "equalParent": true
+    },
+    {
+      "file": "biome-service/native/root-target-backend.js",
+      "bytes": 118511,
+      "sha256": "b0efa9271d94fef061f293fdd55f051fd266cc42b8b471174f2bc54ea43497cc",
+      "parentSha256": "b0efa9271d94fef061f293fdd55f051fd266cc42b8b471174f2bc54ea43497cc",
+      "equalParent": true
+    },
+    {
+      "file": "biome-service/native/main-target-owner.js",
+      "bytes": 24726,
+      "sha256": "e85aa8ae4e0ad59d33afce43023a9c2c7905a36be8bcae6dbe6b02cbd853f235",
+      "parentSha256": "e85aa8ae4e0ad59d33afce43023a9c2c7905a36be8bcae6dbe6b02cbd853f235",
+      "equalParent": true
+    },
+    {
+      "file": "biome-service/native/resource-leases.js",
+      "bytes": 108311,
+      "sha256": "f805286612250ce24c6e8105141da52169c72599a2abb5ef455c79b116f95ed7",
+      "parentSha256": "f805286612250ce24c6e8105141da52169c72599a2abb5ef455c79b116f95ed7",
+      "equalParent": true
+    },
+    {
+      "file": "biome-service/native/main-world-mip-upload-owner.js",
+      "bytes": 19728,
+      "sha256": "47b2a7f4ad5246a54df2fe1dcba2b8dd46a676f3f2c0668cdc6f9462cc02a790",
+      "parentSha256": "47b2a7f4ad5246a54df2fe1dcba2b8dd46a676f3f2c0668cdc6f9462cc02a790",
+      "equalParent": true
+    },
+    {
+      "file": "biome-service/native/main-image-input-owner.js",
+      "bytes": 56945,
+      "sha256": "95dc355f8821f7227c223f0a7490c64b2b5702f2da730612daeb8500f58936f4",
+      "parentSha256": "95dc355f8821f7227c223f0a7490c64b2b5702f2da730612daeb8500f58936f4",
+      "equalParent": true
+    },
+    {
+      "file": "biome-service/native/main-owned-shade-mip-owner.js",
+      "bytes": 32792,
+      "sha256": "f46cc4cb2579590ff8a510441f26742d0dee408996fdf92826f350fe4a4298b3",
+      "parentSha256": "f46cc4cb2579590ff8a510441f26742d0dee408996fdf92826f350fe4a4298b3",
+      "equalParent": true
+    },
+    {
+      "file": "biome-service/native/retained-demand-plan.js",
+      "bytes": 18614,
+      "sha256": "ab9d99f676169b7b645c9d4efd38f4d2d85d25faa1268edc855e81602024f730",
+      "parentSha256": "ab9d99f676169b7b645c9d4efd38f4d2d85d25faa1268edc855e81602024f730",
+      "equalParent": true
+    },
+    {
+      "file": "biome-service/native/source-admission.js",
+      "bytes": 16839,
+      "sha256": "d1676c985688bb3330ae2e35e1194c8b2c05116652939e1b183e0047751d8a7f",
+      "parentSha256": "d1676c985688bb3330ae2e35e1194c8b2c05116652939e1b183e0047751d8a7f",
+      "equalParent": true
+    },
+    {
+      "file": "renderer.js",
+      "bytes": 154257,
+      "sha256": "18c6db590210f263f88c8eb94cf8eee5618289548c6937efdc5c83ea11a1de83",
+      "parentSha256": "a1cf2a979ae368510dd0f1e211544f42d8bdd9a02b4d411489ed91b036beddc3",
+      "equalParent": false
+    },
+    {
+      "file": "math.js",
+      "bytes": 14995,
+      "sha256": "c249ce5165d27bcfbaf8431bfa09bc00fdac84e5a83c6a471ee59c455ab2a6df",
+      "parentSha256": "c249ce5165d27bcfbaf8431bfa09bc00fdac84e5a83c6a471ee59c455ab2a6df",
+      "equalParent": true
+    },
+    {
+      "file": "collection.js",
+      "bytes": 13626,
+      "sha256": "d937d9379cdfd56e2436d370460f696a7c6427464ec297d7272bdd59485bebb4",
+      "parentSha256": "d937d9379cdfd56e2436d370460f696a7c6427464ec297d7272bdd59485bebb4",
+      "equalParent": true
+    },
+    {
+      "file": "world.js",
+      "bytes": 20538,
+      "sha256": "82877ee7543aef2336d3a4dc94b5e42aa55f2eee9f9eb24ef02ece2b0eea861a",
+      "parentSha256": "82877ee7543aef2336d3a4dc94b5e42aa55f2eee9f9eb24ef02ece2b0eea861a",
+      "equalParent": true
+    },
+    {
+      "file": "edge-stream.js",
+      "bytes": 16871,
+      "sha256": "ae26132ae326c88d6dcddb5e6f077f4fce9458957fb1a4065a4106e2a5800651",
+      "parentSha256": "ae26132ae326c88d6dcddb5e6f077f4fce9458957fb1a4065a4106e2a5800651",
+      "equalParent": true
+    },
+    {
+      "file": "watershed-province.js",
+      "bytes": 19962,
+      "sha256": "75334be87b9aeba3893abe5fcf05793dab251bbe745c6f290ee6c290fe9fc50d",
+      "parentSha256": "75334be87b9aeba3893abe5fcf05793dab251bbe745c6f290ee6c290fe9fc50d",
+      "equalParent": true
+    }
+  ],
+  "component11FunctionReuse": [
+    {
+      "file": "main-baseline-owner.js",
+      "name": "ccClose",
+      "current": {
+        "line": 42,
+        "endLine": 42,
+        "sha256": "3171c35f31b2cad5380a88a920329c87d55f1d1c9ed0b1e9d9ae1615e179ef65"
+      },
+      "component11": {
+        "line": 40,
+        "endLine": 40,
+        "sha256": "3171c35f31b2cad5380a88a920329c87d55f1d1c9ed0b1e9d9ae1615e179ef65"
+      },
+      "exact": true
+    },
+    {
+      "file": "main-baseline-owner.js",
+      "name": "ccHandle",
+      "current": {
+        "line": 43,
+        "endLine": 45,
+        "sha256": "d4a5804b8db6b4c162cc8dbd9445fd2431f1999ffb6784f833e1e854154960e5"
+      },
+      "component11": {
+        "line": 41,
+        "endLine": 43,
+        "sha256": "d4a5804b8db6b4c162cc8dbd9445fd2431f1999ffb6784f833e1e854154960e5"
+      },
+      "exact": true
+    },
+    {
+      "file": "main-baseline-owner.js",
+      "name": "createClosedContentFacet",
+      "current": {
+        "line": 128,
+        "endLine": 155,
+        "sha256": "4fd4c8928cef1514c1250594bb1c890134e13d1b6447af9033111ccf65e9d533"
+      },
+      "component11": {
+        "line": 120,
+        "endLine": 147,
+        "sha256": "4fd4c8928cef1514c1250594bb1c890134e13d1b6447af9033111ccf65e9d533"
+      },
+      "exact": true
+    },
+    {
+      "file": "main-texture-binding-owner.js",
+      "name": "ccClose",
+      "current": {
+        "line": 54,
+        "endLine": 54,
+        "sha256": "3171c35f31b2cad5380a88a920329c87d55f1d1c9ed0b1e9d9ae1615e179ef65"
+      },
+      "component11": {
+        "line": 54,
+        "endLine": 54,
+        "sha256": "3171c35f31b2cad5380a88a920329c87d55f1d1c9ed0b1e9d9ae1615e179ef65"
+      },
+      "exact": true
+    },
+    {
+      "file": "main-texture-binding-owner.js",
+      "name": "createClosedContentFromBaseline",
+      "current": {
+        "line": 139,
+        "endLine": 169,
+        "sha256": "739eb9abe40529ad2aa887e5f9d5d7d25b7ff095ad71f21b70aa460982c405aa"
+      },
+      "component11": {
+        "line": 139,
+        "endLine": 169,
+        "sha256": "739eb9abe40529ad2aa887e5f9d5d7d25b7ff095ad71f21b70aa460982c405aa"
+      },
+      "exact": true
+    },
+    {
+      "file": "main-finish-storage-owner.js",
+      "name": "ccClose",
+      "current": {
+        "line": 30,
+        "endLine": 30,
+        "sha256": "3171c35f31b2cad5380a88a920329c87d55f1d1c9ed0b1e9d9ae1615e179ef65"
+      },
+      "component11": {
+        "line": 30,
+        "endLine": 30,
+        "sha256": "3171c35f31b2cad5380a88a920329c87d55f1d1c9ed0b1e9d9ae1615e179ef65"
+      },
+      "exact": true
+    },
+    {
+      "file": "main-finish-storage-owner.js",
+      "name": "createClosedContentFromBaseline",
+      "current": {
+        "line": 59,
+        "endLine": 72,
+        "sha256": "e74046bfa9aed3f6cbe6c45a4277ffa3e99906ca7ecf4202835f42ac53381485"
+      },
+      "component11": {
+        "line": 59,
+        "endLine": 72,
+        "sha256": "e74046bfa9aed3f6cbe6c45a4277ffa3e99906ca7ecf4202835f42ac53381485"
+      },
+      "exact": true
+    },
+    {
+      "file": "root-target-backend.js",
+      "name": "contentConsumerForBaseline",
+      "current": {
+        "line": 228,
+        "endLine": 228,
+        "sha256": "a5e7ae67e07b8ef46b0b0698317777c370d87aff64dfcca123da9635fbf84847"
+      },
+      "component11": {
+        "line": 228,
+        "endLine": 228,
+        "sha256": "a5e7ae67e07b8ef46b0b0698317777c370d87aff64dfcca123da9635fbf84847"
+      },
+      "exact": true
+    },
+    {
+      "file": "root-target-backend.js",
+      "name": "sourceContentConsumer",
+      "current": {
+        "line": 229,
+        "endLine": 229,
+        "sha256": "79a79beb6a1891f4d0a6e35fc787f1d7f11cf2c1f71a0c43501d15e90b25ccdf"
+      },
+      "component11": {
+        "line": 229,
+        "endLine": 229,
+        "sha256": "79a79beb6a1891f4d0a6e35fc787f1d7f11cf2c1f71a0c43501d15e90b25ccdf"
+      },
+      "exact": true
+    },
+    {
+      "file": "root-target-backend.js",
+      "name": "contentPortsForBaseline",
+      "current": {
+        "line": 230,
+        "endLine": 230,
+        "sha256": "7af56eed5e18cd3797f6ac5b4e25936e298c4fe71477b5624b4d92fe334b73b8"
+      },
+      "component11": {
+        "line": 230,
+        "endLine": 230,
+        "sha256": "7af56eed5e18cd3797f6ac5b4e25936e298c4fe71477b5624b4d92fe334b73b8"
+      },
+      "exact": true
+    },
+    {
+      "file": "root-target-backend.js",
+      "name": "contentAdmissionCurrent",
+      "current": {
+        "line": 231,
+        "endLine": 231,
+        "sha256": "0c1e5b2ff3ed93168e8af73b680a3d23c6c079c33de62aea714f333c9592c120"
+      },
+      "component11": {
+        "line": 231,
+        "endLine": 231,
+        "sha256": "0c1e5b2ff3ed93168e8af73b680a3d23c6c079c33de62aea714f333c9592c120"
+      },
+      "exact": true
+    },
+    {
+      "file": "root-target-backend.js",
+      "name": "contentPortsRetiredForBaseline",
+      "current": {
+        "line": 232,
+        "endLine": 232,
+        "sha256": "cf7856536f0f31f81ecaefdf6fe3a8ba052bdda7617fb6278acb892ec7e94b22"
+      },
+      "component11": {
+        "line": 232,
+        "endLine": 232,
+        "sha256": "cf7856536f0f31f81ecaefdf6fe3a8ba052bdda7617fb6278acb892ec7e94b22"
+      },
+      "exact": true
+    },
+    {
+      "file": "root-target-backend.js",
+      "name": "publishContentFacetFromBaseline",
+      "current": {
+        "line": 233,
+        "endLine": 233,
+        "sha256": "44e0e867e0fb30b2404f7f2db85a3db26106518704a193c746be0540b0e2b2b7"
+      },
+      "component11": {
+        "line": 233,
+        "endLine": 233,
+        "sha256": "44e0e867e0fb30b2404f7f2db85a3db26106518704a193c746be0540b0e2b2b7"
+      },
+      "exact": true
+    },
+    {
+      "file": "root-target-backend.js",
+      "name": "bindContentFromScene",
+      "current": {
+        "line": 234,
+        "endLine": 244,
+        "sha256": "f1a7c9335d54ea3a36e261c66407530b3dbca1e1fb8205d8436f483f29f3007b"
+      },
+      "component11": {
+        "line": 234,
+        "endLine": 244,
+        "sha256": "f1a7c9335d54ea3a36e261c66407530b3dbca1e1fb8205d8436f483f29f3007b"
+      },
+      "exact": true
+    },
+    {
+      "file": "root-target-backend.js",
+      "name": "consumeCompositeFromField",
+      "current": {
+        "line": 246,
+        "endLine": 246,
+        "sha256": "e8fd6a8dc37c197df8d85a905d2c22ac1a879f87359cbc34b1dd8ee15be18fce"
+      },
+      "component11": {
+        "line": 246,
+        "endLine": 246,
+        "sha256": "e8fd6a8dc37c197df8d85a905d2c22ac1a879f87359cbc34b1dd8ee15be18fce"
+      },
+      "exact": true
+    },
+    {
+      "file": "resource-leases.js",
+      "name": "createClosedGpuUsePort",
+      "current": {
+        "line": 337,
+        "endLine": 395,
+        "sha256": "b5e8709cbd999977748747d0f76b9bb5e3d419d97dd0fcc0ca108743785b4977"
+      },
+      "component11": {
+        "line": 329,
+        "endLine": 387,
+        "sha256": "4949f64725cd10ae6139871d37a32435af21a3260d5827af476dfeffc94e464b"
+      },
+      "exact": false
+    }
+  ],
+  "pure05ModuleReuse": [
+    {
+      "file": "math.js",
+      "currentSha256": "c249ce5165d27bcfbaf8431bfa09bc00fdac84e5a83c6a471ee59c455ab2a6df",
+      "pure05Sha256": "c249ce5165d27bcfbaf8431bfa09bc00fdac84e5a83c6a471ee59c455ab2a6df",
+      "exact": true
+    },
+    {
+      "file": "collection.js",
+      "currentSha256": "d937d9379cdfd56e2436d370460f696a7c6427464ec297d7272bdd59485bebb4",
+      "pure05Sha256": "d937d9379cdfd56e2436d370460f696a7c6427464ec297d7272bdd59485bebb4",
+      "exact": true
+    },
+    {
+      "file": "world.js",
+      "currentSha256": "82877ee7543aef2336d3a4dc94b5e42aa55f2eee9f9eb24ef02ece2b0eea861a",
+      "pure05Sha256": "82877ee7543aef2336d3a4dc94b5e42aa55f2eee9f9eb24ef02ece2b0eea861a",
+      "exact": true
+    },
+    {
+      "file": "edge-stream.js",
+      "currentSha256": "ae26132ae326c88d6dcddb5e6f077f4fce9458957fb1a4065a4106e2a5800651",
+      "pure05Sha256": "ae26132ae326c88d6dcddb5e6f077f4fce9458957fb1a4065a4106e2a5800651",
+      "exact": true
+    },
+    {
+      "file": "watershed-province.js",
+      "currentSha256": "75334be87b9aeba3893abe5fcf05793dab251bbe745c6f290ee6c290fe9fc50d",
+      "pure05Sha256": "75334be87b9aeba3893abe5fcf05793dab251bbe745c6f290ee6c290fe9fc50d",
+      "exact": true
+    },
+    {
+      "file": "biome-service/native/retained-demand-plan.js",
+      "currentSha256": "ab9d99f676169b7b645c9d4efd38f4d2d85d25faa1268edc855e81602024f730",
+      "pure05Sha256": "ab9d99f676169b7b645c9d4efd38f4d2d85d25faa1268edc855e81602024f730",
+      "exact": true
+    }
+  ],
+  "demand09Reuse": {
+    "currentSha256": "a92f1e4572c99fb688a5e3fe301d7fa83470919f6b97523a357b6b130db6ca31",
+    "sealed09Sha256": "a92f1e4572c99fb688a5e3fe301d7fa83470919f6b97523a357b6b130db6ca31",
+    "exact": true
+  },
+  "stagePredicates": {
+    "facetIssuer": [
+      {
+        "line": 128,
+        "text": "  function createClosedContentFacet({renderer:actual,sceneOwner,rootPort}={}){"
+      },
+      {
+        "line": 129,
+        "text": "   if(actual!==renderer||!ordinaryProfile||!bridge||bridge.stage!==(demandProfile?8:6)||bridge.busy||bridge.closing||closedContentState||closing||closed||uncertain)ccFail();"
+      },
+      {
+        "line": 130,
+        "text": "   if(CLOSED_CONTENT_WORK===null)ccFail();"
+      }
+    ],
+    "ordinaryNativeUse": [
+      {
+        "line": 166,
+        "text": "  function withOrdinaryNativeFromMain(key,{frameId}={},callback){const scope=bridgeScope(key,frameId),paid=ordinaryWork('use');if(!paid)return false;if(bridge.stage!==(demandProfile?8:6)||typeof callback!=='function'||callback.constructor.name==='AsyncFunction'||bridge.serial>=Number.MAX_SAFE_INTEGER)fail('NOT_READY','Complete actual six-reader bridge and bounded synchronous source required');bridge.busy=true;bridge.serial++;try{const r=starApply(starGet,starRecords,[bridge.star]),s=starLive();if(!r||!r.open||r.cookie!==starCookie||r.epoch!==starEpoch||r.texture!==s.row.object||!resourceHost.inspectResource(r.key).usable)fail('STALE_CONTENT','Current retained Star cookie/key required');return resourceHost.withGpuUse([r.key],()=>{bridgeTuple(r.texture,0,r.target,'uStarTex');const result=textureBindings.withContentBatchFromBaseline(textureBindingCapability,bridge.batch,scope.frame,scope.slice,frameId,bridgeTuple,()=>finishStorage.withContentFromBaseline(finishBridgeKey,bridge.finish,scope.frame,scope.slice,frameId,bridgeTuple,()=>{const result=callback();if(result!==true&&result!==false)fail('COMMITTED_UNCERTAIN','Actual source Main completion must be boolean');return result;}));starRequireScope(paid);if(renderer.drawFrameId!==frameId||!Renderer.matchesBaselineCapability(renderer,owner,key))fail('STALE_FRAME','Bridge completion left actual private Main frame');starLive();bridgeTuple(r.texture,0,r.target,'uStarTex');return result;});}catch(error){uncertain=!(resourceHost.inspectLifecycle().contextLost&&starApply(starProperties.isContextLost.value,gl,[])===true);throw error;}finally{bridge.busy=false;}}"
+      }
+    ],
+    "finalNativeDraw": [
+      {
+        "line": 268,
+        "text": "   beforeNativeDraw(key,{core}={}){if(!capability||key!==capability||!Renderer.matchesBaselineCapability(renderer,owner,key))fail('FOREIGN_OWNER','Only actual Main may consume baseline resources');live();if(ordinaryProfile){if(!bridge||bridge.stage!==6||!core||publishedOwn(core,'geometryDetail')?.value!==false||publishedOwn(core,'localShadows')?.value!==1||publishedOwn(core,'atmosphere')?.value!==0||publishedOwn(core,'meadow')!==undefined||renderer.geometry!==null||!groundField||!shadowStorage)fail('DYNAMIC_RESOURCE_PATH_UNADAPTED','Only the exact inactive Ground/Shadow/no-Atmosphere/no-Meadow branch has a staged bridge');fail('ORDINARY_MAIN_HOST_ENVELOPE_UNQUALIFIED','The complete simultaneous ordinary Main host envelope and active-branch contract remain unqualified');}fail('DYNAMIC_RESOURCE_PATH_UNADAPTED','Initial import is complete; all active child replacement/use paths still need genuine R adapters');},"
+      }
+    ],
+    "rendererFinalCall": [
+      {
+        "line": 382,
+        "text": "   if(baseline?.owner.isOrdinaryBridgeProfile?.())baseline.owner.beforeNativeDraw(baseline.key,{core:s});else if(siteGeometry&&baseline)baseline.owner.beforeNativeDraw(baseline.key);"
+      }
+    ]
+  },
+  "pureTokenBounds": [
+    {
+      "token": "references",
+      "pureBody": 120,
+      "resumeAndFailure": 12,
+      "purePayloadWithoutGuard": 132,
+      "freshGuard": 1802,
+      "fullPureResume": 1934,
+      "externalMainRWrapper": "NOT_INCLUDED_UNSELECTED"
+    },
+    {
+      "token": "plate",
+      "pureBody": 120,
+      "resumeAndFailure": 12,
+      "purePayloadWithoutGuard": 132,
+      "freshGuard": 1802,
+      "fullPureResume": 1934,
+      "externalMainRWrapper": "NOT_INCLUDED_UNSELECTED"
+    },
+    {
+      "token": "basis",
+      "pureBody": 56,
+      "resumeAndFailure": 12,
+      "purePayloadWithoutGuard": 68,
+      "freshGuard": 1802,
+      "fullPureResume": 1870,
+      "externalMainRWrapper": "NOT_INCLUDED_UNSELECTED"
+    },
+    {
+      "token": "ray",
+      "pureBody": 48,
+      "resumeAndFailure": 12,
+      "purePayloadWithoutGuard": 60,
+      "freshGuard": 1802,
+      "fullPureResume": 1862,
+      "externalMainRWrapper": "NOT_INCLUDED_UNSELECTED"
+    },
+    {
+      "token": "trace-start",
+      "pureBody": 28,
+      "resumeAndFailure": 12,
+      "purePayloadWithoutGuard": 40,
+      "freshGuard": 1802,
+      "fullPureResume": 1842,
+      "externalMainRWrapper": "NOT_INCLUDED_UNSELECTED"
+    },
+    {
+      "token": "trace-plate",
+      "pureBody": 233,
+      "resumeAndFailure": 12,
+      "purePayloadWithoutGuard": 245,
+      "freshGuard": 1802,
+      "fullPureResume": 2047,
+      "externalMainRWrapper": "NOT_INCLUDED_UNSELECTED"
+    },
+    {
+      "token": "trace-finish",
+      "pureBody": 392,
+      "resumeAndFailure": 12,
+      "purePayloadWithoutGuard": 404,
+      "freshGuard": 1802,
+      "fullPureResume": 2206,
+      "externalMainRWrapper": "NOT_INCLUDED_UNSELECTED"
+    },
+    {
+      "token": "select",
+      "pureBody": 433,
+      "resumeAndFailure": 12,
+      "purePayloadWithoutGuard": 445,
+      "freshGuard": 1802,
+      "fullPureResume": 2247,
+      "externalMainRWrapper": "NOT_INCLUDED_UNSELECTED"
+    },
+    {
+      "token": "rim-start",
+      "pureBody": 8,
+      "resumeAndFailure": 12,
+      "purePayloadWithoutGuard": 20,
+      "freshGuard": 1802,
+      "fullPureResume": 1822,
+      "externalMainRWrapper": "NOT_INCLUDED_UNSELECTED"
+    },
+    {
+      "token": "rim-sample",
+      "pureBody": 40,
+      "resumeAndFailure": 12,
+      "purePayloadWithoutGuard": 52,
+      "freshGuard": 1802,
+      "fullPureResume": 1854,
+      "externalMainRWrapper": "NOT_INCLUDED_UNSELECTED"
+    },
+    {
+      "token": "rim-refine",
+      "pureBody": 88,
+      "resumeAndFailure": 12,
+      "purePayloadWithoutGuard": 100,
+      "freshGuard": 1802,
+      "fullPureResume": 1902,
+      "externalMainRWrapper": "NOT_INCLUDED_UNSELECTED"
+    },
+    {
+      "token": "rim-finish",
+      "pureBody": 52,
+      "resumeAndFailure": 12,
+      "purePayloadWithoutGuard": 64,
+      "freshGuard": 1802,
+      "fullPureResume": 1866,
+      "externalMainRWrapper": "NOT_INCLUDED_UNSELECTED"
+    },
+    {
+      "token": "rim-context",
+      "pureBody": 224,
+      "resumeAndFailure": 12,
+      "purePayloadWithoutGuard": 236,
+      "freshGuard": 1802,
+      "fullPureResume": 2038,
+      "externalMainRWrapper": "NOT_INCLUDED_UNSELECTED"
+    },
+    {
+      "token": "rim-select",
+      "pureBody": 56,
+      "resumeAndFailure": 12,
+      "purePayloadWithoutGuard": 68,
+      "freshGuard": 1802,
+      "fullPureResume": 1870,
+      "externalMainRWrapper": "NOT_INCLUDED_UNSELECTED"
+    },
+    {
+      "token": "order",
+      "pureBody": 12,
+      "resumeAndFailure": 12,
+      "purePayloadWithoutGuard": 24,
+      "freshGuard": 1802,
+      "fullPureResume": 1826,
+      "externalMainRWrapper": "NOT_INCLUDED_UNSELECTED"
+    },
+    {
+      "token": "finish",
+      "pureBody": 32,
+      "resumeAndFailure": 12,
+      "purePayloadWithoutGuard": 44,
+      "freshGuard": 1802,
+      "fullPureResume": 1846,
+      "externalMainRWrapper": "NOT_INCLUDED_UNSELECTED"
+    },
+    {
+      "token": "publish",
+      "pureBody": 2,
+      "resumeAndFailure": 12,
+      "purePayloadWithoutGuard": 14,
+      "freshGuard": 1802,
+      "fullPureResume": 1816,
+      "externalMainRWrapper": "NOT_INCLUDED_UNSELECTED"
+    }
+  ],
+  "tokenScheduler": {
+    "sourceGuard": 1802,
+    "minimumUnselectedPositiveToken": 1,
+    "maxPrepare": 4096,
+    "following": 768,
+    "tail": 32,
+    "twoSuccessfulTokensNeedAtLeast": 4406,
+    "maximumSuccessfulTokensPerSlice": 1,
+    "note": "Only budget algebra over explicit source constants and positive-table guard; not a callback/AST-node tariff. A second quote/refusal or final status call still executes and requires wrapper coverage."
+  },
+  "checks": {
+    "all17NonRendererFrozenInputsMatchParent": true,
+    "onlyRendererStartupDifferenceDisclosed": true,
+    "tablesRemainNull": true,
+    "issuerAndUseDemandAware": true,
+    "finalDrawStillStage6AndRefuses": true,
+    "DRejectsWorldWound": true,
+    "distinctBindingBranches": true,
+    "atMostOneSuccessfulTokenPerSlice": true,
+    "noProductExecution": true,
+    "noBrowserServerGitCalls": true,
+    "all18InitialReviewSourceHashesUnchanged": true
+  }
+}

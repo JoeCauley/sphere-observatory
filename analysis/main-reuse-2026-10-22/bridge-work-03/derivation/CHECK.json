@@ -1,0 +1,114 @@
+{
+  "format": "sphere-main-ordinary-bridge-work-read-only-check/1",
+  "status": "PASS_READ_ONLY_DERIVATION_FOUR_KEY_GATE_STILL_HELD",
+  "utc": "2026-10-23T00:33:40.534Z",
+  "source": "I:/Sphere/work/biome-pack-service-main-2026-10-20T10-35-00/main-startup-draw-helper-2026-10-22-01/main-startup-stage-candidate-04/source",
+  "sourceFiles": 521,
+  "all521StillExactC4": true,
+  "sourceWrites": 0,
+  "selectedSourcePins": 26,
+  "namedFunctionPins": 65,
+  "source37ExactFunctionBodies": 54,
+  "proposedNamedNodes": 43,
+  "source37IsDependencyTemplateOnly": true,
+  "scope": "Joint managed-demanded closed-content Base v7 current four-key bridge; ordinary v3 and standalone demanded v6 paths also enumerated, without applying v7 Surface contradiction to them.",
+  "actualFixedDebitNecessaryVisitMaximumV7": 192,
+  "proposedResourceApiReadinessLowerSubset": 200,
+  "standaloneDemandedV6OptimisticVisitMaximum": 448,
+  "proofConditionalOnExplicitVocabulary": true,
+  "technologyImpossibilityClaim": false,
+  "runningMainStallObserved": false,
+  "proposedOwnedUseWithCallerAndSurfaceBodies": 1426,
+  "proposedUseExternal": "Exact current original H (Main/Root/Scene/Field/source); not qualified here.",
+  "proposedOrderedBridgeClose": 111,
+  "graphValuesAreSelectedFees": false,
+  "ordinaryBridgeTableSelected": false,
+  "otherWorkTablesSelected": false,
+  "limitsChanged": false,
+  "productMainPermission": false,
+  "productMainHostGateStillUnconditional": true,
+  "completeWorkContract": false,
+  "fullColdQualified": false,
+  "baseInstanceQualified": false,
+  "simultaneousHostQualified": false,
+  "nativeBacking": "UNMEASURED",
+  "nativeTiming": "UNMEASURED",
+  "p05Accepted": false,
+  "appNativeContext": "Parent-supplied prior C4 startup PASS with0Main; no new native/browser action by this review.",
+  "browserActions": 0,
+  "serverActions": 0,
+  "gitActions": 0,
+  "nextGate": "Independently reviewed versioned readiness/retention split and disjoint phase payer, reusing original compound batch cookie/serial/key/share/native guards; no ticket presumed necessary.",
+  "artifacts": [
+    {
+      "path": "DERIVATION.md",
+      "bytes": 22001,
+      "sha256": "bd50c694782c1918f7ff31d01d8fb6f87990bef445a3f98fe20ac7d8230509d2"
+    },
+    {
+      "path": "READ-FIRST.md",
+      "bytes": 2878,
+      "sha256": "9cba26802baeacdc48949c9f3aa7a9077644c5c031cdbc0cf91a6079779933c9"
+    },
+    {
+      "path": "check-source.cjs",
+      "bytes": 5171,
+      "sha256": "bee730a3bcf49b129bf95d0d01f62212a76b9b7e63c118329cbedd75574dc81a"
+    },
+    {
+      "path": "current-named-operation-graph.json",
+      "bytes": 12631,
+      "sha256": "6959b0615bd5d7931c02e3d9bb4f4a8ec345231da1f6758a1c69d9ed1083f732"
+    },
+    {
+      "path": "derivation-attempts.json",
+      "bytes": 556,
+      "sha256": "2624f4ab2f6fc65019b39c10a1eaa54e71d7e269a4403102357a329fe6117be4"
+    },
+    {
+      "path": "derive-graph.cjs",
+      "bytes": 16168,
+      "sha256": "6072dec344b3722aaf9be8a6034954bb65081c1fef639af3bddbcffcfbb52aea"
+    },
+    {
+      "path": "function-identities.json",
+      "bytes": 18734,
+      "sha256": "e89c399ac2b80727df06571d943bb004cee9a5221da2a3b234e356c0044768a6"
+    },
+    {
+      "path": "scheduling-obstruction.json",
+      "bytes": 2829,
+      "sha256": "23336546825f4a62573c45832b87c17e15d6824b17d7b3c74670147bb2ff54a6"
+    },
+    {
+      "path": "seal-review.cjs",
+      "bytes": 4053,
+      "sha256": "82934ecde48fe862df20d69647e452239698b58c44b00f7c851ebfda4f1f859d"
+    },
+    {
+      "path": "source-check.json",
+      "bytes": 1294,
+      "sha256": "234706e62d76db33a659f581d175bb32a1ee8e9ff8c04a44354f767f3957ecbc"
+    },
+    {
+      "path": "source-excerpts.md",
+      "bytes": 156731,
+      "sha256": "cff2219f8a9272b146db0074823bb9eaa1c47490769d51ad3dab5dee3e3b1562"
+    },
+    {
+      "path": "source-inventory.json",
+      "bytes": 88362,
+      "sha256": "6c4478954ce4fd3bd3deb580728a577a4345762ff05737609c5f8429d0817b98"
+    },
+    {
+      "path": "source-pins.json",
+      "bytes": 4072,
+      "sha256": "6d21bd9a9effdf179413e1849c38e4e3b329cba7aeb7117e5f093b8259002d23"
+    },
+    {
+      "path": "source37-dependency-comparison.json",
+      "bytes": 6129,
+      "sha256": "8514039b6abb11cc70705daaee7b8bac7bf144fb18db5ddd41c7bf57816f13df"
+    }
+  ]
+}

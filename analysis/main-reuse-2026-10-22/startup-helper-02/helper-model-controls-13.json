@@ -1,0 +1,196 @@
+{
+  "status": "PASS",
+  "planned": 31,
+  "completed": 31,
+  "results": [
+    {
+      "mode": "normal",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS\",\"mode\":\"normal\",\"published\":false,\"backendRealmRetained\":false}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "published",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS\",\"mode\":\"published\",\"published\":true,\"backendRealmRetained\":true}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "limits-large",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS\",\"mode\":\"limits-large\",\"refusal\":\"STARTUP_SOURCE_PROFILE\"}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "body-many",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS\",\"mode\":\"body-many\",\"refusal\":\"STARTUP_SOURCE_PROFILE\"}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "shader-mismatch",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS\",\"mode\":\"shader-mismatch\",\"refusal\":\"STARTUP_SOURCE_PROFILE\"}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "canvas-before",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS\",\"mode\":\"canvas-before\",\"refusal\":\"FOREIGN_STARTUP_SURFACE\"}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "foreign-q",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS\",\"mode\":\"foreign-q\",\"refusal\":\"FOREIGN_STARTUP_PARENTS\"}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "canvas-between",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS\",\"mode\":\"canvas-between\",\"published\":false,\"firstError\":\"STARTUP_RENDERER_CHANGED\",\"backendRealmRetained\":false}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "backend-throw",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS\",\"mode\":\"backend-throw\",\"published\":false,\"backendRealmRetained\":false}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "create-before",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS\",\"mode\":\"create-before\",\"published\":false,\"firstError\":\"EXACT_STARTUP_CREATE_BEFORE\",\"backendRealmRetained\":false}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "create-after",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS\",\"mode\":\"create-after\",\"published\":false,\"firstError\":\"EXACT_STARTUP_CREATE_AFTER\",\"backendRealmRetained\":false}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "create-null",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS\",\"mode\":\"create-null\",\"published\":false,\"firstError\":\"STARTUP_NATIVE_CREATION\",\"backendRealmRetained\":false}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "compile-false",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS\",\"mode\":\"compile-false\",\"published\":false,\"firstError\":\"STARTUP_SHADER_COMPILE\",\"backendRealmRetained\":false}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "link-false",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS\",\"mode\":\"link-false\",\"published\":false,\"firstError\":\"STARTUP_PROGRAM_LINK\",\"backendRealmRetained\":false}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "vao-before",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS\",\"mode\":\"vao-before\",\"published\":false,\"firstError\":\"EXACT_STARTUP_VAO_BEFORE\",\"backendRealmRetained\":false}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "vao-after",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS\",\"mode\":\"vao-after\",\"published\":false,\"firstError\":\"EXACT_STARTUP_VAO_AFTER\",\"backendRealmRetained\":false}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "restore-before",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS\",\"mode\":\"restore-before\",\"published\":false,\"firstError\":\"EXACT_STARTUP_RESTORE_BEFORE\",\"backendRealmRetained\":false}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "restore-after",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS\",\"mode\":\"restore-after\",\"published\":false,\"firstError\":\"EXACT_STARTUP_RESTORE_AFTER\",\"backendRealmRetained\":false}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "delete-before",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS\",\"mode\":\"delete-before\",\"published\":false,\"firstError\":\"EXACT_STARTUP_DELETE_BEFORE\",\"backendRealmRetained\":false}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "delete-after",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS\",\"mode\":\"delete-after\",\"published\":false,\"firstError\":\"EXACT_STARTUP_DELETE_AFTER\",\"backendRealmRetained\":false}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "uniform-undefined",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS\",\"mode\":\"uniform-undefined\",\"published\":false,\"firstError\":\"STARTUP_NATIVE_REPLY\",\"backendRealmRetained\":false}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "getter-shadow",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS\",\"mode\":\"getter-shadow\",\"published\":false,\"firstError\":\"STARTUP_NATIVE_CHANGED\",\"backendRealmRetained\":false}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "reentry",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS\",\"mode\":\"reentry\",\"published\":false,\"backendRealmRetained\":false}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "current-hold",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS\",\"mode\":\"current-hold\",\"published\":false,\"backendRealmRetained\":false}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "stop-0",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS\",\"mode\":\"stop-0\",\"published\":false,\"backendRealmRetained\":false}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "stop-2",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS\",\"mode\":\"stop-2\",\"published\":false,\"backendRealmRetained\":false}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "stop-4",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS\",\"mode\":\"stop-4\",\"published\":false,\"backendRealmRetained\":false}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "stop-8",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS\",\"mode\":\"stop-8\",\"published\":false,\"backendRealmRetained\":false}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "stop-12",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS\",\"mode\":\"stop-12\",\"published\":false,\"backendRealmRetained\":false}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "stop-13",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS\",\"mode\":\"stop-13\",\"published\":false,\"backendRealmRetained\":false}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "stop-15",
+      "exitCode": 0,
+      "stdout": "{\"status\":\"PASS\",\"mode\":\"stop-15\",\"published\":false,\"backendRealmRetained\":false}\n",
+      "stderr": ""
+    }
+  ],
+  "fixtureProvenance": "Exact C1 fixtures/test04 copied into C4 records, genuine current C4 source used without product diagnostics, fee changes or gate overrides.",
+  "sourcePermission": "No Main/P05/cold/physical admission. Standalone explicit Canvas/GL model; actual Q/S/helper/G/R identities.",
+  "testSha256": "ab0815f9913758cec3e577c689df8694b633ab2431e00cf48be6ee40f6bae270"
+}

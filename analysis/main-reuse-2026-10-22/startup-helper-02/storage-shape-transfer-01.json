@@ -1,0 +1,24 @@
+{
+  "status": "SOURCE_SHAPE_TRANSFER_ONLY_NOT_FULL_BASE_QUALIFICATION",
+  "parentSupplement": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\app-startup-candidate-03\\funding-supplement-03.json",
+    "bytes": 2416,
+    "sha256": "1a7db9cfd372e7cad28a7faf506998cc835fe2be6981d4e2e77c2771bf112942"
+  },
+  "controllerLogical": 367104,
+  "controllerSelected": 368640,
+  "controllerHeadroom": 1536,
+  "moduleLogical": 172320,
+  "moduleSelected": 176128,
+  "moduleHeadroom": 3808,
+  "graphShapeEqual": true,
+  "graphCanonicalBytesBefore": 30417,
+  "graphCanonicalBytesAfter": 30417,
+  "bootstrapBytesBefore": 66330,
+  "bootstrapBytesAfter": 66330,
+  "explanation": "Only Base closure byte count93936->93954 (same five-character numeric spelling), Base SHA256 and graph envelope SHA256 (both64-character strings) change in buildGraph. Keys, row/array/object counts, scalar ABI kinds, every string UTF16 length/round32 bucket, generated literal length, all controller functions/captures, order, headers and funding remain identical. Numbers occupy the same32-byte logical slots. This transfers the reviewed generated-controller storage shape without assigning work prices.",
+  "baseFacadeAdditionalLexicalCaptureBytes": 32,
+  "baseCaptureDisposition": "One additional reference to existing demandProfile in a future Baseline facade. Not allocated by actual App startup, which never creates Baseline. Original Baseline factory null-work refusal remains before API birth. This scope neither qualifies full inherited Baseline cold/work/instance metadata nor funds the32B from old retirement4096 slack.",
+  "nativeVM": "UNMEASURED",
+  "actualQSBookkeepingAdditional": true
+}

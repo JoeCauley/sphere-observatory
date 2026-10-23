@@ -1,0 +1,379 @@
+{
+  "format": "sphere-main-startup-stage-composition-seal/1",
+  "status": "PASS_BOUNDED_STAGE_COMPOSITION_PRODUCT_APP_GATE_FALSE",
+  "utc": "2026-10-23T00:10:37.231209+00:00",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\source",
+  "parent": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\app-startup-candidate-03\\source",
+  "sourceFiles": 521,
+  "unchangedC3Files": 519,
+  "changedFiles": [
+    "biome-service/native/main-baseline-owner.js",
+    "owned-main-bootstrap.js"
+  ],
+  "byteHunks": 3,
+  "baselineStageBytesAdded": 18,
+  "bootstrapBytesAdded": 0,
+  "sourcePins": [
+    {
+      "path": "biome-service/native/main-baseline-owner.js",
+      "bytes": 93954,
+      "sha256": "136491ef9d5f7796a0d6328b2c0affe007c984c396eb282fed094812fce61070"
+    },
+    {
+      "path": "owned-main-bootstrap.js",
+      "bytes": 66330,
+      "sha256": "aa559fb41b120473db11d4d9ec1319e354fba4e01623ba274a23370138ad4146"
+    }
+  ],
+  "parentSeal": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\app-startup-candidate-03\\functional-seal-03.json",
+    "bytes": 15909,
+    "sha256": "43ab055c987e6e1de92cfd50e8d5d4986d48dfd43b56ebe46b161ffb972a20be"
+  },
+  "sourceInventory": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\source-inventory-01.json",
+    "bytes": 88362,
+    "sha256": "0e29c74c18c8cb52debd2664865b794e4903f9c6150fabbe3035883a23361271"
+  },
+  "sourceInverse": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\source-inverse-01.json",
+    "bytes": 349,
+    "sha256": "ec67846f60b4aa03051ffcb9160f750528503d7294173373fbd7a5b2f071b739"
+  },
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "rows": 219,
+      "digest": "9a09c0982ce6bc9620fda873299979e886feb8db262dda8e4bbf68e707560678",
+      "sidecar": "graph-profile-01.json",
+      "ids": {
+        "format": "sphere-main-owned-bootstrap-graph/1",
+        "id": "owned-startup-helper-app-held-bootstrap-v6"
+      }
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "rows": 5,
+      "digest": "7751dd2a8a392292cf3626723edbe755976bfc3398d4c77cff5f02e5a4d59c6c",
+      "sidecar": "surface-profile-01.json",
+      "ids": {
+        "format": "sphere-main-owned-default-surface-facts/2",
+        "id": "main-owned-default-surface-facts-v2"
+      }
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "rows": 9,
+      "digest": "987bf7095c3da5ab6ac39fae2fb03409c87f12c40f8e4993f24aea7a400b1021",
+      "sidecar": "helper-profile-01.json",
+      "ids": {
+        "format": "sphere-main-startup-draw-owner/1",
+        "id": "main-startup-draw-owner-v1"
+      }
+    }
+  ],
+  "actualRecordsEnvelopeVerification": true,
+  "parseFiles": 425,
+  "appLoaderModelPasses": 21,
+  "methodCases": 18,
+  "methodExecutions": 36,
+  "originalFactoryNegativePasses": 2,
+  "originalFactoryRefusal": "ORDINARY_BRIDGE_COST_UNQUALIFIED",
+  "controllerLogical": 367104,
+  "controllerSelected": 368640,
+  "controllerHeadroom": 1536,
+  "moduleLogical": 172320,
+  "moduleSelected": 176128,
+  "baseFutureFacadeAdditionalCapture": 32,
+  "baseColdWorkInstanceQualified": false,
+  "oldRetirement4096SlackUsed": false,
+  "productAppGate": false,
+  "mainPermission": false,
+  "graphComplete": false,
+  "nativeVM": "UNMEASURED",
+  "coldStartup": "UNMEASURED",
+  "nativeUIActions": 0,
+  "serverActions": 0,
+  "gitActions": 0,
+  "C3SourcePreserved": true,
+  "controlResultPins": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\controls-app-startup-funding-held-01\\results-01.json",
+      "bytes": 1024,
+      "sha256": "aec301ab199c6b236c4d5eff6d2c2d639dcb23f4f96bb33dfc3b38a9599d6e7c"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\controls-app-startup-app-gate-held-01\\results-01.json",
+      "bytes": 2709,
+      "sha256": "946560a295ac8e025d25665a86a050d8f776cc2b2a7646903df25aa7426531f0"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\controls-app-startup-held-01\\results-01.json",
+      "bytes": 7328,
+      "sha256": "41d1be5a8285c132846f9904d7bd2590e3dd4797d8b8fc18f5734c24dd192237"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\controls-app-startup-foreign-claim-01\\results-01.json",
+      "bytes": 7390,
+      "sha256": "1eb250c0f3ba502d4866482460abfe00fcc3542f5634915680c696e2a37a3437"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\controls-app-startup-helper-source-failure-01\\results-01.json",
+      "bytes": 6326,
+      "sha256": "1138eab0cd0dec831570bda2f3112a05e43fb7dbe0b09f0bae09392d0e8931e8"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\controls-app-startup-compile-failure-01\\results-01.json",
+      "bytes": 7079,
+      "sha256": "6d80a967a8bfd80a6a5801144ddcad6cfa38fb5eb9e42b5aa9b494442a07d967"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\controls-app-startup-g-entry-failure-01\\results-01.json",
+      "bytes": 7323,
+      "sha256": "4b761991e9092714d9e46f80bac1e828423512576b27fd83d1eb832724ca16d9"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\controls-app-startup-dispose-before-app-01\\results-01.json",
+      "bytes": 3650,
+      "sha256": "f7c078c4ce84a5d4732cc7364171706587d9704bb694346dabd37d9c5a996a33"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\controls-app-startup-dispose-during-surface-claim-01\\results-01.json",
+      "bytes": 3760,
+      "sha256": "e02d80b9344f7f84a10caafc436e4e314d01aaccd82bc2b145dca16dd333ffa3"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\controls-app-startup-dispose-during-constructor-01\\results-01.json",
+      "bytes": 6221,
+      "sha256": "c34c2cf645c6c1e5d7a1e7716a15038f44ca1870e5d607a92cbe7e811bf5012c"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\controls-app-startup-dispose-pending-01\\results-01.json",
+      "bytes": 7074,
+      "sha256": "4ffbf2a848a4b596e616b03e37d76a6463b335d49cbfe02f90ab55b3bc20a0d4"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\controls-app-startup-postconstructor-ui-failure-01\\results-01.json",
+      "bytes": 6646,
+      "sha256": "64d2a7cbf7b386e22d42ca6fb352e4628434bd3d49e3198f54bf4240f52e9a7f"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\controls-app-startup-registration-not-reached-01\\results-01.json",
+      "bytes": 6484,
+      "sha256": "5056e3f8972392982049c8b3889e613c570d61c8616f5b4e327703115dd66096"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\controls-app-startup-map-get-after-close-01\\results-01.json",
+      "bytes": 7411,
+      "sha256": "743e7676df9b6f9aa1a3057c7fd9208809a7e523ce1d30dc3721add0353ab57f"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\controls-app-startup-map-delete-after-close-01\\results-01.json",
+      "bytes": 7414,
+      "sha256": "4f4f1c831dbc381ffdff68f65a046b32b2868d67f0775a203232babf94bc50b4"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\controls-app-startup-legacy-01\\results-01.json",
+      "bytes": 2302,
+      "sha256": "06a19716a2179995d980a24b8c2dd93d57df032c3b1acd9825b464803f47c4b1"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\controls-app-startup-missing-bootstrap-01\\results-01.json",
+      "bytes": 1187,
+      "sha256": "46e1d8b3cd37a8c93a1b6f647756466d79b544cd63cba7c5f139265a8e6f833c"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\controls-app-startup-claim-reentry-01\\results-01.json",
+      "bytes": 7744,
+      "sha256": "0d3586e1d2126b3da56f4ede5b49b2ecb4ccd072d39a11296e2cf278db872ff2"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\controls-app-startup-registration-reentry-01\\results-01.json",
+      "bytes": 7795,
+      "sha256": "b514ab17318cc61fef323034bb1f5a298835ec267c82ad97ad341a9d4905e33c"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\controls-app-startup-claim-stop-during-auth-01\\results-01.json",
+      "bytes": 6287,
+      "sha256": "1579715d68513c754bd1f968b1ffde192476cbb2a6355b51d5e430dc7fdacb96"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\controls-app-startup-dispose-reentry-01\\results-01.json",
+      "bytes": 7554,
+      "sha256": "950d508a44c2076582eecab33069cdc7028dd48922a161c985716d41e1367d25"
+    }
+  ],
+  "supportPins": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\READ-FIRST-01.md",
+      "bytes": 4457,
+      "sha256": "e770d3019bff63b2f3eb0b71903eaea31ced57ad262581177672e4b337b9614b"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\author-stage-composition-01.py",
+      "bytes": 7573,
+      "sha256": "ea259a15939a8d9c313c567af5fdb9b6f963b42e159af52cfb0aa52f55404ed1"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\verify-source-composition-01.py",
+      "bytes": 4756,
+      "sha256": "bc8196349ae750cd6b73803bab653d95f0faf4656b01ea0fbb9965a4894fe88b"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\verify-records-envelopes-01.cjs",
+      "bytes": 1590,
+      "sha256": "9d908af5be07b0a39d87cf52347d7892a890a93b6b6302a49ef1c46a34be892b"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\seal-stage-composition-01.py",
+      "bytes": 5938,
+      "sha256": "addbe40c1a369597ddfab2a0ba2124c331094d03ecc41b6d6efe3761d9c9aa35"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\parent-c3-verification-01.json",
+      "bytes": 94267,
+      "sha256": "f042976cee42f7171682eab492f4fcb0832b5c8ad8ff7cedac0c5bb44d2697f4"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\copy-verification-01.json",
+      "bytes": 93965,
+      "sha256": "2286f97bb07db7ae596e09fbcba98f8412636b43328f7c090734a009246bf44c"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\stage-composition-delta-01.json",
+      "bytes": 3317,
+      "sha256": "9e5a8af2094559b148aca96e73cf903626278b550ebdceda5db10832881540a4"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\source-inventory-01.json",
+      "bytes": 88362,
+      "sha256": "0e29c74c18c8cb52debd2664865b794e4903f9c6150fabbe3035883a23361271"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\source-inverse-01.json",
+      "bytes": 349,
+      "sha256": "ec67846f60b4aa03051ffcb9160f750528503d7294173373fbd7a5b2f071b739"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\source-profile-verification-01.json",
+      "bytes": 1114,
+      "sha256": "49178189f1ff2988493df7022f1c8c77092515e6df13cb2224996e6a22b57a2d"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\records-envelope-verification-01.json",
+      "bytes": 911,
+      "sha256": "910eb42023926391a9c03f47877c10c8a68bd1cca3b4ef973b6b7e6903f7774d"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\source-verification-01.json",
+      "bytes": 445,
+      "sha256": "338d60b4108892449c951b9075f86ced6b9f012522db4db96a614b17de721ac8"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\parse-01.json",
+      "bytes": 47931,
+      "sha256": "9bb0cd98eaf8666bb225cfdf4ced7bef3a3d616285c96b7c8f0875a1facabd1b"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\source-plan-01.json",
+      "bytes": 10338,
+      "sha256": "fda8ed8209700a2541fb62dbbba74829326810a5e68802413601e6d3ca9c3b95"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\storage-shape-transfer-01.json",
+      "bytes": 1734,
+      "sha256": "5778f03e90893037ace1db984dfea3890f27d2d94866621f859a29f4ec360e5b"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\funding-supplement-03.json",
+      "bytes": 2416,
+      "sha256": "1a7db9cfd372e7cad28a7faf506998cc835fe2be6981d4e2e77c2771bf112942"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\funding-selection-and-repin-01.json",
+      "bytes": 2778,
+      "sha256": "fba7608903805c0c88d0c693769b254b0758fa134f3cae923234275811b034ef"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\graph-profile-01.json",
+      "bytes": 40095,
+      "sha256": "ab9f688d2d1192bf6047bee7d993b92707b44d832afcb12aa1f109e75023b240"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\surface-profile-01.json",
+      "bytes": 1543,
+      "sha256": "d7b93b6f751a0168fa856ef864426308c63f16112d7b9470ff5d8928aaef9dee"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\helper-profile-01.json",
+      "bytes": 2450,
+      "sha256": "117fb6e3eed362704081b52c75417392f2d6b08fd10282695636e2a7e540a718"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\control-run-01.json",
+      "bytes": 5690,
+      "sha256": "ff4f647505276271e87f5fa035504c0a357f35d219a92bca3a86d827115cf5dc"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\test-app-startup-02.cjs",
+      "bytes": 28725,
+      "sha256": "5f1e165f8cda3bbb3511113502e9ccc24ffd8cce9db34bddb076122ce84d5765"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\run-app-startup-controls-01.cjs",
+      "bytes": 1617,
+      "sha256": "fe0152fb11cfd2210cb63999f29a7f573b962c4e888acbf1ac877edd84dc881f"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\test-source-method.cjs",
+      "bytes": 6250,
+      "sha256": "f84fd33542e43c912bd11f288aad0ff8f77979ad0b19984cd87b8c36b04586ce"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\method-controls.json",
+      "bytes": 12562,
+      "sha256": "a3ad3ba5a82c53224a73e55b71afc7e88e3c6f0a6d1e71b5dea7172859f4e69d"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\test-factory-refusal.cjs",
+      "bytes": 3737,
+      "sha256": "201ccbb30afc97b2c804e5f9f440c76a17bfc39a0c77f186aad2ea61196d2075"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\focused-control-adapters-01.json",
+      "bytes": 2116,
+      "sha256": "897df09eee125cf4b45d98df53a9a7292fafc1110698f84aacf3f7043e1a7cba"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\factory-parent-provenance.json",
+      "bytes": 2331,
+      "sha256": "e5e9bcdd98d3f690abce23287c8bebcdb3369d215c8c4d32603b3ac1ee6420e8"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\factory-successor-provenance.json",
+      "bytes": 2344,
+      "sha256": "ff78b71fddd071de480c71bdbdba8c6958f1156387a833133590d57305dd3e24"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\factory-parent-summary.json",
+      "bytes": 471,
+      "sha256": "0a6f41d8cd8d99dd3de2f57ccf0970299b65d7dc17608969696e86ce29717ebc"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\factory-successor-summary.json",
+      "bytes": 474,
+      "sha256": "6c05d0fa8c12cb4a78a9b0aae4514f4871513d4ec7b57d93333b617dd32db608"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\controls-factory-parent-01\\results.json",
+      "bytes": 2324,
+      "sha256": "afef32bf094c7855b24b976098735ed9ec2a55d5b8b4b4e6d70f284e514aee61"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-startup-draw-helper-2026-10-22-01\\main-startup-stage-candidate-04\\controls-factory-successor-01\\results.json",
+      "bytes": 2324,
+      "sha256": "61b522a830bfb170266fe4ed9761bd69eb8829902a2920dc607d88925a0a21c2"
+    }
+  ],
+  "scope": "Exact C3 successor with one18B final-stage predicate plus Base generated closure row and domain-prefixed graph digest. Functional App/loader models, exact-source method models and negative original-factory controls only. Root separate31helper/nativeC4 results excluded from this bounded seal; C3/C1 native scope unchanged. No fee/table/cap/gate opening, complete work/full cold/Base instance/whole Main/P05 acceptance."
+}
