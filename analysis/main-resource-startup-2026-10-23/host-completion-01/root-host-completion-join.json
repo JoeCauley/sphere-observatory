@@ -1,0 +1,229 @@
+{
+  "status": "FROZEN_ROOT_HOST_COMPLETION_SURFACE_JOIN_FUNCTIONAL_ONLY",
+  "utc": "2026-10-23T17:25:23.096Z",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-host-completion-join-2026-10-23-01\\candidate-01\\source",
+  "loader": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-host-completion-join-2026-10-23-01\\candidate-01\\source\\owned-main-bootstrap.js",
+    "bytes": 205606,
+    "sha256": "886d2bd36fb7f27cdbe09ad7a1952a513d76ed56a10ec0ef3f6797798e769a11"
+  },
+  "files": 521,
+  "parses": 425,
+  "freshSourceReads": 233,
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "rows": 219,
+      "digest": "ffd0d46fbf976efb636ddfde9c12bb39781cd68d550615e9ceae71510f85d93c"
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "rows": 5,
+      "digest": "04cff510ad4d20ec09d314707774ca6fbcfbfc2f4745a6716322db8504a6caf0"
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "rows": 9,
+      "digest": "02e425626b14429ca05a570cc83fde590b505408cc882d07c19f8c9f22a6b69f"
+    }
+  ],
+  "exactInverseHunks": 42,
+  "mergeOrderCommutative": true,
+  "other520Exact": true,
+  "exactSharedFunctionProofs": [
+    {
+      "name": "initializerFinish",
+      "parent": "G11"
+    },
+    {
+      "name": "runAppStartup",
+      "parent": "G11"
+    },
+    {
+      "name": "surfaceAssemble",
+      "parent": "G11"
+    },
+    {
+      "name": "initializerBegin",
+      "parent": "G11"
+    },
+    {
+      "name": "createMainColdProfileBuilders",
+      "parent": "Host04"
+    },
+    {
+      "name": "readAppStartupInputs",
+      "parent": "actualApp03/SurfaceParent"
+    }
+  ],
+  "hostReleaseCurrentSourceModels": 18,
+  "completionIndependentReview": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\independent-completion-review-01\\CHECK-01.json",
+    "bytes": 11600,
+    "sha256": "30bee50d69716c1b27d698296ed2d7c9fef625347d624e14024933c1cc057189"
+  },
+  "surfaceIndependentReview": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\independent-review-01\\CHECK-01.json",
+    "bytes": 42961,
+    "sha256": "4ac46648d4a4eb09d639a439505943da7e60f764817036c09f6f8c225f30866c"
+  },
+  "proofs": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-host-completion-join-2026-10-23-01\\build-join-01.cjs",
+      "bytes": 4859,
+      "sha256": "7a5a71506264d4548289475b5df7376e33549c4d7eb0d560c18a162356458c05"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-host-completion-join-2026-10-23-01\\build-join-02.cjs",
+      "bytes": 872,
+      "sha256": "b061b5ca21d2ba9dcd44011f139ac06c0fb41292de1c3211893e1b8a95db6e0e"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-host-completion-join-2026-10-23-01\\attempt-build-02.json",
+      "bytes": 430,
+      "sha256": "5430b4167648478d894c3653cf9713d7862427de21cef670d4d281fd30330f7f"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-host-completion-join-2026-10-23-01\\exact-join-01.json",
+      "bytes": 47944,
+      "sha256": "a499dae830beb4908c62f19df92578439edb19367cc563fa29c8db36ed33add8"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-host-completion-join-2026-10-23-01\\inventory-01.json",
+      "bytes": 88363,
+      "sha256": "cf4fc6e5ff1869a7ef01be6bcb903a8279f11ab79df0d37fe42879d5948819d6"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-host-completion-join-2026-10-23-01\\verify-source-03.cjs",
+      "bytes": 5173,
+      "sha256": "f2a25eaff7c200a2a3e501783ddc91ce10c99dfaefcd0d36b545b5a6390487c6"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-host-completion-join-2026-10-23-01\\source-verification-03.json",
+      "bytes": 2060,
+      "sha256": "e97a8d4394c71b40322205cfdf15e605e917b0200e10ce48d2d1c96030b85426"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-host-completion-join-2026-10-23-01\\prepare-host-controls-04.py",
+      "bytes": 1354,
+      "sha256": "c9b498a2c7f284bf1527fa498ebaa608b12ef23339598599df4523a1ff253245"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-host-completion-join-2026-10-23-01\\harness-adaptations-04.json",
+      "bytes": 552,
+      "sha256": "e60867e94c854bcfa1d0111e449321b7afc628f4abaf3aba07068583f1f3a81f"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-host-completion-join-2026-10-23-01\\controls-01\\test-host-04.cjs",
+      "bytes": 45287,
+      "sha256": "8922324be0248fd47ae9296a95c7cf3b44668472ac380654453f4435926c98e6"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-host-completion-join-2026-10-23-01\\controls-01\\control-bindForeign-join01.json",
+      "bytes": 90349,
+      "sha256": "cdc3b221a37227fa2b4e2bc0632ca9cd2f74bd1edb3e14002461fe7c5fea4e09"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-host-completion-join-2026-10-23-01\\controls-01\\control-bindOnce-join01.json",
+      "bytes": 90390,
+      "sha256": "35ad40b3a673098c266738345835707f65c21346a5ccec217e50531c6ce70910"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-host-completion-join-2026-10-23-01\\controls-01\\control-hostFirst-join01.json",
+      "bytes": 90265,
+      "sha256": "cf958e42b2b1fbe9d3189d63dfd13db042e85479e289867dadafd35db39f6ae7"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-host-completion-join-2026-10-23-01\\controls-01\\control-legacyBound-join01.json",
+      "bytes": 90135,
+      "sha256": "6db21c04cd77ef5c1cec06402a638a7aa9063b49fc5a259f7fcbb973ad3b0786"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-host-completion-join-2026-10-23-01\\controls-01\\control-preRSourceChanged-join01.json",
+      "bytes": 90349,
+      "sha256": "caf8141f439d8dcfd9642d50744ea7402563c11388e7c789e88fe9e26452e3f1"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-host-completion-join-2026-10-23-01\\controls-01\\control-privateReadConcurrent-join01.json",
+      "bytes": 90385,
+      "sha256": "70ec49f21cfb335d6b0b785afaa0f4ec3459df446ca53057e863d0aeb8c9aa5b"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-host-completion-join-2026-10-23-01\\controls-01\\control-releaseBadProfile-join01.json",
+      "bytes": 2180,
+      "sha256": "a0a53fcd4b8324c486861044f33e433edd6abc9c465bd81edc5c37e5092e6fd7"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-host-completion-join-2026-10-23-01\\controls-01\\control-releaseComplete-join01.json",
+      "bytes": 4064,
+      "sha256": "6b7d501326ea053e495dfa9580445f8b5f6f0623e56ddff8aaafa8d95cf1bf99"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-host-completion-join-2026-10-23-01\\controls-01\\control-releaseForeignHost-join01.json",
+      "bytes": 1729,
+      "sha256": "66ffea1b22c86c50c26ac5448e33ab6585cb2f597b8c537638f5ab35e03e33fc"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-host-completion-join-2026-10-23-01\\controls-01\\control-releaseInvalidConfig-join01.json",
+      "bytes": 1706,
+      "sha256": "53270f2f4af1f4817a2f87250dd4f5953d57bcacaa811f458174d313d1ee6236"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-host-completion-join-2026-10-23-01\\controls-01\\control-releaseMissingConfig-join01.json",
+      "bytes": 1715,
+      "sha256": "3b23dbffc3bc089d87136d7b683d799e74b71a9bf8988e80b0084782419c7bf9"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-host-completion-join-2026-10-23-01\\controls-01\\control-releaseNativeChanged-join01.json",
+      "bytes": 1979,
+      "sha256": "7c5e77bc7a3138005c5bac786511faa5ec1e3fa51adcc3985d56c322c35c1c43"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-host-completion-join-2026-10-23-01\\controls-01\\control-releaseRawChanged-join01.json",
+      "bytes": 2260,
+      "sha256": "cf2c5abade1302ba121098292249d21c5881f039b12bc8d023e7d9a193ed72bf"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-host-completion-join-2026-10-23-01\\controls-01\\control-releaseRejectFalse-join01.json",
+      "bytes": 2318,
+      "sha256": "eac44925f43bd6b00011245712a50343e6265172e66ab6d17f3b76cb50a86b96"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-host-completion-join-2026-10-23-01\\controls-01\\control-releaseRejectNull-join01.json",
+      "bytes": 2316,
+      "sha256": "a082cb2c036c2abe591dfe7069a05cac95bba0efcea63e806a462c033c5036ae"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-host-completion-join-2026-10-23-01\\controls-01\\control-releaseRejectUndefined-join01.json",
+      "bytes": 2326,
+      "sha256": "35957d007234045a9874445cd82dec63278e5371f852bb16a45d421599627ae8"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-host-completion-join-2026-10-23-01\\controls-01\\control-releaseRetired-join01.json",
+      "bytes": 2384,
+      "sha256": "b51dce840345198755e319d8066fa870d2b4fa1be7614d25826d76154e1be3c6"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-host-completion-join-2026-10-23-01\\controls-01\\control-releaseSourceChanged-join01.json",
+      "bytes": 2422,
+      "sha256": "aecfc383ca39ce226f8ddc25fa63162fa6191b12a76b3ba185591702fcfdffee"
+    }
+  ],
+  "actual": "The pre-R Host remains the same adapter through a private one-use same-backend/exact-limits R bind. Metadata-only release verification does not read assets. Paid completion/admission and raw Surface occurrence fix retain all fresh checks.",
+  "models": "Host/release controls execute current exact source with declared DOM/native/Storage adapters, scoped diagnostic reservations and injected verified-identity data. They do not prove native IndexedDB, the complete shared startup, the real resource vector or ordinary Main.",
+  "holds": [
+    "Current full private cold/Host/Profile/Records/Source preludes and caller work/storage.",
+    "New actual source-owned release catalogue/configuration and bounded cursor successor (not part of this frozen source).",
+    "Source/module/caller increment for plan-preparation dependency before Binding use; this snapshot still219-source/233fresh-profile-reads.",
+    "Complete seven-field shared-host vector, genuine resource/Kernel/provider verifier and same Host reuse API.",
+    "Finite Target plus required Content compatibility, complete demanded Root/content/active weather, whole-view/Frame/support and ordinary native Main acceptance.",
+    "Original first-Q foundation and all other previously named native/physical boundaries."
+  ],
+  "selectedComponent": "main-texture-handoff-funded-c3",
+  "selected": false,
+  "Main": false,
+  "Frame": false,
+  "P05": "OPEN",
+  "runtimeFilesChanged": false,
+  "browserServerOperated": false
+}

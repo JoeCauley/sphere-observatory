@@ -1,0 +1,161 @@
+{
+  "status": "FROZEN_UNSELECTED_COMPONENT_PROPOSALS_AND_NUMERIC_MODEL_REPLAY_PASS",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\priced-proposal-join-12\\source",
+  "loader": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\priced-proposal-join-12\\source\\owned-main-bootstrap.js",
+    "bytes": 161499,
+    "sha256": "bcb94d58e3e34e33720d28b91e01bd1872c7f98e0a545232acc0e996de414226"
+  },
+  "files": 521,
+  "parses": 425,
+  "changes": [
+    "C11 exact private completion/admission functions from FUNCTIONAL11",
+    "Root independently passed Surface2f8c raw presence correction",
+    "Three exact fresh profile row/digest repins"
+  ],
+  "joinRecipe": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\priced-proposal-join-12.json",
+    "bytes": 167735,
+    "sha256": "49a8c9f052f34dd87130596f965a077871e567494e4de2bfdb92b1ed370f2ba0"
+  },
+  "inventory": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\inventory-priced-proposal-12.json",
+    "bytes": 93755,
+    "sha256": "431ed0ab9483fc4619bc21bb0d621c2f9e02ed13642d14900a993d54ee8700bf"
+  },
+  "sourceAdmissionOnly": {
+    "profiles": [
+      {
+        "name": "buildGraph",
+        "rows": 219,
+        "digest": "33a26fc32561d7a3c58e5f87674341a22d43ec21425a8d8dc02a000b9c50f161"
+      },
+      {
+        "name": "buildSurfaceEnvelope",
+        "rows": 5,
+        "digest": "04cff510ad4d20ec09d314707774ca6fbcfbfc2f4745a6716322db8504a6caf0"
+      },
+      {
+        "name": "buildStartupEnvelope",
+        "rows": 9,
+        "digest": "02e425626b14429ca05a570cc83fde590b505408cc882d07c19f8c9f22a6b69f"
+      }
+    ],
+    "reads": 233,
+    "copies": 219
+  },
+  "functional": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\FUNCTIONAL-11.json",
+    "bytes": 11910,
+    "sha256": "c6d3419ed330feb6f55647e202ef0fae58234f7e8ef1b40899abd1bfc177c323"
+  },
+  "work": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\complete-work-04.json",
+    "bytes": 384573,
+    "sha256": "8ed678f644e981059b35494f5e718a1cbbab93db8e16fbc281c04801c9f049e4"
+  },
+  "workGenerator": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\derive-complete-work-04.cjs",
+    "bytes": 43078,
+    "sha256": "fad34aae1be1b7e794e04ded33591f3136d642a0174af80a00c2d55569d21b4a"
+  },
+  "storage": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\complete-storage-05.json",
+    "bytes": 109233,
+    "sha256": "c03ec02843a61c4e210727274d896ff5c5e249ecab3a3adde0d594ac2c5ee992"
+  },
+  "storage04": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\complete-storage-04.json",
+    "bytes": 108546,
+    "sha256": "46705654ad0367f2bf1b82ec225e0c65e595cede0c8e7a8358b6607e0f77d916"
+  },
+  "storageGenerator": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\derive-complete-storage-07.cjs",
+    "bytes": 12195,
+    "sha256": "069b1a2456501adc2287c3ce75aebfcc159de3062abf0b648eda9a625420121a"
+  },
+  "storageRelink": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\relink-storage-05.cjs",
+    "bytes": 2054,
+    "sha256": "f702910f7c7d2f0cdff29bdffdf5764b63cc35ee5028ef54e79dd2c1754b16e6"
+  },
+  "numericHarness": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\test-numeric-20.cjs",
+    "bytes": 52785,
+    "sha256": "a867b8dc250bd7402bf706ba6b5e5566a88f73888b3c31fc53c2e247efaf26f4"
+  },
+  "numericHarnessRecipes": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\model-edits-19.json",
+      "bytes": 8189,
+      "sha256": "ac6cc90e5cc3a48817690729b2babf91f4083f2de3488f9c3e970de36fcd7f76"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\model-edits-20.json",
+      "bytes": 379,
+      "sha256": "692ae9aea3bda77c387b2030d53f0bf4420b670c256fb901bf79d477bcee7e2d"
+    }
+  ],
+  "controls": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\control-positive-c11-priced02.json",
+      "bytes": 11362,
+      "sha256": "f935f226460702e806c73c7be257cf8fda557efba2871b8345c2332e7ef9bf37",
+      "case": "positive",
+      "cumulativeProposedWork": 33098,
+      "currentScopeWork": 96,
+      "componentOnlyQPeak": 18126490,
+      "componentOnlyQHeld": 17398275,
+      "shaderOperandBytes": 72671
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\control-field-c11-priced02.json",
+      "bytes": 11359,
+      "sha256": "50996af640b611c4b1565818d1805af3d55005a79905a1dffd763c88cdae714c",
+      "case": "field",
+      "cumulativeProposedWork": 33098,
+      "currentScopeWork": 96,
+      "componentOnlyQPeak": 18126490,
+      "componentOnlyQHeld": 17452959,
+      "shaderOperandBytes": 74763
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\control-composite-c11-priced02.json",
+      "bytes": 11363,
+      "sha256": "f26e1ec43dcd4aa18fac77a86a9ff37f5506c8e6986f7e28a1d19c661e4ef3f4",
+      "case": "composite",
+      "cumulativeProposedWork": 33098,
+      "currentScopeWork": 96,
+      "componentOnlyQPeak": 18126490,
+      "componentOnlyQHeld": 17442599,
+      "shaderOperandBytes": 74393
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\control-finishCheckStop-c11-priced02.json",
+      "bytes": 6476,
+      "sha256": "41971dd5b906fbdd8c1bb454b752c0f26a0dff01bb015a66f7156c1cb248057f",
+      "case": "finishCheckStop",
+      "cumulativeProposedWork": 33212,
+      "currentScopeWork": 210,
+      "componentOnlyQPeak": null,
+      "componentOnlyQHeld": null,
+      "shaderOperandBytes": 72671
+    }
+  ],
+  "limits": {
+    "privatePreRVisitWork": 4096,
+    "cumulativePostConstructorShaderOperandBytes": 262144,
+    "serviceJobs": 2,
+    "metadataCap": 33554432,
+    "changed": false
+  },
+  "disclosures": [
+    "All numeric values are substituted only in disclosed evaluation copies. Product Source/helper/loader tables and complete funding remain null, first entryNaN and APPfalse. No source literal/table selection.",
+    "Private component runs use exact work04/storage05 proposals plus SourceX graph/helper fee proposals and private current10. No unit fee remains on this component path. Initial219 fixture remains ordinary actualS.admit; shared Source_CREATE/START/ACCEPT route and original full-loader entry are not exercised here.",
+    "Seven named component source/module/controller pools are reserved before Source factory/extracted captures. Actual root combined first-entry/cold-profile controller/module/instance, original App/Renderer constructor/Host/R and complete live native context/residency are omitted. Q observations are therefore component-only, not whole-cap certification.",
+    "Real captured Node timer visits execute bounded private pre-R scopes. Their33k cumulative proposal work is not a single host frame, R slice or proof of native wall time. No R reset/cap is invented and shader operand totals never reset per wake.",
+    "Actual Surface/Renderer/Local/G/Positions/Construction/Q/S/Records bodies execute within the named GL/Canvas/Document/required-child models. Native GL/compiler/driver, nativephysical/VM heap, IO fixture URL allocation and test observer roots remain explicitly outside this component claim.",
+    "The named work graph and storage union remain pending independent review. Passing a metered replay checks protocol consistency, not the completeness of its proposed prices.",
+    "Main graph incomplete; helperG and actualSurfaceG stay distinct; no Main frame/readiness/draw permission. Root independently composes source/current-profile/function hunks into its R/App successor."
+  ]
+}

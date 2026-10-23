@@ -1,0 +1,214 @@
+{
+  "status": "FROZEN_SURFACE_RAW_FAILURE_PRESENCE_SUCCESSOR_FUNCTIONAL_ONLY",
+  "utc": "2026-10-23T16:59:41.453Z",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\candidate-01\\source",
+  "parent": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-resource-input-join-2026-10-23-01\\candidate-01\\source",
+  "surface": {
+    "path": "biome-service/native/main-default-surface-facts.js",
+    "parentBytes": 31763,
+    "parentSha256": "34e6b98a2b32d54d6eda0b5521858ff2cd4df241dbb7291a384f4fc981fb8115",
+    "bytes": 31806,
+    "sha256": "2f8c56694194f484dc0a334f0cceeb3e874cd3bf39679961da7d39f72863a7ec"
+  },
+  "loader": {
+    "parentSha256": "10df9d3521fc2de9f56f0f05995b24163f0d63d3b5b3b553be0c949e15231f1f",
+    "bytes": 183195,
+    "sha256": "e3501d880253085fa2254838c1f3317ec3142ca83579b90539c26489b7e0588f"
+  },
+  "files": 521,
+  "parses": 425,
+  "freshSourceReads": 233,
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "rows": 219,
+      "digest": "ffd0d46fbf976efb636ddfde9c12bb39781cd68d550615e9ceae71510f85d93c"
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "rows": 5,
+      "digest": "04cff510ad4d20ec09d314707774ca6fbcfbfc2f4745a6716322db8504a6caf0"
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "rows": 9,
+      "digest": "02e425626b14429ca05a570cc83fde590b505408cc882d07c19f8c9f22a6b69f"
+    }
+  ],
+  "exactSurfaceInverseHunks": 4,
+  "loaderOnlyThreeExactProfileRepins": true,
+  "other519FilesExact": true,
+  "actualOnlyChangedSurfaceFunction": "observeNative",
+  "newActiveBindings": [
+    "hasFailed"
+  ],
+  "newCallableObjects": 0,
+  "newExports": 0,
+  "rawFailureCases": 14,
+  "regressions": 5,
+  "proofs": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\build-candidate-01.cjs",
+      "bytes": 4888,
+      "sha256": "573927bd1b7ea026d19019d667ac6d82e1d36b5608da57b0ae2d0c9e762866c7"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\build-candidate-02.cjs",
+      "bytes": 1077,
+      "sha256": "5ae28e0c588c237a1f214b1d569fd7866716d8af07325362392495b33f87ba95"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\attempt-build-02.json",
+      "bytes": 400,
+      "sha256": "2c231c04d04b86bbf34280bd90bac030dcc6eccb2bc1492f37547036bcace495"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\exact-edits-01.json",
+      "bytes": 75122,
+      "sha256": "2273281d6a6ccf585e8c1b4a8203df7ece83e8585c89466bbce673e758e4e3ee"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\inventory-01.json",
+      "bytes": 88363,
+      "sha256": "821d08051b7dc17f609ae67958865f6016122ac450f4e4c13aa9a585723246e4"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\prepare-controls-03.cjs",
+      "bytes": 4153,
+      "sha256": "9ff8eb1c3f0e281dc5c5318f28304af6645de5c41aa577ff72b74ce8cd9fbdcf"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\harness-edits-03.json",
+      "bytes": 3775,
+      "sha256": "4a7149c4ed24b545a83e2b5bb27a9633692ac8be6c8cad02685eb92fbd6fc524"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\test-surface-raw-03.cjs",
+      "bytes": 48594,
+      "sha256": "257902f7be7eea103575517dc11333f1bad633cd854f58f2ecd8294d8df09aec"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\verify-source-04.cjs",
+      "bytes": 4966,
+      "sha256": "b9b8a88eca85ec0aa57298c01af0df29f85e8511bd796a4f518dc99aa6985f36"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\source-verification-04.json",
+      "bytes": 1793,
+      "sha256": "240087ca508351b8e078fc2c89199682f88b26acebe8e93843d14a52f9333b6b"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\control-rawPresenceBodyFalseOnly-raw01.json",
+      "bytes": 4535,
+      "sha256": "0f68202576589c27a9ad8768d9fbafc6f5823578fa7edb66be02b214ab44fb0a"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\control-rawPresenceBodyFalseRestoreObject-raw01.json",
+      "bytes": 4541,
+      "sha256": "fdd005b8ea449312c897c417d86278bdd795e3dba03ecd2adfae6f5805884682"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\control-rawPresenceBodyNullRestoreObject-raw01.json",
+      "bytes": 4540,
+      "sha256": "5a2b2864ffc1cd6f6580ed8417274c6d620ef75a7f1f915cd0ad4dc6cab6acf6"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\control-rawPresenceBodyObjectRestoreNull-raw01.json",
+      "bytes": 4540,
+      "sha256": "e2cb225936062580ece25c468d78672c5e65c3fb7be689047de8eea05a406237"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\control-rawPresenceBodyUndefinedRestoreFalse-raw01.json",
+      "bytes": 4544,
+      "sha256": "b9af97add2c77a020b5a668696ea422b0ad77f87a5c1ad10c57173cbc15a7e41"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\control-rawPresenceEmpty-raw01.json",
+      "bytes": 4525,
+      "sha256": "a7dc82e92ea15581f57bbfd7f4565228beb2d4b9bcb00b9fee93bb488a483ba7"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\control-rawPresenceFalse-raw01.json",
+      "bytes": 4525,
+      "sha256": "384db45ddd3aa9f8df74a6f0d585281066d20d25811308d6e161c8d11bb93b28"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\control-rawPresenceNaN-raw01.json",
+      "bytes": 4523,
+      "sha256": "29c48c57cad07f1758f343df6890f4caadcba97409206592c08406b7e235b8a4"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\control-rawPresenceNegativeZero-raw01.json",
+      "bytes": 4532,
+      "sha256": "0bc4ad99bfd94ed08eca930dca61f433ee654d0c4dc461e1173a01e387ef0907"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\control-rawPresenceNull-raw01.json",
+      "bytes": 4524,
+      "sha256": "0dd460f68a90f58b2739d88580565602d244a3859eaada27cc3bdad13038dc4d"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\control-rawPresenceObject-raw01.json",
+      "bytes": 4526,
+      "sha256": "a86c0a4db80d8d9f27c2ca084a22467cfb6b60213eacc9297585b40d527ba7bc"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\control-rawPresenceSymbol-raw01.json",
+      "bytes": 4526,
+      "sha256": "df3d324c694e060a79fbcbe75a1f54726ce5a8664f3a7a3412bc83f64ecc47f0"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\control-rawPresenceUndefined-raw01.json",
+      "bytes": 4529,
+      "sha256": "efbfa0ecca6aba0903e93efe84c5fcd881970716a690566f84fc8b3ecfda89c4"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\control-rawPresenceZero-raw01.json",
+      "bytes": 4524,
+      "sha256": "10bf63c97f34f3bd3b0ac0fd93c2ad1d308c0905076766517241d4837aef2122"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\control-composite-regression01.json",
+      "bytes": 8548,
+      "sha256": "a9bc14bae0ee1e3e4f08f84cbe8df66e066e6241fe4e2ae92dba9198624fb745"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\control-field-regression01.json",
+      "bytes": 8544,
+      "sha256": "316470e894572a40fc42768727cb096c34ceee12537da0e7669557e7e0f54f4a"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\control-positive-regression01.json",
+      "bytes": 8547,
+      "sha256": "c4a1717ec181d23e2d46f18f000039c54ea8214a34c925d4a4dd9d659073d89f"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\control-surfaceBeforeNativeMutation-regression01.json",
+      "bytes": 5359,
+      "sha256": "6f05188fdf55eff7838e06d71a458f94008753d25dd13a93b08b8f98dc9407ca"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\control-surfacePostNativeMutation-regression01.json",
+      "bytes": 5356,
+      "sha256": "f36b00a98cf10a52effa6129c18b3687e6b10cf7037d3dab8ab206924598c24a"
+    }
+  ],
+  "frozenOriginalFinding": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\independent-complete-proposals-01\\surface-raw-finding-01\\CHECK-01.json",
+    "bytes": 1858,
+    "sha256": "8515804fea63b532b761501f19c0bcf4a7b78aefad237df093d8401c89a2bbde"
+  },
+  "behavior": "Propagate all raw native failures by occurrence, retain original primary failure if restoration also fails, latch existing failed/cleanupUncertain/restorationOwed flags through the original catch chain and refuse stale facts.",
+  "models": "Actual original Surface/Renderer/Source/Q bodies with named stable native method failure models. No observed browser/native exception or native heap/performance claim.",
+  "held": [
+    "Positive new active-binding and visit/control work derivation before any full caller selection.",
+    "Complete shared startup/Host/R/App ownership/work, original first-Q foundation, actual native Main/P05."
+  ],
+  "selectedComponent": "main-texture-handoff-funded-c3",
+  "selected": false,
+  "Main": false,
+  "Frame": false,
+  "P05": "OPEN",
+  "runtimeFilesChanged": false,
+  "browserServerOperated": false
+}

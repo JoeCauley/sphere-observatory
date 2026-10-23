@@ -1,0 +1,27 @@
+{
+  "pass": true,
+  "cutoff": 17,
+  "snapshots": 87,
+  "archiveEntriesVerified": 40553,
+  "recordsVerified": 6027,
+  "recordsAdded": 475,
+  "recordBytes": 207290509,
+  "freshRestore": {
+    "snapshot": "main-host-completion-unselected-c1",
+    "destination": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-startup-progress-2026-10-23-01\\restored-check-17\\source",
+    "files": 521,
+    "verified": true
+  },
+  "earlier73Snapshots5552RecordsExact": true,
+  "restorerUnchanged": true,
+  "currentReadmeUTF8": true,
+  "historicalReadmeBytesExact": true,
+  "selectedMainComponent": "main-texture-handoff-funded-c3",
+  "joinedMainStartupSelected": false,
+  "P05": "OPEN",
+  "excludedActive": [
+    "Verified release catalogue successor",
+    "Cold private builder/Host/Numeric/Records/Source complete pricing"
+  ],
+  "rawArchivesRemainLocal": true
+}

@@ -1,0 +1,733 @@
+{
+  "status": "PASS_BOUNDED_INDEPENDENT_SURFACE_RAW_PRESENCE_CORRECTION",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01/candidate-01/source",
+  "surface": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01/candidate-01/source/biome-service/native/main-default-surface-facts.js",
+    "bytes": 31806,
+    "sha256": "2f8c56694194f484dc0a334f0cceeb3e874cd3bf39679961da7d39f72863a7ec"
+  },
+  "rootSeal": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01/CHECK-05.json",
+    "bytes": 11054,
+    "sha256": "645aa3f7506975720803b2b122a2a6591bf078113e5169b9a36c555c1d8b63a4"
+  },
+  "originalFailure": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00/main-v8-surface-g-preparation-2026-10-23-01/caller-02/independent-complete-proposals-01/surface-raw-finding-01/CHECK-01.json",
+    "bytes": 1858,
+    "sha256": "8515804fea63b532b761501f19c0bcf4a7b78aefad237df093d8401c89a2bbde"
+  },
+  "static": {
+    "status": "PASS_EXACT_NARROW_SURFACE_PRESENCE_SOURCE",
+    "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01/candidate-01/source",
+    "parent": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00/main-v11-resource-input-join-2026-10-23-01/candidate-01/source",
+    "files": 521,
+    "parses": 425,
+    "changed": [
+      "biome-service/native/main-default-surface-facts.js",
+      "owned-main-bootstrap.js"
+    ],
+    "other519Exact": true,
+    "exactSurfaceInverse": 4,
+    "exactLoaderProfileInverse": 3,
+    "newCallableObjects": 0,
+    "newExports": 0,
+    "newBinding": "hasFailed",
+    "onlyFunctionalChange": "observeNative occurrence sentinel, restoration precedence and exact raw rethrow; unchanged direct outer failed latch now runs",
+    "inputs": [
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01/CHECK-05.json",
+        "bytes": 11054,
+        "sha256": "645aa3f7506975720803b2b122a2a6591bf078113e5169b9a36c555c1d8b63a4"
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01/exact-edits-01.json",
+        "bytes": 75122,
+        "sha256": "2273281d6a6ccf585e8c1b4a8203df7ece83e8585c89466bbce673e758e4e3ee"
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01/inventory-01.json",
+        "bytes": 88363,
+        "sha256": "821d08051b7dc17f609ae67958865f6016122ac450f4e4c13aa9a585723246e4"
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01/test-surface-raw-03.cjs",
+        "bytes": 48594,
+        "sha256": "257902f7be7eea103575517dc11333f1bad633cd854f58f2ecd8294d8df09aec"
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01/candidate-01/source/biome-service/native/main-default-surface-facts.js",
+        "bytes": 31806,
+        "sha256": "2f8c56694194f484dc0a334f0cceeb3e874cd3bf39679961da7d39f72863a7ec"
+      }
+    ],
+    "runnerChange": "OUT remains fresh review; NEW only points to exact frozen source; extra four failure combinations change named native model data only.",
+    "selected": false,
+    "Main": false,
+    "P05": "OPEN"
+  },
+  "profiles": {
+    "status": "PASS",
+    "profiles": [
+      {
+        "name": "buildGraph",
+        "rows": 219,
+        "digest": "ffd0d46fbf976efb636ddfde9c12bb39781cd68d550615e9ceae71510f85d93c"
+      },
+      {
+        "name": "buildSurfaceEnvelope",
+        "rows": 5,
+        "digest": "04cff510ad4d20ec09d314707774ca6fbcfbfc2f4745a6716322db8504a6caf0"
+      },
+      {
+        "name": "buildStartupEnvelope",
+        "rows": 9,
+        "digest": "02e425626b14429ca05a570cc83fde590b505408cc882d07c19f8c9f22a6b69f"
+      }
+    ],
+    "freshReads": 233,
+    "held": {
+      "sourceCopies": 219,
+      "sourceBytes": 6362940,
+      "logicalReferences": 233,
+      "borrowers": 3,
+      "admitting": false,
+      "disposed": false,
+      "ownership": "PRIVATE_SOURCE_BYTES_AND_COMPLETE_LOGICAL_READERS",
+      "nativeHeap": "UNMEASURED",
+      "storageProfile": "private-source-copy-serial-scratch-v2",
+      "persistentSourcePayloadBytes": 6362940,
+      "scratchPayloadBytes": 0,
+      "peakScratchPayloadBytes": 3328186,
+      "scratchAllocations": 233,
+      "incomingBacking": "EXACT_ROW_SIZE_OFFSET0_UINT8_ARRAY",
+      "scratchLifetime": "PREPAID_SERIAL_READ_COPY_HASH_CLEARED_BEFORE_RELEASE"
+    },
+    "released": {
+      "sourceCopies": 0,
+      "sourceBytes": 0,
+      "logicalReferences": 0,
+      "borrowers": 0,
+      "admitting": false,
+      "disposed": false,
+      "ownership": "PRIVATE_SOURCE_BYTES_AND_COMPLETE_LOGICAL_READERS",
+      "nativeHeap": "UNMEASURED",
+      "storageProfile": "private-source-copy-serial-scratch-v2",
+      "persistentSourcePayloadBytes": 0,
+      "scratchPayloadBytes": 0,
+      "peakScratchPayloadBytes": 3328186,
+      "scratchAllocations": 233,
+      "incomingBacking": "EXACT_ROW_SIZE_OFFSET0_UINT8_ARRAY",
+      "scratchLifetime": "PREPAID_SERIAL_READ_COPY_HASH_CLEARED_BEFORE_RELEASE"
+    },
+    "finalQ": {
+      "heldBytes": 0,
+      "requestedBytes": 0,
+      "bookkeepingBytes": 0,
+      "peakBytes": 13191472,
+      "limitBytes": 33554432,
+      "liveReservations": 0,
+      "maximumReservations": 4096,
+      "owners": [],
+      "scope": "CONSERVATIVE_LOGICAL_METADATA_ADMISSION",
+      "nativeHeap": "UNMEASURED"
+    },
+    "scope": "Original actual Records/Q/S source admission only; no complete shared caller/Surfacework/native permission."
+  },
+  "controls": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\independent-review-01/control-rawPresenceFalse-independent01.json",
+      "bytes": 4525,
+      "sha256": "384db45ddd3aa9f8df74a6f0d585281066d20d25811308d6e161c8d11bb93b28",
+      "case": "rawPresenceFalse",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual unchanged Surface.initialFacts already performs one complete original observation before returning its genuine frozen handle; immutable own check descriptor validation performs no second native observation",
+        "Exact successor Surface propagates raw native failure by presence, preserves original primary precedence when restoration also fails, latches failed/uncertain state and refuses the stale facts handle"
+      ],
+      "rawIdentityPreserved": true,
+      "after": {
+        "open": true,
+        "consumed": true,
+        "published": true,
+        "failed": true,
+        "closing": false,
+        "cleanupUncertain": true,
+        "restorationOwed": true,
+        "initialImportRetained": false,
+        "scope": "INITIAL_CONSTRUCTOR_FACTS_ONLY",
+        "nativeBackingBytes": null,
+        "initialNativePeakBytes": null,
+        "hasRenderer": true
+      }
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\independent-review-01/control-rawPresenceNull-independent01.json",
+      "bytes": 4524,
+      "sha256": "0dd460f68a90f58b2739d88580565602d244a3859eaada27cc3bdad13038dc4d",
+      "case": "rawPresenceNull",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual unchanged Surface.initialFacts already performs one complete original observation before returning its genuine frozen handle; immutable own check descriptor validation performs no second native observation",
+        "Exact successor Surface propagates raw native failure by presence, preserves original primary precedence when restoration also fails, latches failed/uncertain state and refuses the stale facts handle"
+      ],
+      "rawIdentityPreserved": true,
+      "after": {
+        "open": true,
+        "consumed": true,
+        "published": true,
+        "failed": true,
+        "closing": false,
+        "cleanupUncertain": true,
+        "restorationOwed": true,
+        "initialImportRetained": false,
+        "scope": "INITIAL_CONSTRUCTOR_FACTS_ONLY",
+        "nativeBackingBytes": null,
+        "initialNativePeakBytes": null,
+        "hasRenderer": true
+      }
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\independent-review-01/control-rawPresenceUndefined-independent01.json",
+      "bytes": 4529,
+      "sha256": "efbfa0ecca6aba0903e93efe84c5fcd881970716a690566f84fc8b3ecfda89c4",
+      "case": "rawPresenceUndefined",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual unchanged Surface.initialFacts already performs one complete original observation before returning its genuine frozen handle; immutable own check descriptor validation performs no second native observation",
+        "Exact successor Surface propagates raw native failure by presence, preserves original primary precedence when restoration also fails, latches failed/uncertain state and refuses the stale facts handle"
+      ],
+      "rawIdentityPreserved": true,
+      "after": {
+        "open": true,
+        "consumed": true,
+        "published": true,
+        "failed": true,
+        "closing": false,
+        "cleanupUncertain": true,
+        "restorationOwed": true,
+        "initialImportRetained": false,
+        "scope": "INITIAL_CONSTRUCTOR_FACTS_ONLY",
+        "nativeBackingBytes": null,
+        "initialNativePeakBytes": null,
+        "hasRenderer": true
+      }
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\independent-review-01/control-rawPresenceZero-independent01.json",
+      "bytes": 4524,
+      "sha256": "10bf63c97f34f3bd3b0ac0fd93c2ad1d308c0905076766517241d4837aef2122",
+      "case": "rawPresenceZero",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual unchanged Surface.initialFacts already performs one complete original observation before returning its genuine frozen handle; immutable own check descriptor validation performs no second native observation",
+        "Exact successor Surface propagates raw native failure by presence, preserves original primary precedence when restoration also fails, latches failed/uncertain state and refuses the stale facts handle"
+      ],
+      "rawIdentityPreserved": true,
+      "after": {
+        "open": true,
+        "consumed": true,
+        "published": true,
+        "failed": true,
+        "closing": false,
+        "cleanupUncertain": true,
+        "restorationOwed": true,
+        "initialImportRetained": false,
+        "scope": "INITIAL_CONSTRUCTOR_FACTS_ONLY",
+        "nativeBackingBytes": null,
+        "initialNativePeakBytes": null,
+        "hasRenderer": true
+      }
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\independent-review-01/control-rawPresenceNegativeZero-independent01.json",
+      "bytes": 4532,
+      "sha256": "0bc4ad99bfd94ed08eca930dca61f433ee654d0c4dc461e1173a01e387ef0907",
+      "case": "rawPresenceNegativeZero",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual unchanged Surface.initialFacts already performs one complete original observation before returning its genuine frozen handle; immutable own check descriptor validation performs no second native observation",
+        "Exact successor Surface propagates raw native failure by presence, preserves original primary precedence when restoration also fails, latches failed/uncertain state and refuses the stale facts handle"
+      ],
+      "rawIdentityPreserved": true,
+      "after": {
+        "open": true,
+        "consumed": true,
+        "published": true,
+        "failed": true,
+        "closing": false,
+        "cleanupUncertain": true,
+        "restorationOwed": true,
+        "initialImportRetained": false,
+        "scope": "INITIAL_CONSTRUCTOR_FACTS_ONLY",
+        "nativeBackingBytes": null,
+        "initialNativePeakBytes": null,
+        "hasRenderer": true
+      }
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\independent-review-01/control-rawPresenceEmpty-independent01.json",
+      "bytes": 4525,
+      "sha256": "a7dc82e92ea15581f57bbfd7f4565228beb2d4b9bcb00b9fee93bb488a483ba7",
+      "case": "rawPresenceEmpty",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual unchanged Surface.initialFacts already performs one complete original observation before returning its genuine frozen handle; immutable own check descriptor validation performs no second native observation",
+        "Exact successor Surface propagates raw native failure by presence, preserves original primary precedence when restoration also fails, latches failed/uncertain state and refuses the stale facts handle"
+      ],
+      "rawIdentityPreserved": true,
+      "after": {
+        "open": true,
+        "consumed": true,
+        "published": true,
+        "failed": true,
+        "closing": false,
+        "cleanupUncertain": true,
+        "restorationOwed": true,
+        "initialImportRetained": false,
+        "scope": "INITIAL_CONSTRUCTOR_FACTS_ONLY",
+        "nativeBackingBytes": null,
+        "initialNativePeakBytes": null,
+        "hasRenderer": true
+      }
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\independent-review-01/control-rawPresenceNaN-independent01.json",
+      "bytes": 4523,
+      "sha256": "29c48c57cad07f1758f343df6890f4caadcba97409206592c08406b7e235b8a4",
+      "case": "rawPresenceNaN",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual unchanged Surface.initialFacts already performs one complete original observation before returning its genuine frozen handle; immutable own check descriptor validation performs no second native observation",
+        "Exact successor Surface propagates raw native failure by presence, preserves original primary precedence when restoration also fails, latches failed/uncertain state and refuses the stale facts handle"
+      ],
+      "rawIdentityPreserved": true,
+      "after": {
+        "open": true,
+        "consumed": true,
+        "published": true,
+        "failed": true,
+        "closing": false,
+        "cleanupUncertain": true,
+        "restorationOwed": true,
+        "initialImportRetained": false,
+        "scope": "INITIAL_CONSTRUCTOR_FACTS_ONLY",
+        "nativeBackingBytes": null,
+        "initialNativePeakBytes": null,
+        "hasRenderer": true
+      }
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\independent-review-01/control-rawPresenceObject-independent01.json",
+      "bytes": 4526,
+      "sha256": "a86c0a4db80d8d9f27c2ca084a22467cfb6b60213eacc9297585b40d527ba7bc",
+      "case": "rawPresenceObject",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual unchanged Surface.initialFacts already performs one complete original observation before returning its genuine frozen handle; immutable own check descriptor validation performs no second native observation",
+        "Exact successor Surface propagates raw native failure by presence, preserves original primary precedence when restoration also fails, latches failed/uncertain state and refuses the stale facts handle"
+      ],
+      "rawIdentityPreserved": true,
+      "after": {
+        "open": true,
+        "consumed": true,
+        "published": true,
+        "failed": true,
+        "closing": false,
+        "cleanupUncertain": true,
+        "restorationOwed": true,
+        "initialImportRetained": false,
+        "scope": "INITIAL_CONSTRUCTOR_FACTS_ONLY",
+        "nativeBackingBytes": null,
+        "initialNativePeakBytes": null,
+        "hasRenderer": true
+      }
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\independent-review-01/control-rawPresenceSymbol-independent01.json",
+      "bytes": 4526,
+      "sha256": "df3d324c694e060a79fbcbe75a1f54726ce5a8664f3a7a3412bc83f64ecc47f0",
+      "case": "rawPresenceSymbol",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual unchanged Surface.initialFacts already performs one complete original observation before returning its genuine frozen handle; immutable own check descriptor validation performs no second native observation",
+        "Exact successor Surface propagates raw native failure by presence, preserves original primary precedence when restoration also fails, latches failed/uncertain state and refuses the stale facts handle"
+      ],
+      "rawIdentityPreserved": true,
+      "after": {
+        "open": true,
+        "consumed": true,
+        "published": true,
+        "failed": true,
+        "closing": false,
+        "cleanupUncertain": true,
+        "restorationOwed": true,
+        "initialImportRetained": false,
+        "scope": "INITIAL_CONSTRUCTOR_FACTS_ONLY",
+        "nativeBackingBytes": null,
+        "initialNativePeakBytes": null,
+        "hasRenderer": true
+      }
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\independent-review-01/control-rawPresenceBodyFalseOnly-independent01.json",
+      "bytes": 4535,
+      "sha256": "0f68202576589c27a9ad8768d9fbafc6f5823578fa7edb66be02b214ab44fb0a",
+      "case": "rawPresenceBodyFalseOnly",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual unchanged Surface.initialFacts already performs one complete original observation before returning its genuine frozen handle; immutable own check descriptor validation performs no second native observation",
+        "Exact successor Surface propagates raw native failure by presence, preserves original primary precedence when restoration also fails, latches failed/uncertain state and refuses the stale facts handle"
+      ],
+      "rawIdentityPreserved": true,
+      "after": {
+        "open": true,
+        "consumed": true,
+        "published": true,
+        "failed": true,
+        "closing": false,
+        "cleanupUncertain": false,
+        "restorationOwed": false,
+        "initialImportRetained": false,
+        "scope": "INITIAL_CONSTRUCTOR_FACTS_ONLY",
+        "nativeBackingBytes": null,
+        "initialNativePeakBytes": null,
+        "hasRenderer": true
+      }
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\independent-review-01/control-rawPresenceBodyFalseRestoreObject-independent01.json",
+      "bytes": 4541,
+      "sha256": "fdd005b8ea449312c897c417d86278bdd795e3dba03ecd2adfae6f5805884682",
+      "case": "rawPresenceBodyFalseRestoreObject",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual unchanged Surface.initialFacts already performs one complete original observation before returning its genuine frozen handle; immutable own check descriptor validation performs no second native observation",
+        "Exact successor Surface propagates raw native failure by presence, preserves original primary precedence when restoration also fails, latches failed/uncertain state and refuses the stale facts handle"
+      ],
+      "rawIdentityPreserved": true,
+      "after": {
+        "open": true,
+        "consumed": true,
+        "published": true,
+        "failed": true,
+        "closing": false,
+        "cleanupUncertain": true,
+        "restorationOwed": true,
+        "initialImportRetained": false,
+        "scope": "INITIAL_CONSTRUCTOR_FACTS_ONLY",
+        "nativeBackingBytes": null,
+        "initialNativePeakBytes": null,
+        "hasRenderer": true
+      }
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\independent-review-01/control-rawPresenceBodyNullRestoreObject-independent01.json",
+      "bytes": 4540,
+      "sha256": "5a2b2864ffc1cd6f6580ed8417274c6d620ef75a7f1f915cd0ad4dc6cab6acf6",
+      "case": "rawPresenceBodyNullRestoreObject",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual unchanged Surface.initialFacts already performs one complete original observation before returning its genuine frozen handle; immutable own check descriptor validation performs no second native observation",
+        "Exact successor Surface propagates raw native failure by presence, preserves original primary precedence when restoration also fails, latches failed/uncertain state and refuses the stale facts handle"
+      ],
+      "rawIdentityPreserved": true,
+      "after": {
+        "open": true,
+        "consumed": true,
+        "published": true,
+        "failed": true,
+        "closing": false,
+        "cleanupUncertain": true,
+        "restorationOwed": true,
+        "initialImportRetained": false,
+        "scope": "INITIAL_CONSTRUCTOR_FACTS_ONLY",
+        "nativeBackingBytes": null,
+        "initialNativePeakBytes": null,
+        "hasRenderer": true
+      }
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\independent-review-01/control-rawPresenceBodyUndefinedRestoreFalse-independent01.json",
+      "bytes": 4544,
+      "sha256": "b9af97add2c77a020b5a668696ea422b0ad77f87a5c1ad10c57173cbc15a7e41",
+      "case": "rawPresenceBodyUndefinedRestoreFalse",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual unchanged Surface.initialFacts already performs one complete original observation before returning its genuine frozen handle; immutable own check descriptor validation performs no second native observation",
+        "Exact successor Surface propagates raw native failure by presence, preserves original primary precedence when restoration also fails, latches failed/uncertain state and refuses the stale facts handle"
+      ],
+      "rawIdentityPreserved": true,
+      "after": {
+        "open": true,
+        "consumed": true,
+        "published": true,
+        "failed": true,
+        "closing": false,
+        "cleanupUncertain": true,
+        "restorationOwed": true,
+        "initialImportRetained": false,
+        "scope": "INITIAL_CONSTRUCTOR_FACTS_ONLY",
+        "nativeBackingBytes": null,
+        "initialNativePeakBytes": null,
+        "hasRenderer": true
+      }
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\independent-review-01/control-rawPresenceBodyObjectRestoreNull-independent01.json",
+      "bytes": 4540,
+      "sha256": "e2cb225936062580ece25c468d78672c5e65c3fb7be689047de8eea05a406237",
+      "case": "rawPresenceBodyObjectRestoreNull",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual unchanged Surface.initialFacts already performs one complete original observation before returning its genuine frozen handle; immutable own check descriptor validation performs no second native observation",
+        "Exact successor Surface propagates raw native failure by presence, preserves original primary precedence when restoration also fails, latches failed/uncertain state and refuses the stale facts handle"
+      ],
+      "rawIdentityPreserved": true,
+      "after": {
+        "open": true,
+        "consumed": true,
+        "published": true,
+        "failed": true,
+        "closing": false,
+        "cleanupUncertain": true,
+        "restorationOwed": true,
+        "initialImportRetained": false,
+        "scope": "INITIAL_CONSTRUCTOR_FACTS_ONLY",
+        "nativeBackingBytes": null,
+        "initialNativePeakBytes": null,
+        "hasRenderer": true
+      }
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\independent-review-01/control-positive-independent01.json",
+      "bytes": 8547,
+      "sha256": "c4a1717ec181d23e2d46f18f000039c54ea8214a34c925d4a4dd9d659073d89f",
+      "case": "positive",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual unchanged Surface.initialFacts already performs one complete original observation before returning its genuine frozen handle; immutable own check descriptor validation performs no second native observation",
+        "Actual copied Renderer constructor and its private canonical program record populate the reciprocal source-currentScript reader",
+        "Actual copied runAppStartup drives private scheduled Source9 admission, schema/two native hash start-finish steps, original16steps/helper G, then17 Local program/VAO/G phases in real captured Node timer visits",
+        "Resource continuation refuses at its first uncaptured original source definition in this Surface-only component model; the actual private App port also remains explicitly unavailable. No Resource method/source identity is replaced by positive authority. Two 1MiB diagnostics and unit work are not selected funding or native chronology proof.",
+        "Separate original G instances and original program identities remain distinct; all four post-constructor shaderSource operand attempts accumulate without per-wake reset; first Main frame remains blocked"
+      ]
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\independent-review-01/control-field-independent01.json",
+      "bytes": 8544,
+      "sha256": "316470e894572a40fc42768727cb096c34ceee12537da0e7669557e7e0f54f4a",
+      "case": "field",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual unchanged Surface.initialFacts already performs one complete original observation before returning its genuine frozen handle; immutable own check descriptor validation performs no second native observation",
+        "Actual copied Renderer constructor and its private canonical program record populate the reciprocal source-currentScript reader",
+        "Actual copied runAppStartup drives private scheduled Source9 admission, schema/two native hash start-finish steps, original16steps/helper G, then17 Local program/VAO/G phases in real captured Node timer visits",
+        "Resource continuation refuses at its first uncaptured original source definition in this Surface-only component model; the actual private App port also remains explicitly unavailable. No Resource method/source identity is replaced by positive authority. Two 1MiB diagnostics and unit work are not selected funding or native chronology proof.",
+        "Separate original G instances and original program identities remain distinct; all four post-constructor shaderSource operand attempts accumulate without per-wake reset; first Main frame remains blocked"
+      ]
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\independent-review-01/control-composite-independent01.json",
+      "bytes": 8548,
+      "sha256": "a9bc14bae0ee1e3e4f08f84cbe8df66e066e6241fe4e2ae92dba9198624fb745",
+      "case": "composite",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual unchanged Surface.initialFacts already performs one complete original observation before returning its genuine frozen handle; immutable own check descriptor validation performs no second native observation",
+        "Actual copied Renderer constructor and its private canonical program record populate the reciprocal source-currentScript reader",
+        "Actual copied runAppStartup drives private scheduled Source9 admission, schema/two native hash start-finish steps, original16steps/helper G, then17 Local program/VAO/G phases in real captured Node timer visits",
+        "Resource continuation refuses at its first uncaptured original source definition in this Surface-only component model; the actual private App port also remains explicitly unavailable. No Resource method/source identity is replaced by positive authority. Two 1MiB diagnostics and unit work are not selected funding or native chronology proof.",
+        "Separate original G instances and original program identities remain distinct; all four post-constructor shaderSource operand attempts accumulate without per-wake reset; first Main frame remains blocked"
+      ]
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\independent-review-01/control-surfaceBeforeNativeMutation-independent01.json",
+      "bytes": 5359,
+      "sha256": "6f05188fdf55eff7838e06d71a458f94008753d25dd13a93b08b8f98dc9407ca",
+      "case": "surfaceBeforeNativeMutation",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual unchanged Surface.initialFacts already performs one complete original observation before returning its genuine frozen handle; immutable own check descriptor validation performs no second native observation",
+        "Actual copied Renderer constructor and its private canonical program record populate the reciprocal source-currentScript reader",
+        "Original genuine Surface observation still rejects changed native canvas facts at the entry or post-native parent barrier; no original G admission or Main frame occurs"
+      ]
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\independent-review-01/control-surfacePostNativeMutation-independent01.json",
+      "bytes": 5356,
+      "sha256": "f36b00a98cf10a52effa6129c18b3687e6b10cf7037d3dab8ab206924598c24a",
+      "case": "surfacePostNativeMutation",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual unchanged Surface.initialFacts already performs one complete original observation before returning its genuine frozen handle; immutable own check descriptor validation performs no second native observation",
+        "Actual copied Renderer constructor and its private canonical program record populate the reciprocal source-currentScript reader",
+        "Original genuine Surface observation still rejects changed native canvas facts at the entry or post-native parent barrier; no original G admission or Main frame occurs"
+      ]
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\independent-review-01/control-rawPresenceBodyZeroRestoreSymbol-independent01.json",
+      "bytes": 4540,
+      "sha256": "644533a3c1a9759d25c630967bc6c33433ffb60cbfab2b46640a849391f3b24b",
+      "case": "rawPresenceBodyZeroRestoreSymbol",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual unchanged Surface.initialFacts already performs one complete original observation before returning its genuine frozen handle; immutable own check descriptor validation performs no second native observation",
+        "Exact successor Surface propagates raw native failure by presence, preserves original primary precedence when restoration also fails, latches failed/uncertain state and refuses the stale facts handle"
+      ],
+      "rawIdentityPreserved": true,
+      "after": {
+        "open": true,
+        "consumed": true,
+        "published": true,
+        "failed": true,
+        "closing": false,
+        "cleanupUncertain": true,
+        "restorationOwed": true,
+        "initialImportRetained": false,
+        "scope": "INITIAL_CONSTRUCTOR_FACTS_ONLY",
+        "nativeBackingBytes": null,
+        "initialNativePeakBytes": null,
+        "hasRenderer": true
+      }
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\independent-review-01/control-rawPresenceBodyNegativeZeroRestoreEmpty-independent01.json",
+      "bytes": 4547,
+      "sha256": "ec46724055d8e417b419a0bcebcacd915c7e20621f9eb71b2cd748aa7b598e05",
+      "case": "rawPresenceBodyNegativeZeroRestoreEmpty",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual unchanged Surface.initialFacts already performs one complete original observation before returning its genuine frozen handle; immutable own check descriptor validation performs no second native observation",
+        "Exact successor Surface propagates raw native failure by presence, preserves original primary precedence when restoration also fails, latches failed/uncertain state and refuses the stale facts handle"
+      ],
+      "rawIdentityPreserved": true,
+      "after": {
+        "open": true,
+        "consumed": true,
+        "published": true,
+        "failed": true,
+        "closing": false,
+        "cleanupUncertain": true,
+        "restorationOwed": true,
+        "initialImportRetained": false,
+        "scope": "INITIAL_CONSTRUCTOR_FACTS_ONLY",
+        "nativeBackingBytes": null,
+        "initialNativePeakBytes": null,
+        "hasRenderer": true
+      }
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\independent-review-01/control-rawPresenceBodyNaNRestoreObject-independent01.json",
+      "bytes": 4539,
+      "sha256": "d6231ebfbabec017d5867f64f2145741392278d770126e5b38db316ec26d2994",
+      "case": "rawPresenceBodyNaNRestoreObject",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual unchanged Surface.initialFacts already performs one complete original observation before returning its genuine frozen handle; immutable own check descriptor validation performs no second native observation",
+        "Exact successor Surface propagates raw native failure by presence, preserves original primary precedence when restoration also fails, latches failed/uncertain state and refuses the stale facts handle"
+      ],
+      "rawIdentityPreserved": true,
+      "after": {
+        "open": true,
+        "consumed": true,
+        "published": true,
+        "failed": true,
+        "closing": false,
+        "cleanupUncertain": true,
+        "restorationOwed": true,
+        "initialImportRetained": false,
+        "scope": "INITIAL_CONSTRUCTOR_FACTS_ONLY",
+        "nativeBackingBytes": null,
+        "initialNativePeakBytes": null,
+        "hasRenderer": true
+      }
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\independent-review-01/control-rawPresenceBodySymbolRestoreUndefined-independent01.json",
+      "bytes": 4545,
+      "sha256": "06543c88da0c53b3743e924f9caae7faffb5d1904fa647bbefb8617149a0b31e",
+      "case": "rawPresenceBodySymbolRestoreUndefined",
+      "groups": [
+        "Actual S owns/freeze-admits the current 219-row graph; raw buildGraph object is not reused as authority",
+        "Actual unchanged Surface.initialFacts already performs one complete original observation before returning its genuine frozen handle; immutable own check descriptor validation performs no second native observation",
+        "Exact successor Surface propagates raw native failure by presence, preserves original primary precedence when restoration also fails, latches failed/uncertain state and refuses the stale facts handle"
+      ],
+      "rawIdentityPreserved": true,
+      "after": {
+        "open": true,
+        "consumed": true,
+        "published": true,
+        "failed": true,
+        "closing": false,
+        "cleanupUncertain": true,
+        "restorationOwed": true,
+        "initialImportRetained": false,
+        "scope": "INITIAL_CONSTRUCTOR_FACTS_ONLY",
+        "nativeBackingBytes": null,
+        "initialNativePeakBytes": null,
+        "hasRenderer": true
+      }
+    }
+  ],
+  "distinctCases": 23,
+  "rawFailureCases": 18,
+  "SurfaceRegressions": 5,
+  "findings": [],
+  "reasoning": [
+    "The exact four-hunk inverse restores old34e6... Surface, and the only changed named child function is observeNative. The three loader profile functions alone repin exact new Surface bytes/digests; all other519 files are byte-exact. Fresh521 hashes/425 parses and independent233 original Records/Q/S reads pass with actual borrower/Q cleanup.",
+    "Independent hasFailed records exception occurrence, so rawfalse/null/undefined/zero/negativezero/empty/NaN/object/symbol are thrown exactly. If a body failure and restoration failure both occur, finally still attempts restoration and the original first raw value wins. No error properties or foreign payload are read.",
+    "The original counter port is covered by rawPresenceFalse: stable captured bindFramebuffer restores the prior model FBO then throwsfalse. Successor returns no facts, factsCheck catches the exact false, sets state.failedtrue and rethrows it; stale facts.check refuses and isOwnedContextSurfacefalse. Original failure/source/report remain unchanged.",
+    "Four new priority combinations independently cover body0→restoreSymbol, body−0→restoreEmpty, bodyNaN→restoreObject, bodySymbol→restoreUndefined with Object.is identity. Root fourteen raw cases and five actual-Surface regressions are all replayed in copied runners.",
+    "The new early rethrow uses the existing direct catches to latchfailed. It does not manufacture native restoration/loss, release parents, clear restorationOwed/cleanupUncertain, or add permission. No extra initial ready predicate is needed to recover old realm state because this is a fresh exact-source successor and every reproduced entered failure now reaches the original latch.",
+    "Actual original Surface/Renderer/helper/Local/G/Positions/Q/S/Records bodies execute, with the same explicitly named GL/Canvas/Document/child constructor/native work/funding models. The positive regressions complete the actual component phases but refuse later unresolved graph/original-definition authority; they are not positive native Main tests."
+  ],
+  "scope": "Exact fresh Surface presence correction and coherent source profile repins only; no broad Surface redesign or native exception claim.",
+  "held": [
+    "The new active hasFailed binding and initialization/primary/restoration-presence operations require explicit positive storage/work rows on the exact final caller. No old margin, implicit slack, or already-reviewed fee is selected by this functional receipt.",
+    "The separate complete-work02 callable widths and async runAppStartup suffix remain held; corrected storage03 is a proposal basis only.",
+    "Original firstQ foundation, whole current host/Q/cold/caller composition, native VM/driver heap/timing, actual App/Main/Frame/P05 remain unqualified."
+  ],
+  "artifacts": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\independent-review-01/prepare-review-01.cjs",
+      "bytes": 4203,
+      "sha256": "beeee4df383d146cae74d7d9f80021866f1f44be08bc0db3cd81b70baf504bd3"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\independent-review-01/static-review-01.json",
+      "bytes": 2398,
+      "sha256": "0b67b4253efc327148de532b2d914c9a5ba0a85dc256610a254ed05cce2bf788"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\independent-review-01/test-surface-raw-01.cjs",
+      "bytes": 48695,
+      "sha256": "297ef517d3c1d1d7aac1818bba18f18750da2093b178e69ed508fce02b16a6da"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\independent-review-01/test-surface-raw-02.cjs",
+      "bytes": 49074,
+      "sha256": "8ba0cee6dcdaabd095809b29d88bda0c61da03d1f5ed04f6c2ca989ff3ed30ef"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\independent-review-01/check-profiles-01.cjs",
+      "bytes": 2044,
+      "sha256": "79805d0d5678ad235304cd2a47a9928ec5da6c929e9e40a617c50b1f1b55e48c"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\independent-review-01/profile-review-01.json",
+      "bytes": 2164,
+      "sha256": "56bec78cada070525db641ad60418e2e510fa74ce80d14926b29e4c2bc0f7595"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\independent-review-01/seal-review-01.cjs",
+      "bytes": 5333,
+      "sha256": "3abf18308260e7bb74c7e5c8822aa04dc4471eca0d98a7474f70053171951825"
+    }
+  ],
+  "fundingSelected": false,
+  "Main": false,
+  "Frame": false,
+  "P05": "OPEN",
+  "sourceFilesChanged": 0,
+  "browserServerOperated": false
+}

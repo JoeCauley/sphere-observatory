@@ -1,0 +1,181 @@
+{
+  "status": "PASS_BOUNDED_C11_FUNCTIONAL_COMPLETION_ADMISSION_DYNAMIC_REVIEW_NO_SELECTION",
+  "source": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\independent-completion-review-01\\candidate\\source\\owned-main-bootstrap.js",
+    "bytes": 161499,
+    "sha256": "f709ed8c816fb487975ef12b72365e6fec60f9dd134a030b173408ead5f4f8f2"
+  },
+  "modelSource": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\independent-completion-review-01\\model\\source\\owned-main-bootstrap.js",
+    "bytes": 161499,
+    "sha256": "a1f9debbfb85e8b23408410e23b89f57cfa7af8ed689b5093449baca3c645969"
+  },
+  "authorSeal": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\FUNCTIONAL-11.json",
+    "bytes": 11910,
+    "sha256": "c6d3419ed330feb6f55647e202ef0fae58234f7e8ef1b40899abd1bfc177c323"
+  },
+  "parentSeal": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\FUNCTIONAL-09.json",
+    "bytes": 6163,
+    "sha256": "e8fc99c08a0922c165bfaddcecc02ae96f640b0a9b3827be34a3726c6caa6afc"
+  },
+  "inputRegister": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\independent-completion-review-01\\input-register-01.json",
+    "bytes": 3349,
+    "sha256": "19d7d208cc71e43dbcd155feb7fa9756a1184cab9f85a071c4a2b07196556a50"
+  },
+  "sourceVerification": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\independent-completion-review-01\\source-verification-01.json",
+    "bytes": 217580,
+    "sha256": "862371a2d12bcf1d3e9443dabda0a3f76f1e12adb883145512877b3e1c20b08a"
+  },
+  "controls": {
+    "originalReplay": {
+      "input": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\independent-completion-review-01\\replay-controls-01.json",
+        "bytes": 1712,
+        "sha256": "27c12de41f89965db32cc68a96ff40182e34f42c1ab6aabf5eb391c74704bb5c"
+      },
+      "cases": 15
+    },
+    "independentFullBodyAdditions": [
+      {
+        "input": {
+          "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\independent-completion-review-01\\extra-controls-01.json",
+          "bytes": 603,
+          "sha256": "b649135d160c63f68f5a004447d3f35b9e515ae5087f42c6d76cc9dde6fdbd27"
+        },
+        "cases": 5
+      },
+      {
+        "input": {
+          "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\independent-completion-review-01\\finish-raw-controls-01.json",
+          "bytes": 805,
+          "sha256": "6e6d8b955f4664a1f9aa313a72486abe7dba673db188cd85924dea5443058663"
+        },
+        "cases": 7
+      }
+    ],
+    "rawAdmissionFunctionMatrix": {
+      "input": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\independent-completion-review-01\\admission-raw-controls-01.json",
+        "bytes": 7990,
+        "sha256": "0c96910944ece824d4a80c35f4497e3bcfa80d21289e196aa296b8eec34e8f79"
+      },
+      "cases": 27
+    },
+    "totalInvocations": 54,
+    "fullBodyModelCases": 27,
+    "separateExactFunctionRawBoundaryCases": 27
+  },
+  "findings": [
+    {
+      "id": "completion",
+      "status": "PASS_FUNCTIONAL_COMPONENT",
+      "evidence": "Original final check, HELD error construction, failure/state/busy writes are executed by initializerFinish before paid.open=false. runAppStartup only returns await initializerDispatcher.runStartup(), with no later JS check/catch/finally suffix. Seven additional raw final-check operation failures preserve exact presence/identity in paid rejection. These named check adapters do not establish native runtime error behavior or fees."
+    },
+    {
+      "id": "admission",
+      "status": "PASS_FUNCTIONAL_COMPONENT",
+      "evidence": "Three fixed controller-owned receipts root valid quote and raw failure before qualifier/Q. ownsAdmission is acquired only after original busy/claimed gate and alone permits busy/failure/admitting cleanup. Active duplicate burst and terminal duplicate preserve original state/charge/scope/failure. Null/invalid quote grants no mode/Promise/native authority; raw quote/qualifier/reserve operation matrix uses exact extracted bodies with disclosed throwing model ports."
+    },
+    {
+      "id": "dynamic-assembly",
+      "status": "PASS_FUNCTIONAL_COMPONENT",
+      "evidence": "Exact immutable original Main fragment is source/native-validated before phase1. Safe integer formula 884057+28*length is checked against separate still-null full-domain allowance and unchanged262144 bound, then actual Q.reserve precedes any Local surfaceFragment call. No old static min. Genuine Q pressure and fixed null/too-small allowances refuse before assembly/G/native shader creation. Full-domain raw8224089 rounded8224768 derives from independently reviewed storage03; C11 adds no arithmetic reduction."
+    },
+    {
+      "id": "source-lifecycle",
+      "status": "PASS_EXACT_COPY_AND_DECLARED_MODELS",
+      "evidence": "Both fresh521-file copies/425 parses are exact frozen author cohorts; only loader differs from C09. All13 exact hunks per source invert through C10 to C09. Both sets of3 profiles pass actual Records.verifyEnvelope and233 fresh original S/Q admissions,219 source copies, actual borrower/ref cleanup and finalQ0. These source-check buffers and observers are fixture-owned and not whole-source-heap certification."
+    },
+    {
+      "id": "retention",
+      "status": "RETAINED_COMPONENT_SCOPE",
+      "evidence": "Terminal startup/failed qualification accounts are held for evaluated realm. Old helper/Surface/G readers/uncertainty/physical release behavior remains exact C09. Published cleanup control retains original G realm/helper source reader after modeled loss, and never asserts complete teardown/wholeQ0."
+    }
+  ],
+  "newBlockingFinding": null,
+  "scope": [
+    "Actual candidate private function bodies, copied original Renderer/Surface/Q/S/Records/Construction/G/Positions/Local bodies under named Node GL/Canvas/Document/children/sourceScript model ports. No actual browser/native GL or App public route execution.",
+    "Model source separately overlays frozen SourceX/RecordsL03 and3 explicit inherited Source bridges with diagnostic unit-work/state budgets; exact product candidate remains old C09 foundation. Model tables are not reviewed work/funding.",
+    "Root Surface2f8c raw-presence correction is separate from these C11 bytes; only a later exact merge/priced proposal can bind it.",
+    "No complete metadata/activation/capture/entry/caller work selected. Work03/storage04 require separate review; null funding and firstNaN prevent product entry. Original firstQ creation/reserve foundation obligation remains unqualified.",
+    "Actual complete host/R/Root/material/terrain/local/Frame/native/time/heap/P05 are not established by this receipt. Main false and P05 open."
+  ],
+  "holds": {
+    "work": null,
+    "metadataFunding": null,
+    "APP_EXECUTION_ENABLED": false,
+    "MainPermission": false,
+    "P05": "OPEN"
+  },
+  "artifacts": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\independent-completion-review-01\\prepare-review-01.cjs",
+      "bytes": 1761,
+      "sha256": "ee90f6fdf4ea1cb7a8619b4e13ba950cc7777d53eb8c1175134dc758e9e6eace"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\independent-completion-review-01\\test-replay-01.cjs",
+      "bytes": 51143,
+      "sha256": "4a194ef9e06f9e9e8a06825a3556d4ea6140c85e7b0141556b18d98898cebef6"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\independent-completion-review-01\\run-controls-01.cjs",
+      "bytes": 1366,
+      "sha256": "259e161699db253dc9589ef2807756bc9e3926002f260fd2b7975c6bcdf0adae"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\independent-completion-review-01\\prepare-extra-01.cjs",
+      "bytes": 5472,
+      "sha256": "19ff2e37ad090f7caba80eb53def45f40906f45d5cf8bd807a6665878cd67d75"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\independent-completion-review-01\\test-extra-01.cjs",
+      "bytes": 55104,
+      "sha256": "5ef873e92cdad2d51de267b7c164a1a9ee4f03a1b502788022246ffa638027c3"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\independent-completion-review-01\\run-extra-01.cjs",
+      "bytes": 1175,
+      "sha256": "c94c029b294d99c155b5a3712dfca56160f68281d6fbb2ac074543d5235a916a"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\independent-completion-review-01\\extra-model-edits-01.json",
+      "bytes": 5236,
+      "sha256": "cd7181d8fb06ed06ef19405db8c163a839975a8324a2e90daa8d366b79ac36b8"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\independent-completion-review-01\\test-admission-raw-01.cjs",
+      "bytes": 5601,
+      "sha256": "5aa62f3e27ad93f11e5095831e0d140677ba2fb671d0a16ad51c17fe2a59f396"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\independent-completion-review-01\\prepare-finish-01.cjs",
+      "bytes": 3351,
+      "sha256": "4635ac702ad46d96003cf8e2e8aa294ced9ef6e850c46531ba6589da07109abd"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\independent-completion-review-01\\test-finish-raw-01.cjs",
+      "bytes": 52689,
+      "sha256": "382f75c5919fcedab9aed6f4222a097b21761d0e083c4a089fc8417eb7dfe3b5"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\independent-completion-review-01\\run-finish-01.cjs",
+      "bytes": 1203,
+      "sha256": "90f0144170d1619ff988e37e77c23abc46ab5f65d3570a5aac7b153975b546a5"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\independent-completion-review-01\\finish-model-edits-01.json",
+      "bytes": 2311,
+      "sha256": "c70065b7c30a5342f800e2134a35b401cbb9fe6874e93e692c91cdab5fe38796"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\independent-completion-review-01\\verify-source-01.cjs",
+      "bytes": 7102,
+      "sha256": "85c02f1259b68efd93c0c8b7f31cebd6b04402d7d0e41f1e8320ecd1091d3c70"
+    }
+  ]
+}

@@ -1,3 +1,5 @@
+> Current progress: [Main resource inputs, completion and reuse](Observatory-Main-Resource-Startup-2026-10-23.md). The joined source is functionally checked; complete funding/native Main remain held and P05 OPEN.
+
 # Joined Main startup and Surface observation reuse
 
 The current private candidate joins the reviewed Source scheduler, startup drawing helper and actual App input handoff. It preserves the current finite Target, deferred Preview worker, original Q/Records and all earlier selected texture-handoff code. The delivered Meadow/Industry walk and public runtime are unchanged.

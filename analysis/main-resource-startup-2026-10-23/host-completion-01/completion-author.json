@@ -1,0 +1,216 @@
+{
+  "status": "FROZEN_PAID_COMPLETION_VALIDATED_LENGTH_PRIVATE_COMPONENT_FUNCTIONAL_MODELS_PASS",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\candidate-11\\source",
+  "loader": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\candidate-11\\source\\owned-main-bootstrap.js",
+    "bytes": 161499,
+    "sha256": "f709ed8c816fb487975ef12b72365e6fec60f9dd134a030b173408ead5f4f8f2"
+  },
+  "modelJoin": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\model-join-11\\source\\owned-main-bootstrap.js",
+    "bytes": 161499,
+    "sha256": "a1f9debbfb85e8b23408410e23b89f57cfa7af8ed689b5093449baca3c645969"
+  },
+  "parent": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\FUNCTIONAL-09.json",
+    "bytes": 6163,
+    "sha256": "e8fc99c08a0922c165bfaddcecc02ae96f640b0a9b3827be34a3726c6caa6afc"
+  },
+  "files": 521,
+  "parses": 425,
+  "changed": [
+    "owned-main-bootstrap.js"
+  ],
+  "recipes": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\exact-byte-edits-10.json",
+      "bytes": 242023,
+      "sha256": "fd68eb5cd4aa6e08fee1569f237f7272c48fb4d7c3e26d854623ca3f3a6ad08f"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\exact-byte-edits-11.json",
+      "bytes": 217593,
+      "sha256": "87f19ad1dab2f174bad450c173237d0985bf91fffb0a29035a364a2b1f1e8e4b"
+    }
+  ],
+  "hunksPerSource": 13,
+  "allHunkInversesExact": true,
+  "inventory": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\inventory-caller-11.json",
+    "bytes": 208435,
+    "sha256": "f0643047acb9c9214b4641e3d756c3fd0978255d23fcdcc905fa186ada2b2727"
+  },
+  "profiles": [
+    {
+      "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\candidate-11\\source",
+      "rows": [
+        {
+          "name": "buildGraph",
+          "rows": 219,
+          "digest": "3644bb570144957519b72934659664d770769bdd4287e6a305e60efd939d2983"
+        },
+        {
+          "name": "buildSurfaceEnvelope",
+          "rows": 5,
+          "digest": "45e96edbf8a8525fcb7cdbec054a7ba677565b8c9a16339589012ba8d033c0de"
+        },
+        {
+          "name": "buildStartupEnvelope",
+          "rows": 9,
+          "digest": "30f075c095ca3dbd8574ceda9d2698cf1cd08c9b499d308bf615d7a82d3aa402"
+        }
+      ],
+      "reads": 233,
+      "copies": 219,
+      "scope": "GENUINE_SOURCE_ADMISSION_ONLY_NO_SOURCE_WORK_QUALIFICATION"
+    },
+    {
+      "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\model-join-11\\source",
+      "rows": [
+        {
+          "name": "buildGraph",
+          "rows": 219,
+          "digest": "2177cacd231ec0c5822017be7516e64a285401587153de4ff08e286b99ed5fbc"
+        },
+        {
+          "name": "buildSurfaceEnvelope",
+          "rows": 5,
+          "digest": "b5e069d75713c63153216e3d9021812d3da66117eb9887f56554fb6e348c078d"
+        },
+        {
+          "name": "buildStartupEnvelope",
+          "rows": 9,
+          "digest": "0dcedabc145ede790e6072f7325d20058d6e9978319813cff5ffb089c68ed908"
+        }
+      ],
+      "reads": 233,
+      "copies": 219,
+      "scope": "GENUINE_SOURCE_ADMISSION_ONLY_NO_SOURCE_WORK_QUALIFICATION"
+    }
+  ],
+  "controls": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\control-positive-c11-01.json",
+      "bytes": 9232,
+      "sha256": "2be895b2eb54527193226beb4aa48cf1a5a033bdf4adcd7e0d830d3135281216"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\control-startupAdmissionQ-c11-01.json",
+      "bytes": 6123,
+      "sha256": "465bffeb8d554bbd88e0b1fa79739206ab87c9b039aecb6fbf3fe350f89cbf50"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\control-startupAdmissionFunding-c11-01.json",
+      "bytes": 5705,
+      "sha256": "2625ac45b5fc5eae99e3e151e3d04cbf8bbf656722220693a5fa83abbe5c1c13"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\control-finishCheckStop-c11-01.json",
+      "bytes": 5655,
+      "sha256": "6686a8b73046c9e75884d0916270337a89e726ca9053ff4185000929003664c8"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\control-duplicateStartup-c11-01.json",
+      "bytes": 9528,
+      "sha256": "f14770c87e689a63dcc5254e5c62866bf3cd148e5dd90ffa8ec1cb93b8148111"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\control-startupAdmissionNoWork-c11-02.json",
+      "bytes": 5640,
+      "sha256": "bbb5a9ced0a29521fd9ff29b6ee8582789633f507beb0513eab6cfe7b5567e9d"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\control-hashRejectNull-c11-02.json",
+      "bytes": 8658,
+      "sha256": "8513c35be3d5c3ee8498556d63a6c7092b57fe06671cc9df370190b2af66b733"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\control-hashRejectUndefined-c11-02.json",
+      "bytes": 8667,
+      "sha256": "66a8d354b78583039117732e68cc74020b1a50410abbfaaf368310e7230525d9"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\control-hashRejectFalse-c11-02.json",
+      "bytes": 8661,
+      "sha256": "69eff8934e4849e59d20a1677860e2fa890fc6af516bd2ac7f5dcda511c290ee"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\control-helperCloseRetry-c11-02.json",
+      "bytes": 8810,
+      "sha256": "2386ab862df35598aab23672575abb9757819da64063b96a15fa2a8c95e67ab9"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\control-field-c11-02.json",
+      "bytes": 9229,
+      "sha256": "c1010d1888889164af444dc053e6666cc93eb1a5220711e3dfdfd31666f048e6"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\control-composite-c11-02.json",
+      "bytes": 9233,
+      "sha256": "2c171b2437e51dcdf68b8814936cc127409fdc61457b00784f50ea2b4d6ef5a5"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\control-surfaceBeforeNativeMutation-c11-02.json",
+      "bytes": 6128,
+      "sha256": "16ff3961e48d873dad981147f980fba82dfd0733208d30e924d11dea1912f614"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\control-surfacePostNativeMutation-c11-02.json",
+      "bytes": 6125,
+      "sha256": "e38aaae751220e2a7a1715ec5612ebd22d6534335def937fce3ab045c0a53044"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\control-publishedCleanup-c11-02.json",
+      "bytes": 8608,
+      "sha256": "27abd829b0af34b7f0647f0a7ad1a3d84f58046709726739f104d2ceddb2541b"
+    }
+  ],
+  "harnesses": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\test-completion-17.cjs",
+      "bytes": 51060,
+      "sha256": "2e4a559928daa96f5e3a503fb0058b61258af9ab91b608bd67cc16440f0af948"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\test-completion-18.cjs",
+      "bytes": 51151,
+      "sha256": "a0df44aa293da42b67ab61fd1e8c6a93b9db7707e816e2802f75c2a844619b66"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\model-edits-17.json",
+      "bytes": 9319,
+      "sha256": "a49c166bbaf158c0d30ca3372bb31e94654b1822d4ae1d36f6e7c24848309dd8"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\model-edits-18.json",
+      "bytes": 1769,
+      "sha256": "9ecc08983bed4ecf14b41b6e3fba5e598294032e7973a5553dca98e17098e839"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\model-disposition-18.json",
+      "bytes": 683,
+      "sha256": "bba6adb9ee134b80d33e2c1ecec5428a2d296a0163539990acf40655ca2b0ae4"
+    }
+  ],
+  "storageBasis": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\complete-storage-03.json",
+    "bytes": 94022,
+    "sha256": "e14b33dc25beac284800985cbacd16514c278ae15bd770845c01c336345920a6"
+  },
+  "preserved": [
+    "C09 and C10 draft and all failed harness expectations remain unchanged. Only loader source differs; original Surface/helper/Renderer/Q/S/Records/G/Construction/Local files exactC09.",
+    "Actual unchanged Surface and copied Renderer constructor, actualQ/S/Records/Construction/Positions/G/Local bodies execute. GL/Canvas/Document and required child constructors are explicit named models. Diagnostic mode/helper/Source budgets and unit fees are not reviewed amounts or complete4096 authority.",
+    "Paid FINISH/Reject own final fresh startup check, HELD error/state/failure/busy writes. Native outer return-await propagation has no fresh JS suffix. Rawnull/undefined/false rejection identity and one-state paid close retry preserved.",
+    "Three bounded controller admission receipts root quote/failure before qualifier/Q. A valid diagnostic quote is stored before original mode reserve; null/invalid quote remains unqualified and grants no mode/Promise/native phase. The fixed controller must prospectively fund these new records and their keys.",
+    "Metadata assembly uses884057+28*private already validated Main fragment length, guarded by original null full-domain allowance, SafeInteger and unchanged262144 extent. Original shader contents/native freshness/operand guards remain. No old staticmin is used.",
+    "Product candidate foundation remains its exact oldC09Source. Disclosed model join separately preserves exact SourceX30d3/RecordsL0370db and fresh233profile rows; root owns current source integration.",
+    "Root independent Surface raw-presence2f8c correction is separate and not silently adopted. Its added32B flag and control work need positive composition.",
+    "Source whole-entry/actual219 scheduled caller route, original fullApp/Renderer constructor, true R/host limits/Root/P05 and nativephysical/compiler/driver/P08 remain held. No Main frames or readiness permission."
+  ],
+  "holds": {
+    "work": null,
+    "metadataFunding": null,
+    "MainPermission": false,
+    "APP_EXECUTION_ENABLED": false
+  }
+}

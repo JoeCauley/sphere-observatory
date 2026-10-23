@@ -1,0 +1,351 @@
+{
+  "status": "PASS_BOUNDED_INDEPENDENT_EARLY_SOURCE_KNOWN_POOL_REPLAY_COMPONENT_ONLY",
+  "rootSeal": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-resource-input-join-2026-10-23-01/EARLY-SOURCE-CHECK-15.json",
+    "bytes": 4351,
+    "sha256": "98b5efa53f275ed35002e2d1adc579d37878c25066c2aeb8065c2cdbcd5c40f3"
+  },
+  "basis": {
+    "status": "PASS_EARLY_SOURCE_REPLAY_BASIS_EXACT_COMPONENT_ONLY",
+    "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-resource-input-join-2026-10-23-01/candidate-01/source",
+    "sourceSnapshot": "Frozen Resource-input join C1, before separate Surface presence successor. This peak is not automatically the later Surface-fixed or C11/current caller cohort.",
+    "loaderSha256": "10df9d3521fc2de9f56f0f05995b24163f0d63d3b5b3b553be0c949e15231f1f",
+    "actualRowsAndByteHashes": 219,
+    "sourceCopiesAtAccept": 219,
+    "sourceTables": {
+      "initial18ExactSealedX": true,
+      "helper21ExactSealedX": true,
+      "SourceOnlyChanges": [
+        {
+          "before": "const SCHEDULED_BOOTSTRAP_WORK=null,SCHEDULED_BOOTSTRAP_CONTROLLER_BYTES=null,SCHEDULED_BOOTSTRAP_PENDING_BYTES=null;",
+          "after": "const SCHEDULED_BOOTSTRAP_WORK={\"visit\":34,\"completion\":16,\"header\":82,\"scan\":4,\"row\":45,\"canonical\":727,\"profileHash\":741,\"profileDigest\":123,\"open\":321,\"response\":12,\"read\":19,\"chunk\":18,\"copy\":27,\"rowDigest\":105,\"commit\":13,\"publish\":23,\"rollback\":9,\"cleanup\":18},SCHEDULED_BOOTSTRAP_CONTROLLER_BYTES=1241088,SCHEDULED_BOOTSTRAP_PENDING_BYTES=49152;",
+          "scope": "Only original Source table values updated for actual added selectors; parent positive instance remains separately charged."
+        },
+        {
+          "before": "const SCHEDULED_HELPER_WORK=null,SCHEDULED_HELPER_INSTANCE_BYTES=null,SCHEDULED_HELPER_PENDING_BYTES=null;",
+          "after": "const SCHEDULED_HELPER_WORK={\"visit\":42,\"completion\":16,\"header\":235,\"scan\":4,\"row\":45,\"canonical\":727,\"profileHash\":5,\"profileDigest\":123,\"open\":321,\"response\":12,\"read\":19,\"chunk\":18,\"copy\":27,\"rowDigest\":105,\"commit\":13,\"publish\":23,\"rollback\":9,\"cleanup\":18,\"helperHeader\":729,\"helperLimit\":729,\"helperHash\":16},SCHEDULED_HELPER_INSTANCE_BYTES=69632,SCHEDULED_HELPER_PENDING_BYTES=4096;",
+          "scope": "Exact helper21 table and explicit extra static/pending metadata."
+        }
+      ],
+      "syntheticBodyEdits": false,
+      "numericConstantsDiagnosticOnly": true
+    },
+    "partition": {
+      "scheduled": 2646016,
+      "hook": 36864,
+      "total": 2682880,
+      "noSecond2678784Pool": true,
+      "SourceChildStaticInsideFactory": "1241088 parent+69632 helper, once each; they are separate from caller pools."
+    },
+    "exactSevenCurrentFunctionHashes": {
+      "loader": "10df9d3521fc2de9f56f0f05995b24163f0d63d3b5b3b553be0c949e15231f1f",
+      "source": "30d3c8fed3b315c926b90942e8a6413e048c70a3790323f8c60362f0f4f33f11",
+      "diagnosticSource": "05128b2b68dc0ff49f1ff0ca8d0e67e254df67a7512895add0da210221b926e7",
+      "proposal": "1b68689b1595c05eb839ef65f8c1e205b3a2c8f6a82cf2d27be6ec2faca036fd",
+      "Q": "9318446452e9a99fee2873eaf0d072bd76c39f714e4d1bceadf6057d04df6635",
+      "hookBodies": {
+        "sourceOwnedCreate": "f9c0272af330504e73affa50572c112319582c651a623e66fff56e0fd3900f9f",
+        "sourceOwnedStart": "167cfff1ca436c35eb0b20d7fe7e2d2c271cb2ad8b355e3ad3f4a0e6b45212b2",
+        "sourceOwnedInspect": "b7df3f27f177e17669b899e0127bd489eefcfec5fc9fc29d37432277926d47e0",
+        "sourceOwnedAccept": "df6ce3922e0710b79e2abc37eb988dceffc9a7b0c659e3c1a1ee2887ce91959c",
+        "sourceOwnedRelease": "68e491a6fecb0e1c4e6130522795f475d8bcac967e2660b8ec93a25f6a3be302",
+        "sourceOwnedDispose": "cbecc21115de85d719d6d0c4e23cfc135b4c596ce950f233acac5e51e6d482e3"
+      },
+      "reader": "cd223f74d155e0d6283c13a89cd0e68a3b6f0cdeb29eed190f441e53127386b1"
+    },
+    "peak": {
+      "bytes": 17544652,
+      "cap": 33554432,
+      "unusedInThisComponent": 16009780,
+      "wholeFit": false
+    },
+    "retention": {
+      "accepted": {
+        "heldBytes": 15041151,
+        "requestedBytes": 14894361,
+        "bookkeepingBytes": 146790,
+        "peakBytes": 17544652,
+        "limitBytes": 33554432,
+        "liveReservations": 240,
+        "maximumReservations": 4096,
+        "owners": [
+          {
+            "name": "biome-native-source-owner",
+            "bytes": 8714617
+          },
+          {
+            "name": "owned-app-startup-controller",
+            "bytes": 369266
+          },
+          {
+            "name": "owned-context-retirement-module",
+            "bytes": 17046
+          },
+          {
+            "name": "owned-main-bootstrap",
+            "bytes": 982622
+          },
+          {
+            "name": "owned-private-helper-module-delta",
+            "bytes": 98974
+          },
+          {
+            "name": "owned-scheduled-source-controller",
+            "bytes": 2646658
+          },
+          {
+            "name": "owned-startup-module-delta",
+            "bytes": 176792
+          },
+          {
+            "name": "owned-texture-handoff-controller-delta",
+            "bytes": 8844
+          },
+          {
+            "name": "owned-texture-handoff-module-delta",
+            "bytes": 66214
+          },
+          {
+            "name": "private-initializer-SOURCE",
+            "bytes": 29298
+          },
+          {
+            "name": "private-initializer-controller",
+            "bytes": 25216
+          },
+          {
+            "name": "private-initializer-module",
+            "bytes": 164502
+          },
+          {
+            "name": "private-initializer-source-hook",
+            "bytes": 37536
+          },
+          {
+            "name": "private-main-app-inputs",
+            "bytes": 164512
+          },
+          {
+            "name": "private-surface-preparation-controller",
+            "bytes": 21134
+          },
+          {
+            "name": "private-surface-preparation-module",
+            "bytes": 184978
+          },
+          {
+            "name": "retained-demand-plan-module",
+            "bytes": 1328846
+          }
+        ],
+        "scope": "CONSERVATIVE_LOGICAL_METADATA_ADMISSION",
+        "nativeHeap": "UNMEASURED"
+      },
+      "closed": {
+        "heldBytes": 7164442,
+        "requestedBytes": 7148640,
+        "bookkeepingBytes": 15802,
+        "peakBytes": 17544652,
+        "limitBytes": 33554432,
+        "liveReservations": 18,
+        "maximumReservations": 4096,
+        "owners": [
+          {
+            "name": "biome-native-source-owner",
+            "bytes": 1312024
+          },
+          {
+            "name": "owned-app-startup-controller",
+            "bytes": 369266
+          },
+          {
+            "name": "owned-context-retirement-module",
+            "bytes": 17046
+          },
+          {
+            "name": "owned-main-bootstrap",
+            "bytes": 508506
+          },
+          {
+            "name": "owned-private-helper-module-delta",
+            "bytes": 98974
+          },
+          {
+            "name": "owned-scheduled-source-controller",
+            "bytes": 2646658
+          },
+          {
+            "name": "owned-startup-module-delta",
+            "bytes": 176792
+          },
+          {
+            "name": "owned-texture-handoff-controller-delta",
+            "bytes": 8844
+          },
+          {
+            "name": "owned-texture-handoff-module-delta",
+            "bytes": 66214
+          },
+          {
+            "name": "private-initializer-SOURCE",
+            "bytes": 29298
+          },
+          {
+            "name": "private-initializer-controller",
+            "bytes": 25216
+          },
+          {
+            "name": "private-initializer-module",
+            "bytes": 164502
+          },
+          {
+            "name": "private-initializer-source-hook",
+            "bytes": 37536
+          },
+          {
+            "name": "private-main-app-inputs",
+            "bytes": 164512
+          },
+          {
+            "name": "private-surface-preparation-controller",
+            "bytes": 21134
+          },
+          {
+            "name": "private-surface-preparation-module",
+            "bytes": 184978
+          },
+          {
+            "name": "retained-demand-plan-module",
+            "bytes": 1328846
+          }
+        ],
+        "scope": "CONSERVATIVE_LOGICAL_METADATA_ADMISSION",
+        "nativeHeap": "UNMEASURED"
+      },
+      "closedProfileAndSourceOwnerPointersRetained": true,
+      "closedHandlesNotReleasedForFalseZero": true,
+      "QDisposeRefuses": true,
+      "earlyPrefixQHandlesRetained": 11
+    },
+    "limits": [
+      "This is a named prospective early-pool memory replay, not the actual shared dispatcher admission/visit/failure/close execution. The prefix allocations represent future owned pools but do not execute/fund missing caller code retrospectively.",
+      "Exact original six hooks and reader run, but check callback/caller environment are explicit fixture adapters; the Source18/21 tables are exact frozen proposals, not source-selected prices.",
+      "The fixture preloads219 raw filesystem buffers in a Map and creates Node dataURL/fetch/AST/module/observer objects outside the owned-source memory claim. S still independently copies/hashes every actual row against the exact profile; no global one-copy, Node heap or native VM/RSS claim follows.",
+      "The old scheduledSourceController fullQ6624 duplicate with central entry remains labelled conservative; no second wholeSource2.6MB pool is reserved. Known overlap is not unused-credit authority.",
+      "Cold builders/output/Host/R/provider/content, actual App/Renderer constructor and shared lifecycle/helper/Surface state, complete Q bookkeeping co-residency and first-Q foundation stay omitted/held. The difference16009780 is not permission to spend or a raised cap.",
+      "No actual Worker/native GL/timing or Main/Frame/P05 approval."
+    ],
+    "inputs": [
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-resource-input-join-2026-10-23-01/EARLY-SOURCE-CHECK-15.json",
+        "bytes": 4351,
+        "sha256": "98b5efa53f275ed35002e2d1adc579d37878c25066c2aeb8065c2cdbcd5c40f3"
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00/main-v9-helper-source-scheduling-2026-10-23-01/review-01/helper-source-selection-proposal-01.json",
+        "bytes": 3758,
+        "sha256": "1b68689b1595c05eb839ef65f8c1e205b3a2c8f6a82cf2d27be6ec2faca036fd"
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00/main-v9-helper-source-scheduling-2026-10-23-01/review-01/helper-source-work-03.json",
+        "bytes": 29367,
+        "sha256": "857ba87f3d150cb21e4b5b32c10b9104286e49a9b55dd8bca9c9eb6754d8343b"
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00/main-v9-helper-source-scheduling-2026-10-23-01/independent-review-01/CHECK-01.json",
+        "bytes": 12174,
+        "sha256": "fa580edd1e6a917cb8ae906f15f8bf3e80b542ddae2122dfeb237b80cedc6059"
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00/main-v8-surface-g-preparation-2026-10-23-01/caller-02/complete-storage-03.json",
+        "bytes": 94022,
+        "sha256": "e14b33dc25beac284800985cbacd16514c278ae15bd770845c01c336345920a6"
+      }
+    ],
+    "fundingSelected": false,
+    "Main": false,
+    "Frame": false,
+    "P05": "OPEN"
+  },
+  "replay": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-resource-input-join-2026-10-23-01\\independent-early-source-review-01/current-source-memory-01.json",
+    "bytes": 10943,
+    "sha256": "d65d748fde1a70b532358e5e59459eb52453211d8d28081ec42d582e1081256c"
+  },
+  "comparisons": {
+    "currentSourceRows": 219,
+    "privateCopiesAtAccept": 219,
+    "rawFilesystemByteHashesExact": true,
+    "exactSixHooksAndReader": true,
+    "sealedSourceXTables18And21Exact": true,
+    "knownNamedPoolsPeakBytes": 17544652,
+    "unchangedQCapBytes": 33554432,
+    "acceptedHeldBytes": 15041151,
+    "closedHeldBytes": 7164442,
+    "retainedAfterCloseReservations": 18,
+    "sourceOwnerAndClosedProfileStillRooted": true,
+    "QDisposeCorrectlyRefuses": true,
+    "rootPeakAndAllQOwnerRowsReproducedExactly": true
+  },
+  "findings": [],
+  "conclusions": [
+    "All root seal/proof pins matched. The replay changes only its source/output directory constants; original six hooks, reader and Q/S/Records bodies are exact except the expressly disclosed Source numeric-table constants. Actual diagnostic source hash matches the sealed X hypothetical source exactly.",
+    "The219 profile entries hash exact actual Resource-join C1 files; a new Source owner starts with no copies and owns219 at accept. Reader receives actual Node fetch/BYOB/dataURL byte streams and S independently hashes/copies every row. There is no raw fixture/caller hash or returned positive readiness substitute for source verification.",
+    "Prefix ScheduledSourceController2646016 plus InitializerSourceHook36864 is the exact storage03 split2682880; no old2678784/second2.6M pool is also reserved. Actual Source.create internally reserves parent1241088 and helper69632 once each; these are distinct instance ownership, not duplicate caller pools.",
+    "Release/dispose removes owned source copies/readers but retains Source instance/controller and closed immutable profile/Graph/Source pointers under the proposed caller/realm ownership. Q remains7164442/18reservations and refuses total disposal. This is truthful retained-close accounting, not a cleanup-to-zero claim.",
+    "The17,544,652 peak includes original Q bookkeeping for the actual model reservations. Its16,009,780 arithmetic difference from32MiB is unused in this component only, not spending authority. The report explicitly excludes cold builders/R/fullApp/Surface state/shared startup lifecycle and firstQ foundation; this review does not promote it to whole-Q, work, native or Main qualification.",
+    "The exact snapshot predates the separate Surface2f8c... presence correction and future C11 source/caller deltas. Reusing its number for those cohorts requires a new exact-source composition/replay."
+  ],
+  "holds": [
+    "This is a named prospective early-pool memory replay, not the actual shared dispatcher admission/visit/failure/close execution. The prefix allocations represent future owned pools but do not execute/fund missing caller code retrospectively.",
+    "Exact original six hooks and reader run, but check callback/caller environment are explicit fixture adapters; the Source18/21 tables are exact frozen proposals, not source-selected prices.",
+    "The fixture preloads219 raw filesystem buffers in a Map and creates Node dataURL/fetch/AST/module/observer objects outside the owned-source memory claim. S still independently copies/hashes every actual row against the exact profile; no global one-copy, Node heap or native VM/RSS claim follows.",
+    "The old scheduledSourceController fullQ6624 duplicate with central entry remains labelled conservative; no second wholeSource2.6MB pool is reserved. Known overlap is not unused-credit authority.",
+    "Cold builders/output/Host/R/provider/content, actual App/Renderer constructor and shared lifecycle/helper/Surface state, complete Q bookkeeping co-residency and first-Q foundation stay omitted/held. The difference16009780 is not permission to spend or a raised cap.",
+    "No actual Worker/native GL/timing or Main/Frame/P05 approval."
+  ],
+  "scope": "Actual early Source component plus named prospective pool reservations only. No whole shared startup/caller or native VM accounting.",
+  "artifacts": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-resource-input-join-2026-10-23-01\\independent-early-source-review-01/prepare-replay-01.cjs",
+      "bytes": 1478,
+      "sha256": "683dcd04d7886c476ee21dd9bffd448cdb549e0be9c6d29a362c5725bd9da8af"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-resource-input-join-2026-10-23-01\\independent-early-source-review-01/input-register-01.json",
+      "bytes": 1460,
+      "sha256": "b3e6e574668dbe09cf359a218409c1a5331a73756196f5781cbd045507669bda"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-resource-input-join-2026-10-23-01\\independent-early-source-review-01/replay-current-source-memory-01.cjs",
+      "bytes": 10122,
+      "sha256": "8c726a7b10ef62ae16f9bdb70e1fd4ee43de733f37f7c43809aaf1f6f5a4b5e8"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-resource-input-join-2026-10-23-01\\independent-early-source-review-01/current-source-memory-01.json",
+      "bytes": 10943,
+      "sha256": "d65d748fde1a70b532358e5e59459eb52453211d8d28081ec42d582e1081256c"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-resource-input-join-2026-10-23-01\\independent-early-source-review-01/check-basis-01.cjs",
+      "bytes": 7244,
+      "sha256": "9074527e1a288894f2dfccadafb4634c77878dffa3f0793cf586eaa19e15d110"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-resource-input-join-2026-10-23-01\\independent-early-source-review-01/basis-review-01.json",
+      "bytes": 10701,
+      "sha256": "bc1ce03f77a95b925a1a7f598132f1ebbf0e41c2c5d0fc13f51f75a428e5ff48"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-resource-input-join-2026-10-23-01\\independent-early-source-review-01/seal-review-01.cjs",
+      "bytes": 3946,
+      "sha256": "f1ff3922aa5c2329708c6bef4c3e1318981a72d9c72c3378360d1b78bcaa97a8"
+    }
+  ],
+  "fundingSelected": false,
+  "Main": false,
+  "Frame": false,
+  "P05": "OPEN",
+  "sourceFilesChanged": 0,
+  "browserServerOperated": false
+}

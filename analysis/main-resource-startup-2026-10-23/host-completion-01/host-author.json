@@ -1,0 +1,181 @@
+{
+  "status": "PASS_FUNCTIONAL_COMPONENT_ONLY_UNSELECTED",
+  "sourceSha256": "3d2b2d8470b43ce5695bb26e891b42e5d4f8631813f4a209d5100ba5cdeb33b2",
+  "inputs": [
+    {
+      "path": "FINDING-01.md",
+      "bytes": 3204,
+      "sha256": "cc5796fcba737577e11efe88dd4ba1f826ba62742d653b47e5cebc4ab632b243"
+    },
+    {
+      "path": "candidate-04/source/owned-main-bootstrap.js",
+      "bytes": 202833,
+      "sha256": "3d2b2d8470b43ce5695bb26e891b42e5d4f8631813f4a209d5100ba5cdeb33b2"
+    },
+    {
+      "path": "author-01/exact-delta-02.json",
+      "bytes": 6319,
+      "sha256": "4167b67526d875dc9e5712c21da45794fe9ce9f235911b01032b11fc7d1dc512"
+    },
+    {
+      "path": "author-01/exact-delta-03.json",
+      "bytes": 19790,
+      "sha256": "b220a9b9cee4a80ee2cae3f3115026853d490d05408f623feaadc7e8e28a1479"
+    },
+    {
+      "path": "author-01/exact-delta-04.json",
+      "bytes": 2200,
+      "sha256": "7dfc110d2823e7c724fb34d10879672467eb2637fadaf515d3cbda6f280ed937"
+    },
+    {
+      "path": "author-01/build-candidate-04.cjs",
+      "bytes": 3087,
+      "sha256": "5f61fed99050b6a675b1116788e1aad3e82f4f79b7c612225f3415743f5eaca6"
+    },
+    {
+      "path": "author-01/VERIFIED-RELEASE-BUDGETS-02.inc.js",
+      "bytes": 9884,
+      "sha256": "fdd435555f5c8b8849bdc176c597bed6daf4f113afa51f0c5f21e13af3fa9d94"
+    },
+    {
+      "path": "author-01/source-verification-01.json",
+      "bytes": 5367,
+      "sha256": "12d71a5edbc5eb368af445b794a19bca679f8b8ecba12d56df7e5e7cdc542876"
+    },
+    {
+      "path": "author-01/overlay-inventory-01.json",
+      "bytes": 88363,
+      "sha256": "faa31b4a63f11f92f42d49dac22f0b9a657dba06549ec7db0056ecc637bfb751"
+    },
+    {
+      "path": "controls-01/test-host-first-03.cjs",
+      "bytes": 45376,
+      "sha256": "29cd27306a4035936d7c720154c9569a4c8da32f0fc3948798250dc48d8541bb"
+    }
+  ],
+  "controlCases": 18,
+  "controls": [
+    {
+      "path": "controls-01/control-hostFirst-03.json",
+      "bytes": 90265,
+      "sha256": "c1082039ce068f7c9323cba92b707cc4974acde294f3a9f623afc806fe770d5e",
+      "groups": 4
+    },
+    {
+      "path": "controls-01/control-bindForeign-03.json",
+      "bytes": 90349,
+      "sha256": "fe8701587e511708aad90e49bed4a6d2464b260ae786e7315b7c933f3364ba78",
+      "groups": 5
+    },
+    {
+      "path": "controls-01/control-bindOnce-03.json",
+      "bytes": 90390,
+      "sha256": "fcba0b6fdef339f9730cc4c5cd7a5b0cec0af63510e65829abebc0b2211b2e41",
+      "groups": 5
+    },
+    {
+      "path": "controls-01/control-preRSourceChanged-03.json",
+      "bytes": 90349,
+      "sha256": "bcb50b6d8cbcb0ef3e0d736344fd8891a3911a2dbe31ffd2f0b9b01d05611182",
+      "groups": 5
+    },
+    {
+      "path": "controls-01/control-privateReadConcurrent-03.json",
+      "bytes": 90385,
+      "sha256": "a047303f44d16a605a8835c358d7a2b894ba7ab7cbd3a3ca69dea27f568ccc01",
+      "groups": 5
+    },
+    {
+      "path": "controls-01/control-legacyBound-03.json",
+      "bytes": 90135,
+      "sha256": "030bfbfdec4b736c2cd09fe028d4b2a0b8190156edea6397733878d4fce05661",
+      "groups": 3
+    },
+    {
+      "path": "controls-01/control-releaseComplete-03.json",
+      "bytes": 4064,
+      "sha256": "4aee0aae4337104252f478104c56328865343290284a3ad780365391c73c1d61",
+      "groups": 5
+    },
+    {
+      "path": "controls-01/control-releaseMissingConfig-03.json",
+      "bytes": 1715,
+      "sha256": "226b8b0fb5a9e14185c6fcd8a40ca653b700d324af0fcfce080f638d57ced9ea",
+      "groups": 3
+    },
+    {
+      "path": "controls-01/control-releaseForeignHost-03.json",
+      "bytes": 1729,
+      "sha256": "117e46dd90c344cb42d365e9d68606acfe0bb8061433cbe62aa5543592770de6",
+      "groups": 3
+    },
+    {
+      "path": "controls-01/control-releaseInvalidConfig-03.json",
+      "bytes": 1706,
+      "sha256": "87aa54dbaef6aa16dcb94ebde30950a1d5cfabd2c74fac0fa01c39aebbddaa39",
+      "groups": 3
+    },
+    {
+      "path": "controls-01/control-releaseBadProfile-03.json",
+      "bytes": 2180,
+      "sha256": "67c97b0f61986d859a22bf729bae9fb6b134b52098519c30dd2ce8bebbf00c88",
+      "groups": 3
+    },
+    {
+      "path": "controls-01/control-releaseRawChanged-03.json",
+      "bytes": 2260,
+      "sha256": "720fecb55c90f97db533dc2f672c51a1122c25fc5e4fc97e7e006b19ea03a7e5",
+      "groups": 4
+    },
+    {
+      "path": "controls-01/control-releaseRetired-03.json",
+      "bytes": 2384,
+      "sha256": "f43911ef114c4db1e7c001f564a3450254cf9d6f69c97e79815e112e5a381764",
+      "groups": 5
+    },
+    {
+      "path": "controls-01/control-releaseNativeChanged-03.json",
+      "bytes": 1979,
+      "sha256": "270523ae6cbd7819fd26a67121f60e7e4601dd7806fcad1fc9987380b99ced06",
+      "groups": 5
+    },
+    {
+      "path": "controls-01/control-releaseSourceChanged-03.json",
+      "bytes": 2422,
+      "sha256": "dd39863bf58ae9e420f0efb085ba4b65841a37cee0c2a5033dff279179595308",
+      "groups": 5
+    },
+    {
+      "path": "controls-01/control-releaseRejectUndefined-03.json",
+      "bytes": 2326,
+      "sha256": "14df7ae6e24cffa4b58ddc5943359b891cd496a40615d8295fd13ec86e12f29d",
+      "groups": 4
+    },
+    {
+      "path": "controls-01/control-releaseRejectFalse-03.json",
+      "bytes": 2318,
+      "sha256": "565140c3f6119860bbd8a62dffba94f7a72f279adf637a5fd39a21911519a19e",
+      "groups": 4
+    },
+    {
+      "path": "controls-01/control-releaseRejectNull-03.json",
+      "bytes": 2316,
+      "sha256": "38c7a0666914b5ffc186b103121aeeb8d279e4567c1127ca5f8eb95baf744c07",
+      "groups": 4
+    }
+  ],
+  "sourceFiles": 521,
+  "parseCount": 425,
+  "freshReads": 233,
+  "exactInverse": true,
+  "hunks": 29,
+  "knownHolds": [
+    "Source-owned actual release catalogue/configuration successor",
+    "Complete seven-byte host vector and genuine Binding authority",
+    "Work and additive entry/module/controller/instance/pending/caller/closed logical ownership",
+    "Original opaque async child native chronology and paid scheduling",
+    "Kernel retained-Host versioned reuse seam",
+    "Native/VM/heap/full Main/P05"
+  ],
+  "noOtherSourceEdits": true
+}

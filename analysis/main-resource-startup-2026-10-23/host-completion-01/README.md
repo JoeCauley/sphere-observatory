@@ -1,0 +1,1 @@
+Current root source/function/profile composition and separately scoped startup, Surface and Source memory receipts. Each copied receipt is byte-exact and retains its native/model/ownership limits. No full Main or performance acceptance. See component-receipt.json and index.json.

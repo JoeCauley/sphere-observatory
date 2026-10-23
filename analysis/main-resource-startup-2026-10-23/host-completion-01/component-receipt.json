@@ -1,0 +1,119 @@
+{
+  "status": "FROZEN_FUNCTIONAL_SOURCE_PROGRESS_COMPLETE_MAIN_HELD",
+  "utc": "2026-10-23T17:28:41.919535+00:00",
+  "currentSource": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-host-completion-join-2026-10-23-01\\candidate-01\\source",
+  "loaderSha256": "886d2bd36fb7f27cdbe09ad7a1952a513d76ed56a10ec0ef3f6797798e769a11",
+  "sourceFiles": 521,
+  "parses": 425,
+  "freshSourceReads": 233,
+  "joinedHunks": 42,
+  "sourcePoolPartition": {
+    "scheduled": 2646016,
+    "hooks": 36864,
+    "bothUnselected": true
+  },
+  "earlySourcePeak": {
+    "bytes": 17544652,
+    "limit": 33554432,
+    "scope": "Old exact219-source resource-input parent and named early pools only. Not the new whole Host/C11/App/R graph."
+  },
+  "pricing": {
+    "scope": "Reviewed/developing component proposals only; private cold and new R/catalogue lanes remain separate.",
+    "selected": false
+  },
+  "proofs": [
+    {
+      "path": "root-resource-input.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-resource-input-join-2026-10-23-01\\CHECK-09.json",
+        "bytes": 8606,
+        "sha256": "559612f2fe742fcd6c21718db224350624916b0165f2c414580259b84c1df885"
+      }
+    },
+    {
+      "path": "root-early-source.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-resource-input-join-2026-10-23-01\\EARLY-SOURCE-CHECK-15.json",
+        "bytes": 4351,
+        "sha256": "98b5efa53f275ed35002e2d1adc579d37878c25066c2aeb8065c2cdbcd5c40f3"
+      }
+    },
+    {
+      "path": "peer-early-source.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-resource-input-join-2026-10-23-01\\independent-early-source-review-01\\CHECK-01.json",
+        "bytes": 18093,
+        "sha256": "627f4c02e87b2b5e51b9086defb90bdbf74ed691b7ef8281757dd47caa0e1b43"
+      }
+    },
+    {
+      "path": "root-surface-presence.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\CHECK-05.json",
+        "bytes": 11054,
+        "sha256": "645aa3f7506975720803b2b122a2a6591bf078113e5169b9a36c555c1d8b63a4"
+      }
+    },
+    {
+      "path": "peer-surface-presence.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-surface-error-presence-2026-10-23-01\\independent-review-01\\CHECK-01.json",
+        "bytes": 42961,
+        "sha256": "4ac46648d4a4eb09d639a439505943da7e60f764817036c09f6f8c225f30866c"
+      }
+    },
+    {
+      "path": "root-host-completion-join.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-host-completion-join-2026-10-23-01\\CHECK-05.json",
+        "bytes": 11739,
+        "sha256": "57f89fe7efd3f3631ba479114ff874670329c119e6a98ea68201194c46e06d18"
+      }
+    },
+    {
+      "path": "host-author.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-host-before-resource-2026-10-23-01\\author-01\\CHECK-01.json",
+        "bytes": 6012,
+        "sha256": "c5fd214f49569dfa15732ba8727d645a01453e06c8af5e2964e8fb73bae6c533"
+      }
+    },
+    {
+      "path": "completion-author.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\FUNCTIONAL-11.json",
+        "bytes": 11910,
+        "sha256": "c6d3419ed330feb6f55647e202ef0fae58234f7e8ef1b40899abd1bfc177c323"
+      }
+    },
+    {
+      "path": "completion-peer.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\independent-completion-review-01\\CHECK-01.json",
+        "bytes": 11600,
+        "sha256": "30bee50d69716c1b27d698296ed2d7c9fef625347d624e14024933c1cc057189"
+      }
+    },
+    {
+      "path": "component-pricing-proposal.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\PROPOSALS-12.json",
+        "bytes": 8834,
+        "sha256": "f46531155197dd62dab7abdeabbb6745cedcb02755c2499cc8c6fd82aa35bb48"
+      }
+    }
+  ],
+  "selectedMainStartupComponent": "main-texture-handoff-funded-c3",
+  "completeFundingSelected": false,
+  "P05": "OPEN",
+  "P06_P08": "NOT_STARTED",
+  "PhaseOne": "NOT_ACCEPTED_NOT_RELEASED",
+  "runtimeFilesChanged": 0,
+  "browserServerOperated": false,
+  "rawArchivesRemainLocal": true,
+  "excludedActive": [
+    "Source-owned release catalogue and bounded IndexedDB cursor successor",
+    "New complete private cold-profile work/ownership lane",
+    "Genuine Host/Kernel reuse and finite Target/Content compatibility work"
+  ]
+}

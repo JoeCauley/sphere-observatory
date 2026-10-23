@@ -1,0 +1,167 @@
+{
+  "status": "FROZEN_ROOT_RESOURCE_INPUT_JOIN_FUNCTIONAL_ONLY",
+  "utc": "2026-10-23T16:49:24.524Z",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-resource-input-join-2026-10-23-01\\candidate-01\\source",
+  "loader": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-resource-input-join-2026-10-23-01\\candidate-01\\source\\owned-main-bootstrap.js",
+    "bytes": 183195,
+    "sha256": "10df9d3521fc2de9f56f0f05995b24163f0d63d3b5b3b553be0c949e15231f1f"
+  },
+  "files": 521,
+  "parses": 425,
+  "exactInverseHunks": 12,
+  "other520FilesExact": true,
+  "sourceProfiles": [
+    {
+      "name": "buildGraph",
+      "rows": 219,
+      "digest": "2b6ef286f4f629c908349b357a2f1494e1610bc79901c98340ce7147d92cd3b0"
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "rows": 5,
+      "digest": "b5e069d75713c63153216e3d9021812d3da66117eb9887f56554fb6e348c078d"
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "rows": 9,
+      "digest": "0dcedabc145ede790e6072f7325d20058d6e9978319813cff5ffb089c68ed908"
+    }
+  ],
+  "freshProfileReads": 233,
+  "rootEntryRetentionAndSurfaceReusePreserved": true,
+  "resourceComponentGroups": 18,
+  "originalAssetsPlanVisitsForDisclosedFixture": 1938,
+  "actualRFactoryCalls": 0,
+  "surfaceCases": 5,
+  "proofs": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-resource-input-join-2026-10-23-01\\build-join-01.py",
+      "bytes": 3328,
+      "sha256": "79e379291d2c2a649e9ebe45070ab14a8dbe1f50233240aaae74f18641b528e3"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-resource-input-join-2026-10-23-01\\inventory-01.json",
+      "bytes": 88363,
+      "sha256": "ec72ed9a8ac6a37ac0e07bc3f188795c085d89dbf031656ee157cf79f7596e68"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-resource-input-join-2026-10-23-01\\join-receipt-01.json",
+      "bytes": 1258,
+      "sha256": "66689c5836e1a0eb4159e238e25184357556fab0c7949606ad0bda53e5aeda39"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-resource-input-join-2026-10-23-01\\verify-join-02.cjs",
+      "bytes": 4331,
+      "sha256": "5360bbedf10c0dac6675e06e2c14c3ef0525db1de74ab4e06ed510ed4a568b88"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-resource-input-join-2026-10-23-01\\source-verification-02.json",
+      "bytes": 2292,
+      "sha256": "effc3667a066c4751a4e83bf737ddb22a4d7feb07bb696af0746e70023093c39"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-resource-input-join-2026-10-23-01\\prepare-controls-03.py",
+      "bytes": 1864,
+      "sha256": "e3fe81565e0909f4319e680719befee77585baebb91e6c22d1b48649102c7518"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-resource-input-join-2026-10-23-01\\harness-adaptations-03.json",
+      "bytes": 1109,
+      "sha256": "408748a2cf00edf572d276c931f654435a2fd9924098fd83226d24910c336293"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-resource-input-join-2026-10-23-01\\controls-01\\test-resource-03.cjs",
+      "bytes": 19301,
+      "sha256": "6fd45bdf50c3289bac6b4cacdf803c353524b8bd2763b1f6f79dac283994158f"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-resource-input-join-2026-10-23-01\\controls-01\\control-run-03.json",
+      "bytes": 6452,
+      "sha256": "016702cf4fb6068f46d35d12272d14a47062592b757b15e416cfe628f264bf29"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-resource-input-join-2026-10-23-01\\prepare-surface-controls-05.py",
+      "bytes": 2904,
+      "sha256": "99511724e11bc734f02c3e2f26c183d60ecbff1d7ed95f3c8185b67e65e3966e"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-resource-input-join-2026-10-23-01\\harness-disposition-05.json",
+      "bytes": 2514,
+      "sha256": "f85c2add4c8d8591f00c8d346ec1318d6048d13fe7d282bf2b012480fb968584"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-resource-input-join-2026-10-23-01\\test-real-surface-06.cjs",
+      "bytes": 45782,
+      "sha256": "bd0e8eb05da03976ecda589143f16add28c3dcdbcd3f3a6f3990fd430e6ca896"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-resource-input-join-2026-10-23-01\\prepare-surface-controls-07.py",
+      "bytes": 2262,
+      "sha256": "58bfbb0240f183b77b6e19e3da07ddc51941aed507e23d37ef0b48acac0676a6"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-resource-input-join-2026-10-23-01\\harness-disposition-07.json",
+      "bytes": 1669,
+      "sha256": "b54e55e44a23391bd4d93d157fdb981818e44069f1b73378194733c913b0dd8c"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-resource-input-join-2026-10-23-01\\test-real-surface-08.cjs",
+      "bytes": 45963,
+      "sha256": "caaf3ab9e8f3f1aef8711cf3c596c452b498d25c6e3723eaebc39f8a0e9a80c5"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-resource-input-join-2026-10-23-01\\control-positive-join03.json",
+      "bytes": 8547,
+      "sha256": "88fbaafd5c7da6ba20e76bdbe12645ef3646f09031a6de52116a539899d95017"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-resource-input-join-2026-10-23-01\\control-field-join03.json",
+      "bytes": 8544,
+      "sha256": "f33f90b346446d3928056517f40d865c196b0e8ac41d630ae411ac895d69618a"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-resource-input-join-2026-10-23-01\\control-composite-join03.json",
+      "bytes": 8548,
+      "sha256": "563565a4df8747e4ce1d0a37935a25bebe13877982344355ea3e45dd854ad039"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-resource-input-join-2026-10-23-01\\control-surfaceBeforeNativeMutation-join02.json",
+      "bytes": 5359,
+      "sha256": "3c88dd8d06352c1604365e8cce8537eec3ee1db35e56665fdf36be57d548e099"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-resource-input-join-2026-10-23-01\\control-surfacePostNativeMutation-join02.json",
+      "bytes": 5356,
+      "sha256": "b572ddb8a556817dba85a5954599e70ad7c3a7762c08fb97a19c06f4703fe94c"
+    }
+  ],
+  "resourceIndependentReview": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-resource-host-seam-2026-10-23-01\\independent-review-01\\CHECK-01.json",
+    "bytes": 20381,
+    "sha256": "66578a2589a9f59a031ed34265dceb87cd9c97a4750bd5fe8f10aa2ffcabe65f"
+  },
+  "models": [
+    "Original App private port and Resource stage bodies with explicitly declared DOM/native-boundary capsules and disclosed Core fixture.",
+    "Actual Renderer/helper/Surface bodies plus captured Node timer visits; no Resource original source identities are supplied in this separate Surface model, so its continuation correctly refuses at the first missing original definition.",
+    "All diagnostic metadata and unit-work prices remain evaluation-copy-only; no product gate/cap/tariff selection."
+  ],
+  "preservedHarnessAttempts": [
+    "Five join01 reports: newly added null Resource controller gate stops old Surface fixture before its target.",
+    "Three positive join02 reports: completed Surface then genuine missing-definition refusal differs from prior assumed App-port boundary; negative mutation cases already pass."
+  ],
+  "holds": [
+    "Every new Resource entry/module/state/work/close and failure ownership price.",
+    "Shared completion/Reject successor and exact full caller work/storage composition.",
+    "Nonduplicating scheduled reader/Source hook ownership and original first-Q foundation boundary.",
+    "Actual verified release identity/provider budgets, full seven-field limits and genuine same-backend R bind.",
+    "Host/PB/Base/program and finite Target/assigned Main work, whole view, Frame and ordinary native Main/P05 proof."
+  ],
+  "selectedComponent": "main-texture-handoff-funded-c3",
+  "fundingSelected": false,
+  "Main": false,
+  "Frame": false,
+  "P05": "OPEN",
+  "runtimeFilesChanged": false,
+  "browserServerOperated": false
+}

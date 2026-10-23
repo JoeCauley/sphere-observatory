@@ -1,0 +1,77 @@
+{
+  "status": "FROZEN_EARLY_SOURCE_KNOWN_POOL_MEMORY_REPLAY_COMPONENT_ONLY",
+  "utc": "2026-10-23T17:02:14.754Z",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-resource-input-join-2026-10-23-01\\candidate-01\\source",
+  "actualSourceRows": 219,
+  "sourceCopiesAtAccept": 219,
+  "SourceTables": "Exact frozen SourceX proposed18+21 tables; no unit Source tariffs",
+  "knownNamedPoolPeakBytes": 17544652,
+  "originalQCapBytes": 33554432,
+  "unusedAtThisComponentPeakBytes": 16009780,
+  "exactSourcePoolPartitionVerified": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-surface-g-preparation-2026-10-23-01\\caller-02\\complete-storage-03.json",
+    "bytes": 94022,
+    "sha256": "e14b33dc25beac284800985cbacd16514c278ae15bd770845c01c336345920a6"
+  },
+  "proofs": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-resource-input-join-2026-10-23-01\\replay-current-source-memory-10.cjs",
+      "bytes": 9537,
+      "sha256": "298164c9dc6fb7f2fca820230da04470d8daed9211c4cd5bb497d91d078267b1"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-resource-input-join-2026-10-23-01\\prepare-source-memory-11.py",
+      "bytes": 1582,
+      "sha256": "4c1d4e2720d170a4b0acdb44e9d24f24cbee1a9991abb4f48714966b6d233932"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-resource-input-join-2026-10-23-01\\source-memory-attempt-11.json",
+      "bytes": 1027,
+      "sha256": "9473eae248cff6e4f8897e2d1667c0afe23b63949429d4e6e91c18cbd7b0ad5c"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-resource-input-join-2026-10-23-01\\replay-current-source-memory-12.cjs",
+      "bytes": 9771,
+      "sha256": "3cf7ee179f7ef267f94cd3e0f5fac15cb1adc2c92af5ac7516da6ce8f36b6d0a"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-resource-input-join-2026-10-23-01\\current-source-memory-12.json",
+      "bytes": 6620,
+      "sha256": "7a20e0fc6a1585cfca83868d58ba791c8b5b2b7c6c81489b31503254838beafd"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-resource-input-join-2026-10-23-01\\prepare-source-memory-13.py",
+      "bytes": 1532,
+      "sha256": "ce1623a5df6750fdc1cd652974e0bbe365ddf733c59f9774a6629f71388b6210"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-resource-input-join-2026-10-23-01\\source-memory-attempt-13.json",
+      "bytes": 972,
+      "sha256": "45be84f1beb1051d2cb998e0987efb700932580afdac5c55040ec4e2b389677a"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-resource-input-join-2026-10-23-01\\replay-current-source-memory-14.cjs",
+      "bytes": 9882,
+      "sha256": "c7608cb693ac8670c4b699959ece8b7fdf612a43dd0e27f615a7aac73f76d745"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-resource-input-join-2026-10-23-01\\current-source-memory-14.json",
+      "bytes": 10943,
+      "sha256": "d65d748fde1a70b532358e5e59459eb52453211d8d28081ec42d582e1081256c"
+    }
+  ],
+  "scope": "Actual original Q/S/Records and exact current reader/six Source hooks, model-only numeric Source proposal and named early pool reservations. This is not an execution or ownership proof of the complete shared startup.",
+  "important": "The source-mode reservation is a named prospective model row. Current full shared admission labels/receipt/failure operations and every new owner must be replayed together after complete composition; the remaining bytes are not spending authority or a proposed new cap.",
+  "holds": [
+    "Complete new private cold-builder module/controller/instance and output unions",
+    "New Resource stage/controller/Host-first/release-budget paths",
+    "Actual App/Renderer constructor ownership and native cold work",
+    "Actual helper/Surface states and async completion/failure lifecycle not reached during this Source-only replay",
+    "Original first-Q pre-admission foundation boundary"
+  ],
+  "selected": false,
+  "Main": false,
+  "P05": "OPEN",
+  "nativePerformance": false,
+  "runtimeFilesChanged": false
+}

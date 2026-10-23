@@ -1,3 +1,5 @@
+> Current progress: [Main resource inputs, completion and reuse](Observatory-Main-Resource-Startup-2026-10-23.md). The joined source is functionally checked; complete funding/native Main remain held and P05 OPEN.
+
 > Current joined-startup record: [Surface observation reuse and reviewed Source child](Observatory-Main-Joined-Startup-2026-10-23.md). Fresh checks remain; complete shared funding/host/native Main are held and P05 OPEN.
 
 # Main startup caller and App inputs - 23 October 2026
