@@ -1,0 +1,144 @@
+{
+  "status": "FROZEN_REVIEWED_FINITE_CONTENT_FUNCTIONAL_COMPONENT_CORRECTED_PROPOSALS_UNSELECTED",
+  "utc": "2026-10-23T17:55:53.836281+00:00",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\candidate-01\\source",
+  "target": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\candidate-01\\source\\biome-service\\native\\main-target-owner.js",
+    "bytes": 32412,
+    "sha256": "4b30bd30d304ce850b4e0db37e54de95c062b18d105d509855d7f612cc68c5cd"
+  },
+  "loader": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\candidate-01\\source\\owned-main-bootstrap.js",
+    "bytes": 213845,
+    "sha256": "d6589b911961979adf6702cc067f3b05510de3b49ccb93c3af6a80c3e3755f94"
+  },
+  "files": 521,
+  "parses": 425,
+  "sourceRows": 220,
+  "freshSourceReads": 234,
+  "exactInverseHunks": 7,
+  "unchangedFunctionsAndMethods": [
+    "function:fail",
+    "function:isBoundRootProfile",
+    "arrow:finiteCheck",
+    "arrow:finitePrepare",
+    "function:clockScope",
+    "function:sameClock",
+    "function:clockCurrent",
+    "function:beginPreparationFrame",
+    "function:maintainPreparationFrame",
+    "function:live",
+    "function:authorize",
+    "function:collect",
+    "function:maskInvoke",
+    "function:invalidateMask",
+    "function:releaseCurrent",
+    "method:createClosedSteadyPort",
+    "method:bindAAMaskContentFromMain",
+    "method:detachAAMaskContentFromMain",
+    "method:bindRenderer",
+    "method:beginMainFrame",
+    "method:withFrameTarget",
+    "method:inspect",
+    "method:retireFromLoss",
+    "method:dispose"
+  ],
+  "other519Exact": true,
+  "sourceFactoryGroups": 16,
+  "finiteStorageGroups": 11,
+  "proofs": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\build-component-01.cjs",
+      "bytes": 4986,
+      "sha256": "74fa66dcb7baa31db46aaff970d115377bf62849edaed515376a79c0a608a4ff"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\exact-component-01.json",
+      "bytes": 68847,
+      "sha256": "aad0100eee442b92bccc41947ddd9a6b03d0be0c63aa23569828e88e2b230585"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\inventory-01.json",
+      "bytes": 88363,
+      "sha256": "d260c5abdfa2c9358459affd32ad75357825ce0c55744f248fa80c7f8621c80f"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\prepare-models-02.py",
+      "bytes": 5337,
+      "sha256": "680365152b3d793c871755de5dd180673784316f04fddab71eabe45b9cbc9c7d"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\test-adaptations-02.json",
+      "bytes": 5131,
+      "sha256": "8fcbe6c80f115ece26fcc2f65861ae9355df9279a250c949c3d80c112a81dbc2"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\test-source-factory-02.cjs",
+      "bytes": 10571,
+      "sha256": "5913c1b56f993417eb3af359ab92873f6fb5f6669840dfde6437abc68ddbdc74"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\source-factory-control-02.json",
+      "bytes": 18877,
+      "sha256": "ab85e7e33c52860937f940730db3853028a6e00ac6da8464ecdf9fc256a54c36"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\test-finite-retention-03.cjs",
+      "bytes": 17824,
+      "sha256": "2024252d2aacb42cba9e6a71bf056a36edfb3950a2719ad8d2e981d64be59f5f"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\finite-retention-control-03.json",
+      "bytes": 12450,
+      "sha256": "7deb1ea4ac4719feea2353e51dd392f6bb160d2da5e4d5593072dd17b327de3f"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\verify-source-04.cjs",
+      "bytes": 4746,
+      "sha256": "082f705802e6968ef1d5ccec74e99eb84467070d0fe713a5710e7606165c43f4"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\source-verification-04.json",
+      "bytes": 1757,
+      "sha256": "724028e5cd079ad9487bea81a6181540470bce6426e0ea3fe89fb6171c2a68df"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\derive-increment-05.cjs",
+      "bytes": 3729,
+      "sha256": "b13feea0d2c590677b4952960eb749df71ce702325aa4d467539daebafc9782c"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\increment-proposal-05.json",
+      "bytes": 4744,
+      "sha256": "e9c061b1c1740f0abf53b894f76ed26e479a35be914b95c5ebb152037a05f36d"
+    }
+  ],
+  "actual": "New opt-in finiteContent profile requires full Content closure/parent and all3 original genuine Root capability methods. It reuses unchanged finite two-generation preparation/retirement/native-scope code. Old finite9 continues refusing Content; legacy Content still admits. Both finite cost gates remain false/worknull.",
+  "models": "Factory runs actual S/Q/R with explicit Root/Renderer registry/GL adapters; named in-memory diagnostic flags/512 work only for reachability. Storage controls execute exact original Target/Root bodies with actual R/Q and deterministic GL/fences, not native browser proof.",
+  "positiveIncrementProposal": "Additional module raw1632\u21924096, transient raw1248\u21924096, and18 named Source37 cold field/capability transactions. All unselected. Original05 omissions preserved and corrected with independent findings.",
+  "holds": [
+    "Corrected increment07 exact artifact and later whole-current cost/storage selection remain separately required; source/native/profile/factory/lifetime independent review passed.",
+    "Current whole root caller/module/controller/pending/sharedQ and all original finite cold/preparation work qualification.",
+    "Remaining genuine Host/Kernel/resource/demanded content/weather implementation and native ordinary Main acceptance."
+  ],
+  "selected": false,
+  "Main": false,
+  "P05": "OPEN",
+  "runtimeBrowserServerOperated": false,
+  "priorComponentReceipt": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\CHECK-06.json",
+    "bytes": 6569,
+    "sha256": "81e74363c54c375fc34a7b396a312c1f4fc7f56c9a87d9a5d5bca8e6e263bbb3"
+  },
+  "independentReview": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\independent-review-01\\CHECK-01.json",
+    "bytes": 15739,
+    "sha256": "b061f9a29e763cf6ef9dbcad6605923541fccda49d51b93e753669ee59e73a9e"
+  },
+  "correctedIncrementProposal": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\increment-proposal-07.json",
+    "bytes": 7195,
+    "sha256": "5038efd4e6d02e4301d4a07c6d084d6e0009d2cfa1262e669d2ad6f9cdad5cc7"
+  },
+  "independentCaseGroups": 34
+}

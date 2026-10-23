@@ -1,0 +1,149 @@
+{
+  "status": "PASS_BOUNDED_C08_CATALOGUE_FUNCTIONAL_REVIEW_CORRECTED_PARTIAL_SOURCE_INCREMENT_NO_SELECTION",
+  "source": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-verified-release-catalogue-2026-10-23-01\\independent-review-01\\source\\owned-main-bootstrap.js",
+    "bytes": 211089,
+    "sha256": "aa1238bb77ced4cee2f890bc668cc073af63ded6b46332741da577c1deb3f1f5"
+  },
+  "authorFunctional": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-verified-release-catalogue-2026-10-23-01\\author-01\\CHECK-01.json",
+    "bytes": 9457,
+    "sha256": "960ed36223fe12e549a2c0dfbde49104ccadf99bca321d588838aec6fbdae127"
+  },
+  "authorCorrection": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-verified-release-catalogue-2026-10-23-01\\author-01\\CHECK-02.json",
+    "bytes": 1682,
+    "sha256": "0920b4b1790e7ec960aa85aa3c5e1b1e4d9b52aa4b910826a182510042fe1fcd"
+  },
+  "mergeRecipe": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-verified-release-catalogue-2026-10-23-01\\author-01\\merge-recipe-01.json",
+    "bytes": 65780,
+    "sha256": "52e9c801df40eeffe23745876ab7176ee012cda06f31ed88d4c54f045663353b"
+  },
+  "inputs": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-verified-release-catalogue-2026-10-23-01\\independent-review-01\\input-register-01.json",
+    "bytes": 2862,
+    "sha256": "a085b5d72ed6048d6fe1222b98b08ba61e2d8fd96499db1756c9cd28618ee2ca"
+  },
+  "evidence": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-verified-release-catalogue-2026-10-23-01\\independent-review-01\\replay-controls-01.json",
+      "bytes": 2625,
+      "sha256": "eae4875ebe6582901fe29761476c7b3e6cd8537bc76a3f7ab451f23c89897fc1"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-verified-release-catalogue-2026-10-23-01\\independent-review-01\\cursor-boundary-controls-01.json",
+      "bytes": 1429,
+      "sha256": "53ef5ec6be5231cc4aa60e70a28f86c56fe876532d8e5afb7e9462987d7114e0"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-verified-release-catalogue-2026-10-23-01\\independent-review-01\\source-verification-01.json",
+      "bytes": 2340,
+      "sha256": "e1b24e9d05cc3125bec50dbf3758f05fe61c09ccf3a7d6f0a19dd47a59c1192b"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-verified-release-catalogue-2026-10-23-01\\independent-review-01\\source-increment-review-01.json",
+      "bytes": 2636,
+      "sha256": "99904a8e7f5f85484046f45c24d280e9db7b800766c3021fa86266e311c3df43"
+    }
+  ],
+  "results": {
+    "authorCasesIndependentlyReplayed": 23,
+    "newCursorBoundaryCases": 5,
+    "assembledFiles": 521,
+    "parses": 425,
+    "exactH04InverseHunks": 34,
+    "codeMergeHunks": 32,
+    "profileOrderEditsRecomputed": 2,
+    "graphRows": 220,
+    "scriptOrderRows": 215,
+    "freshSourceReads": 234,
+    "sourceCheckFinalQ0": true,
+    "Main": false
+  },
+  "findings": [
+    {
+      "id": "SOURCE-COUNT-LIFETIME",
+      "status": "CORRECTED_PARTIAL_PROPOSAL",
+      "finding": "Increment02 asserted the existing Source static domain was unchanged because220<=256, but L11 active/closed entry and retainedQ rows explicitly covered219 entries. The new PP source row needs those exact positive lifetimes as well as dynamic byte storage and profile data.",
+      "correction": "Preserved02; correction03 adds new source entry union8736 =SourceMeta1760 +oldReturnedQMetadata2944 +full retainedQenvironment4032. Beyond actual dynamic entry metadata/bookkeeping4686, Instance needs4050raw->4096. Caller retains entire8736 during original released-held loop plus3328 raw two-profile growth, total12064raw->12288. Source code unchanged. New module returnedQ6624+binding32 is explicitly a separate future root entry/controller liability. PP-only8192 remains a partial module proposal.",
+      "scope": "Actual root split Source caller/hook rounding differs from old unified parent cited in correction. Apply positive supplements once to actual owner partition; no duplicate whole Source pool, old slack or GC borrowing."
+    },
+    {
+      "id": "SOURCE-AUTHORITY",
+      "status": "REVIEWED_FUNCTIONAL_COMPONENT",
+      "finding": "Configuration is fixed private source-owned two genuine fixture factories/schema routes; caller envelopes/digests are not substituted as authority. Profiles are built through original ProviderProfiles.makeProfile then actual factory.configure/Definition brand, exact S-admitted graph closure plus genuine private Host source reader and admission. Source refresh re-admits actual bytes and compares provider references before DONE. Empty/malformed/foreign/changed/retired/oldGraph inputs refuse in actual-body models."
+    },
+    {
+      "id": "CURSOR",
+      "status": "REVIEWED_BOUNDED_BODY_MODELS",
+      "finding": "Original release capacity remains64. readCatalogue uses captured openKeyCursor/key/continue with one bounded result list; no bulk getAllKeys. Independent exact-body cases0/1/63/64/65 confirm exact64 succeeds,65th callback refuses before65th key read/continue. Named cursor/Storage adapters are models; actual native IDB transaction/callback work and physical lifetimes not certified."
+    },
+    {
+      "id": "PENDING-FAILURE-LIFETIME",
+      "status": "REVIEWED_COMPONENT_SCOPE",
+      "finding": "Raw pending tuple roots Promise/value before current checks. invoke failure latches independent hasFailure/rawFailure/failed/uncertain; rejection and matching identity retain through rawnull/undefined/false, close refuses pending/uncertain. Config/increment stay truthfully realm-held after logical close. Closed arrays/maps are cleared while config/source scope roots remain held. Native external settlement is not manufactured cleanup."
+    },
+    {
+      "id": "R-GATE",
+      "status": "REFUSAL_ONLY",
+      "finding": "Actual declaredReleaseBudgets are privately rooted only after DONE metadata read; freshness checks retain exact same Host/App/Renderer/source/native parents. hostAdmission and providerBridge remain null with no setter, so real host stage refuses before R factory unless missing genuine Binding/admission authority exists. Existing bindResourceHost tests use genuine R with sevenzero byte limits and no allocations only; no positive full seven-field host vector, Kernel/Binding/Root/provider/resource readiness."
+    },
+    {
+      "id": "INVERSE-PROFILES",
+      "status": "PASS",
+      "finding": "Fresh assembled source is exact olderJ/C2 base520 unchanged files plus one C08 loader overlay; it is not a physical521-file candidate directory.34 reversible H04 hunks verified,32 nonprofile code hunks separated from graph/order. PP appears exactly once after Binding/View;220/5/9 profiles pass actual Records.verifyEnvelope and234 fresh actual S/Q reads,220 copies, profile fixture finalQ0. Root latest C11/Surface/Resource merges require separate current profile regeneration and controls."
+    }
+  ],
+  "pricingAndScopeHolds": [
+    "Complete catalogue/Host/entry/module/controller/instance/pending/native callback/caller work and logical storage remain unselected. Only partial PP/source increment corrected; it does not pay the new catalogue code/closures/config/pending/async/native bodies.",
+    "C08 extends initializerQualified STARTUP phase fields and initializerPhaseFee/initializerBody resource/release routes; C11 work04 admission365/Qualified317 does not price these changed bodies. Re-derive exact current combined caller rather than reuse fees by label.",
+    "Original generic ownRecord inherited-key scanning and synchronous Host/Numeric/Records/Provider/Release getRelease raw manifest verification/clone domain remain explicitly held. No arbitrary opaque adapter cost is paid as one native row.",
+    "This overlay inherits older parent Source/helper/Surface/caller versions. The root separately reviewed C11 and Surface2f8c corrections must remain intact on exact merge; this receipt cannot reapprove superseded raw-sentinel/continuation behavior.",
+    "Raw metadata declaration/lifecycle revision is a verified snapshot, not actual current resources/native-ready/Binding authority. Resource bytes are not requested; resourcesVerified/nativeReady stay false.",
+    "No browser/server/nativeIndexedDB/WebGL/VM heap/timing/full Main or P05 proof. APPfalse/null funding/NaN first entry guard and original first-Q foundation obligation remain held."
+  ],
+  "artifacts": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-verified-release-catalogue-2026-10-23-01\\independent-review-01\\prepare-review-01.cjs",
+      "bytes": 2425,
+      "sha256": "d5a5b74c04e967f549e1220760ab9c6fd81a3433c92e720baea73068094bcb7e"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-verified-release-catalogue-2026-10-23-01\\independent-review-01\\test-catalogue-01.cjs",
+      "bytes": 50295,
+      "sha256": "4c52b0d7e3fc91b0006fab6a1d1ea55bee521bb8e9cd24caa8e9d38915c84c55"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-verified-release-catalogue-2026-10-23-01\\independent-review-01\\case-list-01.json",
+      "bytes": 541,
+      "sha256": "067b38767d1be29432d45532d8b8ab1696940100c409642ad5245ed696a826e2"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-verified-release-catalogue-2026-10-23-01\\independent-review-01\\run-controls-01.cjs",
+      "bytes": 1200,
+      "sha256": "a9443ff7d3f070ddb7d5e7396ded0827d2229ffa8a89f66b4adca04cf69b7987"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-verified-release-catalogue-2026-10-23-01\\independent-review-01\\test-cursor-boundary-01.cjs",
+      "bytes": 3298,
+      "sha256": "aa824d6f86739d4c0e3bea9aa0be65e4f1792ea2cd48f17253002b51fa2c75c5"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-verified-release-catalogue-2026-10-23-01\\independent-review-01\\verify-source-01.cjs",
+      "bytes": 5963,
+      "sha256": "3bdf13c5c7686d0186975a816f1e4ff263be78ab16e80630127a27cb3e4aa8e3"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-verified-release-catalogue-2026-10-23-01\\independent-review-01\\check-source-increment-01.cjs",
+      "bytes": 4530,
+      "sha256": "b9f87671110093e10bd52dbb981bf9445444b620bb980dfd2aee23e7f6fa3446"
+    }
+  ],
+  "selected": {
+    "funding": false,
+    "work": false,
+    "Main": false,
+    "P05": "OPEN"
+  }
+}

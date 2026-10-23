@@ -1,3 +1,5 @@
+> Current progress: [Main retained-state startup and Kernel handoff](Observatory-Main-Retained-State-Startup-2026-10-23.md). Original Host/Binding/Kernel handoffs pass scoped checks; complete work/ownership/native Main remain held and P05 OPEN.
+
 # Main resource inputs, completion and reuse
 
 The private Main startup path now combines current App inputs, the existing demand planner, a Host built before the resource owner, tracked completion/failure work, and a corrected Surface exception path. The same Host adapter is retained for a single private resource-owner bind. The delivered Infinite Meadow/Infinite Industry walk remains unchanged.

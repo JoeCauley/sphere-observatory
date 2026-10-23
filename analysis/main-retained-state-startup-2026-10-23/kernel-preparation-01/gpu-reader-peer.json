@@ -1,0 +1,104 @@
+{
+  "status": "INDEPENDENT_SCOPED_FIXED_GPU_READER_REQUEST_FUNCTIONAL_REVIEW_PASS_UNSELECTED",
+  "utc": "2026-10-23T18:19:13.472Z",
+  "originalSeal": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-fixed-gpu-reader-2026-10-23-01\\CHECK-05.json",
+    "bytes": 6578,
+    "sha256": "817e7ad0986719a6251c8b4d0645f6b78f8b1c1183731b820398e606528d95a8"
+  },
+  "source": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-fixed-gpu-reader-2026-10-23-01\\candidate-01\\source\\owned-main-bootstrap.js",
+    "bytes": 213980,
+    "sha256": "091d07f66494d44f5a4b81a7bf059bb8ac90a8c3497069ef878b4deaad28e4a6"
+  },
+  "independentCopy": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-fixed-gpu-reader-2026-10-23-01\\independent-review-01\\candidate-01\\source",
+  "files": 521,
+  "parses": 425,
+  "other520ExactV14": true,
+  "profilesUnchanged": true,
+  "freshSourceReads": 234,
+  "sourceCopies220": true,
+  "profileControlFinalQ0": true,
+  "exactInverseHunks": 2,
+  "actualBodyCases": 8,
+  "control": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-fixed-gpu-reader-2026-10-23-01\\independent-review-01\\fixed-reader-control-03.json",
+    "bytes": 2136,
+    "sha256": "6b0a78e6c86478fa5349bbfc1ac942ac1ad81176cea95e90401e153b28ee7ed6"
+  },
+  "scope": [
+    "Binding/Host private completed admission for isolated R birth branch reachability; actual construction is verified in separate Binding/Host components",
+    "App/native/source currentScope and freshness remain named parent adapters here",
+    "GPU/Surface backing callbacks are deterministic logical objects, not native GPU"
+  ],
+  "findings": [
+    "No new functional blocker in this narrow optional-reader request. The original version identities are captured at owned R source load, and actual root R birth requests exact sameQ gpuHeldAdmission beside defaultSurface.",
+    "Actual R/Q tests confirm locked own reader, canonical aggregate including logical default Surface outside three old GPU classes, foreignQ refusal, explicit-request-only publication and retained alias refusal after original Host disposal.",
+    "hostAdmission remains null in product and refuses before R. Positive host/admission/currentness/Binding parents are disclosed isolated models. These tests do not establish full source-owned R birth or actual native backing."
+  ],
+  "partialProposal": {
+    "knownRootRows": 1344,
+    "prospectiveDistinctSupplement4096": 4096,
+    "knownRequestOnlyWork": 7,
+    "originalRreader2560": "Original optional profile request only; no complete R/caller/closed-wrapper ownership certificate.",
+    "notAnUpperOrCompleteTariff": true,
+    "additionalHeld": [
+      "Extra coldSlots/coldCapture admission work and any complete literal/member/key occurrence pool must enter the actual whole current census. Two in-call OwnData3 reads plus one metadata record cover only the requested7 rows.",
+      "Original createHost optional validation/captures/returned facade/input/closed reader roots and full Q-handle/caller entry union remain held. No old rounding slack or released2560 implies alias disappearance.",
+      "No supplement Q handle is created or selected here; any future handle needs its complete current ABI in the actual entry union."
+    ]
+  },
+  "mergeCompatibility": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-fixed-gpu-reader-2026-10-23-01\\independent-review-01\\in-memory-merge-check-02.json",
+    "bytes": 444,
+    "sha256": "e2d3c20913d36c99292e6439309b63f35b77b92445d611841699bf7dd64bf6b1"
+  },
+  "proofs": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-fixed-gpu-reader-2026-10-23-01\\independent-review-01\\prepare-verifier-01.cjs",
+      "bytes": 1248,
+      "sha256": "55b37893387ee9894fad8fd734a3275b7113fe169ac629af63bd0a3b064cc729"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-fixed-gpu-reader-2026-10-23-01\\independent-review-01\\relocations-01.json",
+      "bytes": 934,
+      "sha256": "bc356005d23e47f4a10026b124dbb7386160e2398230638f013a9f2bfcb59c40"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-fixed-gpu-reader-2026-10-23-01\\independent-review-01\\test-fixed-reader-03.cjs",
+      "bytes": 8121,
+      "sha256": "3b0295ca08b1063824c25918f4adab201f20cde45ecedf7bba5557d26a85e9ea"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-fixed-gpu-reader-2026-10-23-01\\independent-review-01\\verify-source-04.cjs",
+      "bytes": 3228,
+      "sha256": "1261e7a0ccceb5097c1b060ed0af057b03279587e8a214c769da6dbe7748e783"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-fixed-gpu-reader-2026-10-23-01\\independent-review-01\\source-verification-04.json",
+      "bytes": 900,
+      "sha256": "3db862869ef0ea695233eaf0f1abc040028f852c740038b3bcaf22eac52692f9"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-fixed-gpu-reader-2026-10-23-01\\independent-review-01\\inventory-04.json",
+      "bytes": 88363,
+      "sha256": "a4ecad28efc49af071d1ead9f1cbc3640ce4d135f1e359155e52c7dc8c79e557"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-fixed-gpu-reader-2026-10-23-01\\independent-review-01\\seal-review-02.cjs",
+      "bytes": 5200,
+      "sha256": "df2e6c28af65aeb7fcc14700edc39f54b397c1197a4c59caee1ca898b2c177a6"
+    }
+  ],
+  "sourceEdits": 0,
+  "product": {
+    "fundingSelected": false,
+    "Main": false,
+    "P05": "OPEN",
+    "runtimeBrowserServerGitOperated": false
+  },
+  "holds": [
+    "Original firstQ/foundation, full current R/Binding/Host/source/caller and seven-field host admission remain independently required.",
+    "No native GPU, native VM heap, whole simultaneous Q/work fit or ordinary Main/P05 promotion."
+  ]
+}

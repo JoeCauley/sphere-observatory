@@ -1,0 +1,189 @@
+{
+  "status": "INDEPENDENT_COMPONENT_REVIEW_WITH_REPRODUCED_VALID_DOMAIN_REFUSAL_C3_NOT_COMPLETE",
+  "createdUTC": "2026-10-23T18:32:00.759Z",
+  "author": {
+    "freeze": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-builder-funding-2026-10-23-01\\author-01\\FREEZE-STRICT-03.json",
+      "bytes": 331992,
+      "sha256": "14e0f221606225fbe442fd4b7e6c7bfe46dc4e4960643a75449d7f6c047c1ef2"
+    },
+    "functional": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-builder-funding-2026-10-23-01\\author-01\\FUNCTIONAL-STRICT-05.json",
+      "bytes": 3334,
+      "sha256": "72eb909398f4d4ef3220a98bfbd61b323f75b37128d72642cd928836e4b246f2"
+    }
+  },
+  "source": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-builder-funding-2026-10-23-01\\independent-review-01\\candidate-03\\source\\biome-service\\native\\strict-record-owner.js",
+    "bytes": 13727,
+    "sha256": "67725b807a4e0b6086601a2ba8e6048a21ebbe2ffae421e93900f1058efe65c7"
+  },
+  "sourceIdentity": {
+    "status": "PASS_EXACT_SOURCE_LINEAGE_AND_SOURCE_IDENTITY_ONLY",
+    "authorFreeze": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-builder-funding-2026-10-23-01\\author-01\\FREEZE-STRICT-03.json",
+      "bytes": 331992,
+      "sha256": "14e0f221606225fbe442fd4b7e6c7bfe46dc4e4960643a75449d7f6c047c1ef2"
+    },
+    "authorFunctional": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-builder-funding-2026-10-23-01\\author-01\\FUNCTIONAL-STRICT-05.json",
+      "bytes": 3334,
+      "sha256": "72eb909398f4d4ef3220a98bfbd61b323f75b37128d72642cd928836e4b246f2"
+    },
+    "verifiedAuthorFrozenRows": 1631,
+    "files": 522,
+    "parses": 426,
+    "unchangedParentFiles": 521,
+    "inverseHunks": 13,
+    "companion": {
+      "path": "biome-service/native/strict-record-owner.js",
+      "bytes": 13727,
+      "sha256": "67725b807a4e0b6086601a2ba8e6048a21ebbe2ffae421e93900f1058efe65c7"
+    },
+    "profiles": [
+      {
+        "name": "buildGraph",
+        "rows": 219,
+        "digest": "ffd0d46fbf976efb636ddfde9c12bb39781cd68d550615e9ceae71510f85d93c"
+      },
+      {
+        "name": "buildStartupEnvelope",
+        "rows": 9,
+        "digest": "02e425626b14429ca05a570cc83fde590b505408cc882d07c19f8c9f22a6b69f"
+      },
+      {
+        "name": "buildSurfaceEnvelope",
+        "rows": 5,
+        "digest": "04cff510ad4d20ec09d314707774ca6fbcfbfc2f4745a6716322db8504a6caf0"
+      }
+    ],
+    "newProfile": {
+      "rows": 7,
+      "digest": "f71c8e6e480eb80a9d1f2194ae4582da63e764afbab4abd0dca8e0557ac7a3f8"
+    },
+    "freshReads": 240,
+    "mismatch": {
+      "code": "SOURCE_PROFILE_MISMATCH",
+      "newModuleByteFlipOnly": true,
+      "finalQ": 0
+    },
+    "finalQ": 0,
+    "scope": {
+      "newModuleEvaluated": false,
+      "newModuleWired": false,
+      "fundingSelected": false,
+      "semanticNumericHostAuthority": false,
+      "Main": false
+    }
+  },
+  "passing": {
+    "originalActualBodyCases": 31,
+    "additionalActualBodyCases": 10,
+    "sourceLineageAndProfileChecks": true,
+    "readersDoNotInvokeForeignResultOrQProxyTraps": true,
+    "closedImmutableResultBrandRemainsSameQ": true,
+    "rawHashFailurePresenceAndUncertainNativeRootsRetained": true
+  },
+  "finding": {
+    "id": "STRICT-C3-ROOT-VERIFY-REUSE",
+    "classification": "Valid same-Q immutable verified-envelope root input refuses; no false envelope admission observed",
+    "lines": {
+      "retainedFastPath": 43,
+      "bodySpanStart": 62,
+      "spanRequirement": 65
+    },
+    "counter": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-builder-funding-2026-10-23-01\\independent-review-01\\root-reuse-counter-02.json",
+      "bytes": 1793,
+      "sha256": "7baea1f15abddd8703627b922b9839696a1453daceca6fe85ead37dac047df16"
+    },
+    "cause": "At the root, a same-Q retained immutable value appends its whole canonical text and completes without traversing the body property. The verify-envelope operation then sees its unchanged bodyStart/bodyEnd sentinels and refuses STRICT_RECORD_ENVELOPE.",
+    "contrast": "The identical first ordinary envelope succeeds; retained root record reuse and nested body-envelope reuse retain exact immutable identity and original Records canonical/digest.",
+    "authorDisposition": "Author accepted the valid-domain defect and is preparing isolated author-02 C4. Frozen C3 is preserved.",
+    "requiredSuccessor": "Disable only the root verify-envelope retained fast path or otherwise establish genuine body spans through the original traversal; preserve nested and other-mode reuse and all brand/hash checks."
+  },
+  "lifetime": {
+    "closedRealm": "Instance/record charges and result/canonical/native-output roots remain held by design. A successful close does not establish Q0 or garbage collection.",
+    "uncertainNative": "Returned native hash Promise and its input/reservations remain held when observer registration fails. External success is not cleanup authority.",
+    "input": "Staged canonical copying is not an atomic snapshot authority over an arbitrarily mutated foreign graph; actual callers must supply the supported source-owned producer contract.",
+    "newModule": "Funding guard remains null before module capture block. Instance/record/WORK guards are null. This review uses disclosed diagnostic substitutions only."
+  },
+  "held": [
+    "Complete source-derived module/instance/record/caller work and storage selection",
+    "Actual paid scheduling and loader/source admission wiring for the new module",
+    "Numeric and Host semantic certificate authority and current original dependency checks",
+    "Native enumeration/Reflect ownKeys/foreign Proxy physical bounds and native heap/P08",
+    "Complete cold, R, Main integration and P05 exit"
+  ],
+  "claims": {
+    "sourceEdits": 0,
+    "authorBytesChanged": 0,
+    "metadataOrFeesSelected": false,
+    "sourceIdentityDoesNotFundEvaluation": true,
+    "nativeMain": false,
+    "MainPermission": false,
+    "P05Complete": false
+  },
+  "evidence": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-builder-funding-2026-10-23-01\\independent-review-01\\verify-source-and-lineage-05.cjs",
+      "bytes": 5632,
+      "sha256": "32a8ff99fb955f9d0d8bff1a6155122e884deadf48704e7ed60dfd26f6c3f149"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-builder-funding-2026-10-23-01\\independent-review-01\\source-and-lineage-controls-05.json",
+      "bytes": 1847,
+      "sha256": "562d691bdcb9e1d2ee3be4406ddc0eb5accaf7def1e18353df2af8018fbd5027"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-builder-funding-2026-10-23-01\\independent-review-01\\test-strict-record-04.cjs",
+      "bytes": 12668,
+      "sha256": "b70952535fe19ef8e6fe79af9ea3767046246d28ba9b10c6c51fe5ef8075ebda"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-builder-funding-2026-10-23-01\\independent-review-01\\strict-record-controls-04.json",
+      "bytes": 19834,
+      "sha256": "34d848a7a1dade9e84566c3245954a7a9e120122dd5054f0bbf6b985d820247b"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-builder-funding-2026-10-23-01\\independent-review-01\\test-root-reuse-01.cjs",
+      "bytes": 3292,
+      "sha256": "7f6ce7b7b36cd24e70168178bc99987da936de330a723acf87db32753b3de783"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-builder-funding-2026-10-23-01\\independent-review-01\\root-reuse-harness-disposition-02.json",
+      "bytes": 505,
+      "sha256": "f890c9cf7db1ae4c56f1f0da693e9d2df83b2419d7bee7b28abff0a92c830013"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-builder-funding-2026-10-23-01\\independent-review-01\\test-root-reuse-02.cjs",
+      "bytes": 3292,
+      "sha256": "aa46a8e366282587c0b02eea558d73ee1df369a938a82738a0c8c7a714ff742d"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-builder-funding-2026-10-23-01\\independent-review-01\\root-reuse-counter-02.json",
+      "bytes": 1793,
+      "sha256": "7baea1f15abddd8703627b922b9839696a1453daceca6fe85ead37dac047df16"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-builder-funding-2026-10-23-01\\independent-review-01\\test-adversarial-03.cjs",
+      "bytes": 6667,
+      "sha256": "fbf8a163788204710c9569d082a5f284a91e2525f8daeadbb766aa4791c3f50e"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-builder-funding-2026-10-23-01\\independent-review-01\\adversarial-disposition-04.json",
+      "bytes": 274,
+      "sha256": "86705ab3f8602664062a193ae4d7dd5c87d3baab16fc8c1e206a653a4e66ddff"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-builder-funding-2026-10-23-01\\independent-review-01\\test-adversarial-04.cjs",
+      "bytes": 6669,
+      "sha256": "c4adf2aa9f2458fba6a6d01668521a6dddc00d798fd512a6c48827c55c8b1bf0"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-builder-funding-2026-10-23-01\\independent-review-01\\adversarial-controls-04.json",
+      "bytes": 2300,
+      "sha256": "3da86e3c14710fb0f1b21b707fec787c24e95fad6a8eff33960f52ba0097245d"
+    }
+  ]
+}

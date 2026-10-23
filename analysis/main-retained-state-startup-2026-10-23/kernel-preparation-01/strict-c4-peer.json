@@ -1,0 +1,139 @@
+{
+  "status": "INDEPENDENT_FUNCTIONAL_STRICT_C4_ROOT_CORRECTION_PASS_NOT_FUNDING_OR_MAIN",
+  "createdUTC": "2026-10-23T18:35:37.267Z",
+  "source": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-builder-funding-2026-10-23-01\\independent-review-02\\candidate-01\\source\\biome-service\\native\\strict-record-owner.js",
+    "bytes": 13771,
+    "sha256": "2f139cbb9edc759d6d237978db6375dbd57067f4cc4a437592631f34ace16f97"
+  },
+  "authorFreeze": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-builder-funding-2026-10-23-01\\author-02\\FREEZE-STRICT-04.json",
+    "bytes": 108956,
+    "sha256": "aa18c04f9a0c3f1939ce4b084ce0a761dfaaa6e9ef75f063106738281cca10c1"
+  },
+  "authorFunctional": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-builder-funding-2026-10-23-01\\author-02\\FUNCTIONAL-STRICT-04.json",
+    "bytes": 2935,
+    "sha256": "15ea2bdbf1a2d75669fec04743d1828ff1dbe483a3907197684f33c842593dcf"
+  },
+  "verifiedAuthorFrozenRows": 533,
+  "sourceVerification": {
+    "files": 522,
+    "parses": 426,
+    "unchangedParentFiles": 521,
+    "exactInverseHunks": 1,
+    "profiles": [
+      {
+        "name": "buildGraph",
+        "rows": 219,
+        "digest": "ffd0d46fbf976efb636ddfde9c12bb39781cd68d550615e9ceae71510f85d93c"
+      },
+      {
+        "name": "buildStartupEnvelope",
+        "rows": 9,
+        "digest": "02e425626b14429ca05a570cc83fde590b505408cc882d07c19f8c9f22a6b69f"
+      },
+      {
+        "name": "buildSurfaceEnvelope",
+        "rows": 5,
+        "digest": "04cff510ad4d20ec09d314707774ca6fbcfbfc2f4745a6716322db8504a6caf0"
+      }
+    ],
+    "separateNewModuleRows": 7,
+    "separateNewModuleDigest": "f567df254a9d243a4ec7e614c07da1800309586c338633a5be0ff567a9a7750a",
+    "freshSourceReads": 240,
+    "newModuleEvaluated": false,
+    "newModuleInActualMainGraph": false,
+    "finalQ": 0,
+    "mismatch": {
+      "code": "SOURCE_PROFILE_MISMATCH",
+      "finalQ": 0
+    }
+  },
+  "controls": {
+    "author34": 34,
+    "additionalAuthorityLifetime": 10,
+    "independentRootCorrection": 6,
+    "rawExecutedGroups": 50,
+    "notAllDistinct": true,
+    "diagnosticOnly": true
+  },
+  "correction": {
+    "C3Counter": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-builder-funding-2026-10-23-01\\independent-review-01\\root-reuse-counter-02.json",
+      "bytes": 1793,
+      "sha256": "7baea1f15abddd8703627b922b9839696a1453daceca6fe85ead37dac047df16"
+    },
+    "C3Seal": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-builder-funding-2026-10-23-01\\independent-review-01\\CHECK-01.json",
+      "bytes": 9720,
+      "sha256": "684188519cfcf323b40fbd491bc4caba339bc052273f2a28a3e147e11fd2fee0"
+    },
+    "C3ReproducedAgain": true,
+    "validRetainedRootVerifyNowTraverses": true,
+    "actualHashRecomputed": true,
+    "closedSourceOwnerResultValid": true,
+    "recordModeWrongDigestStillRefuses": true,
+    "nestedAndOtherModeIdentityReuse": true
+  },
+  "positiveNewLiabilities": {
+    "nodeAdditionalCapture": "mode",
+    "guard": "root target and operation conditional on genuine same-Q retained value",
+    "literalOccurrence": "verify-envelope",
+    "newBindings": 0,
+    "newCallables": 0,
+    "completeFeesAndOwnership": "UNSELECTED"
+  },
+  "lifetime": "Closed instance/result/canonical/native roots stay charged in a retained realm. Source-identity Q0 pertains only to unexecuted module admission. External native hash success never clears an observation-uncertain owner.",
+  "held": [
+    "Private paid scheduling and new profile source-evaluation wiring",
+    "Complete module/instance/record/caller ownership and work selection including C4 positive guard/capture/literal",
+    "Numeric/Host semantic certificate authority and fresh runtime dependency corpus",
+    "Native enumeration/Reflect ownKeys/foreign Proxy physical domain, native heap/P08",
+    "Whole cold/Main/P05 qualification"
+  ],
+  "claims": {
+    "productSourceEdits": 0,
+    "authorChanged": false,
+    "fundingSelected": false,
+    "Main": false,
+    "P05Complete": false
+  },
+  "evidence": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-builder-funding-2026-10-23-01\\independent-review-02\\test-strict-record-01.cjs",
+      "bytes": 13748,
+      "sha256": "7107e9471ed34af8916621f68530067825ddfb960c6cdee294c91c6453c79c2e"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-builder-funding-2026-10-23-01\\independent-review-02\\strict-record-controls-01.json",
+      "bytes": 22643,
+      "sha256": "86774ee0f05c8a037ddb9356214a3a7e3a9687c93dab8cb097fdf1c1b30d9018"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-builder-funding-2026-10-23-01\\independent-review-02\\harness-relocation-02.json",
+      "bytes": 441,
+      "sha256": "ec896edc91e7e51e9efe503b0f5fdf3a976d6c54fe370c97219769affa89caa1"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-builder-funding-2026-10-23-01\\independent-review-02\\test-root-correction-03.cjs",
+      "bytes": 5374,
+      "sha256": "742c564c748d9d122052096f78f614b4f2acf8321573eea095038dd7d9b6b79f"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-builder-funding-2026-10-23-01\\independent-review-02\\root-correction-controls-03.json",
+      "bytes": 2592,
+      "sha256": "1797533afd21f01309977e2d490bc887e357cd00b6ba80e1a23ce061cc3492bc"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-builder-funding-2026-10-23-01\\independent-review-02\\test-adversarial-04.cjs",
+      "bytes": 6669,
+      "sha256": "83b97853910a73d0e88824431a07feeaa79585c0876be92910b66c05335d05da"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-builder-funding-2026-10-23-01\\independent-review-02\\adversarial-controls-04.json",
+      "bytes": 2300,
+      "sha256": "538fc44cf6896a11eb8a53e894b39bceccf5e68b3143151a2a8e40616e8c1dd7"
+    }
+  ]
+}

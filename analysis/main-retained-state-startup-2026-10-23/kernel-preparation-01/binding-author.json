@@ -1,0 +1,392 @@
+{
+  "status": "FROZEN_PRIVATE_BINDING_PREPARATION_FUNCTIONAL_COMPONENT_UNSELECTED",
+  "utc": "2026-10-23T18:15:40.581Z",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\candidate-04\\source",
+  "parent": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\candidate-01\\source",
+  "loader": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\candidate-04\\source\\owned-main-bootstrap.js",
+    "bytes": 227942,
+    "sha256": "52ce3ab8e51321d6fa70f5c629aff29b176b9837183ed2187925697eabba118a"
+  },
+  "inventory": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\source-inventory-10.json",
+    "bytes": 88363,
+    "sha256": "50eef6b9a905d2a18513efe2d194eae4b1d1766f47407e8c5344fd56d8841a2a"
+  },
+  "sourceVerification": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\source-verification-10.json",
+    "bytes": 1414,
+    "sha256": "a1a79c8d3bee3e9effd6f4babdc946a0e70a04d7360719eb08b241fe26c2cb62"
+  },
+  "files": 521,
+  "parses": 425,
+  "other520ExactV14": true,
+  "changed": [
+    "owned-main-bootstrap.js"
+  ],
+  "combinedRecipe": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\combined-recipe-10.json",
+    "bytes": 23015,
+    "sha256": "3fa976b0dba22f79ee151ce6a533f8771c9fe04c461a2995f905b1828dd1a2ca"
+  },
+  "exactInverseHunks": 35,
+  "profilesUnchanged": true,
+  "freshProfileReads": 234,
+  "graphRows": 220,
+  "allOldNullsNaNAndAppFalsePreserved": true,
+  "newModuleAndInstanceAllowancesNull": true,
+  "workNull": true,
+  "fullBodyCases": 15,
+  "routeAndScopeChecks": 16,
+  "controls": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\control-releaseBindingPositive-final08.json",
+      "bytes": 37326,
+      "sha256": "38319689aa3dac9321ee7e0f34ff8428f503f2a4e7e23d6490db4e21952809c6"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\control-releaseBindingHostRefusal-final08.json",
+      "bytes": 37475,
+      "sha256": "4e73d9e54a2a52e0983475fd99a1865981794ea64eb3569bb23c491c1bc732d9"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\control-releaseBindingDisposed-final08.json",
+      "bytes": 2955,
+      "sha256": "8e0dccedef4a52f529ef2846e7b530d0dc588575805ffe91a059eac19fdd5e09"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\control-releaseBindingCodecChanged-final08.json",
+      "bytes": 2526,
+      "sha256": "2b27bcc51ef8a76eae882b6fd474dd4e9f8e00d257cdbf8549ac0f5ec3bb25f3"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\control-releaseBindingQPressure-final08.json",
+      "bytes": 4493,
+      "sha256": "7f8a4c60479bd020ec582954bf37582451794c78697aa3fb9d0d7a60a2520396"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\control-releaseBindingForeignOwner-final08.json",
+      "bytes": 2724,
+      "sha256": "3de61bf6923030380e37400094ff636edfef01ce745649ec4b36b96c48e0ffe1"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\control-releaseBindingRejectNull-final08.json",
+      "bytes": 4066,
+      "sha256": "d6d51b036189bc12b2911bad00332e45f13b02a7baef8d4f5583c516e9955cee"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\control-releaseBindingRejectFalse-final08.json",
+      "bytes": 4067,
+      "sha256": "75acce03f3e9bdd3c84349f1c66819b94558884658e454db1bee0e1873c39155"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\control-releaseBindingRejectUndefined-final08.json",
+      "bytes": 4071,
+      "sha256": "9f51bc1c220adbddba865256876d7a3b3bcbeaa92911e2af01d65830c838f14a"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\control-releaseBindingSourceChanged-final08.json",
+      "bytes": 2699,
+      "sha256": "0165f3992859688aa5bf858e5fda18eba4105124059742af1d34222bfc2b918e"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\control-releasePositive-final08.json",
+      "bytes": 4591,
+      "sha256": "14973157415cdf644bf33b7414f3ffb249de9c0e20f6b3b2aa30e8dd6cc17571"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\control-releaseBindingInstanceHeld-final12.json",
+      "bytes": 3452,
+      "sha256": "29f87a8cb0db543449796aee618799b31ee288d0cdf61e400cfedc8c687fd7c0"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\control-releaseBindingInstanceQ-final12.json",
+      "bytes": 3457,
+      "sha256": "bcf5b9825e753946f641386ed13cf692a1257bed583609729f09fddc886dc100"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\control-releaseForeignHost-final12.json",
+      "bytes": 2048,
+      "sha256": "dd6b9277edede2f9fa8b67e930606a1c03fcbc732a17e782ded77c3778283777"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\control-releaseBindingCompletionSourceChanged-final14.json",
+      "bytes": 37528,
+      "sha256": "355e968b11dc1a63be16e82b7820bc113cd104b579c235fe7dfccc43c8a65224"
+    }
+  ],
+  "routing": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\routing-controls-11.json",
+    "bytes": 2418,
+    "sha256": "0ba9e5f7ec3f195eb92028ce5c498253af592cde88891800adf3ffff347afe19"
+  },
+  "actual": [
+    "Original copied Renderer constructor/reciprocal source registration",
+    "Original actual Node Host/Numeric/Records/ProviderProfiles and genuine fixture factory brands",
+    "Original CommonBoundary validateProfile and create; two original support codec envelopes with actual extensionId+support-v1, exact59-row closure, connector3/state codec/65536 recipe bound, Track duck-blind and Industry none",
+    "Original Allocator.buildProfile and profile verification",
+    "Original VerifiedRecordStore and CheckpointStore creation using retained original catalogue storage",
+    "Original BindingBuilder.create with exact actual common Q.reserve, actual retained Host/release/boundary/allocator/staging/checkpoint parents and private exactRead",
+    "Actual Q/S/R APIs; R test fixture has zero byte limits and does not establish physical native allocation authority"
+  ],
+  "modeled": [
+    "Named GL/reflection/shader state; Surface/G brand and unrelated texture child constructor ports; loader Document/currentScript",
+    "Storage.open/readonly cursor and IDBCursor classes; no native IndexedDB proof",
+    "Additional constructor instance1048576 and inherited262144 diagnostics only, not selected storage bounds",
+    "Separate exact routing/currentScope adapters, not an actual paid scope or complete caller execution",
+    "Controller-owned diagnostic aliases/results sit outside product Q authority; no VM/native heap claim"
+  ],
+  "positive": {
+    "recipeOrResourceByteReads": 0,
+    "storageCloses": 1,
+    "originalBindingAccountBeforeClose": {
+      "heldBytes": 248456,
+      "limitBytes": 33554432,
+      "measurement": "CONSERVATIVE_LOGICAL_RESERVATION_NOT_NATIVE_HEAP",
+      "peakBytes": 248456
+    },
+    "originalBindingAccountAfterClose": {
+      "heldBytes": 0,
+      "limitBytes": 33554432,
+      "measurement": "CONSERVATIVE_LOGICAL_RESERVATION_NOT_NATIVE_HEAP",
+      "peakBytes": 248456
+    },
+    "wholeQZeroClaim": false,
+    "closedRealmModuleInstanceChargesHeld": true,
+    "ctorPreparedOrCachedBindings": 0,
+    "hostAdmissionNullStillRefusesBeforeProductionRFactory": true,
+    "sourceReadInvocations": 886
+  },
+  "authority": "Source-loaded actual exports and separate codec pointer/four-method captures, never coldImmutable(codec). Private pending retains each returned promise/result before fresh checks. Private Binding read requires original brand, usesMetadataOwner, exact constructor arguments/Q/sourceGraph/profile proof and original disposed=false. The ResourceHostStage read also requires actual paid RESOURCE_HOST phase. No public setter/reader or positive fixture verifier was added.",
+  "lifetime": "Successful close disposes original Binding, verifies disposed state, then clears private owner/proof/argument/Boundary/staging/checkpoint/codec roots and closes storage. Raw rejected or changed-current pending completions hold all roots/charges; close refuses. Constructor null/Q refusal before inner block releases only unpublished increments after block unwind. No cleanup is inferred from external native success.",
+  "boundedShape": "Support2 factories/codecs fixed from existing source-owned configuration; existing closure59; exact Binding source proof is one linear merge40+220 actual rows, not a quadratic scan. Start/accept phase pairs do not qualify original heavy async preludes or complete metadata/caller work.",
+  "unchangedBodies": [
+    "Source/Records/Q/Host/Kernel and all other520 source files",
+    "all3 source profile bodies and build order",
+    "original private cold Host/PB/Base builder",
+    "original initializer observer/finish/raw rejection functions",
+    "actual App source and startup input handoff"
+  ],
+  "ownershipProposal": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\ownership-and-scope-13.json",
+    "bytes": 5841,
+    "sha256": "82ed57a1314bdfd0d9f0d2412e0953c9f890019041ed6f8d4b4ceb0d599946fa"
+  },
+  "preservedAttempts": [
+    "build01 exact-space needle assertion before source write, candidate01 parent copy preserved",
+    "prepare-controls03 absent no-op needle assertion before harness output",
+    "test-binding03 wrong filename-derived codec identity expectation; actual source correctly used extensionId",
+    "finalize07 source04 and recipe already complete; harness-only path count included unrelated historical candidate03 path",
+    "verify09 assignment regex mistakenly matched equality; successor10 uses actual AST checks"
+  ],
+  "holds": [
+    "No complete module/instance/controller/entry/pending/closed-alias ownership or byte value selection; extra Q returned facade/entry prefix remains separate.",
+    "Original CommonBoundary/Records/ProviderProfiles/Allocator Numeric and Binding L/X/source verification synchronous+async work remains held; INITIALIZER_WORK and8new fee fields null.",
+    "Current catalogue/startup Qualified and caller phases need new actual merged derivation; old C11 admission365 is not selected wholesale.",
+    "hostAdmission/providerBridge remain null. No install/planAllocation/prepare, durable resolve, provider resource byte reads, native binding/kernel/R integration or positive verifier was executed.",
+    "Original firstQ trusted-foundation obligation, full host seven-field bound/global cold/complete Main/Frame/native acceptance and P05 remain open."
+  ],
+  "product": {
+    "selected": false,
+    "Main": false,
+    "P05": "OPEN",
+    "browserOrServerOperated": false,
+    "priorSealsOrSourcesEdited": false,
+    "sourceRuntimeTimerRun": false
+  },
+  "proofs": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\build-binding-01.cjs",
+      "bytes": 20861,
+      "sha256": "a791291ccba96dcc48113594df9569bb60e640419406069af9048691c12de6ce"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\prepare-build-02.cjs",
+      "bytes": 942,
+      "sha256": "3bbc575c287ca1a85e90a0a27ee6bd60495f8f1cd46f82a7c920dcbfe46997d0"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\build-binding-02.cjs",
+      "bytes": 20859,
+      "sha256": "34170bfae1c975d413c9153050a1f01c035709a82ff126d563824938fe71f9d1"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\build-disposition-02.json",
+      "bytes": 519,
+      "sha256": "475269b40fd2bd5efe608a5fc7c2b1e2ea4a8ca1776271d10388897680ad7f01"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\exact-edits-02.json",
+      "bytes": 21935,
+      "sha256": "8711fe422e1e6a80010a0f896c2bfacca875600daab384079b271be01507ba63"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\prepare-controls-03.cjs",
+      "bytes": 10206,
+      "sha256": "7374325f43a77ad845de364b57d0a3944ca05e0a131617688bbf2bf0a3c0bf71"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\fix-control-preparation-04.cjs",
+      "bytes": 829,
+      "sha256": "306a431d02e8fad2f3acd7b8db0a7ec2c423750cddb3073278509cc74c523c34"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\prepare-controls-04.cjs",
+      "bytes": 10110,
+      "sha256": "1fba62ab276bc009303433a6b9dc4e14382686a0231438b20bb84f390918a3c5"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\control-preparation-disposition-04.json",
+      "bytes": 223,
+      "sha256": "ce5a4630d4f7dd38d9420f99f1bfc10f5c0371e940e23916cf5ab2dd20616a68"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\control-releaseBindingPositive-01.json",
+      "bytes": 2499,
+      "sha256": "be53781ac801f7d86b63c4d214ef6efb677102c875464fb479432c0d3f85cec8"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\fix-control-expectation-05.cjs",
+      "bytes": 934,
+      "sha256": "557cd727d2e9efc19a4cc126a6175dd443f47318d87a05b21fa11444f2812033"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\control-expectation-disposition-05.json",
+      "bytes": 538,
+      "sha256": "d211827c570a00bf5493729f4a458ac97c8926a8dde324c8489af55973109eb7"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\build-linear-proof-06.cjs",
+      "bytes": 2464,
+      "sha256": "e074ec0999ad0109c64a199532985c7a2c744a0e02754c83227d9d25c47670a3"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\exact-edits-06.json",
+      "bytes": 1918,
+      "sha256": "408356dfbcf77d211fbabef528a078d96bf5a7b68646614e801dddef1f28241d"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\finalize-scope-07.cjs",
+      "bytes": 2287,
+      "sha256": "9f441f3df0885b8a99b14fbd85f6a150626f7254ff2c6d6ea4b9381a2c613df7"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\exact-edits-07.json",
+      "bytes": 937,
+      "sha256": "44e5bc73eb98c086ad87fbb5c7b9f5a25d7eccda9fc88a793e1dbff44ec1b707"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\finish-harness-08.cjs",
+      "bytes": 1820,
+      "sha256": "ffaa7ea64badc65a328075cc3f5652edf4b858d24a913bee0814e8357e4ce5ff"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\harness-disposition-08.json",
+      "bytes": 1701,
+      "sha256": "c78fa7adc98ca444e531f21bb45cb620356227720e1a3e175e8c53fb9666ae22"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\test-binding-08.cjs",
+      "bytes": 58729,
+      "sha256": "cbf52602caeabf52ccc5ed75f9dd746f9e3206e0b01c94bea489545ddecbf176"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\verify-component-09.cjs",
+      "bytes": 6182,
+      "sha256": "b9828c046d311639e88c46f4dba409672a9b3166537d8c567eca3ba2c61bb7e2"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\finish-verifier-10.cjs",
+      "bytes": 1650,
+      "sha256": "9921ddbf12442a01e65c3f84a799c52852e9ba56996b74346dae9c66b35f312e"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\verifier-disposition-10.json",
+      "bytes": 298,
+      "sha256": "348e976334a44109e43caa90f6ab87f6ae552d7e03cdd512f2fda7dd582afef1"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\verify-component-10.cjs",
+      "bytes": 6794,
+      "sha256": "7a99244c48473022e49df80bc9626015465abbfe80e50e9145e174e6295ab640"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\source-inventory-10.json",
+      "bytes": 88363,
+      "sha256": "50eef6b9a905d2a18513efe2d194eae4b1d1766f47407e8c5344fd56d8841a2a"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\source-verification-10.json",
+      "bytes": 1414,
+      "sha256": "a1a79c8d3bee3e9effd6f4babdc946a0e70a04d7360719eb08b241fe26c2cb62"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\combined-recipe-10.json",
+      "bytes": 23015,
+      "sha256": "3fa976b0dba22f79ee151ce6a533f8771c9fe04c461a2995f905b1828dd1a2ca"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\test-routing-11.cjs",
+      "bytes": 5425,
+      "sha256": "2692a7f5dc97b0f061ed11ccb6a343d15ba13539380c77a167f09277d21932fe"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\routing-controls-11.json",
+      "bytes": 2418,
+      "sha256": "0ba9e5f7ec3f195eb92028ce5c498253af592cde88891800adf3ffff347afe19"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\prepare-constructor-gates-12.cjs",
+      "bytes": 2565,
+      "sha256": "c4d79adda56fe886334fe3f0e242ce698722d40b9e2996462f2a7feddff69bcf"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\test-constructor-gates-12.cjs",
+      "bytes": 60077,
+      "sha256": "b341dfbb461c2f424238824ae9288c3f547fd6fdb3b64314c0eb8df7fe946ca9"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\constructor-gate-adaptations-12.json",
+      "bytes": 2214,
+      "sha256": "23963a30bcb6de5e234e7276f5f54e9e2db7274d896bb59cbb64d1b763284417"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\ownership-and-scope-13.json",
+      "bytes": 5841,
+      "sha256": "82ed57a1314bdfd0d9f0d2412e0953c9f890019041ed6f8d4b4ceb0d599946fa"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\READ-FIRST-13.md",
+      "bytes": 3222,
+      "sha256": "7868de6ccee14c923052f959029424a6815dd10f9d4c72b7a8c7bd933db3b243"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\prepare-late-current-14.cjs",
+      "bytes": 1498,
+      "sha256": "d75cebf0da368ce35f1c2f5e1f4dac065ad5ffe046bcc726f2fb7c06e26cda57"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\test-late-current-14.cjs",
+      "bytes": 59458,
+      "sha256": "1efe10d938cfd921876f2a0c7e71601ff0106639a3946158ae4ff37d0b076267"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\late-current-adaptations-14.json",
+      "bytes": 1173,
+      "sha256": "f34d961d212c607458b6b336d4e3de32c79065f5abc19a30f7587d5999c63769"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\seal-component-15.cjs",
+      "bytes": 8697,
+      "sha256": "ed23efb429cf6f1e7f93ea98729546af1feb29c646fb1cd53780a8ef6c03b37e"
+    }
+  ],
+  "numberedClarification": {
+    "parent": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\CHECK-01.json",
+      "sha256": "35e7472201ac8f64654e01ad825d959ebcc66007c6ff518e763bcf3a8ca26c17"
+    },
+    "change": "Rename positive.sourceRows to sourceReadInvocations:886. Actual source shape is admitted graph220/provider-codec59/Binding40; the original value was a read invocation count, not unique rows.",
+    "readFirstAddendum": "READ-FIRST13 describes fourteen cases before the additional late-current control; final seal has fifteen full-body cases plus sixteen routing checks. No source/function/proposal value changed."
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "status": "PASS_BOUNDED_EXACT_ROOT_V13_MERGE_ONLY_NO_SELECTION",
+  "source": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v13-installed-catalogue-join-2026-10-23-01\\independent-review-01\\source\\owned-main-bootstrap.js",
+    "bytes": 213845,
+    "sha256": "5b3e76bdf37f0c5702789d01f1898b9efea4c020ba8f86d7c983270fcb21110a"
+  },
+  "parent": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-host-completion-join-2026-10-23-01\\candidate-01\\source\\owned-main-bootstrap.js",
+    "bytes": 205606,
+    "sha256": "886d2bd36fb7f27cdbe09ad7a1952a513d76ed56a10ec0ef3f6797798e769a11"
+  },
+  "componentReview": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-verified-release-catalogue-2026-10-23-01\\independent-review-01\\CHECK-01.json",
+    "bytes": 10812,
+    "sha256": "f3b051b9670270cf32f45538033aaab3050e1106ab11cc4f33f229b281eb33b7"
+  },
+  "evidence": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v13-installed-catalogue-join-2026-10-23-01\\independent-review-01\\verification-01.json",
+    "bytes": 10428,
+    "sha256": "f6bf93cbd5b5986edbd56096500c95b5ac40bea9b48908fbc299da97d3f79383"
+  },
+  "rootReceipts": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v13-installed-catalogue-join-2026-10-23-01\\exact-join-01.json",
+      "bytes": 156308,
+      "sha256": "2277cb31c9a93a67e034f030f53a0c520fc7c558481c2cd952263c602996d075"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v13-installed-catalogue-join-2026-10-23-01\\source-verification-02.json",
+      "bytes": 2000,
+      "sha256": "28b47b4a0fa44cbb5d138bdabec1a40face4badee47c3c5c62924cbc3cb13d57"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v13-installed-catalogue-join-2026-10-23-01\\controls-verification-04.json",
+      "bytes": 2448,
+      "sha256": "5420e405a7d081b094dc90ae33459e45abb3da26f29edbae6c5bff0a88700b47"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v13-installed-catalogue-join-2026-10-23-01\\harness-adaptations-03.json",
+      "bytes": 1509,
+      "sha256": "fb8d850001ff70294820e38b3d17a0b969dd495097c30ffd6030c663f8f8bc8b"
+    }
+  ],
+  "result": {
+    "files": 521,
+    "parses": 425,
+    "other520Exact": true,
+    "recordedExactInverseHunks": 36,
+    "nonprofileComponentCodeHunks": 32,
+    "currentProfiles": "220+5+9 exact fresh234 reads/source fixtureQ0",
+    "order": "215, only original PP insertion once; all prior order rows unchanged",
+    "preservedFunctions": [
+      "initializerFinish",
+      "runAppStartup",
+      "surfaceAssemble",
+      "initializerBegin",
+      "createMainColdProfileBuilders",
+      "readAppStartupInputs",
+      "initializerHelperCurrent",
+      "advanceSurfaceOwner",
+      "readSurfaceDrawObjects",
+      "sourceOwnedCreate",
+      "sourceOwnedStart",
+      "sourceOwnedAccept",
+      "sourceOwnedRelease",
+      "sourceOwnedDispose",
+      "claimAppStartup",
+      "claimSurfacePreparation",
+      "retainAppStartupRenderer",
+      "checkDocument",
+      "surfaceParents",
+      "surfaceMainCurrent"
+    ],
+    "componentSelectionLists": "coldSymbol/coldFields/createMainVerifiedReleaseBudgetInputs exact frozenC08",
+    "rootCases": "All23 actual current-source named model receipts pin exact5b3e76... loader and PASS; unchanged component bodies not redundantly replayed",
+    "newFinding": null
+  },
+  "requiredHolds": [
+    "New initializerQualified STARTUP selected fields are27, replacing the5-field caller on which C11 work04 Qualified317/admission365 were derived. New initializerPhaseFee/initializerBody catalogue/resource paths also need exact current pricing. Old amounts must not be selected wholesale.",
+    "Root current entry/controller/module/instance/pending/callback/Source pool high-water must be recomposed before funding. Source220 partial supplements +4096 Instance/+12288 Caller and PPmodule8192 remain unselected; new module returnedQ6624+binding32 stays separate entry liability.",
+    "Current Surface2f8c, C11 paidFinish/Begin/runAppStartup, weak App input read/claim/source/Renderer/Surface/cold freshness bodies are preserved. Full source files and namespace descriptors are not overwritten by older C08 base.",
+    "All three profile literals recomputed from current files; genuine fresh Source admission is source identity evidence only. The source-check fixture cleans Q0; this does not imply complete startup or closed realm teardown.",
+    "Product retains APPfalse, first reserveNaN, work/fundingnull, hostAdmission/providerBridge null. No R factory/actual host/resource/Binding/Root/native readiness is granted. No browser/server/VM/physical/timing/fullMain/Frame/P05 completion."
+  ],
+  "harnessDisposition": {
+    "preserved": "verify-join-01.cjs",
+    "reason": "Reviewer globally required every function declaration name unique, but normal nested read/close declarations repeat across private factories. It failed before verification output.02 marks duplicate generic names unavailable and checks only the intended unique named bodies; all source unchanged and fresh copy retained."
+  },
+  "artifacts": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v13-installed-catalogue-join-2026-10-23-01\\independent-review-01\\verify-join-01.cjs",
+      "bytes": 7898,
+      "sha256": "9319de3244f5ccb9d132ce143cc772a91e4e8661005d9124fba4f94570dead82"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v13-installed-catalogue-join-2026-10-23-01\\independent-review-01\\verify-join-02.cjs",
+      "bytes": 7904,
+      "sha256": "1a04a8d2738424fc7da38bd2c22acb444e84561b936e39d692ca131876831529"
+    }
+  ],
+  "selected": {
+    "funding": false,
+    "work": false,
+    "Main": false,
+    "P05": "OPEN"
+  }
+}

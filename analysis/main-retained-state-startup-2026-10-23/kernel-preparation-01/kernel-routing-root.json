@@ -1,0 +1,150 @@
+{
+  "status": "PASS_UNSELECTED_PRIVATE_ORIGINAL_RELEASE_KERNEL_PREPARATION",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v17-kernel-preparation-2026-10-23-01\\candidate-02\\source",
+  "loader": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v17-kernel-preparation-2026-10-23-01\\candidate-02\\source\\owned-main-bootstrap.js",
+    "bytes": 236991,
+    "sha256": "82103e4b3a97c797de16e4317527802f340c699ed43e930d0c76c6be3ce5f29e"
+  },
+  "sourceVerification": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v17-kernel-preparation-2026-10-23-01\\source-verification-04.json",
+    "bytes": 1289,
+    "sha256": "75f09d777c247b6ec1415de5339072de7f40826ec3255f752f1c6b6bd4c2e7a9"
+  },
+  "recipe": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v17-kernel-preparation-2026-10-23-01\\exact-component-03.json",
+    "bytes": 8317,
+    "sha256": "66b7760f9ae03991ca616a93c22a43497b88f148fb15ac8252f9a918be8d1d04"
+  },
+  "files": 521,
+  "parses": 425,
+  "other520FilesExact": true,
+  "exactInverseHunks": 14,
+  "freshSourceReads": 234,
+  "profilesUnchanged": true,
+  "constructorAndLifecycleCases": 13,
+  "routingGroups": 7,
+  "controls": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v17-kernel-preparation-2026-10-23-01\\control-releaseBindingKernelReal-05.json",
+      "bytes": 38362,
+      "sha256": "7cba5006c67befa30fba22d21182af6f86400afda17bf72599d57b1e77ee9213",
+      "case": "releaseBindingKernelReal"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v17-kernel-preparation-2026-10-23-01\\control-releaseBindingKernelRealPending-05.json",
+      "bytes": 38369,
+      "sha256": "5e88297fdf100b21682f51c7c431f25e47b1bb3948d5ada25f0869b3497bd4f9",
+      "case": "releaseBindingKernelRealPending"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v17-kernel-preparation-2026-10-23-01\\control-releaseBindingKernelRealForeignBinding-05.json",
+      "bytes": 3416,
+      "sha256": "0b8190391cc178d3ac16a21c0a1c5e5b9a754175221a7e533338b93ae876a8f6",
+      "case": "releaseBindingKernelRealForeignBinding"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v17-kernel-preparation-2026-10-23-01\\control-releaseBindingKernelRealForeignPromise-05.json",
+      "bytes": 4617,
+      "sha256": "ceff7c80595b72a237aee5074ce1a8ef2bcd316d2e6c1bf0cb17f3e56f7291e9",
+      "case": "releaseBindingKernelRealForeignPromise"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v17-kernel-preparation-2026-10-23-01\\control-releaseBindingKernelRealForeignOwner-05.json",
+      "bytes": 4595,
+      "sha256": "3d50d4d9f689b10dc3dc0c39fec246c4b18055464367ef1202e9908e21f1e40b",
+      "case": "releaseBindingKernelRealForeignOwner"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v17-kernel-preparation-2026-10-23-01\\control-releaseBindingKernelRealSourceChanged-05.json",
+      "bytes": 4633,
+      "sha256": "f4f03925a0e029d0fb2a27e3cfd8f4fd4dedaafb70e6ae37b12698d156b47f2d",
+      "case": "releaseBindingKernelRealSourceChanged"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v17-kernel-preparation-2026-10-23-01\\control-releaseBindingKernelRealRejectNull-05.json",
+      "bytes": 4629,
+      "sha256": "3b1b52d34eb903ddb956e49dda1bd43501ddea0de18274e714de50e66bff8b4f",
+      "case": "releaseBindingKernelRealRejectNull"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v17-kernel-preparation-2026-10-23-01\\control-releaseBindingKernelRealRejectFalse-05.json",
+      "bytes": 4630,
+      "sha256": "0e192d7bda5e426825fdb21fc68edee2744efb81c63a80743c1d72351c89770d",
+      "case": "releaseBindingKernelRealRejectFalse"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v17-kernel-preparation-2026-10-23-01\\control-releaseBindingKernelRealRejectUndefined-05.json",
+      "bytes": 4634,
+      "sha256": "7289dc5465c3ff78898c3728b926f0aca8be88cfa1b79a7ed44cebeddc13e00e",
+      "case": "releaseBindingKernelRealRejectUndefined"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v17-kernel-preparation-2026-10-23-01\\control-releaseBindingPositive-05.json",
+      "bytes": 37989,
+      "sha256": "e666144ab84738649dc648d35d4b8a4e2c4cebcdb9b30ae7a278094d7978e5ec",
+      "case": "releaseBindingPositive"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v17-kernel-preparation-2026-10-23-01\\control-releaseBindingHostRefusal-05.json",
+      "bytes": 38138,
+      "sha256": "20fd5e50ef962a5b0af93143b309a5b34b7b9a19089738fd983ecb5f221db4cc",
+      "case": "releaseBindingHostRefusal"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v17-kernel-preparation-2026-10-23-01\\control-releaseBindingDisposed-05.json",
+      "bytes": 3440,
+      "sha256": "ba28c8885591256346201a16fc16043258443bd7917c73d94c93ed9d2c04c5fd",
+      "case": "releaseBindingDisposed"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v17-kernel-preparation-2026-10-23-01\\control-releasePositive-05.json",
+      "bytes": 5254,
+      "sha256": "a6a0fda8dfe659ac34fd0f21f0afb79b482ea252194c16509eed142f22719b0a",
+      "case": "releasePositive"
+    }
+  ],
+  "routing": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v17-kernel-preparation-2026-10-23-01\\routing-controls-04.json",
+    "bytes": 1120,
+    "sha256": "9bbcdadaabc674c690e41fad04e6c255cf26e64cbb03d2755ddb9fbc43bf4b71"
+  },
+  "ownership": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v17-kernel-preparation-2026-10-23-01\\ownership-boundary-06.json",
+    "bytes": 1528,
+    "sha256": "b3b5d56be90008e6df15fdf1676a501b5de5950459b47178166c4a22762dca7c"
+  },
+  "actual": [
+    "Original private release-store instance comes only from the current same-Q producer after genuine Binding readiness",
+    "Original same-Q Host/Binding/Kernel and original private reuse token execute; Host is retained through actual Kernel borrow",
+    "Exact resource-stage start/accept/reject functions preserve pending promises, incoming completion and raw failure identity",
+    "Exact dispatcher routes two new separately priced phases; older fee-table shape refuses instead of inheriting a price",
+    "Final fresh launch barrier precedes async creation; returned retained promise goes directly to existing observer; completion freshly validates again"
+  ],
+  "modeled": [
+    "Node, Storage/cursor, GL, Surface, Document/currentScript",
+    "Resource-stage currentScope and whole parent fresh checks in constructor controls; exact dispatcher observer/owner ports in routing diagnostics",
+    "Diagnostic private constructor/Q amounts and unit fee records are not selected prices or full paid Main execution"
+  ],
+  "preserved": [
+    "C01 and two initial harness failures retained; model attempted a private Host read during its deliberate busy lock. This is not native evidence. The launch check disposition records both the model scope and the safer immediate promise handoff.",
+    "The old expected Host-source error was broadened explicitly to the two original source barriers; the private reader can reject changed source before the original Host verifier. No product source guard changed."
+  ],
+  "limits": {
+    "prepare": 4096,
+    "upload": 262144,
+    "jobs": 2,
+    "slots": 64,
+    "serviceCpu": 33554432,
+    "serviceGpu": 10485760,
+    "commonQ": 33554432
+  },
+  "moduleFunding": null,
+  "instanceFunding": null,
+  "work": null,
+  "hostAdmission": null,
+  "providerBridge": null,
+  "APP_EXECUTION_ENABLED": false,
+  "Main": false,
+  "P05": "OPEN"
+}

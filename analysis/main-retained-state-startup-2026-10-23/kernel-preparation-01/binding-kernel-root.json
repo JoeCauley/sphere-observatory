@@ -1,0 +1,174 @@
+{
+  "status": "PASS_UNSELECTED_EXACT_JOIN_WITH_ORIGINAL_BINDING_AND_RETAINED_HOST_KERNEL",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v16-binding-kernel-join-2026-10-23-01\\candidate-01\\source",
+  "loader": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v16-binding-kernel-join-2026-10-23-01\\candidate-01\\source\\owned-main-bootstrap.js",
+    "bytes": 233652,
+    "sha256": "7b68364127a13a78f30e06bafbd448076899dcd54453c888cb1eb3cd1733c53f"
+  },
+  "sourceVerification": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v16-binding-kernel-join-2026-10-23-01\\source-verification-02.json",
+    "bytes": 1377,
+    "sha256": "0fb649386ecb098dbc26c729bb4dd99ad6eb12172e420041d21fa34bbe1e74bd"
+  },
+  "recipe": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v16-binding-kernel-join-2026-10-23-01\\exact-join-01.json",
+    "bytes": 136331,
+    "sha256": "ca914049a9ccdafe765603e6f07cd6572562c7906fa5e10de51582e2dd92abcb"
+  },
+  "files": 521,
+  "parses": 425,
+  "freshSourceReads": 234,
+  "exactInverseHunks": 69,
+  "other518FilesExact": true,
+  "controls": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v16-binding-kernel-join-2026-10-23-01\\control-releaseBindingPositive-04.json",
+      "bytes": 37758,
+      "sha256": "dc4441f6efd1070a00cf19ebcb0179d61bc1f78b5c8c49eb184cb46bf38d99b8",
+      "case": "releaseBindingPositive"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v16-binding-kernel-join-2026-10-23-01\\control-releaseBindingHostRefusal-04.json",
+      "bytes": 37907,
+      "sha256": "d56b94c46b5ff5ff29e3f7a0a1e47cb81e02597c35b96e8f85af03f16dac6668",
+      "case": "releaseBindingHostRefusal"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v16-binding-kernel-join-2026-10-23-01\\control-releaseBindingDisposed-04.json",
+      "bytes": 3209,
+      "sha256": "91e19cb76c438a1f3b0dbea64c89b6e55f53c575337b7de7ac8431d45614d737",
+      "case": "releaseBindingDisposed"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v16-binding-kernel-join-2026-10-23-01\\control-releaseBindingCodecChanged-04.json",
+      "bytes": 2780,
+      "sha256": "6d531af1348ffe94ba1873fe90ba40a2d1e03609aaad794dda183bf9ce288d3d",
+      "case": "releaseBindingCodecChanged"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v16-binding-kernel-join-2026-10-23-01\\control-releaseBindingQPressure-04.json",
+      "bytes": 4923,
+      "sha256": "4ddb695c67c2a5fb662b9f45c48c2834c47831c411fe086bff7978dc65b98e64",
+      "case": "releaseBindingQPressure"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v16-binding-kernel-join-2026-10-23-01\\control-releaseBindingForeignOwner-04.json",
+      "bytes": 2978,
+      "sha256": "cb54ec2bb9f15c6e8c1c1a833b16eac03cf2c5e0f16b7e63267f86999dad1ba0",
+      "case": "releaseBindingForeignOwner"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v16-binding-kernel-join-2026-10-23-01\\control-releaseBindingRejectNull-04.json",
+      "bytes": 4408,
+      "sha256": "7561640ae62dcc7fb3022c17ec432cde824cf2e6666f773606042c49cd74dfbe",
+      "case": "releaseBindingRejectNull"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v16-binding-kernel-join-2026-10-23-01\\control-releaseBindingRejectFalse-04.json",
+      "bytes": 4409,
+      "sha256": "9d968c42d511a1212e5e70db24e6a08cf3b3e39f045b1c015eeaaaecd3fffa5e",
+      "case": "releaseBindingRejectFalse"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v16-binding-kernel-join-2026-10-23-01\\control-releaseBindingRejectUndefined-04.json",
+      "bytes": 4413,
+      "sha256": "2e464bd143686dbc0fd05fd34e63db1fb025712bf88e4cd47694faed323a500e",
+      "case": "releaseBindingRejectUndefined"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v16-binding-kernel-join-2026-10-23-01\\control-releaseBindingSourceChanged-04.json",
+      "bytes": 2953,
+      "sha256": "879cad006467325d7b767ceecf1dcbb301c2aec118c298b97d7a0e81af418efe",
+      "case": "releaseBindingSourceChanged"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v16-binding-kernel-join-2026-10-23-01\\control-releasePositive-04.json",
+      "bytes": 5023,
+      "sha256": "2e910dd4a9afd6c655ff39566ce9fe320427cf08c6a1a08e8f0161177d35f4a6",
+      "case": "releasePositive"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v16-binding-kernel-join-2026-10-23-01\\control-hostFirst-06.json",
+      "bytes": 91116,
+      "sha256": "3ddf1687b00956a65dd45af87ed613b8d67d2071ca2d33bcaab873f96fe6e457",
+      "case": "hostFirst"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v16-binding-kernel-join-2026-10-23-01\\control-bindForeign-06.json",
+      "bytes": 91200,
+      "sha256": "feabf34dfe71fbda451727768bfcc30c570ff927d727a0f845da9cb4eeacf9c9",
+      "case": "bindForeign"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v16-binding-kernel-join-2026-10-23-01\\control-bindOnce-06.json",
+      "bytes": 91241,
+      "sha256": "b750e64f4fb011f1684f8ddb868da9c0e809472b36659ec0a69ff9435283d009",
+      "case": "bindOnce"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v16-binding-kernel-join-2026-10-23-01\\control-preRSourceChanged-06.json",
+      "bytes": 91200,
+      "sha256": "72724eb2dbb67ce510d347b958413dc08f28bf934b010affef25a15e72b67cc3",
+      "case": "preRSourceChanged"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v16-binding-kernel-join-2026-10-23-01\\control-privateReadConcurrent-06.json",
+      "bytes": 91236,
+      "sha256": "6b155c007fc4bc9f177810ae851202440161b63a89721d5099d41742d1afdd88",
+      "case": "privateReadConcurrent"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v16-binding-kernel-join-2026-10-23-01\\control-legacyBound-06.json",
+      "bytes": 90986,
+      "sha256": "c6f32b0d6f5d6c2973e1914143c875a6003204b5c28377ad299ccfb6c8c5f396",
+      "case": "legacyBound"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v16-binding-kernel-join-2026-10-23-01\\control-releaseBindingKernel-01.json",
+      "bytes": 38126,
+      "sha256": "b0a824bce3901af44e3af984b4aecdbb508f27cdb897dcd55301ac4809fd5b4c",
+      "case": "releaseBindingKernel"
+    }
+  ],
+  "actual": [
+    "Original same-Q Host, Numeric, Binding, CommonBoundary, Allocator, VerifiedRecordStore, CheckpointStore, Source and Kernel constructors execute",
+    "Actual original Kernel uses genuine original Binding and the privately retained Host identity; it does not reconstruct Host",
+    "Live Kernel borrow blocks Host/controller close; explicit Kernel dispose releases borrow",
+    "Original source freshness/dependency/native barriers and original finite two-generation limits unchanged"
+  ],
+  "modeled": [
+    "Node, GL, Surface, Document/currentScript and Storage/cursor ports remain disclosed component adapters",
+    "Joined Kernel release getRelease port is a no-read adapter, not the actual producer-held ReleaseStore handoff",
+    "Diagnostic constructor amounts are not selected funding; full paid dispatcher and native Main are not executed"
+  ],
+  "preservedAttempt": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v16-binding-kernel-join-2026-10-23-01\\controls-verification-04.json",
+    "sixFailures": "Old test expected Host pointer to clear after close; bridge intentionally retains its closed Host/profile and charges. Exact existing C02 correction was applied to test successor only, adding retained-profile/state assertions; all failures and original harness remain.",
+    "disposition": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v16-binding-kernel-join-2026-10-23-01\\inherited-expectation-disposition-05.json",
+      "bytes": 1587,
+      "sha256": "7ef25603842469e94db4200e61125818ab619ba1a389adb6e5531cdeeb341bae"
+    }
+  },
+  "limits": {
+    "prepare": 4096,
+    "upload": 262144,
+    "jobs": 2,
+    "slots": 64,
+    "serviceCpu": 33554432,
+    "serviceGpu": 10485760,
+    "commonQ": 33554432
+  },
+  "holds": [
+    "All new module/controller/entry/instance work and complete ownership remain unselected",
+    "Old Qualified/admission tables do not cover the expanded startup fields",
+    "Host seven-field admission and genuine provider bridge remain absent; hostAdmission is null",
+    "Actual private ReleaseStore handoff and two paid Kernel dispatcher phases are the next connection",
+    "Whole Main/native overview/local/support/whole-view/Frame acceptance remains open"
+  ],
+  "completeFundingAndWorkSelected": false,
+  "APP_EXECUTION_ENABLED": false,
+  "Main": false,
+  "P05": "OPEN"
+}

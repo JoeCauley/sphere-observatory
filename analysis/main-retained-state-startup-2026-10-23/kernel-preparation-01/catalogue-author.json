@@ -1,0 +1,52 @@
+{
+  "status": "PASS_SOURCE_FUNCTIONAL_UNCHANGED_WITH_EXPLICIT_STORAGE_PROPOSAL_CORRECTION",
+  "originalAuthorCheck": {
+    "path": "author-01/CHECK-01.json",
+    "sha256": "960ed36223fe12e549a2c0dfbde49104ccadf99bca321d588838aec6fbdae127",
+    "preserved": true
+  },
+  "source": {
+    "sha256": "aa1238bb77ced4cee2f890bc668cc073af63ded6b46332741da577c1deb3f1f5",
+    "bytes": 211089,
+    "unchanged": true
+  },
+  "inputs": [
+    {
+      "path": "review-01/append-source-row-correction-03.cjs",
+      "bytes": 4615,
+      "sha256": "90bd0fafc0ba50d4650e88b2b5c2e07a0b99c8ea61a73029596898cad8ae1cfa"
+    },
+    {
+      "path": "review-01/module-source-increment-03.json",
+      "bytes": 17680,
+      "sha256": "1353582a6307d2d159be528354c7c42b0346d129943f2da11657d8e1641b3ce8"
+    },
+    {
+      "path": "review-01/source-row-lifetime-correction-03.json",
+      "bytes": 2814,
+      "sha256": "7691527dc7c4d562e0d9f900076a39e0018c5b01c3669b6ca056d802a6c4237c"
+    },
+    {
+      "path": "CORRECTION-02.md",
+      "bytes": 1218,
+      "sha256": "eae569157ac1a2b793cc5e146d98c5384c66c0e6448faeded01a06e10137724f"
+    }
+  ],
+  "sourceInstanceSupplement": {
+    "raw": 4050,
+    "rounded4096": 4096
+  },
+  "sourceCallerSupplement": {
+    "raw": 12064,
+    "rounded4096": 12288
+  },
+  "planModuleProposal": 8192,
+  "additionalLoaderModuleChargeWrapperLiability": {
+    "bytes": 6624,
+    "outerSlot32": 32,
+    "notIncludedInOtherProposals": true
+  },
+  "allTablesAndFundingUnselected": true,
+  "original23functionalControlsStillPinned": true,
+  "remainingHolds": "All CHECK-01 holds remain; full exact current entry/module/controller/caller/host union still requires derivation/review"
+}

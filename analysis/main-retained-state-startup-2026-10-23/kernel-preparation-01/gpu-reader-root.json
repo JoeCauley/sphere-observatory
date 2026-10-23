@@ -1,0 +1,161 @@
+{
+  "status": "FROZEN_ROOT_FIXED_GPU_READER_REQUEST_FUNCTIONAL_COMPONENT",
+  "utc": "2026-10-23T18:08:31.675Z",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-fixed-gpu-reader-2026-10-23-01\\candidate-01\\source",
+  "loader": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-fixed-gpu-reader-2026-10-23-01\\candidate-01\\source\\owned-main-bootstrap.js",
+    "bytes": 213980,
+    "sha256": "091d07f66494d44f5a4b81a7bf059bb8ac90a8c3497069ef878b4deaad28e4a6"
+  },
+  "files": 521,
+  "parses": 425,
+  "sourceRows": 220,
+  "freshSourceReads": 234,
+  "other520Exact": true,
+  "profilesUnchanged": true,
+  "exactInverseHunks": 2,
+  "controlGroups": 8,
+  "actual": "Actual root R birth requests the original fixed GPU-held reader on the same Q, next to defaultSurface admission; host/limits/binding/null prepared verifier guards remain.",
+  "modelBoundary": [
+    "Binding/Host private completed admission for isolated R birth branch reachability; actual construction is verified in separate Binding/Host components",
+    "App/native/source currentScope and freshness remain named parent adapters here",
+    "GPU/Surface backing callbacks are deterministic logical objects, not native GPU"
+  ],
+  "positiveOwnershipBoundary": {
+    "status": "POSITIVE_PARTIAL_ROOT_REQUEST_INCREMENT_NOT_COMPLETE_R_FACTORY_OR_CALLER",
+    "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-fixed-gpu-reader-2026-10-23-01\\candidate-01\\source",
+    "knownRootRows": [
+      {
+        "item": "Two additional source-owned coldSlots array items",
+        "bytes": 64
+      },
+      {
+        "item": "Two additional coldCapture.values primitive data slots",
+        "bytes": 64
+      },
+      {
+        "item": "Additional primitive slot name string",
+        "name": "GPU_HELD_FORMAT",
+        "bytes": 160
+      },
+      {
+        "item": "Additional primitive slot name string",
+        "name": "GPU_HELD_ID",
+        "bytes": 160
+      },
+      {
+        "item": "Outer createHost input additional own slot",
+        "bytes": 32
+      },
+      {
+        "item": "Outer GPU admission property name string",
+        "name": "gpuHeldAdmission",
+        "bytes": 160
+      },
+      {
+        "item": "Nested exact GPU admission own record header and three slots",
+        "bytes": 224
+      },
+      {
+        "item": "GPU admission own-key string",
+        "name": "format",
+        "bytes": 160
+      },
+      {
+        "item": "GPU admission own-key string",
+        "name": "id",
+        "bytes": 160
+      },
+      {
+        "item": "GPU admission own-key string",
+        "name": "metadataOwner",
+        "bytes": 160
+      }
+    ],
+    "knownRaw": 1344,
+    "prospectiveDistinctSupplement4096": 4096,
+    "oldSlackBorrowed": false,
+    "knownRequestWork": [
+      {
+        "name": "Two fresh own-data version identity reads",
+        "count": 2,
+        "OwnDataUnit": 3,
+        "work": 6
+      },
+      {
+        "name": "One three-field admission metadata record",
+        "work": 1
+      }
+    ],
+    "knownRequestWorkSubtotal": 7,
+    "originalGpuHeldReservation": {
+      "bytes": 2560,
+      "selectedByOriginalR": true,
+      "scope": "Original version1 fixed-cell/wrapper profile only; not complete Root/cold R constructor or closed API facade ownership."
+    },
+    "unknownStillHeld": [
+      "Exact original R optional GPU admission validation/callable birth/work/caller and existing whole createHost path",
+      "Additional R/private module/controller/return/closed API lifetime union; closed reader alias may remain even after original2560 charge releases",
+      "Whole Source/current cold/helper/caller simultaneous Q and new captured slots prospective funding"
+    ],
+    "selected": false,
+    "Main": false,
+    "P05": "OPEN"
+  },
+  "proofs": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-fixed-gpu-reader-2026-10-23-01\\build-component-01.cjs",
+      "bytes": 2407,
+      "sha256": "c864f640111bd0d7d5a6182afb0bb55714d1a2f44895b380f1208be3e73cbd88"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-fixed-gpu-reader-2026-10-23-01\\exact-component-01.json",
+      "bytes": 1608,
+      "sha256": "e5f912f335c47e558a8b234af9d674cf8de93e43509b743a0bc7bd99c4ce2766"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-fixed-gpu-reader-2026-10-23-01\\test-fixed-reader-02.cjs",
+      "bytes": 8108,
+      "sha256": "c60bb42b43fcd191a794729d5871f08a23595d39929e09f1801e4882e4745295"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-fixed-gpu-reader-2026-10-23-01\\harness-attempt-02.json",
+      "bytes": 380,
+      "sha256": "ecd16c4a21e141a88de747bef92661064682e68fa64d974efc9b8929b240dac2"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-fixed-gpu-reader-2026-10-23-01\\test-fixed-reader-03.cjs",
+      "bytes": 8121,
+      "sha256": "3b0295ca08b1063824c25918f4adab201f20cde45ecedf7bba5557d26a85e9ea"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-fixed-gpu-reader-2026-10-23-01\\fixed-reader-control-03.json",
+      "bytes": 2136,
+      "sha256": "6b0a78e6c86478fa5349bbfc1ac942ac1ad81176cea95e90401e153b28ee7ed6"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-fixed-gpu-reader-2026-10-23-01\\verify-source-04.cjs",
+      "bytes": 3061,
+      "sha256": "83fefa2826309c8df79947e1b762e3d40890283640348199e73c633b2d05eae6"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-fixed-gpu-reader-2026-10-23-01\\source-verification-04.json",
+      "bytes": 877,
+      "sha256": "e15fe9be2b55890eaebbcc37150475edc612c1d5fc397956e52feb2d5ac5965a"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-fixed-gpu-reader-2026-10-23-01\\inventory-04.json",
+      "bytes": 88363,
+      "sha256": "a4ecad28efc49af071d1ead9f1cbc3640ce4d135f1e359155e52c7dc8c79e557"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-fixed-gpu-reader-2026-10-23-01\\increment-boundary-05.json",
+      "bytes": 2385,
+      "sha256": "73dc71399973b8ac008bdd4475fb7436be5855d26f786f60c9c9e350f27c9aac"
+    }
+  ],
+  "selected": false,
+  "Main": false,
+  "P05": "OPEN",
+  "runtimeBrowserServerOperated": false
+}

@@ -1,0 +1,569 @@
+{
+  "status": "PASS_UNSELECTED_HOST_KERNEL_REUSE_COMPONENT",
+  "sourcePins": [
+    {
+      "path": "biome-service/host-world.js",
+      "bytes": 33336,
+      "sha256": "22c570dd725a0c62096fc7d76d4bcffe0d84e4dbfcdf4b2e482b7472622fa1cb",
+      "origin": "three-file-overlay"
+    },
+    {
+      "path": "biome-service/native/surface-kernel.js",
+      "bytes": 40694,
+      "sha256": "b74257a2634e359423fac350fc5eb95b8d741e17c8cfb899fc692f9c6d1aa8d5",
+      "origin": "three-file-overlay"
+    },
+    {
+      "path": "owned-main-bootstrap.js",
+      "bytes": 216685,
+      "sha256": "4868f6c3d4c68725a6f283abeb097fa43ad7617c8c42e56ec82cddd14f0cba7e",
+      "origin": "three-file-overlay"
+    }
+  ],
+  "assembly": {
+    "base": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v10-helper-app-join-2026-10-23-01\\candidate-02\\source",
+    "loaderParent": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-verified-release-catalogue-2026-10-23-01\\candidate-08\\source\\owned-main-bootstrap.js",
+    "overlay": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-host-kernel-reuse-bridge-2026-10-23-01\\candidate-02\\source",
+    "physicalOverlayFiles": 3,
+    "assembledFiles": 521,
+    "unchangedBaseFiles": 518
+  },
+  "sourceChecks": {
+    "files": 521,
+    "parses": 425,
+    "currentProfiles": 3,
+    "freshReads": 234,
+    "exactInverse": true,
+    "originalModuleFunctions": 90,
+    "unchangedLoaderFunctions": 194
+  },
+  "functional": {
+    "directCases": 19,
+    "privateLoaderCases": 12,
+    "sourceAuthenticationAndPrefixGroups": 12,
+    "adaptersExplicit": true,
+    "BindingConstruction": false,
+    "nativeDOM": false,
+    "nativeMain": false
+  },
+  "positiveStorageOnly": {
+    "module": 71232,
+    "HostPersistent": 287744,
+    "KernelTokenPersistent": 9664,
+    "builderControl": 3072,
+    "sourceCopyBytes": 15933,
+    "notCompleteAllowances": true,
+    "selected": false
+  },
+  "work": null,
+  "funding": null,
+  "Main": false,
+  "P05": "OPEN",
+  "sourceFrozen": true,
+  "originalInputsUnmodified": true,
+  "receiptInventory": [
+    {
+      "path": "READ-FIRST-01.md",
+      "bytes": 4333,
+      "sha256": "75fde954cae57a767d3da3e4067c764365e43cadc8eedcc6375396595ba72c70"
+    },
+    {
+      "path": "README-WIP-01.md",
+      "bytes": 1091,
+      "sha256": "8c0a6f119efc085a6c988beeee3366c479bdd256ed9e44b287ec414e37543d67"
+    },
+    {
+      "path": "author-01/HOST-REUSE-01.inc.js",
+      "bytes": 7472,
+      "sha256": "ef53650c998ad757e14834a956a3e491c1f4c6997fdf22d365bdd4fe7ed78322"
+    },
+    {
+      "path": "author-01/HOST-REUSE-02.inc.js",
+      "bytes": 8839,
+      "sha256": "9dc2d208dea13e46ca2c075b3c8f8e09a867eb370f367e4f42e9b6b611381142"
+    },
+    {
+      "path": "author-01/KERNEL-REUSE-01.inc.js",
+      "bytes": 4288,
+      "sha256": "540e0c9d0cc6ebaf3ba91e41ba074c68706ac05fde10ae3930ec68fb88bb3d54"
+    },
+    {
+      "path": "author-01/append-verifier-02.cjs",
+      "bytes": 1113,
+      "sha256": "35a498ebd76c8cea1e84199544aa51b4c2e61b7fde547cfd488207701a626169"
+    },
+    {
+      "path": "author-01/build-candidate-01.cjs",
+      "bytes": 24217,
+      "sha256": "6c5411d56c78c9afdf1573002ab1c44a2adea760a7f3b7c80e8010bea96c9867"
+    },
+    {
+      "path": "author-01/build-candidate-02.cjs",
+      "bytes": 6776,
+      "sha256": "5674271e98bdcd62b7c0d5829e218fbd80802707cf5b4d20e9702f02995c18b9"
+    },
+    {
+      "path": "author-01/exact-delta-01.json",
+      "bytes": 102460,
+      "sha256": "2b533fb260b07f2c965ff3dc4ad27758b03d8e479665164a22b950534acdf17f"
+    },
+    {
+      "path": "author-01/exact-delta-02.json",
+      "bytes": 80335,
+      "sha256": "4a31d63339cd8074ebdedaee72869965bef767a5c8e648b978ac02db247c48f7"
+    },
+    {
+      "path": "author-01/merge-recipe-01.json",
+      "bytes": 36806,
+      "sha256": "7e4eb5eaa19b62218799a4c8e19f0b82db6b478402b3f01e5bd05e4ef3fb366e"
+    },
+    {
+      "path": "author-01/parent-host-world.js",
+      "bytes": 22368,
+      "sha256": "522698997c3f67befde8f5e69ff5a35eba3595f5c2f59e0c099561c7d9681c7c"
+    },
+    {
+      "path": "author-01/parent-owned-main-bootstrap.js",
+      "bytes": 211089,
+      "sha256": "aa1238bb77ced4cee2f890bc668cc073af63ded6b46332741da577c1deb3f1f5"
+    },
+    {
+      "path": "author-01/parent-pins-01.json",
+      "bytes": 1051,
+      "sha256": "f822e9939d1c94d584e508548fca135590ff43a3d09c0e33afe4326b3fb20bef"
+    },
+    {
+      "path": "author-01/parent-surface-kernel.js",
+      "bytes": 35729,
+      "sha256": "4f1bf9fc14db88f83e9c5fe48a870428b35b491b158363b18f38a0aaee64c90f"
+    },
+    {
+      "path": "author-01/seal-component-01.cjs",
+      "bytes": 3596,
+      "sha256": "a2644d6bdb8b8a142cae09014dca8bdcf294ae562210ba8978e326f3d146c6e5"
+    },
+    {
+      "path": "author-01/source-inventory-01.json",
+      "bytes": 105047,
+      "sha256": "42b50f460f74de8f67de953ab8d42aabcd70e97e2b82e61445265b024d2bef8d"
+    },
+    {
+      "path": "author-01/source-verification-01.json",
+      "bytes": 27406,
+      "sha256": "867958c1851ccfcfa175ea72b1b660e655ca84eaa07ed9e309bd85df3bf6e8bc"
+    },
+    {
+      "path": "author-01/verification-attempt-01.json",
+      "bytes": 853,
+      "sha256": "1862e5d01570f8423e8945ccc8b622afed65fb401f2012f6e399a775d56175c4"
+    },
+    {
+      "path": "author-01/verify-source-01.cjs",
+      "bytes": 11408,
+      "sha256": "9aec7f88fa34cc20a09a84ed2379fe4b8c125fbe2bbbd9f6055ca51e12a4d785"
+    },
+    {
+      "path": "author-01/verify-source-02.cjs",
+      "bytes": 11469,
+      "sha256": "4a7f589e1d90ba5e7a9beb3bd4cf83d219f13a661ecd22acd9213011422ec5d1"
+    },
+    {
+      "path": "candidate-01/source/biome-service/host-world.js",
+      "bytes": 32024,
+      "sha256": "528d80d58a3c928eae538437cab1b5dfc9e8e34de349168ff96ba07106d3d755"
+    },
+    {
+      "path": "candidate-01/source/biome-service/native/surface-kernel.js",
+      "bytes": 40548,
+      "sha256": "7ca031f6699cafdfa56053ddebd590d649267c0e08de6b2fae902c630d2503b0"
+    },
+    {
+      "path": "candidate-01/source/owned-main-bootstrap.js",
+      "bytes": 216685,
+      "sha256": "6832cb73b1ab56c1e6af9c99af96e3be1945c26ea4fd9f36b0ee79a5c69dfb40"
+    },
+    {
+      "path": "candidate-02/source/biome-service/host-world.js",
+      "bytes": 33336,
+      "sha256": "22c570dd725a0c62096fc7d76d4bcffe0d84e4dbfcdf4b2e482b7472622fa1cb"
+    },
+    {
+      "path": "candidate-02/source/biome-service/native/surface-kernel.js",
+      "bytes": 40694,
+      "sha256": "b74257a2634e359423fac350fc5eb95b8d741e17c8cfb899fc692f9c6d1aa8d5"
+    },
+    {
+      "path": "candidate-02/source/owned-main-bootstrap.js",
+      "bytes": 216685,
+      "sha256": "4868f6c3d4c68725a6f283abeb097fa43ad7617c8c42e56ec82cddd14f0cba7e"
+    },
+    {
+      "path": "controls-01/append-loader-fixture-02.cjs",
+      "bytes": 1334,
+      "sha256": "84f627a76b74c2fe755e73923d712c7692800b60b9b122b0137fb3e4c0e240d5"
+    },
+    {
+      "path": "controls-01/control-bindForeign-01.json",
+      "bytes": 2517,
+      "sha256": "8bffe6f463d49e4a2f9543986e40c8b9330d3fddbc7d83d94e3b2f632090b31b"
+    },
+    {
+      "path": "controls-01/control-bindForeign-02.json",
+      "bytes": 90731,
+      "sha256": "17e8652a5396b1d6f3cbf4a77d902631453ed8611218c3dcbec872ec0cbdfdae"
+    },
+    {
+      "path": "controls-01/control-bindOnce-01.json",
+      "bytes": 2558,
+      "sha256": "bab146c34609531417e87ddbb3d9db250b4f8ae90080c983a957190551761d26"
+    },
+    {
+      "path": "controls-01/control-bindOnce-02.json",
+      "bytes": 90772,
+      "sha256": "86c484ac398a393be8c962335f38aecbe5c645e9031b5a540509b2c490349161"
+    },
+    {
+      "path": "controls-01/control-capsules-01.json",
+      "bytes": 1979,
+      "sha256": "a0661f394d503a010cef92e35978abbc70800c13506b09f20441ffa4d4bb0e73"
+    },
+    {
+      "path": "controls-01/control-capsules-02.json",
+      "bytes": 1979,
+      "sha256": "0f4452ee56d1d8fcf03d692e1b04ceff9c250d428a958153eceb39d1517db958"
+    },
+    {
+      "path": "controls-01/control-closeBeforeClaim-01.json",
+      "bytes": 1740,
+      "sha256": "ef5b60220bf35a8fe1226dd29728fd545cfbd9ae07974ff146ab1fb53fdaad67"
+    },
+    {
+      "path": "controls-01/control-closeBeforeClaim-02.json",
+      "bytes": 1740,
+      "sha256": "af09d41dab16b6102900c509c1167aeebdffe91b3ce442931ea918d27a1a2152"
+    },
+    {
+      "path": "controls-01/control-dataChanged-01.json",
+      "bytes": 1767,
+      "sha256": "bde000984a1ae2054fde4af3b8534ae1040548463ba1d42fa5e69970cf5d0f14"
+    },
+    {
+      "path": "controls-01/control-dataChanged-02.json",
+      "bytes": 1767,
+      "sha256": "e4b6c07b9a10c7794392c60dd0249d17ae07b42b129c443ef54bde7fa035c68a"
+    },
+    {
+      "path": "controls-01/control-foreignHost-01.json",
+      "bytes": 1767,
+      "sha256": "f58a0337f353a303d0814f709627d9132c4bc60974d903810380516cd266d16e"
+    },
+    {
+      "path": "controls-01/control-foreignHost-02.json",
+      "bytes": 1767,
+      "sha256": "9c1c441b4f3d4bd5bc5553b8a620c372552bda57fc24de64ec7bb27034303acc"
+    },
+    {
+      "path": "controls-01/control-foreignQ-01.json",
+      "bytes": 1640,
+      "sha256": "82624f32eaed62b0a32546f0958579c513a76a621167a8b27e3eeb92eaf1a1ee"
+    },
+    {
+      "path": "controls-01/control-foreignQ-02.json",
+      "bytes": 1640,
+      "sha256": "6e1f4aa165e17386b82b9f60cc059a62c1d39ff6482949f0105799bb9f24b9c1"
+    },
+    {
+      "path": "controls-01/control-foreignToken-01.json",
+      "bytes": 1781,
+      "sha256": "6ce337bd2deb3c95cbfeabbc3393ef8ed3d36a0cbc6af21d64b07615005cd660"
+    },
+    {
+      "path": "controls-01/control-foreignToken-02.json",
+      "bytes": 1781,
+      "sha256": "5b69b27f7ab85119e05843be10675c879e9d17c5b1dbb332f595a4023cbcaf03"
+    },
+    {
+      "path": "controls-01/control-hostFirst-01.json",
+      "bytes": 2433,
+      "sha256": "2d09ee22b5ca84af3ca9d271f587e0930490bdb39a863ef0e4334ae7eb7a28fc"
+    },
+    {
+      "path": "controls-01/control-hostFirst-02.json",
+      "bytes": 90647,
+      "sha256": "11b140ed2860c234269e55333d1ef04598e688f110a381af0ab61cdb80b77271"
+    },
+    {
+      "path": "controls-01/control-kernelForeignBinding-01.json",
+      "bytes": 2671,
+      "sha256": "312d2d6520b464f81ea2f8bf6d1eb7211407a10906b5fd157666daca8628e737"
+    },
+    {
+      "path": "controls-01/control-kernelPending-01.json",
+      "bytes": 3257,
+      "sha256": "5ad74dc0092b950213e76a86843e2734e13d29738b65ffb16da46eb136cad797"
+    },
+    {
+      "path": "controls-01/control-kernelRejectFalse-01.json",
+      "bytes": 2892,
+      "sha256": "e7deda28c81a6b7c594690967a1b5f2b2b1cc2e49dd278c67eabb8b98d9f69c6"
+    },
+    {
+      "path": "controls-01/control-kernelRejectNull-01.json",
+      "bytes": 2891,
+      "sha256": "5ebc6db9f4a69eced1120812a50e666f5cee64a0410f1fba629629577b4654d7"
+    },
+    {
+      "path": "controls-01/control-kernelRejectUndefined-01.json",
+      "bytes": 2896,
+      "sha256": "a266781bfa3a658ca2f7b2d3ccb4f21f0b221b7a43dd5fc95cccadea15bf8972"
+    },
+    {
+      "path": "controls-01/control-kernelReuse-01.json",
+      "bytes": 3166,
+      "sha256": "aead97fe63acca36a1ebea9a60484fcdec8ab441dd85b9ca4bd3b1da8f89cbf0"
+    },
+    {
+      "path": "controls-01/control-legacy-01.json",
+      "bytes": 1447,
+      "sha256": "821bc4222dde7255ba62b701dfa7bcc848c071d61cb0a7db2e593a9457c9f24b"
+    },
+    {
+      "path": "controls-01/control-legacy-02.json",
+      "bytes": 1447,
+      "sha256": "7b64700f2836879f66fe1d4d47aedee7405e92ef2c7cf041e014956616c2dc92"
+    },
+    {
+      "path": "controls-01/control-legacyBound-01.json",
+      "bytes": 2303,
+      "sha256": "c24362d689dac8df0eec19adddaa141fe85b2cfa00c5d4d5962096c5f2d29b63"
+    },
+    {
+      "path": "controls-01/control-legacyBound-02.json",
+      "bytes": 90517,
+      "sha256": "6a7b275a5f8761e6af4ed8726d36ce89c0088c6d1d783903ae13477031306876"
+    },
+    {
+      "path": "controls-01/control-methodChanged-01.json",
+      "bytes": 1770,
+      "sha256": "9936ac41d3e41fa1337c97247942dd5080775d4a5819a5b205c198e89ed78cae"
+    },
+    {
+      "path": "controls-01/control-methodChanged-02.json",
+      "bytes": 1770,
+      "sha256": "704d301e4b19f2343dbbc97e78d906637443536fdcc336c7e362f0d5849aaf95"
+    },
+    {
+      "path": "controls-01/control-nullHostFunding-01.json",
+      "bytes": 1438,
+      "sha256": "b3867f533004b0eed814ce0898eb8ef43d781163c5896ae558fe58792b7d5bbc"
+    },
+    {
+      "path": "controls-01/control-nullHostFunding-02.json",
+      "bytes": 1438,
+      "sha256": "d66dd17f81d3233a35cbaa233151a7993c5fb7e158e9b03b29b073f8bbf81513"
+    },
+    {
+      "path": "controls-01/control-nullKernelFunding-01.json",
+      "bytes": 1666,
+      "sha256": "d46671ad713801a5d73e246d82d6dc1cfc71fa0a06d2fa14a80090e4c45830d6"
+    },
+    {
+      "path": "controls-01/control-nullKernelFunding-02.json",
+      "bytes": 1666,
+      "sha256": "0150ab8c70e970a4b4dbb748feb7330c06cd1d249a2dd2855dbec61a11c6d375"
+    },
+    {
+      "path": "controls-01/control-numericChanged-01.json",
+      "bytes": 1798,
+      "sha256": "cb0af86dfd0b558816756e364e85728c516c4774a4e3c058ee3f795da11ababc"
+    },
+    {
+      "path": "controls-01/control-numericChanged-02.json",
+      "bytes": 1881,
+      "sha256": "4dfd80076ec9e04e763a9ce526f1af445a24037c87e00ea0bf15cdf4b12c694f"
+    },
+    {
+      "path": "controls-01/control-parentChanged-01.json",
+      "bytes": 1797,
+      "sha256": "a7990333b494141fa46abdaf1edccdff9333c94b0100790694425cbe4cd68b97"
+    },
+    {
+      "path": "controls-01/control-parentChanged-02.json",
+      "bytes": 1797,
+      "sha256": "8980fb3e543b1dcdd21feeb0e262f53051e6be40ac17972ec29c183f49dec2bd"
+    },
+    {
+      "path": "controls-01/control-pending-01.json",
+      "bytes": 2078,
+      "sha256": "6e3d10b724feb45eb077133e3091639631c769edb826c1b5ad173abc6098ab79"
+    },
+    {
+      "path": "controls-01/control-pending-02.json",
+      "bytes": 2078,
+      "sha256": "d7ca41097c0b35da7d8d1433cf8f14cdf890dc36be24600e6df129de6aeea8b3"
+    },
+    {
+      "path": "controls-01/control-preRSourceChanged-01.json",
+      "bytes": 2517,
+      "sha256": "48c2dbb31d9d5bbce3f7a499e8c88a95f2d1870ae7a9ead4743d8f10073ffca6"
+    },
+    {
+      "path": "controls-01/control-preRSourceChanged-02.json",
+      "bytes": 90731,
+      "sha256": "3e67dfa132485c2bfb5b2b405f25f2ccfae3837c7fc6138dae91066f100b5ad6"
+    },
+    {
+      "path": "controls-01/control-privateReadConcurrent-01.json",
+      "bytes": 2553,
+      "sha256": "a4279fdd53e6880bb4e2723defc5737c1bb694edf56340f215c57df52ba26a1f"
+    },
+    {
+      "path": "controls-01/control-privateReadConcurrent-02.json",
+      "bytes": 90767,
+      "sha256": "ec89cea43f91e15a2a6612f82d07a9db05ed9167befb6b2a69020c97361e0ddb"
+    },
+    {
+      "path": "controls-01/control-profileChanged-01.json",
+      "bytes": 1798,
+      "sha256": "3e88c457951542388428794d22fd174071df08267aa391a0170487002d395d2c"
+    },
+    {
+      "path": "controls-01/control-profileChanged-02.json",
+      "bytes": 1881,
+      "sha256": "3aa5b54feb91497bb408d48c3b05168671af7b2c47d4be00cddb3d4dc45fbb13"
+    },
+    {
+      "path": "controls-01/control-rejectFalse-01.json",
+      "bytes": 1795,
+      "sha256": "87ecb297373ada60801b5b8eaa847198ea76ddc242d110ebb1b260a2c74481bc"
+    },
+    {
+      "path": "controls-01/control-rejectFalse-02.json",
+      "bytes": 1878,
+      "sha256": "d274b7efc5a377c967ea9f6083313307b395a359aa6a8b8df626d66ba90d8633"
+    },
+    {
+      "path": "controls-01/control-rejectNull-01.json",
+      "bytes": 1794,
+      "sha256": "f0b6bc1e55ff1c9745c47056d2b1b07690171bce0453a7a6773e70c73336a2b5"
+    },
+    {
+      "path": "controls-01/control-rejectNull-02.json",
+      "bytes": 1877,
+      "sha256": "e01f7bd1e5046ecec3e1c255252501c45cae7287bc24b8a49e26224c03cf2856"
+    },
+    {
+      "path": "controls-01/control-rejectUndefined-01.json",
+      "bytes": 1799,
+      "sha256": "14c9648cb0c10f216074c7892a0fd8d7f9b39a63e6fb3d25f967135a0f20b346"
+    },
+    {
+      "path": "controls-01/control-rejectUndefined-02.json",
+      "bytes": 1882,
+      "sha256": "5a56c2d1fa7683cfa1de247adb1e281eef2a63dbd5cd1aced2a4f85f8053f3de"
+    },
+    {
+      "path": "controls-01/control-reuse-01.json",
+      "bytes": 1976,
+      "sha256": "958872d49f4c74106e3386dcd748906d225939fce761d24fc04848c5eb07a13e"
+    },
+    {
+      "path": "controls-01/control-reuse-02.json",
+      "bytes": 1976,
+      "sha256": "77b441140dd6d8557735e35b0a9e11fc14c6a68066ace625452a01351d66836f"
+    },
+    {
+      "path": "controls-01/control-sourceChanged-01.json",
+      "bytes": 1798,
+      "sha256": "d2efc7126ce40ddead22f31ba80724dc25cbc0da9736c49e87e94fd5fa664202"
+    },
+    {
+      "path": "controls-01/control-sourceChanged-02.json",
+      "bytes": 1881,
+      "sha256": "d8204dba4d6d184180d1a5cfd6563cfe27c3376719b061a626259b473e58befb"
+    },
+    {
+      "path": "controls-01/fix-registration-fixture-02.cjs",
+      "bytes": 832,
+      "sha256": "fa54e5f84e4914f255051c83c2f1713f38f400a0d6b2c6fe663af44ada139203"
+    },
+    {
+      "path": "controls-01/fixture-disposition-02.json",
+      "bytes": 1148,
+      "sha256": "fadcad2771f9c2f76e86e3bb2373998d7350f3f1a91eb3fd67a49a7fa81603fc"
+    },
+    {
+      "path": "controls-01/loader-fixture-derivation-01.json",
+      "bytes": 3400,
+      "sha256": "b701a5e2aa330e219305c70720f942545527c2ae729a361f8000e6cb5ca46307"
+    },
+    {
+      "path": "controls-01/materialize-loader-controls-01.cjs",
+      "bytes": 8883,
+      "sha256": "ad8b643d0946baf896250e5fb1b5283a47154a10738e3558a3d568bf9db197ca"
+    },
+    {
+      "path": "controls-01/registration-02.json",
+      "bytes": 1421,
+      "sha256": "99007c45027eecc7e2303bfde35e776bb73a3e2715a3bfb95cddf0cabdcb887c"
+    },
+    {
+      "path": "controls-01/registration-fixture-attempt-01.json",
+      "bytes": 497,
+      "sha256": "2c5e71b31440e5d1d99e552c2fceead16bef5a04f923d102363ea5e7fd67bee3"
+    },
+    {
+      "path": "controls-01/test-host-kernel-01.cjs",
+      "bytes": 13324,
+      "sha256": "b8a5c64dd41efd206251fd6ffd73945a1aee7ed631e6004ad24850e0a3eeb1b1"
+    },
+    {
+      "path": "controls-01/test-loader-01.cjs",
+      "bytes": 42572,
+      "sha256": "735f609d8f04a799023b3294c02c0250b41de38e7a5a5fd78d1283222dadffb8"
+    },
+    {
+      "path": "controls-01/test-loader-02.cjs",
+      "bytes": 42704,
+      "sha256": "939bee03379f192404a25cb1d7c3b170de4f0aa2817b3822d9ce3812ed6923b8"
+    },
+    {
+      "path": "controls-01/test-registration-01.cjs",
+      "bytes": 6726,
+      "sha256": "4137ed4001da052bda02065fdefc09ba6c4388db8cd6793bc7c4aee0ae36ff43"
+    },
+    {
+      "path": "controls-01/test-registration-02.cjs",
+      "bytes": 6728,
+      "sha256": "5fba5535b048cf11cadd5b48e3372091df8d10113ffdf752b682f6d06221db99"
+    },
+    {
+      "path": "review-01/derive-positive-storage-01.cjs",
+      "bytes": 18624,
+      "sha256": "a9e55d6f8871c6523b5f434fb8acfba218b7098654ff01da9fe151cfd0c8b655"
+    },
+    {
+      "path": "review-01/derive-work-boundaries-01.cjs",
+      "bytes": 5343,
+      "sha256": "d5bb677484f531f084a32c1f32f13ed94ad9bdcb72071d6072c4a92cb1d088dd"
+    },
+    {
+      "path": "review-01/positive-storage-01.json",
+      "bytes": 891383,
+      "sha256": "2d08a89a019d2f744a07ed4b294531f61b6146a8f8ace52797fe04f5eac8730b"
+    },
+    {
+      "path": "review-01/work-boundaries-01.json",
+      "bytes": 6290,
+      "sha256": "46ac53b27539f635c81db369f1e0a7aac9334c3fb6f68239f105c7552e4c79da"
+    }
+  ],
+  "reviewInstructions": [
+    "Independently copy exact candidate02 overlay and assemble over stated J/C2+sealedC08 parent; do not treat the physical3files as a521-file source copy.",
+    "Replay31 original-code/private-loader cases plus12 exact source-registration/prefix groups with only disclosed diagnostics; preserve failed fixture attempts.",
+    "Check private original Host brand/sameQ/usedleaf descriptors, source/profile/Numeric freshness, no H.create reconstruction on opt-in, exclusive borrow before await, raw primary identity, closed-alias ownership and original ownerMetadata retention on reuse failure.",
+    "Review positive record/capture increments as structural proposals only; complete caller/activation/native/legacy cold costs and actual paid dispatcher remain held.",
+    "Merge only exact non-profile code hunks/Host+Kernel overlays onto current root, then freshly repin all current profiles; preserve all root Binding/Surface/Target/App/Source changes."
+  ],
+  "next": "New separate bounded strict verified-envelope Host semantic consumer; no changes to this frozen candidate while it is reviewed."
+}

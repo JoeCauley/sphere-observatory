@@ -1,0 +1,1 @@
+Exact frozen source/component receipts for actual installed-release metadata, retained Host/Binding/Kernel and finite Content Target. Strict C3 counter and separate C4 correction retained. Source/model progress only; complete current work/Q/host/native Main gates remain held.

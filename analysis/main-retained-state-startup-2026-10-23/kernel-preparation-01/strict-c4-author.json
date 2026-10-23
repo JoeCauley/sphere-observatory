@@ -1,0 +1,78 @@
+{
+  "status": "PASS_FUNCTIONAL_STRICT_ROOT_REVERIFY_SUCCESSOR_NOT_FUNDING_OR_COLD",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-builder-funding-2026-10-23-01\\author-02\\candidate-01\\source",
+  "companion": {
+    "path": "biome-service/native/strict-record-owner.js",
+    "bytes": 13771,
+    "sha256": "2f139cbb9edc759d6d237978db6375dbd57067f4cc4a437592631f34ace16f97"
+  },
+  "parent": {
+    "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-builder-funding-2026-10-23-01\\author-01\\candidate-03\\source",
+    "unchangedFiles": 521,
+    "frozenC3": true
+  },
+  "sourceInventory": {
+    "files": 522,
+    "parses": 426,
+    "changedFiles": 1,
+    "exactInverseHunks": 1
+  },
+  "controls": {
+    "path": "strict-record-controls-01.json",
+    "cases": 34,
+    "allPass": true,
+    "original31": true,
+    "newRootModes": [
+      "record",
+      "body-envelope",
+      "verify-envelope"
+    ],
+    "scope": "Actual new companion source; original copied Records/Q/Numeric and exact Host producer expression. Disclosed Node platform; selected test-only module/instance/record values and unit WORK marker are NOT reviewed funding or fees. Native hash rejection/observer faults are explicit diagnostic captured-intrinsic substitutions. Manual per-transaction calls are not genuine scheduled startup/R visits."
+  },
+  "sourceAdmission": {
+    "originalProfiles": [
+      {
+        "name": "buildGraph",
+        "digest": "ffd0d46fbf976efb636ddfde9c12bb39781cd68d550615e9ceae71510f85d93c",
+        "rows": 219
+      },
+      {
+        "name": "buildStartupEnvelope",
+        "digest": "02e425626b14429ca05a570cc83fde590b505408cc882d07c19f8c9f22a6b69f",
+        "rows": 9
+      },
+      {
+        "name": "buildSurfaceEnvelope",
+        "digest": "04cff510ad4d20ec09d314707774ca6fbcfbfc2f4745a6716322db8504a6caf0",
+        "rows": 5
+      }
+    ],
+    "originalFreshReads": 233,
+    "separateNewModuleFreshReads": 7,
+    "totalFreshReads": 240,
+    "finalQ": 0,
+    "newModuleEvaluated": false,
+    "newModuleInActualMainGraph": false
+  },
+  "positiveDelta": {
+    "newBindings": 0,
+    "newCallables": 0,
+    "nodeCapture": "mode additionally read; target already used in existing node frame capture",
+    "literalOccurrence": "verify-envelope",
+    "guard": "sameQ retained row AND not root verify mode; original key/body/hash validation repeated",
+    "completeWorkAndStorage": "UNSELECTED"
+  },
+  "gates": {
+    "moduleMetadata": null,
+    "instanceMetadata": null,
+    "recordMetadata": null,
+    "work": null,
+    "privatePaidCaller": false,
+    "MainPermission": false
+  },
+  "counter": {
+    "sourceC3": "67725b807a4e0b6086601a2ba8e6048a21ebbe2ffae421e93900f1058efe65c7",
+    "peerReceipt": "../independent-review-01/CHECK-01.json",
+    "disposition": "C3 root verify reuse refusal retained; this separate successor restores original traversal."
+  }
+}

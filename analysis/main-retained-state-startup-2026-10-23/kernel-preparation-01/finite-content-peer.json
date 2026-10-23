@@ -1,0 +1,258 @@
+{
+  "status": "INDEPENDENT_SCOPED_FUNCTIONAL_REVIEW_PASS_PROPOSAL05_POSITIVE_CORRECTIONS_REQUIRED_UNSELECTED",
+  "utc": "2026-10-23T17:54:18.546Z",
+  "originalSeal": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\CHECK-06.json",
+    "bytes": 6569,
+    "sha256": "81e74363c54c375fc34a7b396a312c1f4fc7f56c9a87d9a5d5bca8e6e263bbb3"
+  },
+  "source": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\candidate-01\\source\\biome-service\\native\\main-target-owner.js",
+    "bytes": 32412,
+    "sha256": "4b30bd30d304ce850b4e0db37e54de95c062b18d105d509855d7f612cc68c5cd"
+  },
+  "loader": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\candidate-01\\source\\owned-main-bootstrap.js",
+    "bytes": 213845,
+    "sha256": "d6589b911961979adf6702cc067f3b05510de3b49ccb93c3af6a80c3e3755f94"
+  },
+  "independentSource": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\independent-review-01\\candidate-01\\source",
+  "sourcePreservation": {
+    "files": 521,
+    "parses": 425,
+    "other519ExactParent": true,
+    "changed": [
+      "biome-service/native/main-target-owner.js",
+      "owned-main-bootstrap.js"
+    ],
+    "targetHunks": 6,
+    "graphHunks": 1,
+    "all7InverseParentV13": true,
+    "all24ExistingNonCreateFunctionsMethodsExact": true,
+    "allSourceOriginalAndCopyRehashedAtSeal": true,
+    "profiles": [
+      {
+        "name": "buildGraph",
+        "rows": 220,
+        "digest": "9c20f0a571b7ddf585550a42290d42bf70109a8430a10b878ad555dd232e79e0"
+      },
+      {
+        "name": "buildSurfaceEnvelope",
+        "rows": 5,
+        "digest": "04cff510ad4d20ec09d314707774ca6fbcfbfc2f4745a6716322db8504a6caf0"
+      },
+      {
+        "name": "buildStartupEnvelope",
+        "rows": 9,
+        "digest": "02e425626b14429ca05a570cc83fde590b505408cc882d07c19f8c9f22a6b69f"
+      }
+    ],
+    "freshReads": 234,
+    "copies220": true,
+    "finalProfileCheckQ0": true
+  },
+  "replay": {
+    "authorFactoryFresh": 16,
+    "authorFiniteRetentionFresh": 11,
+    "additionalIndependent": 7,
+    "total": 34,
+    "extra": [
+      "finite9 exact parent capability observations",
+      "finite10 adds two actual third-capability observations to same two parent checks",
+      "finite10 refuses changed frame during genuine Source await and restores Q/R",
+      "finite10 refuses changed program during genuine Source await and restores Q/R",
+      "finite10 refuses changed closing during genuine Source await and restores Q/R",
+      "Content capability getter refuses without invocation",
+      "self-consistent profile is insufficient without Root private brand"
+    ],
+    "sourceFactoryScope": [
+      "Source.admit and exact read/hash/closure",
+      "Q",
+      "R/host fixed limit and GPU reader"
+    ],
+    "sourceFactoryModeled": [
+      "Root private brand/parent API",
+      "Renderer private registry/attachment",
+      "gl.isContextLost"
+    ],
+    "finiteScope": "Exact candidate Target private helpers and unchanged Root preparation/activation/release/observation bodies execute with actual R/Q. Fixed private Renderer/Root registry/Mask child boundaries and deterministic WebGL/fence responses are explicitly modeled. Target exploratory own512 preparation debit is a fixture quantity, not a qualified tariff. Full source factory/authentication is covered only by the separate joined actual-App diagnostic. Original Target collect/dispose/releaseCurrent bodies also execute for deferred fence and failed retirement-close retry; retirement ticket/source-admission are explicitly modeled boundaries. Control clear/observed-loss wrapper for the other cases remains modeled, not a new product method. No native, whole-host, Canvas, accounting or P05 claim.",
+    "perFixtureFinalQandR0": true
+  },
+  "authority": {
+    "profile": "New format10/id is exact opt-in. Genuine S admits full CONTENT_SOURCE_PATHS, exact parent ref and every canonical overlapping source row. isBoundRootProfile requires original B private owner plus three locked own data function descriptors and true Content/Qualified/Bound results; self-consistent profile/digest alone is insufficient.",
+    "host": "Existing finite source requires genuine R.isHost, exact unchanged parent seven-field limits, born locked readHostGpuHeld and same Q/service. Genuine reader includes logical default Surface in canonical aggregate. Product finite/current Content cost flags remain false and FINITE_WORK null.",
+    "sourceRace": "Independent await races refuse frame/closing at finiteCheck, program replacement at final attachment check; getter capability refuses without invocation; foreign private Root refuses."
+  },
+  "lifetime": {
+    "generation": "Unchanged finitePrepare admits at most two actual Root generations. Canonical same-scope host held GPU preflight precedes reserve/native prepare; prospective8192 key Q precedes Root.prepare; current/Mask change follows successful R admission. Third generation defers while prior fence held.",
+    "cleanup": "Exact Target collect/dispose retains key/fixed/source/ticket roots through real modeled physical fences and retirement-close refusal, drops key+Map roots before Qrelease, clears finiteReader/scope/helper roots only after safe retirement. Actual uncertain partial native/delete failure seals future allocation until observed genuine loss. Content changes add no new reader, native callback, R reset, storage format or disposal body.",
+    "scope": "Root/Renderer private registries, deterministic GL/fences and Mask boundaries are named models. Fresh S/Q/R and exact original Root/Target bodies establish component behavior, not actual browser/native Main authority."
+  },
+  "proposalReview": {
+    "finding": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\independent-review-01\\positive-findings-09.json",
+      "bytes": 8181,
+      "sha256": "898fd360dbff684620f48fefed67c3704b3e9624b1dc9531a52f0665bf30369d"
+    },
+    "proposal05": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\increment-proposal-05.json",
+      "bytes": 4744,
+      "sha256": "e9c061b1c1740f0abf53b894f76ed26e479a35be914b95c5ebb152037a05f36d"
+    },
+    "module": "1536 omits three additional captured outer cells on existing create; +96 gives1632 rounded4096.",
+    "coldTemporary": "192 expression slots omit newly exercised Content descriptor/key/branch/invocation metadata. Explicit additional peak1056 gives1248 rounded4096. Calls sequential; no escaping descriptor.",
+    "work": "10 route-only increment omits extra Content capability OwnData3+API1 at each of two checks: +8 yields18. Complete prior cold/helper/caller prices remain held.",
+    "selection": false
+  },
+  "preservedHarnessFailures": [
+    {
+      "file": "verify-source-04.cjs",
+      "cause": "Reviewer added Source.dispose without releasing retained admitted profile leases; actual OWNER_IN_USE, corrected harness only."
+    },
+    {
+      "file": "verify-source-05.cjs",
+      "cause": "Early per-profile release dropped sourceCopies before old220 assertion; final06 retains leases through count then releases all."
+    },
+    {
+      "file": "test-additional-07.cjs",
+      "cause": "Reviewer expected late STALE_CURRENT for frame/closing race; actual earlier unchanged finiteCheck correctly returned STALE_PREPARE_SCOPE, corrected08 expectation only."
+    }
+  ],
+  "holds": [
+    "No complete finite cold/preparation/failure/constructor/caller tariff selection. Original diagnostic512 is not an admitted tariff.",
+    "Module4096/transient4096 corrections remain positive proposals. Any new Q handle requires its full6624 facade+binding32 in current caller union.",
+    "All new Source copies/profile canonical/encoded extents and current catalogue-expanded Qualified/admission lists require exact whole current composition. Old C11admission365 is not selected wholesale.",
+    "No change to content, layouts, accepted assignment/domain, two generations, service32MiB/10MiB, shared4096 work/262144 upload/2jobs, original firstQ foundation, or native/current full-host requirements.",
+    "Functional component compatibility does not permit product Main or certify native allocations/performance/Frame."
+  ],
+  "product": {
+    "sourceEdits": 0,
+    "priorSealEdits": 0,
+    "browserServerRuntimeGitOperated": false,
+    "fundingSelected": false,
+    "Main": false,
+    "P05": "OPEN"
+  },
+  "proofs": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\independent-review-01\\prepare-replays-01.cjs",
+      "bytes": 1773,
+      "sha256": "c6d56900b80fa3f0b455acdde5c02c380ccf9071ee290e0c0cc351616cb1b31d"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\independent-review-01\\relocations-01.json",
+      "bytes": 1995,
+      "sha256": "cabba9f4982189e6644fe01073972f463929c1431c5f8b67d10247fddebda79b"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\independent-review-01\\test-source-factory-02.cjs",
+      "bytes": 10571,
+      "sha256": "5913c1b56f993417eb3af359ab92873f6fb5f6669840dfde6437abc68ddbdc74"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\independent-review-01\\source-factory-control-02.json",
+      "bytes": 18877,
+      "sha256": "ab85e7e33c52860937f940730db3853028a6e00ac6da8464ecdf9fc256a54c36"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\independent-review-01\\test-finite-retention-03.cjs",
+      "bytes": 17824,
+      "sha256": "2024252d2aacb42cba9e6a71bf056a36edfb3950a2719ad8d2e981d64be59f5f"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\independent-review-01\\finite-retention-control-03.json",
+      "bytes": 13117,
+      "sha256": "bd5ba8c1f70897a0777020d6cae3c9d02b632f8880681f584cf74cbc15816b44"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\independent-review-01\\verify-source-04.cjs",
+      "bytes": 4869,
+      "sha256": "a1ffaf5f20e31587f1460ce5195cbbf17e79c2b2d936eafd48aa6ecfde7a535a"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\independent-review-01\\finish-verifier-05.cjs",
+      "bytes": 1158,
+      "sha256": "9779f89331f2ead95d3b64e12ee401db3b3e55489e909b31ccaaf3b46acda4bd"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\independent-review-01\\verify-source-05.cjs",
+      "bytes": 4895,
+      "sha256": "16c4902d5f9b008c5e2d66009f30d655db231ddb6dab30ad1df46380a1c03948"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\independent-review-01\\verifier-disposition-05.json",
+      "bytes": 738,
+      "sha256": "e884581ece724a6cb02b2b4319e9344cddac0fe281b9da9fa7747fc91242de54"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\independent-review-01\\finish-verifier-06.cjs",
+      "bytes": 1376,
+      "sha256": "8e48c8ffbe1bc593a0b620bf0ddcc5c72d2dd459ddd4f1f1ff3b288f09b08f5b"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\independent-review-01\\verify-source-06.cjs",
+      "bytes": 4950,
+      "sha256": "174949edcaec0ba64655a7c1c81ea9254b9f66ac7999cab11a35567d9e0f43c7"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\independent-review-01\\verifier-disposition-06.json",
+      "bytes": 1025,
+      "sha256": "b44e12b36a06cb16f2a0415eb731175727be0e7326cb66266c3e1b60c0ed877b"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\independent-review-01\\source-verification-06.json",
+      "bytes": 1780,
+      "sha256": "e4a36a17b61ab2501d2343297158d5539ed8444850813e837177fed9f7b0a41c"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\independent-review-01\\prepare-additional-07.cjs",
+      "bytes": 4420,
+      "sha256": "6d9451e6ba48ec89a74cfb2c9d1ac32c7232155c3b524e5c0f99e71a77dd2166"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\independent-review-01\\test-additional-07.cjs",
+      "bytes": 7573,
+      "sha256": "2d65d31635dbaa0a624ad4b0b87336a63c04878f4f8bad1ebae3a2922dc54cba"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\independent-review-01\\additional-adaptations-07.json",
+      "bytes": 2163,
+      "sha256": "75ebbe5021c503984579b0b664d103a2450862bb87b980b38657a96f9b1bcfa2"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\independent-review-01\\fix-additional-08.cjs",
+      "bytes": 940,
+      "sha256": "74411e8bab8510b0b73d8d7ea18ff4aa698530d84450a3682a0ae31a44b5563e"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\independent-review-01\\test-additional-08.cjs",
+      "bytes": 7618,
+      "sha256": "ddfa8be0c9ab6d892c8d79c533eb52643ea4bfaa41f7aa33d59adc273b934f68"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\independent-review-01\\additional-disposition-08.json",
+      "bytes": 459,
+      "sha256": "3c70ff89cefd61abc7f2bef371ddf5505b641652bfe3128159e671511f2e3483"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\independent-review-01\\additional-controls-08.json",
+      "bytes": 9990,
+      "sha256": "4a5c2c27cbfcbd0188c45bea0dc35a6b4351ed90834ca3f71556c429df265c3f"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\independent-review-01\\derive-positive-findings-09.cjs",
+      "bytes": 4870,
+      "sha256": "b0085f742a813aa07177fa9f82047994abe50e669a062feba56c3ddf029196fb"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\independent-review-01\\positive-findings-09.json",
+      "bytes": 8181,
+      "sha256": "898fd360dbff684620f48fefed67c3704b3e9624b1dc9531a52f0665bf30369d"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\independent-review-01\\seal-review-10.cjs",
+      "bytes": 7193,
+      "sha256": "c46af2556f3b8d7d4176d4d83a4cbb05f7ef54976ae30ea59ca404a87479611b"
+    }
+  ]
+}

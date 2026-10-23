@@ -1,0 +1,155 @@
+{
+  "status": "FROZEN_RETAINED_STATE_FUNCTIONAL_PROGRESS_MAIN_STILL_HELD",
+  "utc": "2026-10-23T18:38:49.030706+00:00",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v17-kernel-preparation-2026-10-23-01\\candidate-02\\source",
+  "loaderSha256": "82103e4b3a97c797de16e4317527802f340c699ed43e930d0c76c6be3ce5f29e",
+  "files": 521,
+  "parses": 425,
+  "freshSourceReads": 234,
+  "sourceGraphRows": 220,
+  "kernelRoutingInverseHunks": 14,
+  "precedingBindingKernelJoinInverseHunks": 69,
+  "originalBindingKernelCombinedCases": 18,
+  "kernelRoutingCases": 13,
+  "routingGroups": 7,
+  "strictCompanionScope": "Separate522-file/426-parse component; not yet in Main order/graph. C3 valid-root refusal preserved and C4 independently repaired.",
+  "proofs": [
+    {
+      "path": "catalogue-author.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-verified-release-catalogue-2026-10-23-01\\author-01\\CHECK-02.json",
+        "bytes": 1682,
+        "sha256": "0920b4b1790e7ec960aa85aa3c5e1b1e4d9b52aa4b910826a182510042fe1fcd"
+      }
+    },
+    {
+      "path": "catalogue-peer.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-verified-release-catalogue-2026-10-23-01\\independent-review-01\\CHECK-01.json",
+        "bytes": 10812,
+        "sha256": "f3b051b9670270cf32f45538033aaab3050e1106ab11cc4f33f229b281eb33b7"
+      }
+    },
+    {
+      "path": "catalogue-root.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v13-installed-catalogue-join-2026-10-23-01\\CHECK-05.json",
+        "bytes": 13089,
+        "sha256": "024e4d2ee202f74c54bd2a2948775a904169e5da0b56a8733d05e8bc67c9893b"
+      }
+    },
+    {
+      "path": "catalogue-root-peer.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v13-installed-catalogue-join-2026-10-23-01\\independent-review-01\\CHECK-01.json",
+        "bytes": 5996,
+        "sha256": "2913535cc162339433075b0af69d72df3966e9ad2344d45ec3542d184a8aa32f"
+      }
+    },
+    {
+      "path": "finite-content-root.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\CHECK-08.json",
+        "bytes": 7643,
+        "sha256": "bac772b0c56531d9d2e15150e74350da5ce469e9d107a24e152645e9ad49e00e"
+      }
+    },
+    {
+      "path": "finite-content-peer.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v14-finite-content-target-2026-10-23-01\\independent-review-01\\CHECK-01.json",
+        "bytes": 15739,
+        "sha256": "b061f9a29e763cf6ef9dbcad6605923541fccda49d51b93e753669ee59e73a9e"
+      }
+    },
+    {
+      "path": "gpu-reader-root.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-fixed-gpu-reader-2026-10-23-01\\CHECK-05.json",
+        "bytes": 6578,
+        "sha256": "817e7ad0986719a6251c8b4d0645f6b78f8b1c1183731b820398e606528d95a8"
+      }
+    },
+    {
+      "path": "gpu-reader-peer.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-fixed-gpu-reader-2026-10-23-01\\independent-review-01\\CHECK-01.json",
+        "bytes": 6065,
+        "sha256": "e572d2978f7c0302923d8e3ab0276182ffc78a5a3ea3906687396d2447fa9e23"
+      }
+    },
+    {
+      "path": "host-kernel-author.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-host-kernel-reuse-bridge-2026-10-23-01\\author-01\\CHECK-01.json",
+        "bytes": 20433,
+        "sha256": "e257f4eb207d117fe8507cbf7a85a07854baa67329c31164f84ed0934ccc3456"
+      }
+    },
+    {
+      "path": "binding-author.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v15-binding-preparation-2026-10-23-01\\CHECK-02.json",
+        "bytes": 22705,
+        "sha256": "086fdd67d37acdc82b3e318671cc0ede37ee3603c74bc74342105f547561b316"
+      }
+    },
+    {
+      "path": "strict-c3-peer-finding.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-builder-funding-2026-10-23-01\\independent-review-01\\CHECK-01.json",
+        "bytes": 9720,
+        "sha256": "684188519cfcf323b40fbd491bc4caba339bc052273f2a28a3e147e11fd2fee0"
+      }
+    },
+    {
+      "path": "strict-c4-author.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-builder-funding-2026-10-23-01\\author-02\\FUNCTIONAL-STRICT-04.json",
+        "bytes": 2935,
+        "sha256": "15ea2bdbf1a2d75669fec04743d1828ff1dbe483a3907197684f33c842593dcf"
+      }
+    },
+    {
+      "path": "strict-c4-peer.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v12-cold-builder-funding-2026-10-23-01\\independent-review-02\\CHECK-01.json",
+        "bytes": 6280,
+        "sha256": "ea24fcb3ca5a2aaee1edbb538b58688d66cc7a96cd36a655cf2fb63acd7ff106"
+      }
+    },
+    {
+      "path": "binding-kernel-root.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v16-binding-kernel-join-2026-10-23-01\\CHECK-07.json",
+        "bytes": 9312,
+        "sha256": "f4d3d78228471c41bf41473ab30f2c2578cbd9690562d54bb68480d063e0a235"
+      }
+    },
+    {
+      "path": "kernel-routing-root.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v17-kernel-preparation-2026-10-23-01\\CHECK-06.json",
+        "bytes": 8074,
+        "sha256": "a8e7507de2f1e498505e24d373787f7943e7b67b3854e17ace4471ab7f472250"
+      }
+    }
+  ],
+  "selectedMainStartupComponent": "main-texture-handoff-funded-c3",
+  "joinedMainStartupSelected": false,
+  "completeFundingSelected": false,
+  "hostAdmission": null,
+  "APP_EXECUTION_ENABLED": false,
+  "P05": "OPEN",
+  "P06_P08": "NOT_STARTED",
+  "PhaseOne": "NOT_ACCEPTED_NOT_RELEASED",
+  "runtimeFilesChanged": 0,
+  "browserServerOperated": false,
+  "rawArchivesRemainLocal": true,
+  "excludedActive": [
+    "Staged Numeric and genuine verified-envelope Host consumer successors",
+    "Complete new cold/shared/caller ownership and work selection",
+    "Whole-current-Q replay, aggregate provider/retirement question, full host vector and genuine provider bridge",
+    "RootV17 independent review if it is still in progress at record cutoff"
+  ]
+}

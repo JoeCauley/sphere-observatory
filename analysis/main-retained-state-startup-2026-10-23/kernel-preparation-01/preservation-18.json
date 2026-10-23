@@ -1,0 +1,29 @@
+{
+  "pass": true,
+  "cutoff": 18,
+  "snapshots": 108,
+  "archiveEntriesVerified": 47862,
+  "recordsVerified": 6726,
+  "recordsAdded": 699,
+  "recordBytes": 226889652,
+  "freshRestore": {
+    "snapshot": "main-kernel-preparation-unselected-c2",
+    "destination": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v17-kernel-progress-2026-10-23-01\\restored-check-18\\source",
+    "files": 521,
+    "verified": true
+  },
+  "earlier87Snapshots6027RecordsExact": true,
+  "restorerUnchanged": true,
+  "currentReadmeUTF8": true,
+  "historicalReadmeBytesExact": true,
+  "selectedMainComponent": "main-texture-handoff-funded-c3",
+  "latestJoinedMainStartup": "main-kernel-preparation-unselected-c2",
+  "joinedMainStartupSelected": false,
+  "P05": "OPEN",
+  "excludedActive": [
+    "Staged Numeric and genuine verified-envelope Host consumer successors",
+    "Complete new cold/shared/caller ownership and work selection",
+    "Whole-current-Q replay, aggregate provider/retirement question, full host vector and genuine provider bridge"
+  ],
+  "rawArchivesRemainLocal": true
+}

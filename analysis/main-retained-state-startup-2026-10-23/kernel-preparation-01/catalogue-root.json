@@ -1,0 +1,249 @@
+{
+  "status": "FROZEN_ROOT_HOST_C11_SURFACE_INSTALLED_CATALOGUE_FUNCTIONAL_JOIN",
+  "utc": "2026-10-23T17:42:16.494Z",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v13-installed-catalogue-join-2026-10-23-01\\candidate-01\\source",
+  "loader": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v13-installed-catalogue-join-2026-10-23-01\\candidate-01\\source\\owned-main-bootstrap.js",
+    "bytes": 213845,
+    "sha256": "5b3e76bdf37f0c5702789d01f1898b9efea4c020ba8f86d7c983270fcb21110a"
+  },
+  "files": 521,
+  "parses": 425,
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "rows": 220,
+      "digest": "cf790dd829e77e23f35c1fc9310af8b48b07e7c017a77fe7d913bcc973de027c"
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "rows": 5,
+      "digest": "04cff510ad4d20ec09d314707774ca6fbcfbfc2f4745a6716322db8504a6caf0"
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "rows": 9,
+      "digest": "02e425626b14429ca05a570cc83fde590b505408cc882d07c19f8c9f22a6b69f"
+    }
+  ],
+  "sourceRows": 220,
+  "orderRows": 215,
+  "freshSourceReads": 234,
+  "exactInverseHunks": 36,
+  "other520Exact": true,
+  "exactUnchangedFunctions": [
+    "initializerFinish",
+    "runAppStartup",
+    "surfaceAssemble",
+    "initializerBegin",
+    "createMainColdProfileBuilders",
+    "readAppStartupInputs",
+    "initializerHelperCurrent",
+    "advanceSurfaceOwner",
+    "readSurfaceDrawObjects",
+    "sourceOwnedCreate",
+    "sourceOwnedStart",
+    "sourceOwnedAccept",
+    "sourceOwnedRelease",
+    "sourceOwnedDispose"
+  ],
+  "cases": 23,
+  "controls": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v13-installed-catalogue-join-2026-10-23-01\\controls-01\\control-hostFirst-root01.json",
+      "bytes": 90293,
+      "sha256": "ef8af61900ed7be9ba1d64560c63798b9ee0ce0e168d6a58b7c9b580cc6bfe68"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v13-installed-catalogue-join-2026-10-23-01\\controls-01\\control-bindForeign-root01.json",
+      "bytes": 90377,
+      "sha256": "a7dc1701411e501921aeafe8f00647b4d5a6272f0976607ad390ba63ee2fccee"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v13-installed-catalogue-join-2026-10-23-01\\controls-01\\control-bindOnce-root01.json",
+      "bytes": 90418,
+      "sha256": "e89677609f7a1be22ef65acb5c7ee7f8167b52b71a9f566fc6a59eb282a96a54"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v13-installed-catalogue-join-2026-10-23-01\\controls-01\\control-preRSourceChanged-root01.json",
+      "bytes": 90377,
+      "sha256": "f7412fde07b1af92af5c1fdf12bcfb492f333b2b803237b4e594b934230a119e"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v13-installed-catalogue-join-2026-10-23-01\\controls-01\\control-privateReadConcurrent-root01.json",
+      "bytes": 90413,
+      "sha256": "4c77020262dbc3aaecc1d101542bb709584affbd986ba5f35467d0f88fc5e72f"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v13-installed-catalogue-join-2026-10-23-01\\controls-01\\control-legacyBound-root01.json",
+      "bytes": 90163,
+      "sha256": "97f68c005f2c11951490a95062c59cc9bca82e79c17d9b63fd0757980cd23549"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v13-installed-catalogue-join-2026-10-23-01\\controls-01\\control-releaseForeignHost-root01.json",
+      "bytes": 1745,
+      "sha256": "0e95f6255e10f9d3a85582335b5a728ec16a00338c8ec4a1ff18746ac8a0e080"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v13-installed-catalogue-join-2026-10-23-01\\controls-01\\control-releaseEmptyCatalogue-root01.json",
+      "bytes": 2467,
+      "sha256": "ace53b2850b39bc740ec550321424228c46690ed60d430630c0691c1a9a5127e"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v13-installed-catalogue-join-2026-10-23-01\\controls-01\\control-releaseOverflowCatalogue-root01.json",
+      "bytes": 2547,
+      "sha256": "0b7d989a6417ed4865a661d4c0dd68429056b29d39ef8ef1572f9e50ec6260ba"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v13-installed-catalogue-join-2026-10-23-01\\controls-01\\control-releaseMalformedKey-root01.json",
+      "bytes": 2541,
+      "sha256": "00669dda79490f9afdd8e4a9c90f802e807b59be658cf0a77749ff1b375c7f8e"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v13-installed-catalogue-join-2026-10-23-01\\controls-01\\control-releaseForeignProvider-root01.json",
+      "bytes": 2534,
+      "sha256": "b66b45db5b1f4a3d3ab372068653cbb89cbdd478aac844a9950f1c1ff4fa7ee6"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v13-installed-catalogue-join-2026-10-23-01\\controls-01\\control-releaseDeclaredBudgetChange-root01.json",
+      "bytes": 4202,
+      "sha256": "33cf1b1a14ee4da7d6b89ff3743b51dfb9beb7c3edf88a461d28bf5cbf181a87"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v13-installed-catalogue-join-2026-10-23-01\\controls-01\\control-releaseRawChanged-root01.json",
+      "bytes": 2446,
+      "sha256": "7cb551b448e4e74c0baa5679a209ba878d7ac27f6c4d63bcde00e0eb89a6a391"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v13-installed-catalogue-join-2026-10-23-01\\controls-01\\control-releaseRetired-root01.json",
+      "bytes": 2570,
+      "sha256": "5d5b9ece284e889c7c887c317f1a92f02d64883e971d011ebc02c3806abfeca5"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v13-installed-catalogue-join-2026-10-23-01\\controls-01\\control-releaseNativeChanged-root01.json",
+      "bytes": 2008,
+      "sha256": "12ca71eff2ebde65c12a4b809b14c31723bf8788963817b16487dd83f147749e"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v13-installed-catalogue-join-2026-10-23-01\\controls-01\\control-releaseSourceChanged-root01.json",
+      "bytes": 2608,
+      "sha256": "682fd2917418036029692e8122ef41dafb7efd762702e20c8a8e44b79b03fbf7"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v13-installed-catalogue-join-2026-10-23-01\\controls-01\\control-releaseBindFresh-root01.json",
+      "bytes": 4337,
+      "sha256": "cf1db138ae942386de6243fdd66b445954b6713116ed052dd89b7d29bb05614d"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v13-installed-catalogue-join-2026-10-23-01\\controls-01\\control-releaseRejectUndefined-root01.json",
+      "bytes": 2512,
+      "sha256": "53755f0fe10c6bf912a93be5b27a0adf1a3940246c421015353f1c6fc6edbbe8"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v13-installed-catalogue-join-2026-10-23-01\\controls-01\\control-releaseRejectFalse-root01.json",
+      "bytes": 2504,
+      "sha256": "b97544f11be4c0f406d29be02a3757761e485cc6a3308258dca0cb622a6f2385"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v13-installed-catalogue-join-2026-10-23-01\\controls-01\\control-releaseRejectNull-root01.json",
+      "bytes": 2502,
+      "sha256": "0dda96b2a4f5a3144c91eb904afdf1ae52183deaf4687ebc109b4414201c670f"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v13-installed-catalogue-join-2026-10-23-01\\controls-01\\control-releaseHostRefusal-root01.json",
+      "bytes": 4367,
+      "sha256": "f0a9c69df8f2b51c1f0627b3f67a265fb7a84b8f5eecee859989d8f4acd65dbd"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v13-installed-catalogue-join-2026-10-23-01\\controls-01\\control-releaseOldGraph-root01.json",
+      "bytes": 1935,
+      "sha256": "fbab3a6d7e9f68a6abd26e90eb5315aa18bce53c95da872c8e925f2c21cfab28"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v13-installed-catalogue-join-2026-10-23-01\\controls-01\\control-releaseComplete-root01.json",
+      "bytes": 4190,
+      "sha256": "b66cd2183e0305aaf170722b8f0f74e5eeed14b1b71e4586d4698c10e66b7231"
+    }
+  ],
+  "proofs": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v13-installed-catalogue-join-2026-10-23-01\\build-join-01.cjs",
+      "bytes": 4583,
+      "sha256": "81741dc16eeee0261467378233437986f6d91ac6999341f4cdc5ef90bf0da5f1"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v13-installed-catalogue-join-2026-10-23-01\\exact-join-01.json",
+      "bytes": 156308,
+      "sha256": "2277cb31c9a93a67e034f030f53a0c520fc7c558481c2cd952263c602996d075"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v13-installed-catalogue-join-2026-10-23-01\\inventory-01.json",
+      "bytes": 88363,
+      "sha256": "5da2b23ad426e8d701633196b4b930dda8c9e322b9842deebe09fdc4c620433d"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v13-installed-catalogue-join-2026-10-23-01\\verify-source-02.cjs",
+      "bytes": 4834,
+      "sha256": "9227e542792d1dff6512765031a87714807786bc63357f0f1c895d60ca88ac20"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v13-installed-catalogue-join-2026-10-23-01\\source-verification-02.json",
+      "bytes": 2000,
+      "sha256": "28b47b4a0fa44cbb5d138bdabec1a40face4badee47c3c5c62924cbc3cb13d57"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v13-installed-catalogue-join-2026-10-23-01\\prepare-controls-03.py",
+      "bytes": 1580,
+      "sha256": "469e8874b4dcb70725737ecefed7668cecb48a228f8a03dbc31f71c36794727a"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v13-installed-catalogue-join-2026-10-23-01\\harness-adaptations-03.json",
+      "bytes": 1509,
+      "sha256": "fb8d850001ff70294820e38b3d17a0b969dd495097c30ffd6030c663f8f8bc8b"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v13-installed-catalogue-join-2026-10-23-01\\run-controls-04.py",
+      "bytes": 2044,
+      "sha256": "b781e0052f3e1e44c50ce1c8f78f645f01b4b0d61bf52da605fead112b61cdd1"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v13-installed-catalogue-join-2026-10-23-01\\controls-verification-04.json",
+      "bytes": 2448,
+      "sha256": "5420e405a7d081b094dc90ae33459e45abb3da26f29edbae6c5bff0a88700b47"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v13-installed-catalogue-join-2026-10-23-01\\controls-01\\test-catalogue-03.cjs",
+      "bytes": 50408,
+      "sha256": "b774a46aa1a7124e6fca81cc200ec4cef9ec384bec2a881513dea0615c89a93e"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v13-installed-catalogue-join-2026-10-23-01\\controls-01\\test-catalogue-04.cjs",
+      "bytes": 50437,
+      "sha256": "5b3603cd75cea66759956420941a1d4d794f71f26f19282108c1eb226891633a"
+    }
+  ],
+  "catalogueIndependentReview": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-verified-release-catalogue-2026-10-23-01\\independent-review-01\\CHECK-01.json",
+    "bytes": 10812,
+    "sha256": "f3b051b9670270cf32f45538033aaab3050e1106ab11cc4f33f229b281eb33b7"
+  },
+  "catalogueAuthor": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v11-verified-release-catalogue-2026-10-23-01\\author-01\\CHECK-02.json",
+    "bytes": 1682,
+    "sha256": "0920b4b1790e7ec960aa85aa3c5e1b1e4d9b52aa4b910826a182510042fe1fcd"
+  },
+  "holds": [
+    "All whole-current module/controller/instance/pending/caller cost and storage selection. New catalogue phase/Qualified lists require current recensus: old C11admission365 is not whole-root authority.",
+    "Source220 positive lifetime increments must be composed with the current separately rounded hook/controller pools; no old unified totals or duplicate omission. PPmodule8192 andQ6624+binding32 separate.",
+    "Native Storage/callback/lifecycle chronology, actual installed fixture input, genuine shared seven-field resource vector.",
+    "Versioned same genuine Host reuse in Kernel, finiteTarget plus Content route and complete demanded Root/content/active weather.",
+    "Original firstQ foundation, all native whole-view/fragment/Frame/support and ordinary Main evidence."
+  ],
+  "selectedMainStartupComponent": "main-texture-handoff-funded-c3",
+  "selected": false,
+  "completeFundingSelected": false,
+  "Main": false,
+  "P05": "OPEN",
+  "runtimeFilesChanged": false,
+  "browserServerOperated": false
+}
