@@ -1,0 +1,119 @@
+{
+  "status": "FIRST_OWNED_LAUNCH_NATIVE_COMPONENT_AND_COMBINED_SOURCE_PREFLIGHT_MAIN_HELD",
+  "utc": "2026-10-24T00:08:50.729297+00:00",
+  "proofs": [
+    {
+      "path": "actual-native-first-launch.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v38-native-owned-launch-2026-10-23-01\\CHECK-NATIVE-08.json",
+        "bytes": 9879,
+        "sha256": "57a6fbdab15c426a9faea5ed20f404475a9532618682a543da0638954bf55d48"
+      }
+    },
+    {
+      "path": "native-launch-selection.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v38-native-owned-launch-2026-10-23-01\\SELECTION-01.json",
+        "bytes": 2208,
+        "sha256": "22a83aad62d94decf40f70319e88731a35669ebda1496099190a19fcca2a7aee"
+      }
+    },
+    {
+      "path": "selected-source-review.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v38-selected-launch-review-2026-10-23-01\\CHECK-SELECTED-01.json",
+        "bytes": 10602,
+        "sha256": "8033a3557aeb636f603778bda19d8c75b4743e5793883846abbe5520dcc49b18"
+      }
+    },
+    {
+      "path": "handoff-review.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v38-selected-launch-review-2026-10-23-01\\CHECK-REVIEW-01.json",
+        "bytes": 7191,
+        "sha256": "3f188c117f913fc2fb1004fcecbc98817e426f6cf50f9f34211f81f100126097"
+      }
+    },
+    {
+      "path": "combined-binding-reuse-preflight.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v40-staged-binding-reuse-join-2026-10-23-01\\CHECK-08.json",
+        "bytes": 5942,
+        "sha256": "9111d9f3de0616bc37a4f6b197ab5ca292d642c84c23cf4484e824878f310fc7"
+      }
+    },
+    {
+      "path": "private-storage-void-completion.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v41-private-storage-read-completion-2026-10-23-01\\CHECK-06.json",
+        "bytes": 2240,
+        "sha256": "290c6efbb2461e49669e0ca3371179208370909595958b0b20821584ab95e2db"
+      }
+    },
+    {
+      "path": "p05-exit-boundary.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\full-ordinary-host-envelope-review-01\\p05-exit-boundary-01.json",
+        "bytes": 2538,
+        "sha256": "1c9fe01eae51a47cfaec5f267f4076f9e6a907f52b82090e4793f9f0237da2f9"
+      }
+    }
+  ],
+  "firstNativeLaunch": {
+    "basis": "Root30 + Qseed02 + timerdraft05 only",
+    "cases": 10,
+    "nativeBrowser": "Chrome155",
+    "selectedScope": "First foundation, original one-shot claim, same-Q finite first entry only",
+    "sourceFiles": 523,
+    "parses": 427,
+    "bundleBytes": 1546784,
+    "bundleSHA256": "66d0ec1663cff24713d114155c47ee3a887f40a3b122ee2c1ff6dd1d3ca2d0b3",
+    "seedBytes": 7258112,
+    "firstEntryBytes": 606208,
+    "actualTwoJobsWork": [
+      3981,
+      1516
+    ],
+    "nativeMain": false
+  },
+  "combinedSource": {
+    "basis": "Root36+C02+C03+P34c18+c28",
+    "files": 522,
+    "parses": 426,
+    "sourceReads": 236,
+    "sourceCopies": 222,
+    "sourceOnlyQPeak": 13807726,
+    "inverseHunks": 50,
+    "HostKernelBindingCases": 18,
+    "HostKernelBindingGroups": 103,
+    "captureCallerCases": 7,
+    "captureCallerGroups": 32,
+    "scopeModelGroups": 80,
+    "privateNumericGroups": 35,
+    "fundingSelected": false,
+    "workSelected": false,
+    "nativeMain": false,
+    "parser": "Historical guarded c28; later linked-path correction remains separate"
+  },
+  "privateStorage": {
+    "groups": 9,
+    "originalResourceThenCallbacks": 1,
+    "privateResourceThenCallbacks": 0,
+    "transport": "Actual fake-indexeddb; not native Chrome IndexedDB",
+    "nativeParent": "MODELED_UNSELECTED",
+    "inputExtent": "UNSELECTED",
+    "Main": false
+  },
+  "P05": "OPEN",
+  "P06_P08": "NOT_STARTED",
+  "PhaseOne": "NOT_ACCEPTED_NOT_RELEASED",
+  "selectedMainStartupComponent": "main-texture-handoff-funded-c3",
+  "deliveredRuntimeFilesChanged": 0,
+  "rawArchivesRemainLocal": true,
+  "excludedActive": [
+    "R v4 fixed semantic freshness route and complete paid-work tables",
+    "P34c30 linked-path parser/reader full accounting and Storage consumer successor",
+    "G R aggregate ownership/work proposal",
+    "Complete actual Main/provider current-and-replacement capacity/retirement and ordinary Main whole-view/fragment/Frame/support"
+  ]
+}

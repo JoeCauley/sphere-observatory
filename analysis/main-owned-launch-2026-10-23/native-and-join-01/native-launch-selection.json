@@ -1,0 +1,53 @@
+{
+  "format": "sphere-owned-main-first-launch-selection/1",
+  "basis": "Root30 + timer draft05 only",
+  "seedBytes": 7258112,
+  "moduleBytes": 7258112,
+  "entryBytes": 606208,
+  "work": {
+    "module": 89,
+    "claim": 688,
+    "factory": 739,
+    "inspect": 5
+  },
+  "jobs": [
+    {
+      "phase": "actual initial classic script through original module/namespace/error capture and queue",
+      "work": 3981
+    },
+    {
+      "phase": "actual captured native timer with fresh source/native/namespace checks, original claim/Q/first reserve until existing currentness null guard",
+      "work": 1516
+    }
+  ],
+  "heldAfterFirstEntry": 7869612,
+  "proofs": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v31-trusted-launch-foundation-review-2026-10-23-01\\CHECK-FOUNDATION-03.json",
+      "bytes": 13621,
+      "sha256": "47c3331c6b49dff829bb275ca4e34e9bc604c1ef9e3c443b4ae7976d7ed007e9"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v31-trusted-launch-foundation-review-2026-10-23-01\\FREEZE-FOUNDATION-01.json",
+      "bytes": 22575,
+      "sha256": "ff7519088dfdedf3fc7920c103f6b0dc8602e52c573dd8b41ce0a6f78a9c0d62"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v31-trusted-launch-foundation-review-2026-10-23-01\\timer-storage-01.json",
+      "bytes": 15429,
+      "sha256": "0624542facd4f9fdde7ce6f9ea1eea716474146e3b2f6708947e6d325b76af97"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v31-trusted-launch-foundation-review-2026-10-23-01\\timer-work-01.json",
+      "bytes": 15559,
+      "sha256": "49d0c36496e86621577b50e0f9ff8ac04e3bf91c059fa0807c2b96dedf723758"
+    }
+  ],
+  "selectionScope": "The fixed prior foundation/first-Q source component only. No later Source/controller/Host/Kernel/currentQ/whole-host qualification. Original trusted HTML admits the whole fixed logical seed before evaluation; external exact SRI authenticates source. Original fresh native/Document realm is an upstream premise.",
+  "limits": {
+    "prepare": 4096,
+    "commonQ": 33554432
+  },
+  "Main": false,
+  "P05": "OPEN"
+}

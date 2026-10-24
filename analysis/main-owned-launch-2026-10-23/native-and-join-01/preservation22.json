@@ -1,0 +1,47 @@
+{
+  "pass": true,
+  "cutoff": 22,
+  "snapshots": 219,
+  "archiveEntriesVerified": 100073,
+  "recordsVerified": 10051,
+  "recordsAdded": 233,
+  "recordBytes": 397300385,
+  "freshRestores": [
+    {
+      "snapshot": "main-owned-first-launch-native-c1",
+      "destination": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v42-owned-launch-progress-2026-10-23-01\\restored-check-22-main-owned-first-launch-native-c1\\source",
+      "files": 523,
+      "verified": true
+    },
+    {
+      "snapshot": "main-staged-binding-reuse-preflight-c1",
+      "destination": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v42-owned-launch-progress-2026-10-23-01\\restored-check-22-main-staged-binding-reuse-preflight-c1\\source",
+      "files": 522,
+      "verified": true
+    },
+    {
+      "snapshot": "main-private-storage-void-completion-c2",
+      "destination": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v42-owned-launch-progress-2026-10-23-01\\restored-check-22-main-private-storage-void-completion-c2\\source",
+      "files": 522,
+      "verified": true
+    }
+  ],
+  "earlier215Snapshots9818RecordsExact": true,
+  "restorerUnchanged": true,
+  "currentReadmeUTF8": true,
+  "historicalReadmeBytesExact": true,
+  "selectedMainComponent": "main-texture-handoff-funded-c3",
+  "latestJoinedMainStartup": "main-staged-world-reuse-join-unselected-c1",
+  "joinedMainStartupSelected": false,
+  "separateFirstNativeOwnedLaunch": "main-owned-first-launch-native-c1",
+  "separateSourcePreflight": "main-staged-binding-reuse-preflight-c1",
+  "separateStorageProtocol": "main-private-storage-void-completion-c2",
+  "P05": "OPEN",
+  "excludedActive": [
+    "R v4 fixed semantic freshness route and complete paid-work tables",
+    "P34c30 linked-path parser/reader full accounting and Storage consumer successor",
+    "G R aggregate ownership/work proposal",
+    "Complete actual Main/provider current-and-replacement capacity/retirement and ordinary Main whole-view/fragment/Frame/support"
+  ],
+  "rawArchivesRemainLocal": true
+}

@@ -1,0 +1,255 @@
+{
+  "status": "PASS_READ_ONLY_SELECTED_ROOT38_SOURCE_HTML_AND_ARCHIVED_NATIVE_RECEIPT_REVIEW",
+  "scope": "Root30/draft05 selected first-Q component only; no Root36 or future handoff amount is inherited.",
+  "pins": {
+    "nativeReceipt": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v38-native-owned-launch-2026-10-23-01\\CHECK-NATIVE-08.json",
+      "bytes": 9879,
+      "sha256": "57a6fbdab15c426a9faea5ed20f404475a9532618682a543da0638954bf55d48"
+    },
+    "bundle": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v38-native-owned-launch-2026-10-23-01\\candidate-01\\source\\owned-main-trusted-launch.js",
+      "bytes": 1546784,
+      "sha256": "66d0ec1663cff24713d114155c47ee3a887f40a3b122ee2c1ff6dd1d3ca2d0b3"
+    },
+    "selection": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v38-native-owned-launch-2026-10-23-01\\SELECTION-01.json",
+      "bytes": 2208,
+      "sha256": "22a83aad62d94decf40f70319e88731a35669ebda1496099190a19fcca2a7aee"
+    },
+    "foundationBasis": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v31-trusted-launch-foundation-review-2026-10-23-01\\FREEZE-FOUNDATION-01.json",
+      "bytes": 22575,
+      "sha256": "ff7519088dfdedf3fc7920c103f6b0dc8602e52c573dd8b41ce0a6f78a9c0d62"
+    }
+  },
+  "source": {
+    "files": 523,
+    "parses": 427,
+    "otherRoot30Exact": 520,
+    "exactInverseHunks": 13,
+    "sixBodyReconstruction": true,
+    "profileAndAllThreeDigests": true,
+    "allFunctionsCompared": 624,
+    "allFunctionCaptureControlShapesExact": true,
+    "profiles": [
+      {
+        "name": "buildGraph",
+        "rows": 222,
+        "id": "observatory-main-v30-current-validated-state-join-222-2026-10-23",
+        "digest": "3af3f557a76122ff3f2dc65ebeb4f36c1ac1e7637014c164f5c1f01e265aaf2d",
+        "qBytes": 13737,
+        "onlyQRowDataAndEnvelopeDigestChanged": true
+      },
+      {
+        "name": "buildSurfaceEnvelope",
+        "rows": 5,
+        "id": "main-owned-default-surface-facts-v2",
+        "digest": "4852cfe470edb09363e744e946e6d07cf573382a3495f772285b394b47691a2a",
+        "qBytes": 13737,
+        "onlyQRowDataAndEnvelopeDigestChanged": true
+      },
+      {
+        "name": "buildStartupEnvelope",
+        "rows": 9,
+        "id": "main-startup-draw-owner-v1",
+        "digest": "20e1c1564e52d85f06f0eed5933e3efb62ef5d8b6dd03be8b842cbc303b71747",
+        "qBytes": 13737,
+        "onlyQRowDataAndEnvelopeDigestChanged": true
+      }
+    ]
+  },
+  "positiveSelectionDelta": {
+    "newCallables": 0,
+    "newCaptures": 0,
+    "newScopes": 0,
+    "newContainers": 1,
+    "newOwnFields": 4,
+    "newStringOccurrenceBytes": 640,
+    "alreadyProspectivelyOwnedBy": "Trusted profile four-work-field record, exact keys and immutable receipt null-record",
+    "alreadyPricedWorkTransactions": 2,
+    "additionalUnownedSourceDelta": 0,
+    "profileHashes": "All changed strings stay exactly64 UTF16 units; ids/paths/row count stable. Q source byte values are fixed-width logical Number data; no source-character tariff is implied."
+  },
+  "selected": {
+    "seed": 7258112,
+    "moduleClassificationWithinSeed": 7258112,
+    "firstEntry": 606208,
+    "jobs": [
+      3981,
+      1516
+    ],
+    "Q": {
+      "module": 89,
+      "claim": 688,
+      "factory": 739,
+      "inspect": 5
+    },
+    "logicalFirstHeldDerived": 7869612
+  },
+  "archivedNative": {
+    "reports": [
+      {
+        "pin": {
+          "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v38-native-owned-launch-2026-10-23-01\\native-02\\reports\\positive.json",
+          "bytes": 2157,
+          "sha256": "0edf527f63343fead5420185bafde6f826688f9857ceefc52bd9dd11baac8075"
+        },
+        "case": "positive",
+        "before": "UNCLAIMED",
+        "after": "OWNED",
+        "codes": [
+          "CURRENTNESS_SCOPE_NOT_YET_DERIVED"
+        ],
+        "loaded": true
+      },
+      {
+        "pin": {
+          "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v38-native-owned-launch-2026-10-23-01\\native-02\\reports\\math-namespace-getter.json",
+          "bytes": 2102,
+          "sha256": "721d2e5154268c9e620aa7c35f2df38b2b6aae090b891a53d736a93d617411cd"
+        },
+        "case": "math-namespace-getter",
+        "before": "UNCLAIMED",
+        "after": "UNCLAIMED",
+        "codes": [
+          "TRUSTED_LAUNCH_NATIVE_CHANGED"
+        ],
+        "loaded": true
+      },
+      {
+        "pin": {
+          "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v38-native-owned-launch-2026-10-23-01\\native-02\\reports\\number-method.json",
+          "bytes": 2094,
+          "sha256": "ae4706f35dd57e25037a0a0f58a0b0589ab18a2d5b4410bc15b90e6565c04aae"
+        },
+        "case": "number-method",
+        "before": "UNCLAIMED",
+        "after": "UNCLAIMED",
+        "codes": [
+          "TRUSTED_LAUNCH_NATIVE_CHANGED"
+        ],
+        "loaded": true
+      },
+      {
+        "pin": {
+          "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v38-native-owned-launch-2026-10-23-01\\native-02\\reports\\address-namespace-getter.json",
+          "bytes": 2113,
+          "sha256": "0173e4f6b5c3f6285eb26017d07cde23d93fa0ad5c409f5190c4147d56af9385"
+        },
+        "case": "address-namespace-getter",
+        "before": "UNCLAIMED",
+        "after": "UNCLAIMED",
+        "codes": [
+          "TRUSTED_LAUNCH_FOUNDATION_CHANGED"
+        ],
+        "loaded": true
+      },
+      {
+        "pin": {
+          "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v38-native-owned-launch-2026-10-23-01\\native-02\\reports\\error-code-getter.json",
+          "bytes": 2096,
+          "sha256": "0beb88f6a0fd61fe52ac2f0d567bf0983817c4770eef79252d9aa0b2955ec8b5"
+        },
+        "case": "error-code-getter",
+        "before": "UNCLAIMED",
+        "after": "UNCLAIMED",
+        "codes": [
+          "TRUSTED_LAUNCH_ERROR_CHANGED"
+        ],
+        "loaded": true
+      },
+      {
+        "pin": {
+          "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v38-native-owned-launch-2026-10-23-01\\native-02\\reports\\document-currentScript-getter.json",
+          "bytes": 2114,
+          "sha256": "545b6e6b54b7313097c311d88fc23085fd10fbbfb2546db54408a9edfc6eab90"
+        },
+        "case": "document-currentScript-getter",
+        "before": "UNCLAIMED",
+        "after": "UNCLAIMED",
+        "codes": [
+          "TRUSTED_LAUNCH_DOCUMENT_CHANGED"
+        ],
+        "loaded": true
+      },
+      {
+        "pin": {
+          "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v38-native-owned-launch-2026-10-23-01\\native-02\\reports\\script-nonce.json",
+          "bytes": 2093,
+          "sha256": "c54ed2133520726777b4a204cd6c8e7e80fd281460d201ca923247729180cfbf"
+        },
+        "case": "script-nonce",
+        "before": "UNCLAIMED",
+        "after": "UNCLAIMED",
+        "codes": [
+          "TRUSTED_LAUNCH_SOURCE_CHANGED"
+        ],
+        "loaded": true
+      },
+      {
+        "pin": {
+          "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v38-native-owned-launch-2026-10-23-01\\native-02\\reports\\timer-slot-getter.json",
+          "bytes": 2098,
+          "sha256": "26d8b983bf9d51ef1902f1d9e3337de18cb7def3b0404bed534a04cae3edd42e"
+        },
+        "case": "timer-slot-getter",
+        "before": "UNCLAIMED",
+        "after": "UNCLAIMED",
+        "codes": [
+          "TRUSTED_LAUNCH_NATIVE_CHANGED"
+        ],
+        "loaded": true
+      },
+      {
+        "pin": {
+          "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v38-native-owned-launch-2026-10-23-01\\native-02\\reports\\preclaim.json",
+          "bytes": 2136,
+          "sha256": "ae182ac10a363261b59dbbee321957be8b7c69e36b8589b160696c5fefd89039"
+        },
+        "case": "preclaim",
+        "before": "UNCLAIMED",
+        "after": "HELD_CLAIM_OR_CONSTRUCTION",
+        "codes": [
+          "BOOTSTRAP_SEED_ALREADY_ENTERED"
+        ],
+        "loaded": true
+      },
+      {
+        "pin": {
+          "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v38-native-owned-launch-2026-10-23-01\\native-02\\reports\\bad-sri.json",
+          "bytes": 1439,
+          "sha256": "2f5240610bf11220aec1355b5beda8e67ed962a2c844eae4dcfe0445492c5242"
+        },
+        "case": "bad-sri",
+        "before": null,
+        "after": null,
+        "codes": [],
+        "loaded": false
+      }
+    ],
+    "firstObserverFailure": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v38-native-owned-launch-2026-10-23-01\\native-01\\reports\\positive.json",
+      "bytes": 1900,
+      "sha256": "52b0fa0f664c767c879747995b97999f6568e16d8df097b6d9a904fe4a886183"
+    },
+    "correction": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v38-native-owned-launch-2026-10-23-01\\native-harness-correction-06.json",
+      "bytes": 1038,
+      "sha256": "876a131c7d07727ab33b28cf732167d864f6cfaf493006a1fe500711f9b44170"
+    },
+    "reviewOnly": "Read existing10 Chrome155 reports/HTML; no native/product execution was performed by this review. Selected logical work quotes are source-derived, not browser counter/timing measurements."
+  },
+  "trust": {
+    "source": "Original trusted HTML/source root admits complete region before module/control birth; exact SRI authenticates emitted source. The browser bad-SRI refusal confirms the exercised native source chain, not a general proof of original HTML trust.",
+    "native": "Pristine original native/Window/Document behavior before capture remains an upstream premise. Subsequent actual used descriptors/source/namespace/Error facts are freshly checked at callback and claim; no foreign callback is priced API1.",
+    "lifetime": "Native callback source retains launchOwner after transfer; original Q live/holds retain seed and first charge. Original prefix/launch catch/finally keep source roots/account through refusal and closed realm; no Q0 or physical/GC claim.",
+    "later": "Source bootstrapNode still captures native currentScript inside later loader. That path remains unreachable behind nulls and requires the separately authenticated private handoff before later Source entry."
+  },
+  "noSourceEdits": true,
+  "noProductExecution": true,
+  "noBrowserExecution": true,
+  "amountSelectionByReviewer": false,
+  "completeMain": false,
+  "P05": "OPEN"
+}

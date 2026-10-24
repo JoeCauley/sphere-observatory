@@ -1,0 +1,1 @@
+Native evidence covers only the first owned startup component on Root30. The larger Root40 source join and private Storage protocol have separate model/funding boundaries. Do not combine their status or prices into a native Main claim. Full source and historical failures remain in the private checkpoint; raw archives remain local.

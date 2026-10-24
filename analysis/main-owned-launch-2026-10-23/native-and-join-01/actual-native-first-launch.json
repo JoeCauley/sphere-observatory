@@ -1,0 +1,244 @@
+{
+  "status": "PASS_SELECTED_FIRST_LAUNCH_SOURCE_AND_ACTUAL_CHROME_COMPONENT",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v38-native-owned-launch-2026-10-23-01\\candidate-01\\source",
+  "bundle": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v38-native-owned-launch-2026-10-23-01\\candidate-01\\source\\owned-main-trusted-launch.js",
+    "bytes": 1546784,
+    "sha256": "66d0ec1663cff24713d114155c47ee3a887f40a3b122ee2c1ff6dd1d3ca2d0b3",
+    "sri": "sha256-ZtDsFmPP8kcT0RQVXEfuOoh/QKOxIu4sH/bdHTyi0LM="
+  },
+  "profileDigest": "27d6fed7e21e20202142251ad9b5db4a0e26b84b711ab852cffc5f3734ae0cb0",
+  "files": 523,
+  "parses": 427,
+  "other520Root30FilesExact": true,
+  "exactInverseHunks": 13,
+  "sourceReads": 236,
+  "sourceCopies": 222,
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "rows": 222,
+      "digest": "3af3f557a76122ff3f2dc65ebeb4f36c1ac1e7637014c164f5c1f01e265aaf2d"
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "rows": 5,
+      "digest": "4852cfe470edb09363e744e946e6d07cf573382a3495f772285b394b47691a2a"
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "rows": 9,
+      "digest": "20e1c1564e52d85f06f0eed5933e3efb62ef5d8b6dd03be8b842cbc303b71747"
+    }
+  ],
+  "selected": {
+    "scope": "Root30/draft05 first genuine foundation/Q/entry only",
+    "seedBytes": 7258112,
+    "moduleClassificationWithinSameSeed": 7258112,
+    "entryBytes": 606208,
+    "QWork": {
+      "module": 89,
+      "claim": 688,
+      "factory": 739,
+      "inspect": 5
+    },
+    "actualTwoJobWorkQuotes": [
+      3981,
+      1516
+    ],
+    "logicalHeldAfterFirstEntryDerivedFromOriginalSource": 7869612,
+    "commonQCap": 33554432,
+    "prepareCap": 4096
+  },
+  "native": {
+    "browser": "Chrome155",
+    "cases": 10,
+    "reports": [
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v38-native-owned-launch-2026-10-23-01\\native-02\\reports\\positive.json",
+        "bytes": 2157,
+        "sha256": "0edf527f63343fead5420185bafde6f826688f9857ceefc52bd9dd11baac8075",
+        "case": "positive",
+        "status": "PASS",
+        "foreignCalls": 0,
+        "before": "UNCLAIMED",
+        "after": "OWNED",
+        "errorCodes": [
+          "CURRENTNESS_SCOPE_NOT_YET_DERIVED"
+        ]
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v38-native-owned-launch-2026-10-23-01\\native-02\\reports\\math-namespace-getter.json",
+        "bytes": 2102,
+        "sha256": "721d2e5154268c9e620aa7c35f2df38b2b6aae090b891a53d736a93d617411cd",
+        "case": "math-namespace-getter",
+        "status": "PASS",
+        "foreignCalls": 0,
+        "before": "UNCLAIMED",
+        "after": "UNCLAIMED",
+        "errorCodes": [
+          "TRUSTED_LAUNCH_NATIVE_CHANGED"
+        ]
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v38-native-owned-launch-2026-10-23-01\\native-02\\reports\\number-method.json",
+        "bytes": 2094,
+        "sha256": "ae4706f35dd57e25037a0a0f58a0b0589ab18a2d5b4410bc15b90e6565c04aae",
+        "case": "number-method",
+        "status": "PASS",
+        "foreignCalls": 0,
+        "before": "UNCLAIMED",
+        "after": "UNCLAIMED",
+        "errorCodes": [
+          "TRUSTED_LAUNCH_NATIVE_CHANGED"
+        ]
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v38-native-owned-launch-2026-10-23-01\\native-02\\reports\\address-namespace-getter.json",
+        "bytes": 2113,
+        "sha256": "0173e4f6b5c3f6285eb26017d07cde23d93fa0ad5c409f5190c4147d56af9385",
+        "case": "address-namespace-getter",
+        "status": "PASS",
+        "foreignCalls": 0,
+        "before": "UNCLAIMED",
+        "after": "UNCLAIMED",
+        "errorCodes": [
+          "TRUSTED_LAUNCH_FOUNDATION_CHANGED"
+        ]
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v38-native-owned-launch-2026-10-23-01\\native-02\\reports\\error-code-getter.json",
+        "bytes": 2096,
+        "sha256": "0beb88f6a0fd61fe52ac2f0d567bf0983817c4770eef79252d9aa0b2955ec8b5",
+        "case": "error-code-getter",
+        "status": "PASS",
+        "foreignCalls": 0,
+        "before": "UNCLAIMED",
+        "after": "UNCLAIMED",
+        "errorCodes": [
+          "TRUSTED_LAUNCH_ERROR_CHANGED"
+        ]
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v38-native-owned-launch-2026-10-23-01\\native-02\\reports\\document-currentScript-getter.json",
+        "bytes": 2114,
+        "sha256": "545b6e6b54b7313097c311d88fc23085fd10fbbfb2546db54408a9edfc6eab90",
+        "case": "document-currentScript-getter",
+        "status": "PASS",
+        "foreignCalls": 0,
+        "before": "UNCLAIMED",
+        "after": "UNCLAIMED",
+        "errorCodes": [
+          "TRUSTED_LAUNCH_DOCUMENT_CHANGED"
+        ]
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v38-native-owned-launch-2026-10-23-01\\native-02\\reports\\script-nonce.json",
+        "bytes": 2093,
+        "sha256": "c54ed2133520726777b4a204cd6c8e7e80fd281460d201ca923247729180cfbf",
+        "case": "script-nonce",
+        "status": "PASS",
+        "foreignCalls": 0,
+        "before": "UNCLAIMED",
+        "after": "UNCLAIMED",
+        "errorCodes": [
+          "TRUSTED_LAUNCH_SOURCE_CHANGED"
+        ]
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v38-native-owned-launch-2026-10-23-01\\native-02\\reports\\timer-slot-getter.json",
+        "bytes": 2098,
+        "sha256": "26d8b983bf9d51ef1902f1d9e3337de18cb7def3b0404bed534a04cae3edd42e",
+        "case": "timer-slot-getter",
+        "status": "PASS",
+        "foreignCalls": 0,
+        "before": "UNCLAIMED",
+        "after": "UNCLAIMED",
+        "errorCodes": [
+          "TRUSTED_LAUNCH_NATIVE_CHANGED"
+        ]
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v38-native-owned-launch-2026-10-23-01\\native-02\\reports\\preclaim.json",
+        "bytes": 2136,
+        "sha256": "ae182ac10a363261b59dbbee321957be8b7c69e36b8589b160696c5fefd89039",
+        "case": "preclaim",
+        "status": "PASS",
+        "foreignCalls": 0,
+        "before": "UNCLAIMED",
+        "after": "HELD_CLAIM_OR_CONSTRUCTION",
+        "errorCodes": [
+          "BOOTSTRAP_SEED_ALREADY_ENTERED"
+        ]
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v38-native-owned-launch-2026-10-23-01\\native-02\\reports\\bad-sri.json",
+        "bytes": 1439,
+        "sha256": "2f5240610bf11220aec1355b5beda8e67ed962a2c844eae4dcfe0445492c5242",
+        "case": "bad-sri",
+        "status": "PASS",
+        "foreignCalls": 0,
+        "before": null,
+        "after": null,
+        "errorCodes": []
+      }
+    ],
+    "realExternalSRI": true,
+    "nonceCSP": true,
+    "directOriginalScriptLoadBeforeQueuedCallback": true,
+    "actualOriginalNativeTimer": true,
+    "noInjectedQOwnerOrClaim": true,
+    "firstFactoryReached": true,
+    "firstOriginalFiniteReserveReached": true,
+    "nextGuard": "CURRENTNESS_SCOPE_NOT_YET_DERIVED",
+    "foreignCallbacks": 0,
+    "physicalHeap": "UNMEASURED",
+    "timing": "UNMEASURED"
+  },
+  "priorFailure": {
+    "report": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v38-native-owned-launch-2026-10-23-01\\native-01\\reports\\positive.json",
+      "bytes": 1900,
+      "sha256": "52b0fa0f664c767c879747995b97999f6568e16d8df097b6d9a904fe4a886183"
+    },
+    "disposition": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v38-native-owned-launch-2026-10-23-01\\native-harness-correction-06.json",
+      "bytes": 1038,
+      "sha256": "876a131c7d07727ab33b28cf732167d864f6cfaf493006a1fe500711f9b44170"
+    },
+    "status": "FAIL_PRESERVED_OBSERVER_PLACEMENT",
+    "productChangedForCorrection": false
+  },
+  "proofs": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v31-trusted-launch-foundation-review-2026-10-23-01\\CHECK-FOUNDATION-03.json",
+      "bytes": 13621,
+      "sha256": "47c3331c6b49dff829bb275ca4e34e9bc604c1ef9e3c443b4ae7976d7ed007e9"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v31-trusted-launch-foundation-review-2026-10-23-01\\FREEZE-FOUNDATION-01.json",
+      "bytes": 22575,
+      "sha256": "ff7519088dfdedf3fc7920c103f6b0dc8602e52c573dd8b41ce0a6f78a9c0d62"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v31-trusted-launch-foundation-review-2026-10-23-01\\timer-storage-01.json",
+      "bytes": 15429,
+      "sha256": "0624542facd4f9fdde7ce6f9ea1eea716474146e3b2f6708947e6d325b76af97"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v31-trusted-launch-foundation-review-2026-10-23-01\\timer-work-01.json",
+      "bytes": 15559,
+      "sha256": "49d0c36496e86621577b50e0f9ff8ac04e3bf91c059fa0807c2b96dedf723758"
+    }
+  ],
+  "preflight": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v38-native-owned-launch-2026-10-23-01\\PREFLIGHT-05.json",
+    "bytes": 1645,
+    "sha256": "e4898c57614578d7085bcc57486d168130d4cbbbc637fc354566c391ae3fc2ce"
+  },
+  "limitsUnchanged": true,
+  "completeMain": false,
+  "Root36AmountsInherited": false,
+  "P05": "OPEN",
+  "remaining": "Root36/current successors need their own full seed/entry; source-private retained bootstrapNode and decoder eligibility handoff, complete current Host/Kernel/Binding/Q/R work, complete demand, original program/whole-view/fragment/Frame/support and ordinary Main remain held."
+}

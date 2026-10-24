@@ -1,0 +1,42 @@
+{
+  "status": "PASS_FROZEN_PRIVATE_STORAGE_VOID_COMPLETION_PROTOCOL_COMPONENT_UNSELECTED",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v41-private-storage-read-completion-2026-10-23-01\\candidate-02\\source",
+  "parent": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v40-staged-binding-reuse-join-2026-10-23-01\\candidate-01\\source",
+  "files": 522,
+  "parses": 426,
+  "changed": [
+    "biome-service/storage.js"
+  ],
+  "other521ParentFilesExact": true,
+  "storage": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v41-private-storage-read-completion-2026-10-23-01\\candidate-02\\source\\biome-service\\storage.js",
+    "bytes": 14975,
+    "sha256": "950f95f787413310ebfd55c1ccdae0c932d7365c7a17904580d00cfe830cbce3"
+  },
+  "inverseHunks": 14,
+  "controls": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v41-private-storage-read-completion-2026-10-23-01\\completion-controls-05.json",
+    "bytes": 12280,
+    "sha256": "dbf78318a562f0c925cbaef146d79808526d03a4685579efd1261264477e9287"
+  },
+  "groups": 9,
+  "publicGetAndTransactionBodiesExact": true,
+  "originalResourceThenCallbacks": 1,
+  "privateResourceThenCallbacks": 0,
+  "sourceProfiles": "Parent profiles intentionally unchanged and therefore stale for this component; original Main loader must not execute this unjoined source",
+  "moduleFunding": null,
+  "nativeEligibilityParent": null,
+  "originalNativeJobPayParent": null,
+  "nativeInputExtent": null,
+  "completeWork": null,
+  "completeLifetimeFunding": null,
+  "Main": false,
+  "P05": "OPEN",
+  "limitations": [
+    "Actual fake-indexeddb transport, not Chrome IndexedDB.",
+    "Only original source footer can bind the same Q. Native currentness and native-job pay are explicitly modeled in the controls.",
+    "The result/input/closed-facade allowances remain held; no retirement or Q0 claim.",
+    "A digest-only head does not prove the incoming native byte/object extent; actual prior input admission remains a concrete parent obligation.",
+    "V consumer, early authentic native receiver facts, complete callback/caller/Q quotes and fresh joined source profiles still required."
+  ]
+}

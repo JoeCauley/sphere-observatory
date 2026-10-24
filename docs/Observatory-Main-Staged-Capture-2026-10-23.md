@@ -1,3 +1,5 @@
+> Current update, October 23: the first original owned startup handoff passes ten Chrome checks on its exact Root30 basis. The larger Root40 Binding/reuse source preflight and private Storage void-completion component pass their separate checks with explicit unselected/model boundaries. Complete startup/caller/Q, actual current/replacement demand/retirement and ordinary Main whole-view/fragment/Frame/support remain open. P05 OPEN; P06-P08 later. [Owned startup and handoff record](Observatory-Main-Owned-Launch-2026-10-23.md).
+
 # Staged world capture and validated reuse
 
 Main's private candidate can now build its world snapshot in small steps using the original retained Numeric proof. It keeps the exact original bytes and world identity while rechecking current source, native operations, parents and lifetime facts at the required boundaries. The current support profile is updated for these source changes. The selected six-step texture handoff is preserved. Ordinary Main remains disabled; P05 is OPEN.

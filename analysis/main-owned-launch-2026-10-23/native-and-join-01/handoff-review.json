@@ -1,0 +1,155 @@
+{
+  "status": "PASS_READ_ONLY_ROOT38_REVIEW_AND_EXACT_ROOT39_POSITIVE_HANDOFF_ARITHMETIC",
+  "replays": [
+    {
+      "script": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v38-selected-launch-review-2026-10-23-01\\review-selected-01.cjs",
+        "bytes": 15006,
+        "sha256": "16024dd752cc6c470d7038aea1381c15257d32610ccdcc6dda65cc60bfee8b77"
+      },
+      "output": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v38-selected-launch-review-2026-10-23-01\\CHECK-SELECTED-01.json",
+        "bytes": 10602,
+        "sha256": "8033a3557aeb636f603778bda19d8c75b4743e5793883846abbe5520dcc49b18"
+      },
+      "byteExact": true
+    },
+    {
+      "script": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v38-selected-launch-review-2026-10-23-01\\derive-handoff-03.cjs",
+        "bytes": 23784,
+        "sha256": "b92a738aafae5f9e0f49501a3e2d162392aa1ee81d90113b4098c4385316f25d"
+      },
+      "output": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v38-selected-launch-review-2026-10-23-01\\HANDOFF-ARITHMETIC-01.json",
+        "bytes": 612710,
+        "sha256": "cc4c339e17378d5c8144c99e7fab0fe1b269c93c50765ffa81f5d044fa5a1b56"
+      },
+      "byteExact": true
+    }
+  ],
+  "protectedInputs": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v38-native-owned-launch-2026-10-23-01\\CHECK-NATIVE-08.json",
+      "bytes": 9879,
+      "sha256": "57a6fbdab15c426a9faea5ed20f404475a9532618682a543da0638954bf55d48"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v38-native-owned-launch-2026-10-23-01\\candidate-01\\source\\owned-main-trusted-launch.js",
+      "bytes": 1546784,
+      "sha256": "66d0ec1663cff24713d114155c47ee3a887f40a3b122ee2c1ff6dd1d3ca2d0b3"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v38-native-owned-launch-2026-10-23-01\\SELECTION-01.json",
+      "bytes": 2208,
+      "sha256": "22a83aad62d94decf40f70319e88731a35669ebda1496099190a19fcca2a7aee"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v31-trusted-launch-foundation-review-2026-10-23-01\\FREEZE-FOUNDATION-01.json",
+      "bytes": 22575,
+      "sha256": "ff7519088dfdedf3fc7920c103f6b0dc8602e52c573dd8b41ce0a6f78a9c0d62"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v31-trusted-launch-foundation-review-2026-10-23-01\\root36-append-01\\FREEZE-APPEND-01.json",
+      "bytes": 3451,
+      "sha256": "497d2e4ff1cd2879ba278bb7518b23dc384c08cf15dd1a94015382a31b22ce13"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v39-current-launch-handoff-2026-10-23-01\\launch-prefix-01.js.txt",
+      "bytes": 11189,
+      "sha256": "b3ac062ae5d186e09207892b2b97932af23ad6547fded495269df6a5f21a463d"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v39-current-launch-handoff-2026-10-23-01\\exact-handoff-edits-01.json",
+      "bytes": 3653,
+      "sha256": "a708d572ce6395db528da3c9a9d299286b1ba0db16fbec284c23047bec4986c1"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v34-owned-binding-read-stages-2026-10-23-01\\candidate-28\\source\\biome-service\\records.js",
+      "bytes": 314801,
+      "sha256": "3d3698838a8c20ffcd6999fa6619cda04bf151b3396cde819723d62e96587830"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v36-staged-world-reuse-join-2026-10-23-01\\candidate-01\\source\\owned-main-bootstrap.js",
+      "bytes": 326133,
+      "sha256": "897f34388d32e6773ecc1438805722598fde56a978d9d408fc1d6cb50cf771c0"
+    }
+  ],
+  "Root38": {
+    "nativeReceipt": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v38-native-owned-launch-2026-10-23-01\\CHECK-NATIVE-08.json",
+      "bytes": 9879,
+      "sha256": "57a6fbdab15c426a9faea5ed20f404475a9532618682a543da0638954bf55d48"
+    },
+    "bundle": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v38-native-owned-launch-2026-10-23-01\\candidate-01\\source\\owned-main-trusted-launch.js",
+      "bytes": 1546784,
+      "sha256": "66d0ec1663cff24713d114155c47ee3a887f40a3b122ee2c1ff6dd1d3ca2d0b3"
+    },
+    "selection": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v38-native-owned-launch-2026-10-23-01\\SELECTION-01.json",
+      "bytes": 2208,
+      "sha256": "22a83aad62d94decf40f70319e88731a35669ebda1496099190a19fcca2a7aee"
+    },
+    "foundationBasis": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v31-trusted-launch-foundation-review-2026-10-23-01\\FREEZE-FOUNDATION-01.json",
+      "bytes": 22575,
+      "sha256": "ff7519088dfdedf3fc7920c103f6b0dc8602e52c573dd8b41ce0a6f78a9c0d62"
+    }
+  },
+  "Root39": {
+    "root36Baseline": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v31-trusted-launch-foundation-review-2026-10-23-01\\root36-append-01\\FREEZE-APPEND-01.json",
+      "bytes": 3451,
+      "sha256": "497d2e4ff1cd2879ba278bb7518b23dc384c08cf15dd1a94015382a31b22ce13"
+    },
+    "prefix": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v39-current-launch-handoff-2026-10-23-01\\launch-prefix-01.js.txt",
+      "bytes": 11189,
+      "sha256": "b3ac062ae5d186e09207892b2b97932af23ad6547fded495269df6a5f21a463d"
+    },
+    "recipe": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v39-current-launch-handoff-2026-10-23-01\\exact-handoff-edits-01.json",
+      "bytes": 3653,
+      "sha256": "a708d572ce6395db528da3c9a9d299286b1ba0db16fbec284c23047bec4986c1"
+    },
+    "P34Records": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v34-owned-binding-read-stages-2026-10-23-01\\candidate-28\\source\\biome-service\\records.js",
+      "bytes": 314801,
+      "sha256": "3d3698838a8c20ffcd6999fa6619cda04bf151b3396cde819723d62e96587830"
+    },
+    "Root36Loader": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v36-staged-world-reuse-join-2026-10-23-01\\candidate-01\\source\\owned-main-bootstrap.js",
+      "bytes": 326133,
+      "sha256": "897f34388d32e6773ecc1438805722598fde56a978d9d408fc1d6cb50cf771c0"
+    }
+  },
+  "positive": {
+    "handoffRaw": 11072,
+    "P34c28DefaultNullRaw": 899904,
+    "shownSeedRaw": 8251744,
+    "shownSeedRounded": 8253440,
+    "shownEntry": 622592,
+    "shownJobs": [
+      4014,
+      1518
+    ],
+    "decoder": {
+      "work": 18,
+      "workspaceRaw": 5120,
+      "workspaceAligned": 8192
+    },
+    "node": {
+      "work": 689,
+      "workspaceRaw": 218848,
+      "workspaceAligned": 221184
+    }
+  },
+  "completeMergedRoot39Allowance": null,
+  "noSourceEdits": true,
+  "noProductExecution": true,
+  "noBrowserServerOperation": true,
+  "amountsSelected": false,
+  "Main": false,
+  "P05": "OPEN"
+}

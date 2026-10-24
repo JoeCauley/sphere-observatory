@@ -1,0 +1,125 @@
+{
+  "status": "PASS_FROZEN_UNSELECTED_BINDING_REUSE_INTEGRATION_PREFLIGHT",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v40-staged-binding-reuse-join-2026-10-23-01\\candidate-01\\source",
+  "parent": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v36-staged-world-reuse-join-2026-10-23-01\\candidate-01\\source",
+  "files": 522,
+  "parses": 426,
+  "changed": [
+    "biome-service/host-world.js",
+    "biome-service/native/surface-kernel.js",
+    "biome-service/numeric-profile.js",
+    "biome-service/records.js",
+    "biome-service/verified-record-store.js",
+    "owned-main-bootstrap.js"
+  ],
+  "other516ParentFilesExact": true,
+  "inverseHunks": 50,
+  "alreadyCurrentC33HunksSkipped": 2,
+  "loader": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v40-staged-binding-reuse-join-2026-10-23-01\\candidate-01\\source\\owned-main-bootstrap.js",
+    "bytes": 328069,
+    "sha256": "4cd4c530808bb192e4363f8f9fa16d20c787759b9eb8434bd2c4c11de4ae2adb"
+  },
+  "parser": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v40-staged-binding-reuse-join-2026-10-23-01\\candidate-01\\source\\biome-service\\records.js",
+    "bytes": 314801,
+    "sha256": "3d3698838a8c20ffcd6999fa6619cda04bf151b3396cde819723d62e96587830"
+  },
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "rows": 222,
+      "digest": "5c1ac5033afe4af063c2372f6874fe088fd1ada7918fe5633394b15ed62a4912"
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "rows": 5,
+      "digest": "3c894d787b1b6cf157fa6a2fd751efad831b3843e2dd0d346a7498eb821b2df6"
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "rows": 9,
+      "digest": "8e6ea2680d113ad255a979ae6c5e284f2f82eb0a7f20e702d8c69bf47766754a"
+    }
+  ],
+  "freshSourceReads": 236,
+  "sourceCopies": 222,
+  "sourceOnlyQPeak": 13807726,
+  "controls": {
+    "HostKernelBindingCases": 18,
+    "HostKernelBindingGroups": 103,
+    "captureCallerCases": 7,
+    "captureCallerGroups": 32,
+    "scopeBoundaryModelGroups": 80,
+    "privateNumericGroups": 35
+  },
+  "proofs": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v40-staged-binding-reuse-join-2026-10-23-01\\exact-join-03.json",
+      "bytes": 630068,
+      "sha256": "5acd06112927d0f7ac32842fd9fca99686699eb8cacc6be130a8947aaee06329"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v40-staged-binding-reuse-join-2026-10-23-01\\CHECK-SOURCE-04.json",
+      "bytes": 4672,
+      "sha256": "fb4d27267b1276d2a0012729b895d4a6be68c2e58df294434f260b1c60c1de53"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v40-staged-binding-reuse-join-2026-10-23-01\\control-preparation-05.json",
+      "bytes": 1011,
+      "sha256": "c2deee2424475e4f6b3f72057a300a1c0139497b26807128ac414f0af7470d10"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v40-staged-binding-reuse-join-2026-10-23-01\\caller-model-disclosure-06.json",
+      "bytes": 694,
+      "sha256": "ead8c196b49109ab625446afdc85f1b876efdfd66e9837103009592b1984380f"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v40-staged-binding-reuse-join-2026-10-23-01\\controls-05\\full-regressions-05.json",
+      "bytes": 8556,
+      "sha256": "921ce1d7aacf621df7e3b3d58c604d2b9b6e9ad02a52cd9d8e6bca2aa44303c1"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v40-staged-binding-reuse-join-2026-10-23-01\\caller-controls-06\\caller-controls-06.json",
+      "bytes": 3401,
+      "sha256": "e9c2a0c8c7060fe59ef63df4caf063e95e1a647ac37d07d584572c95f6dc0746"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v40-staged-binding-reuse-join-2026-10-23-01\\boundary-controls-07\\current-scope-controls-07.json",
+      "bytes": 26510,
+      "sha256": "4b123d8691ce995d5d969bf12fc09d44ea9bc45ab62acfd525450979cd74b190"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v40-staged-binding-reuse-join-2026-10-23-01\\boundary-controls-07\\private-numeric-07.json",
+      "bytes": 8643,
+      "sha256": "b03c2d2321a256ad85729d643151761b1c1c2b4d378c25e619e01b411b5b9dee"
+    }
+  ],
+  "completeWorkSelected": false,
+  "completeFundingSelected": false,
+  "nativeMain": false,
+  "Main": false,
+  "P05": "OPEN",
+  "limits": {
+    "prepare": 4096,
+    "upload": 262144,
+    "jobs": 2,
+    "slots": 64,
+    "serviceCPU": 33554432,
+    "serviceGPU": 10485760,
+    "commonQ": 33554432
+  },
+  "remaining": [
+    "Exact complete paid route costs and prospective ownership remain unselected.",
+    "P34 durable reader/parser is present with null gates; these joined controls do not run its CURRENT Main caller.",
+    "P34 c28 is historical and has a newly identified large nested-path retention counterexample; the linked-segment correction remains in progress in a separate successor.",
+    "Root39 lexical launch and decoder helper are not compiled into this standalone source.",
+    "Complete provider/Main current-plus-replacement demand admission, actual retirement and ordinary Main whole-view/fragment/Frame/support remain open."
+  ],
+  "disclosures": [
+    "All inherited App/Surface/GL/storage/caller adapters and diagnostic funding remain explicit in each report.",
+    "C02/C03 actual same-paid source receipts execute in Host/Kernel setup. P35 capture current parents remain modeled and do not establish the pending P34 CURRENT integration.",
+    "Source-only Q figures are ordinary offline source/profile checks, not simultaneous startup/Q or native heap.",
+    "Failed preparation01 (inventory path) and02 (original module parse mode) failed before any product source was written; corrected tooling preserves all earlier attempts."
+  ]
+}
