@@ -1,0 +1,167 @@
+{
+  "status": "PASS_FROZEN_SOURCE_ONLY_COLD_BUILDER_KERNEL_CLOSE_UNSELECTED",
+  "parent": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-bounded-wait-retirement-2026-10-23-01\\candidate-05\\source",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-bounded-cold-close-2026-10-23-01\\candidate-07\\source",
+  "files": 522,
+  "parses": 426,
+  "changed": [
+    "biome-service/native/surface-kernel.js",
+    "owned-main-bootstrap.js"
+  ],
+  "other520ParentFilesExact": true,
+  "sourcePins": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-bounded-cold-close-2026-10-23-01\\candidate-07\\source\\biome-service\\native\\surface-kernel.js",
+      "bytes": 80233,
+      "sha256": "fc03ca716d9509a35a6b94aab8419aed99300a1a7db0041a77f097d8e7d19072"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-bounded-cold-close-2026-10-23-01\\candidate-07\\source\\owned-main-bootstrap.js",
+      "bytes": 337690,
+      "sha256": "537da53223810ff750e5cffb1910bd93be9177a3f35c80626959d024ff64dc11"
+    }
+  ],
+  "codeHunks": 25,
+  "exactForwardAndInverse": true,
+  "recipe": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-bounded-cold-close-2026-10-23-01\\author-01\\root-safe-cold-close-edits-24.json",
+    "bytes": 133614,
+    "sha256": "3f316e50fe41663ec592ad6a0574a7b4e38edc4964dec5b01f2ad42625194114"
+  },
+  "root48InMemoryMerge": {
+    "status": "PASS_ALL_ORDERED_ANCHORS_AND_PARSE_NO_ROOT_WRITES",
+    "rows": [
+      {
+        "file": "biome-service/native/surface-kernel.js",
+        "parent": {
+          "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v48-live-startup-source-join-2026-10-23-01\\candidate-01\\source\\biome-service\\native\\surface-kernel.js",
+          "bytes": 74599,
+          "sha256": "3017b21bbec3c2c3a797c4240f550fd644e8473ebc70714fb18da2abcf973b09"
+        },
+        "postCodeBytes": 80233,
+        "postCodeSha256": "fc03ca716d9509a35a6b94aab8419aed99300a1a7db0041a77f097d8e7d19072",
+        "requiresAllThreeProfilesFresh": true
+      },
+      {
+        "file": "owned-main-bootstrap.js",
+        "parent": {
+          "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v48-live-startup-source-join-2026-10-23-01\\candidate-01\\source\\owned-main-bootstrap.js",
+          "bytes": 337244,
+          "sha256": "c81cb97c2f1d30279057413027ff84b108ef6a2d3c76cad970cbf71c95cc466a"
+        },
+        "postCodeBytes": 339016,
+        "postCodeSha256": "cfb8b1b9d646c91685222d1a0a5d5269bd7ff4375bfb7e6b1ffeba0a03d0ded3",
+        "requiresAllThreeProfilesFresh": true
+      }
+    ]
+  },
+  "legacy": {
+    "originalAsyncKernelCreateByteExact": true,
+    "defaultPrivateControllerCloseBodyByteExact": true,
+    "publicKernelExportsUnchanged": true,
+    "genericFutureResourceDisposalNotQualified": true
+  },
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "rows": 222,
+      "digest": "487689c42bb19789b8fcd95be1be0d27e9c47bb2e77f6336e75e642e05e2f031"
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "rows": 5,
+      "digest": "c84eaa5c13e2244281f4effdf8e180e5d1e3580a3dec7714d25c997cfd9ff1d1"
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "rows": 9,
+      "digest": "ab0e67568d20db05c04926e7f69dc2d27b09fab4d9f84483c60dc3c4ca44d01a"
+    }
+  ],
+  "sourceReads": 236,
+  "sourceCopies": 222,
+  "sourceOnlyPeakQ": 13512298,
+  "sourceOnlyFinalQ": {
+    "heldBytes": 0,
+    "requestedBytes": 0,
+    "bookkeepingBytes": 0,
+    "peakBytes": 13512298,
+    "limitBytes": 33554432,
+    "liveReservations": 0,
+    "maximumReservations": 4096,
+    "owners": [],
+    "scope": "CONSERVATIVE_LOGICAL_METADATA_ADMISSION",
+    "nativeHeap": "UNMEASURED"
+  },
+  "controls": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-bounded-cold-close-2026-10-23-01\\controls-01\\full-regressions-21.json",
+      "bytes": 8423,
+      "sha256": "dbcee9442d1935f91173ab8733995d0fba6ba6f50b89569de4efac1d8e0cd667",
+      "status": "PASS_UNSELECTED_ACTUAL_ORIGINAL_COMPONENT_REGRESSIONS",
+      "cases": 18,
+      "groups": 103
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-bounded-cold-close-2026-10-23-01\\controls-01\\control-releaseBindingKernelReal-22.json",
+      "bytes": 14189,
+      "sha256": "b3c8072c54e1266d89032fe73013e61e8622ae1c8572107b8a87362eac936fcd",
+      "status": "PASS",
+      "groups": 14
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-bounded-cold-close-2026-10-23-01\\controls-01\\control-releaseBindingKernelRealPending-22.json",
+      "bytes": 13196,
+      "sha256": "4ffaad450697bbd26330ac3e6c65ff49a57ec1ce90cb90cf231853d898c5b202",
+      "status": "PASS",
+      "groups": 9
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-bounded-cold-close-2026-10-23-01\\controls-01\\control-releaseBindingKernelReal-23.json",
+      "bytes": 13418,
+      "sha256": "04a632264716f019d029006e6d339661ac228df85fb6c045907c77457997b7db",
+      "status": "PASS",
+      "groups": 9
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-bounded-cold-close-2026-10-23-01\\controls-01\\control-releaseBindingKernelReal-24.json",
+      "bytes": 13418,
+      "sha256": "68baec2155bb808d3f1a617214eda1a0fd341b53123b2c4a126f54e37eb4464e",
+      "status": "PASS",
+      "groups": 9
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-bounded-cold-close-2026-10-23-01\\controls-01\\control-releaseBindingKernelReal-25.json",
+      "bytes": 12662,
+      "sha256": "54b2b3ee8c4dff736dd3b1434406c43930155759dd2275d38e46e6a6484e23e5",
+      "status": "PASS",
+      "groups": 9
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-bounded-cold-close-2026-10-23-01\\controls-01\\empty-domain-21.json",
+      "bytes": 2572,
+      "sha256": "cd94c6d0f6d9fd99c626d9b5e588bb31876b42cec144315b3fac51434ded5971",
+      "status": "PASS_ELEVEN_EXACT_BODY_EMPTY_DOMAIN_UNIT_GROUPS",
+      "groups": 11
+    }
+  ],
+  "scope": "Actual source-private fixed RESOURCE_CLOSE caller, one original child per visit, genuine empty original Kernel only; all seven private collections empty, active0, not overviewBusy. Original pending source/reader/raw/observer/scope remains retained through actual settlement. Foreign/unscoped/wrongphase/pending close, constructor accessor mutations, poisoned used collection/error paths and null cold guard refuse. Native/App/Surface/paid-scope/browser fixtures remain disclosed component adapters.",
+  "ownership": "New cold charge stays retained after close/failure with closed facade, genuine Q/Host/controller/native getters and source captures. No GC or zero-Q claim. Prospective module/Kernel/builder/caller amounts are separate unselected ABI proposals; caller prefix before extra Q remains held.",
+  "held": [
+    "Complete Resource.close includes generic catalogue/Binding cleanup before this segment and final published R/native retirement after it; those are not priced or made ready.",
+    "Failed/uncertain staged states remain retained and refuse; this component does not invent late-failure cleanup authority.",
+    "All new WORK/funding amounts and complete Root48 startup/Source224/R/Lifecycle/whole-Q remain unselected.",
+    "Original trusted source/module native identity at initial descriptor capture is a prerequisite; own-data shape is not authority.",
+    "Actual native Chrome shape, actual R jobs/clocks and Main/native/P05 acceptance remain separate."
+  ],
+  "attempts": [
+    "Receipt02 had empty replacement context and failed exact inverse despite intended source;04 records full nonempty context.03 helper syntax failure preserved.",
+    "Null-guard07 was outside the test catch;08 incorrectly expected total setup fetch0 although prior genuine Host had24;10 corrects only the control baseline.",
+    "Focused14 output collided with preserved full-regression14;18/21 use fresh paths.",
+    "Set constructor probe16/17 saw4 getters in TEST-only extra producer.readBindingOwner -> B.inspect -> Records.clone; preserved stacks identify that adapter, and18/21 omit only the extra probe assertion. It is not a production Kernel counter or waived actual source child."
+  ],
+  "workSelected": false,
+  "fundingSelected": false,
+  "Main": false,
+  "P05": "OPEN"
+}

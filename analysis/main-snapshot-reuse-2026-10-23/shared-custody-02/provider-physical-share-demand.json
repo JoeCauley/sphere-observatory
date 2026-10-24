@@ -1,0 +1,105 @@
+{
+  "status": "PASS_FROZEN_ORIGINAL_R_RESERVED_PHYSICAL_CONSUMPTION_COMPONENT_UNSELECTED",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v54-provider-demand-transfer-2026-10-23-01\\candidate-01\\source",
+  "parent": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-coherent-main-reuse-2026-10-23-01\\candidate-01\\source",
+  "files": 522,
+  "parses": 426,
+  "unchangedRoot52Files": 520,
+  "codeHunks": 26,
+  "finalProfileHunks": 3,
+  "inverseHunks": 29,
+  "resource": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v54-provider-demand-transfer-2026-10-23-01\\candidate-01\\source\\biome-service\\native\\resource-leases.js",
+    "bytes": 138917,
+    "sha256": "2160a7d5c8adb44592f29d4df5806832091b54cc702e454eb264a84381d53a33"
+  },
+  "proofs": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v54-provider-demand-transfer-2026-10-23-01\\root-safe-recipe-06.json",
+      "bytes": 218955,
+      "sha256": "e0769d53ddf4477a13964996a4a82f5fff99dbcdc56daae333d7481d246a4443"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v54-provider-demand-transfer-2026-10-23-01\\CHECK-SOURCE-06.json",
+      "bytes": 1901,
+      "sha256": "5101efabe9acc33df12ec7367d4c1a1be327b1b79dd6c089ecb09428f0f32627"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v54-provider-demand-transfer-2026-10-23-01\\complete-demand-controls-05.json",
+      "bytes": 5824,
+      "sha256": "8578fa2b71a6ecf6b0bb5fc38a87a333b66136bed3e6fe0f3266d1fe23648fbd"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v54-provider-demand-transfer-2026-10-23-01\\legacy-provider-controls-04.json",
+      "bytes": 4490,
+      "sha256": "fc363c1580959eb2e04b444c3aae4721fd8b8941f6265f5f514b4688877ce861"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v54-provider-demand-transfer-2026-10-23-01\\complete-demand-controls-counterexample-01.json",
+      "bytes": 1624,
+      "sha256": "06b62f5fba0bc5fb279517ccca76a9d8df72d58aca516fb50a54a16152aec3f8"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v54-provider-demand-transfer-2026-10-23-01\\FAILED-PREPARATION-03.json",
+      "bytes": 537,
+      "sha256": "04711eb3756e0f2ad69ee17172bfbb4c80af130b8520e6909217b0f3eecd5970"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v54-provider-demand-transfer-2026-10-23-01\\control-preparation-04.json",
+      "bytes": 842,
+      "sha256": "d34a2208ab64061a9acd9a4d3cf4a7a1f23f55f098ab504df66fc5352d3e76dc"
+    }
+  ],
+  "actualRModelCases": 19,
+  "unchangedLegacyCases": 20,
+  "sourceOnlyQPeak": 14009529,
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "rows": 224,
+      "digest": "ddd4a3c1ab1a11cfb070895d0a033b037af94e1581d40853451b1821d33b78d4"
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "rows": 5,
+      "digest": "0e96f2cd569e56b7129be4625c11e0f6f0566fdeadccbd8382d6f091eac41919"
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "rows": 9,
+      "digest": "0ef500bcf291cd5619abd6af2ab716e52eff9867ac8c2f8c0958a5eab74001d2"
+    }
+  ],
+  "correctedTheorem": "Distinct immutable owner caps alone do not bound new physical allocation: provider-to-host sharing and provider lease release permit reference-usage cycling while original physical backing remains. Version2 adds five consumption scalars inside the same original R/provider partition. A first provider tag consumes the reserved whole-view envelope before parent metadata or native creation, and credits return only after the original backing is destroyed and value is null. This is coupled original bookkeeping, not a second physical resource ledger. Old closed-epoch live backing remains in actual provider held bytes used by the next admission.",
+  "physicalCase": "Frozen R53 admitted48 new GPU bytes against U32 through three provider-reference cycles. Current exact-source model stops at32 before the third native factory; dropping a shared lease does not credit an unsignaled fence. Original observed destruction returns the exact16 credit.",
+  "additionalCases": "Backing tag metadata refusal releases only unpublished parent metadata before native creation. Original observed physical GPU end unblocks a formerly uncertain close cursor. Raw failure and unknown physical lifetime continue to retain the reservation.",
+  "requirements": {
+    "prepare": 4096,
+    "upload": 262144,
+    "jobs": 2,
+    "serviceCpu": 33554432,
+    "serviceGpu": 10485760,
+    "commonQ": 33554432
+  },
+  "selection": {
+    "format": "sphere-r-provider-complete-demand/2",
+    "module": null,
+    "instance": null,
+    "member": null,
+    "backing": null,
+    "work": null,
+    "completeCaller": null,
+    "actualKernelStateContextInactiveProof": false,
+    "coordinatorWired": false,
+    "StateContextsWired": false,
+    "Main": false,
+    "P05": "OPEN"
+  },
+  "limitations": [
+    "Capacity component only. Actual original Root must open before every provider prepare, authenticate Binding and immutable manifests, use the same original R/Q, and obtain genuine Kernel/StateContexts no-active/no-incoming proof before closing. Outer Promise completion or abort alone is insufficient.",
+    "Explicit component ownership/work prices and tiny limits are models only. Full prospective Main Q, prepare work, failed/closed parents and native work are unpriced and unselected.",
+    "Original service, per-provider and global resource caps remain unchanged. No reduction of assignments, biome content, radius, tiers or walking behavior.",
+    "Fresh original Source admission verifies package bytes only; it is not compiled loader funding, current authority, native Main verification or P05 acceptance.",
+    "Historical R53 recipe, source and failing theorem remain preserved. No server, browser, user runtime, public files or archives were changed."
+  ]
+}

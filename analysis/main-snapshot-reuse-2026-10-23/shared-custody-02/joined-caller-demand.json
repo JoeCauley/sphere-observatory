@@ -1,0 +1,177 @@
+{
+  "status": "PASS_FROZEN_COHERENT_MAIN_CALLER_AND_RESERVED_DEMAND_SOURCE_UNSELECTED",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-main-caller-demand-join-2026-10-23-01\\candidate-01\\source",
+  "parent": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-coherent-main-reuse-2026-10-23-01\\candidate-01\\source",
+  "files": 522,
+  "parses": 426,
+  "changed": [
+    "biome-service/binding-builder.js",
+    "biome-service/commonboundary-adapter.js",
+    "biome-service/native/resource-leases.js",
+    "owned-main-bootstrap.js"
+  ],
+  "unchangedRoot52Files": 518,
+  "componentHunks": {
+    "actualConstructorCaller": 42,
+    "originalResourceReservation": 26,
+    "freshProfiles": 3
+  },
+  "inverseHunks": 71,
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "rows": 224,
+      "digest": "112ec83776f1665adbb01ad6d0af7a133b581d92d910bb3ff4c22e8aeaa7406b"
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "rows": 5,
+      "digest": "0e96f2cd569e56b7129be4625c11e0f6f0566fdeadccbd8382d6f091eac41919"
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "rows": 9,
+      "digest": "0ef500bcf291cd5619abd6af2ab716e52eff9867ac8c2f8c0958a5eab74001d2"
+    }
+  ],
+  "sourceOnlyQPeak": 14009845,
+  "freshSourceReads": 238,
+  "sourceCopies": 224,
+  "sourceOnlyFinalQ": {
+    "heldBytes": 0,
+    "requestedBytes": 0,
+    "bookkeepingBytes": 0,
+    "peakBytes": 14009845,
+    "limitBytes": 33554432,
+    "liveReservations": 0,
+    "maximumReservations": 4096,
+    "owners": [],
+    "scope": "CONSERVATIVE_LOGICAL_METADATA_ADMISSION",
+    "nativeHeap": "UNMEASURED"
+  },
+  "recipe": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-main-caller-demand-join-2026-10-23-01\\exact-join-01.json",
+    "bytes": 240764,
+    "sha256": "ff7799794ab719ee0306fea76d27965cf47a9445c12892ad6b1f4acc180badaf"
+  },
+  "sourceProof": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-main-caller-demand-join-2026-10-23-01\\CHECK-SOURCE-02.json",
+    "bytes": 1736,
+    "sha256": "4455684c71c30819c0c1c2c2b1748c48f9f2045e7c4b67a30c74bb0aba264a6d"
+  },
+  "preparation": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-main-caller-demand-join-2026-10-23-01\\control-preparation-02.json",
+    "bytes": 4512,
+    "sha256": "353fde5730d41c2c2536849bf984cb8564519d7c383ef3c281ea8a32c7d6288e"
+  },
+  "resourceCases": 19,
+  "legacyResourceCases": 20,
+  "constructorCallerCases": 8,
+  "constructorCallerGroups": 32,
+  "reports": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-main-caller-demand-join-2026-10-23-01\\control-ownedHostStagesReadCache-positive03.json",
+      "bytes": 19532,
+      "sha256": "b7da673e7f1985deeb59571b58e61f2d79e9103587b607c41b227ea9e184d8db",
+      "control": "positive",
+      "status": "PASS",
+      "groups": 11
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-main-caller-demand-join-2026-10-23-01\\control-ownedHostStagesReadCache-phase03.json",
+      "bytes": 12899,
+      "sha256": "d2e73b3c6cb8aa1ea7a2de15420cfc3ad7ac6c449e1b24f37edbcc1db311c5d7",
+      "control": "phase",
+      "status": "PASS",
+      "groups": 3
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-main-caller-demand-join-2026-10-23-01\\control-ownedHostStagesReadCache-rawFalse03.json",
+      "bytes": 12975,
+      "sha256": "d1a448590e019046c8bcbd37ddfbc9dfd5eb9516b89501ee09cdef5179e30eea",
+      "control": "rawFalse",
+      "status": "PASS",
+      "groups": 3
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-main-caller-demand-join-2026-10-23-01\\control-ownedHostStagesReadCache-rawNull03.json",
+      "bytes": 12971,
+      "sha256": "5cf201a674c25c4892a00a1812b0f5e5626868287351a8f1219656a2c23b44bb",
+      "control": "rawNull",
+      "status": "PASS",
+      "groups": 3
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-main-caller-demand-join-2026-10-23-01\\control-ownedHostStagesReadCache-rawUndefined03.json",
+      "bytes": 12985,
+      "sha256": "e61039024acc8ade6e74937d0c3762430216f0879e28e0d60cf922251a95e3ff",
+      "control": "rawUndefined",
+      "status": "PASS",
+      "groups": 3
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-main-caller-demand-join-2026-10-23-01\\control-ownedHostStagesReadCache-namespace03.json",
+      "bytes": 12922,
+      "sha256": "9fb06bd1fda6ba8e3459bbc44dfa95f860d6f939eba85b3974e4d3401265ab9c",
+      "control": "namespace",
+      "status": "PASS",
+      "groups": 3
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-main-caller-demand-join-2026-10-23-01\\control-ownedHostStagesReadCache-observer03.json",
+      "bytes": 13033,
+      "sha256": "6fc0f5a4cc10d603d8a9d793d8c226fcd126cb3673d9cf3070427d07959338ce",
+      "control": "observer",
+      "status": "PASS",
+      "groups": 3
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-main-caller-demand-join-2026-10-23-01\\control-ownedHostStagesReadCache-cancel03.json",
+      "bytes": 13651,
+      "sha256": "90e08a1f9806206ca0af036769e0b4982bf257c331002762d1d42b31ecae99c3",
+      "control": "cancel",
+      "status": "PASS",
+      "groups": 3
+    }
+  ],
+  "resourceProof": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-main-caller-demand-join-2026-10-23-01\\complete-demand-controls-03.json",
+    "bytes": 5823,
+    "sha256": "43f6e7c4c35e755406c6fd2dba3a9bfeb2972c7e9284f5435ae769ff712133eb"
+  },
+  "legacyProof": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-main-caller-demand-join-2026-10-23-01\\legacy-provider-controls-04.json",
+    "bytes": 4489,
+    "sha256": "05813c4f42b8b97f5056dd8dd1bb7cae755167fe1cb6e97a85e4ac11e4ac3162"
+  },
+  "sourceFacts": "Actual frozen constructor42 edits and original resource reservation26 edits coexist in one current source package. Every original component edit and all three separately refreshed source profiles replay and invert to Root52. Original source admission verifies238 reads224 copies and clears its own Q after disposal.",
+  "controlsScope": "Actual original owners and exact-body initializer source execute under the same explicitly disclosed component literal, native backend, fixture transport, entry/App/Surface/current models as their frozen predecessors. Full compiled native Main startup, resource host admission and service clock are not exercised by these tests.",
+  "selection": {
+    "module": null,
+    "instance": null,
+    "completeStorage": null,
+    "completeWork": null,
+    "current": null,
+    "actualRootHostAdmission": false,
+    "coordinatorWired": false,
+    "StateContextsWired": false,
+    "Main": false,
+    "P05": "OPEN"
+  },
+  "limits": {
+    "prepare": 4096,
+    "upload": 262144,
+    "jobs": 2,
+    "slots": 64,
+    "serviceCpu": 33554432,
+    "serviceGpu": 10485760,
+    "commonQ": 33554432
+  },
+  "held": [
+    "Actual trusted first-launch namespace/native batch and complete funding/work remain separate.",
+    "Actual Main M, authentic provider U/P, H>=M+P+S and pre-prepare original whole-view wiring remain required.",
+    "Pending/unknown work and original backing lifetime cannot be inferred absent from outer Promise completion or provider handle release.",
+    "Ordinary Main overview/local on the same actual assigned surfaces, complete Frame/fragment/whole-view/appearance and native proof remain open.",
+    "No source component or model pass is Main, P05, PhaseOne acceptance or release. No working walking runtime, tab, server, historical input or parallel Atlas path was modified."
+  ]
+}

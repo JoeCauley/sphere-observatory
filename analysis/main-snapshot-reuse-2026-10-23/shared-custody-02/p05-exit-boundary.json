@@ -1,0 +1,41 @@
+{
+  "utc": "2026-10-21T05:13:38.614Z",
+  "status": "CANONICAL_PHASE_BOUNDARY_CLARIFICATION_NO_GATE_WAIVED",
+  "authority": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\preparation-4096-scope-review-01\\inputs\\Phase-01.frozen.md",
+    "bytes": 69624,
+    "sha256": "aefbb76c7bc18de59457100113a6a7dead0c3e416c4daa0fc67c2f09dd43eecd",
+    "rows": [
+      {
+        "line": 656,
+        "text": "| BPS-P05 | Native renderer/support/provider slots and fixture providers | Main overview and local views resolve the same actual assigned surfaces |"
+      },
+      {
+        "line": 657,
+        "text": "| BPS-P06 | Travel, continuous movement, location and capability-driven UI | Public install/visit and boundary routes use existing commit ownership |"
+      },
+      {
+        "line": 658,
+        "text": "| BPS-P07 | Binding-aware sessions, export/import, retirement and recovery | Legacy saves survive; exact service states reconstruct and missing releases refuse safely |"
+      },
+      {
+        "line": 659,
+        "text": "| BPS-P08 | Full native qualification and delivery record | All scoped conformance obligations and resource limits pass with retained source and preservation evidence |"
+      }
+    ]
+  },
+  "expected": {
+    "P05": "Main overview and local views resolve the same actual assigned surfaces",
+    "P06": "Public install/visit and boundary routes use existing commit ownership",
+    "P07": "Legacy saves survive; exact service states reconstruct and missing releases refuse safely",
+    "P08": "All scoped conformance obligations and resource limits pass with retained source and preservation evidence"
+  },
+  "current": {
+    "P05": "OPEN_IN_PROGRESS",
+    "P06_P08": "NOT_STARTED",
+    "PhaseOne": "NOT_ACCEPTED_NOT_RELEASED"
+  },
+  "interpretation": "Finish the required complete native Main renderer/provider/support/whole-view integration and accurate ownership/resource admission for P05. Keep public continuous travel UI in P06, binding-aware session/export/retirement recovery in P07, and full conformance/quiet timing/native peaks/final delivery in P08. Tests may be performed early when they are useful, but do not silently grow P05 into all remaining Phase One exits.",
+  "preserved": "Native whole-view/fragment/Frame/appearance and actual assigned-surface consistency required by P05 remain open until actual evidence passes. Canonical service/provider/H1/work/upload/job/content limits remain unchanged. No component/model result closes P05.",
+  "sourceEdits": 0
+}

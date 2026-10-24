@@ -1,0 +1,120 @@
+{
+  "status": "PASS_SOURCE_ONLY_THREE_JOB_PREFIX_COMPONENT_UNSELECTED",
+  "artifact": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-trusted-prefix-batching-2026-10-23-01\\candidate-11\\owned-main-trusted-launch.unselected.js",
+    "bytes": 1908195,
+    "sha256": "ea6fdf4f7aa7fb4818ec4f612d06bbc3ef786206e2b2f406e66b6af9a50c6861"
+  },
+  "recipe": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-trusted-prefix-batching-2026-10-23-01\\exact-batching-recipe-11.json",
+    "bytes": 10250,
+    "sha256": "7a0448addacf4f68b41c5ed312619ce59f223bbbe42bbaf42cbf96d371a0c8e4"
+  },
+  "parentFreeze": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-main-caller-demand-join-2026-10-23-01\\FREEZE-04.json",
+    "bytes": 98624,
+    "sha256": "d6947246af1e65bbc01b898baea79f3495b2c538bc07d8c5622a207553da1ddd"
+  },
+  "parentSourceFilesRehashed": 522,
+  "bundleParses": true,
+  "rawSourceInverse": [
+    {
+      "file": "world-address.js",
+      "raw": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-main-caller-demand-join-2026-10-23-01\\candidate-01\\source\\world-address.js",
+        "bytes": 9929,
+        "sha256": "b614e3f9e9492674c180ac9ebc72aec2345e5428bdfe98984cb4cd5c224b77f1"
+      },
+      "compiledBodyEdits": 0,
+      "reverseExact": true
+    },
+    {
+      "file": "world-topology.js",
+      "raw": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-main-caller-demand-join-2026-10-23-01\\candidate-01\\source\\world-topology.js",
+        "bytes": 10225,
+        "sha256": "2652a46d33997899f8c0108481ff84a0c97dfc720f2e3853592d0748280f8cf6"
+      },
+      "compiledBodyEdits": 0,
+      "reverseExact": true
+    },
+    {
+      "file": "biome-service/schema-validators.js",
+      "raw": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-main-caller-demand-join-2026-10-23-01\\candidate-01\\source\\biome-service\\schema-validators.js",
+        "bytes": 1108030,
+        "sha256": "7e2a0965c4e5f92b72bb4af2599425149ce1bb52d501b00471bfb01f59e4a46f"
+      },
+      "compiledBodyEdits": 0,
+      "reverseExact": true
+    },
+    {
+      "file": "biome-service/records.js",
+      "raw": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-main-caller-demand-join-2026-10-23-01\\candidate-01\\source\\biome-service\\records.js",
+        "bytes": 320321,
+        "sha256": "27e37ae885687b93f75878674b80fd074d2bd4dc2a05ab042d4bb7bce6dfdb52"
+      },
+      "compiledBodyEdits": 0,
+      "reverseExact": true
+    },
+    {
+      "file": "biome-service/metadata-budget.js",
+      "raw": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-main-caller-demand-join-2026-10-23-01\\candidate-01\\source\\biome-service\\metadata-budget.js",
+        "bytes": 13676,
+        "sha256": "f297bdde5d682e3396f4dae185dd72651b91551dad3a4a0e31d0bde53c0b0511"
+      },
+      "compiledBodyEdits": 6,
+      "reverseExact": true
+    },
+    {
+      "file": "biome-service/native/source-admission.js",
+      "raw": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-main-caller-demand-join-2026-10-23-01\\candidate-01\\source\\biome-service\\native\\source-admission.js",
+        "bytes": 64189,
+        "sha256": "273e8e880f7ee49366c955154b0a4890d7816eabd6a235485d7c3ec5e599676d"
+      },
+      "compiledBodyEdits": 0,
+      "reverseExact": true
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "raw": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-main-caller-demand-join-2026-10-23-01\\candidate-01\\source\\owned-main-bootstrap.js",
+        "bytes": 355751,
+        "sha256": "5b2dd3bf59c3f26be0ac858a9069b284526b5021a373bf581e6c9d7f587e23ef"
+      },
+      "compiledBodyEdits": 1,
+      "reverseExact": true
+    }
+  ],
+  "prefixEditsExactInverse": 8,
+  "currentnessCorrections": [
+    "Fresh13 actual constructor prototypes; no unused timer prototype demand.",
+    "All6 native ToPropertyDescriptor lookup fields refused before delayed global Own.",
+    "Actual Uint8Array.prototype parent freshly checked before Source descriptor capture.",
+    "Decoder expectation ordinary PASS, not a reproduced callback; no unnecessary decoder module-time check.",
+    "Private globalThis/window aliases consume actual original authenticated outer root; ambient getter counters7/8 become0."
+  ],
+  "defaultSelectorsActualNull": true,
+  "order": "one classic capture job -> one actual timer with all six foundations in their original indivisible order -> original actual timer/Q claim/first entry/early Source take",
+  "controls": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-trusted-prefix-batching-2026-10-23-01\\CHECK-CONTROLS-14.json",
+    "bytes": 10001,
+    "sha256": "0daf651deb6b1e493929c6b3401a1e6c8a8ea9d2e39424025c06eda229b7cbc1"
+  },
+  "controlGroups": 39,
+  "preservation": "No Root55/Root51/Q/S/Records source file, profile, native/browser/server/Git state or historical report edited. This folder is an exact compiled overlay/template, not a new full522-file source tree.",
+  "scope": [
+    "Actual native Node setTimeout + original six product bodies/Q factory/Source port are component evidence; modeled DOM/SRI/native trust/prior funding and diagnostics are explicit.",
+    "The default emitted bundle refuses before queue/foundation evaluation. Positive test amounts and dummy fee tables are diagnostic, not selected.",
+    "No pause occurs between Schema and Records. Expected native capture/absence/constructor/species/iterator/write-target rows are retained before the first wait and checked again before every delayed capture.",
+    "Partial publication/raw queue failure stays rooted. Namespace/error facts remain fresh in the original Q entry callback; no replay or claimed native settlement.",
+    "All current/new funding and work remain held. The new whole positive ABI and complete per-job fee table need their own source-pinned review, including all5 semantic Records guards if selected.",
+    "Root55 original complete graph/catalogue/profiles and future publication/closed ownership remain separate. No actual HTML/SRI/bundle selection, whole-Q, paidR/Main/P05/nativeCPU/nativeHeap claim."
+  ],
+  "funding": null,
+  "work": null,
+  "Main": false
+}

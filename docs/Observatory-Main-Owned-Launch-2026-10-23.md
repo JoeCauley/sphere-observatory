@@ -1,3 +1,5 @@
+> Current update, October23: genuine constructor-to-Kernel setup and reuse of owned profile state pass their component checks; physical provider demand follows shared backing. Complete Main admission, whole work/Q and native same-surface proof remain open. P05OPEN; walking preserved. [Current integration and remaining path](Observatory-Main-Shared-Custody-2026-10-23.md).
+
 > Current update, October23: coherent bounded-startup/Lifecycle and authentic admitted-source row components pass their frozen checks. Actual early startup transfer, complete caller/work/Q, current/replacement demand and ordinary Main same-surface rendering remain open. P05OPEN; walking preserved. [Snapshot reuse and remaining path](Observatory-Main-Admitted-Snapshot-Reuse-2026-10-23.md).
 
 # Owned startup and saved-data handoffs

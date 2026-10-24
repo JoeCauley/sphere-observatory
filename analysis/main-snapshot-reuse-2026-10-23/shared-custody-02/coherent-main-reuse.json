@@ -1,0 +1,236 @@
+{
+  "status": "PASS_FROZEN_COHERENT_REUSE_SOURCE_AND_COMPONENT_CONTROLS_UNSELECTED",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-coherent-main-reuse-2026-10-23-01\\candidate-01\\source",
+  "parent": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v51-early-source-snapshot-handoff-2026-10-23-01\\candidate-02\\source",
+  "files": 522,
+  "parses": 426,
+  "changed": [
+    "biome-service/binding-builder.js",
+    "biome-service/commonboundary-adapter.js",
+    "biome-service/host-world.js",
+    "biome-service/native/surface-kernel.js",
+    "biome-service/publication.js",
+    "biome-service/records.js",
+    "biome-service/storage.js",
+    "biome-service/verified-record-store.js",
+    "owned-main-bootstrap.js"
+  ],
+  "unchangedRoot51Files": 513,
+  "codeHunks": 123,
+  "freshProfiles": [
+    {
+      "name": "buildGraph",
+      "rows": 224,
+      "digest": "7782b2401080bb9de9a3ccfc34396fd21e7f156abddbe45e181407a07803ed97"
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "rows": 5,
+      "digest": "0e96f2cd569e56b7129be4625c11e0f6f0566fdeadccbd8382d6f091eac41919"
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "rows": 9,
+      "digest": "0ef500bcf291cd5619abd6af2ab716e52eff9867ac8c2f8c0958a5eab74001d2"
+    }
+  ],
+  "inverseHunks": 126,
+  "sourceOnlyQPeak": 13995906,
+  "freshSourceReads": 238,
+  "sourceCopies": 224,
+  "exactRecipe": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-coherent-main-reuse-2026-10-23-01\\exact-join-02.json",
+    "bytes": 459400,
+    "sha256": "8106772d11857648c190f4772ca2243198a8da34f888fd010bbb738c9b703b01"
+  },
+  "sourceProof": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-coherent-main-reuse-2026-10-23-01\\CHECK-SOURCE-03.json",
+    "bytes": 3056,
+    "sha256": "946e1f89008c1a74925f28be61da0c316bd3a363675ff029e59d481392288795"
+  },
+  "reports": [
+    {
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-coherent-main-reuse-2026-10-23-01\\controls-04\\full-regressions-21.json",
+        "bytes": 8442,
+        "sha256": "5e8c56fbcb20fb0aa691b557df887861d1fc60fdb3c2e0108ccee887c787f499"
+      },
+      "status": "PASS_UNSELECTED_ACTUAL_ORIGINAL_COMPONENT_REGRESSIONS",
+      "cases": 18,
+      "groups": 103
+    },
+    {
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-coherent-main-reuse-2026-10-23-01\\controls-04\\control-releaseBindingKernelReal-52r.json",
+        "bytes": 13588,
+        "sha256": "ab1a71198c1a71c2019eff4bca2e78e28e3cbcc1b06545687ef3d0b9c19ecc43"
+      },
+      "status": "PASS",
+      "cases": null,
+      "groups": 10
+    },
+    {
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-coherent-main-reuse-2026-10-23-01\\controls-04\\control-releaseBindingKernelRealPending-52r.json",
+        "bytes": 13145,
+        "sha256": "ef54e6891a6a7353c29b24766e20300110f747397d9397957259412dc8f09d23"
+      },
+      "status": "PASS",
+      "cases": null,
+      "groups": 9
+    },
+    {
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-coherent-main-reuse-2026-10-23-01\\controls-04\\empty-domain-21.json",
+        "bytes": 2573,
+        "sha256": "069a2f3247f71133499cbc4640a772e8ed9e1ff47885f8e18a5a614bbe2e7342"
+      },
+      "status": "PASS_ELEVEN_EXACT_BODY_EMPTY_DOMAIN_UNIT_GROUPS",
+      "cases": null,
+      "groups": 11
+    },
+    {
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-coherent-main-reuse-2026-10-23-01\\controls-04\\control-ownedHostStagesReadPubExtentPositive-52g.json",
+        "bytes": 198270,
+        "sha256": "0beecd92c00f326746c668d9a764d9b04b3cfe528b709741ef27e53c59090907"
+      },
+      "status": "PASS",
+      "cases": null,
+      "groups": 4
+    },
+    {
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-coherent-main-reuse-2026-10-23-01\\controls-04\\control-ownedHostStagesReadPubSemanticProducer-52g.json",
+        "bytes": 18831,
+        "sha256": "7bd1e0c0a4f5d7a8e86b92569167c281b0c37e49940ca8ca5741a82c8998d022"
+      },
+      "status": "PASS",
+      "cases": null,
+      "groups": 3
+    },
+    {
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-coherent-main-reuse-2026-10-23-01\\controls-04\\control-ownedHostStagesReadPubSemanticAfter-52g.json",
+        "bytes": 22008,
+        "sha256": "bdbdb918bdad5796825f698fdbed03994a12b7ce0287bd0dce15a39cc6f66769"
+      },
+      "status": "PASS",
+      "cases": null,
+      "groups": 3
+    },
+    {
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-coherent-main-reuse-2026-10-23-01\\controls-04\\control-ownedHostStagesReadPubExtentTransfer-52g.json",
+        "bytes": 142561,
+        "sha256": "c5bc8a1a7fed96ef13b201642522e13c2f5a8301c16169c2693e81f5f7b365c2"
+      },
+      "status": "PASS",
+      "cases": null,
+      "groups": 3
+    },
+    {
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-coherent-main-reuse-2026-10-23-01\\controls-04\\control-ownedHostStagesReadPubDefault-52g.json",
+        "bytes": 20238,
+        "sha256": "41a36bd4a610b7ab175e381500224213ccd23b5a6133c015de04e76ec9ccbb13"
+      },
+      "status": "PASS",
+      "cases": null,
+      "groups": 3
+    },
+    {
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-coherent-main-reuse-2026-10-23-01\\controls-04\\control-ownedHostStagesReadPubExtentPendingV-52g.json",
+        "bytes": 142366,
+        "sha256": "dd9b972ed6b46c5890b8c060bbff52da67971f1e7fa206db86db3ff65b9e918d"
+      },
+      "status": "PASS",
+      "cases": null,
+      "groups": 3
+    },
+    {
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-coherent-main-reuse-2026-10-23-01\\controls-04\\control-ownedHostStagesReadPubRawFalse-52g.json",
+        "bytes": 22345,
+        "sha256": "b2236b1038b1d6cb2e4ea779919f7cb0df4af4453bee0907fb6153a6e8866cc3"
+      },
+      "status": "PASS",
+      "cases": null,
+      "groups": 3
+    },
+    {
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-coherent-main-reuse-2026-10-23-01\\controls-04\\control-ownedHostStagesReadPubSemanticNoBPort-52g.json",
+        "bytes": 20000,
+        "sha256": "bb9c8840d02179d9a60a9a1f840b6fe438ff5d55789533424081ba17ae51328b"
+      },
+      "status": "PASS",
+      "cases": null,
+      "groups": 3
+    },
+    {
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-coherent-main-reuse-2026-10-23-01\\controls-04\\control-record-assertion-08.json",
+        "bytes": 2007,
+        "sha256": "30855ebbc819a3d1fa0f73b6e885ada64e842e81e247549e9a13b1a0f2c96ba2"
+      },
+      "status": "PASS",
+      "cases": null,
+      "groups": 8
+    },
+    {
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-coherent-main-reuse-2026-10-23-01\\controls-06\\control-ownedHostStagesReadCache-52p06.json",
+        "bytes": 20649,
+        "sha256": "600c681d196bb7caa8b1595716de2e28aac3a68ee71a47edcc8b88113c3025e2"
+      },
+      "status": "PASS",
+      "groups": 13
+    },
+    {
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-coherent-main-reuse-2026-10-23-01\\controls-06\\control-boundary-positive-03.json",
+        "bytes": 3024,
+        "sha256": "ffaf985d35c2a60d18642e6a4a07a36452ce5099028a10e7fa7c72e23038a30a"
+      },
+      "status": "PASS",
+      "groups": 3
+    }
+  ],
+  "preservedFailures": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-coherent-main-reuse-2026-10-23-01\\failed-preparation-01.json",
+      "bytes": 191,
+      "sha256": "b1b29004f7bfa8462f0c9285fb1b0c0bbb111f27f43d8c4500a91e9a094faaaa"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-coherent-main-reuse-2026-10-23-01\\CHECK-CONTROLS-05.json",
+      "bytes": 15557,
+      "sha256": "c4870d58573e130578d1c12801e5514055c1c40cc60d5f1c75b189896df10b26"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-coherent-main-reuse-2026-10-23-01\\controls-04\\control-ownedHostStagesReadCache-52p.json",
+      "bytes": 11365,
+      "sha256": "dc206e5fc50a17b8ae55306d1c2be9039d080b53d4d5cb461be05afa97012196"
+    }
+  ],
+  "dispositions": [
+    "First source preparation refused ambiguous repeated P append anchors before copy/tests; successor preserves exact ordered P golden site with unique portable contexts.",
+    "First constructor component model predates R Host synchronous guard and refuses; corrected successor adds only existing disclosed G/R Host synchronous literal model16384/diagnosticOnly. Original product remains unchanged."
+  ],
+  "selection": {
+    "completeWork": null,
+    "completeFunding": null,
+    "actualCompiledLaunch": false,
+    "actualMainCurrent": false,
+    "Main": false,
+    "P05": "OPEN"
+  },
+  "limitations": [
+    "New source selectors and funding/work/current/PAY literals remain null; no runtime is published or selected.",
+    "All controls preserve their original explicitly disclosed caller/current/native/work/funding/GL/Surface/transport models. Constructor and semantic positive routes are separately selected tests of one coherent file set, not simultaneous original Main execution.",
+    "Actual Root caller successor, original Source callback and Binder /2, complete prior first-launch/current/account/work and seven-field resource demand plus ordinary same-surface Main drawing remain open.",
+    "Source/frame/metadata/cost/native/acceptance states are separate. Passing126inverse source hunks and component controls cannot close05."
+  ]
+}

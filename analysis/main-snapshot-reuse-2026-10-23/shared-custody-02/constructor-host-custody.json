@@ -1,0 +1,158 @@
+{
+  "status": "PASS_FROZEN_ORIGINAL_B_HOST_RECEIPT_HANDOFF_COMPONENT_UNSELECTED",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v56-constructor-host-custody-2026-10-23-01\\candidate-01\\source",
+  "parent": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-main-caller-demand-join-2026-10-23-01\\candidate-01\\source",
+  "files": 522,
+  "parses": 426,
+  "unchangedRoot55Files": 520,
+  "codeHunks": 1,
+  "finalProfileHunks": 3,
+  "inverseHunks": 4,
+  "binding": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v56-constructor-host-custody-2026-10-23-01\\candidate-01\\source\\biome-service\\binding-builder.js",
+    "bytes": 104481,
+    "sha256": "667131c515df4085faa95397817d947d0c7641102131fc15bec970190c48306b"
+  },
+  "unchangedHost": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v56-constructor-host-custody-2026-10-23-01\\candidate-01\\source\\biome-service\\host-world.js",
+    "bytes": 126230,
+    "sha256": "eb7993dfe26d7a6b3254ca7b068eba08eddf1ca5aee3dc7a4b536a01193288aa"
+  },
+  "recipe": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v56-constructor-host-custody-2026-10-23-01\\exact-handoff-01.json",
+    "bytes": 172027,
+    "sha256": "ced8217735f2fd5ff5d25f3df9ae768585aa6875ecb7984003f4b748399a82bf"
+  },
+  "sourceProof": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v56-constructor-host-custody-2026-10-23-01\\CHECK-SOURCE-02.json",
+    "bytes": 1954,
+    "sha256": "a03cbcd267f0e1fc08f35db4fa136570b4a520dc05fcd40cc96f0835ce0d0708"
+  },
+  "preparation": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v56-constructor-host-custody-2026-10-23-01\\control-preparation-02.json",
+    "bytes": 3870,
+    "sha256": "32ab357a0a259129e89e0f0df2c739185e9983c8e1e5ace7a7989695b44c5fe0"
+  },
+  "reports": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v56-constructor-host-custody-2026-10-23-01\\control-ownedHostStagesReadCache-positive03.json",
+      "bytes": 19533,
+      "sha256": "aad711a45dba826e8998bf0a058d607507a7a860edb34f1756e30bab99834933",
+      "control": "positive",
+      "status": "PASS",
+      "groups": 11
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v56-constructor-host-custody-2026-10-23-01\\control-ownedHostStagesReadCache-phase03.json",
+      "bytes": 12899,
+      "sha256": "4916a1193e164cb65b169cb3989f9f9b8cfb48951e2bad13ca2dbfebbe3151b4",
+      "control": "phase",
+      "status": "PASS",
+      "groups": 3
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v56-constructor-host-custody-2026-10-23-01\\control-ownedHostStagesReadCache-rawFalse03.json",
+      "bytes": 12975,
+      "sha256": "0e397d6e92e7c3f510a43a2c1b479f1051fbe77f42b39d032d0c00a5b0336d7e",
+      "control": "rawFalse",
+      "status": "PASS",
+      "groups": 3
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v56-constructor-host-custody-2026-10-23-01\\control-ownedHostStagesReadCache-rawNull03.json",
+      "bytes": 12971,
+      "sha256": "90ed9ba9114475d1b64b5125a5068d6eb84d1b2b0db841b52d9881a7130fb01b",
+      "control": "rawNull",
+      "status": "PASS",
+      "groups": 3
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v56-constructor-host-custody-2026-10-23-01\\control-ownedHostStagesReadCache-rawUndefined03.json",
+      "bytes": 12985,
+      "sha256": "2bb88f74c4d1f2979700a794e16ec9c140d9d93dd2dac280323c8725ee7c6b06",
+      "control": "rawUndefined",
+      "status": "PASS",
+      "groups": 3
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v56-constructor-host-custody-2026-10-23-01\\control-ownedHostStagesReadCache-namespace03.json",
+      "bytes": 12922,
+      "sha256": "2539dffb78456972708882b1d7f88a4af0f67b08667d4ad398475c184cffbeb8",
+      "control": "namespace",
+      "status": "PASS",
+      "groups": 3
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v56-constructor-host-custody-2026-10-23-01\\control-ownedHostStagesReadCache-observer03.json",
+      "bytes": 13033,
+      "sha256": "7b633f218f75a6e1b1d26f7bf864f2e65f4f4ef43badee930db9b4662465aac9",
+      "control": "observer",
+      "status": "PASS",
+      "groups": 3
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v56-constructor-host-custody-2026-10-23-01\\control-ownedHostStagesReadCache-cancel03.json",
+      "bytes": 13651,
+      "sha256": "d4c7775b71dbf154c4f463796cdf441c1004bd940dd83835d8d7ff2aae9b0110",
+      "control": "cancel",
+      "status": "PASS",
+      "groups": 3
+    }
+  ],
+  "adoptionGuard": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v56-constructor-host-custody-2026-10-23-01\\control-ownedHostStagesReadCache-adoptionMissing05.json",
+    "bytes": 13351,
+    "sha256": "a8afd21d6e039f4f1856d89b9eb54daa75876af663d67eedaf65dd97cabe1b1f"
+  },
+  "preservedModelFailure": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v56-constructor-host-custody-2026-10-23-01\\control-ownedHostStagesReadCache-adoptionMissing04.json",
+    "bytes": 13906,
+    "sha256": "ee2149b95e61e2bb7eded1d5fa36cdac8faf50bc84469bedec03d4f83e6cfbb0"
+  },
+  "modelCorrection": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v56-constructor-host-custody-2026-10-23-01\\adoption-refusal-disposition-05.json",
+    "bytes": 903,
+    "sha256": "78fa2260aed7141b3f03d19ff5af9e21e8e3fc139b19fce632233b89e8b809c1"
+  },
+  "sourceOnlyQPeak": 14010424,
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "rows": 224,
+      "digest": "37a0ede951dd06abfc0015cab420923c57962782b3fa21c9488ffb39d8ada3f5"
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "rows": 5,
+      "digest": "0e96f2cd569e56b7129be4625c11e0f6f0566fdeadccbd8382d6f091eac41919"
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "rows": 9,
+      "digest": "0ef500bcf291cd5619abd6af2ab716e52eff9867ac8c2f8c0958a5eab74001d2"
+    }
+  ],
+  "change": "Only the genuine original B profile owner adoption ends its dormant original Host capture receipt after a separately required adopt entry and all original current checks. Original Source child, profiles, Strict results, closed Host receipt metadata and B source/support account remain held. No Host guard, validation replay rule, source revalidation or Numeric rule changes.",
+  "actualComponentFacts": "Eight original caller cases pass on coherent source; positive additionally proves Host receipt no longer retained while Source child remains. Missing new adopt work key refuses before receipt end and retains actual original Source/Host roots. Original asynchronous rejection model omission is corrected separately and its failure retained.",
+  "genuineJoinedKernel": "NOT_YET_VERIFIED. Agent P must explicitly close the earlier unrelated fixture P31 capture/projection/receipt and test the subsequent actual staged Kernel with this successor. This component pass does not yet remove that separate integration gate.",
+  "remainingGates": [
+    "Complete Root/PH/Coordinator/resource host admission and full Main M/P/H account",
+    "Original selected startup/current/source/callback/module/closed-parent Q and work; all new amounts remain null",
+    "Ordinary same-surface Main native overview/local/whole-view/fragment/Frame/appearance"
+  ],
+  "selection": {
+    "completeFunding": null,
+    "completeWork": null,
+    "Main": false,
+    "P05": "OPEN"
+  },
+  "limits": {
+    "work": 4096,
+    "upload": 262144,
+    "jobs": 2,
+    "slots": 64,
+    "serviceCpu": 33554432,
+    "serviceGpu": 10485760,
+    "commonQ": 33554432
+  }
+}

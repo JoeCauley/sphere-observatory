@@ -1,0 +1,1 @@
+Frozen source and original-function component evidence only. Actual Main host admission, complete current/callback/work/Q ownership, whole-view authority and native same-surface rendering remain open. Genuine constructor-to-Kernel setup is distinct from whole State preparation. Active reusable State, staged record and launch-pricing successors are excluded from cutoff24.

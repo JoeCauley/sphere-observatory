@@ -1,0 +1,413 @@
+{
+  "status": "PASS",
+  "case": "ownedHostStagesReadCache",
+  "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS",
+  "candidate": {
+    "loaderSha256": "9fa3c2e3285fd1215f313521513455cc20b3894887c04384e3951685f8d88101",
+    "rendererSha256": "29b628c1525014fcefd42d835dade219c09cd1529c34acd235155f9d4391220c"
+  },
+  "disclosures": [
+    "Original cold builder block, staged ResourceHostStage methods and original loader BYOB reader function are exact source extractions. The six original initializer scope methods are extracted unchanged; test-only private bridge activates receipts for the fixed step calls. Surface facts/liveness and App input barrier remain explicit models. Counts describe diagnostic paths, never prices. CurrentScope/full ResourceHostStage.fresh private App parent functions are explicit test adapters; original builder current/native/Renderer/source checks execute.",
+    "Copied Renderer constructor/currentScript/source registration runs with instrumented GL/Surface/G/construction/texture children. No DOM/network/NativeMain proof.",
+    "Actual original Q/S/Records/StrictG08/NumericG08/HostTransferV2/KernelPending/ProviderProfiles/ReleaseStore/Binding/CommonBoundary/Allocator/VerifiedRecordStore/CheckpointRepository bodies run. Initial current224-source legacy S.admit is setup only, not selected paid startup.",
+    "Storage.open/readonly indexed cursor and installed fixture raw manifest/release resource identities are explicit data/transport adapters. All genuine verification, sameQ and fixed configured factory branding execute; no resource bytes are read.",
+    "Strict/Numeric/Host/Kernel and private builder/producer guards use literal-only diagnostic amounts/work markers. Entire loader module/controller/entry funding is excluded by extraction, and actual R slice/frame/native jobs/callback work remains held. Seven R resource ceilings are zeros for genuine API brand/bind tests only; full-host vector is not selected.",
+    "Closed and failed controllers, profiles, genuine certificates, raw native Promises, Q facades and private Host lease aliases remain retained as reported. Authenticated actual-only workspace retirement is exercised in a separate Host phase; original expected/profile/result/certificate/closed-Q roots remain retained. No GC inference. Diagnostic result constants are actual source minimum floors, not selected allowances."
+  ],
+  "groups": [
+    "Actual S owns/freeze-admits the current224-row graph; raw buildGraph object is not reused as authority",
+    "Actual copied Renderer constructor and its private canonical program record populate the reciprocal source-currentScript reader",
+    "Exact new initializer profile START/STEP/READ and original pending observe/barrier functions drive genuine Source/Host/C/Strict profiles into the original B constructor with zero source reads; marker units are diagnostic only.",
+    "Exact original prior fixture P31 capture/projection/receipt close before Kernel; adopted Binding constructor has ended only its Host capture pin while retaining Source/Strict/profile ownership.",
+    "Actual original same-Q nonempty Binding and genuine retained-owned-Host Kernel are available before demand setup."
+  ],
+  "counts": {
+    "reads": 224,
+    "shaderQueries": 744206,
+    "facts": 372103
+  },
+  "diagnosticEdits": [
+    {
+      "path": "biome-service/records.js",
+      "sha256": "61594e2384c04b211337aafa1ab38593a566cb78dde55744761f4416ca3e799c",
+      "applied": [
+        [
+          "const OWNED_ADDRESS_VALIDATION_MODULE_METADATA_BYTES=null;",
+          "const OWNED_ADDRESS_VALIDATION_MODULE_METADATA_BYTES=1;"
+        ],
+        [
+          "const OWNED_HOST_WORLD_VALIDATION_MODULE_METADATA_BYTES=null;",
+          "const OWNED_HOST_WORLD_VALIDATION_MODULE_METADATA_BYTES=1;"
+        ],
+        [
+          "const OWNED_STAGED_PARSE_MODULE_BYTES=null;",
+          "const OWNED_STAGED_PARSE_MODULE_BYTES=1;"
+        ],
+        [
+          "const OWNED_BINDING_RECORD_VALIDATION_MODULE_METADATA_BYTES=null;",
+          "const OWNED_BINDING_RECORD_VALIDATION_MODULE_METADATA_BYTES=1;"
+        ],
+        [
+          "const STAGED_SCHEMA_WORK=null;",
+          "const STAGED_SCHEMA_WORK={diagnosticOnly:true};"
+        ],
+        [
+          "const OWNED_BINDING_READ_DECODE_CURRENT=null;",
+          "const OWNED_BINDING_READ_DECODE_CURRENT=launchDecodeCurrent;"
+        ]
+      ]
+    },
+    {
+      "path": "biome-service/native/strict-record-owner.js",
+      "sha256": "40c0122815e79ec98b67ddc4e42de982365ad88e81c66d1392dfc552c63d37db",
+      "applied": [
+        [
+          "const RESULT_FIXED_BYTES=null,RESULT_NODE_BYTES=null,RESULT_UNIT_BYTES=null,WORKSPACE_WORK=null;",
+          "const RESULT_FIXED_BYTES=15676,RESULT_NODE_BYTES=356,RESULT_UNIT_BYTES=6,WORKSPACE_WORK={diagnosticOnly:true};"
+        ],
+        [
+          "const MODULE_METADATA_BYTES=null;",
+          "const MODULE_METADATA_BYTES=1;"
+        ],
+        [
+          "const INSTANCE_METADATA_BYTES=null,RECORD_METADATA_BYTES=null,WORK=null;",
+          "const INSTANCE_METADATA_BYTES=131072,RECORD_METADATA_BYTES=1048576,WORK={diagnosticOnly:true};"
+        ],
+        [
+          "const DESCRIPTOR_WORK=null;",
+          "const DESCRIPTOR_WORK={diagnosticOnly:true};"
+        ]
+      ]
+    },
+    {
+      "kind": "NAMED_FIXTURE_COMMONBOUNDARY_FIRST_NODE_LOAD_LITERAL_ONLY",
+      "original": "3f583b131ecc53c155419ec2fdb0692d63455507ad2d01a20fc3b8d376e06168",
+      "derived": "4b159114b222f8cd881c0f0134f42491590a1b2baf9400374b8978350c360466"
+    },
+    {
+      "path": "biome-service/numeric-profile.js",
+      "sha256": "c13a00778d88b96c1e21ccb6fd4cb4af69b8e6c47287e08cfb73f37685cec6ad",
+      "applied": [
+        [
+          "const OWNED_NUMERIC_MODULE_METADATA_BYTES=null;",
+          "const OWNED_NUMERIC_MODULE_METADATA_BYTES=1;"
+        ],
+        [
+          "const INSTANCE_METADATA_BYTES=null,PRODUCER_METADATA_BYTES=null,WORK=null;",
+          "const INSTANCE_METADATA_BYTES=131072,PRODUCER_METADATA_BYTES=1048576,WORK={diagnosticOnly:true};"
+        ],
+        [
+          "const WORKSPACE_FORWARD_WORK=null,RECORD_ADDRESS_WORK=null;",
+          "const WORKSPACE_FORWARD_WORK={diagnosticOnly:true},RECORD_ADDRESS_WORK={diagnosticOnly:true};"
+        ],
+        [
+          "const DESCRIPTOR_WORK=null;",
+          "const DESCRIPTOR_WORK={diagnosticOnly:true};"
+        ],
+        [
+          "const ADDRESS_DATA_WORK=null,BOUNDED_PROGRESSION_WORK=null;",
+          "const ADDRESS_DATA_WORK={diagnosticOnly:true},BOUNDED_PROGRESSION_WORK={diagnosticOnly:true};"
+        ]
+      ]
+    },
+    {
+      "kind": "R54_ORIGINAL_CAPACITY_DIAGNOSTIC_LITERALS_ONLY",
+      "edits": [
+        [
+          "const PROVIDER_AGGREGATE_MODULE_BYTES=null,PROVIDER_AGGREGATE_INSTANCE_BYTES=null,PROVIDER_AGGREGATE_RECORD_BYTES=null,PROVIDER_AGGREGATE_WORK=null;",
+          "const PROVIDER_AGGREGATE_MODULE_BYTES=4096,PROVIDER_AGGREGATE_INSTANCE_BYTES=131072,PROVIDER_AGGREGATE_RECORD_BYTES=8192,PROVIDER_AGGREGATE_WORK={adopt:1,retire:1,read:1};"
+        ],
+        [
+          "const PROVIDER_DEMAND_MODULE_BYTES=null,PROVIDER_DEMAND_INSTANCE_BYTES=null,PROVIDER_DEMAND_MEMBER_BYTES=null,PROVIDER_DEMAND_BACKING_BYTES=null,PROVIDER_DEMAND_WORK=null;",
+          "const PROVIDER_DEMAND_MODULE_BYTES=8192,PROVIDER_DEMAND_INSTANCE_BYTES=262144,PROVIDER_DEMAND_MEMBER_BYTES=16384,PROVIDER_DEMAND_BACKING_BYTES=16384,PROVIDER_DEMAND_WORK={open:1,claim:1,check:1,close:1,tag:1,retire:1,beginJob:1,endJob:1};"
+        ]
+      ]
+    },
+    {
+      "path": "biome-service/storage.js",
+      "sha256": "6c24b70b2f853defb6db90df2aeb8e2bbcf0b6ef48e264a2efcb51558f524a7a",
+      "applied": [
+        [
+          "OWNED_STORAGE_READ_MODULE_METADATA_BYTES=null",
+          "OWNED_STORAGE_READ_MODULE_METADATA_BYTES=1"
+        ],
+        [
+          "OWNER_METADATA_BYTES=null,OPERATION_METADATA_BYTES=null,NATIVE_INPUT_METADATA_BYTES=null,WORK=null",
+          "OWNER_METADATA_BYTES=32768,OPERATION_METADATA_BYTES=32768,NATIVE_INPUT_METADATA_BYTES=1048576,WORK={\"owner\":1,\"register\":1,\"begin\":1,\"complete\":1,\"abort\":1,\"error\":1,\"success\":1,\"pending\":1,\"take\":1,\"status\":1,\"close\":1}"
+        ],
+        [
+          "OWNED_STORAGE_READ_NATIVE_CURRENT=null,OWNED_STORAGE_READ_PAY=null",
+          "OWNED_STORAGE_READ_NATIVE_CURRENT=globalThis.__storageReadNativeModel,OWNED_STORAGE_READ_PAY=globalThis.__storageReadPayModel"
+        ]
+      ]
+    },
+    {
+      "path": "biome-service/host-world.js",
+      "sha256": "77054d76d13f83712f3885bb739712c8bd1db49c7470296619b1a91dfaf6c863",
+      "applied": [
+        [
+          "OWNED_HOST_CAPTURE_INSTANCE_BYTES=null,OWNED_HOST_CAPTURE_SCRATCH_BYTES=null,OWNED_HOST_CAPTURE_RESULT_BYTES=null,OWNED_HOST_CAPTURE_WORK=null,OWNED_HOST_CAPTURE_LEGACY_WORK=null",
+          "OWNED_HOST_CAPTURE_INSTANCE_BYTES=16384,OWNED_HOST_CAPTURE_SCRATCH_BYTES=1048576,OWNED_HOST_CAPTURE_RESULT_BYTES=1048576,OWNED_HOST_CAPTURE_WORK={diagnosticOnly:true},OWNED_HOST_CAPTURE_LEGACY_WORK={unpricedLegacy:true}"
+        ],
+        [
+          "ORIGINAL_HOST_REUSE_INSTANCE_BYTES=null",
+          "ORIGINAL_HOST_REUSE_INSTANCE_BYTES=262144"
+        ],
+        [
+          "const OWNED_HOST_INSTANCE_METADATA_BYTES=null,OWNED_HOST_PENDING_METADATA_BYTES=null,OWNED_HOST_WORK=null,OWNED_HOST_NUMERIC_TRANSFER_WORK=null;",
+          "const OWNED_HOST_INSTANCE_METADATA_BYTES=1048576,OWNED_HOST_PENDING_METADATA_BYTES=32768,OWNED_HOST_WORK={diagnosticOnly:true},OWNED_HOST_NUMERIC_TRANSFER_WORK={diagnosticOnly:true};"
+        ],
+        [
+          "const OWNED_HOST_STATIC_PROJECTION_MODULE_BYTES=null;",
+          "const OWNED_HOST_STATIC_PROJECTION_MODULE_BYTES=1;"
+        ],
+        [
+          "OWNED_HOST_STATIC_PROJECTION_INSTANCE_BYTES=null,OWNED_HOST_STATIC_PROJECTION_RESULT_BYTES=null,OWNED_HOST_STATIC_PROJECTION_WORK=null,OWNED_HOST_STATIC_VALIDATION_WORK=null",
+          "OWNED_HOST_STATIC_PROJECTION_INSTANCE_BYTES=131072,OWNED_HOST_STATIC_PROJECTION_RESULT_BYTES=131072,OWNED_HOST_STATIC_PROJECTION_WORK={diagnosticOnly:true},OWNED_HOST_STATIC_VALIDATION_WORK={unpricedValidation:true}"
+        ],
+        [
+          "const OWNED_HOST_STAGED_CAPTURE_INSTANCE_BYTES=null,OWNED_HOST_STAGED_CAPTURE_RESULT_BYTES=null,OWNED_HOST_STAGED_CAPTURE_WORK=null;",
+          "const OWNED_HOST_STAGED_CAPTURE_INSTANCE_BYTES=262144,OWNED_HOST_STAGED_CAPTURE_RESULT_BYTES=262144,OWNED_HOST_STAGED_CAPTURE_WORK={diagnosticOnly:true};"
+        ],
+        [
+          "const OWNED_CAPTURE_VALIDATION_MODULE_BYTES=null;",
+          "const OWNED_CAPTURE_VALIDATION_MODULE_BYTES=1;"
+        ],
+        [
+          "const LEASE_METADATA_BYTES=null;",
+          "const LEASE_METADATA_BYTES=16384;"
+        ],
+        [
+          "const OWNED_HOST_SYNCHRONOUS_METADATA_BYTES=null,OWNED_HOST_SYNCHRONOUS_WORK=null;",
+          "const OWNED_HOST_SYNCHRONOUS_METADATA_BYTES=16384,OWNED_HOST_SYNCHRONOUS_WORK={diagnosticOnly:true};"
+        ]
+      ]
+    },
+    {
+      "path": "biome-service/binding-builder.js",
+      "sha256": "4bf0f988e2aec9360aba7e30cad2933ca0802760150a680c8495e98083d8a773",
+      "applied": [
+        [
+          "OWNED_BINDING_CACHE_MODULE_BYTES=null",
+          "OWNED_BINDING_CACHE_MODULE_BYTES=1"
+        ],
+        [
+          "OWNER_METADATA_BYTES=null,RETAIN_METADATA_BYTES=null,WORK=null",
+          "OWNER_METADATA_BYTES=32768,RETAIN_METADATA_BYTES=131072,WORK={\"begin\":1,\"register\":1,\"attach\":1,\"retain\":1,\"check\":1,\"readHandle\":1}"
+        ],
+        [
+          "const OWNED_BINDING_CACHE_CURRENT=null;",
+          "const OWNED_BINDING_CACHE_CURRENT=globalThis.__cacheParentCurrent;"
+        ]
+      ]
+    },
+    {
+      "path": "biome-service/native/surface-kernel.js",
+      "sha256": "229c6de0a311ae03eff6eab9f477c5670c544c1812b799bd5184fa1392fc9992",
+      "applied": [
+        [
+          "KERNEL_HOST_REUSE_INSTANCE_BYTES=null",
+          "KERNEL_HOST_REUSE_INSTANCE_BYTES=262144"
+        ],
+        [
+          "OWNED_KERNEL_INSTANCE_METADATA_BYTES=null,OWNED_KERNEL_WORK=null",
+          "OWNED_KERNEL_INSTANCE_METADATA_BYTES=1048576,OWNED_KERNEL_WORK={diagnosticOnly:true}"
+        ]
+      ]
+    },
+    {
+      "path": "biome-service/verified-record-store.js",
+      "sha256": "647c1cb2cc0e08636fc957e5bc09d5fb9d4652175d24c83f182b42eb8f06ab81",
+      "applied": [
+        [
+          "STAGED_BINDING_READ_MODULE_BYTES=null;",
+          "STAGED_BINDING_READ_MODULE_BYTES=1;"
+        ],
+        [
+          "const OWNER_METADATA_BYTES=null,WORK=null;",
+          "const OWNER_METADATA_BYTES=16384,WORK={diagnosticOnly:true};"
+        ],
+        [
+          "const INSTANCE_METADATA_BYTES=null,SCRATCH_METADATA_BYTES=null,RESULT_METADATA_BYTES=null;",
+          "const INSTANCE_METADATA_BYTES=131072,SCRATCH_METADATA_BYTES=1048576,RESULT_METADATA_BYTES=1048576;"
+        ]
+      ]
+    },
+    {
+      "kind": "NEW_STAGED_STORE_STANDALONE_DIAGNOSTIC_INSTANCE",
+      "disclosure": "Original existing Binding fixture retains its original V instance/WeakSet. The separately evaluated new opt-in V source is used only for this component read with actual storage and genuine capture lease; no Main namespace adoption claimed."
+    },
+    {
+      "kind": "ACTUAL_STORAGE_MODULE_BEFORE_ORIGINAL_SOURCE_CAPTURE_AND_FIXTURE",
+      "disclosure": "Root41 exact Storage source plus disclosed literal/native/job models is loaded and same-Q bound before original source capture. Original nonempty Binding setup opens that actual module with fake-indexeddb; its returned private-branded storage is passed unchanged to V. No copied storage or positive port facade is used."
+    }
+  ],
+  "workspaceSamples": [
+    {
+      "where": "builder-Host",
+      "resultChargeAdded": 905860,
+      "workspaceChargeReleased": 1049216,
+      "heldBefore": 11700343,
+      "heldAfter": 11556987
+    },
+    {
+      "where": "builder-Host",
+      "resultChargeAdded": 983684,
+      "workspaceChargeReleased": 1049216,
+      "heldBefore": 12737891,
+      "heldAfter": 12672359
+    },
+    {
+      "where": "builder-Host",
+      "resultChargeAdded": 905860,
+      "workspaceChargeReleased": 1049216,
+      "heldBefore": 16396719,
+      "heldAfter": 16253363
+    },
+    {
+      "where": "builder-Kernel",
+      "resultChargeAdded": 905860,
+      "workspaceChargeReleased": 1049216,
+      "heldBefore": 26535095,
+      "heldAfter": 26391739
+    }
+  ],
+  "pendingPromiseScope": "Actual original Host/Kernel→Numeric→Strict rawPromise forwarding exercised by exactsource. No new observer/advance/native/current calls on read. FullprivateTimer/Rclock integration is separate native-wait controls; directSourceBody driverhas no paidR claim.",
+  "kernel": {
+    "disposed": false,
+    "activeAdmissions": 0,
+    "contexts": 0,
+    "samplers": 0,
+    "serializationBorrows": 0,
+    "sourceImplementation": true,
+    "nativeQualification": "NOT_RUN",
+    "metadata": {
+      "heldBytes": 26391739,
+      "requestedBytes": 26207113,
+      "bookkeepingBytes": 184626,
+      "peakBytes": 27502063,
+      "limitBytes": 33554432,
+      "liveReservations": 300,
+      "maximumReservations": 4096,
+      "owners": [
+        {
+          "name": "binding-constructor-profiles",
+          "bytes": 524964
+        },
+        {
+          "name": "biome-binding-builder",
+          "bytes": 1254494
+        },
+        {
+          "name": "biome-native-kernel",
+          "bytes": 1049152
+        },
+        {
+          "name": "biome-native-source-owner",
+          "bytes": 8257021
+        },
+        {
+          "name": "biome-spatial-index",
+          "bytes": 64406
+        },
+        {
+          "name": "boundary-constructor-profiles",
+          "bytes": 33408
+        },
+        {
+          "name": "builder-model",
+          "bytes": 484920
+        },
+        {
+          "name": "commonboundary-current-source-module",
+          "bytes": 4792
+        },
+        {
+          "name": "commonboundary-current-source-owner",
+          "bytes": 66206
+        },
+        {
+          "name": "owned-numeric-verification",
+          "bytes": 3542796
+        },
+        {
+          "name": "private-admitted-source-rows",
+          "bytes": 198632
+        },
+        {
+          "name": "private-binding-constructor-caller",
+          "bytes": 66222
+        },
+        {
+          "name": "private-binding-constructor-caller-instance",
+          "bytes": 66246
+        },
+        {
+          "name": "private-cached-admitted-binding",
+          "bytes": 33450
+        },
+        {
+          "name": "private-host-before-resource",
+          "bytes": 262788
+        },
+        {
+          "name": "private-kernel-original-host-reuse",
+          "bytes": 262804
+        },
+        {
+          "name": "private-original-host-reuse",
+          "bytes": 262820
+        },
+        {
+          "name": "private-owned-host-capture",
+          "bytes": 34048
+        },
+        {
+          "name": "private-owned-host-capture-validation",
+          "bytes": 17060
+        },
+        {
+          "name": "private-owned-host-staged-capture",
+          "bytes": 525668
+        },
+        {
+          "name": "private-owned-host-static-projection",
+          "bytes": 263480
+        },
+        {
+          "name": "private-staged-owned-host-kernel",
+          "bytes": 1049262
+        },
+        {
+          "name": "private-staged-profile-builder",
+          "bytes": 262820
+        },
+        {
+          "name": "private-storage-resource-completion",
+          "bytes": 33456
+        },
+        {
+          "name": "private-strict-owned-host",
+          "bytes": 1082650
+        },
+        {
+          "name": "private-synchronous-Host",
+          "bytes": 17054
+        },
+        {
+          "name": "strict-owned-record",
+          "bytes": 1580256
+        },
+        {
+          "name": "strict-owned-record-result",
+          "bytes": 5086768
+        }
+      ],
+      "scope": "CONSERVATIVE_LOGICAL_METADATA_ADMISSION",
+      "nativeHeap": "UNMEASURED"
+    },
+    "metadataAndHeap": "COMMON_LOGICAL_ADMISSION; NATIVE_HEAP_UNMEASURED"
+  },
+  "Main": false,
+  "P05": "OPEN"
+}

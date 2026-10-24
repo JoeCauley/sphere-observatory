@@ -1,0 +1,39 @@
+{
+  "pass": true,
+  "cutoff": 24,
+  "snapshots": 319,
+  "sourceEntries": 146037,
+  "recordsVerified": 12333,
+  "recordBytes": 584616704,
+  "snapshotsAdded": 44,
+  "recordsAdded": 853,
+  "freshRestores": [
+    {
+      "snapshot": "main-original-caller-demand-c1",
+      "destination": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v58-source-reuse-safety-2026-10-23-01\\restored-check-24-main-original-caller-demand-c1\\source",
+      "files": 522,
+      "verified": true
+    },
+    {
+      "snapshot": "main-shared-constructor-profile-custody-c1",
+      "destination": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v58-source-reuse-safety-2026-10-23-01\\restored-check-24-main-shared-constructor-profile-custody-c1\\source",
+      "files": 522,
+      "verified": true
+    }
+  ],
+  "earlier275Archives11480RecordsExact": true,
+  "restorerUnchanged": true,
+  "selectedMainComponent": "main-texture-handoff-funded-c3",
+  "latestJoinedMainStartup": "main-staged-world-reuse-join-unselected-c1",
+  "joinedMainStartupSelected": false,
+  "latestUnselectedSourceComposition": "main-shared-constructor-profile-custody-c1",
+  "rawArchivesRemainLocal": true,
+  "excludedActive": [
+    "P reusable State/Coordinator successors",
+    "G staged Records producer C09 successor",
+    "R work-ownership-review16 and any later successor",
+    "all restored-check folders, node_modules, raw archives and five parallel Atlas paths"
+  ],
+  "P05": "OPEN",
+  "Main": false
+}

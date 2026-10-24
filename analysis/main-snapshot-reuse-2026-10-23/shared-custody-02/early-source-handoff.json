@@ -1,0 +1,92 @@
+{
+  "status": "PASS_FROZEN_EARLY_SOURCE_PORT_ORIGINAL_NODE_AND_DECODER_SOURCE_HANDOFFS_UNSELECTED",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v51-early-source-snapshot-handoff-2026-10-23-01\\candidate-02\\source",
+  "parent": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v49-admitted-source-row-lease-2026-10-23-01\\candidate-02\\source",
+  "files": 522,
+  "parses": 426,
+  "unchangedRoot49Files": 520,
+  "codeHunks": 7,
+  "chronologicalInverseHunks": 13,
+  "module": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v51-early-source-snapshot-handoff-2026-10-23-01\\candidate-02\\source\\biome-service\\native\\source-admission.js",
+    "bytes": 64189,
+    "sha256": "273e8e880f7ee49366c955154b0a4890d7816eabd6a235485d7c3ec5e599676d"
+  },
+  "prefix": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v51-early-source-snapshot-handoff-2026-10-23-01\\launch-prefix-source-08.js.txt",
+    "bytes": 12930,
+    "sha256": "76e9ba251f4df0fd7d0bec87d796562b9f81328423b983189b42da49fed10299"
+  },
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "digest": "d2020f1c7870740c2f66ed033f507f6145d006d083267c0fd0d20d53dbc840d4",
+      "rows": 224
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "digest": "cd9e5f4fee95fc5ad3cf330e05cce92a84d55fa5039204e0539d0e3315b1a965",
+      "rows": 5
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "digest": "aea517d6a5a11a494e8c8ed0e870c94eea80faba7a50917e1d7643e523a83420",
+      "rows": 9
+    }
+  ],
+  "sourceOnlyQPeak": 13927824,
+  "controls": {
+    "sameExactSourceModuleGenericGroups": 9,
+    "sameExactSourceModuleScheduledGroups": 3,
+    "candidate02LexicalOriginalNodeDecoderGroups": 7
+  },
+  "recipe": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v51-early-source-snapshot-handoff-2026-10-23-01\\root-safe-recipe-11.json",
+    "bytes": 276726,
+    "sha256": "bcf550d44bb32e20cb89d6dcfdef5a5c9a2def3e296bbe85afcc10bf725bf8c7"
+  },
+  "proofs": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v51-early-source-snapshot-handoff-2026-10-23-01\\CHECK-SOURCE-10.json",
+      "bytes": 7632,
+      "sha256": "9cb511d455612b1f913a2778a48670a25389851701c88341531ad11164771299"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v51-early-source-snapshot-handoff-2026-10-23-01\\CHECK-LEXICAL-09.json",
+      "bytes": 3528,
+      "sha256": "ef188f01f3a2f889bd3efa29735554998d204da8cdc9ab1b292ee941feefaafe"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v51-early-source-snapshot-handoff-2026-10-23-01\\CHECK-CONTROLS-05.json",
+      "bytes": 6498,
+      "sha256": "18bbdc17e8c9440e7bdc3ccc226819fd464c1de59fe74fd10fbe90cff63c8b02"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v51-early-source-snapshot-handoff-2026-10-23-01\\CHECK-SCHEDULED-06.json",
+      "bytes": 5069,
+      "sha256": "991163e1a3bfe8c72e45cc23fd0fdbee0521cc3ea3a51d88e991036b369d33c7"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v51-early-source-snapshot-handoff-2026-10-23-01\\FAILED-PREPARATION-02.json",
+      "bytes": 189,
+      "sha256": "692b4dd34aae8ff087ddfee4db459c26fd51070a29690736575787c55bb2159b"
+    }
+  ],
+  "selection": {
+    "priorSeed": null,
+    "moduleAmount": null,
+    "callerAmount": null,
+    "work": null,
+    "actualCompiledLaunch": false,
+    "actualMainCurrent": false,
+    "Main": false,
+    "P05": "OPEN"
+  },
+  "limitations": [
+    "Source executes before loader; genuine compiled lexical capture/take now has exact source route but has no full native DOM/SRI/timer/original Q-claim execution yet.",
+    "Component launch-state/Q-entry premises, current/pay/amount/transport remain explicit models; old Root38 seed/entry/work cannot be inherited. R is deriving current six-foundation/whole-loader/first-entry amounts and actual scope split separately.",
+    "Root39 retained original script node and decoder guard are reused verbatim; first callback currentScript is null, so original saved node must be handed over with fresh original native/source/namespace checks.",
+    "Source own null-descriptor append prevents inherited index setters; Module port methods/format unchanged from Root49. Legacy source fresh-read/hash path and all Main policy/content limits preserved.",
+    "Original parent/module/caller/pending/failed/uncertain/closed account, real Source bind/current/debit, constructor/semantic/cold-close composition and full resource/Main proof remain open."
+  ]
+}

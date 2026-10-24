@@ -1,0 +1,177 @@
+{
+  "status": "PASS_FROZEN_GENUINE_SHARED_CONSTRUCTOR_PROFILE_CUSTODY_COMPONENT_UNSELECTED",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v57-shared-constructor-profile-custody-2026-10-23-01\\candidate-01\\source",
+  "parent": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v56-constructor-host-custody-2026-10-23-01\\candidate-01\\source",
+  "files": 522,
+  "parses": 426,
+  "unchangedRoot56Files": 520,
+  "codeHunks": 8,
+  "finalProfileHunks": 3,
+  "inverseHunks": 11,
+  "originalPublicBindingCreateExact": true,
+  "binding": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v57-shared-constructor-profile-custody-2026-10-23-01\\candidate-01\\source\\biome-service\\binding-builder.js",
+    "bytes": 105634,
+    "sha256": "40d4e43582371e5a00de7f230d0ef349f1623f634a55dcb620519e14b8f6aa0e"
+  },
+  "recipe": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v57-shared-constructor-profile-custody-2026-10-23-01\\exact-shared-profiles-01.json",
+    "bytes": 175948,
+    "sha256": "29722073dd3a6c09ca0cdbbcf1c98f6c2c7002ff77be85a70cd5d85e10deeaa3"
+  },
+  "sourceProof": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v57-shared-constructor-profile-custody-2026-10-23-01\\CHECK-SOURCE-02.json",
+    "bytes": 1684,
+    "sha256": "13efa677f509a96bd0378e03debf8cdeee144e2879c25ad83a550ad5b0562bea"
+  },
+  "preparation": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v57-shared-constructor-profile-custody-2026-10-23-01\\control-preparation-02.json",
+    "bytes": 4520,
+    "sha256": "6ba7a713b8d7486e56376802f7e6826856614eadf2f85c13449bed94cd5ee65e"
+  },
+  "reports": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v57-shared-constructor-profile-custody-2026-10-23-01\\control-ownedHostStagesReadCache-positive03.json",
+      "bytes": 20098,
+      "sha256": "519be5469e6c5c783c8d7155f8849ae38cc856cc6829dcd95e916a68dc8fdf92",
+      "control": "positive",
+      "status": "PASS",
+      "groups": 11
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v57-shared-constructor-profile-custody-2026-10-23-01\\control-ownedHostStagesReadCache-phase03.json",
+      "bytes": 12899,
+      "sha256": "aa0af3ba86d1c88f09402874dc0a8509ff3b38d950fe2d81d506a9c8d33e952f",
+      "control": "phase",
+      "status": "PASS",
+      "groups": 3
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v57-shared-constructor-profile-custody-2026-10-23-01\\control-ownedHostStagesReadCache-rawFalse03.json",
+      "bytes": 12975,
+      "sha256": "43a47696a1fb4bfac5049bd071fa72f0f16745d6c7b2baf75502748136acce96",
+      "control": "rawFalse",
+      "status": "PASS",
+      "groups": 3
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v57-shared-constructor-profile-custody-2026-10-23-01\\control-ownedHostStagesReadCache-rawNull03.json",
+      "bytes": 12971,
+      "sha256": "f824ffb57f41920e4ad80c1e0575bc7836b25d65ea9d551fad616ea8c3a3778b",
+      "control": "rawNull",
+      "status": "PASS",
+      "groups": 3
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v57-shared-constructor-profile-custody-2026-10-23-01\\control-ownedHostStagesReadCache-rawUndefined03.json",
+      "bytes": 12985,
+      "sha256": "c9e214ed8ec51b09a3b6a2421e10359b37473a5f88edad28d982b5266811b17f",
+      "control": "rawUndefined",
+      "status": "PASS",
+      "groups": 3
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v57-shared-constructor-profile-custody-2026-10-23-01\\control-ownedHostStagesReadCache-namespace03.json",
+      "bytes": 12922,
+      "sha256": "6a7ab78e427148bf722ceab9bfacf7048131466be0ccf98212ca0b22fcc916eb",
+      "control": "namespace",
+      "status": "PASS",
+      "groups": 3
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v57-shared-constructor-profile-custody-2026-10-23-01\\control-ownedHostStagesReadCache-observer03.json",
+      "bytes": 13033,
+      "sha256": "463e01b2849f9fad6042034414f989dc12a94cb70c785d0b0ef5749a0799faa7",
+      "control": "observer",
+      "status": "PASS",
+      "groups": 3
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v57-shared-constructor-profile-custody-2026-10-23-01\\control-ownedHostStagesReadCache-cancel03.json",
+      "bytes": 13685,
+      "sha256": "ad2237ac34384e71eef45370730855395f13c126e879fb96f99bd83cfdf8c79b",
+      "control": "cancel",
+      "status": "PASS",
+      "groups": 3
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v57-shared-constructor-profile-custody-2026-10-23-01\\control-ownedHostStagesReadCache-missingAlias03.json",
+      "bytes": 13371,
+      "sha256": "428416c9dfcd0e9eed82004ce2e1ffff44a4149c770d9a287042ed3b4a108fd4",
+      "control": "missingAlias",
+      "status": "PASS",
+      "groups": 3
+    }
+  ],
+  "comparison": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v57-shared-constructor-profile-custody-2026-10-23-01\\comparison-04.json",
+    "bytes": 818,
+    "sha256": "41fee00fabc078a9c1620c142049f714bcfbc4d5095ca6874d7434aacf8daaa1"
+  },
+  "sourceOnlyQPeak": 14011601,
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "rows": 224,
+      "digest": "9592e1e8dd0a24ffb20bd0fbfde97f76679a09dad7aa1ea67fb8e2235f6b6958"
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "rows": 5,
+      "digest": "0e96f2cd569e56b7129be4625c11e0f6f0566fdeadccbd8382d6f091eac41919"
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "rows": 9,
+      "digest": "0ef500bcf291cd5619abd6af2ab716e52eff9867ac8c2f8c0958a5eab74001d2"
+    }
+  ],
+  "actualChange": "Private original Binding constructor/3 rechecks one of its three genuine same-Q closed Strict result values per visit and requires each retained result account remains owned. Original Boundary/Host/Source custody checks persist. Existing metadata tariff then counts its own wrapper/key/reference cells only:372B subset for this fixed4-reference record; inherited original tree accounts remain fully held. No child tree is cloned by B.create selected path. Whole B owner callables, captures, Map/Set/Q facade/stack/closed fields are separate unselected ownership, never covered by372B.",
+  "actualModelResult": {
+    "qualification": "SAME_EXPLICIT_COMPONENT_MODELS_NOT_SELECTED_WHOLE_MAIN_Q_OR_TIME",
+    "previous": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v56-constructor-host-custody-2026-10-23-01\\control-ownedHostStagesReadCache-positive03.json",
+      "bytes": 19533,
+      "sha256": "aad711a45dba826e8998bf0a058d607507a7a860edb34f1756e30bab99834933"
+    },
+    "beforeProfileSubset": 192788,
+    "afterNewReferenceSubset": 372,
+    "duplicateTreeSubsetAvoided": 192416,
+    "beforeDiagnosticVisits": 15591,
+    "afterDiagnosticVisits": 11956,
+    "visitsAvoided": 3635,
+    "beforeModelQPeak": 25585668,
+    "afterModelQPeak": 25450429,
+    "modelPeakDifference": 135239,
+    "finalHeldDifference": 1177,
+    "extraSourceBytesRemainOwned": true,
+    "sourceReads": 0,
+    "nativeTime": null,
+    "completeQ": null
+  },
+  "retirement": "Original B adoption still ends only dormant Host capture pin. Source child remains until original B disposal and one-row constructor drain. Original Strict results, immutable profiles and closed Host attempt charges remain held. Host guards/source unchanged. Missing new alias WORK key refuses before alias custody/quote with all3 original result parents retained.",
+  "selection": {
+    "format": "sphere-private-binding-constructor-profiles/3",
+    "module": null,
+    "instance": null,
+    "wholeBindingOwnerQuote": null,
+    "completeFunding": null,
+    "completeWork": null,
+    "Main": false,
+    "P05": "OPEN"
+  },
+  "remaining": [
+    "Repeat genuine combined constructor->Kernel test on this coherent successor before claiming that cross-cohort path current",
+    "Actual R/Root M/P/H host admission, whole State/Coordinator driver and bridge/bundle authority",
+    "Full original source/current/work/module/closed-parent Q and ordinary native Main overview/local same assigned surfaces/whole-view/Frame/fragment/appearance"
+  ],
+  "limits": {
+    "prepare": 4096,
+    "upload": 262144,
+    "jobs": 2,
+    "slots": 64,
+    "serviceCpu": 33554432,
+    "serviceGpu": 10485760,
+    "commonQ": 33554432
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "status": "ORIGINAL_CALLER_DEMAND_AND_SHARED_PROFILE_CUSTODY_COMPONENTS_MAIN_HELD",
+  "utc": "2026-10-24T03:54:15.827260+00:00",
+  "proofs": [
+    {
+      "name": "early-source-handoff.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v51-early-source-snapshot-handoff-2026-10-23-01\\CHECK-11.json",
+        "bytes": 4735,
+        "sha256": "f97c940006bbbd97acd5770631b047d125633191036cec4bf5ebc0d22a3b8ce5"
+      }
+    },
+    {
+      "name": "coherent-main-reuse.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-coherent-main-reuse-2026-10-23-01\\CHECK-07.json",
+        "bytes": 10170,
+        "sha256": "ea12f64634d19caaccf460b0cfe313d5afb468fe8c02778e019ab14914d4ae0d"
+      }
+    },
+    {
+      "name": "original-constructor-caller.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-binding-constructor-caller-2026-10-23-01\\CHECK-24.json",
+        "bytes": 14496,
+        "sha256": "9fcb19cce2358272f2e092872fbec96b49e675504fed681e83587afa469be76e"
+      }
+    },
+    {
+      "name": "provider-physical-share-demand.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v54-provider-demand-transfer-2026-10-23-01\\CHECK-07.json",
+        "bytes": 6095,
+        "sha256": "81db7d9714a0957df82ee1ed8866032e532d13fb83913531978e2e0dfe8eee1e"
+      }
+    },
+    {
+      "name": "joined-caller-demand.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-main-caller-demand-join-2026-10-23-01\\CHECK-04.json",
+        "bytes": 7939,
+        "sha256": "7f000afe2ca2f0a99efaff0df3f536b0aa20d8f46ab4a004a330ead5703742d0"
+      }
+    },
+    {
+      "name": "constructor-host-custody.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v56-constructor-host-custody-2026-10-23-01\\CHECK-COMPONENT-06.json",
+        "bytes": 7960,
+        "sha256": "8eeeda570ead2c3f381ac90b36d0d05801c6399c86c521def0d4931c5e321e6a"
+      }
+    },
+    {
+      "name": "shared-profile-custody.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v57-shared-constructor-profile-custody-2026-10-23-01\\CHECK-COMPONENT-04.json",
+        "bytes": 8670,
+        "sha256": "75382c54eb359ce99eea9d6fbfba61917edb4e549b5d2a70544bfff50c77f635"
+      }
+    },
+    {
+      "name": "shared-profile-comparison.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v57-shared-constructor-profile-custody-2026-10-23-01\\comparison-04.json",
+        "bytes": 818,
+        "sha256": "41fee00fabc078a9c1620c142049f714bcfbc4d5095ca6874d7434aacf8daaa1"
+      }
+    },
+    {
+      "name": "genuine-constructor-kernel.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-state-complete-demand-2026-10-23-01\\control-ownedHostStagesReadCache-genuine24.json",
+        "bytes": 18129,
+        "sha256": "31f29b4bd250c66b11f5326241e905f5b956ddc6c4c2bfa1d3003606823fa94d"
+      }
+    },
+    {
+      "name": "trusted-batch-source.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-trusted-prefix-batching-2026-10-23-01\\CHECK-SOURCE-15.json",
+        "bytes": 6483,
+        "sha256": "f513e0c86f09827022a0da62719e9ddd1c04c957ff67ac8e8ac559280838aa0d"
+      }
+    },
+    {
+      "name": "bounded-cold-close-source.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-bounded-cold-close-2026-10-23-01\\CHECK-SOURCE-24.json",
+        "bytes": 8599,
+        "sha256": "daa32dd8125acc4f570f14a8d4314c7fe5b19c4a6f48f8ccc64935f83b84dbaa"
+      }
+    },
+    {
+      "name": "publication-semantic-custody.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-publication-semantic-custody-2026-10-23-01\\CHECK-FUNCTIONAL-09.json",
+        "bytes": 4929,
+        "sha256": "c923efbabb297a05e7684c77c3ed062df1f244a995888278f989fbd433b68a32"
+      }
+    },
+    {
+      "name": "p05-exit-boundary.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\full-ordinary-host-envelope-review-01\\p05-exit-boundary-01.json",
+        "bytes": 2538,
+        "sha256": "1c9fe01eae51a47cfaec5f267f4076f9e6a907f52b82090e4793f9f0237da2f9"
+      }
+    }
+  ],
+  "coherentSource": {
+    "files": 522,
+    "parses": 426,
+    "sourceRows": 224,
+    "sourceAdmissionReads": 238,
+    "sourceAdmissionPeakSubset": 14011601,
+    "fundingSelected": false,
+    "actualMainCurrent": false
+  },
+  "sharedProfileSubset": {
+    "oldBytes": 192788,
+    "newBytes": 372,
+    "avoidedDuplicateBytes": 192416,
+    "additionalSourceReads": 0,
+    "diagnosticVisitsAvoided": 3635,
+    "modeledPeakReduction": 135239,
+    "wholeBindingOwnershipPriced": false,
+    "nativeTiming": false
+  },
+  "genuineConstructorKernel": "Actual original nonempty Binding/Host/commonQ and staged Kernel pass5groups on Root57, with explicit earlier fixture receipt retirement and draft two-file driver overlay. This is setup compatibility, not actual State/whole-view/Main coverage.",
+  "providerDemand": "Original R/2 retains physical shared backing in each provider demand until actual destruction; own-handle release does not restore physical capacity. Nineteen demand component cases and20legacy cases pass. Whole original Main admission and complete bundle authority remain open.",
+  "trustedBatch": "Root55-scoped exact six-foundation batch and early Source same-Q handoff pass39native Node timer/VM groups. New coherent bodies/profiles require regeneration; emitted product work/Q prices remain null.",
+  "modelBoundary": "Component callers retain their named native/current/pay/work/amount/transport/GL/Surface/App/IDB models. Source checks, arithmetic, genuine setup, full funding and ordinary native Main are separate evidence states.",
+  "P05": "OPEN",
+  "P06_P08": "LATER",
+  "PhaseOne": "NOT_ACCEPTED_NOT_RELEASED",
+  "deliveredRuntimeFilesChanged": 0,
+  "rawArchivesRemainLocal": true,
+  "selectedMainStartupComponent": "main-texture-handoff-funded-c3",
+  "activeSuccessorsExcluded": [
+    "P reusable State/Coordinator successors",
+    "G staged Records producer C09 successor",
+    "R work-ownership-review16 and any later successor",
+    "all restored-check folders, node_modules, raw archives and five parallel Atlas paths"
+  ]
+}

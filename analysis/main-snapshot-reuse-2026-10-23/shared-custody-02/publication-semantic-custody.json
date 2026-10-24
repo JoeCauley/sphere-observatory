@@ -1,0 +1,66 @@
+{
+  "status": "FROZEN_FUNCTIONAL_SEMANTIC_CUSTODY_COMPONENT_COMPLETE_PRICES_HELD",
+  "parent": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-publication-extents-2026-10-23-01\\candidate-03\\source",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-publication-semantic-custody-2026-10-23-01\\candidate-08\\source",
+  "modules": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-publication-semantic-custody-2026-10-23-01\\candidate-08\\source\\biome-service\\binding-builder.js",
+      "bytes": 85198,
+      "sha256": "16e5779596b747c884c985232e2366ea3f8722c679e6b9b277f75b6c0dfae79a"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-publication-semantic-custody-2026-10-23-01\\candidate-08\\source\\biome-service\\publication.js",
+      "bytes": 56282,
+      "sha256": "73f2e7fab1d8039cf6e22667decebe737462dfcc01c77430205f3f8ad5813e33"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-publication-semantic-custody-2026-10-23-01\\candidate-08\\source\\biome-service\\records.js",
+      "bytes": 320321,
+      "sha256": "27e37ae885687b93f75878674b80fd074d2bd4dc2a05ab042d4bb7bce6dfdb52"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-publication-semantic-custody-2026-10-23-01\\candidate-08\\source\\biome-service\\verified-record-store.js",
+      "bytes": 41889,
+      "sha256": "caa46a31b79652e7d0d931461905cce95737bb0143523a6d739b7b9a5ad004d0"
+    }
+  ],
+  "files": 522,
+  "entries": 522,
+  "parses": 426,
+  "unchangedEntries": 518,
+  "changed": [
+    "biome-service/binding-builder.js",
+    "biome-service/publication.js",
+    "biome-service/records.js",
+    "biome-service/verified-record-store.js"
+  ],
+  "recipe": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-publication-semantic-custody-2026-10-23-01\\root-safe-recipe-09.json",
+    "bytes": 59140,
+    "sha256": "ba0d11c4a8aa59287b17b74d236fb52d533eb0bdbafac5e67ae6a9c6a196a7d7"
+  },
+  "inventory": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-publication-semantic-custody-2026-10-23-01\\source-inventory-09.json",
+    "bytes": 211036,
+    "sha256": "cb1fd2a476b63c109868b2c5eb5cdbaa30738b065035477e02d003e2d8e72a98"
+  },
+  "functional": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-publication-semantic-custody-2026-10-23-01\\FUNCTIONAL-09.json",
+    "bytes": 12024,
+    "sha256": "2407bcc0ec535db7d69e2996b19d13a08bd46f247551575e2530ebe949457f22"
+  },
+  "earlyRecordsAcquisition": {
+    "mode": "Conditional immutable original Records API field, not footer registration",
+    "field": "ownedPreparedValidation",
+    "format": "sphere-original-private-prepared-validation/1",
+    "entry": "Actual original trusted early Records body captures its private schema table and original Address/Topology instances. With independently funded module guard and derived work, original API includes immutable FORMAT/assertCurrent. Later loader must source/namespace-authenticate that exact Records object and capture only its original field/method.",
+    "authority": "Pure used-fact eligibility only. It does not mint validation, Q, Host, B, source-row, committed, readiness or custody authority. Actual completed original V/B operations and private same-Q/footer maps mint the new custody proofs.",
+    "privateFoundationPremise": "Original foundation Address/Topology bodies and schema/private Records table are authentic under trusted initial evaluation order/native eligibility. Loader later re-evaluates Address/Topology; current page aliases are not equivalent to the private instances used by original Records."
+  },
+  "guards": "All new module/owner/receipt/identity/wrapper/WORK/CURRENT/PAY amounts remain null. Generic/public old verification, producer work, schema callback/source/native/Storage open/input/transaction and caller scopes remain independent obligations. Diagnostic unit values are never selected fees.",
+  "actualReuse": "Completed original V verify/body validation plus original B semantic producer checks are bound to exact frozen stage results and final issued own clones/ticket/transfer, original B/Host/cache/sameQ. Publication reuses only original source-private proof before consume. Default fresh verification path remains.",
+  "sourceAdmission": "Loader and all embedded profiles are exact extent-parent bytes and stale for the four changed modules; root owns coherent fresh source rows/order/module funding/registration and actual current/pay before evaluation. Diagnostic repins are setup only.",
+  "limits": "Original Q32MiB, max4096slots, schema/record/native/service/cold/Main limits unchanged.",
+  "Main": false,
+  "selectedAmounts": false
+}

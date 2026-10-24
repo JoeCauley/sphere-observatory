@@ -1,3 +1,5 @@
+> Current update, October23: genuine constructor-to-Kernel setup and reuse of owned profile state pass their component checks; physical provider demand follows shared backing. Complete Main admission, whole work/Q and native same-surface proof remain open. P05OPEN; walking preserved. [Current integration and remaining path](Observatory-Main-Shared-Custody-2026-10-23.md).
+
 # Main startup and reuse of validated snapshots
 
 The Meadow-Industry walk remains working and unchanged. P05 is still open. The new work makes the usual Main renderer reuse validated state and prepare only the display work it needs, while keeping the simulation independent. Completion still requires one actual startup/rendering path with honest work, memory and resource limits; isolated component passes do not close P05.

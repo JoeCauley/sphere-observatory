@@ -1,0 +1,281 @@
+{
+  "status": "PASS_FROZEN_FUNCTIONAL_SOURCE_COMPONENT_ONLY",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-binding-constructor-caller-2026-10-23-01\\candidate-06\\source",
+  "actualCurrentOverlay": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-binding-constructor-caller-2026-10-23-01\\model-join-14\\source",
+  "profiles": {
+    "caller": "private-staged-binding-constructor/2",
+    "Binding": "sphere-private-binding-constructor-profiles/2",
+    "Boundary": "sphere-private-boundary-constructor-profiles/2"
+  },
+  "candidatePins": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-binding-constructor-caller-2026-10-23-01\\candidate-06\\source\\owned-main-bootstrap.js",
+      "bytes": 353984,
+      "sha256": "1987aab9d6a717930abeb2c46567fd7b3674fd3b9b519d4da073450ba32eccc7"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-binding-constructor-caller-2026-10-23-01\\candidate-06\\source\\biome-service\\binding-builder.js",
+      "bytes": 83004,
+      "sha256": "e379769834f514bf43bba71cfb9c611bdb9d13579bf02f5b6e5017f2bf143466"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-binding-constructor-caller-2026-10-23-01\\candidate-06\\source\\biome-service\\commonboundary-adapter.js",
+      "bytes": 35019,
+      "sha256": "3f583b131ecc53c155419ec2fdb0692d63455507ad2d01a20fc3b8d376e06168"
+    }
+  ],
+  "overlayPins": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-binding-constructor-caller-2026-10-23-01\\model-join-14\\source\\owned-main-bootstrap.js",
+      "bytes": 355747,
+      "sha256": "d55b40726bfe7e800542add7979161056aeced961a0016a3f838f3a081eeb524"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-binding-constructor-caller-2026-10-23-01\\model-join-14\\source\\biome-service\\binding-builder.js",
+      "bytes": 103950,
+      "sha256": "05e9579becd8bbbd98f69ca623b608473ff815ad09a7f4f827a783473be8da7c"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-binding-constructor-caller-2026-10-23-01\\model-join-14\\source\\biome-service\\commonboundary-adapter.js",
+      "bytes": 35019,
+      "sha256": "3f583b131ecc53c155419ec2fdb0692d63455507ad2d01a20fc3b8d376e06168"
+    }
+  ],
+  "inventory": {
+    "files": 522,
+    "parses": 426,
+    "changedFiles": [
+      "biome-service/binding-builder.js",
+      "biome-service/commonboundary-adapter.js",
+      "owned-main-bootstrap.js"
+    ],
+    "other519Root52Exact": true
+  },
+  "recipe": {
+    "codeEdits": 42,
+    "orderedForwardAndInverse": true,
+    "actualRoot52OverlayExact": true,
+    "threeFreshProfiles": [
+      {
+        "name": "buildGraph",
+        "rows": 224,
+        "digest": "168311f77b28ad44494becacac540925f7cc7e242ab239e092db422c9dc4cf93"
+      },
+      {
+        "name": "buildSurfaceEnvelope",
+        "rows": 5,
+        "digest": "0e96f2cd569e56b7129be4625c11e0f6f0566fdeadccbd8382d6f091eac41919"
+      },
+      {
+        "name": "buildStartupEnvelope",
+        "rows": 9,
+        "digest": "0ef500bcf291cd5619abd6af2ab716e52eff9867ac8c2f8c0958a5eab74001d2"
+      }
+    ]
+  },
+  "sourceOnlyAdmission": {
+    "reads": 238,
+    "copies": 224,
+    "finalQ": 0,
+    "notComponentOrWholeQClaim": true
+  },
+  "controls": {
+    "cases": 8,
+    "positiveGroups": 11,
+    "negativeCases": 7,
+    "reports": [
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-binding-constructor-caller-2026-10-23-01\\control-ownedHostStagesReadCache-positive14.json",
+        "bytes": 19536,
+        "sha256": "196a5f8ed7a08ca09044067f766da214ac0fcde015bbc5531d2a9a61d30fcea1",
+        "case": "positive",
+        "groups": 11
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-binding-constructor-caller-2026-10-23-01\\control-ownedHostStagesReadCache-phase14.json",
+        "bytes": 12899,
+        "sha256": "b63b46662f30694094da90ff0b658d17666a6c41b1f9eb504abcdf1414c72204",
+        "case": "phase",
+        "groups": 3
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-binding-constructor-caller-2026-10-23-01\\control-ownedHostStagesReadCache-observer14.json",
+        "bytes": 13033,
+        "sha256": "67458ada72d9cb5d0fa3aa001f72ef379143e52dd6bc67506a5b57b2ef9b889c",
+        "case": "observer",
+        "groups": 3
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-binding-constructor-caller-2026-10-23-01\\control-ownedHostStagesReadCache-cancel14.json",
+        "bytes": 13651,
+        "sha256": "c66e7946fff4d397e5e90b9987b13044d273718d99f921b937128c56b25f81d9",
+        "case": "cancel",
+        "groups": 3
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-binding-constructor-caller-2026-10-23-01\\control-ownedHostStagesReadCache-rawFalse14.json",
+        "bytes": 12975,
+        "sha256": "4d70c78c4a4c66febd81efd3a3f2a36a7044588e362ab8ed43af1b15bbe9e6b4",
+        "case": "rawFalse",
+        "groups": 3
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-binding-constructor-caller-2026-10-23-01\\control-ownedHostStagesReadCache-rawNull14.json",
+        "bytes": 12971,
+        "sha256": "92ade8e543f40cba051f57268921b5ce04d6f1c5df354fad510f594132132f58",
+        "case": "rawNull",
+        "groups": 3
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-binding-constructor-caller-2026-10-23-01\\control-ownedHostStagesReadCache-rawUndefined14.json",
+        "bytes": 12985,
+        "sha256": "bea01776e885c9059b0392a32818744388c6b8d140e8f91973abb09a1016b9fb",
+        "case": "rawUndefined",
+        "groups": 3
+      },
+      {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-binding-constructor-caller-2026-10-23-01\\control-ownedHostStagesReadCache-namespace14.json",
+        "bytes": 12922,
+        "sha256": "f1960eb0fa41459f95f92cce082d529ecbf0900edf05e742efcedb772e4c4a14",
+        "case": "namespace",
+        "groups": 3
+      }
+    ],
+    "scope": "Actual source bodies and original genuine Q/S/Records/Strict/Numeric/Host/Binding/Boundary/Allocator/V/Storage plus extracted initializer dispatcher/observer/barrier under explicitly named native/App/Surface/current/entry/literal marker models. No compiled launch or Main-current payment claim."
+  },
+  "preservedBases": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v51-early-source-snapshot-handoff-2026-10-23-01\\CHECK-11.json",
+      "bytes": 4735,
+      "sha256": "f97c940006bbbd97acd5770631b047d125633191036cec4bf5ebc0d22a3b8ce5"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-coherent-main-reuse-2026-10-23-01\\CHECK-07.json",
+      "bytes": 10170,
+      "sha256": "ea12f64634d19caaccf460b0cfe313d5afb468fe8c02778e019ab14914d4ae0d"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v49-binding-constructor-profile-stages-2026-10-23-01\\CHECK-23.json",
+      "bytes": 9188,
+      "sha256": "a929b9a655b08b48ac9bede237d0c6da0d2c7de05c152d72783ab92120df8f4e"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v48-binding-constructor-profile-custody-2026-10-23-01\\FREEZE-07.json",
+      "bytes": 7326,
+      "sha256": "1b4f25be6146bdd0064228750528ae627b3de1eb32c018b593f2031a003c27af"
+    }
+  ],
+  "supporting": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-binding-constructor-caller-2026-10-23-01\\root-safe-recipe-24.json",
+      "bytes": 46119,
+      "sha256": "25074692f0d7b4d0cd5539c402d0236ed29b65c7cb1526d20d227afaab7ee4ae"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-binding-constructor-caller-2026-10-23-01\\exact-caller-edits-14.json",
+      "bytes": 43817,
+      "sha256": "3cca864ed86232d9d289227e940574fedb5b403c8132bf4cc6112db28ef49a5d"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-binding-constructor-caller-2026-10-23-01\\current-assembly-14.json",
+      "bytes": 108843,
+      "sha256": "0e8d7b61070cd613d25c14e68015ea1053de5c85909f5739b7748250d2f2f69b"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-binding-constructor-caller-2026-10-23-01\\source-verification-19.json",
+      "bytes": 2260,
+      "sha256": "fe423f8c69824c9283e2d6a24f2f6132d0f0332040e1c7d6d59d6958eab8b74d"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-binding-constructor-caller-2026-10-23-01\\function-archive-19.json",
+      "bytes": 455921,
+      "sha256": "86b7b8da00aad2571f58b179d327cc1738b2deea12cac1d4ee5f8d71834b62a6"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-binding-constructor-caller-2026-10-23-01\\funding-and-default-controls-19.json",
+      "bytes": 705,
+      "sha256": "0a502f7479fd38911aff98558774a2b964141ef17ceb6feecb1f88b24356875e"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-binding-constructor-caller-2026-10-23-01\\ownership-and-work-liabilities-23.json",
+      "bytes": 10321,
+      "sha256": "3e342304890146bc8752ccd65b53d9ce706d7ce8ac14e1418a82711311c7f13b"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-binding-constructor-caller-2026-10-23-01\\attempt-dispositions-24.json",
+      "bytes": 8107,
+      "sha256": "7bc58fbe4a75ed54b6fef79e7bafa4e7fb0dd826646eb4fcbe3f9ad71f35cb40"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-binding-constructor-caller-2026-10-23-01\\test-caller-14.cjs",
+      "bytes": 152317,
+      "sha256": "b68387c9f3a0b6f87cc8fd3fbac94f5b6ce74d41bb99d8ed9f3a28502109cb95"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-binding-constructor-caller-2026-10-23-01\\caller-model-14.cjs",
+      "bytes": 15889,
+      "sha256": "9660088ca2b720b1cd6cb267deb5ffd5b6265f6de162376b67461ef94b4e75fb"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-binding-constructor-caller-2026-10-23-01\\assemble-current-14.cjs",
+      "bytes": 3337,
+      "sha256": "7bbc9c5c17b008ed045880d49885021c24c45a454b62e1ec7a7760893216e674"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-binding-constructor-caller-2026-10-23-01\\verify-functional-19.cjs",
+      "bytes": 9134,
+      "sha256": "a4fa1c291e31826584d7ea39af3e0f5160eba4e0bf01d0796390a327d47b7855"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-binding-constructor-caller-2026-10-23-01\\constructor-caller-01.inc.js",
+      "bytes": 4378,
+      "sha256": "4f28f014b806a6e12e1bf3834010afc9eebf92bd6eadf4906be98c1217f3cffa"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-binding-constructor-caller-2026-10-23-01\\catalogue-profile-stages-12.inc.js",
+      "bytes": 7863,
+      "sha256": "04dbed0e347d976e1b3d38338c5073bbf3d3d824d515461e883b03079e003cd6"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-binding-constructor-caller-2026-10-23-01\\test-adaptation-07.json",
+      "bytes": 10786,
+      "sha256": "c791d2aaf594a6e847e93776119cd71a87f73f89d6622e1cfb16e5dedd6ce60d"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-binding-constructor-caller-2026-10-23-01\\seal-24.cjs",
+      "bytes": 12317,
+      "sha256": "ae28d55489d2b5e64932d94111d29cd009b32ebacc8350b859fc8f5046949aa0"
+    }
+  ],
+  "functionalFacts": [
+    "Actual original B and C public create bodies remain exact.",
+    "Existing original initializer scope, observer, pending Promise, barrier, current and authority checks retained; no second current cache or readiness flag.",
+    "New module and catalogue functions born only after distinct prospective Q reserves. Default source-fresh route and qualifier remain available without new selected-only phase keys.",
+    "Selected original Boundary post-await owner is rooted and checked against exact original same-Q affinity before acceptance.",
+    "Actual original raw Strict Promise is rooted before observer eligibility; failed registration retains paid scope and original child roots even after external native success.",
+    "Positive original nonempty prepared Binding uses genuine current profiles with zero new source reads, cache handoff zero DB reads, and original reader/index pin/drain.",
+    "Original B.dispose precedes one-source-drop-per-visit constructor closure; child pins close before Host receipt. Full original Root cold-close current/native domain remains separate."
+  ],
+  "liabilities": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-binding-constructor-caller-2026-10-23-01\\ownership-and-work-liabilities-23.json",
+    "bytes": 10321,
+    "sha256": "3e342304890146bc8752ccd65b53d9ce706d7ce8ac14e1418a82711311c7f13b"
+  },
+  "selection": {
+    "allAmounts": null,
+    "completeWORK": null,
+    "currentPermission": null,
+    "nativeParent": null,
+    "wholeQ": null,
+    "compiledEarlySourceTransfer": null,
+    "Main": false,
+    "P05": "OPEN"
+  },
+  "held": [
+    "Original C.create variable async read/hash/verification prelude and all caller/current/native scopes remain unpriced.",
+    "Source child debits actual initializerTake; enclosing complete fee must exclude that same child and include all remaining operations. Positive WORK alone is not payment.",
+    "New current/constructor phases are not added to R seven-phase semantic whitelist.",
+    "No root/source/controller/closed-original-parent account is released or replaced by the small local new account.",
+    "Optional extended close models are preserved failures outside accepted model scope."
+  ]
+}
