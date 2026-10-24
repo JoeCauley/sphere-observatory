@@ -1,0 +1,24 @@
+{
+  "format": "sphere-main-preservation-reference/23",
+  "manifest": {
+    "path": "I:\\Sphere\\checkpoints\\observatory-main-joint80-2026-10-21\\manifest.json",
+    "bytes": 30315359,
+    "sha256": "ba1d35726e01615dd6efdbc783ad02a402172f11f6623836462fc2e990f8e22d"
+  },
+  "verification": {
+    "path": "I:\\Sphere\\checkpoints\\observatory-main-joint80-2026-10-21\\verification.json",
+    "bytes": 1499,
+    "sha256": "f6bcfba812692173cbd790904c1af46cf027178eb839ef1419c6322ece6bf063"
+  },
+  "restorer": {
+    "path": "I:\\Sphere\\checkpoints\\observatory-main-joint80-2026-10-21\\materialize.py",
+    "bytes": 2115,
+    "sha256": "5918ffddc55d9aea4ad2b570e47ebe2ca49b1d40b9df2c83936b4466e2c10eb3"
+  },
+  "sourceSnapshots": 275,
+  "sourceEntries": 128784,
+  "records": 11480,
+  "rawArchivesRemainLocal": true,
+  "Main": false,
+  "P05": "OPEN"
+}

@@ -1,0 +1,57 @@
+{
+  "status": "FROZEN_PRIVATE_LIFECYCLE_USE_BOUNDARY_SUCCESSOR",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-publication-lifecycle-2026-10-23-01\\candidate-04\\source",
+  "module": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-publication-lifecycle-2026-10-23-01\\candidate-04\\source\\biome-service\\publication.js",
+    "bytes": 53486,
+    "sha256": "5db2452dba3e427b9e2eaec2f885d22168fd7e36c44f3e2d898c6dc0e94256ca"
+  },
+  "parent": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-publication-handoff-2026-10-23-01\\candidate-03\\source",
+  "files": 522,
+  "parses": 426,
+  "sameParent": 521,
+  "onlyChanged": "biome-service/publication.js",
+  "recipe": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-publication-lifecycle-2026-10-23-01\\root-safe-recipe-05.json",
+    "bytes": 9446,
+    "sha256": "a4f2c18a098bda488083ea8ba30a319ac31612365306dcd08723fa3b63a15c2e"
+  },
+  "inventory": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-publication-lifecycle-2026-10-23-01\\source-inventory-05.json",
+    "bytes": 119119,
+    "sha256": "e51a4dec54b5e14d6d6ee91bfd45911c2431b6c0f180fe6591e551077610aaf1"
+  },
+  "functional": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-publication-lifecycle-2026-10-23-01\\FUNCTIONAL-05.json",
+    "bytes": 9547,
+    "sha256": "680915368a0ca0769b46cb0d31b55e1675bf99ad1990396814ecc4c32d4ca9a1"
+  },
+  "liabilities": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-publication-lifecycle-2026-10-23-01\\ownership-and-work-liabilities-04.json",
+    "bytes": 9098,
+    "sha256": "a4f5c2b00dd5439fecaa523d3e7469ac1aba30400cd1c7ce224e5b7c8a4ac0f5"
+  },
+  "lexicalBasis": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-publication-lifecycle-2026-10-23-01\\lexical-basis-04.json",
+    "bytes": 484214,
+    "sha256": "b1e5e1b7cfbbdb51e9feb56559ff69d958ca01b08c9ad893268022bd65ca46af"
+  },
+  "readFirst": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-publication-lifecycle-2026-10-23-01\\READ-FIRST-04.md",
+    "bytes": 2529,
+    "sha256": "b1abcafbb774326165301462e2b4892f924e8d7074febcab85abb17aeab4a579"
+  },
+  "sourceLineEndings": {
+    "parentCRLF": 224,
+    "candidateCRLF": 225,
+    "parentLoneLF": 0,
+    "candidateLoneLF": 0
+  },
+  "bind": "Original private bind(q,actual original source-loaded Lifecycle API); original CURRENT gains that exact eighth operand. Only source-authenticated loader supplies this authority.",
+  "newWorkKey": "lifecycle",
+  "allAmountsWorkCurrentPay": null,
+  "admission": "Root owns exact Lifecycle+Publication row/order/full module account and current profiles. This isolated inherited source has no new module admission and preserves known inherited Storage mismatch.",
+  "Main": false,
+  "policyLimitsColdSelectionChanged": false,
+  "noBrowserServerGitRuntimeCheckpointChanges": true
+}

@@ -1,0 +1,219 @@
+{
+  "status": "PASS_FROZEN_V4_AND_PRIVATE_LOADING_REUSE_JOIN_UNSELECTED",
+  "parent": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v44-private-loading-reuse-join-2026-10-23-01\\candidate-01\\source",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v46-semantic-loading-reuse-join-2026-10-23-01\\candidate-01\\source",
+  "files": 522,
+  "parses": 426,
+  "changed": [
+    "biome-service/host-world.js",
+    "biome-service/native/surface-kernel.js",
+    "biome-service/numeric-profile.js",
+    "owned-main-bootstrap.js"
+  ],
+  "other518ParentFilesExact": true,
+  "inverseHunks": 49,
+  "loader": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v46-semantic-loading-reuse-join-2026-10-23-01\\candidate-01\\source\\owned-main-bootstrap.js",
+    "bytes": 335926,
+    "sha256": "d2e797ef805c7688d0a6173d9954b0d03c1d7dbb5489e34f9dde5aaaf064957a"
+  },
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "rows": 222,
+      "digest": "8b285d4127d1c3d6cc013cbe527c182103b2cc3fbce3232056c43f9f2ed5cd35"
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "rows": 5,
+      "digest": "768239574b10f7fe42b92780c4b71b61b82d7879bd3d217850fdfda4671c329b"
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "rows": 9,
+      "digest": "c590061e5c8c8f43c0e698199900168615099e833fe2974bd960e855054da2bc"
+    }
+  ],
+  "freshSourceReads": 236,
+  "sourceCopies": 222,
+  "sourceOnlyQPeak": 13823260,
+  "retainedP30P31AndRoot43Exact": true,
+  "controls": {
+    "originalHostKernelBindingCases": 18,
+    "originalHostKernelBindingGroups": 103,
+    "privateNumericGroups": 35,
+    "v4BoundaryModels": 18,
+    "privateDefaultBrowserModels": 5,
+    "actualNonemptyDurableReadCases": 3,
+    "actualNonemptyDurableReadGroups": 9,
+    "resourceThenCallbacks": 0
+  },
+  "proofs": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v46-semantic-loading-reuse-join-2026-10-23-01\\exact-join-01.json",
+      "bytes": 220818,
+      "sha256": "ace7c966d9994e049ed2d70200aa74d7a37e27e38375b93dd1e418f6cf634068"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v46-semantic-loading-reuse-join-2026-10-23-01\\CHECK-SOURCE-02.json",
+      "bytes": 4611,
+      "sha256": "e2d0aa0b42a020f9c6db3fe84e0c8a8506e7885b7ec7f6b0614bc3566658e6b6"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v46-semantic-loading-reuse-join-2026-10-23-01\\control-preparation-02.json",
+      "bytes": 1901,
+      "sha256": "5e7e9adef2f4c51a4f8613d32de8b3672203cd43b6937b8b630b254ad2273ec9"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v46-semantic-loading-reuse-join-2026-10-23-01\\controls-03\\full-regressions-96.json",
+      "bytes": 8594,
+      "sha256": "c701d1137b8c2382396145c22b27c269af5c69b64789bfbffd66d3720f1632e3"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v46-semantic-loading-reuse-join-2026-10-23-01\\reader-model-disclosure-04.json",
+      "bytes": 1385,
+      "sha256": "7cd7c521452892b097dc2649739ce5d03a1a30f9fc77985d5f756af7d23192f8"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v46-semantic-loading-reuse-join-2026-10-23-01\\controls-03\\private-numeric-97.json",
+      "bytes": 8645,
+      "sha256": "2290ad9e99996a0bdf4880c99a7249bc7d06e888dbb973ea2d508fbb135ec747"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v46-semantic-loading-reuse-join-2026-10-23-01\\controls-03\\semantic-boundaries-98.json",
+      "bytes": 5678,
+      "sha256": "80df5f5ea65e84e2e8e142a17ce5101e72500d52a592915b30e6adae1a83ffb2"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v46-semantic-loading-reuse-join-2026-10-23-01\\controls-03\\private-browser-semantic-99.json",
+      "bytes": 2991940,
+      "sha256": "5d701e3b257e7ab14b710f95a3e7fb219f0846e468af97aeb600411208fb93fe"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v46-semantic-loading-reuse-join-2026-10-23-01\\reader-controls-04\\control-ownedHostStagesReadVoidThen-04.json",
+      "bytes": 17165,
+      "sha256": "768eff3914bb73d29163201959441edaf1168c5b57bff214c099a5ac97d04644"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v46-semantic-loading-reuse-join-2026-10-23-01\\reader-controls-04\\control-ownedHostStagesReadPendingClose-04.json",
+      "bytes": 16321,
+      "sha256": "afe5da234b7326c48427c72da3c9bf95194752d26a1e4322e4b4249c1ae632ed"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v46-semantic-loading-reuse-join-2026-10-23-01\\reader-controls-04\\control-ownedHostStagesReadStorageSource-04.json",
+      "bytes": 16339,
+      "sha256": "b774b16b99a67ebc216822e9c51f0b8fb7deeb22a771db315a14bdd7be2a50c4"
+    }
+  ],
+  "inheritedNormalWorkProposal": {
+    "pin": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-synchronous-validation-reuse-2026-10-23-01\\review-03\\phase-12.json",
+      "bytes": 969182,
+      "sha256": "18d6c700dbe7bf5412d476e30e242678f85b8926d4211d19f0cf0383b8f3613b"
+    },
+    "normalRows": 111,
+    "normalMaximum": 4095,
+    "nativePendingOver4096": [
+      {
+        "phase": "KERNEL_OWNER_STEP/VERIFY/HOST/NUMERIC_DRIVE/ENGINE_START",
+        "upper": 4478
+      },
+      {
+        "phase": "KERNEL_OWNER_STEP/VERIFY/HOST/NUMERIC_DRIVE/STRICT",
+        "upper": 4540
+      }
+    ],
+    "conservativeLateFailureOver4096": [
+      {
+        "phase": "KERNEL_OWNER_STEP/VERIFY/HOST/NUMERIC_DRIVE/ENGINE_START",
+        "upper": 4146,
+        "notLowerProof": true
+      },
+      {
+        "phase": "KERNEL_OWNER_STEP/VERIFY/HOST/NUMERIC_DRIVE/ENGINE_WAIT",
+        "upper": 4113,
+        "notLowerProof": true
+      },
+      {
+        "phase": "KERNEL_OWNER_STEP/VERIFY/HOST/NUMERIC_DRIVE/ENGINE_BRAND",
+        "upper": 4117,
+        "notLowerProof": true
+      },
+      {
+        "phase": "KERNEL_OWNER_STEP/VERIFY/HOST/NUMERIC_DRIVE/CORPUS_INIT",
+        "upper": 4114,
+        "notLowerProof": true
+      },
+      {
+        "phase": "KERNEL_OWNER_STEP/VERIFY/HOST/NUMERIC_DRIVE/PRIMITIVE",
+        "upper": 4129,
+        "notLowerProof": true
+      },
+      {
+        "phase": "KERNEL_OWNER_STEP/VERIFY/HOST/NUMERIC_DRIVE/VECTOR",
+        "upper": 4153,
+        "notLowerProof": true
+      },
+      {
+        "phase": "KERNEL_OWNER_STEP/VERIFY/HOST/NUMERIC_DRIVE/SAMPLE",
+        "upper": 4217,
+        "notLowerProof": true
+      },
+      {
+        "phase": "KERNEL_OWNER_STEP/VERIFY/HOST/NUMERIC_DRIVE/ADDRESS",
+        "upper": 4145,
+        "notLowerProof": true
+      },
+      {
+        "phase": "KERNEL_OWNER_STEP/VERIFY/HOST/NUMERIC_DRIVE/STRICT",
+        "upper": 4208,
+        "notLowerProof": true
+      },
+      {
+        "phase": "KERNEL_OWNER_STEP/VERIFY/HOST/NUMERIC_DRIVE/ENGINE_SORT",
+        "upper": 4103,
+        "notLowerProof": true
+      },
+      {
+        "phase": "KERNEL_OWNER_STEP/VERIFY/HOST/NUMERIC_DRIVE/ENGINE_IDENTITY",
+        "upper": 4224,
+        "notLowerProof": true
+      }
+    ],
+    "unscopedCloseUpper": 8594,
+    "selected": false
+  },
+  "inheritedPositiveRStorageProposal": {
+    "pin": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-synchronous-validation-reuse-2026-10-23-01\\review-03\\storage-18.json",
+      "bytes": 519789,
+      "sha256": "9a5d3071530168a46e6cf808eafa07953e34f0fb8fa0b3c6251e9cdcd54f6e61"
+    },
+    "moduleRaw": 14048,
+    "moduleRounded": 16384,
+    "perNumericRaw": 2112,
+    "perNumericRounded": 4096,
+    "HostRaw": 8256,
+    "HostRounded": 12288,
+    "callerRaw": 55936,
+    "callerRounded": 57344,
+    "positiveOnlyOverRoot36": true,
+    "selected": false
+  },
+  "selection": {
+    "completeWork": null,
+    "completeFunding": null,
+    "nativeInputExtent": null,
+    "actualMainCurrentCaller": false,
+    "earlyLaunchCompiled": false,
+    "livePublicationRoute": false,
+    "Main": false,
+    "P05": "OPEN"
+  },
+  "limitations": [
+    "Exact C16 v4 source is now combined with all Root44 loading corrections; its normal111-row proposal remains conditional and unselected. Native pending4478/4540, late-failure upper4224 and old unscoped close8594 remain genuine open work until a source-backed successor closes them.",
+    "Three actual nonempty V controls use inherited P52/Root24 extracted diagnostic caller and explicit native/current/pay/amount models, not the actual product paid CURRENT/live caller.",
+    "All three profiles admit actual new compiled bytes through original offline Q/Source. Source-only peak does not certify complete simultaneous startup/Q or native heap.",
+    "P cached-state and G committed-publication handoffs, authentic first launch/module/caller/currentness, complete Main/provider demand/retirement and actual ordinary Main remain separate work."
+  ]
+}

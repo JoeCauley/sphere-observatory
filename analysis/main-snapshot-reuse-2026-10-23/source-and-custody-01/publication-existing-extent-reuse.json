@@ -1,0 +1,56 @@
+{
+  "status": "FROZEN_FUNCTIONAL_EXTENT_CUSTODY_COMPONENT_ALL_PRICES_HELD",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-publication-extents-2026-10-23-01\\candidate-03\\source",
+  "modules": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-publication-extents-2026-10-23-01\\candidate-03\\source\\biome-service\\binding-builder.js",
+      "bytes": 75472,
+      "sha256": "7551ebde3144564dc1db5fb3e380e69fc4e0984b938300455c20f3de148c5b06"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-publication-extents-2026-10-23-01\\candidate-03\\source\\biome-service\\publication.js",
+      "bytes": 54387,
+      "sha256": "cbc2032a6958e7614595c310c24d1e1de9786637a9e2ef350354302d9028431f"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-publication-extents-2026-10-23-01\\candidate-03\\source\\biome-service\\storage.js",
+      "bytes": 15891,
+      "sha256": "095923614667e8635badd79d876e8737e37b68f5fd8740d7572cdf432d615f43"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-publication-extents-2026-10-23-01\\candidate-03\\source\\biome-service\\verified-record-store.js",
+      "bytes": 39265,
+      "sha256": "fee4539a6fe174d7b1ceab80cb05f5d5851ade238682c0ec7a10028ac9cf18e7"
+    }
+  ],
+  "parent": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v47-live-handoff-source-join-2026-10-23-01\\candidate-02\\source",
+  "files": 522,
+  "entries": 522,
+  "parses": 426,
+  "sameParent": 518,
+  "changed": [
+    "biome-service/binding-builder.js",
+    "biome-service/publication.js",
+    "biome-service/storage.js",
+    "biome-service/verified-record-store.js"
+  ],
+  "inventory": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-publication-extents-2026-10-23-01\\source-inventory-01.json",
+    "bytes": 105723,
+    "sha256": "d962d550587b51e8b1e70c6d74749413f05a96ac9903c094f3cc6930b8c7e667"
+  },
+  "recipe": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-publication-extents-2026-10-23-01\\root-safe-recipe-01.json",
+    "bytes": 58908,
+    "sha256": "7e7e8813e0aea003e94a816acbe7fbbb0b2f719af434d620733ef751ef30fb18"
+  },
+  "functional": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-publication-extents-2026-10-23-01\\FUNCTIONAL-01.json",
+    "bytes": 10759,
+    "sha256": "51a69abefadced0db9c88ff70c36b2c6ff42844c048c2151a814d227e0544118"
+  },
+  "guard": "Every new module/owner/receipt/stage/clone/wrapper/operation/WORK/CURRENT/PAY remains null; original Source/module/current native/Storage input/open/transaction/B preparation/schema/caller costs are not authorized or paid.",
+  "sourceAdmission": "Product loader/profile bytes are exact Root47 and stale for these four new files. Root must authentically register each actual footer under correct original source/load completion, supply fixed genuine sameQ ports, prospectively fund module accounts, and freshly repin graph/current profiles before evaluation. Diagnostic profile refresh is component setup only.",
+  "limits": "Q32MiB/max4096slots/original metadata16MiB canonical/local caps unchanged. No cold selection or Main gate changes.",
+  "Main": false
+}

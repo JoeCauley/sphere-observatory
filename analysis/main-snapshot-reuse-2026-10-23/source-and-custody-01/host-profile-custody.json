@@ -1,0 +1,72 @@
+{
+  "status": "PASS_NARROW_GENUINE_CUSTODY_PRIMITIVE_WITH_DECLARED_OLDER_PARENT_MODEL_NO_CURRENT_MAIN",
+  "source": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v48-binding-constructor-profile-custody-2026-10-23-01\\candidate-01\\source\\biome-service\\host-world.js",
+    "bytes": 126052,
+    "sha256": "750ec376b3952f04b620883f3657e3f8c8ac460a94cc433395c7278c4652da53"
+  },
+  "parentSource": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v47-live-handoff-source-join-2026-10-23-01\\candidate-02\\source\\biome-service\\host-world.js",
+    "bytes": 124970,
+    "sha256": "a3d56eb721362ccae917382b0de485ce95237cfcaaf98548ff98bd7e8ecdb3d0"
+  },
+  "recipe": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v48-binding-constructor-profile-custody-2026-10-23-01\\exact-port-edits-01.json",
+    "bytes": 2150,
+    "sha256": "e6623801e512bd1a5a5cde46fa40d18be58e860cf9304822918bb7c13a3a0953"
+  },
+  "inverseExact": true,
+  "originalFunctionsExact": 196,
+  "newFunctionCount": 1,
+  "archive": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v48-binding-constructor-profile-custody-2026-10-23-01\\original-route-archive-06.json",
+    "bytes": 74010,
+    "sha256": "73b8a2ffb2920e57da4bbe1c7ad49b03c243af7a5bdea2f50828781205fcd19e"
+  },
+  "inspection": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v48-binding-constructor-profile-custody-2026-10-23-01\\constructor-custody-inspection-06.json",
+    "bytes": 32413,
+    "sha256": "ec67c2df055e95a257fd6b88f682f6b11e8e2578554f44270f006a07cb502b7c"
+  },
+  "models": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v48-binding-constructor-profile-custody-2026-10-23-01\\control-ownedHostStagesProfileRead-port04.json",
+      "bytes": 11869,
+      "sha256": "9024dd2eee18733c55e9a21e6edf72a0a4c3c51b63a5e9b57c255467cf4ded51",
+      "groups": 3
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v48-binding-constructor-profile-custody-2026-10-23-01\\control-ownedHostStagesProfileDefault-port04.json",
+      "bytes": 11528,
+      "sha256": "2f3c030491581ed5745535c7967c0bf571f5d2dbf3efee8fb42f1c02d9312fc8",
+      "groups": 3
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v48-binding-constructor-profile-custody-2026-10-23-01\\control-ownedHostStagesProfileWorkNull-port04.json",
+      "bytes": 11480,
+      "sha256": "44470069d5dcf69015d528aaa6cfd9962514cafa0c96ab4f13ae4c8b6b913b65",
+      "groups": 3
+    }
+  ],
+  "oldNonemptyProfileTrace": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v48-binding-constructor-profile-custody-2026-10-23-01\\control-ownedHostStagesReadCache-profile05.json",
+    "bytes": 18612,
+    "sha256": "08d771b1bdf57567eccd2e70d134fa85618c44eb2d7c2bfab043d154af62f09a"
+  },
+  "modelJoin": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v48-binding-constructor-profile-custody-2026-10-23-01\\model-join-02.json",
+    "bytes": 1096,
+    "sha256": "6bf6cdb5e547d9dcf484438af021719ab99612bfba5384903b7dc6ec0c1d20d8"
+  },
+  "failedAttempt": {
+    "report": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v48-binding-constructor-profile-custody-2026-10-23-01\\control-ownedHostStagesProfileRead-port03.json",
+      "bytes": 11774,
+      "sha256": "b54ccf0d43a647bff91b54a23d39264b14b98f1514174d0fc2cfb50b8a984350"
+    },
+    "disposition": "Harness wrongly expected attempted Host close to invalidate an existing held receipt. Original close is deferred while captureReaders>0;04 tests profile remains valid, original receipt close drains, then further reads refuse. Source unchanged."
+  },
+  "remaining": "Root47 actual current driver/caller and source-row lease, C retained profile port, L/X/B staged semantic producers+constructor continuation remain active prerequisites. No profile/plain record authority or old variable async prelude claimed paid.",
+  "Main": false,
+  "P05": "OPEN"
+}

@@ -1,0 +1,314 @@
+{
+  "status": "PASS_CONDITIONAL_LOCAL_CACHE_PRICING_BASIS_NO_SOURCE_OR_MAIN_SELECTION",
+  "frozenSource": {
+    "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\candidate-03\\source",
+    "check": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\CHECK-12.json",
+      "bytes": 9479,
+      "sha256": "9c862db79c9f4023602e6be0ee7048c20f01a5ebfc481ab1e3a59eff8a871237"
+    },
+    "sourceFile": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\candidate-03\\source\\biome-service\\binding-builder.js",
+      "bytes": 64252,
+      "sha256": "bc52b1690105c3d28fada8f57c2b28b6782df3951fd1a211096a004eb1806aca"
+    },
+    "recipe": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\root-safe-recipe-12.json",
+      "bytes": 16088,
+      "sha256": "50de3060369bf51cb5978a09d8e4426fca6ad988f54229eb9562b548c1edabb4"
+    },
+    "sourceAndEvidenceFrozen": true,
+    "Main": false,
+    "P05": "OPEN"
+  },
+  "groups": [
+    "Frozen CHECK12/FREEZE12, all522 source bytes and original426 parse receipt remain exact. No candidate/profile/old evidence edits.",
+    "All12 same-path sequential source edits reapply/invert exactly; default/public source preservation archive12 inherited unchanged.",
+    "Six executable source-backed ABI/work/H/entry/wrapper derivations replay byteexact using readonly intercepted outputs; source syntax never a WORK tariff.",
+    "Exact symbolic multiplicities/4096 boundary and public reader wrapper/affinity children checked. H390 is actualRoot46 v4 indexed path; C/S_C/F_B stay null.",
+    "Three fresh actual original nonempty fixture/control runs PASS16 rawgroups with proposed LOCAL pools, realQ pressure and constructor abort; retained/read/close C multiplicities4/2/0 asserted in actual body. Explicit C=1/current/GL/App/funding models remain, no debit/Main/wholeQ proof."
+  ],
+  "replay": [
+    {
+      "generator": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\pricing-review-01\\derive-storage-18.cjs",
+        "bytes": 14052,
+        "sha256": "4286b157f328a831c64153cb52487d2498e359ab7b59aa689158c0427b01b012"
+      },
+      "outputs": [
+        {
+          "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\pricing-review-01\\storage-proposal-18.json",
+          "bytes": 45946,
+          "sha256": "8c2cbd96291cd4a8afa498eb58a8e8a6f7004ebe0e3b8b6b133bd0634b4f79ba"
+        }
+      ]
+    },
+    {
+      "generator": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\pricing-review-01\\derive-work-19.cjs",
+        "bytes": 17182,
+        "sha256": "522387fa30858efb890cdbc156a5d19d6807647f5c626e2c1528319084e2b29a"
+      },
+      "outputs": [
+        {
+          "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\pricing-review-01\\work-proposal-19.json",
+          "bytes": 34768,
+          "sha256": "4f5093138889fead65ad8d001865c4a5d5aada53f28f73269da206e5bdf81e5e"
+        }
+      ]
+    },
+    {
+      "generator": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\pricing-review-01\\append-coverage-22.cjs",
+        "bytes": 7529,
+        "sha256": "61389cda1a774819076446f2c6f3a93de0e72993c1a52e75b85d1b893c5eee54"
+      },
+      "outputs": [
+        {
+          "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\pricing-review-01\\coverage-and-entry-22.json",
+          "bytes": 12145,
+          "sha256": "487d00a97ac39a3c681b653fb6e14d5f579ae3de27b07687b77a264625843e3e"
+        }
+      ]
+    },
+    {
+      "generator": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\pricing-review-01\\derive-host-ownership-26.cjs",
+        "bytes": 5264,
+        "sha256": "7b7695d808083a7eec73fd003a6673f619d1dcd5cc0b6cacd2e0f1ffc3ac1826"
+      },
+      "outputs": [
+        {
+          "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\pricing-review-01\\host-ownership-26.json",
+          "bytes": 97735,
+          "sha256": "2868a68dfca77032b82b4093fa6ef160c17d53e6aebd1bdc325f3f466a35ff36"
+        }
+      ]
+    },
+    {
+      "generator": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\pricing-review-01\\derive-conditional-join-27.cjs",
+        "bytes": 5004,
+        "sha256": "44a316cd9560e53ba34d803466cd1ffc8cbd605f6bd49a1ce878832045ea829e"
+      },
+      "outputs": [
+        {
+          "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\pricing-review-01\\conditional-selection-input-27.json",
+          "bytes": 7014,
+          "sha256": "bb453fb76d3ff766355b92f56a64a4da28a84d89d013084715c8b249ee99de92"
+        }
+      ]
+    },
+    {
+      "generator": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\pricing-review-01\\append-reader-work-28.cjs",
+        "bytes": 3058,
+        "sha256": "d959e89dff0728849698aaa71c36da307cd36b29ea68d09e86d20ac23b479932"
+      },
+      "outputs": [
+        {
+          "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\pricing-review-01\\reader-work-28.json",
+          "bytes": 4939,
+          "sha256": "2691bc582299b7eccfef6d23b44eebd4d2cd2baea08f914d06e178a35baf2373"
+        }
+      ]
+    }
+  ],
+  "models": [
+    {
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\pricing-review-01\\control-ownedHostStagesReadCache-quote21.json",
+        "bytes": 18015,
+        "sha256": "41c9557abc0b9756df60da9f2aa12ca255eec256641ef6948156e38623686064"
+      },
+      "groups": 9
+    },
+    {
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\pricing-review-01\\control-ownedHostStagesReadCachePressure-quote21.json",
+        "bytes": 16766,
+        "sha256": "74428a94482d7a2e8b6feed047a90040b560554ef363435d797c42ffe62b0996"
+      },
+      "groups": 4
+    },
+    {
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\pricing-review-01\\control-ownedHostStagesReadCacheConstructor-quote21.json",
+        "bytes": 16972,
+        "sha256": "62f1bfda8a97d89d6643168ec9ad96e13287132b18bde9137af83523b385c74b"
+      },
+      "groups": 3
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\pricing-review-01\\basis-14.json",
+      "bytes": 620734,
+      "sha256": "4c1b115bbd8763033ece2513c461bdb693d125340d6215046842e99f87e2063d"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\pricing-review-01\\derive-basis-14.cjs",
+      "bytes": 2548,
+      "sha256": "b2635fdb8f8109f6871fe6d15d5fcc4f21de1a68c93e853c683b9dc1e89a7bb7"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\pricing-review-01\\derive-storage-15.cjs",
+      "bytes": 12833,
+      "sha256": "1920e11e7272cc0e8200efd264537519059de57659f88ab5917807c79b785e6e"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\pricing-review-01\\derive-storage-16.cjs",
+      "bytes": 12848,
+      "sha256": "0650ce74fbafa1769d45ff12cc6eb758fda32ad0e4745291b72fe85475194395"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\pricing-review-01\\derive-storage-17.cjs",
+      "bytes": 12875,
+      "sha256": "fc4ef37c3aca1a68e6fd79900bc9135ed1f52c2d13fc20365116ca727af5095e"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\pricing-review-01\\storage-proposal-17.json",
+      "bytes": 41887,
+      "sha256": "f522a09fd192a62b208dca55e968bcdd667f339018e30e0caaab6be7a55942b8"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\pricing-review-01\\derive-storage-18.cjs",
+      "bytes": 14052,
+      "sha256": "4286b157f328a831c64153cb52487d2498e359ab7b59aa689158c0427b01b012"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\pricing-review-01\\storage-proposal-18.json",
+      "bytes": 45946,
+      "sha256": "8c2cbd96291cd4a8afa498eb58a8e8a6f7004ebe0e3b8b6b133bd0634b4f79ba"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\pricing-review-01\\derive-work-19.cjs",
+      "bytes": 17182,
+      "sha256": "522387fa30858efb890cdbc156a5d19d6807647f5c626e2c1528319084e2b29a"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\pricing-review-01\\work-proposal-19.json",
+      "bytes": 34768,
+      "sha256": "4f5093138889fead65ad8d001865c4a5d5aada53f28f73269da206e5bdf81e5e"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\pricing-review-01\\prepare-controls-20.cjs",
+      "bytes": 4593,
+      "sha256": "98d0ca08ccbd9cc48e989f4beb30af7435f57b68b771cf080e3aeb63a8d560ac"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\pricing-review-01\\prepare-controls-21.cjs",
+      "bytes": 4600,
+      "sha256": "1d49ca225944a61fa6896faba396aab219c7e0e480e6ece273ce40b562a8fd60"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\pricing-review-01\\test-cache-21.cjs",
+      "bytes": 145601,
+      "sha256": "66f1f44f98c1192fcfd645ce00bd231ebc89a63ea39fec35eecfb1ad0a7dd0d1"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\pricing-review-01\\control-adaptation-21.json",
+      "bytes": 4054,
+      "sha256": "e52bf284211ec7248187561665d9a7ffac5ab091a2860f86c1e7029e6128f0de"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\pricing-review-01\\append-coverage-22.cjs",
+      "bytes": 7529,
+      "sha256": "61389cda1a774819076446f2c6f3a93de0e72993c1a52e75b85d1b893c5eee54"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\pricing-review-01\\coverage-and-entry-22.json",
+      "bytes": 12145,
+      "sha256": "487d00a97ac39a3c681b653fb6e14d5f579ae3de27b07687b77a264625843e3e"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\pricing-review-01\\derive-host-ownership-25.cjs",
+      "bytes": 5119,
+      "sha256": "1a307388bc33fcc162a2f43aa5a9b78bb067719cd5dd166f93f3946c2326cb64"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\pricing-review-01\\host-ownership-25.json",
+      "bytes": 97567,
+      "sha256": "64683fed49664ea135f1d4258a6118541cf5508e3754a251bcec261174fdb0be"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\pricing-review-01\\derive-host-ownership-26.cjs",
+      "bytes": 5264,
+      "sha256": "7b7695d808083a7eec73fd003a6673f619d1dcd5cc0b6cacd2e0f1ffc3ac1826"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\pricing-review-01\\host-ownership-26.json",
+      "bytes": 97735,
+      "sha256": "2868a68dfca77032b82b4093fa6ef160c17d53e6aebd1bdc325f3f466a35ff36"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\pricing-review-01\\derive-conditional-join-27.cjs",
+      "bytes": 5004,
+      "sha256": "44a316cd9560e53ba34d803466cd1ffc8cbd605f6bd49a1ce878832045ea829e"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\pricing-review-01\\conditional-selection-input-27.json",
+      "bytes": 7014,
+      "sha256": "bb453fb76d3ff766355b92f56a64a4da28a84d89d013084715c8b249ee99de92"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\pricing-review-01\\append-reader-work-28.cjs",
+      "bytes": 3058,
+      "sha256": "d959e89dff0728849698aaa71c36da307cd36b29ea68d09e86d20ac23b479932"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\pricing-review-01\\reader-work-28.json",
+      "bytes": 4939,
+      "sha256": "2691bc582299b7eccfef6d23b44eebd4d2cd2baea08f914d06e178a35baf2373"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\pricing-review-01\\check-29.cjs",
+      "bytes": 7619,
+      "sha256": "5024810c68666d54da336fb578c38b35ded2036c60a38ad857ecd432088955e9"
+    }
+  ],
+  "attemptDispositions": [
+    {
+      "input": "derive-storage-15.cjs",
+      "result": "PRESERVED_AUTHOR_GENERATOR_SYNTAX_FAILURE",
+      "reason": "CommonJS module binding redeclared; no output/source writes."
+    },
+    {
+      "input": "derive-storage-16.cjs",
+      "result": "PRESERVED_AUTHOR_CENSUS_ADAPTER_ASSERTION_FAILURE",
+      "reason": "AST map indexed ArrowFunction and its Identifier parameter at same start; readonly metadata census only, no output/source writes."
+    },
+    {
+      "input": "storage-proposal-17.json",
+      "result": "SUPERSEDED_POSITIVE_STORAGE_REFINEMENT",
+      "reason": "18 additionally names original scalar probe full occurrence union; no source change."
+    },
+    {
+      "input": "prepare-controls-20.cjs",
+      "result": "PRESERVED_AUTHOR_HARNESS_NEEDLE_FAILURE",
+      "reason": "Parent-current model is arrow, not function-expression. Assert before output.21 corrects only harness setup."
+    },
+    {
+      "input": "host-ownership-25.json",
+      "result": "SUPERSEDED_CONSERVATIVE_SCOPE_REFINEMENT",
+      "reason": "26 additionally preowns all172 for-let iteration environments independently of initial headers; no Source semantic fee/source change."
+    },
+    {
+      "input": "earlier Q47 shorthand",
+      "result": "PROVENANCE_LATER_REESTABLISHED_UNDER_FIXED_DOMAIN",
+      "reason": "Initial absence correctly held; actual foundation-work02 later found/read. Work19 imports exact source-pinned47 and scalar3 fixed-domain graph. Storage-only q-entry09 oldAPI1 not inherited."
+    }
+  ],
+  "outstanding": {
+    "C": null,
+    "S_C": null,
+    "F_B": null,
+    "actualCallerQuoteAndDebit": null,
+    "originalBindingConstructorPrelude": null,
+    "originalModuleCohortAndEntry": null,
+    "globalSimultaneousQAndHost": null,
+    "nativeMain": false,
+    "P05": "OPEN"
+  },
+  "scope": "Logical authored metadata and Source37 conditional original-source child graph only. No actual physical/native engine allocation or performance claim; all source constants/funding/work/gates remain null/unchanged. Existing old graph owners remain separately retained, no new reader retrofunding."
+}

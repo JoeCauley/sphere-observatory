@@ -1,0 +1,115 @@
+{
+  "status": "PASS_FROZEN_COMBINED_LOADING_REUSE_PREFLIGHT_UNSELECTED",
+  "parent": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v40-staged-binding-reuse-join-2026-10-23-01\\candidate-01\\source",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v44-private-loading-reuse-join-2026-10-23-01\\candidate-01\\source",
+  "files": 522,
+  "parses": 426,
+  "changed": [
+    "biome-service/records.js",
+    "biome-service/storage.js",
+    "biome-service/verified-record-store.js",
+    "owned-main-bootstrap.js"
+  ],
+  "other518ParentFilesExact": true,
+  "inverseHunks": 42,
+  "loader": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v44-private-loading-reuse-join-2026-10-23-01\\candidate-01\\source\\owned-main-bootstrap.js",
+    "bytes": 328073,
+    "sha256": "a754b29dfd715a5256794a295f28f6143b80eb0f6e5b90b55ebfd05d6a554ddf"
+  },
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "rows": 222,
+      "digest": "fc7e2acdbefec6c0610b81817d1c47bafd522c855ce5875979dc60054339aded"
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "rows": 5,
+      "digest": "768239574b10f7fe42b92780c4b71b61b82d7879bd3d217850fdfda4671c329b"
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "rows": 9,
+      "digest": "c590061e5c8c8f43c0e698199900168615099e833fe2974bd960e855054da2bc"
+    }
+  ],
+  "freshSourceReads": 236,
+  "sourceCopies": 222,
+  "sourceOnlyQPeak": 13820510,
+  "controls": {
+    "originalHostKernelBindingCases": 18,
+    "originalHostKernelBindingGroups": 103,
+    "actualNonemptyDurableReadCases": 3,
+    "actualNonemptyDurableReadGroups": 9,
+    "resourceThenCallbacks": 0
+  },
+  "proofs": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v44-private-loading-reuse-join-2026-10-23-01\\exact-join-01.json",
+      "bytes": 198514,
+      "sha256": "58afbd6020feb40f210edd095afc790b0f7700387b30d0dacf8e9df4b57bdf47"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v44-private-loading-reuse-join-2026-10-23-01\\CHECK-SOURCE-02.json",
+      "bytes": 4601,
+      "sha256": "8c0cf5427a96ae78e5df785ef53d3879897679d1e66b4a48a1cc3585243a960e"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v44-private-loading-reuse-join-2026-10-23-01\\control-preparation-03.json",
+      "bytes": 1012,
+      "sha256": "46ac796d34a8ddb986bb2613db639b8135b06ad0a49e385a5c9765c2bea986fd"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v44-private-loading-reuse-join-2026-10-23-01\\controls-03\\full-regressions-03.json",
+      "bytes": 8575,
+      "sha256": "60795aa55eb61161c88b8b0d736d52ba635a46e4479ca9e26d80b3d52cb9bf1c"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v44-private-loading-reuse-join-2026-10-23-01\\reader-model-disclosure-04.json",
+      "bytes": 1384,
+      "sha256": "ebd8a04d075b57af0297e28fe8ef8e51bd5cedf615f27513e9e71e0772ea7407"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v44-private-loading-reuse-join-2026-10-23-01\\reader-preparation-correction-05.json",
+      "bytes": 614,
+      "sha256": "7e11116c9b9ae6a672cc10946bac87a48e3fa4fdd5afe0b5d72b10c8041cac21"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v44-private-loading-reuse-join-2026-10-23-01\\reader-controls-04\\control-ownedHostStagesReadVoidThen-05.json",
+      "bytes": 17159,
+      "sha256": "d5043818bc93df818034f7cf9f2a7c5cf9fd8dfde5409d6b357bd11c52e62e67"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v44-private-loading-reuse-join-2026-10-23-01\\reader-controls-04\\control-ownedHostStagesReadPendingClose-05.json",
+      "bytes": 16319,
+      "sha256": "45470298f343a01fc02a42024f9a772c3ec56d3e7d012ed6b6700b452c59cfc5"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v44-private-loading-reuse-join-2026-10-23-01\\reader-controls-04\\control-ownedHostStagesReadStorageSource-05.json",
+      "bytes": 16337,
+      "sha256": "fd92df015e66f0c625996c8fe425af0f21ebd8c7cd95b04c9dfd1b74a4bbe14a"
+    }
+  ],
+  "preservedFailures": [
+    "prepare-checks02 stopped on nonunique harness filename before output/source/test writes; corrected03 uses explicit occurrence counts.",
+    "Reader04 three cases correctly refuse HOST_SYNCHRONOUS_UNQUALIFIED because the inherited caller omitted its new diagnostic marker. Reader05 adds the same explicit16384 marker from original R31 controls. Product source unchanged and failed reports retained."
+  ],
+  "selection": {
+    "funding": null,
+    "completeWork": null,
+    "nativeInputExtent": null,
+    "originalMainCurrentCaller": false,
+    "earlyLaunchCompiled": false,
+    "livePublicationRoute": false,
+    "Main": false,
+    "P05": "OPEN"
+  },
+  "limitations": [
+    "Reader05 uses the inherited Root24 extracted diagnostic caller with all explicit native/current/pay/amount models and freshly pinned original source closures. It does not prove the actual Main paid CURRENT path.",
+    "The exact Root43 store receiver correction composes with original P31 V consumer. The pristine IDB eligibility helper remains an uncompiled separate draft.",
+    "Source-only Qpeak and fixture component Qpeak are not simultaneous complete startup/Q or native heap claims.",
+    "R v4 final semantic source and new live-publication/cached-reader handoffs remain separate active work; no source/profile/policy handoff is assumed.",
+    "All original service, Q, preparation, upload, jobs, slot and content limits remain unchanged. Ordinary complete Main/current-replacement admission and actual native assigned-surface proof remain open."
+  ]
+}

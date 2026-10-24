@@ -1,3 +1,5 @@
+> Current update, October23: coherent bounded-startup/Lifecycle and authentic admitted-source row components pass their frozen checks. Actual early startup transfer, complete caller/work/Q, current/replacement demand and ordinary Main same-surface rendering remain open. P05OPEN; walking preserved. [Snapshot reuse and remaining path](Observatory-Main-Admitted-Snapshot-Reuse-2026-10-23.md).
+
 # Owned startup and saved-data handoffs
 
 The first real owned startup handoff now passes in Chrome. Main still remains disabled and P05 is OPEN. The working Meadow-Industry walk is preserved. The next work remains completing the actual startup and saved-data chain, admitting complete current and replacement provider/Main demand, and proving ordinary Main overview/local views on the same assigned surfaces.

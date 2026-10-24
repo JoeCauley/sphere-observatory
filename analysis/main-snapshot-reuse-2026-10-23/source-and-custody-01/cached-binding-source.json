@@ -1,0 +1,151 @@
+{
+  "status": "FROZEN_FUNCTIONAL_ORIGINAL_CACHED_ADMITTED_BINDING_HANDOFF",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\candidate-03\\source",
+  "files": 522,
+  "parses": 426,
+  "sameParent": 521,
+  "changed": [
+    {
+      "path": "biome-service/binding-builder.js",
+      "bytes": 64252,
+      "sha256": "bc52b1690105c3d28fada8f57c2b28b6782df3951fd1a211096a004eb1806aca",
+      "sameParent": false
+    }
+  ],
+  "recipe": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\root-safe-recipe-12.json",
+    "bytes": 16088,
+    "sha256": "50de3060369bf51cb5978a09d8e4426fca6ad988f54229eb9562b548c1edabb4"
+  },
+  "inventory": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\source-inventory-12.json",
+    "bytes": 107523,
+    "sha256": "14b3d1f2b3df58d8fe11904faa0bffae46bdd9e99d93054c9c176fc945ca9b3e"
+  },
+  "originalBodies": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\original-body-archive-12.json",
+    "bytes": 24248,
+    "sha256": "d075bcd8b1cb4b31b1d46db5567f2fcb372192bd0a1bfd6ce2093ec92b4e6498"
+  },
+  "profiles": {
+    "reads": 236,
+    "rows": [
+      {
+        "name": "buildGraph",
+        "digest": "83ae2538646460a112abcca71085c12013506f6087dbacbb5da67c04b8e5a6b9",
+        "closure": 222
+      },
+      {
+        "name": "buildSurfaceEnvelope",
+        "digest": "c4621813157261f939557767c60f8a63095a8e9a879abf2e7a5f96e1aea3f464",
+        "closure": 5
+      },
+      {
+        "name": "buildStartupEnvelope",
+        "digest": "d3b8e5b16532345fb9e4171ae51c6fdd0d78ec47d18a82c726e3f99177fb14ed",
+        "closure": 9
+      }
+    ],
+    "q": {
+      "heldBytes": 0,
+      "requestedBytes": 0,
+      "bookkeepingBytes": 0,
+      "peakBytes": 10910016,
+      "limitBytes": 33554432,
+      "liveReservations": 0,
+      "maximumReservations": 4096,
+      "owners": [],
+      "scope": "CONSERVATIVE_LOGICAL_METADATA_ADMISSION",
+      "nativeHeap": "UNMEASURED"
+    },
+    "scope": "Only source-profile evidence endsQ0; cached reader component accounts/failed/closed rows remain held."
+  },
+  "controls": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\control-ownedHostStagesReadCache-10.json",
+      "bytes": 17449,
+      "sha256": "219c9a4982074a3c2c21cdd6f1e43cfe856c2cdc4bd19e153005f23e661093fe"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\control-ownedHostStagesReadCacheRetire-10.json",
+      "bytes": 16600,
+      "sha256": "16a4d429e1d65bac9d7153cb58680b8c8a6a97043714170695a2bf14d31d4dc0"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\control-ownedHostStagesReadCacheReentry-10.json",
+      "bytes": 16212,
+      "sha256": "bd3c950ee9996f66e171c9a6fccd8986844bce1bbf15a12613ccf60d9b4db6e8"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\control-ownedHostStagesReadCachePressure-10.json",
+      "bytes": 16200,
+      "sha256": "2f8457b439e6ebad1398da74b89dc8545d541b1edbaa5d0d7882d8eb5b4fcdb3"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\control-ownedHostStagesReadCacheIndex-10.json",
+      "bytes": 16485,
+      "sha256": "3e2f189e204002cc82d173efd13d8c20ef6e3bdbbfcb302ab3b5fee046cbfa5a"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\control-ownedHostStagesReadCacheConstructor-10.json",
+      "bytes": 16405,
+      "sha256": "8d3acce953052475b81dc70cc2e838170a330af8b3e41a281c331fba71592864"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\control-ownedHostStagesReadCacheDefault-10.json",
+      "bytes": 16022,
+      "sha256": "c93fec5605d84730b90dd2771d0834b2073d5fd733fb71b075dbb9053c621239"
+    }
+  ],
+  "distinctFixtureRuns": 7,
+  "preservedCounter": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\control-ownedHostStagesReadCacheCounter-05.json",
+    "bytes": 16220,
+    "sha256": "c36cdd46e2525ddba1b31d3bfdca5238f5a2fcb1718765b9f7599efca919c79f"
+  },
+  "earlierPositive": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\control-ownedHostStagesReadCache-04.json",
+    "bytes": 17449,
+    "sha256": "aaa9bd055fe74ae3c63e8043dae0acf45f0aedd088663ab7a4b52bea09ea6866"
+  },
+  "liabilities": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\ownership-and-work-liabilities-10.json",
+    "bytes": 13631,
+    "sha256": "031f756cc7d6a1db63b3c208b6bbf2643b9e4779ede3f5dcf89bfad6d919d6ca"
+  },
+  "census": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\lexical-basis-10.json",
+    "bytes": 575250,
+    "sha256": "a34c3a6850bf6f8094089b6ead14b12a604092daabe8f88c0690046f417d2b64"
+  },
+  "api": {
+    "format": "sphere-private-cached-admitted-binding/1",
+    "publicQualifiedPort": "Binding.cachedAdmittedState.{FORMAT,retainCached(owner,digest,{format,metadataOwner,hostAdapter}),readHandle(reader,q)}",
+    "privateFooter": "retainColdBindingCache(api,binder)",
+    "privateLoaderOnly": "binder.bind(q,HostModule,actualOriginalHostFooterPort) once, binder.attach(owner,actualHost,q) after original B.create completes and identities/currentness are freshly rechecked",
+    "reader": "Genuine original Binding bindingReaders-map brand/API, activeReads and original index scalar probe; readHandle synchronously returns the original bindings-map handle.",
+    "qualification": "CACHED_ADMITTED_STATE_NOT_PUBLICATION"
+  },
+  "scope": [
+    "Actual original owned Host/P31/Numeric/Strict/Binding/CommonBoundary/Allocator/VerifiedRecordStore/ReleaseStore/Q execute to prepare nonempty cached Binding. Native DB is fake-indexeddb; source/GL/Surface/constructor/Main/native-current/caller funds remain explicitly disclosed models.",
+    "Zero native DB transactions during the cached handoff and all its core negatives; original same-B resolve fast cache returns the same original opaque handle. No getRecord/admit/reconstruct/hash/clone fallback is accepted.",
+    "Cache admission existed before the new reader. Same actual constructor B, exact reserveMetadata===sameQ.reserve, actual Host footer brand/current and private loader attachment are mandatory. Plain digest is only an immutable selector; a copied B/Host/reader/Q facade cannot fabricate admitted state.",
+    "Reader activeReads and preparation latch prevent original B cache/index/Q release until data pins drain. Disposed index is detected via genuine original scalar index state; close clears old graph refs and original index-reader charge while new complete closed metadata stays held.",
+    "Default private port is absent with null module amount. Public/default bodies are byte-exact except the explicit create admission/register/abort wrapper and dispose private root/latch guard; original retainBinding/resolveBinding/inspectBinding/prepare bodies exact.",
+    "Fixed OWNED_BINDING_CACHE_CURRENT remains null in product source. Diagnostic current function is not a production verifier or a ready capability. Future genuine loader must authenticate footer/current script and actual Host port, compile actual original source/native/paid current chain and prospectively fund all new births before selecting this route.",
+    "Positive ABI/callable/capture/scope/field/raw-handle child graph is frozen as a basis, not complete numeric pricing. Exact original Q/Host/index/current/constructor and full original cached metadata owners remain separate; diagnostic module1/owner32768/retain131072/work1 are never selected allowances.",
+    "Publication authority is separate and requires G actual successful transaction/opaque commit proof. This cached state does not imply installed/live/committed/current-head selection.",
+    "Candidate loader profiles are intentionally unchanged/stale. Only disclosed diagnostic loader10 has fresh all3profiles; root must freshly repin its actual composed files. Mainfalse/P05OPEN/full-Q/nativeHeap/Frame/.5ms remain open."
+  ],
+  "history": [
+    "Build01 failed before copy on CRLF exact needle; corrected02 copied source once.",
+    "Draft01 confirmed original dispose during source-current/probe interval can release cache while new state still references data; counter05 preserved. Candidate02 adds same-owner preparation latch checked before old destruction and post-current closed guard.",
+    "Candidate03 moves reader literal to module-private row-only factory to avoid assuming sparse closure environment capture. Candidate01/02 sources and positives remain preserved."
+  ],
+  "funding": null,
+  "completeWork": null,
+  "completeStorage": null,
+  "nativeMain": false,
+  "Main": false,
+  "P05": "OPEN"
+}

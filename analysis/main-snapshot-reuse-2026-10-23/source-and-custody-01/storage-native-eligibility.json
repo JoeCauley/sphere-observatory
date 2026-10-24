@@ -1,0 +1,39 @@
+{
+  "status": "PASS_FROZEN_ORIGINAL_STORE_RECEIVER_AND_EARLY_FACT_DRAFT_UNSELECTED",
+  "parent": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v41-private-storage-read-completion-2026-10-23-01\\candidate-02\\source",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v43-storage-native-eligibility-2026-10-23-01\\candidate-01\\source",
+  "files": 522,
+  "parses": 426,
+  "other521ParentFilesExact": true,
+  "inverseHunks": 4,
+  "storage": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v43-storage-native-eligibility-2026-10-23-01\\candidate-01\\source\\biome-service\\storage.js",
+    "bytes": 15084,
+    "sha256": "ca7c8df8e6126d7032515667103a0f05cfa05dfd74f2da7c47c4abb0ce60bc13"
+  },
+  "earlyPrefixDraft": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v43-storage-native-eligibility-2026-10-23-01\\launch-prefix-01.js.txt",
+    "bytes": 14830,
+    "sha256": "c7db8173e26aaaae2829abe94fd0c1b16f30f46be038a7a6089b713cd8708cc7"
+  },
+  "pristineCapturePremise": "Original trusted launch realm before any pause; descriptor identity is eligibility only, not proof of native provenance after replacement.",
+  "modelEligibilityGroups": 12,
+  "originalFakeIndexedDBCompletionGroups": 9,
+  "actualStorePassedBeforeGet": true,
+  "foreignModelGetters": 0,
+  "prefixCompiledIntoSource": false,
+  "publicGetAndTransactionBodiesExact": true,
+  "nativeInputExtent": null,
+  "nativeJobPayParent": null,
+  "completeWork": null,
+  "completeFunding": null,
+  "nativeChrome": false,
+  "Main": false,
+  "P05": "OPEN",
+  "remaining": [
+    "The early helper is a draft outside the selected launch bundle. Complete prior seed/module/control/caller/work must be derived before compilation.",
+    "These are descriptor-rich models plus separate actual fake-indexeddb completion controls, not native Chrome IDB.",
+    "Object-store receiver check does not prove the extent of an arriving result or establish original Storage.open.",
+    "Default/private gates remain null; parent loader profiles remain stale until a complete source join."
+  ]
+}

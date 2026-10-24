@@ -1,0 +1,158 @@
+{
+  "status": "PASS_FROZEN_SOURCE_ONLY_BOUNDED_WAIT_COMPONENT_UNSELECTED",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-bounded-wait-retirement-2026-10-23-01\\candidate-05\\source",
+  "parent": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-synchronous-validation-reuse-2026-10-23-01\\candidate-16\\source",
+  "files": 522,
+  "parses": 426,
+  "changed": [
+    "biome-service/host-world.js",
+    "biome-service/numeric-profile.js",
+    "owned-main-bootstrap.js"
+  ],
+  "other519ParentFilesExact": true,
+  "codeHunks": 16,
+  "profileHistoryHunks": 4,
+  "exactInverse": true,
+  "sourcePins": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-bounded-wait-retirement-2026-10-23-01\\candidate-05\\source\\biome-service\\host-world.js",
+      "bytes": 121738,
+      "sha256": "f74ecfad25049dd9f39f4ff01bfc85ff4d98e14ad4b0a26e68929b218528d80c"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-bounded-wait-retirement-2026-10-23-01\\candidate-05\\source\\biome-service\\numeric-profile.js",
+      "bytes": 55456,
+      "sha256": "33bb13fab41476a1b2170a0023f078cef3b7f50f0ab0ab9d360da7ed6d96d152"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-bounded-wait-retirement-2026-10-23-01\\candidate-05\\source\\owned-main-bootstrap.js",
+      "bytes": 335918,
+      "sha256": "b18fb428dcb544c66c3017d3604d0a1a0029dc12bbdb1c77acc53af0c440a212"
+    }
+  ],
+  "unchangedKernel": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-bounded-wait-retirement-2026-10-23-01\\candidate-05\\source\\biome-service\\native\\surface-kernel.js",
+    "bytes": 74599,
+    "sha256": "3017b21bbec3c2c3a797c4240f550fd644e8473ebc70714fb18da2abcf973b09"
+  },
+  "recipe": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-bounded-wait-retirement-2026-10-23-01\\author-01\\root-safe-bounded-edits-25.json",
+    "bytes": 13845,
+    "sha256": "b8e8a61ec9e8cc5545a42f0bc9de51965a028fafd0ee46d274003ee2d25b2141"
+  },
+  "Root47InMemoryMerge": {
+    "status": "PASS_EXACT_ORDERED_ANCHORS_PARSE_NO_WRITES",
+    "rows": [
+      {
+        "file": "biome-service/numeric-profile.js",
+        "parent": {
+          "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v47-live-handoff-source-join-2026-10-23-01\\candidate-02\\source\\biome-service\\numeric-profile.js",
+          "bytes": 53605,
+          "sha256": "5dfad499ab93d56de4c96f1a79a6232bfb2db8010470d1afc3ec5b21073bf566"
+        },
+        "postCodeBytes": 55456,
+        "postCodeSha256": "33bb13fab41476a1b2170a0023f078cef3b7f50f0ab0ab9d360da7ed6d96d152",
+        "allProfileLiteralsNeedFreshRepin": true
+      },
+      {
+        "file": "biome-service/host-world.js",
+        "parent": {
+          "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v47-live-handoff-source-join-2026-10-23-01\\candidate-02\\source\\biome-service\\host-world.js",
+          "bytes": 124970,
+          "sha256": "a3d56eb721362ccae917382b0de485ce95237cfcaaf98548ff98bd7e8ecdb3d0"
+        },
+        "postCodeBytes": 125148,
+        "postCodeSha256": "e58405c83879f440a5c77ec24b32c99767d7525bfd1807477bac756433fb09ad",
+        "allProfileLiteralsNeedFreshRepin": true
+      }
+    ]
+  },
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "rows": 222,
+      "digest": "8d59ea63c9bc4690eeaa03b5dbe7a59c207bfab8e9a7a5ac93601e722cec7e13"
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "rows": 5,
+      "digest": "c84eaa5c13e2244281f4effdf8e180e5d1e3580a3dec7714d25c997cfd9ff1d1"
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "rows": 9,
+      "digest": "ab0e67568d20db05c04926e7f69dc2d27b09fab4d9f84483c60dc3c4ca44d01a"
+    }
+  ],
+  "freshSourceReads": 236,
+  "sourceCopies": 222,
+  "sourceOnlyPeakQ": 13506680,
+  "sourceOnlyFinalQ": {
+    "heldBytes": 0,
+    "requestedBytes": 0,
+    "bookkeepingBytes": 0,
+    "peakBytes": 13506680,
+    "limitBytes": 33554432,
+    "liveReservations": 0,
+    "maximumReservations": 4096,
+    "owners": [],
+    "scope": "CONSERVATIVE_LOGICAL_METADATA_ADMISSION",
+    "nativeHeap": "UNMEASURED"
+  },
+  "controls": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-bounded-wait-retirement-2026-10-23-01\\controls-01\\full-regressions-15.json",
+      "bytes": 8518,
+      "sha256": "0820531c4e670a37f9e4c98bed40aa6a17b8399be5c636a2da6a43dcc437650b",
+      "status": "PASS_UNSELECTED_ACTUAL_ORIGINAL_COMPONENT_REGRESSIONS",
+      "cases": 18,
+      "groups": 103,
+      "rows": 18
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-bounded-wait-retirement-2026-10-23-01\\controls-01\\browser-domain-positive-14.json",
+      "bytes": 3002005,
+      "sha256": "1b7b9da5a69de66e0adccbc5816ccb6c3590ada933275f4a8487f50736ef01ab",
+      "status": "PASS_ACTUAL_SOURCE_PRIVATE_AND_DEFAULT_BROWSER_COMPONENT_MODELS",
+      "groups": 5
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-bounded-wait-retirement-2026-10-23-01\\controls-01\\bounded-controls-17.json",
+      "bytes": 6185,
+      "sha256": "9e4773e2f394991985b44c78ec1406128c1a8c9dd8afc313cc957996e098b037",
+      "status": "PASS_EIGHT_EXACT_SOURCE_BOUNDARY_MODELS",
+      "rows": 8
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-bounded-wait-retirement-2026-10-23-01\\controls-01\\private-strict-close-STRICT_CREATE-25.json",
+      "bytes": 5733,
+      "sha256": "ab2cff643bf91774486b46c330ba677d6367cc08620c72695d4b784e5ea8aa2a",
+      "status": "PASS_ACTUAL_PRIVATE_STRICT_BIRTH_CLOSE_MODEL",
+      "groups": 3
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-bounded-wait-retirement-2026-10-23-01\\controls-01\\private-strict-close-STRICT_BEGIN-25.json",
+      "bytes": 5892,
+      "sha256": "22f2205b07bb1c261c0618ae160b22ba9283ae3a20b0f12ce29cfe89e548710a",
+      "status": "PASS_ACTUAL_PRIVATE_STRICT_BIRTH_CLOSE_MODEL",
+      "groups": 3
+    }
+  ],
+  "scope": "Source-only functional component: prospective private browser lookup<=2; every original row still checked; three real private address stages; original Strict create/begin separated into real visits; three genuine v4 Host dispatches corrected. Public/default generic<=8 behavior retained; actual Chrome native shape has not been measured here. No R frame/job reset or future prepayment.",
+  "reviewBoundary": {
+    "work": "Numeric work/proposals remain separate unselected review artifacts; no source literal/fee/funding selection. Current Root47 R/Lifecycle/graph224 and complete startup caller must be rebased before selection.",
+    "storage": "Positive module/controller/instance/caller/partial-address/closed-root ABI remains a separate proposal. No borrowed page margin, removed-text, GC or physical heap credit.",
+    "close": "Only the new two Strict birth close points were modeled. Full Resource/catalogue/retirement close remains a separately held source/work/native/caller obligation.",
+    "Main": "All original readiness/null-funding guards remain. CURRENT/cache/publication are not added to the seven semantic phase whitelist; no Main/native/P05 permission."
+  },
+  "attempts": [
+    "Storage inspection18 only recognized declarations; privateEngineProgress expression correctly refused.19 fixes the AST locator; not a source defect.",
+    "Storage22 named-expression ownOccurrences locator refused;23 uses conservative complete changed engine activation.23 footer locator expected arrow although actual footer is a method;24 corrects the exact method node.26 exposed false anonymous-name capture matching on byte-exact unchanged Kernel;27 explicitly zeroes only exact-byte-identical file deltas. No source edits or borrowed credit.",
+    "Phase20 unique-name locator found original and optional seed reserve copies.21 selects original first factory reserve/release and proves byte equality to original Q basis; all work values remain proposals.",
+    "Strict-close24 omitted the genuine sameQ argument and refused; its inherited failure writer hit an existing historical report.25 corrects only the control invocation/output path; both new close points pass. All earlier files/reports remain preserved."
+  ],
+  "workSelected": false,
+  "fundingSelected": false,
+  "Main": false,
+  "P05": "OPEN"
+}

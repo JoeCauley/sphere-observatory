@@ -1,0 +1,101 @@
+{
+  "status": "PASS_FROZEN_ORIGINAL_ADMITTED_SOURCE_ROW_CUSTODY_UNSELECTED",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v49-admitted-source-row-lease-2026-10-23-01\\candidate-02\\source",
+  "module": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v49-admitted-source-row-lease-2026-10-23-01\\candidate-02\\source\\biome-service\\native\\source-admission.js",
+    "bytes": 63745,
+    "sha256": "ab8c034814a16282d1359ee62d6111014779ac68f3b4529e8bb6d327872fa01b"
+  },
+  "parent": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v48-live-startup-source-join-2026-10-23-01\\candidate-01\\source",
+  "recipe": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v49-admitted-source-row-lease-2026-10-23-01\\exact-source-recipe-06.json",
+    "bytes": 190914,
+    "sha256": "ce910555f5df42860b1644a052ae350acaef0dcb55352015ce8065833dd185e3"
+  },
+  "files": 522,
+  "parses": 426,
+  "sourceOnlyHunks": 9,
+  "unchangedRoot48Files": 520,
+  "sourceProfiles": [
+    {
+      "name": "buildGraph",
+      "digest": "f3408f2064460a0ddeb01b6375dc1aa9ae547fba1c78d74ed3d8091785971563",
+      "rows": 224
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "digest": "653dece5e6e88dec84a7547609aa3fccead7ba9e6a2b518909ebf4dd44e3b38c",
+      "rows": 5
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "digest": "81bd224b27f42e4dcd5d22a9854d6c9788951feba8cbc75ae64e82924c5ed8e1",
+      "rows": 9
+    }
+  ],
+  "sourceOnlyQPeak": 13927460,
+  "controls": {
+    "genericOriginalAdmissionGroups": 8,
+    "scheduledOriginalPublishGroups": 3,
+    "rows": 224,
+    "additionalSourceReadsByLease": 0,
+    "legacyExtraReadsAcrossTwoAdmissions": 448,
+    "rowAndCloseSteps": 224,
+    "closedPoolsHeld": true,
+    "uncertainNativeDropNeverRetried": true
+  },
+  "proofs": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v49-admitted-source-row-lease-2026-10-23-01\\CHECK-SOURCE-09.json",
+      "bytes": 2085,
+      "sha256": "0c3cd8d8631640be334c98eb9dba32df2594e58e91e6abdbd9110ddf3dff18d4"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v49-admitted-source-row-lease-2026-10-23-01\\CHECK-CONTROLS-07.json",
+      "bytes": 6296,
+      "sha256": "07c8c74ea2dc400dd5fdb99fc2dd033fb5d2e009bde96db845272f57d54e6775"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v49-admitted-source-row-lease-2026-10-23-01\\CHECK-SCHEDULED-08.json",
+      "bytes": 5065,
+      "sha256": "e0a2ee323897604b212f1ce4f9d8196f67909c7c0b8d9d80f2c46d7e2b8a725f"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v49-admitted-source-row-lease-2026-10-23-01\\ownership-and-work-liabilities-10.json",
+      "bytes": 4621,
+      "sha256": "e1cfc362832ce8c8f70a90891786aa3fc93b86cff2fdf652c20733bc8243ddbe"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v49-admitted-source-row-lease-2026-10-23-01\\FAILED-PREPARATION-02.json",
+      "bytes": 139,
+      "sha256": "d98c938f6bd1411af10bb472efeecaef3fdaf015b2f77cc7986af7183413c57b"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v49-admitted-source-row-lease-2026-10-23-01\\CHECK-CONTROLS-04.json",
+      "bytes": 6296,
+      "sha256": "e6de0c865d1ae4e4882fed2dd2f22df0d362ed2dab67e9276ff1b1432ca29673"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v49-admitted-source-row-lease-2026-10-23-01\\CHECK-SCHEDULED-05.json",
+      "bytes": 5065,
+      "sha256": "f463cad55556ca09832e2e0144ed5b4617409ec2358add86b6a4dac9d3b07eb1"
+    }
+  ],
+  "selection": {
+    "moduleAmount": null,
+    "ownerAmount": null,
+    "receiptAmount": null,
+    "rowPoolAmount": null,
+    "work": null,
+    "actualLoaderCurrent": false,
+    "authenticEarlyFoundationHandoff": false,
+    "Main": false,
+    "P05": "OPEN"
+  },
+  "limitations": [
+    "Generic and scheduled original admission actually authenticate result custody; new literal funding/work/current/pay/registrar and scheduled transport are component models.",
+    "Early Source runs before loader; actual trusted-launch lexical capture, original loader current/debit/native/Q and complete source producer/caller/module/parent/closed ownership remain required.",
+    "B must create and own its child lease until original B retirement. Source row metadata does not attest later server/local-file freshness.",
+    "Default fresh re-read/hash path remains. No actual Main initializer or draw, new selected work/funding, whole concurrent Q, browser/native/storage or acceptance claim."
+  ]
+}

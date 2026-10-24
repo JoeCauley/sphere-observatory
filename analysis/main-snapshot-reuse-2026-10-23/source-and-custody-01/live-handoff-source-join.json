@@ -1,0 +1,136 @@
+{
+  "status": "PASS_FROZEN_CACHED_BINDING_AND_COMMIT_SOURCE_JOIN_UNSELECTED",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v47-live-handoff-source-join-2026-10-23-01\\candidate-02\\source",
+  "parent": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v46-semantic-loading-reuse-join-2026-10-23-01\\candidate-01\\source",
+  "files": 522,
+  "parses": 426,
+  "changed": [
+    "biome-service/binding-builder.js",
+    "biome-service/publication.js",
+    "owned-main-bootstrap.js"
+  ],
+  "other519ParentFilesExact": true,
+  "inverseHunks": 41,
+  "inverseContextRepairs": [
+    {
+      "component": "G-live-commit/5",
+      "prefixCharacters": 16,
+      "suffixCharacters": 16,
+      "originalAfterOccurrences": 2
+    }
+  ],
+  "loader": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v47-live-handoff-source-join-2026-10-23-01\\candidate-02\\source\\owned-main-bootstrap.js",
+    "bytes": 337244,
+    "sha256": "c8d910fbfcc424d86f02dff8b57bfd5c4563f2d8bc4c6fc107dd898be44d9a97"
+  },
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "rows": 224,
+      "digest": "177af04e63eb41ff7349cc618988a49bc599adb38d1e2cde178ff2a4722b301d"
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "rows": 5,
+      "digest": "768239574b10f7fe42b92780c4b71b61b82d7879bd3d217850fdfda4671c329b"
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "rows": 9,
+      "digest": "c590061e5c8c8f43c0e698199900168615099e833fe2974bd960e855054da2bc"
+    }
+  ],
+  "evaluationOrderRows": 220,
+  "sourceReads": 238,
+  "sourceCopies": 224,
+  "sourceOnlyQPeak": 13914669,
+  "controls": {
+    "originalCases": 18,
+    "originalGroups": 103,
+    "actualNonemptyCommitCases": 3,
+    "actualNonemptyCommitGroups": 9
+  },
+  "proofs": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v47-live-handoff-source-join-2026-10-23-01\\exact-join-04.json",
+      "bytes": 280138,
+      "sha256": "63706425f687c63cf4dbfce1159add6c771205c78fbae98271b27d0f009ea73b"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v47-live-handoff-source-join-2026-10-23-01\\CHECK-SOURCE-05.json",
+      "bytes": 2671,
+      "sha256": "13ae4654532d291ddf5eb0d52182cc56ab43a92f9a7615d440d669af31a71139"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v47-live-handoff-source-join-2026-10-23-01\\control-preparation-06.json",
+      "bytes": 1729,
+      "sha256": "33e70287683ac4ad9b4a48e1705b2fbdc0a80739ab52cf0283ca817bc302cc76"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v47-live-handoff-source-join-2026-10-23-01\\controls-06\\full-regressions-96.json",
+      "bytes": 8537,
+      "sha256": "cea62190f3feb4d254e5ae35d0c43db67a4bdd30ff5a0f6ed26691615a630ca4"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v47-live-handoff-source-join-2026-10-23-01\\publication-control-preparation-07.json",
+      "bytes": 2220,
+      "sha256": "ae28748eaf661b8e072629571ee9958c9fe0a0d8d86b2bdadffd4fc5b2131bef"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v47-live-handoff-source-join-2026-10-23-01\\attempt-01.json",
+      "bytes": 493,
+      "sha256": "876e5992ecba2b790006ce78df170cebaa6a3856c378caa882335fcbcff6931a"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v47-live-handoff-source-join-2026-10-23-01\\preparation-disposition-03.json",
+      "bytes": 515,
+      "sha256": "74ce2ffcd6bfa0c75b2988064da5ab1852d17836c42cf9f87ba8bdd711ad5176"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v47-live-handoff-source-join-2026-10-23-01\\attempt-03-and-early-check-02.json",
+      "bytes": 1090,
+      "sha256": "97af8102a953f5c46a422125740be44764a77c9808a6451a256936b400ff0618"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v47-live-handoff-source-join-2026-10-23-01\\publication-controls-07\\control-ownedHostStagesReadPubPositive-07.json",
+      "bytes": 18665,
+      "sha256": "c268b476eb63339de5182f0265de6740df408efff20e192ffcaafa00a5d45ca6"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v47-live-handoff-source-join-2026-10-23-01\\publication-controls-07\\control-ownedHostStagesReadPubPendingClose-07.json",
+      "bytes": 17827,
+      "sha256": "60b996164ecc1e317b1af3b79aefa76526d49d10221a4ff980e487666b6c7662"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v47-live-handoff-source-join-2026-10-23-01\\publication-controls-07\\control-ownedHostStagesReadPubSource-07.json",
+      "bytes": 17962,
+      "sha256": "de388eea164a0c8bba17121bc5d9cbb845f8a443dd4737f15806f48e6b2d9b71"
+    }
+  ],
+  "failedPreparationDisposition": {
+    "firstInverseFailure": "Before copy; replacement closure duplicated. Exact unchanged context added in root recipe only.",
+    "secondParseFailure": "Candidate01 copied then inherited ES fixture encountered classic-only parser. Candidate02 uses original script-or-module parser before any copy.",
+    "earlyDependentCheck": "Root incorrectly started source check after failed preparation; it failed ENOENT before profile/test execution. Preserved, no passing result.",
+    "missingAuxiliaryCarrier": "Three06 component commands failed ENOENT before component case execution. Separate07 folder adds original diagnostic carrier/fresh all3profiles and explicit Host16384 marker.",
+    "candidate01BytesSameAsSuccessfulCandidate02": 522,
+    "inheritedReportLabel": "One fixture group still says222rows in prose. Actual carrier has exact Root47 graph224; source admission05 independently verifies224rows/238reads. No historical report label was overwritten."
+  },
+  "selection": {
+    "completeWork": null,
+    "completeFunding": null,
+    "actualMainCurrent": false,
+    "earlyLaunchCompiled": false,
+    "livePublicationRuntime": false,
+    "nativeInputExtent": null,
+    "Main": false,
+    "P05": "OPEN"
+  },
+  "limitations": [
+    "Only source and disclosed diagnostic component integration. Existing R v4 work proposal applicability correction16 remains and no inherited normal/failure/native/close fee is selected.",
+    "Private live commit+cached reader original bodies execute with fake-IDB and inherited extracted Root24 carrier, current/pay/amount/GL/Surface/App models. Not genuine paid Main CURRENT or actual Chrome Storage.",
+    "Publication/Lifecycle are newly source-admitted and ordered. The entire new Publication/Lifecycle module plus cached Binding delta has a distinct prospective null funding gate; prior moduleBaselineBytes covers its old cohort only.",
+    "Original lazy Lifecycle uses across native waits still need G C04 private fresh-use custody, now frozen separately. This source retains frozenC03; do not silently promote it to C04.",
+    "Real startup constructor/caller/preflight/pending/closed/source/native/Q, whole Main/provider demand admission and actual ordinary Main overview/local wholeview/fragment/Frame/appearance proof remain open."
+  ]
+}

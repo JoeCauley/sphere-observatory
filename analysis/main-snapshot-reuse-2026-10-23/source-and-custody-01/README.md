@@ -1,0 +1,1 @@
+Frozen original-function/source/custody component evidence only. Live Main startup/current/work/Q, early source foundation transfer, whole current/replacement demand and ordinary same-surface Main proof remain open. Full source/history/failures are in private checkpoint23; raw captures remain local.

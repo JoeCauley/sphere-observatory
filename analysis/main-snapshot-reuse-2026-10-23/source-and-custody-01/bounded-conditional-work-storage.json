@@ -1,0 +1,224 @@
+{
+  "status": "PASS_AUTHOR_REPRODUCIBLE_CONDITIONAL_COMPONENT_WORK_ABI_PROPOSAL",
+  "sourceSeal": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-bounded-wait-retirement-2026-10-23-01\\FREEZE-SOURCE-28.json",
+    "bytes": 4249,
+    "sha256": "fdd3a5534e19543d76696defc68bd626ad996292476a047982dd5f976cc10d05"
+  },
+  "sourcePins": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-bounded-wait-retirement-2026-10-23-01\\candidate-05\\source\\biome-service\\host-world.js",
+      "bytes": 121738,
+      "sha256": "f74ecfad25049dd9f39f4ff01bfc85ff4d98e14ad4b0a26e68929b218528d80c"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-bounded-wait-retirement-2026-10-23-01\\candidate-05\\source\\biome-service\\numeric-profile.js",
+      "bytes": 55456,
+      "sha256": "33bb13fab41476a1b2170a0023f078cef3b7f50f0ab0ab9d360da7ed6d96d152"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-bounded-wait-retirement-2026-10-23-01\\candidate-05\\source\\owned-main-bootstrap.js",
+      "bytes": 335918,
+      "sha256": "b18fb428dcb544c66c3017d3604d0a1a0029dc12bbdb1c77acc53af0c440a212"
+    }
+  ],
+  "work": {
+    "pin": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-bounded-wait-retirement-2026-10-23-01\\review-01\\phase-proposal-21.json",
+      "bytes": 765424,
+      "sha256": "aa2d1e9b525ee27843805e1c3269e0145b58f4ba62dfb3df0b9c905742f644f0"
+    },
+    "generator": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-bounded-wait-retirement-2026-10-23-01\\review-01\\derive-phase-21.cjs",
+      "bytes": 18559,
+      "sha256": "4530c2a7a33dc04f8ef8da1f0cdfad5140fb75f0c445dfa6eed04386d0d4d168"
+    },
+    "rows": 123,
+    "keys": [
+      {
+        "key": "hostBuildCreate",
+        "payload": 2063,
+        "normal": 2126,
+        "native": null,
+        "failure": 2255,
+        "fee": null
+      },
+      {
+        "key": "hostBuildStart",
+        "payload": 2203,
+        "normal": 2266,
+        "native": null,
+        "failure": 2395,
+        "fee": null
+      },
+      {
+        "key": "hostBuildStep",
+        "payload": 3203,
+        "normal": 3266,
+        "native": 3544,
+        "failure": 3395,
+        "fee": null
+      },
+      {
+        "key": "kernelOwnerStep",
+        "payload": 3195,
+        "normal": 3611,
+        "native": 4072,
+        "failure": 3740,
+        "fee": null
+      },
+      {
+        "key": "hostBuildAccept",
+        "payload": 881,
+        "normal": 944,
+        "native": null,
+        "failure": 1073,
+        "fee": null
+      },
+      {
+        "key": "kernelOwnerStart",
+        "payload": 2062,
+        "normal": 2478,
+        "native": null,
+        "failure": 2607,
+        "fee": null
+      },
+      {
+        "key": "kernelOwnerAccept",
+        "payload": 1384,
+        "normal": 1800,
+        "native": null,
+        "failure": 1929,
+        "fee": null
+      }
+    ],
+    "maxima": {
+      "normal": {
+        "phase": "KERNEL_OWNER_STEP/VERIFY/HOST/NUMERIC_DRIVE/STRICT_CREATE",
+        "value": 3611
+      },
+      "actualNative": {
+        "phase": "KERNEL_OWNER_STEP/VERIFY/HOST/NUMERIC_DRIVE/STRICT",
+        "value": 4040
+      },
+      "lateFailure": {
+        "phase": "KERNEL_OWNER_STEP/VERIFY/HOST/NUMERIC_DRIVE/STRICT_CREATE",
+        "value": 3740
+      },
+      "flatNative": {
+        "key": "kernelOwnerStep",
+        "phaseCount": 42,
+        "fee": null,
+        "proposedPayloadUpper": 3195,
+        "payloadDeterminingPhase": "KERNEL_OWNER_STEP/VERIFY/HOST/NUMERIC_DRIVE/STRICT_CREATE",
+        "actualTiming": "POST_R",
+        "normalWholeFlatUpper": 3611,
+        "conservativeFailureWholeFlatUpper": 3740,
+        "nativeScopeFlatUpper": 4072,
+        "firstActualRServiceExtra": 0,
+        "following": null
+      }
+    }
+  },
+  "storage": {
+    "pin": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-bounded-wait-retirement-2026-10-23-01\\review-01\\storage-proposal-27.json",
+      "bytes": 42451,
+      "sha256": "ea53c6ec758ed413ea8773e53f363c7865e48bd5d055a454362479d423174d58"
+    },
+    "generator": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-bounded-wait-retirement-2026-10-23-01\\review-01\\derive-storage-27.cjs",
+      "bytes": 9820,
+      "sha256": "5d8cde300f86393e225ea833d121a1c1dedee4cfdc00ee40becce92e2105a631"
+    },
+    "moduleAdded160": 160,
+    "privateNumericAdded8896": 8896,
+    "callerAdded17024": 17024,
+    "aggregateOverRoot36": {
+      "module": {
+        "parentRaw": 14048,
+        "addedRaw": 160,
+        "raw": 14208,
+        "rounded": 16384
+      },
+      "privateNumericEach": {
+        "parentRaw": 2112,
+        "addedRaw": 8896,
+        "raw": 11008,
+        "rounded": 12288
+      },
+      "HostEach": {
+        "parentRaw": 8256,
+        "addedRaw": 0,
+        "raw": 8256,
+        "rounded": 12288
+      },
+      "caller": {
+        "parentRaw": 55936,
+        "addedRaw": 17024,
+        "raw": 72960,
+        "rounded": 73728
+      }
+    },
+    "retainedPartialAddressEnvelopes": {
+      "fields": [
+        "schema",
+        "worldSeed",
+        "geographyRevision",
+        "terrainRevision",
+        "artRevision",
+        "assetRevision",
+        "heroRevision",
+        "space",
+        "face",
+        "level",
+        "x",
+        "y",
+        "local"
+      ],
+      "localKeys": [
+        "length",
+        "0",
+        "1"
+      ],
+      "stringValue": "shell",
+      "oneEnvelope": 3520,
+      "overlap": 2,
+      "bytes": 7040
+    }
+  },
+  "callback": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-bounded-wait-retirement-2026-10-23-01\\review-01\\current-fact-work-29.json",
+    "bytes": 8168,
+    "sha256": "ce4f86e90a1fdc5fa6d11538eb3487f93dc8c4c56c1f3d7b3dccca7586b2c22f"
+  },
+  "childApplicability": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-bounded-wait-retirement-2026-10-23-01\\review-01\\CHILD-APPLICABILITY-29.json",
+    "bytes": 6451,
+    "sha256": "8cd87c0b9e41b19fb12a03e55efe93ec2250ade64725c34438846320d9ef989d"
+  },
+  "attempts": [
+    {
+      "path": "derive-phase-20.cjs",
+      "disposition": "function-name uniqueness failed because current Q contains original and optional seed reserve bodies.21 selects original first factory body and verifies exact function bytes; no source edit."
+    },
+    {
+      "path": "derive-storage-22.cjs/23.cjs/24.cjs/26.cjs",
+      "disposition": "AST locators for named expression/method were corrected, then an unchanged Kernel anonymous-name capture match false-positive96 was detected by exact-byte check.27 zeroes ONLY exact-byte-identical file increments.26 preserved; final module160, not256."
+    },
+    {
+      "path": "phase-proposal-01.json",
+      "disposition": "Per-row native4012 and old flat4213 proposals preserved. Actual continuation and full F/footer/Q children produce new flat4072; never infer technology impossibility or selection from old upper."
+    }
+  ],
+  "held": [
+    "Actual Root47 graph224/order220/Profile/Source/R/Lifecycle/first-Q/whole-Q and complete37startup table rebase.",
+    "Actual native browser lookup<=2 domain; unsupported shapes refuse prospectively rather than omit rows.",
+    "Current original native/protocol/ServiceError per-paid-chain eligibility and parent facts remain mandatory; Error4 is conditional child allocation.",
+    "Full Resource/catalogue/retirement/close and current/cached/publication reader caller scope remain separately held.",
+    "No numerical allowance or fee is selected in source. Every original null readiness/Main gate remains. Native/VM/heap/driver/wall-time unmeasured."
+  ],
+  "workSelected": false,
+  "fundingSelected": false,
+  "Main": false
+}

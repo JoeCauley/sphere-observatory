@@ -1,0 +1,80 @@
+{
+  "status": "PASS_FROZEN_BOUNDED_STARTUP_AND_LIFECYCLE_SOURCE_JOIN_UNSELECTED",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v48-live-startup-source-join-2026-10-23-01\\candidate-01\\source",
+  "parent": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v47-live-handoff-source-join-2026-10-23-01\\candidate-02\\source",
+  "files": 522,
+  "parses": 426,
+  "changed": [
+    "biome-service/host-world.js",
+    "biome-service/numeric-profile.js",
+    "biome-service/publication.js",
+    "owned-main-bootstrap.js"
+  ],
+  "unchanged": 518,
+  "inverseHunks": 28,
+  "evaluationOrderRows": 220,
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "rows": 224,
+      "digest": "5da2fcde2fde97bed91b2f5776f06d290bca83597cde8e8f3230e09811a6dde9"
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "rows": 5,
+      "digest": "768239574b10f7fe42b92780c4b71b61b82d7879bd3d217850fdfda4671c329b"
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "rows": 9,
+      "digest": "c590061e5c8c8f43c0e698199900168615099e833fe2974bd960e855054da2bc"
+    }
+  ],
+  "sourceReads": 238,
+  "sourceCopies": 224,
+  "sourceOnlyQPeak": 13917825,
+  "controls": {
+    "originalCases": 18,
+    "originalGroups": 103,
+    "browserAndAddressFixtureGroups": 18,
+    "privateStrictCloseGroups": 6,
+    "publicationLifecycleCases": 8,
+    "publicationLifecycleGroups": 24
+  },
+  "proofs": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v48-live-startup-source-join-2026-10-23-01\\exact-join-01.json",
+      "bytes": 237193,
+      "sha256": "699b61984555300c329007aa88df6a5c5beeb6740e955c30153606b359fb2d26"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v48-live-startup-source-join-2026-10-23-01\\CHECK-SOURCE-02.json",
+      "bytes": 2690,
+      "sha256": "65140140774df72bf37c5db3a3580f8f3734e36d96226f58cacf3e4b88739fc9"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v48-live-startup-source-join-2026-10-23-01\\control-preparation-03.json",
+      "bytes": 5972,
+      "sha256": "db64ca42c7be083f4f694d614120749067fb0ed02109992becf3205a87cb0b94"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v48-live-startup-source-join-2026-10-23-01\\CHECK-CONTROLS-04.json",
+      "bytes": 7353,
+      "sha256": "7d7e564bda2cc8534251eadba0613ac92e55c0b33895fe766d18cdcb71bbd30d"
+    }
+  ],
+  "selection": {
+    "completeWork": null,
+    "completeFunding": null,
+    "actualMainCurrent": false,
+    "earlyLaunchCompiled": false,
+    "Main": false,
+    "P05": "OPEN"
+  },
+  "limitations": [
+    "Every inherited model in R/G controls remains explicit; actual functions and exact fresh profiles run, with diagnostic current/pay/funding/GL/Surface/caller and fake IndexedDB.",
+    "Private source lookup/Address/Strict visits and G04 Lifecycle checks are source joined; numerical quotes remain separate conditional proposals requiring exact caller rebase.",
+    "Source-only Q peak does not measure whole concurrent startup or native heap.",
+    "Actual original constructor/profile/source-snapshot custody, full module/caller/current/work/funding, whole Main/provider demand and ordinary Main same-surface evidence remain open."
+  ]
+}

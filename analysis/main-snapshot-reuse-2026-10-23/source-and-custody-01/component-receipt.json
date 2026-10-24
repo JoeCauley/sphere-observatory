@@ -1,0 +1,169 @@
+{
+  "status": "FROZEN_COHERENT_STARTUP_AND_SNAPSHOT_CUSTODY_COMPONENTS_MAIN_HELD",
+  "utc": "2026-10-24T02:04:35.720168+00:00",
+  "proofs": [
+    {
+      "name": "storage-native-eligibility.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v43-storage-native-eligibility-2026-10-23-01\\CHECK-04.json",
+        "bytes": 2150,
+        "sha256": "48ff8f0cd2da5dd0b755ce18ffdedce4a10bf11e53051c04f3d1a08fe2845d48"
+      }
+    },
+    {
+      "name": "private-loading-source-join.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v44-private-loading-reuse-join-2026-10-23-01\\CHECK-06.json",
+        "bytes": 5883,
+        "sha256": "6ed148fe9ab8472d346f963a4bdc4562d50f2d119f1671315486a7cd8b6a76b8"
+      }
+    },
+    {
+      "name": "cached-binding-source.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\CHECK-12.json",
+        "bytes": 9479,
+        "sha256": "9c862db79c9f4023602e6be0ee7048c20f01a5ebfc481ab1e3a59eff8a871237"
+      }
+    },
+    {
+      "name": "cached-binding-conditional-pricing.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v45-cached-binding-handoff-2026-10-23-01\\pricing-review-01\\CHECK-29.json",
+        "bytes": 16541,
+        "sha256": "be1defe0087eb1a95eb5e0c3525edd362f540510932eb1a17a4db2ba5d911a9a"
+      }
+    },
+    {
+      "name": "semantic-loading-source-join.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v46-semantic-loading-reuse-join-2026-10-23-01\\CHECK-05.json",
+        "bytes": 9121,
+        "sha256": "1031bb9f31619b4a194c9fe64ebd142c0cb997e9521a1d6f1e910db6e1cfce1b"
+      }
+    },
+    {
+      "name": "live-handoff-source-join.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v47-live-handoff-source-join-2026-10-23-01\\CHECK-08.json",
+        "bytes": 7278,
+        "sha256": "4a997aa9920a792f6e6bcc513b2cfe11ac379e7182a09294ea8b75d07086500a"
+      }
+    },
+    {
+      "name": "bounded-startup-lifecycle-source.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v48-live-startup-source-join-2026-10-23-01\\CHECK-05.json",
+        "bytes": 3345,
+        "sha256": "7dc16ecf07ad7a8e49c0f654960004cb92a67edfbbc70cadf7f13dc6f5213102"
+      }
+    },
+    {
+      "name": "admitted-source-row-custody.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v49-admitted-source-row-lease-2026-10-23-01\\CHECK-11.json",
+        "bytes": 4777,
+        "sha256": "dd3ead8d6595a8a2e0b6f42bb2df3379eb8e8d4433c2b4d47acc06f8ab78f243"
+      }
+    },
+    {
+      "name": "source-row-work-ownership-holds.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v49-admitted-source-row-lease-2026-10-23-01\\ownership-and-work-liabilities-10.json",
+        "bytes": 4621,
+        "sha256": "e1cfc362832ce8c8f70a90891786aa3fc93b86cff2fdf652c20733bc8243ddbe"
+      }
+    },
+    {
+      "name": "host-profile-custody.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v48-binding-constructor-profile-custody-2026-10-23-01\\CHECK-06.json",
+        "bytes": 4179,
+        "sha256": "8b7e1a5b7f11004eb6a09464b8152b4aff0d8a2f5f623e2eb887b65a98257f93"
+      }
+    },
+    {
+      "name": "bounded-source-successor.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-bounded-wait-retirement-2026-10-23-01\\CHECK-SOURCE-28.json",
+        "bytes": 8565,
+        "sha256": "5926e912871767bd0acdcde98bc253975e97b4482a0d916459fda10d4f371828"
+      }
+    },
+    {
+      "name": "bounded-conditional-work-storage.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v30-bounded-wait-retirement-2026-10-23-01\\review-01\\CHECK-WORK-STORAGE-29.json",
+        "bytes": 7940,
+        "sha256": "c173ddd23f97c9673e4f09a87e31d4d23f50c424b4de189d78597ac24c090fd6"
+      }
+    },
+    {
+      "name": "publication-lifecycle-custody.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-publication-lifecycle-2026-10-23-01\\CHECK-05.json",
+        "bytes": 3106,
+        "sha256": "d5687b8205c6581def0d7b0da423ff42920d3c8a3e6894b2ae79e8fcd703b615"
+      }
+    },
+    {
+      "name": "publication-existing-extent-reuse.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-publication-extents-2026-10-23-01\\CHECK-FUNCTIONAL-01.json",
+        "bytes": 3400,
+        "sha256": "2a1e56ec1a6637bc9153abd472b09f2006663b14fd0c95a85791d3098c0efc9a"
+      }
+    },
+    {
+      "name": "p05-exit-boundary.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\full-ordinary-host-envelope-review-01\\p05-exit-boundary-01.json",
+        "bytes": 2538,
+        "sha256": "1c9fe01eae51a47cfaec5f267f4076f9e6a907f52b82090e4793f9f0237da2f9"
+      }
+    }
+  ],
+  "coherentSource": {
+    "files": 522,
+    "parses": 426,
+    "sourceRows": 224,
+    "orderRows": 220,
+    "inverseHunks": 28,
+    "originalCases": 18,
+    "originalGroups": 103,
+    "browserAddressGroups": 18,
+    "StrictCloseGroups": 6,
+    "PublicationLifecycleCases": 8,
+    "PublicationLifecycleGroups": 24,
+    "fundingSelected": false,
+    "actualMainCurrent": false
+  },
+  "sourceSnapshotCustody": {
+    "sourceOnlyHunks": 9,
+    "genericGroups": 8,
+    "scheduledGroups": 3,
+    "sourceRows": 224,
+    "additionalSourceReadsByLease": 0,
+    "defaultTwoAdmissionFreshReads": 448,
+    "sourcePinsPerCloseVisit": 1,
+    "escapedRowAndClosedPoolsHeld": true,
+    "actualEarlyFoundationTransfer": false,
+    "workSelected": false,
+    "fundingSelected": false,
+    "nativeMain": false
+  },
+  "conditionalArithmetic": "R and P quotes are separate conditional exact-source/domain tables. Updated source/caller/C/Host/Source-Q/full launch eligibility must be rebased; they are not a complete paid Main certificate.",
+  "modelBoundary": "Actual original functions run with explicit component current/pay/amount/native/GL/Surface/App/extracted-caller/fake-IDB/transport models as each proof states.",
+  "P05": "OPEN",
+  "P06_P08": "LATER",
+  "PhaseOne": "NOT_ACCEPTED_NOT_RELEASED",
+  "deliveredRuntimeFilesChanged": 0,
+  "rawArchivesRemainLocal": true,
+  "selectedMainStartupComponent": "main-texture-handoff-funded-c3",
+  "activeSuccessorsExcluded": [
+    "main-v49-binding-constructor-profile-stages active P consumer",
+    "main-v30-bounded-cold-close active R successor",
+    "G next immutable-envelope/semantic custody successor",
+    "all restored-check folders, node_modules, raw archives and parallel five Atlas paths"
+  ]
+}

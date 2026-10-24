@@ -1,0 +1,39 @@
+{
+  "pass": true,
+  "cutoff": 23,
+  "snapshots": 275,
+  "sourceEntries": 128784,
+  "recordsVerified": 11480,
+  "recordBytes": 498065754,
+  "snapshotsAdded": 56,
+  "recordsAdded": 1429,
+  "freshRestores": [
+    {
+      "snapshot": "main-bounded-startup-lifecycle-c1",
+      "destination": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v50-source-reuse-progress-2026-10-23-01\\restored-check-23-main-bounded-startup-lifecycle-c1\\source",
+      "files": 522,
+      "verified": true
+    },
+    {
+      "snapshot": "main-admitted-source-rows-c2",
+      "destination": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v50-source-reuse-progress-2026-10-23-01\\restored-check-23-main-admitted-source-rows-c2\\source",
+      "files": 522,
+      "verified": true
+    }
+  ],
+  "earlier219Archives10051RecordsExact": true,
+  "restorerUnchanged": true,
+  "selectedMainComponent": "main-texture-handoff-funded-c3",
+  "latestJoinedMainStartup": "main-staged-world-reuse-join-unselected-c1",
+  "joinedMainStartupSelected": false,
+  "latestUnselectedSourceComposition": "main-admitted-source-rows-c2",
+  "rawArchivesRemainLocal": true,
+  "excludedActive": [
+    "main-v49-binding-constructor-profile-stages active P consumer",
+    "main-v30-bounded-cold-close active R successor",
+    "G next immutable-envelope/semantic custody successor",
+    "all restored-check folders, node_modules, raw archives and parallel five Atlas paths"
+  ],
+  "P05": "OPEN",
+  "Main": false
+}
