@@ -1,0 +1,225 @@
+{
+  "status": "PASS_FROZEN_AUTHENTIC_BOUNDARY_CONFIGURATION_SOURCE_COMPONENT_ONLY",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-state-complete-demand-2026-10-23-01\\candidate-13\\source",
+  "coherentModelJoin": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-state-complete-demand-2026-10-23-01\\model-join-43\\source",
+  "parentDriverCutoff": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-state-complete-demand-2026-10-23-01\\CHECK-FIXED-DRIVER-32.json",
+    "bytes": 9374,
+    "sha256": "928d963b14edd05f1e923afac8ffe51f61768566bcc463213fe27ad1a6b82189"
+  },
+  "state": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-state-complete-demand-2026-10-23-01\\candidate-13\\source\\biome-service\\native\\state-contexts.js",
+    "bytes": 49253,
+    "sha256": "bb32334ef0952c7792e954dae7b9febe075af71ccc3b4f17776c4ba2d9912807"
+  },
+  "codeRecipe": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-state-complete-demand-2026-10-23-01\\root-safe-state-configuration-recipe-45.json",
+    "bytes": 87003,
+    "sha256": "dd2bff8eaf0da3f760f48690b4048163a30f1be43f9210ee3469bdfe33408acf"
+  },
+  "files": 522,
+  "parses": 426,
+  "originalDefaultFunctions": [
+    {
+      "name": "fail",
+      "sha256": "779ed99315adb4429b6688e1883a19884e0d8051ed07ee9f2918e5134e0eb8c8"
+    },
+    {
+      "name": "data",
+      "sha256": "fc3713c0a0c8f018a44f3bd1aa3a1dea00558a7fb09075737a46b2d7bf6a399e"
+    },
+    {
+      "name": "abort",
+      "sha256": "cfbb76f893ab8d12bba0f48746349feaf20ae9f3fd23e412eba1941c0608955c"
+    },
+    {
+      "name": "live",
+      "sha256": "e747cf33f4dea50d872645358d93a42cb272329225023c1b0ab25bd33ecd177e"
+    },
+    {
+      "name": "observe",
+      "sha256": "4c5e7838801acb97d78a307494245345404191fa67badc591bdc56dea2a8d46a"
+    },
+    {
+      "name": "releaseObservation",
+      "sha256": "fbce4d042bed91a370b51760743eb2d7b53c0bd858c8d37167ed2dacd82e6ca2"
+    },
+    {
+      "name": "get",
+      "sha256": "f4444bbb49d4ca1ac203f3284a17f167d173d604cee046036aaf0bbd0bc7b749"
+    },
+    {
+      "name": "destroy",
+      "sha256": "f85e237a0b4761a7e91e4bed3f28cc002bd05b6cbfe4f0b1114554c9cd1f9f7e"
+    },
+    {
+      "name": "acquire",
+      "sha256": "cedf04af012e9ab26069e588b9f3d8b50b3f1559c954c77c3030338b3f3eacb2"
+    },
+    {
+      "name": "prepare",
+      "sha256": "b273db8a7b35f2e9314a64a389ad3d8cf6f5c93d8455ce63ef2e730048accd60"
+    },
+    {
+      "name": "inspectState",
+      "sha256": "bd1f5065112f2e073f25fab0c714938bfa3f31fd243bf60aa17e83d94e3da534"
+    },
+    {
+      "name": "inspectPrepared",
+      "sha256": "2ac153d41cb914a8a1e1c09c6a0357e26c30412c882debc10a4e92008663dc5e"
+    },
+    {
+      "name": "borrowPrepared",
+      "sha256": "b77f9ff51a149c23184daeab14ac4d6b7637e89769a47a325d1f9b6f4c4cb33d"
+    },
+    {
+      "name": "releasePrepared",
+      "sha256": "39b5b2474d80ef0d16afecffc9396a30fe067964996c32a4a1665cd5e9831f31"
+    },
+    {
+      "name": "release",
+      "sha256": "298203f26956cabb9981deda4fd1aeb7a45a30d779a6c4fe7275cae40f10c953"
+    },
+    {
+      "name": "dispose",
+      "sha256": "11004ab30ac902c9f41172f9143e9c9b70ff0effa90cd6f9d2642384c9657800"
+    }
+  ],
+  "unchangedDriverFunctions": [
+    {
+      "name": "fixedDriver",
+      "sha256": "2301785dabc566636c7c495b769026a5b571bb08bcdd8d82212791850fc98769"
+    },
+    {
+      "name": "acquireDemandCore",
+      "sha256": "7271ef895af970aa25ed581050c874c0ae336714b1e137cfca995dba1a7d0b44"
+    },
+    {
+      "name": "prepareDemandCore",
+      "sha256": "2e269aeb167173fa1af6f733f962d24cae50b128d2d01f4e540e4db731c010f0"
+    },
+    {
+      "name": "current",
+      "sha256": "0e864b17882ec0b1a58f8730339e21c36458cfeebf2d3e042fb93e08ada8ecc9"
+    },
+    {
+      "name": "promiseEligible",
+      "sha256": "cbd8b92b670570610974f6e3f5c9a6374e50576b7cdd70ea4edc92d0ab6ea4a6"
+    },
+    {
+      "name": "hold",
+      "sha256": "5fc002e3c69bb4c5a543796718893965b51a424eaaba6dffccc818a2feaaf21d"
+    },
+    {
+      "name": "start",
+      "sha256": "95eaac1d870950b9139a99dd2e462da5b4dcffad26dff65aef367f218f8f2bf9"
+    },
+    {
+      "name": "noIncoming",
+      "sha256": "748af7e1ba03d6e10a70c81b12fb42376cd6b827bfabeea675895fb71c2c46d5"
+    },
+    {
+      "name": "end",
+      "sha256": "2f9cfe5d94ec421940b5dd158f129297a3dbd978c8cca43a988738fb78a65b9e"
+    },
+    {
+      "name": "claim",
+      "sha256": "f27b8949b162ce9858b7e57e5c24f6ba199f8051cb63ad5273af2d0f522b73a7"
+    }
+  ],
+  "birth": {
+    "nullModuleGuard": 1930,
+    "conditionalEntry": 2026,
+    "receiptReserve": 6551,
+    "rowBirth": 6721,
+    "callablesInsideGuard": 16
+  },
+  "sourceProof": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-state-complete-demand-2026-10-23-01\\source-inventory-state-45.json",
+    "bytes": 94824,
+    "sha256": "3da29507f402fca824610adad38babf0e9c2dd15df5fc36b3e3b40a6c97f0487"
+  },
+  "genuineConfiguration": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-state-complete-demand-2026-10-23-01\\control-ownedHostStagesReadCache-genuine43.json",
+    "bytes": 22485,
+    "sha256": "e815aadc1550cee022612c45b2541e2b30b51387b0f1903e68b2b48de14b83fd",
+    "groups": 9,
+    "configuration": {
+      "format": "sphere-private-state-boundary-configuration/1",
+      "phase": "OWNER",
+      "nodes": 269,
+      "bytes": 8551,
+      "hasFailure": false,
+      "claimed": true,
+      "closed": false,
+      "retainedBoundary": true,
+      "retainedParentCharges": true
+    },
+    "visits": 877,
+    "scopeAdapter": "Original C constructor scope is explicitly entered by test-current adapter for functional component only; not actual new Root phase permission.",
+    "preparation": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-state-complete-demand-2026-10-23-01\\preparation-genuine-custody-43.json",
+      "bytes": 1154,
+      "sha256": "40363f5831ce4493ec2bc61fc6ecd3bf91c35ab32e8163fb6803151b00ea26c7"
+    }
+  },
+  "domainMath": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-state-complete-demand-2026-10-23-01\\domain-controls-42.json",
+    "bytes": 7719,
+    "sha256": "56f555d7cf5bc5e248dca16dc988edd5f9816f0a7dcdcbc4aa9da0fd8138c073",
+    "cases": 16,
+    "scope": "PASS_PURE_EXACT_SOURCE_DOMAIN_MATH_ONLY_NO_AUTHORITY"
+  },
+  "preservedFailures": {
+    "originalEagerConfigurationQ": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-state-complete-demand-2026-10-23-01\\control-ownedHostStagesReadCache-genuine27.json",
+      "bytes": 16452,
+      "sha256": "e061c3d5d847bc7e72a198fc990e9bc3d0ca74001888c378457b751bb9ea0b3c"
+    },
+    "originalCScope": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-state-complete-demand-2026-10-23-01\\control-ownedHostStagesReadCache-genuine35.json",
+      "bytes": 17005,
+      "sha256": "6712208c4bdcfe7c1235e838690227a02b560024cd8a448a9c07e11a48da65c5"
+    },
+    "laterRecipeParseQ": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-state-complete-demand-2026-10-23-01\\control-ownedHostStagesReadCache-genuine36.json",
+      "bytes": 16983,
+      "sha256": "932e2658c4cf39f1be9cc7aafad2d9e4bdf1502a4c3be9842b9f073546928867"
+    },
+    "earlierFunctionalC12": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-state-complete-demand-2026-10-23-01\\control-ownedHostStagesReadCache-genuine38.json",
+      "bytes": 22485,
+      "sha256": "31069c44a25aeb1c08f47e348fe61c4936f463c107219e7096c65306fc317d80"
+    },
+    "pureDomainCorrection": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-state-complete-demand-2026-10-23-01\\exact-domain-edits-40.json",
+      "bytes": 1624,
+      "sha256": "f77072e4c03188e7a54e1108e10d0ca0f2a08eebb0d464855c8a689ad28628db"
+    },
+    "pureHarnessCorrection": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-state-complete-demand-2026-10-23-01\\domain-harness-disposition-42.json",
+      "bytes": 387,
+      "sha256": "ef7e0af677dec447e85b2862537f0ca814fce181971eb9811f9887c4f25f86b9"
+    }
+  },
+  "rootRegistrarOnlyProposal": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-state-complete-demand-2026-10-23-01\\root-registrar-handoff-recipe-44.json",
+    "bytes": 7885,
+    "sha256": "aac420c2a8690e637ba57a3db25b057512b83d1b43268205a52a9e25e216096c"
+  },
+  "requiredRealScopeContract": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-state-complete-demand-2026-10-23-01\\root-state-scope-contract-44.md",
+    "bytes": 6371,
+    "sha256": "5dc142fa9b04166970ddecd4fb24729b762434289195ec57e27d284753912677"
+  },
+  "liabilities": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-state-complete-demand-2026-10-23-01\\state-configuration-liabilities-45.json",
+    "bytes": 3549,
+    "sha256": "1861a60386e7ff1a215fa82e5e84594ce0c06027c8a582d8af8c6018642a043a"
+  },
+  "allPrices": null,
+  "allFunding": null,
+  "allCurrentPermission": null,
+  "Main": false,
+  "P05": "OPEN"
+}

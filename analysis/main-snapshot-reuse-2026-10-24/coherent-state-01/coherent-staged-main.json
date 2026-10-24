@@ -1,0 +1,338 @@
+{
+  "status": "PASS_FROZEN_COHERENT_STAGED_MAIN_COMPONENT_SOURCE_UNSELECTED",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v60-coherent-staged-main-2026-10-24-01\\candidate-01\\source",
+  "parent": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v59-original-provider-bridge-stage-2026-10-23-01\\candidate-01\\source",
+  "files": 522,
+  "parses": 426,
+  "changed": [
+    "biome-service/records.js",
+    "biome-service/verified-record-store.js",
+    "biome-service/binding-builder.js",
+    "biome-service/native/state-contexts.js",
+    "biome-service/native/host-coordinator.js",
+    "owned-main-bootstrap.js"
+  ],
+  "unchangedRoot59Files": 516,
+  "codeHunks": 46,
+  "finalProfileHunks": 3,
+  "inverseHunks": 49,
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "rows": 224,
+      "digest": "b0cc30a87f7c7ba5e95ddcc1137df72582f7b67b49952b32a8cb7e3e1f35f57f"
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "rows": 5,
+      "digest": "c6d0fe3d8496eed9ff67d69d65ab819c8d9e4d007fa3d056db179b84bf515eaf"
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "rows": 9,
+      "digest": "f0d1c5a9df8cc8fcfb327e34f100a5f51e093b174992067fa3078f0937975e3b"
+    }
+  ],
+  "recipe": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v60-coherent-staged-main-2026-10-24-01\\exact-coherent-join-01.json",
+    "bytes": 956101,
+    "sha256": "e5ae30045bd02148f7ed35063f958fdc5695aba7f352e291a8c4ec4b43d4ca19"
+  },
+  "sourceProof": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v60-coherent-staged-main-2026-10-24-01\\CHECK-SOURCE-02.json",
+    "bytes": 1851,
+    "sha256": "225cf0296855f74f144e84816b25320409bbc19039804fed21f1af594133a37b"
+  },
+  "preparation": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v60-coherent-staged-main-2026-10-24-01\\control-preparation-02.json",
+    "bytes": 8217,
+    "sha256": "bd5c752d8dfb853c6212b2dfbd2d27601785588450d6ac5c4139a0a9f2c7775b"
+  },
+  "reports": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v60-coherent-staged-main-2026-10-24-01\\controls-02\\control-typed-schema-12.json",
+      "bytes": 4065,
+      "sha256": "5ba0489d822719eee15dc94c615b21c43a068d727ad97f64695c87a4513db8b3",
+      "family": "G-original-schema",
+      "cases": 22,
+      "groups": 22,
+      "status": "PASS"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v60-coherent-staged-main-2026-10-24-01\\controls-02\\control-semantic-producer-12.json",
+      "bytes": 5030,
+      "sha256": "64ed61bd4255e6e318b9f8c3a9f68ded5ed0eea245b638c15f3547e471a19440",
+      "family": "G-original-semantic",
+      "cases": 12,
+      "groups": 12,
+      "status": "PASS"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v60-coherent-staged-main-2026-10-24-01\\controls-02\\control-schema-interleave-12.json",
+      "bytes": 1447,
+      "sha256": "5c805e11add0d0c635ff2974a21ecff211490a7404812fa346ea4b032b4c3616",
+      "family": "G-interleaved-error-and-closed-roots",
+      "cases": 4,
+      "groups": 4,
+      "status": "PASS"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v60-coherent-staged-main-2026-10-24-01\\controls-02\\control-ownedHostStagesReadStagedBindingProducerPositive-coherentBPositive03.json",
+      "bytes": 20190,
+      "sha256": "8baedd618fc99443929b053b2796067d2c1919152e75452cdf1f1b432b8fbf62",
+      "family": "G-original-B-prepareBase-and-failures",
+      "cases": 1,
+      "groups": 3,
+      "status": "PASS"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v60-coherent-staged-main-2026-10-24-01\\controls-02\\control-ownedHostStagesReadStagedBindingProducerPositive-coherentBaffinity03.json",
+      "bytes": 21497,
+      "sha256": "9b9dfa24c8a0fd02174a75e74debc0092582cfc96a16617bc7ddb586ec11c573",
+      "family": "G-original-B-prepareBase-and-failures",
+      "cases": 1,
+      "groups": 3,
+      "status": "PASS"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v60-coherent-staged-main-2026-10-24-01\\controls-02\\control-ownedHostStagesReadStagedBindingProducerPositive-coherentBsource03.json",
+      "bytes": 21532,
+      "sha256": "dd272152cf15489e9295fe9139fd0f5f1837eb5b4ea271a71b709bc61eba07b4",
+      "family": "G-original-B-prepareBase-and-failures",
+      "cases": 1,
+      "groups": 3,
+      "status": "PASS"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v60-coherent-staged-main-2026-10-24-01\\controls-02\\control-ownedHostStagesReadStagedBindingProducerPositive-coherentBraw-undefined04.json",
+      "bytes": 21551,
+      "sha256": "75bc5e093b7d0e274463835cdf98b1f523a082afc72bf5d47763fde3977cc341",
+      "family": "G-original-B-prepareBase-and-failures",
+      "cases": 1,
+      "groups": 3,
+      "status": "PASS"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v60-coherent-staged-main-2026-10-24-01\\controls-02\\control-ownedHostStagesReadStagedBindingProducerPositive-coherentBraw-false04.json",
+      "bytes": 21547,
+      "sha256": "dbe84c9307ae0bda0d43ff6d3127ad1d103c4cfa088cf778ba61a8ebbda55bd1",
+      "family": "G-original-B-prepareBase-and-failures",
+      "cases": 1,
+      "groups": 3,
+      "status": "PASS"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v60-coherent-staged-main-2026-10-24-01\\controls-02\\control-ownedHostStagesReadStagedBindingProducerPositive-coherentBraw-null04.json",
+      "bytes": 21546,
+      "sha256": "031b5f76c55ff4451cdd0dc705584fdb2a020359a80468e7ac24eec2a86bf3a4",
+      "family": "G-original-B-prepareBase-and-failures",
+      "cases": 1,
+      "groups": 3,
+      "status": "PASS"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v60-coherent-staged-main-2026-10-24-01\\controls-02\\control-ownedHostStagesReadStagedBindingProducerPositive-coherentBpending-close04.json",
+      "bytes": 21538,
+      "sha256": "8eb050fc2819dfb0db6a440115d73fb04f492404875d1e8fcb3823e73397c203",
+      "family": "G-original-B-prepareBase-and-failures",
+      "cases": 1,
+      "groups": 3,
+      "status": "PASS"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v60-coherent-staged-main-2026-10-24-01\\controls-02\\control-positive-coherent03.json",
+      "bytes": 6445,
+      "sha256": "d1b745ad019c7e1e76e9180eb59e51c7ab1bdfed3a7b48e08e00094498cfd571",
+      "family": "P-reusable-State-Coordinator-named-models",
+      "cases": 1,
+      "groups": 4,
+      "status": "PASS_REAL_R_Q_SOURCE_STATE_AND_COORDINATOR_NAMED_PARENT_MODELS_ONLY"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v60-coherent-staged-main-2026-10-24-01\\controls-02\\control-raw-false-coherent03.json",
+      "bytes": 6076,
+      "sha256": "602c36c53b999e3675eb5a8f5ac01485a4004cffb5a91a12b6964becf374352f",
+      "family": "P-reusable-State-Coordinator-named-models",
+      "cases": 1,
+      "groups": 1,
+      "status": "PASS_REAL_R_Q_SOURCE_STATE_AND_COORDINATOR_NAMED_PARENT_MODELS_ONLY"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v60-coherent-staged-main-2026-10-24-01\\controls-02\\control-raw-null-coherent03.json",
+      "bytes": 6075,
+      "sha256": "a1ace0e669bfe992e93287f07b3625379f18eec797238df89ed69820d41b400d",
+      "family": "P-reusable-State-Coordinator-named-models",
+      "cases": 1,
+      "groups": 1,
+      "status": "PASS_REAL_R_Q_SOURCE_STATE_AND_COORDINATOR_NAMED_PARENT_MODELS_ONLY"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v60-coherent-staged-main-2026-10-24-01\\controls-02\\control-raw-undefined-coherent03.json",
+      "bytes": 6080,
+      "sha256": "ad8b730c326085979032316f7236c68c112193ccb620aef07ce3d99f50fd289a",
+      "family": "P-reusable-State-Coordinator-named-models",
+      "cases": 1,
+      "groups": 1,
+      "status": "PASS_REAL_R_Q_SOURCE_STATE_AND_COORDINATOR_NAMED_PARENT_MODELS_ONLY"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v60-coherent-staged-main-2026-10-24-01\\controls-02\\control-state-uncertain-coherent03.json",
+      "bytes": 4374,
+      "sha256": "0ce06a4ba92037e71b2aabc1ef6d1f678a9fb869014d0a6d6b612fbe8355da98",
+      "family": "P-reusable-State-Coordinator-named-models",
+      "cases": 1,
+      "groups": 1,
+      "status": "PASS_REAL_R_Q_SOURCE_STATE_AND_COORDINATOR_NAMED_PARENT_MODELS_ONLY"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v60-coherent-staged-main-2026-10-24-01\\controls-02\\control-observer-coherent03.json",
+      "bytes": 4494,
+      "sha256": "fded0a2b0dcffde8420bc0c6b4f66705ae133844345ca319722314c0cde3c7a2",
+      "family": "P-reusable-State-Coordinator-named-models",
+      "cases": 1,
+      "groups": 1,
+      "status": "PASS_REAL_R_Q_SOURCE_STATE_AND_COORDINATOR_NAMED_PARENT_MODELS_ONLY"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v60-coherent-staged-main-2026-10-24-01\\controls-02\\control-descriptor-kind-coherent03.json",
+      "bytes": 4501,
+      "sha256": "8ddad56e3583ffbfadd6a1c65782d5f0f7964a632aa127f130f1487c94ffcfc8",
+      "family": "P-reusable-State-Coordinator-named-models",
+      "cases": 1,
+      "groups": 1,
+      "status": "PASS_REAL_R_Q_SOURCE_STATE_AND_COORDINATOR_NAMED_PARENT_MODELS_ONLY"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v60-coherent-staged-main-2026-10-24-01\\controls-02\\control-pressure-coherent03.json",
+      "bytes": 6170,
+      "sha256": "e97cbcb1b67c865b94d64021860026be3f43953b97caeb642b301fd52d372f5d",
+      "family": "P-reusable-State-Coordinator-named-models",
+      "cases": 1,
+      "groups": 2,
+      "status": "PASS_REAL_R_Q_SOURCE_STATE_AND_COORDINATOR_NAMED_PARENT_MODELS_ONLY"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v60-coherent-staged-main-2026-10-24-01\\controls-02\\control-reuse-coherent03.json",
+      "bytes": 6511,
+      "sha256": "46b49f8be652fc146d09c0c4d44040d59a0569230864ef95a78f1feecd951d1d",
+      "family": "P-reusable-State-Coordinator-named-models",
+      "cases": 1,
+      "groups": 4,
+      "status": "PASS_REAL_R_Q_SOURCE_STATE_AND_COORDINATOR_NAMED_PARENT_MODELS_ONLY"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v60-coherent-staged-main-2026-10-24-01\\controls-02\\control-wrong-q-coherent03.json",
+      "bytes": 6072,
+      "sha256": "b313c102738d8859001c6b8b5ee449c8671cb797a9478473cf17322538361335",
+      "family": "P-reusable-State-Coordinator-named-models",
+      "cases": 1,
+      "groups": 1,
+      "status": "PASS_REAL_R_Q_SOURCE_STATE_AND_COORDINATOR_NAMED_PARENT_MODELS_ONLY"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v60-coherent-staged-main-2026-10-24-01\\controls-02\\control-result-held-coherent03.json",
+      "bytes": 5972,
+      "sha256": "856e4d2f953b7f9d146aaedd9aef02fb48090407d51528d04edc7e0a4c078ba2",
+      "family": "P-reusable-State-Coordinator-named-models",
+      "cases": 1,
+      "groups": 1,
+      "status": "PASS_REAL_R_Q_SOURCE_STATE_AND_COORDINATOR_NAMED_PARENT_MODELS_ONLY"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v60-coherent-staged-main-2026-10-24-01\\controls-02\\control-cleanup-roots-coherent03.json",
+      "bytes": 6408,
+      "sha256": "8b4d2dd25f0c131cc240ec160f1306c492a380564abaf2fa15efd254194a45dc",
+      "family": "P-reusable-State-Coordinator-named-models",
+      "cases": 1,
+      "groups": 1,
+      "status": "PASS_REAL_R_Q_SOURCE_STATE_AND_COORDINATOR_NAMED_PARENT_MODELS_ONLY"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v60-coherent-staged-main-2026-10-24-01\\controls-02\\control-reentry-coherent03.json",
+      "bytes": 6564,
+      "sha256": "e74884f041f6801a7ca8ffa6e5beb4cb5d016b949224a3de7d4ea32e42944f38",
+      "family": "P-reusable-State-Coordinator-named-models",
+      "cases": 1,
+      "groups": 5,
+      "status": "PASS_REAL_R_Q_SOURCE_STATE_AND_COORDINATOR_NAMED_PARENT_MODELS_ONLY"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v60-coherent-staged-main-2026-10-24-01\\controls-02\\control-ownedHostStagesReadCache-coherentBridgePositive03.json",
+      "bytes": 22543,
+      "sha256": "91d256b56cb6195e3a8fe715fc8e94198d24aa0639903a0f72adba93756b068e",
+      "family": "Root59-genuine-B-Kernel-PH-setup-with-entry-models",
+      "cases": 1,
+      "groups": 7,
+      "status": "PASS"
+    }
+  ],
+  "cases": 59,
+  "groups": 90,
+  "freshSourceReads": 238,
+  "sourceCopies": 224,
+  "sourceOnlyQPeak": 14704337,
+  "sourceOnlyFinalQ": {
+    "heldBytes": 0,
+    "requestedBytes": 0,
+    "bookkeepingBytes": 0,
+    "peakBytes": 14704337,
+    "limitBytes": 33554432,
+    "liveReservations": 0,
+    "maximumReservations": 4096,
+    "owners": [],
+    "scope": "CONSERVATIVE_LOGICAL_METADATA_ADMISSION",
+    "nativeHeap": "UNMEASURED"
+  },
+  "coherentGenuineBridgeQSubset": {
+    "held": 26602203,
+    "peak": 27646329,
+    "fullLaunchAndModuleExcluded": true
+  },
+  "preservedTestRoutingFailures": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v60-coherent-staged-main-2026-10-24-01\\control-routing-attempt-03.json",
+    "bytes": 2077,
+    "sha256": "4a4f58a7e8b8b820211ef953a76b7acff296555550a067e43862a23a64755010"
+  },
+  "inheritedSeparateBridgeNegativeControls": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v59-original-provider-bridge-stage-2026-10-23-01\\CHECK-COMPONENT-05.json",
+    "bytes": 8649,
+    "sha256": "ffd0b688f86f7c91af9a8331412cf6b02650d4ad05dd84466c95f491e20368b2"
+  },
+  "change": "Exact source-only join of G sealed staged original typed/semantic producer C10 (44 unique reversible edits) and P sealed reusable original State/Coordinator driver C10 (2 complete unique source groups), over coherent Root59 bridge. Actual original B remains Root57 constructor/3 alias/adopt custody compatible; all three profiles are freshly recomputed. Original parent source, failed attempts and each named model boundary remain retained.",
+  "boundaries": [
+    "G45 cases prove original compiled schema/semantic parity, isolated interleaved error state and closed roots plus actual empty-base B.prepareBase/failures. Original B prelude/clones/remaining V/native/async tail and all new prices stay unqualified.",
+    "P13models/24groups include128 serial whole-view replacements with one charged controller and flat logical held Q. B/K/provider/geometry/target/current/pay adapters remain models; no genuine whole State/view proof.",
+    "The genuine bridge setup uses original nonempty B/Host/Kernel/PH/R/commonQ with original Source/Strict parents, but fixed entry/current/Surface/App/literal allowances and zero physical R fixture ceilings. Whole Main/native/current/work/Q are separate.",
+    "Source admission238reads/224copies/Q0 checks complete source metadata only, never all runtime or launcher ownership.",
+    "Four new failed runs used incorrect non-hyphenated control CLI names; original pending-close fallback assertions refused them. Fresh04 runs use the exact original supported modes. Runtime code unchanged."
+  ],
+  "excludedActive": [
+    "P C11 State provider-profile custody successor and actual Root scope/footer handoff",
+    "R stored-root-chain batch successor and all trusted-launch work/Q selection",
+    "G actual Main M producer successor"
+  ],
+  "selection": {
+    "module": null,
+    "state": null,
+    "completeFunding": null,
+    "completeWork": null,
+    "wholeQ": null,
+    "Main": false,
+    "P05": "OPEN"
+  },
+  "remaining": [
+    "G actual Main M/P/H authority and physical held/current/replacement envelope",
+    "P authentic State profile configuration handoff and recipe parse/prepare pressure, complete bundle authority",
+    "R exact current-source trusted startup compilation, guarded root chain, full callback/native/work/Q and any optional initializer split",
+    "Ordinary Main overview/local on same assigned surfaces, provider/support/uniform/whole-view/Frame/fragment/appearance"
+  ],
+  "limits": {
+    "prepare": 4096,
+    "upload": 262144,
+    "jobs": 2,
+    "slots": 64,
+    "serviceCpu": 33554432,
+    "serviceGpu": 10485760,
+    "commonQ": 33554432
+  }
+}

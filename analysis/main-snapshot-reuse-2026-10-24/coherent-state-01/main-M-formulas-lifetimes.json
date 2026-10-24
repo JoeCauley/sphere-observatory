@@ -1,0 +1,404 @@
+{
+  "status": "PASS_SOURCE_PINNED_INTEGER_FORMULAS_AND_PHYSICAL_LIFETIME_REQUIREMENTS",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\candidate-06\\source",
+  "loader": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\candidate-06\\source\\owned-main-bootstrap.js",
+    "bytes": 374147,
+    "sha256": "4d7480ef530175497613678d036ebfeaa9a120d6ae39ea9a81c9c4b3fd802813"
+  },
+  "anchors": [
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 545,
+      "needle": "function inputs(){",
+      "meaning": "Original private App/Core/actual native viewport input entry; no fixture desired viewport.",
+      "source": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\candidate-06\\source\\owned-main-bootstrap.js",
+        "bytes": 374147,
+        "sha256": "4d7480ef530175497613678d036ebfeaa9a120d6ae39ea9a81c9c4b3fd802813"
+      }
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 1247,
+      "needle": "function fresh(s){",
+      "meaning": "Original same App weak-Core/serial/current native/Renderer/G/Q/S parents remain before and after every new step.",
+      "source": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\candidate-06\\source\\owned-main-bootstrap.js",
+        "bytes": 374147,
+        "sha256": "4d7480ef530175497613678d036ebfeaa9a120d6ae39ea9a81c9c4b3fd802813"
+      }
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 1251,
+      "needle": "function viewport(s){",
+      "meaning": "Original observed native texture/renderbuffer/viewport maxima and App policy; no new native capability values.",
+      "source": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\candidate-06\\source\\owned-main-bootstrap.js",
+        "bytes": 374147,
+        "sha256": "4d7480ef530175497613678d036ebfeaa9a120d6ae39ea9a81c9c4b3fd802813"
+      }
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 1281,
+      "needle": "function subset(){",
+      "meaning": "Existing subset remains a separately labeled partial input; new complete conditional M candidate is not installed as admission.",
+      "source": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\candidate-06\\source\\owned-main-bootstrap.js",
+        "bytes": 374147,
+        "sha256": "4d7480ef530175497613678d036ebfeaa9a120d6ae39ea9a81c9c4b3fd802813"
+      }
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 1141,
+      "needle": "function readMainVectorConstruction(backend,renderer,inspect){",
+      "meaning": "Original Surface-block private port: both original current/Surface/G/Renderer barriers, existing private key, captured original Construction.inspect; absent and no callable born under null funding.",
+      "source": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\candidate-06\\source\\owned-main-bootstrap.js",
+        "bytes": 374147,
+        "sha256": "4d7480ef530175497613678d036ebfeaa9a120d6ae39ea9a81c9c4b3fd802813"
+      }
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 1310,
+      "needle": "function vectorCurrent(s,m){",
+      "meaning": "Fresh exact retained Core/plan/viewport/source/Renderer/G/Construction and original iterator.matches, plus passive branch descriptors.",
+      "source": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\candidate-06\\source\\owned-main-bootstrap.js",
+        "bytes": 374147,
+        "sha256": "4d7480ef530175497613678d036ebfeaa9a120d6ae39ea9a81c9c4b3fd802813"
+      }
+    },
+    {
+      "file": "owned-main-bootstrap.js",
+      "line": 1611,
+      "needle": "case 'RESOURCE_MAIN_VECTOR_START':resourceHostStage.mainVectorStart();",
+      "meaning": "Actual private paid initializer dispatch stages precede Host builders; default profile null preserves old dispatch.",
+      "source": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\candidate-06\\source\\owned-main-bootstrap.js",
+        "bytes": 374147,
+        "sha256": "4d7480ef530175497613678d036ebfeaa9a120d6ae39ea9a81c9c4b3fd802813"
+      }
+    },
+    {
+      "file": "biome-service/native/main-baseline-resource-records.js",
+      "line": 59,
+      "needle": "function snapshot(",
+      "meaning": "Original private constructor-record snapshot/brand, not public Renderer fields.",
+      "source": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\candidate-06\\source\\biome-service\\native\\main-baseline-resource-records.js",
+        "bytes": 38921,
+        "sha256": "5f11cbc99a9a225f163dc0509f6e67369c797f2333419d3b4b47498a4b8a5310"
+      }
+    },
+    {
+      "file": "biome-service/native/main-target-owner.js",
+      "line": 54,
+      "needle": "if(!observed.physicallyRetained)",
+      "meaning": "Retained Target key removed only after original R physical end; old readers/fences keep the generation counted.",
+      "source": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\candidate-06\\source\\biome-service\\native\\main-target-owner.js",
+        "bytes": 32412,
+        "sha256": "4b30bd30d304ce850b4e0db37e54de95c062b18d105d509855d7f612cc68c5cd"
+      }
+    },
+    {
+      "file": "biome-service/native/main-target-owner.js",
+      "line": 56,
+      "needle": "if(finiteApply(finiteSetSize,retained,[])>=FINITE_LIMITS.maximumLiveGenerations)",
+      "meaning": "Finite selected Target refuses another preparation before allocating when two keys remain.",
+      "source": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\candidate-06\\source\\biome-service\\native\\main-target-owner.js",
+        "bytes": 32412,
+        "sha256": "4b30bd30d304ce850b4e0db37e54de95c062b18d105d509855d7f612cc68c5cd"
+      }
+    },
+    {
+      "file": "biome-service/native/main-target-owner.js",
+      "line": 63,
+      "needle": "preparationUncertain=true;throw error;",
+      "meaning": "Unknown entered Target failure holds preparation rather than freeing capacity. The RESOURCE_BUDGET exception requires genuine pre-physical original R error eligibility.",
+      "source": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\candidate-06\\source\\biome-service\\native\\main-target-owner.js",
+        "bytes": 32412,
+        "sha256": "4b30bd30d304ce850b4e0db37e54de95c062b18d105d509855d7f612cc68c5cd"
+      }
+    },
+    {
+      "file": "biome-service/native/root-target-backend.js",
+      "line": 428,
+      "needle": "shape.renderbuffers?gl.MAX_RENDERBUFFER_SIZE:gl.MAX_TEXTURE_SIZE",
+      "meaning": "Display renderbuffers and textured layouts use different native extent checks; new uniform raster bound uses original Renderer renderbuffer maximum.",
+      "source": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\candidate-06\\source\\biome-service\\native\\root-target-backend.js",
+        "bytes": 118511,
+        "sha256": "b0efa9271d94fef061f293fdd55f051fd266cc42b8b471174f2bc54ea43497cc"
+      }
+    },
+    {
+      "file": "biome-service/native/root-target-backend.js",
+      "line": 457,
+      "needle": "s.resource=resource;if(s.failure){drop(s);throw s.failure;}",
+      "meaning": "A charged partial failed record can exist before a returned target key. It consumes prospective capacity and remains owned by R.",
+      "source": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\candidate-06\\source\\biome-service\\native\\root-target-backend.js",
+        "bytes": 118511,
+        "sha256": "b0efa9271d94fef061f293fdd55f051fd266cc42b8b471174f2bc54ea43497cc"
+      }
+    },
+    {
+      "file": "biome-service/native/main-demanded-array-content-owner.js",
+      "line": 59,
+      "needle": "retire(s.chunkKey);if(resourceHost.inspectResource(s.chunkKey).physicallyRetained)return false;",
+      "meaning": "A second BYOB chunk is not begun until actual first chunk physical retirement; this justifies one input+result envelope instead of all chunk history.",
+      "source": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\candidate-06\\source\\biome-service\\native\\main-demanded-array-content-owner.js",
+        "bytes": 36686,
+        "sha256": "a92f1e4572c99fb688a5e3fe301d7fa83470919f6b97523a357b6b130db6ca31"
+      }
+    },
+    {
+      "file": "biome-service/native/main-demanded-array-content-owner.js",
+      "line": 62,
+      "needle": "nativeRequest(s.asset.bytes+32",
+      "meaning": "Actual native digest reserves encoded input plus32 result, not native/API1 as a full work price.",
+      "source": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\candidate-06\\source\\biome-service\\native\\main-demanded-array-content-owner.js",
+        "bytes": 36686,
+        "sha256": "a92f1e4572c99fb688a5e3fe301d7fa83470919f6b97523a357b6b130db6ca31"
+      }
+    },
+    {
+      "file": "biome-service/native/main-demanded-array-content-owner.js",
+      "line": 67,
+      "needle": "nativeRequest(s.asset.bytes,{",
+      "meaning": "Actual Blob logical reservation equals exact original manifest encoded length.",
+      "source": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\candidate-06\\source\\biome-service\\native\\main-demanded-array-content-owner.js",
+        "bytes": 36686,
+        "sha256": "a92f1e4572c99fb688a5e3fe301d7fa83470919f6b97523a357b6b130db6ca31"
+      }
+    },
+    {
+      "file": "biome-service/native/main-demanded-array-content-owner.js",
+      "line": 71,
+      "needle": "nativeRequest(s.asset.bytes+s.asset.decodedRGBABytes",
+      "meaning": "Actual original image/URL+decoded logical envelope includes both original operands. Native browser decoder/CPU/physical heap is separate.",
+      "source": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\candidate-06\\source\\biome-service\\native\\main-demanded-array-content-owner.js",
+        "bytes": 36686,
+        "sha256": "a92f1e4572c99fb688a5e3fe301d7fa83470919f6b97523a357b6b130db6ca31"
+      }
+    },
+    {
+      "file": "biome-service/native/main-demanded-array-content-owner.js",
+      "line": 77,
+      "needle": "Math.max(300*150,size*size)*4",
+      "meaning": "Every Canvas logical factory includes native default300x150 before setters; all Canvas factories and all readbacks remain in the allocation union.",
+      "source": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\candidate-06\\source\\biome-service\\native\\main-demanded-array-content-owner.js",
+        "bytes": 36686,
+        "sha256": "a92f1e4572c99fb688a5e3fe301d7fa83470919f6b97523a357b6b130db6ca31"
+      }
+    },
+    {
+      "file": "biome-service/native/main-demanded-array-content-owner.js",
+      "line": 96,
+      "needle": "if(actualPlan.worldTextures.length||actualPlan.woundTextures.length)",
+      "meaning": "Original demanded owner explicitly supports the single initial Biome/Hero domain; no new World/Wound route or accepted-content reduction.",
+      "source": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\candidate-06\\source\\biome-service\\native\\main-demanded-array-content-owner.js",
+        "bytes": 36686,
+        "sha256": "a92f1e4572c99fb688a5e3fe301d7fa83470919f6b97523a357b6b130db6ca31"
+      }
+    },
+    {
+      "file": "biome-service/native/main-host-cpu-cache.js",
+      "line": 28,
+      "needle": "if(held.size>=MAX_RECORDS||resources.size+1+(dataBytes?1:0)>MAX_CPU_BUFFERS)",
+      "meaning": "At most8 actual current/building/retiring cache entries and17 buffers.",
+      "source": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\candidate-06\\source\\biome-service\\native\\main-host-cpu-cache.js",
+        "bytes": 23209,
+        "sha256": "53aed7b369441ec37031b6bcc2f71f694a5f972ce7772c795a72dbedadca7497"
+      }
+    },
+    {
+      "file": "biome-service/native/main-host-cpu-cache.js",
+      "line": 26,
+      "needle": "function finishRecord(entry){",
+      "meaning": "Cache held entry is removed only after both key and data original R backings physically end.",
+      "source": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\candidate-06\\source\\biome-service\\native\\main-host-cpu-cache.js",
+        "bytes": 23209,
+        "sha256": "53aed7b369441ec37031b6bcc2f71f694a5f972ce7772c795a72dbedadca7497"
+      }
+    },
+    {
+      "file": "biome-service/native/main-atmosphere-storage-owner.js",
+      "line": 32,
+      "needle": "[...records].filter(r=>r.field===field).length>=DUST_LIMITS.maxPhysicalPerField",
+      "meaning": "Selected dust v2 counts all current/preparing/retiring/uncommitted physical rows per field; genuine used Set/Array/error operations remain parent eligibility.",
+      "source": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\candidate-06\\source\\biome-service\\native\\main-atmosphere-storage-owner.js",
+        "bytes": 26826,
+        "sha256": "05f6bb92b95c320f7498f1be01aec75fc0bda0df14ec213b65639682907da8a4"
+      }
+    },
+    {
+      "file": "biome-service/native/main-atmosphere-storage-owner.js",
+      "line": 30,
+      "needle": "resourceHost.inspectResource(r.key).physicallyRetained",
+      "meaning": "Dust reap removes rows only at original R physical end, not lease release.",
+      "source": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\candidate-06\\source\\biome-service\\native\\main-atmosphere-storage-owner.js",
+        "bytes": 26826,
+        "sha256": "05f6bb92b95c320f7498f1be01aec75fc0bda0df14ec213b65639682907da8a4"
+      }
+    },
+    {
+      "file": "biome-service/native/main-default-surface-facts.js",
+      "line": 126,
+      "needle": "m.generations.length+count>MANAGED_LIMITS.maxRecords",
+      "meaning": "Managed default Surface bounds old/intermediate/final logical rows at3. Native browser/compositor backing count remains unmeasured.",
+      "source": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\candidate-06\\source\\biome-service\\native\\main-default-surface-facts.js",
+        "bytes": 31806,
+        "sha256": "2f8c56694194f484dc0a334f0cceeb3e874cd3bf39679961da7d39f72863a7ec"
+      }
+    },
+    {
+      "file": "renderer.js",
+      "line": 304,
+      "needle": "new Uint8Array(2048*1024*4)",
+      "meaning": "Exact initial8MiB Star CPU operand remains pre-R original constructor/caller liability; Star GPU is included through actual Construction rows.",
+      "source": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\candidate-06\\source\\renderer.js",
+        "bytes": 156144,
+        "sha256": "29b628c1525014fcefd42d835dade219c09cd1529c34acd235155f9d4391220c"
+      }
+    }
+  ],
+  "originalReviews": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-full-host-vector-2026-10-23-01\\READ-FIRST.md",
+      "bytes": 12204,
+      "sha256": "2648bfc097c960f1186849fc218bdc7f872271620b73f8a855fd2559e7d7792d"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v8-full-host-vector-2026-10-23-01\\stage-admission-formulas-01.cjs",
+      "bytes": 3303,
+      "sha256": "560f3fd6219d33b09bb992f83c9ae9f6d7c6c63a5e984abe2ffd04ed94fba5f0"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v19-provider-host-policy-review-2026-10-23-01\\READ-ONLY-POLICY-01.md",
+      "bytes": 17383,
+      "sha256": "799ddf94faaa82e1aac2a9d8516e628b547952ae8faa827ad264d41a15fd88ac"
+    }
+  ],
+  "terms": {
+    "initial": "Actual genuine Construction.inspect resources: retain each unique original backing, max7 positive storage+23 aux. Initial GPU Star included, initial CPU Star separate.",
+    "content": "One whole array per demanded family, mipSum4*s*s*layers; actual immutable plan supplies IDs, no special7 branch.",
+    "image": "Sum selected original rows:4E+D+65536+32+allCanvasFactories+allWholeLevelReadbacks. Only the one BYOB input/result uses a proved physical-retirement reuse boundary; other allocations remain a finite all-allocation union.",
+    "cache": "8*(8192+192*32)+192*24=119296, all current/building/retiring entries. Service private480 COW tables not added.",
+    "root": "2*min(4*AppAreaBound,min(2*maxWidth,renderbufferMax)*min(2*maxHeight,renderbufferMax))*maxOriginalLayoutBpp13. Original native factor1..2 and exact supported finite Target required.",
+    "dust": "2*(8*rootArea+16*floor((rootArea+rootWidth+rootHeight+4)/4)). Separate actual dust-v2 field generation rule, not inferred from Root2.",
+    "surface": "3*(ceil(maxWidth*maxHeight*actualColorBits/8)+ceil(maxWidth*maxHeight*actualDepthStencilBits/8)). Covers old/intermediate/final width/height-setting products. gpuTotal only; browser physical native backing unknown.",
+    "M": "cpuResident=imageUnion+hostCache+public420; transient=Finish1572864; gpuTexture=initial+arrays+Finish+Root+dust; gpuTotal=texture+buffers+Surface. No P/S/refinement double addition.",
+    "H": "Future authentic same-R host must componentwise cover M+P+S, with unchanged S32MiBCPU/10MiBGPU once;4096/262144/jobs2 unchanged. This component does not provide P or a positive H receipt."
+  },
+  "observedOriginalPlanModel": {
+    "scope": "Actual retained-plan result from saved Core, named Construction/Surface/native inputs; not native Main or selected limits.",
+    "calculated": {
+      "images": [
+        {
+          "family": "biomes",
+          "id": 7,
+          "encoded": 3359586,
+          "decoded": 6290112,
+          "levels": 10,
+          "canvas": 6155008,
+          "readback": 4194300,
+          "bytes": 30143332
+        },
+        {
+          "family": "heroes",
+          "id": 7,
+          "encoded": 3225686,
+          "decoded": 6290064,
+          "levels": 11,
+          "canvas": 9694456,
+          "readback": 8384072,
+          "bytes": 37336904
+        }
+      ],
+      "parts": {
+        "initialGpuTextureBytes": 8388852,
+        "selectedArrayGpuBytes": 125783720,
+        "finishGpuBytes": 1398096,
+        "imageAllocationUnionBytes": 67480236,
+        "hostCacheCpuBytes": 119296,
+        "publicBindingCpuBytes": 420,
+        "finishTransientCpuBytes": 1572864,
+        "rootGpuBytes": 436207616,
+        "dustGpuBytes": 402718752,
+        "defaultSurfaceLogicalBytes": 352321536
+      },
+      "mainLimits": {
+        "cpuResidentBytes": 67599952,
+        "cpuTransientBytes": 1572864,
+        "cpuTotalBytes": 69172816,
+        "gpuBufferResidentBytes": 0,
+        "gpuTextureResidentBytes": 974497036,
+        "gpuTransientBytes": 0,
+        "gpuTotalBytes": 1326818572
+      },
+      "shape": {
+        "rootRasterWidthBound": 4096,
+        "rootRasterHeightBound": 4096,
+        "rootRasterAreaBound": 16777216,
+        "dustVolumeAreaBound": 4196353
+      }
+    }
+  },
+  "all20FormulaModel": {
+    "scope": "Labeled20-ID integer/domain coverage only, not genuine retained-plan authority.",
+    "parts": {
+      "initialGpuTextureBytes": 8388852,
+      "selectedArrayGpuBytes": 125783720,
+      "finishGpuBytes": 1398096,
+      "imageAllocationUnionBytes": 682145028,
+      "hostCacheCpuBytes": 119296,
+      "publicBindingCpuBytes": 420,
+      "finishTransientCpuBytes": 1572864,
+      "rootGpuBytes": 436207616,
+      "dustGpuBytes": 402718752,
+      "defaultSurfaceLogicalBytes": 352321536
+    }
+  },
+  "sourceScalarWitness": {
+    "qualification": "PURE_SOURCE_ACCEPTED_SCALARS_NOT_NATIVE_DEVICE_OR_WEBGL2_ELIGIBILITY_WITNESS",
+    "textureMaximum": 1024,
+    "renderbufferMaximum": 4096,
+    "width": 1024,
+    "height": 1024,
+    "ordinaryAdaptiveScale": 1,
+    "AA": 2,
+    "originalFactor": 1.40625,
+    "actualFormulaRaster": 1440,
+    "oldUniformDimensionBound": 1024,
+    "newUniformDimensionBound": 2048
+  },
+  "preconditions": {
+    "fixedOwnerProfiles": "Exact same source and future selected finite Target9/content10, split Base8/Binding13, demanded3 singleInitialPlan, managed Surface3 logical rows, dust2 per field, Finish/CPU cache/public Binding originals. An exported constant alone cannot supply instantiated owner/current/profile authority.",
+    "partialTarget": "A full R record can be allocated then fail before key return. Count it in the prospective second slot; original Target must stop on all genuine postphysical failures. The RESOURCE_BUDGET retry exception assumes exact eligible original R prephysical failure, never arbitrary native/caller error.code.",
+    "nativeAndError": "Only actually used original native/number/Map/Set/Array iterator/error/current dependencies may be assumed by a future qualified parent. This stage does not newly attest them or price callback work asAPI1. Native browser decoder/Canvas/compiler/compositor physical storage/time remains unmeasured.",
+    "lifetimes": "Closed/released reader or Q count is not destruction. All R physical-held source records remain in generation/union equations. New candidate stores original parents and first raw failure and does not release its module/instance Q at close.",
+    "noPermission": "wholeHostLimits,wholeAdmission,hostAdmission and all new WORK/amount/current/caller flags remain null; APP false. No R creation, public binder/readiness or new ledger."
+  },
+  "Main": false
+}

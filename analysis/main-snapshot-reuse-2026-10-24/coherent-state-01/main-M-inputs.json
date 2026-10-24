@@ -1,0 +1,205 @@
+{
+  "status": "PASS_FROZEN_PRIVATE_CONDITIONAL_M_INPUT_COMPONENT_NOT_HOST_ADMISSION",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\candidate-06\\source",
+  "loader": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\candidate-06\\source\\owned-main-bootstrap.js",
+    "bytes": 374147,
+    "sha256": "4d7480ef530175497613678d036ebfeaa9a120d6ae39ea9a81c9c4b3fd802813"
+  },
+  "parent": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v57-shared-constructor-profile-custody-2026-10-23-01\\candidate-01\\source",
+  "files": 522,
+  "parses": 426,
+  "unchangedOwnerAndOtherFiles": 521,
+  "exactRoot57ForwardInverseHunks": 11,
+  "componentModelGroups": 16,
+  "lexicalFunctions": 11,
+  "unresolvedNonIntrinsicGlobals": 0,
+  "prospectiveBirthChecks": [
+    {
+      "name": "readMainVectorConstruction",
+      "line": 1141,
+      "sourceRange": [
+        198323,
+        198978
+      ],
+      "birthBlock": [
+        198319,
+        199035
+      ],
+      "priorReserve": [
+        198103,
+        198317
+      ],
+      "actualFunctionSHA256": "2727ef2fe7df9b05f493a493be5cd567ec70378eec4626d2988d7d19e37f8364"
+    },
+    {
+      "name": "vectorBudget",
+      "line": 1306,
+      "sourceRange": [
+        228272,
+        228392
+      ],
+      "birthBlock": [
+        227432,
+        242048
+      ],
+      "priorReserve": [
+        227246,
+        227429
+      ],
+      "actualFunctionSHA256": "f0b77c984b0d75007385d6ed9047f2e276d3d581a24f1fcc2326d033a233eb40"
+    }
+  ],
+  "profiles": {
+    "changed": 0,
+    "freshSourceReads": 238,
+    "sourceCopies": 224
+  },
+  "formulaSourceAnchors": 25,
+  "sourceOnlyQ": {
+    "peak": 14011625,
+    "qualification": "Only exact3 original Source/profile admissions. NOT whole Main/caller Q or native memory."
+  },
+  "parentAndModelBoundary": "Component models use genuine Q/S/Construction/retained-plan/original source constants. Actual original Renderer construction/native GL/Surface current/body, private load-registration/paid-caller/current scope are named adapters; complete native/parent eligibility is source-pinned but not granted by these controls. All new production gates remain null/default false.",
+  "preservedCounter": "C05 inaccessible sibling lexicals + extracted model masking, now corrected by separately null-funded original Surface private port and full-source scope census. C04 scalar raster witness is not native WebGL2 device proof.",
+  "completeMainOrNativeClaim": false,
+  "selection": {
+    "profile": null,
+    "module": null,
+    "instance": null,
+    "surfacePort": null,
+    "WORK": null,
+    "CURRENT": null,
+    "caller": null,
+    "wholeQ": null,
+    "hostAdmission": null,
+    "APP": false
+  },
+  "records": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\root-safe-recipe-15.json",
+      "bytes": 22144,
+      "sha256": "b8618a6634c90ea5de41e51ae37bc0450c30c1107d1ae78765b387f60832e550"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\CHECK-SOURCE-15.json",
+      "bytes": 2407,
+      "sha256": "2d859851e5413cafb896ecff05eb3875ce93aeb41ca3eef1e3c396808d3e38ee"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\inventory-15.json",
+      "bytes": 94078,
+      "sha256": "fbbd4276ab8e2aa3e71d4fbd3283831c5082afb9f111e5b60e56e83372a8ebd6"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\control-vector-model-13.json",
+      "bytes": 4914,
+      "sha256": "6743effc0107104e8af740c53ac70b23d832ebd0fc7d165b3cc9736eeaf72904"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\positive-census-16.json",
+      "bytes": 4186332,
+      "sha256": "e44a113cec6bf0165fc15cda676c732899286d33cfb7b97cf110a3794230b988"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\source-formulas-and-lifetimes-17.json",
+      "bytes": 22761,
+      "sha256": "41a20eb0a8afe24836ca66105732fd661a7f318b7e8bf33077b18483b8a7416c"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\continuations-and-liabilities-18.json",
+      "bytes": 68858,
+      "sha256": "756f65a1df1107852a1367ec37e5aea5353a9298f45323a5cb701fadeb8a1a9c"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\READ-FIRST-19.md",
+      "bytes": 12168,
+      "sha256": "e44c45b88b1684d08d5937dd63af3417dfeb97bf57efd9915d8f0af0f853be0c"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\scope-counter-05-disposition.json",
+      "bytes": 749,
+      "sha256": "a9c19ebd3cfac9f0ab7f0b6925334ecfcd0d6972822dda2fe23d26442f438705"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\census-attempt-08-disposition.json",
+      "bytes": 469,
+      "sha256": "0df26565edb3eefb384255b62199f132469a5d9bc67e0c2ee2e5f2e52c2a6a75"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\census-attempt-09-disposition.json",
+      "bytes": 405,
+      "sha256": "491f7dd2b7830f1eb1dd4788282ade4ffdfbf6b15fa786b9676e51268e0ccac7"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\census-attempt-14-disposition.json",
+      "bytes": 460,
+      "sha256": "f589e71527e1e1d3090d32b0b8b111acc4adb4a3e2013a45a7591472171570a8"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\formula-attempt-11-disposition.json",
+      "bytes": 482,
+      "sha256": "46adcf66afbf45331e1f1befe3e4072b9bcec199cf13450cf12048190170403b"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\build-candidate-06.cjs",
+      "bytes": 5276,
+      "sha256": "ac8b50d98a0ec11365b4c812e2156c65a057ff939b05e4414e8b4a028f0c007b"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\prepare-controls-13.cjs",
+      "bytes": 6783,
+      "sha256": "2ef568e3afbc9d70a8ae9d04b0fe6d5cf9dccd76470461b8d653a9bf54dfaac7"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\test-vector-model-13.cjs",
+      "bytes": 19271,
+      "sha256": "cfc2b8be2ac42aa824e6dd83dcc7312d044459992c38fcf8f7c2e2ed685a9390"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\prepare-source-15.cjs",
+      "bytes": 766,
+      "sha256": "bd3c2266365615861a0ecc4306ead831393580c05b261cc33887f7eb3d726d84"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\verify-source-15.cjs",
+      "bytes": 6709,
+      "sha256": "f9f9bffca92ad7f1a756406dcb38f243e33dfae262a0c4b5082ed27070a927e1"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\prepare-census-14.cjs",
+      "bytes": 2834,
+      "sha256": "f3aa078710f9cdd15e3d7caddb3c676d950a892c8f5defc90f880c75d1dac999"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\prepare-census-16.cjs",
+      "bytes": 918,
+      "sha256": "bccc1c49e8a83307509800e60e19294fb3d299e3fdd7e8d0e6490df9a3995037"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\derive-positive-census-16.cjs",
+      "bytes": 12510,
+      "sha256": "88bf09a42eefeb500d547c3f6fafcaebfad3028f6e82ea0b410134a110e613d4"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\prepare-formulas-17.cjs",
+      "bytes": 953,
+      "sha256": "3e48a3e1ae223b8b59a9ae81494dcd249d10ed19b4612b5264270d4996a0a9bb"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\derive-source-formulas-17.cjs",
+      "bytes": 15491,
+      "sha256": "661332df86365f95dff8bdff478b47bde886044a530bad22baf5ff46e6eb185f"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\derive-continuations-18.cjs",
+      "bytes": 13907,
+      "sha256": "e0734ffe6e106881a39a1293db123aa64c9455ca52f7e2c4c8c311820cc81aa0"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-vector-input-producer-2026-10-24-01\\seal-functional-20.cjs",
+      "bytes": 5935,
+      "sha256": "2fea63691e6075f0fc182a59405877235dce6f1e5bb5b441b61d4e74af7c1334"
+    }
+  ]
+}

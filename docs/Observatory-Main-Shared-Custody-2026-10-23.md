@@ -1,3 +1,5 @@
+> Current update, October24: coherent Main resource/State/recipe source passes71 focused grouped checks and full private-scope layout review. Complete host admission, paid startup/work/Q, asynchronous State/whole-view and native Main remain open. P05 OPEN; walking preserved. [Current integration and remaining path](Observatory-Main-Resource-State-Join-2026-10-24.md).
+
 # Main integration and reuse of owned state
 
 The Meadow-Industry walking experience remains working and unchanged. P05 is open. The current work joins that proven display direction to ordinary Main while keeping the simulation independent and preserving the existing work, memory and resource limits.

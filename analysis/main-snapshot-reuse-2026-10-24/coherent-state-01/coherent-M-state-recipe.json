@@ -1,0 +1,123 @@
+{
+  "status": "FROZEN_COHERENT_M_STATE_RECIPE_SOURCE_71_FOCUSED_GROUPS_UNSELECTED",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v62-main-vector-state-recipe-2026-10-24-01\\candidate-01\\source",
+  "recipe": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v62-main-vector-state-recipe-2026-10-24-01\\exact-coherent-join-01.json",
+    "bytes": 219858,
+    "sha256": "44be625cdf11465818db15feb4e3804949d461a52d577c0171f7c5a70baa2a25"
+  },
+  "sourceCheck": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v62-main-vector-state-recipe-2026-10-24-01\\CHECK-SOURCE-02.json",
+    "bytes": 1703,
+    "sha256": "91ea53128a72d522434625b61c16a0fad0da01ae11968476c780eb983e0b109b"
+  },
+  "lexicalCheck": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v62-main-vector-state-recipe-2026-10-24-01\\CHECK-LEXICAL-02.json",
+    "bytes": 2773458,
+    "sha256": "510942b4badd362166a05957525168740816a6d7574f316addc46017baf5faf7"
+  },
+  "controlPreparation": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v62-main-vector-state-recipe-2026-10-24-01\\control-preparation-02.json",
+    "bytes": 7667,
+    "sha256": "88a586723c93ddb474ee559441c798dab9761e203b2ff35d4c43523707afdb37"
+  },
+  "files": 522,
+  "parses": 426,
+  "changedRoot61Files": 3,
+  "unchangedRoot61Files": 519,
+  "codeHunks": 21,
+  "freshProfileHunks": 3,
+  "inverseHunks": 24,
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "rows": 224,
+      "digest": "519467ccffbebc5b3ae660e0d7b6109c5c25d78dbe3d9fb0fdbda81b6b8aa329"
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "rows": 5,
+      "digest": "994beb12656ee2e152f95e6e50b8d0a571053c222fbb23bac532fddd9d8d6d8d"
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "rows": 9,
+      "digest": "0ab67ba1e785677a6258fe8273dd9160ef7f00a54de3557da7a7fed0e8a2623b"
+    }
+  ],
+  "sourceOnlyPeakBytes": 14727677,
+  "sourceOnlyFinalQ": 0,
+  "groups": 71,
+  "controls": [
+    {
+      "control": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v62-main-vector-state-recipe-2026-10-24-01\\controls-02\\control-vector-model-13.json",
+        "bytes": 4916,
+        "sha256": "db1257f41cecb73617ae15d87288c04dc964ecf754280df2d8c283b34fb53170"
+      },
+      "groups": 16,
+      "scope": "M exact new source in isolated sibling-block model"
+    },
+    {
+      "control": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v62-main-vector-state-recipe-2026-10-24-01\\controls-02\\parser-controls-02.json",
+        "bytes": 2100,
+        "sha256": "e1ea8a907351e1d58931b1ecb6c56ca833ae8b767d6eccc23ce58da1b40bc0b2"
+      },
+      "groups": 10,
+      "scope": "Original new Records recipe syntax and domain/reuse control"
+    },
+    {
+      "control": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v62-main-vector-state-recipe-2026-10-24-01\\controls-02\\workspace-controls-11.json",
+        "bytes": 4678,
+        "sha256": "2324bc9e49d67aebbb29822a044fd3b51c19f3e1e3ab1dcdb357a6028627428d"
+      },
+      "groups": 7,
+      "scope": "Four exact new State recipe helpers and actual Q with current/debit models"
+    },
+    {
+      "control": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v62-main-vector-state-recipe-2026-10-24-01\\controls-02\\control-typed-schema-12.json",
+        "bytes": 4065,
+        "sha256": "0a962b9c8654c7c3055660cdaee53f94220c6455ae1edab3e414d10fb610001a"
+      },
+      "groups": 22,
+      "scope": "Original typed/schema and exact fixture validation"
+    },
+    {
+      "control": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v62-main-vector-state-recipe-2026-10-24-01\\controls-02\\control-semantic-producer-12.json",
+        "bytes": 5030,
+        "sha256": "59718a71bc8a50e158c3f464646bccc82ca79941809abcc97e8598e9db892293"
+      },
+      "groups": 12,
+      "scope": "Original semantic + genuine Strict canonical child models"
+    },
+    {
+      "control": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v62-main-vector-state-recipe-2026-10-24-01\\controls-02\\control-schema-interleave-12.json",
+        "bytes": 1451,
+        "sha256": "cd4d44697d3379eaa8100bbe9daea129510b1bfa1f1864a155a3b73711da449c"
+      },
+      "groups": 4,
+      "scope": "Exact compiled-operation independence and closed-root control"
+    }
+  ],
+  "wholeBootstrapFunctions": 414,
+  "unchangedRoot61GuardFunctions": 18,
+  "allNewAmounts": null,
+  "allNewCompleteWork": null,
+  "wholeQ": null,
+  "pendingGenuineScope": "Actual original C2/State/R Root61 scope cohort is separate; the inherited guard body hashes are exact, but no genuine whole initializer claim is made by this seal.",
+  "next": [
+    "G source-private fixed owner factory/profile selection and actual M/P/S host admission with genuine provider /2 proof",
+    "R actual guarded staged Records initialization, rebase seventh recipe body and complete final ABI/work/source seed",
+    "P authentic Root61 configuration scope proof, original async State owner/acquire Kernel scratch/PH/whole bundle path",
+    "Final original native Main overview/local Frame/fragment/appearance and whole ownership/work limits"
+  ],
+  "Main": false,
+  "P05": "OPEN",
+  "PhaseOneAccepted": false,
+  "PhaseOneReleased": false
+}

@@ -1,0 +1,277 @@
+{
+  "schema": "sphere-bounded-original-staged-producer-functional-seal/1",
+  "status": "PASS_FROZEN_FUNCTIONAL_COMPONENT_NOT_PRICED_NOT_MAIN",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-staged-record-producer-2026-10-23-01\\candidate-10\\source",
+  "parent": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v52-coherent-main-reuse-2026-10-23-01\\candidate-01\\source",
+  "sources": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-staged-record-producer-2026-10-23-01\\candidate-10\\source\\biome-service\\binding-builder.js",
+      "bytes": 116521,
+      "sha256": "a283e79f7ea944c798f7a63fad4241cf832a6858651009a677877d16853c4adc"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-staged-record-producer-2026-10-23-01\\candidate-10\\source\\biome-service\\records.js",
+      "bytes": 935765,
+      "sha256": "e45ad169a8eb7e8b88663a421c3c51ef945ded47661355e9deaf51ad6bacb268"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-staged-record-producer-2026-10-23-01\\candidate-10\\source\\biome-service\\verified-record-store.js",
+      "bytes": 61381,
+      "sha256": "ebe6d04e57b76f949a7092e2e3f5c3c85d722ed8c543e7d492467f1359b0d1f2"
+    }
+  ],
+  "files": 522,
+  "parses": 426,
+  "changed": [
+    "biome-service/binding-builder.js",
+    "biome-service/records.js",
+    "biome-service/verified-record-store.js"
+  ],
+  "unchanged": 519,
+  "inverseHunks": 44,
+  "Root57Compatibility": [
+    {
+      "path": "biome-service/records.js",
+      "Root57ParentSHA256": "27e37ae885687b93f75878674b80fd074d2bd4dc2a05ab042d4bb7bce6dfdb52",
+      "combinedBytes": 935765,
+      "combinedSHA256": "e45ad169a8eb7e8b88663a421c3c51ef945ded47661355e9deaf51ad6bacb268",
+      "allNewEditsApplyAndInverseExactly": true,
+      "sourceWritten": false
+    },
+    {
+      "path": "biome-service/verified-record-store.js",
+      "Root57ParentSHA256": "caa46a31b79652e7d0d931461905cce95737bb0143523a6d739b7b9a5ad004d0",
+      "combinedBytes": 61381,
+      "combinedSHA256": "ebe6d04e57b76f949a7092e2e3f5c3c85d722ed8c543e7d492467f1359b0d1f2",
+      "allNewEditsApplyAndInverseExactly": true,
+      "sourceWritten": false
+    },
+    {
+      "path": "biome-service/binding-builder.js",
+      "Root57ParentSHA256": "40d4e43582371e5a00de7f230d0ef349f1623f634a55dcb620519e14b8f6aa0e",
+      "combinedBytes": 118426,
+      "combinedSHA256": "64351731246f59eafb2917de4adc6553fb9e51f8f484dc6199215ed28c8d002f",
+      "allNewEditsApplyAndInverseExactly": true,
+      "sourceWritten": false
+    }
+  ],
+  "controls": {
+    "originalSchemaCases": 22,
+    "originalSemanticCases": 12,
+    "interleaveAndClearedRootGroups": 4,
+    "actualBPrepareBaseAndFailureCases": 7,
+    "reports": [
+      "control-typed-schema-12.json",
+      "control-semantic-producer-12.json",
+      "control-schema-interleave-12.json",
+      "control-ownedHostStagesReadStagedBindingProducerPositive-12.json",
+      "control-ownedHostStagesReadStagedBindingProducerPositive-12-affinity.json",
+      "control-ownedHostStagesReadStagedBindingProducerPositive-12-rawundefined.json",
+      "control-ownedHostStagesReadStagedBindingProducerPositive-12-rawfalse.json",
+      "control-ownedHostStagesReadStagedBindingProducerPositive-12-rawnull.json",
+      "control-ownedHostStagesReadStagedBindingProducerPositive-12-source.json",
+      "control-ownedHostStagesReadStagedBindingProducerPositive-12-pending.json"
+    ]
+  },
+  "records": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-staged-record-producer-2026-10-23-01\\control-typed-schema-12.json",
+      "bytes": 4065,
+      "sha256": "5ba0489d822719eee15dc94c615b21c43a068d727ad97f64695c87a4513db8b3"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-staged-record-producer-2026-10-23-01\\control-semantic-producer-12.json",
+      "bytes": 5030,
+      "sha256": "64ed61bd4255e6e318b9f8c3a9f68ded5ed0eea245b638c15f3547e471a19440"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-staged-record-producer-2026-10-23-01\\control-schema-interleave-12.json",
+      "bytes": 1450,
+      "sha256": "5cf37f9c97a44a15a5959018bcf4aee7030bec9b98e1c41a12d9a7a20136d3af"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-staged-record-producer-2026-10-23-01\\control-ownedHostStagesReadStagedBindingProducerPositive-12.json",
+      "bytes": 20193,
+      "sha256": "9fa8e0716774a0c59210c53b25c1f92d3f9a207e06cded66eabeb6e66f9fa488"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-staged-record-producer-2026-10-23-01\\control-ownedHostStagesReadStagedBindingProducerPositive-12-affinity.json",
+      "bytes": 21500,
+      "sha256": "43e4576680202b7a4337284e2cf4491206fa2f9a424230f662654e29c5a2a42a"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-staged-record-producer-2026-10-23-01\\control-ownedHostStagesReadStagedBindingProducerPositive-12-rawundefined.json",
+      "bytes": 21554,
+      "sha256": "e420ea78dadeb378349a714908b76c813b69a19beac743523bd2d6ac55024b8b"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-staged-record-producer-2026-10-23-01\\control-ownedHostStagesReadStagedBindingProducerPositive-12-rawfalse.json",
+      "bytes": 21550,
+      "sha256": "c15ad97137b980db35066ef8355c48a7a92761a27fe1abeea7fa086a49d9e371"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-staged-record-producer-2026-10-23-01\\control-ownedHostStagesReadStagedBindingProducerPositive-12-rawnull.json",
+      "bytes": 21549,
+      "sha256": "fb97d558fcb8afb2624263afe97cc7e33d1170fa512ccb80871ddf0379889a5b"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-staged-record-producer-2026-10-23-01\\control-ownedHostStagesReadStagedBindingProducerPositive-12-source.json",
+      "bytes": 21535,
+      "sha256": "0ba4c5cc027a2f09baa0ae5d7ef1b5377e63ebcb4c1264efc71ba31dfab16f05"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-staged-record-producer-2026-10-23-01\\control-ownedHostStagesReadStagedBindingProducerPositive-12-pending.json",
+      "bytes": 21541,
+      "sha256": "82530e28793f8abb3a6b496be41f1c543c40127d4e224350df314f30e5816243"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-staged-record-producer-2026-10-23-01\\counter-schema-interleave-08.json",
+      "bytes": 653,
+      "sha256": "b44bae1c296bc793beef433e3201122e09a38b210e370655399aaec2c85bce7c"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-staged-record-producer-2026-10-23-01\\root-safe-recipe-13.json",
+      "bytes": 691762,
+      "sha256": "2a14b28c30d6911c6d6c625958034b206f1af36fe847ad6f490366e43cb12555"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-staged-record-producer-2026-10-23-01\\CHECK-SOURCE-16.json",
+      "bytes": 7867,
+      "sha256": "d93f51f119d73f13f140ac6f39ed37fa283d7678bd3bd18e5db881783fa608c6"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-staged-record-producer-2026-10-23-01\\inventory-16.json",
+      "bytes": 94064,
+      "sha256": "141c445ad4da118c9ec4053138face981d80ea9039f1f250fbc1859be8df6c2a"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-staged-record-producer-2026-10-23-01\\positive-census-17.json",
+      "bytes": 13572885,
+      "sha256": "ec76c9dcd917d8cb83fbc93bbe0136aba5a893cb1399a5885da2c283148ff4b1"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-staged-record-producer-2026-10-23-01\\work-and-continuation-19.json",
+      "bytes": 42282,
+      "sha256": "847c583ba3de63b6fa5c58a5eb58af514e6cf47184393c0fa3fc4fe26b006b02"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-staged-record-producer-2026-10-23-01\\CHECK-ARITHMETIC-20.json",
+      "bytes": 1594,
+      "sha256": "30d7ee6bdd6b409f7294a6afeaf53cf207f3da346d944e81312e1a08bffe04e1"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-staged-record-producer-2026-10-23-01\\control-preparation-12.json",
+      "bytes": 1782,
+      "sha256": "6c5bafe42b7e6dd516e028609422b0e646e7455ab97fbc6654f321603941b7ab"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-staged-record-producer-2026-10-23-01\\READ-FIRST-21.txt",
+      "bytes": 7084,
+      "sha256": "b56625543803bf6d31a09285e9eea7f4508b956a3018502091025ea3749b5d54"
+    }
+  ],
+  "scripts": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-staged-record-producer-2026-10-23-01\\test-typed-schema-12.cjs",
+      "bytes": 4702,
+      "sha256": "84a7f7f859caee0e4f8e04558aac39d507e0244a5b458436adee028ec49a9493"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-staged-record-producer-2026-10-23-01\\test-semantic-producer-12.cjs",
+      "bytes": 7638,
+      "sha256": "a8d018335aa09780690b57c36af844938d2d93b80c7bca6c7d16a1d594dbfe1e"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-staged-record-producer-2026-10-23-01\\test-schema-interleave-12.cjs",
+      "bytes": 4716,
+      "sha256": "5aebb595ff58894dc62ac9034158c6b7e4645015105df84ce8c1d91a881520ce"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-staged-record-producer-2026-10-23-01\\test-binding-producer-12.cjs",
+      "bytes": 199570,
+      "sha256": "54418b40e2f839ebcaba4367b92188f5cc4032d8a14eafbc764fad1d86cf074d"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-staged-record-producer-2026-10-23-01\\binding-failure-cases-12.inc.js",
+      "bytes": 4436,
+      "sha256": "6d1c64344b60dfeeafa0b8d17f173d4479c0c2f0cfe6922dfd04c94da2cb8062"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-staged-record-producer-2026-10-23-01\\derive-root-recipe-13.py",
+      "bytes": 4674,
+      "sha256": "804b14b0912f1101e38fdce1900cfe6008eec0b4dd8fe39600727c0d6fd16ae5"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-staged-record-producer-2026-10-23-01\\verify-source-14.cjs",
+      "bytes": 6726,
+      "sha256": "f00a8b6ec881bd678f5e51a03255c4e2b778c514c38997b5d99b841444120ba7"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-staged-record-producer-2026-10-23-01\\verify-source-15.cjs",
+      "bytes": 6856,
+      "sha256": "1c52cd90c61ec2504535147a8a6f1452850ea4c8ddff519b90aacc7b680c6be1"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-staged-record-producer-2026-10-23-01\\prepare-verifier-16.cjs",
+      "bytes": 457,
+      "sha256": "8aba9da74d424678c5273fe06496fb1835cc033be285cb47e63bb21b9dd20c9c"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-staged-record-producer-2026-10-23-01\\verify-source-16.cjs",
+      "bytes": 6862,
+      "sha256": "b8560445ed631737280dc9190dcd9488dbd12e90b0782b8a8339761879786700"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-staged-record-producer-2026-10-23-01\\derive-positive-census-17.cjs",
+      "bytes": 12056,
+      "sha256": "3ef191a493150222fd3d5d4b04c1f88644de3a4f83fac2b5d82d4b32e03ff58e"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-staged-record-producer-2026-10-23-01\\derive-continuation-18.cjs",
+      "bytes": 11345,
+      "sha256": "1c19f1305bf375454ce3f71a1d2fe7971cc4f4476a41a26bf627ca5e7536420b"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-staged-record-producer-2026-10-23-01\\prepare-continuation-19.cjs",
+      "bytes": 652,
+      "sha256": "eaca97fec8e2642a5f6c9a90cd30b339996df3736b43b46844714e788a83d12b"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-staged-record-producer-2026-10-23-01\\derive-continuation-19.cjs",
+      "bytes": 11503,
+      "sha256": "97e779abbe33f67e196fb110bfb0c4d5231c077d648b61ebc77bfc5d583e17b7"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-staged-record-producer-2026-10-23-01\\verify-arithmetic-20.cjs",
+      "bytes": 1277,
+      "sha256": "692c9e8dfcef37689acda0fce6c18e72c9d3443b61a2a5b136105d9ef6c4b44c"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-live-staged-record-producer-2026-10-23-01\\seal-21.cjs",
+      "bytes": 4468,
+      "sha256": "d9184355c06de0d6e5896367e730f021747b5c5a32463e831897ecdbf5ffd1fe"
+    }
+  ],
+  "scope": "Actual corrected original B.prepareBase and private V/Strict/Records producer components with explicitly disclosed source/current/PAY/native/fixture funding models. No nonempty publication/native browser/Main/complete fee/whole-Q claim. Product loader/profile pins remain the parent and need an independent coherent reprofile.",
+  "preservedCounter": {
+    "candidate": "candidate-08",
+    "report": "counter-schema-interleave-08.json",
+    "correctedBy": [
+      "candidate-09 per-operation compiled graph",
+      "candidate-10 supported fixed kinds + explicit closed-root clear"
+    ]
+  },
+  "remaining": "Unchanged B.context own/canonical/index prelude, final wrapper clones, original V/Storage/native callback/async continuations and actual source-private paid caller plus complete current/module/closed-parent ownership remain held. See READ-FIRST and source-pinned continuation contract.",
+  "selection": {
+    "module": null,
+    "owner": null,
+    "operation": null,
+    "cursor": null,
+    "caller": null,
+    "WORK": null,
+    "CURRENT": null,
+    "PAY": null
+  },
+  "Main": false,
+  "P05": "OPEN"
+}

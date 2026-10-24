@@ -1,3 +1,5 @@
+> Current update, October24: coherent Main resource/State/recipe source passes71 focused grouped checks and full private-scope layout review. Complete host admission, paid startup/work/Q, asynchronous State/whole-view and native Main remain open. P05 OPEN; walking preserved. [Current integration and remaining path](Observatory-Main-Resource-State-Join-2026-10-24.md).
+
 > Current update, October23: genuine constructor-to-Kernel setup and reuse of owned profile state pass their component checks; physical provider demand follows shared backing. Complete Main admission, whole work/Q and native same-surface proof remain open. P05OPEN; walking preserved. [Current integration and remaining path](Observatory-Main-Shared-Custody-2026-10-23.md).
 
 # Main startup and reuse of validated snapshots

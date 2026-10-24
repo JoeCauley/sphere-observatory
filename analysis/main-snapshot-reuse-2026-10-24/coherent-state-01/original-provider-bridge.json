@@ -1,0 +1,168 @@
+{
+  "status": "PASS_FROZEN_ORIGINAL_ROOT_PROVIDER_BRIDGE_COMPONENT_UNSELECTED",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v59-original-provider-bridge-stage-2026-10-23-01\\candidate-01\\source",
+  "parent": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v57-shared-constructor-profile-custody-2026-10-23-01\\candidate-01\\source",
+  "files": 522,
+  "parses": 426,
+  "unchangedRoot57Files": 521,
+  "codeHunks": 8,
+  "finalProfileHunks": 3,
+  "inverseHunks": 11,
+  "recipe": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v59-original-provider-bridge-stage-2026-10-23-01\\exact-bridge-stage-01.json",
+    "bytes": 179087,
+    "sha256": "3c24f339ca25d5fb4ef6e4cb8fbe0892994ba756fcb1cb9c589227becb3f3648"
+  },
+  "sourceProof": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v59-original-provider-bridge-stage-2026-10-23-01\\CHECK-SOURCE-02.json",
+    "bytes": 1643,
+    "sha256": "6a939cabd7550d24480726001f36d62d3ccc940415803d90adf5e8c273eb738e"
+  },
+  "preparation": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v59-original-provider-bridge-stage-2026-10-23-01\\control-preparation-02.json",
+    "bytes": 11000,
+    "sha256": "cc7bd55cab1339c249af307fad94b9e74361d022d75448c7c9d05e429c54ae2a"
+  },
+  "correctedDiagnosticOnly": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v59-original-provider-bridge-stage-2026-10-23-01\\control-correction-04.json",
+    "bytes": 743,
+    "sha256": "f5cb746549d156e8af6af09b4da83fed012945072b1956819f1ec0e63fcef8bc"
+  },
+  "preservedFailedAssertion": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v59-original-provider-bridge-stage-2026-10-23-01\\control-ownedHostStagesReadCache-bridgePositive03.json",
+    "bytes": 15272,
+    "sha256": "dc5cf41c439e6e2378b2dc124740450e2050cd970ca28236fb3ecd09aa7427f0"
+  },
+  "reports": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v59-original-provider-bridge-stage-2026-10-23-01\\control-ownedHostStagesReadCache-bridgePositive04.json",
+      "bytes": 22545,
+      "sha256": "a34c36db79056c9ebeb5d24015c3d185df2498f85c06569696f6f60f45927bf4",
+      "control": "positive",
+      "status": "PASS",
+      "groups": 7
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v59-original-provider-bridge-stage-2026-10-23-01\\control-ownedHostStagesReadCache-bridgewrongPhase04.json",
+      "bytes": 22101,
+      "sha256": "661bfe84682bbdcf387f39b804906477bdb4ef185aad8ccaeb4539f851ff3c81",
+      "control": "wrongPhase",
+      "status": "PASS",
+      "groups": 6
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v59-original-provider-bridge-stage-2026-10-23-01\\control-ownedHostStagesReadCache-bridgemissingAmount04.json",
+      "bytes": 22107,
+      "sha256": "eaca58ca4554f14e5e443644d84400f51d26eb9c8ff68e8239232a8048a7e16a",
+      "control": "missingAmount",
+      "status": "PASS",
+      "groups": 6
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v59-original-provider-bridge-stage-2026-10-23-01\\control-ownedHostStagesReadCache-bridgewrongQ04.json",
+      "bytes": 22093,
+      "sha256": "6305b7f41475c661a0a26ea51297f3bd6e4742651461739bff48307e3ff3a049",
+      "control": "wrongQ",
+      "status": "PASS",
+      "groups": 6
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v59-original-provider-bridge-stage-2026-10-23-01\\control-ownedHostStagesReadCache-bridgepressure04.json",
+      "bytes": 22097,
+      "sha256": "bb18dd7a8339e638bcce30e70222a4c4583b77f92249b0f55b84cb3be6233ad3",
+      "control": "pressure",
+      "status": "PASS",
+      "groups": 6
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v59-original-provider-bridge-stage-2026-10-23-01\\control-ownedHostStagesReadCache-bridgerawFalse04.json",
+      "bytes": 22364,
+      "sha256": "bcf4bc827d50f90781480caf0dc8c9c6514534dc3a443f86824e99f3c459d59d",
+      "control": "rawFalse",
+      "status": "PASS",
+      "groups": 6
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v59-original-provider-bridge-stage-2026-10-23-01\\control-ownedHostStagesReadCache-bridgerawNull04.json",
+      "bytes": 22362,
+      "sha256": "cac169db3b7e9ef5b57ea874413a361597856e52ebac733730b2d5881b3ecbbc",
+      "control": "rawNull",
+      "status": "PASS",
+      "groups": 6
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v59-original-provider-bridge-stage-2026-10-23-01\\control-ownedHostStagesReadCache-bridgerawUndefined04.json",
+      "bytes": 22372,
+      "sha256": "4af5c2232f60ca298b61f76008cdca00adb805e8246ca85c753c82029ccdec71",
+      "control": "rawUndefined",
+      "status": "PASS",
+      "groups": 6
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v59-original-provider-bridge-stage-2026-10-23-01\\control-ownedHostStagesReadCache-bridgereentry04.json",
+      "bytes": 22362,
+      "sha256": "3f4df0e77836ceefd34e1993d7bddcf9d075b59d037b536b22f9a925f9f8da30",
+      "control": "reentry",
+      "status": "PASS",
+      "groups": 6
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v59-original-provider-bridge-stage-2026-10-23-01\\control-ownedHostStagesReadCache-bridgeforeignBridge04.json",
+      "bytes": 22374,
+      "sha256": "7750efe4c5665013f7b43038690c289f9e92b24e73dc7e5531992e9f69bc0c2e",
+      "control": "foreignBridge",
+      "status": "PASS",
+      "groups": 6
+    }
+  ],
+  "groups": 61,
+  "sourceOnlyQPeak": 14011577,
+  "modelQHeldSubset": 26412849,
+  "modelQPeakSubset": 27456975,
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "rows": 224,
+      "digest": "2378e9c236a0363a467e099129e97302d14ba236e94840c8ff2e58fab656c9f4"
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "rows": 5,
+      "digest": "0e96f2cd569e56b7129be4625c11e0f6f0566fdeadccbd8382d6f091eac41919"
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "rows": 9,
+      "digest": "0ef500bcf291cd5619abd6af2ab716e52eff9867ac8c2f8c0958a5eab74001d2"
+    }
+  ],
+  "actualChange": "Original Root initializer adds one private PROVIDER_BRIDGE_CREATE step after genuine Kernel acceptance. It requires the same existing original R backend, B/Kernel/Q affinity, a new prospective Q account and actual PH brand/Host/Q/live checks. Only then does its original prepared verifier delegate to the genuine bridge. Wrong scope, missing allowance, wrongQ and capacity fail before PH construction; raw falsy failures, reentry and bad factory affinity retain actual factory, raw cause and account without publishing readiness. No bridge setter, positive placeholder or second R is introduced.",
+  "boundary": "Genuine original nonempty Binding/Host/Kernel/PH/R/commonQ run. Original Source/Strict/profile and prior fixture receipt lifetimes remain retained as disclosed. CurrentScope/fresh App/Surface entry checks, entire extracted Root module/caller funding and literal65536 bridge bytes are named models, not selected work/storage/native/current authority. The old zero R physical limits are brand/bind-only fixture inputs; no full Main vector or physical demand claim.",
+  "diagnosticCorrection": "The first03 assertion forgot original Q512-byte record plus150-byte bounded labels. Runtime original Q correctly retained all66198bytes for the65536 diagnostic request. Only the new04 expected delta changed; original source and failed03report remain exact.",
+  "selection": {
+    "module": null,
+    "state": null,
+    "wholePHFactoryOwnership": null,
+    "entryWork": null,
+    "completeFunding": null,
+    "completeWork": null,
+    "hostAdmission": false,
+    "Main": false,
+    "P05": "OPEN"
+  },
+  "remaining": [
+    "Join frozen P reusable driver and G staged record producer with fresh source profiles",
+    "Actual authentic Main M/P/H resource admission and original R/2 demand option at birth",
+    "Genuine State configuration/recipe preparation, complete coordinator bundle proof and original native Main path",
+    "Whole launch/callback/native/current/work/Q and actual same-surface overview/local/Frame/fragment/appearance"
+  ],
+  "limits": {
+    "prepare": 4096,
+    "upload": 262144,
+    "jobs": 2,
+    "slots": 64,
+    "serviceCpu": 33554432,
+    "serviceGpu": 10485760,
+    "commonQ": 33554432
+  }
+}

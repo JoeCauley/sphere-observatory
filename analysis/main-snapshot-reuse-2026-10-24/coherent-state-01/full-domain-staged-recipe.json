@@ -1,0 +1,105 @@
+{
+  "status": "FROZEN_STAGED_RECIPE_SOURCE_COMPONENT_NEXT_KERNEL_BARRIER_OPEN",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-state-staged-recipe-2026-10-24-01\\candidate-04\\source",
+  "pins": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-state-staged-recipe-2026-10-24-01\\candidate-04\\source\\biome-service\\records.js",
+      "bytes": 944424,
+      "sha256": "37564791cfff835a653fb27dc5375d6c9243cfe98431d031b50893b6ff9688ee"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-state-staged-recipe-2026-10-24-01\\candidate-04\\source\\biome-service\\native\\state-contexts.js",
+      "bytes": 52848,
+      "sha256": "79ca563ae827c7480e578a968f1860c4acc24c917f49b33215c1ffbfa9739633"
+    }
+  ],
+  "recipe": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-state-staged-recipe-2026-10-24-01\\root-safe-staged-recipe-recipe-13.json",
+    "bytes": 27966,
+    "sha256": "b95aa9810ff0cdb4a5a3b53ff5eb14de46a792e7d56d517d6424b50a9cb6264b"
+  },
+  "sourceOnly": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-state-staged-recipe-2026-10-24-01\\root60-source-inventory-13.json",
+    "bytes": 94957,
+    "sha256": "df4dc93251c89006944160d2263de1a8ce2be5c384bd4ece7701fa7128d5b668"
+  },
+  "files": 522,
+  "parses": 426,
+  "sourceReads": 238,
+  "sourceCopies": 224,
+  "sourceOnlyPeak": 14727613,
+  "bodies": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-state-staged-recipe-2026-10-24-01\\original-body-archive-13.json",
+    "bytes": 42964,
+    "sha256": "09cb48040d582e41c418978e4a495b067bacb5d56d0d71428a2505f82b29ab18"
+  },
+  "birth": {
+    "reservation": 27845,
+    "rowBirth": 28057,
+    "functionBirth": 28142,
+    "allAmountsNull": true
+  },
+  "parser": {
+    "control": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-state-staged-recipe-2026-10-24-01\\parser-controls-03.json",
+      "bytes": 2091,
+      "sha256": "5cce5f7e4ae609969597299ce4b57f3c0aff1b0e5dec0e927853fb80cac837c1"
+    },
+    "groups": 10,
+    "exactSameRecordsHash": true,
+    "maximumBytes": 1048576,
+    "maximumNodes": 8192,
+    "maximumDepth": 32,
+    "reuse128": true
+  },
+  "workspace": {
+    "control": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-state-staged-recipe-2026-10-24-01\\workspace-controls-11.json",
+      "bytes": 4678,
+      "sha256": "2324bc9e49d67aebbb29822a044fd3b51c19f3e1e3ab1dcdb357a6028627428d"
+    },
+    "groups": 7,
+    "actualOriginalQ": true,
+    "currentAndDebit": "Explicit child-only models, never Main phase proof"
+  },
+  "genuine": {
+    "control": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-state-staged-recipe-2026-10-24-01\\control-ownedHostStagesReadCache-genuine09.json",
+      "bytes": 25370,
+      "sha256": "86c226cd092ccee334ee6b96aabf5813c9e6370e3686028547fb126ffac63aec"
+    },
+    "groups": 8,
+    "visits": 2240,
+    "waits": 5,
+    "scope": "Actual original Root57 nonempty B/Host/K/PH/ReleaseStore/factory + new State/R; disclosed caller/Surface/native/current/pay/module literals. Exact next original8MiB Kernel refusal and known failure/close verified, no positive prepared State.",
+    "preparation": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-state-staged-recipe-2026-10-24-01\\preparation-final-09.json",
+      "bytes": 754,
+      "sha256": "6bb34aad654cd27b10dceaf6e7bb4c9436835f3845cf7d4bd64347baa10a5a89"
+    }
+  },
+  "nextBarrier": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-state-staged-recipe-2026-10-24-01\\next-kernel-barrier-13.json",
+    "bytes": 3846,
+    "sha256": "cbc8478f728b44509a6eaf46f3362e1d456035200851d981557f314ee4b76451"
+  },
+  "liabilities": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-state-staged-recipe-2026-10-24-01\\ownership-and-work-liabilities-13.json",
+    "bytes": 8002,
+    "sha256": "c33d2660a973289c8d980c253635e7d7e027c348e9f462ec108f72aabb736ddc"
+  },
+  "dispositions": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-state-staged-recipe-2026-10-24-01\\harness-dispositions-13.json",
+    "bytes": 1451,
+    "sha256": "573d9b92f1e6cf57efd2c84babc756853f17704ff68896ac6982ac76b56423fd"
+  },
+  "priorConfiguration": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-state-complete-demand-2026-10-23-01\\CHECK-STATE-CONFIGURATION-45.json",
+    "bytes": 9344,
+    "sha256": "dc770ff0580c752257bb43ab7bac8d5464260ed0c4903d192ef1e683ea8ccb0e"
+  },
+  "allFunding": null,
+  "allCompleteWork": null,
+  "Main": false,
+  "P05": "OPEN"
+}

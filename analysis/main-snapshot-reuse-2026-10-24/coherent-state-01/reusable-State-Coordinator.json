@@ -1,0 +1,184 @@
+{
+  "status": "PASS_FROZEN_FIXED_REUSABLE_STATE_COORDINATOR_SOURCE_COMPONENT_NAMED_PARENT_SCOPE_ONLY",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-state-complete-demand-2026-10-23-01\\candidate-10\\source",
+  "coherentRoot57ModelJoin": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-state-complete-demand-2026-10-23-01\\model-join-24\\source",
+  "parent": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v57-shared-constructor-profile-custody-2026-10-23-01\\candidate-01\\source",
+  "files": 522,
+  "parses": 426,
+  "changedModelFiles": [
+    "biome-service/native/state-contexts.js",
+    "biome-service/native/host-coordinator.js",
+    "owned-main-bootstrap.js"
+  ],
+  "codeSourceFiles": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-state-complete-demand-2026-10-23-01\\candidate-10\\source\\biome-service\\native\\state-contexts.js",
+      "bytes": 38191,
+      "sha256": "2a4f90ec73385da193fed8d4bda6191eeb6dcecbec3505b661d6e5ba59eba300"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-state-complete-demand-2026-10-23-01\\candidate-10\\source\\biome-service\\native\\host-coordinator.js",
+      "bytes": 36477,
+      "sha256": "277e16d628d0224da18992c94c2a7e31026ca1d8839b29bc4239dfe9637d65c7"
+    }
+  ],
+  "rootSafeRecipe": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-state-complete-demand-2026-10-23-01\\root-safe-driver-recipe-32.json",
+    "bytes": 102166,
+    "sha256": "13590cebec4f95ebc53ddddee36b53823f5257b68a9d933a6e181e7966bd027c"
+  },
+  "originalBodies": 36,
+  "birthProof": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-state-complete-demand-2026-10-23-01\\birth-and-reuse-32.json",
+    "bytes": 1327,
+    "sha256": "e3b738ff98112197c90dc1aaa9bbaa8c984447168eb4b396c870331d2e94e614"
+  },
+  "inventory": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-state-complete-demand-2026-10-23-01\\source-inventory-32.json",
+    "bytes": 108388,
+    "sha256": "bb814e8b84711a84a4c14d76df1340d59a479ceafcea019d64f50e247d0d98aa"
+  },
+  "freshSourceReads": 238,
+  "sourceCopies": 224,
+  "focusedModels": 13,
+  "focusedGroups": 24,
+  "controls": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-state-complete-demand-2026-10-23-01\\control-positive-25.json",
+      "bytes": 5937,
+      "sha256": "ff35e3d5ad6410fc3cb441415d0605b331a222406ce5299ba04292162db196df",
+      "case": "positive",
+      "groups": 4,
+      "status": "PASS_REAL_R_Q_SOURCE_STATE_AND_COORDINATOR_NAMED_PARENT_MODELS_ONLY"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-state-complete-demand-2026-10-23-01\\control-raw-false-25.json",
+      "bytes": 5567,
+      "sha256": "2a995e112f8f628e9058b40f734b2bceb5e69adf976466e9392204a575161895",
+      "case": "raw-false",
+      "groups": 1,
+      "status": "PASS_REAL_R_Q_SOURCE_STATE_AND_COORDINATOR_NAMED_PARENT_MODELS_ONLY"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-state-complete-demand-2026-10-23-01\\control-raw-null-25.json",
+      "bytes": 5566,
+      "sha256": "8087e27160c34a772b67945d7a0bf9f2b1effdbfb62b74ce14de9bd761e80cea",
+      "case": "raw-null",
+      "groups": 1,
+      "status": "PASS_REAL_R_Q_SOURCE_STATE_AND_COORDINATOR_NAMED_PARENT_MODELS_ONLY"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-state-complete-demand-2026-10-23-01\\control-raw-undefined-25.json",
+      "bytes": 5571,
+      "sha256": "dfb825457343857dfe5e2744c49b39453616e2a88f6f00841422f5c7386b8220",
+      "case": "raw-undefined",
+      "groups": 1,
+      "status": "PASS_REAL_R_Q_SOURCE_STATE_AND_COORDINATOR_NAMED_PARENT_MODELS_ONLY"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-state-complete-demand-2026-10-23-01\\control-state-uncertain-25.json",
+      "bytes": 4119,
+      "sha256": "0d910b1e50a91b443cf4d2f4f05186f4aa35520ca35982c02df394202fc2d94d",
+      "case": "state-uncertain",
+      "groups": 1,
+      "status": "PASS_REAL_R_Q_SOURCE_STATE_AND_COORDINATOR_NAMED_PARENT_MODELS_ONLY"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-state-complete-demand-2026-10-23-01\\control-observer-25.json",
+      "bytes": 4239,
+      "sha256": "37048ff58714130b66e629a9e39e235672c564aa6c9ffa70b1e14061474e7a15",
+      "case": "observer",
+      "groups": 1,
+      "status": "PASS_REAL_R_Q_SOURCE_STATE_AND_COORDINATOR_NAMED_PARENT_MODELS_ONLY"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-state-complete-demand-2026-10-23-01\\control-descriptor-kind-25.json",
+      "bytes": 4246,
+      "sha256": "d8abe66f81e0777485a44bdd8073156671b74a9610a2740b10bf6c466db37c89",
+      "case": "descriptor-kind",
+      "groups": 1,
+      "status": "PASS_REAL_R_Q_SOURCE_STATE_AND_COORDINATOR_NAMED_PARENT_MODELS_ONLY"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-state-complete-demand-2026-10-23-01\\control-pressure-25.json",
+      "bytes": 5662,
+      "sha256": "8980f70e6270cb737bd13cdcd859ef371e99fbff5d868d58b16042e169eaccdd",
+      "case": "pressure",
+      "groups": 2,
+      "status": "PASS_REAL_R_Q_SOURCE_STATE_AND_COORDINATOR_NAMED_PARENT_MODELS_ONLY"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-state-complete-demand-2026-10-23-01\\control-reuse-25.json",
+      "bytes": 6003,
+      "sha256": "ed8bd33d8f2824995864b87581f3b0c6524985e649490eed0984ef403c345db9",
+      "case": "reuse",
+      "groups": 4,
+      "status": "PASS_REAL_R_Q_SOURCE_STATE_AND_COORDINATOR_NAMED_PARENT_MODELS_ONLY"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-state-complete-demand-2026-10-23-01\\control-wrong-q-28.json",
+      "bytes": 6071,
+      "sha256": "a8c8b78c462a53c0369c96daa5f6c27660159f4a3771fcc78b076777669261b6",
+      "case": "wrong-q",
+      "groups": 1,
+      "status": "PASS_REAL_R_Q_SOURCE_STATE_AND_COORDINATOR_NAMED_PARENT_MODELS_ONLY"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-state-complete-demand-2026-10-23-01\\control-result-held-28.json",
+      "bytes": 5972,
+      "sha256": "90abf5ce159e0b0183835c12255b637d294527aebc838afccc27558b9e30cd23",
+      "case": "result-held",
+      "groups": 1,
+      "status": "PASS_REAL_R_Q_SOURCE_STATE_AND_COORDINATOR_NAMED_PARENT_MODELS_ONLY"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-state-complete-demand-2026-10-23-01\\control-cleanup-roots-28.json",
+      "bytes": 6407,
+      "sha256": "cee81845c761a4fecdfe329294874a8c2674c897366a0edc693647da601ddee1",
+      "case": "cleanup-roots",
+      "groups": 1,
+      "status": "PASS_REAL_R_Q_SOURCE_STATE_AND_COORDINATOR_NAMED_PARENT_MODELS_ONLY"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-state-complete-demand-2026-10-23-01\\control-reentry-28.json",
+      "bytes": 6564,
+      "sha256": "e43de4c80444ec88e8598a359d429d120ce6876c4f402505dc04cbe47e54ce8b",
+      "case": "reentry",
+      "groups": 5,
+      "status": "PASS_REAL_R_Q_SOURCE_STATE_AND_COORDINATOR_NAMED_PARENT_MODELS_ONLY"
+    }
+  ],
+  "genuineRoot57KernelSetup": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-state-complete-demand-2026-10-23-01\\control-ownedHostStagesReadCache-genuine24.json",
+    "bytes": 18129,
+    "sha256": "31f29b4bd250c66b11f5326241e905f5b956ddc6c4c2bfa1d3003606823fa94d",
+    "status": "PASS",
+    "groups": 5,
+    "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+  },
+  "genuineStateRefusal": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-state-complete-demand-2026-10-23-01\\control-ownedHostStagesReadCache-genuine27.json",
+    "bytes": 16452,
+    "sha256": "e061c3d5d847bc7e72a198fc990e9bc3d0ca74001888c378457b751bb9ea0b3c"
+  },
+  "priorGenuine19": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-state-complete-demand-2026-10-23-01\\control-ownedHostStagesReadCache-genuine19.json",
+    "bytes": 18129,
+    "sha256": "135af38a050e20cc5d08c3875b7705001682e4031cbe49390a95d2490d982218"
+  },
+  "priorGenuine14Counter": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-state-complete-demand-2026-10-23-01\\control-ownedHostStagesReadCache-genuine14.json",
+    "bytes": 16146,
+    "sha256": "405e0182bc077a8a35fe1e6b4dff15d1ee9db9037d570eab51be3fa1efe761a3"
+  },
+  "liabilities": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v55-state-complete-demand-2026-10-23-01\\ownership-and-next-seams-32.json",
+    "bytes": 4924,
+    "sha256": "613898f1810c6e3ac1805723eaa007a14ba9fd88eebe177a46e2feba24e9a7e0"
+  },
+  "newAmounts": null,
+  "newWork": null,
+  "nativeCurrent": null,
+  "wholeMain": null,
+  "P05": "OPEN"
+}

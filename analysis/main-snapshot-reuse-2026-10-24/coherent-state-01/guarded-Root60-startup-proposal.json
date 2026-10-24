@@ -1,0 +1,177 @@
+{
+  "status": "PASS_BOUNDED_ROOT60_SOURCE_AND_PROPOSAL_REPLAY_ONLY_UNSELECTED",
+  "parent": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v60-coherent-staged-main-2026-10-24-01\\candidate-01\\source",
+  "parentFreeze": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v60-coherent-staged-main-2026-10-24-01\\FREEZE-COMPONENT-05.json",
+    "bytes": 106668,
+    "sha256": "6aaa37cb4ea74d07691a79515438d7dcb5df3db86ece0d9748aba00e7c5ad018"
+  },
+  "all522SourcePinsExact": true,
+  "pins": {
+    "recipe": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v60-trusted-foundation-batch-2026-10-24-01\\exact-current-batch-recipe-01.json",
+      "bytes": 7399,
+      "sha256": "3380d218621fe6df18871c837514bdbb2cd8d54bc76064f567ffef2d8fe91d88"
+    },
+    "census": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v60-trusted-foundation-batch-2026-10-24-01\\current-census-02.json",
+      "bytes": 7561559,
+      "sha256": "07abeaff8987e1fd0c61ae316839edc9283dc64e0f9463f81d46437158312d82"
+    },
+    "entry": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v60-trusted-foundation-batch-2026-10-24-01\\current-entry-proof-09.json",
+      "bytes": 9153,
+      "sha256": "8fc1224f789bf5c45e14677d1cdc1acdead4acc4356af0a9028a3f7b4c835fc8"
+    },
+    "controls": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v60-trusted-foundation-batch-2026-10-24-01\\CHECK-CONTROLS-03.json",
+      "bytes": 11441,
+      "sha256": "8640986115d7a16d87471c364dcfeb78cb593c42f78bfecb8f14540c1e407b9f"
+    },
+    "work": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v60-trusted-foundation-batch-2026-10-24-01\\current-module-work-04.json",
+      "bytes": 15625,
+      "sha256": "1715d35c7c8204761ed49c0f4619ba217c4b368fd9dfac51415f802a9bcf8e9d"
+    },
+    "storage": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v60-trusted-foundation-batch-2026-10-24-01\\current-storage-06.json",
+      "bytes": 1304999,
+      "sha256": "a671e5c88615c10a5866e826c49061d9b22e6dae1d47855b653984199577cea7"
+    }
+  },
+  "functionalControls": {
+    "groups": 45,
+    "scope": {
+      "nativeTimers": true,
+      "allSixOriginalBodies": true,
+      "actualOriginalQFactory": true,
+      "actualEarlyLexicalSourceTake": true,
+      "actualMain": false,
+      "paidVisit": false,
+      "CPU": false,
+      "nativeHeap": "UNMEASURED"
+    },
+    "diagnostics": [
+      "Native Node setTimeout invokes the actual VM callback in separate native visits. The fixed timer bridge sets the modeled Document currentScript to null and catches raw thrown values for this harness.",
+      "DOM/HTMLScriptElement/currentScript/nonce/SRI/base are explicit source-owned browser models; URL/TextEncoder/TextDecoder and all six original foundation bodies are actual Node/VM originals. No browser/HTML/SRI claim.",
+      "A diagnostic-only closure exposes private state after execution; no such inspection/export is emitted in the saved unselected bundle.",
+      "Diagnostic funding/work literals test control flow only; they are not prices or selected admission. The complete source code and inherited later guards stay exact.",
+      "New root-chain diagnostics select16384 and {capture:1,moduleCheck:1} only for these functional controls; neither amount is a derived fee or admission.",
+      "CurrentC10 typed module selects metadata1 only for functional module entry; all operation WORK/null guards and actual Root60 source/loader profiles remain exact. No selected byte/fee claim."
+    ]
+  },
+  "reproduced": [
+    {
+      "generator": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v60-trusted-foundation-batch-2026-10-24-01\\derive-current-module-work-04.cjs",
+        "bytes": 10221,
+        "sha256": "93202a3452f1032a3620e24c1a54bf0fe1b7e5bee0cb18057a59652753777a1d"
+      },
+      "output": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v60-trusted-foundation-batch-2026-10-24-01\\current-module-work-04.json",
+        "bytes": 15625,
+        "sha256": "1715d35c7c8204761ed49c0f4619ba217c4b368fd9dfac51415f802a9bcf8e9d"
+      },
+      "byteExact": true
+    },
+    {
+      "generator": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v60-trusted-foundation-batch-2026-10-24-01\\derive-current-storage-06.cjs",
+        "bytes": 11064,
+        "sha256": "dfad2815041a589db11867f16097dd09683fdeef7d69e3b2f6193552c69056ca"
+      },
+      "output": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v60-trusted-foundation-batch-2026-10-24-01\\current-storage-06.json",
+        "bytes": 1304999,
+        "sha256": "a671e5c88615c10a5866e826c49061d9b22e6dae1d47855b653984199577cea7"
+      },
+      "byteExact": true
+    },
+    {
+      "generator": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v60-trusted-foundation-batch-2026-10-24-01\\derive-current-entry-proof-09.cjs",
+        "bytes": 4935,
+        "sha256": "70d5f39b9471d97e56829b2a6d3121dc0e6b5f505369727719d77877ede5c03f"
+      },
+      "output": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v60-trusted-foundation-batch-2026-10-24-01\\current-entry-proof-09.json",
+        "bytes": 9153,
+        "sha256": "8fc1224f789bf5c45e14677d1cdc1acdead4acc4356af0a9028a3f7b4c835fc8"
+      },
+      "byteExact": true
+    }
+  ],
+  "storageTotals": {
+    "oldRaw": 9738272,
+    "positiveRaw": 2313088,
+    "rawSeed": 12051360,
+    "proposedSeed": 12054528,
+    "firstEntry": 634880,
+    "dedicatedSourceCaller": 12288,
+    "heldAfterClaimAndFirstEntryAndSourceCaller": 12707690,
+    "cap": 33554432,
+    "currentRecordsPool": 3056544,
+    "currentWholeLoaderPool": 1663936
+  },
+  "entry": {
+    "exactPrefixSameRoot55": true,
+    "enclosingFoundationCaptureBytes": 608,
+    "oldAlreadyOwnedWidth8Extra": 1,
+    "newLaunchCaptureDelta": 0,
+    "requests": 29,
+    "scope": 6432
+  },
+  "workTotals": {
+    "sixCoreAndSourceRows": 1792,
+    "sixAllPriorFiveSemantic": 3044,
+    "sixAllSixSemantic": 3969,
+    "allOptionalAddend": 2177,
+    "completeCallbackCaller": 1490,
+    "completeCoreCallback": 3282,
+    "completeAllPriorFiveCallback": 4534,
+    "completeAllSixCallback": 5459,
+    "limit": 4096
+  },
+  "history": [
+    {
+      "file": "derive-current-entry-proof-07.cjs",
+      "outcome": "Harness expectation mistakenly asserted enclosing width8 delta0; actual1 is already present in the inherited608-byte capture row. No price/storage change and no JSON output."
+    },
+    {
+      "file": "derive-current-entry-proof-08.cjs",
+      "outcome": "Wrong parent seal filename; no JSON output.09 names exact FREEZE-COMPONENT-05."
+    },
+    {
+      "file": "current-storage-05.json",
+      "outcome": "Preserved draft under-repeated nested same-line block scopes.06 adds1920 actual ABI bytes before rounding; no old margin claimed."
+    },
+    {
+      "file": "current-module-work-03.json",
+      "outcome": "Preserved draft raw null-record refusal omitted Create1.04 includes the explicit5 record/refusal upper."
+    }
+  ],
+  "lazySeam": {
+    "purpose": "Separate optional original Records module bodies into genuine once-only timer visits,then publish one frozen final DATA namespace with original core method/class identities.",
+    "required": [
+      "Same original Q and authenticated original Source/lexical ownership across the continuation.",
+      "Original root/prototype rows checked without following changed foreign objects.",
+      "Fresh actually used native/namespace/error facts at each phase and no readiness reused across timers.",
+      "No mutable const initializer,public positive setter,getter namespace or duplicate huge original body.",
+      "Every new callback/control/closed/failure root and namespace transition owned prospectively; exact final source re-census.",
+      "Original generic/null route remains exact; optional work/funding stays null until exact-source review."
+    ],
+    "currentPrerequisite": "Source and Q capture only original Records core methods; their current exact files do not consult root Records again. This is a seam premise to prove with actual code,not approval to change their bodies."
+  },
+  "scope": "Current Root60 source-only compiled overlay/proposed named work and logical ABI. Functional controls are actual original Node/VM bodies and native timers with disclosed browser/amount models. Upper excess is not a lower or an impossibility proof. Neither Source15 nor frozen Root60 is changed.",
+  "held": [
+    "Actual authenticated HTML/SRI/native bundle and compiled-code physical costs",
+    "Complete current callback selection; all6 upper5459 exceeds4096 and needs a real continuation",
+    "Later complete live Source and Numeric/Strict/Host/Kernel/R/B/provider/caller/whole32MiB union",
+    "Unknown native driver/VM/physical backing and actual Chrome callback chronology",
+    "Full Main/P05"
+  ],
+  "selected": null,
+  "funding": null,
+  "work": null,
+  "Main": false
+}

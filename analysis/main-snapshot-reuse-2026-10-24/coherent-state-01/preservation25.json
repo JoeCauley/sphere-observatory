@@ -1,0 +1,39 @@
+{
+  "pass": true,
+  "cutoff": 25,
+  "snapshots": 367,
+  "sourceEntries": 169013,
+  "recordsVerified": 12929,
+  "recordBytes": 658806877,
+  "snapshotsAdded": 48,
+  "recordsAdded": 596,
+  "freshRestores": [
+    {
+      "snapshot": "main-State-configuration-actual-scopes-c2",
+      "destination": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v63-source-progress-safety-2026-10-24-01\\restored-check-25-main-State-configuration-actual-scopes-c2\\source",
+      "files": 522,
+      "verified": true
+    },
+    {
+      "snapshot": "main-coherent-M-state-recipe-c1",
+      "destination": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v63-source-progress-safety-2026-10-24-01\\restored-check-25-main-coherent-M-state-recipe-c1\\source",
+      "files": 522,
+      "verified": true
+    }
+  ],
+  "earlier319Archives12333RecordsExact": true,
+  "restorerUnchanged": true,
+  "selectedMainComponent": "main-texture-handoff-funded-c3",
+  "latestJoinedMainStartup": "main-staged-world-reuse-join-unselected-c1",
+  "joinedMainStartupSelected": false,
+  "latestUnselectedSourceComposition": "main-coherent-M-state-recipe-c1",
+  "rawArchivesRemainLocal": true,
+  "excludedActive": [
+    "main-v61-state-configuration-peer-2026-10-24-01 actual C2/State/R scope controls",
+    "main-trusted-records-staging-2026-10-24-01 and seven-block rebase",
+    "G current Main host-admission/factory/profile successor and any later agent source",
+    "all restored-check folders, node_modules, raw archives and five parallel Atlas paths"
+  ],
+  "P05": "OPEN",
+  "Main": false
+}
