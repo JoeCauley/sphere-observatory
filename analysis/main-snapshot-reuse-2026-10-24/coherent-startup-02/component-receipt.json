@@ -1,0 +1,162 @@
+{
+  "utc": "2026-10-24T06:00:54.304176+00:00",
+  "status": "COHERENT_H_SAME_R_TUPLE_SEVEN_RECORDS_FOCUSED_COMPONENT_SOURCE_ONLY_MAIN_HELD",
+  "coherentSource": {
+    "files": 522,
+    "parses": 426,
+    "unchangedParentFiles": 520,
+    "codeHunks": 43,
+    "inverseHunks": 46,
+    "freshSourceReads": 238,
+    "sourceCopies": 224,
+    "sourceOnlyPeakBytes": 14739681,
+    "fullBootstrapFunctions": 434,
+    "unresolvedPrivateOrNewGlobals": 0,
+    "focusedGroups": 183
+  },
+  "actualConfiguration": {
+    "visits": 880,
+    "nodes": 269,
+    "bytes": 8551,
+    "phase": "COMPLETE",
+    "claimed": false,
+    "tupleCases": 26,
+    "positiveCases": 1,
+    "negativeCases": 25,
+    "originalC2BinderOnce": true,
+    "actualOriginalRJobs": true
+  },
+  "nativeNodeTimers": {
+    "focusedGroups": 40,
+    "realTimerVisits": 11,
+    "nativeBrowserOrGPU": false
+  },
+  "hostAdmission": "Actual source capacity and payment-scope bodies, with modeled original Binding-producer and R factory. Fixed M+2U+S candidate is not an actual PB/Base/provider import. Original provider /2 receives U, not doubled P.",
+  "retainedCounters": [
+    "Actual original slice reset unexpectedly passed prior Root61 configuration; preserved finding. New versioned same-R tuple code now refuses it and12frame/slice/context mutations.",
+    "Actual Node TextDecoder inherited ignoreBOM getter ran2times in the prior draft; preserved counter. Original absence capture and fresh checks now refuse before0unknown getters in this component."
+  ],
+  "workABI": "Independent seven-block proposal is an unselected upper/storage analysis. Three callback uppers4490/4558/4692 exceed4096 at this frozen cutoff; upper is not lower or impossibility. Current used-fact successor is excluded.",
+  "modelBoundary": "183focused grouped checks are not183full conformance cases. Named App/Surface/current/native/caller-entry/transport/script/GL/IDB and literal-only metadata/work adapters remain explicit; no independent peaks are summed.",
+  "completeFunding": null,
+  "completeWork": null,
+  "wholeQ": null,
+  "Main": false,
+  "P05": "OPEN",
+  "P06_P08": "LATER",
+  "PhaseOne": "NOT_ACCEPTED_NOT_RELEASED",
+  "runtimeFilesChanged": 0,
+  "selectedMainStartupComponent": "main-texture-handoff-funded-c3",
+  "activeSuccessorsExcluded": [
+    "G PB/Base Source scheduling child and any later loader/factory work",
+    "R used-fact correction/rebase and later proposals",
+    "P Kernel/State recipe/release child and later contexts",
+    "all unlisted agent folders,restored-check folders,node_modules,raw archives and five parallel Atlas paths"
+  ],
+  "proofs": [
+    {
+      "name": "coherent-startup-component.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\CHECK-COMPONENT-06.json",
+        "bytes": 7973,
+        "sha256": "a981429a18ef99d644a6fd27bbf9e9935603996b7eb2c46dd9fa6603ff9cc7ff"
+      }
+    },
+    {
+      "name": "coherent-source-admission.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\CHECK-SOURCE-03.json",
+        "bytes": 2683,
+        "sha256": "f6eed3786ac406698d821a6125af504449ee84794d4dd67637e18197079bda18"
+      }
+    },
+    {
+      "name": "coherent-bootstrap-lexical.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\CHECK-LEXICAL-03.json",
+        "bytes": 2996999,
+        "sha256": "ee76dcff5013062bf616001cc987aa4330062be758378dc67f67b7e5d5060cc2"
+      }
+    },
+    {
+      "name": "coherent-genuine-tuple.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\CHECK-TUPLE-05.json",
+        "bytes": 16941,
+        "sha256": "bbf4bbf26e43b2ba72ea0a4406db7153e69c0bf46f3bfad74dc17c75625af376"
+      }
+    },
+    {
+      "name": "host-admission-handoff.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-admission-handoff-2026-10-24-01\\CHECK-FUNCTIONAL-14.json",
+        "bytes": 6594,
+        "sha256": "a6a7781854b8c428856a15cd6575e0e1dd752507ae3bce52a7cd50217916d1ae"
+      }
+    },
+    {
+      "name": "tuple-component.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v63-state-configuration-r-tuple-2026-10-24-01\\CHECK-TUPLE-16.json",
+        "bytes": 30908,
+        "sha256": "fa92bc9d9cc740fe43e49caef27eb9bacb4370bc0e9fe7f695c7d227976ef992"
+      }
+    },
+    {
+      "name": "original-clock-counter.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v61-state-configuration-peer-2026-10-24-01\\FINDING-R-CLOCK-14.json",
+        "bytes": 3685,
+        "sha256": "a9b13583358d67691581cf4ae3ce56ba35bb10496e70595c19d76f5870ac1602"
+      }
+    },
+    {
+      "name": "seven-block-records-component.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v62-trusted-records-staging-2026-10-24-01\\CHECK-CODE-12.json",
+        "bytes": 7433,
+        "sha256": "49a256bf552e3e7618d9c1bc8833948c11acf286f7b820187377c561baeca78c"
+      }
+    },
+    {
+      "name": "coherent-native-Node-timers.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\controls-03\\CHECK-CONTROLS-09.json",
+        "bytes": 13637,
+        "sha256": "089d9b76a1ff5c24e143bf0a8e9349fa6fe8d2df09e7978f6bdb6c40c3d1582b"
+      }
+    },
+    {
+      "name": "original-decoder-options-counter.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v62-trusted-records-staging-2026-10-24-01\\native-decoder-options-counter-07.json",
+        "bytes": 989,
+        "sha256": "4ac5dda15f60da72acc5ddf38936c09ae679f3a878f28725f9baf3e37713d0b3"
+      }
+    },
+    {
+      "name": "seven-block-work-ABI-proposal.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v62-trusted-records-work-2026-10-24-01\\CHECK-06.json",
+        "bytes": 4947,
+        "sha256": "9b4885fd435c7fefa4bc714586e5963c685d6d8f9349d917194db76c57831754"
+      }
+    },
+    {
+      "name": "next-original-Kernel-barrier.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-state-staged-recipe-2026-10-24-01\\next-kernel-barrier-13.json",
+        "bytes": 3846,
+        "sha256": "cbc8478f728b44509a6eaf46f3362e1d456035200851d981557f314ee4b76451"
+      }
+    },
+    {
+      "name": "p05-exit-boundary.json",
+      "original": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\full-ordinary-host-envelope-review-01\\p05-exit-boundary-01.json",
+        "bytes": 2538,
+        "sha256": "1c9fe01eae51a47cfaec5f267f4076f9e6a907f52b82090e4793f9f0237da2f9"
+      }
+    }
+  ]
+}

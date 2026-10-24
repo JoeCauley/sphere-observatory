@@ -1,0 +1,137 @@
+{
+  "schema": "sphere-private-main-handoff-functional-freeze/1",
+  "status": "PASS_FROZEN_CONDITIONAL_SOURCE_COMPONENT_NOT_SELECTED_HOST_OR_MAIN",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-admission-handoff-2026-10-24-01\\candidate-01\\source",
+  "parent": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v62-main-vector-state-recipe-2026-10-24-01\\candidate-01\\source",
+  "sourcePin": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-admission-handoff-2026-10-24-01\\candidate-01\\source\\owned-main-bootstrap.js",
+    "bytes": 409870,
+    "sha256": "d8fec31cea2692ca98511bf99411b8acaa9c5580a1b39088989425f58ce66b21"
+  },
+  "parentPin": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v62-main-vector-state-recipe-2026-10-24-01\\candidate-01\\source\\owned-main-bootstrap.js",
+    "bytes": 396777,
+    "sha256": "22dbc16b94317c7d5f07f34b0f7a500a1bc9b24ce0cc2e58644d36a91aaf1c2c"
+  },
+  "recipe": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-admission-handoff-2026-10-24-01\\root-safe-recipe-09.json",
+    "bytes": 18400,
+    "sha256": "4295a33f9b81e144a92b0741584ab9e1f60b6a829992b14ded4d943551e42b7c"
+  },
+  "files": 522,
+  "parses": 426,
+  "unchanged": 521,
+  "inverseHunks": 18,
+  "currentProfiles": 3,
+  "freshOriginalSourceReads": 238,
+  "distinctSourceCopies": 224,
+  "models": {
+    "actualNewBodies28": 28,
+    "exactOriginalScopeAndReadPaymentChain32": 32,
+    "nativeOrActualRConstructor": false,
+    "actualBindingProducerBuilt": false
+  },
+  "wholeSourceLexical": {
+    "newFunctions": 14,
+    "unresolvedNonIntrinsic": 0,
+    "sourceSlotsAdded": 13
+  },
+  "poolSubsets": {
+    "HCallableAndAutomaticMetadata": 20032,
+    "MConsumerCallableAndAutomaticMetadata": 1568,
+    "localModuleDataOnly": 13568,
+    "localInstanceDataOnly": 13248,
+    "upstreamSourceOccurrenceStorageOnly": 80576,
+    "completeModule": null,
+    "completeInstance": null,
+    "completeCurrent": null,
+    "completeCaller": null,
+    "whole32MiB": null
+  },
+  "authority": {
+    "capacityEquations": "P=2*actual original U; H=M+P+unchanged S",
+    "sameOriginalRArgument": "original /2 receives U not2U, but actual R constructor is not qualified or executed by this component",
+    "privatePhasePermission": "Actual original resolvedBindingPay extends only3 explicit H STARTUP phases; each original readPort/read debits same actual scope after outer Wake/fee predebit. All amounts are diagnostic models in tests only.",
+    "originalOwnerFilesChanged": 0,
+    "defaultProfile": null,
+    "newAmounts": null,
+    "newWORK": null,
+    "originalProductMain": false,
+    "limitsChanged": false,
+    "rendererStarCpu": "Separate original pre-R constructor/caller operand, no retroactive R CPU charge",
+    "noReadinessOrPublicBinder": true
+  },
+  "nextCaller": {
+    "missingActualStagedPBAndBaselinePort": true,
+    "legacyProgramBaselineNotCalled": true,
+    "actualBaselineInstance": false,
+    "baselineZeroResourceOrderRequired": true,
+    "futureFixedFactoriesRemainOriginal": true,
+    "completeActualProvider2DemandStillRequired": true
+  },
+  "preservation": {
+    "productSourceNeverChangedAfterCandidateBuild": true,
+    "Root62Untouched": true,
+    "oldFrozenMAndAllPriorSourcesUntouched": true,
+    "scopeHarness04Failure": "wrong diagnostic following29, actual25; original attempt preserved",
+    "census06And07Failures": "cross-realm [] assertion and expected20 vs actual18 shape; preserved, corrected only new scripts",
+    "noBrowserServerRuntimeGit": true
+  },
+  "records": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-admission-handoff-2026-10-24-01\\READ-FIRST-13.md",
+      "bytes": 12962,
+      "sha256": "11b4db6faf919dc4ce26d5219804820d757dd7791d9bb9dea6d4e94003de7432"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-admission-handoff-2026-10-24-01\\root-safe-recipe-09.json",
+      "bytes": 18400,
+      "sha256": "4295a33f9b81e144a92b0741584ab9e1f60b6a829992b14ded4d943551e42b7c"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-admission-handoff-2026-10-24-01\\CHECK-SOURCE-09.json",
+      "bytes": 2821,
+      "sha256": "7a776f5d3e1d8d5a2ce94d63e11bb3b35203cc20fe2897b43c6c95a9c07c5188"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-admission-handoff-2026-10-24-01\\inventory-09.json",
+      "bytes": 94064,
+      "sha256": "66d0bdcf5cd733c6d385d7c90e8a4f18ee5f9caba8215aa62d7075944518744a"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-admission-handoff-2026-10-24-01\\control-handoff-model-03.json",
+      "bytes": 8595,
+      "sha256": "6a0f3c03dc3659d4d5168002bd29e081a8e7d8fcdd56304f65f76042d3ea912b"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-admission-handoff-2026-10-24-01\\control-binding-paid-chain-05.json",
+      "bytes": 16830,
+      "sha256": "94385f059c6b74bbf5be3e5bbab6280268071025beb7d39db19dc6c5b51a134c"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-admission-handoff-2026-10-24-01\\positive-census-08.json",
+      "bytes": 93476,
+      "sha256": "4debc361cb5c9ed4cb43358368f8461eb74c3e2d46c0e22669925ee321d2b19b"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-admission-handoff-2026-10-24-01\\census-supplement-12.json",
+      "bytes": 5082,
+      "sha256": "614af0ca9200c95802362d726299557e0316886efef9ceb934dd82e12540a3eb"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-admission-handoff-2026-10-24-01\\continuations-and-liabilities-10.json",
+      "bytes": 35217,
+      "sha256": "72403d05a75264ccb284863aabb61df95d3eda79b18942f28d32df53d98c5cc9"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-admission-handoff-2026-10-24-01\\integration-contract-11.json",
+      "bytes": 48858,
+      "sha256": "83f75ee134692931617d7840073e370cefc27c65c91cd897bfab49d351122e8d"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-host-admission-handoff-2026-10-24-01\\parent-scope-01.json",
+      "bytes": 3687,
+      "sha256": "9246650be3e2e3371042f7f1885f968994611a902ef9cb3486d4116f5a417cbd"
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+Coherent private source64 component evidence only.183focused groups include26genuine C2/State/R configuration cases and40Node-timer groups; named models remain. Complete startup/work/wholeQ, actual staged PB/Base, asyncState/Kernel/wholeview and native Main remain open. Active used-fact, Source-scheduling and Kernel-custody children are excluded from cutoff26.

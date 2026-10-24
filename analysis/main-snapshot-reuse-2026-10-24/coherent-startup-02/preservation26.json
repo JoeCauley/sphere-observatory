@@ -1,0 +1,39 @@
+{
+  "pass": true,
+  "cutoff": 26,
+  "snapshots": 377,
+  "sourceEntries": 171113,
+  "recordsVerified": 13435,
+  "recordBytes": 737021716,
+  "snapshotsAdded": 10,
+  "recordsAdded": 506,
+  "freshRestores": [
+    {
+      "snapshot": "main-coherent-H-tuple-stagedRecords-c1",
+      "destination": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v65-source-progress-safety-2026-10-24-01\\restored-check-26-main-coherent-H-tuple-stagedRecords-c1\\source",
+      "files": 522,
+      "verified": true
+    },
+    {
+      "snapshot": "main-fixed-M-P-S-host-admission-c1",
+      "destination": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v65-source-progress-safety-2026-10-24-01\\restored-check-26-main-fixed-M-P-S-host-admission-c1\\source",
+      "files": 522,
+      "verified": true
+    }
+  ],
+  "earlier367Archives12929RecordsExact": true,
+  "restorerUnchanged": true,
+  "selectedMainComponent": "main-texture-handoff-funded-c3",
+  "latestJoinedMainStartup": "main-staged-world-reuse-join-unselected-c1",
+  "joinedMainStartupSelected": false,
+  "latestUnselectedSourceComposition": "main-coherent-H-tuple-stagedRecords-c1",
+  "rawArchivesRemainLocal": true,
+  "excludedActive": [
+    "G PB/Base Source scheduling child and any later loader/factory work",
+    "R used-fact correction/rebase and later proposals",
+    "P Kernel/State recipe/release child and later contexts",
+    "all unlisted agent folders,restored-check folders,node_modules,raw archives and five parallel Atlas paths"
+  ],
+  "P05": "OPEN",
+  "Main": false
+}

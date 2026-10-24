@@ -1,0 +1,89 @@
+{
+  "status": "CONFIRMED_SOURCE_SCOPE_GAP",
+  "source": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v61-state-configuration-caller-2026-10-24-01\\candidate-02\\source\\owned-main-bootstrap.js",
+    "bytes": 378405,
+    "sha256": "729c94cbef67ecdfef6d6089552dd468a7b4712fe18c28cf4837f50b0181874a"
+  },
+  "resources": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v61-state-configuration-caller-2026-10-24-01\\candidate-02\\source\\biome-service\\native\\resource-leases.js",
+    "bytes": 138917,
+    "sha256": "2160a7d5c8adb44592f29d4df5806832091b54cc702e454eb264a84381d53a33"
+  },
+  "counter": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v61-state-configuration-peer-2026-10-24-01\\control-ownedHostStagesReadCache-clock12.json",
+    "bytes": 57092,
+    "sha256": "1fea8a3eee2114ad9383ae7e63536a221fe37cae14e2bc4e6eedd75b8277f181"
+  },
+  "observation": {
+    "kind": "ACTUAL_R_CLOCK_RESET_WITH_SAME_ACCEPTED_JOB",
+    "before": {
+      "frame": 3,
+      "slice": 3,
+      "epoch": 0,
+      "work": 2
+    },
+    "after": {
+      "frame": 3,
+      "slice": 4,
+      "epoch": 0,
+      "work": 0
+    },
+    "sameJob": true,
+    "samePaid": true,
+    "sameStamp": true,
+    "jobCheckReturned": true
+  },
+  "accepted": {
+    "phase": "ACCEPTED",
+    "visits": 880,
+    "child": {
+      "format": "sphere-private-state-boundary-configuration/1",
+      "phase": "COMPLETE",
+      "nodes": 269,
+      "bytes": 8551,
+      "hasFailure": false,
+      "claimed": false,
+      "closed": false,
+      "retainedBoundary": true,
+      "retainedParentCharges": true
+    }
+  },
+  "references": [
+    {
+      "path": "owned-main-bootstrap.js",
+      "lines": "1326-1333",
+      "meaning": "Original Root work job start/take/end checks job identity/check but stores no R numeric frame/slice/context tuple."
+    },
+    {
+      "path": "owned-main-bootstrap.js",
+      "lines": "1368-1390",
+      "meaning": "State scope checks paid/stamp/job/source/owner identities and original job.check before and after, but cannot detect beginSlice reset."
+    },
+    {
+      "path": "biome-service/native/resource-leases.js",
+      "lines": "774-780",
+      "meaning": "Original generic root preparation job intentionally checks live/owner/loss/cancellation, not frame/slice."
+    },
+    {
+      "path": "biome-service/native/resource-leases.js",
+      "lines": "281-291",
+      "meaning": "Existing original same-owner credit closure exposes numeric frame/slice/context and matchesScope."
+    },
+    {
+      "path": "biome-service/native/resource-leases.js",
+      "lines": "828-829",
+      "meaning": "Actual beginSlice increments numeric slice and resets global and owner work."
+    }
+  ],
+  "interpretation": "Contract44 same actual R frame/slice tuple is not established by job identity alone. This witness does not show a 4096 quota bypass: separate paid.work remains. It demonstrates mid-visit tuple freshness is missing.",
+  "smallestRemedy": "Prospectively retain an original R.createCredits(actual same service owner) closure through source-authenticated original R. Capture its frame/slice/context on the synchronous visit, freshly compare before/after debit/parent callbacks and exit; retain failed roots on mismatch. Preserve generic R job cross-slice semantics. New closure, tuple cells, descriptor facts, work and lifetime are positive unselected liabilities.",
+  "notRemedy": [
+    "No phase boolean",
+    "No generic R job semantic change",
+    "No claim that a reset creates extra allowed work",
+    "No model permission for async State.create"
+  ],
+  "Main": false,
+  "P05": "OPEN"
+}

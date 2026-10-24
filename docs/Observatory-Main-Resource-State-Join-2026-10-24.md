@@ -1,3 +1,5 @@
+> Current checkpoint, October24: coherent Main startup source passes183 focused groups, including26 genuine configuration cases. Complete startup/work/whole metadata budget, actual program/Baseline ownership and native Main remain open. P05 OPEN; walking preserved. [Current integration and remaining path](Observatory-Main-Startup-Integration-2026-10-24.md).
+
 # Main resource and State integration
 
 The Meadow-Industry walking experience remains preserved. P05 is open. The current work makes ordinary Main use the same reuse strategy within its existing work and memory limits: keep the simulation as the reference, retain validated state, and prepare graphics when the camera needs them.

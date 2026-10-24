@@ -1,0 +1,411 @@
+{
+  "status": "PASS_ACTUAL_STAGED_RECORDS_NODE_TIMER_COMPONENT",
+  "source": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\candidate-01\\owned-main-trusted-launch.unselected.js",
+    "bytes": 2614888,
+    "sha256": "268a72206e717e1201ca6c75e34de1e1f42aae33030cc566cb3119048b30b1f6"
+  },
+  "groups": [
+    {
+      "name": "Unselected saved artifact refuses before queue or any foundation",
+      "status": "PASS"
+    },
+    {
+      "name": "New prior staged callback/region guard refuses before native capture/queue",
+      "status": "PASS"
+    },
+    {
+      "name": "Original Records controller guard refuses before its new capture/initializer data and Q",
+      "status": "PASS"
+    },
+    {
+      "name": "Eleven actual native timer visits execute original6,one real Q claim,seven original bodies,one final DATA publication,and same-Q loader entry",
+      "status": "PASS",
+      "snapshots": [
+        {
+          "index": 1,
+          "moduleState": "COMPLETE_HELD",
+          "recordsState": "ADOPT",
+          "cursor": 0,
+          "owner": false,
+          "sourceRows": "CAPTURED",
+          "recordsRootIsCore": true
+        },
+        {
+          "index": 2,
+          "moduleState": "COMPLETE_HELD",
+          "recordsState": "INITIALIZING",
+          "cursor": 0,
+          "owner": true,
+          "sourceRows": "CAPTURED",
+          "recordsRootIsCore": true
+        },
+        {
+          "index": 3,
+          "moduleState": "COMPLETE_HELD",
+          "recordsState": "INITIALIZING",
+          "cursor": 1,
+          "owner": true,
+          "sourceRows": "CAPTURED",
+          "recordsRootIsCore": true
+        },
+        {
+          "index": 4,
+          "moduleState": "COMPLETE_HELD",
+          "recordsState": "INITIALIZING",
+          "cursor": 2,
+          "owner": true,
+          "sourceRows": "CAPTURED",
+          "recordsRootIsCore": true
+        },
+        {
+          "index": 5,
+          "moduleState": "COMPLETE_HELD",
+          "recordsState": "INITIALIZING",
+          "cursor": 3,
+          "owner": true,
+          "sourceRows": "CAPTURED",
+          "recordsRootIsCore": true
+        },
+        {
+          "index": 6,
+          "moduleState": "COMPLETE_HELD",
+          "recordsState": "INITIALIZING",
+          "cursor": 4,
+          "owner": true,
+          "sourceRows": "CAPTURED",
+          "recordsRootIsCore": true
+        },
+        {
+          "index": 7,
+          "moduleState": "COMPLETE_HELD",
+          "recordsState": "INITIALIZING",
+          "cursor": 5,
+          "owner": true,
+          "sourceRows": "CAPTURED",
+          "recordsRootIsCore": true
+        },
+        {
+          "index": 8,
+          "moduleState": "COMPLETE_HELD",
+          "recordsState": "INITIALIZING",
+          "cursor": 6,
+          "owner": true,
+          "sourceRows": "CAPTURED",
+          "recordsRootIsCore": true
+        },
+        {
+          "index": 9,
+          "moduleState": "COMPLETE_HELD",
+          "recordsState": "PUBLISH",
+          "cursor": 7,
+          "owner": true,
+          "sourceRows": "CAPTURED",
+          "recordsRootIsCore": true
+        },
+        {
+          "index": 10,
+          "moduleState": "COMPLETE_HELD",
+          "recordsState": "PUBLISHED",
+          "cursor": 7,
+          "owner": true,
+          "sourceRows": "CAPTURED",
+          "recordsRootIsCore": false
+        },
+        {
+          "index": 11,
+          "moduleState": "COMPLETE_HELD",
+          "recordsState": "PUBLISHED",
+          "cursor": 7,
+          "owner": true,
+          "sourceRows": "TAKEN",
+          "recordsRootIsCore": false
+        }
+      ],
+      "held": 17844074
+    },
+    {
+      "name": "Actual original Source lexical transfer and Q retain unchanged core functions while loader receives final frozen data namespace",
+      "status": "PASS"
+    },
+    {
+      "name": "Old serial/entry callback and foreign Q cannot replay original initializer or factory",
+      "status": "PASS"
+    },
+    {
+      "name": "After a real wait schema function Proxy refuses original changed authority before foreign callback/Q release",
+      "status": "PASS",
+      "foreignCallbacks": 0
+    },
+    {
+      "name": "After a real wait schema evaluated accessor refuses original changed authority before foreign callback/Q release",
+      "status": "PASS",
+      "foreignCallbacks": 0
+    },
+    {
+      "name": "After a real wait schema metadata scalar refuses original changed authority before foreign callback/Q release",
+      "status": "PASS",
+      "foreignCallbacks": 0
+    },
+    {
+      "name": "After a real wait Address shell accessor refuses original changed authority before foreign callback/Q release",
+      "status": "PASS",
+      "foreignCallbacks": 0
+    },
+    {
+      "name": "After a real wait Topology neighbors accessor refuses original changed authority before foreign callback/Q release",
+      "status": "PASS",
+      "foreignCallbacks": 0
+    },
+    {
+      "name": "After a real wait face vector replacement Proxy refuses original changed authority before foreign callback/Q release",
+      "status": "PASS",
+      "foreignCallbacks": 0
+    },
+    {
+      "name": "After a real wait face vector scalar refuses original changed authority before foreign callback/Q release",
+      "status": "PASS",
+      "foreignCallbacks": 0
+    },
+    {
+      "name": "After a real wait used native Map getter refuses original changed authority before foreign callback/Q release",
+      "status": "PASS",
+      "foreignCallbacks": 0
+    },
+    {
+      "name": "After a real wait Record namespace getter refuses original changed authority before foreign callback/Q release",
+      "status": "PASS",
+      "foreignCallbacks": 0
+    },
+    {
+      "name": "After a real wait original root next Proxy refuses original changed authority before foreign callback/Q release",
+      "status": "PASS",
+      "foreignCallbacks": 0
+    },
+    {
+      "name": "After a real wait ServiceError write target refuses original changed authority before foreign callback/Q release",
+      "status": "PASS",
+      "foreignCallbacks": 0
+    },
+    {
+      "name": "Queue2 raw undefined failure occurrence retains exact ownership/primary without replay",
+      "status": "PASS"
+    },
+    {
+      "name": "Queue3 raw undefined failure occurrence retains exact ownership/primary without replay",
+      "status": "PASS"
+    },
+    {
+      "name": "Queue6 raw undefined failure occurrence retains exact ownership/primary without replay",
+      "status": "PASS"
+    },
+    {
+      "name": "Queue9 raw undefined failure occurrence retains exact ownership/primary without replay",
+      "status": "PASS"
+    },
+    {
+      "name": "Queue10 raw undefined failure occurrence retains exact ownership/primary without replay",
+      "status": "PASS"
+    },
+    {
+      "name": "Queue11 raw undefined failure occurrence retains exact ownership/primary without replay",
+      "status": "PASS"
+    },
+    {
+      "name": "Queue2 raw false failure occurrence retains exact ownership/primary without replay",
+      "status": "PASS"
+    },
+    {
+      "name": "Queue3 raw false failure occurrence retains exact ownership/primary without replay",
+      "status": "PASS"
+    },
+    {
+      "name": "Queue6 raw false failure occurrence retains exact ownership/primary without replay",
+      "status": "PASS"
+    },
+    {
+      "name": "Queue9 raw false failure occurrence retains exact ownership/primary without replay",
+      "status": "PASS"
+    },
+    {
+      "name": "Queue10 raw false failure occurrence retains exact ownership/primary without replay",
+      "status": "PASS"
+    },
+    {
+      "name": "Queue11 raw false failure occurrence retains exact ownership/primary without replay",
+      "status": "PASS"
+    },
+    {
+      "name": "Queue2 raw null failure occurrence retains exact ownership/primary without replay",
+      "status": "PASS"
+    },
+    {
+      "name": "Queue3 raw null failure occurrence retains exact ownership/primary without replay",
+      "status": "PASS"
+    },
+    {
+      "name": "Queue6 raw null failure occurrence retains exact ownership/primary without replay",
+      "status": "PASS"
+    },
+    {
+      "name": "Queue9 raw null failure occurrence retains exact ownership/primary without replay",
+      "status": "PASS"
+    },
+    {
+      "name": "Queue10 raw null failure occurrence retains exact ownership/primary without replay",
+      "status": "PASS"
+    },
+    {
+      "name": "Queue11 raw null failure occurrence retains exact ownership/primary without replay",
+      "status": "PASS"
+    },
+    {
+      "name": "Synchronous substituted scheduler cannot enter a queued-only private optional phase",
+      "status": "PASS"
+    },
+    {
+      "name": "Actual original seventh parser receives pre-wait original decoder fact and retains full1MiB/8192/depth32/unsafe/reset behavior",
+      "status": "PASS",
+      "parserModelVisits": 154
+    },
+    {
+      "name": "A changed decoder before later seventh initialization is never recaptured; actual parser use refuses saved original fact before unknown getter",
+      "status": "PASS",
+      "foreignCallbacks": 0
+    },
+    {
+      "name": "Actual native constructor dictionary ignoreBOM counter2 is now refused before0 foreign getters by the saved original absence fact",
+      "status": "PASS",
+      "priorUnknownCallbacks": 2,
+      "currentUnknownCallbacks": 0
+    },
+    {
+      "name": "A preexisting decoder option getter refuses before any native queue/foundation; no changed option is captured as original",
+      "status": "PASS",
+      "foreignCallbacks": 0
+    }
+  ],
+  "diagnosticSubstitutions": [
+    [
+      "launchProfileDigest=null",
+      "launchProfileDigest='0000000000000000000000000000000000000000000000000000000000000000'"
+    ],
+    [
+      "launchSeedBytes=null",
+      "launchSeedBytes=16777216"
+    ],
+    [
+      "launchModuleBytes=null",
+      "launchModuleBytes=16777216"
+    ],
+    [
+      "launchWork=null",
+      "launchWork={module:1,claim:1,factory:1,inspect:1}"
+    ],
+    [
+      "launchBatchMetadataBytes=null",
+      "launchBatchMetadataBytes=131072"
+    ],
+    [
+      "launchBatchWork=null",
+      "launchBatchWork={capture:1,module:1,entry:1}"
+    ],
+    [
+      "launchEntryBytes=null",
+      "launchEntryBytes=1048576"
+    ],
+    [
+      "launchSourceRowsPriorBytes=null",
+      "launchSourceRowsPriorBytes=65536"
+    ],
+    [
+      "launchSourceRowsWork=null",
+      "launchSourceRowsWork={diagnosticOnly:true}"
+    ],
+    [
+      "launchRootChainMetadataBytes=null",
+      "launchRootChainMetadataBytes=20480"
+    ],
+    [
+      "launchRootChainWork=null",
+      "launchRootChainWork={capture:1,moduleCheck:1}"
+    ],
+    [
+      "ADMITTED_ROW_MODULE_METADATA_BYTES=null",
+      "ADMITTED_ROW_MODULE_METADATA_BYTES=1"
+    ],
+    [
+      "ADMITTED_SOURCE_ROWS_CALLER_METADATA_BYTES=null",
+      "ADMITTED_SOURCE_ROWS_CALLER_METADATA_BYTES=12288"
+    ],
+    [
+      "ADMITTED_SOURCE_ROWS_CALLER_WORK=null",
+      "ADMITTED_SOURCE_ROWS_CALLER_WORK={diagnosticOnly:true}"
+    ],
+    [
+      "launchDeferredRecordsMetadataBytes=null",
+      "launchDeferredRecordsMetadataBytes=262144"
+    ],
+    [
+      "launchDeferredRecordsWork=null",
+      "launchDeferredRecordsWork={diagnosticOnly:true}"
+    ],
+    [
+      "OWNED_RECORDS_DEFERRED_METADATA_BYTES=null",
+      "OWNED_RECORDS_DEFERRED_METADATA_BYTES=262144"
+    ],
+    [
+      "OWNED_RECORDS_DEFERRED_WORK=null",
+      "OWNED_RECORDS_DEFERRED_WORK={diagnosticOnly:true}"
+    ],
+    [
+      "OWNED_ADDRESS_VALIDATION_MODULE_METADATA_BYTES=null",
+      "OWNED_ADDRESS_VALIDATION_MODULE_METADATA_BYTES=1"
+    ],
+    [
+      "OWNED_HOST_WORLD_VALIDATION_MODULE_METADATA_BYTES=null",
+      "OWNED_HOST_WORLD_VALIDATION_MODULE_METADATA_BYTES=1"
+    ],
+    [
+      "OWNED_BINDING_RECORD_VALIDATION_MODULE_METADATA_BYTES=null",
+      "OWNED_BINDING_RECORD_VALIDATION_MODULE_METADATA_BYTES=1"
+    ],
+    [
+      "OWNED_STAGED_PARSE_MODULE_BYTES=null",
+      "OWNED_STAGED_PARSE_MODULE_BYTES=1"
+    ],
+    [
+      "OWNED_RECIPE_PARSE_MODULE_BYTES=null",
+      "OWNED_RECIPE_PARSE_MODULE_BYTES=1"
+    ],
+    [
+      "OWNED_PREPARED_VALIDATION_MODULE_BYTES=null",
+      "OWNED_PREPARED_VALIDATION_MODULE_BYTES=1"
+    ],
+    [
+      "OWNED_TYPED_PRODUCER_VALIDATION_MODULE_BYTES=null",
+      "OWNED_TYPED_PRODUCER_VALIDATION_MODULE_BYTES=1"
+    ]
+  ],
+  "adapters": [
+    "Original six foundation and optional initializer bodies,original Q claim/owner,original early Source lexical port and loader refusal execute in a fresh Node VM.",
+    "Actual native Node timers carry the actual private serial argument. Fixed modeled Document classes/currentScript/SRI/nonce/URL stand in for the browser entry; this is not native browser/SRI evidence.",
+    "The schedule bridge can inject raw throw or forbidden synchronous callback solely for negative controls; these are disclosed adapter cases,not a public production scheduling API.",
+    "One test-only lexical diagnostic closure exposes existing private roots; no such export is emitted in the saved artifact.",
+    "All metadata/work substitutions are diagnostic values only. Whole callback quotes,ABI,current cohort,HTML admission and all null product gates remain unselected."
+  ],
+  "scope": {
+    "nativeTimers": true,
+    "actualOriginalQ": true,
+    "originalSource": true,
+    "all7OriginalBodies": true,
+    "bodyCopies": "one original text each",
+    "paidWork": false,
+    "nativeHeap": "UNMEASURED",
+    "actualMain": false
+  },
+  "storage": null,
+  "work": null,
+  "funding": null,
+  "Main": false
+}

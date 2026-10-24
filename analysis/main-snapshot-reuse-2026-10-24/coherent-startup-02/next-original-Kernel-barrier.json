@@ -1,0 +1,42 @@
+{
+  "status": "ACTUAL_NEXT_ORIGINAL_REFUSAL_NOT_IMPOSSIBILITY",
+  "genuine": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-state-staged-recipe-2026-10-24-01\\control-ownedHostStagesReadCache-genuine09.json",
+    "bytes": 25370,
+    "sha256": "86c226cd092ccee334ee6b96aabf5813c9e6370e3686028547fb126ffac63aec"
+  },
+  "visits": 2240,
+  "waits": 5,
+  "error": {
+    "code": "RESOURCE_LIMIT",
+    "message": "Service metadata current, staging, replacement and ownership records exceed admission",
+    "details": {
+      "heldBytes": 29984235,
+      "requestedBytes": 8388608,
+      "chargedBytes": 8389184,
+      "limitBytes": 33554432,
+      "liveReservations": 314,
+      "maximumReservations": 4096,
+      "owner": "biome-native-kernel",
+      "phase": "proof-working"
+    },
+    "stack": "SphereBiomeServiceError: Service metadata current, staging, replacement and ownership records exceed admission\n    at Object.error (eval at privateModule (I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-state-staged-recipe-2026-10-24-01\\test-genuine-09.cjs:18:8524), <anonymous>:12:57)\n    at fail (I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-state-staged-recipe-2026-10-24-01\\model-join-09\\source\\biome-service\\metadata-budget.js:7:48)\n    at Object.reserve (I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-state-staged-recipe-2026-10-24-01\\model-join-09\\source\\biome-service\\metadata-budget.js:22:68)\n    at scopedSync (eval at privateModule (I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-state-staged-recipe-2026-10-24-01\\test-genuine-09.cjs:18:8524), <anonymous>:58:142)\n    at Object.issueRecipe (eval at privateModule (I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-state-staged-recipe-2026-10-24-01\\test-genuine-09.cjs:18:8524), <anonymous>:99:37)\n    at acquireDemandCore (I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-state-staged-recipe-2026-10-24-01\\model-join-09\\source\\biome-service\\native\\state-contexts.js:235:40)\n    at acquireDemandCore.next (<anonymous>)\n    at Object.advance (I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-state-staged-recipe-2026-10-24-01\\model-join-09\\source\\biome-service\\native\\state-contexts.js:188:25)\n    at main (I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-state-staged-recipe-2026-10-24-01\\test-genuine-09.cjs:215:413)"
+  },
+  "source": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v60-coherent-staged-main-2026-10-24-01\\candidate-01\\source\\biome-service\\native\\surface-kernel.js",
+    "line": 56,
+    "source": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v60-coherent-staged-main-2026-10-24-01\\candidate-01\\source\\biome-service\\native\\surface-kernel.js",
+      "bytes": 80233,
+      "sha256": "fc03ca716d9509a35a6b94aab8419aed99300a1a7db0041a77f097d8e7d19072"
+    },
+    "calledAt": {
+      "path": "biome-service/native/state-contexts.js",
+      "line": 235
+    }
+  },
+  "meaning": "The original parser refusal is crossed. Original Kernel.issueRecipe then prospectively requests its unchanged8MiB scopedSync proof-working account at29,984,235 held logical bytes. It refuses without any Kernel recipe/context/provider instance publication. Earlier sources/errors remain intact.",
+  "nextRoute": "Review original validateRecipe + manifest own/canonical/recipe metadata and subsequent Kernel.bind8MiB exclusive prelude. Reuse only genuine completed immutable recipe/manifest custody if same-Q/source semantic validation can be retained, otherwise stage the actual authored children. Do not shrink workspace blindly or treat async bind as API1.",
+  "Main": false,
+  "P05": "OPEN"
+}

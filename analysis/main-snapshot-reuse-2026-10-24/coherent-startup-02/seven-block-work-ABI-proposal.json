@@ -1,0 +1,143 @@
+{
+  "status": "PASS_COMPONENT_NAMED_UPPER_AND_POSITIVE_ABI_PROPOSAL_NOT_SELECTED",
+  "scope": "Read-only review of frozen seven-block Root62 example. Pure source/arithmetic controls only; original46 functional groups are separately pinned,not counted again as new tests.",
+  "inputs": {
+    "work": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v62-trusted-records-work-2026-10-24-01\\phase-work-05.json",
+      "bytes": 66193,
+      "sha256": "afc6edfee648f81fa371a4774cfa4b225d1b8aa77e31d1e1df0fd9cc683d3a14"
+    },
+    "storage": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v62-trusted-records-work-2026-10-24-01\\storage-03.json",
+      "bytes": 234798,
+      "sha256": "b237b3f0c20e9d2ede070afc4e0fcdb80342c57c658d093ba5d6824fa12a381c"
+    },
+    "codeCheck": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v62-trusted-records-staging-2026-10-24-01\\CHECK-CODE-12.json",
+      "bytes": 7433,
+      "sha256": "49a256bf552e3e7618d9c1bc8833948c11acf286f7b820187377c561baeca78c"
+    },
+    "codeFreeze": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v62-trusted-records-staging-2026-10-24-01\\FREEZE-CODE-13.json",
+      "bytes": 13976,
+      "sha256": "118e11d6ddae7f71a30e1978ef1f511ed29854259b2eb3261dff1a8e2cb2fd6d"
+    },
+    "decoderCounter": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v62-trusted-records-staging-2026-10-24-01\\native-decoder-options-counter-07.json",
+      "bytes": 989,
+      "sha256": "4ac5dda15f60da72acc5ddf38936c09ae679f3a878f28725f9baf3e37713d0b3"
+    },
+    "lexicalCensus": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v62-trusted-records-staging-2026-10-24-01\\census-staged-control-11.json",
+      "bytes": 1846191,
+      "sha256": "f6171ca67ba9eb2f687dfa58f51f82d8e78fcfec013768fb13f6aff26fdbb5b0"
+    }
+  },
+  "checks": [
+    {
+      "name": "Every frozen code seal input remains byte exact",
+      "pass": true
+    },
+    {
+      "name": "All named upper recurrences independently sum",
+      "pass": true
+    },
+    {
+      "name": "Actual fixed extent/scope/field roles agree with current source",
+      "pass": true
+    },
+    {
+      "name": "Positive seed rows,automatic keys and source lifetime sum independently",
+      "pass": true
+    },
+    {
+      "name": "Default null guards and no Main permission remain",
+      "pass": true
+    }
+  ],
+  "phaseUpperRows": [
+    {
+      "phase": "FIRST_CLASSIC",
+      "upper": 3344,
+      "selected": null
+    },
+    {
+      "phase": "FOUNDATIONS",
+      "upper": 4490,
+      "selected": null
+    },
+    {
+      "phase": "ADOPT",
+      "upper": 3691,
+      "selected": null
+    },
+    {
+      "phase": "ADDRESS",
+      "upper": 3834,
+      "selected": null
+    },
+    {
+      "phase": "HOST",
+      "upper": 3834,
+      "selected": null
+    },
+    {
+      "phase": "BINDING",
+      "upper": 4071,
+      "selected": null
+    },
+    {
+      "phase": "STAGEDPARSE",
+      "upper": 3790,
+      "selected": null
+    },
+    {
+      "phase": "RECIPEPARSE",
+      "upper": 3791,
+      "selected": null
+    },
+    {
+      "phase": "PREPARED",
+      "upper": 4558,
+      "selected": null
+    },
+    {
+      "phase": "TYPEDPRODUCER",
+      "upper": 4692,
+      "selected": null
+    },
+    {
+      "phase": "PUBLISH",
+      "upper": 4038,
+      "selected": null
+    },
+    {
+      "phase": "LOADER_TO_NULL",
+      "upper": 927,
+      "selected": null
+    }
+  ],
+  "proposal": {
+    "seed": 13012992,
+    "firstEntry": 634880,
+    "sourceCaller": 12288,
+    "heldSubset": 13666154,
+    "wholeQ": null
+  },
+  "held": [
+    "FOUNDATIONS4490/PREPARED4558/TYPED4692 have no selected<=4096 upper. This is not a lower or impossibility.",
+    "First real trusted source/SRI/browser/namespaces/actual primitive domain must still be accepted. Native compiler/heap/queue/backing/work timing remains unmeasured.",
+    "Final actual Root64+/H/Program/Baseline/Kernel/whole-loader pool and first-entry/payer union require fresh coherent source rebase; this example is Root62 only.",
+    "Every new amount/table stays null. Future phase table validation/payment controls,keys and their positive ABI must be emitted/rechecked before selection.",
+    "No original source/runtime/P05/Main gate is opened."
+  ],
+  "attemptHistory": [
+    "WORK01 wrong inherited key refused NaN before output.",
+    "WORK02 stale34corekey expectation refused actual29 before output.",
+    "WORK03 preliminary source-control/name aliases were clarified in04 and exact loader-head identity added05;03/04 outputs preserved.",
+    "STORAGE01 prior recipe regions field mismatch refused before output.02 valid conservative output omitted explicit automatic length/dynamic-index/Apply array rows,positively added03."
+  ],
+  "funding": null,
+  "work": null,
+  "Main": false
+}

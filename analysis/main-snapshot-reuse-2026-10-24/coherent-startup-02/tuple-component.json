@@ -1,0 +1,857 @@
+{
+  "status": "FROZEN_FUNCTIONAL_ACTUAL_STATE_R_TUPLE_CORRECTION_UNSELECTED",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v63-state-configuration-r-tuple-2026-10-24-01\\candidate-02\\source",
+  "loader": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v63-state-configuration-r-tuple-2026-10-24-01\\candidate-02\\source\\owned-main-bootstrap.js",
+    "bytes": 405089,
+    "sha256": "538f7ca02b0440aa4e10a35a514f0cb23952e49fcc1414a92946102744d43919"
+  },
+  "parent": "Immutable Root62 candidate01/source",
+  "recipe": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v63-state-configuration-r-tuple-2026-10-24-01\\root-safe-tuple-recipe-07.json",
+    "bytes": 182421,
+    "sha256": "8999eb787232108e9528f1403b3e8bc79ad6c3e92c7f609fb75f18b1cc7940a7"
+  },
+  "files": 522,
+  "parses": 426,
+  "changedFiles": 1,
+  "unchangedFiles": 521,
+  "codeHunks": 16,
+  "freshProfileHunks": 3,
+  "forwardInverse": true,
+  "sourceCheck": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v63-state-configuration-r-tuple-2026-10-24-01\\CHECK-SOURCE-11.json",
+    "bytes": 906,
+    "sha256": "96595706432421f60b0bcad0b634ff40aeb3ecd164fde1aad01732cbe347075c"
+  },
+  "lexicalAndOriginalCredits": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v63-state-configuration-r-tuple-2026-10-24-01\\full-loader-lexical-and-credit-census-11.json",
+    "bytes": 2792563,
+    "sha256": "8cfe7cfb1e9a63ff9244687809d67a89cdd59e1b902e2d80598d8bfa8dff8da0"
+  },
+  "fullLoaderFunctions": 420,
+  "privateUnresolved": [],
+  "freshReads": 238,
+  "sourceCopies": 224,
+  "sourceOnlyPeak": 14727597,
+  "sourceOnlyFinalQ": 0,
+  "distinctCases": 26,
+  "actualRuns": 27,
+  "controls": [
+    {
+      "control": "stateRawFalse",
+      "receipt": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v63-state-configuration-r-tuple-2026-10-24-01\\controls-09\\control-ownedHostStagesReadCache-tuple10-stateRawFalse.json",
+        "bytes": 19884,
+        "sha256": "2b8b3a0e91f8262c45a583dd91d39cd6f0c5ecdc714e775ba672af98d63e8208"
+      },
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "primary": {
+        "present": true,
+        "type": "boolean",
+        "isNull": false,
+        "code": null
+      },
+      "cleanup": {
+        "present": true,
+        "code": null
+      },
+      "tupleObservation": {
+        "exists": true,
+        "active": true,
+        "hasFailure": true,
+        "creditsRetained": true,
+        "instanceChargeRetained": true,
+        "creditsChargeRetained": true,
+        "jobAliasRetained": true,
+        "paidAliasRetained": true,
+        "methodCount": 8
+      }
+    },
+    {
+      "control": "stateRawNull",
+      "receipt": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v63-state-configuration-r-tuple-2026-10-24-01\\controls-09\\control-ownedHostStagesReadCache-tuple10-stateRawNull.json",
+        "bytes": 19879,
+        "sha256": "801b9fc98d28833b2843ab0c6823d0738a2370aa57f9c4705fb9eec5f488874a"
+      },
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "primary": {
+        "present": true,
+        "type": "object",
+        "isNull": true,
+        "code": null
+      },
+      "cleanup": {
+        "present": true,
+        "code": null
+      },
+      "tupleObservation": {
+        "exists": true,
+        "active": true,
+        "hasFailure": true,
+        "creditsRetained": true,
+        "instanceChargeRetained": true,
+        "creditsChargeRetained": true,
+        "jobAliasRetained": true,
+        "paidAliasRetained": true,
+        "methodCount": 8
+      }
+    },
+    {
+      "control": "positive",
+      "receipt": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v63-state-configuration-r-tuple-2026-10-24-01\\controls-09\\control-ownedHostStagesReadCache-tuple10-positive.json",
+        "bytes": 57231,
+        "sha256": "6e6ac39f1a30127dd1cad2409360ec429e98436066f2513fb1878f7994e4134e"
+      },
+      "status": "PASS",
+      "primary": null,
+      "cleanup": null,
+      "tupleObservation": {
+        "exists": true,
+        "active": false,
+        "hasFailure": false,
+        "creditsRetained": true,
+        "instanceChargeRetained": true,
+        "creditsChargeRetained": true,
+        "jobAliasRetained": false,
+        "paidAliasRetained": false,
+        "methodCount": 8
+      }
+    },
+    {
+      "control": "stateRawUndefined",
+      "receipt": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v63-state-configuration-r-tuple-2026-10-24-01\\controls-09\\control-ownedHostStagesReadCache-tuple10-stateRawUndefined.json",
+        "bytes": 19898,
+        "sha256": "9052c421e240729c467b7d59d670ee8c677cbafbcd884d6ab6a6e47befba84d2"
+      },
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "primary": {
+        "present": true,
+        "type": "undefined",
+        "isNull": false,
+        "code": null
+      },
+      "cleanup": {
+        "present": true,
+        "code": null
+      },
+      "tupleObservation": {
+        "exists": true,
+        "active": true,
+        "hasFailure": true,
+        "creditsRetained": true,
+        "instanceChargeRetained": true,
+        "creditsChargeRetained": true,
+        "jobAliasRetained": true,
+        "paidAliasRetained": true,
+        "methodCount": 8
+      }
+    },
+    {
+      "control": "statePaidSerial",
+      "receipt": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v63-state-configuration-r-tuple-2026-10-24-01\\controls-09\\control-ownedHostStagesReadCache-tuple10-statePaidSerial.json",
+        "bytes": 19945,
+        "sha256": "dc11837c6d367c4f42dd9e6dbfac7b9fc9930f8e3b04fe88218723b84a3a693d"
+      },
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "primary": {
+        "present": true,
+        "type": "object",
+        "isNull": false,
+        "code": "RESOURCE_STATE_R_TUPLE_CHANGED"
+      },
+      "cleanup": {
+        "present": true,
+        "code": "RESOURCE_STATE_R_TUPLE_CHANGED"
+      },
+      "tupleObservation": {
+        "exists": true,
+        "active": true,
+        "hasFailure": true,
+        "creditsRetained": true,
+        "instanceChargeRetained": true,
+        "creditsChargeRetained": true,
+        "jobAliasRetained": true,
+        "paidAliasRetained": true,
+        "methodCount": 8
+      }
+    },
+    {
+      "control": "stateScope",
+      "receipt": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v63-state-configuration-r-tuple-2026-10-24-01\\controls-09\\control-ownedHostStagesReadCache-tuple10-stateScope.json",
+        "bytes": 19930,
+        "sha256": "b0938f4640a04f731c88ab1e441aa4f4de7854cf60149ea486c352df76b7373b"
+      },
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "primary": {
+        "present": true,
+        "type": "object",
+        "isNull": false,
+        "code": "RESOURCE_STATE_R_TUPLE_CHANGED"
+      },
+      "cleanup": {
+        "present": true,
+        "code": "RESOURCE_STATE_R_TUPLE_CHANGED"
+      },
+      "tupleObservation": {
+        "exists": true,
+        "active": true,
+        "hasFailure": true,
+        "creditsRetained": true,
+        "instanceChargeRetained": true,
+        "creditsChargeRetained": true,
+        "jobAliasRetained": true,
+        "paidAliasRetained": true,
+        "methodCount": 8
+      }
+    },
+    {
+      "control": "stateNoPaid",
+      "receipt": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v63-state-configuration-r-tuple-2026-10-24-01\\controls-09\\control-ownedHostStagesReadCache-tuple10-stateNoPaid.json",
+        "bytes": 19906,
+        "sha256": "702d606b1ff08f2ce32448276833d7e33caa1122833603c8c1bb927ada8a6c11"
+      },
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "primary": {
+        "present": true,
+        "type": "object",
+        "isNull": false,
+        "code": "RESOURCE_STATE_R_TUPLE_CHANGED"
+      },
+      "cleanup": {
+        "present": false,
+        "code": null
+      },
+      "tupleObservation": {
+        "exists": true,
+        "active": true,
+        "hasFailure": true,
+        "creditsRetained": true,
+        "instanceChargeRetained": true,
+        "creditsChargeRetained": true,
+        "jobAliasRetained": true,
+        "paidAliasRetained": true,
+        "methodCount": 8
+      }
+    },
+    {
+      "control": "stateNamespace",
+      "receipt": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v63-state-configuration-r-tuple-2026-10-24-01\\controls-09\\control-ownedHostStagesReadCache-tuple10-stateNamespace.json",
+        "bytes": 19944,
+        "sha256": "b2611d54f3cf588f7e0a7e803d8f9f2b575d345f8e2b1c8fd1f0802586c4036a"
+      },
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "primary": {
+        "present": true,
+        "type": "object",
+        "isNull": false,
+        "code": "COLD_PROFILE_DEPENDENCY_CHANGED"
+      },
+      "cleanup": {
+        "present": true,
+        "code": "COLD_PROFILE_DEPENDENCY_CHANGED"
+      },
+      "tupleObservation": {
+        "exists": true,
+        "active": true,
+        "hasFailure": true,
+        "creditsRetained": true,
+        "instanceChargeRetained": true,
+        "creditsChargeRetained": true,
+        "jobAliasRetained": true,
+        "paidAliasRetained": true,
+        "methodCount": 8
+      }
+    },
+    {
+      "control": "stateReentry",
+      "receipt": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v63-state-configuration-r-tuple-2026-10-24-01\\controls-09\\control-ownedHostStagesReadCache-tuple10-stateReentry.json",
+        "bytes": 19926,
+        "sha256": "7ee9ab2706021c56a0958c1b3974a4a108519beb8a8a0fd753a832567ed0b388"
+      },
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "primary": {
+        "present": true,
+        "type": "object",
+        "isNull": false,
+        "code": "SAME_PAID_CURRENT_REENTRY"
+      },
+      "cleanup": {
+        "present": true,
+        "code": "SAME_PAID_CURRENT_REENTRY"
+      },
+      "tupleObservation": {
+        "exists": true,
+        "active": true,
+        "hasFailure": true,
+        "creditsRetained": true,
+        "instanceChargeRetained": true,
+        "creditsChargeRetained": true,
+        "jobAliasRetained": true,
+        "paidAliasRetained": true,
+        "methodCount": 8
+      }
+    },
+    {
+      "control": "statePressure",
+      "receipt": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v63-state-configuration-r-tuple-2026-10-24-01\\controls-09\\control-ownedHostStagesReadCache-tuple10-statePressure.json",
+        "bytes": 19212,
+        "sha256": "ff588b2e54a12aca8c2c24a823c61d1853096f078c1a708191830884b568efba"
+      },
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "primary": {
+        "present": true,
+        "type": "object",
+        "isNull": false,
+        "code": "RESOURCE_LIMIT"
+      },
+      "cleanup": {
+        "present": false,
+        "code": null
+      },
+      "tupleObservation": {
+        "qualified": false,
+        "reason": "Superseded observer-only fields; see pressure14 replay. Functional RESOURCE_LIMIT refusal unchanged."
+      }
+    },
+    {
+      "control": "stateQ",
+      "receipt": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v63-state-configuration-r-tuple-2026-10-24-01\\controls-09\\control-ownedHostStagesReadCache-tuple10-stateQ.json",
+        "bytes": 19958,
+        "sha256": "9550aed2250b20b892f17aaf98b8c58b6f0ef7112bf5fbc77c26a805c939dcc0"
+      },
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "primary": {
+        "present": true,
+        "type": "object",
+        "isNull": false,
+        "code": "RESOURCE_STATE_CONFIGURATION_ACTUAL_SCOPE_REQUIRED"
+      },
+      "cleanup": {
+        "present": true,
+        "code": "RESOURCE_STATE_CONFIGURATION_ACTUAL_SCOPE_REQUIRED"
+      },
+      "tupleObservation": {
+        "exists": true,
+        "active": true,
+        "hasFailure": true,
+        "creditsRetained": true,
+        "instanceChargeRetained": true,
+        "creditsChargeRetained": true,
+        "jobAliasRetained": true,
+        "paidAliasRetained": true,
+        "methodCount": 8
+      }
+    },
+    {
+      "control": "stateJobClosed",
+      "receipt": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v63-state-configuration-r-tuple-2026-10-24-01\\controls-09\\control-ownedHostStagesReadCache-tuple10-stateJobClosed.json",
+        "bytes": 19984,
+        "sha256": "84939978f0620028a00274485b48f61cfdb992452444daca86c5f08921e345cd"
+      },
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "primary": {
+        "present": true,
+        "type": "object",
+        "isNull": false,
+        "code": "CANCELLED"
+      },
+      "cleanup": {
+        "present": true,
+        "code": "CANCELLED"
+      },
+      "tupleObservation": {
+        "exists": true,
+        "active": true,
+        "hasFailure": true,
+        "creditsRetained": true,
+        "instanceChargeRetained": true,
+        "creditsChargeRetained": true,
+        "jobAliasRetained": true,
+        "paidAliasRetained": true,
+        "methodCount": 8
+      }
+    },
+    {
+      "control": "stateResourceDisposed",
+      "receipt": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v63-state-configuration-r-tuple-2026-10-24-01\\controls-09\\control-ownedHostStagesReadCache-tuple10-stateResourceDisposed.json",
+        "bytes": 20043,
+        "sha256": "7e6d58807342bd8deb51b889ef310a7a98b64bab784f897d6aacd20d29dc6b8e"
+      },
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "primary": {
+        "present": true,
+        "type": "object",
+        "isNull": false,
+        "code": "RESOURCE_STATE_R_TUPLE_CHANGED"
+      },
+      "cleanup": {
+        "present": true,
+        "code": "RESOURCE_STATE_R_TUPLE_CHANGED"
+      },
+      "tupleObservation": {
+        "exists": true,
+        "active": true,
+        "hasFailure": true,
+        "creditsRetained": true,
+        "instanceChargeRetained": true,
+        "creditsChargeRetained": true,
+        "jobAliasRetained": true,
+        "paidAliasRetained": true,
+        "methodCount": 8
+      }
+    },
+    {
+      "control": "stateRclock",
+      "receipt": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v63-state-configuration-r-tuple-2026-10-24-01\\controls-09\\control-ownedHostStagesReadCache-tuple10-stateRclock.json",
+        "bytes": 19933,
+        "sha256": "657f84a2f845a081590aebdef9e566aba9475535bfc5c6c452f595aa0354ad7e"
+      },
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "primary": {
+        "present": true,
+        "type": "object",
+        "isNull": false,
+        "code": "RESOURCE_STATE_R_TUPLE_CHANGED"
+      },
+      "cleanup": {
+        "present": true,
+        "code": "RESOURCE_STATE_R_TUPLE_CHANGED"
+      },
+      "tupleObservation": {
+        "exists": true,
+        "active": true,
+        "hasFailure": true,
+        "creditsRetained": true,
+        "instanceChargeRetained": true,
+        "creditsChargeRetained": true,
+        "jobAliasRetained": true,
+        "paidAliasRetained": true,
+        "methodCount": 8
+      }
+    },
+    {
+      "control": "tuple-frame-pre",
+      "receipt": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v63-state-configuration-r-tuple-2026-10-24-01\\controls-09\\control-ownedHostStagesReadCache-tuple10-tuple-frame-pre.json",
+        "bytes": 20161,
+        "sha256": "d1bad5553a18167818170fbb135ef3af80e2d99fc59ca03ee6c27fba4cab6fd7"
+      },
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "primary": {
+        "present": true,
+        "type": "object",
+        "isNull": false,
+        "code": "RESOURCE_STATE_R_TUPLE_CHANGED"
+      },
+      "cleanup": {
+        "present": true,
+        "code": "RESOURCE_STATE_R_TUPLE_CHANGED"
+      },
+      "tupleObservation": {
+        "exists": true,
+        "active": true,
+        "hasFailure": true,
+        "creditsRetained": true,
+        "instanceChargeRetained": true,
+        "creditsChargeRetained": true,
+        "jobAliasRetained": true,
+        "paidAliasRetained": true,
+        "methodCount": 8
+      }
+    },
+    {
+      "control": "tuple-frame-current",
+      "receipt": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v63-state-configuration-r-tuple-2026-10-24-01\\controls-09\\control-ownedHostStagesReadCache-tuple10-tuple-frame-current.json",
+        "bytes": 20175,
+        "sha256": "cb81360ca7ae4d810437ebd89a3a653a8018b6031b18a054d573edddb44d9a63"
+      },
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "primary": {
+        "present": true,
+        "type": "object",
+        "isNull": false,
+        "code": "RESOURCE_STATE_R_TUPLE_CHANGED"
+      },
+      "cleanup": {
+        "present": true,
+        "code": "RESOURCE_STATE_R_TUPLE_CHANGED"
+      },
+      "tupleObservation": {
+        "exists": true,
+        "active": true,
+        "hasFailure": true,
+        "creditsRetained": true,
+        "instanceChargeRetained": true,
+        "creditsChargeRetained": true,
+        "jobAliasRetained": true,
+        "paidAliasRetained": true,
+        "methodCount": 8
+      }
+    },
+    {
+      "control": "tuple-frame-debit",
+      "receipt": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v63-state-configuration-r-tuple-2026-10-24-01\\controls-09\\control-ownedHostStagesReadCache-tuple10-tuple-frame-debit.json",
+        "bytes": 20169,
+        "sha256": "6b81f086eb71eb0b1624bfb19bb02efa3f83225979fbf153ac0ad0dbfe8e69db"
+      },
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "primary": {
+        "present": true,
+        "type": "object",
+        "isNull": false,
+        "code": "RESOURCE_STATE_R_TUPLE_CHANGED"
+      },
+      "cleanup": {
+        "present": true,
+        "code": "RESOURCE_STATE_R_TUPLE_CHANGED"
+      },
+      "tupleObservation": {
+        "exists": true,
+        "active": true,
+        "hasFailure": true,
+        "creditsRetained": true,
+        "instanceChargeRetained": true,
+        "creditsChargeRetained": true,
+        "jobAliasRetained": true,
+        "paidAliasRetained": true,
+        "methodCount": 8
+      }
+    },
+    {
+      "control": "tuple-frame-tail",
+      "receipt": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v63-state-configuration-r-tuple-2026-10-24-01\\controls-09\\control-ownedHostStagesReadCache-tuple10-tuple-frame-tail.json",
+        "bytes": 20142,
+        "sha256": "0c90c4f223b761f5381c676744ee876284b88d5debbe4b73a46458d0b1dad9e7"
+      },
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "primary": {
+        "present": false,
+        "type": "undefined",
+        "isNull": false,
+        "code": null
+      },
+      "cleanup": {
+        "present": true,
+        "code": "RESOURCE_STATE_R_TUPLE_CHANGED"
+      },
+      "tupleObservation": {
+        "exists": true,
+        "active": true,
+        "hasFailure": true,
+        "creditsRetained": true,
+        "instanceChargeRetained": true,
+        "creditsChargeRetained": true,
+        "jobAliasRetained": true,
+        "paidAliasRetained": true,
+        "methodCount": 8
+      }
+    },
+    {
+      "control": "tuple-slice-pre",
+      "receipt": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v63-state-configuration-r-tuple-2026-10-24-01\\controls-09\\control-ownedHostStagesReadCache-tuple10-tuple-slice-pre.json",
+        "bytes": 20161,
+        "sha256": "8446aa4dd100ac9d02dcbf1cf877d06dac7f8e9d2fb5a92ba04280021914caa4"
+      },
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "primary": {
+        "present": true,
+        "type": "object",
+        "isNull": false,
+        "code": "RESOURCE_STATE_R_TUPLE_CHANGED"
+      },
+      "cleanup": {
+        "present": true,
+        "code": "RESOURCE_STATE_R_TUPLE_CHANGED"
+      },
+      "tupleObservation": {
+        "exists": true,
+        "active": true,
+        "hasFailure": true,
+        "creditsRetained": true,
+        "instanceChargeRetained": true,
+        "creditsChargeRetained": true,
+        "jobAliasRetained": true,
+        "paidAliasRetained": true,
+        "methodCount": 8
+      }
+    },
+    {
+      "control": "tuple-slice-current",
+      "receipt": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v63-state-configuration-r-tuple-2026-10-24-01\\controls-09\\control-ownedHostStagesReadCache-tuple10-tuple-slice-current.json",
+        "bytes": 20174,
+        "sha256": "8d5671d55be1d2299babeef008d0dcdff539cd031f237ea002308b339a53a7af"
+      },
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "primary": {
+        "present": true,
+        "type": "object",
+        "isNull": false,
+        "code": "RESOURCE_STATE_R_TUPLE_CHANGED"
+      },
+      "cleanup": {
+        "present": true,
+        "code": "RESOURCE_STATE_R_TUPLE_CHANGED"
+      },
+      "tupleObservation": {
+        "exists": true,
+        "active": true,
+        "hasFailure": true,
+        "creditsRetained": true,
+        "instanceChargeRetained": true,
+        "creditsChargeRetained": true,
+        "jobAliasRetained": true,
+        "paidAliasRetained": true,
+        "methodCount": 8
+      }
+    },
+    {
+      "control": "tuple-slice-debit",
+      "receipt": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v63-state-configuration-r-tuple-2026-10-24-01\\controls-09\\control-ownedHostStagesReadCache-tuple10-tuple-slice-debit.json",
+        "bytes": 20168,
+        "sha256": "c894083626828bcf85637bae30f75d472b43fbc4ed2eca08a8342d9c76eb9cd9"
+      },
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "primary": {
+        "present": true,
+        "type": "object",
+        "isNull": false,
+        "code": "RESOURCE_STATE_R_TUPLE_CHANGED"
+      },
+      "cleanup": {
+        "present": true,
+        "code": "RESOURCE_STATE_R_TUPLE_CHANGED"
+      },
+      "tupleObservation": {
+        "exists": true,
+        "active": true,
+        "hasFailure": true,
+        "creditsRetained": true,
+        "instanceChargeRetained": true,
+        "creditsChargeRetained": true,
+        "jobAliasRetained": true,
+        "paidAliasRetained": true,
+        "methodCount": 8
+      }
+    },
+    {
+      "control": "tuple-slice-tail",
+      "receipt": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v63-state-configuration-r-tuple-2026-10-24-01\\controls-09\\control-ownedHostStagesReadCache-tuple10-tuple-slice-tail.json",
+        "bytes": 20141,
+        "sha256": "596b0d9630f08501496ab03218ab39625f17c3cc7c221ae07b3289e3df4b767e"
+      },
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "primary": {
+        "present": false,
+        "type": "undefined",
+        "isNull": false,
+        "code": null
+      },
+      "cleanup": {
+        "present": true,
+        "code": "RESOURCE_STATE_R_TUPLE_CHANGED"
+      },
+      "tupleObservation": {
+        "exists": true,
+        "active": true,
+        "hasFailure": true,
+        "creditsRetained": true,
+        "instanceChargeRetained": true,
+        "creditsChargeRetained": true,
+        "jobAliasRetained": true,
+        "paidAliasRetained": true,
+        "methodCount": 8
+      }
+    },
+    {
+      "control": "tuple-context-pre",
+      "receipt": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v63-state-configuration-r-tuple-2026-10-24-01\\controls-09\\control-ownedHostStagesReadCache-tuple10-tuple-context-pre.json",
+        "bytes": 20167,
+        "sha256": "e5f4c45e5ed1181d35ca9708c8c3113585b7cc6c523098e14414bb1b1da6b21e"
+      },
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "primary": {
+        "present": true,
+        "type": "object",
+        "isNull": false,
+        "code": "RESOURCE_STATE_R_TUPLE_CHANGED"
+      },
+      "cleanup": {
+        "present": true,
+        "code": "RESOURCE_STATE_R_TUPLE_CHANGED"
+      },
+      "tupleObservation": {
+        "exists": true,
+        "active": true,
+        "hasFailure": true,
+        "creditsRetained": true,
+        "instanceChargeRetained": true,
+        "creditsChargeRetained": true,
+        "jobAliasRetained": true,
+        "paidAliasRetained": true,
+        "methodCount": 8
+      }
+    },
+    {
+      "control": "tuple-context-current",
+      "receipt": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v63-state-configuration-r-tuple-2026-10-24-01\\controls-09\\control-ownedHostStagesReadCache-tuple10-tuple-context-current.json",
+        "bytes": 20181,
+        "sha256": "b3fbb3a78e4be6f4bfa11e56a27e25382ef571ab36f6889d865d013f1ed23630"
+      },
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "primary": {
+        "present": true,
+        "type": "object",
+        "isNull": false,
+        "code": "RESOURCE_STATE_R_TUPLE_CHANGED"
+      },
+      "cleanup": {
+        "present": true,
+        "code": "RESOURCE_STATE_R_TUPLE_CHANGED"
+      },
+      "tupleObservation": {
+        "exists": true,
+        "active": true,
+        "hasFailure": true,
+        "creditsRetained": true,
+        "instanceChargeRetained": true,
+        "creditsChargeRetained": true,
+        "jobAliasRetained": true,
+        "paidAliasRetained": true,
+        "methodCount": 8
+      }
+    },
+    {
+      "control": "tuple-context-debit",
+      "receipt": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v63-state-configuration-r-tuple-2026-10-24-01\\controls-09\\control-ownedHostStagesReadCache-tuple10-tuple-context-debit.json",
+        "bytes": 20175,
+        "sha256": "0b3065ccd4ec34e2ad603134d7e62568206eef53004dd4129a1311d20dcdd0ba"
+      },
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "primary": {
+        "present": true,
+        "type": "object",
+        "isNull": false,
+        "code": "RESOURCE_STATE_R_TUPLE_CHANGED"
+      },
+      "cleanup": {
+        "present": true,
+        "code": "RESOURCE_STATE_R_TUPLE_CHANGED"
+      },
+      "tupleObservation": {
+        "exists": true,
+        "active": true,
+        "hasFailure": true,
+        "creditsRetained": true,
+        "instanceChargeRetained": true,
+        "creditsChargeRetained": true,
+        "jobAliasRetained": true,
+        "paidAliasRetained": true,
+        "methodCount": 8
+      }
+    },
+    {
+      "control": "tuple-context-tail",
+      "receipt": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v63-state-configuration-r-tuple-2026-10-24-01\\controls-09\\control-ownedHostStagesReadCache-tuple10-tuple-context-tail.json",
+        "bytes": 20148,
+        "sha256": "e79fbb10f5e6e82d4a1cc056b51ebdde5e04e81cc1c564c0f9570525836f891a"
+      },
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "primary": {
+        "present": false,
+        "type": "undefined",
+        "isNull": false,
+        "code": null
+      },
+      "cleanup": {
+        "present": true,
+        "code": "RESOURCE_STATE_R_TUPLE_CHANGED"
+      },
+      "tupleObservation": {
+        "exists": true,
+        "active": true,
+        "hasFailure": true,
+        "creditsRetained": true,
+        "instanceChargeRetained": true,
+        "creditsChargeRetained": true,
+        "jobAliasRetained": true,
+        "paidAliasRetained": true,
+        "methodCount": 8
+      }
+    }
+  ],
+  "pressureObserverReplay": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v63-state-configuration-r-tuple-2026-10-24-01\\controls-14\\control-ownedHostStagesReadCache-tuple14-pressure.json",
+    "bytes": 19230,
+    "sha256": "fd51441254012971a9a43656f14650fdc7b97f88bdcfab5b1878a94110630f36"
+  },
+  "liabilities": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v63-state-configuration-r-tuple-2026-10-24-01\\ownership-work-liabilities-12.json",
+    "bytes": 8004,
+    "sha256": "6d9c780cdfac6bed2ef8f7917d9e0e31b38c6b22a2d79eb0b7e651de8c8adc46"
+  },
+  "positiveOwnershipSubsetsOnly": {
+    "module": 56416,
+    "originalCredits": 8640,
+    "tupleRecord": 960,
+    "returnedQFacades": 19872,
+    "completeAmountSelected": false
+  },
+  "joinedRerunPreparer": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v63-state-configuration-r-tuple-2026-10-24-01\\prepare-joined-controls-15.cjs",
+    "bytes": 5334,
+    "sha256": "466da9cda40e887a8f929d9aeb54a977f4d90806546b10634d0ea4a220134d5d"
+  },
+  "joinedPreparationSelfCheck": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v63-state-configuration-r-tuple-2026-10-24-01\\joined-control-preparation-15\\JOINED-PREPARATION-15.json",
+    "bytes": 81114,
+    "sha256": "f8feae191051400c71318e56a33a1d8df5cba1ddf84aa1799ac41eef2c74e83f"
+  },
+  "rules": [
+    "Use code-only16 ordered bootstrap hunks over Root62-compatible caller; regenerate all three target joined profiles. Never copy old graph closures or source profiles blindly.",
+    "Original R file/public APIs/credits body/generic job lifetime are exact; only selected original Root State work path gains tuple capability/stamps.",
+    "Existing old constructor Boundary fallback stays exact. No C rebind, forced constructor phase or async State.create permission.",
+    "Actual old first-Q/caller/module/Source/App/Surface/native used eligibility and complete fresh/error/source graphs remain held or explicitly modeled. New positive guards and markers are not complete payment.",
+    "Successful active tuple is checked before/after original child current/debit/barriers and before/after actual original job.close; then job/paid/state pointers clear. The fixed credit capability, descriptor rows, original R/Q/source/parent aliases and all new charges remain retained through failure/close.",
+    "Raw false/null/undefined retain independent occurrence and identity; failure does not reset paid work or grant another R scope.",
+    "Do not read pressure10 optional-undefined alias booleans as custody evidence; pressure14 corrects only observation. Actual c-null failure and source-held/Q-root lifetimes remain explicit."
+  ],
+  "preservedAttempts": [
+    "controls02 omitted inherited carrier before setup",
+    "tuple03/04 expected unique old decoder seam; current Records has two",
+    "tuple05 old carrier profiles refused real new Records/State bytes",
+    "tuple08 observer crossed source-private lexical block; only observer corrected",
+    "controls09 pressure observer undefined!==null corrected in14; source and functional refusal unchanged",
+    "Root61 peer14 original accepted slice-reset counter remains immutable"
+  ],
+  "allNewAmounts": null,
+  "allNewCompleteWork": null,
+  "wholeQ": null,
+  "nativeMain": false,
+  "Main": false,
+  "P05": "OPEN"
+}

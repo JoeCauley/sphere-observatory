@@ -1,0 +1,89 @@
+{
+  "status": "PASS_COHERENT_SOURCE_FRESH_ADMISSION_AND_DEFAULT_RECORDS",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\candidate-01\\source",
+  "recipe": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\exact-coherent-join-02.json",
+    "bytes": 2116438,
+    "sha256": "4a58c3398065934c4dd8d697196a84a9dec38034ef6aa76d25597fd314e3c25b"
+  },
+  "files": 522,
+  "parses": 426,
+  "changed": [
+    "biome-service/records.js",
+    "owned-main-bootstrap.js"
+  ],
+  "unchanged": 520,
+  "inverseHunks": 46,
+  "postWriteInverseExact": true,
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "rows": 224,
+      "digest": "b03f428067b66099231cd22c2e3e10d7855bfe30d433a8f37136a766def2441a"
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "rows": 5,
+      "digest": "8933c041aabaf1e0638f63e3591660774a7feac9ff63296f9d84aec827f35ad1"
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "rows": 9,
+      "digest": "27b757b82e292c93695664e57548ff00bcb96a122d394ca02f860d81854ef77a"
+    }
+  ],
+  "freshReads": 238,
+  "sourceCopies": 224,
+  "sourceOnlyPeakBytes": 14739681,
+  "sourceOnlyFinal": {
+    "heldBytes": 0,
+    "requestedBytes": 0,
+    "bookkeepingBytes": 0,
+    "peakBytes": 14739681,
+    "limitBytes": 33554432,
+    "liveReservations": 0,
+    "maximumReservations": 4096,
+    "owners": [],
+    "scope": "CONSERVATIVE_LOGICAL_METADATA_ADMISSION",
+    "nativeHeap": "UNMEASURED"
+  },
+  "recordGroups": [
+    {
+      "name": "Actual default-null legacy Records API/function text/descriptors",
+      "status": "PASS"
+    },
+    {
+      "name": "Actual all-seven-positive legacy Records API/function text/descriptors",
+      "status": "PASS"
+    }
+  ],
+  "coreUse": [
+    {
+      "file": "biome-service/metadata-budget.js",
+      "sha256": "f297bdde5d682e3396f4dae185dd72651b91551dad3a4a0e31d0bde53c0b0511",
+      "members": [
+        "deepFreeze",
+        "error"
+      ]
+    },
+    {
+      "file": "biome-service/native/source-admission.js",
+      "sha256": "273e8e880f7ee49366c955154b0a4890d7816eabd6a235485d7c3ec5e599676d",
+      "members": [
+        "ServiceError",
+        "canonicalJSON",
+        "deepFreeze",
+        "error",
+        "parse",
+        "sha256",
+        "verifyEnvelope"
+      ]
+    }
+  ],
+  "recordPositiveAmounts": "Diagnostic selector1 only, not module/work prices",
+  "sourceOnlyScope": "Disposed legacy Source/Q test only; excludes prospective compiled launch,closed scopes and all real Main parents",
+  "completeFunding": null,
+  "wholeQ": null,
+  "Main": false,
+  "P05": "OPEN"
+}

@@ -1,0 +1,16 @@
+{
+  "status": "PRESERVED_ACTUAL_NATIVE_NODE_TEXTDECODER_DICTIONARY_CALLBACK",
+  "source": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v62-trusted-records-staging-2026-10-24-01\\candidate-02\\owned-main-trusted-launch.unselected.js",
+    "sha256": "00650e6f4cc995354f27959384f75f96050f4e50ce55be8436965f7f4f8b263c"
+  },
+  "result": {
+    "foreign": 2,
+    "decoderFactReturnedBeforeConstructor": true
+  },
+  "scope": "Existing original parser body and private pre-wait3-descriptor decoder port pass before a later inherited nonenumerable ignoreBOM getter runs inside the actual native Node constructor. Diagnostic seed/DOM/private state adapters remain as in controls03. No Chrome/full Main claim.",
+  "needs": "A narrow original pre-wait own-absence fact for the actual constructor dictionary ignoreBOM lookup,refreshed before decode use; do not invoke the getter or re-capture it after a wait.",
+  "work": null,
+  "funding": null,
+  "Main": false
+}

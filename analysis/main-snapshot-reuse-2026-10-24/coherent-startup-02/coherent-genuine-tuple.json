@@ -1,0 +1,416 @@
+{
+  "status": "PASS_ACTUAL_JOINED_C2_STATE_R_CONFIGURATION_AND_ADVERSE_TUPLES",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\candidate-01\\source",
+  "loader": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\candidate-01\\source\\owned-main-bootstrap.js",
+    "bytes": 418199,
+    "sha256": "2acc1c506e9c1a110737e14122e6bd69e2b49159f95df48b8689ec7739fb0e7d"
+  },
+  "preparation": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\controls-tuple-04\\JOINED-PREPARATION-15.json",
+    "bytes": 81095,
+    "sha256": "24f23e7a799909ec8935b42e296c995bec1d90e33b54d6c9ee6e7a008be57eca"
+  },
+  "cases": 26,
+  "results": [
+    {
+      "control": "stateRawFalse",
+      "exitCode": 0,
+      "signal": null,
+      "stdout": "",
+      "stderr": "",
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "expected": "PASS_EXPECTED_ROOT_REFUSAL",
+      "passed": true,
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\controls-tuple-04\\control-ownedHostStagesReadCache-root64-05-stateRawFalse.json",
+        "bytes": 19902,
+        "sha256": "c4a5d3ab6fd61f65ec776769266a47f2d430f0ca60cdc272c96daf62bec66b6e"
+      }
+    },
+    {
+      "control": "stateRawNull",
+      "exitCode": 0,
+      "signal": null,
+      "stdout": "",
+      "stderr": "",
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "expected": "PASS_EXPECTED_ROOT_REFUSAL",
+      "passed": true,
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\controls-tuple-04\\control-ownedHostStagesReadCache-root64-05-stateRawNull.json",
+        "bytes": 19897,
+        "sha256": "42c6f73fb2406f4ddbeed46a89d14ec73530d47e04373e555768a0c7a5df4466"
+      }
+    },
+    {
+      "control": "positive",
+      "exitCode": 0,
+      "status": "PASS",
+      "expected": "PASS",
+      "passed": true,
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\controls-tuple-04\\control-ownedHostStagesReadCache-root64-05-positive.json",
+        "bytes": 57251,
+        "sha256": "544617779a1f20c858744460318049579cee47b5449e267c36a1c43e09e3a48b"
+      },
+      "alreadyRunSeparately": true
+    },
+    {
+      "control": "stateRawUndefined",
+      "exitCode": 0,
+      "signal": null,
+      "stdout": "",
+      "stderr": "",
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "expected": "PASS_EXPECTED_ROOT_REFUSAL",
+      "passed": true,
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\controls-tuple-04\\control-ownedHostStagesReadCache-root64-05-stateRawUndefined.json",
+        "bytes": 19916,
+        "sha256": "0d45fd6d7fc58f784cf563cd82392c9a635c88ea9429aa2a45fc049c5d4950ff"
+      }
+    },
+    {
+      "control": "statePaidSerial",
+      "exitCode": 0,
+      "signal": null,
+      "stdout": "",
+      "stderr": "",
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "expected": "PASS_EXPECTED_ROOT_REFUSAL",
+      "passed": true,
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\controls-tuple-04\\control-ownedHostStagesReadCache-root64-05-statePaidSerial.json",
+        "bytes": 19963,
+        "sha256": "7a7dd752c3e5f7dac77d0f54ed52bbc604bb5c101fa68b30c70e5fd749626948"
+      }
+    },
+    {
+      "control": "stateScope",
+      "exitCode": 0,
+      "signal": null,
+      "stdout": "",
+      "stderr": "",
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "expected": "PASS_EXPECTED_ROOT_REFUSAL",
+      "passed": true,
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\controls-tuple-04\\control-ownedHostStagesReadCache-root64-05-stateScope.json",
+        "bytes": 19948,
+        "sha256": "b8d2901975e73bc646830386ef067d306772a3244c0a7064ff6037a8d4928d30"
+      }
+    },
+    {
+      "control": "stateNoPaid",
+      "exitCode": 0,
+      "signal": null,
+      "stdout": "",
+      "stderr": "",
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "expected": "PASS_EXPECTED_ROOT_REFUSAL",
+      "passed": true,
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\controls-tuple-04\\control-ownedHostStagesReadCache-root64-05-stateNoPaid.json",
+        "bytes": 19924,
+        "sha256": "b328ab464cc62a61b72028b609225826626994f6ae70639b637af864563b28c0"
+      }
+    },
+    {
+      "control": "stateNamespace",
+      "exitCode": 0,
+      "signal": null,
+      "stdout": "",
+      "stderr": "",
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "expected": "PASS_EXPECTED_ROOT_REFUSAL",
+      "passed": true,
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\controls-tuple-04\\control-ownedHostStagesReadCache-root64-05-stateNamespace.json",
+        "bytes": 19962,
+        "sha256": "58fba49cb0a9aeaf0484fc80b9f9dcacbca4ac8e1aed00d5b2de24d2446b7bb6"
+      }
+    },
+    {
+      "control": "stateReentry",
+      "exitCode": 0,
+      "signal": null,
+      "stdout": "",
+      "stderr": "",
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "expected": "PASS_EXPECTED_ROOT_REFUSAL",
+      "passed": true,
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\controls-tuple-04\\control-ownedHostStagesReadCache-root64-05-stateReentry.json",
+        "bytes": 19944,
+        "sha256": "abfaa85cccab52765ca8e4e67ef499e50eb939440aaaaf77674f24c2428ad6f0"
+      }
+    },
+    {
+      "control": "statePressure",
+      "exitCode": 0,
+      "signal": null,
+      "stdout": "",
+      "stderr": "",
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "expected": "PASS_EXPECTED_ROOT_REFUSAL",
+      "passed": true,
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\controls-tuple-04\\control-ownedHostStagesReadCache-root64-05-statePressure.json",
+        "bytes": 19231,
+        "sha256": "c242c8e186c42ce7592430a94a4f9fab1c1c6b720d370bcc81b1c5eb4a370a9b"
+      }
+    },
+    {
+      "control": "stateQ",
+      "exitCode": 0,
+      "signal": null,
+      "stdout": "",
+      "stderr": "",
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "expected": "PASS_EXPECTED_ROOT_REFUSAL",
+      "passed": true,
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\controls-tuple-04\\control-ownedHostStagesReadCache-root64-05-stateQ.json",
+        "bytes": 19976,
+        "sha256": "910cf9e37712380ec5b8bf6a614ebfac20c9c236d59ab47c6bf93647bfcbeeec"
+      }
+    },
+    {
+      "control": "stateJobClosed",
+      "exitCode": 0,
+      "signal": null,
+      "stdout": "",
+      "stderr": "",
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "expected": "PASS_EXPECTED_ROOT_REFUSAL",
+      "passed": true,
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\controls-tuple-04\\control-ownedHostStagesReadCache-root64-05-stateJobClosed.json",
+        "bytes": 20002,
+        "sha256": "787408a6d147ac25f0cdf97e68e4b3dcf548fcf23c00519617d01195467af22d"
+      }
+    },
+    {
+      "control": "stateResourceDisposed",
+      "exitCode": 0,
+      "signal": null,
+      "stdout": "",
+      "stderr": "",
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "expected": "PASS_EXPECTED_ROOT_REFUSAL",
+      "passed": true,
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\controls-tuple-04\\control-ownedHostStagesReadCache-root64-05-stateResourceDisposed.json",
+        "bytes": 20061,
+        "sha256": "8fd75f5f9df87e475bc738b38c4c0cb9b6119922066207fdb6c3b550adfd8de9"
+      }
+    },
+    {
+      "control": "stateRclock",
+      "exitCode": 0,
+      "signal": null,
+      "stdout": "",
+      "stderr": "",
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "expected": "PASS_EXPECTED_ROOT_REFUSAL",
+      "passed": true,
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\controls-tuple-04\\control-ownedHostStagesReadCache-root64-05-stateRclock.json",
+        "bytes": 19951,
+        "sha256": "4128d132ba17c1cba550d0a492e0f8bbc994862b479c0ca729d0b6f27f712d10"
+      }
+    },
+    {
+      "control": "tuple-frame-pre",
+      "exitCode": 0,
+      "signal": null,
+      "stdout": "",
+      "stderr": "",
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "expected": "PASS_EXPECTED_ROOT_REFUSAL",
+      "passed": true,
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\controls-tuple-04\\control-ownedHostStagesReadCache-root64-05-tuple-frame-pre.json",
+        "bytes": 20179,
+        "sha256": "ca3492e32561419734b8fe71ab70e462981e1fda9a0dcede801530af03d246e8"
+      }
+    },
+    {
+      "control": "tuple-frame-current",
+      "exitCode": 0,
+      "signal": null,
+      "stdout": "",
+      "stderr": "",
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "expected": "PASS_EXPECTED_ROOT_REFUSAL",
+      "passed": true,
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\controls-tuple-04\\control-ownedHostStagesReadCache-root64-05-tuple-frame-current.json",
+        "bytes": 20193,
+        "sha256": "22ecceab16d80c0c4ec2d902e6c43afa91a47f573935c8b94e492e44fba7427d"
+      }
+    },
+    {
+      "control": "tuple-frame-debit",
+      "exitCode": 0,
+      "signal": null,
+      "stdout": "",
+      "stderr": "",
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "expected": "PASS_EXPECTED_ROOT_REFUSAL",
+      "passed": true,
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\controls-tuple-04\\control-ownedHostStagesReadCache-root64-05-tuple-frame-debit.json",
+        "bytes": 20187,
+        "sha256": "3ce3a8af5c3f8ba25c93f46ab89494e4f54485d33bc3e60960887a147eb6b88f"
+      }
+    },
+    {
+      "control": "tuple-frame-tail",
+      "exitCode": 0,
+      "signal": null,
+      "stdout": "",
+      "stderr": "",
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "expected": "PASS_EXPECTED_ROOT_REFUSAL",
+      "passed": true,
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\controls-tuple-04\\control-ownedHostStagesReadCache-root64-05-tuple-frame-tail.json",
+        "bytes": 20160,
+        "sha256": "c0e7f62f2b5ee0d4baebda76a6f9ab0ebb48daa045da2c81c911c8ee127d9517"
+      }
+    },
+    {
+      "control": "tuple-slice-pre",
+      "exitCode": 0,
+      "signal": null,
+      "stdout": "",
+      "stderr": "",
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "expected": "PASS_EXPECTED_ROOT_REFUSAL",
+      "passed": true,
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\controls-tuple-04\\control-ownedHostStagesReadCache-root64-05-tuple-slice-pre.json",
+        "bytes": 20179,
+        "sha256": "84b62d438228b2bcf1c0c15b572f2d9fd573727edb24c50920aad7861134d494"
+      }
+    },
+    {
+      "control": "tuple-slice-current",
+      "exitCode": 0,
+      "signal": null,
+      "stdout": "",
+      "stderr": "",
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "expected": "PASS_EXPECTED_ROOT_REFUSAL",
+      "passed": true,
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\controls-tuple-04\\control-ownedHostStagesReadCache-root64-05-tuple-slice-current.json",
+        "bytes": 20192,
+        "sha256": "dcde3a30e45fa516de829ff2f18bd3731536f52c6b2f7ced327cc5947db7195f"
+      }
+    },
+    {
+      "control": "tuple-slice-debit",
+      "exitCode": 0,
+      "signal": null,
+      "stdout": "",
+      "stderr": "",
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "expected": "PASS_EXPECTED_ROOT_REFUSAL",
+      "passed": true,
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\controls-tuple-04\\control-ownedHostStagesReadCache-root64-05-tuple-slice-debit.json",
+        "bytes": 20186,
+        "sha256": "87342f89768c31a594a8ee0964ddc4c6f2dadc327a288e3ea5c1f72a6a52541a"
+      }
+    },
+    {
+      "control": "tuple-slice-tail",
+      "exitCode": 0,
+      "signal": null,
+      "stdout": "",
+      "stderr": "",
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "expected": "PASS_EXPECTED_ROOT_REFUSAL",
+      "passed": true,
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\controls-tuple-04\\control-ownedHostStagesReadCache-root64-05-tuple-slice-tail.json",
+        "bytes": 20159,
+        "sha256": "f196aa100e7fb7f15d7220dc8b517abfc8bdb6ded152cb163978702d7b58a5b9"
+      }
+    },
+    {
+      "control": "tuple-context-pre",
+      "exitCode": 0,
+      "signal": null,
+      "stdout": "",
+      "stderr": "",
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "expected": "PASS_EXPECTED_ROOT_REFUSAL",
+      "passed": true,
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\controls-tuple-04\\control-ownedHostStagesReadCache-root64-05-tuple-context-pre.json",
+        "bytes": 20185,
+        "sha256": "2eb13b910f88c1cadb9efe4855a20278e2837f07ef0ab1abb2d6cf3c9a2262c5"
+      }
+    },
+    {
+      "control": "tuple-context-current",
+      "exitCode": 0,
+      "signal": null,
+      "stdout": "",
+      "stderr": "",
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "expected": "PASS_EXPECTED_ROOT_REFUSAL",
+      "passed": true,
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\controls-tuple-04\\control-ownedHostStagesReadCache-root64-05-tuple-context-current.json",
+        "bytes": 20199,
+        "sha256": "882e31f0fa7fb4d794c6188f00eb10cbb2387333ada1054afa6fa70f79488df1"
+      }
+    },
+    {
+      "control": "tuple-context-debit",
+      "exitCode": 0,
+      "signal": null,
+      "stdout": "",
+      "stderr": "",
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "expected": "PASS_EXPECTED_ROOT_REFUSAL",
+      "passed": true,
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\controls-tuple-04\\control-ownedHostStagesReadCache-root64-05-tuple-context-debit.json",
+        "bytes": 20193,
+        "sha256": "cdb8c9a8a8db0e8a8771578115a60b801a44470da9283154f07fa65c401f2d9a"
+      }
+    },
+    {
+      "control": "tuple-context-tail",
+      "exitCode": 0,
+      "signal": null,
+      "stdout": "",
+      "stderr": "",
+      "status": "PASS_EXPECTED_ROOT_REFUSAL",
+      "expected": "PASS_EXPECTED_ROOT_REFUSAL",
+      "passed": true,
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\controls-tuple-04\\control-ownedHostStagesReadCache-root64-05-tuple-context-tail.json",
+        "bytes": 20166,
+        "sha256": "a4f37eafba3e7b719e30cd386c21bc6b005e864235797165e7be84414ea3f133"
+      }
+    }
+  ],
+  "originalBodiesExact": 30,
+  "genuineParents": [
+    "Original C2 binder from actual B once",
+    "Original same Q/Source/Kernel/PH/Boundary/State configuration",
+    "Original R service and real R work jobs,frame,slice,context generation"
+  ],
+  "preservedModels": "Original P16 named App/Surface/fresh/native/script/GL/IDB/caller-entry adapters and diagnostic literal-only metadata/work remain. This is genuine scoped configuration evidence, not whole startup/renderer.",
+  "completeFunding": null,
+  "wholeQ": null,
+  "Main": false,
+  "P05": "OPEN"
+}

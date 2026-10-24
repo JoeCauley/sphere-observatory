@@ -1,0 +1,176 @@
+{
+  "status": "PASS_COHERENT_PRIVATE_MAIN_COMPONENT_SOURCE_NOT_SELECTED_MAIN",
+  "source": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\candidate-01\\source",
+  "parent": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v62-main-vector-state-recipe-2026-10-24-01\\candidate-01\\source",
+  "recipe": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\exact-coherent-join-02.json",
+    "bytes": 2116438,
+    "sha256": "4a58c3398065934c4dd8d697196a84a9dec38034ef6aa76d25597fd314e3c25b"
+  },
+  "files": 522,
+  "parses": 426,
+  "changed": [
+    "biome-service/records.js",
+    "owned-main-bootstrap.js"
+  ],
+  "unchanged": 520,
+  "codeHunks": 43,
+  "inverseHunks": 46,
+  "inverseExact": true,
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "rows": 224,
+      "digest": "b03f428067b66099231cd22c2e3e10d7855bfe30d433a8f37136a766def2441a"
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "rows": 5,
+      "digest": "8933c041aabaf1e0638f63e3591660774a7feac9ff63296f9d84aec827f35ad1"
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "rows": 9,
+      "digest": "27b757b82e292c93695664e57548ff00bcb96a122d394ca02f860d81854ef77a"
+    }
+  ],
+  "sourceCheck": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\CHECK-SOURCE-03.json",
+    "bytes": 2683,
+    "sha256": "f6eed3786ac406698d821a6125af504449ee84794d4dd67637e18197079bda18"
+  },
+  "lexicalCheck": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\CHECK-LEXICAL-03.json",
+    "bytes": 2996999,
+    "sha256": "ee76dcff5013062bf616001cc987aa4330062be758378dc67f67b7e5d5060cc2"
+  },
+  "functions": 434,
+  "unresolvedPrivate": 0,
+  "newUnresolvedGlobals": 0,
+  "compiled": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\candidate-01\\owned-main-trusted-launch.unselected.js",
+    "bytes": 2614888,
+    "sha256": "268a72206e717e1201ca6c75e34de1e1f42aae33030cc566cb3119048b30b1f6"
+  },
+  "groups": 183,
+  "cohorts": [
+    {
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\controls-03\\parser-controls-03.json",
+        "bytes": 2103,
+        "sha256": "1f2a516bdd664967d32cacd48bd2704dcfa4620921a39e261d8128c2cd9587e9"
+      },
+      "groups": 10,
+      "status": "PASS"
+    },
+    {
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\controls-03\\workspace-controls-11.json",
+        "bytes": 4678,
+        "sha256": "76daf46aee8a733d82120c041be2937bd2fd74c93b421cae83df374b1a7c5e5f"
+      },
+      "groups": 7,
+      "status": "PASS"
+    },
+    {
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\controls-03\\control-typed-schema-12.json",
+        "bytes": 4065,
+        "sha256": "ef4de7c2d0b3258b965fbf169d408635495cac9a6c4976849ea45f7a76e3c926"
+      },
+      "groups": 22,
+      "status": "PASS"
+    },
+    {
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\controls-03\\control-semantic-producer-12.json",
+        "bytes": 5030,
+        "sha256": "abea55d4ec413be30a8b00e05161017b824241300c82600551a4f138aff5b5a4"
+      },
+      "groups": 12,
+      "status": "PASS"
+    },
+    {
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\controls-03\\control-schema-interleave-12.json",
+        "bytes": 1454,
+        "sha256": "8c309c3a6358769846954c1bbbc837fda866fab53448f0aa3fe8eed2f9614263"
+      },
+      "groups": 4,
+      "status": "PASS"
+    },
+    {
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\controls-03\\control-handoff-model-03.json",
+        "bytes": 8604,
+        "sha256": "d1bd8154aebc0f27115bf0b1d49d24fd8fa62a394f93f5343f5a290ba01bd12c"
+      },
+      "groups": 28,
+      "status": "PASS"
+    },
+    {
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\controls-03\\control-binding-paid-chain-05.json",
+        "bytes": 17028,
+        "sha256": "2a343adc77e0655afa20af11afb1dd7ad509a7b95a10cffeadbf584662460f65"
+      },
+      "groups": 32,
+      "status": "PASS_EXACT_SOURCE_SCOPE_AND_DEBIT_MODEL_NOT_PRICING_OR_NATIVE_AUTHORITY"
+    },
+    {
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\controls-03\\CHECK-CONTROLS-09.json",
+        "bytes": 13637,
+        "sha256": "089d9b76a1ff5c24e143bf0a8e9349fa6fe8d2df09e7978f6bdb6c40c3d1582b"
+      },
+      "groups": 40,
+      "status": "PASS_ACTUAL_STAGED_RECORDS_NODE_TIMER_COMPONENT"
+    },
+    {
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\CHECK-SOURCE-03.json",
+        "bytes": 2683,
+        "sha256": "f6eed3786ac406698d821a6125af504449ee84794d4dd67637e18197079bda18"
+      },
+      "groups": 2,
+      "status": "PASS_DEFAULT_AND_POSITIVE_LEGACY_RECORDS_API"
+    },
+    {
+      "report": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v64-coherent-host-clock-staging-2026-10-24-01\\CHECK-TUPLE-05.json",
+        "bytes": 16941,
+        "sha256": "bbf4bbf26e43b2ba72ea0a4406db7153e69c0bf46f3bfad74dc17c75625af376"
+      },
+      "groups": 26,
+      "status": "PASS_ACTUAL_JOINED_C2_STATE_R_CONFIGURATION_AND_ADVERSE_TUPLES"
+    }
+  ],
+  "actualConfiguration": {
+    "visits": 880,
+    "nodes": 269,
+    "bytes": 8551,
+    "claimed": false,
+    "stampActive": false,
+    "actualC2BinderOnce": true,
+    "actualOriginalRJobs": true,
+    "jobAndPaidAliasesClearedAfterSuccessfulClose": true
+  },
+  "boundaries": [
+    "The183 are focused grouped cases with retained explicit model adapters, not183 full conformance procedures. No independent peaks are summed.",
+    "Actual11 native Node timers run original6 foundations,Q adoption,seven original Records initializers,publication and original sameQ loader entry. Native Node/VM evidence is not Chrome/WebGL/Main evidence.",
+    "Original C2/B/Kernel/PH/Boundary/State configuration and real sameR work jobs are genuine; named App/Surface/native/fresh/caller-entry/IDB/script and diagnostic literal-only pricing models remain.",
+    "H tests actual source bodies/payment scopes with modeled Binding-producer/R factory. Actual staged PB owner/token/Base8 import and all fixed future owner factories remain unbuilt.",
+    "State configuration is COMPLETE and unclaimed; async State S/P/OWNER,Kernel recipe/bind,complete Coordinator whole-view proof remain separate.",
+    "All new WORK/module/caller/instance/current/native/closed/foundation amounts remain null. Complete startup affordability and wholeQ are unqualified.",
+    "The Source-only test238freshreads224copies closes only its isolated legacy Source/Q graph to0; prospective launch/closed/Main roots are not in that result.",
+    "Actual ordinary Main overview/local same assigned surfaces,Frame/fragment/appearance and eventual PhaseOne acceptance remain open."
+  ],
+  "completeWork": null,
+  "completeFunding": null,
+  "wholeQ": null,
+  "nativeHeap": "UNMEASURED",
+  "Main": false,
+  "P05": "OPEN",
+  "P06_P08": "LATER",
+  "PhaseOne": "NOT_ACCEPTED_NOT_RELEASED"
+}

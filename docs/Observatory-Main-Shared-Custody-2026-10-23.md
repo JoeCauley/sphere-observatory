@@ -1,3 +1,5 @@
+> Current checkpoint, October24: coherent Main startup source passes183 focused groups, including26 genuine configuration cases. Complete startup/work/whole metadata budget, actual program/Baseline ownership and native Main remain open. P05 OPEN; walking preserved. [Current integration and remaining path](Observatory-Main-Startup-Integration-2026-10-24.md).
+
 > Current update, October24: coherent Main resource/State/recipe source passes71 focused grouped checks and full private-scope layout review. Complete host admission, paid startup/work/Q, asynchronous State/whole-view and native Main remain open. P05 OPEN; walking preserved. [Current integration and remaining path](Observatory-Main-Resource-State-Join-2026-10-24.md).
 
 # Main integration and reuse of owned state

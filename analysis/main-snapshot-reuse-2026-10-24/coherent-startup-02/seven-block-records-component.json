@@ -1,0 +1,117 @@
+{
+  "status": "PASS_PRIVATE_STAGED_SEVEN_BLOCK_RECORDS_CODE_ONLY",
+  "parent": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v62-main-vector-state-recipe-2026-10-24-01\\candidate-01\\source",
+  "parentFreeze": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v62-main-vector-state-recipe-2026-10-24-01\\FREEZE-05.json",
+    "bytes": 97157,
+    "sha256": "fd00cd732e90df4acb1f7b205c1ececb2b1e5056f55cd418582768d29c881eeb"
+  },
+  "pins": {
+    "recipe": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v62-trusted-records-staging-2026-10-24-01\\exact-staged-records-recipe-08.json",
+      "bytes": 2002223,
+      "sha256": "c4fadcc0c0767502f8fb6a7d04d8641e31fade31676e9a42aa5a2e00ab311c90"
+    },
+    "rootSafe": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v62-trusted-records-staging-2026-10-24-01\\root-safe-staged-code-recipe-12.json",
+      "bytes": 1927222,
+      "sha256": "f96221656d1fa86981cf4440d9c65a6a39fd86737e684122326d509744b6b413"
+    },
+    "controls": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v62-trusted-records-staging-2026-10-24-01\\CHECK-CONTROLS-09.json",
+      "bytes": 13633,
+      "sha256": "75dc942daa7671a0c7069005fd5b19fffe6239a37f92e8b13f00a23bba3c49b5"
+    },
+    "sourceLegacy": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v62-trusted-records-staging-2026-10-24-01\\CHECK-SOURCE-LEGACY-10.json",
+      "bytes": 98174,
+      "sha256": "df6d794c8b9a150f1f63ff5e784ad1b508a21bd5e6055a4852bef1538f6a6884"
+    },
+    "lexical": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v62-trusted-records-staging-2026-10-24-01\\census-staged-control-11.json",
+      "bytes": 1846191,
+      "sha256": "f6171ca67ba9eb2f687dfa58f51f82d8e78fcfec013768fb13f6aff26fdbb5b0"
+    },
+    "decoderCounter": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v62-trusted-records-staging-2026-10-24-01\\native-decoder-options-counter-07.json",
+      "bytes": 989,
+      "sha256": "4ac5dda15f60da72acc5ddf38936c09ae679f3a878f28725f9baf3e37713d0b3"
+    }
+  },
+  "artifact": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v62-trusted-records-staging-2026-10-24-01\\candidate-03\\owned-main-trusted-launch.unselected.js",
+    "bytes": 2593458,
+    "sha256": "8c4df9027d18a35daeacbd190e76211b1d7d1d0245f8ef677f1349503c2dc7d8"
+  },
+  "source": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v62-trusted-records-staging-2026-10-24-01\\candidate-03\\source\\biome-service\\records.js",
+      "bytes": 956388,
+      "sha256": "c8adfccbe0ebed520173c7205db691a99d9f13e66350a2a4c857ccbd4a8f985d"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v62-trusted-records-staging-2026-10-24-01\\candidate-03\\source\\owned-main-bootstrap.js",
+      "bytes": 396769,
+      "sha256": "694f0010e27aed8161d384e4034b0c85d3b723255aceb33626532e50d45142f1"
+    }
+  ],
+  "tests": {
+    "totalGroups": 46,
+    "nativeTimerComponent": 40,
+    "legacyAndSource": 6,
+    "files": 522,
+    "parses": 426,
+    "freshReads": 238,
+    "copies": 224,
+    "actualNativeTimers": 11,
+    "adapters": [
+      "Original six foundation and optional initializer bodies,original Q claim/owner,original early Source lexical port and loader refusal execute in a fresh Node VM.",
+      "Actual native Node timers carry the actual private serial argument. Fixed modeled Document classes/currentScript/SRI/nonce/URL stand in for the browser entry; this is not native browser/SRI evidence.",
+      "The schedule bridge can inject raw throw or forbidden synchronous callback solely for negative controls; these are disclosed adapter cases,not a public production scheduling API.",
+      "One test-only lexical diagnostic closure exposes existing private roots; no such export is emitted in the saved artifact.",
+      "All metadata/work substitutions are diagnostic values only. Whole callback quotes,ABI,current cohort,HTML admission and all null product gates remain unselected."
+    ]
+  },
+  "preserved": {
+    "originalFoundationOrder": 6,
+    "originalOptionalBodies": 7,
+    "rawBodyCopies": "one each",
+    "recipeDomain": "Full original1048576bytes/8192nodes/depth32/unsafe-number policy and reusable original controller; semantic/Kernel/R proof remains separate.",
+    "defaultAndLegacyImmediateBehavior": "Exact original API keys/functions/descriptors and representative behavior,with no public deferred control API.",
+    "oldSourceCode": "Source,Q and all other520 files remain byte-exact Root62.",
+    "originalQ": "One actual original factory/claim,then exact sameQ through7 initializer timers,one namespace publication and final loader.",
+    "originalSource": "Actual original source-private capture/take remains one-shot and genuine sameQ.",
+    "publication": "Final frozen DATA namespace checks original core function/class/scalar identities; Q/S keep the original frozen core. No getter namespace or public positive setter.",
+    "rootAndRows": "Stored original<=8 root rows and native/source/namespace/error facts are fresh each timer; private module original7schema/evaluated and Prepared A/T/face/vector rows are checked around each actual initializer.",
+    "retention": "All closed/failed/evaluated prefix/controller/initializer/Q/Source/core/final API/raw failure/timer/provenance roots remain held. Native/VM/physical backing unmeasured."
+  },
+  "history": [
+    {
+      "file": "FAILED-PREPARATION-01.json",
+      "kind": "receipt-only",
+      "detail": "Rebase code files compiled,then generator used old Root60 folder with new Root62 seal filename. Candidate01 preserved;02 fixes only recipe provenance path."
+    },
+    {
+      "file": "author-01/test-decoder-options-counter-06.cjs",
+      "kind": "counter harness",
+      "detail": "Expected one callback; actual native Node constructor performed two.07 preserves exact2,not a price."
+    },
+    {
+      "file": "native-decoder-options-counter-07.json",
+      "kind": "actual native component counter",
+      "detail": "Prior C02 ctor/prototype/decode3-fact guard allowed inherited nonenumerable ignoreBOM getter2. C03 adds only actual original option-absence fact; new controls show0getter and raw own-data refusal before queue if already present."
+    }
+  ],
+  "scope": "Exact current seven-block source-only successor,not selected phase prices/funding/nativeHTML/SRI/Main. Full native/source/module/first-entry/caller/closed ABI/work still needs exact current derivation and later H-loader regeneration. Source-only Q14739649 excludes the prospective compiled region and all later accounts; it is not wholeQ.",
+  "holds": [
+    "All new module/controller/activation/caller/constant-pool/returned Q/closed/timer/native-ref logical storage",
+    "All complete actual per-callback WORK,first classic and Q entry/failure/following quotes,strict phase selection/admission",
+    "Original authenticated HTML/SRI/genuine browser callback/physical native measurements",
+    "Final joined H/factory/caller loader ABI/work and current wholeQ",
+    "Actual ordinary Main/P05/Kernel recipe working-scratch issue"
+  ],
+  "selected": null,
+  "work": null,
+  "funding": null,
+  "Main": false
+}
