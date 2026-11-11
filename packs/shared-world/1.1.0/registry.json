@@ -125,11 +125,6 @@
       "sha256": "31d782b7919049ee1bd6cf3f9cb8f558b4d7a901a23747bcc8a684e1d57a1c35"
     },
     {
-      "path": "../../catalogue.v1.json",
-      "bytes": 51,
-      "sha256": "2b4ae5bb347fcd08b6596d960b8c7c4d913fd1748cc5ee68b92eec4db341a459"
-    },
-    {
       "path": "../../infinite-industry/1.0.0/app.js",
       "bytes": 19037,
       "sha256": "16e61c9eef7ce8916b5ab524001e76d7fb6b4717a12d335d5e4c2c3204ba69fc"
