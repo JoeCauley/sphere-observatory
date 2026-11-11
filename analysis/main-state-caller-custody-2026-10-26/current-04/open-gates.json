@@ -1,0 +1,83 @@
+{
+  "source": "I:\\Sphere\\work\\biome-pack-service-caller-2026-10-26-175203-a5ce5685/source/caller-04",
+  "componentAssociation": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-caller-2026-10-26-175203-a5ce5685/reports/component-association-caller-04.json",
+    "bytes": 119575,
+    "sha256": "f0b927828a620f611e7348c5d016f80a014e683730ef021fe64003908be4040c"
+  },
+  "P05": "OPEN",
+  "P06": "NOT_STARTED",
+  "P07": "NOT_STARTED",
+  "P08": "NOT_STARTED",
+  "PhaseOne": "NOT_ACCEPTED_NOT_RELEASED",
+  "completeWorkPrice": null,
+  "completeRetainedStoragePrice": null,
+  "wholeSourcePrice": null,
+  "funding": null,
+  "wholeMainMetadata": null,
+  "gates": [
+    {
+      "id": "GenuineRootCaller",
+      "status": "OPEN",
+      "required": "New /8 fixed input custody leaf exists; actual complete source-owned initializer/Source/program/Baseline/Root-to-State scheduling and incoming-result/native/error observer ownership are open. Naive nested Source rows request three jobs against unchanged two."
+    },
+    {
+      "id": "CompleteConsumerPrices",
+      "status": "OPEN",
+      "required": "Complete 17-module expanded body audit plus all transitive used bodies/maxima, actual seed funding, activations/arguments/descriptors/prototypes/Promise/native/pending/raw/closed/request costs; known authored module subtotal567872 B remains incomplete."
+    },
+    {
+      "id": "C1",
+      "status": "OPEN",
+      "required": "All used helper/native/error/caller/retirement paths; the new11 caller checks and old33 passing checks cover only their stated component paths."
+    },
+    {
+      "id": "Replacement",
+      "status": "FAIL_RESOURCE_BUDGET_UNWAIVED",
+      "required": "Two distinct live owner declarations must fit unchanged original full binding envelope U; no U/provider/manifest change or old-owner discard."
+    },
+    {
+      "id": "BroadRegressions",
+      "status": "19_PASS_21_FAIL_UNWAIVED",
+      "required": "All40 statuses match reuse09 and parent07, 19 PASS /21 FAIL. Every failure remains unwaived."
+    },
+    {
+      "id": "WholeResourceAndMetadataVector",
+      "status": "OPEN",
+      "required": "Simultaneous Main/provider/service/current/replacement whole resource and metadata admission."
+    },
+    {
+      "id": "NativeMainOverviewAndSameAssignedSurface",
+      "status": "NOT_RUN",
+      "required": "Actual Main overview and same assigned surface local whole-view/fragment/Frame/support/appearance native proof."
+    },
+    {
+      "id": "ConformanceAcceptanceRelease",
+      "status": "OPEN",
+      "required": "Original full protocol/performance/resource/visual/lifetime/quality acceptance; no component promotion."
+    }
+  ],
+  "fixed": {
+    "prepareOps": 4096,
+    "uploadBytes": 262144,
+    "jobs": 2,
+    "slots": 64,
+    "serviceCpuBytes": 33554432,
+    "serviceGpuBytes": 10485760,
+    "commonMetadataBytes": 33554432,
+    "contextBytes": 1048576,
+    "contextDepth": 64,
+    "contextNodes": 2097152,
+    "stateBytes": 262144,
+    "stateDepth": 32,
+    "stateNodes": 8192
+  },
+  "exclusions": [
+    "P06 public install/travel",
+    "P07 session/export/recovery",
+    "P08 full native qualification",
+    "Phase Two / accepted Meadow adaptation",
+    "Unreal"
+  ],
+  "completePricingClosed": false
+}

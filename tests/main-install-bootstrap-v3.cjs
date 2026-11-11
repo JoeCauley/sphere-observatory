@@ -1,0 +1,20 @@
+'use strict';
+const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
+const repo=path.resolve(__dirname,'..'),H=require('../biome-service/host-world.js'),Boot=require('../biome-service/main-install-bootstrap.v3.js');
+const context=vm.createContext({URL,TextEncoder,TextDecoder,Uint8Array,ArrayBuffer,DataView,AbortController,DOMException,console,performance,crypto:global.crypto,setTimeout,clearTimeout});
+vm.runInContext("window=globalThis;document={currentScript:{src:'http://127.0.0.1:8877/hero-textures.js'}};",context);
+const run=relative=>vm.runInContext(fs.readFileSync(path.join(repo,relative),'utf8'),context,{filename:relative});
+for(const relative of H.MODULE_ORDER.filter(p=>!p.startsWith('biome-service/')))run(relative);
+run('biome-service/main-install-bootstrap.v3.js');
+for(const entry of Boot.MODULES)run('biome-service/'+entry.path+'.js');
+vm.runInContext('SphereApp={snapshot(){return SphereMath.defaultState();}};',context);
+assert.equal(context.module,undefined);assert.equal(context.require,undefined);assert.equal(context.SphereMainInstallBootstrap.assertReady().ready,true);
+const lifecycle=context.SphereBiomeLifecycle;context.SphereBiomeLifecycle=undefined;
+assert.throws(()=>context.SphereMainInstallBootstrap.assertReady(),e=>e.code==='MAIN_INSTALL_DEPENDENCY_MISSING'&&e.details.namespace==='SphereBiomeLifecycle');
+context.SphereBiomeLifecycle={...lifecycle,validateStatus:undefined};
+assert.throws(()=>context.SphereMainInstallBootstrap.assertReady(),e=>e.code==='MAIN_INSTALL_DEPENDENCY_MISSING'&&e.details.member==='validateStatus');context.SphereBiomeLifecycle=lifecycle;
+let refused=0;
+for(const entry of [...Boot.CORE,...Boot.MODULES]){const saved=context[entry.name];context[entry.name]=undefined;assert.throws(()=>context.SphereMainInstallBootstrap.assertReady(),e=>e.code==='MAIN_INSTALL_DEPENDENCY_MISSING'&&e.details.namespace===entry.name);context[entry.name]=saved;refused++;}
+const status=vm.runInContext("SphereBiomeLifecycle.validateStatus({payloadDigest:'a'.repeat(64),revision:0,retired:false,pins:{bindingDigests:[],sessionDigests:[],regionIds:[],reservations:[]}})",context);assert.equal(status.revision,0);
+assert.equal(Boot.MODULES.findIndex(e=>e.path==='lifecycle')<Boot.MODULES.findIndex(e=>e.path==='publication.v2'),true);
+console.log(JSON.stringify({status:'PASS',revision:Boot.REVISION,classicModules:Boot.MODULES.length,missingNamespaceRefusals:refused,missingLifecycleMemberRefused:true,commonJSFallback:'ABSENT',authenticLifecycleStatusValidation:'PASS',scope:'CLASSIC_BROWSER_BOOT_CONTRACT_NO_STORAGE_OR_INSTALLATION'}));

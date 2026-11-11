@@ -1,0 +1,15 @@
+'use strict';
+const assert=require('node:assert/strict'),Q=require('../biome-service/metadata-budget.js'),Shared=require('../biome-service/service-resources.v1.js');
+const q=Q.create(),owner=Shared.create({metadataOwner:q}),base=q.inspect().heldBytes;
+assert.throws(()=>Shared.create({metadataOwner:{reserve(){}}}),e=>e.code==='FOREIGN_OWNER');
+const overview=owner.reserveGpu(8192),native=owner.reserveGpu(6*1048576),overlap=owner.reserveGpu(4194304-8192);
+assert.equal(owner.inspect().gpuHeldBytes,10485760);
+const before=q.inspect().heldBytes;assert.throws(()=>owner.reserveGpu(1),e=>e.code==='RESOURCE_LIMIT');assert.equal(q.inspect().heldBytes,before);
+assert.throws(()=>owner.dispose(),e=>e.code==='RESOURCES_HELD');overlap.release();overlap.release();
+const bytes=owner.createCpu(16384),held=q.inspect().heldBytes;assert.equal(bytes.byteLength,16384);assert(held>base+16384);
+assert.throws(()=>owner.detachCpu(new ArrayBuffer(1)),e=>e.code==='FOREIGN_OWNER');assert.equal(q.inspect().heldBytes,held);
+const prior=bytes.transfer;bytes.transfer=()=>{throw Error('controlled detachment fault');};assert.throws(()=>owner.detachCpu(bytes),/controlled/);assert.equal(q.inspect().heldBytes,held);assert.equal(owner.inspect().cpuBuffers,1);bytes.transfer=prior;
+owner.detachCpu(bytes);assert.equal(bytes.byteLength,0);assert.equal(owner.inspect().cpuBuffers,0);
+const cap=q.reserve(33554432-q.inspect().heldBytes-700,{owner:'controlled-exhaustion'});assert.throws(()=>owner.createCpu(4096),e=>e.code==='RESOURCE_LIMIT');assert.equal(owner.inspect().cpuBuffers,0);cap.release();
+native.release();overview.release();assert.equal(owner.inspect().gpuHeldBytes,0);assert.equal(owner.inspect().gpuPeakBytes,10485760);owner.dispose();q.dispose();assert.equal(q.inspect().heldBytes,0);
+console.log(JSON.stringify({status:'PASS',checks:10,scope:'One common prospective GPU capacity limit, actual CPU detachment, failed retirement retention and complete disposal'}));

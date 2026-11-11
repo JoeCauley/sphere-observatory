@@ -11,6 +11,7 @@ function transport(previous,next){
 }
 function setTime(s,time){const previous={...s};s.time=time;if(s.shadeAttachment!==null)transport(previous,s);return s;}
 function surface(s){
+ const installed=root.SphereMainSurfaceSlot?.query(s,s.position,M.norm(s.position),5);if(installed)return {up:installed.normal,altitude:installed.ready?installed.distance:NaN,name:installed.ready?'installed surface':'support preparing',nativeReady:installed.ready};
  const p=plate(s);if(p){const r=M.length(p.center)*s.radius,curved=p.shape==='cap'||p.shape==='trimmed',q=curved?M.norm(s.position):p.normal;
   const h=curved?r-M.length(s.position):-M.dot(M.sub(s.position,M.mul(p.center,s.radius)),p.normal);
   const thickness=(p.thickness||0)*s.radius;

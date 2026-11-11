@@ -1,0 +1,181 @@
+{
+  "status": "PARTIAL_PRIVATE_BIND_COMPONENT_WITH_OPEN_GATES",
+  "utc": "2026-10-25T17:19:59.270Z",
+  "work": "I:\\Sphere\\work\\biome-pack-service-bind-2026-10-25-123727-49551eea",
+  "source": "I:\\Sphere\\work\\biome-pack-service-bind-2026-10-25-123727-49551eea/source/bind-05",
+  "sourceFiles": 522,
+  "parsedScripts": 426,
+  "changedFromPrevious": [
+    "biome-service/binding-builder.js",
+    "biome-service/native/state-contexts.js",
+    "biome-service/native/surface-kernel.js",
+    "owned-main-bootstrap.js"
+  ],
+  "changedFromRoot66": [
+    "biome-service/binding-builder.js",
+    "biome-service/commonboundary-adapter.js",
+    "biome-service/host-world.js",
+    "biome-service/native/root-program-binding.js",
+    "biome-service/native/source-admission.js",
+    "biome-service/native/state-contexts.js",
+    "biome-service/native/strict-record-owner.js",
+    "biome-service/native/surface-kernel.js",
+    "biome-service/provider-profiles.js",
+    "owned-main-bootstrap.js"
+  ],
+  "newerRecordsPreserved": true,
+  "compiledLaunch": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-bind-2026-10-25-123727-49551eea\\compiled05\\owned-main-trusted-launch.unselected.js",
+    "bytes": 2631060,
+    "sha256": "10f4beea1d928c8b25516cfddaaaed88e751252f8ea9b1a41a488465e5560f8a"
+  },
+  "controls": {
+    "pass": 10,
+    "replacementFail": 1,
+    "defaultNullApi": "PASS_INDEPENDENT_REALMS_WITH_CLASSIC_FOUNDATION_AND_HERO_DOCUMENT_ADAPTER"
+  },
+  "genuineStateAcquireAndNormalCleanup": true,
+  "logicalComponent": {
+    "peakBytes": 33327857,
+    "finalHeldBytes": 28018197,
+    "limitBytes": 33554432,
+    "stateVisits": 3889,
+    "stateWaits": 6,
+    "bindSteps": 1031,
+    "perSliceDiagnosticMarkerPeak": 163,
+    "contextCanonicalBytes": 11167
+  },
+  "sourceAdmission": {
+    "reads": 238,
+    "copies": 224,
+    "sourceOnlyPeak": 14888419
+  },
+  "broaderService": {
+    "status": "FAIL",
+    "pass": 19,
+    "fail": 21,
+    "sourceIntegrity": {
+      "status": "PASS",
+      "reason": "Exact tested source bytes unchanged throughout run"
+    },
+    "dependencies": 870,
+    "dependenciesUnchanged": true
+  },
+  "openGates": [
+    {
+      "id": "ROOT",
+      "status": "OPEN",
+      "required": "Actual reciprocal source-authenticated Root registration for all original private ports, including retainColdKernelVerifiedBind. Controls use a disclosed Root adapter."
+    },
+    {
+      "id": "PROGRAM_BASELINE",
+      "status": "OPEN",
+      "required": "Genuine Root registration/program/Baseline ownership in the complete startup; no nominal constructor or modeled graphics substitute."
+    },
+    {
+      "id": "WORK_STORAGE",
+      "status": "INCOMPLETE",
+      "required": "Complete new consumer role/current/native/error/caller work and retained module/instance/closed storage prices. Current report enumerates source and obligations; diagnostic unit fees and byte selections are not production prices."
+    },
+    {
+      "id": "WHOLE_MAIN",
+      "status": "UNSELECTED",
+      "required": "Complete simultaneous Main/provider/service/current/replacement work and resource vector, complete new whole-source funding, common metadata admission and native heap/driver evidence. All complete prices/funding/admission remain null."
+    },
+    {
+      "id": "REPLACEMENT",
+      "status": "FAIL_UNWAIVED",
+      "required": "The genuine two-owner replacement attempt fails RESOURCE_BUDGET. Derive the actual complete current/replacement binding contract; do not widen U or drop a live owner to turn this control green."
+    },
+    {
+      "id": "ADVERSE_RECOVERY",
+      "status": "OPEN",
+      "required": "Adverse controls prove raw-failure preservation and safe retained refusal. They do not prove cancellation recovery, complete failed-operation reclamation, reusable failed owners or a whole-Main cleanup."
+    },
+    {
+      "id": "MAIN_SURFACES",
+      "status": "NOT_RUN",
+      "required": "Actual Main overview/local same-assigned-surface whole-view, fragment, Frame, support and appearance proof under original geography and all content/quality limits."
+    },
+    {
+      "id": "BROAD_SERVICE",
+      "status": "FAIL_19_PASS_21_FAIL",
+      "required": "All21 existing service failures remain unwaived. Matching prior test-name/status pairs and the previous Root66 comparison do not waive them."
+    }
+  ],
+  "references": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-bind-2026-10-25-123727-49551eea/reports/bind-05-source.json",
+      "bytes": 94839,
+      "sha256": "9668900e5fe24685f8e39642a3da29c19c80eb88069a2113214ae17d225509ff"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-bind-2026-10-25-123727-49551eea/reports/bind-05-launch-source.json",
+      "bytes": 6117,
+      "sha256": "600173e2bc06597c74d62d3bd587e9c1964527bdc5b28d0a2bd029268a687197"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-bind-2026-10-25-123727-49551eea/reports/component-association-05.json",
+      "bytes": 22120,
+      "sha256": "8f085ea45acd95529a215d7348a1ba1df16629ce5d05c21766cc41da957a32ee"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-bind-2026-10-25-123727-49551eea/reports/consumer-work-storage-05.json",
+      "bytes": 691383,
+      "sha256": "f914a2e989b104a5cac89112600a068dac27a4a74191956ab7569896657aee96"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-bind-2026-10-25-123727-49551eea/reports/regression-association-05.json",
+      "bytes": 3891,
+      "sha256": "33beff281ec156851ca54295f39987102d0add6438008ec0cc213e3974ab03a6"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-bind-2026-10-25-123727-49551eea/reports/service-regressions-05.json",
+      "bytes": 308283,
+      "sha256": "ddf323139b318db1dd5cd2bdddec064233f5947d955ad534cba6772e94c0c6be"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-bind-2026-10-25-123727-49551eea/reports/default-api-06.json",
+      "bytes": 2442,
+      "sha256": "5445d0c1bec174292f8a17bfb34eb4b19ab0a8113d115a72a0d02cabe3b6ff63"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-bind-2026-10-25-123727-49551eea/reports/implementation-01.json",
+      "bytes": 25407,
+      "sha256": "bdd4164f0b85a45a4dfa56f5a506c65430d7dd4964322ae48d305efe3a6cf108"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-bind-2026-10-25-123727-49551eea/reports/refinement-03.json",
+      "bytes": 4473,
+      "sha256": "507c6903857b4242481b5d279ecba6b80a8976aa0848d53c31770ab625dad148"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-bind-2026-10-25-123727-49551eea/reports/refinement-04.json",
+      "bytes": 6105,
+      "sha256": "4b96c273640a42b1bb800b3181e5b5f5053cbcc8a7b1f71746aff30cb4a2ae35"
+    }
+  ],
+  "protectedCheckpoint": "I:/Sphere/work/biome-pack-service-resume-2026-10-25-01",
+  "limits": {
+    "prepareOps": 4096,
+    "uploadBytes": 262144,
+    "jobs": 2,
+    "slots": 64,
+    "serviceCpuBytes": 33554432,
+    "serviceGpuBytes": 10485760,
+    "commonMetadataBytes": 33554432,
+    "content": "UNCHANGED",
+    "quality": "UNCHANGED"
+  },
+  "completeConsumerPrice": null,
+  "wholeSourcePrice": null,
+  "funding": null,
+  "wholeMainMetadata": null,
+  "nativeHeap": "UNMEASURED",
+  "nativeMain": "NOT_RUN",
+  "fullConformance": "NOT_RUN",
+  "Main": false,
+  "P05": "OPEN",
+  "P06_P08": "NOT_STARTED",
+  "PhaseOne": "NOT_ACCEPTED_NOT_RELEASED"
+}

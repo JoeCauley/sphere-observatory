@@ -1,5 +1,7 @@
 # Observatory Biome Pack Service Phase One Design
 
+> **Bounded P05 replacement follow-up · 10 November 2026.** Industry now replaces its centre native view with a complete view four metres east while retaining the old ready geometry/support until a real replacement draw. Both full geometry/material rasters and changed support identity pass; old and final native resources retire under unchanged caps. Logical peak is 33,533,342 / 33,554,432 B, with only 21,090 B spare. Current-source Meadow, broader approach/tiers/geometry and visual acceptance remain unqualified. **P05 OPEN; safe pause requested by Joe.** [Verified result and pause handoff](Observatory-Main-P05-View-Replacement-2026-11-10.md).
+
 10 October 2026. Revision 1. **Status: proposed design for Phase One. Runtime implementation has not started.** The user's request authorizes this design work. This document defines the proposed implementation contract; it does not claim service conformance, installation of a new pack, or closure of older Observatory gates.
 
 The Observatory will own a Biome Pack Service that accepts a compatible release, registers it, allocates persistent areas on the inner surface, and connects its content provider to the Observatory's world, travel, rendering and persistence services. A pack declares its requirements and supplies content. It cannot choose authoritative world coordinates, move another pack, replace a world clock, or create a second travel controller.
@@ -659,6 +661,8 @@ Run all standard Observatory regressions and new service suites against fresh so
 | BPS-P08 | Full native qualification and delivery record | All scoped conformance obligations and resource limits pass with retained source and preservation evidence |
 
 Each step can retain partial evidence, but Phase One completion requires all eight exits. Steps do not authorize changing accepted Meadow artwork or closing older programme gates.
+
+**P05 bounded evidence · 10 November 2026.** Both fixed native fixture views resolve their actual assigned regions and supply Main's normal altitude instruments from the same verified uploaded triangles. Return and local/cache retirement pass under unchanged caps. General approach, changed-view representation replacement and remaining geometry criteria keep P05 **OPEN**. [Scoped result and retained evidence](Observatory-Main-P05-Installed-Surface-Queries-2026-11-10.md).
 
 The implementation handoff names likely files and ownership points. It is a plan for new code, not a claim that proposed modules already exist.
 

@@ -15,6 +15,7 @@ function elevation(s,p){
 }
 function clearance(s,p){return s.radius-M.length(p)-elevation(s,p);}
 function heightAboveGround(s){
+ const installed=root.SphereMainSurfaceSlot?.query(s,s.position,M.norm(s.position),5);if(installed)return installed.ready?installed.distance:NaN;
  const altitude=s.radius-M.length(s.position);
  if(s.meadow?.placementRevision===2&&root.SphereMeadowEcology?.active?.(s)){
   const support=root.SphereMeadowSupport?.camera?.(s,s.position);if(Number.isFinite(support?.cameraHeightKm))return Math.max(0,support.cameraHeightKm);
@@ -27,6 +28,7 @@ function heightAboveGround(s){
 }
 function release(s){suppressed=M.norm(s.position);approach=null;s.walkMode=false;s.walkSurface=false;s.walkPosition=null;s.walkVelocity=0;}
 function probe(s,p,d,max=Infinity){
+ const installed=root.SphereMainSurfaceSlot?.query(s,p,d,max);if(installed)return {...installed,nativeReady:installed.ready};
  const analytic=M.trace(p,d,s);let hit={distance:analytic.distance,normal:M.mul(M.norm(p),-1),kind:analytic.kind};
  for(const mesh of S.geometry(s)){const record={},t=S.rayBVH(mesh.local(p),mesh.basis.map(b=>M.dot(d,b)),mesh.bvh,Math.min(max,hit.distance),record);if(!record.normal)continue;
   let n=mesh.basis.reduce((v,b,i)=>M.add(v,M.mul(b,record.normal[i])),[0,0,0]);if(M.dot(n,d)>0)n=M.mul(n,-1);hit={distance:t,normal:n,kind:mesh.name};

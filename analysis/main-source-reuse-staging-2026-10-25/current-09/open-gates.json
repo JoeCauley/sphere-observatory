@@ -1,0 +1,82 @@
+{
+  "source": "I:\\Sphere\\work\\biome-pack-service-reuse-2026-10-25-213922-9485ed41/source/reuse-09",
+  "componentAssociation": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-reuse-2026-10-25-213922-9485ed41/reports/component-association-reuse-09.json",
+    "bytes": 114319,
+    "sha256": "7048ce7dfd111e059fa67ddc8ff559fc0d03fc95eff04a3a9d562232c1055d36"
+  },
+  "P05": "OPEN",
+  "P06": "NOT_STARTED",
+  "P07": "NOT_STARTED",
+  "P08": "NOT_STARTED",
+  "PhaseOne": "NOT_ACCEPTED_NOT_RELEASED",
+  "completeWorkPrice": null,
+  "completeRetainedStoragePrice": null,
+  "wholeSourcePrice": null,
+  "funding": null,
+  "wholeMainMetadata": null,
+  "gates": [
+    {
+      "id": "GenuineRootCaller",
+      "status": "OPEN",
+      "required": "Actual complete source-owned Main program/Baseline/Root/consumer caller and observer ownership. Component pre-R SOURCE scope and remaining inherited parents are models."
+    },
+    {
+      "id": "CompleteConsumerPrices",
+      "status": "OPEN",
+      "required": "Full work/current/native/error/caller and module/instance/activation/argument/descriptor/promise/closed/failure derivation; no arbitrary unit fees. Known module subtotal524128 B is incomplete."
+    },
+    {
+      "id": "C1",
+      "status": "OPEN",
+      "required": "Complete dependency/helper/native/error/retirement proof; the17 new Source controls establish only their stated paths."
+    },
+    {
+      "id": "Replacement",
+      "status": "FAIL_RESOURCE_BUDGET_UNWAIVED",
+      "required": "Two distinct live owner declarations must fit unchanged original full binding envelope U; no U/provider/manifest change or old-owner discard."
+    },
+    {
+      "id": "BroadRegressions",
+      "status": "19_PASS_21_FAIL_UNWAIVED",
+      "required": "All40 statuses match parent07. Historical Root66 comparison is not a waiver."
+    },
+    {
+      "id": "WholeResourceAndMetadataVector",
+      "status": "OPEN",
+      "required": "Simultaneous Main/provider/service/current/replacement whole resource and metadata admission."
+    },
+    {
+      "id": "NativeMainOverviewAndSameAssignedSurface",
+      "status": "NOT_RUN",
+      "required": "Actual Main overview and same assigned surface local whole-view/fragment/Frame/support/appearance native proof."
+    },
+    {
+      "id": "ConformanceAcceptanceRelease",
+      "status": "OPEN",
+      "required": "Original full protocol/performance/resource/visual/lifetime/quality acceptance; no component promotion."
+    }
+  ],
+  "fixed": {
+    "prepareOps": 4096,
+    "uploadBytes": 262144,
+    "jobs": 2,
+    "slots": 64,
+    "serviceCpuBytes": 33554432,
+    "serviceGpuBytes": 10485760,
+    "commonMetadataBytes": 33554432,
+    "contextBytes": 1048576,
+    "contextDepth": 64,
+    "contextNodes": 2097152,
+    "stateBytes": 262144,
+    "stateDepth": 32,
+    "stateNodes": 8192
+  },
+  "exclusions": [
+    "P06 public install/travel",
+    "P07 session/export/recovery",
+    "P08 full native qualification",
+    "Phase Two / accepted Meadow adaptation",
+    "Unreal"
+  ]
+}

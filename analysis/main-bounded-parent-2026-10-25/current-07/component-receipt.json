@@ -1,0 +1,382 @@
+{
+  "status": "BOUNDED_PARENT_COMPONENT_IMPLEMENTED_COMPLETE_PRICING_OPEN",
+  "source": "I:\\Sphere\\work\\biome-pack-service-parent-2026-10-25-164137-2c9aedb1/source/parent-07",
+  "sourceReceipt": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-parent-2026-10-25-164137-2c9aedb1/reports/parent-07-source.json",
+    "bytes": 94770,
+    "sha256": "76c261f1c981dbab8061b9bbae879f8f3791a52fdce0c7bc5638ca2796a4f02d"
+  },
+  "sourcePins": [
+    {
+      "path": "biome-service/binding-builder.js",
+      "bytes": 122805,
+      "sha256": "f8eb9dfb5e77705b859bc5e17109cc94a7300491728571c6e22f2c63bf8da4d8"
+    },
+    {
+      "path": "biome-service/native/resource-leases.js",
+      "bytes": 138917,
+      "sha256": "2160a7d5c8adb44592f29d4df5806832091b54cc702e454eb264a84381d53a33"
+    },
+    {
+      "path": "biome-service/native/state-contexts.js",
+      "bytes": 66227,
+      "sha256": "ded32fd35a081234e252730950d72710e997a844e38996331fdbd44fd80c9cfd"
+    },
+    {
+      "path": "biome-service/native/surface-kernel.js",
+      "bytes": 115950,
+      "sha256": "a0f9f0b97779a7c74d12d6751854fbf76b3b3f2179939a8d57e1c9b296a85ea7"
+    },
+    {
+      "path": "biome-service/records.js",
+      "bytes": 957107,
+      "sha256": "82af5de7c47b07b6f91a2fd2c9cc1c154bd300660617f38319e1c01bcd887bb1"
+    },
+    {
+      "path": "owned-main-bootstrap.js",
+      "bytes": 451543,
+      "sha256": "40db6e2f66852af48288c1a636f4b75ec5949bbb7c05a99be7c8e0b04efd3767"
+    }
+  ],
+  "sourceFiles": 522,
+  "parsedScripts": 426,
+  "changedFromPricing02": [
+    "biome-service/native/state-contexts.js",
+    "owned-main-bootstrap.js"
+  ],
+  "RecordsByteExact": true,
+  "compiledLaunch": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-parent-2026-10-25-164137-2c9aedb1\\compiled-parent-07\\owned-main-trusted-launch.unselected.js",
+    "bytes": 2664411,
+    "sha256": "72a639777d25698efc46b4d7294a36f698361b1dfdc9b461b7dfdc7fa72b88fa"
+  },
+  "positive": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-parent-2026-10-25-164137-2c9aedb1/controls/parent-07/control-ownedHostStagesReadBindPositive-12.json",
+    "bytes": 38603,
+    "sha256": "bb319ceff598d3867bb55d0c8f0a8b9a816dd42bb417d91adf05eae6826217c6",
+    "status": "PASS_VERIFIED_BIND_COMPONENT",
+    "logicalPeakBytes": 33429813,
+    "finalHeldBytes": 28138415,
+    "markerPeakOnly": 864,
+    "stateVisits": 3889,
+    "bindSteps": 1031,
+    "stateWaits": 6,
+    "contextBytes": 11167
+  },
+  "originalEleven": [
+    {
+      "name": "BindPositive",
+      "path": "I:\\Sphere\\work\\biome-pack-service-parent-2026-10-25-164137-2c9aedb1/controls/parent-07/control-ownedHostStagesReadBindPositive-12.json",
+      "bytes": 38603,
+      "sha256": "bb319ceff598d3867bb55d0c8f0a8b9a816dd42bb417d91adf05eae6826217c6",
+      "status": "PASS_VERIFIED_BIND_COMPONENT"
+    },
+    {
+      "name": "BindCleanupPinned",
+      "path": "I:\\Sphere\\work\\biome-pack-service-parent-2026-10-25-164137-2c9aedb1/controls/parent-07/control-ownedHostStagesReadBindCleanupPinned-12.json",
+      "bytes": 38745,
+      "sha256": "5d86c339920b3276f7bf8cc9327cf9eee5ad956963813f6a7b34bbbb9d2c10cd",
+      "status": "PASS_VERIFIED_BIND_COMPONENT"
+    },
+    {
+      "name": "BindRawFalse",
+      "path": "I:\\Sphere\\work\\biome-pack-service-parent-2026-10-25-164137-2c9aedb1/controls/parent-07/control-ownedHostStagesReadBindRawFalse-12.json",
+      "bytes": 29081,
+      "sha256": "a71bbc9a6030c7040e6b55dc0cb6e8594335b35397a8961964540fd52d84584d",
+      "status": "PASS_ADVERSE_RETAINED"
+    },
+    {
+      "name": "BindRawUndefined",
+      "path": "I:\\Sphere\\work\\biome-pack-service-parent-2026-10-25-164137-2c9aedb1/controls/parent-07/control-ownedHostStagesReadBindRawUndefined-12.json",
+      "bytes": 29097,
+      "sha256": "459df16f0056bcf9ec75efbc67c762e14f5586717c63aefa53c8da9cb0d263a2",
+      "status": "PASS_ADVERSE_RETAINED"
+    },
+    {
+      "name": "BindCurrent",
+      "path": "I:\\Sphere\\work\\biome-pack-service-parent-2026-10-25-164137-2c9aedb1/controls/parent-07/control-ownedHostStagesReadBindCurrent-12.json",
+      "bytes": 30125,
+      "sha256": "c61ec28543d303729a7a5592b4c9df061235b129685b1ae998b85e0707687745",
+      "status": "PASS_PARENT_BOUNDARY_HELD",
+      "error": "COLD_PROFILE_DEPENDENCY_CHANGED"
+    },
+    {
+      "name": "BindReentry",
+      "path": "I:\\Sphere\\work\\biome-pack-service-parent-2026-10-25-164137-2c9aedb1/controls/parent-07/control-ownedHostStagesReadBindReentry-12.json",
+      "bytes": 29129,
+      "sha256": "f676a1e359cf55429cc3fe85320bd801a5daa32d4cc6247206a5830a2d10f1cb",
+      "status": "PASS_ADVERSE_RETAINED",
+      "error": "CONSUMER_PARENT_REENTRY"
+    },
+    {
+      "name": "BindCancel",
+      "path": "I:\\Sphere\\work\\biome-pack-service-parent-2026-10-25-164137-2c9aedb1/controls/parent-07/control-ownedHostStagesReadBindCancel-12.json",
+      "bytes": 29124,
+      "sha256": "68f316050d829c4852a800f348f24cc2975cdfeeabe51ba634a57a4db5648e96",
+      "status": "PASS_ADVERSE_RETAINED",
+      "error": "CANCELLED"
+    },
+    {
+      "name": "BindPressure",
+      "path": "I:\\Sphere\\work\\biome-pack-service-parent-2026-10-25-164137-2c9aedb1/controls/parent-07/control-ownedHostStagesReadBindPressure-12.json",
+      "bytes": 29349,
+      "sha256": "7cb2f569593234370be5a3a4552075bc092457d814e48e736a6747727a014681",
+      "status": "PASS_ADVERSE_RETAINED",
+      "error": "RESOURCE_LIMIT"
+    },
+    {
+      "name": "BindQuota",
+      "path": "I:\\Sphere\\work\\biome-pack-service-parent-2026-10-25-164137-2c9aedb1/controls/parent-07/control-ownedHostStagesReadBindQuota-12.json",
+      "bytes": 29113,
+      "sha256": "2008df68cd687abdc40104b7cf9c707035e9ab2458007da4b6fe0f5aa31c86f1",
+      "status": "PASS_ADVERSE_RETAINED",
+      "error": "WORK_QUOTA"
+    },
+    {
+      "name": "BindBoundaryReentry",
+      "path": "I:\\Sphere\\work\\biome-pack-service-parent-2026-10-25-164137-2c9aedb1/controls/parent-07/control-ownedHostStagesReadBindBoundaryReentry-12.json",
+      "bytes": 29159,
+      "sha256": "8700e214adfc9ed97e9b4aecffc69c22a9c207be6abe19ddb517f5b564f67005",
+      "status": "PASS_ADVERSE_RETAINED",
+      "error": "BINDING_BOUNDARY_REENTRY"
+    },
+    {
+      "name": "BindReplacement",
+      "path": "I:\\Sphere\\work\\biome-pack-service-parent-2026-10-25-164137-2c9aedb1/controls/parent-07/control-ownedHostStagesReadBindReplacement-12.json",
+      "bytes": 25804,
+      "sha256": "93bc196bf61af8244e4f350fa70d2feb54073eee8118af74d6a37027ca853b4e",
+      "status": "FAIL",
+      "error": "RESOURCE_BUDGET"
+    }
+  ],
+  "additionalNewPaths": [
+    {
+      "name": "ParentCompletionQuota",
+      "path": "I:\\Sphere\\work\\biome-pack-service-parent-2026-10-25-164137-2c9aedb1/controls/parent-07/control-ownedHostStagesReadParentCompletionQuota-14.json",
+      "bytes": 24869,
+      "sha256": "7490f3ae3e388c97736ed1c9edca5cee7bf91729b42d8734bb438cb9e88afc74",
+      "status": "PASS_COMPLETION_QUOTA_HELD"
+    },
+    {
+      "name": "ParentSliceChange",
+      "path": "I:\\Sphere\\work\\biome-pack-service-parent-2026-10-25-164137-2c9aedb1/controls/parent-07/control-ownedHostStagesReadParentSliceChange-14.json",
+      "bytes": 29147,
+      "sha256": "3ff0324e4c12126570e1eb9864b17c605b1a4b9c38289eb028b24932f0f7003f",
+      "status": "PASS_ADVERSE_RETAINED"
+    },
+    {
+      "name": "ParentRequestDomain",
+      "path": "I:\\Sphere\\work\\biome-pack-service-parent-2026-10-25-164137-2c9aedb1/controls/parent-07/control-ownedHostStagesReadParentRequestDomain-14.json",
+      "bytes": 28734,
+      "sha256": "e2b2be9f3cd6df0bb128366caaa822c9d69e0a6485bc687c532bcae0936b0682",
+      "status": "PASS_EARLY_PARENT_REFUSAL_HELD"
+    },
+    {
+      "name": "ParentRequestQuota",
+      "path": "I:\\Sphere\\work\\biome-pack-service-parent-2026-10-25-164137-2c9aedb1/controls/parent-07/control-ownedHostStagesReadParentRequestQuota-14.json",
+      "bytes": 28886,
+      "sha256": "6e95fedd5197f023b00d68f033368695fdf352d6e153837c3c1f41d1dc90a1df",
+      "status": "PASS_EARLY_PARENT_REFUSAL_HELD"
+    },
+    {
+      "name": "ParentForgedToken",
+      "path": "I:\\Sphere\\work\\biome-pack-service-parent-2026-10-25-164137-2c9aedb1/controls/parent-07/control-ownedHostStagesReadParentForgedToken-14.json",
+      "bytes": 28732,
+      "sha256": "72ee625faafb84fe13df6216304a338b64417a97c53650eabba8c8b7506e790d",
+      "status": "PASS_EARLY_PARENT_REFUSAL_HELD"
+    },
+    {
+      "name": "ParentJobQuota",
+      "path": "I:\\Sphere\\work\\biome-pack-service-parent-2026-10-25-164137-2c9aedb1/controls/parent-07/control-ownedHostStagesReadParentJobQuota-15.json",
+      "bytes": 30139,
+      "sha256": "1250bb1a44f03952968db638da3a65ffc15e393c33025217553a13f0f4697ddf",
+      "status": "PASS_PARENT_BOUNDARY_HELD"
+    }
+  ],
+  "preDebitNativeRefusals": [
+    {
+      "key": "Number",
+      "namespace": true,
+      "error": "CONSUMER_PARENT_NATIVE_NAMESPACE_CHANGED",
+      "foreignCalls": 0
+    },
+    {
+      "key": "Object",
+      "namespace": true,
+      "error": "CONSUMER_PARENT_NATIVE_NAMESPACE_CHANGED",
+      "foreignCalls": 0
+    },
+    {
+      "key": "Reflect",
+      "namespace": true,
+      "error": "CONSUMER_PARENT_NATIVE_NAMESPACE_CHANGED",
+      "foreignCalls": 0
+    },
+    {
+      "key": "Error",
+      "namespace": true,
+      "error": "CONSUMER_PARENT_NATIVE_NAMESPACE_CHANGED",
+      "foreignCalls": 0
+    },
+    {
+      "key": "get",
+      "namespace": false,
+      "error": "CONSUMER_PARENT_NATIVE_CHANGED",
+      "foreignCalls": 0
+    },
+    {
+      "key": "size",
+      "namespace": false,
+      "error": "SAME_PAID_CURRENT_ERROR_OR_LOOKUP_CHANGED",
+      "foreignCalls": 0
+    }
+  ],
+  "pricingRefusals": {
+    "module": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-parent-2026-10-25-164137-2c9aedb1/controls/parent-07/control-ownedHostStagesReadBindPositive-module-floor-13.json",
+      "bytes": 24371,
+      "sha256": "80acd4d7f3a288c33a680dc9f90d5c767873ad1d6a0e72e4345656f4db2212b7",
+      "status": "FAIL",
+      "error": "RESOURCE_LIMIT",
+      "conditionalFloor": 392160,
+      "necessaryPeak": 33720981
+    },
+    "work": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-parent-2026-10-25-164137-2c9aedb1/controls/parent-07/control-ownedHostStagesReadBindPositive-work-floor-13.json",
+      "bytes": 25232,
+      "sha256": "6f5869985fe11d4ac5ca81b1bdd521d1f3353fdfc5be5412b16e6e07074b8239",
+      "status": "FAIL",
+      "error": "WORK_QUOTA",
+      "language": "47-unit descriptor subset per active parentOriginals, only; no complete fee selected."
+    },
+    "observer": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-parent-2026-10-25-164137-2c9aedb1/controls/parent-07/control-ownedHostStagesReadBindPositive-observer-13.json",
+      "bytes": 38663,
+      "sha256": "bd182d0123a5fe9ee2a7e5029c289ed8eb0c6a3502ea233bbd1db5f34b0eae39",
+      "peakGuards": 203,
+      "peakDescriptorSubset": 9541
+    }
+  },
+  "references": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-parent-2026-10-25-164137-2c9aedb1/reports/parent-07-source.json",
+      "bytes": 94770,
+      "sha256": "76c261f1c981dbab8061b9bbae879f8f3791a52fdce0c7bc5638ca2796a4f02d"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-parent-2026-10-25-164137-2c9aedb1/reports/parent-07-launch-source.json",
+      "bytes": 6131,
+      "sha256": "80f36ebb544c840e8c85b8526ecd3dc2e42059f2c5b4ff9a5c54001577661922"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-parent-2026-10-25-164137-2c9aedb1/reports/consumer-census-parent-07.json",
+      "bytes": 9487883,
+      "sha256": "c9bcbd0874eafc21558a79a833a47de2777628918a07fa73a9c7fd352edd2f46"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-parent-2026-10-25-164137-2c9aedb1/reports/consumer-work-storage-parent-07.json",
+      "bytes": 14908,
+      "sha256": "6e0b4691e16959619432e7a6e1e3f54afabba2a9a0f474304e5ae5ff80dde0bf"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-parent-2026-10-25-164137-2c9aedb1/reports/parent-owned-storage-parent-07.json",
+      "bytes": 41070,
+      "sha256": "7a1017fd919de555c4bd27e88135ff1c4827d92eeee6d0b74b5d2ae28dd204ac"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-parent-2026-10-25-164137-2c9aedb1/reports/module-storage-floor-parent-07.json",
+      "bytes": 65570,
+      "sha256": "a08781b40a6afec14d232744159dde568244bbbd0f65a1b042cf2468bc3dce00"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-parent-2026-10-25-164137-2c9aedb1/reports/producer-controls-parent-07.json",
+      "bytes": 16246,
+      "sha256": "1352fb50a6e118e2c0130aebf37d86d9554d0d51a427fb88e72bd74a491835f0"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-parent-2026-10-25-164137-2c9aedb1/reports/new-boundary-controls-parent-07.json",
+      "bytes": 10333,
+      "sha256": "22e8e9d46194604c931358469bf77870537aac4a516379ca8fbd531a34794375"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-parent-2026-10-25-164137-2c9aedb1/reports/regression-association-parent-07.json",
+      "bytes": 1923,
+      "sha256": "67fe8d0e3da2870bf327c6b9e3793b7eeb869149540f13fa2cb3e48f515bd356"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-parent-2026-10-25-164137-2c9aedb1/reports/service-regressions-parent-07.json",
+      "bytes": 308292,
+      "sha256": "4164a290128f21f3376f742682ffd9b431e3793de5968f64b51ab907cb8f557b"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-parent-2026-10-25-164137-2c9aedb1/reports/default-api-parent-07.json",
+      "bytes": 2515,
+      "sha256": "cffb0bc219acdd4f83c912a098e8913f63d6b0cd659046b7c33f0a8beb750856"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-parent-2026-10-25-164137-2c9aedb1/reports/diagnostic-disclosures-parent-07.json",
+      "bytes": 92960,
+      "sha256": "3dcd311c2291b785eec273242c2340e0a8b8510ce6a9d9fb1de49dd50f33959f"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-parent-2026-10-25-164137-2c9aedb1/reports/pricing-replay-selections-parent-13.json",
+      "bytes": 1549,
+      "sha256": "8a7867617f735e6abc703f561a41f2d35786f2915006222426701db05ed90584"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-parent-2026-10-25-164137-2c9aedb1/reports/open-gates-parent-07.json",
+      "bytes": 3302,
+      "sha256": "3a4fa759ad8624ea85c244eec188d819252ca6a0b90558dfdaec0348060e0c7b"
+    }
+  ],
+  "completePricesSelected": false,
+  "completeConsumerPrice": null,
+  "wholeSourcePrice": null,
+  "funding": null,
+  "wholeMainMetadata": null,
+  "limitations": [
+    {
+      "id": "COMPLETE_WORK",
+      "status": "OPEN",
+      "reason": "The concrete producer is implemented. Every original child/current/native/Promise/error/caller price and pre-R production caller composition is still required. Unit864 and descriptor subset9541 are not complete fees."
+    },
+    {
+      "id": "COMPLETE_STORAGE",
+      "status": "OPEN_REFUSED_CONDITIONAL_MODULE_FLOOR",
+      "reason": "Current disjoint known module ABI floor392160B, after crediting100992B all prior Root/parent charges, needs saved component peak lower bound33720981B against33554432B; excess166549B. Actual prospective Q replay fails RESOURCE_LIMIT. Complete module/instance/arguments/native/closed/failure/borrowed-owner derivation remains incomplete."
+    },
+    {
+      "id": "ACTUAL_ROOT_CALLER",
+      "status": "OPEN",
+      "reason": "Original Main initializer/source/program/Baseline-to-consumer producer ownership remains unqualified; test SOURCE scope is explicit."
+    },
+    {
+      "id": "SIMULTANEOUS_VECTOR",
+      "status": "OPEN",
+      "reason": "Whole Main/provider/service/current/replacement resource vector and common-Q admission are not selected. Actual replacement still FAIL RESOURCE_BUDGET; full binding U and all declared budgets unchanged."
+    },
+    {
+      "id": "NATIVE_MAIN",
+      "status": "NOT_RUN",
+      "reason": "Actual Main overview/local whole view, fragment, Frame, support and appearance on the same assigned surface are not proved."
+    },
+    {
+      "id": "PHYSICAL_HEAP_GPU",
+      "status": "UNMEASURED"
+    },
+    {
+      "id": "FULL_CONFORMANCE",
+      "status": "OPEN_21_UNWAIVED_SUITE_FAILURES"
+    },
+    {
+      "id": "ACCEPTANCE_RELEASE",
+      "status": "NOT_ACCEPTED_NOT_RELEASED"
+    }
+  ],
+  "Main": false,
+  "nativeMain": "NOT_RUN",
+  "physicalHeap": "UNMEASURED",
+  "P05": "OPEN",
+  "P06_P08": "NOT_STARTED",
+  "PhaseOne": "NOT_ACCEPTED_NOT_RELEASED"
+}

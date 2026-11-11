@@ -1,0 +1,49 @@
+{
+  "status": "OPEN",
+  "gates": [
+    {
+      "id": "ROOT",
+      "status": "OPEN",
+      "required": "Actual reciprocal source-authenticated Root registration for all original private ports, including retainColdKernelVerifiedBind. Controls use a disclosed Root adapter."
+    },
+    {
+      "id": "PROGRAM_BASELINE",
+      "status": "OPEN",
+      "required": "Genuine Root registration/program/Baseline ownership in the complete startup; no nominal constructor or modeled graphics substitute."
+    },
+    {
+      "id": "WORK_STORAGE",
+      "status": "INCOMPLETE",
+      "required": "Complete new consumer role/current/native/error/caller work and retained module/instance/closed storage prices. Current report enumerates source and obligations; diagnostic unit fees and byte selections are not production prices."
+    },
+    {
+      "id": "WHOLE_MAIN",
+      "status": "UNSELECTED",
+      "required": "Complete simultaneous Main/provider/service/current/replacement work and resource vector, complete new whole-source funding, common metadata admission and native heap/driver evidence. All complete prices/funding/admission remain null."
+    },
+    {
+      "id": "REPLACEMENT",
+      "status": "FAIL_UNWAIVED",
+      "required": "The genuine two-owner replacement attempt fails RESOURCE_BUDGET. Derive the actual complete current/replacement binding contract; do not widen U or drop a live owner to turn this control green."
+    },
+    {
+      "id": "ADVERSE_RECOVERY",
+      "status": "OPEN",
+      "required": "Adverse controls prove raw-failure preservation and safe retained refusal. They do not prove cancellation recovery, complete failed-operation reclamation, reusable failed owners or a whole-Main cleanup."
+    },
+    {
+      "id": "MAIN_SURFACES",
+      "status": "NOT_RUN",
+      "required": "Actual Main overview/local same-assigned-surface whole-view, fragment, Frame, support and appearance proof under original geography and all content/quality limits."
+    },
+    {
+      "id": "BROAD_SERVICE",
+      "status": "FAIL_19_PASS_21_FAIL",
+      "required": "All21 existing service failures remain unwaived. Matching prior test-name/status pairs and the previous Root66 comparison do not waive them."
+    }
+  ],
+  "Main": false,
+  "P05": "OPEN",
+  "P06_P08": "NOT_STARTED",
+  "PhaseOne": "NOT_ACCEPTED_NOT_RELEASED"
+}

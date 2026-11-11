@@ -1,0 +1,141 @@
+{
+  "status": "STARTUP_COMPONENT_SCHEDULE_PASS_COMPLETE_WORK_STORAGE_PRICING_OPEN_WITH_CONCRETE_INADMISSIBLE_INPUT_FRONTIER",
+  "source": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/source/startup-09",
+  "sourceReceipt": {
+    "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/reports/startup-09-source.json",
+    "bytes": 94770,
+    "sha256": "5aebaa15ef653ff7ad1132d5670127866483ae7484752747b46d6481792375f3"
+  },
+  "storage": {
+    "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/reports/retained-storage-startup-09.json",
+    "bytes": 893773,
+    "sha256": "48af8e3f78ce1365aede817342ad59260c21e2ce0f8e18ea0d9443b8d04f437f"
+  },
+  "bodyMap": {
+    "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/reports/startup-body-cover-map-09.json",
+    "bytes": 49975,
+    "sha256": "974b2fb64c0c2a793739c3eb98821a28c69fd89b811583b304d4910cf55f0cb0"
+  },
+  "expandedCensus": {
+    "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/reports/borrower-body-census-startup-09.json",
+    "bytes": 16645467,
+    "sha256": "06063a9eec20500ec1ebf943c530be3b6e3d6fe2258d86377570ecbb7496c718"
+  },
+  "ownership": [
+    {
+      "id": "TrustedSeedBeforeEvaluation",
+      "owner": "Original prospective trusted seed/launch",
+      "maximum": null,
+      "status": "OPEN",
+      "births": "All code strings, intrinsic rows, Source module declarations and unconditional State caller WeakSet precede bind-time reserves. No retroactive module funding."
+    },
+    {
+      "id": "RootRegistry",
+      "owner": "Fixed original Root caller module/instance",
+      "maximum": {
+        "catalogues": 1,
+        "attempts": 1
+      },
+      "status": "SOURCE_BOUNDED_NOT_FULLY_PRICED",
+      "births": "Two WeakMaps, callerRoots Set, one immutable catalogue row and one retained 20-field attempt. Every failed/raw/closed row stays held."
+    },
+    {
+      "id": "StateConstructorSegments",
+      "owner": "Original consumed private options and original initializer job",
+      "maximum": {
+        "segments": 3,
+        "successfulSegmentOrder": [
+          "BEGIN",
+          "SOURCE",
+          "PROVIDERS"
+        ],
+        "retainedInitializerJobs": 1,
+        "simultaneousSourceJobs": 1,
+        "maximumJobs": 2
+      },
+      "status": "SCOPED_CONTROL_PASS_COMPLETE_COST_OPEN",
+      "births": "Three original synchronous constructor segments separated by original Source and P awaits. The exact authenticated header array is reused. Native/Promise/activation/current/error closure remains disjoint pricing work."
+    },
+    {
+      "id": "InitializerContinuation",
+      "owner": "Existing private initializer state/mode",
+      "maximum": {
+        "sourceAdmissionAdvances": 225,
+        "oneSourceRowPerAdvance": 1,
+        "sourceRetireAdvances": 224,
+        "retainedSourceStartPaidScopes": 1,
+        "normalWholeStateStageVisits": 228
+      },
+      "status": "SOURCE_BOUNDED_DIAGNOSTIC_TARIFF_ONLY",
+      "births": "One reused paid R job scope across Source rows and native waits, original pending/observer record, timer closures and later ACCEPT/FINISH scopes. All request/descriptor/argument/native/raw/closed storage must still be priced."
+    },
+    {
+      "id": "OriginalSourceStateBacking",
+      "owner": "Original Source projection instance",
+      "maximum": {
+        "stateBackingBytes": 2097152,
+        "sourceRows": 224,
+        "digestBytes": 32
+      },
+      "status": "RETAINED_THROUGH_CLOSED_RETAINED",
+      "births": "Actual held-source references, pinned canonical preimage and original State/profile/provider/continuation backing. Byte lease closure does not release State backing."
+    },
+    {
+      "id": "NativeStorageResult",
+      "owner": "Earlier original Storage/Release parent",
+      "maximum": null,
+      "status": "FAIL_NO_COMPLETE_PROSPECTIVE_BOUND",
+      "births": "Original native request/result/Promise/error data, input metadata and byte buffers before every late validator, copy and canonical walk. Branding of the genuine storage/Binding/Kernel is not an input extent proof."
+    },
+    {
+      "id": "EarlierBodyClosure",
+      "owner": "Original Host/Binding/cache/configuration/factory/storage/native/error parents",
+      "maximum": null,
+      "status": "OPEN",
+      "births": "Complete original used body ownership and all activation/descriptor/prototype/Promise/native/pending/raw/closed/request maxima. The old six rejected parent callbacks remain rejected; they do not describe the new producer."
+    }
+  ],
+  "finiteAdmissionCounterexample": {
+    "n": 95325,
+    "distinctOwnerStringLogicalBytes": 27453600,
+    "inputArrayLogicalBytes": 3050528,
+    "outputSliceArrayLogicalBytes": 3050528,
+    "disjointLowerBoundBytes": 33554656,
+    "metadataLimitBytes": 33554432,
+    "minimumOwnerLoopIterations": 95325,
+    "prepareLimit": 4096,
+    "proof": "Original Release retainedMetadata validates each owner and slices its array before final canonical size refusal. Input strings are charged once; copied array aliases them. This is a lower-bound failure witness, not a complete price or native/browser input allocation proof.",
+    "receipt": {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/pricing-02/control-release-native-input-frontier-02.json",
+      "bytes": 4231,
+      "sha256": "e46422d8f4c045083c813dfdd8caf5c930caaec2e7500ed44f874331e3a1baa7"
+    },
+    "workVocabulary": "95325 is the observed original owner-loop iteration count and a lower bound in the expressly selected local per-owner predicate/control vocabulary. It is not the actual R debit counter, an AST tariff, or a proof that no different faithful bounded resource/API operation language or staged implementation could work."
+  },
+  "completeConsumerWorkPrice": null,
+  "completeConsumerRetainedStoragePrice": null,
+  "wholeSourcePrice": null,
+  "funding": null,
+  "wholeMainMetadata": null,
+  "completeC1": false,
+  "NativeMain": "NOT_RUN",
+  "physicalHeap": "UNMEASURED",
+  "fullConformance": "NOT_RUN",
+  "P05": "OPEN",
+  "P06_P08": "NOT_STARTED",
+  "PhaseOne": "NOT_ACCEPTED_NOT_RELEASED",
+  "derivationNote": "derive-startup-09.cjs generated fresh source09 census/storage outputs, then exclusive creation refused its unadapted historical body-map08 label. This continuation uses those exact fresh source09 outputs and creates only new body-map09/consumer09 reports. The failed recipe and historical output remain intact.",
+  "counterexampleScope": {
+    "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/reports/pricing-frontier-scope-09.json",
+    "bytes": 1654,
+    "sha256": "5ebf432c6ef5a4359ef700c9fbf011edec5617559391586d061cc7d22600c9b5"
+  },
+  "supersedes": {
+    "receipt": {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/reports/consumer-work-storage-startup-09.json",
+      "bytes": 6200,
+      "sha256": "b7693856007417650bc9a39385cb07dd7046ea215a46ebf9f6bd6bc3fd72a0e9"
+    },
+    "reason": "Makes the selected per-owner work vocabulary and explicit external/native input fixture scope unambiguous. Complete prices remain null."
+  }
+}

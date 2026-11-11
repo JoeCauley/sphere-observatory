@@ -1,0 +1,110 @@
+{
+  "status": "INCOMPLETE_NEW_NATIVE_BOUND_DOES_NOT_CLOSE_ORIGINAL_STARTUP_OR_PRICING",
+  "source": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/source/storage-05",
+  "sourceReceipt": {
+    "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/reports/storage-05-source.json",
+    "bytes": 95128,
+    "sha256": "2639d1ac0cdf9e180cbfad20ecbaf90f44900fb4e58a3a17c5e72bdc66869654"
+  },
+  "bodyMap": {
+    "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/reports/body-cover-map-storage-05.json",
+    "bytes": 14012856,
+    "sha256": "6b83e3603f23361ad32f6ab9e9c958a6d77ece4ae402f72d2cd01daa5fed05af"
+  },
+  "storage": {
+    "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/reports/retained-storage-storage-05.json",
+    "bytes": 7956,
+    "sha256": "386c394d2e5d9e128ca1e159ac668b42b672db97d43c499a323fbb6880c92e17"
+  },
+  "ownership": [
+    {
+      "id": "NativeInputProvenance",
+      "status": "SCOPED_COMPONENT_PASS",
+      "owner": "Original private fresh SCB/1 writer and same-session row ledger",
+      "maximum": "One512-byte native value at a time. Head and each data frame are written only by this exact source in an exclusively fresh database; existing database reuse refuses. Key/hash/declared extent alone grants no read.",
+      "proof": "Unknown record and output/scratch quota controls perform zero native reads. Decoder verifies actual row fields, actual wire/node/cost counters. Writer must finish actual syntax/parts before publication."
+    },
+    {
+      "id": "DecodedOutput",
+      "status": "EXACT_GRAMMAR_COST_AND_PROSPECTIVE_RESERVATION_COMPONENT_CHECKED_NOT_WHOLE_PRICE",
+      "owner": "Same Q result charge retained after close",
+      "maximum": "D=R(1)+sum container R(0)+32 per container value edge+sum T(key/string UTF16 units)+sum(128+ArrayBuffer bytes), R(n)=128+32n and T(n)=128+32ceil(2n/32). Encoder and decoder compute D independently from actual original primitive stream.",
+      "excludes": "Does not include all module/instance/activation/argument/descriptor/prototype/native/Promise/raw/closed/caller births."
+    },
+    {
+      "id": "DecoderScratch",
+      "status": "SELECTED_FORMULA_COMPLETENESS_OPEN",
+      "owner": "Separate same-Q scratch charge",
+      "maximum": "65536+32*source-writer-verified maximum string units, reserved before first head read; no caller length authority.",
+      "release": "Only after decoder/output aliases clear. Hidden native/VM retention remains unmeasured; no GC reclamation claim."
+    },
+    {
+      "id": "EncodedFrameBanks",
+      "status": "SELECTED_FORMULA_COMPLETENESS_OPEN",
+      "owner": "Same-Q prospective bank reservations",
+      "maximum": "64*(512+128+256)+R(64)+R(3)=59744 requested B per bank. One frame retirement per source visit; ArrayBuffers transfer(0), frame aliases clear, then bank release.",
+      "excludes": "Full native persistent store/index/key serialization, error and caller graph costs are not closed."
+    },
+    {
+      "id": "RetainedControls",
+      "status": "FORMULAS_NOT_COMPLETE_ALLOWANCES",
+      "owner": "Separate same-Q controller/entry/read/driver holds",
+      "maximum": "Writer32768, read65536, driver65536; entry R(16)+T(id.length)+128+512. Q adds original512+2*(ownerLabel.length+phaseLabel.length) bookkeeping per hold. All completed writer/driver/read entries and raw/failed states remain rooted.",
+      "excludes": "Module1, instance524288 and IO65536 in controls are diagnostic only. No complete function/activation/descriptor/Promise/native/request/error maximum is selected."
+    },
+    {
+      "id": "SourceLease",
+      "status": "GENUINE_COMPONENT_PIN_HELD",
+      "owner": "Original Source admission metadata pin",
+      "maximum": 1,
+      "release": "No release/recovery proof. Original parent admission close returns false while the realm-retained pin is open. Source pin2048/work1 in controls remains diagnostic."
+    },
+    {
+      "id": "Scheduling",
+      "status": "ONE_FIXED_STAGE_PER_EXPLICIT_CALLER_VISIT_COMPONENT_PASS",
+      "owner": "Private source generator plus original R jobs and credits",
+      "maximum": "One encoded/native/decode/join/retirement stage per private factory advance. Actual native pending Promise keeps its captured frame/slice/epoch; external scope change refuses and retains the job.",
+      "excludes": "Controls use an explicit caller model to open R visits. Original initializer does not yet drive this new store; no internal frame/slice reset exists."
+    },
+    {
+      "id": "EarlyStorageCaller",
+      "status": "OPEN",
+      "owner": "Original Root catalogue / Storage.open / Release path before resource host creation",
+      "maximum": null,
+      "why": "Root registry authenticates new Source footer and can bind its factory only after actual R host creation. The earlier catalogue still calls legacy Storage.open. No compatible original producer/seed/release/status/transaction bridge or pre-R capacity/work ownership is supplied. Existing records remain untouched."
+    },
+    {
+      "id": "ServiceCpuAndWholeVector",
+      "status": "OPEN",
+      "owner": "Original service/common metadata/Main/provider/current/replacement disjoint owners",
+      "maximum": null,
+      "why": "New tests admit metadata through Q and use R for work/jobs. R CPU resource allocation/retirement and the whole simultaneous service/Main/provider vector are not established by Q or by a source pin."
+    },
+    {
+      "id": "OriginalReleaseOwnersPins",
+      "status": "OPEN",
+      "owner": "Original Release/get/getRelease/retainedMetadata/statusMetadata/owner/pin/raw-copy/hash paths",
+      "maximum": null,
+      "why": "The successful768-byte original getResource compatibility case is functional evidence only. Original unbounded owner/pin walks, late canonical check, raw copy and caller/native/error ownership remain unpriced. New store does not yet replace those bodies."
+    },
+    {
+      "id": "TrustedSeedAndWholeClosure",
+      "status": "OPEN",
+      "owner": "Original prospective trusted launch and all used Root/program/Baseline/Host/Binding/cache/configuration/factory/native/error/caller/retirement bodies",
+      "maximum": null,
+      "why": "Module declarations precede bind-time reservations; Root adds a fail-closed pre-evaluation gate. No completed seed price, new whole-body work tariff or complete metadata peak is supplied. Historical636064 subtotal and module1 selectors are not full allowances."
+    }
+  ],
+  "completeConsumerWorkPrice": null,
+  "completeConsumerRetainedStoragePrice": null,
+  "wholeSourcePrice": null,
+  "funding": null,
+  "wholeMainMetadata": null,
+  "completeC1": false,
+  "NativeMain": "NOT_RUN",
+  "physicalHeap": "UNMEASURED",
+  "fullConformance": "NOT_RUN",
+  "P05": "OPEN",
+  "P06_P08": "NOT_STARTED",
+  "PhaseOne": "NOT_ACCEPTED_NOT_RELEASED"
+}

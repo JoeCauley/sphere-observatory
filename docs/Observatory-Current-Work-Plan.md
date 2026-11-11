@@ -1,3 +1,11 @@
+> **Current Observatory work · 2 November 2026.** Joe's finish line is installing Meadow and Industry in Main, visiting their assigned places, and returning after reopening the browser. Start with Track Meadow installation, persistent placement and duplicate-install handling. The October sequence below is historical. The linked plan controls current implementation sessions. See the [four-milestone delivery plan](Observatory-Biome-Pack-Main-Delivery.md) and [first implementation prompt](Observatory-Track-Meadow-Install-Prompt.md).
+
+> Current pricing attempt, 25 October 2026: complete finite Root/consumer prices remain open. The generic parent interface has no finite body/capture bound; real prospective R/Q and module-floor replays refuse under unchanged limits. A private WeakSet.has native check is corrected (35 audit cases); 10 bind and 9 State port controls pass. Replacement and all21 service failures remain unwaived. Walking is unchanged; native Main and acceptance remain open. [Pricing refusal, exact source and required producer](Observatory-Main-Pricing-Refusal-2026-10-25.md). Earlier records retain their original scopes.
+
+> Current continuation, 25 October 2026: private reciprocal Root registration and State verified-port wiring are implemented and component tested (10 bind, 31 Root registration and 9 State port controls). Complete work/storage remains unpriced; a separate observer records150 Root guards / 6750 descriptor reads in one advance, without selecting a work-unit conversion. Replacement remains FAIL / RESOURCE_BUDGET and the service sweep remains19 PASS/21 FAIL, all unwaived. P05 OPEN; native Main, program/Baseline and whole admission remain open. [Exact source, evidence and next gate](Observatory-Main-Reciprocal-Root-2026-10-25.md). Earlier dated records retain their scopes.
+
+> Current continuation, 25 October 2026: one private candidate preserves the newer startup validation and joins Source/program, Host/Binding/recipe and provider custody. Focused controls pass; the integrated path reaches the next unchanged 8 MiB bind refusal. The broader service suite remains FAIL (19/40 pass), with all 21 failed cases also failing on the prior candidate. P05 OPEN; native Main remains unqualified. [Current evidence and next step](Observatory-Main-Custody-Continuation-2026-10-25.md).
+
 > Current checkpoint, October24: coherent Main startup source passes183 focused groups, including26 genuine configuration cases. Complete startup/work/whole metadata budget, actual program/Baseline ownership and native Main remain open. P05 OPEN; walking preserved. [Current integration and remaining path](Observatory-Main-Startup-Integration-2026-10-24.md).
 
 > Current update, October24: coherent Main resource/State/recipe source passes71 focused grouped checks and full private-scope layout review. Complete host admission, paid startup/work/Q, asynchronous State/whole-view and native Main remain open. P05 OPEN; walking preserved. [Current integration and remaining path](Observatory-Main-Resource-State-Join-2026-10-24.md).
@@ -78,3 +86,28 @@ Provide configure, preview, validate, version and package for supported pack cre
 - Occlusion queries or depth hierarchies, only if simpler culling leaves a measured need. No synchronous visibility readback or free unaccounted cache.
 
 Industry implementation and functional observations are reported in their exact scopes above. No native performance gain, formal gate closure or automatic background run is claimed by this plan update.
+
+
+## Private verified bind continuation — 25 October 2026
+
+[Current source, evidence and open gates](Observatory-Main-Verified-Bind-2026-10-25.md): actual private State/Kernel/provider acquisition and normal component cleanup now pass the former bind/holder barriers. Ten targeted controls pass; real replacement remains FAIL / RESOURCE_BUDGET and the broad service sweep remains19 PASS/21 FAIL, all unwaived. Complete consumer/whole-source pricing, Root/program/Baseline, simultaneous Main/current/replacement admission and native same-surface proof remain open. P05 OPEN; P06–P08 NOT_STARTED; Phase One NOT_ACCEPTED / NOT_RELEASED. The live walking runtime is unchanged. Earlier dated records above retain their original scope.
+
+
+## Bounded parent implementation and pricing — 25 October 2026
+
+Read [the latest private source, evidence and open gates](Observatory-Main-Bounded-Parent-2026-10-25.md). The source-owned bounded parent producer is implemented and component tested, including genuine R native-completion jobs. Complete work/storage/whole-source pricing is still open: current prospective module and work subset replays fail unchanged limits. Ten component controls and six new held-failure controls pass; actual replacement remains FAIL RESOURCE_BUDGET and the service suite remains19 PASS/21 FAIL, all unwaived. Native Main and acceptance remain open; P05 OPEN, P06–P08 NOT_STARTED, Phase One NOT_ACCEPTED / NOT_RELEASED. Walking is unchanged. The earlier dated bodies above are preserved as historical evidence.
+
+
+## 25 October 2026 continuation — source reuse/staging09
+
+[Current source reuse/staging report](Observatory-Main-Source-Reuse-Staging-2026-10-25.md) records fresh sibling `I:/Sphere/work/biome-pack-service-reuse-2026-10-25-213922-9485ed41`, exact source/reuse-09 (522 files / 426 scripts). Root drives225 source-admission and224 retirement visits through genuine Source custody and guarded native hash completion. The ordinary component passes at33,107,779 B logical peak with closed State backing retained. Ten original, six parent and17 new Source controls pass; replacement remains FAIL RESOURCE_BUDGET. The broad cohort remains19 PASS / 21 FAIL, all failures unwaived. Complete consumer work/storage prices, whole-source price/funding and whole Main metadata remain null; complete C1, native Main and acceptance remain open. P05 OPEN; P06–P08 NOT_STARTED; Phase One NOT_ACCEPTED / NOT_RELEASED. No walking promotion or fixed-limit change. Historical content above is preserved.
+
+
+## 26 October 2026 — private catalogue-to-State input custody
+
+Read [the current source and evidence report](Observatory-Main-State-Caller-Custody-2026-10-26.md). The new /8 private input-custody leaf and fixed startup resource callsite are implemented, with44 scoped PASS controls and unchanged unwaived replacement FAIL RESOURCE_BUDGET. Actual initializer dispatch/result observation and complete work/storage pricing remain OPEN; naive nested Source rows request a third job against the fixed two-job limit. The broad suite remains19 PASS /21 FAIL, all unwaived. Known authored module subtotal567872 B is incomplete; complete consumer/whole-source price, funding and Main metadata stay null. Native Main NOT_RUN, physical heap UNMEASURED, full C1/conformance/acceptance open. P05 OPEN; P06–P08 NOT_STARTED; Phase One NOT_ACCEPTED /NOT_RELEASED. Walking and earlier dated report bodies are preserved.
+
+
+## 27 October 2026 — private State startup scheduling under two jobs
+
+Read [the current source/evidence report](Observatory-Main-State-Startup-Schedule-2026-10-27.md). The State-stage component now shares the exact original initializer R job, retains Source's second job, and adds no internal frame/slice reset.55 scoped receipts:54 PASS; replacement remains unwaived FAIL RESOURCE_BUDGET. The broad sweep remains19 PASS/21 FAIL, all unwaived and matching caller04. Complete pricing stays OPEN: an original Release late-refusal fixture reaches a disjoint33,554,656 B string/two-array subset before final admission; the local owner-loop count is not an R tariff. Known636,064 B module and2,912 B shape subsets are incomplete. Complete work/storage/whole-source/funding/Main metadata remain null. Earlier callers/full C1/native Main/conformance/acceptance remain open. P05 OPEN; P06–P08 NOT_STARTED; Phase One NOT_ACCEPTED/NOT_RELEASED. Original runtime, walking, protected packs and dated report bodies are preserved.

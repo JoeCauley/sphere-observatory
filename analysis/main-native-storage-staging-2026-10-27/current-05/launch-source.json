@@ -1,0 +1,162 @@
+{
+  "status": "PASS_COHERENT_COMPILED_LAUNCH_AND_THREE_ACTUAL_SOURCE_ADMISSIONS",
+  "source": "I:\\Sphere\\work\\biome-pack-service-storage-2026-10-27-192829-eb2d8929\\source\\storage-05",
+  "compiled": {
+    "artifact": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-storage-2026-10-27-192829-eb2d8929\\compiled-storage-05\\owned-main-trusted-launch.unselected.js",
+      "bytes": 2727954,
+      "sha256": "23ef86634d30bb73476308d23650c04afe56255a4b0f87eeab250b45db5ef305"
+    },
+    "regions": [
+      {
+        "file": "world-address.js",
+        "inputSHA256": "b614e3f9e9492674c180ac9ebc72aec2345e5428bdfe98984cb4cd5c224b77f1",
+        "inputBytes": 9929,
+        "start": 28311,
+        "end": 38328,
+        "edits": []
+      },
+      {
+        "file": "world-topology.js",
+        "inputSHA256": "2652a46d33997899f8c0108481ff84a0c97dfc720f2e3853592d0748280f8cf6",
+        "inputBytes": 10225,
+        "start": 38328,
+        "end": 48643,
+        "edits": []
+      },
+      {
+        "file": "biome-service/schema-validators.js",
+        "inputSHA256": "7e2a0965c4e5f92b72bb4af2599425149ce1bb52d501b00471bfb01f59e4a46f",
+        "inputBytes": 1108030,
+        "start": 48643,
+        "end": 1156797,
+        "edits": []
+      },
+      {
+        "file": "biome-service/records.js",
+        "inputSHA256": "82af5de7c47b07b6f91a2fd2c9cc1c154bd300660617f38319e1c01bcd887bb1",
+        "inputBytes": 957107,
+        "start": 1156932,
+        "end": 2114201,
+        "edits": [
+          {
+            "old": "OWNED_RECORDS_DEFERRED_CAPTURE=null",
+            "new": "OWNED_RECORDS_DEFERRED_CAPTURE=launchRetainRecordsInitialization"
+          },
+          {
+            "old": "const OWNED_BINDING_READ_DECODE_CURRENT=null;",
+            "new": "const OWNED_BINDING_READ_DECODE_CURRENT=launchDecodeCurrent;",
+            "allOccurrences": true,
+            "expectedCount": 2,
+            "role": "Original pre-wait decoder fact for both original binding and seventh recipe parser; no later recapture."
+          }
+        ]
+      },
+      {
+        "file": "biome-service/metadata-budget.js",
+        "inputSHA256": "f297bdde5d682e3396f4dae185dd72651b91551dad3a4a0e31d0bde53c0b0511",
+        "inputBytes": 13676,
+        "start": 2114201,
+        "end": 2128058,
+        "edits": [
+          {
+            "old": "OWNED_BOOTSTRAP_PROFILE_DIGEST=null",
+            "new": "OWNED_BOOTSTRAP_PROFILE_DIGEST=launchProfileDigest"
+          },
+          {
+            "old": "OWNED_BOOTSTRAP_SEED_BYTES=null",
+            "new": "OWNED_BOOTSTRAP_SEED_BYTES=launchSeedBytes"
+          },
+          {
+            "old": "OWNED_BOOTSTRAP_MODULE_BYTES=null",
+            "new": "OWNED_BOOTSTRAP_MODULE_BYTES=launchModuleBytes"
+          },
+          {
+            "old": "OWNED_BOOTSTRAP_WORK=null",
+            "new": "OWNED_BOOTSTRAP_WORK=launchWork"
+          },
+          {
+            "old": "OWNED_BOOTSTRAP_LAUNCH_CLAIM=null",
+            "new": "OWNED_BOOTSTRAP_LAUNCH_CLAIM=launchClaim"
+          },
+          {
+            "old": "OWNED_BOOTSTRAP_EXPECTED_RECEIPT=null",
+            "new": "OWNED_BOOTSTRAP_EXPECTED_RECEIPT=launchReceipt"
+          }
+        ]
+      },
+      {
+        "file": "biome-service/native/source-admission.js",
+        "inputSHA256": "7ef00386c13646f38ba11403309d319297d6776665e2b2909539695492fe6131",
+        "inputBytes": 100576,
+        "start": 2128058,
+        "end": 2228770,
+        "edits": []
+      }
+    ],
+    "loader": {
+      "start": 2232188,
+      "end": 2726300,
+      "edit": {
+        "old": "const metadataOwner=Q.create(),controllerCharge=metadataOwner.reserve(NaN/* base389120 plus private entry delta NOT_YET_DERIVED */,{owner:'owned-main-bootstrap',phase:'controller-before-capture'});",
+        "new": "const metadataOwner=launchOwner,controllerCharge=metadataOwner.reserve(launchEntryBytes,{owner:'owned-main-bootstrap',phase:'controller-before-capture'});"
+      }
+    },
+    "parts": {
+      "prefix": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v66-coherent-used-source-2026-10-24-01\\candidate-01\\launch-prefix-staged-01.js.txt",
+        "bytes": 28311,
+        "sha256": "b458d08dd720611146d8cbe8a945dc6d1d0c9fc74826bc4abb5fea83d470d200"
+      },
+      "between": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v66-coherent-used-source-2026-10-24-01\\candidate-01\\launch-between-staged-01.js.txt",
+        "bytes": 3418,
+        "sha256": "9ac321f719b6f43a7a8885fc8401955509c782b6f2b70e3be78a2ca2bee4acf0"
+      },
+      "suffix": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-main-2026-10-20T10-35-00\\main-v66-coherent-used-source-2026-10-24-01\\candidate-01\\launch-suffix-staged-01.js.txt",
+        "bytes": 1412,
+        "sha256": "3d48fd1e5c96599aae68ba5f8065aa43a5e8ca538bd5d028a1b494015f18c3ad"
+      }
+    }
+  },
+  "profiles": [
+    {
+      "name": "buildGraph",
+      "digest": "3c358a365e75f2a90153f7883d14e860df95e6aed3f2aa3a5be1fe1d37d936f3",
+      "rows": 225
+    },
+    {
+      "name": "buildSurfaceEnvelope",
+      "digest": "c4e27123bf6ce81d8d6b24a9ef8bad337971cc0e27746f8001d24f695863b089",
+      "rows": 5
+    },
+    {
+      "name": "buildStartupEnvelope",
+      "digest": "4d4f43ad0d8cbf6137d22458cb30ed1a0b21f6f652b750d72a54c4d21f612f21",
+      "rows": 9
+    }
+  ],
+  "freshReads": 239,
+  "distinctSourceCopies": 225,
+  "sourceOnlyPeakBytes": 14950165,
+  "sourceOnlyFinal": {
+    "heldBytes": 0,
+    "requestedBytes": 0,
+    "bookkeepingBytes": 0,
+    "peakBytes": 14950165,
+    "limitBytes": 33554432,
+    "liveReservations": 0,
+    "maximumReservations": 4096,
+    "owners": [],
+    "scope": "CONSERVATIVE_LOGICAL_METADATA_ADMISSION",
+    "nativeHeap": "UNMEASURED"
+  },
+  "sourceIntegrity": true,
+  "RecordsSameAsRoot66": true,
+  "scope": "Actual original Source/Q/Records and native Node SHA run with default-null API. Compiled source is parsed, unselected and not activated. Source-only final Q0 excludes every optional component/startup/retained caller/Main cohort.",
+  "completeFunding": null,
+  "wholeQ": null,
+  "Main": false,
+  "P05": "OPEN"
+}

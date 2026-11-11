@@ -1,0 +1,79 @@
+{
+  "P05": "OPEN",
+  "P06": "NOT_STARTED",
+  "P07": "NOT_STARTED",
+  "P08": "NOT_STARTED",
+  "PhaseOne": "NOT_ACCEPTED_NOT_RELEASED",
+  "gates": [
+    {
+      "id": "StateStageSharedJobSchedule",
+      "status": "COMPONENT_PASS",
+      "note": "Actual original initializer/resource/Root/State/Source bodies share the exact retained initializer R job and transient Source second job. Ten scoped controls pass. Earlier entry/parents remain disclosed models."
+    },
+    {
+      "id": "CompleteConsumerWorkStoragePricing",
+      "status": "OPEN",
+      "note": "Native Storage/Release input and original owner/pin/resource validation require complete source-owned bounds/staging/reuse. Concrete late-refusal subset33554656B already exceeds32MiB. Selected local owner-loop count95325 is not a complete R tariff."
+    },
+    {
+      "id": "SourceSeedWholeSourceFunding",
+      "status": "OPEN",
+      "note": "New Source/State declarations precede later bind-time reserves. Known module subtotal636064B and seven shapes2912B omit other births."
+    },
+    {
+      "id": "FullOriginalCallerC1",
+      "status": "OPEN",
+      "note": "Earlier Host/Binding/cache/configuration/storage/native/error/factory/caller bodies and every used retirement/native/error path remain unqualified as a whole."
+    },
+    {
+      "id": "Replacement",
+      "status": "FAIL_RESOURCE_BUDGET_UNWAIVED",
+      "note": "Two distinct live owners exceed unchanged full U. No old-owner removal, U/provider/manifest budget increase or waiver."
+    },
+    {
+      "id": "BroadServiceRegressions",
+      "status": "19_PASS_21_FAIL_UNWAIVED",
+      "note": "All40 statuses match caller04; every failure remains unwaived."
+    },
+    {
+      "id": "WholeMainRootProgramBaselineOwnership",
+      "status": "OPEN"
+    },
+    {
+      "id": "WholeSimultaneousResourceMetadataVector",
+      "status": "OPEN"
+    },
+    {
+      "id": "NativeMainOverviewWholeViewFragmentFrameSupportAppearance",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "PhysicalHeap",
+      "status": "UNMEASURED"
+    },
+    {
+      "id": "FullConformanceAcceptanceRelease",
+      "status": "NOT_RUN_NOT_ACCEPTED_NOT_RELEASED"
+    }
+  ],
+  "completeWorkPrice": null,
+  "completeStoragePrice": null,
+  "wholeSourcePrice": null,
+  "funding": null,
+  "wholeMainMetadata": null,
+  "limits": {
+    "prepareOperations": 4096,
+    "uploadBytes": 262144,
+    "jobs": 2,
+    "slots": 64,
+    "serviceCPUBytes": 33554432,
+    "serviceGPUBytes": 10485760,
+    "commonMetadataBytes": 33554432,
+    "contextBytes": 1048576,
+    "contextDepth": 64,
+    "contextNodes": 2097152,
+    "stateBytes": 262144,
+    "stateDepth": 32,
+    "stateNodes": 8192
+  }
+}

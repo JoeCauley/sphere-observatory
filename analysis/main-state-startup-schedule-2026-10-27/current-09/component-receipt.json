@@ -1,0 +1,741 @@
+{
+  "status": "EXACT_SOURCE_ASSOCIATED_SCOPED_SCHEDULE_PASS_COMPLETE_PRICING_OPEN",
+  "work": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a",
+  "source": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/source/startup-09",
+  "files": 522,
+  "parsedScripts": 426,
+  "changedFromCaller04": [
+    "biome-service/native/state-contexts.js",
+    "owned-main-bootstrap.js"
+  ],
+  "Root66": {
+    "changed": 10,
+    "exact": 512,
+    "paths": [
+      "biome-service/binding-builder.js",
+      "biome-service/commonboundary-adapter.js",
+      "biome-service/host-world.js",
+      "biome-service/native/root-program-binding.js",
+      "biome-service/native/source-admission.js",
+      "biome-service/native/state-contexts.js",
+      "biome-service/native/strict-record-owner.js",
+      "biome-service/native/surface-kernel.js",
+      "biome-service/provider-profiles.js",
+      "owned-main-bootstrap.js"
+    ]
+  },
+  "RecordsByteExact": true,
+  "compiledLaunch": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-startup-2026-10-26-191746-01debe3a\\compiled-startup-09\\owned-main-trusted-launch.unselected.js",
+    "bytes": 2723860,
+    "sha256": "ac4586e99b46bc3e9fbc0e53cceced7882dfe680bcd775ae9a159955805d5ed3"
+  },
+  "sourceOnlyProof": {
+    "reads": 238,
+    "copies": 224,
+    "scope": "Actual original Source/Q/Records and native Node SHA run with default-null API. Compiled source is parsed, unselected and not activated. Source-only final Q0 excludes every optional component/startup/retained caller/Main cohort."
+  },
+  "componentControls": [
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/current-16/control-ownedHostStagesReadBindBoundaryReentry-01.json",
+      "bytes": 29823,
+      "sha256": "2ef6c803397dc0995298e8100eda469804a25c65b1098aa7775c99ed9314bb57",
+      "case": "ownedHostStagesReadBindBoundaryReentry",
+      "status": "PASS_ADVERSE_RETAINED",
+      "errorCode": "BINDING_BOUNDARY_REENTRY",
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/current-16/control-ownedHostStagesReadBindCallerCatalogue-01.json",
+      "bytes": 19701,
+      "sha256": "f01462f6180a8fecfc70f1de5f334b97671e103ac7416458f5de0d2744b9e3c3",
+      "case": "ownedHostStagesReadBindCallerCatalogue",
+      "status": "PASS_CALLER_FOREIGN_CATALOGUE_NO_TRAPS",
+      "errorCode": null,
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/current-16/control-ownedHostStagesReadBindCallerForgery-01.json",
+      "bytes": 19703,
+      "sha256": "7e276674c103f93086bd9b3fdebc3d0027cc20444260724834bbe761065f68d0",
+      "case": "ownedHostStagesReadBindCallerForgery",
+      "status": "PASS_CALLER_FORGED_OPAQUE_RECEIPT_NO_TRAPS",
+      "errorCode": null,
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/current-16/control-ownedHostStagesReadBindCallerMetadata-01.json",
+      "bytes": 19774,
+      "sha256": "34994e1fb88c17ce4a58fe4fb798e46bf033ff2acf94a9774f19ee23e1912474",
+      "case": "ownedHostStagesReadBindCallerMetadata",
+      "status": "PASS_CALLER_ACTUAL_METADATA_QUOTA_CATALOGUE_HELD",
+      "errorCode": null,
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/current-16/control-ownedHostStagesReadBindCallerNamespace-01.json",
+      "bytes": 19740,
+      "sha256": "2d5154cda05f77bf2a02434139fd1225abdf93acd35f5fce2641c26d73e787b4",
+      "case": "ownedHostStagesReadBindCallerNamespace",
+      "status": "PASS_CALLER_PREDEBIT_NAMESPACE_NO_FOREIGN_CALL",
+      "errorCode": null,
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/current-16/control-ownedHostStagesReadBindCallerNestedJob-01.json",
+      "bytes": 22683,
+      "sha256": "c91a64554c817829630a068caeff255a617cd0801174819da0aac5102c8d1ee6",
+      "case": "ownedHostStagesReadBindCallerNestedJob",
+      "status": "PASS_NAIVE_NESTED_SOURCE_THIRD_JOB_REFUSED",
+      "errorCode": null,
+      "scope": "The outer actual R job models an initializer visit. The original standalone parent wrapper opens the second job; Source row enter requests a third and refuses. Normal standalone source rows transiently use two jobs. The State native Promise rejection is observed through a disclosed external test observer outside Q; no native crypto had started. No actual initializer, native Main or recovery proof."
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/current-16/control-ownedHostStagesReadBindCallerPositive-01.json",
+      "bytes": 41939,
+      "sha256": "a7e0779bb22f03c34e24c19090a7345fb1d2b75fd83dbb27649c18f0bd3b57dc",
+      "case": "ownedHostStagesReadBindCallerPositive",
+      "status": "PASS_VERIFIED_BIND_COMPONENT",
+      "errorCode": null,
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/current-16/control-ownedHostStagesReadBindCallerPublic-01.json",
+      "bytes": 19713,
+      "sha256": "63d9810901036d8965e3b9d367fcee1db3b57e03764a4ba039e60e75b5790417",
+      "case": "ownedHostStagesReadBindCallerPublic",
+      "status": "PASS_CALLER_PUBLIC_INPUT_REFUSED_BEFORE_OTHER_GETTERS",
+      "errorCode": null,
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/current-16/control-ownedHostStagesReadBindCallerRawFalse-01.json",
+      "bytes": 19830,
+      "sha256": "f099c348129556ba98942a9bfccf43c4eea9e418a451d710f87f02ff9a3afc8d",
+      "case": "ownedHostStagesReadBindCallerRawFalse",
+      "status": "PASS_CALLER_FIRST_RAW_OCCURRENCE_AND_CATALOGUE_HELD",
+      "errorCode": null,
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/current-16/control-ownedHostStagesReadBindCallerRawUndefined-01.json",
+      "bytes": 19836,
+      "sha256": "4c50296dac486c984fd4f59cd16ef43a31194294a9251681e732a6876aa81ae0",
+      "case": "ownedHostStagesReadBindCallerRawUndefined",
+      "status": "PASS_CALLER_FIRST_RAW_OCCURRENCE_AND_CATALOGUE_HELD",
+      "errorCode": null,
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/current-16/control-ownedHostStagesReadBindCallerReplay-01.json",
+      "bytes": 42050,
+      "sha256": "6801e688011d2eccc5bbd31a282decc354cb8e86a3fef8ac440f3197b9fbf2f0",
+      "case": "ownedHostStagesReadBindCallerReplay",
+      "status": "PASS_VERIFIED_BIND_COMPONENT",
+      "errorCode": null,
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/current-16/control-ownedHostStagesReadBindCallerWork-01.json",
+      "bytes": 21046,
+      "sha256": "653a09a293287ac20b23131b11ab3732700a7a28979a4f7c8b39777df25d05ae",
+      "case": "ownedHostStagesReadBindCallerWork",
+      "status": "PASS_CALLER_ACTUAL_R_WORK_QUOTA_CATALOGUE_HELD",
+      "errorCode": null,
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/current-16/control-ownedHostStagesReadBindCancel-01.json",
+      "bytes": 29788,
+      "sha256": "8da1d19775afeecc79a997a0fde57694b160a49504566f2583ac72dfb0549e5c",
+      "case": "ownedHostStagesReadBindCancel",
+      "status": "PASS_ADVERSE_RETAINED",
+      "errorCode": "CANCELLED",
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/current-16/control-ownedHostStagesReadBindCleanupPinned-01.json",
+      "bytes": 39817,
+      "sha256": "fdd90dabab8faef6fcc920e3ec99ec4d817ff4022b814afd9733e9585323367e",
+      "case": "ownedHostStagesReadBindCleanupPinned",
+      "status": "PASS_VERIFIED_BIND_COMPONENT",
+      "errorCode": null,
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/current-16/control-ownedHostStagesReadBindCurrent-01.json",
+      "bytes": 30789,
+      "sha256": "c8c53551f27053cf957adc3f776881039abb38da218f60d4361d8b3e62767e34",
+      "case": "ownedHostStagesReadBindCurrent",
+      "status": "PASS_PARENT_BOUNDARY_HELD",
+      "errorCode": "COLD_PROFILE_DEPENDENCY_CHANGED",
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/current-16/control-ownedHostStagesReadBindPositive-01.json",
+      "bytes": 39675,
+      "sha256": "5e627e10832d1e08e756aef12ccfc756938b17aa5e00e784a0fe382862fbefb6",
+      "case": "ownedHostStagesReadBindPositive",
+      "status": "PASS_VERIFIED_BIND_COMPONENT",
+      "errorCode": null,
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/current-16/control-ownedHostStagesReadBindPressure-01.json",
+      "bytes": 30013,
+      "sha256": "fe9635c21442e093c46ce83717421e7a24c2a28198370a9108b083b7f6adcfb5",
+      "case": "ownedHostStagesReadBindPressure",
+      "status": "PASS_ADVERSE_RETAINED",
+      "errorCode": "RESOURCE_LIMIT",
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/current-16/control-ownedHostStagesReadBindQuota-01.json",
+      "bytes": 29777,
+      "sha256": "2f52e17795e4e54411693f3c2bb2a094e6d514785bb4c6c0341d22059a01c330",
+      "case": "ownedHostStagesReadBindQuota",
+      "status": "PASS_ADVERSE_RETAINED",
+      "errorCode": "WORK_QUOTA",
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/current-16/control-ownedHostStagesReadBindRawFalse-01.json",
+      "bytes": 29745,
+      "sha256": "5757859394d88bff712b63012e7ea4af3dc0b8e3c2890d7261dd7f1e908babb6",
+      "case": "ownedHostStagesReadBindRawFalse",
+      "status": "PASS_ADVERSE_RETAINED",
+      "errorCode": null,
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/current-16/control-ownedHostStagesReadBindRawUndefined-01.json",
+      "bytes": 29761,
+      "sha256": "ca02b79382b1880a331994cabe8f8f135d574035d8362440281efa993028d86f",
+      "case": "ownedHostStagesReadBindRawUndefined",
+      "status": "PASS_ADVERSE_RETAINED",
+      "errorCode": null,
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/current-16/control-ownedHostStagesReadBindReentry-01.json",
+      "bytes": 29793,
+      "sha256": "3c7b954e78f1ef7bd08e14758847d619f4cb9809642e20c2c2e37947fd9a0f0a",
+      "case": "ownedHostStagesReadBindReentry",
+      "status": "PASS_ADVERSE_RETAINED",
+      "errorCode": "CONSUMER_PARENT_REENTRY",
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/current-16/control-ownedHostStagesReadBindReplacement-01.json",
+      "bytes": 26398,
+      "sha256": "81ad31755c2b594bbf68089dba3de973eec1c4ac1bfa3773e7e03362d680293d",
+      "case": "ownedHostStagesReadBindReplacement",
+      "status": "FAIL",
+      "errorCode": "RESOURCE_BUDGET",
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/current-16/control-ownedHostStagesReadParentCompletionQuota-01.json",
+      "bytes": 25441,
+      "sha256": "4e99018a9f575728e08ed46b15ffd0be36812b97dd15ff6128b510517b5a1529",
+      "case": "ownedHostStagesReadParentCompletionQuota",
+      "status": "PASS_COMPLETION_QUOTA_HELD",
+      "errorCode": "WORK_QUOTA",
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/current-16/control-ownedHostStagesReadParentForgedToken-01.json",
+      "bytes": 29393,
+      "sha256": "3a13af69bbd997e0d33ca6c767a1076a36d11e987e32ddc62ab0d118ed4999d2",
+      "case": "ownedHostStagesReadParentForgedToken",
+      "status": "PASS_EARLY_PARENT_REFUSAL_HELD",
+      "errorCode": "CONSUMER_PARENT_REQUEST_REQUIRED",
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/current-16/control-ownedHostStagesReadParentJobQuota-01.json",
+      "bytes": 30803,
+      "sha256": "5f1ad0c101aa2194c42d1eb3d44ed54310ff0ae01211a851704df9722163f712",
+      "case": "ownedHostStagesReadParentJobQuota",
+      "status": "PASS_PARENT_BOUNDARY_HELD",
+      "errorCode": "JOB_QUOTA",
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/current-16/control-ownedHostStagesReadParentRequestDomain-01.json",
+      "bytes": 29395,
+      "sha256": "211b2f6d80ebf2ede4bfcc6cbbac8c3843a5553365abc2db170403eeb9894092",
+      "case": "ownedHostStagesReadParentRequestDomain",
+      "status": "PASS_EARLY_PARENT_REFUSAL_HELD",
+      "errorCode": "CONSUMER_PARENT_REQUEST_DOMAIN",
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/current-16/control-ownedHostStagesReadParentRequestQuota-01.json",
+      "bytes": 29547,
+      "sha256": "cee83eed391dcb2c0fac6b485c05c78bd38d69b8d33b09abe15075e3fc8f0c54",
+      "case": "ownedHostStagesReadParentRequestQuota",
+      "status": "PASS_EARLY_PARENT_REFUSAL_HELD",
+      "errorCode": "RESOURCE_LIMIT",
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/current-16/control-ownedHostStagesReadParentSliceChange-01.json",
+      "bytes": 29811,
+      "sha256": "3c152943e821613feaf0a7b9a4582c16f1b85ebc78a4746f8b81da8d43dcd644",
+      "case": "ownedHostStagesReadParentSliceChange",
+      "status": "PASS_ADVERSE_RETAINED",
+      "errorCode": "CONSUMER_PARENT_SCOPE_CHANGED",
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/source-18/source-projection-closeQuota-10.json",
+      "bytes": 6342,
+      "sha256": "e5c5eac6692aaf3a01b8a90a62e4091298f126940661ad20a721130f11ac9dfd",
+      "case": "closeQuota",
+      "status": "PASS_CLOSE_QUOTA_NO_SOURCE_OR_STATE_RECLAIM",
+      "errorCode": null,
+      "scope": null
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/source-18/source-projection-completionQuota-09.json",
+      "bytes": 7193,
+      "sha256": "c6f5392c6c9ad9eaf561dd26bebd5271ae84da7ea984db5f40e4d208c7c4ec93",
+      "case": "completionQuota",
+      "status": "PASS_ACTUAL_COMPLETION_QUOTA_HELD",
+      "errorCode": null,
+      "scope": null
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/source-18/source-projection-contextLoss-10.json",
+      "bytes": 6363,
+      "sha256": "022c47ee124f7a1dd200760a015590281c457833bd218b97e7ba3322ed0dab48",
+      "case": "contextLoss",
+      "status": "PASS_ACTUAL_CONTEXT_LOSS_NATIVE_COMPLETION_HELD",
+      "errorCode": null,
+      "scope": null
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/source-18/source-projection-errorPrototype-09.json",
+      "bytes": 5061,
+      "sha256": "d0f46e8e7976d69386f69ecc5c749c44d9917cd10c90a2552cee2e84a297fd48",
+      "case": "errorPrototype",
+      "status": "PASS_ERROR_PROTOTYPE_NO_FOREIGN_SETTER",
+      "errorCode": null,
+      "scope": null
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/source-18/source-projection-forged-09.json",
+      "bytes": 4618,
+      "sha256": "712db1c8a1e08ce14dc737c8f509809d091c6410b5f20bf03a4ae9de612d5e77",
+      "case": "forged",
+      "status": "PASS_FORGED_RECEIPTS_NO_TRAPS",
+      "errorCode": null,
+      "scope": null
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/source-18/source-projection-jobs-09.json",
+      "bytes": 6308,
+      "sha256": "7298fa492abc8bccfaa9c86c9d1a42e610161c7a23ec3cc80a0b47f7f28998b6",
+      "case": "jobs",
+      "status": "PASS_ACTUAL_JOB_QUOTA_HELD",
+      "errorCode": null,
+      "scope": null
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/source-18/source-projection-metadataQuota-09.json",
+      "bytes": 4712,
+      "sha256": "4d500dff6e09ed14a66bde5ba2dc637b84e2efaa2eb146b6103afea61110221e",
+      "case": "metadataQuota",
+      "status": "PASS_EXPECTED_METADATA_REFUSAL",
+      "errorCode": null,
+      "scope": null
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/source-18/source-projection-namespace-09.json",
+      "bytes": 5053,
+      "sha256": "6bd8b393971eccf7261850efd91f8729d10d0fcbd9316619397ef916873c950c",
+      "case": "namespace",
+      "status": "PASS_SOURCE_NAMESPACE_SUBSTITUTION_REFUSED",
+      "errorCode": null,
+      "scope": null
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/source-18/source-projection-namespaceAccessor-09.json",
+      "bytes": 5059,
+      "sha256": "3b1c67814e9bd9d2f270f8f08d9d1d13163127d84f233732eb559a618c6fee84",
+      "case": "namespaceAccessor",
+      "status": "PASS_SOURCE_NAMESPACE_ACCESSOR_NO_GETTER",
+      "errorCode": null,
+      "scope": null
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/source-18/source-projection-native-09.json",
+      "bytes": 5043,
+      "sha256": "993c08b52c4e477ba0653f12607593ef3a1fab417fce8cad1efe188bd6ae8c1a",
+      "case": "native",
+      "status": "PASS_NATIVE_PREDEBIT_REFUSAL",
+      "errorCode": null,
+      "scope": null
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/source-18/source-projection-nativeWaitIterator-09.json",
+      "bytes": 5933,
+      "sha256": "39bf47decf29e7b07516a96093e3f0772d5ca405c02123a22a9161f4e8fc927c",
+      "case": "nativeWaitIterator",
+      "status": "PASS_POST_NATIVE_CURRENT_BEFORE_FORMAT_AND_DEBIT",
+      "errorCode": null,
+      "scope": null
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/source-18/source-projection-nativeWaitNumber-09.json",
+      "bytes": 5931,
+      "sha256": "cf54f2ffabb003f1727010391b66edbba51f1923736d78a7d9d42c31009d6f7b",
+      "case": "nativeWaitNumber",
+      "status": "PASS_POST_NATIVE_CURRENT_BEFORE_FORMAT_AND_DEBIT",
+      "errorCode": null,
+      "scope": null
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/source-18/source-projection-positive-09.json",
+      "bytes": 8444,
+      "sha256": "7897b24ff978431360aaf5c483b19e10cc51d87dcb2036d4147a24882330a53a",
+      "case": "positive",
+      "status": "PASS_ORIGINAL_PROJECTION_DIGEST_PROVIDER_ROWS_AND_CLOSED_BACKING",
+      "errorCode": null,
+      "scope": null
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/source-18/source-projection-rawFalse-09.json",
+      "bytes": 5888,
+      "sha256": "3e6b76ff92d4115ccb6bab7970604e45fd39f8acd20cbd75bf3bea0917d23ce2",
+      "case": "rawFalse",
+      "status": "PASS_RAW_OCCURRENCE_AND_ALL_ROOTS_HELD",
+      "errorCode": null,
+      "scope": null
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/source-18/source-projection-rawUndefined-09.json",
+      "bytes": 5898,
+      "sha256": "51110e048f7786604e2fefe123b92dbb73b0ba4c5cbf199ee2d47400758a230c",
+      "case": "rawUndefined",
+      "status": "PASS_RAW_OCCURRENCE_AND_ALL_ROOTS_HELD",
+      "errorCode": null,
+      "scope": null
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/source-18/source-projection-reentry-09.json",
+      "bytes": 7204,
+      "sha256": "47b95359a5d827ad64bd006fad7e138616bc9388352e575cfeac433798649261",
+      "case": "reentry",
+      "status": "PASS_REENTRY_FIRST_CAUSE_AND_JOB_HELD",
+      "errorCode": null,
+      "scope": null
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/source-18/source-projection-scratchQuota-10.json",
+      "bytes": 5125,
+      "sha256": "a7a96846ebffff63083e2e1aafb898f8bf74693a79cd3b3ea74d7497d92715b7",
+      "case": "scratchQuota",
+      "status": "PASS_STAGED_SCRATCH_QUOTA_ALL_ROOTS_HELD",
+      "errorCode": null,
+      "scope": null
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/startup-17/control-ownedHostStagesReadBindStartupClose-01.json",
+      "bytes": 24803,
+      "sha256": "387f0374534360d1bee2dc080e36d17e566aee8720b91b1d98c07caeb7f023b1",
+      "case": "ownedHostStagesReadBindStartupClose",
+      "status": "PASS_STARTUP_ADVERSE_RETAINED",
+      "errorCode": null,
+      "scope": {
+        "phase": "STATE_CALLER_START",
+        "uncertain": true,
+        "terminal": false,
+        "hasOwnedFailure": true,
+        "failureCode": "STATE_CALLER_PROGRESS_FAILED_RETAINED",
+        "totalWork": 14,
+        "visits": 4,
+        "paid": {
+          "open": true,
+          "pending": true,
+          "inVisit": false,
+          "rOwned": true
+        }
+      }
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/startup-17/control-ownedHostStagesReadBindStartupEpoch-01.json",
+      "bytes": 24814,
+      "sha256": "ec8bcf9286794f05b22ce99d0bb97094644389a90a96e4d61d7be1106c913d15",
+      "case": "ownedHostStagesReadBindStartupEpoch",
+      "status": "PASS_STARTUP_ADVERSE_RETAINED",
+      "errorCode": null,
+      "scope": {
+        "phase": "STATE_CALLER_START",
+        "uncertain": true,
+        "terminal": false,
+        "hasOwnedFailure": true,
+        "failureCode": "INITIALIZER_COMPLETION_SCOPE_CHANGED",
+        "totalWork": 14,
+        "visits": 4,
+        "paid": {
+          "open": true,
+          "pending": true,
+          "inVisit": false,
+          "rOwned": true
+        }
+      }
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/startup-17/control-ownedHostStagesReadBindStartupForgery-01.json",
+      "bytes": 19695,
+      "sha256": "5dce4fefd95b2fbf0c7b8a5aaa28bd0750d435b8f4223d61f5fefbfd0222b8b1",
+      "case": "ownedHostStagesReadBindStartupForgery",
+      "status": "PASS_STARTUP_FOREIGN_ADVANCE_REFUSED",
+      "errorCode": null,
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/startup-17/control-ownedHostStagesReadBindStartupNamespace-01.json",
+      "bytes": 24832,
+      "sha256": "e469da257b87faafffba733362b03af51925dc5b9beef44ade7b4c08c069de9a",
+      "case": "ownedHostStagesReadBindStartupNamespace",
+      "status": "PASS_STARTUP_ADVERSE_RETAINED",
+      "errorCode": null,
+      "scope": {
+        "phase": "STATE_CALLER_START",
+        "uncertain": true,
+        "terminal": false,
+        "hasOwnedFailure": true,
+        "failureCode": "STATE_CALLER_PROGRESS_FAILED_RETAINED",
+        "totalWork": 14,
+        "visits": 4,
+        "paid": {
+          "open": true,
+          "pending": true,
+          "inVisit": false,
+          "rOwned": true
+        }
+      }
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/startup-17/control-ownedHostStagesReadBindStartupPositive-01.json",
+      "bytes": 72477,
+      "sha256": "e5075bcb52ac71ec84f5ea0190db663d8c3c42589d1d0f58cdaa819cdc1f7852",
+      "case": "ownedHostStagesReadBindStartupPositive",
+      "status": "PASS_VERIFIED_BIND_COMPONENT",
+      "errorCode": null,
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/startup-17/control-ownedHostStagesReadBindStartupQuota-01.json",
+      "bytes": 24793,
+      "sha256": "19e500d24649dce38c0ab660a7e6127af4fbca8157332161cabf5b8a9698dc61",
+      "case": "ownedHostStagesReadBindStartupQuota",
+      "status": "PASS_STARTUP_ADVERSE_RETAINED",
+      "errorCode": null,
+      "scope": {
+        "phase": "STATE_CALLER_START",
+        "uncertain": true,
+        "terminal": false,
+        "hasOwnedFailure": true,
+        "failureCode": "INITIALIZER_COMPLETION_SCOPE_CHANGED",
+        "totalWork": 14,
+        "visits": 4,
+        "paid": {
+          "open": true,
+          "pending": true,
+          "inVisit": false,
+          "rOwned": true
+        }
+      }
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/startup-17/control-ownedHostStagesReadBindStartupRawFalse-01.json",
+      "bytes": 24778,
+      "sha256": "1acd0651a5529401b4868858fee6ecce64b3ff3e7411dbf533f6bc84fb686d41",
+      "case": "ownedHostStagesReadBindStartupRawFalse",
+      "status": "PASS_STARTUP_ADVERSE_RETAINED",
+      "errorCode": null,
+      "scope": {
+        "phase": "STATE_CALLER_START",
+        "uncertain": true,
+        "terminal": false,
+        "hasOwnedFailure": true,
+        "failureCode": "STATE_CALLER_PROGRESS_FAILED_RETAINED",
+        "totalWork": 14,
+        "visits": 4,
+        "paid": {
+          "open": true,
+          "pending": true,
+          "inVisit": false,
+          "rOwned": true
+        }
+      }
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/startup-17/control-ownedHostStagesReadBindStartupRawUndefined-01.json",
+      "bytes": 24792,
+      "sha256": "eeb210aa05254d99874bdf8e5859cc49dd8225c4b9abe2a529b3197a6edeb74e",
+      "case": "ownedHostStagesReadBindStartupRawUndefined",
+      "status": "PASS_STARTUP_ADVERSE_RETAINED",
+      "errorCode": null,
+      "scope": {
+        "phase": "STATE_CALLER_START",
+        "uncertain": true,
+        "terminal": false,
+        "hasOwnedFailure": true,
+        "failureCode": "STATE_CALLER_PROGRESS_FAILED_RETAINED",
+        "totalWork": 14,
+        "visits": 4,
+        "paid": {
+          "open": true,
+          "pending": true,
+          "inVisit": false,
+          "rOwned": true
+        }
+      }
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/startup-17/control-ownedHostStagesReadBindStartupReentry-01.json",
+      "bytes": 24810,
+      "sha256": "00ee6c03419cbe478dea33e6f8fe25d77c64a044f7ffb7d660a48146774f00fb",
+      "case": "ownedHostStagesReadBindStartupReentry",
+      "status": "PASS_STARTUP_ADVERSE_RETAINED",
+      "errorCode": null,
+      "scope": {
+        "phase": "STATE_CALLER_START",
+        "uncertain": true,
+        "terminal": false,
+        "hasOwnedFailure": true,
+        "failureCode": "INITIALIZER_COMPLETION_SCOPE_CHANGED",
+        "totalWork": 14,
+        "visits": 4,
+        "paid": {
+          "open": true,
+          "pending": true,
+          "inVisit": false,
+          "rOwned": true
+        }
+      }
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/startup-17/control-ownedHostStagesReadBindStartupReplay-01.json",
+      "bytes": 72472,
+      "sha256": "a265adc6bebc21b0735160d122f5b87bbab4fac8ad714c57c137e101bf05f52c",
+      "case": "ownedHostStagesReadBindStartupReplay",
+      "status": "PASS_VERIFIED_BIND_COMPONENT",
+      "errorCode": null,
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    }
+  ],
+  "passingControls": 54,
+  "totalControls": 55,
+  "unwaived": [
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/current-16/control-ownedHostStagesReadBindReplacement-01.json",
+      "bytes": 26398,
+      "sha256": "81ad31755c2b594bbf68089dba3de973eec1c4ac1bfa3773e7e03362d680293d",
+      "case": "ownedHostStagesReadBindReplacement",
+      "status": "FAIL",
+      "errorCode": "RESOURCE_BUDGET",
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    }
+  ],
+  "original7": {
+    "logicalPeakBytes": 33110296,
+    "heldAfterCloseBytes": 30489430,
+    "markerPeakDiagnosticOnly": 538
+  },
+  "stateCaller8Startup": {
+    "logicalPeakBytes": 33243424,
+    "heldAfterCloseBytes": 30622558,
+    "sourceAdmissionVisits": 225,
+    "sourceRetirementVisits": 224,
+    "initializerVisits": 228,
+    "sourceJobSamples": 234,
+    "maximumJobs": 2,
+    "endJobs": 0,
+    "endCurrentSliceWorkDiagnosticOnly": 2807,
+    "initializerWorkDiagnosticOnly": 913,
+    "noInternalClockResets": true,
+    "MainOutcome": "HELD_MAIN_GRAPH_INCOMPLETE",
+    "scope": "Exact original State-stage initializer bodies with explicit entry/earlier-parent adapters, not whole native startup"
+  },
+  "pricingWitness": {
+    "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/pricing-02/control-release-native-input-frontier-02.json",
+    "bytes": 4231,
+    "sha256": "e46422d8f4c045083c813dfdd8caf5c930caaec2e7500ed44f874331e3a1baa7"
+  },
+  "references": [
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/reports/startup-09-source.json",
+      "bytes": 94770,
+      "sha256": "5aebaa15ef653ff7ad1132d5670127866483ae7484752747b46d6481792375f3"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/reports/startup-09-launch-source.json",
+      "bytes": 6135,
+      "sha256": "3ae65d50b8cf855e574553446d1f2ce1a9b192f759d349d345ff59456a2ca80c"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/reports/default-api-startup-09.json",
+      "bytes": 2598,
+      "sha256": "acbce9fabe4b0e88fa6f299aa8674821f802baa6c0a0062ac62cb6b058c1f29c"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/reports/consumer-work-storage-startup-09-02.json",
+      "bytes": 7231,
+      "sha256": "d713c773b0f431f2d83c0e6a97098ca6ec5d3ae941946390d72ec12fc564b4eb"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/reports/retained-storage-startup-09.json",
+      "bytes": 893773,
+      "sha256": "48af8e3f78ce1365aede817342ad59260c21e2ce0f8e18ea0d9443b8d04f437f"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/reports/borrower-body-census-startup-09.json",
+      "bytes": 16645467,
+      "sha256": "06063a9eec20500ec1ebf943c530be3b6e3d6fe2258d86377570ecbb7496c718"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/reports/startup-body-cover-map-09.json",
+      "bytes": 49975,
+      "sha256": "974b2fb64c0c2a793739c3eb98821a28c69fd89b811583b304d4910cf55f0cb0"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/reports/pricing-frontier-scope-09.json",
+      "bytes": 1654,
+      "sha256": "5ebf432c6ef5a4359ef700c9fbf011edec5617559391586d061cc7d22600c9b5"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/reports/regression-association-startup-09.json",
+      "bytes": 3576,
+      "sha256": "d8a8f0b6b808d370a9bc84ebe8d95bb8be2ce7e6ef7067af0ff23b97e45c1bc5"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/reports/diagnostic-disclosures-startup-09.json",
+      "bytes": 21112,
+      "sha256": "9db95d0918d0ea31f949b587ed55cb55c730405e4d6438381f0194f42073e1f1"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/reports/open-gates-startup-09.json",
+      "bytes": 2676,
+      "sha256": "804fbe42b010c38695db9853def52c6a20fbc3b17b4940a3c7ed92b58d3309c1"
+    }
+  ],
+  "completeConsumerWorkPrice": null,
+  "completeConsumerRetainedStoragePrice": null,
+  "wholeSourcePrice": null,
+  "funding": null,
+  "wholeMainMetadata": null,
+  "completeC1": false,
+  "nativeMain": "NOT_RUN",
+  "physicalHeap": "UNMEASURED",
+  "fullConformance": "NOT_RUN",
+  "Main": false,
+  "P05": "OPEN",
+  "P06_P08": "NOT_STARTED",
+  "PhaseOne": "NOT_ACCEPTED_NOT_RELEASED"
+}

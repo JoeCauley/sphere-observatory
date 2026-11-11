@@ -54,12 +54,14 @@ function create({getState,validate,prepare,commit,hold=()=>{},requiresHold=()=>t
     if(!candidate)throw Error('The selected destination is unavailable.');const candidateViewContext=structuredClone(spec.viewContext??null);let next=merge(candidate,getState(),spec);
     // Reprepare when live settings affect readiness, without replacing them.
     for(;;){next=validate(next);next.playing=getState().playing;
-     if(job.preparedViewContext!==null){releaseViewContext(job.preparedViewContext,{committed:false});job.preparedViewContext=null;}
+     if(job.preparedViewContext!==null){await releaseViewContext(job.preparedViewContext,{committed:false});job.preparedViewContext=null;}
      job.preparedViewContext=await prepareViewContext(next,candidateViewContext,{signal:job.controller.signal,requestId:id,prospective:true});check(job);
      await prepare(next,{signal:job.controller.signal,viewContext:job.preparedViewContext,onProgress:p=>{if(active===job)report('preparing',{id,title:spec.title,phase:p.phase});}});check(job);
-     const latest=merge(candidate,getState(),spec);
-     if(readinessKeys.some(k=>!equal(next[k],latest[k]))||!ready(latest,{viewContext:job.preparedViewContext})){next=latest;continue;}
-     next=validate(latest);next.playing=getState().playing;break;
+     const latestRaw=merge(candidate,getState(),spec),latest=validate(latestRaw);latest.playing=getState().playing;
+     if(readinessKeys.some(k=>!equal(next[k],latest[k]))||!ready(latest,{viewContext:job.preparedViewContext})){next=latestRaw;continue;}
+     // Readiness and the synchronous commit use the same validated numbers.
+     // Re-normalizing an orientation can change its last binary64 bits.
+     next=latest;break;
     }
     check(job);const departure=structuredClone(getState()),departureViewContext=structuredClone(getViewContext());
     // No await between final validation, controller activation and history commit.
@@ -73,9 +75,9 @@ function create({getState,validate,prepare,commit,hold=()=>{},requiresHold=()=>t
     // Reacquire departure support before resuming its controller. The frozen
     // image remains visible while bounded caches are reused for preparation.
     let recoveryError=null;if(!held){held=true;hold(true);}
-    try{if(job.preparedViewContext!==null){releaseViewContext(job.preparedViewContext,{committed:false});job.preparedViewContext=null;}const currentViewContext=structuredClone(getViewContext());releaseResources({viewContext:currentViewContext,prospective:false});job.preparedViewContext=await prepareViewContext(getState(),currentViewContext,{requestId:id,prospective:false});await prepare(getState(),{viewContext:job.preparedViewContext,onProgress:p=>{if(active===job)report('preparing',{id,title:spec.title,phase:'Restoring current view · '+p.phase});}});releaseViewContext(job.preparedViewContext,{currentRestored:true,committed:false});job.preparedViewContext=null;held=false;hold(false);}catch(e){recoveryError=e;}
+    try{if(job.preparedViewContext!==null){await releaseViewContext(job.preparedViewContext,{committed:false});job.preparedViewContext=null;}const currentViewContext=structuredClone(getViewContext());releaseResources({viewContext:currentViewContext,prospective:false});job.preparedViewContext=await prepareViewContext(getState(),currentViewContext,{requestId:id,prospective:false});await prepare(getState(),{viewContext:job.preparedViewContext,onProgress:p=>{if(active===job)report('preparing',{id,title:spec.title,phase:'Restoring current view · '+p.phase});}});await releaseViewContext(job.preparedViewContext,{currentRestored:true,committed:false});job.preparedViewContext=null;held=false;hold(false);}catch(e){recoveryError=e;}
     report(recoveryError?'failed':error.name==='AbortError'?'cancelled':'failed',{id,title:spec.title,error:error.message,recoveryError:recoveryError?.message,held,elapsedMs:clock()-started});return status;
-   }finally{if(job.preparedViewContext!==null){releaseViewContext(job.preparedViewContext,{committed:false});job.preparedViewContext=null;}if(active===job)active=null;}
+   }finally{if(job.preparedViewContext!==null){await releaseViewContext(job.preparedViewContext,{committed:false});job.preparedViewContext=null;}if(active===job)active=null;}
   };
   const result=tail.then(run);tail=result.catch(()=>{});return result;
  }

@@ -1,0 +1,85 @@
+{
+  "status": "P05_OPEN_COMPLETE_PRICING_NOT_CLOSED",
+  "source": "I:\\Sphere\\work\\biome-pack-service-parent-2026-10-25-164137-2c9aedb1/source/parent-07",
+  "completedComponent": [
+    "Original seven-port reciprocal registration and exact State verified custody",
+    "Root-issued bounded parent/current/pay/error/caller producer; no six-function adoption",
+    "Original pre-R initializer debit body under disclosed component SOURCE scope",
+    "Genuine shared-R synchronous and authentic native completion jobs/credits, frame/slice/epoch checks",
+    "Source-owned requests and cancellation, original State acquisition/context and normal lease cleanup",
+    "Six pre-debit native corruption refusals, zero foreign-body calls",
+    "Six additional completion/job/slice/request/forgery held-failure controls"
+  ],
+  "open": [
+    {
+      "id": "COMPLETE_WORK",
+      "status": "OPEN",
+      "reason": "The concrete producer is implemented. Every original child/current/native/Promise/error/caller price and pre-R production caller composition is still required. Unit864 and descriptor subset9541 are not complete fees."
+    },
+    {
+      "id": "COMPLETE_STORAGE",
+      "status": "OPEN_REFUSED_CONDITIONAL_MODULE_FLOOR",
+      "reason": "Current disjoint known module ABI floor392160B, after crediting100992B all prior Root/parent charges, needs saved component peak lower bound33720981B against33554432B; excess166549B. Actual prospective Q replay fails RESOURCE_LIMIT. Complete module/instance/arguments/native/closed/failure/borrowed-owner derivation remains incomplete."
+    },
+    {
+      "id": "ACTUAL_ROOT_CALLER",
+      "status": "OPEN",
+      "reason": "Original Main initializer/source/program/Baseline-to-consumer producer ownership remains unqualified; test SOURCE scope is explicit."
+    },
+    {
+      "id": "SIMULTANEOUS_VECTOR",
+      "status": "OPEN",
+      "reason": "Whole Main/provider/service/current/replacement resource vector and common-Q admission are not selected. Actual replacement still FAIL RESOURCE_BUDGET; full binding U and all declared budgets unchanged."
+    },
+    {
+      "id": "NATIVE_MAIN",
+      "status": "NOT_RUN",
+      "reason": "Actual Main overview/local whole view, fragment, Frame, support and appearance on the same assigned surface are not proved."
+    },
+    {
+      "id": "PHYSICAL_HEAP_GPU",
+      "status": "UNMEASURED"
+    },
+    {
+      "id": "FULL_CONFORMANCE",
+      "status": "OPEN_21_UNWAIVED_SUITE_FAILURES"
+    },
+    {
+      "id": "ACCEPTANCE_RELEASE",
+      "status": "NOT_ACCEPTED_NOT_RELEASED"
+    }
+  ],
+  "limits": {
+    "prepareOperations": 4096,
+    "uploadBytes": 262144,
+    "jobs": 2,
+    "slots": 64,
+    "serviceCpuBytes": 33554432,
+    "serviceGpuBytes": 10485760,
+    "commonMetadataBytes": 33554432,
+    "context": {
+      "bytes": 1048576,
+      "depth": 64,
+      "nodes": 2097152
+    },
+    "State": {
+      "bytes": 262144,
+      "depth": 32,
+      "nodes": 8192
+    }
+  },
+  "completeWorkPrice": null,
+  "completeRetainedStoragePrice": null,
+  "wholeSourcePrice": null,
+  "funding": null,
+  "wholeMainMetadata": null,
+  "P05": "OPEN",
+  "P06_P08": "NOT_STARTED",
+  "PhaseOne": "NOT_ACCEPTED_NOT_RELEASED",
+  "excluded": [
+    "Phase Two",
+    "accepted Meadow adaptation",
+    "Unreal"
+  ],
+  "failuresWaived": 0
+}

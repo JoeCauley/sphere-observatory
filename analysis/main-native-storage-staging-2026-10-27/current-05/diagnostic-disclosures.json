@@ -1,0 +1,536 @@
+{
+  "status": "DISCLOSED_NO_PROMOTION",
+  "source": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/source/storage-05",
+  "controls": [
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadBindBoundaryReentry-01.json",
+      "case": "ownedHostStagesReadBindBoundaryReentry",
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadBindCallerCatalogue-01.json",
+      "case": "ownedHostStagesReadBindCallerCatalogue",
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadBindCallerForgery-01.json",
+      "case": "ownedHostStagesReadBindCallerForgery",
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadBindCallerMetadata-01.json",
+      "case": "ownedHostStagesReadBindCallerMetadata",
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadBindCallerNamespace-01.json",
+      "case": "ownedHostStagesReadBindCallerNamespace",
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadBindCallerNestedJob-01.json",
+      "case": "ownedHostStagesReadBindCallerNestedJob",
+      "scope": "The outer actual R job models an initializer visit. The original standalone parent wrapper opens the second job; Source row enter requests a third and refuses. Normal standalone source rows transiently use two jobs. The State native Promise rejection is observed through a disclosed external test observer outside Q; no native crypto had started. No actual initializer, native Main or recovery proof."
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadBindCallerPositive-01.json",
+      "case": "ownedHostStagesReadBindCallerPositive",
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadBindCallerPublic-01.json",
+      "case": "ownedHostStagesReadBindCallerPublic",
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadBindCallerRawFalse-01.json",
+      "case": "ownedHostStagesReadBindCallerRawFalse",
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadBindCallerRawUndefined-01.json",
+      "case": "ownedHostStagesReadBindCallerRawUndefined",
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadBindCallerReplay-01.json",
+      "case": "ownedHostStagesReadBindCallerReplay",
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadBindCallerWork-01.json",
+      "case": "ownedHostStagesReadBindCallerWork",
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadBindCancel-01.json",
+      "case": "ownedHostStagesReadBindCancel",
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadBindCleanupPinned-01.json",
+      "case": "ownedHostStagesReadBindCleanupPinned",
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadBindCurrent-01.json",
+      "case": "ownedHostStagesReadBindCurrent",
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadBindPositive-01.json",
+      "case": "ownedHostStagesReadBindPositive",
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadBindPressure-01.json",
+      "case": "ownedHostStagesReadBindPressure",
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadBindQuota-01.json",
+      "case": "ownedHostStagesReadBindQuota",
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadBindRawFalse-01.json",
+      "case": "ownedHostStagesReadBindRawFalse",
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadBindRawUndefined-01.json",
+      "case": "ownedHostStagesReadBindRawUndefined",
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadBindReentry-01.json",
+      "case": "ownedHostStagesReadBindReentry",
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadBindReplacement-01.json",
+      "case": "ownedHostStagesReadBindReplacement",
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadParentCompletionQuota-01.json",
+      "case": "ownedHostStagesReadParentCompletionQuota",
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadParentForgedToken-01.json",
+      "case": "ownedHostStagesReadParentForgedToken",
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadParentJobQuota-01.json",
+      "case": "ownedHostStagesReadParentJobQuota",
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadParentRequestDomain-01.json",
+      "case": "ownedHostStagesReadParentRequestDomain",
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadParentRequestQuota-01.json",
+      "case": "ownedHostStagesReadParentRequestQuota",
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadParentSliceChange-01.json",
+      "case": "ownedHostStagesReadParentSliceChange",
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/source-05/source-projection-closeQuota-10.json",
+      "case": "closeQuota",
+      "scope": null
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/source-05/source-projection-completionQuota-09.json",
+      "case": "completionQuota",
+      "scope": null
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/source-05/source-projection-contextLoss-10.json",
+      "case": "contextLoss",
+      "scope": null
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/source-05/source-projection-errorPrototype-09.json",
+      "case": "errorPrototype",
+      "scope": null
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/source-05/source-projection-forged-09.json",
+      "case": "forged",
+      "scope": null
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/source-05/source-projection-jobs-09.json",
+      "case": "jobs",
+      "scope": null
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/source-05/source-projection-metadataQuota-09.json",
+      "case": "metadataQuota",
+      "scope": null
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/source-05/source-projection-namespace-09.json",
+      "case": "namespace",
+      "scope": null
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/source-05/source-projection-namespaceAccessor-09.json",
+      "case": "namespaceAccessor",
+      "scope": null
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/source-05/source-projection-native-09.json",
+      "case": "native",
+      "scope": null
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/source-05/source-projection-nativeWaitIterator-09.json",
+      "case": "nativeWaitIterator",
+      "scope": null
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/source-05/source-projection-nativeWaitNumber-09.json",
+      "case": "nativeWaitNumber",
+      "scope": null
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/source-05/source-projection-positive-09.json",
+      "case": "positive",
+      "scope": null
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/source-05/source-projection-rawFalse-09.json",
+      "case": "rawFalse",
+      "scope": null
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/source-05/source-projection-rawUndefined-09.json",
+      "case": "rawUndefined",
+      "scope": null
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/source-05/source-projection-reentry-09.json",
+      "case": "reentry",
+      "scope": null
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/source-05/source-projection-scratchQuota-10.json",
+      "case": "scratchQuota",
+      "scope": null
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/startup-05/control-ownedHostStagesReadBindStartupClose-01.json",
+      "case": "ownedHostStagesReadBindStartupClose",
+      "scope": {
+        "phase": "STATE_CALLER_START",
+        "uncertain": true,
+        "terminal": false,
+        "hasOwnedFailure": true,
+        "failureCode": "STATE_CALLER_PROGRESS_FAILED_RETAINED",
+        "totalWork": 14,
+        "visits": 4,
+        "paid": {
+          "open": true,
+          "pending": true,
+          "inVisit": false,
+          "rOwned": true
+        }
+      }
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/startup-05/control-ownedHostStagesReadBindStartupEpoch-01.json",
+      "case": "ownedHostStagesReadBindStartupEpoch",
+      "scope": {
+        "phase": "STATE_CALLER_START",
+        "uncertain": true,
+        "terminal": false,
+        "hasOwnedFailure": true,
+        "failureCode": "INITIALIZER_COMPLETION_SCOPE_CHANGED",
+        "totalWork": 14,
+        "visits": 4,
+        "paid": {
+          "open": true,
+          "pending": true,
+          "inVisit": false,
+          "rOwned": true
+        }
+      }
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/startup-05/control-ownedHostStagesReadBindStartupForgery-01.json",
+      "case": "ownedHostStagesReadBindStartupForgery",
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/startup-05/control-ownedHostStagesReadBindStartupNamespace-01.json",
+      "case": "ownedHostStagesReadBindStartupNamespace",
+      "scope": {
+        "phase": "STATE_CALLER_START",
+        "uncertain": true,
+        "terminal": false,
+        "hasOwnedFailure": true,
+        "failureCode": "STATE_CALLER_PROGRESS_FAILED_RETAINED",
+        "totalWork": 14,
+        "visits": 4,
+        "paid": {
+          "open": true,
+          "pending": true,
+          "inVisit": false,
+          "rOwned": true
+        }
+      }
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/startup-05/control-ownedHostStagesReadBindStartupPositive-01.json",
+      "case": "ownedHostStagesReadBindStartupPositive",
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/startup-05/control-ownedHostStagesReadBindStartupQuota-01.json",
+      "case": "ownedHostStagesReadBindStartupQuota",
+      "scope": {
+        "phase": "STATE_CALLER_START",
+        "uncertain": true,
+        "terminal": false,
+        "hasOwnedFailure": true,
+        "failureCode": "INITIALIZER_COMPLETION_SCOPE_CHANGED",
+        "totalWork": 14,
+        "visits": 4,
+        "paid": {
+          "open": true,
+          "pending": true,
+          "inVisit": false,
+          "rOwned": true
+        }
+      }
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/startup-05/control-ownedHostStagesReadBindStartupRawFalse-01.json",
+      "case": "ownedHostStagesReadBindStartupRawFalse",
+      "scope": {
+        "phase": "STATE_CALLER_START",
+        "uncertain": true,
+        "terminal": false,
+        "hasOwnedFailure": true,
+        "failureCode": "STATE_CALLER_PROGRESS_FAILED_RETAINED",
+        "totalWork": 14,
+        "visits": 4,
+        "paid": {
+          "open": true,
+          "pending": true,
+          "inVisit": false,
+          "rOwned": true
+        }
+      }
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/startup-05/control-ownedHostStagesReadBindStartupRawUndefined-01.json",
+      "case": "ownedHostStagesReadBindStartupRawUndefined",
+      "scope": {
+        "phase": "STATE_CALLER_START",
+        "uncertain": true,
+        "terminal": false,
+        "hasOwnedFailure": true,
+        "failureCode": "STATE_CALLER_PROGRESS_FAILED_RETAINED",
+        "totalWork": 14,
+        "visits": 4,
+        "paid": {
+          "open": true,
+          "pending": true,
+          "inVisit": false,
+          "rOwned": true
+        }
+      }
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/startup-05/control-ownedHostStagesReadBindStartupReentry-01.json",
+      "case": "ownedHostStagesReadBindStartupReentry",
+      "scope": {
+        "phase": "STATE_CALLER_START",
+        "uncertain": true,
+        "terminal": false,
+        "hasOwnedFailure": true,
+        "failureCode": "INITIALIZER_COMPLETION_SCOPE_CHANGED",
+        "totalWork": 14,
+        "visits": 4,
+        "paid": {
+          "open": true,
+          "pending": true,
+          "inVisit": false,
+          "rOwned": true
+        }
+      }
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/startup-05/control-ownedHostStagesReadBindStartupReplay-01.json",
+      "case": "ownedHostStagesReadBindStartupReplay",
+      "scope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/control-native-input-positive-11.json",
+      "case": "positive",
+      "scope": [
+        "In-memory fake-indexeddb 6.2.5 from pinned existing dependencies; no browser storage accessed. Three prototype getter adapters model WebIDL attributes: IDBDatabase.version, IDBTransaction.error, IDBVersionChangeEvent.oldVersion.",
+        "Original Q, Source admission and R host/jobs/credits execute. R aggregate and Source private modules have disclosed diagnostic byte selections and unit work selectors. New module INSTANCE524288/IO65536 and all WORK1 are diagnostic, not complete work/storage prices.",
+        "Root footer receiver is an explicit model with an observer alias for the private Source and new store binder. Minimal leaf Source envelope is genuine but does not establish whole program/Root provenance or prospective trusted launch funding.",
+        "Native ArrayBuffer, DataView, typed arrays, structuredClone and Node WebCrypto are actual Node primitives. Native browser IDB, whole Main, physical heap, complete C1 and acceptance remain unqualified."
+      ]
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/control-native-input-large-11.json",
+      "case": "large",
+      "scope": [
+        "In-memory fake-indexeddb 6.2.5 from pinned existing dependencies; no browser storage accessed. Three prototype getter adapters model WebIDL attributes: IDBDatabase.version, IDBTransaction.error, IDBVersionChangeEvent.oldVersion.",
+        "Original Q, Source admission and R host/jobs/credits execute. R aggregate and Source private modules have disclosed diagnostic byte selections and unit work selectors. New module INSTANCE524288/IO65536 and all WORK1 are diagnostic, not complete work/storage prices.",
+        "Root footer receiver is an explicit model with an observer alias for the private Source and new store binder. Minimal leaf Source envelope is genuine but does not establish whole program/Root provenance or prospective trusted launch funding.",
+        "Native ArrayBuffer, DataView, typed arrays, structuredClone and Node WebCrypto are actual Node primitives. Native browser IDB, whole Main, physical heap, complete C1 and acceptance remain unqualified."
+      ]
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/control-native-input-depth-11.json",
+      "case": "depth",
+      "scope": [
+        "In-memory fake-indexeddb 6.2.5 from pinned existing dependencies; no browser storage accessed. Three prototype getter adapters model WebIDL attributes: IDBDatabase.version, IDBTransaction.error, IDBVersionChangeEvent.oldVersion.",
+        "Original Q, Source admission and R host/jobs/credits execute. R aggregate and Source private modules have disclosed diagnostic byte selections and unit work selectors. New module INSTANCE524288/IO65536 and all WORK1 are diagnostic, not complete work/storage prices.",
+        "Root footer receiver is an explicit model with an observer alias for the private Source and new store binder. Minimal leaf Source envelope is genuine but does not establish whole program/Root provenance or prospective trusted launch funding.",
+        "Native ArrayBuffer, DataView, typed arrays, structuredClone and Node WebCrypto are actual Node primitives. Native browser IDB, whole Main, physical heap, complete C1 and acceptance remain unqualified."
+      ]
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/control-native-input-unknown-11.json",
+      "case": "unknown",
+      "scope": [
+        "In-memory fake-indexeddb 6.2.5 from pinned existing dependencies; no browser storage accessed. Three prototype getter adapters model WebIDL attributes: IDBDatabase.version, IDBTransaction.error, IDBVersionChangeEvent.oldVersion.",
+        "Original Q, Source admission and R host/jobs/credits execute. R aggregate and Source private modules have disclosed diagnostic byte selections and unit work selectors. New module INSTANCE524288/IO65536 and all WORK1 are diagnostic, not complete work/storage prices.",
+        "Root footer receiver is an explicit model with an observer alias for the private Source and new store binder. Minimal leaf Source envelope is genuine but does not establish whole program/Root provenance or prospective trusted launch funding.",
+        "Native ArrayBuffer, DataView, typed arrays, structuredClone and Node WebCrypto are actual Node primitives. Native browser IDB, whole Main, physical heap, complete C1 and acceptance remain unqualified."
+      ]
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/control-native-input-quota-11.json",
+      "case": "quota",
+      "scope": [
+        "In-memory fake-indexeddb 6.2.5 from pinned existing dependencies; no browser storage accessed. Three prototype getter adapters model WebIDL attributes: IDBDatabase.version, IDBTransaction.error, IDBVersionChangeEvent.oldVersion.",
+        "Original Q, Source admission and R host/jobs/credits execute. R aggregate and Source private modules have disclosed diagnostic byte selections and unit work selectors. New module INSTANCE524288/IO65536 and all WORK1 are diagnostic, not complete work/storage prices.",
+        "Root footer receiver is an explicit model with an observer alias for the private Source and new store binder. Minimal leaf Source envelope is genuine but does not establish whole program/Root provenance or prospective trusted launch funding.",
+        "Native ArrayBuffer, DataView, typed arrays, structuredClone and Node WebCrypto are actual Node primitives. Native browser IDB, whole Main, physical heap, complete C1 and acceptance remain unqualified."
+      ]
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/control-native-input-thirdJob-11.json",
+      "case": "thirdJob",
+      "scope": [
+        "In-memory fake-indexeddb 6.2.5 from pinned existing dependencies; no browser storage accessed. Three prototype getter adapters model WebIDL attributes: IDBDatabase.version, IDBTransaction.error, IDBVersionChangeEvent.oldVersion.",
+        "Original Q, Source admission and R host/jobs/credits execute. R aggregate and Source private modules have disclosed diagnostic byte selections and unit work selectors. New module INSTANCE524288/IO65536 and all WORK1 are diagnostic, not complete work/storage prices.",
+        "Root footer receiver is an explicit model with an observer alias for the private Source and new store binder. Minimal leaf Source envelope is genuine but does not establish whole program/Root provenance or prospective trusted launch funding.",
+        "Native ArrayBuffer, DataView, typed arrays, structuredClone and Node WebCrypto are actual Node primitives. Native browser IDB, whole Main, physical heap, complete C1 and acceptance remain unqualified."
+      ]
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/control-native-input-nativeChanged-11.json",
+      "case": "nativeChanged",
+      "scope": [
+        "In-memory fake-indexeddb 6.2.5 from pinned existing dependencies; no browser storage accessed. Three prototype getter adapters model WebIDL attributes: IDBDatabase.version, IDBTransaction.error, IDBVersionChangeEvent.oldVersion.",
+        "Original Q, Source admission and R host/jobs/credits execute. R aggregate and Source private modules have disclosed diagnostic byte selections and unit work selectors. New module INSTANCE524288/IO65536 and all WORK1 are diagnostic, not complete work/storage prices.",
+        "Root footer receiver is an explicit model with an observer alias for the private Source and new store binder. Minimal leaf Source envelope is genuine but does not establish whole program/Root provenance or prospective trusted launch funding.",
+        "Native ArrayBuffer, DataView, typed arrays, structuredClone and Node WebCrypto are actual Node primitives. Native browser IDB, whole Main, physical heap, complete C1 and acceptance remain unqualified."
+      ]
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/control-native-input-forgedAdmission-11.json",
+      "case": "forgedAdmission",
+      "scope": [
+        "In-memory fake-indexeddb 6.2.5 from pinned existing dependencies; no browser storage accessed. Three prototype getter adapters model WebIDL attributes: IDBDatabase.version, IDBTransaction.error, IDBVersionChangeEvent.oldVersion.",
+        "Original Q, Source admission and R host/jobs/credits execute. R aggregate and Source private modules have disclosed diagnostic byte selections and unit work selectors. New module INSTANCE524288/IO65536 and all WORK1 are diagnostic, not complete work/storage prices.",
+        "Root footer receiver is an explicit model with an observer alias for the private Source and new store binder. Minimal leaf Source envelope is genuine but does not establish whole program/Root provenance or prospective trusted launch funding.",
+        "Native ArrayBuffer, DataView, typed arrays, structuredClone and Node WebCrypto are actual Node primitives. Native browser IDB, whole Main, physical heap, complete C1 and acceptance remain unqualified."
+      ]
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/control-native-input-epoch-11.json",
+      "case": "epoch",
+      "scope": [
+        "In-memory fake-indexeddb 6.2.5 from pinned existing dependencies; no browser storage accessed. Three prototype getter adapters model WebIDL attributes: IDBDatabase.version, IDBTransaction.error, IDBVersionChangeEvent.oldVersion.",
+        "Original Q, Source admission and R host/jobs/credits execute. R aggregate and Source private modules have disclosed diagnostic byte selections and unit work selectors. New module INSTANCE524288/IO65536 and all WORK1 are diagnostic, not complete work/storage prices.",
+        "Root footer receiver is an explicit model with an observer alias for the private Source and new store binder. Minimal leaf Source envelope is genuine but does not establish whole program/Root provenance or prospective trusted launch funding.",
+        "Native ArrayBuffer, DataView, typed arrays, structuredClone and Node WebCrypto are actual Node primitives. Native browser IDB, whole Main, physical heap, complete C1 and acceptance remain unqualified."
+      ]
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/control-native-input-rawFalse-11.json",
+      "case": "rawFalse",
+      "scope": [
+        "In-memory fake-indexeddb 6.2.5 from pinned existing dependencies; no browser storage accessed. Three prototype getter adapters model WebIDL attributes: IDBDatabase.version, IDBTransaction.error, IDBVersionChangeEvent.oldVersion.",
+        "Original Q, Source admission and R host/jobs/credits execute. R aggregate and Source private modules have disclosed diagnostic byte selections and unit work selectors. New module INSTANCE524288/IO65536 and all WORK1 are diagnostic, not complete work/storage prices.",
+        "Root footer receiver is an explicit model with an observer alias for the private Source and new store binder. Minimal leaf Source envelope is genuine but does not establish whole program/Root provenance or prospective trusted launch funding.",
+        "Native ArrayBuffer, DataView, typed arrays, structuredClone and Node WebCrypto are actual Node primitives. Native browser IDB, whole Main, physical heap, complete C1 and acceptance remain unqualified."
+      ]
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/control-native-input-rawUndefined-11.json",
+      "case": "rawUndefined",
+      "scope": [
+        "In-memory fake-indexeddb 6.2.5 from pinned existing dependencies; no browser storage accessed. Three prototype getter adapters model WebIDL attributes: IDBDatabase.version, IDBTransaction.error, IDBVersionChangeEvent.oldVersion.",
+        "Original Q, Source admission and R host/jobs/credits execute. R aggregate and Source private modules have disclosed diagnostic byte selections and unit work selectors. New module INSTANCE524288/IO65536 and all WORK1 are diagnostic, not complete work/storage prices.",
+        "Root footer receiver is an explicit model with an observer alias for the private Source and new store binder. Minimal leaf Source envelope is genuine but does not establish whole program/Root provenance or prospective trusted launch funding.",
+        "Native ArrayBuffer, DataView, typed arrays, structuredClone and Node WebCrypto are actual Node primitives. Native browser IDB, whole Main, physical heap, complete C1 and acceptance remain unqualified."
+      ]
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/control-native-input-pendingScope-11.json",
+      "case": "pendingScope",
+      "scope": [
+        "In-memory fake-indexeddb 6.2.5 from pinned existing dependencies; no browser storage accessed. Three prototype getter adapters model WebIDL attributes: IDBDatabase.version, IDBTransaction.error, IDBVersionChangeEvent.oldVersion.",
+        "Original Q, Source admission and R host/jobs/credits execute. R aggregate and Source private modules have disclosed diagnostic byte selections and unit work selectors. New module INSTANCE524288/IO65536 and all WORK1 are diagnostic, not complete work/storage prices.",
+        "Root footer receiver is an explicit model with an observer alias for the private Source and new store binder. Minimal leaf Source envelope is genuine but does not establish whole program/Root provenance or prospective trusted launch funding.",
+        "Native ArrayBuffer, DataView, typed arrays, structuredClone and Node WebCrypto are actual Node primitives. Native browser IDB, whole Main, physical heap, complete C1 and acceptance remain unqualified."
+      ]
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/control-native-input-partBacking-11.json",
+      "case": "partBacking",
+      "scope": [
+        "In-memory fake-indexeddb 6.2.5 from pinned existing dependencies; no browser storage accessed. Three prototype getter adapters model WebIDL attributes: IDBDatabase.version, IDBTransaction.error, IDBVersionChangeEvent.oldVersion.",
+        "Original Q, Source admission and R host/jobs/credits execute. R aggregate and Source private modules have disclosed diagnostic byte selections and unit work selectors. New module INSTANCE524288/IO65536 and all WORK1 are diagnostic, not complete work/storage prices.",
+        "Root footer receiver is an explicit model with an observer alias for the private Source and new store binder. Minimal leaf Source envelope is genuine but does not establish whole program/Root provenance or prospective trusted launch funding.",
+        "Native ArrayBuffer, DataView, typed arrays, structuredClone and Node WebCrypto are actual Node primitives. Native browser IDB, whole Main, physical heap, complete C1 and acceptance remain unqualified."
+      ]
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/control-native-input-releaseCompatibility-12.json",
+      "case": "releaseCompatibility",
+      "scope": [
+        "In-memory fake-indexeddb 6.2.5 from pinned existing dependencies; no browser storage accessed. Three prototype getter adapters model WebIDL attributes: IDBDatabase.version, IDBTransaction.error, IDBVersionChangeEvent.oldVersion.",
+        "Original Q, Source admission and R host/jobs/credits execute. R aggregate and Source private modules have disclosed diagnostic byte selections and unit work selectors. New module INSTANCE524288/IO65536 and all WORK1 are diagnostic, not complete work/storage prices.",
+        "Root footer receiver is an explicit model with an observer alias for the private Source and new store binder. Minimal leaf Source envelope is genuine but does not establish whole program/Root provenance or prospective trusted launch funding.",
+        "Native ArrayBuffer, DataView, typed arrays, structuredClone and Node WebCrypto are actual Node primitives. Native browser IDB, whole Main, physical heap, complete C1 and acceptance remain unqualified.",
+        "Original Release compatibility covers one small resource. Its full metadata/native/copy/error/caller work/storage remain unpriced; this is not a completed original reader bound."
+      ]
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/control-native-root-registry-01.json",
+      "case": "rootRegistry",
+      "scope": "Document/currentScript/native src and exact phase/path inputs are modeled; loader pre-evaluation is a Q1 fixture. Binder forwarding uses a tuple recorder. No whole Root/program/native storage or complete work/storage/funding proof."
+    }
+  ],
+  "newStore": "Fixed-profile module1/instance524288/IO65536 and Source pin2048/work1 are diagnostic, not prices; all work selectors1 are diagnostic. Root footer receiver, minimal leaf Source graph, native getter adapters and host visit driver are fixtures. fake-indexeddb6.2.5 is not browser IDB. Original Release compatibility is small and unpaid in its original caller/body path.",
+  "raw": "New false/undefined controls deliberately call original hold observer. Actual Node crypto and32-byte Source digest are separate. No native crypto raw false/undefined result is claimed.",
+  "retention": "All failed/native/raw/closed writer/driver/read/output controls remain held. No reopen/recovery/GC proof.",
+  "parentHelperAudit": {
+    "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/reports/parent-helper-reference-audit-storage-05.json",
+    "bytes": 1234,
+    "sha256": "2db5b0a70417583252c60c14210dcfcfca36c833f2f17d72cd5d35dace14a0fe"
+  },
+  "excluded": "All earlier storage01–04 and native01–10 receipts/failed recipes are historical. Auxiliary current-05 CallerJobQuota is a normal-branch invocation, excluded from the55 matched controls; the genuine adverse is CallerNestedJob. No copied receipt JSONs are current.",
+  "Main": false,
+  "P05": "OPEN"
+}

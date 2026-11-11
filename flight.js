@@ -4,7 +4,7 @@
 function sphereRoots(p,d,r){const length=M.length(p),b=M.dot(p,d),c=(length-r)*(length+r),disc=b*b-c;if(disc<0)return [];
  const q=-b-(b>=0?1:-1)*Math.sqrt(disc);return (q===0?[0]:[q,c/q]).sort((a,b)=>a-b);
 }
-function contact(s,p,d,distance,skipShell=false){let hit={distance:Infinity,normal:null,kind:''};
+function contact(s,p,d,distance,skipShell=false){const installed=root.SphereMainSurfaceSlot?.query(s,p,d,distance+CLEARANCE*100);if(installed){if(!installed.ready)return {...installed,nativeReady:false};const safe=Math.max(0,installed.distance-CLEARANCE/Math.max(.01,-M.dot(installed.normal,d)));return {distance:safe<=distance?safe:Infinity,normal:installed.normal,kind:installed.kind,nativeReady:true,native:installed.native};}let hit={distance:Infinity,normal:null,kind:''};
  // Test both crossings. A long step through an opening can still reach solid
  // ground on the opposite wall; endpoint clamping cannot detect that crossing.
  const inside=M.length(p)<=s.radius;

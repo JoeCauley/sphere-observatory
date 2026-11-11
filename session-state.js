@@ -18,7 +18,7 @@ function decode(raw){if(typeof raw!=='string'||raw.length>1000000)throw Error('I
  }
  state.playing=false;state.walkVelocity=0;
  const history=[],skipped=[];
- if(record.version===2&&record.journey?.version===1&&Array.isArray(record.journey.entries))for(const entry of record.journey.entries.slice(-24)){try{if(!entry||typeof entry.title!=='string'||entry.title.length>240||!entry.state)throw Error('Invalid journey entry');history.push({state:M.validate(entry.state),title:entry.title,created:typeof entry.created==='string'?entry.created.slice(0,40):'',identity:entry.identity});}catch(e){skipped.push(e.message);}}
+ if(record.version===2&&record.journey?.version===1&&Array.isArray(record.journey.entries))for(const entry of record.journey.entries.slice(-24)){try{if(!entry||typeof entry.title!=='string'||entry.title.length>240||!entry.state)throw Error('Invalid journey entry');const viewContext=entry.viewContext??null;if(viewContext!==null&&(viewContext.kind!=='installed-native-local/1'||typeof viewContext.regionId!=='string'||viewContext.regionId.length>160))throw Error('Invalid installed local journey context');history.push({state:M.validate(entry.state),title:entry.title,created:typeof entry.created==='string'?entry.created.slice(0,40):'',identity:entry.identity,viewContext});}catch(e){skipped.push(e.message);}}
  else if(record.version===2&&record.journey)skipped.push('Unsupported journey version');
  return {state,history,skipped,ui:record.ui&&typeof record.ui==='object'&&!Array.isArray(record.ui)?record.ui:{}};
 }
@@ -44,6 +44,7 @@ function applyUI(ui){for(const id of preferences){const el=$(id),value=ui.values
  for(const el of document.querySelectorAll('.tab-panel details')){const open=ui.details?.[detailKey(el)];if(typeof open==='boolean')el.open=open;}
 }
 function flush(){clearTimeout(timer);timer=null;if(!ready||(A.busy&&!root.SphereLoading?.active)||root.spherePreviewSuspended||root.SphereJourney?.travel?.legacyAutosaveAllowed===false)return false;
+ if(root.SphereMainBiomeView?.getViewContext()){status.textContent='Local inspection is temporary. Use Return to resume automatic viewpoint saving.';return false;}
  try{const next=encode(A.snapshot(),uiState(),root.SphereJourney?.entries||[]);if(next!==lastWritten){localStorage.setItem(key,next);lastWritten=next;}
   if(storageError){status.textContent='Settings and your viewpoint save automatically in this browser. Reopens paused.';storageError=false;}return true;
  }catch{status.textContent='This browser could not save the session. Export a scene from Capture to keep your settings.';storageError=true;return false;}

@@ -1,0 +1,104 @@
+{
+  "status": "PRIVATE_CATALOGUE_STATE_INPUT_CUSTODY_COMPONENT_WITH_ACTUAL_NESTED_JOB_REFUSAL_COMPLETE_PRICING_OPEN",
+  "source": "I:\\Sphere\\work\\biome-pack-service-caller-2026-10-26-175203-a5ce5685/source/caller-04",
+  "sourceReceipt": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-caller-2026-10-26-175203-a5ce5685/reports/caller-04-source.json",
+    "bytes": 94766,
+    "sha256": "f4ca766f826b80cc840bfb68bc18ace4be06a64fee03da9ef126f030e8e18fd2"
+  },
+  "retainedStorage": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-caller-2026-10-26-175203-a5ce5685/reports/retained-storage-caller-04-02.json",
+    "bytes": 806579,
+    "sha256": "df17e98ed41ebb65534e24f52a45de823eb489083e6092baf7abec3138d99145"
+  },
+  "expandedCensus": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-caller-2026-10-26-175203-a5ce5685/reports/borrower-body-census-caller-04.json",
+    "bytes": 16669788,
+    "sha256": "4deef9fe2f019c16c1ab1dd5968565df181c62fb47838717b2d7a1f6716ad414"
+  },
+  "frontiers": [
+    {
+      "id": "LegacyState7",
+      "file": "biome-service/native/state-contexts.js",
+      "body": "create",
+      "observation": "The older /7 component path still accepts release/resource/readSource/factory inputs from its caller. Its diagnostic success is not complete closure ownership.",
+      "status": "UNQUALIFIED_HISTORICAL_COMPONENT_PATH"
+    },
+    {
+      "id": "StrictState8",
+      "file": "owned-main-bootstrap.js + state-contexts.js",
+      "body": "callerRegister/callerStart/callerConsume/createFromCaller/originalStateCallerInputs",
+      "observation": "The new /8 source entry accepts only a once-consumed private Root token; the original catalogue supplies its retained factory map and transport. The startup resource source callsite exists, but automatic dispatcher scheduling and result/native observer custody remain unselected.",
+      "status": "INPUT_CUSTODY_COMPONENT_ONLY"
+    },
+    {
+      "id": "StartupScheduling",
+      "file": "owned-main-bootstrap.js",
+      "body": "beginOriginalStateCaller / initializerBody",
+      "observation": "initializerBody currently finishes after STATE_CONFIGURATION_ACCEPT. It never calls beginOriginalStateCaller. Creation, 225 Source visits, async result observation and retention must be integrated before actual startup is claimed.",
+      "status": "OPEN"
+    },
+    {
+      "id": "JobCoexistence",
+      "file": "owned-main-bootstrap.js + source-admission.js + resource-leases.js",
+      "body": "beginOwnedWorkVisit / visitParentSource / admitState",
+      "observation": "A standalone Source row transiently opens the original parent wrapper job and the original Source row job. Adding an outer initializer job requests a third at Source row enter. The exact component refuses JOB_QUOTA with one outer job before, two retained jobs after, and the same error propagated by the original State Promise. The outer job and final observer are disclosed test fixtures; actual initializer integration remains open. The HASH phase separately retains its real native job while awaiting crypto.",
+      "status": "NEEDS_GENUINE_SHARED_CURRENT_JOB_OR_STAGING_PROOF",
+      "componentProof": {
+        "path": "I:\\Sphere\\work\\biome-pack-service-caller-2026-10-26-175203-a5ce5685/controls/caller-08/control-ownedHostStagesReadBindCallerNestedJob-01.json",
+        "bytes": 22649,
+        "sha256": "ff81e50fbc39e27072419b57d9dee8a3754b117b280f3dca7da2c560e9b13e1c"
+      }
+    },
+    {
+      "id": "NativeInputBirth",
+      "file": "biome-service/storage.js + release-store.js",
+      "body": "open/get/getRelease/getResource",
+      "observation": "The genuine original Release store can retain Storage callbacks and native input results; resource raw copies are permitted up to 67108864 B. A genuine output identity and a late byte check do not alone prospectively bound the native result/copy/Promise activation peak.",
+      "status": "OPEN"
+    },
+    {
+      "id": "RetainedOwnerMetadata",
+      "file": "biome-service/release-store.js",
+      "body": "retainedMetadata/statusMetadata",
+      "observation": "publishedOwners and stagingOwners use Infinity as a list-length check before canonical size admission. Pins also iterate before their canonical quota check. The complete upstream native/input and invalid-input work bounds are not supplied by the late accepted-record check.",
+      "status": "OPEN"
+    },
+    {
+      "id": "FactoryScope",
+      "file": "biome-service/native/fixture-definition.js + owned-main-bootstrap.js",
+      "body": "make/configure/acceptProfile",
+      "observation": "The strict caller reuses outputs actually created by the original source-pinned factory specifications. Original presentation/native factory/body/host-service closures and all used error paths still require complete disjoint costs and C1.",
+      "status": "OPEN"
+    },
+    {
+      "id": "EarlierParentBodies",
+      "file": "host-world.js/binding-builder.js/commonboundary-adapter.js/storage.js",
+      "body": "Original current/pay/cache/configuration/constructor/native parents",
+      "observation": "The earlier six rejected parent callbacks are not accepted by the new Root producer. The remaining original earlier parents are distinct and remain unqualified as disclosed in controls.",
+      "status": "OPEN"
+    }
+  ],
+  "operationLanguage": "Original logical R resource/API operations remain authority. A syntactic node, named callback, unit marker, observed count or convenient amount is not a complete fee. The expanded census pins bodies and explicitly leaves unknown maxima null.",
+  "completeConsumerWorkPrice": null,
+  "completeConsumerRetainedStoragePrice": null,
+  "wholeSourcePrice": null,
+  "funding": null,
+  "wholeMainMetadata": null,
+  "completeC1": false,
+  "NativeMain": "NOT_RUN",
+  "physicalHeap": "UNMEASURED",
+  "fullConformance": "NOT_RUN",
+  "P05": "OPEN",
+  "P06_P08": "NOT_STARTED",
+  "PhaseOne": "NOT_ACCEPTED_NOT_RELEASED",
+  "derivationRefinement": "Authored shapes are corrected from exact AST keys. Unknown complete fees and maxima remain null.",
+  "supersedes": {
+    "receipt": {
+      "path": "I:\\Sphere\\work\\biome-pack-service-caller-2026-10-26-175203-a5ce5685/reports/consumer-work-storage-caller-04-02.json",
+      "bytes": 5495,
+      "sha256": "932ab78829601afa1eadead394e84410b5fbf3697464f91e6f6f117f7b13d4ef"
+    },
+    "reason": "Refines normal Source row versus HASH native job lifetimes using actual original R JOB_QUOTA evidence. Complete prices remain null."
+  }
+}

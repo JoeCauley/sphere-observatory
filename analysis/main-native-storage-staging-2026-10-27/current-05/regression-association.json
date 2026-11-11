@@ -1,0 +1,258 @@
+{
+  "status": "ALL40_STATUSES_MATCH_STARTUP09_FAILURES_UNWAIVED",
+  "current": {
+    "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/reports/service-regressions-storage-05.json",
+    "bytes": 308294,
+    "sha256": "bb90a9f6505753e6e488a266d117d5987151cb563e1c19709c72f06e5e02e1b3"
+  },
+  "parent": {
+    "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/reports/service-regressions-startup-09.json",
+    "bytes": 308294,
+    "sha256": "ef36badf9bf1f1084d631475b2779e01da7e7ee2f22062555ce891ca20b3864b"
+  },
+  "rows": [
+    {
+      "test": "biome-service-records.cjs",
+      "parentStatus": "PASS",
+      "currentStatus": "PASS",
+      "unwaived": false
+    },
+    {
+      "test": "biome-service-numeric-profile.cjs",
+      "parentStatus": "PASS",
+      "currentStatus": "PASS",
+      "unwaived": false
+    },
+    {
+      "test": "biome-service-host.cjs",
+      "parentStatus": "PASS",
+      "currentStatus": "PASS",
+      "unwaived": false
+    },
+    {
+      "test": "biome-service-numeric-integration.cjs",
+      "parentStatus": "PASS",
+      "currentStatus": "PASS",
+      "unwaived": false
+    },
+    {
+      "test": "biome-service-providers.cjs",
+      "parentStatus": "PASS",
+      "currentStatus": "PASS",
+      "unwaived": false
+    },
+    {
+      "test": "biome-service-ingestion.cjs",
+      "parentStatus": "PASS",
+      "currentStatus": "PASS",
+      "unwaived": false
+    },
+    {
+      "test": "biome-service-store.cjs",
+      "parentStatus": "PASS",
+      "currentStatus": "PASS",
+      "unwaived": false
+    },
+    {
+      "test": "biome-service-registry.cjs",
+      "parentStatus": "PASS",
+      "currentStatus": "PASS",
+      "unwaived": false
+    },
+    {
+      "test": "biome-service-geometry.cjs",
+      "parentStatus": "PASS",
+      "currentStatus": "PASS",
+      "unwaived": false
+    },
+    {
+      "test": "biome-service-eligibility.cjs",
+      "parentStatus": "PASS",
+      "currentStatus": "PASS",
+      "unwaived": false
+    },
+    {
+      "test": "biome-service-allocator.cjs",
+      "parentStatus": "PASS",
+      "currentStatus": "PASS",
+      "unwaived": false
+    },
+    {
+      "test": "biome-service-spatial-index.cjs",
+      "parentStatus": "PASS",
+      "currentStatus": "PASS",
+      "unwaived": false
+    },
+    {
+      "test": "biome-service-storage-lifecycle.cjs",
+      "parentStatus": "PASS",
+      "currentStatus": "PASS",
+      "unwaived": false
+    },
+    {
+      "test": "biome-service-view.cjs",
+      "parentStatus": "PASS",
+      "currentStatus": "PASS",
+      "unwaived": false
+    },
+    {
+      "test": "biome-service-bindings.cjs",
+      "parentStatus": "FAIL",
+      "currentStatus": "FAIL",
+      "unwaived": true
+    },
+    {
+      "test": "biome-service-view-binding.cjs",
+      "parentStatus": "FAIL",
+      "currentStatus": "FAIL",
+      "unwaived": true
+    },
+    {
+      "test": "biome-service-binding-reissue-identity.cjs",
+      "parentStatus": "FAIL",
+      "currentStatus": "FAIL",
+      "unwaived": true
+    },
+    {
+      "test": "biome-service-publication.cjs",
+      "parentStatus": "FAIL",
+      "currentStatus": "FAIL",
+      "unwaived": true
+    },
+    {
+      "test": "biome-service-publication-ownership.cjs",
+      "parentStatus": "FAIL",
+      "currentStatus": "FAIL",
+      "unwaived": true
+    },
+    {
+      "test": "biome-service-publication-faults.cjs",
+      "parentStatus": "FAIL",
+      "currentStatus": "FAIL",
+      "unwaived": true
+    },
+    {
+      "test": "biome-service-publication-existing-faults.cjs",
+      "parentStatus": "FAIL",
+      "currentStatus": "FAIL",
+      "unwaived": true
+    },
+    {
+      "test": "biome-service-publication-races.cjs",
+      "parentStatus": "FAIL",
+      "currentStatus": "FAIL",
+      "unwaived": true
+    },
+    {
+      "test": "biome-service-publication-dependencies.cjs",
+      "parentStatus": "FAIL",
+      "currentStatus": "FAIL",
+      "unwaived": true
+    },
+    {
+      "test": "biome-service-diagnostic-export.cjs",
+      "parentStatus": "PASS",
+      "currentStatus": "PASS",
+      "unwaived": false
+    },
+    {
+      "test": "biome-service-native.cjs",
+      "parentStatus": "FAIL",
+      "currentStatus": "FAIL",
+      "unwaived": true
+    },
+    {
+      "test": "biome-service-metadata-policy.cjs",
+      "parentStatus": "PASS",
+      "currentStatus": "PASS",
+      "unwaived": false
+    },
+    {
+      "test": "biome-service-native-fixtures.cjs",
+      "parentStatus": "FAIL",
+      "currentStatus": "FAIL",
+      "unwaived": true
+    },
+    {
+      "test": "biome-service-native-fixed-program.cjs",
+      "parentStatus": "FAIL",
+      "currentStatus": "FAIL",
+      "unwaived": true
+    },
+    {
+      "test": "biome-service-native-local-ownership.cjs",
+      "parentStatus": "FAIL",
+      "currentStatus": "FAIL",
+      "unwaived": true
+    },
+    {
+      "test": "biome-service-native-local-field.cjs",
+      "parentStatus": "FAIL",
+      "currentStatus": "FAIL",
+      "unwaived": true
+    },
+    {
+      "test": "biome-service-native-state.cjs",
+      "parentStatus": "FAIL",
+      "currentStatus": "FAIL",
+      "unwaived": true
+    },
+    {
+      "test": "biome-service-root-target.cjs",
+      "parentStatus": "FAIL",
+      "currentStatus": "FAIL",
+      "unwaived": true
+    },
+    {
+      "test": "biome-service-state-contexts.cjs",
+      "parentStatus": "FAIL",
+      "currentStatus": "FAIL",
+      "unwaived": true
+    },
+    {
+      "test": "biome-service-source-owner.cjs",
+      "parentStatus": "PASS",
+      "currentStatus": "PASS",
+      "unwaived": false
+    },
+    {
+      "test": "biome-service-host-coordinator.cjs",
+      "parentStatus": "FAIL",
+      "currentStatus": "FAIL",
+      "unwaived": true
+    },
+    {
+      "test": "biome-service-owned-record-intake.cjs",
+      "parentStatus": "PASS",
+      "currentStatus": "PASS",
+      "unwaived": false
+    },
+    {
+      "test": "biome-service-world-input.cjs",
+      "parentStatus": "FAIL",
+      "currentStatus": "FAIL",
+      "unwaived": true
+    },
+    {
+      "test": "biome-service-interior-ray-halfspace.cjs",
+      "parentStatus": "PASS",
+      "currentStatus": "PASS",
+      "unwaived": false
+    },
+    {
+      "test": "biome-service-surface-uniform-transport.cjs",
+      "parentStatus": "FAIL",
+      "currentStatus": "FAIL",
+      "unwaived": true
+    },
+    {
+      "test": "biome-service-interior-ray-cell.cjs",
+      "parentStatus": "FAIL",
+      "currentStatus": "FAIL",
+      "unwaived": true
+    }
+  ],
+  "pass": 19,
+  "fail": 21,
+  "allFailuresUnwaived": true
+}

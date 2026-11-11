@@ -1,0 +1,122 @@
+{
+  "status": "PASS_SCOPED_SOURCE_AND_COMPONENT_CONTINUATION_WITH_OPEN_GATES",
+  "utc": "2026-10-25T15:00:43.674100+00:00",
+  "work": "I:\\Sphere\\work\\biome-pack-service-resume-2026-10-25-01",
+  "source": "I:\\Sphere\\work\\biome-pack-service-resume-2026-10-25-01\\source\\coherent-01",
+  "sourceFiles": 522,
+  "parsedScripts": 426,
+  "changedFromRoot66": [
+    "biome-service/binding-builder.js",
+    "biome-service/commonboundary-adapter.js",
+    "biome-service/host-world.js",
+    "biome-service/native/root-program-binding.js",
+    "biome-service/native/source-admission.js",
+    "biome-service/native/state-contexts.js",
+    "biome-service/native/strict-record-owner.js",
+    "biome-service/native/surface-kernel.js",
+    "biome-service/provider-profiles.js",
+    "owned-main-bootstrap.js"
+  ],
+  "unchangedFromRoot66": 512,
+  "newerRecordsPreserved": true,
+  "compiledLaunch": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-resume-2026-10-25-01\\compiled02\\owned-main-trusted-launch.unselected.js",
+    "bytes": 2631059,
+    "sha256": "57ab89e0013cba621a2843bb856b4d344e86998aa4f162cf078fbfc497d0c783"
+  },
+  "controls": {
+    "providerGroups": 17,
+    "originalProgramGroups": 9,
+    "recordsTimerGroups": 52,
+    "integratedPathGroups": 11,
+    "integratedPathStatus": "PASS_EXPECTED_NEXT_BIND_BARRIER",
+    "additionalAdverseAndRetirementCases": 5
+  },
+  "genuineSourceAdmission": {
+    "profiles": 3,
+    "reads": 238,
+    "distinctCopies": 224,
+    "isolatedLogicalPeak": 14866162,
+    "isolatedFinalHeldBytes": 0
+  },
+  "nextBindingBarrier": {
+    "heldBytes": 30328045,
+    "requestedBytes": 8388608,
+    "chargedBytes": 8389184,
+    "limitBytes": 33554432,
+    "stateVisits": 2748,
+    "stateWaits": 6,
+    "peakLogicalBytes": 33506816,
+    "stateRemainsHeld": true
+  },
+  "broaderServiceSuite": {
+    "status": "FAIL",
+    "pass": 19,
+    "fail": 21,
+    "sourceIntegrity": "PASS",
+    "dependencyFiles": 870,
+    "dependenciesUnchanged": true,
+    "failedCasesAlsoFailOnParent": 21,
+    "meaning": "Parent comparison is not a waiver or a service pass."
+  },
+  "references": [
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-resume-2026-10-25-01\\reports\\coherent-source-01.json",
+      "bytes": 178496,
+      "sha256": "07270f22f2b2051d6bb4d5db6cc09c1f2bebbe0c192284a7d787335519174d5c"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-resume-2026-10-25-01\\reports\\coherent-launch-source-02.json",
+      "bytes": 6099,
+      "sha256": "94dec9dc9163dfb4ef7457ee92c84d83a00bc40989d3e401182678c3b5b520eb"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-resume-2026-10-25-01\\reports\\coherent-provider-01.json",
+      "bytes": 42664,
+      "sha256": "21b52c862a98e7f4bebcb2e08507d0b2bce6cc9e9350fc362a1be114efb58779"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-resume-2026-10-25-01\\reports\\coherent-program-01-01.json",
+      "bytes": 89007,
+      "sha256": "a1c98208115538fa02c8f6f9abc7ddd87081964798a299f2e2e885ac3cc8bf60"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-resume-2026-10-25-01\\controls\\records-coherent-01\\CHECK-CONTROLS-15.json",
+      "bytes": 15659,
+      "sha256": "7b45d488cb1dae2198e8fe41c9722c7963b9973a89823594d1db9b06104ac68a"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-resume-2026-10-25-01\\controls\\kernel-coherent-01\\control-ownedHostStagesReadCache-04.json",
+      "bytes": 27082,
+      "sha256": "9de534e9df035356d346984c071b757653ef912cc6733458d139de392fc08874"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-resume-2026-10-25-01\\reports\\service-regressions-01.json",
+      "bytes": 308272,
+      "sha256": "3875a7b0f7e7bcd20e17556812ea8d5ce1a11d1dbd1dfc9fc2b2ccdfad7448fa"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-resume-2026-10-25-01\\reports\\parent-regression-comparison-02.json",
+      "bytes": 1310,
+      "sha256": "75403e224dc02144d504c75d66235acf567fb766e067be30d3e434e51623eed0"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-resume-2026-10-25-01\\reports\\source-custody-proposal-06.json",
+      "bytes": 16611,
+      "sha256": "466ed629f9d89403784519676a18478b2d43857ed7838080632415116fe8e709"
+    },
+    {
+      "path": "I:\\Sphere\\work\\biome-pack-service-resume-2026-10-25-01\\reports\\preservation-before-docs-01.json",
+      "bytes": 262,
+      "sha256": "60ce217e52358768e3272ec4f82a55af74249a03bba83ac66d17f93d098b0f5d"
+    }
+  ],
+  "funding": null,
+  "wholeMainMetadata": null,
+  "nativeHeap": "UNMEASURED",
+  "nativeMain": "NOT_RUN",
+  "Main": false,
+  "P05": "OPEN",
+  "P06_P08": "NOT_STARTED",
+  "PhaseOne": "NOT_ACCEPTED_NOT_RELEASED"
+}

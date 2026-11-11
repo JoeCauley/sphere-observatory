@@ -1,0 +1,21 @@
+{
+  "title": "Main ownership continuation,25 October2026",
+  "report": {
+    "path": "I:\\Sphere\\repositories\\sphere-observatory\\docs\\Observatory-Main-Custody-Continuation-2026-10-25.md",
+    "bytes": 6999,
+    "sha256": "80325a2a6c2056a00ececae2242c378a8c62a270ed82fd8aaa1c889155500b67"
+  },
+  "componentReceipt": {
+    "path": "I:\\Sphere\\repositories\\sphere-observatory\\analysis\\main-custody-continuation-2026-10-25\\current-01\\component-receipt.json",
+    "bytes": 4689,
+    "sha256": "6384011ef4efc325350c72e800308dbeca37fa7ecd14a326f434cdf60c3395bf"
+  },
+  "work": "I:\\Sphere\\work\\biome-pack-service-resume-2026-10-25-01",
+  "continuation": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-resume-2026-10-25-01\\CONTINUATION.md",
+    "bytes": 6076,
+    "sha256": "d48e97d3cd2090d529e875a51c1b324c4df6994b6905fcaf89da599b083375ad"
+  },
+  "P05": "OPEN",
+  "Main": false
+}

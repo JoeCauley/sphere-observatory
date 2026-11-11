@@ -1,0 +1,248 @@
+{
+  "P05": "OPEN",
+  "P06": "NOT_STARTED",
+  "P07": "NOT_STARTED",
+  "P08": "NOT_STARTED",
+  "PhaseOne": "NOT_ACCEPTED_NOT_RELEASED",
+  "gates": [
+    {
+      "id": "NewNativeBoundedCodec",
+      "status": "SCOPED_COMPONENT_PASS",
+      "evidence": [
+        {
+          "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/control-native-input-positive-11.json",
+          "bytes": 5264,
+          "sha256": "5c7ddcda65391e377bfd8aab0f82ceb6d77dec92990443452bfd044ec217f401",
+          "case": "positive",
+          "status": "PASS",
+          "sourceScope": [
+            "In-memory fake-indexeddb 6.2.5 from pinned existing dependencies; no browser storage accessed. Three prototype getter adapters model WebIDL attributes: IDBDatabase.version, IDBTransaction.error, IDBVersionChangeEvent.oldVersion.",
+            "Original Q, Source admission and R host/jobs/credits execute. R aggregate and Source private modules have disclosed diagnostic byte selections and unit work selectors. New module INSTANCE524288/IO65536 and all WORK1 are diagnostic, not complete work/storage prices.",
+            "Root footer receiver is an explicit model with an observer alias for the private Source and new store binder. Minimal leaf Source envelope is genuine but does not establish whole program/Root provenance or prospective trusted launch funding.",
+            "Native ArrayBuffer, DataView, typed arrays, structuredClone and Node WebCrypto are actual Node primitives. Native browser IDB, whole Main, physical heap, complete C1 and acceptance remain unqualified."
+          ]
+        },
+        {
+          "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/control-native-input-large-11.json",
+          "bytes": 5294,
+          "sha256": "45e2f74074cd6b86a4aa8624e82c637c0554cdd9a011cafd26d6748b4e4d4d93",
+          "case": "large",
+          "status": "PASS",
+          "sourceScope": [
+            "In-memory fake-indexeddb 6.2.5 from pinned existing dependencies; no browser storage accessed. Three prototype getter adapters model WebIDL attributes: IDBDatabase.version, IDBTransaction.error, IDBVersionChangeEvent.oldVersion.",
+            "Original Q, Source admission and R host/jobs/credits execute. R aggregate and Source private modules have disclosed diagnostic byte selections and unit work selectors. New module INSTANCE524288/IO65536 and all WORK1 are diagnostic, not complete work/storage prices.",
+            "Root footer receiver is an explicit model with an observer alias for the private Source and new store binder. Minimal leaf Source envelope is genuine but does not establish whole program/Root provenance or prospective trusted launch funding.",
+            "Native ArrayBuffer, DataView, typed arrays, structuredClone and Node WebCrypto are actual Node primitives. Native browser IDB, whole Main, physical heap, complete C1 and acceptance remain unqualified."
+          ]
+        },
+        {
+          "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/control-native-input-depth-11.json",
+          "bytes": 4956,
+          "sha256": "a7be588040994aeb16cde682bdfdb75ad8f538c319f5f8bb0e2e04ecc9884c54",
+          "case": "depth",
+          "status": "PASS",
+          "sourceScope": [
+            "In-memory fake-indexeddb 6.2.5 from pinned existing dependencies; no browser storage accessed. Three prototype getter adapters model WebIDL attributes: IDBDatabase.version, IDBTransaction.error, IDBVersionChangeEvent.oldVersion.",
+            "Original Q, Source admission and R host/jobs/credits execute. R aggregate and Source private modules have disclosed diagnostic byte selections and unit work selectors. New module INSTANCE524288/IO65536 and all WORK1 are diagnostic, not complete work/storage prices.",
+            "Root footer receiver is an explicit model with an observer alias for the private Source and new store binder. Minimal leaf Source envelope is genuine but does not establish whole program/Root provenance or prospective trusted launch funding.",
+            "Native ArrayBuffer, DataView, typed arrays, structuredClone and Node WebCrypto are actual Node primitives. Native browser IDB, whole Main, physical heap, complete C1 and acceptance remain unqualified."
+          ]
+        },
+        {
+          "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/control-native-input-unknown-11.json",
+          "bytes": 4980,
+          "sha256": "35c92ed500318ce625bbad07d9a73d15cf8ae61f6825c29bdcc9efb9281a5671",
+          "case": "unknown",
+          "status": "PASS",
+          "sourceScope": [
+            "In-memory fake-indexeddb 6.2.5 from pinned existing dependencies; no browser storage accessed. Three prototype getter adapters model WebIDL attributes: IDBDatabase.version, IDBTransaction.error, IDBVersionChangeEvent.oldVersion.",
+            "Original Q, Source admission and R host/jobs/credits execute. R aggregate and Source private modules have disclosed diagnostic byte selections and unit work selectors. New module INSTANCE524288/IO65536 and all WORK1 are diagnostic, not complete work/storage prices.",
+            "Root footer receiver is an explicit model with an observer alias for the private Source and new store binder. Minimal leaf Source envelope is genuine but does not establish whole program/Root provenance or prospective trusted launch funding.",
+            "Native ArrayBuffer, DataView, typed arrays, structuredClone and Node WebCrypto are actual Node primitives. Native browser IDB, whole Main, physical heap, complete C1 and acceptance remain unqualified."
+          ]
+        },
+        {
+          "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/control-native-input-quota-11.json",
+          "bytes": 5225,
+          "sha256": "2573cfb99b79605b1857165af6360866688e90b0b3c854c109647b88ff6e3bbd",
+          "case": "quota",
+          "status": "PASS",
+          "sourceScope": [
+            "In-memory fake-indexeddb 6.2.5 from pinned existing dependencies; no browser storage accessed. Three prototype getter adapters model WebIDL attributes: IDBDatabase.version, IDBTransaction.error, IDBVersionChangeEvent.oldVersion.",
+            "Original Q, Source admission and R host/jobs/credits execute. R aggregate and Source private modules have disclosed diagnostic byte selections and unit work selectors. New module INSTANCE524288/IO65536 and all WORK1 are diagnostic, not complete work/storage prices.",
+            "Root footer receiver is an explicit model with an observer alias for the private Source and new store binder. Minimal leaf Source envelope is genuine but does not establish whole program/Root provenance or prospective trusted launch funding.",
+            "Native ArrayBuffer, DataView, typed arrays, structuredClone and Node WebCrypto are actual Node primitives. Native browser IDB, whole Main, physical heap, complete C1 and acceptance remain unqualified."
+          ]
+        },
+        {
+          "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/control-native-input-thirdJob-11.json",
+          "bytes": 4143,
+          "sha256": "30cf65278a5f7e995db934f6a411dd2b62fa84a6559b0199f3ff7e4ddc8dfced",
+          "case": "thirdJob",
+          "status": "PASS",
+          "sourceScope": [
+            "In-memory fake-indexeddb 6.2.5 from pinned existing dependencies; no browser storage accessed. Three prototype getter adapters model WebIDL attributes: IDBDatabase.version, IDBTransaction.error, IDBVersionChangeEvent.oldVersion.",
+            "Original Q, Source admission and R host/jobs/credits execute. R aggregate and Source private modules have disclosed diagnostic byte selections and unit work selectors. New module INSTANCE524288/IO65536 and all WORK1 are diagnostic, not complete work/storage prices.",
+            "Root footer receiver is an explicit model with an observer alias for the private Source and new store binder. Minimal leaf Source envelope is genuine but does not establish whole program/Root provenance or prospective trusted launch funding.",
+            "Native ArrayBuffer, DataView, typed arrays, structuredClone and Node WebCrypto are actual Node primitives. Native browser IDB, whole Main, physical heap, complete C1 and acceptance remain unqualified."
+          ]
+        },
+        {
+          "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/control-native-input-nativeChanged-11.json",
+          "bytes": 5124,
+          "sha256": "7f03679438fe9ef72eafcf5c16e2667f84ff0c3d44dd46f04c527c814913daca",
+          "case": "nativeChanged",
+          "status": "PASS",
+          "sourceScope": [
+            "In-memory fake-indexeddb 6.2.5 from pinned existing dependencies; no browser storage accessed. Three prototype getter adapters model WebIDL attributes: IDBDatabase.version, IDBTransaction.error, IDBVersionChangeEvent.oldVersion.",
+            "Original Q, Source admission and R host/jobs/credits execute. R aggregate and Source private modules have disclosed diagnostic byte selections and unit work selectors. New module INSTANCE524288/IO65536 and all WORK1 are diagnostic, not complete work/storage prices.",
+            "Root footer receiver is an explicit model with an observer alias for the private Source and new store binder. Minimal leaf Source envelope is genuine but does not establish whole program/Root provenance or prospective trusted launch funding.",
+            "Native ArrayBuffer, DataView, typed arrays, structuredClone and Node WebCrypto are actual Node primitives. Native browser IDB, whole Main, physical heap, complete C1 and acceptance remain unqualified."
+          ]
+        },
+        {
+          "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/control-native-input-forgedAdmission-11.json",
+          "bytes": 3974,
+          "sha256": "8d53cbc4fb1380c7f25564feef8e144ea0a233530618206915d5fdd482405ada",
+          "case": "forgedAdmission",
+          "status": "PASS",
+          "sourceScope": [
+            "In-memory fake-indexeddb 6.2.5 from pinned existing dependencies; no browser storage accessed. Three prototype getter adapters model WebIDL attributes: IDBDatabase.version, IDBTransaction.error, IDBVersionChangeEvent.oldVersion.",
+            "Original Q, Source admission and R host/jobs/credits execute. R aggregate and Source private modules have disclosed diagnostic byte selections and unit work selectors. New module INSTANCE524288/IO65536 and all WORK1 are diagnostic, not complete work/storage prices.",
+            "Root footer receiver is an explicit model with an observer alias for the private Source and new store binder. Minimal leaf Source envelope is genuine but does not establish whole program/Root provenance or prospective trusted launch funding.",
+            "Native ArrayBuffer, DataView, typed arrays, structuredClone and Node WebCrypto are actual Node primitives. Native browser IDB, whole Main, physical heap, complete C1 and acceptance remain unqualified."
+          ]
+        },
+        {
+          "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/control-native-input-epoch-11.json",
+          "bytes": 5103,
+          "sha256": "4dd3f6e7cff8ebd69058dc3801a67eff16ca97f49c6322843c17d138fb6cb471",
+          "case": "epoch",
+          "status": "PASS",
+          "sourceScope": [
+            "In-memory fake-indexeddb 6.2.5 from pinned existing dependencies; no browser storage accessed. Three prototype getter adapters model WebIDL attributes: IDBDatabase.version, IDBTransaction.error, IDBVersionChangeEvent.oldVersion.",
+            "Original Q, Source admission and R host/jobs/credits execute. R aggregate and Source private modules have disclosed diagnostic byte selections and unit work selectors. New module INSTANCE524288/IO65536 and all WORK1 are diagnostic, not complete work/storage prices.",
+            "Root footer receiver is an explicit model with an observer alias for the private Source and new store binder. Minimal leaf Source envelope is genuine but does not establish whole program/Root provenance or prospective trusted launch funding.",
+            "Native ArrayBuffer, DataView, typed arrays, structuredClone and Node WebCrypto are actual Node primitives. Native browser IDB, whole Main, physical heap, complete C1 and acceptance remain unqualified."
+          ]
+        },
+        {
+          "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/control-native-input-rawFalse-11.json",
+          "bytes": 5164,
+          "sha256": "9393faf45bf735c0b2071da36a5439052871bdb270c0e104bc9f4472ca2c6cd4",
+          "case": "rawFalse",
+          "status": "PASS",
+          "sourceScope": [
+            "In-memory fake-indexeddb 6.2.5 from pinned existing dependencies; no browser storage accessed. Three prototype getter adapters model WebIDL attributes: IDBDatabase.version, IDBTransaction.error, IDBVersionChangeEvent.oldVersion.",
+            "Original Q, Source admission and R host/jobs/credits execute. R aggregate and Source private modules have disclosed diagnostic byte selections and unit work selectors. New module INSTANCE524288/IO65536 and all WORK1 are diagnostic, not complete work/storage prices.",
+            "Root footer receiver is an explicit model with an observer alias for the private Source and new store binder. Minimal leaf Source envelope is genuine but does not establish whole program/Root provenance or prospective trusted launch funding.",
+            "Native ArrayBuffer, DataView, typed arrays, structuredClone and Node WebCrypto are actual Node primitives. Native browser IDB, whole Main, physical heap, complete C1 and acceptance remain unqualified."
+          ]
+        },
+        {
+          "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/control-native-input-rawUndefined-11.json",
+          "bytes": 5168,
+          "sha256": "05c2f6f4fb8a8ccbc6dc93e18b545bccbf822d06b4769b09e6170c63a9ee0440",
+          "case": "rawUndefined",
+          "status": "PASS",
+          "sourceScope": [
+            "In-memory fake-indexeddb 6.2.5 from pinned existing dependencies; no browser storage accessed. Three prototype getter adapters model WebIDL attributes: IDBDatabase.version, IDBTransaction.error, IDBVersionChangeEvent.oldVersion.",
+            "Original Q, Source admission and R host/jobs/credits execute. R aggregate and Source private modules have disclosed diagnostic byte selections and unit work selectors. New module INSTANCE524288/IO65536 and all WORK1 are diagnostic, not complete work/storage prices.",
+            "Root footer receiver is an explicit model with an observer alias for the private Source and new store binder. Minimal leaf Source envelope is genuine but does not establish whole program/Root provenance or prospective trusted launch funding.",
+            "Native ArrayBuffer, DataView, typed arrays, structuredClone and Node WebCrypto are actual Node primitives. Native browser IDB, whole Main, physical heap, complete C1 and acceptance remain unqualified."
+          ]
+        },
+        {
+          "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/control-native-input-pendingScope-11.json",
+          "bytes": 5150,
+          "sha256": "5b8f45075574c86e7d1225f38cd5898998ad570a1bc2efbcb4d7814d7073bb32",
+          "case": "pendingScope",
+          "status": "PASS",
+          "sourceScope": [
+            "In-memory fake-indexeddb 6.2.5 from pinned existing dependencies; no browser storage accessed. Three prototype getter adapters model WebIDL attributes: IDBDatabase.version, IDBTransaction.error, IDBVersionChangeEvent.oldVersion.",
+            "Original Q, Source admission and R host/jobs/credits execute. R aggregate and Source private modules have disclosed diagnostic byte selections and unit work selectors. New module INSTANCE524288/IO65536 and all WORK1 are diagnostic, not complete work/storage prices.",
+            "Root footer receiver is an explicit model with an observer alias for the private Source and new store binder. Minimal leaf Source envelope is genuine but does not establish whole program/Root provenance or prospective trusted launch funding.",
+            "Native ArrayBuffer, DataView, typed arrays, structuredClone and Node WebCrypto are actual Node primitives. Native browser IDB, whole Main, physical heap, complete C1 and acceptance remain unqualified."
+          ]
+        },
+        {
+          "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/control-native-input-partBacking-11.json",
+          "bytes": 4836,
+          "sha256": "8d89adbd8bd519332052b282cca28928e5f996384c40b1c040652068dc9bf0b4",
+          "case": "partBacking",
+          "status": "PASS",
+          "sourceScope": [
+            "In-memory fake-indexeddb 6.2.5 from pinned existing dependencies; no browser storage accessed. Three prototype getter adapters model WebIDL attributes: IDBDatabase.version, IDBTransaction.error, IDBVersionChangeEvent.oldVersion.",
+            "Original Q, Source admission and R host/jobs/credits execute. R aggregate and Source private modules have disclosed diagnostic byte selections and unit work selectors. New module INSTANCE524288/IO65536 and all WORK1 are diagnostic, not complete work/storage prices.",
+            "Root footer receiver is an explicit model with an observer alias for the private Source and new store binder. Minimal leaf Source envelope is genuine but does not establish whole program/Root provenance or prospective trusted launch funding.",
+            "Native ArrayBuffer, DataView, typed arrays, structuredClone and Node WebCrypto are actual Node primitives. Native browser IDB, whole Main, physical heap, complete C1 and acceptance remain unqualified."
+          ]
+        },
+        {
+          "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/control-native-input-releaseCompatibility-12.json",
+          "bytes": 5508,
+          "sha256": "317aa821a6b4ba148b44695d5ed1ebfee5c5350218ac798035956bf23db801e2",
+          "case": "releaseCompatibility",
+          "status": "PASS",
+          "sourceScope": [
+            "In-memory fake-indexeddb 6.2.5 from pinned existing dependencies; no browser storage accessed. Three prototype getter adapters model WebIDL attributes: IDBDatabase.version, IDBTransaction.error, IDBVersionChangeEvent.oldVersion.",
+            "Original Q, Source admission and R host/jobs/credits execute. R aggregate and Source private modules have disclosed diagnostic byte selections and unit work selectors. New module INSTANCE524288/IO65536 and all WORK1 are diagnostic, not complete work/storage prices.",
+            "Root footer receiver is an explicit model with an observer alias for the private Source and new store binder. Minimal leaf Source envelope is genuine but does not establish whole program/Root provenance or prospective trusted launch funding.",
+            "Native ArrayBuffer, DataView, typed arrays, structuredClone and Node WebCrypto are actual Node primitives. Native browser IDB, whole Main, physical heap, complete C1 and acceptance remain unqualified.",
+            "Original Release compatibility covers one small resource. Its full metadata/native/copy/error/caller work/storage remain unpriced; this is not a completed original reader bound."
+          ]
+        },
+        {
+          "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/control-native-root-registry-01.json",
+          "bytes": 1226,
+          "sha256": "c75691d89b30a790e22d7e4c53d004f6e41a0a0f01ea2ee081d66b392c1cf1ac",
+          "case": "rootRegistry",
+          "status": "PASS_EXACT_ROOT_AUTHENTICATION_BODIES_WITH_DISCLOSED_DOCUMENT_FIXTURES",
+          "sourceScope": "Document/currentScript/native src and exact phase/path inputs are modeled; loader pre-evaluation is a Q1 fixture. Binder forwarding uses a tuple recorder. No whole Root/program/native storage or complete work/storage/funding proof."
+        }
+      ]
+    },
+    {
+      "id": "NativeStorageInputOwnershipAndStaging",
+      "status": "PARTIAL_ORIGINAL_STARTUP_PARENT_OPEN",
+      "reason": "New private store exists and stages one operation per caller visit. Earlier startup still opens legacy Storage before R; original caller/scheduler/producer/transaction/release/status paths and service CPU ownership are not integrated."
+    },
+    {
+      "id": "CompleteWorkStoragePricing",
+      "status": "INCOMPLETE",
+      "work": null,
+      "storage": null,
+      "source": null,
+      "funding": null,
+      "wholeMain": null
+    },
+    {
+      "id": "OriginalReplacementAdmission",
+      "status": "FAIL_UNWAIVED",
+      "code": "RESOURCE_BUDGET"
+    },
+    {
+      "id": "BroadConformance",
+      "status": "FAIL_UNWAIVED",
+      "pass": 19,
+      "fail": 21
+    },
+    {
+      "id": "CompleteC1",
+      "status": "OPEN"
+    },
+    {
+      "id": "WholeRootProgramBaselineCallerVector",
+      "status": "OPEN"
+    },
+    {
+      "id": "NativeMainAndSameSurfaceAppearance",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "PhysicalHeap",
+      "status": "UNMEASURED"
+    }
+  ],
+  "forbiddenChanges": "No widening U/provider/manifest limits, dropping old owner, trimming content, waiving failure, public install/travel, session/recovery/export qualification, PhaseTwo/Meadow adaptation or Unreal promotion."
+}

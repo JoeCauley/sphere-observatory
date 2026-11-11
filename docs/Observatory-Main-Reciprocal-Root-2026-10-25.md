@@ -1,0 +1,51 @@
+# Private reciprocal Root continuation — 25 October 2026
+
+P05 remains **OPEN**. P06–P08 are **NOT_STARTED**; Phase One is **NOT_ACCEPTED / NOT_RELEASED**. Reciprocal registration is implemented and component tested. Complete consumer work/storage, actual scheduled Root/program/Baseline ownership, simultaneous Main admission and native same-surface qualification remain open.
+
+The exact private candidate is `I:/Sphere/work/biome-pack-service-root-2026-10-25-132453-8d4aadb7/source/root-02`. It has 522 files and 426 parsed scripts. Only `owned-main-bootstrap.js` and `biome-service/native/state-contexts.js` differ from bind-05. Ten files differ from Root66; 512 remain exact. Records remains byte exact to Root66. The earlier candidates, controls, profiles and failures are preserved.
+
+Read the [compact current receipt](../analysis/main-reciprocal-root-2026-10-25/current-02/component-receipt.json), [open gates](../analysis/main-reciprocal-root-2026-10-25/current-02/open-gates.json), [exact association](../../../work/biome-pack-service-root-2026-10-25-132453-8d4aadb7/reports/component-association-root-03.json) and [continuation](../../../work/biome-pack-service-root-2026-10-25-132453-8d4aadb7/CONTINUATION.md).
+
+## Implemented ownership connection
+
+The source-private Root controller registers original Storage completion, Host validation result, Binding cache, Binding boundary proof, Kernel recipe issuance, Kernel verified bind and State recipe/verified custody. Each registration requires the source-admitted path, active script/node/URL and exact module namespace. It captures immutable own-data methods, the original namespace descriptors and the exact nested State recipe and verified ports. Foreign attempts do not consume a registration; authentic partial failures and duplicate/reentrant attempts retain their first raw failure and original roots.
+
+Root performs the original Storage/Host/cache/boundary binds and Binding attachment. It then joins the original State recipe reader to Kernel issuance, returns that exact recipe port to State, passes the exact State verified port to Kernel, and returns the original Kernel verified port to State. A matching format string alone cannot substitute a different State return. Native descriptor checks include the captured Object.create and array iterator. The new State bindVerified validation requires a frozen own-data format and all five original methods, including status and measure, without invoking getters.
+
+These seven registration/binding bodies run in the current-source component control through actual module footers and source-issued ports. The Document/currentScript environment, prospective current/pay callbacks, diagnostic selections and graphics/backend remain disclosed adapters. The trusted complete Main launch has not been activated. Thus this closes the missing implementation connection in the component, while genuine native Root/program/Baseline ownership remains an open gate.
+
+## Evidence and preserved refusals
+
+Ten acquisition/adverse bind controls pass, including ordinary cleanup, an extra host-service lease, raw false/undefined, current loss, reentry, cancellation, common metadata pressure, actual R4096 quota and Binding proof-reader reentry. Thirty-one Root registration negative/model cases and nine isolated State port-validation cases pass separately. The default-null API check also passes. Synthetic binder inputs in the negative cases are explicitly disclosed; the original-module acquisition control supplies the independent positive wiring evidence.
+
+The original acquisition still executes 3,889 State visits, six waits and 1,031 bind steps. Original SHA/release/resource/recipe/provider/binding/C1 relations, geometry, frame, base state and the complete 11,167-byte context agree with independent recomputation. Logical component peak is **33,394,896 B** against **33,554,432 B**, leaving **159,536 B**. Final held bytes are **28,085,236 B**. The new Root diagnostic module/controller selections are 1 B and 65,536 B; these are not production quotes. The permanent Root reservations, original ports/callbacks and closed/failure rows stay held. Normal component cleanup proves neither Root/Q0 nor failed-operation recovery or physical heap reclamation.
+
+The actual replacement attempt still **FAILS / RESOURCE_BUDGET**. Two distinct live provider-owner declarations exceed the unchanged full binding envelope. U, manifest/provider budgets and the old owner's lifetime were not changed. The broad service sweep remains **19 PASS / 21 FAIL**; all 40 names/statuses match bind-05 and all failures remain unwaived. All prior regression tests/helpers and all 870 dependency files remain exact. This is no fresh nested-cause equivalence to Root66.
+
+## Current work audit and next gate
+
+The [source-associated work/storage ledger](../../../work/biome-pack-service-root-2026-10-25-132453-8d4aadb7/reports/consumer-work-storage-root-02.json) remains **INCOMPLETE**. It now inventories the original current functions and the added Root module, seven retained binder/namespace rows, twelve callable binder slots, two nested State port slots, eleven native descriptor rows, callback/argument lifetimes and permanent failed/closed roots.
+
+A separate observer control inserts only a disclosed guard-entry counter. It records 59,636 Root guards across acquisition driver.advance calls, with a maximum of 150 in one advance. Each full Root guard makes 45 own-descriptor reads: eleven native, six foundation, fourteen registered namespace, twelve binder and two nested State port reads. That gives **6,750 Root descriptor reads in that one advance**, before other child/current/native/error/caller work. These event counts are not complete operation prices, an accepted work-unit conversion or native timing. The ordinary control's 163 diagnostic markers cannot price the complete work.
+
+Next, derive and prospectively fund the complete original Root callback/current scope and every new consumer child/native/Promise/error/caller path, together with retained module/instance/working/result/closed/failure storage. Any proposed shared current fact must be source owned, tied to the actual paid scope and preserve every mutation/native/callback boundary; a global cached-ready flag supplies no proof. Complete consumer price, new whole-source price, funding and whole Main metadata admission remain null. The former Source-only conditional 4,081 proposal is inapplicable.
+
+The rebuilt unselected launch is 2,643,931 bytes, SHA-256 `f80ee75e433bc6afa7dab97c9e570cce83e52d6750bf8e677c5b07bdb5e3841c`. Three actual default-null Source admissions perform 238 reads and retain 224 distinct copies; isolated Source-only logical peak is 14,888,559 B and that isolated owner closes to zero. This excludes the retained Root/consumer/Main cohort.
+
+All original limits remain: 4,096 preparation operations, 262,144 upload bytes, two jobs, 64 slots, 32 MiB service CPU, 10 MiB service GPU and 32 MiB common metadata. The full context 1 MiB/depth64/2,097,152-node and State 262,144 B/depth32/8,192-node domains, original geography, cells/features, content and quality remain unchanged. Complete simultaneous Main/provider/service/current/replacement admission and actual overview/local whole-view/fragment/Frame/support/appearance proof are still required before P05 exit. P06 install/travel, P07 session/export/recovery and P08 full native qualification follow; Phase Two Meadow adaptation and Unreal remain excluded.
+
+Before documentation writes, all 1,636 baselined Observatory files, five Atlas files, 5,120 prior-work files, 258 original design files, 42 protected pack files and 870 dependency files were exact. All 23 baseline listener endpoints and twelve owner process identities match after normalizing PowerShell timestamp formats. The first literal timestamp comparison and its correction remain separate evidence. No server was started/stopped/restarted, no browser storage was changed and no private code was promoted to the walking route.
+
+## Subsequent pricing attempt
+
+The original body above retains its source/evidence scope. The later [pricing refusal and native correction](Observatory-Main-Pricing-Refusal-2026-10-25.md) preserves a fresh sibling, actual parent/module-floor quota refusals and the missing WeakSet.has check. Complete finite pricing remains open pending a bounded source-owned parent producer; no complete price or native/acceptance claim is selected.
+
+
+## Bounded parent implementation and pricing — 25 October 2026
+
+Read [the latest private source, evidence and open gates](Observatory-Main-Bounded-Parent-2026-10-25.md). The source-owned bounded parent producer is implemented and component tested, including genuine R native-completion jobs. Complete work/storage/whole-source pricing is still open: current prospective module and work subset replays fail unchanged limits. Ten component controls and six new held-failure controls pass; actual replacement remains FAIL RESOURCE_BUDGET and the service suite remains19 PASS/21 FAIL, all unwaived. Native Main and acceptance remain open; P05 OPEN, P06–P08 NOT_STARTED, Phase One NOT_ACCEPTED / NOT_RELEASED. Walking is unchanged. The earlier dated bodies above are preserved as historical evidence.
+
+
+## 25 October 2026 continuation — source reuse/staging09
+
+[Current source reuse/staging report](Observatory-Main-Source-Reuse-Staging-2026-10-25.md) records fresh sibling `I:/Sphere/work/biome-pack-service-reuse-2026-10-25-213922-9485ed41`, exact source/reuse-09 (522 files / 426 scripts). Root drives225 source-admission and224 retirement visits through genuine Source custody and guarded native hash completion. The ordinary component passes at33,107,779 B logical peak with closed State backing retained. Ten original, six parent and17 new Source controls pass; replacement remains FAIL RESOURCE_BUDGET. The broad cohort remains19 PASS / 21 FAIL, all failures unwaived. Complete consumer work/storage prices, whole-source price/funding and whole Main metadata remain null; complete C1, native Main and acceptance remain open. P05 OPEN; P06–P08 NOT_STARTED; Phase One NOT_ACCEPTED / NOT_RELEASED. No walking promotion or fixed-limit change. Historical content above is preserved.

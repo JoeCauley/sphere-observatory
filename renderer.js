@@ -51,14 +51,77 @@ void main(){vec3 center=mapped(texture(source,vUV).rgb);if(edgeAA==0){fragColor=
    }catch(error){try{this.dispose();}catch(cleanupError){error.cleanupError=cleanupError;error.renderer=this;}throw error;}
   }
   // Service/slot lifetimes stay outside saved scenes and worker state clones.
+  setBiomeOverview(owner){
+   if(this.disposalStarted)throw Error('The renderer is being disposed.');
+   if(!window.SphereBiomeMainOverview?.isOwner(owner)||!owner.usesRenderer(this))throw Error('Foreign installed overview owner');
+   this.biomeOverview=owner;
+  }
+  clearBiomeOverview(owner){if(this.biomeOverview!==owner)return false;this.biomeOverview=null;this.program=this.modernProgram;this.uniforms=this.modernUniforms;return true;}
+  setBiomeLocal(owner){if(!window.SphereBiomeMainLocalSupportV6?.isOwner(owner)||!owner.usesRenderer(this))throw Error('The actual source-owned Main local view is required');if(this.biomeLocal&&this.biomeLocal!==owner)throw Error('Retire the previous Main local view first');this.biomeLocal=owner;window.SphereMainSurfaceSlot?.attach(owner,this);}
+  clearBiomeLocal(owner){if(this.biomeLocal!==owner)return false;if(owner.isActive())throw Error('Leave the local view before clearing its renderer');window.SphereMainSurfaceSlot?.clear(owner);this.biomeLocal=null;return true;}
+  lockUniformFrame(owner){if(!window.SphereBiomeMainLocalMaterialV2?.isOwner(owner)||!owner.usesRenderer(this)||this.uniformFrameLock&&this.uniformFrameLock!==owner||this.prepareControllers?.size)throw Error('The exact settled Main material owner is required for a uniform hold');this.uniformFrameLock=owner;}
+  unlockUniformFrame(owner){if(this.uniformFrameLock===owner){this.uniformFrameLock=null;window.SphereApp?.draw();}}
   setVegetationPopulation(population=null){
    if(this.disposalStarted)throw Error('The renderer is being disposed.');
    if(population&&(population.coordinateSpace!=='vegetation-chart'||!population.service||!Array.isArray(population.handles)))throw Error('Invalid runtime vegetation population');
    const previous=this.vegetationPopulation?.service;if(previous&&previous!==population?.service)this.vegetationPopulation.lifecycle?.dispose();if(previous&&previous!==population?.service&&previous.gpuBackend?.owningPass===this.environment)previous.gpuBackend.dispose();
    previous?.collectRetired();this.vegetationPopulation=population;
   }
+  uploadFrameUniforms(s,width,height,{rw,rh,linear,silhouettes,exportFrame=false}){
+   const gl=this.gl;
+   gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,this.texture);gl.viewport(0,0,rw,rh);gl.useProgram(this.program);gl.uniform1i(this.uniforms.uLinearOutput,linear?1:0);
+   this.finishes.bind(this.uniforms,s);this.localShadows.bind(this.uniforms,s);
+   const f=(n,v)=>gl.uniform1f(this.uniforms[n],v),i=(n,v)=>gl.uniform1i(this.uniforms[n],v),v=(n,a)=>gl.uniform3fv(this.uniforms[n],a);
+   const b=M.basis(s.forward,s.up),plate=M.shade(s),radius=M.length(s.position),n=M.norm(s.position);
+   if(this.biomes){const B=SphereBiomes,alt=s.radius-radius;i('uBiomeOverride',s.biome??-1);i('uTextureDetail',s.textureDetail!==false?1:0);i('uBiomeAtm',s.biomeAtmosphere!==false?1:0);gl.uniform3fv(this.uniforms['uBiomeAnchor[0]'],B.anchors(n,s.radius));
+    this.biomes.upload();this.biomes.bind(this.uniforms,exportFrame);
+    if(this.heroes){i('uSurfaceRelief',s.surfaceRelief!==false?1:0);v('uHeroAnchor',B.heroAnchors(n,s.radius));
+     this.heroes.upload();this.heroes.bind(this.uniforms,exportFrame);
+    }
+   }
+   const atmKey=[n.join(','),s.time,s.radius,s.starRadius,s.collection,s.shadeEnabled,s.shadeAltitude,s.shadeDiameter,s.shadeOffset,s.shadeDamage,s.shadeSpeed,s.era,s.routeShades,s.starStation,s.cycleScale,s.shadeShape,s.shadeTrim,s.stationSamples,s.layoutVersion,s.axisLat,s.axisLon,s.waistWidth].join('|');
+   if(s.atmosphere>0&&s.radius-radius<160){if(this.atmosphereCache.key!==atmKey){this.atmosphereCache={key:atmKey,value:M.sunVisibility(M.mul(n,s.radius),s,s.stationSamples||64)};}f('uAtmosphereLight',this.atmosphereCache.value);}else f('uAtmosphereLight',1);
+   const indirect=s.collection&&s.shineField?(exportFrame||!this.previewLight?SphereCollection.cavity(s):this.previewLight.sample(s)):[0,0,0];this.frameFill=s.shineField?indirect.map(v=>v*s.shellshine*4):[s.shellshine,s.shellshine,s.shellshine];
+   gl.uniform2f(this.uniforms.uResolution,width,height);gl.uniform2f(this.uniforms.uRasterSize,rw,rh);i('uSilhouetteSamples',silhouettes?8:0);i('uAAPass',0);i('uAAMask',13);gl.uniform2f(this.uniforms.uAAOffset,0,0);v('uN',n);v('uForward',b.f);v('uRight',b.r);v('uUp',b.u);
+   const anchor=[];for(const scale of [1000000,100000,10000,1000,100,10,1,.1,.01,.001])for(const value of n)anchor.push(((value*s.radius/scale)%256+256)%256);gl.uniform3fv(this.uniforms['uAnchor[0]'],anchor);
+   f('uBreachRoughness',s.breachRoughness||0);i('uStyle',s.surfaceStyle==='legacy'?0:1);
+   f('uH',(s.radius-radius)/s.radius);f('uRadius',s.radius);f('uStar',s.starRadius/s.radius);f('uLuminosity',s.luminosity*Math.pow(M.AU/s.radius,2));f('uFov',M.radians(s.fov));f('uExposure',s.exposure);f('uShine',s.shellshine);f('uAtm',s.atmosphere);f('uSeed',s.seed);
+   v('uBreachAxis',M.axis(s.breachLat,s.breachLon));f('uBreachChord',2*Math.sin(s.breachDiameter/(4*s.radius)));i('uBreach',+s.breachEnabled);
+   v('uPlateRelative',M.mul(M.sub(plate.center,s.position),1/s.radius));v('uPlateWorld',M.mul(plate.center,1/s.radius));f('uPlateRadius',plate.radius/s.radius);f('uDamage',s.shadeDamage);i('uShade',+s.shadeEnabled);
+   i('uGrid',+s.grid);i('uMode',s.viewMode==='geographyid'?6:s.viewMode==='surfaceLight'?5:s.viewMode==='coverageid'?4:s.viewMode==='lightid'?3:s.viewMode==='objectid'?2:s.viewMode==='distance'?1:0);i('uPanorama',s.projection==='panorama'?1:0);i('uStars',+s.starfield);i('uStarTex',0);
+   if(window.SphereCollection)SphereCollection.upload(gl,this.uniforms,s,indirect);
+   if(window.SphereWorld)SphereWorld.upload(gl,this.uniforms,s);this.meadowGround?.bind(this.uniforms,s);this.renderInfo.meadowGround=this.meadowGround?.info;
+   // The inactive sampler still belongs to the complete linked Main program.
+   // Reuse Main's existing complete 2D texture; no additional image allocation.
+   const descriptorActive=gl.getParameter(gl.ACTIVE_TEXTURE);gl.activeTexture(gl.TEXTURE15);
+   if(!gl.getParameter(gl.TEXTURE_BINDING_2D)){
+    const revision=this.uniforms.uMeadowMaterialRevision==null?0:gl.getUniform(this.program,this.uniforms.uMeadowMaterialRevision);
+    if(revision!==0)throw Error('The active Meadow descriptor texture is unavailable.');gl.bindTexture(gl.TEXTURE_2D,this.texture);
+   }gl.activeTexture(descriptorActive);
+   if(this.worldTextures){this.worldTextures.upload();this.worldTextures.bind(this.uniforms);}
+   if(this.woundTextures){this.woundTextures.upload();this.woundTextures.bind(this.uniforms,exportFrame);}
+  }
+  withUniformFrame(s,layout,hostProgram,callback){
+   if(this.disposalStarted||typeof callback!=='function'||callback.constructor.name==='AsyncFunction')throw Error('One synchronous live Main uniform frame required');
+   const installed=s.collection&&s.layoutVersion===2?this.biomeOverview?.programFor(s):null,program=installed?.program??this.modernProgram,uniforms=installed?.uniforms??this.modernUniforms;
+   if(program!==hostProgram)throw Error('The source-admitted actual Main program changed');
+   const gl=this.gl,prior={program:this.program,uniforms:this.uniforms,renderInfo:this.renderInfo,frameFill:this.frameFill,atmosphereCache:this.atmosphereCache,glProgram:gl.getParameter(gl.CURRENT_PROGRAM),active:gl.getParameter(gl.ACTIVE_TEXTURE),viewport:Array.from(gl.getParameter(gl.VIEWPORT))};
+   try{this.program=program;this.uniforms=uniforms;this.renderInfo={};this.uploadFrameUniforms(s,layout.width,layout.height,layout);const result=callback();if(result!==null&&(typeof result==='object'||typeof result==='function'))throw Error('Main uniform frame did not settle synchronously');return result;}
+   finally{this.program=prior.program;this.uniforms=prior.uniforms;this.renderInfo=prior.renderInfo;this.frameFill=prior.frameFill;this.atmosphereCache=prior.atmosphereCache;gl.useProgram(prior.glProgram);gl.activeTexture(prior.active);gl.viewport(...prior.viewport);}
+  }
+  frameLayout(s,width,height,{exportFrame=false,adaptiveScale=1,facePass=false}={}){
+   if(!Number.isSafeInteger(width)||!Number.isSafeInteger(height)||width<1||height<1)throw Error('Exact full output viewport required');
+   const diagnostic=['objectid','lightid','surfaceLight','distance','geographyid'].includes(s.viewMode),budget=(exportFrame?3840*2160*4:1920*1080*adaptiveScale*adaptiveScale)/(facePass?6:1),factor=s.antialias>=2&&!diagnostic?Math.max(1,Math.min(2,Math.sqrt(budget/(width*height)),this.maxSize/width,this.maxSize/height)):1,rw=Math.floor(width*factor),rh=Math.floor(height*factor),linear=this.linearSupported&&(!s.viewMode||s.viewMode==='material');
+   return {width,height,rw,rh,smooth:rw>width||rh>height,linear,silhouettes:linear&&s.antialias===3&&s.collection&&s.layoutVersion===2,antialias:s.antialias,exportFrame,adaptiveScale,facePass};
+  }
   draw(s,width,height,{exportFrame=false,adaptiveScale=1,facePass=false}={}){
    if(this.disposalStarted)throw Error('The renderer is being disposed.');
+   if(this.uniformFrameLock||this.biomeLocal?.holdsMainFrame?.())return this.renderInfo;
+   if(this.biomeLocal?.isActive()){
+    const layout=this.frameLayout(s,width,height,{exportFrame,adaptiveScale,facePass});
+    if(!this.biomeLocal.matches(s,layout)){if(!this.nativeViewHeld){this.nativeViewHeld=true;window.dispatchEvent(new CustomEvent('sphere-native-view-held',{detail:{reason:'The local inspection needs preparation for the changed view. Use Return to leave it.'}}));}return this.renderInfo;}
+    this.nativeViewHeld=false;
+   }
    const frameStarted=performance.now();
    const frameId=this.drawFrameId=(this.drawFrameId||0)+1;
    SphereEdges.setView(width,{deterministic:exportFrame});
@@ -71,13 +134,11 @@ void main(){vec3 center=mapped(texture(source,vUV).rgb);if(edgeAA==0){fragColor=
    if(!this.geometry&&window.SphereGeometryRenderer&&s.layoutVersion===2&&s.collection&&s.geometryDetail&&SphereSites.geometry(s).length)this.geometry=new SphereGeometryRenderer(this.gl);
    const gl=this.gl;const started=performance.now();if(!facePass)this.pollTimers();let timerQuery=null;if(this.timer&&!exportFrame&&!facePass&&this.queries.length<4){timerQuery=gl.createQuery();gl.beginQuery(this.timer.TIME_ELAPSED_EXT,timerQuery);}
    try{
-    if(s.collection&&s.layoutVersion===2){this.program=this.modernProgram;this.uniforms=this.modernUniforms;}
+   const installedOverview=this.biomeOverview,installedProgram=s.collection&&s.layoutVersion===2?installedOverview?.programFor(s):null;
+   if(s.collection&&s.layoutVersion===2){this.program=installedProgram?.program??this.modernProgram;this.uniforms=installedProgram?.uniforms??this.modernUniforms;}
     else if(window.SphereLegacyShaders){if(!this.legacyProgram){const compiled=SphereGLProgram(gl,SphereLegacyShaders.vertex,SphereLegacyShaders.fragment);this.legacyProgram=compiled.p;this.legacyUniforms=compiled.u;}this.program=this.legacyProgram;this.uniforms=this.legacyUniforms;}
    if(this.canvas.width!==width||this.canvas.height!==height){this.canvas.width=width;this.canvas.height=height;}
-   const diagnostic=['objectid','lightid','surfaceLight','distance','geographyid'].includes(s.viewMode),budget=(exportFrame?3840*2160*4:1920*1080*adaptiveScale*adaptiveScale)/(facePass?6:1),maxSize=this.maxSize;
-   const factor=s.antialias>=2&&!diagnostic?Math.max(1,Math.min(2,Math.sqrt(budget/(width*height)),maxSize/width,maxSize/height)):1;
-   const rw=Math.floor(width*factor),rh=Math.floor(height*factor),smooth=rw>width||rh>height;
-   const linear=this.linearSupported&&(!s.viewMode||s.viewMode==='material'),silhouettes=linear&&s.antialias===3&&s.collection&&s.layoutVersion===2;
+   const {rw,rh,smooth,linear,silhouettes}=this.frameLayout(s,width,height,{exportFrame,adaptiveScale,facePass});
    if(linear){
     if(!this.lightBuffer){this.lightBuffer=gl.createFramebuffer();this.lightTexture=gl.createTexture();this.depthTexture=gl.createTexture();}
     gl.bindFramebuffer(gl.FRAMEBUFFER,this.lightBuffer);gl.activeTexture(gl.TEXTURE1);gl.bindTexture(gl.TEXTURE_2D,this.lightTexture);
@@ -102,43 +163,28 @@ void main(){vec3 center=mapped(texture(source,vUV).rgb);if(edgeAA==0){fragColor=
    const shadowGroups=this.geometry&&s.layoutVersion===2&&s.geometryDetail?SphereSites.geometry(s):[];
    this.localShadows.prepare(s,shadowGroups,mesh=>this.geometry.upload(mesh),{exportFrame,target:linear?this.lightBuffer:smooth?this.aaBuffer:null,viewport:[0,0,rw,rh]});
    this.renderInfo.structureShadows=this.localShadows.info;
-   gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,this.texture);gl.viewport(0,0,rw,rh);gl.useProgram(this.program);gl.uniform1i(this.uniforms.uLinearOutput,linear?1:0);
-   this.finishes.bind(this.uniforms,s);this.localShadows.bind(this.uniforms,s);
-   const f=(n,v)=>gl.uniform1f(this.uniforms[n],v),i=(n,v)=>gl.uniform1i(this.uniforms[n],v),v=(n,a)=>gl.uniform3fv(this.uniforms[n],a);
-   const b=M.basis(s.forward,s.up),plate=M.shade(s),radius=M.length(s.position),n=M.norm(s.position);
-   if(this.biomes){const B=SphereBiomes,alt=s.radius-radius;i('uBiomeOverride',s.biome??-1);i('uTextureDetail',s.textureDetail!==false?1:0);i('uBiomeAtm',s.biomeAtmosphere!==false?1:0);gl.uniform3fv(this.uniforms['uBiomeAnchor[0]'],B.anchors(n,s.radius));
-    this.biomes.upload();this.biomes.bind(this.uniforms,exportFrame);
-    if(this.heroes){i('uSurfaceRelief',s.surfaceRelief!==false?1:0);v('uHeroAnchor',B.heroAnchors(n,s.radius));
-     this.heroes.upload();this.heroes.bind(this.uniforms,exportFrame);
-    }
-   }
-   const atmKey=[n.join(','),s.time,s.radius,s.starRadius,s.collection,s.shadeEnabled,s.shadeAltitude,s.shadeDiameter,s.shadeOffset,s.shadeDamage,s.shadeSpeed,s.era,s.routeShades,s.starStation,s.cycleScale,s.shadeShape,s.shadeTrim,s.stationSamples,s.layoutVersion,s.axisLat,s.axisLon,s.waistWidth].join('|');
-   if(s.atmosphere>0&&s.radius-radius<160){if(this.atmosphereCache.key!==atmKey){this.atmosphereCache={key:atmKey,value:M.sunVisibility(M.mul(n,s.radius),s,s.stationSamples||64)};}f('uAtmosphereLight',this.atmosphereCache.value);}else f('uAtmosphereLight',1);
-   const indirect=s.collection&&s.shineField?(exportFrame||!this.previewLight?SphereCollection.cavity(s):this.previewLight.sample(s)):[0,0,0];this.frameFill=s.shineField?indirect.map(v=>v*s.shellshine*4):[s.shellshine,s.shellshine,s.shellshine];
-   gl.uniform2f(this.uniforms.uResolution,width,height);gl.uniform2f(this.uniforms.uRasterSize,rw,rh);i('uSilhouetteSamples',silhouettes?8:0);i('uAAPass',0);i('uAAMask',13);gl.uniform2f(this.uniforms.uAAOffset,0,0);v('uN',n);v('uForward',b.f);v('uRight',b.r);v('uUp',b.u);
-   const anchor=[];for(const scale of [1000000,100000,10000,1000,100,10,1,.1,.01,.001])for(const value of n)anchor.push(((value*s.radius/scale)%256+256)%256);gl.uniform3fv(this.uniforms['uAnchor[0]'],anchor);
-   f('uBreachRoughness',s.breachRoughness||0);i('uStyle',s.surfaceStyle==='legacy'?0:1);
-   f('uH',(s.radius-radius)/s.radius);f('uRadius',s.radius);f('uStar',s.starRadius/s.radius);f('uLuminosity',s.luminosity*Math.pow(M.AU/s.radius,2));f('uFov',M.radians(s.fov));f('uExposure',s.exposure);f('uShine',s.shellshine);f('uAtm',s.atmosphere);f('uSeed',s.seed);
-   v('uBreachAxis',M.axis(s.breachLat,s.breachLon));f('uBreachChord',2*Math.sin(s.breachDiameter/(4*s.radius)));i('uBreach',+s.breachEnabled);
-   v('uPlateRelative',M.mul(M.sub(plate.center,s.position),1/s.radius));v('uPlateWorld',M.mul(plate.center,1/s.radius));f('uPlateRadius',plate.radius/s.radius);f('uDamage',s.shadeDamage);i('uShade',+s.shadeEnabled);
-   i('uGrid',+s.grid);i('uMode',s.viewMode==='geographyid'?6:s.viewMode==='surfaceLight'?5:s.viewMode==='coverageid'?4:s.viewMode==='lightid'?3:s.viewMode==='objectid'?2:s.viewMode==='distance'?1:0);i('uPanorama',s.projection==='panorama'?1:0);i('uStars',+s.starfield);i('uStarTex',0);
-   if(window.SphereCollection)SphereCollection.upload(gl,this.uniforms,s,indirect);
-   if(window.SphereWorld)SphereWorld.upload(gl,this.uniforms,s);this.meadowGround?.bind(this.uniforms,s);this.renderInfo.meadowGround=this.meadowGround?.info;
-   if(this.worldTextures){this.worldTextures.upload();this.worldTextures.bind(this.uniforms);}
-   if(this.woundTextures){this.woundTextures.upload();this.woundTextures.bind(this.uniforms,exportFrame);}
-   gl.bindVertexArray(null);gl.enable(gl.DEPTH_TEST);gl.depthMask(true);gl.depthFunc(gl.ALWAYS);gl.clearDepth(1);gl.clear(gl.DEPTH_BUFFER_BIT);gl.drawArrays(gl.TRIANGLES,0,3);
+   this.uploadFrameUniforms(s,width,height,{rw,rh,linear,silhouettes,exportFrame});
+   gl.bindVertexArray(null);gl.enable(gl.DEPTH_TEST);gl.depthMask(true);gl.depthFunc(gl.ALWAYS);gl.clearDepth(1);gl.clear(gl.DEPTH_BUFFER_BIT);
+   const i=(name,value)=>gl.uniform1i(this.uniforms[name],value);
+   const drawShell=()=>{gl.drawArrays(gl.TRIANGLES,0,3);
    if(silhouettes){
     gl.framebufferTexture2D(gl.FRAMEBUFFER,gl.COLOR_ATTACHMENT1,gl.TEXTURE_2D,null,0);gl.drawBuffers([gl.COLOR_ATTACHMENT0]);
     gl.activeTexture(gl.TEXTURE13);gl.bindTexture(gl.TEXTURE_2D,this.silhouetteMask);gl.disable(gl.DEPTH_TEST);gl.depthMask(false);gl.enable(gl.BLEND);gl.blendEquation(gl.FUNC_ADD);gl.blendFunc(gl.ONE,gl.ONE);i('uAAPass',1);
     for(const offset of SphereSilhouetteOffsets){gl.uniform2fv(this.uniforms.uAAOffset,offset);gl.drawArrays(gl.TRIANGLES,0,3);}
     gl.disable(gl.BLEND);gl.depthMask(true);gl.enable(gl.DEPTH_TEST);i('uAAPass',0);gl.uniform2f(this.uniforms.uAAOffset,0,0);gl.activeTexture(gl.TEXTURE0);
    }
+   };
+   if(installedProgram){installedOverview.withFrame(s,this.uniforms,drawShell);this.renderInfo.installedOverview=installedOverview.inspect();}else drawShell();
+    const nativeLocalDrawn=this.biomeLocal?.isActive()?this.biomeLocal.draw(s,this.frameLayout(s,width,height,{exportFrame,adaptiveScale,facePass})):false;
+    if(nativeLocalDrawn)this.renderInfo.nativeBiomeLocal=this.biomeLocal.frameInfo();
+    if(!nativeLocalDrawn){
     this.geometry?.draw(s,this,linear,rw,rh);
     let environmentPopulation=this.vegetationPopulation||s.instancedEnvironment?.population||null,meadowResidentPopulation=null,environmentFrameDiagnostics=null;const meadowConfig=s.meadow||s.instancedEnvironment?.meadow;const grassConfig=s.grass||s.instancedEnvironment?.grass;
     if(this.meadow&&meadowConfig?.enabled){const runtimePopulation=environmentPopulation?.coordinateSpace==='vegetation-chart'&&environmentPopulation.service?.providers.has(window.SphereMeadowProvider?.ID)?environmentPopulation:null;if(runtimePopulation&&SphereVegetationRevisions.resourceKey(SphereVegetationRevisions.describe(runtimePopulation.service.current.get(SphereMeadowProvider.ID)?.value.state))!==SphereVegetationRevisions.resourceKey(SphereVegetationRevisions.describe({...s,meadow:meadowConfig})))throw Error('Runtime Meadow population belongs to another scene');const meadowPopulation=runtimePopulation?SphereMeadow.createGpuPopulation(runtimePopulation.service,{...s,meadow:meadowConfig},runtimePopulation.handles,{prototypes:runtimePopulation.prototypes,culling:runtimePopulation.culling,maxUploadBytesPerFrame:runtimePopulation.maxUploadBytesPerFrame,diagnostic:runtimePopulation.diagnostic,lifecycle:runtimePopulation.lifecycle,productionSelection:runtimePopulation.productionSelection}):this.meadow.request({...s,meadow:meadowConfig},{internalWidth:rw,capture:exportFrame});if(runtimePopulation)environmentPopulation=null;if(['resident-chart','vegetation-chart'].includes(meadowPopulation.coordinateSpace))meadowResidentPopulation=meadowPopulation;else environmentPopulation=environmentPopulation?{...environmentPopulation,prototypes:[...(environmentPopulation.prototypes||[]),...meadowPopulation.prototypes],patches:[...(environmentPopulation.patches||[]),...meadowPopulation.patches],windTime:meadowPopulation.windTime,windStrength:meadowPopulation.windStrength,diagnostic:meadowConfig.diagnostic}: {...meadowPopulation,diagnostic:meadowConfig.diagnostic};if(!meadowResidentPopulation?.service)this.renderInfo.meadow={...this.meadow.info,diagnostic:meadowConfig.diagnostic||null};}
     if(this.grass&&grassConfig?.enabled&&!meadowConfig?.enabled){this.grass.options={...this.grass.options,...grassConfig};const grassPopulation=this.grass.request({...s,grass:grassConfig});environmentPopulation=environmentPopulation?{...environmentPopulation,prototypes:[...(environmentPopulation.prototypes||[]),...grassPopulation.prototypes],patches:[...(environmentPopulation.patches||[]),...grassPopulation.patches],windTime:grassPopulation.windTime,windStrength:grassPopulation.windStrength}:grassPopulation;this.renderInfo.grass={...this.grass.info};}
     if(this.environment&&s.instancedEnvironment?.enabled!==false&&environmentPopulation){this.environment.draw(s,environmentPopulation,rw,rh,{linear,exportFrame,measureGpu:false,renderer:this});environmentFrameDiagnostics={...this.environment.diagnostics};this.renderInfo.instancedEnvironment=environmentFrameDiagnostics;}
     if(this.environment&&s.instancedEnvironment?.enabled!==false&&meadowResidentPopulation){this.environment.draw(s,meadowResidentPopulation,rw,rh,{linear,exportFrame,measureGpu:false,renderer:this});if(meadowResidentPopulation.coordinateSpace==='resident-chart')this.meadow.commitResident(this.environment.diagnostics.committedTargetSignature);const meadowInfo=meadowResidentPopulation.service?.info;this.renderInfo.meadow=meadowInfo?{...meadowInfo,fixedBlades:meadowInfo.retainedDetailedRecords,fixedBytes:meadowInfo.retainedBackingBytes,fixedCells:meadowResidentPopulation.service.allocations.size,queue:meadowInfo.queue+meadowInfo.workers,diagnostic:meadowConfig.diagnostic||null}:{...this.meadow.info,diagnostic:meadowConfig.diagnostic||null};this.renderInfo.instancedEnvironment={...this.environment.diagnostics};if(environmentFrameDiagnostics){for(const field of ['drawCalls','instances','triangles','frameUploadedBytes','frameInstanceUploadBytes','framePrototypeUploadBytes','frameReferenceUploadBytes'])this.renderInfo.instancedEnvironment[field]=(this.renderInfo.instancedEnvironment[field]||0)+(environmentFrameDiagnostics[field]||0);}}
+    }
    gl.disable(gl.DEPTH_TEST);
    if(linear){const image=this.weather?this.weather.draw(s,this,rw,rh):this.lightTexture;gl.bindFramebuffer(gl.FRAMEBUFFER,null);gl.viewport(0,0,width,height);gl.useProgram(this.resolve);gl.activeTexture(gl.TEXTURE1);gl.bindTexture(gl.TEXTURE_2D,image);gl.uniform1i(this.resolveSource,1);gl.uniform1f(this.resolveExposure,s.exposure);gl.uniform1i(this.resolveEdge,s.antialias===3?1:0);gl.drawArrays(gl.TRIANGLES,0,3);gl.activeTexture(gl.TEXTURE0);}
    else if(smooth){gl.bindFramebuffer(gl.READ_FRAMEBUFFER,this.aaBuffer);gl.bindFramebuffer(gl.DRAW_FRAMEBUFFER,null);gl.blitFramebuffer(0,0,rw,rh,0,0,width,height,gl.COLOR_BUFFER_BIT,gl.LINEAR);gl.bindFramebuffer(gl.FRAMEBUFFER,null);}
@@ -165,7 +211,8 @@ void main(){vec3 center=mapped(texture(source,vUV).rgb);if(edgeAA==0){fragColor=
    if(this.disposalComplete)return;
    this.disposalStarted=true;for(const controller of this.prepareControllers||[])controller.abort();const gl=this.gl;this.disposedChildren??=new WeakSet();
    const child=value=>{if(value?.dispose&&!this.disposedChildren.has(value)){value.dispose();this.disposedChildren.add(value);}};
-   child(this.vegetationPopulation?.lifecycle);for(const name of ['previewLight','biomes','heroes','worldTextures','woundTextures','finishes','localShadows','geometry','environment','meadowGround','grass','meadow'])child(this[name]);child(window.SphereEdgeStreaming);child(window.SphereGround);child(this.weather);child(this.panorama);
+   if(this.biomeLocal?.isActive())this.biomeLocal.deactivate();child(this.biomeLocal);if(this.biomeLocal)window.SphereMainSurfaceSlot?.clear(this.biomeLocal);
+   child(this.biomeOverview);child(this.vegetationPopulation?.lifecycle);for(const name of ['previewLight','biomes','heroes','worldTextures','woundTextures','finishes','localShadows','geometry','environment','meadowGround','grass','meadow'])child(this[name]);child(window.SphereEdgeStreaming);child(window.SphereGround);child(this.weather);child(this.panorama);
    const destroy=(method,value)=>{if(gl.isContextLost())return;gl[method](value);if(gl.getError()!==gl.NO_ERROR&&!gl.isContextLost())throw Error('The renderer could not finish '+method+'. Its resource is retained for retry.');};
    const programs=new Set(['modernProgram','program','legacyProgram','resolve'].map(name=>this[name]).filter(Boolean));
    if(!gl.isContextLost()&&programs.has(gl.getParameter(gl.CURRENT_PROGRAM))){gl.useProgram(null);if(!gl.isContextLost()&&(gl.getError()!==gl.NO_ERROR||gl.getParameter(gl.CURRENT_PROGRAM)!==null))throw Error('The renderer could not unbind its current program. Its programs are retained for retry.');}
@@ -179,6 +226,7 @@ void main(){vec3 center=mapped(texture(source,vUV).rgb);if(edgeAA==0){fragColor=
   }
   async prepare(s,{aspect=this.canvas.clientWidth/Math.max(1,this.canvas.clientHeight)||16/9,onProgress,signal}={}){
    if(this.disposalStarted)throw Error('The renderer is being disposed.');
+   if(this.uniformFrameLock)throw Error('The current Main material frame is held for verification.');
    const controller=new AbortController();this.prepareControllers??=new Set();this.prepareControllers.add(controller);signal=signal?AbortSignal.any([signal,controller.signal]):controller.signal;
    const check=()=>{if(this.disposalStarted||signal.aborted)throw new DOMException('View changed','AbortError');};
    try{

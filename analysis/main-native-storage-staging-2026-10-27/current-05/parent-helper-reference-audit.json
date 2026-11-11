@@ -1,0 +1,42 @@
+{
+  "status": "STALE_PARENT_FULL_LOADER_REFERENCE_CHECKED",
+  "parentHelper": {
+    "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/startup-17/caller-model-root-02.cjs",
+    "bytes": 15942,
+    "sha256": "a809756a601e5eedb365c4f8056d8ea38d0ae9b5b96c605949b34edb04f2b8c8"
+  },
+  "reference": "source/startup-08/owned-main-bootstrap.js",
+  "sameSelectedFunctions": [
+    "coldData",
+    "coldCapture",
+    "coldRowCurrent",
+    "coldOriginal",
+    "coldSlots",
+    "endOwnedWorkVisit",
+    "initializerCurrent",
+    "initializerScope",
+    "initializerTake",
+    "initializerNewScope",
+    "initializerPromiseCurrent",
+    "initializerObserve",
+    "initializerSettled",
+    "initializerWaitOwned",
+    "initializerOwnedSettled",
+    "initializerResumeOwned",
+    "initializerPhaseFee",
+    "initializerBody",
+    "bindingProfilesStart",
+    "bindingProfilesStep",
+    "bindingProfilesRead",
+    "bindingStart",
+    "bindingAccept",
+    "invoke",
+    "accepted",
+    "releasePending",
+    "startBinding",
+    "acceptBinding",
+    "readBindingOwner"
+  ],
+  "changedSelectedFunctions": [],
+  "freshHelpers": "Every copied current helper now reads source/storage-05; prior evidence is unmodified."
+}

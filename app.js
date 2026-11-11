@@ -6,7 +6,9 @@
  let lastPreviewDraw=-Infinity,previewFps=60,frameCount=0,fpsStart=performance.now(),measuredFps=0;
  let state=M.defaultState(),renderer,dirty=true,capturing=!!$('sceneLoading'),last=performance.now(),hudTime=0,renderCost=0,toastTimer,keys=new Set(),drag=null,verticalFlight=null;
  const viewport=$('viewport'),canvas=$('view'),previewQuality=new SpherePreviewQuality();
- let travelHold=false;
+ let travelHold=false,localInspection=null;
+ const localLocked=()=>!!localInspection?.isActive();
+ const localNotice=()=>toast('Use Return to leave this local inspection before changing the view.');
  function navigationIntent(){window.dispatchEvent(new Event('sphere-user-navigation-intent'));}
  try{const saved=Number(localStorage.getItem('sphere-preview-fps'));if([15,30,60].includes(saved))previewFps=saved;}catch{}
  $('previewFps').value=String(previewFps);$('previewFps').onchange=()=>{previewFps=Number($('previewFps').value);try{localStorage.setItem('sphere-preview-fps',String(previewFps));}catch{}dirty=true;};
@@ -14,7 +16,7 @@
  const actions=document.querySelector('.view-actions'),tools=document.createElement('div'),keyboardMap=document.createElement('div');tools.className='view-tools';keyboardMap.className='keyboard-map';keyboardMap.setAttribute('aria-label','Keyboard controls');keyboardMap.innerHTML='<span class="keyboard-map-title">FLIGHT CONTROLS</span><div><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd><span>fly</span></div><div><kbd>Q</kbd><kbd>E</kbd><span>down / up</span><kbd>Z</kbd><kbd>X</kbd><span>turn</span></div><small>Shift · fast&nbsp;&nbsp; Space · shades</small>';actions.replaceWith(tools);tools.append(actions,keyboardMap);const controlStyle=document.createElement('style');controlStyle.textContent='.view-tools{display:flex;flex-direction:column;align-items:flex-end;gap:8px}.keyboard-map{padding:8px 10px;border:1px solid #ffffff22;border-radius:3px;background:#10182055;color:#e7e9e7;font-size:9px;line-height:1.8;letter-spacing:.2px;text-align:right;text-shadow:0 1px 8px #000;pointer-events:none;white-space:nowrap}.keyboard-map-title{display:block;color:#aeb9b8;font-size:8px;letter-spacing:1.4px;margin-bottom:2px}.keyboard-map kbd{display:inline-flex;align-items:center;justify-content:center;min-width:15px;height:15px;margin-left:3px;border:1px solid #ffffff55;border-radius:2px;background:#ffffff0b;color:#f0f2ef;font:9px/1 monospace}.keyboard-map span:not(.keyboard-map-title){margin-left:5px;color:#c8d0ce}.keyboard-map small{display:block;color:#aeb9b8;font-size:8px}.view-top{align-items:flex-start}@media(max-width:760px){.keyboard-map{font-size:8px;padding:6px 8px}.keyboard-map kbd{min-width:13px;height:13px;font-size:8px}}';document.head.append(controlStyle);
  function clearFlightKeys(){keys.clear();verticalFlight=null;}
  function toast(message){$('toast').textContent=message;$('toast').classList.add('visible');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').classList.remove('visible'),4500);}
- const distance=v=>!Number.isFinite(v)?'Beyond the shell':Math.abs(v)<1?(v*1000).toLocaleString(undefined,{maximumFractionDigits:1})+' m':v>=1e6?(v/1e6).toFixed(3)+' million km':v.toLocaleString(undefined,{maximumFractionDigits:1})+' km';
+ const distance=v=>Number.isNaN(v)?'Support unavailable':!Number.isFinite(v)?'Beyond the shell':Math.abs(v)<1?(v*1000).toLocaleString(undefined,{maximumFractionDigits:1})+' m':v>=1e6?(v/1e6).toFixed(3)+' million km':v.toLocaleString(undefined,{maximumFractionDigits:1})+' km';
  const timeLabel=v=>{const sign=v<0?'−':'',s=Math.floor(Math.abs(v));return sign+[Math.floor(s/3600),Math.floor(s/60)%60,s%60].map(x=>String(x).padStart(2,'0')).join(':');};
  const transforms={radius:1e6,breachDiameter:1e6};
  const fields=['radius','starRadius','luminosity','breachEnabled','breachDiameter','breachLat','breachLon','breachRoughness','surfaceStyle','shadeEnabled','shadeAltitude','shadeDiameter','shadeOffset','shadeDamage','shadeSpeed','shellshine','atmosphere','seed','starfield','fov','speed','projection','viewMode','grid','exposure','timeRate','quality'];
@@ -26,7 +28,7 @@
  function chooseTab(name){document.querySelectorAll('[data-tab]').forEach(el=>{el.classList.toggle('active',el.dataset.tab===name);el.setAttribute('aria-selected',String(el.dataset.tab===name));});document.querySelectorAll('.tab-panel').forEach(el=>el.hidden=el.id!==name);if(name==='camera')syncCameraFields();}
  document.querySelectorAll('[data-tab]').forEach(el=>el.addEventListener('click',()=>chooseTab(el.dataset.tab)));
  for(const k of fields){const el=$(k);el.addEventListener(el.type==='range'?'input':'change',()=>{
-  const before=structuredClone(state);let value=el.type==='checkbox'?el.checked:el.tagName==='SELECT'&&['projection','viewMode','surfaceStyle'].includes(k)?el.value:Number(el.value)*(transforms[k]||1);
+  if(localLocked()){localNotice();sync();return;}const before=structuredClone(state);let value=el.type==='checkbox'?el.checked:el.tagName==='SELECT'&&['projection','viewMode','surfaceStyle'].includes(k)?el.value:Number(el.value)*(transforms[k]||1);
   if(k==='timeRate')W.rate(state,value);else state[k]=value;if(k==='speed')state.autoSpeed=false;
   if(k==='radius')state.position=M.mul(before.position,value/before.radius);
   try {const wasPlaying=state.playing;state=M.validate(state);state.playing=wasPlaying;if(displayedWind)displayedWind.meadow=state.meadow;}
@@ -34,7 +36,7 @@
   updateOutput();dirty=true;window.dispatchEvent(new Event('sphere-world-changed'));if(k==='radius'||k==='speed')sync();if(k==='projection')toast(value==='panorama'?'360° panorama: poles stretch in this flat projection.':'Photographic perspective restored.');
  });}
  document.querySelectorAll('summary .toggle').forEach(el=>el.addEventListener('click',e=>e.stopPropagation()));
- function setLook(f,up=[0,1,0]){const b=M.basis(f,up);state.forward=b.f;state.up=b.u;dirty=true;}
+ function setLook(f,up=[0,1,0]){if(localLocked()){localNotice();return;}const b=M.basis(f,up);state.forward=b.f;state.up=b.u;dirty=true;}
  function autoLevelIfNearSurface(){const changed=SphereInspection.level(state,1000);dirty=dirty||changed;return changed;}
  let integratingMovement=false,poseChanged=false;
  function moved(){if(integratingMovement){poseChanged=true;return;}const location=window.SphereJourney?.current();if(location)$('viewTitle').textContent=location.title;window.dispatchEvent(new Event('sphere-pose-updated'));window.dispatchEvent(new Event('sphere-view-changed'));}
@@ -53,19 +55,19 @@
  $('faceSurface').onclick=()=>{setLook(M.norm(state.position));moved();};$('faceStar').onclick=()=>{setLook(M.mul(M.norm(state.position),-1));moved();};
  $('inspectBelow').onclick=()=>{setLook(M.norm(state.position));moved();toast('Looking toward the nearby surface. Detail follows the distance to what you see.');};
  $('moveCamera').onclick=()=>{const lat=Number($('cameraLat').value),lon=Number($('cameraLon').value),alt=Number($('cameraAltitude').value);if(![lat,lon,alt].every(Number.isFinite)||Math.abs(lat)>90||Math.abs(lon)>180||alt<.001||alt>state.radius){toast('Choose valid latitude, longitude and altitude inside the shell.');return;}SphereJourney.travel.request({type:'place',title:'Exact shell address',resolve:input=>({...input,position:M.mul(M.axis(lat,lon),input.radius-alt),walkMode:false,walkSurface:false,walkPosition:null,siteId:'',siteAnchor:null,shadeAttachment:null})});};
- function setPlaying(value){W.playback(state,value,displayedPhase());sync();}
- $('play').onclick=()=>setPlaying(!state.playing);$('resetTime').onclick=()=>{SphereInspection.setTime(state,0);W.scrub(state);displayedWind=null;sync();};
- $('timeSlider').oninput=e=>{SphereInspection.setTime(state,Number(e.target.value));W.scrub(state);displayedWind=null;sync();};
+ function setPlaying(value){if(value&&localLocked()){localNotice();return;}W.playback(state,value,displayedPhase());sync();}
+ $('play').onclick=()=>setPlaying(!state.playing);$('resetTime').onclick=()=>{if(localLocked()){localNotice();return;}SphereInspection.setTime(state,0);W.scrub(state);displayedWind=null;sync();};
+ $('timeSlider').oninput=e=>{if(localLocked()){localNotice();sync();return;}SphereInspection.setTime(state,Number(e.target.value));W.scrub(state);displayedWind=null;sync();};
  $('togglePanel').onclick=()=>{document.body.classList.toggle('panel-hidden');dirty=true;};
  $('fullscreen').onclick=async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else await viewport.requestFullscreen();}catch{toast('This browser did not allow full-screen mode.');}dirty=true;};
  $('helpButton').onclick=()=>{clearFlightKeys();$('guide').showModal();};$('closeGuide').onclick=()=>$('guide').close();
  viewport.addEventListener('pointerdown',e=>{if(e.target!==canvas)return;viewport.focus({preventScroll:true});drag={x:e.clientX,y:e.clientY,id:e.pointerId};canvas.setPointerCapture(e.pointerId);});
- canvas.addEventListener('pointermove',e=>{if(!drag)return;const dx=e.clientX-drag.x,dy=e.clientY-drag.y;drag.x=e.clientX;drag.y=e.clientY;if(dx||dy)navigationIntent();if(travelHold)return;const b=M.basis(state.forward,state.up),yaw=-dx*.003,pitch=-dy*.003;let f=M.rotate(b.f,b.u,yaw),r=M.norm(M.cross(f,b.u));f=M.rotate(f,r,pitch);state.up=M.norm(M.rotate(b.u,r,pitch));state.forward=M.norm(f);moved();dirty=true;});
+ canvas.addEventListener('pointermove',e=>{if(!drag)return;const dx=e.clientX-drag.x,dy=e.clientY-drag.y;drag.x=e.clientX;drag.y=e.clientY;if(dx||dy)navigationIntent();if(travelHold||localLocked()){if(localLocked())localNotice();return;}const b=M.basis(state.forward,state.up),yaw=-dx*.003,pitch=-dy*.003;let f=M.rotate(b.f,b.u,yaw),r=M.norm(M.cross(f,b.u));f=M.rotate(f,r,pitch);state.up=M.norm(M.rotate(b.u,r,pitch));state.forward=M.norm(f);moved();dirty=true;});
  canvas.addEventListener('pointerup',()=>drag=null);canvas.addEventListener('lostpointercapture',()=>drag=null);
  viewport.addEventListener('wheel',e=>{if(e.target!==canvas)return;e.preventDefault();state.autoSpeed=false;state.speed=M.clamp(state.speed*Math.exp(-e.deltaY*.0015),state.layoutVersion===2?.001:1,3e7);sync();},{passive:false});
  function takeoff(){if(SphereTravel.takeoff(state)){verticalFlight=SphereInspection.surface(state).up;keys.delete('Space');dirty=true;sync();$('viewTitle').textContent='Lifting off';toast('Lifting off. E climbs; W flies forward.');return true;}return false;}
  window.addEventListener('keydown',e=>{if($('guide').open||/INPUT|SELECT|TEXTAREA|BUTTON/.test(e.target.tagName))return;
-  if(['KeyW','KeyA','KeyS','KeyD','KeyQ','KeyE','KeyZ','KeyX'].includes(e.code)||(e.code==='Space'&&state.walkMode)){navigationIntent();if(travelHold)return;}
+  if(['KeyW','KeyA','KeyS','KeyD','KeyQ','KeyE','KeyZ','KeyX'].includes(e.code)||(e.code==='Space'&&state.walkMode)){navigationIntent();if(travelHold||localLocked()){if(localLocked())localNotice();return;}}
   if((e.code==='KeyE'||e.code==='KeyQ')&&!keys.has('KeyE')&&!keys.has('KeyQ')){const axis=SphereInspection.surface(state).up;verticalFlight=M.length(axis)>.5?axis:state.up.slice();}
   if(['KeyW','KeyA','KeyS','KeyD','KeyQ','KeyE','KeyZ','KeyX','ShiftLeft','ShiftRight','Space'].includes(e.code)){keys.add(e.code);e.preventDefault();}
   if((e.code==='KeyE'||e.code==='Space')&&keys.has('KeyE')&&keys.has('Space')){takeoff();return;}
@@ -106,7 +108,7 @@
    const turn=(keys.has('KeyZ')?1:0)+(keys.has('KeyX')?-1:0);if(turn){const angle=turn*dt*M.radians(45);setLook(M.rotate(b.f,b.u,angle),M.rotate(b.u,b.u,angle));moved();}
    if(M.length(move)>0){const dir=M.norm(move);let step=SphereTravel.speed(state,dir,dt,keys.has('ShiftLeft')||keys.has('ShiftRight'))*dt;if(state.layoutVersion!==2){const star=M.sphereDistance(state.position,dir,[0,0,0],state.starRadius*1.02);if(star<step)step=Math.max(0,star-1);}const travel=window.SphereLanding?SphereLanding.move(state,dir,step):window.SphereFlight?SphereFlight.move(state,dir,step):{position:M.add(state.position,M.mul(dir,step))};let p=travel.position;const r=M.length(p);const limit=state.layoutVersion===2?state.radius*1.999:state.radius-1;if(r>=limit)p=M.mul(M.norm(p),limit);if(state.layoutVersion!==2&&r<=state.starRadius*1.02)p=M.mul(M.norm(p),state.starRadius*1.02);const crossed=state.radius-M.length(state.position)>1000&&state.radius-r<=1000;state.position=p;if(crossed&&state.autoSpeed===false)autoLevelIfNearSurface();moved();if(travel.landed){sync();$('viewTitle').textContent='Arriving on foot';toast('Landing here. Drag to look; W A S D to walk, Shift to run, Space to jump.');}dirty=true;}
   }
-  if(!window.SphereEnhancements?.measuring&&(state.autoSpeed===false?SphereInspection.level(state):SphereTravel.level(state,dt)))dirty=true;
+  if(!localLocked()&&!window.SphereEnhancements?.measuring&&(state.autoSpeed===false?SphereInspection.level(state):SphereTravel.level(state,dt)))dirty=true;
   });
   integratingMovement=false;if(poseChanged){poseChanged=false;moved();}
   if((dirty||renderer.needsFrame)&&window.SphereLoading?.needs(state)){SphereLoading.ensureCurrent();return;}
@@ -115,9 +117,9 @@
  }
  canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();$('error').hidden=false;$('error').textContent='The graphics context was interrupted. Reload this page to restore the renderer. Exported scenes and saved viewpoints are safe.';capturing=true;clearFlightKeys();});
  // Diagnostics used by local verification. No network or remote control interface.
- window.SphereApp={get travelHeld(){return travelHold;},setTravelHold:v=>{travelHold=v;clearFlightKeys();dirty=true;last=performance.now();},commitTravel:(next,candidate)=>{const clean=M.validate(next);W.playback(clean,state.playing);displayedWind=null;SphereLanding.activate(candidate);SphereTravel.reset();verticalFlight=null;state=clean;sync();},get busy(){return capturing;},getState:()=>structuredClone(state),snapshot,get displayedWindPhase(){return displayedPhase();},takeoff,setPlaying,setState:s=>{const next=M.validate(s);if(W.active(next)&&s.time!==state.time&&s.meadow?.windAnchorSceneTime===state.meadow?.windAnchorSceneTime)W.scrub(next);W.playback(next,state.playing);displayedWind=null;
+ window.SphereApp={setLocalInspection:owner=>{if(owner!==null&&(!window.SphereBiomeMainLocalSupportV6?.isOwner(owner)||!owner.usesRenderer(renderer)))throw Error('Actual Main local inspection owner required');localInspection=owner;clearFlightKeys();},get travelHeld(){return travelHold;},setTravelHold:v=>{travelHold=v;clearFlightKeys();dirty=true;last=performance.now();},commitTravel:(next,candidate)=>{if(localInspection&&(!localInspection.ready(next)||next.playing!==false))throw Error('The exact prepared paused native scene is required at commit');const clean=localInspection?structuredClone(next):M.validate(next);if(!localInspection)W.playback(clean,state.playing);displayedWind=null;SphereLanding.activate(candidate);SphereTravel.reset();verticalFlight=null;state=clean;sync();},get busy(){return capturing;},getState:()=>structuredClone(state),snapshot,get displayedWindPhase(){return displayedPhase();},takeoff,setPlaying,setState:s=>{if(localLocked()){localNotice();sync();return;}const next=M.validate(s);if(W.active(next)&&s.time!==state.time&&s.meadow?.windAnchorSceneTime===state.meadow?.windAnchorSceneTime)W.scrub(next);W.playback(next,state.playing);displayedWind=null;
   const samePose=['position','forward','up'].every(k=>Array.isArray(s[k])&&s[k].every((v,i)=>v===state[k][i]));
   if(next.shadeAttachment!==null&&next.shadeAttachment===state.shadeAttachment&&samePose)SphereInspection.transport(state,next);
-  if(!samePose){SphereTravel.reset();verticalFlight=null;}state=next;SphereInspection.level(state);sync();},preset,buildPreset,autoLevelIfNearSurface,renderer,draw:()=>{dirty=true;},setBusy:(v,{keepKeys=false}={})=>{capturing=v;if(!keepKeys)clearFlightKeys();dirty=true;last=performance.now();},capture,cancelCapture:()=>captureController?.abort(),record,assumptions,toast,download,get renderCost(){return renderCost;}};
+  if(!samePose){SphereTravel.reset();verticalFlight=null;}state=next;SphereInspection.level(state);sync();},preset,buildPreset,autoLevelIfNearSurface,renderer,draw:()=>{dirty=true;},refreshTelemetry:()=>{hudTime=0;},setBusy:(v,{keepKeys=false}={})=>{capturing=v;if(!keepKeys)clearFlightKeys();dirty=true;last=performance.now();},capture,cancelCapture:()=>captureController?.abort(),record,assumptions,toast,download,get renderCost(){return renderCost;}};
  sync();showBookmarks();if(innerWidth<760)document.body.classList.add('panel-hidden');requestAnimationFrame(frame);
 })();

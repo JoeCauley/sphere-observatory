@@ -1,3 +1,5 @@
+> **Current Observatory work · 2 November 2026.** Joe's finish line is installing Meadow and Industry in Main, visiting their assigned places, and returning after reopening the browser. Start with Track Meadow installation, persistent placement and duplicate-install handling. Full formal qualification and the creator toolkit have separate exits. See the [four-milestone delivery plan](Observatory-Biome-Pack-Main-Delivery.md) and [first implementation prompt](Observatory-Track-Meadow-Install-Prompt.md).
+
 <!-- repository-safety-checkpoint-2026-10-20 -->
 > **Project safety checkpoint — 20 October 2026:** Meadow–Industry walking is delivered; formal P05 remains OPEN. The latest Main candidate completes input compilation but defers before drawing on its unqualified work contract. Read [current status and completion path](Observatory-Project-Checkpoint-2026-10-20.md). Source/progress backups preserve the unfinished candidates separately from the working application; raw archives remain local by owner selection.
 

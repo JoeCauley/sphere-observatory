@@ -1,3 +1,5 @@
+> **Current Observatory work · 2 November 2026.** Joe's finish line is installing Meadow and Industry in Main, visiting their assigned places, and returning after reopening the browser. Start with Track Meadow installation, persistent placement and duplicate-install handling. The dated checkpoint below records the earlier route. See the [four-milestone delivery plan](Observatory-Biome-Pack-Main-Delivery.md) and [first implementation prompt](Observatory-Track-Meadow-Install-Prompt.md).
+
 # Biome Pack Service Continuation Ledger 08
 
 13 October 2026. Current report: I:\Sphere\repositories\sphere-observatory\docs\Observatory-Biome-Pack-Service-Implementation-09.md. WORK: I:\Sphere\work\biome-pack-service-main-2026-10-13T21-35-09-434Z-1acb8fb3. Read-only component viewer: http://127.0.0.1:9027/review-final-01/index.html.
@@ -40,3 +42,8 @@ HR-09/H IN_PROGRESS; H1 FAIL; native equivalence REOPENED_CAUSE_UNKNOWN_UNWAIVED
 The user confirmed another chat working in the shared checkout. 6 original snapshot entries differ at this closeout observation; 993 live census entries were observed before this documentation interval. Exact observations are in concurrent-source-closeout-observation.json. Source/current native profile equivalence for the changed Main/package files is INCOMPLETE. The final isolated40, standard61/pack16 and native147 results qualify their exact frozen source windows only. The fresh full matrix is qualification/current-02/matrix.json with16 open gates. Own four code/test paths remain exact to their after-registers. Overlapping current docs changed outside our chain are preserved without a pointer write: []. Only 25 unchanged-current doc bodies receive new exact preserved prefixes. Later outside-scope modifications are not placed in our own change chain or retroactively qualified.
 
 The user supplied a Main loading/error screenshot and then reported both screens gone. Exact screenshot and separate follow-up are retained in user-observation-01. This is a temporary UI observation, not an unresolved startup fault, measured cause or Main acceptance result. No action was taken in those windows.
+
+
+## Private verified bind continuation — 25 October 2026
+
+[Current source, evidence and open gates](Observatory-Main-Verified-Bind-2026-10-25.md): actual private State/Kernel/provider acquisition and normal component cleanup now pass the former bind/holder barriers. Ten targeted controls pass; real replacement remains FAIL / RESOURCE_BUDGET and the broad service sweep remains19 PASS/21 FAIL, all unwaived. Complete consumer/whole-source pricing, Root/program/Baseline, simultaneous Main/current/replacement admission and native same-surface proof remain open. P05 OPEN; P06–P08 NOT_STARTED; Phase One NOT_ACCEPTED / NOT_RELEASED. The live walking runtime is unchanged. Earlier dated records above retain their original scope.

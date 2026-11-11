@@ -1,0 +1,13 @@
+{
+  "status": "EXACT_COUNTEREXAMPLE_SCOPE_NO_COMPLETE_PRICE_SELECTION",
+  "witness": {
+    "path": "I:/Sphere/work/biome-pack-service-startup-2026-10-26-191746-01debe3a/controls/pricing-02/control-release-native-input-frontier-02.json",
+    "bytes": 4231,
+    "sha256": "e46422d8f4c045083c813dfdd8caf5c930caaec2e7500ed44f874331e3a1baa7"
+  },
+  "storage": "The 33554656 B subset is a disjoint lower bound under the existing authored-storage ABI: unique 72-unit owner strings once, the native-input array once, and its original slice backing once. The input and original copy overlap before late canonical refusal. This excludes other metadata/native/buffer/Promise/activation storage, so it is not a full allowance or peak.",
+  "work": "95325 is the observed original owner-loop iteration count and a lower bound in the expressly selected local per-owner predicate/control vocabulary. It is not the actual R debit counter, an AST tariff, or a proof that no different faithful bounded resource/API operation language or staged implementation could work.",
+  "native": "The control uses an explicit Storage/input fixture and an output-only iteration observer in the original Release body. Passing small rows use actual Node crypto. It does not allocate a browser IndexedDB result or qualify native heap, whole Main, full C1 or funding.",
+  "next": "Supply an authentic source-owned prospective native input bound and stage/reuse the original owner/pin/resource validation and transport. A late validator, genuine Kernel/Binding/storage identity, static subtotal, or diagnostic unit selection does not supply that bound.",
+  "completePricingClosed": false
+}

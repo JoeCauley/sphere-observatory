@@ -1,12 +1,13 @@
 /* Geographic identity is independent of camera activity and movement mode. */
 (function(root){
-'use strict';const M=root.SphereMath;
+'use strict';const M=root.SphereMath;let installedBiomeOwner=null;
 function resolve(s,previous=null){
  const q=M.norm(s.position),region=root.SphereWorld.sample(q,s),height=Math.abs(s.radius-M.length(s.position));
  const plate=s.shadeAttachment!==null?root.SphereInspection?.plate(s):null;
  if(plate&&root.SphereTravel.shadeClearance(s,plate).distance<1000)return {id:'shade-'+s.shadeAttachment,title:'Shade '+s.shadeAttachment,region:'Moving Shade',frame:'shade',parent:s.shadeAttachment};
  if(/^port-/.test(s.siteId)&&s.siteAnchor&&M.length(M.sub(s.position,M.mul(s.siteAnchor,s.radius)))<3)return {id:s.siteId,title:'Polar entry '+(s.siteId==='port-0'?'A':'B'),region:'Polar entry complex',frame:'shell'};
  if(s.siteId==='exterior-0'&&s.siteAnchor&&M.length(M.sub(s.position,M.mul(s.siteAnchor,s.radius+2500)))<100)return {id:'wound-spill',title:'Breach spill',region:'Wound '+(root.SphereWorld.nearestRim(s.siteAnchor,s).index+1),frame:'shell'};
+ if(height<1000000&&installedBiomeOwner){const installed=installedBiomeOwner.location(s);if(installed)return installed;}
  if(height<50000&&root.SpherePacks?.enabled(s)){
   if(root.SphereMeadowEcology?.active?.(s)&&root.SphereMeadowEcology.directionInDomain(s).coverage>0)return {id:'watershed-meadow-study',title:'Open meadow · Meadow study · on foot',region:'Watershed',frame:'shell'};
   const sample=root.SphereNeighbourhood?.sample(q,s),weights=sample?.compositionWeights;
@@ -19,5 +20,7 @@ function resolve(s,previous=null){
  if(height<1000000)return {id:'region-'+region.id,title:region.name,region:region.id<10?'Habitat waist':'Shell works',frame:'shell'};
  return {id:'survey',title:M.length(s.position)<s.starRadius*25&&M.dot(s.forward,q)<-.9?'Central star':'Across the collection',region:'Free flight',frame:'shell'};
 }
-root.SphereLocation={resolve};
+function setInstalledBiomeOwner(owner){if(!root.SphereBiomeMainOverview?.isOwner(owner))throw Error('Foreign installed-biome location owner');if(installedBiomeOwner&&installedBiomeOwner!==owner)throw Error('An installed-biome location owner is already active');installedBiomeOwner=owner;}
+function clearInstalledBiomeOwner(owner){if(installedBiomeOwner===owner)installedBiomeOwner=null;}
+root.SphereLocation={resolve,setInstalledBiomeOwner,clearInstalledBiomeOwner};
 })(typeof window==='undefined'?globalThis:window);

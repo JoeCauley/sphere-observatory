@@ -1,0 +1,118 @@
+{
+  "status": "PRIVATE_RECIPROCAL_ROOT_IMPLEMENTED_COMPONENT_PASS_WITH_OPEN_GATES",
+  "utc": "2026-10-25T17:50:38.228Z",
+  "work": "I:/Sphere/work/biome-pack-service-root-2026-10-25-132453-8d4aadb7",
+  "source": "I:/Sphere/work/biome-pack-service-root-2026-10-25-132453-8d4aadb7/source/root-02",
+  "sourceFiles": 522,
+  "parsedScripts": 426,
+  "changedFromBind05": [
+    "biome-service/native/state-contexts.js",
+    "owned-main-bootstrap.js"
+  ],
+  "changedFromRoot66": [
+    "biome-service/binding-builder.js",
+    "biome-service/commonboundary-adapter.js",
+    "biome-service/host-world.js",
+    "biome-service/native/root-program-binding.js",
+    "biome-service/native/source-admission.js",
+    "biome-service/native/state-contexts.js",
+    "biome-service/native/strict-record-owner.js",
+    "biome-service/native/surface-kernel.js",
+    "biome-service/provider-profiles.js",
+    "owned-main-bootstrap.js"
+  ],
+  "exactToRoot66": 512,
+  "RecordsByteExactToRoot66": true,
+  "compiledLaunch": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-root-2026-10-25-132453-8d4aadb7\\compiled-root-02\\owned-main-trusted-launch.unselected.js",
+    "bytes": 2643931,
+    "sha256": "f80ee75e433bc6afa7dab97c9e570cce83e52d6750bf8e677c5b07bdb5e3841c"
+  },
+  "component": {
+    "logicalPeakBytes": 33394896,
+    "finalHeldBytes": 28085236,
+    "limitBytes": 33554432,
+    "headroomBytes": 159536,
+    "stateVisits": 3889,
+    "stateWaits": 6,
+    "bindSteps": 1031,
+    "contextCanonicalBytes": 11167,
+    "perSliceDiagnosticMarkers": 163,
+    "rootModuleDiagnosticBytes": 1,
+    "rootControllerDiagnosticBytes": 65536
+  },
+  "controls": {
+    "originalRootBindPass": 10,
+    "replacement": "FAIL_RESOURCE_BUDGET_UNWAIVED",
+    "rootRegistrationNegative": 31,
+    "statePortValidation": 9,
+    "defaultNullApi": "PASS"
+  },
+  "broadService": {
+    "pass": 19,
+    "fail": 21,
+    "sameFortyStatusesAsBind05": true,
+    "dependencyFiles": 870,
+    "dependenciesUnchanged": true
+  },
+  "workObservation": {
+    "guardEntries": 59636,
+    "maximumGuardsPerAdvance": 150,
+    "ownDescriptorReadsPerFullGuard": 45,
+    "maximumRootOwnDescriptorReadsPerAdvance": 6750,
+    "completePrice": null
+  },
+  "references": [
+    {
+      "path": "I:/Sphere/work/biome-pack-service-root-2026-10-25-132453-8d4aadb7/reports/component-association-root-03.json",
+      "bytes": 9924,
+      "sha256": "5974c272ff7f0399b3dc33a793e282e6667c651b0274a1be7c3b8d02f0bd1ac1"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-root-2026-10-25-132453-8d4aadb7/reports/consumer-work-storage-root-02.json",
+      "bytes": 347913,
+      "sha256": "063ab4190d16a3c0aa9572339afe786e170d68f8b3e75a90a651916dc29fa2a6"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-root-2026-10-25-132453-8d4aadb7/reports/regression-association-root-02.json",
+      "bytes": 1948,
+      "sha256": "4ce0e543c9d841bb92fa157564bae6dce5502cfbb9029cc55c24c87efc828a0d"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-root-2026-10-25-132453-8d4aadb7/reports/root-02-source.json",
+      "bytes": 94760,
+      "sha256": "5abffcc98591743cb680c9980cee99ef8dc80e2483f11ca630ea046ea6092b94"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-root-2026-10-25-132453-8d4aadb7/reports/root-02-launch-source.json",
+      "bytes": 6123,
+      "sha256": "cf9f643e2a73211b167cc611b6c0a149a2451fc88947b53a969906cff88eb4d7"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-root-2026-10-25-132453-8d4aadb7/reports/preservation-normalized-root-02.json",
+      "bytes": 3056,
+      "sha256": "eb451d46b2a9c4329fbfb9803f01b4dd04eb0ef8d6f365defac1c933606fc1e6"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-root-2026-10-25-132453-8d4aadb7/reports/failed-attempts-root-02.json",
+      "bytes": 1988,
+      "sha256": "1e80100e562c5c1ad00a435ca94c8ab02c2e7bc15d5654c10b499edeea562445"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-root-2026-10-25-132453-8d4aadb7/reports/collector-corrections-root-03.json",
+      "bytes": 773,
+      "sha256": "b2f695391069d49638ef6d202d0c784db6de197610ceef50cbc214df494160f3"
+    }
+  ],
+  "completeConsumerPrice": null,
+  "wholeSourcePrice": null,
+  "funding": null,
+  "wholeMainMetadata": null,
+  "nativeHeap": "UNMEASURED",
+  "nativeMain": "NOT_RUN",
+  "fullConformance": "NOT_RUN",
+  "Main": false,
+  "P05": "OPEN",
+  "P06_P08": "NOT_STARTED",
+  "PhaseOne": "NOT_ACCEPTED_NOT_RELEASED"
+}

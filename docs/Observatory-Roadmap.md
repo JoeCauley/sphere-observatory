@@ -1,3 +1,5 @@
+> **Current Observatory work · 2 November 2026.** Joe's finish line is installing Meadow and Industry in Main, visiting their assigned places, and returning after reopening the browser. Start with Track Meadow installation, persistent placement and duplicate-install handling. Full formal qualification and the creator toolkit have separate exits. See the [four-milestone delivery plan](Observatory-Biome-Pack-Main-Delivery.md) and [first implementation prompt](Observatory-Track-Meadow-Install-Prompt.md).
+
 <!-- industry-display-preparation-2026-10-20 -->
 > **Industry display preparation — 20 October 2026:** The [successor implementation](Observatory-Industry-Display-Preparation-2026-10-20.md) uses verified bounds before detail uploads, origin copies, draws and moving-geometry preparation. A public walk crossed both ways, hidden graphics stopped while the clock advanced, and exact saved return/tracked cleanup passed. Original content remains exact. Required image/performance qualification and formal P05 remain OPEN; see the [current work plan](Observatory-Current-Work-Plan.md). Earlier reports and results remain exact below.
 

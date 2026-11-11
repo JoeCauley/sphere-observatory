@@ -1,0 +1,2460 @@
+{
+  "status": "SCOPED_NATIVE_BOUND_AND_STAGING_PASS_ORIGINAL_STARTUP_AND_PRICING_OPEN",
+  "work": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929",
+  "source": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/source/storage-05",
+  "sourceReceipt": {
+    "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/reports/storage-05-source.json",
+    "bytes": 95128,
+    "sha256": "2639d1ac0cdf9e180cbfad20ecbaf90f44900fb4e58a3a17c5e72bdc66869654"
+  },
+  "files": 523,
+  "parses": 427,
+  "changedFromStartup09": [
+    "biome-service/native/bounded-native-input-store.js",
+    "biome-service/native/source-admission.js",
+    "owned-main-bootstrap.js"
+  ],
+  "added": [
+    "biome-service/native/bounded-native-input-store.js"
+  ],
+  "RecordsByteExact": true,
+  "Root66": {
+    "changed": 11,
+    "exact": 512,
+    "scope": "Original10 changed paths remain; Source and Root were already members; one new native store file is added."
+  },
+  "compiledLaunch": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-storage-2026-10-27-192829-eb2d8929\\compiled-storage-05\\owned-main-trusted-launch.unselected.js",
+    "bytes": 2727954,
+    "sha256": "23ef86634d30bb73476308d23650c04afe56255a4b0f87eeab250b45db5ef305"
+  },
+  "sourceOnly": {
+    "reads": 239,
+    "copies": 225,
+    "scope": "Actual original Source/Q/Records and native Node SHA run with default-null API. Compiled source is parsed, unselected and not activated. Source-only final Q0 excludes every optional component/startup/retained caller/Main cohort."
+  },
+  "componentControls": [
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadBindBoundaryReentry-01.json",
+      "bytes": 29823,
+      "sha256": "a2c47d38583471cc8699e9b0ad73fc07c1995151d5ab540b13e65651bfce633a",
+      "case": "ownedHostStagesReadBindBoundaryReentry",
+      "status": "PASS_ADVERSE_RETAINED",
+      "errorCode": "BINDING_BOUNDARY_REENTRY",
+      "sourceScope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS",
+      "parentStatus": "PASS_ADVERSE_RETAINED",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadBindCallerCatalogue-01.json",
+      "bytes": 19701,
+      "sha256": "504993e32607cc99524bfc3856eb2be3baa9a7f0dcec8b8212c1c56105cf8635",
+      "case": "ownedHostStagesReadBindCallerCatalogue",
+      "status": "PASS_CALLER_FOREIGN_CATALOGUE_NO_TRAPS",
+      "errorCode": null,
+      "sourceScope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS",
+      "parentStatus": "PASS_CALLER_FOREIGN_CATALOGUE_NO_TRAPS",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadBindCallerForgery-01.json",
+      "bytes": 19703,
+      "sha256": "21149528303fe7fc6d9fa4ea3318200585cec543f2ffec67f62d83587c9bf8da",
+      "case": "ownedHostStagesReadBindCallerForgery",
+      "status": "PASS_CALLER_FORGED_OPAQUE_RECEIPT_NO_TRAPS",
+      "errorCode": null,
+      "sourceScope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS",
+      "parentStatus": "PASS_CALLER_FORGED_OPAQUE_RECEIPT_NO_TRAPS",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadBindCallerMetadata-01.json",
+      "bytes": 19774,
+      "sha256": "73d2d15ccbe68eddeba74d53b61a4e6c3eec64170fac3662607f96f97ba83dda",
+      "case": "ownedHostStagesReadBindCallerMetadata",
+      "status": "PASS_CALLER_ACTUAL_METADATA_QUOTA_CATALOGUE_HELD",
+      "errorCode": null,
+      "sourceScope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS",
+      "parentStatus": "PASS_CALLER_ACTUAL_METADATA_QUOTA_CATALOGUE_HELD",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadBindCallerNamespace-01.json",
+      "bytes": 19740,
+      "sha256": "54bce56b398b5d79354a98477a9c1cf353981d6de4c772f06c9e57ef0562e2ea",
+      "case": "ownedHostStagesReadBindCallerNamespace",
+      "status": "PASS_CALLER_PREDEBIT_NAMESPACE_NO_FOREIGN_CALL",
+      "errorCode": null,
+      "sourceScope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS",
+      "parentStatus": "PASS_CALLER_PREDEBIT_NAMESPACE_NO_FOREIGN_CALL",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadBindCallerNestedJob-01.json",
+      "bytes": 22683,
+      "sha256": "075e44aa753dfc97867b5a85956d9e5df2dfc23ec5d1103c82276c618c14c733",
+      "case": "ownedHostStagesReadBindCallerNestedJob",
+      "status": "PASS_NAIVE_NESTED_SOURCE_THIRD_JOB_REFUSED",
+      "errorCode": null,
+      "sourceScope": "The outer actual R job models an initializer visit. The original standalone parent wrapper opens the second job; Source row enter requests a third and refuses. Normal standalone source rows transiently use two jobs. The State native Promise rejection is observed through a disclosed external test observer outside Q; no native crypto had started. No actual initializer, native Main or recovery proof.",
+      "parentStatus": "PASS_NAIVE_NESTED_SOURCE_THIRD_JOB_REFUSED",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadBindCallerPositive-01.json",
+      "bytes": 41938,
+      "sha256": "85be420b5cbb6e5f4f45f54e516fe17840460b718a7d9b86d93ab968e225f225",
+      "case": "ownedHostStagesReadBindCallerPositive",
+      "status": "PASS_VERIFIED_BIND_COMPONENT",
+      "errorCode": null,
+      "sourceScope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS",
+      "parentStatus": "PASS_VERIFIED_BIND_COMPONENT",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadBindCallerPublic-01.json",
+      "bytes": 19713,
+      "sha256": "8b2073694fad59c04d4dca57ecb67b6e1e9f89d02c71387c73d3444bef2caa96",
+      "case": "ownedHostStagesReadBindCallerPublic",
+      "status": "PASS_CALLER_PUBLIC_INPUT_REFUSED_BEFORE_OTHER_GETTERS",
+      "errorCode": null,
+      "sourceScope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS",
+      "parentStatus": "PASS_CALLER_PUBLIC_INPUT_REFUSED_BEFORE_OTHER_GETTERS",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadBindCallerRawFalse-01.json",
+      "bytes": 19830,
+      "sha256": "36d58e3d7801b0ca8898126a1c039bfe0e32a856d4f1d059392cb390358df4d1",
+      "case": "ownedHostStagesReadBindCallerRawFalse",
+      "status": "PASS_CALLER_FIRST_RAW_OCCURRENCE_AND_CATALOGUE_HELD",
+      "errorCode": null,
+      "sourceScope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS",
+      "parentStatus": "PASS_CALLER_FIRST_RAW_OCCURRENCE_AND_CATALOGUE_HELD",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadBindCallerRawUndefined-01.json",
+      "bytes": 19836,
+      "sha256": "9e21511e78d0fb368264189a75f544cf702c0ede9757e39b04e9b7ab4da4b775",
+      "case": "ownedHostStagesReadBindCallerRawUndefined",
+      "status": "PASS_CALLER_FIRST_RAW_OCCURRENCE_AND_CATALOGUE_HELD",
+      "errorCode": null,
+      "sourceScope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS",
+      "parentStatus": "PASS_CALLER_FIRST_RAW_OCCURRENCE_AND_CATALOGUE_HELD",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadBindCallerReplay-01.json",
+      "bytes": 42049,
+      "sha256": "3d3e02a4e246f90b956f99fe17b3d328ca6d856098dd038f8b84f58dba2927aa",
+      "case": "ownedHostStagesReadBindCallerReplay",
+      "status": "PASS_VERIFIED_BIND_COMPONENT",
+      "errorCode": null,
+      "sourceScope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS",
+      "parentStatus": "PASS_VERIFIED_BIND_COMPONENT",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadBindCallerWork-01.json",
+      "bytes": 21046,
+      "sha256": "3abe7c2c74b18d3fdfed64be07d5b1f5bf1e89475ef6ce8f74d12e8d578e30cf",
+      "case": "ownedHostStagesReadBindCallerWork",
+      "status": "PASS_CALLER_ACTUAL_R_WORK_QUOTA_CATALOGUE_HELD",
+      "errorCode": null,
+      "sourceScope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS",
+      "parentStatus": "PASS_CALLER_ACTUAL_R_WORK_QUOTA_CATALOGUE_HELD",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadBindCancel-01.json",
+      "bytes": 29788,
+      "sha256": "05dbbfeac2dee0693667b65933ff266e7b8df34b3e94abe8425553f5f54ca35f",
+      "case": "ownedHostStagesReadBindCancel",
+      "status": "PASS_ADVERSE_RETAINED",
+      "errorCode": "CANCELLED",
+      "sourceScope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS",
+      "parentStatus": "PASS_ADVERSE_RETAINED",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadBindCleanupPinned-01.json",
+      "bytes": 39816,
+      "sha256": "e5321e7c6d06a3801b35a3f9a481d4a50eacd05d11210c749208e9a01aa55dc1",
+      "case": "ownedHostStagesReadBindCleanupPinned",
+      "status": "PASS_VERIFIED_BIND_COMPONENT",
+      "errorCode": null,
+      "sourceScope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS",
+      "parentStatus": "PASS_VERIFIED_BIND_COMPONENT",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadBindCurrent-01.json",
+      "bytes": 30789,
+      "sha256": "27b4953f61187361aad46b55440a40b83860c1d8fdabd769cd0279128c50a4dd",
+      "case": "ownedHostStagesReadBindCurrent",
+      "status": "PASS_PARENT_BOUNDARY_HELD",
+      "errorCode": "COLD_PROFILE_DEPENDENCY_CHANGED",
+      "sourceScope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS",
+      "parentStatus": "PASS_PARENT_BOUNDARY_HELD",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadBindPositive-01.json",
+      "bytes": 39674,
+      "sha256": "9ad8fc66a33363519c2fde40a508977128592008e0ca3a7c6b1be2e52482ea39",
+      "case": "ownedHostStagesReadBindPositive",
+      "status": "PASS_VERIFIED_BIND_COMPONENT",
+      "errorCode": null,
+      "sourceScope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS",
+      "parentStatus": "PASS_VERIFIED_BIND_COMPONENT",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadBindPressure-01.json",
+      "bytes": 30013,
+      "sha256": "2e19406850a0055c9536260818b6999494eac0d81711a7f64446b6cbebf796e4",
+      "case": "ownedHostStagesReadBindPressure",
+      "status": "PASS_ADVERSE_RETAINED",
+      "errorCode": "RESOURCE_LIMIT",
+      "sourceScope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS",
+      "parentStatus": "PASS_ADVERSE_RETAINED",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadBindQuota-01.json",
+      "bytes": 29777,
+      "sha256": "ed6316a216e00f6e51fe840c6df163ce7fc9379b512ad1cdefdb4975f3807f84",
+      "case": "ownedHostStagesReadBindQuota",
+      "status": "PASS_ADVERSE_RETAINED",
+      "errorCode": "WORK_QUOTA",
+      "sourceScope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS",
+      "parentStatus": "PASS_ADVERSE_RETAINED",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadBindRawFalse-01.json",
+      "bytes": 29745,
+      "sha256": "f1d3fab9a9774302db43257a7238762b85f5aa2f50fd543dfba19e1604fb0abe",
+      "case": "ownedHostStagesReadBindRawFalse",
+      "status": "PASS_ADVERSE_RETAINED",
+      "errorCode": null,
+      "sourceScope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS",
+      "parentStatus": "PASS_ADVERSE_RETAINED",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadBindRawUndefined-01.json",
+      "bytes": 29761,
+      "sha256": "32ea051f491d9b839b8ba28736cb48c72c92bc43d5681a0706a353c0b44d32ed",
+      "case": "ownedHostStagesReadBindRawUndefined",
+      "status": "PASS_ADVERSE_RETAINED",
+      "errorCode": null,
+      "sourceScope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS",
+      "parentStatus": "PASS_ADVERSE_RETAINED",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadBindReentry-01.json",
+      "bytes": 29793,
+      "sha256": "06020c33845efa5a01fd8e2368fa65dc525cc6dd73c02b1c151999a7c04bd72c",
+      "case": "ownedHostStagesReadBindReentry",
+      "status": "PASS_ADVERSE_RETAINED",
+      "errorCode": "CONSUMER_PARENT_REENTRY",
+      "sourceScope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS",
+      "parentStatus": "PASS_ADVERSE_RETAINED",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadBindReplacement-01.json",
+      "bytes": 26398,
+      "sha256": "6f815c9ee56226af7b50037c54e6520d3fe1bed25577615e38ac1ab7dfae9f46",
+      "case": "ownedHostStagesReadBindReplacement",
+      "status": "FAIL",
+      "errorCode": "RESOURCE_BUDGET",
+      "sourceScope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS",
+      "parentStatus": "FAIL",
+      "unwaived": true
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadParentCompletionQuota-01.json",
+      "bytes": 25441,
+      "sha256": "42ac03927d9e90e87c01a34a712c36659800d40ba4806884097420ac455ddedb",
+      "case": "ownedHostStagesReadParentCompletionQuota",
+      "status": "PASS_COMPLETION_QUOTA_HELD",
+      "errorCode": "WORK_QUOTA",
+      "sourceScope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS",
+      "parentStatus": "PASS_COMPLETION_QUOTA_HELD",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadParentForgedToken-01.json",
+      "bytes": 29393,
+      "sha256": "504a74d9e28d08ab3658d1fec35f42de6e73ec7788c3c7c633a395871bcbda7e",
+      "case": "ownedHostStagesReadParentForgedToken",
+      "status": "PASS_EARLY_PARENT_REFUSAL_HELD",
+      "errorCode": "CONSUMER_PARENT_REQUEST_REQUIRED",
+      "sourceScope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS",
+      "parentStatus": "PASS_EARLY_PARENT_REFUSAL_HELD",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadParentJobQuota-01.json",
+      "bytes": 30803,
+      "sha256": "7b8c992d7d9886cd1b996d9bdc4ddcaccc92d52956d754b41d0b234742db6d27",
+      "case": "ownedHostStagesReadParentJobQuota",
+      "status": "PASS_PARENT_BOUNDARY_HELD",
+      "errorCode": "JOB_QUOTA",
+      "sourceScope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS",
+      "parentStatus": "PASS_PARENT_BOUNDARY_HELD",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadParentRequestDomain-01.json",
+      "bytes": 29395,
+      "sha256": "704ba8c8b622ccf71084a2aebf9490a4458479ddf4b7d0ee1b1cdd9f7022db91",
+      "case": "ownedHostStagesReadParentRequestDomain",
+      "status": "PASS_EARLY_PARENT_REFUSAL_HELD",
+      "errorCode": "CONSUMER_PARENT_REQUEST_DOMAIN",
+      "sourceScope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS",
+      "parentStatus": "PASS_EARLY_PARENT_REFUSAL_HELD",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadParentRequestQuota-01.json",
+      "bytes": 29547,
+      "sha256": "ff4310b69ab0d9daa7f6130db58836cd5fec2a8e0638a57285bc72c2900825ff",
+      "case": "ownedHostStagesReadParentRequestQuota",
+      "status": "PASS_EARLY_PARENT_REFUSAL_HELD",
+      "errorCode": "RESOURCE_LIMIT",
+      "sourceScope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS",
+      "parentStatus": "PASS_EARLY_PARENT_REFUSAL_HELD",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/current-05/control-ownedHostStagesReadParentSliceChange-01.json",
+      "bytes": 29811,
+      "sha256": "90b8a31f7a7adabbe954518bf91237614b690a124115c588c080f76f448a2148",
+      "case": "ownedHostStagesReadParentSliceChange",
+      "status": "PASS_ADVERSE_RETAINED",
+      "errorCode": "CONSUMER_PARENT_SCOPE_CHANGED",
+      "sourceScope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS",
+      "parentStatus": "PASS_ADVERSE_RETAINED",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/source-05/source-projection-closeQuota-10.json",
+      "bytes": 6342,
+      "sha256": "6ba54eca2eaa08a63ac0c62a32e589fc45e571fbc8bafce29c41fdce010ef9d9",
+      "case": "closeQuota",
+      "status": "PASS_CLOSE_QUOTA_NO_SOURCE_OR_STATE_RECLAIM",
+      "errorCode": null,
+      "sourceScope": null,
+      "parentStatus": "PASS_CLOSE_QUOTA_NO_SOURCE_OR_STATE_RECLAIM",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/source-05/source-projection-completionQuota-09.json",
+      "bytes": 7193,
+      "sha256": "25225a71fff71e516cad224f4022ae207b2e65ea5cad4ba6800ba6878046e0bf",
+      "case": "completionQuota",
+      "status": "PASS_ACTUAL_COMPLETION_QUOTA_HELD",
+      "errorCode": null,
+      "sourceScope": null,
+      "parentStatus": "PASS_ACTUAL_COMPLETION_QUOTA_HELD",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/source-05/source-projection-contextLoss-10.json",
+      "bytes": 6363,
+      "sha256": "88784427227d03e9c957f00da870eb9c4da77001f3159f8d796d4651f4147808",
+      "case": "contextLoss",
+      "status": "PASS_ACTUAL_CONTEXT_LOSS_NATIVE_COMPLETION_HELD",
+      "errorCode": null,
+      "sourceScope": null,
+      "parentStatus": "PASS_ACTUAL_CONTEXT_LOSS_NATIVE_COMPLETION_HELD",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/source-05/source-projection-errorPrototype-09.json",
+      "bytes": 5061,
+      "sha256": "30b07335e325479140f55404708098a0e5292a02165c6aa9f7323c8a56abb5cf",
+      "case": "errorPrototype",
+      "status": "PASS_ERROR_PROTOTYPE_NO_FOREIGN_SETTER",
+      "errorCode": null,
+      "sourceScope": null,
+      "parentStatus": "PASS_ERROR_PROTOTYPE_NO_FOREIGN_SETTER",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/source-05/source-projection-forged-09.json",
+      "bytes": 4618,
+      "sha256": "ccf0dcfbcfa293acc25204c1810910dcc032567926c914c075fbb82723017520",
+      "case": "forged",
+      "status": "PASS_FORGED_RECEIPTS_NO_TRAPS",
+      "errorCode": null,
+      "sourceScope": null,
+      "parentStatus": "PASS_FORGED_RECEIPTS_NO_TRAPS",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/source-05/source-projection-jobs-09.json",
+      "bytes": 6308,
+      "sha256": "ec1274fd7524621f8310aa54a0c9402252e16149b85454ed90d2bd7e34c764b5",
+      "case": "jobs",
+      "status": "PASS_ACTUAL_JOB_QUOTA_HELD",
+      "errorCode": null,
+      "sourceScope": null,
+      "parentStatus": "PASS_ACTUAL_JOB_QUOTA_HELD",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/source-05/source-projection-metadataQuota-09.json",
+      "bytes": 4712,
+      "sha256": "8bbe8695412a92f1fcf54be05e757929ba92a4c339316453efa1d7bf805c52aa",
+      "case": "metadataQuota",
+      "status": "PASS_EXPECTED_METADATA_REFUSAL",
+      "errorCode": null,
+      "sourceScope": null,
+      "parentStatus": "PASS_EXPECTED_METADATA_REFUSAL",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/source-05/source-projection-namespace-09.json",
+      "bytes": 5053,
+      "sha256": "30000bc047ab3c030503b6fb5f90e7f62fec63f4948f74c2e19c484992e3a3a5",
+      "case": "namespace",
+      "status": "PASS_SOURCE_NAMESPACE_SUBSTITUTION_REFUSED",
+      "errorCode": null,
+      "sourceScope": null,
+      "parentStatus": "PASS_SOURCE_NAMESPACE_SUBSTITUTION_REFUSED",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/source-05/source-projection-namespaceAccessor-09.json",
+      "bytes": 5059,
+      "sha256": "d68e84cc4b67829568cbfb589ed6351a665b96e4594cdaa6dab3ed7eb397781c",
+      "case": "namespaceAccessor",
+      "status": "PASS_SOURCE_NAMESPACE_ACCESSOR_NO_GETTER",
+      "errorCode": null,
+      "sourceScope": null,
+      "parentStatus": "PASS_SOURCE_NAMESPACE_ACCESSOR_NO_GETTER",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/source-05/source-projection-native-09.json",
+      "bytes": 5043,
+      "sha256": "3d99a803e2edf243baa67c397d591f7e9c5ab34f690f22d0412233a44028ce6d",
+      "case": "native",
+      "status": "PASS_NATIVE_PREDEBIT_REFUSAL",
+      "errorCode": null,
+      "sourceScope": null,
+      "parentStatus": "PASS_NATIVE_PREDEBIT_REFUSAL",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/source-05/source-projection-nativeWaitIterator-09.json",
+      "bytes": 5933,
+      "sha256": "ba112a54a2fb330006a6f17aca4a9fd4f879252d87fcecb93a7053903b7caee6",
+      "case": "nativeWaitIterator",
+      "status": "PASS_POST_NATIVE_CURRENT_BEFORE_FORMAT_AND_DEBIT",
+      "errorCode": null,
+      "sourceScope": null,
+      "parentStatus": "PASS_POST_NATIVE_CURRENT_BEFORE_FORMAT_AND_DEBIT",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/source-05/source-projection-nativeWaitNumber-09.json",
+      "bytes": 5931,
+      "sha256": "f6b9777a7b6707ee644a4212656607bea95d1a6e9fef1a73243ccbedc58cce5f",
+      "case": "nativeWaitNumber",
+      "status": "PASS_POST_NATIVE_CURRENT_BEFORE_FORMAT_AND_DEBIT",
+      "errorCode": null,
+      "sourceScope": null,
+      "parentStatus": "PASS_POST_NATIVE_CURRENT_BEFORE_FORMAT_AND_DEBIT",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/source-05/source-projection-positive-09.json",
+      "bytes": 8444,
+      "sha256": "7c0a78b9f937d33ff800caaa37bcd5a727799c67a7d7e511d24a585a497ccd87",
+      "case": "positive",
+      "status": "PASS_ORIGINAL_PROJECTION_DIGEST_PROVIDER_ROWS_AND_CLOSED_BACKING",
+      "errorCode": null,
+      "sourceScope": null,
+      "parentStatus": "PASS_ORIGINAL_PROJECTION_DIGEST_PROVIDER_ROWS_AND_CLOSED_BACKING",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/source-05/source-projection-rawFalse-09.json",
+      "bytes": 5888,
+      "sha256": "6a7853ef7e28f88ea9d0449696d061707246d0de694638ad2d0e309003eb9b96",
+      "case": "rawFalse",
+      "status": "PASS_RAW_OCCURRENCE_AND_ALL_ROOTS_HELD",
+      "errorCode": null,
+      "sourceScope": null,
+      "parentStatus": "PASS_RAW_OCCURRENCE_AND_ALL_ROOTS_HELD",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/source-05/source-projection-rawUndefined-09.json",
+      "bytes": 5898,
+      "sha256": "38783bc7b5ec6fbebad858a89573fceb65e9edf582bc3679164a9fd60c0c6c6e",
+      "case": "rawUndefined",
+      "status": "PASS_RAW_OCCURRENCE_AND_ALL_ROOTS_HELD",
+      "errorCode": null,
+      "sourceScope": null,
+      "parentStatus": "PASS_RAW_OCCURRENCE_AND_ALL_ROOTS_HELD",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/source-05/source-projection-reentry-09.json",
+      "bytes": 7204,
+      "sha256": "2c5e5e699eb7b071761dbef29c6baa830f327ed7a0089d963c4af068294ef7bb",
+      "case": "reentry",
+      "status": "PASS_REENTRY_FIRST_CAUSE_AND_JOB_HELD",
+      "errorCode": null,
+      "sourceScope": null,
+      "parentStatus": "PASS_REENTRY_FIRST_CAUSE_AND_JOB_HELD",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/source-05/source-projection-scratchQuota-10.json",
+      "bytes": 5125,
+      "sha256": "2e9dab376d274874c430434033e02fa34a13fada3a3e3184f77d70f58bddc82c",
+      "case": "scratchQuota",
+      "status": "PASS_STAGED_SCRATCH_QUOTA_ALL_ROOTS_HELD",
+      "errorCode": null,
+      "sourceScope": null,
+      "parentStatus": "PASS_STAGED_SCRATCH_QUOTA_ALL_ROOTS_HELD",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/startup-05/control-ownedHostStagesReadBindStartupClose-01.json",
+      "bytes": 24803,
+      "sha256": "0d68967c4d9a35e5d948a5fcb8a9f7f27a33f8d370855d15eb2186aca16cdbd3",
+      "case": "ownedHostStagesReadBindStartupClose",
+      "status": "PASS_STARTUP_ADVERSE_RETAINED",
+      "errorCode": null,
+      "sourceScope": {
+        "phase": "STATE_CALLER_START",
+        "uncertain": true,
+        "terminal": false,
+        "hasOwnedFailure": true,
+        "failureCode": "STATE_CALLER_PROGRESS_FAILED_RETAINED",
+        "totalWork": 14,
+        "visits": 4,
+        "paid": {
+          "open": true,
+          "pending": true,
+          "inVisit": false,
+          "rOwned": true
+        }
+      },
+      "parentStatus": "PASS_STARTUP_ADVERSE_RETAINED",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/startup-05/control-ownedHostStagesReadBindStartupEpoch-01.json",
+      "bytes": 24814,
+      "sha256": "a3568b378e17fb609d38027364bd1041698ecd4e7f0334160e4426fb111e0481",
+      "case": "ownedHostStagesReadBindStartupEpoch",
+      "status": "PASS_STARTUP_ADVERSE_RETAINED",
+      "errorCode": null,
+      "sourceScope": {
+        "phase": "STATE_CALLER_START",
+        "uncertain": true,
+        "terminal": false,
+        "hasOwnedFailure": true,
+        "failureCode": "INITIALIZER_COMPLETION_SCOPE_CHANGED",
+        "totalWork": 14,
+        "visits": 4,
+        "paid": {
+          "open": true,
+          "pending": true,
+          "inVisit": false,
+          "rOwned": true
+        }
+      },
+      "parentStatus": "PASS_STARTUP_ADVERSE_RETAINED",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/startup-05/control-ownedHostStagesReadBindStartupForgery-01.json",
+      "bytes": 19695,
+      "sha256": "684bd5fbdccfe29272ce76c2a2b78a4a39652bba4c477a45af94569814917580",
+      "case": "ownedHostStagesReadBindStartupForgery",
+      "status": "PASS_STARTUP_FOREIGN_ADVANCE_REFUSED",
+      "errorCode": null,
+      "sourceScope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS",
+      "parentStatus": "PASS_STARTUP_FOREIGN_ADVANCE_REFUSED",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/startup-05/control-ownedHostStagesReadBindStartupNamespace-01.json",
+      "bytes": 24832,
+      "sha256": "ddde97b6580c2b36fc3205152b47371fb44ad1aec9b3c470f5efcabecd0de24f",
+      "case": "ownedHostStagesReadBindStartupNamespace",
+      "status": "PASS_STARTUP_ADVERSE_RETAINED",
+      "errorCode": null,
+      "sourceScope": {
+        "phase": "STATE_CALLER_START",
+        "uncertain": true,
+        "terminal": false,
+        "hasOwnedFailure": true,
+        "failureCode": "STATE_CALLER_PROGRESS_FAILED_RETAINED",
+        "totalWork": 14,
+        "visits": 4,
+        "paid": {
+          "open": true,
+          "pending": true,
+          "inVisit": false,
+          "rOwned": true
+        }
+      },
+      "parentStatus": "PASS_STARTUP_ADVERSE_RETAINED",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/startup-05/control-ownedHostStagesReadBindStartupPositive-01.json",
+      "bytes": 72597,
+      "sha256": "4bb51fb14d514ad1f41f86e6191a8a3eb3c13f1d8a6b888adb5a3d5e797bb6a3",
+      "case": "ownedHostStagesReadBindStartupPositive",
+      "status": "PASS_VERIFIED_BIND_COMPONENT",
+      "errorCode": null,
+      "sourceScope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS",
+      "parentStatus": "PASS_VERIFIED_BIND_COMPONENT",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/startup-05/control-ownedHostStagesReadBindStartupQuota-01.json",
+      "bytes": 24793,
+      "sha256": "049f1cdb4116acc131d782b21830a57866918c586c24ac18b68a8f127008c7b4",
+      "case": "ownedHostStagesReadBindStartupQuota",
+      "status": "PASS_STARTUP_ADVERSE_RETAINED",
+      "errorCode": null,
+      "sourceScope": {
+        "phase": "STATE_CALLER_START",
+        "uncertain": true,
+        "terminal": false,
+        "hasOwnedFailure": true,
+        "failureCode": "INITIALIZER_COMPLETION_SCOPE_CHANGED",
+        "totalWork": 14,
+        "visits": 4,
+        "paid": {
+          "open": true,
+          "pending": true,
+          "inVisit": false,
+          "rOwned": true
+        }
+      },
+      "parentStatus": "PASS_STARTUP_ADVERSE_RETAINED",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/startup-05/control-ownedHostStagesReadBindStartupRawFalse-01.json",
+      "bytes": 24778,
+      "sha256": "7caf7467987fb376e2da155e0d0aff8ff4cc8712f1e157631d21420717fb63dc",
+      "case": "ownedHostStagesReadBindStartupRawFalse",
+      "status": "PASS_STARTUP_ADVERSE_RETAINED",
+      "errorCode": null,
+      "sourceScope": {
+        "phase": "STATE_CALLER_START",
+        "uncertain": true,
+        "terminal": false,
+        "hasOwnedFailure": true,
+        "failureCode": "STATE_CALLER_PROGRESS_FAILED_RETAINED",
+        "totalWork": 14,
+        "visits": 4,
+        "paid": {
+          "open": true,
+          "pending": true,
+          "inVisit": false,
+          "rOwned": true
+        }
+      },
+      "parentStatus": "PASS_STARTUP_ADVERSE_RETAINED",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/startup-05/control-ownedHostStagesReadBindStartupRawUndefined-01.json",
+      "bytes": 24792,
+      "sha256": "ca23ca88305aadcc37837d5b23201b4203f7e55ec2d0dc5dd6c7344457629b84",
+      "case": "ownedHostStagesReadBindStartupRawUndefined",
+      "status": "PASS_STARTUP_ADVERSE_RETAINED",
+      "errorCode": null,
+      "sourceScope": {
+        "phase": "STATE_CALLER_START",
+        "uncertain": true,
+        "terminal": false,
+        "hasOwnedFailure": true,
+        "failureCode": "STATE_CALLER_PROGRESS_FAILED_RETAINED",
+        "totalWork": 14,
+        "visits": 4,
+        "paid": {
+          "open": true,
+          "pending": true,
+          "inVisit": false,
+          "rOwned": true
+        }
+      },
+      "parentStatus": "PASS_STARTUP_ADVERSE_RETAINED",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/startup-05/control-ownedHostStagesReadBindStartupReentry-01.json",
+      "bytes": 24810,
+      "sha256": "2baad8866b5613b84b074a6a6e1eef11057e7059f71347bffe1798d8835889c2",
+      "case": "ownedHostStagesReadBindStartupReentry",
+      "status": "PASS_STARTUP_ADVERSE_RETAINED",
+      "errorCode": null,
+      "sourceScope": {
+        "phase": "STATE_CALLER_START",
+        "uncertain": true,
+        "terminal": false,
+        "hasOwnedFailure": true,
+        "failureCode": "INITIALIZER_COMPLETION_SCOPE_CHANGED",
+        "totalWork": 14,
+        "visits": 4,
+        "paid": {
+          "open": true,
+          "pending": true,
+          "inVisit": false,
+          "rOwned": true
+        }
+      },
+      "parentStatus": "PASS_STARTUP_ADVERSE_RETAINED",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/startup-05/control-ownedHostStagesReadBindStartupReplay-01.json",
+      "bytes": 72592,
+      "sha256": "0f6f9246bfa455704e7fe6d03592a91ee6e34d5179d2a26ce34bd7d7db288192",
+      "case": "ownedHostStagesReadBindStartupReplay",
+      "status": "PASS_VERIFIED_BIND_COMPONENT",
+      "errorCode": null,
+      "sourceScope": "EXACT_PRIVATE_SCOPE_METHODS_AND_ACTUAL_ORIGINAL_HOST_KERNEL_WITH_DISCLOSED_CALLER_SURFACE_MODELS",
+      "parentStatus": "PASS_VERIFIED_BIND_COMPONENT",
+      "unwaived": false
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/control-native-input-positive-11.json",
+      "bytes": 5264,
+      "sha256": "5c7ddcda65391e377bfd8aab0f82ceb6d77dec92990443452bfd044ec217f401",
+      "case": "positive",
+      "status": "PASS",
+      "sourceScope": [
+        "In-memory fake-indexeddb 6.2.5 from pinned existing dependencies; no browser storage accessed. Three prototype getter adapters model WebIDL attributes: IDBDatabase.version, IDBTransaction.error, IDBVersionChangeEvent.oldVersion.",
+        "Original Q, Source admission and R host/jobs/credits execute. R aggregate and Source private modules have disclosed diagnostic byte selections and unit work selectors. New module INSTANCE524288/IO65536 and all WORK1 are diagnostic, not complete work/storage prices.",
+        "Root footer receiver is an explicit model with an observer alias for the private Source and new store binder. Minimal leaf Source envelope is genuine but does not establish whole program/Root provenance or prospective trusted launch funding.",
+        "Native ArrayBuffer, DataView, typed arrays, structuredClone and Node WebCrypto are actual Node primitives. Native browser IDB, whole Main, physical heap, complete C1 and acceptance remain unqualified."
+      ]
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/control-native-input-large-11.json",
+      "bytes": 5294,
+      "sha256": "45e2f74074cd6b86a4aa8624e82c637c0554cdd9a011cafd26d6748b4e4d4d93",
+      "case": "large",
+      "status": "PASS",
+      "sourceScope": [
+        "In-memory fake-indexeddb 6.2.5 from pinned existing dependencies; no browser storage accessed. Three prototype getter adapters model WebIDL attributes: IDBDatabase.version, IDBTransaction.error, IDBVersionChangeEvent.oldVersion.",
+        "Original Q, Source admission and R host/jobs/credits execute. R aggregate and Source private modules have disclosed diagnostic byte selections and unit work selectors. New module INSTANCE524288/IO65536 and all WORK1 are diagnostic, not complete work/storage prices.",
+        "Root footer receiver is an explicit model with an observer alias for the private Source and new store binder. Minimal leaf Source envelope is genuine but does not establish whole program/Root provenance or prospective trusted launch funding.",
+        "Native ArrayBuffer, DataView, typed arrays, structuredClone and Node WebCrypto are actual Node primitives. Native browser IDB, whole Main, physical heap, complete C1 and acceptance remain unqualified."
+      ]
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/control-native-input-depth-11.json",
+      "bytes": 4956,
+      "sha256": "a7be588040994aeb16cde682bdfdb75ad8f538c319f5f8bb0e2e04ecc9884c54",
+      "case": "depth",
+      "status": "PASS",
+      "sourceScope": [
+        "In-memory fake-indexeddb 6.2.5 from pinned existing dependencies; no browser storage accessed. Three prototype getter adapters model WebIDL attributes: IDBDatabase.version, IDBTransaction.error, IDBVersionChangeEvent.oldVersion.",
+        "Original Q, Source admission and R host/jobs/credits execute. R aggregate and Source private modules have disclosed diagnostic byte selections and unit work selectors. New module INSTANCE524288/IO65536 and all WORK1 are diagnostic, not complete work/storage prices.",
+        "Root footer receiver is an explicit model with an observer alias for the private Source and new store binder. Minimal leaf Source envelope is genuine but does not establish whole program/Root provenance or prospective trusted launch funding.",
+        "Native ArrayBuffer, DataView, typed arrays, structuredClone and Node WebCrypto are actual Node primitives. Native browser IDB, whole Main, physical heap, complete C1 and acceptance remain unqualified."
+      ]
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/control-native-input-unknown-11.json",
+      "bytes": 4980,
+      "sha256": "35c92ed500318ce625bbad07d9a73d15cf8ae61f6825c29bdcc9efb9281a5671",
+      "case": "unknown",
+      "status": "PASS",
+      "sourceScope": [
+        "In-memory fake-indexeddb 6.2.5 from pinned existing dependencies; no browser storage accessed. Three prototype getter adapters model WebIDL attributes: IDBDatabase.version, IDBTransaction.error, IDBVersionChangeEvent.oldVersion.",
+        "Original Q, Source admission and R host/jobs/credits execute. R aggregate and Source private modules have disclosed diagnostic byte selections and unit work selectors. New module INSTANCE524288/IO65536 and all WORK1 are diagnostic, not complete work/storage prices.",
+        "Root footer receiver is an explicit model with an observer alias for the private Source and new store binder. Minimal leaf Source envelope is genuine but does not establish whole program/Root provenance or prospective trusted launch funding.",
+        "Native ArrayBuffer, DataView, typed arrays, structuredClone and Node WebCrypto are actual Node primitives. Native browser IDB, whole Main, physical heap, complete C1 and acceptance remain unqualified."
+      ]
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/control-native-input-quota-11.json",
+      "bytes": 5225,
+      "sha256": "2573cfb99b79605b1857165af6360866688e90b0b3c854c109647b88ff6e3bbd",
+      "case": "quota",
+      "status": "PASS",
+      "sourceScope": [
+        "In-memory fake-indexeddb 6.2.5 from pinned existing dependencies; no browser storage accessed. Three prototype getter adapters model WebIDL attributes: IDBDatabase.version, IDBTransaction.error, IDBVersionChangeEvent.oldVersion.",
+        "Original Q, Source admission and R host/jobs/credits execute. R aggregate and Source private modules have disclosed diagnostic byte selections and unit work selectors. New module INSTANCE524288/IO65536 and all WORK1 are diagnostic, not complete work/storage prices.",
+        "Root footer receiver is an explicit model with an observer alias for the private Source and new store binder. Minimal leaf Source envelope is genuine but does not establish whole program/Root provenance or prospective trusted launch funding.",
+        "Native ArrayBuffer, DataView, typed arrays, structuredClone and Node WebCrypto are actual Node primitives. Native browser IDB, whole Main, physical heap, complete C1 and acceptance remain unqualified."
+      ]
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/control-native-input-thirdJob-11.json",
+      "bytes": 4143,
+      "sha256": "30cf65278a5f7e995db934f6a411dd2b62fa84a6559b0199f3ff7e4ddc8dfced",
+      "case": "thirdJob",
+      "status": "PASS",
+      "sourceScope": [
+        "In-memory fake-indexeddb 6.2.5 from pinned existing dependencies; no browser storage accessed. Three prototype getter adapters model WebIDL attributes: IDBDatabase.version, IDBTransaction.error, IDBVersionChangeEvent.oldVersion.",
+        "Original Q, Source admission and R host/jobs/credits execute. R aggregate and Source private modules have disclosed diagnostic byte selections and unit work selectors. New module INSTANCE524288/IO65536 and all WORK1 are diagnostic, not complete work/storage prices.",
+        "Root footer receiver is an explicit model with an observer alias for the private Source and new store binder. Minimal leaf Source envelope is genuine but does not establish whole program/Root provenance or prospective trusted launch funding.",
+        "Native ArrayBuffer, DataView, typed arrays, structuredClone and Node WebCrypto are actual Node primitives. Native browser IDB, whole Main, physical heap, complete C1 and acceptance remain unqualified."
+      ]
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/control-native-input-nativeChanged-11.json",
+      "bytes": 5124,
+      "sha256": "7f03679438fe9ef72eafcf5c16e2667f84ff0c3d44dd46f04c527c814913daca",
+      "case": "nativeChanged",
+      "status": "PASS",
+      "sourceScope": [
+        "In-memory fake-indexeddb 6.2.5 from pinned existing dependencies; no browser storage accessed. Three prototype getter adapters model WebIDL attributes: IDBDatabase.version, IDBTransaction.error, IDBVersionChangeEvent.oldVersion.",
+        "Original Q, Source admission and R host/jobs/credits execute. R aggregate and Source private modules have disclosed diagnostic byte selections and unit work selectors. New module INSTANCE524288/IO65536 and all WORK1 are diagnostic, not complete work/storage prices.",
+        "Root footer receiver is an explicit model with an observer alias for the private Source and new store binder. Minimal leaf Source envelope is genuine but does not establish whole program/Root provenance or prospective trusted launch funding.",
+        "Native ArrayBuffer, DataView, typed arrays, structuredClone and Node WebCrypto are actual Node primitives. Native browser IDB, whole Main, physical heap, complete C1 and acceptance remain unqualified."
+      ]
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/control-native-input-forgedAdmission-11.json",
+      "bytes": 3974,
+      "sha256": "8d53cbc4fb1380c7f25564feef8e144ea0a233530618206915d5fdd482405ada",
+      "case": "forgedAdmission",
+      "status": "PASS",
+      "sourceScope": [
+        "In-memory fake-indexeddb 6.2.5 from pinned existing dependencies; no browser storage accessed. Three prototype getter adapters model WebIDL attributes: IDBDatabase.version, IDBTransaction.error, IDBVersionChangeEvent.oldVersion.",
+        "Original Q, Source admission and R host/jobs/credits execute. R aggregate and Source private modules have disclosed diagnostic byte selections and unit work selectors. New module INSTANCE524288/IO65536 and all WORK1 are diagnostic, not complete work/storage prices.",
+        "Root footer receiver is an explicit model with an observer alias for the private Source and new store binder. Minimal leaf Source envelope is genuine but does not establish whole program/Root provenance or prospective trusted launch funding.",
+        "Native ArrayBuffer, DataView, typed arrays, structuredClone and Node WebCrypto are actual Node primitives. Native browser IDB, whole Main, physical heap, complete C1 and acceptance remain unqualified."
+      ]
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/control-native-input-epoch-11.json",
+      "bytes": 5103,
+      "sha256": "4dd3f6e7cff8ebd69058dc3801a67eff16ca97f49c6322843c17d138fb6cb471",
+      "case": "epoch",
+      "status": "PASS",
+      "sourceScope": [
+        "In-memory fake-indexeddb 6.2.5 from pinned existing dependencies; no browser storage accessed. Three prototype getter adapters model WebIDL attributes: IDBDatabase.version, IDBTransaction.error, IDBVersionChangeEvent.oldVersion.",
+        "Original Q, Source admission and R host/jobs/credits execute. R aggregate and Source private modules have disclosed diagnostic byte selections and unit work selectors. New module INSTANCE524288/IO65536 and all WORK1 are diagnostic, not complete work/storage prices.",
+        "Root footer receiver is an explicit model with an observer alias for the private Source and new store binder. Minimal leaf Source envelope is genuine but does not establish whole program/Root provenance or prospective trusted launch funding.",
+        "Native ArrayBuffer, DataView, typed arrays, structuredClone and Node WebCrypto are actual Node primitives. Native browser IDB, whole Main, physical heap, complete C1 and acceptance remain unqualified."
+      ]
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/control-native-input-rawFalse-11.json",
+      "bytes": 5164,
+      "sha256": "9393faf45bf735c0b2071da36a5439052871bdb270c0e104bc9f4472ca2c6cd4",
+      "case": "rawFalse",
+      "status": "PASS",
+      "sourceScope": [
+        "In-memory fake-indexeddb 6.2.5 from pinned existing dependencies; no browser storage accessed. Three prototype getter adapters model WebIDL attributes: IDBDatabase.version, IDBTransaction.error, IDBVersionChangeEvent.oldVersion.",
+        "Original Q, Source admission and R host/jobs/credits execute. R aggregate and Source private modules have disclosed diagnostic byte selections and unit work selectors. New module INSTANCE524288/IO65536 and all WORK1 are diagnostic, not complete work/storage prices.",
+        "Root footer receiver is an explicit model with an observer alias for the private Source and new store binder. Minimal leaf Source envelope is genuine but does not establish whole program/Root provenance or prospective trusted launch funding.",
+        "Native ArrayBuffer, DataView, typed arrays, structuredClone and Node WebCrypto are actual Node primitives. Native browser IDB, whole Main, physical heap, complete C1 and acceptance remain unqualified."
+      ]
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/control-native-input-rawUndefined-11.json",
+      "bytes": 5168,
+      "sha256": "05c2f6f4fb8a8ccbc6dc93e18b545bccbf822d06b4769b09e6170c63a9ee0440",
+      "case": "rawUndefined",
+      "status": "PASS",
+      "sourceScope": [
+        "In-memory fake-indexeddb 6.2.5 from pinned existing dependencies; no browser storage accessed. Three prototype getter adapters model WebIDL attributes: IDBDatabase.version, IDBTransaction.error, IDBVersionChangeEvent.oldVersion.",
+        "Original Q, Source admission and R host/jobs/credits execute. R aggregate and Source private modules have disclosed diagnostic byte selections and unit work selectors. New module INSTANCE524288/IO65536 and all WORK1 are diagnostic, not complete work/storage prices.",
+        "Root footer receiver is an explicit model with an observer alias for the private Source and new store binder. Minimal leaf Source envelope is genuine but does not establish whole program/Root provenance or prospective trusted launch funding.",
+        "Native ArrayBuffer, DataView, typed arrays, structuredClone and Node WebCrypto are actual Node primitives. Native browser IDB, whole Main, physical heap, complete C1 and acceptance remain unqualified."
+      ]
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/control-native-input-pendingScope-11.json",
+      "bytes": 5150,
+      "sha256": "5b8f45075574c86e7d1225f38cd5898998ad570a1bc2efbcb4d7814d7073bb32",
+      "case": "pendingScope",
+      "status": "PASS",
+      "sourceScope": [
+        "In-memory fake-indexeddb 6.2.5 from pinned existing dependencies; no browser storage accessed. Three prototype getter adapters model WebIDL attributes: IDBDatabase.version, IDBTransaction.error, IDBVersionChangeEvent.oldVersion.",
+        "Original Q, Source admission and R host/jobs/credits execute. R aggregate and Source private modules have disclosed diagnostic byte selections and unit work selectors. New module INSTANCE524288/IO65536 and all WORK1 are diagnostic, not complete work/storage prices.",
+        "Root footer receiver is an explicit model with an observer alias for the private Source and new store binder. Minimal leaf Source envelope is genuine but does not establish whole program/Root provenance or prospective trusted launch funding.",
+        "Native ArrayBuffer, DataView, typed arrays, structuredClone and Node WebCrypto are actual Node primitives. Native browser IDB, whole Main, physical heap, complete C1 and acceptance remain unqualified."
+      ]
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/control-native-input-partBacking-11.json",
+      "bytes": 4836,
+      "sha256": "8d89adbd8bd519332052b282cca28928e5f996384c40b1c040652068dc9bf0b4",
+      "case": "partBacking",
+      "status": "PASS",
+      "sourceScope": [
+        "In-memory fake-indexeddb 6.2.5 from pinned existing dependencies; no browser storage accessed. Three prototype getter adapters model WebIDL attributes: IDBDatabase.version, IDBTransaction.error, IDBVersionChangeEvent.oldVersion.",
+        "Original Q, Source admission and R host/jobs/credits execute. R aggregate and Source private modules have disclosed diagnostic byte selections and unit work selectors. New module INSTANCE524288/IO65536 and all WORK1 are diagnostic, not complete work/storage prices.",
+        "Root footer receiver is an explicit model with an observer alias for the private Source and new store binder. Minimal leaf Source envelope is genuine but does not establish whole program/Root provenance or prospective trusted launch funding.",
+        "Native ArrayBuffer, DataView, typed arrays, structuredClone and Node WebCrypto are actual Node primitives. Native browser IDB, whole Main, physical heap, complete C1 and acceptance remain unqualified."
+      ]
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/control-native-input-releaseCompatibility-12.json",
+      "bytes": 5508,
+      "sha256": "317aa821a6b4ba148b44695d5ed1ebfee5c5350218ac798035956bf23db801e2",
+      "case": "releaseCompatibility",
+      "status": "PASS",
+      "sourceScope": [
+        "In-memory fake-indexeddb 6.2.5 from pinned existing dependencies; no browser storage accessed. Three prototype getter adapters model WebIDL attributes: IDBDatabase.version, IDBTransaction.error, IDBVersionChangeEvent.oldVersion.",
+        "Original Q, Source admission and R host/jobs/credits execute. R aggregate and Source private modules have disclosed diagnostic byte selections and unit work selectors. New module INSTANCE524288/IO65536 and all WORK1 are diagnostic, not complete work/storage prices.",
+        "Root footer receiver is an explicit model with an observer alias for the private Source and new store binder. Minimal leaf Source envelope is genuine but does not establish whole program/Root provenance or prospective trusted launch funding.",
+        "Native ArrayBuffer, DataView, typed arrays, structuredClone and Node WebCrypto are actual Node primitives. Native browser IDB, whole Main, physical heap, complete C1 and acceptance remain unqualified.",
+        "Original Release compatibility covers one small resource. Its full metadata/native/copy/error/caller work/storage remain unpriced; this is not a completed original reader bound."
+      ]
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/control-native-root-registry-01.json",
+      "bytes": 1226,
+      "sha256": "c75691d89b30a790e22d7e4c53d004f6e41a0a0f01ea2ee081d66b392c1cf1ac",
+      "case": "rootRegistry",
+      "status": "PASS_EXACT_ROOT_AUTHENTICATION_BODIES_WITH_DISCLOSED_DOCUMENT_FIXTURES",
+      "sourceScope": "Document/currentScript/native src and exact phase/path inputs are modeled; loader pre-evaluation is a Q1 fixture. Binder forwarding uses a tuple recorder. No whole Root/program/native storage or complete work/storage/funding proof."
+    }
+  ],
+  "counts": {
+    "total": 70,
+    "pass": 69,
+    "unwaivedFailure": 1
+  },
+  "ordinary": {
+    "logicalPeak": 32963961,
+    "heldAfterClose": 30380423,
+    "sourceAdmissionVisits": 226,
+    "sourceRetirementVisits": 225
+  },
+  "scheduled": {
+    "logicalPeak": 33097089,
+    "heldAfterClose": 30513551,
+    "sourceAdmissionVisits": 226,
+    "sourceRetirementVisits": 225,
+    "schedule": {
+      "status": {
+        "phase": "FINISH",
+        "uncertain": false,
+        "terminal": true,
+        "hasOwnedFailure": false,
+        "failureCode": "INITIALIZER_REJECTED_RETAINED",
+        "totalWork": 917,
+        "visits": 229,
+        "paid": {
+          "open": false,
+          "pending": false,
+          "inVisit": false,
+          "rOwned": false
+        }
+      },
+      "endResources": {
+        "held": {
+          "cpuResidentBytes": 0,
+          "cpuTransientBytes": 0,
+          "gpuBufferResidentBytes": 0,
+          "gpuTextureResidentBytes": 0,
+          "gpuTransientBytes": 0
+        },
+        "peak": {
+          "cpuResidentBytes": 0,
+          "cpuTransientBytes": 0,
+          "gpuBufferResidentBytes": 0,
+          "gpuTextureResidentBytes": 0,
+          "gpuTransientBytes": 0
+        },
+        "physicalResources": 0,
+        "logicalLeases": 0,
+        "cpuReaders": 0,
+        "gpuReaders": 0,
+        "preparedBackingPins": 0,
+        "totalResourceReaderReferences": 0,
+        "retiringResources": 0,
+        "jobs": 0,
+        "phaseCounts": {},
+        "active": null,
+        "contextLost": false,
+        "disposed": false,
+        "currentFrameUploadBytes": 0,
+        "currentSliceWork": 2819,
+        "counters": {
+          "allocations": 0,
+          "creationFaults": 0,
+          "cacheHits": 0,
+          "logicalWork": 2819,
+          "uploadedBytes": 0,
+          "uploadAttempts": 0,
+          "jobsAdmitted": 238,
+          "jobsPeak": 2,
+          "cancellationRefusals": 0,
+          "disposalFaults": 0,
+          "nativeVerifierCaptureWork": 50
+        },
+        "accounting": "EXACT_OWNED_CPU_ARRAYBUFFER_LENGTHS_AND_DECLARED_MOCK_GPU_BYTES_ONLY",
+        "backendQualification": "NOT_GPU",
+        "nativeHeap": "UNMEASURED",
+        "wrappersAndEngine": "UNMEASURED",
+        "driverPeak": "UNMEASURED"
+      },
+      "replayRefused": false,
+      "sourceJobSamples": [
+        {
+          "jobs": 2,
+          "currentSliceWork": 11,
+          "logicalWork": 11,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 20,
+          "logicalWork": 20,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 32,
+          "logicalWork": 32,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 44,
+          "logicalWork": 44,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 56,
+          "logicalWork": 56,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 68,
+          "logicalWork": 68,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 80,
+          "logicalWork": 80,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 92,
+          "logicalWork": 92,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 104,
+          "logicalWork": 104,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 116,
+          "logicalWork": 116,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 128,
+          "logicalWork": 128,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 140,
+          "logicalWork": 140,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 152,
+          "logicalWork": 152,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 164,
+          "logicalWork": 164,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 176,
+          "logicalWork": 176,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 188,
+          "logicalWork": 188,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 200,
+          "logicalWork": 200,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 212,
+          "logicalWork": 212,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 224,
+          "logicalWork": 224,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 236,
+          "logicalWork": 236,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 248,
+          "logicalWork": 248,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 260,
+          "logicalWork": 260,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 272,
+          "logicalWork": 272,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 284,
+          "logicalWork": 284,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 296,
+          "logicalWork": 296,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 308,
+          "logicalWork": 308,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 320,
+          "logicalWork": 320,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 332,
+          "logicalWork": 332,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 344,
+          "logicalWork": 344,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 356,
+          "logicalWork": 356,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 368,
+          "logicalWork": 368,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 380,
+          "logicalWork": 380,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 392,
+          "logicalWork": 392,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 404,
+          "logicalWork": 404,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 416,
+          "logicalWork": 416,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 428,
+          "logicalWork": 428,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 440,
+          "logicalWork": 440,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 452,
+          "logicalWork": 452,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 464,
+          "logicalWork": 464,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 476,
+          "logicalWork": 476,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 488,
+          "logicalWork": 488,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 500,
+          "logicalWork": 500,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 512,
+          "logicalWork": 512,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 524,
+          "logicalWork": 524,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 536,
+          "logicalWork": 536,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 548,
+          "logicalWork": 548,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 560,
+          "logicalWork": 560,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 572,
+          "logicalWork": 572,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 584,
+          "logicalWork": 584,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 596,
+          "logicalWork": 596,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 608,
+          "logicalWork": 608,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 620,
+          "logicalWork": 620,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 632,
+          "logicalWork": 632,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 644,
+          "logicalWork": 644,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 656,
+          "logicalWork": 656,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 668,
+          "logicalWork": 668,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 680,
+          "logicalWork": 680,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 692,
+          "logicalWork": 692,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 704,
+          "logicalWork": 704,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 716,
+          "logicalWork": 716,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 728,
+          "logicalWork": 728,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 740,
+          "logicalWork": 740,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 752,
+          "logicalWork": 752,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 764,
+          "logicalWork": 764,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 776,
+          "logicalWork": 776,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 788,
+          "logicalWork": 788,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 800,
+          "logicalWork": 800,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 812,
+          "logicalWork": 812,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 824,
+          "logicalWork": 824,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 836,
+          "logicalWork": 836,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 848,
+          "logicalWork": 848,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 860,
+          "logicalWork": 860,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 872,
+          "logicalWork": 872,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 884,
+          "logicalWork": 884,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 896,
+          "logicalWork": 896,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 908,
+          "logicalWork": 908,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 920,
+          "logicalWork": 920,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 932,
+          "logicalWork": 932,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 944,
+          "logicalWork": 944,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 956,
+          "logicalWork": 956,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 968,
+          "logicalWork": 968,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 980,
+          "logicalWork": 980,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 992,
+          "logicalWork": 992,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1004,
+          "logicalWork": 1004,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1016,
+          "logicalWork": 1016,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1028,
+          "logicalWork": 1028,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1040,
+          "logicalWork": 1040,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1052,
+          "logicalWork": 1052,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1064,
+          "logicalWork": 1064,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1076,
+          "logicalWork": 1076,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1088,
+          "logicalWork": 1088,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1100,
+          "logicalWork": 1100,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1112,
+          "logicalWork": 1112,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1124,
+          "logicalWork": 1124,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1136,
+          "logicalWork": 1136,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1148,
+          "logicalWork": 1148,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1160,
+          "logicalWork": 1160,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1172,
+          "logicalWork": 1172,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1184,
+          "logicalWork": 1184,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1196,
+          "logicalWork": 1196,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1208,
+          "logicalWork": 1208,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1220,
+          "logicalWork": 1220,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1232,
+          "logicalWork": 1232,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1244,
+          "logicalWork": 1244,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1256,
+          "logicalWork": 1256,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1268,
+          "logicalWork": 1268,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1280,
+          "logicalWork": 1280,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1292,
+          "logicalWork": 1292,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1304,
+          "logicalWork": 1304,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1316,
+          "logicalWork": 1316,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1328,
+          "logicalWork": 1328,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1340,
+          "logicalWork": 1340,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1352,
+          "logicalWork": 1352,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1364,
+          "logicalWork": 1364,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1376,
+          "logicalWork": 1376,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1388,
+          "logicalWork": 1388,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1400,
+          "logicalWork": 1400,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1412,
+          "logicalWork": 1412,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1424,
+          "logicalWork": 1424,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1436,
+          "logicalWork": 1436,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1448,
+          "logicalWork": 1448,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1460,
+          "logicalWork": 1460,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1472,
+          "logicalWork": 1472,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1484,
+          "logicalWork": 1484,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1496,
+          "logicalWork": 1496,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1508,
+          "logicalWork": 1508,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1520,
+          "logicalWork": 1520,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1532,
+          "logicalWork": 1532,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1544,
+          "logicalWork": 1544,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1556,
+          "logicalWork": 1556,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1568,
+          "logicalWork": 1568,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1580,
+          "logicalWork": 1580,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1592,
+          "logicalWork": 1592,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1604,
+          "logicalWork": 1604,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1616,
+          "logicalWork": 1616,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1628,
+          "logicalWork": 1628,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1640,
+          "logicalWork": 1640,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1652,
+          "logicalWork": 1652,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1664,
+          "logicalWork": 1664,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1676,
+          "logicalWork": 1676,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1688,
+          "logicalWork": 1688,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1700,
+          "logicalWork": 1700,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1712,
+          "logicalWork": 1712,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1724,
+          "logicalWork": 1724,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1736,
+          "logicalWork": 1736,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1748,
+          "logicalWork": 1748,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1760,
+          "logicalWork": 1760,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1772,
+          "logicalWork": 1772,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1784,
+          "logicalWork": 1784,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1796,
+          "logicalWork": 1796,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1808,
+          "logicalWork": 1808,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1820,
+          "logicalWork": 1820,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1832,
+          "logicalWork": 1832,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1844,
+          "logicalWork": 1844,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1856,
+          "logicalWork": 1856,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1868,
+          "logicalWork": 1868,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1880,
+          "logicalWork": 1880,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1892,
+          "logicalWork": 1892,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1904,
+          "logicalWork": 1904,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1916,
+          "logicalWork": 1916,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1928,
+          "logicalWork": 1928,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1940,
+          "logicalWork": 1940,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1952,
+          "logicalWork": 1952,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1964,
+          "logicalWork": 1964,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1976,
+          "logicalWork": 1976,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 1988,
+          "logicalWork": 1988,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2000,
+          "logicalWork": 2000,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2012,
+          "logicalWork": 2012,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2024,
+          "logicalWork": 2024,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2036,
+          "logicalWork": 2036,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2048,
+          "logicalWork": 2048,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2060,
+          "logicalWork": 2060,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2072,
+          "logicalWork": 2072,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2084,
+          "logicalWork": 2084,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2096,
+          "logicalWork": 2096,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2108,
+          "logicalWork": 2108,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2120,
+          "logicalWork": 2120,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2132,
+          "logicalWork": 2132,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2144,
+          "logicalWork": 2144,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2156,
+          "logicalWork": 2156,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2168,
+          "logicalWork": 2168,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2180,
+          "logicalWork": 2180,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2192,
+          "logicalWork": 2192,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2204,
+          "logicalWork": 2204,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2216,
+          "logicalWork": 2216,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2228,
+          "logicalWork": 2228,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2240,
+          "logicalWork": 2240,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2252,
+          "logicalWork": 2252,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2264,
+          "logicalWork": 2264,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2276,
+          "logicalWork": 2276,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2288,
+          "logicalWork": 2288,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2300,
+          "logicalWork": 2300,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2312,
+          "logicalWork": 2312,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2324,
+          "logicalWork": 2324,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2336,
+          "logicalWork": 2336,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2348,
+          "logicalWork": 2348,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2360,
+          "logicalWork": 2360,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2372,
+          "logicalWork": 2372,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2384,
+          "logicalWork": 2384,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2396,
+          "logicalWork": 2396,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2408,
+          "logicalWork": 2408,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2420,
+          "logicalWork": 2420,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2432,
+          "logicalWork": 2432,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2444,
+          "logicalWork": 2444,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2456,
+          "logicalWork": 2456,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2468,
+          "logicalWork": 2468,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2480,
+          "logicalWork": 2480,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2492,
+          "logicalWork": 2492,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2504,
+          "logicalWork": 2504,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2516,
+          "logicalWork": 2516,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2528,
+          "logicalWork": 2528,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2540,
+          "logicalWork": 2540,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2552,
+          "logicalWork": 2552,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2564,
+          "logicalWork": 2564,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2576,
+          "logicalWork": 2576,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2588,
+          "logicalWork": 2588,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2600,
+          "logicalWork": 2600,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2612,
+          "logicalWork": 2612,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2624,
+          "logicalWork": 2624,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2636,
+          "logicalWork": 2636,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2648,
+          "logicalWork": 2648,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2660,
+          "logicalWork": 2660,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2672,
+          "logicalWork": 2672,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2684,
+          "logicalWork": 2684,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2696,
+          "logicalWork": 2696,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2708,
+          "logicalWork": 2708,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2720,
+          "logicalWork": 2720,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2726,
+          "logicalWork": 2726,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2728,
+          "logicalWork": 2728,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2730,
+          "logicalWork": 2730,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2733,
+          "logicalWork": 2733,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2735,
+          "logicalWork": 2735,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2738,
+          "logicalWork": 2738,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2740,
+          "logicalWork": 2740,
+          "jobsPeak": 2
+        },
+        {
+          "jobs": 2,
+          "currentSliceWork": 2801,
+          "logicalWork": 2801,
+          "jobsPeak": 2
+        }
+      ],
+      "maximumJobs": 2,
+      "noInternalClockResets": true
+    }
+  },
+  "nativeCodec": {
+    "module": {
+      "path": "biome-service/native/bounded-native-input-store.js",
+      "bytes": 32625,
+      "sha256": "44269c057748caab12975c23e4be9dc35d53958edfa93cc5f9bf914bec009f7c"
+    },
+    "originalReleaseCompatibility": {
+      "path": "I:/Sphere/work/biome-pack-service-storage-2026-10-27-192829-eb2d8929/controls/control-native-input-releaseCompatibility-12.json",
+      "bytes": 5508,
+      "sha256": "317aa821a6b4ba148b44695d5ed1ebfee5c5350218ac798035956bf23db801e2"
+    },
+    "completePrice": null
+  },
+  "regressions": {
+    "pass": 19,
+    "fail": 21,
+    "allStatusesMatchParent": true,
+    "allFailuresUnwaived": true
+  },
+  "limitsUnchanged": true,
+  "completeWork": null,
+  "completeStorage": null,
+  "wholeSourcePrice": null,
+  "funding": null,
+  "wholeMainMetadata": null,
+  "completeC1": false,
+  "NativeMain": "NOT_RUN",
+  "physicalHeap": "UNMEASURED",
+  "P05": "OPEN",
+  "P06_P08": "NOT_STARTED",
+  "PhaseOne": "NOT_ACCEPTED_NOT_RELEASED"
+}

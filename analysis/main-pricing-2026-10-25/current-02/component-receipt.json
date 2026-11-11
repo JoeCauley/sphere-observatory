@@ -1,0 +1,135 @@
+{
+  "status": "PRICING_ATTEMPT_REFUSED_FINITE_PRICES_STILL_OPEN",
+  "utc": "2026-10-25T19:51:28.513Z",
+  "work": "I:/Sphere/work/biome-pack-service-pricing-2026-10-25-144616-401feae0",
+  "source": "I:/Sphere/work/biome-pack-service-pricing-2026-10-25-144616-401feae0/source/pricing-02",
+  "sourceFiles": 522,
+  "parsedScripts": 426,
+  "changedFromRoot02": [
+    "owned-main-bootstrap.js"
+  ],
+  "changedFromRoot66": [
+    "biome-service/binding-builder.js",
+    "biome-service/commonboundary-adapter.js",
+    "biome-service/host-world.js",
+    "biome-service/native/root-program-binding.js",
+    "biome-service/native/source-admission.js",
+    "biome-service/native/state-contexts.js",
+    "biome-service/native/strict-record-owner.js",
+    "biome-service/native/surface-kernel.js",
+    "biome-service/provider-profiles.js",
+    "owned-main-bootstrap.js"
+  ],
+  "RecordsByteExactToRoot66": true,
+  "compiledLaunch": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-pricing-2026-10-25-144616-401feae0\\compiled-pricing-02\\owned-main-trusted-launch.unselected.js",
+    "bytes": 2643957,
+    "sha256": "28a224361ca5c70b303587c6fcead8cea0c90ca210e1e3414b36d91f67efbdfd"
+  },
+  "componentLogical": {
+    "peak": 33394896,
+    "finalHeld": 28085236,
+    "cap": 33554432,
+    "stateVisits": 3889,
+    "stateWaits": 6,
+    "bindSteps": 1031,
+    "contextCanonicalBytes": 11167,
+    "diagnosticMarkers": 163,
+    "completeAdmission": false
+  },
+  "controls": {
+    "bindPass": 10,
+    "registrationAuditCases": 35,
+    "statePortCases": 9,
+    "defaultNullApi": "PASS",
+    "replacement": "FAIL_RESOURCE_BUDGET_UNWAIVED",
+    "parentWork": "FAIL_WORK_QUOTA_UNWAIVED",
+    "parentStorage": "FAIL_RESOURCE_LIMIT_UNWAIVED",
+    "moduleFloor": "FAIL_RESOURCE_LIMIT_UNWAIVED"
+  },
+  "pricing": {
+    "finitePricingClosed": false,
+    "parentBodyBound": "NO_FINITE_UNIFORM_BOUND_FOR_CURRENT_ARGUMENT_DOMAIN",
+    "unpricedWitness": {
+      "counterWritesPerDriverAdvance": 65536,
+      "rowOnlyModelBytes": 46137632,
+      "diagnosticMarkers": 163
+    },
+    "partialModuleFloor": 247808,
+    "generousOldRootCredit": 66899,
+    "necessaryCounterfactualCohortPeak": 33575805,
+    "conditionalExcess": 21373,
+    "model": "Inherited unselected conservative logical ABI; extracted cohort only; not a complete total or physical/whole Main certificate."
+  },
+  "broadService": {
+    "pass": 19,
+    "fail": 21,
+    "sameFortyStatusesAsRoot02": true,
+    "dependencies": 870,
+    "dependenciesUnchanged": true
+  },
+  "references": [
+    {
+      "path": "I:/Sphere/work/biome-pack-service-pricing-2026-10-25-144616-401feae0/reports/component-association-pricing-03.json",
+      "bytes": 12406,
+      "sha256": "a191c382cbe69949fbf8622eb504c82f82ac4876fb27bb9c8cae58353ef2fbbc"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-pricing-2026-10-25-144616-401feae0/reports/complete-pricing-verdict-03.json",
+      "bytes": 22976,
+      "sha256": "ead48064f9ab7c432dc8e4b7a6d9f1bd518599518ce06836965aa54744871436"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-pricing-2026-10-25-144616-401feae0/reports/module-storage-floor-02.json",
+      "bytes": 243841,
+      "sha256": "0187294b06b1b603ff23cc35d593421d6c8a0d3368c84881311cf35140836122"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-pricing-2026-10-25-144616-401feae0/reports/next-parent-contract-03.json",
+      "bytes": 1678,
+      "sha256": "b86d0668ee1e54e05fe0111c9077b8bbc0e9a8c8c27f603bc3b0ba81c70ba6e3"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-pricing-2026-10-25-144616-401feae0/reports/pricing-02-source.json",
+      "bytes": 94720,
+      "sha256": "81d3f5eb98c386161fdd2c07117b15e5fac97edb85cea9e47f0f10a3b433508f"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-pricing-2026-10-25-144616-401feae0/reports/pricing-02-launch-source.json",
+      "bytes": 6135,
+      "sha256": "681d0843a28fb45968f19a28a580d451c9480a5bfd47e0ed102a33c77a21ba45"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-pricing-2026-10-25-144616-401feae0/reports/regression-association-pricing-03.json",
+      "bytes": 1818,
+      "sha256": "3d3b058d98fe4c9ddf28c812528f460872572e573c0d62f562f64bf969d050ac"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-pricing-2026-10-25-144616-401feae0/reports/native-fix-02.json",
+      "bytes": 1016,
+      "sha256": "a87309abaaf53dec2bd5e38accd03d3f00129a76ee79929c00f0f9515b6d8964"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-pricing-2026-10-25-144616-401feae0/reports/preservation-before-docs-pricing-03.json",
+      "bytes": 2244,
+      "sha256": "4e8b4d4462f320bb5b50d0e2671ac9d0575858a1036fd417e4b7b9373fc81f27"
+    },
+    {
+      "path": "I:/Sphere/work/biome-pack-service-pricing-2026-10-25-144616-401feae0/reports/attempts-preserved-pricing-03.json",
+      "bytes": 2309,
+      "sha256": "d29e647cf87873aa872f77429e2af43c1dd1aaca2fdc6f77f3dc30b24f4440da"
+    }
+  ],
+  "completeConsumerPrice": null,
+  "completeRetainedStoragePrice": null,
+  "wholeSourcePrice": null,
+  "funding": null,
+  "wholeMainMetadata": null,
+  "nativeMain": "NOT_RUN",
+  "nativeHeap": "UNMEASURED",
+  "fullConformance": "NOT_RUN",
+  "Main": false,
+  "P05": "OPEN",
+  "P06_P08": "NOT_STARTED",
+  "PhaseOne": "NOT_ACCEPTED_NOT_RELEASED"
+}

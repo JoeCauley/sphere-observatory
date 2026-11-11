@@ -1,0 +1,65 @@
+{
+  "status": "SOURCE_OWNED_REUSE_STAGING_IMPLEMENTED_COMPLETE_PRICING_NOT_CLOSED",
+  "source": "I:\\Sphere\\work\\biome-pack-service-reuse-2026-10-25-213922-9485ed41/source/reuse-09",
+  "sourceReceipt": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-reuse-2026-10-25-213922-9485ed41/reports/reuse-09-source.json",
+    "bytes": 94902,
+    "sha256": "c63ce0fbe34560a4e13a7e296baabbcccf0cf64afc57962c02abb2a7fa690e00"
+  },
+  "retainedStorage": {
+    "path": "I:\\Sphere\\work\\biome-pack-service-reuse-2026-10-25-213922-9485ed41/reports/retained-storage-reuse-09.json",
+    "bytes": 742883,
+    "sha256": "a5f3c693bae10207061a035630c1d2fae74539685005d3cb5c9eca44ca3c1e41"
+  },
+  "workFrontiers": [
+    {
+      "id": "RootProducer",
+      "source": "owned-main-bootstrap.js",
+      "implementation": "Opaque fixed parent capability; real R Root visits; same job/serial debit tickets; immutable nonwritable/nonconfigurable methods retained once; namespace/native/job/context/epoch mutable checks remain live.",
+      "remaining": "Full current/guard/native/helper/error/caller work across all original inherited parents, including original pre-R initializer through actual Main.",
+      "price": null
+    },
+    {
+      "id": "SourceRows",
+      "source": "biome-service/native/source-admission.js",
+      "implementation": "One original source row per source-owned Root advance; staged canonical State profile; exact 32-byte original WebCrypto SHA input/result; guarded paid formatting and original Records.verifyEnvelope independent proof.",
+      "remaining": "Full predicates/declarations/calls/control/argument/temporary/exception work and native/error dependencies for every source phase and actual complete Root caller.",
+      "price": null
+    },
+    {
+      "id": "SourceProvider",
+      "source": "biome-service/provider-profiles.js",
+      "implementation": "Genuine opaque Source receipt permits exact immutable providers and pinned source entries. Every original schema, codec, backend/factory/reference and actual profile digest check remains; no duplicate source read/hash.",
+      "remaining": "Provider validation and canonical helper full admitted domain still need complete tariffs/staging or authentic original admission reuse. Public static factories/read/release transport are not made bounded merely by owning a parent capability.",
+      "price": null
+    },
+    {
+      "id": "StateKernel",
+      "source": "biome-service/native/state-contexts.js + surface-kernel.js",
+      "implementation": "Original full 1MiB/depth64/2097152-node context and 262144B/depth32/8192-node State; exact frame/content; genuine Kernel context and State holder; Source close must complete before State continuation closes.",
+      "remaining": "Complete work/current/native/error/caller graph and all retained module/instance/closed states. Existing logical unit selectors and observer counts are diagnostic.",
+      "price": null
+    }
+  ],
+  "operationLanguage": "Original R operation/resource API language remains authority. No syntax-node count, observed marker, function name or arbitrary unit selection is promoted to a complete work tariff. No wider preparation ceiling or moved native work is claimed.",
+  "actualSourceStaging": {
+    "admissionVisits": 225,
+    "retirementVisits": 224,
+    "initialOriginalSourceReads": 224,
+    "sourceRows": 224,
+    "internalClockResets": 0,
+    "maximumJobs": 2
+  },
+  "completeConsumerWorkPrice": null,
+  "completeConsumerRetainedStoragePrice": null,
+  "wholeSourcePrice": null,
+  "funding": null,
+  "wholeMainMetadata": null,
+  "NativeMain": "NOT_RUN",
+  "physicalHeap": "UNMEASURED",
+  "completeC1": false,
+  "fullConformance": "NOT_RUN",
+  "P05": "OPEN",
+  "P06_P08": "NOT_STARTED",
+  "PhaseOne": "NOT_ACCEPTED_NOT_RELEASED"
+}
