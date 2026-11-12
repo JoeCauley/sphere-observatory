@@ -147,7 +147,7 @@
     {
       "path": "../../infinite-industry/1.0.0/manifest.json",
       "bytes": 6749,
-      "sha256": "3da6ef8fda6862e80cefa7aa8481184dafcd1e841d49fa5e0687964498f83035"
+      "sha256": "5b4d13812d225d9f85b5b4fb1e738c13801fd7733d794838558e175c8b1d5e53"
     },
     {
       "path": "../../infinite-industry/1.0.0/model.js",
@@ -166,8 +166,8 @@
     },
     {
       "path": "../../infinite-industry/1.0.0/renderer.js",
-      "bytes": 7500,
-      "sha256": "6fabc6c0e401b16b161bc3d67d8c19c34ba5a33cf92a0bf08f858332733beedd"
+      "bytes": 9826,
+      "sha256": "8284939da01b27b78006c21d9d05d2ab62d6aee4b7921888da43ffbeca9b7d76"
     },
     {
       "path": "../../infinite-industry/1.0.0/style.css",
