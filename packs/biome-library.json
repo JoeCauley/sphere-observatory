@@ -13,20 +13,51 @@
       "description": "Rolling hills and tall grass in the wind, beneath a shade track.",
       "entry": "packs/infinite-meadow/1.0.0/index.html",
       "saveKey": "sphere-pack:infinite-meadow:1.0.0",
-      "placement": { "relation": "within" },
-      "overview": { "albedo": [0.16, 0.42, 0.15], "accent": [0.34, 0.52, 0.20], "pattern": "field" },
-      "travel": { "ascent": "guided-journey" }
+      "placement": {
+        "relation": "within"
+      },
+      "overview": {
+        "albedo": [
+          0.16,
+          0.42,
+          0.15
+        ],
+        "accent": [
+          0.34,
+          0.52,
+          0.2
+        ],
+        "pattern": "field"
+      },
+      "travel": {
+        "ascent": "guided-journey"
+      }
     },
     {
       "id": "infinite-industry",
       "name": "Infinite Industry",
-      "version": "1.0.0",
-      "description": "The working water works: intake, treatment, storage and distribution, in open light outside the shade tracks.",
-      "entry": "packs/infinite-industry/1.0.0/index.html",
-      "saveKey": "sphere-pack:infinite-industry:1.0.0",
-      "placement": { "relation": "outside", "prefer": "Air and water works" },
-      "overview": { "albedo": [0.46, 0.43, 0.37], "accent": [0.10, 0.30, 0.32], "pattern": "works" },
-      "travel": { "glide": "industry-approach", "flightArrival": "?arrival=flight" }
+      "version": "1.3.0",
+      "description": "The working water works: intake, treatment, storage and distribution, in open light outside the shade tracks. This version flies in and out through its own Duck Blind.",
+      "entry": "packs/infinite-industry/1.3.0/index.html",
+      "saveKey": "sphere-pack:infinite-industry:1.3.0",
+      "placement": {
+        "relation": "outside",
+        "prefer": "Air and water works"
+      },
+      "overview": {
+        "albedo": [
+          0.46,
+          0.43,
+          0.37
+        ],
+        "accent": [
+          0.1,
+          0.3,
+          0.32
+        ],
+        "pattern": "works"
+      },
+      "contract": "sphere-biome/1"
     },
     {
       "id": "sideways-city",
@@ -36,8 +67,22 @@
       "entry": "packs/sideways-city/1.0.0/index.html",
       "saveKey": "sphere-biome:sideways-city:1.0.0",
       "contract": "sphere-biome/1",
-      "placement": { "relation": "within" },
-      "overview": { "albedo": [0.72, 0.57, 0.50], "accent": [0.34, 0.50, 0.48], "pattern": "works" }
+      "placement": {
+        "relation": "within"
+      },
+      "overview": {
+        "albedo": [
+          0.72,
+          0.57,
+          0.5
+        ],
+        "accent": [
+          0.34,
+          0.5,
+          0.48
+        ],
+        "pattern": "works"
+      }
     }
   ]
 }

@@ -308,3 +308,25 @@ Joe watched the city in motion: "Glorious. Shimmer seen on pool faces, but glori
 **Joe's answer and the change (13 November):** the shimmer is on nearby pools and begins only below about 100 m above the ground; above that every visible pool is steady. He watched several times. That points at the meshes, where the water was a separate sheet 3 cm above the plinth top. `city.js` now builds a pool's top as one level surface with nothing stacked: a stone rim of four panels around a water panel at the same height. Headless, after the change: no errors; water still shows in the mesh render; mesh and trace differ by a mean of 0.29 to 0.45 out of 255 on two low views with pools (0.03 to 0.07 percent of pixels by more than 40), closer than before. Whether the shimmer is gone has NOT been seen: it only shows in motion on the real GPU, and the cause was inferred from where it appears, not proven. Joe's eye is the test.
 
 Joe also said the buildings will be walked inside soon. Their doors are currently dark panels on solid boxes; interiors do not exist yet.
+
+## Infinite Industry 1.3.0: the second contract biome (13 November, evening session)
+
+**Version numbers, corrected.** Earlier notes speak of "Meadow 1.1.0" and "Industry 1.1.0". Those numbers are taken: `packs/infinite-industry/1.1.0` and `1.2.0`, and the same for Meadow, each hold one shared-world adapter manifest committed on 20 October. The contract versions are therefore **1.3.0**. (This was found by colliding with them: a copy landed inside the existing `1.1.0` folder. Nothing tracked was changed; the stray copy was moved to become `1.3.0`.)
+
+**What 1.3.0 is.** A full copy of Industry 1.0.0 beside it, with its own manifest and save (`sphere-pack:infinite-industry:1.3.0`), and one file changed: `app.js`, where the private camera lives. Added there: `window.SphereBiome` (`sphere-biome/1`): `ready`, `arrived`, `pose()` (height above the works' ground), `ascend(options)`, held air arrival (`?arrival=air&hold=1&fromM=blind`) with `begin()`, `save()`, `dispose()`, `air()`, `inspect()` with `veil`. A script moves the eye with height and view paced separately, as in the city; the place last stood in is what is saved while a script runs and until the controls are taken. Its renderer is unchanged. 1.0.0, 1.1.0 and 1.2.0 are untouched.
+
+**Kit.** `packs/kit/veil.js` (new, optional): draws a Duck Blind veil as an overlay for a pack whose own renderer does not draw one, with the same wisps and opacity law as the Observatory's cloud. Industry 1.3.0 uses it and pins it in its manifest. Industry declares a blind at 7,000 to 8,500 m (PROPOSED) and no haze layers, because its renderer does not draw declared haze.
+
+**Other changes.** `packs/biome-library.json`: the Industry entry now points at 1.3.0, declares the contract, and drops the old glide. `scripts/build-industry-manifest.cjs` takes a version argument (default 1.0.0): `node scripts/build-industry-manifest.cjs 1.3.0`. `stage-frame.js`: the host no longer edits a contract biome's save on leaving by air. Both packs: `ascend` returns at once if the eye is already at the height asked for.
+
+**Verified in Main (RTX 5080, pane displayed), once each:**
+- 1.3.0 loads through Visit, passes its manifest check, 60 frames a second, no GL errors.
+- Contract ascent on its own: 16 s to 7,750 m; the renderer steps through "middle fallback" and "far"; veil begins near 6.4 km and is full at 7 km; the save still holds the place on the ground (walk, 1.7 m).
+- Industry to City: 0 exchanges of picture outside cloud, card 0 ms, both saved places kept.
+- City to Industry: Industry placed in its blind (7,750 m, `veil` 1, held) behind the host cloud, released, veil gone at 6,300 m, settled at 65 m on its approach line 15 s after release; 0 exchanges outside cloud, card 0 ms, no GL errors, both saved places kept.
+
+**Not verified, or weak:**
+- Nobody has watched Industry's flights. What Sol's renderer shows between 100 m and 6 km (its "far" level) was not looked at, only that it draws without error.
+- A lift-off from inside the covered treatment hall would pass through the roof; the script does not check for cover.
+- The installed record still says version 1.0.0 in the panel (it was installed before); the scene opened is 1.3.0. A place saved in 1.0.0 is not carried over: 1.3.0 has its own save.
+- Meadow 1.3.0 is not started.

@@ -172,7 +172,7 @@
     window.removeEventListener('resize', onResize);
     shell.remove();
     remember(null);
-    if (toGround) groundSave(scene?.saveKey);
+    if (toGround && !scene?.contract) groundSave(scene?.saveKey);   // a contract biome keeps its own place; the host does not edit its save
     say('Back above ' + (scene?.name ?? 'the biome') + '. It kept your saved place.');
     document.getElementById('view')?.focus?.();
   }

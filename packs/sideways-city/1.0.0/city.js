@@ -335,6 +335,7 @@ function ascend(options) {
   if (script) return Promise.resolve('taken-over');
   status('Lifting off. The city goes on.');
   const handoff = options?.handoff === true, top = Math.min(4e6, Math.max(REVEAL_M, Number(options?.toAltitudeM) || REVEAL_M));
+  if (pose.altitudeM >= top * .98) return Promise.resolve('revealed');   // already there
   const from = { ...pose }, to = { ...pose, altitudeM: top, pitch: handoff ? -1.5 : -.9, yaw: pose.yaw + .5 };
   if (from.mode === 'walk') from.altitudeM = Math.max(from.altitudeM, EYE);
   // For a handoff the climb keeps gathering pace to the end, so the host's picture can take over a view already moving.
