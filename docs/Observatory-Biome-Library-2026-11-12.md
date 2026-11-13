@@ -182,3 +182,129 @@ In the City to Meadow exchange, a screenshot at the midpoint showed one flat fie
 **For the contract (item 4), added to the findings above:** `ascend` options and held arrival with `begin()` are now what the host uses; the earlier finding about the arrival clock is closed for the city. Still needed: a declared high-view colour (or a rule that it equals the overview colour), and a statement that a biome must be a flat field by the handoff height.
 
 **Files changed:** `stage-frame.js`, `packs/sideways-city/1.0.0/city.js`, `app.js` (one condition; profiles regenerated with `--both`, provider digests unchanged), `.gitignore` (`/installed-biomes.json`).
+
+## Measurements for seamless movement (13 November)
+
+Joe's goal: seamless movement point to point anywhere on the Sphere, no visible dissolves or teleports, the camera moves even for Visit; hide the tricks in "deep in atmosphere" places. The viewpoint is a lens, not a vehicle (Joe, 13 November), so flight speed is unconstrained for now. Nothing below is built; these are the measurements the plan rests on. Browser pane, RTX 5080.
+
+**Main can go low.** Main accepted 1,500, 150 and 15 km over all three installed plots. At 15 km looking down it draws pale ground with cloud mottling; looking toward the horizon it draws a warm haze band with the inner surface, a shade and its track above. Frame cost at 15 km: 2.7 ms on the GPU.
+
+**Main already has an atmosphere.** `asset-plan.js` keys Main's pipeline on weather: `local` below 160 km, `far` above, `dust` for cavity haze. `atmosphere.js` holds a volume march with noise and climate textures. State at the time: `atmosphere` 1, `cavityHaze` 0.28.
+
+**What the card costs when Main is not ready** (after a reload; first visit to each view in that page load):
+
+| Plot | 1,500 km | 150 km | 15 km |
+| --- | --- | --- | --- |
+| Sideways City | 0 (restored at boot) | 3.8 s | 2.9 s |
+| Infinite Meadow | 1.3 s | 0 | 1.1 s |
+| Infinite Industry | 1.3 s | 0 | 0 |
+
+The cost follows the view plan, not the height: the first drop below 160 km builds the low-air program (`SphereVolume.march`), and each new region loads artwork.
+
+**Main can be made ready ahead of time, unseen.** After a reload parked at 30.6 million km (only the `far` program built):
+- `renderer.prepare(state)` for a view Main was not at ran with no card, no hold and no error, 68 to 123 ms per height, and left Main's own view intact. Alone it was not enough: the gate still fired on arrival (1.25 s).
+- Building the low-air program first, with the renderer's own call (`weather.program ??= SphereGLProgram(gl, SphereShaders.vertex, SphereVolume.march)`), returned in 12 ms.
+- With both done, Main was sent through 1,500, 150 and 15 km over the city: the gate did not fire at any of them and the card was on screen for 0 ms.
+
+**Not shown by these runs:**
+- The 12 ms is the time the build call took to return. Whether the driver defers work to the first draw, and how long that first frame takes, was not measured.
+- One page load each; shader and HTTP caches from earlier loads were present. A browser that has never opened the Observatory was not tested.
+- Only the three installed plots, straight down, plus one horizon view. Provinces with their own artwork, wounds and authored sites were not probed.
+- Whether `prepare` for many views evicts earlier ones.
+
+## The reveal without pop-in: the far city traced from the city's own function (13 November)
+
+Joe's direction: the critical moment is when the dense air thins and the infinite biome comes into view; complex structure should be visible without pop-in; any trick is acceptable as long as the Atlas is the actual Sphere.
+
+**Why it popped.** The city was drawn two ways: meshes within 1.6 km of the eye and a painted street grid beyond. Two representations pop where they meet.
+
+**What replaced it (`packs/sideways-city/1.0.0/city.js`).** The city is a function of cell index. The ground shader now steps each pixel's ray through the street grid and, for every cell crossed, rebuilds that cell from the same hash the meshes use (plinth, ramps, up to three tiers, doors, tower shaft and cap, pool, plaza rails and marker) and intersects it. Meshes are kept only below 600 m and only for the widest complete ring of cells around the eye; the shader skips exactly those cells, so each cell is drawn once. Where a building would be narrower than a pixel it fades into the average colour of its block (6 to 30 m per pixel), which is what makes the city emerge gradually on a descent instead of appearing. `?far=1` forces the traced version everywhere, as a test aid.
+
+**Verified, headless (software GL, 800 x 450):**
+- Mesh and trace of the same view agree building for building, including in negative cell coordinates, so the shader hash matches the JavaScript hash. Mean difference 0.25 to 0.73 out of 255 over three views; 0.1 to 0.7 percent of pixels differ by more than 40, on edges (the meshes are antialiased, the trace is not) and ramp sides.
+- The comparison exposed a mesh bug: pool water was drawn beneath its own plinth top and never seen. Fixed.
+- Stills at 15 km, 5 km, 1.5 km and 300 m: fine-grained field, then grid with blocks emerging toward the nearer ground, then the full city into haze, then meshes near with trace beyond and no visible boundary.
+
+**Verified in Main (RTX 5080, pane hidden, 1165 x 1259):**
+- No shader or GL errors in eight views from the street to 15 km.
+- Industry to City flight: traced from 1,500 km to 600 m, then the meshes appear as one complete ring (built while the biome waited); no card; saved place kept.
+- Frame cost 0.2 to 0.5 ms measured around the draw with `gl.finish()`. Treat as a lower bound: the pane was hidden, and whether the browser's finish waits for the GPU was not established.
+
+**Not verified, or weak:**
+- Nobody has watched it move. Shimmer on fine detail in motion (the trace has no antialiasing) is the most likely complaint, and stills cannot show it.
+- The mesh-to-trace switch at 600 m was compared in stills at fixed views, not watched during a descent.
+- The shader hash was checked by picture, not exhaustively. A float rounding difference could flip one cell in millions; none was seen.
+- Cost on a weaker GPU. The ray may cross up to 96 cells per pixel.
+- Three Canvas2D `getImageData` warnings appeared in Main's console during the timing runs; the city uses no 2D canvas, and their source was not traced.
+
+**What this is for the contract (item 4).** A biome's far field must be the same function as its near field, and a biome should provide a way to render one view both ways so the agreement can be measured. This is the first requirement that speaks to "infinite" directly. It suits biomes that are functions of position (a city, a works); grass and trees are a different problem and nothing here claims to solve them.
+
+## Air and the Duck Blind: what the lore says, and a declared-air prototype (13 November)
+
+Joe's direction: go on Meadow 1.1.0 and Industry 1.1.0; the air decision depends on whether different atmospheric transitions can be implemented; there will be thick and thin atmospheres; keep the technology open for variety, including floating islands.
+
+**Lore read** (import at `I:/Sphere/work/lore-import-20261112/Documents-Codex`, 1,208 text files outside dependency folders; searched, not read in full):
+- Show bible, 9 October, marked CANON: "Above the Duck Blind, obscuring cloud can give way over a few seconds to a fast fall away of concealment and the first discernible meadow below. Different regions have different presented skies." Joe in the source conversation: "It is a fast fall away after a few seconds in obscuring cloud."
+- Show bible glossary: Duck Blind is "Regional concealment and managed daylight vocabulary; sky presentation and light supply have separate functions"; status "Canon and repository established; mechanism open".
+- Design Requirements DR-12: regional altitude fade; concealment and daylight have separate parameters; the fictional mechanism remains open; "no inherited kilometre value becomes canon". The grass transition test plan (30 September) adds: gradual reveal "with no camera teleport", and lists as an open decision for Joe which behaviour is essential (physical crossing surface, optical concealment, fade interval, deck altitude, or a combination); "The older 1-3 km fade and 4 km deck values are explicitly not canon."
+- Atmosphere: needs "a retention and compartment account"; pressure boundaries or declared containment between differing regions.
+- Not found in the import: floating islands, megalopoli, border biomes, "under construction". "The Docks" and "Ghost Radio" appear in the 9 October transcript and show bible; those passages were not read today.
+- Correction to an earlier note in this document: the blind is not strictly one-way. Canon has the ground discernible from above and a few seconds of obscuring cloud while crossing.
+
+**Prototype (`city.js`).** The air is declared, not built in: `haze` is a list of level layers (base, top, dimming per kilometre of path), integrated exactly along each pixel's ray; `blind` is a band (base, top, edge) that veils the eye only while the eye is inside it, with wisps that stream as the eye climbs. Two declarations exist, chosen with `?air=thin` (default) or `?air=thick`. The pack reports its declaration (`SphereBiome.air()`) and how veiled the view is now (`inspect().veil`, 0 to 1). Every height in both declarations is PROPOSED.
+
+**Verified.** Headless, twelve stills (two airs, six heights), no errors: in thin air the city is crisp at 1 km and a faint grid at 5 km; in thick air it is half lost at 1 km and gone by 5 km; inside the blind both are fully veiled and `veil` reads 1; above it `veil` reads 0. In Main on the RTX 5080: no shader or GL error; a contract ascent to 20 km passed through the blind with `veil` at 1 from about 9.4 to 10.2 km.
+
+**What this answers.** Different atmospheric transitions are implementable: thickness, layering and blind height are data. `veil` gives a host the moment at which a lens swap cannot be seen.
+
+**Not shown:**
+- Motion. The wisps were judged from stills only. The ascent crossed the blind in about one second; canon says a few seconds, which is a pacing choice for the flight director.
+- Main drawing the same veil. Until the host owns one veil layer over both pictures, the swap is not continuous.
+- Structures at height. The traced far field assumes everything stands within 262 m of the ground. That is the city's implementation, not the contract, but floating islands would need a biome whose function is evaluated in height as well; not attempted.
+- Cloud that is seen from outside (a deck below you, a storm ahead). The blind here is felt only from inside.
+
+**Meadow 1.1.0 and Industry 1.1.0: scoped, not started.** Meadow 1.0.0 already has its own Duck Blind (a blind-height control, a concealment setting and the guided journey that crosses it), so 1.1.0 is largely exposing what exists. Both packs hold their camera state privately (Industry exposes `SphereIndustry.inspect` only; Meadow exposes nothing), in about 200 KB of code across the two and the shared runtime.
+
+## Lenses change places inside the cloud (13 November, last sprint of the session)
+
+`stage-frame.js` now draws one host-owned cloud layer over the viewport (`cloud()`), with the same wisps and opacity law as a contract biome's own blind. In a flight, Main and a scene change places only while that layer is opaque; the soft-focus dissolve is no longer used in flight (Visit and Return still use it). A biome that declares a blind climbs into the middle of it and stops there (`ascend({ toAltitudeM: middle of blind })`), and arrives held in the middle of it (`?arrival=air&hold=1&fromM=blind`), so the host's cloud arrives over a picture that is already cloud.
+
+**Run in Main (RTX 5080, pane hidden), once each:**
+
+| Flight | Total | Pictures exchanged outside cloud | Card | Host cloud on screen |
+| --- | --- | --- | --- | --- |
+| Industry to City | about 41 s | 0 | 0 ms | 6.5 s over two crossings |
+| City to Meadow | 49.9 s | 0 | 0 ms | 5.8 s over two crossings |
+
+City to Meadow: the city reached 9,750 m with `veil` 1 at 16.3 s, the host cloud came over it at 16.6 s, the scene closed at 17.1 s, the cloud cleared by 19.5 s with Main rising. Industry to City: the city was placed at 9,750 m, held, `veil` 1, behind the cloud, then released. City save byte-identical in both; no errors.
+
+**Weak, or not shown:**
+- Nobody has watched it. All of the above is logs.
+- Pacing. The city leaves its own blind within a fraction of a second of release, so by the time the host cloud clears it is already near 2 km. Canon wants a few seconds of cloud and then the fall away with the ground first discernible; that needs the flight director to pace the descent, not a script inside the biome.
+- Main is still far from the biome's height at the exchange (Main 1,500 km, city under 10 km). The cloud hides it; a height readout would not.
+- Meadow 1.0.0 and Industry 1.0.0: arriving at Meadow is cloud, then standing in grass. Hidden, but it is a teleport behind a curtain. Leaving Industry has no ascent, so the cloud arrives over a ground-level view. Both are what the 1.1.0 packs are for.
+- Using cloud on every flight is a pattern a player can learn to read. Other occluders have not been tried.
+
+## Pacing the Duck Blind crossing in the city (13 November, evening)
+
+This supersedes the "Pacing" weakness in the section above, for the city. `city.js` scripts may now pace height and view separately (`script.shape`).
+- **Arrival from its own blind** (`?arrival=air&fromM=blind`), 15 s: 1.5 s descending inside the blind, fully veiled; 1.5 s in which the concealment falls away, looking straight down; then the descent and the turn toward the approach.
+- **Ascent into its own blind** (`ascend` to a height inside the blind with `handoff`), 16 s: the rise beneath the ordinary sky, then the last 3.2 s climbing as the cloud gathers.
+
+**Verified.** Headless, stepped at 12 frames a second of scene time: fully veiled until 1.6 s, veil gone at 2.9 s at about 8.2 km with the street grid first showing, meshes from 9.3 s, settled at 60 m at 14.9 s, no errors. In Main (RTX 5080, pane hidden), Industry to City once: the city was placed behind the host cloud with `veil` 1; the host cloud cleared 1.5 s later while the city's own veil was still 1; the veil began to fall at 8.9 km and was gone at 8.2 km, 3.0 s after release; arrival at 60 m 15.4 s after release; card 0 ms; saved place kept.
+
+**Not shown.** The paced ascent was not flown in Main after this change (City to Meadow or City to Industry). Nobody has watched either in motion on ALPHA. A 16 s clip of the descent, rendered headless on software GL from this code, was sent to Joe; it is a render of the city alone, not a capture of the app.
+
+## First report from a human eye (13 November)
+
+Joe watched the city in motion: "Glorious. Shimmer seen on pool faces, but glorious." This is the first observation of any of this work moving that did not come from logs or stills.
+
+**The defect:** shimmer on pool faces. Cause not established. Two candidates, not yet told apart:
+- Far pools, in the traced field: the trace has no antialiasing, and pool water is the strongest colour contrast in the city, so sub-pixel pools would sparkle as the eye moves. This is the weakness predicted in "The reveal without pop-in".
+- Near pools, in the meshes: the water is a separate sheet 3 cm above the plinth top (added on 13 November so the water shows); two close surfaces can flicker against each other.
+
+**To settle it:** whether the shimmer is on distant pools or nearby ones, and on foot or in flight. If distant, the fix is in the trace (fade water into the block average earlier, or soften edges by pixel footprint). If near, colour the plinth top as water inside the pool outline and remove the separate sheet.
+
+**Joe's answer and the change (13 November):** the shimmer is on nearby pools and begins only below about 100 m above the ground; above that every visible pool is steady. He watched several times. That points at the meshes, where the water was a separate sheet 3 cm above the plinth top. `city.js` now builds a pool's top as one level surface with nothing stacked: a stone rim of four panels around a water panel at the same height. Headless, after the change: no errors; water still shows in the mesh render; mesh and trace differ by a mean of 0.29 to 0.45 out of 255 on two low views with pools (0.03 to 0.07 percent of pixels by more than 40), closer than before. Whether the shimmer is gone has NOT been seen: it only shows in motion on the real GPU, and the cause was inferred from where it appears, not proven. Joe's eye is the test.
+
+Joe also said the buildings will be walked inside soon. Their doors are currently dark panels on solid boxes; interiors do not exist yet.

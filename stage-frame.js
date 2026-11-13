@@ -9,8 +9,9 @@
  * arc across the Sphere, Main sinking toward the destination, then the other
  * scene on approach. The joins are hidden with stagecraft (see "Stagecraft"):
  * the two pictures exchange at the same height, looking straight down, both
- * already moving, through soft focus; and the destination loads unseen during
- * the crossing.
+ * already moving; in flight they change places only behind a few seconds of
+ * obscuring cloud (the Duck Blind crossing); and the destination loads unseen
+ * during the crossing. Visit and Return still use a soft-focus dissolve.
  *
  * This is a portal, not a continuous surface: the scene is not shaped or lit by
  * its place on the Sphere. See docs/Observatory-Stage-Frame-2026-11-11.md.
@@ -241,6 +242,55 @@
     if (show && current?.shell === shell) { shell.style.pointerEvents = ''; cover(true); }
   }
 
+  // The cloud. Canon: crossing a Duck Blind is a few seconds in obscuring cloud. The host draws
+  // that cloud over the viewport, above whichever picture is showing, and the two pictures are
+  // exchanged only while it is opaque. A contract biome stops and starts inside its own declared
+  // blind, where its own picture is already cloud, so the host's cloud arrives over cloud.
+  let cloudLayer = null;
+  function cloud() {
+    if (cloudLayer) return cloudLayer;
+    const canvas = document.createElement('canvas');
+    Object.assign(canvas.style, { position: 'fixed', zIndex: '950', pointerEvents: 'none', display: 'none' });
+    document.body.append(canvas);
+    const gl = canvas.getContext('webgl2', { alpha: true, premultipliedAlpha: true, antialias: false });
+    let program = null, u = {};
+    if (gl) try {
+      const make = (type, source) => { const sh = gl.createShader(type); gl.shaderSource(sh, source); gl.compileShader(sh); if (!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) throw Error(gl.getShaderInfoLog(sh)); return sh; };
+      program = gl.createProgram();
+      gl.attachShader(program, make(gl.VERTEX_SHADER, '#version 300 es\nout vec2 v;void main(){vec2 p=vec2(float((gl_VertexID<<1)&2),float(gl_VertexID&2))*2.-1.;v=p;gl_Position=vec4(p,0.,1.);}'));
+      // The same wisps and the same opacity law as a contract biome's own blind.
+      gl.attachShader(program, make(gl.FRAGMENT_SHADER, '#version 300 es\nprecision highp float;in vec2 v;out vec4 frag;uniform float uTime,uClimb,uAspect,uOpacity;void main(){vec3 d=normalize(vec3(v.x*uAspect/1.19,v.y/1.19-.9,.6));vec3 q=d*3.+vec3(uTime*.05,uClimb*.004,uTime*.03);float n=.5+.5*sin(q.x*2.1+sin(q.z*1.7+q.y))*sin(q.y*1.3+q.z*2.3);float a=smoothstep(0.,1.,uOpacity*1.5-.5*n);vec3 c=pow(mix(vec3(.80,.78,.76),vec3(.95,.93,.90),n),vec3(1./2.2));frag=vec4(c*a,a);}'));
+      gl.linkProgram(program);
+      if (!gl.getProgramParameter(program, gl.LINK_STATUS)) throw Error(gl.getProgramInfoLog(program));
+      for (const name of ['uTime', 'uClimb', 'uAspect', 'uOpacity']) u[name] = gl.getUniformLocation(program, name);
+    } catch (error) { console.warn('Stage frame: cloud shader unavailable, using a plain veil', error); program = null; }
+    let opacity = 0, goal = 0, perMs = 0, direction = 1, climb = 0, last = 0, running = false, waiting = [];
+    function frame(now) {
+      const dt = Math.min(250, last ? now - last : 0); last = now;
+      opacity = goal > opacity ? Math.min(goal, opacity + perMs * dt) : Math.max(goal, opacity - perMs * dt);
+      climb += direction * dt * 1.4;   // the wisps stream past: upward travel reads as climbing, downward as sinking
+      const r = view()?.getBoundingClientRect();
+      if (r) {
+        Object.assign(canvas.style, { left: r.left + 'px', top: r.top + 'px', width: r.width + 'px', height: r.height + 'px', display: opacity > 0 || goal > 0 ? 'block' : 'none' });
+        const w = Math.max(1, Math.round(r.width / 2)), h = Math.max(1, Math.round(r.height / 2));
+        if (program) {
+          if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
+          gl.viewport(0, 0, w, h); gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT); gl.useProgram(program);
+          gl.uniform1f(u.uTime, now / 1000); gl.uniform1f(u.uClimb, climb); gl.uniform1f(u.uAspect, w / h); gl.uniform1f(u.uOpacity, opacity);
+          gl.drawArrays(gl.TRIANGLES, 0, 3);
+        } else { canvas.style.background = '#e2dfdb'; canvas.style.opacity = String(opacity); }
+      }
+      if (opacity === goal) { for (const done of waiting.splice(0)) done(); if (goal === 0) { canvas.style.display = 'none'; running = false; last = 0; return; } }
+      requestAnimationFrame(frame);
+    }
+    cloudLayer = {
+      // Bring the cloud to an opacity over a time; resolves when it gets there.
+      to(value, ms, travel = 1) { goal = value; perMs = 1 / Math.max(1, ms); direction = travel; const reached = new Promise(done => waiting.push(done)); if (!running) { running = true; requestAnimationFrame(frame); } return reached; },
+      get opacity() { return opacity; }
+    };
+    return cloudLayer;
+  }
+
   // Has the scene drawn? Contract biomes say so; the two older packs are asked their own way.
   async function settled(frame, scene, limitMs) {
     if (scene.contract) return biomeReady(frame, limitMs);
@@ -450,10 +500,13 @@
       if (scene.contract || scene.ascent) {
         label('Lifting off · your place here is kept');
         const api = scene.contract ? here.frame.contentWindow?.SphereBiome : null;
-        const result = scene.contract ? await (api?.ascend({ toAltitudeM: HANDOFF_KM * 1000, handoff: true }) ?? 'revealed') : await ascend(here.frame);
+        // A biome that declares a Duck Blind climbs into the middle of it and stops there, in cloud.
+        let blind = null; try { blind = api?.air?.().blind ?? null; } catch {}
+        flight.departInBlind = !!blind;
+        const result = scene.contract ? await (api?.ascend({ toAltitudeM: blind ? (blind.baseM + blind.topM) / 2 : HANDOFF_KM * 1000, handoff: true }) ?? 'revealed') : await ascend(here.frame);
         if (result === 'taken-over') { label('You took control. Flight to ' + target.scene.name + ' cancelled.'); await rehearsal; window.SphereApp.setState(A); controls(false); cover(true); return; }
         if (result === 'closed') return;
-        try { low = !!api && api.pose().altitudeM >= HANDOFF_KM * 900; } catch {}
+        try { low = !!api && (!!blind || api.pose().altitudeM >= HANDOFF_KM * 900); } catch {}
       }
       label('Leaving for ' + target.scene.name);
       here.shell.style.pointerEvents = 'none';
@@ -468,13 +521,15 @@
         say('Crossing the Sphere to ' + target.scene.name);
         await crossSphere(A, B);
       })();
-      await dissolve(here.shell, here.frame, false, 1600);
+      // Into cloud; the pictures change places behind it; then the fast fall away.
+      await cloud().to(1, low ? 500 : 1100, 1);
       close({ toGround: true });
+      sleep(900).then(() => cloud().to(0, 1400, 1));
       // The destination loads unseen during the crossing, so it is ready before it is wanted.
       let glide = null;
       if (target.scene.glide) try { glide = await prepareGlide(target.scene); } catch (error) { console.warn('Stage frame: glide unavailable', error); }
       const byContract = target.scene.contract;
-      open(target.item.id, { hidden: true, query: glide ? '' : byContract ? '?arrival=air&hold=1&fromM=' + HANDOFF_KM * 1000 : target.scene.flightArrival });
+      open(target.item.id, { hidden: true, query: glide ? '' : byContract ? '?arrival=air&hold=1&fromM=blind' : target.scene.flightArrival });
       const arriving = current;
       const loading = glide ? sceneReady(arriving.frame, 20000) : byContract ? biomeReady(arriving.frame, 20000) : sleep(2500).then(() => true);
       await moving;
@@ -485,12 +540,16 @@
       flight.arriveKm = Math.round(floorB);
       const sinking = sinkMain(B, topB, floorB, sinkMs, easeIn);   // still gathering pace at the exchange
       const ready = await loading;
-      await Promise.race([sinking, sleep(Math.max(0, sinkMs - 1600))]);
+      await Promise.race([sinking, sleep(Math.max(0, sinkMs - 1300))]);
+      if (current !== arriving) return;
+      await cloud().to(1, 1200, -1);   // Main sinks into cloud
       if (current !== arriving) return;
       const api = byContract && ready ? arriving.frame.contentWindow.SphereBiome : null;
       // The biome holds level for the first half of the exchange, then starts down as Main arrives at its height.
-      const landing = api ? (typeof api.begin === 'function' ? sleep(800).then(() => api.begin()) : api.arrived) : null;
-      const revealed = dissolve(arriving.shell, arriving.frame, true, 1600);
+      const landing = api ? (typeof api.begin === 'function' ? api.begin() : api.arrived) : null;
+      // The scene is put in place behind the cloud, already moving; then the cloud falls away.
+      arriving.shell.style.opacity = '1'; arriving.shell.style.pointerEvents = '';
+      const revealed = sleep(500).then(() => cloud().to(0, 1200, -1)).then(() => { if (current === arriving) cover(true); });
       if (glide && ready) await glideIn(arriving.frame, glide);
       else if (landing) await Promise.race([landing, sleep(45000)]);
       await revealed;

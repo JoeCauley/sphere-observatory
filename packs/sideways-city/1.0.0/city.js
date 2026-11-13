@@ -17,7 +17,7 @@
  *     dispose()  stop, save, release GPU resources
  *   }
  *   Arrival is chosen by the address: ?arrival=saved (default) | ground | air.
- *   With air, &fromM=<metres> starts the approach straight down from that height
+ *   With air, &fromM=<metres> (or fromM=blind, the middle of its own Duck Blind) starts the approach straight down from that height
  *   and &hold=1 waits, unseen and ready, until the host calls begin().
  *   An element with id "leavePack" asks to leave. pagehide saves and disposes.
  *
@@ -28,7 +28,21 @@
  */
 const ID = 'sideways-city', VERSION = '1.0.0', SAVE_KEY = 'sphere-biome:' + ID + ':' + VERSION;
 const CELL = 200, PLINTH = 70, CURB = 1.5, EYE = 1.7, RAMP = 9, RAMP_HALF = 10, RADIUS = 8;
-const REVEAL_M = 3000;
+const REVEAL_M = 3000, MESH_BELOW_M = 600;
+// The air, declared rather than built in, so that biomes can differ: thin, thick, layered.
+// haze: level layers of air, each with a base, a top and how much it dims per kilometre of path.
+// blind: the Duck Blind band. Canon: seen from above, the ground below is discernible; crossing
+// it is a few seconds of obscuring cloud. So it veils the eye only while the eye is inside it.
+// Every height here is PROPOSED for this prototype; no kilometre value is canon.
+const AIRS = {
+  thin: { haze: [{ baseM: 0, topM: 400, perKm: .5 }, { baseM: 0, topM: 4000, perKm: .08 }], blind: { baseM: 9000, topM: 10500, edgeM: 800 } },
+  thick: { haze: [{ baseM: 0, topM: 1500, perKm: .9 }, { baseM: 0, topM: 9000, perKm: .25 }], blind: { baseM: 11000, topM: 13000, edgeM: 1200 } }
+};
+const AIR = AIRS[new URLSearchParams(location.search).get('air')] ?? AIRS.thin;
+const HAZE = new Float32Array(AIR.haze.flatMap(l => [l.baseM, l.topM, l.perKm / 1000, 0]));
+const smooth = (a, b, x) => { const t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
+const veilAt = m => smooth(AIR.blind.baseM - AIR.blind.edgeM, AIR.blind.baseM, m) * (1 - smooth(AIR.blind.topM, AIR.blind.topM + AIR.blind.edgeM, m));
+const FAR_ONLY = new URLSearchParams(location.search).get('far') === '1';   // test aid: trace everything, to compare with the meshes
 const $ = id => document.getElementById(id);
 const canvas = $('world');
 
@@ -78,18 +92,21 @@ function build(ix, iz) {
   const box = (x0, y0, z0, x1, y1, z1, col, top = col) => {
     quad([x0, y0, z0], [x1, y0, z0], [x1, y1, z0], [x0, y1, z0], col); quad([x1, y0, z1], [x0, y0, z1], [x0, y1, z1], [x1, y1, z1], col);
     quad([x0, y0, z1], [x0, y0, z0], [x0, y1, z0], [x0, y1, z1], col); quad([x1, y0, z0], [x1, y0, z1], [x1, y1, z1], [x1, y1, z0], col);
-    quad([x0, y1, z0], [x1, y1, z0], [x1, y1, z1], [x0, y1, z1], top);
+    if (top) quad([x0, y1, z0], [x1, y1, z0], [x1, y1, z1], [x0, y1, z1], top);
   };
   const dark = [.06, .05, .06], water = [.10, .36, .40], shade = c.stone.map(v => v * .86);
   if (c.kind !== 'plaza') {
-    box(-PLINTH, 0, -PLINTH, PLINTH, CURB, PLINTH, shade, c.kind === 'pool' ? shade : c.stone);
+    box(-PLINTH, 0, -PLINTH, PLINTH, CURB, PLINTH, shade, c.kind === 'pool' ? null : c.stone);
     for (const [sx, sz] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) {   // the ramps: their way up, and yours
       const p = (along, out2, y) => sx ? [sx * out2, y, along] : [along, y, sz * out2];
       quad(p(-RAMP_HALF, PLINTH, CURB), p(RAMP_HALF, PLINTH, CURB), p(RAMP_HALF, PLINTH + RAMP, 0), p(-RAMP_HALF, PLINTH + RAMP, 0), c.stone.map(v => v * .94));
       tri(p(-RAMP_HALF, PLINTH, CURB), p(-RAMP_HALF, PLINTH + RAMP, 0), p(-RAMP_HALF, PLINTH, 0), shade); tri(p(RAMP_HALF, PLINTH, CURB), p(RAMP_HALF, PLINTH, 0), p(RAMP_HALF, PLINTH + RAMP, 0), shade);
     }
   }
-  if (c.kind === 'pool') { quad([-PLINTH + 6, CURB - .4, -PLINTH + 6], [PLINTH - 6, CURB - .4, -PLINTH + 6], [PLINTH - 6, CURB - .4, PLINTH - 6], [-PLINTH + 6, CURB - .4, PLINTH - 6], water); }
+  if (c.kind === 'pool') {   // one level top, nothing stacked: a stone rim around a water panel (stacked sheets flicker when seen from low down)
+    const P = PLINTH, I = PLINTH - 6, top = (x0, z0, x1, z1, col) => quad([x0, CURB, z0], [x1, CURB, z0], [x1, CURB, z1], [x0, CURB, z1], col);
+    top(-P, -P, P, -I, shade); top(-P, I, P, P, shade); top(-P, -I, -I, I, shade); top(I, -I, P, I, shade); top(-I, -I, I, I, water);
+  }
   if (c.kind === 'plaza') {   // resting rails: a bar at shell height on two posts
     for (let i = -1; i <= 1; i++) { const x = i * 46; box(x - 14, 0, -1.2, x - 12, 7, 1.2, shade); box(x + 12, 0, -1.2, x + 14, 7, 1.2, shade); box(x - 15, 7, -1.6, x + 15, 8.2, 1.6, c.roof); }
     box(-4, 0, 34, 4, 22, 42, c.stone, c.roof);
@@ -126,7 +143,13 @@ function program(vs, fs) {
 const COMMON = `uniform vec3 uRight,uUp,uForward;uniform float uAspect,uAltitude;
 const vec3 SUN=vec3(.46,.78,.42);
 vec3 sky(vec3 d){float t=clamp(d.y*.5+.5,0.,1.);vec3 c=mix(vec3(.86,.72,.60),vec3(.36,.52,.70),smoothstep(.45,.95,t));return c+vec3(1.,.85,.6)*pow(max(dot(normalize(d),SUN),0.),90.)*.5;}
-float fogOf(float dist){return 1.-exp(-dist/(1500.+uAltitude*7.));}`;
+uniform vec4 uHaze[2];uniform vec3 uBlind;uniform float uTime;
+float through(vec4 L,float dy,float t){float y=uAltitude,y1=y+dy*t,lo=min(y,y1),hi=max(y,y1);   // length of the ray inside one level layer
+ return hi-lo<1e-3?(y>=L.x&&y<=L.y?t:0.):t*max(0.,min(hi,L.y)-max(lo,L.x))/(hi-lo);}
+float fogOf(float dist,float dy){float tau=0.;for(int i=0;i<2;i++)tau+=uHaze[i].z*through(uHaze[i],dy,dist);return 1.-exp(-tau);}
+vec3 veiled(vec3 col,vec3 d){float v=smoothstep(uBlind.x-uBlind.z,uBlind.x,uAltitude)*(1.-smoothstep(uBlind.y,uBlind.y+uBlind.z,uAltitude));if(v<=0.)return col;
+ vec3 q=d*3.+vec3(uTime*.05,uAltitude*.004,uTime*.03);float n=.5+.5*sin(q.x*2.1+sin(q.z*1.7+q.y))*sin(q.y*1.3+q.z*2.3);   // wisps that stream past as the eye climbs
+ return mix(col,mix(vec3(.80,.78,.76),vec3(.95,.93,.90),n),smoothstep(0.,1.,v*1.5-.5*n));}`;
 const mesh = program(`#version 300 es
 precision highp float;layout(location=0)in vec3 aPos;layout(location=1)in vec3 aCol;layout(location=2)in vec3 aNor;
 uniform vec3 uOffset;${COMMON}
@@ -135,20 +158,85 @@ void main(){vec3 p=aPos+uOffset;float z=dot(p,uForward);gl_Position=vec4(dot(p,u
 `#version 300 es
 precision highp float;in vec3 vCol,vNor,vRel;out vec4 frag;uniform float uFade;${COMMON}
 void main(){float dist=length(vRel);vec3 n=normalize(vNor);if(dot(n,vRel)>0.)n=-n;float lit=.34+.66*max(dot(n,SUN),0.)+.10*max(n.y,0.);
- vec3 col=mix(vCol*lit,sky(vRel/dist*vec3(1.,.15,1.)),fogOf(dist));
+ vec3 col=veiled(mix(vCol*lit,sky(vRel/dist*vec3(1.,.15,1.)),fogOf(dist,vRel.y/dist)),vRel/dist);
  gl_FragDepth=clamp(log2(1.+dist)/log2(1.+400000.),0.,1.);frag=vec4(pow(col,vec3(1./2.2)),uFade);}`);
-// The far ground: the same street-and-block grid, drawn analytically to the horizon.
+// The far field. Not a painting of the city: the city itself, traced per pixel from the
+// same function that builds the meshes (same hash, same plinths, tiers, doors, towers).
+// A ray is stepped through the street grid; each cell it crosses is rebuilt and intersected.
+// Because near and far are one function there is nowhere for a building to pop in. Where a
+// building would be smaller than a pixel it fades into the average of its block.
 const plane = program(`#version 300 es
 precision highp float;${COMMON}
 out vec2 vNdc;void main(){vec2 p=vec2(float((gl_VertexID<<1)&2),float(gl_VertexID&2))*2.-1.;vNdc=p;gl_Position=vec4(p,0.,1.);}`,
 `#version 300 es
-precision highp float;in vec2 vNdc;out vec4 frag;uniform vec2 uCellPhase;${COMMON}
+precision highp float;precision highp int;in vec2 vNdc;out vec4 frag;
+uniform ivec2 uCell;uniform vec2 uLocal;uniform int uMesh;uniform float uPix;${COMMON}
+const float CELL=${CELL}.,PL=${PLINTH}.,CURB=${CURB},HMAX=262.;
+const vec3 STONE[4]=vec3[4](vec3(.78,.62,.52),vec3(.72,.56,.50),vec3(.80,.70,.58),vec3(.66,.58,.55));
+const vec3 ROOF[3]=vec3[3](vec3(.34,.52,.50),vec3(.42,.36,.44),vec3(.55,.40,.30));
+const vec3 DARK=vec3(.06,.05,.06),WATER=vec3(.10,.36,.40),STREET=vec3(.50,.44,.40),FLAT=vec3(.70,.57,.50),MEAN=vec3(.65,.56,.50);
+float hsh(ivec2 c,int k){uint h=uint(c.x)*374761393u^uint(c.y)*668265263u^uint(k)*2246822519u;h=(h^(h>>13u))*1274126177u;h^=h>>16u;return min(float(h)/4294967296.,.9999999);}
+float bt;vec3 bn,bc;   // nearest hit so far: distance, normal, colour
+void tryBox(vec3 o,vec3 d,vec3 inv,vec3 lo,vec3 hi,vec3 side,vec3 top){
+ vec3 a=(lo-o)*inv,b=(hi-o)*inv,t0=min(a,b),t1=max(a,b);float tn=max(max(t0.x,t0.y),t0.z),tf=min(min(t1.x,t1.y),t1.z);
+ if(tn>tf||tn<0.||tn>=bt)return;
+ bt=tn;if(tn==t0.y){bn=vec3(0.,-sign(d.y),0.);bc=d.y<0.?top:side;}else if(tn==t0.x){bn=vec3(-sign(d.x),0.,0.);bc=side;}else{bn=vec3(0.,0.,-sign(d.z));bc=side;}
+}
+void cellHit(ivec2 ij,vec3 o,vec3 d,vec3 inv){   // o is measured from this cell's centre
+ ivec2 c=uCell+ij;float k=hsh(c,1);
+ vec3 stone=STONE[int(hsh(c,13)*4.)],roof=ROOF[int(hsh(c,14)*3.)],shade=stone*.86;
+ if(k>=.10&&k<.19){   // plaza: resting rails and a marker
+  for(int i=-1;i<=1;i++){float x=float(i)*46.;tryBox(o,d,inv,vec3(x-14.,0.,-1.2),vec3(x-12.,7.,1.2),shade,shade);tryBox(o,d,inv,vec3(x+12.,0.,-1.2),vec3(x+14.,7.,1.2),shade,shade);tryBox(o,d,inv,vec3(x-15.,7.,-1.6),vec3(x+15.,8.2,1.6),roof,roof);}
+  tryBox(o,d,inv,vec3(-4.,0.,34.),vec3(4.,22.,42.),stone,roof);return;}
+ bool pool=k<.10;float was=bt;
+ tryBox(o,d,inv,vec3(-PL,0.,-PL),vec3(PL,CURB,PL),shade,pool?shade:stone);
+ if(pool&&bt<was&&bn.y>.5){vec3 p=o+d*bt;if(abs(p.x)<PL-6.&&abs(p.z)<PL-6.)bc=WATER;}
+ for(int m=0;m<4;m++){   // the four ramps
+  float sg=m<2?1.:-1.;bool ax=(m&1)==0;float ou=ax?o.x:o.z,du=ax?d.x:d.z,ov=ax?o.z:o.x,dv=ax?d.z:d.x,den=d.y+sg*CURB*du/9.;
+  if(abs(den)<1e-9)continue;float t=(CURB*(PL+9.-sg*ou)/9.-o.y)/den;if(t<=0.||t>=bt)continue;
+  float u=sg*(ou+du*t),v=ov+dv*t;if(u<PL||u>PL+9.||abs(v)>10.)continue;
+  bt=t;bn=normalize(ax?vec3(sg*CURB/9.,1.,0.):vec3(0.,1.,sg*CURB/9.));bc=stone*.94;}
+ if(pool)return;
+ float w=34.+hsh(c,2)*24.,dd=26.+hsh(c,3)*30.,h=14.+hsh(c,4)*16.;
+ float cx=(hsh(c,5)-.5)*(PL-w)*1.2,cz=(hsh(c,6)-.5)*(PL-dd)*1.2;int tiers=1+int(hsh(c,7)*3.);
+ float x0=cx-w,x1=cx+w,z0=cz-dd,z1=cz+dd,y=CURB;
+ for(int t=0;t<3;t++){if(t>=tiers)break;float th=h/float(t+1);was=bt;
+  tryBox(o,d,inv,vec3(x0,y,z0),vec3(x1,y+th,z1),t==1?shade:stone,roof);
+  if(t==0&&bt<was&&bn.y==0.){vec3 p=o+d*bt;   // doors: wider than tall
+   if(p.y-y<min(9.,th-2.)){if(bn.z!=0.){if(abs(p.x-(x0+x1)*.5)<min(11.,(x1-x0)*.5-3.))bc=DARK;}else if(abs(p.z-(z0+z1)*.5)<min(11.,(z1-z0)*.5-3.))bc=DARK;}}
+  y+=th;float inset=min(x1-x0,z1-z0)*.16;x0+=inset;x1-=inset;z0+=inset;z1-=inset;}
+ if(hsh(c,8)<.22){   // tower: a shaft and a cap
+  float r=13.+hsh(c,9)*7.,tx=(hsh(c,10)<.5?-1.:1.)*(PL-r-3.),tz=(hsh(c,11)<.5?-1.:1.)*(PL-r-3.),top=CURB+80.+hsh(c,12)*90.;
+  vec2 q=o.xz-vec2(tx,tz);float a=dot(d.xz,d.xz),b=dot(q,d.xz),disc=b*b-a*(dot(q,q)-r*r);
+  if(disc>0.){float t=(-b-sqrt(disc))/a,py=o.y+d.y*t;if(t>0.&&t<bt&&py>=CURB&&py<=top){vec2 p=q+d.xz*t;float ang=atan(p.y,p.x);if(ang<0.)ang+=6.2831853;float i=floor(ang/.5235988),mid=(i+.5)*.5235988;bt=t;bn=vec3(cos(mid),0.,sin(mid));bc=mod(i,2.)>.5?stone:shade;}}
+  vec3 qa=o-vec3(tx,top+r*.5,tz);float ca=a-4.*d.y*d.y,cb=dot(qa.xz,d.xz)-4.*qa.y*d.y,cd=cb*cb-ca*(dot(qa.xz,qa.xz)-4.*qa.y*qa.y);
+  if(cd>0.&&abs(ca)>1e-9){float sq=sqrt(cd);for(int m=0;m<2;m++){float t=(-cb+(m==0?-sq:sq))/ca,yy=qa.y+d.y*t;if(t>0.&&t<bt&&yy<=0.&&yy>=-r*.5){vec3 p=qa+d*t;bt=t;bn=normalize(vec3(p.x,-4.*p.y,p.z));bc=roof;}}}
+ }
+}
 void main(){vec3 d=normalize(uForward+uRight*vNdc.x*uAspect/1.19+uUp*vNdc.y/1.19);
- if(d.y>-.0005){frag=vec4(pow(sky(d),vec3(1./2.2)),1.);gl_FragDepth=1.;return;}
- float t=uAltitude/-d.y;vec2 g=d.xz*t+uCellPhase;vec2 l=abs(fract(g/${CELL}.+.5)-.5)*${CELL}.;
- float width=t*.0022+.5,block=1.-smoothstep(${PLINTH}.-width,${PLINTH}.+width,max(l.x,l.y));
- vec3 street=vec3(.50,.44,.40),stone=vec3(.70,.57,.50);vec3 col=mix(street,stone,block);
- col*=.34+.66*SUN.y+.10;col=mix(col,sky(d*vec3(1.,.15,1.)),fogOf(t));
+ if(abs(d.x)<1e-6)d.x=1e-6;if(abs(d.z)<1e-6)d.z=1e-6;if(abs(d.y)<1e-6)d.y=-1e-6;
+ vec3 inv=1./d,o=vec3(uLocal.x,uAltitude,uLocal.y);
+ float tG=d.y<0.?uAltitude/-d.y:1e12;                                  // where the ray meets the street
+ float tIn=o.y>HMAX?(d.y<0.?(o.y-HMAX)/-d.y:1e12):0.;                  // where it enters the layer that holds buildings
+ float tOut=d.y>0.?(o.y<HMAX?(HMAX-o.y)/d.y:0.):tG,tLim=30./uPix;      // beyond tLim a pixel is wider than a block
+ bt=1e12;
+ if(tIn<tOut&&tIn<tLim){
+  vec3 p=o+d*tIn;vec2 cf=floor((p.xz+100.)/CELL),stp=sign(d.xz);ivec2 ij=ivec2(cf),si=ivec2(stp);
+  vec2 tMax=((cf+max(stp,0.))*CELL-100.-o.xz)*inv.xz,tDelta=CELL*abs(inv.xz);
+  for(int n=0;n<96;n++){
+   if(max(abs(ij.x),abs(ij.y))>uMesh){cellHit(ij,o-vec3(float(ij.x)*CELL,0.,float(ij.y)*CELL),d,inv);if(bt<1e11)break;}
+   float tNext=min(tMax.x,tMax.y);if(tNext>tOut||tNext>tLim)break;
+   if(tMax.x<tMax.y){tMax.x+=tDelta.x;ij.x+=si.x;}else{tMax.y+=tDelta.y;ij.y+=si.y;}
+  }
+ }
+ if(bt>1e11&&d.y>-.0005){frag=vec4(pow(veiled(sky(d),d),vec3(1./2.2)),1.);gl_FragDepth=1.;return;}
+ float up1=.34+.66*SUN.y+.10,t=bt<1e11?bt:tG;vec3 col;
+ if(bt<1e11)col=bc*(.34+.66*max(dot(bn,SUN),0.)+.10*max(bn.y,0.));
+ else{vec2 g=d.xz*tG+uLocal,l=abs(fract(g/CELL+.5)-.5)*CELL;float k=hsh(uCell+ivec2(floor(g/CELL+.5)),1);col=(k>=.10&&k<.19&&max(l.x,l.y)<PL?FLAT:STREET)*up1;}
+ if(d.y<0.){   // too small to draw honestly: become the average of the block
+  vec2 g=d.xz*tG+uLocal,l=abs(fract(g/CELL+.5)-.5)*CELL;float width=tG*uPix+.5,block=1.-smoothstep(PL-width,PL+width,max(l.x,l.y));
+  col=mix(col,mix(STREET,MEAN,block)*up1,smoothstep(6.,30.,t*uPix));}
+ col=veiled(mix(col,sky(d*vec3(1.,.15,1.)),fogOf(t,d.y)),d);
  gl_FragDepth=clamp(log2(1.+t)/log2(1.+400000.),0.,1.);frag=vec4(pow(col,vec3(1./2.2)),1.);}`);
 const buffers = new Map();
 function buffer(ix, iz) {
@@ -163,7 +251,7 @@ const blank = gl.createVertexArray();
 
 /* ---- state, save ---- */
 const start = () => ({ eastM: 0, northM: -86, altitudeM: EYE, yaw: 0, pitch: 0, mode: 'walk' });
-let pose = start(), bookmark = start(), script = null, held = null, disposed = false, frames = 0, built = 0, drawn = 0;
+let pose = start(), bookmark = start(), script = null, held = null, disposed = false, frames = 0, built = 0, drawn = 0, meshRing = -1;
 const valid = p => p && ['eastM', 'northM', 'altitudeM', 'yaw', 'pitch'].every(k => Number.isFinite(p[k])) && ['walk', 'flight'].includes(p.mode);
 function load() { try { const s = JSON.parse(localStorage.getItem(SAVE_KEY)); if (s?.schema === 1 && valid(s.pose) && valid(s.bookmark)) { pose = { ...s.pose }; bookmark = { ...s.bookmark }; return true; } } catch {} return false; }
 // A scripted ascent or arrival never moves the saved place. While one runs, and after it
@@ -178,8 +266,8 @@ function interrupt() { held = null; if (script?.interruptible) { const done = sc
 function lift() { if (pose.mode === 'walk') { pose.mode = 'flight'; pose.altitudeM += 12; status('Flying · W goes where you look · Q down, E up · F lands'); } }
 function land() { const g = ground(pose.eastM, pose.northM); if (pose.mode === 'flight' && pose.altitudeM - g < 14 && !solid(pose.eastM, pose.northM, 0)) { pose.mode = 'walk'; pose.altitudeM = g + EYE; pose.pitch = Math.max(-1, Math.min(1, pose.pitch)); status('On foot · WASD walks · Space lifts off'); } else status('Come down close to open ground to land.'); }
 function step(dt) {
-  if (script) { if (script.held) return; const t = Math.min(1, (script.t += dt) / script.seconds), e = script.ease ? script.ease(t) : t * t * (3 - 2 * t); for (const k of ['eastM', 'northM', 'yaw', 'pitch']) pose[k] = script.from[k] + (script.to[k] - script.from[k]) * e;
-    pose.altitudeM = Math.exp(Math.log(script.from.altitudeM) + (Math.log(script.to.altitudeM) - Math.log(script.from.altitudeM)) * e); pose.mode = 'flight';
+  if (script) { if (script.held) return; const t = Math.min(1, (script.t += dt) / script.seconds), shaped = script.shape ? script.shape(t) : null, e = shaped ? shaped.pos : script.ease ? script.ease(t) : t * t * (3 - 2 * t), ea = shaped ? shaped.alt : e; for (const k of ['eastM', 'northM', 'yaw', 'pitch']) pose[k] = script.from[k] + (script.to[k] - script.from[k]) * e;
+    pose.altitudeM = Math.exp(Math.log(script.from.altitudeM) + (Math.log(script.to.altitudeM) - Math.log(script.from.altitudeM)) * ea); pose.mode = 'flight';
     if (t >= 1) { const done = script.done; held = script.keep; script = null; done('revealed'); } return; }
   const fx = (keys.has('KeyD') ? 1 : 0) - (keys.has('KeyA') ? 1 : 0), fz = (keys.has('KeyW') ? 1 : 0) - (keys.has('KeyS') ? 1 : 0), fy = (keys.has('KeyE') ? 1 : 0) - (keys.has('KeyQ') ? 1 : 0), fast = keys.has('ShiftLeft') || keys.has('ShiftRight');
   if (pose.mode === 'walk') {
@@ -201,24 +289,32 @@ function draw() {
   if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
   gl.viewport(0, 0, w, h); gl.enable(gl.DEPTH_TEST); gl.depthFunc(gl.LEQUAL); gl.clear(gl.DEPTH_BUFFER_BIT);
   const f = forward(), right = [Math.cos(pose.yaw), 0, -Math.sin(pose.yaw)], up = [-Math.sin(pose.yaw) * Math.sin(pose.pitch), Math.cos(pose.pitch), -Math.cos(pose.yaw) * Math.sin(pose.pitch)];
-  const common = pr => { gl.useProgram(pr.p); gl.uniform3fv(pr.u.uRight, right); gl.uniform3fv(pr.u.uUp, up); gl.uniform3fv(pr.u.uForward, f); gl.uniform1f(pr.u.uAspect, w / h); gl.uniform1f(pr.u.uAltitude, pose.altitudeM); };
-  common(plane); gl.uniform2f(plane.u.uCellPhase, local(pose.eastM), local(pose.northM)); gl.bindVertexArray(blank); gl.drawArrays(gl.TRIANGLES, 0, 3);
-  common(mesh); const cx = index(pose.eastM), cz = index(pose.northM); let made = 0;
-  // Buildings fade out between 1.5 and 2.5 km instead of vanishing; above that the far ground carries the picture.
-  const fade = 1 - Math.min(1, Math.max(0, (pose.altitudeM - 1500) / 1000)); drawn = 0;
-  if (fade > 0) {
-    if (fade < 1) { gl.enable(gl.BLEND); gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA); }
-    gl.uniform1f(mesh.u.uFade, fade);
-    for (let dz = -RADIUS; dz <= RADIUS; dz++) for (let dx = -RADIUS; dx <= RADIUS; dx++) {
-      const key = (cx + dx) + ',' + (cz + dz); if (!buffers.has(key)) { if (made >= 24) continue; made++; built++; }   // at most 24 new cells a frame
-      const b = buffer(cx + dx, cz + dz), ox = (cx + dx) * CELL - pose.eastM, oz = (cz + dz) * CELL - pose.northM;
-      if (ox * f[0] - pose.altitudeM * f[1] + oz * f[2] < -260) continue;   // wholly behind the eye
-      gl.uniform3f(mesh.u.uOffset, ox, -pose.altitudeM, oz); gl.bindVertexArray(b.vao); gl.drawArrays(gl.TRIANGLES, 0, b.count); drawn++;
+  const common = pr => { gl.useProgram(pr.p); gl.uniform3fv(pr.u.uRight, right); gl.uniform3fv(pr.u.uUp, up); gl.uniform3fv(pr.u.uForward, f); gl.uniform1f(pr.u.uAspect, w / h); gl.uniform1f(pr.u.uAltitude, pose.altitudeM); gl.uniform4fv(pr.u['uHaze[0]'], HAZE); gl.uniform3f(pr.u.uBlind, AIR.blind.baseM, AIR.blind.topM, AIR.blind.edgeM); gl.uniform1f(pr.u.uTime, performance.now() / 1000); };
+  // Near the eye: full meshes, nearest ring first. meshRing is the widest ring that is complete;
+  // the ground shader traces everything outside it, so a cell is always drawn exactly once.
+  const cx = index(pose.eastM), cz = index(pose.northM); let made = 0; meshRing = -1;
+  if (!FAR_ONLY && pose.altitudeM < MESH_BELOW_M) {
+    for (let r = 0; r <= RADIUS; r++) {
+      let whole = true;
+      for (let dz = -r; dz <= r; dz++) for (let dx = -r; dx <= r; dx++) {
+        if (Math.max(Math.abs(dx), Math.abs(dz)) !== r || buffers.has((cx + dx) + ',' + (cz + dz))) continue;
+        if (made >= 24) { whole = false; continue; }   // at most 24 new cells a frame
+        buffer(cx + dx, cz + dz); made++; built++;
+      }
+      if (!whole) break;
+      meshRing = r;
     }
-    gl.disable(gl.BLEND);
-  } else if (script?.to) {   // too high to see buildings: build the ones waiting at the end of the approach
+  } else if (script?.to) {   // above the meshes: build the ones waiting at the end of the approach
     const tx = index(script.to.eastM), tz = index(script.to.northM);
     for (let dz = -RADIUS; dz <= RADIUS && made < 24; dz++) for (let dx = -RADIUS; dx <= RADIUS && made < 24; dx++) if (!buffers.has((tx + dx) + ',' + (tz + dz))) { buffer(tx + dx, tz + dz); made++; built++; }
+  }
+  common(plane); gl.uniform2i(plane.u.uCell, cx, cz); gl.uniform2f(plane.u.uLocal, local(pose.eastM), local(pose.northM)); gl.uniform1i(plane.u.uMesh, meshRing); gl.uniform1f(plane.u.uPix, 2 / (1.19 * h));
+  gl.bindVertexArray(blank); gl.drawArrays(gl.TRIANGLES, 0, 3);
+  common(mesh); gl.uniform1f(mesh.u.uFade, 1); drawn = 0;
+  for (let dz = -meshRing; dz <= meshRing; dz++) for (let dx = -meshRing; dx <= meshRing; dx++) {
+    const b = buffers.get((cx + dx) + ',' + (cz + dz)), ox = (cx + dx) * CELL - pose.eastM, oz = (cz + dz) * CELL - pose.northM;
+    if (!b || ox * f[0] - pose.altitudeM * f[1] + oz * f[2] < -260) continue;   // wholly behind the eye
+    gl.uniform3f(mesh.u.uOffset, ox, -pose.altitudeM, oz); gl.bindVertexArray(b.vao); gl.drawArrays(gl.TRIANGLES, 0, b.count); drawn++;
   }
   frames++; if (frames === 3) resolveReady();
 }
@@ -242,23 +338,33 @@ function ascend(options) {
   const from = { ...pose }, to = { ...pose, altitudeM: top, pitch: handoff ? -1.5 : -.9, yaw: pose.yaw + .5 };
   if (from.mode === 'walk') from.altitudeM = Math.max(from.altitudeM, EYE);
   // For a handoff the climb keeps gathering pace to the end, so the host's picture can take over a view already moving.
-  return new Promise(done => { script = { from, to, keep: held ?? { ...pose }, t: 0, seconds: 16, done, interruptible: true, ease: handoff ? t => .25 * t + .75 * t * t * t : null }; });
+  // Climbing into its own Duck Blind: rise beneath the ordinary sky, then a few seconds of cloud
+  // gathering while still climbing. Height and view are paced separately.
+  const edge = AIR.blind.baseM - AIR.blind.edgeM, span = Math.log(top / from.altitudeM), f1 = Math.log(edge / from.altitudeM) / span;
+  const rise = u => .1 * u + .9 * u * u * (3 - 2 * u);
+  const shape = handoff && top > edge && top <= AIR.blind.topM && f1 > 0 ? t => ({ pos: t * t * (3 - 2 * t), alt: t < .8 ? f1 * rise(t / .8) : f1 + (1 - f1) * (t - .8) / .2 }) : null;
+  return new Promise(done => { script = { from, to, keep: held ?? { ...pose }, t: 0, seconds: 16, done, interruptible: true, shape, ease: handoff ? t => .25 * t + .75 * t * t * t : null }; });
 }
 let resolveArrived; const arrived = new Promise(r => { resolveArrived = r; });
-function arriveFromAir(keep, fromM, hold) {
+function arriveFromAir(keep, fromM, hold, viaBlind) {
   const to = { eastM: 0, northM: -150, altitudeM: 60, yaw: 0, pitch: -.32, mode: 'flight' }, high = fromM > 2400;
   const from = high ? { ...to, northM: -1650, altitudeM: Math.min(fromM, 4e6), pitch: -1.5 } : { ...to, northM: -5200, altitudeM: 2400, pitch: -.42 };
   pose = { ...from }; status('On approach.');
   // From a great height the descent starts at full pace (the host's picture was already falling) and settles at the end.
-  script = { from, to, keep, t: 0, seconds: high ? 13.5 : 13, held: hold, ease: high ? t => 1 - (1 - t) ** 3 : null, interruptible: false, done: () => { status('Arrived above the city · Q descends · F lands'); resolveArrived('arrived'); } };
+  // Out of its own Duck Blind (canon): a few seconds in obscuring cloud, the fast fall away of
+  // concealment with the ground first discernible straight below, then the descent.
+  const span = Math.log(from.altitudeM / to.altitudeM), f1 = Math.log(from.altitudeM / AIR.blind.baseM) / span, f2 = Math.log(from.altitudeM / (AIR.blind.baseM - AIR.blind.edgeM)) / span;
+  const fall = u => .15 * u + .85 * u * u * (3 - 2 * u);
+  const shape = viaBlind && f1 > 0 ? t => t < .1 ? { pos: 0, alt: f1 * t / .1 } : t < .2 ? { pos: 0, alt: f1 + (f2 - f1) * (t - .1) / .1 } : { pos: fall((t - .2) / .8), alt: f2 + (1 - f2) * fall((t - .2) / .8) } : null;
+  script = { from, to, keep, t: 0, seconds: shape ? 15 : high ? 13.5 : 13, shape, held: hold, ease: high ? t => 1 - (1 - t) ** 3 : null, interruptible: false, done: () => { status('Arrived above the city · Q descends · F lands'); resolveArrived('arrived'); } };
 }
 function begin() { if (script?.held) script.held = false; return arrived; }
 function dispose() { if (disposed) return; save(); disposed = true; for (const b of buffers.values()) { gl.deleteBuffer(b.vbo); gl.deleteVertexArray(b.vao); } buffers.clear(); gl.deleteProgram(mesh.p); gl.deleteProgram(plane.p); }
 
 const query = new URLSearchParams(location.search), arrival = query.get('arrival') ?? 'saved', had = load();
 if (arrival === 'ground' || (arrival === 'saved' && !had)) pose = start();
-if (arrival === 'air') arriveFromAir(had ? { ...pose } : start(), Number(query.get('fromM')) || 0, query.get('hold') === '1'); else resolveArrived('ground');
-window.SphereBiome = { contract: 'sphere-biome/1', id: ID, version: VERSION, ready, arrived, pose: () => ({ ...pose }), ascend, begin, save, dispose, inspect: () => ({ frames, cellsBuilt: built, buffers: buffers.size, cellsDrawn: drawn, scripted: !!script, held: !!script?.held }) };
+if (arrival === 'air') arriveFromAir(had ? { ...pose } : start(), query.get('fromM') === 'blind' ? (AIR.blind.baseM + AIR.blind.topM) / 2 : Number(query.get('fromM')) || 0, query.get('hold') === '1', query.get('fromM') === 'blind'); else resolveArrived('ground');
+window.SphereBiome = { contract: 'sphere-biome/1', id: ID, version: VERSION, ready, arrived, pose: () => ({ ...pose }), ascend, begin, save, dispose, air: () => structuredClone(AIR), inspect: () => ({ veil: +veilAt(pose.altitudeM).toFixed(3), frames, cellsBuilt: built, buffers: buffers.size, cellsDrawn: drawn, meshRing, scripted: !!script, held: !!script?.held }) };
 
 canvas.addEventListener('pointerdown', e => { drag = [e.clientX, e.clientY]; canvas.setPointerCapture(e.pointerId); canvas.focus(); });
 canvas.addEventListener('pointermove', e => { if (!drag || script) return; held = null; pose.yaw += (e.clientX - drag[0]) * .004; pose.pitch = Math.max(-1.5, Math.min(1.5, pose.pitch - (e.clientY - drag[1]) * .004)); drag = [e.clientX, e.clientY]; });
