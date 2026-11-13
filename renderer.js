@@ -56,6 +56,13 @@ void main(){vec3 center=mapped(texture(source,vUV).rgb);if(edgeAA==0){fragColor=
    if(!window.SphereBiomeMainOverview?.isOwner(owner)||!owner.usesRenderer(this))throw Error('Foreign installed overview owner');
    this.biomeOverview=owner;
   }
+  // Neutral overlay hook: any owner that supplies a substitute surface program and
+  // sets its own uniforms around the shell draw. Shares the overview slot above.
+  setSurfaceOverlay(owner){
+   if(this.disposalStarted)throw Error('The renderer is being disposed.');
+   if(!owner||typeof owner.programFor!=='function'||typeof owner.withFrame!=='function'||typeof owner.inspect!=='function'||owner.usesRenderer?.(this)!==true)throw Error('A surface overlay owner for this renderer is required');
+   this.biomeOverview=owner;
+  }
   clearBiomeOverview(owner){if(this.biomeOverview!==owner)return false;this.biomeOverview=null;this.program=this.modernProgram;this.uniforms=this.modernUniforms;return true;}
   setBiomeLocal(owner){if(!window.SphereBiomeMainLocalSupportV6?.isOwner(owner)||!owner.usesRenderer(this))throw Error('The actual source-owned Main local view is required');if(this.biomeLocal&&this.biomeLocal!==owner)throw Error('Retire the previous Main local view first');this.biomeLocal=owner;window.SphereMainSurfaceSlot?.attach(owner,this);}
   clearBiomeLocal(owner){if(this.biomeLocal!==owner)return false;if(owner.isActive())throw Error('Leave the local view before clearing its renderer');window.SphereMainSurfaceSlot?.clear(owner);this.biomeLocal=null;return true;}

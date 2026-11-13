@@ -334,3 +334,7 @@ The [integrated H1 certification runner](docs/Observatory-Meadow-HR09-Certificat
 ## Infinite Industry — II-001, 13 October 2026
 
 Infinite Industry 1.0.0 is implemented as a peer of Infinite Meadow in Explore → Biome Packs. The 150 m water works includes a covered hall, operating clarifiers and filtration, a supported 9 m gallery, a recovery routing control and two authoritative hex-boundary corridors. The final contract suite passes nineteen groups; actual browser integration passes twenty-two groups, including exact save/reload pixels, both boundary walks, flight arrival, three clean exits/revisits and the unchanged Meadow adapter. Read [II-001 completion report](docs/Observatory-Infinite-Industry-II001.md) for precise evidence, performance, preservation scope and limits. The review is http://127.0.0.1:8970/. The bounded Watershed Meadow, H1, Biome Pack Service and Unreal statuses remain separate. II-002 through II-006 are not started and require authorization.
+
+## Biomes (work in progress, November 2026)
+
+The Biomes panel in Explore installs walkable biomes onto plots of the inner surface: Infinite Meadow, Infinite Industry and The Sideways City. Install one, press Visit to walk it, and use "Fly to" in the scene bar to cross the Sphere to another. Installed biomes are kept in `installed-biomes.json` beside the app (not committed). Adding a biome is one entry in `packs/biome-library.json`. Details and what is still unverified: `docs/Observatory-Biome-Library-2026-11-12.md`. The plot grid is PROPOSED, not established lore.

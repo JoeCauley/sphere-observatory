@@ -1,114 +1,68 @@
-/* Stage frame: visit real pack scenes at their installed places, inside Main.
+/* Stage frame: visit installed biomes inside Main, and fly between them.
  *
- * The biome service decides WHERE a pack lives (allocator, saved binding). This
- * file decides only WHAT you see when you visit: it opens the accepted pack
- * scene in a same-origin frame over Main's viewport and closes it on Return.
- * Main is never reloaded and none of the service's pinned sources are edited.
+ * biome-library.js decides WHICH biomes are installed and WHERE they are. This
+ * file decides only what you see when you go: it opens the biome's scene in a
+ * same-origin frame over Main's viewport and closes it on Return. Main is never
+ * reloaded.
  *
- * "Fly to" joins two places: the scene's own ascent, a dissolve, Main's camera
- * flown along an arc across the Sphere, then the other scene from the air.
+ * "Fly to" joins two places: the scene's own ascent, Main's camera flown along an
+ * arc across the Sphere, Main sinking toward the destination, then the other
+ * scene on approach. The joins are hidden with stagecraft (see "Stagecraft"):
+ * the two pictures exchange at the same height, looking straight down, both
+ * already moving, through soft focus; and the destination loads unseen during
+ * the crossing.
  *
  * This is a portal, not a continuous surface: the scene is not shaped or lit by
- * the assigned cells. See docs/Observatory-Stage-Frame-2026-11-11.md.
+ * its place on the Sphere. See docs/Observatory-Stage-Frame-2026-11-11.md.
  */
 (function () {
   'use strict';
 
-  const KEY = 'sphere-stage-frame-v1';
+  const KEY = 'sphere-stage-frame-v2';
   const base = new URL('.', document.currentScript.src);
   const rootPath = base.pathname;
-
-  // Which real scene stands at each placement family's assignment.
-  const SCENES = Object.freeze({
-    'fixture-track-meadow': { name: 'Infinite Meadow', entry: 'packs/infinite-meadow/1.0.0/index.html',
-      saveKey: 'sphere-pack:infinite-meadow:1.0.0', ascent: true },
-    'fixture-open-industry': { name: 'Infinite Industry', entry: 'packs/infinite-industry/1.0.0/index.html',
-      saveKey: 'sphere-pack:infinite-industry:1.0.0', flightArrival: '?arrival=flight', glide: true }
-  });
+  const library = () => window.SphereBiomeLibrary;
 
   const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
-  let current = null;   // { packId, regionId, shell, frame, observer }
+  let current = null;   // { id, shell, frame, observer, where }
   let opening = false;
   let flying = false;
-  const overviewButtons = new Map();   // regionId -> Main's own "View assigned region" button
+  let lastFlight = null;   // what the last flight found, for inspection
 
-  function installations() {
-    try { return window.SphereMainInstallEvidence?.installations ?? []; } catch { return []; }
-  }
-
-  function describe(region) {
-    const cell = region.cells?.[0];
-    return cell ? `face ${cell.face}, level ${region.level}, cell ${cell.x}, ${cell.y}` : region.regionId;
+  // A biome's scene, in the shape the rest of this file uses.
+  function sceneOf(item) {
+    const pack = library()?.pack(item.packId);
+    if (!pack) return null;
+    // contract: the biome implements sphere-biome/1 and needs no special handling here.
+    return { name: pack.name, entry: pack.entry, saveKey: pack.saveKey, contract: pack.contract === 'sphere-biome/1', ascent: pack.travel?.ascent === 'guided-journey',
+      glide: pack.travel?.glide === 'industry-approach', flightArrival: pack.travel?.flightArrival ?? '' };
   }
 
   function remember(value) {
     try { value ? localStorage.setItem(KEY, JSON.stringify(value)) : localStorage.removeItem(KEY); } catch {}
   }
   function remembered() {
-    try { const v = JSON.parse(localStorage.getItem(KEY)); return v?.schema === 1 ? v : null; } catch { return null; }
+    try { const v = JSON.parse(localStorage.getItem(KEY)); return v?.schema === 2 ? v : null; } catch { return null; }
   }
 
   function say(text) {
-    const status = document.getElementById('biomeInstallStatus');
+    const status = document.getElementById('biomeLibraryStatus');
     if (status) status.textContent = text;
   }
 
-  /* ---- Visit buttons beside each installed place ---- */
+  /* ---- Travel there with Main's own travel, then open the scene ---- */
 
-  function decorate() {
-    const places = document.getElementById('biomeInstalledPlaces');
-    if (!places) return;
-    const list = installations();
-    overviewButtons.clear();
-    let installation = null, index = -1, regionIndex = 0;
-    for (const node of [...places.children]) {
-      if (node.tagName === 'H4') { installation = list[++index] ?? null; regionIndex = 0; continue; }
-      if (node.tagName !== 'P' || !installation) continue;
-      const region = installation.regions?.[regionIndex++];
-      const scene = SCENES[installation.packId];
-      if (!region || !scene) continue;
-      const present = node.nextElementSibling?.dataset?.stageRegion === region.regionId;
-      let overview = node.nextElementSibling;
-      while (overview && !(overview.tagName === 'BUTTON' && overview.textContent === 'View assigned region')) {
-        if (overview.tagName === 'H4') { overview = null; break; }
-        overview = overview.nextElementSibling;
-      }
-      if (overview) overviewButtons.set(region.regionId, overview);
-      if (present) continue;
-      const packId = installation.packId;   // capture now; `installation` moves on
-      const visit = document.createElement('button');
-      visit.textContent = 'Visit ' + scene.name;
-      visit.dataset.stageRegion = region.regionId;
-      visit.setAttribute('aria-label', `Visit ${scene.name} at its assigned place`);
-      visit.onclick = () => visitPlace(packId, region, overview);
-      node.after(visit);
-    }
-  }
-
-  /* ---- Travel there with Main's own controls, then open the scene ---- */
-
-  async function settleTravel(before) {
-    // Travel status goes ready -> preparing (when a view needs preparation) ->
-    // arrived. Arrival itself is synchronous. status is a fresh copy per read.
-    const travel = window.SphereJourney?.travel;
-    const started = performance.now();
-    while (JSON.stringify(travel?.status) === before && performance.now() - started < 1500) await sleep(50);
-    while (travel?.status?.state === 'preparing' && performance.now() - started < 120000) await sleep(100);
-    await sleep(400);
-  }
-
-  async function visitPlace(packId, region, overviewButton) {
-    if (current || opening) return;
+  async function visit(id) {
+    if (current || opening || flying) return;
     opening = true;
     try {
-      if (overviewButton && !overviewButton.disabled) {
-        say('Flying to the assigned place');
-        const before = JSON.stringify(window.SphereJourney?.travel?.status);
-        overviewButton.click();
-        await settleTravel(before);
-      }
+      const item = library().entry(id);
+      if (!item) return;
+      say('Flying to ' + item.name);
+      await library().travelTo(id);
+      await sleep(350);
       try { window.SphereSession?.flush(); } catch {}
-      open(packId, region.regionId, describe(region));
+      await show(id);
     } finally { opening = false; }
   }
 
@@ -133,14 +87,15 @@
       const leaving = target.id === 'leavePack' ||
         (!target.hasAttribute('download') && new URL(target.href, child.location.href).pathname.replace(/index\.html$/, '') === rootPath);
       if (!leaving) return;
-      event.preventDefault(); event.stopImmediatePropagation(); close();
+      event.preventDefault(); event.stopImmediatePropagation(); leave();
     }, true);
     child.focus();
   }
 
-  function open(packId, regionId, address, { query = '', hidden = false } = {}) {
-    const scene = SCENES[packId];
+  function open(id, { query = '', hidden = false } = {}) {
+    const item = library()?.entry(id), scene = item && sceneOf(item);
     if (!scene || current) return;
+    const address = library().describe(item);
     const shell = document.createElement('section');
     shell.id = 'stageFrame';
     shell.setAttribute('aria-label', scene.name + ' at its assigned place');
@@ -149,14 +104,25 @@
     const bar = document.createElement('div');
     Object.assign(bar.style, { display: 'flex', alignItems: 'center', gap: '12px', padding: '8px 14px', background: '#16202b', color: '#e8e2d4', font: '13px/1.3 system-ui, sans-serif', borderBottom: '1px solid #ffffff22' });
     const title = document.createElement('strong'); title.textContent = scene.name;
-    const where = document.createElement('span'); where.textContent = 'Assigned place · ' + address; where.style.opacity = '.75'; where.style.flex = '1';
-    const back = document.createElement('button'); back.textContent = 'Return to the Sphere'; back.className = 'secondary'; back.onclick = () => { if (!flying) close(); };
+    const where = document.createElement('span'); where.textContent = address; where.style.opacity = '.75'; where.style.flex = '1'; where.style.minWidth = '0'; where.style.whiteSpace = 'nowrap'; where.style.overflow = 'hidden'; where.style.textOverflow = 'ellipsis';
+    const back = document.createElement('button'); back.textContent = 'Return to the Sphere'; back.className = 'secondary'; back.onclick = () => { leave(); };
     bar.append(title, where);
-    for (const other of destinations(regionId)) {
-      const fly = document.createElement('button');
-      fly.textContent = 'Fly to ' + other.scene.name; fly.className = 'secondary';
-      fly.onclick = () => flyTo(other);
-      bar.append(fly);
+    const others = destinations(id);
+    if (others.length <= 3) {
+      for (const other of others) {
+        const fly = document.createElement('button');
+        fly.textContent = 'Fly to ' + other.scene.name; fly.className = 'secondary';
+        fly.onclick = () => flyTo(other);
+        bar.append(fly);
+      }
+    } else {
+      // Hundreds of biomes: one picker, not hundreds of buttons.
+      const pick = document.createElement('select'), fly = document.createElement('button');
+      pick.setAttribute('aria-label', 'Destination biome');
+      for (const other of others) { const option = document.createElement('option'); option.value = other.item.id; option.textContent = other.scene.name; pick.append(option); }
+      fly.textContent = 'Fly there'; fly.className = 'secondary';
+      fly.onclick = () => { const other = others.find(o => o.item.id === pick.value); if (other) flyTo(other); };
+      bar.append(pick, fly);
     }
     bar.append(back);
 
@@ -165,18 +131,28 @@
     Object.assign(frame.style, { flex: '1', width: '100%', border: '0', background: '#000' });
     frame.addEventListener('load', () => { if (current?.frame === frame) guard(frame); });
     frame.src = new URL(scene.entry + query, base).href;
-    if (hidden) { shell.style.opacity = '0'; shell.style.transition = 'opacity 1.8s ease'; }   // caller reveals it
+    if (hidden) { shell.style.opacity = '0'; shell.style.pointerEvents = 'none'; }   // the caller reveals it with dissolve()
+    else cover(true);
 
     shell.append(bar, frame);
     document.body.append(shell);
+    // Give the scene the same frame fallback as Main, as soon as its window exists
+    // and before its (deferred) scripts start their loops.
+    const arm = setInterval(() => {
+      try {
+        const child = frame.contentWindow;
+        if (child && child.location.href !== 'about:blank') { window.SphereFrameFallback?.install(child); clearInterval(arm); }
+      } catch { clearInterval(arm); }
+      if (!frame.isConnected) clearInterval(arm);
+    }, 5);
     place(shell);
     const observer = new ResizeObserver(() => place(shell));
     observer.observe(document.getElementById('view'));
     window.addEventListener('resize', onResize);
 
-    current = { packId, regionId, shell, frame, observer, where };
-    remember({ schema: 1, packId, regionId, address });
-    say(scene.name + ' is open at its assigned place. Use Return to the Sphere to come back.');
+    current = { id, shell, frame, observer, where };
+    remember({ schema: 2, id });
+    say(scene.name + ' is open. Use Return to the Sphere to come back.');
   }
 
   function onResize() { if (current) place(current.shell); }
@@ -184,31 +160,122 @@
   function close(options) {
     if (!current) return;
     const toGround = options?.toGround === true;
-    const { shell, frame, observer, packId } = current;
+    const { shell, frame, observer, id } = current;
+    const item = library()?.entry(id), scene = item && sceneOf(item);
     current = null;
+    cover(false);
+    const main = view(); if (main) { main.style.transition = ''; main.style.filter = ''; }
     // The pack runtime saves its place and releases its GPU resources on pagehide.
     try { const child = frame.contentWindow; child.dispatchEvent(new child.Event('pagehide')); } catch {}
     observer.disconnect();
     window.removeEventListener('resize', onResize);
     shell.remove();
     remember(null);
-    if (toGround) groundSave(SCENES[packId]?.saveKey);
-    say('Back above the assigned place. ' + (SCENES[packId]?.name ?? 'The scene') + ' kept your saved place.');
+    if (toGround) groundSave(scene?.saveKey);
+    say('Back above ' + (scene?.name ?? 'the biome') + '. It kept your saved place.');
     document.getElementById('view')?.focus?.();
+  }
+
+  /* ---- Stagecraft: what hides the join between Main and a scene ---- */
+
+  const HANDOFF_KM = 1500;   // Main and a contract biome exchange the picture at this height, both looking straight down
+  const view = () => document.getElementById('view');
+  const easeIn = x => x * x, easeOut = x => 1 - (1 - x) * (1 - x);
+  const altitudeOf = P => P.radius - Math.hypot(...P.position);
+
+  // Main does not draw while a scene covers it completely. Its clock keeps running.
+  // While covered, or in flight, Main's "Preparing your view" card is kept out of sight:
+  // Main still prepares, but behind the scene, or as a held frame, never as a card.
+  const quietStyle = document.createElement('style');
+  quietStyle.textContent = 'body.stage-quiet #sceneLoading{opacity:0!important;pointer-events:none!important}';
+  document.head.append(quietStyle);
+  function quiet() { document.body.classList.toggle('stage-quiet', flying || window.sphereStageCovered === true); }
+  function cover(on) { window.sphereStageCovered = on === true; quiet(); }
+
+  const withHeight = (P, km) => ({ ...window.SphereApp.getState(), position: scale(norm(P.position), P.radius - km), forward: P.forward, up: P.up });
+
+  // Rehearsal: send Main to a view while it cannot be seen and let it prepare there,
+  // so that it has nothing left to prepare when the audience is looking.
+  async function rehearse(P, km, limitMs) {
+    const started = performance.now();
+    try {
+      window.SphereApp.setState(withHeight(P, km));
+      await sleep(80);
+      while (performance.now() - started < limitMs) {
+        const loading = window.SphereLoading;
+        if (!loading.active && !loading.needs(window.SphereApp.getState())) return true;
+        if (!loading.active) loading.ensureCurrent();
+        await sleep(100);
+      }
+    } catch (error) { console.warn('Stage frame: rehearsal failed', error); }
+    return false;
+  }
+
+  // The lowest height above P that Main can show without stopping to prepare,
+  // asked of Main's own gate at every step of the way up.
+  function floorKm(P) {
+    const top = altitudeOf(P);
+    let floor = top;
+    try {
+      for (let i = 1; i <= 12; i++) {
+        const km = Math.exp(Math.log(top) + (Math.log(HANDOFF_KM) - Math.log(top)) * i / 12);
+        if (window.SphereLoading.needs(withHeight(P, km))) break;
+        floor = km;
+      }
+    } catch {}
+    return floor;
+  }
+  const paceMs = (fromKm, toKm) => Math.min(9000, Math.abs(Math.log(fromKm / toKm)) * 900);   // matches the biome's pace at the exchange
+
+  // A cross-dissolve through soft focus. Both pictures are blurred while they
+  // exchange, so the eye is given colour and motion to follow, not detail to compare.
+  async function dissolve(shell, frame, show, ms) {
+    const main = view(), soft = 'blur(14px)', sharp = 'blur(0px)', timing = ms + 'ms ease-in-out';
+    if (show) frame.style.filter = soft; else { if (main) main.style.filter = soft; cover(false); }
+    void shell.offsetWidth;   // commit the starting styles before the transition
+    shell.style.transition = 'opacity ' + timing; frame.style.transition = 'filter ' + timing; if (main) main.style.transition = 'filter ' + timing;
+    shell.style.opacity = show ? '1' : '0'; frame.style.filter = show ? sharp : soft; if (main) main.style.filter = show ? soft : sharp;
+    await sleep(ms + 40);
+    shell.style.transition = ''; frame.style.transition = ''; if (show) frame.style.filter = '';
+    if (main) { main.style.transition = ''; main.style.filter = ''; }
+    if (show && current?.shell === shell) { shell.style.pointerEvents = ''; cover(true); }
+  }
+
+  // Has the scene drawn? Contract biomes say so; the two older packs are asked their own way.
+  async function settled(frame, scene, limitMs) {
+    if (scene.contract) return biomeReady(frame, limitMs);
+    if (scene.glide) return sceneReady(frame, limitMs);
+    const started = performance.now();
+    while (performance.now() - started < limitMs) {
+      try { if (frame.contentWindow.location.href !== 'about:blank' && frame.contentDocument.readyState === 'complete') break; } catch {}
+      await sleep(50);
+    }
+    await sleep(600);
+    return true;
+  }
+
+  // Open a scene unseen, wait until it has drawn, then let it come up through soft focus.
+  async function show(id) {
+    open(id, { hidden: true });
+    const opened = current;
+    if (!opened) return;
+    await settled(opened.frame, sceneOf(library().entry(id)), 8000);
+    if (current === opened) await dissolve(opened.shell, opened.frame, true, 700);
+  }
+
+  // Return to the Sphere: the scene goes out through soft focus, then closes.
+  async function leave() {
+    const leaving = current;
+    if (!leaving || flying || leaving.leaving) return;
+    leaving.leaving = true; leaving.shell.style.pointerEvents = 'none';
+    await dissolve(leaving.shell, leaving.frame, false, 500);
+    if (current === leaving) close();
   }
 
   /* ---- Flight: lift off here, cross the Sphere, arrive above there ---- */
 
-  function destinations(fromRegionId) {
-    const out = [];
-    for (const installation of installations()) {
-      const scene = SCENES[installation.packId];
-      if (!scene) continue;
-      for (const region of installation.regions ?? []) {
-        if (region.regionId !== fromRegionId) out.push({ packId: installation.packId, scene, region });
-      }
-    }
-    return out;
+  function destinations(fromId) {
+    return (library()?.installed() ?? []).filter(item => item.id !== fromId).map(item => ({ item, scene: sceneOf(item) })).filter(d => d.scene);
   }
 
   // A scene closed in mid-air would save "current place" up there. Put it back
@@ -221,15 +288,6 @@
       save.address = save.bookmark.pose.address;
       localStorage.setItem(key, JSON.stringify(save));
     } catch {}
-  }
-
-  async function overviewState(regionId) {
-    const button = overviewButtons.get(regionId);
-    if (!button || button.disabled) return null;
-    const before = JSON.stringify(window.SphereJourney?.travel?.status);
-    button.click();
-    await settleTravel(before);
-    return window.SphereApp.getState();
   }
 
   const dot = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
@@ -295,16 +353,16 @@
 
   /* ---- Arrival: come down instead of appearing ---- */
 
-  // Main sinks from its overview toward the region, straight down the view line.
-  async function descendMain(B, toAltitudeKm, duration) {
-    const radial = norm(B.position), from = B.radius - Math.hypot(...B.position);
-    if (!(from > toAltitudeKm)) return;
+  // Main moves along the view line above a region, by equal ratios of height in equal times.
+  async function sinkMain(P, fromKm, toKm, duration, ease) {
+    const radial = norm(P.position);
+    if (!(fromKm > 0 && toKm > 0) || fromKm === toKm) return;
     const started = performance.now();
     for (;;) {
-      const x = Math.min(1, (performance.now() - started) / duration), e = x * x * (3 - 2 * x);
-      const altitude = Math.exp(Math.log(from) + (Math.log(toAltitudeKm) - Math.log(from)) * e);
-      try { window.SphereApp.setState({ ...window.SphereApp.getState(), position: scale(radial, B.radius - altitude), forward: B.forward, up: B.up }); }
-      catch (error) { console.warn('Stage frame: descent step refused', error); break; }
+      const x = Math.min(1, (performance.now() - started) / duration), e = ease(x);
+      const altitude = Math.exp(Math.log(fromKm) + (Math.log(toKm) - Math.log(fromKm)) * e);
+      try { window.SphereApp.setState({ ...window.SphereApp.getState(), position: scale(radial, P.radius - altitude), forward: P.forward, up: P.up }); }
+      catch (error) { console.warn('Stage frame: height step refused', error); break; }
       if (x >= 1) break;
       await new Promise(requestAnimationFrame);
     }
@@ -342,6 +400,16 @@
     return false;
   }
 
+  // A contract biome says for itself when its first frame is drawn.
+  async function biomeReady(frame, limitMs) {
+    const started = performance.now();
+    while (performance.now() - started < limitMs) {
+      try { const api = frame.contentWindow?.SphereBiome; if (api?.contract === 'sphere-biome/1') { await Promise.race([api.ready, sleep(Math.max(0, limitMs - (performance.now() - started)))]); return true; } } catch {}
+      await sleep(100);
+    }
+    return false;
+  }
+
   // Hold "forward" for the pack until it reaches its approach height.
   async function glideIn(frame, target) {
     const child = frame.contentWindow, canvas = frame.contentDocument.getElementById('world') ?? frame.contentDocument;
@@ -362,77 +430,91 @@
   async function flyTo(target) {
     if (!current || flying || opening) return;
     flying = true;
-    const here = current, scene = SCENES[here.packId];
+    const here = current, scene = sceneOf(library().entry(here.id));
     const label = text => { if (here.where) here.where.textContent = text; };
+    const controls = off => { for (const b of here.shell.querySelectorAll('button, select')) b.disabled = off; };
+    const flight = lastFlight = { from: here.id, to: target.item.id };
     try {
-      for (const b of here.shell.querySelectorAll('button')) b.disabled = true;
-      // Learn both overview poses with Main's own buttons while the scene covers the view.
+      controls(true);
+      cover(false);   // Main's own travel may wait on its frames
+      quiet();
+      // Both overview poses come from the library; Main sits at A under the scene.
       label('Plotting a course to ' + target.scene.name);
-      try { window.SphereApp?.setPlaying(false); } catch {}
-      const B = await overviewState(target.region.regionId);
-      const A = await overviewState(here.regionId);
-      if (!A || !B) { label('Main could not plot that course. Use Return to the Sphere.'); for (const b of here.shell.querySelectorAll('button')) b.disabled = false; return; }
+      let A, B;
+      try { B = await library().travelTo(target.item.id); A = await library().travelTo(here.id); }
+      catch { label('Main could not plot that course. Use Return to the Sphere.'); controls(false); cover(true); return; }
       here.frame.contentWindow?.focus();
-      if (scene.ascent) {
-        label('Lifting off · the meadow will stay where you left it');
-        const result = await ascend(here.frame);
-        if (result === 'taken-over') { label('You took control. Flight to ' + target.scene.name + ' cancelled.'); for (const b of here.shell.querySelectorAll('button')) b.disabled = false; return; }
+      // While this scene lifts off, Main rehearses the low views at both ends behind it.
+      const rehearsal = (async () => { const there = await rehearse(B, HANDOFF_KM, 12000), back = await rehearse(A, HANDOFF_KM, 12000); return { there, back }; })();
+      let low = false;   // the scene itself climbed to the handoff height
+      if (scene.contract || scene.ascent) {
+        label('Lifting off · your place here is kept');
+        const api = scene.contract ? here.frame.contentWindow?.SphereBiome : null;
+        const result = scene.contract ? await (api?.ascend({ toAltitudeM: HANDOFF_KM * 1000, handoff: true }) ?? 'revealed') : await ascend(here.frame);
+        if (result === 'taken-over') { label('You took control. Flight to ' + target.scene.name + ' cancelled.'); await rehearsal; window.SphereApp.setState(A); controls(false); cover(true); return; }
         if (result === 'closed') return;
+        try { low = !!api && api.pose().altitudeM >= HANDOFF_KM * 900; } catch {}
       }
       label('Leaving for ' + target.scene.name);
-      here.shell.style.transition = 'opacity 1.8s ease';
-      here.shell.style.opacity = '0';
       here.shell.style.pointerEvents = 'none';
-      await sleep(1900);
+      // Main is already moving when it comes into view. After a contract biome it starts
+      // at the height the scene reached and keeps rising; otherwise the crossing has begun.
+      flight.rehearsal = await rehearsal;
+      const topA = altitudeOf(A), floorA = low ? floorKm(A) : topA;
+      flight.departKm = Math.round(floorA);
+      window.SphereApp.setState(withHeight(A, floorA));
+      const moving = (async () => {
+        if (floorA < topA) await sinkMain(A, floorA, topA, paceMs(topA, floorA), easeOut);
+        say('Crossing the Sphere to ' + target.scene.name);
+        await crossSphere(A, B);
+      })();
+      await dissolve(here.shell, here.frame, false, 1600);
       close({ toGround: true });
-      say('Crossing the Sphere to ' + target.scene.name);
-      await crossSphere(A, B);
-      await overviewState(target.region.regionId);   // commit the exact arrival through Main's travel
+      // The destination loads unseen during the crossing, so it is ready before it is wanted.
       let glide = null;
       if (target.scene.glide) try { glide = await prepareGlide(target.scene); } catch (error) { console.warn('Stage frame: glide unavailable', error); }
-      say('Descending toward ' + target.scene.name);
-      const sinking = descendMain(B, 1500, 6500);
-      open(target.packId, target.region.regionId, describe(target.region), { hidden: true, query: glide ? '' : target.scene.flightArrival ?? '' });
+      const byContract = target.scene.contract;
+      open(target.item.id, { hidden: true, query: glide ? '' : byContract ? '?arrival=air&hold=1&fromM=' + HANDOFF_KM * 1000 : target.scene.flightArrival });
       const arriving = current;
-      const ready = glide ? await sceneReady(arriving.frame, 12000) : (await sleep(2500), true);
-      await Promise.race([sinking, sleep(4500)]);
+      const loading = glide ? sceneReady(arriving.frame, 20000) : byContract ? biomeReady(arriving.frame, 20000) : sleep(2500).then(() => true);
+      await moving;
+      await library().travelTo(target.item.id);   // commit the exact arrival through Main's travel
       if (current !== arriving) return;
-      arriving.shell.style.opacity = '1';
+      say('Descending toward ' + target.scene.name);
+      const topB = altitudeOf(B), floorB = floorKm(B), sinkMs = paceMs(topB, floorB);
+      flight.arriveKm = Math.round(floorB);
+      const sinking = sinkMain(B, topB, floorB, sinkMs, easeIn);   // still gathering pace at the exchange
+      const ready = await loading;
+      await Promise.race([sinking, sleep(Math.max(0, sinkMs - 1600))]);
+      if (current !== arriving) return;
+      const api = byContract && ready ? arriving.frame.contentWindow.SphereBiome : null;
+      // The biome holds level for the first half of the exchange, then starts down as Main arrives at its height.
+      const landing = api ? (typeof api.begin === 'function' ? sleep(800).then(() => api.begin()) : api.arrived) : null;
+      const revealed = dissolve(arriving.shell, arriving.frame, true, 1600);
       if (glide && ready) await glideIn(arriving.frame, glide);
+      else if (landing) await Promise.race([landing, sleep(45000)]);
+      await revealed;
       await sinking;
       try { window.SphereSession?.flush(); } catch {}
-      say(target.scene.name + ': you are on approach. Q descends, F lands.');
-    } finally { flying = false; }
+      say(target.scene.name + ': you have arrived from the air.');
+    } finally { flying = false; quiet(); }
   }
 
   /* ---- Startup: add buttons, and reopen the scene you were in ---- */
 
   async function start() {
     const deadline = performance.now() + 300000;
-    while (!document.getElementById('biomeInstalledPlaces') && performance.now() < deadline) await sleep(200);
-    const places = document.getElementById('biomeInstalledPlaces');
-    if (!places) return;
-    new MutationObserver(decorate).observe(places, { childList: true });
-    decorate();
-
-    // The service refuses to install while the world clock is running
-    // (INVALID_CORE_SCENE, field "playing") and then stays failed until reload.
-    // Pause the clock before an Install click reaches it.
-    document.getElementById('biomeInstallReleases')?.addEventListener('click', event => {
-      if (event.target.closest?.('button')) try { window.SphereApp?.setPlaying(false); } catch {}
-    }, true);
-
+    while (!library() && performance.now() < deadline) await sleep(200);
+    await library()?.ready;
+    // A biome removed while its scene is open closes the scene.
+    window.addEventListener('sphere-biomes-changed', () => { if (current && !library().entry(current.id) && !flying) close(); });
     const saved = remembered();
     if (!saved) return;
-    while (performance.now() < deadline) {
-      if (window.SphereMainInstallEvidence && window.SphereLoading?.ready) break;
-      await sleep(250);
-    }
-    const match = installations().find(i => i.packId === saved.packId && i.regions?.some(r => r.regionId === saved.regionId));
-    if (match && !current) open(saved.packId, saved.regionId, saved.address ?? saved.regionId);
-    else if (!match) remember(null);
+    while (!window.SphereLoading?.ready && performance.now() < deadline) await sleep(250);
+    if (library().entry(saved.id) && !current) await show(saved.id);
+    else remember(null);
   }
 
-  window.SphereStageFrame = Object.freeze({ open, close, get current() { return current ? { packId: current.packId, regionId: current.regionId } : null; }, scenes: SCENES });
+  window.SphereStageFrame = Object.freeze({ visit, open, close: () => { if (!flying) close(); }, leave, get lastFlight() { return lastFlight ? { ...lastFlight } : null; }, get current() { return current ? { id: current.id } : null; }, get flying() { return flying; } });
   start();
 })();
