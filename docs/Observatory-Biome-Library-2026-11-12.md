@@ -330,3 +330,15 @@ Joe also said the buildings will be walked inside soon. Their doors are currentl
 - A lift-off from inside the covered treatment hall would pass through the roof; the script does not check for cover.
 - The installed record still says version 1.0.0 in the panel (it was installed before); the scene opened is 1.3.0. A place saved in 1.0.0 is not carried over: 1.3.0 has its own save.
 - Meadow 1.3.0 is not started.
+
+## Second report from Joe, flight sounds, more rotation (13 November, evening)
+
+**Joe watched again:** no shimmer on the pools (the one-level pool top fixed it); "a dream made real"; the rotating camera reads as cinematic and he wants more of it; he wants sound for the jumps, in the spirit of a space game's travel sounds but not copied from one.
+
+**Sound (`stage-sound.js`, new; loaded from `index.html` before `stage-frame.js`).** Everything is synthesized from oscillators and noise; nothing is sampled. Five voices, each a plain function `(ctx, out, t0, seconds)`: `lift` (an engine rising in pitch, with wind), `cloud` (rushing air and a low rumble), `jump` (a charge, a deep release, a travelling drone for as long as the crossing lasts, a drop-out), `descend` (the engine winding down), `settle` (three soft tones on arrival). `stage-frame.js` calls them at lift-off, at each cloud, at the start of the crossing with the crossing's real duration, at the start of Main's descent, and on arrival. The scene bar has a "Sound on / Sound off" button; the choice is remembered. Browsers allow sound only after a click or key press on the page.
+
+**Rotation.** City and Industry 1.3.0: the scripted ascent now turns the view 1.7 rad as it climbs (was 0.5), and the scripted descent turns 1.6 rad as it comes down (was none).
+
+**Verified.** Offline render in a headless browser: all five voices audible, none clipping (peaks 0.10 to 0.53 at the module's own level; a 33 s sequence peaks at 0.60). A preview file was sent to Joe. In Main, Industry to City once: no errors, 0 exchanges of picture outside cloud, card 0 ms, the sound context running throughout, departure turn 1.70 rad, arrival turn 1.59 rad.
+
+**Not verified.** How any of it sounds: Claude cannot hear. Whether the sounds line up with what the eye sees (durations are passed in, but the scripted ascent's 16 s is assumed, and Meadow's own journey is given a fixed 24 s). Visit and Return have no sound.

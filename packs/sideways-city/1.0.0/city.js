@@ -336,7 +336,7 @@ function ascend(options) {
   status('Lifting off. The city goes on.');
   const handoff = options?.handoff === true, top = Math.min(4e6, Math.max(REVEAL_M, Number(options?.toAltitudeM) || REVEAL_M));
   if (pose.altitudeM >= top * .98) return Promise.resolve('revealed');   // already there
-  const from = { ...pose }, to = { ...pose, altitudeM: top, pitch: handoff ? -1.5 : -.9, yaw: pose.yaw + .5 };
+  const from = { ...pose }, to = { ...pose, altitudeM: top, pitch: handoff ? -1.5 : -.9, yaw: pose.yaw + 1.7 };   // the view turns as it climbs
   if (from.mode === 'walk') from.altitudeM = Math.max(from.altitudeM, EYE);
   // For a handoff the climb keeps gathering pace to the end, so the host's picture can take over a view already moving.
   // Climbing into its own Duck Blind: rise beneath the ordinary sky, then a few seconds of cloud
@@ -349,7 +349,8 @@ function ascend(options) {
 let resolveArrived; const arrived = new Promise(r => { resolveArrived = r; });
 function arriveFromAir(keep, fromM, hold, viaBlind) {
   const to = { eastM: 0, northM: -150, altitudeM: 60, yaw: 0, pitch: -.32, mode: 'flight' }, high = fromM > 2400;
-  const from = high ? { ...to, northM: -1650, altitudeM: Math.min(fromM, 4e6), pitch: -1.5 } : { ...to, northM: -5200, altitudeM: 2400, pitch: -.42 };
+  const from = high ? { ...to, northM: -1650, altitudeM: Math.min(fromM, 4e6), pitch: -1.5, yaw: to.yaw - 1.6 } :   // and turns as it comes down
+    { ...to, northM: -5200, altitudeM: 2400, pitch: -.42 };
   pose = { ...from }; status('On approach.');
   // From a great height the descent starts at full pace (the host's picture was already falling) and settles at the end.
   // Out of its own Duck Blind (canon): a few seconds in obscuring cloud, the fast fall away of

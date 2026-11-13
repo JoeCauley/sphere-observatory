@@ -72,8 +72,8 @@
   "assets": [
     {
       "path": "app.js",
-      "bytes": 23583,
-      "sha256": "886290c4baafdc9ad3470c4171bab360fee69f938322ab75cacbfd3005420c18"
+      "bytes": 23599,
+      "sha256": "a1eb7554aacdda1fb6803e536066c38631bbf317713b22d915b8039cb63f6aea"
     },
     {
       "path": "boundaries.js",

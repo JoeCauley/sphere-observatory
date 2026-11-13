@@ -25,6 +25,7 @@
   const library = () => window.SphereBiomeLibrary;
 
   const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+  const sound = (name, seconds) => { try { window.SphereStageSound?.play(name, seconds); } catch {} };   // stage-sound.js; silent if absent
   let current = null;   // { id, shell, frame, observer, where }
   let opening = false;
   let flying = false;
@@ -124,6 +125,11 @@
       fly.textContent = 'Fly there'; fly.className = 'secondary';
       fly.onclick = () => { const other = others.find(o => o.item.id === pick.value); if (other) flyTo(other); };
       bar.append(pick, fly);
+    }
+    if (window.SphereStageSound) {   // flight sounds on or off; remembered
+      const mute = document.createElement('button'); mute.className = 'secondary';
+      const show = () => { mute.textContent = window.SphereStageSound.on ? 'Sound on' : 'Sound off'; };
+      mute.onclick = () => { window.SphereStageSound.toggle(); show(); }; show(); bar.append(mute);
     }
     bar.append(back);
 
@@ -371,6 +377,7 @@
   async function crossSphere(A, B) {
     const omega = arcPose(A, B, 0).omega;
     const duration = 9000 + 7000 * omega / Math.PI;
+    sound('jump', duration / 1000);   // charge, release, drone for the crossing, drop-out
     const started = performance.now();
     for (;;) {
       const x = Math.min(1, (performance.now() - started) / duration);
@@ -499,6 +506,7 @@
       let low = false;   // the scene itself climbed to the handoff height
       if (scene.contract || scene.ascent) {
         label('Lifting off · your place here is kept');
+        sound('lift', scene.contract ? 16 : 24);
         const api = scene.contract ? here.frame.contentWindow?.SphereBiome : null;
         // A biome that declares a Duck Blind climbs into the middle of it and stops there, in cloud.
         let blind = null; try { blind = api?.air?.().blind ?? null; } catch {}
@@ -522,6 +530,7 @@
         await crossSphere(A, B);
       })();
       // Into cloud; the pictures change places behind it; then the fast fall away.
+      sound('cloud', 3.2);
       await cloud().to(1, low ? 500 : 1100, 1);
       close({ toGround: true });
       sleep(900).then(() => cloud().to(0, 1400, 1));
@@ -539,9 +548,11 @@
       const topB = altitudeOf(B), floorB = floorKm(B), sinkMs = paceMs(topB, floorB);
       flight.arriveKm = Math.round(floorB);
       const sinking = sinkMain(B, topB, floorB, sinkMs, easeIn);   // still gathering pace at the exchange
+      if (sinkMs > 500) sound('descend', sinkMs / 1000);
       const ready = await loading;
       await Promise.race([sinking, sleep(Math.max(0, sinkMs - 1300))]);
       if (current !== arriving) return;
+      sound('cloud', 3.2);
       await cloud().to(1, 1200, -1);   // Main sinks into cloud
       if (current !== arriving) return;
       const api = byContract && ready ? arriving.frame.contentWindow.SphereBiome : null;
@@ -555,6 +566,7 @@
       await revealed;
       await sinking;
       try { window.SphereSession?.flush(); } catch {}
+      sound('settle');
       say(target.scene.name + ': you have arrived from the air.');
     } finally { flying = false; quiet(); }
   }

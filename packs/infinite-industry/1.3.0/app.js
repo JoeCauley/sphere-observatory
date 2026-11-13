@@ -34,7 +34,7 @@ export function mountPack(host){
   if(t>=1){script=null;held=sc.keep;sc.done(sc.result);}}
  if(arrival==='air'){   // from the air: optionally from the middle of its own blind, optionally held until begin()
   const q=entryURL.searchParams,arg=q.get('fromM'),viaBlind=arg==='blind',fromH=viaBlind?(AIR.blind.baseM+AIR.blind.topM)/2:Math.max(2400,Number(arg)||2400),to=approachPose(facility),keep={...state.pose};
-  const from={...to,eastM:to.eastM-Math.sin(to.yaw)*1500,northM:to.northM+Math.cos(to.yaw)*1500,altitudeM:DATUM_M+fromH,pitch:-1.5};
+  const from={...to,eastM:to.eastM-Math.sin(to.yaw)*1500,northM:to.northM+Math.cos(to.yaw)*1500,altitudeM:DATUM_M+fromH,pitch:-1.5,yaw:to.yaw-1.6};
   const toH=to.altitudeM-DATUM_M,span=Math.log(fromH/toH),f1=Math.log(fromH/AIR.blind.baseM)/span,f2=Math.log(fromH/(AIR.blind.baseM-AIR.blind.edgeM))/span,fall=u=>.15*u+.85*u*u*(3-2*u);
   const shape=viaBlind&&f1>0?t=>t<.1?{pos:0,alt:f1*t/.1}:t<.2?{pos:0,alt:f1+(f2-f1)*(t-.1)/.1}:{pos:fall((t-.2)/.8),alt:f2+(1-f2)*fall((t-.2)/.8)}:null;
   state.pose={...from};script={from,to,keep,t:0,seconds:15,done:r=>{status('Arrived above the water works · Q descends, F lands.');resolveArrived(r);},result:'arrived',interruptible:false,shape,held:q.get('hold')==='1'};
@@ -87,7 +87,7 @@ export function mountPack(host){
  // Scripted lift-off. With o.handoff and a height inside the blind it rises beneath the ordinary sky
  // and spends its last seconds climbing as the cloud gathers. It never moves the saved place.
  function ascend(options){if(script||measurement)return Promise.resolve('taken-over');tour=overview=null;liftTime=0;clearKeys();
-  const handoff=options?.handoff===true,top=Math.min(4e6,Math.max(3000,Number(options?.toAltitudeM)||3000)),keep=held??{...state.pose},from={...state.pose},to={...state.pose,altitudeM:DATUM_M+top,pitch:handoff?-1.5:-.9,yaw:state.pose.yaw+.5};
+  const handoff=options?.handoff===true,top=Math.min(4e6,Math.max(3000,Number(options?.toAltitudeM)||3000)),keep=held??{...state.pose},from={...state.pose},to={...state.pose,altitudeM:DATUM_M+top,pitch:handoff?-1.5:-.9,yaw:state.pose.yaw+1.7};
   if(from.altitudeM-DATUM_M>=top*.98)return Promise.resolve('revealed');   // already there
   const h0=from.altitudeM-DATUM_M,edge=AIR.blind.baseM-AIR.blind.edgeM,span=Math.log(top/h0),f1=Math.log(edge/h0)/span,rise=u=>.1*u+.9*u*u*(3-2*u);
   const shape=handoff&&top>edge&&top<=AIR.blind.topM&&f1>0?t=>({pos:t*t*(3-2*t),alt:t<.8?f1*rise(t/.8):f1+(1-f1)*(t-.8)/.2}):null;
