@@ -26,6 +26,7 @@
  * Streets are 60 m. Every curb is 1.5 m, a comfortable step for them and a wall
  * for you; the ramps they use to mount a block are the only way you get up.
  */
+import { ascentShape, arrivalShape, advance, heightAt } from '../../kit/flight.js';   // shared pacing; the kit is not a pack
 const ID = 'sideways-city', VERSION = '1.0.0', SAVE_KEY = 'sphere-biome:' + ID + ':' + VERSION;
 const CELL = 200, PLINTH = 70, CURB = 1.5, EYE = 1.7, RAMP = 9, RAMP_HALF = 10, RADIUS = 8;
 const REVEAL_M = 3000, MESH_BELOW_M = 600;
@@ -266,9 +267,9 @@ function interrupt() { held = null; if (script?.interruptible) { const done = sc
 function lift() { if (pose.mode === 'walk') { pose.mode = 'flight'; pose.altitudeM += 12; status('Flying · W goes where you look · Q down, E up · F lands'); } }
 function land() { const g = ground(pose.eastM, pose.northM); if (pose.mode === 'flight' && pose.altitudeM - g < 14 && !solid(pose.eastM, pose.northM, 0)) { pose.mode = 'walk'; pose.altitudeM = g + EYE; pose.pitch = Math.max(-1, Math.min(1, pose.pitch)); status('On foot · WASD walks · Space lifts off'); } else status('Come down close to open ground to land.'); }
 function step(dt) {
-  if (script) { if (script.held) return; const t = Math.min(1, (script.t += dt) / script.seconds), shaped = script.shape ? script.shape(t) : null, e = shaped ? shaped.pos : script.ease ? script.ease(t) : t * t * (3 - 2 * t), ea = shaped ? shaped.alt : e; for (const k of ['eastM', 'northM', 'yaw', 'pitch']) pose[k] = script.from[k] + (script.to[k] - script.from[k]) * e;
-    pose.altitudeM = Math.exp(Math.log(script.from.altitudeM) + (Math.log(script.to.altitudeM) - Math.log(script.from.altitudeM)) * ea); pose.mode = 'flight';
-    if (t >= 1) { const done = script.done; held = script.keep; script = null; done('revealed'); } return; }
+  if (script) { if (script.held) return; const { pos: e, alt: ea, done: over } = advance(script, dt); for (const k of ['eastM', 'northM', 'yaw', 'pitch']) pose[k] = script.from[k] + (script.to[k] - script.from[k]) * e;
+    pose.altitudeM = heightAt(script.from.altitudeM, script.to.altitudeM, ea); pose.mode = 'flight';
+    if (over) { const done = script.done; held = script.keep; script = null; done('revealed'); } return; }
   const fx = (keys.has('KeyD') ? 1 : 0) - (keys.has('KeyA') ? 1 : 0), fz = (keys.has('KeyW') ? 1 : 0) - (keys.has('KeyS') ? 1 : 0), fy = (keys.has('KeyE') ? 1 : 0) - (keys.has('KeyQ') ? 1 : 0), fast = keys.has('ShiftLeft') || keys.has('ShiftRight');
   if (pose.mode === 'walk') {
     const speed = (fast ? 7 : 3) * dt, dx = (Math.sin(pose.yaw) * fz + Math.cos(pose.yaw) * fx) * speed, dz = (Math.cos(pose.yaw) * fz - Math.sin(pose.yaw) * fx) * speed;
@@ -341,9 +342,7 @@ function ascend(options) {
   // For a handoff the climb keeps gathering pace to the end, so the host's picture can take over a view already moving.
   // Climbing into its own Duck Blind: rise beneath the ordinary sky, then a few seconds of cloud
   // gathering while still climbing. Height and view are paced separately.
-  const edge = AIR.blind.baseM - AIR.blind.edgeM, span = Math.log(top / from.altitudeM), f1 = Math.log(edge / from.altitudeM) / span;
-  const rise = u => .1 * u + .9 * u * u * (3 - 2 * u);
-  const shape = handoff && top > edge && top <= AIR.blind.topM && f1 > 0 ? t => ({ pos: t * t * (3 - 2 * t), alt: t < .8 ? f1 * rise(t / .8) : f1 + (1 - f1) * (t - .8) / .2 }) : null;
+  const shape = handoff ? ascentShape(from.altitudeM, top, AIR.blind) : null;
   return new Promise(done => { script = { from, to, keep: held ?? { ...pose }, t: 0, seconds: 16, done, interruptible: true, shape, ease: handoff ? t => .25 * t + .75 * t * t * t : null }; });
 }
 let resolveArrived; const arrived = new Promise(r => { resolveArrived = r; });
@@ -355,9 +354,7 @@ function arriveFromAir(keep, fromM, hold, viaBlind) {
   // From a great height the descent starts at full pace (the host's picture was already falling) and settles at the end.
   // Out of its own Duck Blind (canon): a few seconds in obscuring cloud, the fast fall away of
   // concealment with the ground first discernible straight below, then the descent.
-  const span = Math.log(from.altitudeM / to.altitudeM), f1 = Math.log(from.altitudeM / AIR.blind.baseM) / span, f2 = Math.log(from.altitudeM / (AIR.blind.baseM - AIR.blind.edgeM)) / span;
-  const fall = u => .15 * u + .85 * u * u * (3 - 2 * u);
-  const shape = viaBlind && f1 > 0 ? t => t < .1 ? { pos: 0, alt: f1 * t / .1 } : t < .2 ? { pos: 0, alt: f1 + (f2 - f1) * (t - .1) / .1 } : { pos: fall((t - .2) / .8), alt: f2 + (1 - f2) * fall((t - .2) / .8) } : null;
+  const shape = viaBlind ? arrivalShape(from.altitudeM, to.altitudeM, AIR.blind) : null;
   script = { from, to, keep, t: 0, seconds: shape ? 15 : high ? 13.5 : 13, shape, held: hold, ease: high ? t => 1 - (1 - t) ** 3 : null, interruptible: false, done: () => { status('Arrived above the city · Q descends · F lands'); resolveArrived('arrived'); } };
 }
 function begin() { if (script?.held) script.held = false; return arrived; }

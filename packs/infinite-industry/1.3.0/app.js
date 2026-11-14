@@ -5,6 +5,7 @@ import {createFacility,DATUM_M} from './facility.js';
 import {initialState,saveState,parseState,address,interact,canInteract,approachPose,boundedPitch} from './model.js';
 import {IndustryRenderer} from './renderer.js';
 import {createVeil,veilAt} from '../../kit/veil.js';
+import {ascentShape,arrivalShape,advance,heightAt} from '../../kit/flight.js';
 // 1.3.0: this pack implements the Sphere biome contract (sphere-biome/1) so the Observatory can
 // fly into and out of it without a cut. 1.0.0 is unchanged beside it (1.1.0 and 1.2.0 are the
 // shared-world adapters). The air it declares: heights are PROPOSED; no kilometre value is canon.
@@ -28,15 +29,14 @@ export function mountPack(host){
  // while a script runs and afterwards until the controls are taken.
  let script=null,held=null,drawn=0,resolveReady,resolveArrived;const ready=new Promise(r=>resolveReady=r),arrived=new Promise(r=>resolveArrived=r),veil=createVeil(document,AIR.blind);
  const kept=()=>{const k=script?.keep??held;return k?{...state,pose:{...k}}:state;};
- function stepScript(dt){const sc=script;if(sc.held)return;const t=Math.min(1,(sc.t+=dt)/sc.seconds),sh=sc.shape?sc.shape(t):null,e=sh?sh.pos:t*t*(3-2*t),ea=sh?sh.alt:e,p=state.pose;
+ function stepScript(dt){const sc=script;if(sc.held)return;const {pos:e,alt:ea,done:over}=advance(sc,dt),p=state.pose;
   for(const k of ['eastM','northM','yaw','pitch'])p[k]=sc.from[k]+(sc.to[k]-sc.from[k])*e;
-  const h0=sc.from.altitudeM-DATUM_M,h1=sc.to.altitudeM-DATUM_M;p.altitudeM=DATUM_M+Math.exp(Math.log(h0)+(Math.log(h1)-Math.log(h0))*ea);p.mode='flight';
-  if(t>=1){script=null;held=sc.keep;sc.done(sc.result);}}
+  p.altitudeM=DATUM_M+heightAt(sc.from.altitudeM-DATUM_M,sc.to.altitudeM-DATUM_M,ea);p.mode='flight';
+  if(over){script=null;held=sc.keep;sc.done(sc.result);}}
  if(arrival==='air'){   // from the air: optionally from the middle of its own blind, optionally held until begin()
   const q=entryURL.searchParams,arg=q.get('fromM'),viaBlind=arg==='blind',fromH=viaBlind?(AIR.blind.baseM+AIR.blind.topM)/2:Math.max(2400,Number(arg)||2400),to=approachPose(facility),keep={...state.pose};
   const from={...to,eastM:to.eastM-Math.sin(to.yaw)*1500,northM:to.northM+Math.cos(to.yaw)*1500,altitudeM:DATUM_M+fromH,pitch:-1.5,yaw:to.yaw-1.6};
-  const toH=to.altitudeM-DATUM_M,span=Math.log(fromH/toH),f1=Math.log(fromH/AIR.blind.baseM)/span,f2=Math.log(fromH/(AIR.blind.baseM-AIR.blind.edgeM))/span,fall=u=>.15*u+.85*u*u*(3-2*u);
-  const shape=viaBlind&&f1>0?t=>t<.1?{pos:0,alt:f1*t/.1}:t<.2?{pos:0,alt:f1+(f2-f1)*(t-.1)/.1}:{pos:fall((t-.2)/.8),alt:f2+(1-f2)*fall((t-.2)/.8)}:null;
+  const shape=viaBlind?arrivalShape(fromH,to.altitudeM-DATUM_M,AIR.blind):null;
   state.pose={...from};script={from,to,keep,t:0,seconds:15,done:r=>{status('Arrived above the water works · Q descends, F lands.');resolveArrived(r);},result:'arrived',interruptible:false,shape,held:q.get('hold')==='1'};
  }else resolveArrived('ground');
  const metrics=[],events=[],trace=[],measurements=[],glErrors=[];
@@ -89,8 +89,7 @@ export function mountPack(host){
  function ascend(options){if(script||measurement)return Promise.resolve('taken-over');tour=overview=null;liftTime=0;clearKeys();
   const handoff=options?.handoff===true,top=Math.min(4e6,Math.max(3000,Number(options?.toAltitudeM)||3000)),keep=held??{...state.pose},from={...state.pose},to={...state.pose,altitudeM:DATUM_M+top,pitch:handoff?-1.5:-.9,yaw:state.pose.yaw+1.7};
   if(from.altitudeM-DATUM_M>=top*.98)return Promise.resolve('revealed');   // already there
-  const h0=from.altitudeM-DATUM_M,edge=AIR.blind.baseM-AIR.blind.edgeM,span=Math.log(top/h0),f1=Math.log(edge/h0)/span,rise=u=>.1*u+.9*u*u*(3-2*u);
-  const shape=handoff&&top>edge&&top<=AIR.blind.topM&&f1>0?t=>({pos:t*t*(3-2*t),alt:t<.8?f1*rise(t/.8):f1+(1-f1)*(t-.8)/.2}):null;
+  const shape=handoff?ascentShape(from.altitudeM-DATUM_M,top,AIR.blind):null;
   status('Lifting off. Your place here is kept.');event('contract-ascent');
   return new Promise(done=>{script={from,to,keep,t:0,seconds:16,done,result:'revealed',interruptible:true,shape};});}
  window.SphereBiome={contract:'sphere-biome/1',id:'infinite-industry',version:'1.3.0',ready,arrived,

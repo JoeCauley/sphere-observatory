@@ -350,3 +350,15 @@ Joe also said the buildings will be walked inside soon. Their doors are currentl
 **Joe on the second sounds (13 November):** use the end sequence reversed for the start (the plain rising pitch for lift-off was weak); the jump is good but should be more subtle, with more bass, "feel more than hear", and the pulse should change with camera speed; do not spend long on sound.
 
 **Change:** `lift` is now the arrival backwards: the three tones swell in and cut off, and the engine winds up with `descend`'s pitch, filter and air reversed. `jump`: charge, burst, air and drone turned down; the engine is two sines (36 to 44 Hz and its octave) under a 120 Hz low-pass; its pace (1.1 to 3.2 beats a second) and pitch follow the crossing's own speed curve, slowest at each end and fastest in the middle. Offline: no errors, no clipping (jump peak 0.60; 3.2 pulses a second mid-crossing). Not flown in Main, not heard by Claude, no preview sent.
+
+## Kit: shared flight pacing (13 November, late)
+
+Order agreed with Joe before any fourth pack: (1) pull the shared flight code into the kit, (2) Meadow 1.3.0, (3) write the contract down, (4) pack 4 (a flowers or grass-variant pack first; the Watershed, which lives inside Main in five files drawn by Main's renderer, gets its own reading and design after that).
+
+**Step 1 done.** `packs/kit/flight.js` (new): `ascentShape`, `arrivalShape`, `advance`, `heightAt`. The city (`city.js`) and Industry 1.3.0 (`app.js`) now import their pacing from it and carry no copy of their own; Industry's manifest pins it (23 shared sources). The kit is not a pack; the city still imports nothing from any pack.
+
+**Verified.** Headless, city, stepped at 12 frames a second: arrival veil full until 1.58 s, gone at 2.92 s, settled at 60 m at 14.92 s (identical to before the change); ascent to 9,750 m in 16 s, veil from 12.8 s, full at 14.4 s, turn 1.7 rad; a second ascent returns at once. In Main (sound switched off for the test and restored), Industry 1.3.0 to City once: Industry loads and passes its manifest check; its veil begins at 6.4 km and is full at 7 km; the city's veil is gone at 8.2 km 3.0 s after release and it settles at 60 m 15.4 s after release; 0 exchanges of picture outside cloud; card 0 ms; both saved places kept; no errors.
+
+**Not verified.** City to Industry after this change (Industry's arrival through the kit was not flown). The kept-save logic is still duplicated in the two packs; only the pacing moved.
+
+**Next:** Meadow 1.3.0.

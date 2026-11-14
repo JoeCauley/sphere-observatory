@@ -72,8 +72,8 @@
   "assets": [
     {
       "path": "app.js",
-      "bytes": 23599,
-      "sha256": "a1eb7554aacdda1fb6803e536066c38631bbf317713b22d915b8039cb63f6aea"
+      "bytes": 23100,
+      "sha256": "560cf673c3645358926fcda6e30fa3d51231de94da84640422159baf4b8ee527"
     },
     {
       "path": "boundaries.js",
@@ -231,6 +231,11 @@
       "path": "../../kit/veil.js",
       "bytes": 3696,
       "sha256": "4c7fb4427d695ea4791ca2567c610a433cf4bf47672fa0327593c4cc44861ddb"
+    },
+    {
+      "path": "../../kit/flight.js",
+      "bytes": 2538,
+      "sha256": "0641ba80ed17bef2d1565a39aabba5d227f500f0e90cce6fad921947275b721b"
     }
   ]
 }
