@@ -54,7 +54,19 @@
     return row < ROWS && col < columns(row) ? make(row, col) : null;
   }
 
-  const api = Object.freeze({ ROW, ROWS, LIMIT, TOTAL, EQUATOR_COLUMNS, MIN_COLUMNS, WAIST_FIRST, WAIST_LAST, BORDER_KM, TRUNK_KM, TRUNK_MERIDIANS, TRACKS, columns, plot, plotAt, byId });
+  // A Border site belongs to an edge, so it never consumes either adjacent plot.
+  function northEdge(id) {
+    const near=byId(id);
+    if(!near || near.row===ROWS-1)return null;
+    const latitude=near.latitude+near.halfHeight, half=Math.PI/near.columns;
+    const step=2*Math.PI/TRUNK_MERIDIANS, meridian=Math.round(near.longitude/step)*step;
+    const onTrunk=Math.abs(meridian-near.longitude)<half-1e-10;
+    const longitude=onTrunk?meridian:near.longitude;
+    const far=plotAt(latitude+1e-8,longitude);
+    return {id:'north/'+near.id+'/'+far.id,near:near.id,far:far.id,latitude,longitude,onTrunk};
+  }
+
+  const api = Object.freeze({ ROW, ROWS, LIMIT, TOTAL, EQUATOR_COLUMNS, MIN_COLUMNS, WAIST_FIRST, WAIST_LAST, BORDER_KM, TRUNK_KM, TRUNK_MERIDIANS, TRACKS, columns, plot, plotAt, byId, northEdge });
   root.SphereAtlas = api;
   if (typeof module !== 'undefined') module.exports = api;
 })(typeof window === 'undefined' ? globalThis : window);

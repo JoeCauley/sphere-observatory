@@ -1,0 +1,309 @@
+{
+  "capturedAt": "2026-11-18T02:55:39.116Z",
+  "source": {
+    "files": 80,
+    "sha256": "650715f6f4ef6b0c7af17ed2257fae9d31f200eadfa08d79ef5d32964a332b69"
+  },
+  "browser": "157.0.8103.80",
+  "views": [
+    {
+      "file": "meadow-2m.jpg",
+      "pack": "infinite-meadow",
+      "version": "1.3.0",
+      "clearanceM": 2,
+      "windTime": 17,
+      "seed": 713,
+      "pose": {
+        "eastM": 15,
+        "northM": 10,
+        "altitudeM": 6.459032359639117,
+        "yaw": -0.72,
+        "pitch": -0.045,
+        "mode": "flight"
+      },
+      "browserViewport": [
+        1440,
+        810
+      ],
+      "drawingBuffer": [
+        1440,
+        810
+      ],
+      "visible": true,
+      "focused": true,
+      "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "sha256": "da9c82787ad7f0a72a09af4f9daf8aeeeb3c7565bd03bc1f2259ddf33f15c54f",
+      "pan": {
+        "file": "meadow-pan.webm",
+        "sha256": "b03fa2fb3ce1beb4f53e938373234ff0b32b41fea235fb25b1af9da0a81725c3",
+        "endPose": {
+          "eastM": 15,
+          "northM": 10,
+          "altitudeM": 6.459032359639117,
+          "yaw": 1.4118062349096938,
+          "pitch": -0.045,
+          "mode": "flight"
+        }
+      }
+    },
+    {
+      "file": "meadow-10m.jpg",
+      "pack": "infinite-meadow",
+      "version": "1.3.0",
+      "clearanceM": 10,
+      "windTime": 17,
+      "seed": 713,
+      "pose": {
+        "eastM": 15,
+        "northM": 10,
+        "altitudeM": 14.459032359639117,
+        "yaw": -0.72,
+        "pitch": -0.045,
+        "mode": "flight"
+      },
+      "browserViewport": [
+        1440,
+        810
+      ],
+      "drawingBuffer": [
+        1440,
+        810
+      ],
+      "visible": true,
+      "focused": true,
+      "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "sha256": "498f88c9857bba2b85fba5290ab79a64ea837f7fe522fbf8794d1a6b2672fcd1"
+    },
+    {
+      "file": "meadow-20m.jpg",
+      "pack": "infinite-meadow",
+      "version": "1.3.0",
+      "clearanceM": 20,
+      "windTime": 17,
+      "seed": 713,
+      "pose": {
+        "eastM": 15,
+        "northM": 10,
+        "altitudeM": 24.45903235963912,
+        "yaw": -0.72,
+        "pitch": -0.045,
+        "mode": "flight"
+      },
+      "browserViewport": [
+        1440,
+        810
+      ],
+      "drawingBuffer": [
+        1440,
+        810
+      ],
+      "visible": true,
+      "focused": true,
+      "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "sha256": "8fb7de96102ed4d4680f9e0ee5b8113b1bd789fc4c1023302078e3b11e3f9306"
+    },
+    {
+      "file": "meadow-30m.jpg",
+      "pack": "infinite-meadow",
+      "version": "1.3.0",
+      "clearanceM": 30,
+      "windTime": 17,
+      "seed": 713,
+      "pose": {
+        "eastM": 15,
+        "northM": 10,
+        "altitudeM": 34.459032359639124,
+        "yaw": -0.72,
+        "pitch": -0.045,
+        "mode": "flight"
+      },
+      "browserViewport": [
+        1440,
+        810
+      ],
+      "drawingBuffer": [
+        1440,
+        810
+      ],
+      "visible": true,
+      "focused": true,
+      "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "sha256": "ac9d43f734870d11f2b5f12cb5d586d587dfe7d2da9ca97f2973d376b121782e"
+    },
+    {
+      "file": "industry-district.jpg",
+      "pack": "infinite-industry",
+      "version": "1.4.1",
+      "pose": {
+        "eastM": -210,
+        "northM": -620,
+        "altitudeM": 290,
+        "yaw": 2.8018581963359366,
+        "pitch": -0.37,
+        "mode": "flight"
+      },
+      "browserViewport": [
+        1440,
+        810
+      ],
+      "drawingBuffer": [
+        1440,
+        810
+      ],
+      "visible": true,
+      "focused": true,
+      "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "sha256": "db844089377599b96cca49842cecbd6fd010cc088f273dfcf455fedb5d8968c7"
+    },
+    {
+      "file": "industry-waterworks.jpg",
+      "pack": "infinite-industry",
+      "version": "1.4.1",
+      "pose": {
+        "eastM": 107,
+        "northM": -180,
+        "altitudeM": 34,
+        "yaw": -2.6052681345246556,
+        "pitch": -0.11,
+        "mode": "flight"
+      },
+      "browserViewport": [
+        1440,
+        810
+      ],
+      "drawingBuffer": [
+        1440,
+        810
+      ],
+      "visible": true,
+      "focused": true,
+      "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "sha256": "913f39d86a10c9e9b8daf2301386fe37fc6ee789bc7b754a695c543c312f3289"
+    },
+    {
+      "file": "industry-transfer.jpg",
+      "pack": "infinite-industry",
+      "version": "1.4.1",
+      "pose": {
+        "eastM": -157,
+        "northM": 316,
+        "altitudeM": 3.5,
+        "yaw": -2.90604767286893,
+        "pitch": 0.15,
+        "mode": "flight"
+      },
+      "browserViewport": [
+        1440,
+        810
+      ],
+      "drawingBuffer": [
+        1440,
+        810
+      ],
+      "visible": true,
+      "focused": true,
+      "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "sha256": "4d25db79d2297fa7684a5f7dc713b777c65d23f11fc2cda43d30c4a72b19ade2"
+    },
+    {
+      "file": "city-tower.jpg",
+      "pack": "sideways-city",
+      "version": "1.0.0",
+      "pose": {
+        "eastM": 308,
+        "northM": -555,
+        "altitudeM": 19,
+        "yaw": -0.52,
+        "pitch": 0.24,
+        "mode": "flight"
+      },
+      "browserViewport": [
+        1440,
+        810
+      ],
+      "drawingBuffer": [
+        1440,
+        810
+      ],
+      "visible": true,
+      "focused": true,
+      "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "sha256": "0b99e7cceeaa5e76e7f3c2bd1558b940cd1cbe6416413802aee2154643978abc"
+    },
+    {
+      "file": "sideways-city.jpg",
+      "pack": "sideways-city",
+      "version": "1.0.0",
+      "pose": {
+        "eastM": -21,
+        "northM": -109,
+        "altitudeM": 44,
+        "yaw": 0.43,
+        "pitch": -0.06,
+        "mode": "flight"
+      },
+      "browserViewport": [
+        1440,
+        810
+      ],
+      "drawingBuffer": [
+        1440,
+        810
+      ],
+      "visible": true,
+      "focused": true,
+      "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "sha256": "622870f4ffd9d96f59b9a083c2c70c05bebf95f823a0ca2230f56907dc4c012c"
+    },
+    {
+      "file": "outfall-approach.jpg",
+      "pack": "border-outfall",
+      "version": "1.0.0",
+      "pose": {
+        "eastM": -7,
+        "northM": -24,
+        "altitudeM": 1.7,
+        "yaw": 0.27,
+        "pitch": 0.15,
+        "mode": "walk"
+      },
+      "browserViewport": [
+        1440,
+        810
+      ],
+      "drawingBuffer": [
+        1440,
+        810
+      ],
+      "visible": true,
+      "focused": true,
+      "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "sha256": "6ebb8ccbc771012d5bb560c161af91a5ce59522adf35e7e0e0370ae1a31f8b9f"
+    },
+    {
+      "file": "outfall-gallery.jpg",
+      "pack": "border-outfall",
+      "version": "1.0.0",
+      "pose": {
+        "eastM": -1.1,
+        "northM": 7.9,
+        "altitudeM": 1.7,
+        "yaw": 0.3,
+        "pitch": 0.025,
+        "mode": "walk"
+      },
+      "browserViewport": [
+        1440,
+        810
+      ],
+      "drawingBuffer": [
+        1440,
+        810
+      ],
+      "visible": true,
+      "focused": true,
+      "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "sha256": "15ce5a57926f2c3ea5bc778542e454eb97ed74ee97fe3623ab75d0d68188177f"
+    }
+  ]
+}

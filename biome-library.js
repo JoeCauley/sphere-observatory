@@ -29,14 +29,17 @@
   let construction = new Set();   // plot indexes declared under construction; never generated
   let store = { schema: 1, worlds: {} };
   let world = null;            // { key, params }
+  let selection = null, selectedSignature = '', legacyWorld = null;
+  let operations = Promise.resolve(), patchSupported = false;
   let persistence = 'unknown'; // 'file' | 'browser'
   let filter = '';
   let message = '';
 
   /* ---- World identity: the Sphere's own parameters, nothing else ---- */
 
-  async function identify(state) {
-    const params = Object.fromEntries(WORLD_KEYS.map(key => [key, state[key] ?? null]));
+  const parameters = state => Object.fromEntries(WORLD_KEYS.map(key => [key, state[key] ?? null]));
+  const matchesWorld = state => JSON.stringify(parameters(state)) === selectedSignature;
+  async function identify(params) {
     const bytes = new TextEncoder().encode(JSON.stringify(params));
     const digest = new Uint8Array(await crypto.subtle.digest('SHA-256', bytes));
     return { key: 'sphere-' + [...digest.slice(0, 8)].map(v => v.toString(16).padStart(2, '0')).join(''), params };
@@ -93,7 +96,23 @@
 
   function place(pack, state, installed) {
     const A = window.SphereAtlas, relation = pack.placement.relation, taken = new Set(installed.map(i => i.plot));
+    // An installed Border keeps its anchor address if the anchor is removed and later reinstalled.
+    for (const item of installed) {
+      if (!item.edge) continue;
+      const near = A.byId(item.edge.near);
+      if (!near) continue;
+      const anchorId = packs.find(p => p.id === item.packId)?.placement.anchorPack;
+      if (anchorId === pack.id && !taken.has(near.index))
+        return {plot:near, direction:window.SphereWorld.direction(near.latitude,near.longitude,state)};
+      taken.add(near.index);
+    }
     const preferred = [], near = [], far = [], prefer = pack.placement.prefer;
+    const preferredPlot=pack.placement.preferredPlot;
+    if(preferredPlot?.seed===state.seed){
+      const p=A.byId(preferredPlot.id);
+      if(p && !taken.has(p.index) && !construction.has(p.index) && !plotBlocked(p,state))
+        return {plot:p,direction:window.SphereWorld.direction(p.latitude,p.longitude,state)};
+    }
     for (let index = 0; index < A.TOTAL; index++) {
       if (taken.has(index) || construction.has(index)) continue;
       const p = A.plot(index);
@@ -116,37 +135,106 @@
 
   const installedHere = () => store.worlds[world?.key]?.installed ?? [];
 
+  function enqueue(operation) {
+    const next = operations.then(operation);
+    operations = next.catch(() => {});
+    return next;
+  }
+
   async function load() {
-    let cached = null;
+    let cached;
     try { cached = JSON.parse(localStorage.getItem(CACHE_KEY)); } catch {}
     try {
       const response = await fetch(STORE_URL, { cache: 'no-store' });
-      if (!response.ok) throw Error('no endpoint');
-      const value = await response.json();
-      if (value?.schema !== 1 || typeof value.worlds !== 'object') throw Error('bad file');
-      store = value; persistence = 'file';
-      // Installs made before the server could write: move them into the file once.
-      if (cached?.schema === 1) {
-        let moved = false;
-        for (const [key, entry] of Object.entries(cached.worlds ?? {})) if (!store.worlds[key] && entry?.installed?.length) { store.worlds[key] = entry; moved = true; }
-        if (moved) await save();
-        if (persistence === 'file') try { localStorage.removeItem(CACHE_KEY); } catch {}
-      }
+      if (!response.ok) throw Error('No install endpoint');
+      const disk = await response.json();
+      if (disk?.schema !== 1 || !disk.worlds) throw Error('Invalid installation file');
+      store = disk;
+      persistence = 'file';
+      patchSupported = response.headers.get('Accept-Patch') === 'application/json';
     } catch {
       persistence = 'browser';
-      if (cached?.schema === 1 && typeof cached.worlds === 'object') store = cached;
+      if (cached?.schema === 1 && cached.worlds) store = cached;
+      return;
+    }
+    if (cached?.schema === 1) {
+      for (const [key, prior] of Object.entries(cached.worlds ?? {})) {
+        if (!store.worlds[key] && prior.installed?.length)
+          await updateWorld({key, params:prior.parameters}, list => { if(!list.length)list.push(...prior.installed); });
+      }
+      if (persistence === 'file') try { localStorage.removeItem(CACHE_KEY); } catch {}
     }
   }
 
-  async function save() {
-    if (persistence === 'file') {
-      try {
-        const response = await fetch(STORE_URL, { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(store) });
-        if (response.ok) return;
-      } catch {}
-      persistence = 'browser';
+  // Each edit closes over its initiating world. Compare and retry the one affected list
+  // if a second browser wins a write. Other worlds are merged by the server on disk.
+  async function updateWorld(target, edit) {
+    for (let attempt = 0; attempt < 4; attempt++) {
+      const before = store.worlds[target.key]?.installed ?? [];
+      const installed = structuredClone(before);
+      const result = edit(installed);
+      if (JSON.stringify(before) === JSON.stringify(installed)) return result;
+      const entry = {parameters:target.params, installed};
+      let next = {...store, worlds:{...store.worlds, [target.key]:entry}};
+      if (persistence === 'file') {
+        const payload = patchSupported ? {key:target.key, parameters:target.params, before, installed} : next;
+        let response;
+        try { response = await fetch(STORE_URL, {method:patchSupported ? 'PATCH' : 'PUT',
+          headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)}); } catch {}
+        if (response?.status === 409) { store = await response.json(); continue; }
+        if (response && !response.ok) throw Error('Installation could not be saved (' + response.status + ').');
+        if (!response) persistence = 'browser';
+        else if (patchSupported) { const saved = await response.json(); if (saved.schema === 1 && saved.worlds) next = saved; }
+      }
+      if (persistence === 'browser') localStorage.setItem(CACHE_KEY, JSON.stringify(next));
+      store = next;
+      return result;
     }
-    try { localStorage.setItem(CACHE_KEY, JSON.stringify(store)); } catch { throw Error('The installed list could not be saved anywhere.'); }
+    throw Error('The installed world changed during saving. Please try again.');
+  }
+
+  function saveStorage(key = world?.key) {
+    if (!key || key === legacyWorld) return localStorage;
+    const prefix = 'sphere-place:' + key + ':';
+    return {getItem:name => localStorage.getItem(prefix + name), setItem:(name,value) => localStorage.setItem(prefix + name,value),
+      removeItem:name => localStorage.removeItem(prefix + name)};
+  }
+
+  function selectWorld(state = window.SphereApp.getState()) {
+    const params = parameters(state), signature = JSON.stringify(params);
+    if (signature === selectedSignature) return selection;
+    const departing = world;
+    selectedSignature = signature;
+    world = null;
+    if (departing) {
+      window.dispatchEvent(new CustomEvent('sphere-biome-world-leaving',{detail:departing.key}));
+      changed();
+    }
+    selection = identify(params).then(async target => {
+      await enqueue(() => updateWorld(target, list => {
+        const placed = list.filter(item => Number.isInteger(item.plot));
+        for (const item of list) {
+          const offered = pack(item.packId);
+          if (!offered) continue;
+          if (!item.edge && !Number.isInteger(item.plot)) {
+            const installedAt = item.installedAt;
+            Object.assign(item, record(offered, place(offered,state,placed),state), {installedAt});
+            placed.push(item);
+          }
+          item.version = offered.version; item.name = offered.name;
+        }
+      }));
+      if (selectedSignature === signature) {
+        world = target;
+        if (!legacyWorld) {
+          legacyWorld = localStorage.getItem('sphere-legacy-place-world') || target.key;
+          localStorage.setItem('sphere-legacy-place-world',legacyWorld);
+        }
+        message = ''; changed();
+      }
+      return target;
+    });
+    return selection;
   }
 
   /* ---- Operations ---- */
@@ -156,6 +244,8 @@
 
   function describe(item) {
     const state = window.SphereApp.getState(), at = locate(item.direction, state);
+    if(item.edge)return 'Border between '+item.edge.near+' and '+item.edge.far+
+      ' · '+Math.abs(deg(at.latitude)).toFixed(2)+'° '+(at.latitude>=0?'N':'S')+', '+Math.abs(deg(at.longitude)).toFixed(2)+'° '+(at.longitude>=0?'E':'W');
     const p = window.SphereAtlas.plot(item.plot);
     const where = p?.track ? 'beneath the ' + p.track : 'in open light';
     let province = ''; try { province = window.SphereWorld.sample(item.direction, state).name ?? ''; } catch {}
@@ -167,37 +257,37 @@
       radiusKm: state.radius * Math.max(found.plot.halfHeight, found.plot.halfWidth), relation: p.placement.relation, installedAt: new Date().toISOString() };
   }
 
-  // Installs recorded before the surface was divided into plots are given one.
-  async function adoptPlots() {
-    const list = store.worlds[world?.key]?.installed;
-    if (!list?.some(item => !Number.isInteger(item.plot))) return;
-    const state = window.SphereApp.getState(), kept = list.filter(item => Number.isInteger(item.plot));
-    for (const item of list) if (!Number.isInteger(item.plot)) { const p = pack(item.packId); if (!p) continue; kept.push({ ...record(p, place(p, state, kept), state), installedAt: item.installedAt }); }
-    store.worlds[world.key].installed = kept;
-    await save();
-  }
-
   async function install(packId) {
     const p = pack(packId);
     if (!p) throw Error('Unknown biome');
-    if (entry(packId)) return entry(packId);
-    const state = window.SphereApp.getState(), found = place(p, state, installedHere());
-    const item = record(p, found, state);
-    store.worlds[world.key] ??= { parameters: world.params, installed: [] };
-    store.worlds[world.key].installed.push(item);
-    await save();
-    changed();
+    const state = window.SphereApp.getState(), target = await selectWorld(state);
+    const item = await enqueue(() => updateWorld(target, list => {
+      const existing = list.find(i => i.packId === packId);
+      if (existing) return existing;
+      let item;
+      if(p.placement.relation==='border'){
+        const parent=pack(p.placement.anchorPack);
+        let anchor=list.find(i=>i.packId===parent.id);
+        if(!anchor){anchor=record(parent,place(parent,state,list),state);list.push(anchor);}
+        const edge=window.SphereAtlas.northEdge(anchor.plotId);
+        if(!edge)throw Error('This Meadow has no northern Border site.');
+        item={id:p.id,packId:p.id,name:p.name,version:p.version,edge,plotId:edge.id,relation:'border',
+          radiusKm:anchor.radiusKm,direction:window.SphereWorld.direction(edge.latitude,edge.longitude,state),installedAt:new Date().toISOString()};
+      }else item=record(p, place(p, state, list), state);
+      list.push(item);
+      return item;
+    }));
+    if (world?.key === target.key) changed();
     return item;
   }
 
   async function remove(id) {
-    const list = store.worlds[world?.key]?.installed;
-    if (!list) return;
-    const index = list.findIndex(i => i.id === id);
-    if (index < 0) return;
-    list.splice(index, 1);
-    await save();
-    changed();
+    const target = await selectWorld();
+    await enqueue(() => updateWorld(target, list => {
+      const index = list.findIndex(i => i.id === id);
+      if (index >= 0) list.splice(index, 1);
+    }));
+    if (world?.key === target.key) changed();
   }
 
   // Main's camera above a biome, looking out at it with world north up.
@@ -210,15 +300,27 @@
       walkMode: false, walkSurface: false, walkPosition: null, shadeAttachment: null, siteId: '', siteAnchor: null };
   }
 
-  async function travelTo(id) {
-    const item = entry(id);
+  async function travelTo(id, { signal } = {}) {
+    const item = entry(id), origin = world?.key;
     if (!item) throw Error('That biome is not installed in this world.');
+    signal?.throwIfAborted();
     const travel = window.SphereJourney?.travel;
-    let arrived = false;
+    let arrived = false, cancelOwnRequest;
     try {
-      const result = await travel?.request({ type: 'place', id: 'biome-' + item.id, title: item.name, resolve: core => overviewPose(item, core) });
+      const result = await travel?.request({ type: 'place', id: 'biome-' + item.id, title: item.name, resolve: core => {
+        if (signal) {
+          signal.throwIfAborted();
+          const requestId = travel.status.id;
+          cancelOwnRequest = () => { if (travel.status.id === requestId) travel.cancel('The biome arrival ended.', false); };
+          signal.addEventListener('abort', cancelOwnRequest, { once: true });
+        }
+        if (world?.key !== origin || !matchesWorld(core)) throw Error('The selected world changed.');
+        return overviewPose(item, core);
+      } });
       arrived = result?.state === 'arrived';
-    } catch {}
+    } catch {} finally { if (cancelOwnRequest) signal.removeEventListener('abort', cancelOwnRequest); }
+    signal?.throwIfAborted();   // an expired arrival must never move Main during a later retry
+    if (world?.key !== origin || !matchesWorld(window.SphereApp.getState())) throw Error('The selected world changed.');
     if (!arrived) window.SphereApp.setState(overviewPose(item, window.SphereApp.getState()));
     return window.SphereApp.getState();
   }
@@ -257,9 +359,12 @@
     const manifest = await response.json();
     packs = manifest.packs ?? [];
     construction = new Set((manifest.atlas?.underConstruction ?? []).map(id => window.SphereAtlas.byId(id)?.index).filter(Number.isInteger));
-    world = await identify(window.SphereApp.getState());
     await load();
-    await adoptPlots();
+    await selectWorld();
+    const sync = () => selectWorld().catch(error => { message = error.message; render(); });
+    window.addEventListener('sphere-world-changed',sync);
+    window.addEventListener('sphere-state-synced',sync);
+    await selectWorld();
     panel = document.createElement('section'); panel.id = 'biomeLibrary';
     panel.innerHTML = '<h3>Biomes</h3><p class="micro">Install a biome and the Sphere gives it a place. Visit walks you into it; Fly to, inside a biome, crosses to another.</p><input id="biomeLibraryFilter" type="search" placeholder="Filter biomes" aria-label="Filter biomes" hidden><p id="biomeLibraryStatus" class="micro" role="status" aria-live="polite"></p><div id="biomeLibraryList"></div>';
     const style = document.createElement('style');
@@ -273,7 +378,8 @@
   const ready = start();
   window.SphereBiomeLibrary = Object.freeze({
     ready, packs: () => packs.map(p => ({ ...p })), pack, installed: () => installedHere().map(i => ({ ...i })), entry,
-    install, remove, travelTo, describe, locate, tracks, place, underConstruction: () => [...construction],
+    install, remove, travelTo, describe, locate, tracks, place, saveStorage, selectWorld,
+    matchesWorld, underConstruction: () => [...construction],
     get persistence() { return persistence; }, get world() { return world ? { ...world } : null; }
   });
 })();

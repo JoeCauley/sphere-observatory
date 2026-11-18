@@ -1,0 +1,461 @@
+{
+  "scope": "Disposable profiles and install files. Browser routes on the capture machine used the local HTTP handler over process IPC. The restart and public-route tests default to loopback HTTP in a normal clone.",
+  "browser": "157.0.8103.80",
+  "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+  "captureViewport": [
+    1440,
+    810
+  ],
+  "performanceViewport": [
+    1280,
+    720
+  ],
+  "contractChecks": {
+    "infinite-meadow": {
+      "version": "1.3.0",
+      "pass": 28,
+      "total": 28
+    },
+    "infinite-industry": {
+      "version": "1.4.1",
+      "pass": 28,
+      "total": 28
+    },
+    "sideways-city": {
+      "version": "1.0.0",
+      "pass": 28,
+      "total": 28
+    },
+    "border-outfall": {
+      "version": "1.0.0",
+      "pass": 28,
+      "total": 28
+    }
+  },
+  "hostArrivalCases": 20,
+  "hostArrivalErrors": [],
+  "worldRestart": {
+    "freshWorldSeed": 23,
+    "alternateWorldSeed": 24,
+    "profiles": 2,
+    "reopenedExactManualPose": true,
+    "errorCount": 0,
+    "flight": {
+      "samples": 2477,
+      "mainSamples": 746,
+      "swaps": 2,
+      "uncovered": 0,
+      "loaderFrames": 0,
+      "shadeShellFrames": 0,
+      "maxMainRadiusFraction": 0.08146178568379248,
+      "events": [
+        {
+          "from": "infinite-meadow",
+          "to": "Main",
+          "cover": 1
+        },
+        {
+          "from": "Main",
+          "to": "infinite-industry",
+          "cover": 1
+        }
+      ],
+      "done": true
+    },
+    "manualPose": {
+      "eastM": 91.18702198130623,
+      "northM": -52.64685168750743,
+      "altitudeM": 59.46450801326205,
+      "yaw": 4.400847708903699,
+      "pitch": -0.3599999999999999,
+      "mode": "flight"
+    },
+    "reopenedPose": {
+      "eastM": 91.18702198130623,
+      "northM": -52.64685168750743,
+      "altitudeM": 59.46450801326205,
+      "yaw": 4.400847708903699,
+      "pitch": -0.3599999999999999,
+      "mode": "flight"
+    }
+  },
+  "outfall": {
+    "seed": 23,
+    "edge": {
+      "id": "north/r12c35/r13c34",
+      "near": "r12c35",
+      "far": "r13c34",
+      "latitude": 0.2327105669325773,
+      "longitude": 1.0471975511965976,
+      "onTrunk": true
+    },
+    "walkAndValve": {
+      "inside": {
+        "eastM": -0.06165365461118283,
+        "northM": 10.84778337737816,
+        "altitudeM": 1.7,
+        "yaw": 0.11,
+        "pitch": -0.075,
+        "mode": "walk"
+      },
+      "levels": [
+        0.5350985476543086,
+        0.9321012377200125,
+        0.9935403947442312
+      ]
+    },
+    "reentry": {
+      "pose": {
+        "eastM": -0.06165365461118283,
+        "northM": 10.84778337737816,
+        "altitudeM": 1.7,
+        "yaw": 0.11,
+        "pitch": -0.075,
+        "mode": "walk"
+      },
+      "open": false
+    },
+    "reopen": {
+      "pose": {
+        "eastM": -0.06165365461118283,
+        "northM": 10.84778337737816,
+        "altitudeM": 1.7,
+        "yaw": 0.11,
+        "pitch": -0.075,
+        "mode": "walk"
+      },
+      "levels": [
+        0.607704199418839,
+        0.12854029124702165,
+        0.017340212810714604
+      ]
+    }
+  },
+  "industry": {
+    "roof": {
+      "hex": "industry-pods-v2:9187:1,1:0,0:0,0",
+      "undersideM": 20,
+      "frames": 994,
+      "climbUnderRoof": 0,
+      "finish": {
+        "eastM": 7138.267928,
+        "northM": 4098.578459,
+        "altitudeM": 7750.000000000004,
+        "yaw": 1.7,
+        "pitch": -1.5,
+        "mode": "flight"
+      },
+      "saved": {
+        "address": {
+          "schema": 1,
+          "worldRevision": "industry-address-v1",
+          "siteId": "industry-water-0-0",
+          "east": {
+            "cell": 27,
+            "localM": 226.2679280000002
+          },
+          "north": {
+            "cell": 16,
+            "localM": 6.578459000000294
+          },
+          "altitudeM": 49.7
+        },
+        "yaw": 0,
+        "pitch": 0,
+        "mode": "walk"
+      }
+    },
+    "rotatedSeam": {
+      "scale": 1.25,
+      "from": "industry-pods-v2:9187:1,1:0,0:1,0",
+      "to": "industry-pods-v2:9187:1,1:1,0:0,-1",
+      "before": {
+        "eastM": 7363.551246450381,
+        "northM": 4382.030916850135,
+        "altitudeM": 1.7000000000000028,
+        "yaw": 2.5132741228718345,
+        "pitch": 0,
+        "mode": "walk"
+      },
+      "end": {
+        "eastM": 7368.261357768259,
+        "northM": 4388.51382891148,
+        "altitudeM": 1.7000000000000028,
+        "yaw": 2.5132741228718345,
+        "pitch": 0,
+        "mode": "walk"
+      }
+    },
+    "migratedFrom": [
+      "1.3.0",
+      "1.4.0"
+    ],
+    "transfer": {
+      "from": "industry-pods-v2:9187:0,0:-1,1:1,0",
+      "to": "industry-pods-v2:9187:0,0:-1,1:0,1",
+      "walkedM": 37.23119999999773,
+      "spanM": 39.14874831559186,
+      "outlet": [
+        -150,
+        323.8076211353316
+      ],
+      "intake": [
+        -169.57437415779594,
+        357.7114317029974
+      ],
+      "saved": {
+        "time": 7.784266666666674,
+        "bar": {
+          "along": 12.844040000000014,
+          "position": [
+            -156.42202,
+            334.9308860625551
+          ]
+        },
+        "pose": {
+          "eastM": -163.77776274428894,
+          "northM": 359.9968492479274,
+          "yaw": -2.6089347259651334,
+          "pitch": 0.19,
+          "mode": "walk",
+          "altitudeM": 1.7000000000000028
+        }
+      },
+      "restored": {
+        "time": 7.784266666666674,
+        "bar": {
+          "along": 12.844040000000014,
+          "position": [
+            -156.42202,
+            334.9308860625551
+          ]
+        },
+        "pose": {
+          "eastM": -163.77776274428894,
+          "northM": 359.9968492479274,
+          "altitudeM": 1.7000000000000028,
+          "yaw": -2.6089347259651334,
+          "pitch": 0.19,
+          "mode": "walk"
+        }
+      },
+      "errors": []
+    }
+  },
+  "performance": {
+    "1.4.0": [
+      {
+        "station": 1.7,
+        "height": 1.7,
+        "pose": {
+          "eastM": 300,
+          "northM": -350,
+          "altitudeM": 1.7000000000000028,
+          "yaw": -2.43,
+          "pitch": -0.025,
+          "mode": "walk"
+        },
+        "durationMs": 30075.89999999851,
+        "frames": 1705,
+        "intervalMedianMs": 17.69999999999709,
+        "intervalP95Ms": 18.100000000002183,
+        "hitchesAbove50": 0,
+        "shareAbove16_7": 1,
+        "drawsMedian": 150,
+        "uploadBytes": 0,
+        "peakResidentBytes": 44741124
+      },
+      {
+        "station": 400,
+        "height": 400,
+        "pose": {
+          "eastM": 300,
+          "northM": -350,
+          "altitudeM": 400,
+          "yaw": -2.43,
+          "pitch": -0.22,
+          "mode": "flight"
+        },
+        "durationMs": 30102,
+        "frames": 1705,
+        "intervalMedianMs": 17.700000000000728,
+        "intervalP95Ms": 18.100000000000364,
+        "hitchesAbove50": 0,
+        "shareAbove16_7": 1,
+        "drawsMedian": 191,
+        "uploadBytes": 0,
+        "peakResidentBytes": 38161116
+      },
+      {
+        "station": 2600,
+        "height": 2600,
+        "pose": {
+          "eastM": 300,
+          "northM": -350,
+          "altitudeM": 2600,
+          "yaw": -2.43,
+          "pitch": -0.22,
+          "mode": "flight"
+        },
+        "durationMs": 30089.89999999851,
+        "frames": 1710,
+        "intervalMedianMs": 17.600000000000364,
+        "intervalP95Ms": 18.099999999998545,
+        "hitchesAbove50": 0,
+        "shareAbove16_7": 1,
+        "drawsMedian": 716,
+        "uploadBytes": 0,
+        "peakResidentBytes": 42281748
+      },
+      {
+        "station": 3100,
+        "height": 3100,
+        "pose": {
+          "eastM": 300,
+          "northM": -350,
+          "altitudeM": 3100,
+          "yaw": -2.43,
+          "pitch": -0.22,
+          "mode": "flight"
+        },
+        "durationMs": 30113.699999999255,
+        "frames": 1710,
+        "intervalMedianMs": 17.600000000002183,
+        "intervalP95Ms": 18.099999999999454,
+        "hitchesAbove50": 0,
+        "shareAbove16_7": 1,
+        "drawsMedian": 716,
+        "uploadBytes": 0,
+        "peakResidentBytes": 42281748
+      },
+      {
+        "station": "transfer",
+        "height": 1.7,
+        "pose": {
+          "eastM": -144.87083487540116,
+          "northM": 327.923646539116,
+          "altitudeM": 1.7000000000000028,
+          "yaw": -2.154346268990691,
+          "pitch": 0.19,
+          "mode": "walk"
+        },
+        "durationMs": 30124.699999999255,
+        "frames": 1698,
+        "intervalMedianMs": 17.899999999999636,
+        "intervalP95Ms": 18.100000000000364,
+        "hitchesAbove50": 0,
+        "shareAbove16_7": 1,
+        "drawsMedian": 137,
+        "uploadBytes": 0,
+        "peakResidentBytes": 35071884
+      }
+    ],
+    "1.4.1": [
+      {
+        "station": 1.7,
+        "height": 1.7,
+        "pose": {
+          "eastM": 300,
+          "northM": -350,
+          "altitudeM": 1.7000000000000028,
+          "yaw": -2.43,
+          "pitch": -0.025,
+          "mode": "walk"
+        },
+        "durationMs": 30088.300000000745,
+        "frames": 1706,
+        "intervalMedianMs": 17.69999999999709,
+        "intervalP95Ms": 18.100000000000364,
+        "hitchesAbove50": 0,
+        "shareAbove16_7": 1,
+        "drawsMedian": 150,
+        "uploadBytes": 0,
+        "peakResidentBytes": 44741124
+      },
+      {
+        "station": 400,
+        "height": 400,
+        "pose": {
+          "eastM": 300,
+          "northM": -350,
+          "altitudeM": 400,
+          "yaw": -2.43,
+          "pitch": -0.22,
+          "mode": "flight"
+        },
+        "durationMs": 30118.89999999851,
+        "frames": 1710,
+        "intervalMedianMs": 17.600000000002183,
+        "intervalP95Ms": 18.100000000000364,
+        "hitchesAbove50": 0,
+        "shareAbove16_7": 1,
+        "drawsMedian": 191,
+        "uploadBytes": 0,
+        "peakResidentBytes": 38161116
+      },
+      {
+        "station": 2600,
+        "height": 2600,
+        "pose": {
+          "eastM": 300,
+          "northM": -350,
+          "altitudeM": 2600,
+          "yaw": -2.43,
+          "pitch": -0.22,
+          "mode": "flight"
+        },
+        "durationMs": 30099.39999999851,
+        "frames": 1710,
+        "intervalMedianMs": 17.600000000000364,
+        "intervalP95Ms": 18.100000000000364,
+        "hitchesAbove50": 0,
+        "shareAbove16_7": 0.9994152046783625,
+        "drawsMedian": 261,
+        "uploadBytes": 0,
+        "peakResidentBytes": 43955532
+      },
+      {
+        "station": 3100,
+        "height": 3100,
+        "pose": {
+          "eastM": 300,
+          "northM": -350,
+          "altitudeM": 3100,
+          "yaw": -2.43,
+          "pitch": -0.22,
+          "mode": "flight"
+        },
+        "durationMs": 30125,
+        "frames": 1711,
+        "intervalMedianMs": 17.600000000000364,
+        "intervalP95Ms": 18.100000000000364,
+        "hitchesAbove50": 0,
+        "shareAbove16_7": 1,
+        "drawsMedian": 263,
+        "uploadBytes": 0,
+        "peakResidentBytes": 45661068
+      },
+      {
+        "station": "transfer",
+        "height": 1.7,
+        "pose": {
+          "eastM": -144.87083487540116,
+          "northM": 327.923646539116,
+          "altitudeM": 1.7000000000000028,
+          "yaw": -2.154346268990691,
+          "pitch": 0.19,
+          "mode": "walk"
+        },
+        "durationMs": 30090.800000000745,
+        "frames": 1709,
+        "intervalMedianMs": 17.600000000002183,
+        "intervalP95Ms": 18.099999999998545,
+        "hitchesAbove50": 0,
+        "shareAbove16_7": 1,
+        "drawsMedian": 140,
+        "uploadBytes": 0,
+        "peakResidentBytes": 35104284
+      }
+    ]
+  }
+}

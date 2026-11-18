@@ -25,10 +25,11 @@
   const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
   const f = x => { const s = String(+x.toPrecision(10)); return /[.e]/.test(s) ? s : s + '.'; };
 
-  function glsl(A, radiusKm) {
+  function glsl(A) {
     return `
 uniform highp sampler2D uInstalledBiomes;
 uniform int uInstalledBiomesOn;
+uniform float uAtlasRadiusKm;
 uniform vec3 uAtlasAxis,uAtlasRight,uAtlasUp;
 vec3 installedBiomeMaterial(vec3 original,vec3 q,float pixel){
  if(uInstalledBiomesOn==0)return original;
@@ -57,19 +58,19 @@ vec3 installedBiomeMaterial(vec3 original,vec3 q,float pixel){
    col=mix(col,vec3(.62,.44,.12),.10+(1.-smoothstep(.12,.2,stripe))*.42*detail);
   }
   float edge=min(min(local.y,1.-local.y)*ROW,min(local.x,1.-local.x)*ATLAS_TAU/n*cosLat);
-  float border=max(${f(A.BORDER_KM / radiusKm)},pixel*1.1);
+  float border=max(${f(A.BORDER_KM)}/uAtlasRadiusKm,pixel*1.1);
   col=mix(col,vec3(.035,.04,.045),1.-smoothstep(border*.55,border,edge));
  }
  float trunk=min(abs(abs(lat)-3.*ROW),abs(fract(lon/ATLAS_TAU*${f(A.TRUNK_MERIDIANS)}+.5)-.5)*ATLAS_TAU/${f(A.TRUNK_MERIDIANS)}*cosLat);
- float wide=max(${f(A.TRUNK_KM / radiusKm)},pixel*1.8);
+ float wide=max(${f(A.TRUNK_KM)}/uAtlasRadiusKm,pixel*1.8);
  return mix(col,vec3(.62,.55,.40),(1.-smoothstep(wide*.5,wide,trunk))*.85);
 }
 `;
   }
 
-  function assemble(fragment, A, radiusKm) {
+  function assemble(fragment, A) {
     if (fragment.split(SLOT).length !== 2 || fragment.split('const float PI=').length !== 2) throw Error('Main surface shader changed; the atlas slot was not found.');
-    return fragment.replace('const float PI=', glsl(A, radiusKm) + '\nconst float PI=').replace(SLOT, 'installedBiomeMaterial(' + SLOT + ',q,footprint/uRadius)');
+    return fragment.replace('const float PI=', glsl(A) + '\nconst float PI=').replace(SLOT, 'installedBiomeMaterial(' + SLOT + ',q,footprint/uRadius)');
   }
 
   // One texel per plot: [r, g, b, state] and, ROWS rows lower, [accent r, g, b, pattern].
@@ -139,6 +140,7 @@ vec3 installedBiomeMaterial(vec3 original,vec3 q,float pixel){
         gl.activeTexture(gl.TEXTURE0 + UNIT);
         const priorBinding = gl.getParameter(gl.TEXTURE_BINDING_2D);
         gl.bindTexture(gl.TEXTURE_2D, texture);
+        gl.uniform1f(uniforms.uAtlasRadiusKm, core.radius);
         gl.uniform1i(uniforms.uInstalledBiomes, UNIT); gl.uniform1i(uniforms.uInstalledBiomesOn, 1);
         gl.uniform3fv(uniforms.uAtlasAxis, frame.axis); gl.uniform3fv(uniforms.uAtlasRight, frame.right); gl.uniform3fv(uniforms.uAtlasUp, frame.up);
         try { draw(); } finally { gl.activeTexture(gl.TEXTURE0 + UNIT); gl.bindTexture(gl.TEXTURE_2D, priorBinding); gl.activeTexture(priorActive); state.frames++; }
@@ -147,20 +149,22 @@ vec3 installedBiomeMaterial(vec3 original,vec3 q,float pixel){
       dispose() { if (disposed) return; disposed = true; if (compiled) gl.deleteProgram(compiled.program); if (texture) gl.deleteTexture(texture); compiled = texture = null; }
     };
 
+    let compiling = false;
     const refresh = async () => {
-      if (disposed) return;
+      if (disposed || compiling) return;
       try {
         if (!compiled) {
+          compiling = true;
           state.status = 'compiling';
           const started = performance.now();
-          compiled = await compile(gl, window.SphereShaders.vertex, assemble(window.SphereShaders.fragment, A, window.SphereApp.getState().radius));
+          compiled = await compile(gl, window.SphereShaders.vertex, assemble(window.SphereShaders.fragment, A));
           state.compileMs = Math.round(performance.now() - started);
           upload();
           renderer.setSurfaceOverlay(owner);
         } else upload();
         state.status = 'ready';
         window.SphereApp.draw();
-      } catch (error) { state.status = 'failed: ' + error.message; console.warn('Biome surface', error); }
+      } catch (error) { state.status = 'failed: ' + error.message; console.warn('Biome surface', error); } finally { compiling = false; }
     };
     window.addEventListener('sphere-biomes-changed', refresh);
     api.show = value => { enabled = value !== false; window.SphereApp.draw(); };

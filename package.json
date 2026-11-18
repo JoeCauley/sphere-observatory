@@ -1,12 +1,15 @@
 {
   "name": "sphere-observatory",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "private": true,
-  "description": "Local WebGL Dyson shell visualization and measurement instrument",
+  "description": "Explore the inside of a Dyson sphere and visit its four walkable WebGL biomes",
   "license": "UNLICENSED",
   "scripts": {
     "start": "node serve.cjs",
     "test:pack": "node tests/biome-pack.mjs",
+    "test:contract": "node tests/biome-contract-browser.cjs",
+    "test:stage-arrival": "node tests/biome-stage-arrival-browser.cjs",
+    "test:pods": "node tests/industry-pods.mjs",
     "test:industry": "node tests/industry.mjs",
     "test:industry:display": "node tests/industry-display.mjs && node tests/industry-display-preparation.mjs && node tests/industry-display-comparison.mjs",
     "test:industry:browser": "node tests/industry-browser.cjs",
@@ -39,7 +42,13 @@
     "test:ib075:hr06": "node tests/vegetation-optimisation.cjs && node tests/vegetation-optimisation-browser.cjs",
     "test:ib075:hr07": "node tests/vegetation-memory.cjs && node tests/vegetation-memory-browser.cjs",
     "test:ib075:hr08": "node tests/vegetation-integrated-suite.cjs",
-    "test:ib075:hr09": "node tests/vegetation-certification-suite.cjs"
+    "test:ib075:hr09": "node tests/vegetation-certification-suite.cjs",
+    "test:restart": "node tests/biome-restart-browser.cjs",
+    "test:outfall": "node tests/outfall-browser.cjs",
+    "test:industry:roof": "node tests/industry-roof-browser.cjs",
+    "test:industry:transfer": "node tests/industry-transfer-browser.cjs",
+    "test:gallery": "node tools/verify-gallery.cjs",
+    "test:http-restart": "node tests/installation-store.cjs"
   },
   "engines": {
     "node": ">=20"

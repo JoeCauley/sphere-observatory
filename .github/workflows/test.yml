@@ -11,11 +11,34 @@ permissions:
 jobs:
   numerical-and-gallery:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: '24'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: npm test
+      - run: npm run test:pack && npm run test:industry && npm run test:pods
+      - run: npm run test:gallery
+
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        suite: [test:http-restart, test:restart, test:outfall, test:industry:roof, test:industry:transfer, test:contract, test:stage-arrival]
+    env:
+      SPHERE_NATIVE_BROWSER: /usr/bin/google-chrome
+      SPHERE_CONTRACT_HEADLESS: '1'
+      SPHERE_CONTRACT_TIMEOUT_MS: '120000'
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: '24'
-      - run: npm test
-      - run: node tools/verify-gallery.cjs
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: npm run ${{ matrix.suite }}

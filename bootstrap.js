@@ -9,7 +9,7 @@ scripts.splice(scripts.indexOf('places'),0,'pack-library');
 if(new URLSearchParams(location.search).has('service'))scripts.push('biome-service/main-install-bootstrap.v12','main-install-ui');
 const paint=()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
 try{
- window.SphereBuild={version:'1.6.0',status:'unverified-local',release:false};
+ window.SphereBuild={version:'1.7.0',status:'unverified-local',release:false};
  try{const response=await fetch(new URL('build-info.json',scriptBase));if(response.ok)window.SphereBuild=await response.json();}catch{}
  await paint();
  for(const name of scripts){
