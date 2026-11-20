@@ -5,7 +5,7 @@ const emit=(name,detail)=>window.dispatchEvent(new CustomEvent(name,{detail}));
 function sync(){emit('sphere-history-changed');}
 function current(){return identity=SphereLocation.resolve(A.getState(),identity);}
 function remember(state=A.getState(),title=current().title,viewContext=null){entries.push({viewContext:structuredClone(viewContext),state:SphereMeadowWind.snapshot(state),title,identity:SphereLocation.resolve(state),created:new Date().toISOString()});if(entries.length>24)entries.shift();sync();}
-const travel=SphereTravelTransaction.create({getState:A.getState,validate:M.validate,hold:A.setTravelHold,blocked:()=>A.busy&&window.SphereLoading?.ready,
+const travel=SphereTravelTransaction.create({getState:A.getState,validate:M.validate,beforePrepare:()=>SphereTransitStatus.paint(),hold:A.setTravelHold,blocked:()=>A.busy&&window.SphereLoading?.ready,
  getViewContext:()=>window.SphereMainBiomeView?.getViewContext()??null,
  prepareViewContext:(s,context,options)=>window.SphereMainBiomeView?.prepareViewContext(s,context,options)??context,
  releaseViewContext:context=>window.SphereMainBiomeView?.releaseViewContext(context),

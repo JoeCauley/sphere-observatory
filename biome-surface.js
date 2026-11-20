@@ -31,8 +31,11 @@ uniform highp sampler2D uInstalledBiomes;
 uniform int uInstalledBiomesOn;
 uniform float uAtlasRadiusKm;
 uniform vec3 uAtlasAxis,uAtlasRight,uAtlasUp;
-vec3 installedBiomeMaterial(vec3 original,vec3 q,float pixel){
- if(uInstalledBiomesOn==0)return original;
+vec3 installedBiomeMaterial(vec3 original,vec3 q,float pixel,float distanceKm){
+ // The atlas is an orbital map. Ground and shell share their geographic
+ // material through the handoff to detailed terrain and the low-flight packs.
+ float mapWeight=smoothstep(1000.,12000.,distanceKm);
+ if(uInstalledBiomesOn==0 || mapWeight<=0.)return original;
  const float ROW=${f(A.ROW)},LIMIT=${f(A.LIMIT)},ATLAS_TAU=6.283185307179586;
  float lat=asin(clamp(dot(q,uAtlasAxis),-1.,1.)),lon=atan(dot(q,uAtlasUp),dot(q,uAtlasRight));
  float grey=dot(original,vec3(.3333)),cosLat=max(.05,cos(lat));
@@ -63,14 +66,19 @@ vec3 installedBiomeMaterial(vec3 original,vec3 q,float pixel){
  }
  float trunk=min(abs(abs(lat)-3.*ROW),abs(fract(lon/ATLAS_TAU*${f(A.TRUNK_MERIDIANS)}+.5)-.5)*ATLAS_TAU/${f(A.TRUNK_MERIDIANS)}*cosLat);
  float wide=max(${f(A.TRUNK_KM)}/uAtlasRadiusKm,pixel*1.8);
- return mix(col,vec3(.62,.55,.40),(1.-smoothstep(wide*.5,wide,trunk))*.85);
+ return mix(original,mix(col,vec3(.62,.55,.40),(1.-smoothstep(wide*.5,wide,trunk))*.85),mapWeight);
 }
 `;
   }
 
   function assemble(fragment, A) {
     if (fragment.split(SLOT).length !== 2 || fragment.split('const float PI=').length !== 2) throw Error('Main surface shader changed; the atlas slot was not found.');
-    return fragment.replace('const float PI=', glsl(A) + '\nconst float PI=').replace(SLOT, 'installedBiomeMaterial(' + SLOT + ',q,footprint/uRadius)');
+    // A uniform upper bound prevents drivers from expanding hundreds of iterations at link time.
+    // The original loops broke on these same limits, including a zero edge or plate count.
+    fragment=fragment.replaceAll('for(int i=0;i<18;i++){if(i>=uPlateCount)break;','for(int i=0;i<min(uPlateCount,18);i++){')
+      .replaceAll('for(int k=0;k<256;k++){if(k>=count)break;','for(int k=0;k<min(count,256);k++){')
+      .replaceAll('for(int i=0;i<128;i++){if(i>=uPackEdges)break;','for(int i=0;i<min(uPackEdges,128);i++){');
+    return fragment.replace('const float PI=', glsl(A) + '\nconst float PI=').replace(SLOT, 'installedBiomeMaterial(' + SLOT + ',q,footprint/uRadius,ts*uRadius)');
   }
 
   // One texel per plot: [r, g, b, state] and, ROWS rows lower, [accent r, g, b, pattern].
@@ -108,7 +116,7 @@ vec3 installedBiomeMaterial(vec3 original,vec3 q,float pixel){
 
   async function start() {
     const deadline = performance.now() + 300000;
-    while (!(window.SphereBiomeLibrary && window.SphereAtlas && window.SphereApp?.renderer && window.SphereLoading?.ready) && performance.now() < deadline) await sleep(250);
+    while (!(window.SphereBiomeLibrary && window.SphereAtlas && window.SphereApp?.renderer) && performance.now() < deadline) await sleep(250);
     const library = window.SphereBiomeLibrary, renderer = window.SphereApp?.renderer, A = window.SphereAtlas;
     if (!library || !renderer || !A) return;
     await library.ready;
@@ -143,12 +151,15 @@ vec3 installedBiomeMaterial(vec3 original,vec3 q,float pixel){
         gl.uniform1f(uniforms.uAtlasRadiusKm, core.radius);
         gl.uniform1i(uniforms.uInstalledBiomes, UNIT); gl.uniform1i(uniforms.uInstalledBiomesOn, 1);
         gl.uniform3fv(uniforms.uAtlasAxis, frame.axis); gl.uniform3fv(uniforms.uAtlasRight, frame.right); gl.uniform3fv(uniforms.uAtlasUp, frame.up);
-        try { draw(); } finally { gl.activeTexture(gl.TEXTURE0 + UNIT); gl.bindTexture(gl.TEXTURE_2D, priorBinding); gl.activeTexture(priorActive); state.frames++; }
+        try { draw(); } finally { gl.uniform1i(uniforms.uInstalledBiomesOn,0); gl.activeTexture(gl.TEXTURE0 + UNIT); gl.bindTexture(gl.TEXTURE_2D, priorBinding); gl.activeTexture(priorActive); state.frames++; }
       },
       inspect: () => ({ ...state }),
-      dispose() { if (disposed) return; disposed = true; if (compiled) gl.deleteProgram(compiled.program); if (texture) gl.deleteTexture(texture); compiled = texture = null; }
+      dispose() { if (disposed) return; disposed = true; if (compiled && compiled!==shared) gl.deleteProgram(compiled.program); if (texture) gl.deleteTexture(texture); compiled = texture = null; }
     };
 
+    // The normal bootstrap links the atlas into Main once. Standalone hosts can still supply the original shell.
+    const shared=renderer.modernUniforms?.uInstalledBiomes
+      ? {program:renderer.modernProgram,uniforms:renderer.modernUniforms} : null;
     let compiling = false;
     const refresh = async () => {
       if (disposed || compiling) return;
@@ -157,7 +168,7 @@ vec3 installedBiomeMaterial(vec3 original,vec3 q,float pixel){
           compiling = true;
           state.status = 'compiling';
           const started = performance.now();
-          compiled = await compile(gl, window.SphereShaders.vertex, assemble(window.SphereShaders.fragment, A));
+          compiled = shared ?? await compile(gl, window.SphereShaders.vertex, assemble(window.SphereShaders.fragment, A));
           state.compileMs = Math.round(performance.now() - started);
           upload();
           renderer.setSurfaceOverlay(owner);
@@ -173,5 +184,5 @@ vec3 installedBiomeMaterial(vec3 original,vec3 q,float pixel){
 
   const api = { inspect: () => ({ ...state }), build, assemble, glsl, show() {} };
   window.SphereBiomeSurface = api;
-  start();
+  api.ready=start();
 })();

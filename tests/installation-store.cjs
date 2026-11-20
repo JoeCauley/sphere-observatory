@@ -14,7 +14,14 @@ async function main(){
   const result=r=>JSON.parse(r.body);
   try{
     host=await start({port,transport,storePath});port=host.port;
-    assert.equal((await host.dispatch('/')).status,200);
+    const health=result(await host.dispatch('/api/health'));assert.equal(health.service,'sphere-observatory');
+    assert.match(health.checkout,/^[a-f0-9]{64}$/);assert(health.pid>0);
+    const page=await host.dispatch('/');assert.equal(page.status,200);
+    const tag=page.headers.etag??page.headers.ETag;assert(tag);
+    const reused=await host.dispatch('/','GET',{'if-none-match':tag});
+    assert.equal(reused.status,304);assert.equal(reused.body.length,0);
+    assert.equal((await host.dispatch('/','GET',{'if-none-match':'"older"'})).status,200);
+    const head=await host.dispatch('/','HEAD',{'if-none-match':'*'});assert.equal(head.status,304);assert.equal(head.body.length,0);
     const catalog=result(await host.dispatch('/packs/biome-library.json'));assert.equal(catalog.packs.length,4);
     assert.deepEqual(result(await send('GET')),{schema:1,worlds:{}});
     const a=item('infinite-meadow'),b=item('sideways-city');

@@ -8,6 +8,8 @@ h1{font:normal 26px/1.1 Georgia,serif;margin:2px 0 8px}p{margin:6px 0}button{bac
 footer{position:absolute;bottom:0;width:100%;padding:8px 14px;background:#111e1bd9;display:flex;gap:12px;align-items:center}#status{flex:1}#show{position:absolute;top:12px;left:12px}#error{color:#ffcf9e}
 </style></head><body><canvas id="world" tabindex="0" aria-label="Border gallery. WASD moves, drag to look."></canvas>
 <section id="panel"><h1>The Outfall</h1><p>WASD to move. Drag to look. Space lifts off, Q and E change height, F lands.</p>
+<p>Follow the dry aisle past the valve and across the gallery to enter the 1,000 km through-tunnel.</p>
+<label id="walkClockField" hidden>Developer walk clock <select id="walkClock"><option value="1">Real time</option><option value="1000">1,000×</option><option value="10000">10,000×</option></select></label>
 <button id="save">Save this place</button> <button id="back">Return to saved</button> <button id="hide">Hide controls</button><p id="error" role="alert"></p></section>
 <button id="show" hidden>Controls</button><button id="action" hidden>Turn bypass valve · E</button>
 <footer><strong id="mode">ON FOOT</strong><span id="status" role="status">At the foot of the Border.</span><button id="leavePack">Return to Observatory</button></footer>

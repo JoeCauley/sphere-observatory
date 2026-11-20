@@ -1,3 +1,6 @@
+import {chartFor,course,toBorder,toMeadow,enterNorthM,inApproach} from '../../kit/surface-route.js';
+import {borderUniforms} from '../../kit/meadow-border.js';
+import {createRenderer as createBorderStructures} from '../../border-outfall/1.0.0/render.js';
 import {clamp,address,toGlobal} from './coordinates.js';
 import {initialState,saveState,parseState,terrain,clearance,move,takeoff,stepTakeoff,landOnFoot,startSkimming,flightSpeed,sceneLight,guidedRoute,finishRoute,meadowRoute,landscapeRoute,grassEdgeRoute,routePose,blindBands,GROUND_DATUM,COMFORT_TURN_RAD_S,EYE} from './model.js';
 import {Renderer} from './renderer.js';
@@ -24,9 +27,31 @@ function event(type,detail={}){events.push({type,frame,timestamp:performance.now
 const status=text=>$('status').textContent=text;
 function download(blob,name){const a=document.createElement('a');a.href=host.objectURL(blob);a.download=name;document.body.append(a);a.click();a.remove();host.delay(()=>host.revokeURL(a.href),60000);}
 function syncUI(){$('density').value=state.grassDensity;$('reach').value=state.grassReach;$('daylight').value=state.daylight;$('comfort').checked=state.comfortMotion;$('concealment').checked=state.concealment;$('blindHeight').value=state.blindHeightM/1000;$('blindLabel').textContent=(state.blindHeightM/1000)+' km · provisional';$('pause').textContent=paused?'Resume journey':'Pause journey';$('grassbox').checked=state.grassbox;$('wind').checked=state.windPlaying;$('grassHeight').value=state.grassHeightScale;$('grassWidth').value=state.grassWidthScale;$('skimSpeed').value=state.skimSpeedMps*3.6;$('skimSpeedValue').value=Math.round(state.skimSpeedMps*3.6);}
-function persist(){host.storage.write({state:JSON.parse(saveState(kept())),bookmark:JSON.parse(saveState(bookmark))});}
+function persist(){if(surfaceEntry?.active===false)return;host.storage.write({state:JSON.parse(saveState(kept())),bookmark:JSON.parse(saveState(bookmark))});}
 host.storage.useValidator(s=>JSON.parse(saveState(parseState(JSON.stringify(s)))));
 try{const saved=host.storage.read();if(saved){state=parseState(JSON.stringify(saved.state));bookmark=parseState(JSON.stringify(saved.bookmark));stage='Saved meadow restored';}}catch(e){status('Save rejected: '+e.message);}
+const stageHost=window.frameElement?.dataset.worldKey ? parent.SphereStageFrame : null;
+const surfaceEntry=window.frameElement?.surfaceEntry;
+let borderStructures=null,chart=null,gateDatum=0,crossing=false,crossingFailed=false,lastCheckpoint=0;
+function refreshChart(){
+  const address=stageHost?.surfaceAddress?.();
+  chart=address?chartFor(address.home,address.edge,address.radiusKm):null;
+  gateDatum=chart?terrain(chart.eastM,chart.northM):0;
+  $('outfallCourse').hidden=$('outfallRange').hidden=$('outfallApproach').hidden=!chart;
+}
+refreshChart();
+if(stageHost)host.listen(parent,'sphere-biomes-changed',refreshChart);
+if(surfaceEntry?.geographic){
+  state.pose={...surfaceEntry.pose,altitudeM:surfaceEntry.pose.altitudeM+GROUND_DATUM};const ground=terrain(state.pose.eastM,state.pose.northM)+EYE;
+  state.pose.altitudeM=state.pose.mode==='walk'?ground:Math.max(ground,state.pose.altitudeM);
+  state.skimEnabled=false;
+}else if(chart && surfaceEntry?.edge===chart.edge){
+  state.pose=toMeadow(surfaceEntry.pose,chart,gateDatum);
+  if(Number.isFinite(surfaceEntry.windTime))state.windTime=surfaceEntry.windTime;
+  const floor=terrain(state.pose.eastM,state.pose.northM)+EYE;
+  state.pose.altitudeM=state.pose.mode==='walk'?floor:Math.max(floor,state.pose.altitudeM);
+  state.skimEnabled=false;
+}
 let renderer;try{renderer=new Renderer(canvas);}catch(e){$('error').hidden=false;$('error').textContent='The meadow could not start.\n'+e.message;throw e;}
 function resize(){const dpr=Math.min(1,window.devicePixelRatio||1);canvas.width=Math.round(innerWidth*dpr);canvas.height=Math.round(innerHeight*dpr);}
 resize();host.listen(window,'resize',resize);syncUI();
@@ -85,6 +110,21 @@ function toggleLevelCruise(){
   syncUI();canvas.focus();
 }
 $('levelCruise').onclick=toggleLevelCruise;
+$('outfallApproach').onclick=()=>{
+  if(!chart || crossing || !takeOver())return;
+  route=null;lift=null;quiet=null;stopLevelCruise(flightMotion);
+  state.pose=toMeadow({eastM:0,northM:-2700,altitudeM:48,yaw:0,pitch:-.045,mode:'flight'},chart,gateDatum);
+  state.pose.yaw=course(state.pose,chart).heading;lastPose={...state.pose};state.skimEnabled=false;
+  startLevelCruise(state,flightMotion);persist();syncUI();canvas.focus();
+  status('On the final 2.7 km of the Meadow approach. Your saved place is still available.');
+};
+$('outfallCourse').onclick=()=>{
+  if(!chart || quiet || route || !takeOver())return;
+  stopLevelCruise(flightMotion);
+  state.pose.yaw=course(state.pose,chart).heading;
+  toggleLevelCruise();crossingFailed=false;
+  status('Level cruise to the Outfall · the opening is on your heading');
+};
 $('skimSpeed').oninput=()=>{state.skimSpeedMps=Number($('skimSpeed').value)/3.6;$('skimSpeedValue').value=Math.round(state.skimSpeedMps*3.6);event('skim-speed',{value:state.skimSpeedMps});};
 function liftOff(){
   if(quiet){status('Finish the quiet measurement before lifting off');return;}
@@ -186,7 +226,12 @@ host.listen(window,'keyup',e=>keys.delete(e.code));host.listen(window,'blur',()=
 let drag=null;host.listen(canvas,'pointerdown',e=>{if(script)return;if(route&&!quiet)manual();drag=[e.clientX,e.clientY];canvas.focus();canvas.setPointerCapture(e.pointerId);});host.listen(canvas,'pointerup',()=>drag=null);host.listen(canvas,'lostpointercapture',()=>drag=null);
 host.listen(canvas,'pointermove',e=>{if(!drag||route||quiet||script)return;held=null;const sensitivity=(state.comfortMotion&&state.pose.altitudeM>blindBands(state).startM) ? .0015 : .004;state.pose.yaw+=(e.clientX-drag[0])*sensitivity;state.pose.pitch=clamp(state.pose.pitch-(e.clientY-drag[1])*sensitivity,-1.5,1.5);drag=[e.clientX,e.clientY];});
 function formatM(x){if(x>=1e9)return(x/1e9).toFixed(2)+' million km';if(x>=1e6)return(x/1e6).toFixed(2)+' thousand km';if(x>=1000)return(x/1000).toFixed(2)+' km';return x.toFixed(2)+' m';}
-function hud(t,m){if(t-hudLast<125)return;hudLast=t;$('height').textContent=formatM(state.pose.altitudeM-GROUND_DATUM);const a=address(state.pose);$('address').textContent=`E ${a.east.cell}:${a.east.localM.toFixed(3)} · N ${a.north.cell}:${a.north.localM.toFixed(3)}`;
+function hud(t,m){if(t-hudLast<125)return;hudLast=t;
+  if(chart){
+    const km=course(state.pose,chart).distanceM/1000;
+    $('outfallRange').textContent='Outfall opening · '+km.toLocaleString(undefined,{maximumFractionDigits:km<10?2:0})+' km';
+    $('outfallCourse').disabled=!!quiet||!!route||!!script||crossing;
+  }$('height').textContent=formatM(state.pose.altitudeM-GROUND_DATUM);const a=address(state.pose);$('address').textContent=`E ${a.east.cell}:${a.east.localM.toFixed(3)} · N ${a.north.cell}:${a.north.localM.toFixed(3)}`;
   const travel=state.pose.mode==='walk'?'on foot':route?(paused?'guided · paused':'guided flight'):flightMotion.level?(flightMotion.speedMps*3.6).toFixed(0)+' km/h · level cruise':state.skimEnabled?(flightMotion.speedMps*3.6).toFixed(0)+' km/h · skimming':(flightMotion.speedMps||flightSpeed(state.pose)).toFixed(1)+' m/s';$('clearance').textContent=formatM(clearance(state.pose)+1.7)+' · '+travel;$('lift').disabled=state.pose.mode==='flight'||!!quiet;$('lift').textContent=lift?'Lifting off…':state.pose.mode==='flight'?'Flying · Q to descend':'Lift off · Space + E';
   $('skim').disabled=$('cruise').disabled=!!quiet||!!route;$('skim').textContent=state.skimEnabled?'Free flight · T':'Skim grass · T';$('cruise').textContent=flightMotion.cruise?'Stop cruising':'Cruise';
   $('levelCruise').disabled=!!quiet||!!route;$('levelCruise').textContent=flightMotion.level?'Stop level cruise · L':'Level cruise · L';
@@ -203,15 +248,45 @@ async function compareReturn(saved){const before=bookmarkCheck;if(!before)return
   returnCheck={...match,pixelsMatch:after.hash===before.snapshot.hash,beforePixels:before.snapshot.hash,afterPixels:after.hash,pixelDifference:match.sameViewport?{changedPixels,maxChannelDifference,meanChannelDifference:totalDifference/after.bytes.length}:null};event('return-comparison',returnCheck);}
 function tick(t){
   host.frame(tick);const start=performance.now(),rawDt=last?(t-last)/1000:1/60,dt=Math.min(.1,rawDt);last=t;frame++;let completed=null;const frameKeys=new Set([...keys,...tappedKeys]);tappedKeys.clear();if(state.skimEnabled&&flightMotion.cruise)frameKeys.add('KeyW');
-  if(!quiet){if(state.windPlaying)state.windTime+=dt;if(script)stepScript(dt);else if(lift){if(!stepTakeoff(state,lift,dt)){lift=null;stage='Free flight · skim the hills';event('free-lift-complete');}}
+  if(!quiet&&!crossing&&surfaceEntry?.active!==false){if(state.windPlaying)state.windTime+=dt;if(script)stepScript(dt);else if(lift){if(!stepTakeoff(state,lift,dt)){lift=null;stage='Free flight · skim the hills';event('free-lift-complete');}}
   else if(route&&!paused){routeTime=clamp(routeTime+dt*direction,0,route.duration);const next=routePose(route,routeTime);state.pose=next.pose;stage=next.stage;
     if((next.complete&&direction>0)||(routeTime===0&&direction<0)){completed=route.bookmark;state=structuredClone(completed);route=null;event('journey-complete',{exactState:saveState(state)===saveState(completed)});persist();syncUI();status('Back at the same place, with the same light and grass');}
-  }else if(!route){const turn=(state.comfortMotion&&state.pose.altitudeM>blindBands(state).startM?COMFORT_TURN_RAD_S:Math.PI/4)*dt;state.pose.yaw+=((frameKeys.has('ArrowRight')||frameKeys.has('KeyX')?1:0)-(frameKeys.has('ArrowLeft')||frameKeys.has('KeyZ')?1:0))*turn;state.pose.pitch=clamp(state.pose.pitch+((frameKeys.has('ArrowUp')?1:0)-(frameKeys.has('ArrowDown')?1:0))*turn,-1.5,1.5);const moved=flightMotion.level?stepLevelCruise(state,flightMotion,frameKeys,dt):move(state,frameKeys,dt,flightMotion);if(flightMotion.level)stage=moved.phase==='climbing'?'Climbing above the highest hills':'Level cruise · straight course';if(moved.phase==='envelope-limit'){stage='Level cruise stopped at the study boundary';status('Study coordinate limit reached · take control to turn back');event('level-envelope-stop');}if(moved.landed){stage='On foot · your meadow';status('Landed here · WASD walks · Space + E lifts off');event('free-land');}}}
+  }else if(!route){const turn=(state.comfortMotion&&state.pose.altitudeM>blindBands(state).startM?COMFORT_TURN_RAD_S:Math.PI/4)*dt;state.pose.yaw+=((frameKeys.has('ArrowRight')||frameKeys.has('KeyX')?1:0)-(frameKeys.has('ArrowLeft')||frameKeys.has('KeyZ')?1:0))*turn;state.pose.pitch=clamp(state.pose.pitch+((frameKeys.has('ArrowUp')?1:0)-(frameKeys.has('ArrowDown')?1:0))*turn,-1.5,1.5);const moved=flightMotion.level?stepLevelCruise(state,flightMotion,frameKeys,Math.max(0,rawDt)):move(state,frameKeys,dt,flightMotion);if(flightMotion.level)stage=moved.phase==='climbing'?'Climbing above the highest hills':'Level cruise · straight course';if(moved.phase==='envelope-limit'){stage='Level cruise stopped at the study boundary';status('Study coordinate limit reached · take control to turn back');event('level-envelope-stop');}if(moved.landed){stage='On foot · your meadow';status('Landed here · WASD walks · Space + E lifts off');event('free-land');}}}
   if(quiet&&quiet.kind!=='stationary'){quiet.elapsed+=dt;if(state.windPlaying)state.windTime+=dt;state.pose.yaw=quiet.original.pose.yaw+.20*Math.sin(quiet.elapsed*.35);if(quiet.kind==='level')stepLevelCruise(state,flightMotion,new Set(),dt);else move(state,new Set(quiet.kind==='skimming'?['KeyW','ShiftLeft']:['KeyW']),dt,flightMotion);if(quiet.kind==='flying')state.pose.altitudeM=terrain(state.pose.eastM,state.pose.northM)+31.7;stage=quiet.kind==='walking'?'Measuring meadow walk':quiet.kind==='level'?'Measuring level cruise':quiet.kind==='skimming'?'Measuring fast grass skim':'Measuring low flight';}
+  let borderPose=null;
+  if(chart){
+    const p=state.pose;
+    borderPose=toBorder(p,chart,gateDatum);
+    if(borderPose.northM<enterNorthM)crossingFailed=false;
+    if(!crossing && !crossingFailed && !quiet && !script && !route && !lift && surfaceEntry?.active!==false &&
+        borderPose.northM>=enterNorthM && inApproach(borderPose,chart) && stageHost.canCrossSurface?.(window)){
+      const before=toBorder(lastPose,chart,gateDatum);
+      if(before.northM<enterNorthM){
+        // Sweep even a long frame to the first crossing, retaining lateral offset.
+        const t=(enterNorthM-before.northM)/(borderPose.northM-before.northM);
+        p.eastM=lastPose.eastM+(p.eastM-lastPose.eastM)*t;p.northM=lastPose.northM+(p.northM-lastPose.northM)*t;
+        borderPose=toBorder(p,chart,gateDatum);
+      }
+      if(borderPose.northM<0){
+        const cruise=flightMotion.level?{heading:flightMotion.level.headingRad-chart.angle-Math.PI,speedMps:flightMotion.speedMps,baseMps:state.skimSpeedMps}:null;
+        crossing=true;persist();
+        stageHost.crossSurface(window,{edge:chart.edge,pose:borderPose,cruise,windTime:state.windTime}).then(ok=>{
+          if(!ok){crossing=false;crossingFailed=true;stopLevelCruise(flightMotion);status('Crossing paused. Select the Outfall course to retry.');}
+        });
+      }
+    }
+    if(flightMotion.level && !crossing && t-lastCheckpoint>30000){persist();lastCheckpoint=t;}
+  }
+  const drawBorder=borderPose && inApproach(borderPose,chart) && borderPose.northM<0 && borderPose.northM>-12000;
+  renderer.borderMap=drawBorder?borderUniforms(chart,borderPose):null;renderer.gateDatum=gateDatum;
+  renderer.borderView=!drawBorder && borderPose && inApproach(borderPose,chart) && borderPose.northM<0 && borderPose.northM>-120000 ?
+    [-Math.sin(chart.angle),Math.cos(chart.angle),-borderPose.northM,borderPose.altitudeM]:null;
   const prepareStart=performance.now(),sharedFrame=host.stage.follow(state.pose,state.windTime),changed=residency.update(sharedFrame.eye,state.grassDensity,state.grassReach),prepareMs=performance.now()-prepareStart;
   if(changed&&tracing&&demands.length<2048)demands.push({version:residency.version,frame,required:[...residency.required],hashes:[...residency.tiles.values()].map(v=>[v.key,v.contentHash])});
   if(!residency.ready){paused=true;status('Movement paused while detail is unavailable: '+residency.failure);}
-  const m=renderer.draw(state,residency,{inspection:$('grassLayers').value});drawVeil(t);if(++drawn===3)resolveReady();if(completed)compareReturn(completed);
+  const m=renderer.draw(state,residency,{inspection:$('grassLayers').value});
+  if(drawBorder){borderStructures??=createBorderStructures(canvas);borderStructures.draw({pose:borderPose,levels:[1,1,1]},t*.001,1,{overMeadow:true,resize:false});}
+  drawVeil(t);if(++drawn===3)resolveReady();if(completed)compareReturn(completed);
   const counts=residency.counters();const row={frame,rendererFrame:m.rendererFrame,stageVersion:residency.version,timestamp:t,intervalMs:rawDt*1000,prepareMs,renderCpuMs:m.renderCpuMs,gpuMs:m.gpuMs,gpuSampleFrame:m.gpuSampleFrame,gpuDisjoint:m.gpuDisjoint,gpuResolved:m.gpuResolved,drawCalls:m.drawCalls,uploadBytes:m.uploadBytes,descriptorBytes:m.descriptorBytes,gpuBufferBytes:m.gpuBytes,gpuTextureBytes:m.gpuTextureBytes,grassboxInstances:m.grassboxInstances,grassboxBlades:m.grassboxBlades,grassCenter:m.grassCenter,windTime:state.windTime,originId:m.originId,reveal:m.reveal,interiorDaylight:m.interiorDaylight,terrainAlpha:m.terrainAlpha,heroCenter:m.heroCenter,terrainRadiusM:m.terrainRadiusM,pose:{...state.pose},global:toGlobal(state.pose),address:address(state.pose),required:residency.required.length,ready:counts.ready,retainedTufts:counts.tufts,submittedTufts:m.instanceCount,collisionClearanceM:clearance(state.pose),speedMps:flightMotion.speedMps,skimming:state.skimEnabled,skimTargetClearanceM:state.skimClearanceM,movementM:Math.hypot(state.pose.eastM-lastPose.eastM,state.pose.northM-lastPose.northM,state.pose.altitudeM-lastPose.altitudeM),stage};
   row.levelCruising=!!flightMotion.level;row.levelHeadingRad=flightMotion.level?.headingRad??null;row.levelAltitudeM=flightMotion.level?.altitudeM??null;row.levelPhase=flightMotion.level?(flightMotion.level.elapsedS<flightMotion.level.entrySeconds?'climbing':'level'):null;row.groundEyeClearanceM=clearance(state.pose)+1.7;
   if(tracing&&trace.length<12000)trace.push(row);metrics.push(row);if(metrics.length>900)metrics.shift();if(quiet){quiet.rows.push(row);if(quiet.rows.length===900)finishQuiet();}lastPose={...state.pose};hud(t,m);
@@ -231,10 +306,10 @@ window.SphereBiome={contract:'sphere-biome/1',id:'infinite-meadow',version:'1.3.
   pose:()=>({...state.pose,altitudeM:above(state.pose)}),   // height above the meadow datum
   ascend,begin(){if(script?.held)script.held=false;return arrived;},save(){try{persist();return true;}catch{return false;}},
   dispose(){window.dispatchEvent(new Event('pagehide'));},air:()=>({haze:[],blind:blindOf(state)}),
-  inspect:()=>{const b=blindOf(state);return {veil:b?+veilAt(b,above(state.pose)).toFixed(3):0,reveal:+sceneLight(state).reveal.toFixed(3),frames:frame,scripted:!!script,held:!!script?.held,ready:residency.ready,drawCalls:metrics.at(-1)?.drawCalls??null};}};
+  inspect:()=>{const b=blindOf(state);return {veil:b?+veilAt(b,above(state.pose)).toFixed(3):0,reveal:+sceneLight(state).reveal.toFixed(3),frames:frame,surfaceEdge:chart?.edge??null,rangeM:chart?course(state.pose,chart).distanceM:null,levelCruising:!!flightMotion.level,scripted:!!script,held:!!script?.held,ready:residency.ready,drawCalls:metrics.at(-1)?.drawCalls??null};}};
 host.frame(tick);status(script?'Arriving from the air · your place here is kept':'Walk the meadow, then lift off from wherever you stop');
 
 
 
-return {snapshot:()=>({state:JSON.parse(saveState(quiet?.original??kept())),bookmark:JSON.parse(saveState(bookmark))}),dispose(){clearKeys();route=null;lift=null;quiet=null;script=null;veil.dispose();delete window.SphereBiome;if(recording){recording.ondataavailable=null;if(recording.state!=='inactive')recording.stop();for(const track of recording.stream.getTracks())track.stop();recording=null;}for(const id of ['recordingLink','evidenceLink']){const href=$(id).href;if(href.startsWith('blob:'))host.revokeURL(href);}residency.tiles.clear();residency.required.length=0;metrics.length=events.length=trace.length=demands.length=measurements.length=0;renderer.queries.length=0;}};
+return {snapshot:()=>({state:JSON.parse(saveState(quiet?.original??kept())),bookmark:JSON.parse(saveState(bookmark))}),dispose(){borderStructures?.dispose();clearKeys();route=null;lift=null;quiet=null;script=null;veil.dispose();delete window.SphereBiome;if(recording){recording.ondataavailable=null;if(recording.state!=='inactive')recording.stop();for(const track of recording.stream.getTracks())track.stop();recording=null;}for(const id of ['recordingLink','evidenceLink']){const href=$(id).href;if(href.startsWith('blob:'))host.revokeURL(href);}residency.tiles.clear();residency.required.length=0;metrics.length=events.length=trace.length=demands.length=measurements.length=0;renderer.queries.length=0;}};
 }

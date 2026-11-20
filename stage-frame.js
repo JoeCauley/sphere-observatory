@@ -13,8 +13,8 @@
  * obscuring cloud (the Duck Blind crossing); and the destination loads unseen
  * during the crossing. Restoring a remembered scene uses a soft-focus dissolve.
  *
- * This is a portal, not a continuous surface: the scene is not shaped or lit by
- * its place on the Sphere. See docs/Observatory-Stage-Frame-2026-11-11.md.
+ * Walking handoffs project the current position and heading onto the adjoining
+ * chart. Flight cinematics are described in docs/Observatory-Stage-Frame-2026-11-11.md.
  */
 (function () {
   'use strict';
@@ -24,9 +24,11 @@
   const rootPath = base.pathname;
   const library = () => window.SphereBiomeLibrary;
 
+  let geography=null, walking=null, suppressedPlot=null, observedPlace=null, lastMouth=null, borderFailure=null;
   const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
   const sound = (name, seconds) => { try { window.SphereStageSound?.play(name, seconds); } catch {} };   // stage-sound.js; silent if absent
   let current = null;   // { id, shell, frame, observer, where }
+  let parked = null; // departure remains visible until a surface arrival has drawn its own frames
   let opening = false;
   let flying = false;
   let lastFlight = null;   // what the last flight found, for inspection
@@ -61,7 +63,18 @@
   /* ---- Travel there with Main's own travel, then open the scene ---- */
 
   async function visit(id) {
-    if (current || opening || flying) return;
+    if (opening || flying) { say('A flight is in progress.'); return; }
+    if(current?.frame.surfaceEntry?.passage){
+      const frame=current.frame;
+      if(await leavePassage(frame.contentWindow,frame.surfaceEntry.reverse?'far':'near'))return visit(id);
+      return;
+    }
+    if (current) {
+      if (current.id === id) { current.frame.contentWindow?.focus(); say('You are already in ' + library().entry(id).name + '.'); return; }
+      const target = destinations(current.id).find(other => other.item.id === id);
+      if (target) return flyTo(target);
+      return;
+    }
     opening = true;
     try {
       const item = library().entry(id);
@@ -114,10 +127,12 @@
     if (!current?.pending) child.focus();
   }
 
-  function mountFrame(id, query = '') {
-    const item = library()?.entry(id), scene = item && sceneOf(item);
+  function mountFrame(id, query = '', surfaceEntry = null) {
+    const passage=surfaceEntry?.passage;
+    const item = library().entry(id) ?? (passage && id==='border-outfall' ? {id,packId:id,name:'The Outfall'} : null);
+    const scene=item && sceneOf(item);
     if (!scene || current) return;
-    const address = library().describe(item);
+    const address=passage ? passage.near.name + ' → ' + passage.far.name : library().describe(item);
     const shell = document.createElement('section');
     shell.id = 'stageFrame';
     shell.setAttribute('aria-label', scene.name + ' at its assigned place');
@@ -129,7 +144,7 @@
     const where = document.createElement('span'); where.textContent = address; where.style.opacity = '.75'; where.style.flex = '1'; where.style.minWidth = '0'; where.style.whiteSpace = 'nowrap'; where.style.overflow = 'hidden'; where.style.textOverflow = 'ellipsis';
     const back = document.createElement('button'); back.textContent = 'Return to the Sphere'; back.className = 'secondary'; back.onclick = () => { leave(); };
     bar.append(title, where);
-    const others = destinations(id);
+    const others = passage ? [] : destinations(id);
     if (others.length <= 3) {
       for (const other of others) {
         const fly = document.createElement('button');
@@ -151,10 +166,12 @@
       const show = () => { mute.textContent = window.SphereStageSound.on ? 'Sound on' : 'Sound off'; };
       mute.onclick = () => { window.SphereStageSound.toggle(); show(); }; show(); bar.append(mute);
     }
+    if(passage)back.textContent='Return to entry';
     bar.append(back);
 
     const frame = document.createElement('iframe');
     frame.title = scene.name;
+    if (surfaceEntry) frame.surfaceEntry = surfaceEntry;
     frame.dataset.worldKey = library().world.key;
     Object.assign(frame.style, { flex: '1', width: '100%', border: '0', background: '#000' });
     frame.addEventListener('load', () => { if (current?.frame === frame) guard(frame); });
@@ -181,21 +198,27 @@
     current = { id, shell, frame, observer, where, query, worldKey:frame.dataset.worldKey, pending: true };
   }
 
-  function onResize() { if (current) place(current.shell); }
+  function retire({shell, frame, observer}) {
+    // The pack runtime saves its place and releases its GPU resources on pagehide.
+    try { const child = frame.contentWindow; child.dispatchEvent(new child.Event('pagehide')); } catch {}
+    observer.disconnect();
+    if (!current) window.removeEventListener('resize', onResize);
+    shell.remove();
+  }
+
+  function onResize() { if (current) place(current.shell); if (parked) place(parked.shell); }
 
   function close(options) {
     if (!current) return;
     const toGround = options?.toGround === true;
     const { shell, frame, observer, id } = current;
     const item = library()?.entry(id), scene = item && sceneOf(item);
+    if(current.frame.surfaceEntry?.geographic)suppressedPlot=id;
+    observedPlace=null;
     current = null;
     cover(false);
     const main = view(); if (main) { main.style.transition = ''; main.style.filter = ''; }
-    // The pack runtime saves its place and releases its GPU resources on pagehide.
-    try { const child = frame.contentWindow; child.dispatchEvent(new child.Event('pagehide')); } catch {}
-    observer.disconnect();
-    window.removeEventListener('resize', onResize);
-    shell.remove();
+    retire({ shell, frame, observer });
     if (!options?.inTransit) remember(null, frame.dataset.worldKey);
     if (toGround && !scene?.contract) groundSave(scene?.saveKey);   // a contract biome keeps its own place; the host does not edit its save
     if (!options?.silent) say('Back above ' + (scene?.name ?? 'the biome') + '. It kept your saved place.');
@@ -216,7 +239,11 @@
   quietStyle.textContent = 'body.stage-quiet #sceneLoading{opacity:0!important;pointer-events:none!important}';
   document.head.append(quietStyle);
   function quiet() { document.body.classList.toggle('stage-quiet', flying || window.sphereStageCovered === true); }
-  function cover(on) { window.sphereStageCovered = on === true; quiet(); }
+  function cover(on) {
+    window.sphereStageCovered = on === true; quiet();
+    const name=current?.frame.surfaceEntry?.passage?'Outfall passage':library()?.entry(current?.id)?.name;
+    window.dispatchEvent(new CustomEvent('sphere-visible-biome',{detail:on&&current?name:null}));
+  }
 
   const withHeight = (P, km) => ({ ...window.SphereApp.getState(), position: scale(norm(P.position), P.radius - km), forward: P.forward, up: P.up });
 
@@ -370,7 +397,7 @@
   function waitForStage(opened, phase, limitMs, getSignal, canExtend) {
     let deadline = performance.now() + limitMs;
     return new Promise(resolve => {
-      let timer, watching = false, finished = false;
+      let timer, watching = false, finished = false, finalCheck = false;
       function finish(result) {
         if (finished) return;
         finished = true;
@@ -390,13 +417,6 @@
             deadline += limitMs;
             canExtend = null;
           }
-          const remaining = deadline - now;
-          if (remaining <= 0) {
-            const result = { status: 'timeout', phase };
-            const state = phase === 'arrival' && opened.frame.contentWindow?.SphereBiome?.inspect?.();
-            if (state) result.scene = { frames: state.frames, held: state.held, scripted: state.scripted };
-            return finish(result);
-          }
           if (!watching) {
             const signal = getSignal();
             if (signal) {
@@ -406,6 +426,18 @@
                 finish({ status, phase });   // a verified result won the race with the pending-signal timer
               }, failed);
             }
+          }
+          const remaining = deadline - now;
+          if (remaining <= 0) {
+            // A driver can block the UI thread past the deadline while it compiles.
+            // Give an already-drawn frame and its fulfilled ready promise one event turn.
+            if(phase==='ready' && !finalCheck){
+              finalCheck=true;timer=setTimeout(poll,100);return;
+            }
+            const result = { status: 'timeout', phase };
+            const state = opened.frame.contentWindow?.SphereBiome?.inspect?.();
+            if (state) result.scene = { frames: state.frames, held: state.held, scripted: state.scripted };
+            return finish(result);
           }
           timer = setTimeout(poll, Math.min(100, remaining));
         } catch (error) { failed(error); }
@@ -469,7 +501,7 @@
     });
   }
 
-  function clearRecovery() { document.getElementById('biomeArrivalRecovery')?.remove(); }
+  function clearRecovery() { borderFailure?.end();borderFailure=null;document.getElementById('biomeArrivalRecovery')?.remove(); }
 
   function recover(id, route, from, result, overview) {
     if (overview && !library()?.matchesWorld(overview)) return;
@@ -495,7 +527,8 @@
     const retry = document.createElement('button'); retry.textContent = 'Retry ' + name;
     retry.onclick = () => {
       if (current || opening || flying) return;
-      if (route === 'restore' || route === 'open') openScene(id, route, { query });
+      if (route === 'geographic') enterRegion(id,window.SphereApp.getState());
+      else if (route === 'restore' || route === 'open') openScene(id, route, { query });
       else visit(id);
     };
     const stay = document.createElement('button'); stay.textContent = 'Stay in the Sphere'; stay.className = 'secondary';
@@ -516,18 +549,22 @@
       opened.where.textContent = 'You have the controls.';
       say('You have the controls in ' + scene.name + '.');
     } else if (route === 'restore') say('Restored your saved place in ' + scene.name + '.');
+    else if (route === 'geographic') say('Entered ' + scene.name + ' in free flight.');
     else if (route === 'open' || (!scene.contract && route === 'visit')) say(scene.name + ' is open. Use Return to the Sphere to come back.');
     else { sound('settle'); say(scene.name + ': you have arrived from the air.'); }
     opened.frame.contentWindow?.focus();
     return lastArrival;
   }
 
-  async function show(id, route, query = '') {
+  async function show(id, route, query = '', geographic = null) {
     const scene = sceneOf(library().entry(id));
-    mountFrame(id, query);
+    mountFrame(id, query, geographic);
     const opened = current;
     if (!opened) return;
-    let result = await settled(opened, scene, 8000);
+    const status=window.SphereTransitStatus.begin(scene.name,'Opening the biome and preparing its first frame.');
+    let result;
+    try { result=await settled(opened,scene,45000); }
+    finally { status.end(); }
     if (current !== opened) return;
     if (result.status === 'ready') {
       const fromAir = new URLSearchParams(query).get('arrival') === 'air';
@@ -535,6 +572,7 @@
       if (current !== opened) return;
       if (result.status === 'arrived' || result.status === 'taken-over') await dissolve(opened.shell, opened.frame, true, 700);
     }
+    if(geographic && (result.status==='arrived'||result.status==='taken-over'))geographic.active=true;
     return finishArrival(opened, scene, route, null, result);
   }
 
@@ -552,6 +590,9 @@
   async function leave() {
     const leaving = current;
     if (!leaving || flying || leaving.leaving) return;
+    if(leaving.frame.surfaceEntry?.passage){
+      await leavePassage(leaving.frame.contentWindow,leaving.frame.surfaceEntry.reverse?'far':'near');return;
+    }
     leaving.leaving = true;
     // A contract biome leaves by lifting off into its own blind; anything else, or a failure, dissolves.
     let api = null; try { api = leaving.frame.contentWindow?.SphereBiome; } catch {}
@@ -714,7 +755,10 @@
     if (from) lastFlight.arriveKm = Math.round(floor);
     const sinking = sinkMain(pose, top, floor, sinkMs, easeIn);
     if (sinkMs > 500) sound('descend', sinkMs / 1000);
-    const ready = await loading;
+    let waiting,loaded=false;
+    sinking.then(()=>{if(!loaded && current===opened)waiting=window.SphereTransitStatus.begin(scene.name,'Preparing the destination landscape.');}).catch(()=>{});
+    let ready;
+    try { ready=await loading; } finally { loaded=true;waiting?.end(); }
     if (ready.status !== 'ready') {
       await sinking;   // finish the old camera motion before handing Main back to the explorer
       return finishArrival(opened, scene, route, from, ready, overview);
@@ -896,28 +940,314 @@
     } finally { flying = false; quiet(); }
   }
 
+  function surfaceAddress() {
+    const lib=library(), meadow=lib?.entry('infinite-meadow'), outfall=lib?.entry('border-outfall');
+    if (!meadow || !outfall?.edge || outfall.edge.near !== meadow.plotId) return null;
+    return {home:window.SphereAtlas.byId(meadow.plotId), edge:outfall.edge, radiusKm:lib.world.params.radius};
+  }
+
+  function canCrossSurface(source) {
+    return !!current && current.frame.contentWindow===source && !current.pending && !opening && !flying && !current.leaving;
+  }
+  async function crossSurface(source, payload) {
+    const here=current, address=surfaceAddress();
+    if (!address || !canCrossSurface(source) ||
+        payload.edge !== address.edge.id || !['infinite-meadow','border-outfall'].includes(here.id)) return false;
+    const id=here.id==='infinite-meadow'?'border-outfall':'infinite-meadow';
+    const arrival={...structuredClone(payload), active:false};
+    opening=true;
+    parked=here;
+    let destination;
+    const status=window.SphereTransitStatus.begin(library().entry(id).name,'Opening the adjoining ground.');
+    try {
+      here.shell.inert=true;here.shell.id='departingStageFrame';
+      current=null;
+      mountFrame(id,'',arrival);
+      destination=current;
+      if (!destination) throw Error('The adjoining biome is unavailable.');
+      const result=await settled(destination,sceneOf(library().entry(id)),45000);
+      if(current!==destination || parked!==here)return false;
+      if(result.status!=='ready')throw Error(result.message || 'The adjoining view did not finish opening.');
+      destination.shell.style.transition='opacity 350ms linear';
+      destination.shell.style.opacity='1';
+      await sleep(350);
+      if(current!==destination || parked!==here)return false;
+      retire(here);parked=null;
+      destination.pending=false;
+      destination.shell.style.pointerEvents='';
+      arrival.active=true;
+      destination.frame.contentWindow.focus();
+      remember({schema:2,id});
+      recordArrival(id,'surface',here.id,{status:'arrived',phase:'arrival'});
+      say('Reached '+library().entry(id).name+' along the surface.');
+      cover(true);
+      return true;
+    } catch(error) {
+      if(parked===here){
+        if(destination && current===destination)retire(destination);
+        current=here;parked=null;here.shell.id='stageFrame';here.shell.inert=false;
+        say('Surface crossing paused. '+error.message);
+      }
+      return false;
+    } finally {status.end();opening=false;}
+  }
+
   /* ---- Startup: add buttons, and reopen the scene you were in ---- */
 
+  async function enterRegion(id,state) {
+    const lib=library(),item=lib?.entry(id);
+    if(!geography || !item || current || flying || opening || !lib.matchesWorld(state))return;
+    const here=geography.footprint(state,lib,SphereAtlas,SphereWorld);
+    if(here?.id!==id)return;
+    opening=true;suppressedPlot=id;clearRecovery();lastArrival=null;
+    const camera={geographic:true,pose:geography.packPose(state,item,SphereAtlas,SphereWorld),active:false};
+    try{
+      window.SphereApp.clearNavigation?.();
+      say('Entering '+item.name+' at your flight position.');
+      await show(id,'geographic','',camera);
+    }catch(error){recover(id,'geographic',null,issue('load-failure','ready',error));}
+    finally{opening=false;}
+  }
+  function groundAt(q,state) {
+    return walking.ownerAt(q,state,library().installed(),SphereAtlas,SphereWorld);
+  }
+  function station(point,state,owner=groundAt(point.q,state)) {
+    const color=owner.pack ? library().pack(owner.id)?.overview?.albedo : SphereWorld.sample(point.q,state).color;
+    return {...point,id:owner.id,name:owner.name,pack:owner.pack,tint:color||[.35,.38,.36]};
+  }
+  function shellView(state,station) {
+    const q=station.q,up=q.map(n=>-n);
+    return {...state,position:q.map(n=>n*(state.radius-.0017)),forward:station.forward.slice(),up,
+      siteId:'',siteAnchor:null,terrainAnchor:null,siteRevision:0,siteElevation:0,
+      walkPosition:null,walkVelocity:0,walkMode:true,walkSurface:true,shadeAttachment:null,geometryDetail:true};
+  }
+  // Keep the departure frame and its save until the adjoining scene can actually support a walker.
+  async function walkGround(point,passage=null,entryPose=null) {
+    const lib=library(),core=window.SphereApp.getState();
+    if(!walking || !lib?.matchesWorld(core) || opening || flying || current?.pending)return false;
+    const named=point.pack && lib.entry(point.id);
+    const owner=passage ? {id:'border-outfall',name:'Outfall passage',pack:true}
+      : named ? {id:named.id,name:named.name,pack:true} : groundAt(point.q,core);
+    if(!passage && (SphereMath.inBreach(point.q,core)||SphereCollection.missing(point.q,core)))return false;
+    const id=owner.id, here=current, worldKey=lib.world.key;
+    clearRecovery();
+    const status=window.SphereTransitStatus.begin(owner.name,'Preparing the adjoining ground.');
+    opening=true;let destination;
+    try {
+      await window.SphereTransitStatus.paint();
+      if(lib.world?.key!==worldKey || current!==here)throw Error('The active world changed.');
+      if(here){parked=here;here.shell.inert=true;here.shell.id='departingStageFrame';}
+      current=null;
+      if(owner.pack){
+        const view=shellView(core,point);
+        const pose=entryPose||geography.packPose(view,lib.entry(id),SphereAtlas,SphereWorld);
+        const entry={geographic:true,pose,passage,reverse:!!passage && pose.yaw===Math.PI,active:false};
+        mountFrame(id,'',entry);destination=current;
+        if(!destination)throw Error('The neighbouring scene is unavailable.');
+        const scene=passage?{contract:true}:sceneOf(lib.entry(id));
+        const ready=await settled(destination,scene,90000);
+        if(ready.status!=='ready'||current!==destination)throw Error(ready.detail ||
+          (ready.status==='timeout'?'The neighbouring scene took too long to draw its first frame.':'The crossing was interrupted.'));
+        if(destination.frame.contentWindow.SphereBiome.pose().mode!=='walk')throw Error('The doorway is obstructed.');
+        destination.pending=false;destination.shell.style.opacity='1';destination.shell.style.pointerEvents='';
+        destination.frame.contentWindow.focus();entry.active=true;cover(true);
+        remember({schema:2,id,...(passage?{passage,pose}:{})});
+      } else {
+        const result=await window.SphereJourney.travel.request({type:'place',title:owner.name,stageTrip:true,resolve:s=>{
+          const next=shellView(s,point);
+          next.walkMode=false;
+          SphereLanding.enter(next,next.position,{activate:false});
+          return next;
+        }});
+        if(result.state!=='arrived' || !window.SphereApp.getState().walkMode)throw Error(result.error||'Could not reach walkable ground.');
+        cover(false);remember(null);document.getElementById('viewport').focus({preventScroll:true});
+      }
+      if(here)retire(here);
+      parked=null;observedPlace=null;
+      recordArrival(id,'surface',here?.id??null,{status:'arrived',phase:'arrival'});
+      say('On foot in '+owner.name+'.');return true;
+    } catch(error) {
+      if(destination && current===destination){current=null;retire(destination);}
+      if(parked===here && here){current=here;here.shell.inert=false;here.shell.id='stageFrame';cover(true);window.addEventListener('resize',onResize);}
+      parked=null;say('Surface crossing paused. '+error.message);
+      if(lib.world?.key===worldKey)borderFailure=window.SphereTransitStatus.begin('Surface crossing paused',error.message,[
+        ['Retry crossing',()=>walkGround(point,passage,entryPose)],['Stay here',clearRecovery]
+      ],true);
+      return false;
+    } finally {status.end();opening=false;}
+  }
+  async function clearGate(gate,retry){
+    if(!['infinite-industry','sideways-city'].includes(gate.far.id))return gate;
+    if(opening||flying)return null;
+    const lib=library(),key=lib.world?.key,source=current;
+    opening=true;clearRecovery();
+    const status=window.SphereTransitStatus.begin(gate.far.name,'Finding clear ground for the tunnel exit.');
+    try{
+      await window.SphereTransitStatus.paint();
+      const {surveyGate}=await import(new URL('portal-landing.js',base));
+      const state=window.SphereApp.getState();
+      if(current!==source||lib.world?.key!==key||!lib.matchesWorld(state))return null;
+      return surveyGate(gate,state,lib.installed(),{atlas:SphereAtlas,world:SphereWorld});
+    }catch(error){
+      if(lib.world?.key===key){
+        say('Surface crossing paused. '+error.message);
+        borderFailure=window.SphereTransitStatus.begin('Surface crossing paused',error.message,[
+          ['Retry crossing',retry],['Stay here',clearRecovery]
+        ],true);
+      }
+      return null;
+    }finally{status.end();opening=false;}
+  }
+  async function enterPassage(gate,reverse=false) {
+    if(!reverse){
+      const original=gate;
+      gate=await clearGate(gate,()=>enterPassage(original));
+      if(!gate)return false;
+    }
+    const point=reverse?gate.far:gate.near;
+    const pose={eastM:-1,northM:reverse?walking.tunnelEnd-.5:walking.tunnelStart+.5,
+      altitudeM:1.7,yaw:reverse?Math.PI:0,pitch:0,mode:'walk'};
+    return walkGround(point,gate,pose);
+  }
+  function crossedOnFoot(state,oldPosition,bearing=null) {
+    if(!walking || current?.frame.surfaceEntry?.passage)return false;
+    const q=norm(state.position),old=norm(oldPosition),delta=q.map((x,i)=>x-old[i]);
+    if(Math.hypot(...delta)<1e-15)return false;
+    if(lastMouth){
+      const {gate,side}=lastMouth, mouth=gate[side],d=q.map((x,i)=>(x-mouth.q[i])*state.radius*1000);
+      const distance=Math.hypot(...d),direction=dot(delta,mouth.forward)*(side==='far'?-1:1);
+      if(distance<4 && direction>0)return enterPassage(gate,side==='far');
+    }
+    const near=groundAt(old,state),far=groundAt(q,state);
+    if(near.id===far.id)return false;
+    // Locate the edge between the two footfalls; a long stride can enter off-centre.
+    let a=0,b=1;
+    for(let i=0;i<24;i++){
+      const mid=(a+b)/2,sample=norm(old.map((n,j)=>n+delta[j]*mid));
+      if(groundAt(sample,state).id===near.id)a=mid;else b=mid;
+    }
+    const mouth=norm(old.map((n,j)=>n+delta[j]*a));
+    const gate=walking.passageAt(mouth,bearing||delta,state.radius);
+    gate.near=station(gate.near,state,near);gate.far=station(gate.far,state);
+    return enterPassage(gate);
+  }
+  function servicePassage(source,eastM=-1) {
+    const lib=library(),item=lib?.entry('border-outfall');
+    if(!walking||!geography||!item?.edge||current?.id!=='border-outfall'||current.frame.contentWindow!==source)return null;
+    const core=window.SphereApp.getState();
+    const pose={eastM,northM:walking.tunnelStart,altitudeM:1.7,mode:'walk',yaw:0,pitch:0};
+    const from=geography.mainPose(core,item,pose,SphereAtlas,SphereWorld);
+    const gate=walking.passageAt(norm(from.position),from.forward,core.radius);
+    gate.near=station(gate.near,core,{id:item.id,name:item.name,pack:true});
+    gate.near.tint=lib.pack('infinite-meadow')?.overview?.albedo||gate.near.tint;
+    gate.far=station(gate.far,core);return gate;
+  }
+  async function leavePassage(source,side) {
+    if(!canCrossSurface(source)||current.id!=='border-outfall'||!['near','far'].includes(side))return false;
+    const pose=source.SphereBiome.pose();
+    const virtual=current.frame.surfaceEntry?.passage;
+    if(!virtual && side!=='far')return false;
+    let gate=virtual||servicePassage(source,pose.eastM);
+    if(gate && !virtual)gate=await clearGate(gate,()=>leavePassage(source,side));
+    if(!gate)return false;
+    const point=gate[side];
+    const exit={...point,forward:point.forward.map(x=>side==='near'?-x:x)};
+    const arrived=await walkGround(exit);
+    if(arrived)lastMouth={gate,side};
+    return arrived;
+  }
+
+  function manualMovement(state,previousPosition){
+    const lib=library();
+    if(!geography || !lib?.world || current || flying || opening || !window.SphereLoading?.ready || window.SphereJourney?.travel.active)return;
+    if(state.walkMode && previousPosition && crossedOnFoot(state,previousPosition))return;
+    const altitude=state.radius-Math.hypot(...state.position);
+    if(altitude>geography.leaveKm){suppressedPlot=null;return;}
+    if(altitude<0 || altitude>geography.enterKm)return;
+    const target=geography.footprint(state,lib,SphereAtlas,SphereWorld);
+    if(!target){suppressedPlot=null;return;}
+    if(target.id!==suppressedPlot)void enterRegion(target.id,state);
+  }
+  function observeDeparture(){
+    if(!geography || !current || current.pending || opening || flying || current.leaving){observedPlace=null;return;}
+    const api=current.frame.contentWindow?.SphereBiome,inspect=api?.inspect?.();
+    if(!inspect || !api.pose || inspect.scripted || inspect.held)return;
+    const pose=api.pose(),previous=observedPlace;
+    observedPlace={id:current.id,pose};
+    if(previous?.id!==current.id || (pose.altitudeM===previous.pose.altitudeM && pose.eastM===previous.pose.eastM && pose.northM===previous.pose.northM))return;
+    const lib=library(),item=lib.entry(current.id),s=window.SphereApp.getState();
+    if(!item || !lib.matchesWorld(s))return;
+    const climbed=pose.altitudeM>previous.pose.altitudeM && pose.altitudeM>=geography.leaveKm*1000;
+    // Outfall owns the apron and the Meadow handoff. Moving through its doorway
+    // or along the gallery must never trigger a second regional transfer.
+    // Level cruise has its own swept Meadow-to-Outfall handoff.
+    if(!climbed && (item.edge || inspect.levelCruising || pose.altitudeM>=geography.leaveKm*1000))return;
+    const worldPose=geography.mainPose(s,item,pose,SphereAtlas,SphereWorld);
+    if(pose.mode==='walk' && previous.pose.mode==='walk'){
+      const old=geography.mainPose(s,item,previous.pose,SphereAtlas,SphereWorld);
+      if(crossedOnFoot({...worldPose,walkMode:true},old.position))return;
+    }
+    if(!climbed){
+      const g=SphereWorld.coordinates(SphereMath.norm(worldPose.position),s);
+      if(SphereAtlas.plotAt(g.lat,g.lon)?.index===item.plot)return;
+    }
+    const id=item.id;
+    close({silent:true});suppressedPlot=id;setFlightView(worldPose);
+    say('Back in Sphere free flight above '+item.name+'.');
+    document.getElementById('viewport')?.focus({preventScroll:true});
+  }
   async function start() {
     const deadline = performance.now() + 300000;
     while (!library() && performance.now() < deadline) await sleep(200);
     await library()?.ready;
+    [geography,walking]=await Promise.all(['geographic-flight.js','surface-passages.js'].map(path=>import(new URL(path,base))));
+    window.setInterval(observeDeparture,200);
     // A biome removed while its scene is open closes the scene.
     window.addEventListener('sphere-biome-world-leaving', () => {
+      suppressedPlot=null;observedPlace=null;lastMouth=null;
       clearRecovery();
+      if (parked) { retire(parked); parked=null; }
       if (current) close({inTransit:true, silent:true});
       if (cloudLayer) cloudLayer.to(0, 200);
     });
-    window.addEventListener('sphere-biomes-changed', () => { if (current && !library().entry(current.id) && !flying) close(); });
+    window.addEventListener('sphere-biomes-changed', () => {
+      if(parked && !surfaceAddress()){
+        const departure=parked;parked=null;
+        if(current)close({inTransit:true,silent:true});
+        current=departure;current.shell.id='stageFrame';current.shell.inert=false;cover(true);window.addEventListener('resize',onResize);
+      }
+      if(current && !current.frame.surfaceEntry?.passage && !library().entry(current.id) && !flying)close();
+    });
     const saved = remembered();
     if (!saved) return;
     while (!window.SphereLoading?.ready && performance.now() < deadline) await sleep(250);
     if (current || opening || flying) return;
-    if (library().entry(saved.id)) await openScene(saved.id, 'restore');
+    if (window.SphereControls?.userSelected && !document.querySelector('[data-tab=camera].active')) return;
+    if(saved.passage && saved.pose && saved.id==='border-outfall'){
+      await walkGround(saved.passage.near,saved.passage,saved.pose);return;
+    }
+    if (library().entry(saved.id)) { window.SphereControls?.select('camera'); await openScene(saved.id, 'restore'); }
     else remember(null);
   }
 
-  window.SphereStageFrame = Object.freeze({ visit, open: (id, options) => openScene(id, 'open', options), close: () => { if (!flying) close(); }, leave,
+  window.SphereStageFrame = Object.freeze({ visit, manualMovement,
+    crossWalkingEdge(from,to,bearing){
+      const core=window.SphereApp.getState();
+      return crossedOnFoot({...core,position:to},from,bearing);
+    }, approachLabel(s){
+    const height=altitudeOf(s);
+    if(!geography || current || height<0 || height>Math.min(s.radius*.4,4000000) || !library()?.world)return '';
+    const item=geography.footprint(s,library(),SphereAtlas,SphereWorld);
+    return item?' · '+item.name+' below · '+(height>geography.enterKm?'descend below '+geography.enterKm+' km to enter':'fly into its landscape'):'';
+  }, surfaceAddress, servicePassage, canCrossSurface, crossSurface, walkGround, leavePassage,
+    savePassage(source,pose){const passage=current?.frame.surfaceEntry?.passage;
+      if(passage && current.frame.contentWindow===source && !current.pending && current.frame.surfaceEntry.active)
+        remember({schema:2,id:'border-outfall',passage,pose});},
+    showMain() {
+    if (opening || flying) { const message='A flight is in progress.'; say(message); window.SphereApp?.toast(message); return false; }
+    if (current) close();
+    return true;
+  }, open: (id, options) => openScene(id, 'open', options), close: () => { if (!flying && !parked) close(); }, leave,
     get lastFlight() { return lastFlight ? { ...lastFlight } : null; },
     get lastArrival() { return lastArrival ? { ...lastArrival } : null; },
     get current() { return current ? { id: current.id } : null; },

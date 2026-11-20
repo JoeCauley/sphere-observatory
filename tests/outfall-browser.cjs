@@ -25,7 +25,11 @@ async function main(){
   const row=()=>page.locator('#biomeLibraryList article').filter({has:page.getByRole('heading',{name:/^The Outfall /})});
   async function settled(){
     await page.waitForFunction(()=>SphereStageFrame.lastArrival?.to==='border-outfall'&&SphereStageFrame.lastArrival.status==='arrived'&&!SphereStageFrame.flying
-      &&document.querySelector('#stageFrame iframe')?.contentWindow?.SphereBiome?.inspect().scripted===false);
+      &&document.querySelector('#stageFrame iframe')?.contentWindow?.SphereBiome?.inspect().scripted===false).catch(async error=>{
+      const detail=await page.evaluate(()=>({arrival:SphereStageFrame.lastArrival,scene:SphereStageFrame.current,
+        status:document.getElementById('biomeLibraryStatus')?.textContent,travel:SphereJourney.travel.status,pack:document.querySelector('#stageFrame iframe')?.contentWindow?.SphereBiome?.inspect()}));
+      throw Error(error.message+' '+JSON.stringify(detail));
+    });
   }
   async function visit(){await row().getByRole('button',{name:'Visit',exact:true}).click();await settled();}
   async function leave(){await page.getByRole('button',{name:'Return to the Sphere',exact:true}).click();await page.waitForFunction(()=>!SphereStageFrame.current&&!SphereStageFrame.flying);}

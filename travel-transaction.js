@@ -5,11 +5,11 @@ const dependencies=['radius','starRadius','layoutVersion','collection','axisLat'
 const arrivalKeys=['position','forward','up','siteId','siteAnchor','siteRevision','siteElevation','terrainAnchor','walkMode','walkSurface','walkPosition','walkVelocity','shadeAttachment','projection','surfaceLock','geometryDetail','provinceRevision','provinceSeed','provinceAnchor','packAddress','routeShades','wreckage','spaceEnvironment','meadow'];
 const readinessKeys=['fov','quality','textureDetail','richMaterials','localShadows','weatherQuality','clouds','weatherStrength','placeScene','placeWeather','viewMode','antialias','shadowSamples','stationSamples','shineField'];
 const equal=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
-function create({getState,validate,prepare,commit,hold=()=>{},requiresHold=()=>true,ready=()=>true,releaseResources=()=>{},blocked=()=>false,publish=()=>{},clock=()=>performance.now(),getViewContext=()=>null,prepareViewContext=(_core,context)=>context,releaseViewContext=()=>{},verifyCommitReconciliation=null}){
+function create({getState,validate,prepare,commit,beforePrepare,hold=()=>{},requiresHold=()=>true,ready=()=>true,releaseResources=()=>{},blocked=()=>false,publish=()=>{},clock=()=>performance.now(),getViewContext=()=>null,prepareViewContext=(_core,context)=>context,releaseViewContext=()=>{},verifyCommitReconciliation=null}){
  if(typeof commit!=='function'||commit.constructor.name==='AsyncFunction')throw Object.assign(Error('The single arrival commit must be a statically synchronous host callback.'),{code:'ASYNC_COMMIT'});
  if(verifyCommitReconciliation!==null&&(typeof verifyCommitReconciliation!=='function'||verifyCommitReconciliation.constructor.name==='AsyncFunction'))throw Object.assign(Error('Commit reconciliation requires a statically synchronous host witness verifier.'),{code:'INVALID_RECONCILIATION'});
  let generation=0,active=null,tail=Promise.resolve(),lastRequest=null,status={state:'ready'},held=false,uncertainCommit=null;
- function report(state,detail={}){status={state,...detail};publish(status);}
+ function report(state,detail={}){status={state,...(active?.stageTrip && active.id===detail.id?{stageTrip:true}:{}),...detail};publish(status);}
  function cancel(reason='Travel cancelled.',invalidateQueued=true){if(invalidateQueued)generation++;if(active&&!active.committed){active.reason=reason;active.controller.abort();}}
  function checkWorld(){if(!active||active.committed)return;const current=getState(),key=dependencies.find(k=>!equal(active.initial[k],current[k]));if(key)cancel('Travel cancelled because '+key+' changed in World.',false);}
  function check(job){checkWorld();if(job.controller.signal.aborted||job.id!==generation)throw Object.assign(Error(job.reason||'A newer trip replaced this request.'),{name:'AbortError'});}
@@ -26,7 +26,7 @@ function create({getState,validate,prepare,commit,hold=()=>{},requiresHold=()=>t
   // a rollback nor a release can safely be inferred from this callback result.
   job.preparedViewContext=null;held=true;
   try{hold(true);}catch(_){}
-  const detail={id:job.id,title:spec.title,error:error.message,committed:true,commitOutcome:'UNCERTAIN',recoveryRequired:true,legacyAutosaveAllowed:false,held:true,elapsedMs:clock()-started};
+  const detail={id:job.id,stageTrip:spec.stageTrip===true,title:spec.title,error:error.message,committed:true,commitOutcome:'UNCERTAIN',recoveryRequired:true,legacyAutosaveAllowed:false,held:true,elapsedMs:clock()-started};
   status={state:'committed-uncertain',...detail};try{publish(status);}catch(_){}
   return {...status};
  }
@@ -42,21 +42,22 @@ function create({getState,validate,prepare,commit,hold=()=>{},requiresHold=()=>t
  function request(spec){
   spec={...spec,viewContext:structuredClone(spec.viewContext??null)};
   if(uncertainCommit)return Promise.resolve({...status});
-  lastRequest=spec;if(blocked()){report('failed',{title:spec.title,error:'Finish the current capture or loading operation before travelling.'});return Promise.resolve(status);}
+  lastRequest=spec;if(blocked()){report('failed',{stageTrip:spec.stageTrip===true,title:spec.title,error:'Finish the current capture or loading operation before travelling.'});return Promise.resolve(status);}
   cancel('A newer trip replaced this request.',false);const id=++generation;
   const run=async()=>{
    if(uncertainCommit)return {...status};
    if(id!==generation)return {state:'cancelled'};
-   const job={id,initial:structuredClone(getState()),initialViewContext:structuredClone(getViewContext()),controller:new AbortController(),committed:false,commitInvoked:false,preparedViewContext:null};active=job;const started=clock();
-   held=requiresHold(job.initial,spec);hold(held);report('preparing',{id,title:spec.title||'Selected destination',phase:held?'Preparing arrival · current support is held safely':'Preparing arrival'});
+   const job={id,stageTrip:spec.stageTrip===true,initial:structuredClone(getState()),initialViewContext:structuredClone(getViewContext()),controller:new AbortController(),committed:false,commitInvoked:false,preparedViewContext:null};active=job;const started=clock();
+   held=requiresHold(job.initial,spec);hold(held);report('preparing',{id,stageTrip:spec.stageTrip===true,title:spec.title||'Selected destination',phase:held?'Preparing arrival · current support is held safely':'Preparing arrival'});
    try{
+    if(beforePrepare){await beforePrepare();check(job);}
     releaseResources({viewContext:job.initialViewContext,prospective:false});check(job);const candidate=await spec.resolve(structuredClone(job.initial),job.controller.signal);check(job);
     if(!candidate)throw Error('The selected destination is unavailable.');const candidateViewContext=structuredClone(spec.viewContext??null);let next=merge(candidate,getState(),spec);
     // Reprepare when live settings affect readiness, without replacing them.
     for(;;){next=validate(next);next.playing=getState().playing;
      if(job.preparedViewContext!==null){await releaseViewContext(job.preparedViewContext,{committed:false});job.preparedViewContext=null;}
      job.preparedViewContext=await prepareViewContext(next,candidateViewContext,{signal:job.controller.signal,requestId:id,prospective:true});check(job);
-     await prepare(next,{signal:job.controller.signal,viewContext:job.preparedViewContext,onProgress:p=>{if(active===job)report('preparing',{id,title:spec.title,phase:p.phase});}});check(job);
+     await prepare(next,{signal:job.controller.signal,viewContext:job.preparedViewContext,onProgress:p=>{if(active===job && (status.phase!==p.phase || status.ready!==p.ready || status.total!==p.total))report('preparing',{id,title:spec.title,phase:p.phase,ready:p.ready,total:p.total});}});check(job);
      const latestRaw=merge(candidate,getState(),spec),latest=validate(latestRaw);latest.playing=getState().playing;
      if(readinessKeys.some(k=>!equal(next[k],latest[k]))||!ready(latest,{viewContext:job.preparedViewContext})){next=latestRaw;continue;}
      // Readiness and the synchronous commit use the same validated numbers.

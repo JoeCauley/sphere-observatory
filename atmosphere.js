@@ -27,21 +27,44 @@ function climatePixels(s,width=256,height=128){
 }
 class Atmosphere{
  constructor(gl){this.gl=gl;this.program=null;this.dustProgram=SphereGLProgram(gl,SphereShaders.vertex,SphereVolume.dust);this.composite=SphereGLProgram(gl,SphereShaders.vertex,SphereVolume.composite);this.texture=gl.createTexture();this.volumeLight=gl.createTexture();this.volumeTrans=gl.createTexture();this.fbo=gl.createFramebuffer();this.volumeFbo=gl.createFramebuffer();}
+ async prepare(s){
+  const h=s.radius-M.length(s.position);
+  if(s.layoutVersion!==2||!s.collection||s.atmosphere<=0||h<0)return;
+  const key=h<160?'program':'farProgram';
+  if(this[key])return;
+  this.preparing??=new Map();
+  if(!this.preparing.has(key)){
+   const source=key==='program'?SphereVolume.march:SphereVolume.far;
+   const job=SphereGLProgram.prepare(this.gl,SphereShaders.vertex,source,()=>this.disposed).then(value=>{
+    if(this.disposed||this[key])this.gl.deleteProgram(value.p);else this[key]=value;
+   }).finally(()=>this.preparing.delete(key));
+   this.preparing.set(key,job);
+  }
+  return this.preparing.get(key);
+ }
  buffer(texture,unit,width,height,filter){const gl=this.gl;gl.activeTexture(gl.TEXTURE0+unit);gl.bindTexture(gl.TEXTURE_2D,texture);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA16F,width,height,0,gl.RGBA,gl.HALF_FLOAT,null);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,filter);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,filter);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);}
  noise(){const gl=this.gl;if(!this.noiseTexture){const {data,size}=SphereVolume.noiseVolume();this.noiseTexture=gl.createTexture();gl.activeTexture(gl.TEXTURE10);gl.bindTexture(gl.TEXTURE_3D,this.noiseTexture);gl.texImage3D(gl.TEXTURE_3D,0,gl.RGBA8,size,size,size,0,gl.RGBA,gl.UNSIGNED_BYTE,data);gl.texParameteri(gl.TEXTURE_3D,gl.TEXTURE_MIN_FILTER,gl.LINEAR_MIPMAP_LINEAR);gl.texParameteri(gl.TEXTURE_3D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);for(const k of [gl.TEXTURE_WRAP_S,gl.TEXTURE_WRAP_T,gl.TEXTURE_WRAP_R])gl.texParameteri(gl.TEXTURE_3D,k,gl.REPEAT);gl.generateMipmap(gl.TEXTURE_3D);}else{gl.activeTexture(gl.TEXTURE10);gl.bindTexture(gl.TEXTURE_3D,this.noiseTexture);}}
  climate(s){const gl=this.gl,key=[s.layoutVersion,s.axisLat,s.axisLon,s.waistWidth,s.transitionKm,s.radius,s.era,s.biome].join('|');
   this.climateTexture??=gl.createTexture();gl.activeTexture(gl.TEXTURE7);gl.bindTexture(gl.TEXTURE_2D,this.climateTexture);
   if(this.climateKey!==key){const {data,width,height}=climatePixels(s);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA8,width,height,0,gl.RGBA,gl.UNSIGNED_BYTE,data);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR_MIPMAP_LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.REPEAT);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);gl.generateMipmap(gl.TEXTURE_2D);this.climateKey=key;}
  }
+ prepareTargets(s,width,height,exporting){
+  if(s.layoutVersion!==2||!s.collection||(s.cavityHaze<=0&&(s.atmosphere<=0||s.radius<M.length(s.position))))return;
+  const gl=this.gl;
+  const scale=Math.min(.5,Math.sqrt((exporting?1920*1080:1280*720)/(width*height))),vw=Math.max(1,Math.ceil(width*scale)),vh=Math.max(1,Math.ceil(height*scale));
+  if(this.width===width && this.height===height && this.vw===vw && this.vh===vh)return;
+  if(this.width!==width||this.height!==height){gl.bindFramebuffer(gl.FRAMEBUFFER,this.fbo);this.buffer(this.texture,8,width,height,gl.LINEAR);gl.framebufferTexture2D(gl.FRAMEBUFFER,gl.COLOR_ATTACHMENT0,gl.TEXTURE_2D,this.texture,0);if(gl.checkFramebufferStatus(gl.FRAMEBUFFER)!==gl.FRAMEBUFFER_COMPLETE)throw Error('Atmosphere composite buffer unavailable');this.width=width;this.height=height;}
+  if(this.vw!==vw||this.vh!==vh){gl.bindFramebuffer(gl.FRAMEBUFFER,this.volumeFbo);this.buffer(this.volumeLight,11,vw,vh,gl.NEAREST);this.buffer(this.volumeTrans,12,vw,vh,gl.NEAREST);gl.framebufferTexture2D(gl.FRAMEBUFFER,gl.COLOR_ATTACHMENT0,gl.TEXTURE_2D,this.volumeLight,0);gl.framebufferTexture2D(gl.FRAMEBUFFER,gl.COLOR_ATTACHMENT1,gl.TEXTURE_2D,this.volumeTrans,0);gl.drawBuffers([gl.COLOR_ATTACHMENT0,gl.COLOR_ATTACHMENT1]);if(gl.checkFramebufferStatus(gl.FRAMEBUFFER)!==gl.FRAMEBUFFER_COMPLETE)throw Error('Atmosphere volume buffer unavailable');this.vw=vw;this.vh=vh;}
+  gl.bindFramebuffer(gl.FRAMEBUFFER,null);gl.activeTexture(gl.TEXTURE0);return true;
+ }
  draw(s,renderer,width,height){
   const altitude=s.radius-M.length(s.position);if(s.layoutVersion!==2||!s.collection||(s.cavityHaze<=0&&(s.atmosphere<=0||altitude<0)))return renderer.lightTexture;
   const gl=this.gl,n=M.norm(s.position),wound=SphereWorld.woundMetric(n,s);let rim=null,amount=s.atmosphere;
   if(wound.index>=0&&Math.abs(wound.km)<3000&&altitude>=0&&altitude<160){const key=[s.position,s.radius,s.era,s.multipleWounds].join('|');if(this.rimKey!==key){const near=SphereWorld.nearestRim(n,s);this.rim={...SphereWorld.rimFrame(s,near.index,near.t),index:near.index};this.rimKey=key;}rim=this.rim;}
   const quality=s.weatherQuality??1,exporting=renderer.renderInfo.exportFrame,steps=exporting?Math.max(112,[48,80,128][quality]):[48,80,128][quality];
-  const scale=Math.min(.5,Math.sqrt((exporting?1920*1080:1280*720)/(width*height))),vw=Math.max(1,Math.ceil(width*scale)),vh=Math.max(1,Math.ceil(height*scale));
+  this.prepareTargets(s,width,height,exporting);const vw=this.vw,vh=this.vh;
   const air=amount>0&&altitude>=0,local=air&&altitude<160;if(air){if(local)this.program??=SphereGLProgram(gl,SphereShaders.vertex,SphereVolume.march);else this.farProgram??=SphereGLProgram(gl,SphereShaders.vertex,SphereVolume.far);this.noise();this.climate(s);}const program=air?(local?this.program:this.farProgram):this.dustProgram,u=program.u;
-  gl.bindFramebuffer(gl.FRAMEBUFFER,this.fbo);if(this.width!==width||this.height!==height){this.buffer(this.texture,8,width,height,gl.LINEAR);gl.framebufferTexture2D(gl.FRAMEBUFFER,gl.COLOR_ATTACHMENT0,gl.TEXTURE_2D,this.texture,0);if(gl.checkFramebufferStatus(gl.FRAMEBUFFER)!==gl.FRAMEBUFFER_COMPLETE)throw Error('Atmosphere composite buffer unavailable');this.width=width;this.height=height;}
-  gl.bindFramebuffer(gl.FRAMEBUFFER,this.volumeFbo);if(this.vw!==vw||this.vh!==vh){this.buffer(this.volumeLight,11,vw,vh,gl.NEAREST);this.buffer(this.volumeTrans,12,vw,vh,gl.NEAREST);gl.framebufferTexture2D(gl.FRAMEBUFFER,gl.COLOR_ATTACHMENT0,gl.TEXTURE_2D,this.volumeLight,0);gl.framebufferTexture2D(gl.FRAMEBUFFER,gl.COLOR_ATTACHMENT1,gl.TEXTURE_2D,this.volumeTrans,0);gl.drawBuffers([gl.COLOR_ATTACHMENT0,gl.COLOR_ATTACHMENT1]);if(gl.checkFramebufferStatus(gl.FRAMEBUFFER)!==gl.FRAMEBUFFER_COMPLETE)throw Error('Atmosphere volume buffer unavailable');this.vw=vw;this.vh=vh;}
+  gl.bindFramebuffer(gl.FRAMEBUFFER,this.volumeFbo);
   gl.viewport(0,0,vw,vh);gl.useProgram(program.p);gl.activeTexture(gl.TEXTURE6);gl.bindTexture(gl.TEXTURE_2D,renderer.depthTexture);gl.uniform1i(u.sceneDepth,6);gl.uniform1i(u.densityVolume,10);
   const b=M.basis(s.forward,s.up),id=SphereBiomes.region(n,s),p=profiles[id],rgb=SphereBiomes.catalog[id].haze,f=(k,v)=>gl.uniform1f(u[k],v),v=(k,a)=>gl.uniform3fv(u[k],a);
   gl.uniform2f(u.volumeResolution,vw,vh);
@@ -66,7 +89,7 @@ class Atmosphere{
   for(const [unit,texture,name] of [[1,renderer.lightTexture,'source'],[6,renderer.depthTexture,'sceneDepth'],[11,this.volumeLight,'volumeLight'],[12,this.volumeTrans,'volumeTrans']]){gl.activeTexture(gl.TEXTURE0+unit);gl.bindTexture(gl.TEXTURE_2D,texture);gl.uniform1i(c[name],unit);}gl.uniform2f(c.volumeSize,vw,vh);gl.drawArrays(gl.TRIANGLES,0,3);gl.activeTexture(gl.TEXTURE0);
   renderer.renderInfo.weather=air?(local?p.name:'Layered distant weather'):'Cavity dust';renderer.renderInfo.volume={steps,width:vw,height:vh,depthAware:true,cavityHaze:s.cavityHaze??.28,weatherLayers:air?3:0};return this.texture;
  }
- dispose(){const gl=this.gl;for(const t of [this.texture,this.volumeLight,this.volumeTrans,this.noiseTexture,this.climateTexture])if(t)gl.deleteTexture(t);gl.deleteFramebuffer(this.fbo);gl.deleteFramebuffer(this.volumeFbo);if(this.program)gl.deleteProgram(this.program.p);if(this.farProgram)gl.deleteProgram(this.farProgram.p);gl.deleteProgram(this.dustProgram.p);gl.deleteProgram(this.composite.p);}
+ dispose(){this.disposed=true;const gl=this.gl;for(const t of [this.texture,this.volumeLight,this.volumeTrans,this.noiseTexture,this.climateTexture])if(t)gl.deleteTexture(t);gl.deleteFramebuffer(this.fbo);gl.deleteFramebuffer(this.volumeFbo);if(this.program)gl.deleteProgram(this.program.p);if(this.farProgram)gl.deleteProgram(this.farProgram.p);gl.deleteProgram(this.dustProgram.p);gl.deleteProgram(this.composite.p);}
 }
 window.SphereAtmosphere=Atmosphere;window.SphereWeatherProfiles=profiles;window.SphereWeatherClimate={pixels:climatePixels,coverage:regionalCoverage};
 })();

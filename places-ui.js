@@ -23,13 +23,28 @@ function populate(keep=false){const category=$('placeCategory').value,previous=$
 function describe(){const s=A.getState(),id=$('placeDestination').value,entry=P.catalogue(s).find(p=>p.id===id),previous=$('placeAltitude').value;
  $('placeDescription').textContent=entry?.description||'';const choices=P.arrivals(s,id);$('placeAltitude').replaceChildren(...choices.map(a=>new Option(a.label,a.id)));if(choices.some(a=>a.id===previous))$('placeAltitude').value=previous;else if(choices.some(a=>a.id==='ground'))$('placeAltitude').value='ground';availability();}
 function availability(){const s=A.getState(),id=$('placeDestination').value,height=$('placeAltitude').value,result=P.availability(s,id,height),entry=P.catalogue(s).find(p=>p.id===id),arrival=P.arrivals(s,id).find(a=>a.id===height);
- $('placeAvailability').textContent=result.reason;$('placeWorld').hidden=result.available;$('visitPlace').disabled=!result.available||A.busy;$('placeTargetSummary').textContent=entry&&arrival?entry.name+' · '+arrival.label:'';}
+ $('placeAvailability').textContent=result.reason;$('placeWorld').hidden=result.available;$('visitPlace').disabled=!result.available||(A.busy&&!(window.SphereStageFrame?.current&&window.SphereLoading?.active));$('placeTargetSummary').textContent=entry&&arrival?entry.name+' · '+arrival.label:'';}
 $('placeCategory').onchange=()=>populate();$('placeDestination').onchange=describe;$('placeAltitude').onchange=availability;
 $('placeWorld').onclick=()=>document.querySelector('[data-tab=scene]').click();
-function visit(){const id=$('placeDestination').value,arrival=$('placeAltitude').value,title=$('placeTargetSummary').textContent;if(SpherePackLibrary.get(id)){try{SpherePackLibrary.open(id,arrival);}catch(e){$('placeVisitStatus').textContent=e.message;}return;}return J.travel.request({type:'place',id,arrival,title,overrides:id==='watershed'&&arrival!=='ground'?['fov']:[],resolve:(s,signal)=>P.destination(s,id,arrival,undefined,undefined,{signal})});}
+async function visit(){const id=$('placeDestination').value,arrival=$('placeAltitude').value,title=$('placeTargetSummary').textContent;
+ if(window.SphereStageFrame?.showMain()===false)return;
+ if(A.busy&&window.SphereLoading?.active){$('placeVisitStatus').textContent='Preparing the Sphere view.';await SphereLoading.pending;if(A.busy)return;}
+ if(SpherePackLibrary.get(id)){try{SpherePackLibrary.open(id,arrival);}catch(e){$('placeVisitStatus').textContent=e.message;}return;}return J.travel.request({type:'place',id,arrival,title,overrides:id==='watershed'&&arrival!=='ground'?['fov']:[],resolve:(s,signal)=>P.destination(s,id,arrival,undefined,undefined,{signal})});}
+// A coordinate or lens change made in Explore applies to the visible Main view.
+for(const type of ['input','change','click']){
+ exact.addEventListener(type,e=>{
+   if(!e.target.closest('input,select,button') || !window.SphereStageFrame?.current)return;
+   if(!SphereStageFrame.showMain()){e.preventDefault();e.stopImmediatePropagation();}
+ },true);
+}
 $('visitPlace').onclick=visit;$('cancelTravel').onclick=()=>{J.travel.cancel();$('visitPlace').focus();};$('retryTravel').onclick=()=>J.travel.retry();
-function travelStatus({detail:s}){$('cancelTravel').hidden=s.state!=='preparing';$('retryTravel').hidden=!['failed','cancelled'].includes(s.state);$('placeVisitStatus').textContent=s.state==='preparing'?(s.title||'Destination')+' — '+s.phase:s.state==='arrived'?'Arrived at '+J.current().title+'.':s.error||'Ready.';if(s.recoveryError)$('placeVisitStatus').textContent+=' Current view remains held: '+s.recoveryError+'. Retry to recover.';if(s.state==='failed')$('retryTravel').focus({preventScroll:true});availability();}
+function travelStatus({detail:s}){$('cancelTravel').hidden=s.state!=='preparing';$('retryTravel').hidden=!['failed','cancelled'].includes(s.state);$('placeVisitStatus').textContent=s.state==='preparing'?(s.title||'Destination')+' — '+s.phase:s.state==='arrived'?'Arrived at '+J.current().title+'.':s.error||'Ready.';if(s.recoveryError)$('placeVisitStatus').textContent+=' Current view remains held: '+s.recoveryError+'. Retry to recover.';if(s.state==='failed')$('retryTravel').focus({preventScroll:true});if(s.state!=='preparing')availability();}
 window.addEventListener('sphere-travel-status',travelStatus);
+window.addEventListener('sphere-visible-biome',e=>{
+ if(e.detail)$('placeVisitStatus').textContent='Exploring '+e.detail+'. Visit opens the selected destination.';
+ else if($('placeVisitStatus').textContent.startsWith('Exploring '))$('placeVisitStatus').textContent='Ready.';
+ availability();
+});
 $('speedMode').onchange=()=>{const s=A.getState();s.autoSpeed=$('speedMode').value==='auto';SphereTravel.reset();A.setState(s);};
 // The mark is a world address. Its screen projection is disposable.
 let pointer=null,hover=null,press=null,picked=null,markedWorld=null;

@@ -21,6 +21,8 @@ const shots = [
   {file:'city-tower',id:'sideways-city',pose:camera(308,-555,19,-.52,.24)},
   {file:'sideways-city',id:'sideways-city',pose:camera(-21,-109,44,.43,-.06)},
   {file:'outfall-approach',id:'border-outfall',pose:camera(-7,-24,1.7,.27,.15,'walk')},
+  {file:'outfall-wall',id:'border-outfall',pose:camera(-12000,-4,1.7,1.49,.04,'walk')},
+  {file:'outfall-cross-gallery',id:'border-outfall',pose:camera(1004,38,1.7,1.55,.02,'walk')},
   {file:'outfall-gallery',id:'border-outfall',pose:camera(-1.1,7.9,1.7,.30,.025,'walk')}
 ];
 async function saved(pack, shot) {
@@ -87,6 +89,7 @@ async function main() {
         if (errors.length) throw Error(errors.join('\n'));
         const observed=await page.evaluate(() => {
           const api=window.SphereBiome, gl=document.querySelector('#world').getContext('webgl2');
+          if(!gl || gl.isContextLost())throw Error('The scene lost its graphics context before capture.');
           const dbg=gl.getExtension('WEBGL_debug_renderer_info');
           return {pose:api.pose(),browserViewport:[innerWidth,innerHeight],drawingBuffer:[gl.drawingBufferWidth,gl.drawingBufferHeight],
             visible:document.visibilityState==='visible',focused:document.hasFocus(),gpu:dbg&&gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL)};

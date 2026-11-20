@@ -39,8 +39,8 @@ function applyUI(ui){for(const id of preferences){const el=$(id),value=ui.values
   else{if(typeof value!=='string'||!Number.isFinite(Number(value))||(el.min!==''&&Number(value)<Number(el.min))||(el.max!==''&&Number(value)>Number(el.max)))continue;el.value=value;}
   el.dispatchEvent(new Event('change',{bubbles:true}));
  }
- const tab=[...document.querySelectorAll('[data-tab]')].find(el=>el.dataset.tab===ui.tab);tab?.click();
- if(typeof ui.panelHidden==='boolean')document.body.classList.toggle('panel-hidden',ui.panelHidden);
+ if(!root.SphereControls.userSelected)root.SphereControls.select(ui.tab);
+ if(!root.SphereControls.userSelected&&typeof ui.panelHidden==='boolean')document.body.classList.toggle('panel-hidden',ui.panelHidden);
  for(const el of document.querySelectorAll('.tab-panel details')){const open=ui.details?.[detailKey(el)];if(typeof open==='boolean')el.open=open;}
 }
 function flush(){clearTimeout(timer);timer=null;if(!ready||(A.busy&&!root.SphereLoading?.active)||root.spherePreviewSuspended||root.SphereJourney?.travel?.legacyAutosaveAllowed===false)return false;

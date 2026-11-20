@@ -4,8 +4,7 @@ import {ZonePreparation} from '../../runtime/v1/preparation.js';
 import {createFacility,DATUM_M} from './facility.js';
 import {initialState,saveState,parseState,address,interact,canInteract,approachPose,boundedPitch} from './model.js';
 import {IndustryRenderer} from './renderer.js';
-import {locate} from './pod.js';
-import {plant} from './plant.js';
+import {walkingContent} from './plant.js';
 import {transfer,transferPlace,barAt} from './transfer.js';
 import {roofAbove, escapeFromCover} from './ascent.js';
 import {createVeil,veilAt} from '../../kit/veil.js';
@@ -23,8 +22,7 @@ export function mountPack(host){
  let state=initialState(),bookmark=structuredClone(state),saveRejected=null;const facility=createFacility(state.config),keys=new Set(),motion={speedMps:0};
  // 1.4.1: the ground is the water works and, around it, the pods (pod.js, plant.js). What stops a walker is the water works' own
  // account inside its hex and, in any other hex of a pod, that plant's list of solids. On the boulevards between districts the ground is open.
- const plants=new Map(),plantAt=hex=>{let made=plants.get(hex.id);if(!made){if(plants.size>48)plants.clear();plants.set(hex.id,made=plant(hex));}return made;};
- const content={support:(e,n,foot)=>facility.support(e,n,foot),blocked(e,n,eye,walking){if(facility.blocked(e,n,eye,walking))return true;const at=locate(e,n).hex;return !!at&&!at.waterWorks&&plantAt(at).blocked(...at.toLocal(e,n),eye-DATUM_M);}};
+ const content=walkingContent(facility),plantAt=content.plantAt;
  host.storage.useValidator(s=>saveState(parseState(s)));
  try{const saved=host.storage.read();if(saved){state=parseState(saved.state);bookmark=parseState(saved.bookmark);}
   else {
@@ -37,6 +35,11 @@ export function mountPack(host){
   }
  }catch(e){saveRejected=e.message;}
  const entryURL=new URL(location.href),arrival=entryURL.searchParams.get('arrival');if(arrival==='flight')state.pose=approachPose(facility);else if(arrival==='ground')state.pose={...facility.arrival};
+ const geographic=window.frameElement?.surfaceEntry;
+ if(geographic?.geographic){const p={...geographic.pose,altitudeM:geographic.pose.altitudeM+DATUM_M};const h=content.support(p.eastM,p.northM,p.altitudeM-EYE_M)+EYE_M;
+  p.altitudeM=p.mode==='walk'?h:Math.max(p.altitudeM,h);
+  if(content.blocked(p.eastM,p.northM,p.altitudeM,p.mode==='walk')){p.mode='flight';while(content.blocked(p.eastM,p.northM,p.altitudeM,false))p.altitudeM+=2;}
+  state.pose=p;}
  // Arrival is a one-time visit command. Reload must continue the checkpoint.
  if(arrival){entryURL.searchParams.delete('arrival');history.replaceState(null,'',entryURL.href);}
  const preparation=new ZonePreparation(new URL('prepare-worker.js',import.meta.url),{build:state.config,maxResident:4,maxPacketBytes:2097152});
@@ -59,7 +62,7 @@ export function mountPack(host){
  const metrics=[],events=[],trace=[],measurements=[],glErrors=[];
  const event=(type,detail={})=>{events.push({type,frame,pose:{...state.pose},...detail});if(events.length>512)events.shift();};
  const status=text=>$('status').textContent=text;
- const persist=()=>{if(saveRejected)throw Error('The previous save needs an explicit repair or import: '+saveRejected);host.storage.write({state:saveState(kept()),bookmark:saveState(bookmark)});};
+ const persist=()=>{if(geographic?.active===false)return;if(saveRejected)throw Error('The previous save needs an explicit repair or import: '+saveRejected);host.storage.write({state:saveState(kept()),bookmark:saveState(bookmark)});};
  // A rejected save is never replaced on exit. A portable new save remains possible.
  function snapshot(){if(saveRejected)throw Error('Previous Industry save rejected: '+saveRejected);return {state:saveState(kept()),bookmark:saveState(bookmark)};}
  const clearKeys=()=>{keys.clear();drag=null;motion.speedMps=0;};

@@ -85,8 +85,8 @@
   "assets": [
     {
       "path": "app.js",
-      "bytes": 39186,
-      "sha256": "8f86e96ad04eba3356bc7cef1adec8179772530a78266aeadab59457909331ed"
+      "bytes": 44105,
+      "sha256": "fa8fef29a75e4895a0fb3db2abc2e649dfcaf31bc59ad490e80e75fda85a5e51"
     },
     {
       "path": "coordinates.js",
@@ -95,8 +95,8 @@
     },
     {
       "path": "entry.js",
-      "bytes": 877,
-      "sha256": "c828ada1809bbb256934700b963a6a01c64236ae73dd2002989997ec4fdbc228"
+      "bytes": 1116,
+      "sha256": "cdcb56527dc3b02f1a0adae24fce7c2076341d26d697ec2e396fb82c0638bc31"
     },
     {
       "path": "grass-allocation.js",
@@ -115,8 +115,8 @@
     },
     {
       "path": "grass-shaders.js",
-      "bytes": 11160,
-      "sha256": "0e149323a0f5b5cd22ddd8a4b71d8905291a8188226f826a078607ce68ba833d"
+      "bytes": 11229,
+      "sha256": "5f3ae3a590561e4c783a98806342f0cf22517ce974cd9570e70a2d54aa6d78f2"
     },
     {
       "path": "grass-stage.js",
@@ -125,13 +125,13 @@
     },
     {
       "path": "index.html",
-      "bytes": 7502,
-      "sha256": "9e3ba732ab4200958ab3cc546ccbc16c7465d695b912375f10cc7639738ab67a"
+      "bytes": 7700,
+      "sha256": "baf227837f21c636b4456aec0926791bbb886e94bb259874f6f28b81af9884f7"
     },
     {
       "path": "landscape.js",
-      "bytes": 2657,
-      "sha256": "e298f775c45a24ed78ef63283bea5a535db01b6ad97c0926bc6588463868c587"
+      "bytes": 3381,
+      "sha256": "994a031558a834e560ccf9fa4acb6915b5779e9bd82de814715085b8acc4eb84"
     },
     {
       "path": "level-cruise.js",
@@ -165,8 +165,8 @@
     },
     {
       "path": "renderer.js",
-      "bytes": 28271,
-      "sha256": "31aef7070eb2a7946634a9c58eaa042ae545c2c1c68e7af2bab523ba4e82a337"
+      "bytes": 29718,
+      "sha256": "45c93d8d14fedd0b0f444d4e7776b5d88e325d7e8a771393bcb58c461c14f86b"
     },
     {
       "path": "style.css",
@@ -202,6 +202,41 @@
       "path": "../../kit/flight.js",
       "bytes": 2538,
       "sha256": "0641ba80ed17bef2d1565a39aabba5d227f500f0e90cce6fad921947275b721b"
+    },
+    {
+      "path": "../../kit/surface-route.js",
+      "bytes": 2890,
+      "sha256": "3625e2a17240382017d5e8fe8bdb6013d385c96e83301ba304fed310aa0d4f2e"
+    },
+    {
+      "path": "../../kit/meadow-border.js",
+      "bytes": 476,
+      "sha256": "25b8199e58f92e776b3f3c997e550a1687a585c76b547deded72bd956907ca6e"
+    },
+    {
+      "path": "../../border-outfall/1.0.0/render.js",
+      "bytes": 9682,
+      "sha256": "07ab8dd1f8dfb18d5c0e64cfef8b9e3c0fbb18fdcbf0f8e1dab55b4899946cba"
+    },
+    {
+      "path": "../../border-outfall/1.0.0/geometry.js",
+      "bytes": 4194,
+      "sha256": "71cd1467dd2209c4d59e44e18fe2b0b56c39f2690c9c024cdd5b6c19d4937aee"
+    },
+    {
+      "path": "../../border-outfall/1.0.0/border.js",
+      "bytes": 5256,
+      "sha256": "12de04307a2d5bfbd8d27cfd8c54202d40e452d25ca243ca40c595b5a2cce79a"
+    },
+    {
+      "path": "../../border-outfall/1.0.0/model.js",
+      "bytes": 1416,
+      "sha256": "a32bcadb4a41e7f2f69d88c6ea0bec2885e40cfa27028d858c00414aaf80e29f"
+    },
+    {
+      "path": "../../border-outfall/1.0.0/shell-mesh.js",
+      "bytes": 2195,
+      "sha256": "a46ac53044f047003d6a5d55ff8132728cb5f0b75feb88b426d0b021a20dbd09"
     }
   ]
 }

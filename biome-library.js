@@ -305,9 +305,9 @@
     if (!item) throw Error('That biome is not installed in this world.');
     signal?.throwIfAborted();
     const travel = window.SphereJourney?.travel;
-    let arrived = false, cancelOwnRequest;
+    let cancelOwnRequest;
     try {
-      const result = await travel?.request({ type: 'place', id: 'biome-' + item.id, title: item.name, resolve: core => {
+      const result = await travel?.request({ type: 'place', id: 'biome-' + item.id, title: item.name, stageTrip:true, resolve: core => {
         if (signal) {
           signal.throwIfAborted();
           const requestId = travel.status.id;
@@ -317,11 +317,11 @@
         if (world?.key !== origin || !matchesWorld(core)) throw Error('The selected world changed.');
         return overviewPose(item, core);
       } });
-      arrived = result?.state === 'arrived';
-    } catch {} finally { if (cancelOwnRequest) signal.removeEventListener('abort', cancelOwnRequest); }
+      if(travel && result?.state!=='arrived')throw Error(result?.error||'The Sphere approach was interrupted.');
+    } finally { if (cancelOwnRequest) signal.removeEventListener('abort', cancelOwnRequest); }
     signal?.throwIfAborted();   // an expired arrival must never move Main during a later retry
     if (world?.key !== origin || !matchesWorld(window.SphereApp.getState())) throw Error('The selected world changed.');
-    if (!arrived) window.SphereApp.setState(overviewPose(item, window.SphereApp.getState()));
+    if (!travel) window.SphereApp.setState(overviewPose(item, window.SphereApp.getState()));
     return window.SphereApp.getState();
   }
 
@@ -345,7 +345,7 @@
     };
     for (const item of installed) if (match(item.name)) row(item.name + ' · ' + item.version, 'Installed ' + describe(item) + '.', [
       button('Visit', 'secondary', () => window.SphereStageFrame?.visit(item.id)),
-      button('View from above', 'quiet', () => attempt(() => travelTo(item.id))),
+      button('View from above', 'quiet', () => attempt(() => { if (window.SphereStageFrame?.showMain() !== false) return travelTo(item.id); })),
       button('Remove', 'quiet', () => attempt(() => remove(item.id)))]);
     for (const p of packs) if (!ids.has(p.id) && match(p.name)) row(p.name + ' · ' + p.version, p.description ?? '', [
       button('Install', 'secondary', () => attempt(() => install(p.id)))]);
@@ -366,7 +366,7 @@
     window.addEventListener('sphere-state-synced',sync);
     await selectWorld();
     panel = document.createElement('section'); panel.id = 'biomeLibrary';
-    panel.innerHTML = '<h3>Biomes</h3><p class="micro">Install a biome and the Sphere gives it a place. Visit walks you into it; Fly to, inside a biome, crosses to another.</p><input id="biomeLibraryFilter" type="search" placeholder="Filter biomes" aria-label="Filter biomes" hidden><p id="biomeLibraryStatus" class="micro" role="status" aria-live="polite"></p><div id="biomeLibraryList"></div>';
+    panel.innerHTML = '<h3>Walkable biome packs</h3><p class="micro">Install a pack to place it on the atlas. Descend below 20 km over its plot or service opening to fly in. Visit takes you straight there.</p><input id="biomeLibraryFilter" type="search" placeholder="Filter biomes" aria-label="Filter biomes" hidden><p id="biomeLibraryStatus" class="micro" role="status" aria-live="polite"></p><div id="biomeLibraryList"></div>';
     const style = document.createElement('style');
     style.textContent = '#biomeLibrary{padding:14px 0;border-top:1px solid #ffffff22;border-bottom:1px solid #ffffff22;margin:16px 0}#biomeLibrary h4{margin:12px 0 4px}#biomeLibrary button{margin:6px 6px 2px 0}#biomeLibraryList{max-height:60vh;overflow:auto}#biomeLibraryFilter{width:100%;margin:6px 0}';
     document.head.append(style);

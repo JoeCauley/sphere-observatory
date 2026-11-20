@@ -28,7 +28,7 @@ void main(){
  float distanceM=length(at);
  float original=1.-(uWide>.5?coverBlend(at,22.,32.):smoothstep(22.,32.,distanceM));
  alpha=(uExtension>.5?(1.-original)*(1.-coverBlend(at,24.,64.)):original)*(1.-smoothstep(85.,140.,uClearance));
- if(alpha<.001){gl_Position=vec4(2.,2.,2.,1.);color=vec3(0);normal=view=vec3(0,1,0);root=at;leafHeight=0.;return;}
+ alpha*=meadowCover(at);if(alpha<.001){gl_Position=vec4(2.,2.,2.,1.);color=vec3(0);normal=view=vec3(0,1,0);root=at;leafHeight=0.;return;}
  float b=aBlade.z,angle=coverRandom(seed+5u)*6.2831853+b*2.399963;
  float flatten=uDisturbance.z>0.?mix(1.,.14,1.-smoothstep(2.3,3.,length(at-uDisturbance.xy))):1.;
  float height=mix(uProportions.x,uProportions.y,coverRandom(seed+3u))*flatten*(.66+.34*pow(sin(b*3.7+1.),2.));
@@ -68,7 +68,7 @@ void main(){
  uint seed=coverHash(cell.x^coverHash(cell.y)^coverHash(high.x+713u)^coverHash(high.y));
  vec2 at=uOrigin+(vec2(local)+vec2(coverRandom(seed+1u),coverRandom(seed+2u))*.7+.15)*uPitch;
  float dist=length(at);alpha=smoothstep(uFade.x,uFade.y,dist)*(1.-smoothstep(uFade.z,uFade.w,dist))*(1.-smoothstep(8.,36.,uClearance));
- if(alpha<.001){gl_Position=vec4(2.,2.,2.,1.);uv=root=vec2(0);normal=view=vec3(0,1,0);leafHeight=0.;return;}
+ alpha*=meadowCover(at);if(alpha<.001){gl_Position=vec4(2.,2.,2.,1.);uv=root=vec2(0);normal=view=vec3(0,1,0);leafHeight=0.;return;}
  // Crossed, world-oriented cards avoid camera-facing rows across the hills.
  vec2 q=QUAD[gl_VertexID%6];float angle=coverRandom(seed+8u)*6.2831853+float(gl_VertexID/6)*1.5707963;
  vec2 side=vec2(cos(angle),sin(angle)),toward=vec2(-side.y,side.x);
@@ -132,7 +132,7 @@ void main(){
  float start=uLevel==0?0.:(uLevel==1?weights.x:weights.x+weights.y);
  float altitude=1.-smoothstep(55.,120.,uClearance);
  alpha=weights[uLevel]*altitude;fadeWindow=vec2(start,start+weights[uLevel])*altitude;
- if(alpha<.001){gl_Position=vec4(2.,2.,2.,1.);color=vec3(0);normal=view=vec3(0,1,0);root=at;leafHeight=0.;return;}
+ alpha*=meadowCover(at);if(alpha<.001){gl_Position=vec4(2.,2.,2.,1.);color=vec3(0);normal=view=vec3(0,1,0);root=at;leafHeight=0.;return;}
  vec2 q=TRI[gl_VertexID%3];float y=q.y,angle=coverRandom(seed+5u)*6.2831853;
  vec2 side=vec2(cos(angle),sin(angle)),bend=vec2(cos(angle+.9),sin(angle+.9));
  float height=uHeight*(.54+.46*coverRandom(seed+3u)),width=(.095+.09*coverRandom(seed+4u))*widthScale*uFullness;

@@ -73,13 +73,28 @@ M.validate=input=>{
 function frame(s){const axis=M.axis(s.axisLat??defaults.axisLat,s.axisLon??defaults.axisLon),right=M.basis(axis).r;return {axis,right,up:M.cross(axis,right)};}
 function coordinates(q,s){const f=frame(s);return {lat:Math.asin(M.clamp(M.dot(q,f.axis),-1,1)),lon:Math.atan2(M.dot(q,f.up),M.dot(q,f.right))};}
 function direction(lat,lon,s){const f=frame(s);return M.add(M.mul(f.axis,Math.sin(lat)),M.add(M.mul(f.right,Math.cos(lat)*Math.cos(lon)),M.mul(f.up,Math.cos(lat)*Math.sin(lon))));}
+function habitatU(lon,row){return lon/TAU+.5+.006*Math.sin(lon*7+row*1.7)+.002*Math.sin(lon*19+row*2.3);}
+let meridians;
+function habitatMeridians(){
+ if(meridians)return meridians;
+ const result=[];
+ for(let row=0;row<3;row++)for(const boundary of fractions.slice(0,-1)){
+  // The warped longitude is monotonic. Include the wrapped zero boundary.
+  let lo=-Math.PI,hi=Math.PI,target=boundary;
+  if(target<habitatU(lo,row))target++;
+  if(target>habitatU(hi,row))target--;
+  for(let j=0;j<55;j++){const mid=(lo+hi)/2;if(habitatU(mid,row)<target)lo=mid;else hi=mid;}
+  result.push((lo+hi)/2);
+ }
+ return meridians=Object.freeze(result);
+}
 function province(row,u,s){u=((u%1)+1)%1;let cell=9;for(let i=0;i<10;i++)if(u<fractions[i+1]){cell=i;break;}let id=provinces[row][cell];if(id===4&&s.era==='before')id=5;return {id,cell};}
 function woundMetric(q,s){let metric=Infinity,index=-1;if(s.era!=='after'||!s.multipleWounds)return {metric,index,km:Infinity};C.wounds.forEach((w,i)=>{const d=C.woundDistance(q,w);if(d<metric){metric=d;index=i;}});return {metric,index,km:(metric-1)*C.wounds[index].width*s.radius};}
 function sample(q,s){
  if(s.layoutVersion!==2){const r=oldCollectionRegion(q,s),id=oldRegion(q,s);return {a:id,b:id,blend:0,id,biome:id,name:names[id],lat:0,lon:0,damage:0,color:r.color,band:r.band,cell:r.cell,weight:r.weight,boundary:0};}
  const {lat,lon}=coordinates(q,s),width=M.radians(s.waistWidth),latitude=Math.abs(lat),u=(lon/TAU+.5)%1;
- const row=M.clamp(Math.floor((lat+width)/(2*width)*3),0,2),warp=.006*Math.sin(lon*7+row*1.7)+.002*Math.sin(lon*19+row*2.3);
- const pu=((u+warp)%1+1)%1,p=province(row,pu,s),belt=1-smooth(width-.004,width+.004,latitude);
+ const row=M.clamp(Math.floor((lat+width)/(2*width)*3),0,2);
+ const pu=((habitatU(lon,row)%1)+1)%1,p=province(row,pu,s),belt=1-smooth(width-.004,width+.004,latitude);
  let a=p.id,b=a,blend=0,boundary=0;
  const machine=10+((Math.floor(u*8)+(lat<0?1:0))%3);
  if(latitude>width){a=machine;b=a;}
@@ -128,5 +143,5 @@ const shadeSolidBody=`
  if((x*13+y*7+id*11)%37===0&&Math.abs((u+1)*18-x-.5)<.29&&Math.abs((v+1)*18-y-.5)<.34)return false;
  return true;`;
 const shadeSolid=Function('u','v','id',shadeSolidBody);
-root.SphereWorld={defaults,frame,coordinates,direction,sample,palette,names,provinces,fractions,smooth,woundMetric,woundDistance,woundGradient,woundBlend,woundPalette,woundBandKm,woundTileKm,edgeBiome,boundaryPoint,nearestRim,rimFrame,locateBiome,physics,shadeSolid,shadeSolidBody};
+root.SphereWorld={defaults,frame,coordinates,direction,sample,palette,names,provinces,fractions,habitatMeridians,smooth,woundMetric,woundDistance,woundGradient,woundBlend,woundPalette,woundBandKm,woundTileKm,edgeBiome,boundaryPoint,nearestRim,rimFrame,locateBiome,physics,shadeSolid,shadeSolidBody};
 })(typeof window==='undefined'?globalThis:window);

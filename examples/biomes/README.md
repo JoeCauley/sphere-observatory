@@ -1,6 +1,12 @@
 # Biome photographs
 
-Every photograph in the project README comes from a running WebGL 2 scene in this build. The captures use a 1440 × 810 browser viewport with the floating controls hidden. The receipt records the pack version, viewpoint, renderer, image hash and rendering-source fingerprint. [Capture receipt](captures.json)
+The 13 pack photographs come from running WebGL 2 scenes in Observatory 1.8.0. Each uses a 1440 × 810 browser viewport with the floating controls hidden. The capture record identifies each pack version, viewpoint, renderer and image hash. [Pack photographs and capture settings](captures.json)
+
+The Visit card for Violet Labyrinth and the 500 km tunnel marker show what a traveller sees with the controls visible. The browser walking record gives their image sizes and hashes. [Visit card](visit-progress.jpg) · [Tunnel midpoint](outfall-through-tunnel.jpg) · [Walking record](surface-walks.json)
+
+## Meadow to Outfall
+
+Follow a normal-speed cruise over the last 2.7 km of the installed Meadow, cross onto the Outfall apron, descend to the path and walk through the wall. The recording uses the real flight controls and the local Sphere at seed 713. [Watch the crossing](meadow-outfall.webm) · [Flight record](meadow-outfall.json)
 
 ## Meadow clearance study
 
@@ -23,3 +29,9 @@ At 2 m the foreground resolves into individual blades. At 10 m a change in textu
 | The Outfall | [Approach](outfall-approach.jpg) · [Bypass gallery](outfall-gallery.jpg) |
 
 To take the same photographs, install the development dependencies and Chromium, then run `node tools/capture-biome-gallery.cjs <output-directory>` from the repository root. The capture opens a visible browser and uses a disposable server. [Back to the Observatory](../../README.md)
+
+The Outfall wall continues past the survey point 12 km west of its opening. The cross-gallery image looks along the trunk from 1,004 metres east of the valve.
+
+| Exterior wall | Cross-gallery |
+| --- | --- |
+| ![Looking along the wall from its grassy foot](outfall-wall.jpg) | ![Grated floor, pipes and ceiling far along the transverse gallery](outfall-cross-gallery.jpg) |

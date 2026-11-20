@@ -9,7 +9,7 @@
 // written in the sector's own frame: u outward along the sector's middle, v across it.
 import {addTransferSolids} from './transfer.js';
 import {hash32} from '../../infinite-meadow/1.0.0/coordinates.js';
-import {LANE_HALF_M,LANE_MARGIN_M,CARRY_M,HEX_M} from './pod.js';
+import {LANE_HALF_M,LANE_MARGIN_M,CARRY_M,HEX_M,locate} from './pod.js';
 export const DATUM_M=48;
 
 export const PALETTES={
@@ -175,4 +175,19 @@ export function plant(hex){
   return new Float32Array(out);
  }
  return {hex,scale:s,palette:c,solids,blocked,cover,vertices,circumradiusM:R};
+}
+
+// Shared by the live walker and the survey that locates an unobstructed portal mouth.
+export function walkingContent(facility){
+  const cache=new Map();
+  function plantAt(hex){
+    let made=cache.get(hex.id);
+    if(!made){if(cache.size>48)cache.clear();made=plant(hex);cache.set(hex.id,made);}
+    return made;
+  }
+  return {plantAt,support:(e,n,foot)=>facility.support(e,n,foot),blocked(e,n,eye,walking){
+    if(facility.blocked(e,n,eye,walking))return true;
+    const hex=locate(e,n).hex;
+    return !!hex && !hex.waterWorks && plantAt(hex).blocked(...hex.toLocal(e,n),eye-DATUM_M);
+  }};
 }

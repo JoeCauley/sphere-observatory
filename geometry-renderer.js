@@ -1,7 +1,31 @@
 /* Camera-relative triangle pass sharing logarithmic ray-distance depth with analytic bodies. */
 (function(){
 'use strict';const M=SphereMath;
-function program(gl,vs,fs){const compile=(type,source)=>{const sh=gl.createShader(type);gl.shaderSource(sh,source);gl.compileShader(sh);if(!gl.getShaderParameter(sh,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(sh));return sh;};const p=gl.createProgram();gl.attachShader(p,compile(gl.VERTEX_SHADER,vs));gl.attachShader(p,compile(gl.FRAGMENT_SHADER,fs));gl.linkProgram(p);if(!gl.getProgramParameter(p,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(p));const u={};for(let i=0;i<gl.getProgramParameter(p,gl.ACTIVE_UNIFORMS);i++){const name=gl.getActiveUniform(p,i).name;u[name]=gl.getUniformLocation(p,name);}return {p,u};}
+function link(gl,vs,fs){
+ const p=gl.createProgram();
+ for(const [type,source] of [[gl.VERTEX_SHADER,vs],[gl.FRAGMENT_SHADER,fs]]){
+  const shader=gl.createShader(type);gl.shaderSource(shader,source);gl.compileShader(shader);gl.attachShader(p,shader);gl.deleteShader(shader);
+ }
+ gl.linkProgram(p);return p;
+}
+function uniforms(gl,p){
+ if(!gl.getProgramParameter(p,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(p)||'Shader program could not be linked.');
+ const u={};
+ for(let i=0;i<gl.getProgramParameter(p,gl.ACTIVE_UNIFORMS);i++){const name=gl.getActiveUniform(p,i).name;u[name]=gl.getUniformLocation(p,name);}
+ return {p,u};
+}
+function program(gl,vs,fs){const p=link(gl,vs,fs);try{return uniforms(gl,p);}catch(error){gl.deleteProgram(p);throw error;}}
+program.prepare=async function(gl,vs,fs,isDisposed){
+ const p=link(gl,vs,fs),parallel=gl.getExtension('KHR_parallel_shader_compile');
+ try{
+  while(parallel&&!gl.getProgramParameter(p,parallel.COMPLETION_STATUS_KHR)){
+   if(isDisposed()||gl.isContextLost())throw Error('The graphics context closed while preparing the scene.');
+   await new Promise(r=>setTimeout(r,32));
+  }
+  if(isDisposed())throw Error('The scene renderer closed.');
+  return uniforms(gl,p);
+ }catch(error){gl.deleteProgram(p);throw error;}
+};
 // Conservative oriented-box/frustum rejection. Residency and shadow casters
 // retain the full set; only the colour pass rejects wholly invisible meshes.
 function visible(mesh,s,b,aspect){
@@ -18,10 +42,9 @@ uniform vec3 uOriginRelative,uMeshX,uMeshY,uMeshZ,uForward,uRight,uUp;uniform fl
 out vec3 vRelative,vNormal,vAlbedo,vLocal,vLocalNormal;flat out float vMaterial,vEmission;
 void main(){vec3 p=uOriginRelative+position.x*uMeshX+position.y*uMeshY+position.z*uMeshZ;vRelative=p;vNormal=normal.x*uMeshX+normal.y*uMeshY+normal.z*uMeshZ;vLocalNormal=normal;vAlbedo=albedo;vMaterial=material;vEmission=emission;vLocal=position;float z=dot(p,uForward),t=tan(uFov*.5);gl_Position=vec4(dot(p,uRight)/t,dot(p,uUp)/t*uResolution.x/uResolution.y,z-.00002,z);}
 `;
-class GeometryRenderer{
- constructor(gl){this.gl=gl;this.meshes=new Map();this.work={allocatedBytes:0,uploadedBytes:0,synchronousUploads:0,synchronousUploadMs:0};
+function terrainFragment(){
   const fragment=SphereShaders.geometryFragment||SphereShaders.fragment,sharedBase=fragment.slice(0,fragment.lastIndexOf('void main(){')).replace('in vec2 vUV;',''),shared=sharedBase+(sharedBase.includes('uniform int uMeadowMaterialRevision;')?'':'\nuniform int uMeadowMaterialRevision;vec3 meadowGroundLighting(vec3 radiance,vec3 delta,float direct,vec3 fill){return radiance;}\nvec3 meadowGroundNormal(vec3 n,vec3 delta){return n;}float meadowGroundSpec(vec3 delta,vec3 n,vec3 v,float direct){return 0.;}\n');
-  this.main=program(gl,vertex,shared+`
+  return shared+`
 in vec3 vRelative,vNormal,vAlbedo,vLocal,vLocalNormal;flat in float vMaterial,vEmission;
 uniform float uSiteLight,uDetailFeature,uPixelFocal,uGroundPatchRadius;uniform int uMaterialPlate,uStructureMaterial,uConnectedGround;uniform vec3 uMaterialOffset,uMaterialX,uMaterialY,uMaterialZ;uniform vec3 uSiteFill;
 vec3 fieldGround(int id,vec3 p,float footprint){vec3 col=WORLD_ALBEDO[id];float n=noise(p*35.)*.60+noise(p*110.)*.4;
@@ -81,7 +104,15 @@ void main(){float distanceKm=length(vRelative);if(uDetailFeature>0.){float cover
  }
  if(uMode==1){float f=clamp(log(1.+distanceKm/uRadius*1e6)/log(2000001.),0.,1.);radiance=mix(vec3(.05,.6,.51),vec3(.25,.12,.45),f);}
  fragColor=vec4(uLinearOutput==1?clamp(radiance,vec3(0.),vec3(60000.)):tone(radiance),1.);}
-`);
+`;
+}
+class GeometryRenderer{
+ constructor(gl,prepared){this.gl=gl;this.meshes=new Map();this.work={allocatedBytes:0,uploadedBytes:0,synchronousUploads:0,synchronousUploadMs:0};
+  this.main=prepared||program(gl,vertex,terrainFragment());
+ }
+ static async prepare(gl,isDisposed){
+  const compiled=await program.prepare(gl,vertex,terrainFragment(),isDisposed);
+  return new GeometryRenderer(gl,compiled);
  }
  allocate(mesh){this.work.allocatedBytes+=mesh.vertices.byteLength;const gl=this.gl,vao=gl.createVertexArray(),buffer=gl.createBuffer();gl.bindVertexArray(vao);gl.bindBuffer(gl.ARRAY_BUFFER,buffer);gl.bufferData(gl.ARRAY_BUFFER,mesh.vertices.byteLength,gl.STATIC_DRAW);for(const [loc,size,offset]of[[0,3,0],[1,3,3],[2,3,6],[3,1,9],[4,1,10]]){gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,size,gl.FLOAT,false,44,offset*4);}gl.bindVertexArray(null);const result={vao,buffer,offset:0};this.meshes.set(mesh,result);return result;}
  stage(mesh,budget=4){const gl=this.gl,start=performance.now(),record=this.meshes.get(mesh)||this.allocate(mesh);gl.bindBuffer(gl.ARRAY_BUFFER,record.buffer);while(record.offset<mesh.vertices.byteLength){const end=Math.min(mesh.vertices.byteLength,record.offset+65536);gl.bufferSubData(gl.ARRAY_BUFFER,record.offset,new Uint8Array(mesh.vertices.buffer,mesh.vertices.byteOffset+record.offset,end-record.offset));this.work.uploadedBytes+=end-record.offset;record.offset=end;if(performance.now()-start>=budget)break;}return record.offset===mesh.vertices.byteLength;}
@@ -99,7 +130,7 @@ void main(){float distanceKm=length(vRelative);if(uDetailFeature>0.){float cover
   // which painted every field-patch border with that same unrelated material.
   i('uBiomeOverride',s.biome??-1);i('uGrid',+s.grid);
   SphereCollection.upload(gl,u,s,[0,0,0]); // Mesh lighting uses uSiteLight/uSiteFill below.
-  gl.uniform3fv(u['uAnchor[0]'],[1000000,100000,10000,1000,100,10,1,.1,.01,.001].flatMap(scale=>n.map(x=>((x*s.radius/scale)%256+256)%256)));v('uHeroAnchor',SphereBiomes.heroAnchors(n,s.radius));gl.uniform3fv(u['uBiomeAnchor[0]'],SphereBiomes.anchors(n,s.radius));renderer.biomes?.bind(u,true);renderer.heroes?.bind(u,true);renderer.worldTextures?.bind(u);SphereWorld.upload(gl,u,s);
+  gl.uniform3fv(u['uAnchor[0]'],[1000000,100000,10000,1000,100,10,1,.1,.01,.001].flatMap(scale=>n.map(x=>((x*s.radius/scale)%256+256)%256)));v('uHeroAnchor',SphereBiomes.heroAnchors(n,s.radius));gl.uniform3fv(u['uBiomeAnchor[0]'],SphereBiomes.anchors(n,s.radius));renderer.biomes?.bindFrame(u);renderer.heroes?.bindFrame(u);renderer.worldTextures?.bind(u);SphereWorld.upload(gl,u,s);
   renderer.woundTextures?.bind(u,true);renderer.finishes.bind(u,s);renderer.localShadows.bind(u,s);renderer.meadowGround?.bind(u,s);
   const lights=new Map(),lightSources=new Map(),lightKeys=new Map();
   // Keep each shared Wound/Shade sample at its original resident origin even

@@ -18,9 +18,19 @@ export function heightFromPhases(old,region,home,at=[0,0]){
  return familiar+(varied-familiar)*blend;
 }
 export function terrain(e,n){return heightFromPhases(terrainPhases(e,n),landscapePhases(e,n),[e,n]);}
+// The graded service apron uses the same geographic terrain and blade mask in both scenes.
+export const BORDER_GLSL=`
+uniform vec4 uBorderMap;uniform float uGateDatum;
+bool byBorder(){return dot(uBorderMap.zw,uBorderMap.zw)>.5;}
+vec2 borderAt(vec2 at){return uBorderMap.xy+vec2(dot(at,-uBorderMap.wz),dot(at,vec2(-uBorderMap.z,uBorderMap.w)));}
+float meadowCover(vec2 at){if(!byBorder())return 1.;vec2 p=borderAt(at);
+  float verge=mix(1.,smoothstep(.95,1.8,abs(p.x+1.15+.024*p.y)),smoothstep(-52.,-30.,p.y));
+  return verge*(1.-smoothstep(-.7,-.05,p.y));}
+`;
 export const TERRAIN_GLSL=`
+${BORDER_GLSL}
 uniform vec4 uTerrainPhase,uLandscapePhase;uniform vec2 uHomeOffset;
-float coverGround(vec2 at){
+float ungradedGround(vec2 at){
  float a=uTerrainPhase.x+at.x*.014,b=uTerrainPhase.y+at.y*.011;
  float c=uTerrainPhase.z+at.y*.035+at.x*.006,d=uTerrainPhase.w+(at.x+at.y)*.019;
  float familiar=max(.5,12.+8.*sin(a)*sin(b)+4.*sin(c)+3.*cos(d));
@@ -33,4 +43,6 @@ float coverGround(vec2 at){
  float amplitude=(.72+.86*(.5+.5*sin(r)))*(1.-.96*plain);
  return mix(familiar,max(.5,12.+amplitude*relief+3.5*sin(s)*(1.-.82*plain)),blend);
 }
+float coverGround(vec2 at){float h=ungradedGround(at);if(!byBorder())return h;
+ return mix(h,uGateDatum,smoothstep(-160.,-18.,borderAt(at).y));}
 `;

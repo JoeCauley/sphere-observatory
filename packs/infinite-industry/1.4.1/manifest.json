@@ -72,8 +72,8 @@
   "assets": [
     {
       "path": "app.js",
-      "bytes": 25622,
-      "sha256": "aafd86f61c06726c60d4e221622fcf5573b6e401a96c847ba40350dffaae0520"
+      "bytes": 25747,
+      "sha256": "b01e60e5a34be7448b98cc9469055e75c160a00dc44aaf36d506185063ab4464"
     },
     {
       "path": "ascent.js",
@@ -87,8 +87,8 @@
     },
     {
       "path": "entry.js",
-      "bytes": 1607,
-      "sha256": "c1c67fa1eb41ec7aa25bf336da3729daf0276b5b89e80a74d69a33d69480b4ea"
+      "bytes": 1757,
+      "sha256": "4dc1a1eac7403b9c80ec5f908492702e80131dac1565b1163d16d88916a3de98"
     },
     {
       "path": "facility.js",
@@ -112,8 +112,8 @@
     },
     {
       "path": "plant.js",
-      "bytes": 20306,
-      "sha256": "4b553ee2c96034db7d6283d8d8a58bf374934aef441616b21d0ec1092a7e85ed"
+      "bytes": 20910,
+      "sha256": "46f8debdde922de55217715e66157d6bd87a86b6f5dd1a8b9aa2cf43c8f988fa"
     },
     {
       "path": "pod.js",

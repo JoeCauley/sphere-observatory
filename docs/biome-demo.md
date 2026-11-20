@@ -1,5 +1,7 @@
 # Four-biome demo · Observatory 1.7.0
 
+The current build adds on-screen Visit progress, straight Outfall passages and measured great-circle walks. [Surface walking release](Surface-maturity.md)
+
 ## Persistence and travel
 
 The install register belongs to the server. Plot allocations are keyed by the world seed, radius, axis latitude and longitude, waist width, layout version and shade-geometry revision. Each profile owns its active-scene marker, viewpoint, bookmark and local machinery state. A write finishes against the world that started it. Concurrent changes to one world's installation list are reconciled before another write can replace it.

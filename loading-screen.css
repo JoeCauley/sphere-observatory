@@ -1,4 +1,4 @@
-#sceneLoading{position:fixed;inset:0;z-index:10000;display:grid;place-items:center;background:#10191df7;color:#dfe6e2;cursor:default}
+#sceneLoading{position:absolute;inset:0;z-index:10000;display:grid;place-items:center;background:#10191df7;color:#dfe6e2;cursor:default}
 #sceneLoading[hidden]{display:none}
 .loading-card{width:min(390px,calc(100vw - 52px));text-align:center;padding:32px 0}
 .loading-orbit{width:88px;height:88px;border:1px solid #c4a77c66;border-radius:50%;margin:0 auto 32px;position:relative;transform:rotate(-28deg)}
@@ -17,3 +17,18 @@
 #loadingActions button{font-size:12px;padding:10px 14px;border:1px solid #776d58;border-radius:3px;background:#273137;color:#e1d2b9;cursor:pointer}
 #loadingActions button[hidden]{display:none}
 #loadingRetry{background:#c4a77c!important;color:#172328!important}
+
+#controlStatus{padding:12px 20px;margin:0;color:var(--muted)}
+
+#travelCurtain{position:fixed;z-index:10020;display:grid;place-items:center;background:linear-gradient(135deg,#08151b33,#08151b85);pointer-events:none}
+#travelCurtain[hidden],#travelCurtain progress[hidden]{display:none}
+.transit-card{display:grid;grid-template-columns:54px 1fr;gap:22px;align-items:start;box-sizing:border-box;width:min(450px,90%);padding:28px;background:#17272cf5;border:1px solid #a8c3bc66;border-top:2px solid #d4b47e;border-radius:8px;color:#f4f1e9;box-shadow:0 14px 52px #0007;pointer-events:auto}
+.transit-card h2{font:normal clamp(23px,2.1vw,31px)/1.13 Georgia,serif;margin:0 0 9px}
+.transit-card p{font:15px/1.5 system-ui,sans-serif;margin:0 0 14px;color:#c8d9d7}
+.transit-card progress{height:4px;width:100%;accent-color:#dbbb86;display:block}
+.transit-actions{display:flex;gap:10px}
+.transit-actions button{width:auto;margin:16px 0 0;padding:6px 12px;background:#20363c;color:#f6efdf;border:1px solid #7f9898;border-radius:4px}
+.transit-mark{width:46px;height:46px;box-sizing:border-box;border:1px solid #8da6a4;border-radius:50%;display:grid;place-items:center;position:relative;transform:rotate(-27deg)}
+.transit-mark:before{content:'';width:18px;height:44px;border:1px solid #d4b47e;border-radius:50%}
+.transit-mark:after{content:'';position:absolute;height:5px;width:5px;left:2px;top:8px;border-radius:50%;background:#ffe2a8}
+@media(max-width:650px){.transit-card{grid-template-columns:1fr;padding:20px;gap:12px}.transit-mark{display:none}}

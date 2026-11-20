@@ -1,0 +1,25 @@
+{
+  "file": "meadow-outfall.webm",
+  "sha256": "36e0ba17ee40351b7c8f317f8c83dead50a654900277c4044658ba5bb92d0b0a",
+  "source": {
+    "files": 85,
+    "sha256": "d02e0a21601666d1850264be1dcce1bf11541560e90c6f8f346ceb76eaaf0d7a"
+  },
+  "browser": "157.0.8103.80",
+  "capture": "Native Chrome compositor, cropped to the two running scenes",
+  "pixels": [
+    640,
+    432
+  ],
+  "fps": 12,
+  "durationSeconds": 69.83,
+  "framesCaptured": 738,
+  "seed": 713,
+  "edge": "north/r10c0/r11c0",
+  "initialCourseMetres": 2700,
+  "cruiseKmh": 180,
+  "route": "surface",
+  "firstConfirmedOutfallSeconds": 7.61,
+  "endOfCruiseMetresFromWall": 18,
+  "walkedThroughEntrance": true
+}

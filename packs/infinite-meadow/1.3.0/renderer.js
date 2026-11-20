@@ -2,7 +2,7 @@ import {R,cameraBasis,poseFrame,toGlobal,renderOrigin,smooth} from './coordinate
 import {terrain,terrainPhases,landmarks,sceneLight,clearance,TUFTS_PER_TILE,GROUND_DATUM} from './model.js';
 import {profileFor,STAGE,windUniforms,WIND_GLSL,TRANSITION_GLSL,transitionPhases,createGrassAtlas,canopyAtlasFootprint} from './grass-stage.js';
 import {canopyShaders} from './grass-shaders.js';
-import {landscapePhases,TERRAIN_GLSL} from './landscape.js';
+import {landscapePhases,TERRAIN_GLSL,BORDER_GLSL} from './landscape.js';
 import {surfaceAnchor,SURFACE_GLSL} from './meadow-surface.js';
 import {TERRAIN_GRID,terrainGridOffsets,TERRAIN_GRID_GLSL} from './terrain-grid.js';
 import {lineageAnchor} from './grass-handoff.js';
@@ -17,7 +17,7 @@ const FS_SCREEN=`#version 300 es
 precision highp float;
 in vec2 screen;out vec4 frag;
 uniform vec3 uRight,uUp,uForward,uEast,uNorth,uRadial;
-uniform vec2 uResolution,uArc;
+uniform vec2 uResolution,uArc;uniform vec4 uBorder;
 uniform float uAltitude,uReveal,uDaylight,uInteriorLight;
 const float R=149597870700.,S=695700000.;
 float hash(vec3 p){p=fract(p*.1031);p+=dot(p,p.yzx+33.33);return fract((p.x+p.y)*p.z);}
@@ -91,6 +91,14 @@ void main(){
  }
  float skyMask=smoothstep(6500.,80000.,t);
  vec3 col=mix(actual,sky,skyMask*(1.-uReveal));
+ // The installed border face rises through the haze on its real bearing.
+ float toward=dot(ray.xz,uBorder.xy);
+ if(uBorder.z>0. && toward>.00001){
+   float distanceM=uBorder.z/toward,y=uBorder.w+ray.y*distanceM;
+   float aa=max(.35,fwidth(y)),wall=smoothstep(-aa,aa,y)*(1.-smoothstep(1400.-aa,1400.+aa,y));
+   vec3 concrete=mix(vec3(.12,.16,.15),vec3(.34,.40,.37),1.-exp(-distanceM/7000.));
+   col=mix(col,concrete*mix(.10,1.,daylight),wall*(1.-smoothstep(18000.,110000.,distanceM)));
+ }
  // Actual central-star angle, with a separate restrained glare halo.
  float angle2=1.-ray.y*ray.y,star2=pow(S/(R-h),2.);
  if(ray.y>0.){float edge=max(fwidth(angle2),.0000001);
@@ -115,6 +123,7 @@ in vec3 color,normal,position;in float distanceM,edgeAlpha;out vec4 frag;
 uniform float uDaylight,uAlpha,uGround,uReveal;uniform vec3 uTexturePhase;uniform vec2 uSiteOffset;
 uniform vec3 uCamera;
 uniform float uCover,uCoverHeight;uniform vec2 uCoverOrigin;
+${BORDER_GLSL}
 ${WIND_GLSL}
 ${TRANSITION_GLSL}
 ${SURFACE_GLSL}
@@ -134,6 +143,8 @@ void main(){
    col*=.91+.18*mix(.5,texture,detailWeight);
    if(uCover>.5){vec3 canopy=meadowCanopy(position.xz,n,light,uCoverHeight,normalize(uCamera-position),uDaylight);
      col=mix(col,canopy,(1.-smoothstep(6000.,22000.,distanceM))*.92);}
+   if(byBorder()){vec2 b=borderAt(position.xz);if(b.y>=0. && b.y<=73.)discard;
+     col=mix(vec3(.22,.19,.103)*(.85+.22*texture),col,meadowCover(position.xz));}
    vec2 at=position.xz+uSiteOffset;
    float shade=shadow(at,vec2(6,-5),3.8,1.2)+shadow(at,vec2(-8,-27),2.6,1.5)+shadow(at,vec2(12,-42),8.,.65);
    col*=1.-min(.7,shade)*uDaylight;
@@ -239,9 +250,18 @@ export class Renderer {
       coverage:'Eye-centered 81-cell stage; stable canonical root subsets and wind; 64 m geometry reach; continuous filtered canopy; geographic terrain grids and attached distant clumps',ownedGpuBufferBytes:this.gpuBytes,ownedGpuTextureBytes:this.textureBytes,
       lighting:'Directional shading, transmission, root occlusion; one shared geographic wind field for near grass, grassbox and distant cover'};
   }
+  dispose(){
+    const gl=this.gl;
+    for(const mesh of [this.terrainMesh,this.landmarkMesh,this.latticeMesh,this.beltMesh]){gl.deleteBuffer(mesh.buffer);gl.deleteVertexArray(mesh.vao);}
+    for(const buffer of [this.bladeBuffer,this.outerBuffer])gl.deleteBuffer(buffer);
+    for(const vao of [this.grassVAO,this.outerVAO])gl.deleteVertexArray(vao);
+    for(const program of [this.screen,this.mesh,this.grass,this.grassbox,this.terrainProgram])gl.deleteProgram(program);
+    for(const item of this.queries)gl.deleteQuery(item.query);this.queries.length=0;
+  }
   location(program,key){const gl=this.gl,id=program===this.screen?'s':program===this.mesh?'m':program===this.terrainProgram?'t':program===this.grassbox?'b':'g';let location=this.uniforms.get(id+key);if(location===undefined){location=gl.getUniformLocation(program,key);this.uniforms.set(id+key,location);}return location;}
   uniform(program,key,type,value){const gl=this.gl,location=this.location(program,key);if(type==='int')gl.uniform1i(location,value);else if(type==='uint2')gl.uniform2uiv(location,value);else if(type===1)gl.uniform1f(location,value);else if(type===2)gl.uniform2fv(location,value);else if(type===4)gl.uniform4fv(location,value);else gl.uniform3fv(location,value);}
-  common(program,p){this.gl.useProgram(program);const b=cameraBasis(p);for(const [key,value] of [['uRight',b.right],['uUp',b.up],['uForward',b.forward]])this.uniform(program,key,3,value);this.uniform(program,'uAspect',1,this.canvas.width/this.canvas.height);}
+  common(program,p){this.gl.useProgram(program);
+    this.uniform(program,'uBorderMap',4,this.borderMap||[0,0,0,0]);this.uniform(program,'uGateDatum',1,this.gateDatum||0);const b=cameraBasis(p);for(const [key,value] of [['uRight',b.right],['uUp',b.up],['uForward',b.forward]])this.uniform(program,key,3,value);this.uniform(program,'uAspect',1,this.canvas.width/this.canvas.height);}
   upload(residency){
     this.sortedTiles=[...residency.tiles.values()].sort((a,b)=>a.key.localeCompare(b.key));this.tileSeeds.fill(0);
     this.sortedTiles.forEach((tile,i)=>this.tileSeeds[i]=tile.seed);
@@ -262,7 +282,7 @@ export class Renderer {
     const {reveal,interiorDaylight}=sceneLight(state);
     gl.viewport(0,0,this.canvas.width,this.canvas.height);gl.disable(gl.DEPTH_TEST);gl.disable(gl.BLEND);gl.disable(gl.DITHER);gl.depthMask(true);gl.clearColor(0,0,0,1);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);this.common(this.screen,p);
     const f=poseFrame(p);for(const [key,value] of [['uEast',f.east],['uNorth',f.north],['uRadial',f.radial]])this.uniform(this.screen,key,3,value);
-    this.uniform(this.screen,'uResolution',2,[this.canvas.width,this.canvas.height]);this.uniform(this.screen,'uArc',2,[p.eastM,p.northM]);
+    this.uniform(this.screen,'uBorder',4,this.borderView||[0,0,0,0]);this.uniform(this.screen,'uResolution',2,[this.canvas.width,this.canvas.height]);this.uniform(this.screen,'uArc',2,[p.eastM,p.northM]);
     for(const [key,value] of [['uAltitude',p.altitudeM],['uReveal',reveal],['uDaylight',state.daylight],['uInteriorLight',interiorDaylight]])this.uniform(this.screen,key,1,value);
     gl.bindVertexArray(null);gl.drawArrays(gl.TRIANGLES,0,3);
     let calls=1,triangles=1;gl.enable(gl.DEPTH_TEST);this.common(this.mesh,p);

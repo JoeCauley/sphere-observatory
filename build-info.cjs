@@ -9,3 +9,6 @@ module.exports=function buildInfo(root=__dirname){
  scan(path.join(root,'assets'));
  return {version:JSON.parse(fs.readFileSync(path.join(root,'package.json'),'utf8')).version,commit,sourceSha256:hash.digest('hex'),status:changes===null?'unverified-local':changes?'local-modified':'clean-checkout',release:false,assets:manifests,assetSetSha256:assetSet.digest('hex'),assetCount};
 };
+
+const {isMainThread,parentPort,workerData}=require('node:worker_threads');
+if(!isMainThread && workerData?.root)parentPort.postMessage(module.exports(workerData.root));

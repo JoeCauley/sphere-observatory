@@ -22,6 +22,7 @@ jobs:
       - run: npm ci --ignore-scripts --no-audit --no-fund
       - run: npm test
       - run: npm run test:pack && npm run test:industry && npm run test:pods
+      - run: npm run test:surface
       - run: npm run test:gallery
 
   browser:
@@ -30,8 +31,16 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        suite: [test:http-restart, test:restart, test:outfall, test:industry:roof, test:industry:transfer, test:contract, test:stage-arrival]
+        suite: [test:http-restart, test:restart, test:outfall, test:surface:browser, test:industry:roof, test:industry:transfer, test:contract, test:stage-arrival, test:transit, test:border:browser]
+        include:
+          - suite: test:walks:browser
+            walk_shard: 1/3
+          - suite: test:walks:browser
+            walk_shard: 2/3
+          - suite: test:walks:browser
+            walk_shard: 3/3
     env:
+      SPHERE_WALK_SHARD: ${{ matrix.walk_shard }}
       SPHERE_NATIVE_BROWSER: /usr/bin/google-chrome
       SPHERE_CONTRACT_HEADLESS: '1'
       SPHERE_CONTRACT_TIMEOUT_MS: '120000'

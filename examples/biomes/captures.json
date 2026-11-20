@@ -1,8 +1,8 @@
 {
-  "capturedAt": "2026-11-18T02:55:39.116Z",
+  "capturedAt": "2026-11-20T04:11:58.779Z",
   "source": {
-    "files": 80,
-    "sha256": "650715f6f4ef6b0c7af17ed2257fae9d31f200eadfa08d79ef5d32964a332b69"
+    "files": 85,
+    "sha256": "d02e0a21601666d1850264be1dcce1bf11541560e90c6f8f346ceb76eaaf0d7a"
   },
   "browser": "157.0.8103.80",
   "views": [
@@ -35,12 +35,12 @@
       "sha256": "da9c82787ad7f0a72a09af4f9daf8aeeeb3c7565bd03bc1f2259ddf33f15c54f",
       "pan": {
         "file": "meadow-pan.webm",
-        "sha256": "b03fa2fb3ce1beb4f53e938373234ff0b32b41fea235fb25b1af9da0a81725c3",
+        "sha256": "2becd9ab3457041bfd6182a3e1c850d56caa1753597de5969d13635b4af6bb3b",
         "endPose": {
           "eastM": 15,
           "northM": 10,
           "altitudeM": 6.459032359639117,
-          "yaw": 1.4118062349096938,
+          "yaw": 1.4136911905018483,
           "pitch": -0.045,
           "mode": "flight"
         }
@@ -128,7 +128,7 @@
       "visible": true,
       "focused": true,
       "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-      "sha256": "ac9d43f734870d11f2b5f12cb5d586d587dfe7d2da9ca97f2973d376b121782e"
+      "sha256": "2b5103df0f39dcec3c863ab6af811af466837c4af9a5df169c3a469b67346c0c"
     },
     {
       "file": "industry-district.jpg",
@@ -178,7 +178,7 @@
       "visible": true,
       "focused": true,
       "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-      "sha256": "913f39d86a10c9e9b8daf2301386fe37fc6ee789bc7b754a695c543c312f3289"
+      "sha256": "89336cdd8d2934ce4259bfa5047d85edc38e0f988b930b2632d1c31d4be25e24"
     },
     {
       "file": "industry-transfer.jpg",
@@ -203,7 +203,7 @@
       "visible": true,
       "focused": true,
       "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-      "sha256": "4d25db79d2297fa7684a5f7dc713b777c65d23f11fc2cda43d30c4a72b19ade2"
+      "sha256": "11b11ca1e41645c298d3cd0d8b8c22f1aeb1cd71d3e2f6c04a88a3f8dad4ce4a"
     },
     {
       "file": "city-tower.jpg",
@@ -262,7 +262,7 @@
       "pose": {
         "eastM": -7,
         "northM": -24,
-        "altitudeM": 1.7,
+        "altitudeM": 1.7108418708627213,
         "yaw": 0.27,
         "pitch": 0.15,
         "mode": "walk"
@@ -272,13 +272,63 @@
         810
       ],
       "drawingBuffer": [
-        1440,
-        810
+        1800,
+        1013
       ],
       "visible": true,
       "focused": true,
       "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-      "sha256": "6ebb8ccbc771012d5bb560c161af91a5ce59522adf35e7e0e0370ae1a31f8b9f"
+      "sha256": "1625512870a52348c4f6ca3b6087ff7473d98f0e798947587d8e805b97c11f77"
+    },
+    {
+      "file": "outfall-wall.jpg",
+      "pack": "border-outfall",
+      "version": "1.0.0",
+      "pose": {
+        "eastM": -12000,
+        "northM": -4,
+        "altitudeM": 1.7,
+        "yaw": 1.49,
+        "pitch": 0.04,
+        "mode": "walk"
+      },
+      "browserViewport": [
+        1440,
+        810
+      ],
+      "drawingBuffer": [
+        1800,
+        1013
+      ],
+      "visible": true,
+      "focused": true,
+      "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "sha256": "2104ee529f2c2b83dc019346f89fd646aebe3560b1595b35035b5f33fd9be54f"
+    },
+    {
+      "file": "outfall-cross-gallery.jpg",
+      "pack": "border-outfall",
+      "version": "1.0.0",
+      "pose": {
+        "eastM": 1004,
+        "northM": 38,
+        "altitudeM": 1.7,
+        "yaw": 1.55,
+        "pitch": 0.02,
+        "mode": "walk"
+      },
+      "browserViewport": [
+        1440,
+        810
+      ],
+      "drawingBuffer": [
+        1800,
+        1013
+      ],
+      "visible": true,
+      "focused": true,
+      "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "sha256": "3f546822aca51b87e8fd9c62bc8ae84be47ecbcb0d73dd71652ac0198c24e810"
     },
     {
       "file": "outfall-gallery.jpg",
@@ -297,13 +347,13 @@
         810
       ],
       "drawingBuffer": [
-        1440,
-        810
+        1800,
+        1013
       ],
       "visible": true,
       "focused": true,
       "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-      "sha256": "15ce5a57926f2c3ea5bc778542e454eb97ed74ee97fe3623ab75d0d68188177f"
+      "sha256": "93b51f0ca19471f7b3e182cda777a2b1b474de45c1afe8ee09647a05aecb5097"
     }
   ]
 }

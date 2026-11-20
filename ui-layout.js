@@ -4,7 +4,7 @@
 function details(title){const d=document.createElement('details');d.innerHTML='<summary>'+title+'</summary>';return d;}
 function field(id){return $(id).closest('label');}
 function moveField(id,parent,withNote=true){const node=field(id),note=node.nextElementSibling;parent.append(node);if(withNote&&note?.matches('p.micro'))parent.append(note);}
-const tabs=document.querySelector('.tabs'),exploreTab=document.querySelector('[data-tab="camera"]');exploreTab.textContent='Explore';tabs.prepend(exploreTab);
+const exploreTab=document.querySelector('[data-tab="camera"]');
 document.querySelector('.intro h1').textContent='Find your perspective.';
 document.querySelector('.intro p').textContent='A whole world. A place to land.';
 // Explore: the visual destination picker first, precise camera controls second.
@@ -47,6 +47,6 @@ for(const [name,label,description] of destinations){const button=document.create
 const browse=document.createElement('button');browse.id='browseBiomes';browse.innerHTML='<span>Biomes ↗</span><small>Ten places to discover</small>';browse.onclick=()=>{document.body.classList.remove('panel-hidden');exploreTab.click();expeditions.open=true;expeditions.scrollIntoView({block:'nearest'});};journeys.append(browse);
 function destinationState(){const s=A.getState();for(const name of ['wounds','shades']){const button=journeys.querySelector(`[data-destination="${name}"]`),available=name==='wounds'?(s.collection?s.era==='after'&&s.multipleWounds:s.breachEnabled):(s.collection?s.routeShades:s.shadeEnabled);button.disabled=!available;button.title=available?destinations.find(d=>d[0]===name)[2]:'Enable this feature in World to visit it.';}}
 window.addEventListener('sphere-state-synced',destinationState);window.addEventListener('sphere-view-changed',()=>journeys.querySelectorAll('.selected').forEach(b=>b.classList.remove('selected')));destinationState();
-exploreTab.click();journeys.querySelector('[data-destination="overview"]').classList.add('selected');
+journeys.querySelector('[data-destination="overview"]').classList.add('selected');
 window.SphereNavigation={navigate};
 })();

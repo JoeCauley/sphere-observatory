@@ -39,8 +39,27 @@ for(const v of photos.views){
  assert.deepEqual(v.browserViewport,[1440,810]);assert.equal(v.version,offered.find(p=>p.id===v.pack).version);
  if(v.pan){const clip=fs.readFileSync(path.join(biomeDir,v.pan.file));assert.equal(clip.readUInt32BE(0),0x1a45dfa3);assert.equal(sha(clip),v.pan.sha256);}
 }
+const crossing=read(path.join(biomeDir,'meadow-outfall.json')),movie=fs.readFileSync(path.join(biomeDir,crossing.file));
+assert.deepEqual(crossing.source,photos.source);
+assert.equal(movie.readUInt32BE(0),0x1a45dfa3);assert.equal(sha(movie),crossing.sha256);
+assert.equal(crossing.route,'surface');assert.equal(crossing.walkedThroughEntrance,true);
+assert(crossing.durationSeconds>50 && crossing.endOfCruiseMetresFromWall===18);
 const readme=fs.readFileSync(path.join(root,'README.md'),'utf8');
+assert(readme.includes('examples/biomes/'+crossing.file));
 const shown=[...readme.matchAll(/!\[[^\]]*\]\(([^)]+)\)/g)].map(m=>m[1]);
-assert(shown.length>=4);assert(shown.every(p=>photos.views.some(v=>p==='examples/biomes/'+v.file)));
-assert.deepEqual(new Set(shown.map(p=>photos.views.find(v=>p==='examples/biomes/'+v.file).pack)),new Set(offered.map(p=>p.id)));
-console.log('PASS '+photos.views.length+' biome photographs, the Meadow pan, release source fingerprints, historical galleries and publication links');
+const walks=read(path.join(biomeDir,'surface-walks.json'));
+for(const [file,expected] of Object.entries(walks.sourceFiles))assert.equal(sha(fs.readFileSync(path.join(root,file))),expected,file);
+assert.equal(walks.visitTimingsMs.release.webglError,0);assert.deepEqual(walks.pageErrors,[]);
+assert.equal(walks.totals.circuits,walks.circuits.length);assert(walks.circuits.length>=7);
+assert.equal(walks.totals.tunnels,walks.circuits.reduce((n,r)=>n+r.renderedTunnels,0));
+assert(walks.installed.every(site=>walks.visited.includes(site.id)));
+for(const id of [0,1,2,3,4,5,6,7,8,9,10,11,12,15])assert(walks.visited.includes('main-'+id));
+for(const shot of walks.screenshots){
+ const bytes=fs.readFileSync(path.join(biomeDir,shot.file));
+ assert.equal(bytes.readUInt16BE(0),0xffd8);assert.equal(sha(bytes),shot.sha256);
+}
+assert(walks.circuits.every(w=>Math.abs(w.liveDegrees-360)<1e-8 && w.liveClosureM<.5));
+const illustrated=[...photos.views,...walks.screenshots].map(v=>'examples/biomes/'+v.file);
+assert(shown.length>=4);assert(shown.every(p=>illustrated.includes(p)));
+assert.deepEqual(new Set(photos.views.filter(v=>shown.includes('examples/biomes/'+v.file)).map(v=>v.pack)),new Set(offered.map(p=>p.id)));
+console.log('PASS '+photos.views.length+' biome photographs, the Meadow pan and Outfall crossing, release source fingerprints, historical galleries and publication links');

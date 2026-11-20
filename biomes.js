@@ -55,7 +55,8 @@ class Textures {
   gl.activeTexture(gl.TEXTURE0);
  }
  bind(uniforms,exact=false){const now=performance.now();this.fading=false;for(let id=0;id<10;id++)if(this.status[id]==='ready'){this.ready[id]=exact?1:clamp((now-this.loadedAt[id])/350);if(this.ready[id]<1)this.fading=true;}
-  const gl=this.gl;gl.activeTexture(gl.TEXTURE2);gl.bindTexture(gl.TEXTURE_2D_ARRAY,this.texture);gl.uniform1i(uniforms.uBiomeTex,2);gl.uniform1fv(uniforms['uBiomeReady[0]'],this.ready);gl.activeTexture(gl.TEXTURE0);}
+  this.bindFrame(uniforms);}
+ bindFrame(uniforms){const gl=this.gl;gl.activeTexture(gl.TEXTURE2);gl.bindTexture(gl.TEXTURE_2D_ARRAY,this.texture);gl.uniform1i(uniforms.uBiomeTex,2);gl.uniform1fv(uniforms['uBiomeReady[0]'],this.ready);gl.activeTexture(gl.TEXTURE0);}
  prepare(ids=[],options={}){return root.SphereAssets.prepareMaps(this,ids,'Surface detail',options);}
  dispose(){this.gl.deleteTexture(this.texture);}
 }

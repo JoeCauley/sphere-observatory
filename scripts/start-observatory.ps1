@@ -8,31 +8,45 @@ $Root = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path
 $ServerScript = (Join-Path $Root 'serve.cjs')
 $PidFile = Join-Path $Root '.observatory-server.pid'
 
-function Get-ObservatoryServers {
-    Get-CimInstance Win32_Process -Filter "Name='node.exe'" |
-        Where-Object {
-            $_.CommandLine -and
-            $_.CommandLine -match '(?i)serve\.cjs' -and
-            $_.CommandLine -match [regex]::Escape($ServerScript)
-        }
+$Digest = [System.Security.Cryptography.SHA256]::Create()
+try {
+    $Checkout = [BitConverter]::ToString($Digest.ComputeHash([Text.Encoding]::UTF8.GetBytes($Root.ToUpperInvariant()))).Replace('-', '').ToLowerInvariant()
+} finally { $Digest.Dispose() }
+$Address = "http://127.0.0.1:$Port"
+
+function Get-ReadyServer {
+    try {
+        $request = [Net.HttpWebRequest]::Create("$Address/api/health")
+        $request.Proxy = $null
+        $request.Timeout = 350
+        $response = $request.GetResponse()
+        try {
+            $reader = New-Object IO.StreamReader($response.GetResponseStream())
+            try { $health = ConvertFrom-Json -InputObject $reader.ReadToEnd() } finally { $reader.Dispose() }
+            if ($health.service -eq 'sphere-observatory' -and $health.checkout -eq $Checkout) { return $health }
+        } finally { $response.Dispose() }
+    } catch { return $null }
 }
 
-$existing = @(Get-ObservatoryServers)
-if ($existing.Count -gt 0) {
-    $ids = ($existing | ForEach-Object ProcessId) -join ', '
-    Write-Output "Sphere Observatory is already running (PID $ids). Use npm run stop to shut it down."
-    exit 0
+# A saved PID gives an inexpensive hint. The HTTP reply identifies the checkout and the port.
+if (Test-Path -LiteralPath $PidFile) {
+    $known = Get-ReadyServer
+    if ($known) {
+        Write-Output "Sphere Observatory is ready at $Address (PID $($known.pid))."
+        exit 0
+    }
 }
-
 $node = (Get-Command node.exe -ErrorAction Stop).Source
-$process = Start-Process -FilePath $node -ArgumentList @($ServerScript, $Port) -WorkingDirectory $Root -WindowStyle Hidden -PassThru
-Set-Content -LiteralPath $PidFile -Value $process.Id -NoNewline
-Start-Sleep -Milliseconds 250
-
-if ($process.HasExited) {
-    Remove-Item -LiteralPath $PidFile -Force -ErrorAction SilentlyContinue
-    throw "Sphere Observatory server exited immediately with code $($process.ExitCode). Port $Port may already be in use."
-}
-
-Write-Output "Sphere Observatory started at http://127.0.0.1:$Port (PID $($process.Id))."
-Write-Output 'Stop it with: npm run stop'
+$process = Start-Process -FilePath $node -ArgumentList @(('"' + $ServerScript + '"'), [string]$Port) -WorkingDirectory $Root -WindowStyle Hidden -PassThru
+$deadline = [DateTime]::UtcNow.AddSeconds(6)
+do {
+    $known = Get-ReadyServer
+    if ($known) {
+        Set-Content -LiteralPath $PidFile -Value $known.pid -NoNewline
+        Write-Output "Sphere Observatory is ready at $Address (PID $($known.pid))."
+        exit 0
+    }
+    if ($process.HasExited) { break }
+    Start-Sleep -Milliseconds 60
+} while ([DateTime]::UtcNow -lt $deadline)
+throw "Sphere Observatory did not answer at $Address. The port may already belong to another server."

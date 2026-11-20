@@ -1,0 +1,516 @@
+{
+  "version": "1.8.0",
+  "referenceCommit": "ce36d24",
+  "routeSeed": 1592762643,
+  "radiusKm": 149597870.7,
+  "installed": [
+    {
+      "id": "infinite-meadow",
+      "plot": "r12c35"
+    },
+    {
+      "id": "infinite-industry",
+      "plot": "r7c21"
+    },
+    {
+      "id": "sideways-city",
+      "plot": "r13c0"
+    },
+    {
+      "id": "border-outfall",
+      "plot": "north/r12c35/r13c34"
+    }
+  ],
+  "visited": [
+    "main-9",
+    "main-8",
+    "main-0",
+    "main-1",
+    "main-6",
+    "sideways-city",
+    "main-7",
+    "main-2",
+    "main-3",
+    "main-4",
+    "main-12",
+    "main-10",
+    "main-11",
+    "infinite-meadow",
+    "infinite-industry",
+    "border-outfall",
+    "main-5",
+    "main-15"
+  ],
+  "totals": {
+    "circuits": 9,
+    "tunnels": 159,
+    "nativeGroundLegs": 168,
+    "distanceKm": 8459560288.508389,
+    "maxNativeClosureM": 0.000170239175498188
+  },
+  "circuits": [
+    {
+      "label": "Random equatorial bearing 1",
+      "inclinationDeg": 19.83267196454113,
+      "lengthKm": 939951143.167599,
+      "steps": 788,
+      "sweptDegrees": 360.0000000000002,
+      "closureM": 0.0012765220392719201,
+      "nativeGroundLegs": 17,
+      "renderedTunnels": 16,
+      "liveDegrees": 360,
+      "liveClosureM": 0.00011325623450679758,
+      "visits": [
+        "main-9",
+        "main-8",
+        "main-0",
+        "main-1",
+        "main-6",
+        "sideways-city",
+        "main-7",
+        "main-2",
+        "main-3"
+      ],
+      "equatorialStart": [
+        -0.850615680405724,
+        -0.37106170980838205,
+        0.3725133175632616
+      ],
+      "initialTangent": [
+        0.3798316737303901,
+        0.05623698766440932,
+        0.9233446273464763
+      ]
+    },
+    {
+      "label": "Random equatorial bearing 2",
+      "inclinationDeg": 26.303950985893618,
+      "lengthKm": 939951143.1675987,
+      "steps": 789,
+      "sweptDegrees": 359.9999999999997,
+      "closureM": 0.0005254265358257029,
+      "nativeGroundLegs": 18,
+      "renderedTunnels": 17,
+      "liveDegrees": 360,
+      "liveClosureM": 3.347590516400543e-05,
+      "visits": [
+        "main-4",
+        "main-3",
+        "main-8",
+        "main-12",
+        "main-10",
+        "main-11",
+        "main-1",
+        "main-6",
+        "main-2"
+      ],
+      "equatorialStart": [
+        -0.9658661819661974,
+        -0.1303275859003887,
+        -0.22386879837846319
+      ],
+      "initialTangent": [
+        -0.226429736442605,
+        0.004982146302668303,
+        0.9740147599871117
+      ]
+    },
+    {
+      "label": "Random equatorial bearing 3",
+      "inclinationDeg": 60.11273243464527,
+      "lengthKm": 939951143.1675988,
+      "steps": 788,
+      "sweptDegrees": 360.0000000000002,
+      "closureM": 0.0014197828016143466,
+      "nativeGroundLegs": 19,
+      "renderedTunnels": 18,
+      "liveDegrees": 360.00000000000017,
+      "liveClosureM": 4.923395122531758e-05,
+      "visits": [
+        "main-6",
+        "main-1",
+        "main-10",
+        "main-11",
+        "main-12",
+        "main-4",
+        "main-3",
+        "main-9"
+      ],
+      "equatorialStart": [
+        0.9712246001891671,
+        0.23784867991542794,
+        -0.012279309829176443
+      ],
+      "initialTangent": [
+        -0.13183012001397043,
+        0.5798196063016663,
+        0.8040087335379406
+      ]
+    },
+    {
+      "label": "Infinite Meadow",
+      "inclinationDeg": 69.39247796036679,
+      "lengthKm": 939951143.1675993,
+      "steps": 790,
+      "sweptDegrees": 359.9999999999999,
+      "closureM": 0.0011121630029781282,
+      "nativeGroundLegs": 19,
+      "renderedTunnels": 18,
+      "liveDegrees": 360,
+      "liveClosureM": 4.152175012150927e-05,
+      "visits": [
+        "main-9",
+        "infinite-meadow",
+        "main-8",
+        "main-12",
+        "main-10",
+        "main-11",
+        "main-7",
+        "main-6",
+        "main-1"
+      ],
+      "equatorialStart": [
+        -0.8287354368570112,
+        -0.38216790587637517,
+        0.40883403407187696
+      ],
+      "initialTangent": [
+        -0.01736820722474633,
+        0.7477410850250963,
+        0.6637632221984657
+      ]
+    },
+    {
+      "label": "Infinite Industry",
+      "inclinationDeg": 26.992064127870865,
+      "lengthKm": 939951143.1675986,
+      "steps": 795,
+      "sweptDegrees": 360.0000000000004,
+      "closureM": 0.0011402696826845573,
+      "nativeGroundLegs": 24,
+      "renderedTunnels": 23,
+      "liveDegrees": 360.00000000000006,
+      "liveClosureM": 0.00011933553427019354,
+      "visits": [
+        "main-6",
+        "main-1",
+        "sideways-city",
+        "main-11",
+        "main-10",
+        "main-12",
+        "main-8",
+        "infinite-meadow",
+        "main-4",
+        "main-3",
+        "infinite-industry"
+      ],
+      "equatorialStart": [
+        0.9690510199532979,
+        0.2450882839521369,
+        -0.029527170485329657
+      ],
+      "initialTangent": [
+        0.014249670505218822,
+        0.06387579888263442,
+        0.9978561164855371
+      ]
+    },
+    {
+      "label": "The Sideways City",
+      "inclinationDeg": 24.438045879563262,
+      "lengthKm": 939951143.1675986,
+      "steps": 790,
+      "sweptDegrees": 359.99999999999943,
+      "closureM": 0.0003372220576397331,
+      "nativeGroundLegs": 21,
+      "renderedTunnels": 20,
+      "liveDegrees": 359.9999999999999,
+      "liveClosureM": 0.000170239175498188,
+      "visits": [
+        "main-3",
+        "main-9",
+        "infinite-meadow",
+        "main-8",
+        "main-0",
+        "main-10",
+        "main-11",
+        "main-1",
+        "main-6",
+        "sideways-city",
+        "main-7",
+        "infinite-industry"
+      ],
+      "equatorialStart": [
+        -0.9219925243881811,
+        -0.3191726054554557,
+        0.2192227928366143
+      ],
+      "initialTangent": [
+        0.20613111486976202,
+        0.07468609500752299,
+        0.9756700009199197
+      ]
+    },
+    {
+      "label": "The Outfall",
+      "inclinationDeg": 24.61911890406318,
+      "lengthKm": 939951143.1675988,
+      "steps": 794,
+      "sweptDegrees": 359.9999999999998,
+      "closureM": 0.00020107258509620939,
+      "nativeGroundLegs": 21,
+      "renderedTunnels": 20,
+      "liveDegrees": 360.00000000000017,
+      "liveClosureM": 8.660669705079976e-05,
+      "visits": [
+        "main-6",
+        "main-1",
+        "main-11",
+        "main-10",
+        "main-12",
+        "main-8",
+        "border-outfall",
+        "infinite-meadow",
+        "main-4",
+        "main-3",
+        "infinite-industry"
+      ],
+      "equatorialStart": [
+        0.9751946598415198,
+        0.2190930681491933,
+        0.03152146737630639
+      ],
+      "initialTangent": [
+        -0.03448166224867512,
+        0.009699503831406242,
+        0.9993582613827698
+      ]
+    },
+    {
+      "label": "Additional equatorial bearing 1",
+      "inclinationDeg": 4.380430793389662,
+      "lengthKm": 939951143.1675991,
+      "steps": 778,
+      "sweptDegrees": 360.0000000000004,
+      "closureM": 0.00140193563896296,
+      "nativeGroundLegs": 11,
+      "renderedTunnels": 10,
+      "liveDegrees": 360.00000000000006,
+      "liveClosureM": 0.00010763667835263465,
+      "visits": [
+        "main-9",
+        "main-8",
+        "main-0",
+        "main-1",
+        "main-6",
+        "main-7",
+        "main-2",
+        "main-5",
+        "main-4",
+        "main-3"
+      ],
+      "equatorialStart": [
+        -0.744544138005,
+        -0.4137812725429032,
+        0.5238693396784806
+      ],
+      "initialTangent": [
+        0.6145081792797702,
+        -0.11819578676670794,
+        0.7800060599693189
+      ]
+    },
+    {
+      "label": "Additional equatorial bearing 2",
+      "inclinationDeg": 75.91369061730802,
+      "lengthKm": 939951143.1675987,
+      "steps": 790,
+      "sweptDegrees": 359.9999999999998,
+      "closureM": 0.0005068375521208006,
+      "nativeGroundLegs": 18,
+      "renderedTunnels": 17,
+      "liveDegrees": 360,
+      "liveClosureM": 0.00013543985012081378,
+      "visits": [
+        "main-2",
+        "main-3",
+        "main-12",
+        "main-10",
+        "main-15",
+        "main-11",
+        "main-8",
+        "main-0",
+        "main-4",
+        "main-7"
+      ],
+      "equatorialStart": [
+        0.43552372101750847,
+        0.45390332876628986,
+        -0.7773614709811291
+      ],
+      "initialTangent": [
+        -0.4195851070016945,
+        0.8663793157410873,
+        0.2708047622151097
+      ]
+    }
+  ],
+  "browser": "157.0.8103.80",
+  "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+  "pageErrors": [],
+  "blockedCityDoorOffsetM": 22,
+  "visitTimingsMs": {
+    "reference": {
+      "openingMs": 38347,
+      "trips": [
+        {
+          "title": "Violet Labyrinth · On foot",
+          "state": "arrived",
+          "ms": 96363
+        },
+        {
+          "title": "Dark Age Forest · On foot",
+          "state": "arrived",
+          "ms": 3371
+        },
+        {
+          "title": "Violet Labyrinth · On foot",
+          "state": "arrived",
+          "ms": 4
+        }
+      ],
+      "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "webglError": 0,
+      "reopenMs": 5537,
+      "browser": "157.0.8103.80"
+    },
+    "release": {
+      "openingMs": 38379,
+      "trips": [
+        {
+          "title": "Violet Labyrinth · On foot",
+          "state": "arrived",
+          "ms": 42269
+        },
+        {
+          "title": "Dark Age Forest · On foot",
+          "state": "arrived",
+          "ms": 3486
+        },
+        {
+          "title": "Violet Labyrinth · On foot",
+          "state": "arrived",
+          "ms": 34
+        }
+      ],
+      "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "webglError": 0,
+      "reopenMs": 5073,
+      "browser": "157.0.8103.80"
+    }
+  },
+  "openingHttpMs": {
+    "reference": {
+      "medianShellMs": 239.4924000000001,
+      "medianFingerprintMs": 235.63910000000033,
+      "samples": [
+        {
+          "shellMs": 264.4099,
+          "fingerprintMs": 262.7405
+        },
+        {
+          "shellMs": 236.41129999999998,
+          "fingerprintMs": 232.4538
+        },
+        {
+          "shellMs": 243.5365999999999,
+          "fingerprintMs": 239.3110999999999
+        },
+        {
+          "shellMs": 239.4924000000001,
+          "fingerprintMs": 235.28920000000016
+        },
+        {
+          "shellMs": 242.66829999999982,
+          "fingerprintMs": 238.35550000000012
+        },
+        {
+          "shellMs": 238.32410000000027,
+          "fingerprintMs": 235.63910000000033
+        },
+        {
+          "shellMs": 236.8068000000003,
+          "fingerprintMs": 232.7184000000002
+        }
+      ]
+    },
+    "release": {
+      "medianShellMs": 8.032799999999952,
+      "medianFingerprintMs": 249.46010000000024,
+      "samples": [
+        {
+          "shellMs": 9.20029999999997,
+          "fingerprintMs": 254.37579999999997
+        },
+        {
+          "shellMs": 8.097200000000043,
+          "fingerprintMs": 246.59519999999998
+        },
+        {
+          "shellMs": 8.171399999999949,
+          "fingerprintMs": 246.23289999999997
+        },
+        {
+          "shellMs": 7.46569999999997,
+          "fingerprintMs": 250.01139999999987
+        },
+        {
+          "shellMs": 8.032799999999952,
+          "fingerprintMs": 249.46010000000024
+        },
+        {
+          "shellMs": 7.331000000000131,
+          "fingerprintMs": 249.04109999999991
+        },
+        {
+          "shellMs": 7.358600000000024,
+          "fingerprintMs": 253.22600000000057
+        }
+      ]
+    }
+  },
+  "screenshots": [
+    {
+      "file": "visit-progress.jpg",
+      "sha256": "c24f4952c14fc884eb2e6c7799499d47495ff0939168b47d2d3fb1b59cf19c14",
+      "pixels": [
+        1180,
+        760
+      ],
+      "caption": "Violet Labyrinth, after Visit and before its destination resolver"
+    },
+    {
+      "file": "outfall-through-tunnel.jpg",
+      "sha256": "1cd61b536ef65f05db0283aa4ac99813d5001dff9b86c5121727851320c72882",
+      "pixels": [
+        764,
+        580
+      ],
+      "caption": "On foot at the 500 km marker toward Mycelium Sea"
+    }
+  ],
+  "sourceFiles": {
+    "transit-status.js": "514fe6185ccc9be6d883728612e02abb76408f40520ea5e1409a6761f5636e80",
+    "loading-screen.css": "e3cf0341fadfa3a7a39c0ec143f85dc1d6cc070498d3fead391e64840d5a4ea7",
+    "stage-frame.js": "778f824f4ff03b4bef9f39bec89bdf5db191e1422844c1bdf96eb6bb98578134",
+    "surface-passages.js": "44b43409c97e988d6847f402df567147166a04b798c93c97f8653f6bf569a131",
+    "surface-circuit.js": "35061ba6ff9226811fda81b0072afb5d74a06c3b01923fdd1a2fe96032008962",
+    "world.js": "12c2473f2937d9ca7116e4cd4fcec8e6ca91634043de278e0b0a910cfffc6e32",
+    "portal-landing.js": "59dfebed346c640450c170cbe4f7754513e19291eb3df610523d616e4cb4515b",
+    "packs/sideways-city/1.0.0/ground.js": "88e52fa02b884374bc4a10bb83a79f9fd80d421429ac6d03b2bd655170566935",
+    "packs/infinite-industry/1.4.1/plant.js": "46f8debdde922de55217715e66157d6bd87a86b6f5dd1a8b9aa2cf43c8f988fa",
+    "packs/border-outfall/1.0.0/border.js": "12de04307a2d5bfbd8d27cfd8c54202d40e452d25ca243ca40c595b5a2cce79a",
+    "packs/border-outfall/1.0.0/outfall.js": "a3c2953070c5f3a010956fe0604fd759a6b7c9a7b07b4d3b685546401a2c91b6",
+    "packs/border-outfall/1.0.0/render.js": "07ab8dd1f8dfb18d5c0e64cfef8b9e3c0fbb18fdcbf0f8e1dab55b4899946cba"
+  }
+}
