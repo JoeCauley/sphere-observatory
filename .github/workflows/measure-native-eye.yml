@@ -1,0 +1,24 @@
+name: Measure the native camera above the rendered survey ground
+on:
+  push:
+    branches: [qa/transition-grounded-proof]
+    paths: [.github/workflows/measure-native-eye.yml]
+permissions:
+  contents: read
+jobs:
+  survey:
+    runs-on: macos-15
+    timeout-minutes: 18
+    env:
+      SPHERE_NATIVE_BROWSER: /Applications/Google Chrome.app/Contents/MacOS/Google Chrome
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version: '24'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: |
+          gh release download transition-films-44871660792 -p Sphere-Transition-Films.zip -D "$RUNNER_TEMP/baseline"
+          unzip -q "$RUNNER_TEMP/baseline/Sphere-Transition-Films.zip" 'walk-*.json' -d "$RUNNER_TEMP/baseline"
+          node tools/measure-surveyed-eye.cjs "$RUNNER_TEMP/baseline"
