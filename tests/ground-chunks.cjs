@@ -11,6 +11,10 @@ s.position=f.world([1.078,.1,.4]);SphereLanding.enter(s,s.position);for(let i=0;
 // A tunnel exit is already grounded. The first physics tick must accept held forward input.
 SphereLanding.enter(s,s.position,{activate:false,grounded:true});
 SphereLanding.activate(s);
+const supportedPosition=s.position.slice(),live=structuredClone(s);
+live.walkPosition[1]-=.008;live.position=S.site(live).world(live.walkPosition);
+SphereLanding.activate(s,live);
+assert(M.length(M.sub(live.position,supportedPosition))<.000002,'The first drawn frame uses the prepared collision triangle');
 const atDoor=s.walkPosition.slice();
 S.step(s,new Set(['KeyW']),1/60);
 assert(Math.hypot(s.walkPosition[0]-atDoor[0],s.walkPosition[2]-atDoor[2])>.00003,
