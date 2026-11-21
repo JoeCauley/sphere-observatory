@@ -1,0 +1,56 @@
+name: Check the native transition regressions and outlet movement
+on:
+  push:
+    branches: [qa/transition-film-archive-44870610208]
+    paths: [.github/workflows/verify-transition-motion.yml]
+permissions:
+  contents: read
+jobs:
+  native:
+    runs-on: macos-15
+    timeout-minutes: 35
+    env:
+      SPHERE_NATIVE_BROWSER: /Applications/Google Chrome.app/Contents/MacOS/Google Chrome
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version: "24"
+      - run: npm ci --no-audit --no-fund
+      - run: node tests/geographic-flight-browser.cjs
+      - run: node tests/surface-architecture-browser.cjs
+      - run: node tests/violet-flight-browser.cjs
+      - run: node tests/asset-loading-browser.cjs
+  footsteps:
+    runs-on: ubuntu-latest
+    timeout-minutes: 65
+    permissions:
+      actions: read
+      contents: read
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - name: Read the original camera traces
+        run: |
+          gh run watch 44871660792 --interval 40 --compact
+          gh run download 44871660792 -D "$RUNNER_TEMP/takes"
+      - name: Measure the final forward input on every surveyed outlet
+        run: |
+          python - <<'PY'
+          import json,math,os,pathlib
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'takes'
+          observations=[]
+          for f in sorted(root.glob('*/walk-*.json')):
+              tr=json.loads(f.read_bytes())
+              if tr.get('failure'): raise RuntimeError((f.name,tr['failure']))
+              frames=tr['frames'];last=frames[-1]
+              local=bool(last.get('local') and (last.get('stageOpacity') or 0)>.9)
+              key='local' if local else 'main'
+              def position(s):return s[key][:3] if local else s[key][1:4]
+              samples=[v for v in frames if v['owner']==last['owner'] and v.get(key) and (not local or v.get('stageOpacity',0)>.90) and v['ms']>=last['ms']-1350]
+              dist=max((math.dist(position(s),position(last)) for s in samples),default=0)*(1 if local else 1000)
+              observations.append({'id':tr['id'],'observedM':round(dist,4),'postArrivalSamples':len(samples),'outletErrorM':tr['result']['end']['slipM']})
+          assert len(observations)==28,len(observations)
+          print('FINAL_FOOTSTEPS '+json.dumps(observations),flush=True)
+          PY
