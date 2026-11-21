@@ -1,0 +1,20 @@
+name: Verify recovery from an interrupted destination alignment
+on:
+  push:
+    branches: [qa/transition-film-archive-44870610208]
+    paths: [.github/workflows/verify-transition-recovery.yml]
+permissions:
+  contents: read
+jobs:
+  recovery:
+    runs-on: macos-15
+    timeout-minutes: 40
+    env:
+      SPHERE_NATIVE_BROWSER: /Applications/Google Chrome.app/Contents/MacOS/Google Chrome
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version: '24'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: npm run test:stage-arrival

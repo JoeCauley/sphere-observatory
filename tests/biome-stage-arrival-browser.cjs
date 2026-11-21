@@ -247,16 +247,15 @@ async function main() {
     checkSuccess(crossed, city);
     record('Healthy inter-biome Fly to draws and settles', crossed);
 
-    // Delay only the second request for the target, the final Main overview under cloud.
+    // Delay the destination alignment once its child is mounted behind the regional view.
     // Let it finish after recovery to prove it cannot reset the explorer's Main camera.
     await observeStatus();
     await page.evaluate(id => {
       const travel = SphereJourney.travel, original = travel.request;
-      let targets = 0;
       travel.request = function(spec) {
-        if (spec.id === 'biome-' + id && ++targets === 2) {
+        if (spec.stageTrip && spec.id === 'biome-' + id && SphereStageFrame.current?.id === id) {
           return new Promise(resolve => { window.__releaseOverview = () => {
-            travel.request = original; resolve({ state: 'cancelled' });
+            travel.request = original; resolve({ state: 'arrived' });
           }; });
         }
         return original.call(this, spec);
