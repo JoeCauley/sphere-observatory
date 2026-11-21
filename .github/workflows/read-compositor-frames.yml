@@ -1,0 +1,25 @@
+name: Inspect the two compositor frame changes at their recorded positions
+on:
+  push:
+    branches: [qa/transition-film-archive-44870610208]
+    paths: [.github/workflows/read-compositor-frames.yml]
+permissions:
+  actions: read
+  contents: read
+jobs:
+  read:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - run: |
+          gh run download 44872266309 -n compositor-evidence -D "$RUNNER_TEMP/takes"
+          cd "$RUNNER_TEMP/takes"
+          unzip -q Compositor-Demo-Recordings.zip -d originals
+          python "$GITHUB_WORKSPACE/tools/transition-cut-traces.py" originals cuts.json
+          python - <<'PY'
+          import json,pathlib
+          for label,p in [('COMPOSITOR_METRICS','demo-records.json'),('COMPOSITOR_CUT_TRACES','cuts.json')]:
+              print(label+' '+json.dumps(json.loads(pathlib.Path(p).read_bytes()),separators=(',',':')))
+          PY
