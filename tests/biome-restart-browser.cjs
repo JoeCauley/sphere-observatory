@@ -71,12 +71,13 @@ async function main() {
   }
   const installed=()=>page.evaluate(()=>SphereBiomeLibrary.installed());
   const row=id=>page.locator('#biomeLibraryList article').filter({has:page.getByRole('heading',{name:new RegExp('^'+name(id)+' '),exact:false})});
-  const install=async id=>{await row(id).getByRole('button',{name:'Install',exact:true}).click();await page.waitForFunction(id=>!!SphereBiomeLibrary.entry(id),id);};
+  const explore=async()=>{await page.locator('[data-tab=camera]').click();};
+  const install=async id=>{await explore();await row(id).getByRole('button',{name:'Install',exact:true}).click();await page.waitForFunction(id=>!!SphereBiomeLibrary.entry(id),id);};
   const settled=async id=>{
     await page.waitForFunction(id=>SphereStageFrame.current?.id===id&&!SphereStageFrame.flying&&SphereStageFrame.lastArrival?.status==='arrived'
       &&document.querySelector('#stageFrame iframe')?.contentWindow?.SphereBiome?.inspect().scripted===false,id);
   };
-  const visit=async id=>{await row(id).getByRole('button',{name:'Visit',exact:true}).click();await settled(id);};
+  const visit=async id=>{await explore();await row(id).getByRole('button',{name:'Visit',exact:true}).click();await settled(id);};
   const fly=async id=>{await page.locator('#stageFrame').getByRole('button',{name:'Fly to '+name(id),exact:true}).click();await settled(id);};
   const back=async()=>{await page.getByRole('button',{name:'Return to the Sphere',exact:true}).click();await page.waitForFunction(()=>!SphereStageFrame.current&&!SphereStageFrame.flying);};
   const pose=()=>page.evaluate(()=>document.querySelector('#stageFrame iframe').contentWindow.SphereBiome.pose());

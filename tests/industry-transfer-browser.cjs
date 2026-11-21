@@ -22,13 +22,20 @@ async function main(){
     const wanted=Math.atan2(ex,-ez);
     const turn=((wanted-start.pose.yaw+3*Math.PI)%(2*Math.PI))-Math.PI;
     const canvas=page.locator('#world');await canvas.focus();
-    const key=turn>0?'KeyX':'KeyZ';await page.keyboard.down(key);
-    try{
-      await page.waitForFunction(({from,amount})=>Math.abs(SphereBiome.pose().yaw-from)>=Math.max(0,amount-.011),{from:start.pose.yaw,amount:Math.abs(turn)},{timeout:12000});
-    }finally{await page.keyboard.up(key);}
+    // A frame-delayed key release can miss a narrow deck on a software renderer.
+    // The normal drag control has a fixed gain independent of the render clock.
+    const box=await canvas.boundingBox(),centerX=box.x+box.width*.65,centerY=box.y+box.height*.60;
+    const segments=Math.max(1,Math.ceil(Math.abs(turn/.004)/(box.width*.2)));
+    for(let i=0;i<segments;i++){
+      await page.mouse.move(centerX,centerY);await page.mouse.down();
+      try{await page.mouse.move(centerX+turn/.004/segments,centerY);}
+      finally{await page.mouse.up();}
+    }
+    const heading=await page.evaluate(()=>SphereBiome.pose().yaw);
+    assert(Math.abs(Math.atan2(Math.sin(heading-wanted),Math.cos(heading-wanted)))<.012,'Walk must start parallel to the conveyor');
     await page.keyboard.down('ShiftLeft');await page.keyboard.down('KeyW');
     try{
-      await page.waitForFunction(({outlet,ex,ez,length})=>{const p=SphereBiome.pose();return (p.eastM-outlet[0])*ex+(p.northM-outlet[1])*ez>length-1;},{outlet:start.transfer.outlet,ex,ez,length:start.transfer.length},{timeout:35000});
+      await page.waitForFunction(({outlet,ex,ez,length})=>{const p=SphereBiome.pose();return (p.eastM-outlet[0])*ex+(p.northM-outlet[1])*ez>length-1;},{outlet:start.transfer.outlet,ex,ez,length:start.transfer.length},{timeout:150000,polling:100});
     }finally{await page.keyboard.up('KeyW');await page.keyboard.up('ShiftLeft');}
     const end=await page.evaluate(async()=>{const {locate}=await import('./pod.js');const p=SphereBiome.pose();return {pose:p,hex:locate(p.eastM,p.northM).hex.id};});
     assert.equal(end.hex,start.transfer.destination);assert.equal(end.pose.mode,'walk');assert(Math.abs(end.pose.altitudeM-start.pose.altitudeM)<.002);

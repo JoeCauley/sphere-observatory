@@ -1,0 +1,24 @@
+name: Check restored installations and the Industry walking route
+on:
+  push:
+    branches: [qa/transition-film-archive-44870610208]
+    paths: [.github/workflows/check-recorded-controls.yml]
+permissions:
+  contents: read
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        command: [test:restart, test:industry:transfer]
+    env:
+      SPHERE_NATIVE_BROWSER: /usr/bin/google-chrome
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version: "24"
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: npm run ${{ matrix.command }}
