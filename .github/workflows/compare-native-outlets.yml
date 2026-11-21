@@ -1,0 +1,22 @@
+name: Compare the visible ground at matched tunnel exits
+on:
+  push:
+    branches: [qa/triangle-transition-films]
+    paths: [.github/workflows/compare-native-outlets.yml]
+permissions:
+  actions: read
+  contents: write
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - run: |
+          gh release download transition-films-44871660792 -p Sphere-Transition-Films.zip -D "$RUNNER_TEMP/before"
+          gh run watch 44875365674 --interval 20 --compact --exit-status
+          gh release download transition-films-44875365674 -p Sphere-Transition-Films.zip -D "$RUNNER_TEMP/after"
+      - run: python -m pip install opencv-python-headless Pillow
+      - run: python tools/compare-ground-pictures.py "$RUNNER_TEMP"
