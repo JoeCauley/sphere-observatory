@@ -96,7 +96,7 @@ for begin in range(0,len(review),6):
             im=Image.open(ct);im.thumbnail((310,360));board.paste(im,(x+417,y+23))
     b=archive/('review-'+str(begin//6+1)+'.jpg');board.save(b,quality=86);boards.append({'file':b.name,'blob':git_blob(b)})
 totals={'routes':len(films),'seconds':round(sum(f['seconds'] for f in films),2),'frames':sum(f['decodedFrames'] for f in films),'samples':sum(f['cameraSamples'] for f in films),'blackFrames':sum(f['blackFrames'] for f in films),'candidateCuts':sum(len(f['candidateCuts']) for f in films),'maxSlipM':max(f.get('outletErrorM',0) for f in films),'portalLightComparisons':sum(f.get('portalDirect') is not None for f in films),'fullScreenTransitSamples':sum(f['fullScreenTransitSamples'] for f in films)}
-a={'source':json.loads(subprocess.check_output(['node','tools/transition-source.cjs'])),'browser':sorted(browsers),'captureEnvironment':'GitHub-hosted Linux Chrome, separate from the Windows desktop walk and regression campaign','plans':plans,'totals':totals,'demos':demos,'films':review}
+a={'source':json.loads(subprocess.check_output(['node','tools/transition-source.cjs'])),'browser':sorted(browsers),'captureEnvironment':'GitHub-hosted macOS Chrome using ANGLE Metal on Apple Paravirtual graphics, separate from the Windows desktop campaign','plans':plans,'totals':totals,'demos':demos,'films':review}
 write(archive/'audit.json',a);refer['audit.json']=git_blob(archive/'audit.json')
 movie=export/'Sphere-Transition-Films.zip'
 with zipfile.ZipFile(movie,'w') as z:
