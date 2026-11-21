@@ -8,6 +8,13 @@ let joins=0;const visited=new Map(),times=[];for(const x of [...Array.from({leng
 }
 // Actual controller crosses a join without the former 1.08 km clamp.
 s.position=f.world([1.078,.1,.4]);SphereLanding.enter(s,s.position);for(let i=0;i<150;i++)S.step(s,new Set(),1/60);s.forward=f.basis[0];s.up=f.basis[1];for(let i=0;i<200;i++)S.step(s,new Set(['KeyW']),1/60);assert(s.walkPosition[0]>1.08);M.validate(s);
+// A tunnel exit is already grounded. The first physics tick must accept held forward input.
+SphereLanding.enter(s,s.position,{activate:false,grounded:true});
+SphereLanding.activate(s);
+const atDoor=s.walkPosition.slice();
+S.step(s,new Set(['KeyW']),1/60);
+assert(Math.hypot(s.walkPosition[0]-atDoor[0],s.walkPosition[2]-atDoor[2])>.00003,
+ 'Forward input must move the walker on the first tick across a grounded doorway');
 // Clipped fine/coarse chunks at a real Wound use one coalesced complement.
 const w={...s,walkMode:false,terrainAnchor:null,multipleWounds:true,siteId:'biome-5'},rim=W.rimFrame(w,0,Math.PI/2);w.siteAnchor=M.norm(M.add(rim.point,M.mul(rim.inland,.02/w.radius)));w.position=M.mul(w.siteAnchor,w.radius-.04);const groups=G.neighbourhood(w),cut=G.rimCut(w);assert(cut&&cut.ends.length===2);for(const mesh of groups)for(const seg of mesh.ground.rim?.segments||[]){for(const p of [seg.a,seg.b])assert(Math.abs(SphereCollection.woundDistance(M.norm(mesh.world(p)),SphereCollection.wounds[0])-1)<1e-10);}
 console.log(JSON.stringify({status:'PASS',joins,residency:G.info,syncBuildMs:{max:Math.max(...times)}}));
