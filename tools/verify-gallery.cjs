@@ -69,4 +69,46 @@ assert(walks.circuits.every(w=>Math.abs(w.liveDegrees-360)<1e-8 && w.liveClosure
 const illustrated=[...photos.views,...walks.screenshots].map(v=>'examples/biomes/'+v.file);
 assert(shown.length>=4);assert(shown.every(p=>illustrated.includes(p)));
 assert.deepEqual(new Set(photos.views.filter(v=>shown.includes('examples/biomes/'+v.file)).map(v=>v.pack)),new Set(offered.map(p=>p.id)));
+const audit=read(path.join(root,'examples/transitions/audit.json'));
+assert.deepEqual(require('./transition-source.cjs').sourceFingerprint(),audit.source);
+assert.equal(audit.films.length,48);
+assert.equal(audit.films.length,new Set(audit.films.map(f=>f.id)).size);
+const footFilms=audit.films.filter(f=>f.id.startsWith('walk-'));
+assert.equal(footFilms.length,28);
+assert(footFilms.every(f=>f.firstStepM>.25 && f.outletErrorM<.5));
+const nativeEyes=footFilms.filter(f=>f.eyeAboveFloorM!==null);
+assert.equal(nativeEyes.length,24);
+assert(nativeEyes.every(f=>Math.abs(f.eyeAboveFloorM-1.7)<.10));
+assert(audit.films.every(f=>f.sourcePictures>=8 && f.picturesPerSecond>0));
+const guided=audit.films.filter(f=>f.id.startsWith('flight-'));
+assert.equal(new Set(guided.map(f=>f.from+'/'+f.to)).size,offered.length*(offered.length-1));
+assert(audit.films.every(f=>f.outcome==='pass' && f.decodedFrames>0));
+assert.equal(audit.demos.length,3);
+if(audit.demoCaptureSourceSha256){
+ assert.equal(sha(fs.readFileSync(path.join(root,'tools/compositor-film.cjs'))),audit.demoCaptureSourceSha256);
+}
+const cutTraces=read(path.join(root,'examples/transitions/camera-cuts.json'));
+assert.equal(Object.values(cutTraces).flat().length,audit.totals.candidateCuts);
+for(const film of audit.films){
+ assert.equal((cutTraces[film.id]||[]).length,film.candidateCuts.length,film.id);
+}
+for(const demo of audit.demos){
+ const clip=fs.readFileSync(path.join(root,'examples/transitions',demo.file));
+ assert.equal(clip.subarray(4,8).toString(),'ftyp');assert.equal(sha(clip),demo.sha256);
+ assert(readme.includes('examples/transitions/'+demo.file));
+ const surveyed=audit.films.find(f=>f.id===demo.sourceFilm);
+ assert(surveyed,'The demonstration must repeat a surveyed route');
+ assert.equal(demo.capture,'compositor');
+ assert.equal(demo.decodedFrames,surveyed.decodedFrames);
+ assert.equal(demo.sourceSha256,surveyed.sha256);
+ assert.equal(demo.sourcePictures,surveyed.sourcePictures);
+}
+const transitionDoc=fs.readFileSync(path.join(root,'docs/Transition-audit.md'),'utf8');
+const comparison=fs.readFileSync(path.join(root,'examples/transitions/outlet-before-after.jpg'));
+assert.equal(comparison.readUInt16BE(0),0xffd8);
+assert.equal(sha(comparison),audit.groundComparison.sha256);
+assert(transitionDoc.includes('outlet-before-after.jpg'));
+for(const demo of audit.demos)assert(transitionDoc.includes('examples/transitions/'+demo.file));
+assert(readme.includes('docs/Transition-audit.md'));
+console.log('PASS '+audit.films.length+' transition films, three complete demo files and current transition source');
 console.log('PASS '+photos.views.length+' biome photographs, the Meadow pan and Outfall crossing, release source fingerprints, historical galleries and publication links');

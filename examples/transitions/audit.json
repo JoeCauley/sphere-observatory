@@ -1,0 +1,3018 @@
+{
+  "source": {
+    "files": 289,
+    "sha256": "07ae2faf1272dd51e97fb97459d6d46db57abbd392c2ad1e7e08ec0d3f21c15b"
+  },
+  "browser": [
+    "158.0.8127.37"
+  ],
+  "captureEnvironment": "GitHub-hosted macOS Chrome using ANGLE Metal on Apple Paravirtual graphics, separate from the Windows desktop campaign",
+  "plans": {
+    "empty": {
+      "worldSeed": 23,
+      "bearingSeeds": [
+        1592762643,
+        713,
+        20261120
+      ],
+      "completedLaps": 12,
+      "passages": 175,
+      "distinctDirectedPairs": 57,
+      "worstClosureM": 0.002418676694290831,
+      "pairs": [
+        {
+          "key": "main-0--main-1",
+          "count": 3
+        },
+        {
+          "key": "main-0--main-11",
+          "count": 1
+        },
+        {
+          "key": "main-0--main-5",
+          "count": 1
+        },
+        {
+          "key": "main-0--main-8",
+          "count": 3
+        },
+        {
+          "key": "main-1--main-0",
+          "count": 3
+        },
+        {
+          "key": "main-1--main-11",
+          "count": 1
+        },
+        {
+          "key": "main-1--main-12",
+          "count": 1
+        },
+        {
+          "key": "main-1--main-6",
+          "count": 8
+        },
+        {
+          "key": "main-10--main-0",
+          "count": 1
+        },
+        {
+          "key": "main-10--main-11",
+          "count": 8
+        },
+        {
+          "key": "main-10--main-12",
+          "count": 3
+        },
+        {
+          "key": "main-10--main-15",
+          "count": 3
+        },
+        {
+          "key": "main-10--main-7",
+          "count": 1
+        },
+        {
+          "key": "main-10--main-8",
+          "count": 1
+        },
+        {
+          "key": "main-10--main-9",
+          "count": 1
+        },
+        {
+          "key": "main-11--main-1",
+          "count": 4
+        },
+        {
+          "key": "main-11--main-10",
+          "count": 7
+        },
+        {
+          "key": "main-11--main-12",
+          "count": 7
+        },
+        {
+          "key": "main-11--main-2",
+          "count": 3
+        },
+        {
+          "key": "main-11--main-3",
+          "count": 1
+        },
+        {
+          "key": "main-11--main-4",
+          "count": 1
+        },
+        {
+          "key": "main-11--main-7",
+          "count": 1
+        },
+        {
+          "key": "main-12--main-10",
+          "count": 5
+        },
+        {
+          "key": "main-12--main-11",
+          "count": 8
+        },
+        {
+          "key": "main-12--main-15",
+          "count": 3
+        },
+        {
+          "key": "main-12--main-7",
+          "count": 1
+        },
+        {
+          "key": "main-12--main-8",
+          "count": 1
+        },
+        {
+          "key": "main-15--main-10",
+          "count": 3
+        },
+        {
+          "key": "main-15--main-11",
+          "count": 3
+        },
+        {
+          "key": "main-2--main-3",
+          "count": 3
+        },
+        {
+          "key": "main-2--main-5",
+          "count": 3
+        },
+        {
+          "key": "main-2--main-7",
+          "count": 2
+        },
+        {
+          "key": "main-3--main-12",
+          "count": 3
+        },
+        {
+          "key": "main-3--main-4",
+          "count": 5
+        },
+        {
+          "key": "main-3--main-9",
+          "count": 6
+        },
+        {
+          "key": "main-4--main-11",
+          "count": 3
+        },
+        {
+          "key": "main-4--main-3",
+          "count": 4
+        },
+        {
+          "key": "main-4--main-5",
+          "count": 2
+        },
+        {
+          "key": "main-4--main-8",
+          "count": 1
+        },
+        {
+          "key": "main-5--main-10",
+          "count": 1
+        },
+        {
+          "key": "main-5--main-12",
+          "count": 1
+        },
+        {
+          "key": "main-5--main-2",
+          "count": 1
+        },
+        {
+          "key": "main-5--main-4",
+          "count": 3
+        },
+        {
+          "key": "main-5--main-9",
+          "count": 1
+        },
+        {
+          "key": "main-6--main-1",
+          "count": 6
+        },
+        {
+          "key": "main-6--main-10",
+          "count": 2
+        },
+        {
+          "key": "main-6--main-12",
+          "count": 1
+        },
+        {
+          "key": "main-6--main-7",
+          "count": 7
+        },
+        {
+          "key": "main-7--main-2",
+          "count": 4
+        },
+        {
+          "key": "main-7--main-6",
+          "count": 8
+        },
+        {
+          "key": "main-8--main-0",
+          "count": 4
+        },
+        {
+          "key": "main-8--main-12",
+          "count": 2
+        },
+        {
+          "key": "main-8--main-4",
+          "count": 1
+        },
+        {
+          "key": "main-8--main-9",
+          "count": 3
+        },
+        {
+          "key": "main-9--main-3",
+          "count": 6
+        },
+        {
+          "key": "main-9--main-5",
+          "count": 1
+        },
+        {
+          "key": "main-9--main-8",
+          "count": 4
+        }
+      ],
+      "sampledFilms": 4
+    },
+    "placed": {
+      "worldSeed": 23,
+      "bearingSeeds": [
+        1592762643,
+        713,
+        20261120
+      ],
+      "completedLaps": 15,
+      "passages": 228,
+      "distinctDirectedPairs": 66,
+      "worstClosureM": 0.0016724402230858723,
+      "pairs": [
+        {
+          "key": "main-0--main-1",
+          "count": 4
+        },
+        {
+          "key": "main-0--main-10",
+          "count": 1
+        },
+        {
+          "key": "main-0--main-11",
+          "count": 1
+        },
+        {
+          "key": "main-0--main-8",
+          "count": 3
+        },
+        {
+          "key": "main-1--main-0",
+          "count": 2
+        },
+        {
+          "key": "main-1--main-11",
+          "count": 2
+        },
+        {
+          "key": "main-1--main-12",
+          "count": 2
+        },
+        {
+          "key": "main-1--main-6",
+          "count": 9
+        },
+        {
+          "key": "main-10--main-0",
+          "count": 1
+        },
+        {
+          "key": "main-10--main-11",
+          "count": 11
+        },
+        {
+          "key": "main-10--main-12",
+          "count": 5
+        },
+        {
+          "key": "main-10--main-15",
+          "count": 4
+        },
+        {
+          "key": "main-10--main-6",
+          "count": 2
+        },
+        {
+          "key": "main-10--main-7",
+          "count": 1
+        },
+        {
+          "key": "main-10--main-8",
+          "count": 1
+        },
+        {
+          "key": "main-10--main-9",
+          "count": 1
+        },
+        {
+          "key": "main-11--main-0",
+          "count": 1
+        },
+        {
+          "key": "main-11--main-1",
+          "count": 3
+        },
+        {
+          "key": "main-11--main-10",
+          "count": 13
+        },
+        {
+          "key": "main-11--main-12",
+          "count": 9
+        },
+        {
+          "key": "main-11--main-2",
+          "count": 2
+        },
+        {
+          "key": "main-11--main-3",
+          "count": 1
+        },
+        {
+          "key": "main-11--main-4",
+          "count": 1
+        },
+        {
+          "key": "main-11--main-5",
+          "count": 1
+        },
+        {
+          "key": "main-11--main-7",
+          "count": 1
+        },
+        {
+          "key": "main-12--main-1",
+          "count": 1
+        },
+        {
+          "key": "main-12--main-10",
+          "count": 7
+        },
+        {
+          "key": "main-12--main-11",
+          "count": 11
+        },
+        {
+          "key": "main-12--main-15",
+          "count": 2
+        },
+        {
+          "key": "main-12--main-7",
+          "count": 1
+        },
+        {
+          "key": "main-12--main-8",
+          "count": 2
+        },
+        {
+          "key": "main-12--main-9",
+          "count": 2
+        },
+        {
+          "key": "main-15--main-10",
+          "count": 1
+        },
+        {
+          "key": "main-15--main-11",
+          "count": 3
+        },
+        {
+          "key": "main-15--main-12",
+          "count": 2
+        },
+        {
+          "key": "main-2--main-3",
+          "count": 3
+        },
+        {
+          "key": "main-2--main-5",
+          "count": 2
+        },
+        {
+          "key": "main-2--main-7",
+          "count": 2
+        },
+        {
+          "key": "main-3--main-11",
+          "count": 1
+        },
+        {
+          "key": "main-3--main-12",
+          "count": 3
+        },
+        {
+          "key": "main-3--main-4",
+          "count": 6
+        },
+        {
+          "key": "main-3--main-9",
+          "count": 8
+        },
+        {
+          "key": "main-4--main-11",
+          "count": 3
+        },
+        {
+          "key": "main-4--main-12",
+          "count": 1
+        },
+        {
+          "key": "main-4--main-3",
+          "count": 6
+        },
+        {
+          "key": "main-4--main-5",
+          "count": 2
+        },
+        {
+          "key": "main-4--main-8",
+          "count": 1
+        },
+        {
+          "key": "main-5--main-2",
+          "count": 1
+        },
+        {
+          "key": "main-5--main-4",
+          "count": 4
+        },
+        {
+          "key": "main-6--main-1",
+          "count": 7
+        },
+        {
+          "key": "main-6--main-10",
+          "count": 3
+        },
+        {
+          "key": "main-6--main-12",
+          "count": 1
+        },
+        {
+          "key": "main-6--main-7",
+          "count": 11
+        },
+        {
+          "key": "main-6--sideways-city",
+          "count": 3
+        },
+        {
+          "key": "main-7--main-10",
+          "count": 1
+        },
+        {
+          "key": "main-7--main-2",
+          "count": 4
+        },
+        {
+          "key": "main-7--main-6",
+          "count": 12
+        },
+        {
+          "key": "main-8--main-0",
+          "count": 5
+        },
+        {
+          "key": "main-8--main-12",
+          "count": 2
+        },
+        {
+          "key": "main-8--main-4",
+          "count": 2
+        },
+        {
+          "key": "main-8--main-9",
+          "count": 3
+        },
+        {
+          "key": "main-9--main-12",
+          "count": 1
+        },
+        {
+          "key": "main-9--main-3",
+          "count": 8
+        },
+        {
+          "key": "main-9--main-8",
+          "count": 5
+        },
+        {
+          "key": "sideways-city--main-6",
+          "count": 2
+        },
+        {
+          "key": "sideways-city--main-7",
+          "count": 1
+        }
+      ],
+      "sampledFilms": 2
+    },
+    "installed": {
+      "worldSeed": 23,
+      "bearingSeeds": [
+        1592762643,
+        713,
+        20261120
+      ],
+      "completedLaps": 24,
+      "passages": 398,
+      "distinctDirectedPairs": 74,
+      "worstClosureM": 0.0017368615574596678,
+      "pairs": [
+        {
+          "key": "infinite-industry--main-11",
+          "count": 5
+        },
+        {
+          "key": "infinite-meadow--main-8",
+          "count": 7
+        },
+        {
+          "key": "main-0--main-1",
+          "count": 9
+        },
+        {
+          "key": "main-0--main-10",
+          "count": 1
+        },
+        {
+          "key": "main-0--main-11",
+          "count": 3
+        },
+        {
+          "key": "main-0--main-5",
+          "count": 1
+        },
+        {
+          "key": "main-0--main-8",
+          "count": 5
+        },
+        {
+          "key": "main-1--main-0",
+          "count": 9
+        },
+        {
+          "key": "main-1--main-11",
+          "count": 6
+        },
+        {
+          "key": "main-1--main-12",
+          "count": 2
+        },
+        {
+          "key": "main-1--main-6",
+          "count": 19
+        },
+        {
+          "key": "main-10--main-0",
+          "count": 1
+        },
+        {
+          "key": "main-10--main-11",
+          "count": 19
+        },
+        {
+          "key": "main-10--main-12",
+          "count": 11
+        },
+        {
+          "key": "main-10--main-15",
+          "count": 4
+        },
+        {
+          "key": "main-10--main-5",
+          "count": 1
+        },
+        {
+          "key": "main-10--main-6",
+          "count": 3
+        },
+        {
+          "key": "main-10--main-7",
+          "count": 1
+        },
+        {
+          "key": "main-10--main-8",
+          "count": 1
+        },
+        {
+          "key": "main-10--main-9",
+          "count": 2
+        },
+        {
+          "key": "main-11--infinite-industry",
+          "count": 5
+        },
+        {
+          "key": "main-11--main-0",
+          "count": 2
+        },
+        {
+          "key": "main-11--main-1",
+          "count": 5
+        },
+        {
+          "key": "main-11--main-10",
+          "count": 22
+        },
+        {
+          "key": "main-11--main-12",
+          "count": 16
+        },
+        {
+          "key": "main-11--main-2",
+          "count": 2
+        },
+        {
+          "key": "main-11--main-3",
+          "count": 3
+        },
+        {
+          "key": "main-11--main-4",
+          "count": 1
+        },
+        {
+          "key": "main-11--main-5",
+          "count": 2
+        },
+        {
+          "key": "main-11--main-7",
+          "count": 2
+        },
+        {
+          "key": "main-12--main-10",
+          "count": 16
+        },
+        {
+          "key": "main-12--main-11",
+          "count": 14
+        },
+        {
+          "key": "main-12--main-15",
+          "count": 2
+        },
+        {
+          "key": "main-12--main-3",
+          "count": 3
+        },
+        {
+          "key": "main-12--main-5",
+          "count": 1
+        },
+        {
+          "key": "main-12--main-6",
+          "count": 2
+        },
+        {
+          "key": "main-12--main-7",
+          "count": 1
+        },
+        {
+          "key": "main-12--main-8",
+          "count": 3
+        },
+        {
+          "key": "main-15--main-10",
+          "count": 1
+        },
+        {
+          "key": "main-15--main-11",
+          "count": 3
+        },
+        {
+          "key": "main-15--main-12",
+          "count": 2
+        },
+        {
+          "key": "main-2--main-3",
+          "count": 3
+        },
+        {
+          "key": "main-2--main-5",
+          "count": 2
+        },
+        {
+          "key": "main-2--main-7",
+          "count": 4
+        },
+        {
+          "key": "main-3--main-11",
+          "count": 5
+        },
+        {
+          "key": "main-3--main-12",
+          "count": 3
+        },
+        {
+          "key": "main-3--main-2",
+          "count": 1
+        },
+        {
+          "key": "main-3--main-4",
+          "count": 11
+        },
+        {
+          "key": "main-3--main-9",
+          "count": 11
+        },
+        {
+          "key": "main-4--main-11",
+          "count": 4
+        },
+        {
+          "key": "main-4--main-3",
+          "count": 13
+        },
+        {
+          "key": "main-4--main-5",
+          "count": 5
+        },
+        {
+          "key": "main-4--main-8",
+          "count": 2
+        },
+        {
+          "key": "main-5--main-0",
+          "count": 2
+        },
+        {
+          "key": "main-5--main-11",
+          "count": 1
+        },
+        {
+          "key": "main-5--main-2",
+          "count": 2
+        },
+        {
+          "key": "main-5--main-4",
+          "count": 7
+        },
+        {
+          "key": "main-6--main-1",
+          "count": 22
+        },
+        {
+          "key": "main-6--main-10",
+          "count": 2
+        },
+        {
+          "key": "main-6--main-12",
+          "count": 3
+        },
+        {
+          "key": "main-6--main-7",
+          "count": 9
+        },
+        {
+          "key": "main-6--sideways-city",
+          "count": 5
+        },
+        {
+          "key": "main-7--main-10",
+          "count": 1
+        },
+        {
+          "key": "main-7--main-2",
+          "count": 4
+        },
+        {
+          "key": "main-7--main-6",
+          "count": 12
+        },
+        {
+          "key": "main-8--infinite-meadow",
+          "count": 5
+        },
+        {
+          "key": "main-8--main-0",
+          "count": 5
+        },
+        {
+          "key": "main-8--main-12",
+          "count": 5
+        },
+        {
+          "key": "main-8--main-4",
+          "count": 5
+        },
+        {
+          "key": "main-8--main-9",
+          "count": 4
+        },
+        {
+          "key": "main-9--infinite-meadow",
+          "count": 2
+        },
+        {
+          "key": "main-9--main-3",
+          "count": 9
+        },
+        {
+          "key": "main-9--main-8",
+          "count": 6
+        },
+        {
+          "key": "sideways-city--main-6",
+          "count": 5
+        }
+      ],
+      "sampledFilms": 22
+    }
+  },
+  "totals": {
+    "routes": 48,
+    "seconds": 1327.51,
+    "frames": 31860,
+    "samples": 9878,
+    "blackFrames": 0,
+    "candidateCuts": 51,
+    "maxSlipM": 0.0000447202934969969,
+    "portalLightComparisons": 28,
+    "fullScreenTransitSamples": 0,
+    "sourcePictures": 23253,
+    "nativeEyeChecks": 24,
+    "minimumEyeM": 1.7199814319610596,
+    "maximumEyeM": 1.720041036605835,
+    "minimumFirstStepM": 1.8670400000000087,
+    "maximumFirstStepM": 3.173240000000047
+  },
+  "demos": [
+    {
+      "sourceFilm": "flight-outfall-industry",
+      "file": "outfall-to-industry.mp4",
+      "seconds": 57.21,
+      "decodedFrames": 1373,
+      "sha256": "8644e4ebda1e6ae3e3b22751297ea66477eb5d4629f6fff7f1825d92c376c71b",
+      "bytes": 2538284,
+      "capture": "compositor",
+      "edit": "Uncut downscale of the complete surveyed route",
+      "sourceSha256": "8e32fefc865fa7f6195bb20c86304af556604a0e3fc5fa7343ea3bf67150a4f0",
+      "sourcePictures": 999,
+      "picturesPerSecond": 17.46,
+      "p95PictureIntervalMs": 200,
+      "cameraSamples": 394
+    },
+    {
+      "sourceFilm": "meadow-outfall-service-door",
+      "file": "meadow-service-door.mp4",
+      "seconds": 70.42,
+      "decodedFrames": 1690,
+      "sha256": "ea524a5e4687dc0c37d3c87ef9e0511d4d70460898eb0e4301f7b5b671612f9e",
+      "bytes": 4137265,
+      "capture": "compositor",
+      "edit": "Uncut downscale of the complete surveyed route",
+      "sourceSha256": "95070d5adb4acb15dd7813b70b864428d22732001bb316970e7e65eaae68ca79",
+      "sourcePictures": 1622,
+      "picturesPerSecond": 23.03,
+      "p95PictureIntervalMs": 84,
+      "cameraSamples": 645
+    },
+    {
+      "file": "into-violet-labyrinth.mp4",
+      "sourceFilm": "walk-installed-main-10-main-9",
+      "seconds": 18.54,
+      "decodedFrames": 445,
+      "sourceSha256": "c852fbe83bb0bd2492d9a443e2299e8452c67f5ef00c80bdac40dc87a91939e0",
+      "sha256": "ff21e5eca51cc1632daec654edbc8c641418d96135375c952c909379e47b99ab",
+      "bytes": 366022,
+      "sourcePictures": 306,
+      "picturesPerSecond": 16.52,
+      "p95PictureIntervalMs": 183,
+      "cameraSamples": 136,
+      "capture": "compositor",
+      "edit": "Uncut downscale of the complete surveyed route"
+    }
+  ],
+  "films": [
+    {
+      "id": "flight-city-industry",
+      "seconds": 64.29,
+      "sha256": "38adde1fff09f16ccf37490b830e3cb22dfbadadb7b663a36c29f75d0b6931e5",
+      "bytes": 12509898,
+      "decodedFrames": 1543,
+      "cameraSamples": 532,
+      "captureGapP95Ms": 249,
+      "blackFrames": 0,
+      "flatFrames": 222,
+      "maxDelta": 0.215,
+      "longestSimilarSeconds": 0.67,
+      "candidateCuts": [
+        {
+          "s": 31.08,
+          "change": 0.162,
+          "histogram": 0.391,
+          "owner": "infinite-industry",
+          "curtain": false,
+          "cloud": 0
+        },
+        {
+          "s": 32.42,
+          "change": 0.178,
+          "histogram": 0.391,
+          "owner": "infinite-industry",
+          "curtain": false,
+          "cloud": 0
+        }
+      ],
+      "group": "guided flight",
+      "outcome": "pass",
+      "fullScreenTransitSamples": 0,
+      "compactTransitSamples": 0,
+      "sourcePictures": 1308,
+      "picturesPerSecond": 20.34,
+      "p95PictureIntervalMs": 150,
+      "to": "infinite-industry",
+      "from": "sideways-city"
+    },
+    {
+      "id": "flight-city-meadow",
+      "seconds": 63.92,
+      "sha256": "3a6c961f4db47f76aa65325971e51cbd9df9f89fd0433b1ae86ac54cc5a063af",
+      "bytes": 8315433,
+      "decodedFrames": 1534,
+      "cameraSamples": 487,
+      "captureGapP95Ms": 379,
+      "blackFrames": 0,
+      "flatFrames": 245,
+      "maxDelta": 0.174,
+      "longestSimilarSeconds": 1.29,
+      "candidateCuts": [],
+      "group": "guided flight",
+      "outcome": "pass",
+      "fullScreenTransitSamples": 0,
+      "compactTransitSamples": 0,
+      "sourcePictures": 1074,
+      "picturesPerSecond": 16.8,
+      "p95PictureIntervalMs": 183,
+      "to": "infinite-meadow",
+      "from": "sideways-city"
+    },
+    {
+      "id": "flight-city-outfall",
+      "seconds": 58.67,
+      "sha256": "060669518aa8f5cbbe90e96177d87817861fd93b58e6a9ff8f7e6758af49b2d0",
+      "bytes": 8861927,
+      "decodedFrames": 1408,
+      "cameraSamples": 406,
+      "captureGapP95Ms": 394,
+      "blackFrames": 0,
+      "flatFrames": 344,
+      "maxDelta": 0.167,
+      "longestSimilarSeconds": 0.79,
+      "candidateCuts": [],
+      "group": "guided flight",
+      "outcome": "pass",
+      "fullScreenTransitSamples": 0,
+      "compactTransitSamples": 0,
+      "sourcePictures": 767,
+      "picturesPerSecond": 13.07,
+      "p95PictureIntervalMs": 200,
+      "to": "border-outfall",
+      "from": "sideways-city"
+    },
+    {
+      "id": "flight-industry-city",
+      "seconds": 62.83,
+      "sha256": "f033b2f16792fb17bb8c4489a2f36426f5b810895fdaa34b78ae860adbf253e1",
+      "bytes": 11233746,
+      "decodedFrames": 1508,
+      "cameraSamples": 515,
+      "captureGapP95Ms": 211,
+      "blackFrames": 0,
+      "flatFrames": 196,
+      "maxDelta": 0.194,
+      "longestSimilarSeconds": 1.54,
+      "candidateCuts": [],
+      "group": "guided flight",
+      "outcome": "pass",
+      "fullScreenTransitSamples": 0,
+      "compactTransitSamples": 0,
+      "sourcePictures": 1053,
+      "picturesPerSecond": 16.76,
+      "p95PictureIntervalMs": 150,
+      "to": "sideways-city",
+      "from": "infinite-industry"
+    },
+    {
+      "id": "flight-industry-meadow",
+      "seconds": 63.75,
+      "sha256": "a41265188bf60a3ddc076fbfb4975deff9b679c4e12b318fdc87705a1a6936d1",
+      "bytes": 9654693,
+      "decodedFrames": 1530,
+      "cameraSamples": 473,
+      "captureGapP95Ms": 403,
+      "blackFrames": 0,
+      "flatFrames": 92,
+      "maxDelta": 0.264,
+      "longestSimilarSeconds": 1.04,
+      "candidateCuts": [
+        {
+          "s": 30.54,
+          "change": 0.264,
+          "histogram": 0.364,
+          "owner": "infinite-meadow",
+          "curtain": false,
+          "cloud": 0
+        },
+        {
+          "s": 35.17,
+          "change": 0.221,
+          "histogram": 0.463,
+          "owner": "infinite-meadow",
+          "curtain": false,
+          "cloud": 0
+        }
+      ],
+      "group": "guided flight",
+      "outcome": "pass",
+      "fullScreenTransitSamples": 0,
+      "compactTransitSamples": 0,
+      "sourcePictures": 1135,
+      "picturesPerSecond": 17.8,
+      "p95PictureIntervalMs": 183,
+      "to": "infinite-meadow",
+      "from": "infinite-industry"
+    },
+    {
+      "id": "flight-industry-outfall",
+      "seconds": 58.5,
+      "sha256": "0fdfb451f01022c1070dc2fc36c7d0e77b6003d08b8bde36dbd7b91cabad9eba",
+      "bytes": 9757316,
+      "decodedFrames": 1404,
+      "cameraSamples": 390,
+      "captureGapP95Ms": 404,
+      "blackFrames": 0,
+      "flatFrames": 213,
+      "maxDelta": 0.271,
+      "longestSimilarSeconds": 0.88,
+      "candidateCuts": [
+        {
+          "s": 29.25,
+          "change": 0.173,
+          "histogram": 0.376,
+          "owner": "border-outfall",
+          "curtain": false,
+          "cloud": 0
+        },
+        {
+          "s": 29.75,
+          "change": 0.206,
+          "histogram": 0.366,
+          "owner": "border-outfall",
+          "curtain": false,
+          "cloud": 0
+        },
+        {
+          "s": 35.12,
+          "change": 0.175,
+          "histogram": 0.351,
+          "owner": "border-outfall",
+          "curtain": false,
+          "cloud": 0
+        },
+        {
+          "s": 53.92,
+          "change": 0.26,
+          "histogram": 1,
+          "owner": "border-outfall",
+          "curtain": false,
+          "cloud": 0
+        }
+      ],
+      "group": "guided flight",
+      "outcome": "pass",
+      "fullScreenTransitSamples": 0,
+      "compactTransitSamples": 0,
+      "sourcePictures": 870,
+      "picturesPerSecond": 14.87,
+      "p95PictureIntervalMs": 200,
+      "to": "border-outfall",
+      "from": "infinite-industry"
+    },
+    {
+      "id": "flight-meadow-city",
+      "seconds": 61.17,
+      "sha256": "d2b33f3c08c4358828cbf93b1b4c497d5f6bbe347795dacdb3d54fe691287bc1",
+      "bytes": 8673144,
+      "decodedFrames": 1468,
+      "cameraSamples": 472,
+      "captureGapP95Ms": 302,
+      "blackFrames": 0,
+      "flatFrames": 206,
+      "maxDelta": 0.172,
+      "longestSimilarSeconds": 2.71,
+      "candidateCuts": [],
+      "group": "guided flight",
+      "outcome": "pass",
+      "fullScreenTransitSamples": 0,
+      "compactTransitSamples": 0,
+      "sourcePictures": 991,
+      "picturesPerSecond": 16.21,
+      "p95PictureIntervalMs": 167,
+      "to": "sideways-city",
+      "from": "infinite-meadow"
+    },
+    {
+      "id": "flight-meadow-industry",
+      "seconds": 63.08,
+      "sha256": "c7d7458da559103f2b560cfda31363a23730cbf0c4e12eee483e00471745b080",
+      "bytes": 10558517,
+      "decodedFrames": 1514,
+      "cameraSamples": 480,
+      "captureGapP95Ms": 329,
+      "blackFrames": 0,
+      "flatFrames": 88,
+      "maxDelta": 0.225,
+      "longestSimilarSeconds": 1.54,
+      "candidateCuts": [
+        {
+          "s": 29.42,
+          "change": 0.18,
+          "histogram": 0.37,
+          "owner": "infinite-industry",
+          "curtain": false,
+          "cloud": 0
+        }
+      ],
+      "group": "guided flight",
+      "outcome": "pass",
+      "fullScreenTransitSamples": 0,
+      "compactTransitSamples": 0,
+      "sourcePictures": 1144,
+      "picturesPerSecond": 18.14,
+      "p95PictureIntervalMs": 167,
+      "to": "infinite-industry",
+      "from": "infinite-meadow"
+    },
+    {
+      "id": "flight-meadow-outfall",
+      "seconds": 55.04,
+      "sha256": "403e155c00336ed9eabccc18bedf7e6862062502482cda0a15392a17ea93cbd3",
+      "bytes": 6037127,
+      "decodedFrames": 1321,
+      "cameraSamples": 322,
+      "captureGapP95Ms": 418,
+      "blackFrames": 0,
+      "flatFrames": 219,
+      "maxDelta": 0.233,
+      "longestSimilarSeconds": 1.25,
+      "candidateCuts": [
+        {
+          "s": 50.29,
+          "change": 0.233,
+          "histogram": 1,
+          "owner": "border-outfall",
+          "curtain": false,
+          "cloud": 0
+        }
+      ],
+      "group": "guided flight",
+      "outcome": "pass",
+      "fullScreenTransitSamples": 0,
+      "compactTransitSamples": 0,
+      "sourcePictures": 854,
+      "picturesPerSecond": 15.52,
+      "p95PictureIntervalMs": 250,
+      "to": "border-outfall",
+      "from": "infinite-meadow"
+    },
+    {
+      "id": "flight-outfall-city",
+      "seconds": 56.33,
+      "sha256": "42b7571610659a20def61df5e023e3034433e59adcc02ce6537d7f137af25c31",
+      "bytes": 8927306,
+      "decodedFrames": 1352,
+      "cameraSamples": 382,
+      "captureGapP95Ms": 377,
+      "blackFrames": 0,
+      "flatFrames": 348,
+      "maxDelta": 0.184,
+      "longestSimilarSeconds": 2.33,
+      "candidateCuts": [
+        {
+          "s": 21.46,
+          "change": 0.167,
+          "histogram": 0.325,
+          "owner": "sideways-city",
+          "curtain": false,
+          "cloud": 0
+        }
+      ],
+      "group": "guided flight",
+      "outcome": "pass",
+      "fullScreenTransitSamples": 0,
+      "compactTransitSamples": 0,
+      "sourcePictures": 828,
+      "picturesPerSecond": 14.7,
+      "p95PictureIntervalMs": 184,
+      "to": "sideways-city",
+      "from": "border-outfall"
+    },
+    {
+      "id": "flight-outfall-industry",
+      "seconds": 57.21,
+      "sha256": "8e32fefc865fa7f6195bb20c86304af556604a0e3fc5fa7343ea3bf67150a4f0",
+      "bytes": 10865570,
+      "decodedFrames": 1373,
+      "cameraSamples": 394,
+      "captureGapP95Ms": 372,
+      "blackFrames": 0,
+      "flatFrames": 226,
+      "maxDelta": 0.233,
+      "longestSimilarSeconds": 1.46,
+      "candidateCuts": [
+        {
+          "s": 5.46,
+          "change": 0.213,
+          "histogram": 0.963,
+          "owner": "border-outfall",
+          "curtain": false,
+          "cloud": 0
+        },
+        {
+          "s": 23.54,
+          "change": 0.233,
+          "histogram": 0.382,
+          "owner": "infinite-industry",
+          "curtain": false,
+          "cloud": 0
+        }
+      ],
+      "group": "guided flight",
+      "outcome": "pass",
+      "fullScreenTransitSamples": 0,
+      "compactTransitSamples": 0,
+      "sourcePictures": 999,
+      "picturesPerSecond": 17.46,
+      "p95PictureIntervalMs": 200,
+      "to": "infinite-industry",
+      "from": "border-outfall"
+    },
+    {
+      "id": "flight-outfall-meadow",
+      "seconds": 54.38,
+      "sha256": "fd73cfdeb04ddc4917de8052b64a5cda02ddd8017188e12f0dcab509f42f51aa",
+      "bytes": 5481556,
+      "decodedFrames": 1305,
+      "cameraSamples": 326,
+      "captureGapP95Ms": 409,
+      "blackFrames": 0,
+      "flatFrames": 235,
+      "maxDelta": 0.214,
+      "longestSimilarSeconds": 1.08,
+      "candidateCuts": [
+        {
+          "s": 5.29,
+          "change": 0.214,
+          "histogram": 0.966,
+          "owner": "border-outfall",
+          "curtain": false,
+          "cloud": 0
+        }
+      ],
+      "group": "guided flight",
+      "outcome": "pass",
+      "fullScreenTransitSamples": 0,
+      "compactTransitSamples": 0,
+      "sourcePictures": 814,
+      "picturesPerSecond": 14.96,
+      "p95PictureIntervalMs": 250,
+      "to": "infinite-meadow",
+      "from": "border-outfall"
+    },
+    {
+      "id": "free-city-reverse",
+      "seconds": 4.92,
+      "sha256": "e7f063be76b72728bcd0df16038906fa0c81147835be2a4bd21e1a83f3d8929a",
+      "bytes": 154212,
+      "decodedFrames": 118,
+      "cameraSamples": 39,
+      "captureGapP95Ms": 274,
+      "blackFrames": 0,
+      "flatFrames": 118,
+      "maxDelta": 0.021,
+      "longestSimilarSeconds": 1.58,
+      "candidateCuts": [],
+      "group": "manual flight",
+      "outcome": "pass",
+      "fullScreenTransitSamples": 0,
+      "compactTransitSamples": 0,
+      "sourcePictures": 61,
+      "picturesPerSecond": 12.4,
+      "p95PictureIntervalMs": 275,
+      "hoverLocalOpacity": 0.420398
+    },
+    {
+      "id": "free-industry-reverse",
+      "seconds": 6.62,
+      "sha256": "9bb6690f874af3b16ce6194bd356ea5c65263d8709dced2cf0117e7ab0940fbb",
+      "bytes": 199372,
+      "decodedFrames": 159,
+      "cameraSamples": 45,
+      "captureGapP95Ms": 270,
+      "blackFrames": 0,
+      "flatFrames": 109,
+      "maxDelta": 0.068,
+      "longestSimilarSeconds": 2.71,
+      "candidateCuts": [],
+      "group": "manual flight",
+      "outcome": "pass",
+      "fullScreenTransitSamples": 0,
+      "compactTransitSamples": 2,
+      "sourcePictures": 81,
+      "picturesPerSecond": 12.22,
+      "p95PictureIntervalMs": 267,
+      "hoverLocalOpacity": 0.566113
+    },
+    {
+      "id": "free-meadow-reverse",
+      "seconds": 8.08,
+      "sha256": "3ef5d4e4a1fa2de10fec64ee447d4315c951f90919959b2e5ed3341e6f0253f0",
+      "bytes": 249793,
+      "decodedFrames": 194,
+      "cameraSamples": 41,
+      "captureGapP95Ms": 440,
+      "blackFrames": 0,
+      "flatFrames": 144,
+      "maxDelta": 0.034,
+      "longestSimilarSeconds": 2.42,
+      "candidateCuts": [],
+      "group": "manual flight",
+      "outcome": "pass",
+      "fullScreenTransitSamples": 0,
+      "compactTransitSamples": 4,
+      "sourcePictures": 74,
+      "picturesPerSecond": 9.16,
+      "p95PictureIntervalMs": 333,
+      "hoverLocalOpacity": 0.601593
+    },
+    {
+      "id": "free-outfall-reverse",
+      "seconds": 7.17,
+      "sha256": "b04c00615dc27fcf7a56a5dd02b42c00c96d3b284dfc58cb9773b0ee212788ee",
+      "bytes": 264868,
+      "decodedFrames": 172,
+      "cameraSamples": 46,
+      "captureGapP95Ms": 407,
+      "blackFrames": 0,
+      "flatFrames": 172,
+      "maxDelta": 0.018,
+      "longestSimilarSeconds": 1.54,
+      "candidateCuts": [],
+      "group": "manual flight",
+      "outcome": "pass",
+      "fullScreenTransitSamples": 0,
+      "compactTransitSamples": 5,
+      "sourcePictures": 75,
+      "picturesPerSecond": 10.44,
+      "p95PictureIntervalMs": 333,
+      "hoverLocalOpacity": 0.32784
+    },
+    {
+      "id": "meadow-outfall-service-door",
+      "seconds": 70.42,
+      "sha256": "95070d5adb4acb15dd7813b70b864428d22732001bb316970e7e65eaae68ca79",
+      "bytes": 28070353,
+      "decodedFrames": 1690,
+      "cameraSamples": 645,
+      "captureGapP95Ms": 161,
+      "blackFrames": 0,
+      "flatFrames": 0,
+      "maxDelta": 0.091,
+      "longestSimilarSeconds": 1.54,
+      "candidateCuts": [],
+      "group": "Meadow service route",
+      "outcome": "pass",
+      "fullScreenTransitSamples": 0,
+      "compactTransitSamples": 4,
+      "sourcePictures": 1622,
+      "picturesPerSecond": 23.03,
+      "p95PictureIntervalMs": 84
+    },
+    {
+      "id": "outfall-far-roof",
+      "seconds": 3.88,
+      "sha256": "bfcf4dc9063acb1c11328f1239663b11706ac375ad5da0df780f326dfc11d7a1",
+      "bytes": 339803,
+      "decodedFrames": 93,
+      "cameraSamples": 38,
+      "captureGapP95Ms": 117,
+      "blackFrames": 0,
+      "flatFrames": 0,
+      "maxDelta": 0.09,
+      "longestSimilarSeconds": 0.62,
+      "candidateCuts": [],
+      "group": "roof walk and liftoff",
+      "outcome": "pass",
+      "fullScreenTransitSamples": 0,
+      "compactTransitSamples": 0,
+      "sourcePictures": 92,
+      "picturesPerSecond": 23.78,
+      "p95PictureIntervalMs": 125
+    },
+    {
+      "id": "outfall-near-roof",
+      "seconds": 4.46,
+      "sha256": "7a53ee4bd5f7ed5049e1098a5f4a35a5bd15f19cc0a346d7f0d305c53e2c7039",
+      "bytes": 295998,
+      "decodedFrames": 107,
+      "cameraSamples": 40,
+      "captureGapP95Ms": 132,
+      "blackFrames": 0,
+      "flatFrames": 0,
+      "maxDelta": 0.095,
+      "longestSimilarSeconds": 0.83,
+      "candidateCuts": [],
+      "group": "roof walk and liftoff",
+      "outcome": "pass",
+      "fullScreenTransitSamples": 0,
+      "compactTransitSamples": 0,
+      "sourcePictures": 115,
+      "picturesPerSecond": 25.83,
+      "p95PictureIntervalMs": 137
+    },
+    {
+      "id": "violet-crown-descent",
+      "seconds": 12.79,
+      "sha256": "ce10bc89476e03bbfda863d36ba02df8690106110e34d91136bddcd5a26a970c",
+      "bytes": 1265942,
+      "decodedFrames": 307,
+      "cameraSamples": 76,
+      "captureGapP95Ms": 303,
+      "blackFrames": 0,
+      "flatFrames": 0,
+      "maxDelta": 0.073,
+      "longestSimilarSeconds": 1.58,
+      "candidateCuts": [],
+      "group": "Violet descent",
+      "outcome": "pass",
+      "fullScreenTransitSamples": 0,
+      "compactTransitSamples": 0,
+      "sourcePictures": 116,
+      "picturesPerSecond": 9.07,
+      "p95PictureIntervalMs": 217
+    },
+    {
+      "id": "walk-empty-main-0-main-11",
+      "seconds": 18.71,
+      "sha256": "0bbb6dc76f682c52c521a22d86623b1417e601f2090eb13b1954ca6ada9c595f",
+      "bytes": 749637,
+      "decodedFrames": 449,
+      "cameraSamples": 144,
+      "captureGapP95Ms": 254,
+      "blackFrames": 0,
+      "flatFrames": 0,
+      "maxDelta": 0.343,
+      "longestSimilarSeconds": 5.75,
+      "candidateCuts": [
+        {
+          "s": 2.83,
+          "change": 0.343,
+          "histogram": 0.842,
+          "owner": "border-outfall",
+          "curtain": false,
+          "cloud": 0
+        },
+        {
+          "s": 14.46,
+          "change": 0.198,
+          "histogram": 0.529,
+          "owner": "main",
+          "curtain": false,
+          "cloud": 0
+        }
+      ],
+      "group": "empty walks",
+      "outcome": "pass",
+      "fullScreenTransitSamples": 0,
+      "compactTransitSamples": 55,
+      "sourcePictures": 308,
+      "picturesPerSecond": 16.47,
+      "p95PictureIntervalMs": 150,
+      "eyeAboveFloorM": 1.7200112342834473,
+      "firstStepM": 3.1261999999999968,
+      "outletErrorM": 0.000017119856151148562,
+      "from": "main-0",
+      "to": "main-11",
+      "portalDirect": 1,
+      "destinationDirect": 1
+    },
+    {
+      "id": "walk-empty-main-12-main-7",
+      "seconds": 17.75,
+      "sha256": "54e8fb3158ef1d938a719011a35c20874ed223106025ca62de00e3b0aacab930",
+      "bytes": 776377,
+      "decodedFrames": 426,
+      "cameraSamples": 139,
+      "captureGapP95Ms": 296,
+      "blackFrames": 0,
+      "flatFrames": 0,
+      "maxDelta": 0.185,
+      "longestSimilarSeconds": 5.83,
+      "candidateCuts": [
+        {
+          "s": 2.67,
+          "change": 0.185,
+          "histogram": 0.733,
+          "owner": "border-outfall",
+          "curtain": true,
+          "cloud": 0
+        }
+      ],
+      "group": "empty walks",
+      "outcome": "pass",
+      "fullScreenTransitSamples": 0,
+      "compactTransitSamples": 54,
+      "sourcePictures": 317,
+      "picturesPerSecond": 17.86,
+      "p95PictureIntervalMs": 150,
+      "eyeAboveFloorM": 1.7199814319610596,
+      "firstStepM": 2.286479999999977,
+      "outletErrorM": 0,
+      "from": "main-12",
+      "to": "main-7",
+      "portalDirect": 1,
+      "destinationDirect": 1
+    },
+    {
+      "id": "walk-empty-main-2-main-7",
+      "seconds": 19.17,
+      "sha256": "0960de2ba59c6e4575e76e207ef9cd9783e56fd14a1fd1f0754afd3e4ac1591f",
+      "bytes": 801998,
+      "decodedFrames": 460,
+      "cameraSamples": 129,
+      "captureGapP95Ms": 425,
+      "blackFrames": 0,
+      "flatFrames": 0,
+      "maxDelta": 0.32,
+      "longestSimilarSeconds": 5.42,
+      "candidateCuts": [
+        {
+          "s": 2.21,
+          "change": 0.32,
+          "histogram": 0.977,
+          "owner": "border-outfall",
+          "curtain": true,
+          "cloud": 0
+        },
+        {
+          "s": 13.04,
+          "change": 0.31,
+          "histogram": 0.776,
+          "owner": "main",
+          "curtain": false,
+          "cloud": 0
+        }
+      ],
+      "group": "empty walks",
+      "outcome": "pass",
+      "fullScreenTransitSamples": 0,
+      "compactTransitSamples": 46,
+      "sourcePictures": 301,
+      "picturesPerSecond": 15.69,
+      "p95PictureIntervalMs": 217,
+      "eyeAboveFloorM": 1.7200112342834473,
+      "firstStepM": 3.12648000000002,
+      "outletErrorM": 0.00002491305007290556,
+      "from": "main-2",
+      "to": "main-7",
+      "portalDirect": 1,
+      "destinationDirect": 1
+    },
+    {
+      "id": "walk-empty-main-9-main-5",
+      "seconds": 20.75,
+      "sha256": "04e8d90280e3875f390872f823e6efcc488b150225ff92b097585c4119b7e814",
+      "bytes": 755770,
+      "decodedFrames": 498,
+      "cameraSamples": 137,
+      "captureGapP95Ms": 368,
+      "blackFrames": 0,
+      "flatFrames": 0,
+      "maxDelta": 0.136,
+      "longestSimilarSeconds": 5.17,
+      "candidateCuts": [],
+      "group": "empty walks",
+      "outcome": "pass",
+      "fullScreenTransitSamples": 0,
+      "compactTransitSamples": 48,
+      "sourcePictures": 296,
+      "picturesPerSecond": 14.26,
+      "p95PictureIntervalMs": 200,
+      "eyeAboveFloorM": 1.7199814319610596,
+      "firstStepM": 2.332960000000034,
+      "outletErrorM": 0.000018569091163290978,
+      "from": "main-9",
+      "to": "main-5",
+      "portalDirect": 0,
+      "destinationDirect": 0
+    },
+    {
+      "id": "walk-installed-infinite-industry-main-11",
+      "seconds": 14.88,
+      "sha256": "2d4657c9165c97ea31fae551868de8cef470e5059a59e2369c0f7243a999a597",
+      "bytes": 852001,
+      "decodedFrames": 357,
+      "cameraSamples": 131,
+      "captureGapP95Ms": 167,
+      "blackFrames": 0,
+      "flatFrames": 0,
+      "maxDelta": 0.208,
+      "longestSimilarSeconds": 5.33,
+      "candidateCuts": [
+        {
+          "s": 11.92,
+          "change": 0.208,
+          "histogram": 0.578,
+          "owner": "main",
+          "curtain": false,
+          "cloud": 0
+        }
+      ],
+      "group": "installed walks",
+      "outcome": "pass",
+      "fullScreenTransitSamples": 0,
+      "compactTransitSamples": 45,
+      "sourcePictures": 323,
+      "picturesPerSecond": 21.69,
+      "p95PictureIntervalMs": 117,
+      "eyeAboveFloorM": 1.7199814319610596,
+      "firstStepM": 2.6600000000000006,
+      "outletErrorM": 0.000023852429476690798,
+      "from": "infinite-industry",
+      "to": "main-11",
+      "portalDirect": 1,
+      "destinationDirect": 1
+    },
+    {
+      "id": "walk-installed-infinite-meadow-main-8",
+      "seconds": 18.62,
+      "sha256": "0df76649c9014cc4318b571af5eabbad46a290c74ddd6e0eeec92febcb5aac07",
+      "bytes": 1058404,
+      "decodedFrames": 447,
+      "cameraSamples": 139,
+      "captureGapP95Ms": 351,
+      "blackFrames": 0,
+      "flatFrames": 0,
+      "maxDelta": 0.136,
+      "longestSimilarSeconds": 5.29,
+      "candidateCuts": [],
+      "group": "installed walks",
+      "outcome": "pass",
+      "fullScreenTransitSamples": 0,
+      "compactTransitSamples": 44,
+      "sourcePictures": 321,
+      "picturesPerSecond": 17.22,
+      "p95PictureIntervalMs": 167,
+      "eyeAboveFloorM": 1.7200112342834473,
+      "firstStepM": 2.006480000000098,
+      "outletErrorM": 0.000004152175012150927,
+      "from": "infinite-meadow",
+      "to": "main-8",
+      "portalDirect": 0.96875,
+      "destinationDirect": 0.96875
+    },
+    {
+      "id": "walk-installed-main-0-main-10",
+      "seconds": 19.88,
+      "sha256": "23107c8c7a5bdeb0273e47500096427b5710cab106fc9b2d88d9e2fdcc1dc960",
+      "bytes": 785855,
+      "decodedFrames": 477,
+      "cameraSamples": 159,
+      "captureGapP95Ms": 248,
+      "blackFrames": 0,
+      "flatFrames": 0,
+      "maxDelta": 0.184,
+      "longestSimilarSeconds": 8.25,
+      "candidateCuts": [
+        {
+          "s": 17.38,
+          "change": 0.184,
+          "histogram": 0.49,
+          "owner": "main",
+          "curtain": false,
+          "cloud": 0
+        }
+      ],
+      "group": "installed walks",
+      "outcome": "pass",
+      "fullScreenTransitSamples": 0,
+      "compactTransitSamples": 80,
+      "sourcePictures": 500,
+      "picturesPerSecond": 25.17,
+      "p95PictureIntervalMs": 100,
+      "eyeAboveFloorM": 1.7200112342834473,
+      "firstStepM": 2.1464799999999955,
+      "outletErrorM": 0.000009284545581645489,
+      "from": "main-0",
+      "to": "main-10",
+      "portalDirect": 0.953125,
+      "destinationDirect": 0.953125
+    },
+    {
+      "id": "walk-installed-main-1-main-12",
+      "seconds": 16.38,
+      "sha256": "f2a89c6fb0c44151907bbd53e66b293c77f9d4f7851ea70a8b370f37554c82b7",
+      "bytes": 747124,
+      "decodedFrames": 393,
+      "cameraSamples": 138,
+      "captureGapP95Ms": 229,
+      "blackFrames": 0,
+      "flatFrames": 0,
+      "maxDelta": 0.266,
+      "longestSimilarSeconds": 6.12,
+      "candidateCuts": [
+        {
+          "s": 13.21,
+          "change": 0.266,
+          "histogram": 0.6,
+          "owner": "main",
+          "curtain": false,
+          "cloud": 0
+        }
+      ],
+      "group": "installed walks",
+      "outcome": "pass",
+      "fullScreenTransitSamples": 0,
+      "compactTransitSamples": 55,
+      "sourcePictures": 359,
+      "picturesPerSecond": 21.95,
+      "p95PictureIntervalMs": 117,
+      "eyeAboveFloorM": 1.7200112342834473,
+      "firstStepM": 2.5662000000000025,
+      "outletErrorM": 0.00001660870004860371,
+      "from": "main-1",
+      "to": "main-12",
+      "portalDirect": 0.96875,
+      "destinationDirect": 0.96875
+    },
+    {
+      "id": "walk-installed-main-10-main-0",
+      "seconds": 17.5,
+      "sha256": "ea54ab28bb5c61ab1738594f6931cff02b845f7c2f7f5b28374d090c6215f65c",
+      "bytes": 749489,
+      "decodedFrames": 420,
+      "cameraSamples": 139,
+      "captureGapP95Ms": 270,
+      "blackFrames": 0,
+      "flatFrames": 0,
+      "maxDelta": 0.223,
+      "longestSimilarSeconds": 5.58,
+      "candidateCuts": [
+        {
+          "s": 2.79,
+          "change": 0.223,
+          "histogram": 0.958,
+          "owner": "border-outfall",
+          "curtain": true,
+          "cloud": 0
+        },
+        {
+          "s": 14.25,
+          "change": 0.217,
+          "histogram": 0.536,
+          "owner": "main",
+          "curtain": false,
+          "cloud": 0
+        }
+      ],
+      "group": "installed walks",
+      "outcome": "pass",
+      "fullScreenTransitSamples": 0,
+      "compactTransitSamples": 54,
+      "sourcePictures": 301,
+      "picturesPerSecond": 17.21,
+      "p95PictureIntervalMs": 150,
+      "eyeAboveFloorM": 1.720041036605835,
+      "firstStepM": 2.659999999999999,
+      "outletErrorM": 0.000034239712302297124,
+      "from": "main-10",
+      "to": "main-0",
+      "portalDirect": 1,
+      "destinationDirect": 1
+    },
+    {
+      "id": "walk-installed-main-10-main-7",
+      "seconds": 19.42,
+      "sha256": "694ca726d71cebfc24da02bed15be165891ff43ecf9da3b5ec8e04f6f37d010f",
+      "bytes": 824880,
+      "decodedFrames": 466,
+      "cameraSamples": 137,
+      "captureGapP95Ms": 314,
+      "blackFrames": 0,
+      "flatFrames": 0,
+      "maxDelta": 0.244,
+      "longestSimilarSeconds": 5.25,
+      "candidateCuts": [
+        {
+          "s": 3.5,
+          "change": 0.227,
+          "histogram": 0.813,
+          "owner": "border-outfall",
+          "curtain": true,
+          "cloud": 0
+        },
+        {
+          "s": 3.62,
+          "change": 0.181,
+          "histogram": 0.975,
+          "owner": "border-outfall",
+          "curtain": true,
+          "cloud": 0
+        },
+        {
+          "s": 14.5,
+          "change": 0.244,
+          "histogram": 0.62,
+          "owner": "main",
+          "curtain": false,
+          "cloud": 0
+        }
+      ],
+      "group": "installed walks",
+      "outcome": "pass",
+      "fullScreenTransitSamples": 0,
+      "compactTransitSamples": 51,
+      "sourcePictures": 343,
+      "picturesPerSecond": 17.66,
+      "p95PictureIntervalMs": 167,
+      "eyeAboveFloorM": 1.7200112342834473,
+      "firstStepM": 3.173240000000047,
+      "outletErrorM": 0.00003449055603894504,
+      "from": "main-10",
+      "to": "main-7",
+      "portalDirect": 0.984375,
+      "destinationDirect": 0.984375
+    },
+    {
+      "id": "walk-installed-main-10-main-9",
+      "seconds": 18.54,
+      "sha256": "c852fbe83bb0bd2492d9a443e2299e8452c67f5ef00c80bdac40dc87a91939e0",
+      "bytes": 792783,
+      "decodedFrames": 445,
+      "cameraSamples": 136,
+      "captureGapP95Ms": 339,
+      "blackFrames": 0,
+      "flatFrames": 0,
+      "maxDelta": 0.217,
+      "longestSimilarSeconds": 5.67,
+      "candidateCuts": [
+        {
+          "s": 1.67,
+          "change": 0.217,
+          "histogram": 0.856,
+          "owner": "border-outfall",
+          "curtain": true,
+          "cloud": 0
+        },
+        {
+          "s": 13.33,
+          "change": 0.161,
+          "histogram": 0.621,
+          "owner": "main",
+          "curtain": false,
+          "cloud": 0
+        }
+      ],
+      "group": "installed walks",
+      "outcome": "pass",
+      "fullScreenTransitSamples": 0,
+      "compactTransitSamples": 49,
+      "sourcePictures": 306,
+      "picturesPerSecond": 16.52,
+      "p95PictureIntervalMs": 183,
+      "eyeAboveFloorM": 1.7200112342834473,
+      "firstStepM": 3.0332400000000477,
+      "outletErrorM": 0.000017119856151148562,
+      "from": "main-10",
+      "to": "main-9",
+      "portalDirect": 1,
+      "destinationDirect": 1
+    },
+    {
+      "id": "walk-installed-main-11-infinite-industry",
+      "seconds": 12.62,
+      "sha256": "d6adb27114e6fdd995562ea18b4e7e3b51d4aeb9a5f013e654f6c366d9e906eb",
+      "bytes": 845107,
+      "decodedFrames": 303,
+      "cameraSamples": 92,
+      "captureGapP95Ms": 314,
+      "blackFrames": 0,
+      "flatFrames": 0,
+      "maxDelta": 0.183,
+      "longestSimilarSeconds": 2.42,
+      "candidateCuts": [
+        {
+          "s": 10.58,
+          "change": 0.183,
+          "histogram": 0.586,
+          "owner": "infinite-industry",
+          "curtain": false,
+          "cloud": 0
+        }
+      ],
+      "group": "installed walks",
+      "outcome": "pass",
+      "fullScreenTransitSamples": 0,
+      "compactTransitSamples": 3,
+      "sourcePictures": 236,
+      "picturesPerSecond": 18.67,
+      "p95PictureIntervalMs": 183,
+      "eyeAboveFloorM": null,
+      "firstStepM": 2.7061972538388566,
+      "outletErrorM": 0.000031072032610785386,
+      "from": "main-11",
+      "to": "infinite-industry",
+      "portalDirect": 1,
+      "destinationDirect": 1
+    },
+    {
+      "id": "walk-installed-main-11-main-1",
+      "seconds": 16.67,
+      "sha256": "d074194b50fe235ed43705c8e5390917870fa3d739d4e0d928e3270a53c1c67e",
+      "bytes": 773631,
+      "decodedFrames": 400,
+      "cameraSamples": 133,
+      "captureGapP95Ms": 267,
+      "blackFrames": 0,
+      "flatFrames": 0,
+      "maxDelta": 0.254,
+      "longestSimilarSeconds": 5.29,
+      "candidateCuts": [
+        {
+          "s": 13.04,
+          "change": 0.254,
+          "histogram": 0.763,
+          "owner": "main",
+          "curtain": false,
+          "cloud": 0
+        }
+      ],
+      "group": "installed walks",
+      "outcome": "pass",
+      "fullScreenTransitSamples": 0,
+      "compactTransitSamples": 48,
+      "sourcePictures": 344,
+      "picturesPerSecond": 20.67,
+      "p95PictureIntervalMs": 133,
+      "eyeAboveFloorM": 1.7200112342834473,
+      "firstStepM": 2.612960000000034,
+      "outletErrorM": 0.00002357982132972725,
+      "from": "main-11",
+      "to": "main-1",
+      "portalDirect": 1,
+      "destinationDirect": 1
+    },
+    {
+      "id": "walk-installed-main-11-main-4",
+      "seconds": 16,
+      "sha256": "8f586a4150041bf6fd929e10f33e8c25ebdf6d263747cd3327093f6887be00f9",
+      "bytes": 726177,
+      "decodedFrames": 384,
+      "cameraSamples": 127,
+      "captureGapP95Ms": 280,
+      "blackFrames": 0,
+      "flatFrames": 0,
+      "maxDelta": 0.254,
+      "longestSimilarSeconds": 5.25,
+      "candidateCuts": [
+        {
+          "s": 1.54,
+          "change": 0.158,
+          "histogram": 0.723,
+          "owner": "border-outfall",
+          "curtain": true,
+          "cloud": 0
+        },
+        {
+          "s": 1.62,
+          "change": 0.254,
+          "histogram": 0.964,
+          "owner": "border-outfall",
+          "curtain": false,
+          "cloud": 0
+        },
+        {
+          "s": 12.71,
+          "change": 0.235,
+          "histogram": 0.551,
+          "owner": "main",
+          "curtain": false,
+          "cloud": 0
+        }
+      ],
+      "group": "installed walks",
+      "outcome": "pass",
+      "fullScreenTransitSamples": 0,
+      "compactTransitSamples": 46,
+      "sourcePictures": 302,
+      "picturesPerSecond": 18.88,
+      "p95PictureIntervalMs": 133,
+      "eyeAboveFloorM": 1.7200112342834473,
+      "firstStepM": 2.47324000000001,
+      "outletErrorM": 0.000018569091163290978,
+      "from": "main-11",
+      "to": "main-4",
+      "portalDirect": 1,
+      "destinationDirect": 1
+    },
+    {
+      "id": "walk-installed-main-12-main-15",
+      "seconds": 18.33,
+      "sha256": "4baf0bf8a4654a178e4658799d0da69acabf4fedd51c2d310c3c4eeeb2008326",
+      "bytes": 795272,
+      "decodedFrames": 440,
+      "cameraSamples": 151,
+      "captureGapP95Ms": 215,
+      "blackFrames": 0,
+      "flatFrames": 0,
+      "maxDelta": 0.215,
+      "longestSimilarSeconds": 6.04,
+      "candidateCuts": [
+        {
+          "s": 2.33,
+          "change": 0.208,
+          "histogram": 0.915,
+          "owner": "border-outfall",
+          "curtain": true,
+          "cloud": 0
+        },
+        {
+          "s": 14.29,
+          "change": 0.215,
+          "histogram": 0.568,
+          "owner": "main",
+          "curtain": false,
+          "cloud": 0
+        }
+      ],
+      "group": "installed walks",
+      "outcome": "pass",
+      "fullScreenTransitSamples": 0,
+      "compactTransitSamples": 58,
+      "sourcePictures": 368,
+      "picturesPerSecond": 20.06,
+      "p95PictureIntervalMs": 116,
+      "eyeAboveFloorM": 1.7199814319610596,
+      "firstStepM": 2.7064799999999365,
+      "outletErrorM": 0.000004152175012150927,
+      "from": "main-12",
+      "to": "main-15",
+      "portalDirect": 1,
+      "destinationDirect": 1
+    },
+    {
+      "id": "walk-installed-main-12-main-5",
+      "seconds": 21.5,
+      "sha256": "e305b1cf7036e35a8c1a2d0c85ab1d8bf8e1b3fcd79400c725a3f40638060943",
+      "bytes": 736993,
+      "decodedFrames": 516,
+      "cameraSamples": 136,
+      "captureGapP95Ms": 384,
+      "blackFrames": 0,
+      "flatFrames": 0,
+      "maxDelta": 0.216,
+      "longestSimilarSeconds": 5.54,
+      "candidateCuts": [
+        {
+          "s": 3.71,
+          "change": 0.216,
+          "histogram": 0.918,
+          "owner": "border-outfall",
+          "curtain": false,
+          "cloud": 0
+        }
+      ],
+      "group": "installed walks",
+      "outcome": "pass",
+      "fullScreenTransitSamples": 0,
+      "compactTransitSamples": 54,
+      "sourcePictures": 338,
+      "picturesPerSecond": 15.73,
+      "p95PictureIntervalMs": 216,
+      "eyeAboveFloorM": 1.7199814319610596,
+      "firstStepM": 1.8670400000000087,
+      "outletErrorM": 0.000020341420205008624,
+      "from": "main-12",
+      "to": "main-5",
+      "portalDirect": 0.984375,
+      "destinationDirect": 0.984375
+    },
+    {
+      "id": "walk-installed-main-15-main-10",
+      "seconds": 18.12,
+      "sha256": "b64063c456eb361e0000660ff26ce13fe0b9591652def31ca690ebd3ad0bbd78",
+      "bytes": 773153,
+      "decodedFrames": 435,
+      "cameraSamples": 148,
+      "captureGapP95Ms": 215,
+      "blackFrames": 0,
+      "flatFrames": 0,
+      "maxDelta": 0.143,
+      "longestSimilarSeconds": 5.42,
+      "candidateCuts": [],
+      "group": "installed walks",
+      "outcome": "pass",
+      "fullScreenTransitSamples": 0,
+      "compactTransitSamples": 53,
+      "sourcePictures": 327,
+      "picturesPerSecond": 18.05,
+      "p95PictureIntervalMs": 135,
+      "eyeAboveFloorM": 1.7200112342834473,
+      "firstStepM": 2.613239999999967,
+      "outletErrorM": 0.00001660870004860371,
+      "from": "main-15",
+      "to": "main-10",
+      "portalDirect": 1,
+      "destinationDirect": 1
+    },
+    {
+      "id": "walk-installed-main-2-main-3",
+      "seconds": 20.21,
+      "sha256": "837f97112cfdf99502e10b0c643b6f378a813871163cc0137970846a250dcb9d",
+      "bytes": 799333,
+      "decodedFrames": 485,
+      "cameraSamples": 157,
+      "captureGapP95Ms": 307,
+      "blackFrames": 0,
+      "flatFrames": 0,
+      "maxDelta": 0.123,
+      "longestSimilarSeconds": 8.08,
+      "candidateCuts": [],
+      "group": "installed walks",
+      "outcome": "pass",
+      "fullScreenTransitSamples": 0,
+      "compactTransitSamples": 74,
+      "sourcePictures": 429,
+      "picturesPerSecond": 21.22,
+      "p95PictureIntervalMs": 133,
+      "eyeAboveFloorM": 1.7200112342834473,
+      "firstStepM": 2.1932400000000065,
+      "outletErrorM": 0.00002357982132972725,
+      "from": "main-2",
+      "to": "main-3",
+      "portalDirect": 1,
+      "destinationDirect": 1
+    },
+    {
+      "id": "walk-installed-main-3-main-2",
+      "seconds": 18.12,
+      "sha256": "e2218d2c41d893909eeca429eafbf76b15280400a33b4ea34c63e819888131d9",
+      "bytes": 766303,
+      "decodedFrames": 435,
+      "cameraSamples": 139,
+      "captureGapP95Ms": 273,
+      "blackFrames": 0,
+      "flatFrames": 0,
+      "maxDelta": 0.338,
+      "longestSimilarSeconds": 5.79,
+      "candidateCuts": [
+        {
+          "s": 2.54,
+          "change": 0.338,
+          "histogram": 0.96,
+          "owner": "border-outfall",
+          "curtain": false,
+          "cloud": 0
+        },
+        {
+          "s": 14,
+          "change": 0.156,
+          "histogram": 0.563,
+          "owner": "main",
+          "curtain": false,
+          "cloud": 0
+        }
+      ],
+      "group": "installed walks",
+      "outcome": "pass",
+      "fullScreenTransitSamples": 0,
+      "compactTransitSamples": 53,
+      "sourcePictures": 312,
+      "picturesPerSecond": 17.21,
+      "p95PictureIntervalMs": 167,
+      "eyeAboveFloorM": 1.7200112342834473,
+      "firstStepM": 2.4264799999999775,
+      "outletErrorM": 0.000023488248862122048,
+      "from": "main-3",
+      "to": "main-2",
+      "portalDirect": 1,
+      "destinationDirect": 1
+    },
+    {
+      "id": "walk-installed-main-4-main-8",
+      "seconds": 18.54,
+      "sha256": "58bf040a3cf4009e70139c96f18a155c15438a91b980d22d8cb49b8c3dc99cd1",
+      "bytes": 715376,
+      "decodedFrames": 445,
+      "cameraSamples": 145,
+      "captureGapP95Ms": 265,
+      "blackFrames": 0,
+      "flatFrames": 0,
+      "maxDelta": 0.249,
+      "longestSimilarSeconds": 6.21,
+      "candidateCuts": [
+        {
+          "s": 1.88,
+          "change": 0.249,
+          "histogram": 0.944,
+          "owner": "border-outfall",
+          "curtain": false,
+          "cloud": 0
+        },
+        {
+          "s": 13.62,
+          "change": 0.244,
+          "histogram": 0.61,
+          "owner": "main",
+          "curtain": false,
+          "cloud": 0
+        }
+      ],
+      "group": "installed walks",
+      "outcome": "pass",
+      "fullScreenTransitSamples": 0,
+      "compactTransitSamples": 57,
+      "sourcePictures": 344,
+      "picturesPerSecond": 18.53,
+      "p95PictureIntervalMs": 150,
+      "eyeAboveFloorM": 1.7200112342834473,
+      "firstStepM": 3.033239999999969,
+      "outletErrorM": 0.00001660870004860371,
+      "from": "main-4",
+      "to": "main-8",
+      "portalDirect": 0.953125,
+      "destinationDirect": 0.953125
+    },
+    {
+      "id": "walk-installed-main-5-main-11",
+      "seconds": 16.29,
+      "sha256": "380c670bf14fb3be238be1d932a6b96873d1de9c69f9b2d18b24ebfb33bd22c2",
+      "bytes": 784228,
+      "decodedFrames": 391,
+      "cameraSamples": 133,
+      "captureGapP95Ms": 235,
+      "blackFrames": 0,
+      "flatFrames": 0,
+      "maxDelta": 0.18,
+      "longestSimilarSeconds": 6.12,
+      "candidateCuts": [
+        {
+          "s": 1.46,
+          "change": 0.18,
+          "histogram": 0.794,
+          "owner": "border-outfall",
+          "curtain": true,
+          "cloud": 0
+        },
+        {
+          "s": 1.58,
+          "change": 0.16,
+          "histogram": 0.971,
+          "owner": "border-outfall",
+          "curtain": true,
+          "cloud": 0
+        }
+      ],
+      "group": "installed walks",
+      "outcome": "pass",
+      "fullScreenTransitSamples": 0,
+      "compactTransitSamples": 53,
+      "sourcePictures": 346,
+      "picturesPerSecond": 21.24,
+      "p95PictureIntervalMs": 117,
+      "eyeAboveFloorM": 1.7199814319610596,
+      "firstStepM": 2.47324000000001,
+      "outletErrorM": 0,
+      "from": "main-5",
+      "to": "main-11",
+      "portalDirect": 1,
+      "destinationDirect": 1
+    },
+    {
+      "id": "walk-installed-main-6-sideways-city",
+      "seconds": 11.21,
+      "sha256": "b0ac33527120b39961e11c3bb37e73fc68ae8865a2ba0c1e4bccf312a9231cef",
+      "bytes": 728199,
+      "decodedFrames": 269,
+      "cameraSamples": 91,
+      "captureGapP95Ms": 275,
+      "blackFrames": 0,
+      "flatFrames": 0,
+      "maxDelta": 0.154,
+      "longestSimilarSeconds": 2.58,
+      "candidateCuts": [
+        {
+          "s": 9.42,
+          "change": 0.154,
+          "histogram": 0.57,
+          "owner": "sideways-city",
+          "curtain": false,
+          "cloud": 0
+        }
+      ],
+      "group": "installed walks",
+      "outcome": "pass",
+      "fullScreenTransitSamples": 0,
+      "compactTransitSamples": 5,
+      "sourcePictures": 214,
+      "picturesPerSecond": 19.09,
+      "p95PictureIntervalMs": 135,
+      "eyeAboveFloorM": null,
+      "firstStepM": 2.999997022771415,
+      "outletErrorM": 0.00002491305007290556,
+      "from": "main-6",
+      "to": "sideways-city",
+      "portalDirect": 1,
+      "destinationDirect": 1
+    },
+    {
+      "id": "walk-installed-main-7-main-10",
+      "seconds": 18.29,
+      "sha256": "70f8767339ece1735cd618555a41bb46eb1233c07c5340702cd04ba8e547d06c",
+      "bytes": 795184,
+      "decodedFrames": 439,
+      "cameraSamples": 148,
+      "captureGapP95Ms": 246,
+      "blackFrames": 0,
+      "flatFrames": 0,
+      "maxDelta": 0.182,
+      "longestSimilarSeconds": 6.29,
+      "candidateCuts": [
+        {
+          "s": 13.88,
+          "change": 0.182,
+          "histogram": 0.58,
+          "owner": "main",
+          "curtain": false,
+          "cloud": 0
+        }
+      ],
+      "group": "installed walks",
+      "outcome": "pass",
+      "fullScreenTransitSamples": 0,
+      "compactTransitSamples": 57,
+      "sourcePictures": 389,
+      "picturesPerSecond": 21.28,
+      "p95PictureIntervalMs": 117,
+      "eyeAboveFloorM": 1.7199814319610596,
+      "firstStepM": 3.126480000000018,
+      "outletErrorM": 0.000008559928075574281,
+      "from": "main-7",
+      "to": "main-10",
+      "portalDirect": 1,
+      "destinationDirect": 1
+    },
+    {
+      "id": "walk-installed-main-8-infinite-meadow",
+      "seconds": 16.75,
+      "sha256": "a886b275c5b4d37697460b70960a8f701520a17e5a732bfd8347672b15d6f069",
+      "bytes": 1538665,
+      "decodedFrames": 402,
+      "cameraSamples": 93,
+      "captureGapP95Ms": 490,
+      "blackFrames": 0,
+      "flatFrames": 0,
+      "maxDelta": 0.313,
+      "longestSimilarSeconds": 3.46,
+      "candidateCuts": [
+        {
+          "s": 3.67,
+          "change": 0.313,
+          "histogram": 0.865,
+          "owner": "border-outfall",
+          "curtain": true,
+          "cloud": 0
+        }
+      ],
+      "group": "installed walks",
+      "outcome": "pass",
+      "fullScreenTransitSamples": 0,
+      "compactTransitSamples": 9,
+      "sourcePictures": 217,
+      "picturesPerSecond": 12.97,
+      "p95PictureIntervalMs": 283,
+      "eyeAboveFloorM": null,
+      "firstStepM": 1.9135219857069135,
+      "outletErrorM": 0.000017119856151148562,
+      "from": "main-8",
+      "to": "infinite-meadow",
+      "portalDirect": 0.984375,
+      "destinationDirect": 0.984375
+    },
+    {
+      "id": "walk-installed-main-9-infinite-meadow",
+      "seconds": 14.96,
+      "sha256": "6dc1594e75c2bafdbd07ea9d919972c7d8dd034cc62c03b7d4403734bd9cae00",
+      "bytes": 1337802,
+      "decodedFrames": 359,
+      "cameraSamples": 86,
+      "captureGapP95Ms": 394,
+      "blackFrames": 0,
+      "flatFrames": 0,
+      "maxDelta": 0.314,
+      "longestSimilarSeconds": 4.33,
+      "candidateCuts": [
+        {
+          "s": 4.58,
+          "change": 0.314,
+          "histogram": 0.891,
+          "owner": "border-outfall",
+          "curtain": false,
+          "cloud": 0
+        }
+      ],
+      "group": "installed walks",
+      "outcome": "pass",
+      "fullScreenTransitSamples": 0,
+      "compactTransitSamples": 6,
+      "sourcePictures": 229,
+      "picturesPerSecond": 15.32,
+      "p95PictureIntervalMs": 217,
+      "eyeAboveFloorM": null,
+      "firstStepM": 2.6600018903434437,
+      "outletErrorM": 0.000018569091163290978,
+      "from": "main-9",
+      "to": "infinite-meadow",
+      "portalDirect": 0.984375,
+      "destinationDirect": 0.984375
+    },
+    {
+      "id": "walk-installed-sideways-city-main-6",
+      "seconds": 15.33,
+      "sha256": "1d983117e621d01fbdfbf9b9a1d36f3936000c1992b1021af2e5b13fa65e01ad",
+      "bytes": 792306,
+      "decodedFrames": 368,
+      "cameraSamples": 136,
+      "captureGapP95Ms": 226,
+      "blackFrames": 0,
+      "flatFrames": 0,
+      "maxDelta": 0.173,
+      "longestSimilarSeconds": 5.75,
+      "candidateCuts": [
+        {
+          "s": 0.79,
+          "change": 0.173,
+          "histogram": 0.911,
+          "owner": "border-outfall",
+          "curtain": false,
+          "cloud": 0
+        }
+      ],
+      "group": "installed walks",
+      "outcome": "pass",
+      "fullScreenTransitSamples": 0,
+      "compactTransitSamples": 49,
+      "sourcePictures": 380,
+      "picturesPerSecond": 24.77,
+      "p95PictureIntervalMs": 83,
+      "eyeAboveFloorM": 1.720041036605835,
+      "firstStepM": 2.5664799999999794,
+      "outletErrorM": 0.0000447202934969969,
+      "from": "sideways-city",
+      "to": "main-6",
+      "portalDirect": 1,
+      "destinationDirect": 1
+    },
+    {
+      "id": "walk-placed-main-6-sideways-city",
+      "seconds": 16.79,
+      "sha256": "1dc644773d71eb43f174c4d4cfa4af96e6959f03cba31636b9dc9002b7d657c9",
+      "bytes": 819194,
+      "decodedFrames": 403,
+      "cameraSamples": 137,
+      "captureGapP95Ms": 251,
+      "blackFrames": 0,
+      "flatFrames": 0,
+      "maxDelta": 0.321,
+      "longestSimilarSeconds": 5.79,
+      "candidateCuts": [
+        {
+          "s": 2.79,
+          "change": 0.321,
+          "histogram": 0.96,
+          "owner": "border-outfall",
+          "curtain": false,
+          "cloud": 0
+        },
+        {
+          "s": 14,
+          "change": 0.176,
+          "histogram": 0.554,
+          "owner": "main",
+          "curtain": false,
+          "cloud": 0
+        }
+      ],
+      "group": "placed walks",
+      "outcome": "pass",
+      "fullScreenTransitSamples": 0,
+      "compactTransitSamples": 58,
+      "sourcePictures": 327,
+      "picturesPerSecond": 19.47,
+      "p95PictureIntervalMs": 133,
+      "eyeAboveFloorM": 1.7200112342834473,
+      "firstStepM": 2.286199999999999,
+      "outletErrorM": 0.000019027656291885806,
+      "from": "main-6",
+      "to": "sideways-city",
+      "portalDirect": 1,
+      "destinationDirect": 1
+    },
+    {
+      "id": "walk-placed-sideways-city-main-7",
+      "seconds": 18.67,
+      "sha256": "3357b51bdcf1d227ddc26953d7a66931316e67b1840aeee426bd3d9bf02fe450",
+      "bytes": 840849,
+      "decodedFrames": 448,
+      "cameraSamples": 149,
+      "captureGapP95Ms": 272,
+      "blackFrames": 0,
+      "flatFrames": 0,
+      "maxDelta": 0.338,
+      "longestSimilarSeconds": 7.21,
+      "candidateCuts": [
+        {
+          "s": 2,
+          "change": 0.338,
+          "histogram": 0.962,
+          "owner": "border-outfall",
+          "curtain": true,
+          "cloud": 0
+        }
+      ],
+      "group": "placed walks",
+      "outcome": "pass",
+      "fullScreenTransitSamples": 0,
+      "compactTransitSamples": 64,
+      "sourcePictures": 403,
+      "picturesPerSecond": 21.61,
+      "p95PictureIntervalMs": 125,
+      "eyeAboveFloorM": 1.7199814319610596,
+      "firstStepM": 2.6132400000000073,
+      "outletErrorM": 0.000008304350024301854,
+      "from": "sideways-city",
+      "to": "main-7",
+      "portalDirect": 1,
+      "destinationDirect": 1
+    }
+  ],
+  "demoCaptureSourceSha256": "085cd0d84ce9754e113b0f420acaf1915d3673938d210c824badfb01284193be",
+  "captureMethod": "Chrome native compositor images and independent timestamped camera samples, presented on a 24 Hz timeline",
+  "previousPass": {
+    "runId": "44871660792",
+    "archiveSha256": "b0ab729c0170d70e3ec99181774337bc4f299a5c1888aa985df0e51000073dbc",
+    "decodedFrames": 30299,
+    "candidateCuts": 89
+  },
+  "groundComparison": {
+    "blob": "effbd7de51741278f940fe5ee5ce26bc6925588c",
+    "sha256": "4a1fd5baba9ddf235cfd8cb9672ff00f78f79fa27689b73bb07649fff4c94249",
+    "bytes": 70167,
+    "frames": [
+      {
+        "route": "walk-installed-main-11-main-4",
+        "phase": "before",
+        "seconds": 13.61,
+        "filmSha256": "c9a56ebc8bd8ba6386914d25badc57eed9dedf3719146e9d4f6b3acbe5e24bb4",
+        "eyeM": null
+      },
+      {
+        "route": "walk-installed-main-11-main-4",
+        "phase": "after",
+        "seconds": 15.15,
+        "filmSha256": "8f586a4150041bf6fd929e10f33e8c25ebdf6d263747cd3327093f6887be00f9",
+        "eyeM": 1.7200112342834473
+      },
+      {
+        "route": "walk-installed-main-10-main-9",
+        "phase": "before",
+        "seconds": 12.9,
+        "filmSha256": "747df0989f9776c475feeb7061189d3785bf3649d50f115c79da944b26b0bfcf",
+        "eyeM": null
+      },
+      {
+        "route": "walk-installed-main-10-main-9",
+        "phase": "after",
+        "seconds": 17.69,
+        "filmSha256": "c852fbe83bb0bd2492d9a443e2299e8452c67f5ef00c80bdac40dc87a91939e0",
+        "eyeM": 1.7200112342834473
+      }
+    ],
+    "earlierCameraChecks": [
+      {
+        "id": "walk-installed-main-11-main-4",
+        "site": "biome-4",
+        "eyeM": -5.497193564838904,
+        "traceEye": -5.478450792454232,
+        "support": "connected-ground-collision-triangle",
+        "radialEyeM": -5.497187376022339
+      },
+      {
+        "id": "walk-installed-main-12-main-5",
+        "site": "biome-5",
+        "eyeM": -5.469946313172283,
+        "traceEye": -5.453735108104984,
+        "support": "connected-ground-collision-triangle",
+        "radialEyeM": -5.469977855682373
+      },
+      {
+        "id": "walk-empty-main-0-main-11",
+        "site": "biome-5",
+        "eyeM": -3.547710020359511,
+        "traceEye": -3.5316207957018033,
+        "support": "connected-ground-collision-triangle",
+        "radialEyeM": -3.5477280616760254
+      },
+      {
+        "id": "walk-installed-main-10-main-9",
+        "site": "biome-9",
+        "eyeM": -4.581161341508113,
+        "traceEye": -4.5672336575158,
+        "support": "connected-ground-collision-triangle",
+        "radialEyeM": -4.581153392791748
+      },
+      {
+        "id": "walk-placed-sideways-city-main-7",
+        "site": "biome-7",
+        "eyeM": -5.633293613630748,
+        "traceEye": -5.620590591727459,
+        "support": "connected-ground-collision-triangle",
+        "radialEyeM": -5.633294582366943
+      }
+    ]
+  },
+  "independentCompositorCrossChecks": {
+    "runId": "44872266309",
+    "demos": [
+      {
+        "sourceFilm": "flight-outfall-industry",
+        "sourcePictures": 1054,
+        "picturesPerSecond": 18.41,
+        "thresholdEvents": 1
+      },
+      {
+        "sourceFilm": "meadow-outfall-service-door",
+        "sourcePictures": 1707,
+        "picturesPerSecond": 24.6,
+        "thresholdEvents": 0
+      },
+      {
+        "sourceFilm": "walk-installed-main-6-sideways-city",
+        "sourcePictures": 182,
+        "picturesPerSecond": 16.58,
+        "thresholdEvents": 1
+      }
+    ],
+    "cameraAtEvents": {
+      "flight-outfall-industry": [
+        {
+          "seconds": 23.5,
+          "change": 0.202,
+          "histogram": 0.405,
+          "before": {
+            "owner": "infinite-industry",
+            "mode": "flight",
+            "localM": [
+              1402.96,
+              -810,
+              7750
+            ],
+            "mainAltitudeKm": 14236805.0714,
+            "nearOpacity": 1,
+            "stageOpacity": 0,
+            "direct": null,
+            "cloud": 0,
+            "crossingStatus": false
+          },
+          "at": {
+            "owner": "infinite-industry",
+            "mode": "flight",
+            "localM": [
+              1402.96,
+              -810,
+              7750
+            ],
+            "mainAltitudeKm": 14624982.4165,
+            "nearOpacity": 1,
+            "stageOpacity": 0,
+            "direct": null,
+            "cloud": 0,
+            "crossingStatus": false
+          },
+          "after": {
+            "owner": "infinite-industry",
+            "mode": "flight",
+            "localM": [
+              1402.96,
+              -810,
+              7750
+            ],
+            "mainAltitudeKm": 15393306.0319,
+            "nearOpacity": 1,
+            "stageOpacity": 0,
+            "direct": null,
+            "cloud": 0,
+            "crossingStatus": false
+          },
+          "cameraTimeErrorMs": 112
+        }
+      ],
+      "meadow-outfall-service-door": [],
+      "walk-installed-main-6-sideways-city": [
+        {
+          "seconds": 9.25,
+          "change": 0.153,
+          "histogram": 0.823,
+          "before": {
+            "owner": "sideways-city",
+            "mode": "walk",
+            "localM": [
+              -6060995577.11,
+              -1123718156.64,
+              3.2
+            ],
+            "mainAltitudeKm": 0.0017,
+            "nearOpacity": 1,
+            "stageOpacity": 0,
+            "direct": null,
+            "cloud": 0,
+            "crossingStatus": false
+          },
+          "at": {
+            "owner": "sideways-city",
+            "mode": "walk",
+            "localM": [
+              -6060995577.11,
+              -1123718156.64,
+              3.2
+            ],
+            "mainAltitudeKm": 0.0017,
+            "nearOpacity": 1,
+            "stageOpacity": 0.184,
+            "direct": null,
+            "cloud": 0,
+            "crossingStatus": false
+          },
+          "after": {
+            "owner": "sideways-city",
+            "mode": "walk",
+            "localM": [
+              -6060995577.11,
+              -1123718156.64,
+              3.2
+            ],
+            "mainAltitudeKm": 0.0017,
+            "nearOpacity": 1,
+            "stageOpacity": 1,
+            "direct": null,
+            "cloud": 0,
+            "crossingStatus": false
+          },
+          "cameraTimeErrorMs": 30
+        }
+      ]
+    }
+  },
+  "nativeBrowserCircuits": [
+    {
+      "id": 1,
+      "label": "Random equatorial bearing 1",
+      "inclinationDeg": 19.83,
+      "tunnels": 16,
+      "closureM": 0.000134
+    },
+    {
+      "id": 2,
+      "label": "Random equatorial bearing 2",
+      "inclinationDeg": 26.3,
+      "tunnels": 17,
+      "closureM": 0.000013
+    },
+    {
+      "id": 3,
+      "label": "Random equatorial bearing 3",
+      "inclinationDeg": 60.11,
+      "tunnels": 18,
+      "closureM": 0.000022
+    },
+    {
+      "id": 4,
+      "label": "Infinite Meadow",
+      "inclinationDeg": 69.39,
+      "tunnels": 18,
+      "closureM": 0.000019
+    },
+    {
+      "id": 5,
+      "label": "Infinite Industry",
+      "inclinationDeg": 28.67,
+      "tunnels": 19,
+      "closureM": 0.000119
+    },
+    {
+      "id": 6,
+      "label": "The Sideways City",
+      "inclinationDeg": 24.44,
+      "tunnels": 20,
+      "closureM": 0.000178
+    },
+    {
+      "id": 7,
+      "label": "The Outfall",
+      "inclinationDeg": 24.62,
+      "tunnels": 21,
+      "closureM": 0.000123
+    },
+    {
+      "id": 8,
+      "label": "Additional equatorial bearing 1",
+      "inclinationDeg": 4.38,
+      "tunnels": 10,
+      "closureM": 0.000108
+    },
+    {
+      "id": 9,
+      "label": "Additional equatorial bearing 2",
+      "inclinationDeg": 75.91,
+      "tunnels": 17,
+      "closureM": 0.00009
+    }
+  ],
+  "runtimeVerification": {
+    "commit": "2bc507396f2a8be333af87a99e51418ea4faee1b",
+    "workflowRun": "44875657898",
+    "passingJobs": 14,
+    "packContractAssertions": 108,
+    "requiredForwardMovementM": 0.25,
+    "forwardKeyDurationMs": 950,
+    "targetEyeHeightM": 1.7,
+    "collisionClearanceM": 0.02
+  },
+  "review": {
+    "routeCountWithoutThresholdEvent": 16,
+    "cutCountsByCameraState": {
+      "Accelerated crossing above 24,000 km": 10,
+      "Outfall ascent or descent with the wall in view": 4,
+      "Entrance to a walking passage": 20,
+      "Outlet from a walking passage": 17
+    },
+    "perFilm": {
+      "flight-city-industry": {
+        "Accelerated crossing above 24,000 km": 2
+      },
+      "flight-city-meadow": {},
+      "flight-city-outfall": {},
+      "flight-industry-city": {},
+      "flight-industry-meadow": {
+        "Accelerated crossing above 24,000 km": 2
+      },
+      "flight-industry-outfall": {
+        "Accelerated crossing above 24,000 km": 3,
+        "Outfall ascent or descent with the wall in view": 1
+      },
+      "flight-meadow-city": {},
+      "flight-meadow-industry": {
+        "Accelerated crossing above 24,000 km": 1
+      },
+      "flight-meadow-outfall": {
+        "Outfall ascent or descent with the wall in view": 1
+      },
+      "flight-outfall-city": {
+        "Accelerated crossing above 24,000 km": 1
+      },
+      "flight-outfall-industry": {
+        "Outfall ascent or descent with the wall in view": 1,
+        "Accelerated crossing above 24,000 km": 1
+      },
+      "flight-outfall-meadow": {
+        "Outfall ascent or descent with the wall in view": 1
+      },
+      "free-city-reverse": {},
+      "free-industry-reverse": {},
+      "free-meadow-reverse": {},
+      "free-outfall-reverse": {},
+      "meadow-outfall-service-door": {},
+      "outfall-far-roof": {},
+      "outfall-near-roof": {},
+      "violet-crown-descent": {},
+      "walk-empty-main-0-main-11": {
+        "Entrance to a walking passage": 1,
+        "Outlet from a walking passage": 1
+      },
+      "walk-empty-main-12-main-7": {
+        "Entrance to a walking passage": 1
+      },
+      "walk-empty-main-2-main-7": {
+        "Entrance to a walking passage": 1,
+        "Outlet from a walking passage": 1
+      },
+      "walk-empty-main-9-main-5": {},
+      "walk-installed-infinite-industry-main-11": {
+        "Outlet from a walking passage": 1
+      },
+      "walk-installed-infinite-meadow-main-8": {},
+      "walk-installed-main-0-main-10": {
+        "Outlet from a walking passage": 1
+      },
+      "walk-installed-main-1-main-12": {
+        "Outlet from a walking passage": 1
+      },
+      "walk-installed-main-10-main-0": {
+        "Entrance to a walking passage": 1,
+        "Outlet from a walking passage": 1
+      },
+      "walk-installed-main-10-main-7": {
+        "Entrance to a walking passage": 2,
+        "Outlet from a walking passage": 1
+      },
+      "walk-installed-main-10-main-9": {
+        "Entrance to a walking passage": 1,
+        "Outlet from a walking passage": 1
+      },
+      "walk-installed-main-11-infinite-industry": {
+        "Outlet from a walking passage": 1
+      },
+      "walk-installed-main-11-main-1": {
+        "Outlet from a walking passage": 1
+      },
+      "walk-installed-main-11-main-4": {
+        "Entrance to a walking passage": 2,
+        "Outlet from a walking passage": 1
+      },
+      "walk-installed-main-12-main-15": {
+        "Entrance to a walking passage": 1,
+        "Outlet from a walking passage": 1
+      },
+      "walk-installed-main-12-main-5": {
+        "Entrance to a walking passage": 1
+      },
+      "walk-installed-main-15-main-10": {},
+      "walk-installed-main-2-main-3": {},
+      "walk-installed-main-3-main-2": {
+        "Entrance to a walking passage": 1,
+        "Outlet from a walking passage": 1
+      },
+      "walk-installed-main-4-main-8": {
+        "Entrance to a walking passage": 1,
+        "Outlet from a walking passage": 1
+      },
+      "walk-installed-main-5-main-11": {
+        "Entrance to a walking passage": 2
+      },
+      "walk-installed-main-6-sideways-city": {
+        "Outlet from a walking passage": 1
+      },
+      "walk-installed-main-7-main-10": {
+        "Outlet from a walking passage": 1
+      },
+      "walk-installed-main-8-infinite-meadow": {
+        "Entrance to a walking passage": 1
+      },
+      "walk-installed-main-9-infinite-meadow": {
+        "Entrance to a walking passage": 1
+      },
+      "walk-installed-sideways-city-main-6": {
+        "Entrance to a walking passage": 1
+      },
+      "walk-placed-main-6-sideways-city": {
+        "Entrance to a walking passage": 1,
+        "Outlet from a walking passage": 1
+      },
+      "walk-placed-sideways-city-main-7": {
+        "Entrance to a walking passage": 1
+      }
+    },
+    "walkingEventMethod": "Camera ownership and local position place each threshold event at the entrance inside the border passage or at the receiving habitat. A contact sheet records the adjoining pictures."
+  },
+  "publication": {
+    "recordingRun": "44875365674",
+    "canonicalBundle": "Sphere-Transition-Survey.zip",
+    "rawBundle": "Sphere-Transition-Films.zip"
+  },
+  "reviewNarrative": "Sixteen films had no threshold event. These included all four manually flown reversals, both Outfall roof crossings, the complete service-door approach and the Violet crown descent. The 37 walking events correspond to the tunnel coming into view or the receiving habitat taking over. At 9.42 s in the Marsh-to-City film, a nearby facade becomes visible while the City view is at 83% opacity. The walker stays supported, but the skyline seen through the mouth differs visibly from the first street-level view.\n\nIn Outfall to Industry, the 5.46 s change came as the camera approached the 1,400 m wall crest. At the nearest camera sample it was 1,234 m above local ground, with clear air and steady direct light. At 23.54 s a bright edge of the shell swept through the frame. By then the camera was 15.8 million km above the surface and the pack view had faded completely. In Violet, the 13.33 s outlet change resolves into distinct crystal spires. The before-and-after frames show what measuring camera position alone had missed.",
+  "demoSelection": "The three complete takes show departure into orbit, a working door and handwheel at walking scale, and the repaired crystal-forest reveal. The complete Marsh-to-City walk remains in the survey."
+}

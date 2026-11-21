@@ -4,7 +4,17 @@ Walk the inner surface of a Dyson sphere with a radius of one astronomical unit.
 
 ![The Outfall service entrance at the end of the track through Infinite Meadow](examples/biomes/outfall-approach.jpg)
 
-**Observatory 1.8.0** brings visible loading progress, crossings on foot between surface regions, and nine recorded great-circle walks. The four installable destinations share the same globe as the original Observatory habitats. [Walking results and performance measurements](docs/Surface-maturity.md)
+The Atlas places the four optional packs on the same globe as the original habitats. You can cross a region on foot, lift off from the roof of the Outfall, or bank and turn back midway through an atmospheric handoff. [Transition tests and measurements](docs/Transition-audit.md)
+
+## Watch the transitions
+
+| Demo | Length | What to watch |
+| --- | ---: | --- |
+| [Outfall to Infinite Industry](examples/transitions/outfall-to-industry.mp4) | 0:57 | Watch the Outfall wall fall away, cross the shell, then descend through works vapour until individual factory roofs and conveyors resolve. |
+| [Through the Meadow service door](examples/transitions/meadow-service-door.mp4) | 1:10 | Level cruise reaches the foot of the wall, the pilot lands, and the walker enters the pipe gallery and operates the valve. |
+| [Through the tunnel into Violet Labyrinth](examples/transitions/into-violet-labyrinth.mp4) | 0:19 | Walk the accelerated 1,000 km passage and emerge at eye height among the purple crystal spires. |
+
+The flight survey covers all twelve directed links between installed packs. The walking survey uses three sets of bearings across three installation states. [Download all 48 recordings and camera traces](https://github.com/JoeCauley/sphere-observatory/releases/download/transition-films-44875365674/Sphere-Transition-Survey.zip) · [Read the frame analysis](docs/Transition-audit.md) · [Compare the Ruin and Violet outlets before and after the repair](examples/transitions/outlet-before-after.jpg)
 
 ## Run it locally
 
@@ -43,11 +53,11 @@ For more views, see the factory districts from above, the city tower from the st
 
 ## Travel and saves
 
-**From the Sphere.** In **Explore**, choose **Biomes**, select a habitat such as **Violet Labyrinth**, choose **On foot**, and click **Visit**. You can cancel a Main trip or retry a failed load. To find an installed pack in free flight, fly over its atlas plot and descend below **20 km**. Climb through **24 km** to rejoin Sphere flight. The Outfall entrance occupies the shared border of its anchor plot. [Original habitats and their development plan](docs/Biome-Pack-Migration.md)
+**From the Sphere.** In **Explore**, choose **Biomes**, select a habitat such as **Violet Labyrinth**, choose **On foot**, and click **Visit**. You can cancel a Main trip or retry a failed load. To enter an installed pack in free flight, descend through **24 km** over its footprint. The Atlas and local views overlap down to **18–20 km**, depending on the atmosphere. A level lateral entry below **20 km** also opens the pack. Climb through **24 km** to rejoin Sphere flight. The Outfall entrance occupies the shared border of its anchor plot. [Original habitats and their development plan](docs/Biome-Pack-Migration.md)
 
-**Between packs.** Install two destinations to see **Fly to** controls in the scene bar. Try **Fly to Infinite Industry** from the Meadow. The camera climbs through the cloud layer known as the Duck Blind, crosses the shell and descends into the factory district. **Return to the Sphere** leaves the pack.
+**Between packs.** Install two destinations to see **Fly to** controls in the scene bar. Try **Fly to Infinite Industry** from the Meadow. Meadow mist and industrial vapour each have their own procedural cloud layer. The City and Outfall use clear-air altitude layers. The camera keeps its geographic position and bearing through the exchange. **Return to the Sphere** leaves the pack.
 
-**On foot.** Crossing a change of surface region opens an Outfall passage. Both doors use the adjacent landscapes' coordinates and colours. If a building obstructs the proposed outlet, the entrance aims the straight tunnel at nearby open ground. The far door also works in reverse.
+**On foot.** Most changes of surface region open an Outfall passage. The surveyed Outfall roof and ramps also let a walker cross over the structure, and connected watershed banks preserve their own walking path. Both doors use the adjacent landscapes' coordinates and colours. If a building obstructs the proposed outlet, the entrance aims the straight tunnel at nearby open ground. The far door also works in reverse.
 
 | A Visit to Violet Labyrinth | Halfway through a border crossing |
 | --- | --- |
@@ -55,7 +65,7 @@ For more views, see the factory districts from above, the city tower from the st
 
 **Coming back.** The local server records installed plots in `installed-biomes.json`. Your browser profile remembers the active scene, manual viewpoint, bookmarks and local machinery state. Use **Save this place** for a bookmark. To resume after quitting, start the server and reopen the same address in the same browser profile. A second profile shares plot assignments and starts with its own camera.
 
-## What the release demonstrated
+## Earlier 1.8.0 walking measurements
 
 **Nine accelerated browser walks** each made a signed 360° revolution. Together they crossed **159 rendered tunnels** and **168 ground legs**, visiting all **four installed packs** and **14 Main surface regions**. The largest distance from a starting point after a full lap was about **0.17 mm**. The test advances the camera in long strides on the globe, samples local ground on each leg and exercises both doors of every crossing. [Walk records, bearings and rendering checks](examples/biomes/surface-walks.json)
 

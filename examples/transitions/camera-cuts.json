@@ -1,0 +1,2503 @@
+{
+  "walk-empty-main-0-main-11": [
+    {
+      "seconds": 2.83,
+      "change": 0.343,
+      "histogram": 0.842,
+      "before": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0093,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 1,
+        "cloud": 0,
+        "crossingStatus": true
+      },
+      "at": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0093,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 1,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "after": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0093,
+        "nearOpacity": 1,
+        "stageOpacity": 0.977,
+        "direct": 1,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 35
+    },
+    {
+      "seconds": 14.46,
+      "change": 0.198,
+      "histogram": 0.529,
+      "before": {
+        "owner": "main",
+        "mode": "walk",
+        "localM": null,
+        "mainAltitudeKm": 0.007,
+        "nearOpacity": 0,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "at": {
+        "owner": "main",
+        "mode": "walk",
+        "localM": null,
+        "mainAltitudeKm": 0.007,
+        "nearOpacity": 0,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "after": {
+        "owner": "main",
+        "mode": "walk",
+        "localM": null,
+        "mainAltitudeKm": 0.007,
+        "nearOpacity": 0,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 14
+    }
+  ],
+  "walk-empty-main-12-main-7": [
+    {
+      "seconds": 2.67,
+      "change": 0.185,
+      "histogram": 0.733,
+      "before": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0081,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 1,
+        "cloud": 0,
+        "crossingStatus": true
+      },
+      "at": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0081,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 1,
+        "cloud": 0,
+        "crossingStatus": true
+      },
+      "after": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0081,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 1,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 281
+    }
+  ],
+  "walk-empty-main-2-main-7": [
+    {
+      "seconds": 2.21,
+      "change": 0.32,
+      "histogram": 0.977,
+      "before": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0094,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 1,
+        "cloud": 0,
+        "crossingStatus": true
+      },
+      "at": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0094,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 1,
+        "cloud": 0,
+        "crossingStatus": true
+      },
+      "after": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0094,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 1,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 430
+    },
+    {
+      "seconds": 13.04,
+      "change": 0.31,
+      "histogram": 0.776,
+      "before": {
+        "owner": "main",
+        "mode": "walk",
+        "localM": null,
+        "mainAltitudeKm": 0.0094,
+        "nearOpacity": 0,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": true
+      },
+      "at": {
+        "owner": "main",
+        "mode": "walk",
+        "localM": null,
+        "mainAltitudeKm": 0.0111,
+        "nearOpacity": 0,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "after": {
+        "owner": "main",
+        "mode": "walk",
+        "localM": null,
+        "mainAltitudeKm": 0.0111,
+        "nearOpacity": 0,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 503
+    }
+  ],
+  "walk-empty-main-9-main-5": [],
+  "flight-city-industry": [
+    {
+      "seconds": 31.08,
+      "change": 0.162,
+      "histogram": 0.391,
+      "before": {
+        "owner": "infinite-industry",
+        "mode": "flight",
+        "localM": [
+          1402.96,
+          -810.0,
+          7750
+        ],
+        "mainAltitudeKm": 17903358.2065,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "at": {
+        "owner": "infinite-industry",
+        "mode": "flight",
+        "localM": [
+          1402.96,
+          -810.0,
+          7750
+        ],
+        "mainAltitudeKm": 18133386.0641,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "after": {
+        "owner": "infinite-industry",
+        "mode": "flight",
+        "localM": [
+          1402.96,
+          -810.0,
+          7750
+        ],
+        "mainAltitudeKm": 18398355.3211,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 136
+    },
+    {
+      "seconds": 32.42,
+      "change": 0.178,
+      "histogram": 0.391,
+      "before": {
+        "owner": "infinite-industry",
+        "mode": "flight",
+        "localM": [
+          1402.96,
+          -810.0,
+          7750
+        ],
+        "mainAltitudeKm": 18841228.566,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "at": {
+        "owner": "infinite-industry",
+        "mode": "flight",
+        "localM": [
+          1402.96,
+          -810.0,
+          7750
+        ],
+        "mainAltitudeKm": 18847882.8496,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "after": {
+        "owner": "infinite-industry",
+        "mode": "flight",
+        "localM": [
+          1402.96,
+          -810.0,
+          7750
+        ],
+        "mainAltitudeKm": 18814263.2015,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 31
+    }
+  ],
+  "flight-city-meadow": [],
+  "flight-city-outfall": [],
+  "flight-industry-city": [],
+  "flight-industry-meadow": [
+    {
+      "seconds": 30.54,
+      "change": 0.264,
+      "histogram": 0.364,
+      "before": {
+        "owner": "infinite-meadow",
+        "mode": "flight",
+        "localM": [
+          0,
+          1500,
+          100000
+        ],
+        "mainAltitudeKm": 17623406.8832,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 0.96875,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "at": {
+        "owner": "infinite-meadow",
+        "mode": "flight",
+        "localM": [
+          0,
+          1500,
+          100000
+        ],
+        "mainAltitudeKm": 18011030.4005,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 0.96875,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "after": {
+        "owner": "infinite-meadow",
+        "mode": "flight",
+        "localM": [
+          0,
+          1500,
+          100000
+        ],
+        "mainAltitudeKm": 18165370.3267,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 0.96875,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 23
+    },
+    {
+      "seconds": 35.17,
+      "change": 0.221,
+      "histogram": 0.463,
+      "before": {
+        "owner": "infinite-meadow",
+        "mode": "flight",
+        "localM": [
+          0,
+          1500,
+          100000
+        ],
+        "mainAltitudeKm": 16109459.604,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 0.96875,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "at": {
+        "owner": "infinite-meadow",
+        "mode": "flight",
+        "localM": [
+          0,
+          1500,
+          100000
+        ],
+        "mainAltitudeKm": 15473146.0555,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 0.96875,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "after": {
+        "owner": "infinite-meadow",
+        "mode": "flight",
+        "localM": [
+          0,
+          1500,
+          100000
+        ],
+        "mainAltitudeKm": 14738588.5423,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 0.96875,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 226
+    }
+  ],
+  "flight-industry-outfall": [
+    {
+      "seconds": 29.25,
+      "change": 0.173,
+      "histogram": 0.376,
+      "before": {
+        "owner": "border-outfall",
+        "mode": "flight",
+        "localM": [
+          -3.8,
+          -46,
+          1500000
+        ],
+        "mainAltitudeKm": 14412297.2207,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 0.984375,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "at": {
+        "owner": "border-outfall",
+        "mode": "flight",
+        "localM": [
+          -3.8,
+          -46,
+          1500000
+        ],
+        "mainAltitudeKm": 14804239.5237,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 0.984375,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "after": {
+        "owner": "border-outfall",
+        "mode": "flight",
+        "localM": [
+          -3.8,
+          -46,
+          1500000
+        ],
+        "mainAltitudeKm": 15281314.0597,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 0.984375,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 175
+    },
+    {
+      "seconds": 29.75,
+      "change": 0.206,
+      "histogram": 0.366,
+      "before": {
+        "owner": "border-outfall",
+        "mode": "flight",
+        "localM": [
+          -3.8,
+          -46,
+          1500000
+        ],
+        "mainAltitudeKm": 15823538.3604,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 0.984375,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "at": {
+        "owner": "border-outfall",
+        "mode": "flight",
+        "localM": [
+          -3.8,
+          -46,
+          1500000
+        ],
+        "mainAltitudeKm": 16420619.8311,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 0.984375,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "after": {
+        "owner": "border-outfall",
+        "mode": "flight",
+        "localM": [
+          -3.8,
+          -46,
+          1500000
+        ],
+        "mainAltitudeKm": 16448448.9914,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 0.984375,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 28
+    },
+    {
+      "seconds": 35.12,
+      "change": 0.175,
+      "histogram": 0.351,
+      "before": {
+        "owner": "border-outfall",
+        "mode": "flight",
+        "localM": [
+          -3.8,
+          -46,
+          1500000
+        ],
+        "mainAltitudeKm": 16235394.7933,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 0.984375,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "at": {
+        "owner": "border-outfall",
+        "mode": "flight",
+        "localM": [
+          -3.8,
+          -46,
+          1500000
+        ],
+        "mainAltitudeKm": 15962549.4089,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 0.984375,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "after": {
+        "owner": "border-outfall",
+        "mode": "flight",
+        "localM": [
+          -3.8,
+          -46,
+          1500000
+        ],
+        "mainAltitudeKm": 15381630.8671,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 0.984375,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 167
+    },
+    {
+      "seconds": 53.92,
+      "change": 0.26,
+      "histogram": 1.0,
+      "before": {
+        "owner": "border-outfall",
+        "mode": "flight",
+        "localM": [
+          -3.8,
+          -33.42,
+          1451.23
+        ],
+        "mainAltitudeKm": 1500,
+        "nearOpacity": 1,
+        "stageOpacity": 1,
+        "direct": 0.984375,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "at": {
+        "owner": "border-outfall",
+        "mode": "flight",
+        "localM": [
+          -3.8,
+          -33.0,
+          1145.37
+        ],
+        "mainAltitudeKm": 1500,
+        "nearOpacity": 1,
+        "stageOpacity": 1,
+        "direct": 0.984375,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "after": {
+        "owner": "border-outfall",
+        "mode": "flight",
+        "localM": [
+          -3.8,
+          -32.57,
+          904.92
+        ],
+        "mainAltitudeKm": 1500,
+        "nearOpacity": 1,
+        "stageOpacity": 1,
+        "direct": 0.984375,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 26
+    }
+  ],
+  "flight-meadow-city": [],
+  "flight-meadow-industry": [
+    {
+      "seconds": 29.42,
+      "change": 0.18,
+      "histogram": 0.37,
+      "before": {
+        "owner": "infinite-industry",
+        "mode": "flight",
+        "localM": [
+          1402.96,
+          -810.0,
+          7750
+        ],
+        "mainAltitudeKm": 14153613.7383,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "at": {
+        "owner": "infinite-industry",
+        "mode": "flight",
+        "localM": [
+          1402.96,
+          -810.0,
+          7750
+        ],
+        "mainAltitudeKm": 14780072.2882,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "after": {
+        "owner": "infinite-industry",
+        "mode": "flight",
+        "localM": [
+          1402.96,
+          -810.0,
+          7750
+        ],
+        "mainAltitudeKm": 15570263.9014,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 53
+    }
+  ],
+  "flight-meadow-outfall": [
+    {
+      "seconds": 50.29,
+      "change": 0.233,
+      "histogram": 1.0,
+      "before": {
+        "owner": "border-outfall",
+        "mode": "flight",
+        "localM": [
+          -3.8,
+          -34.07,
+          2070.97
+        ],
+        "mainAltitudeKm": 1500,
+        "nearOpacity": 1,
+        "stageOpacity": 1,
+        "direct": 0.984375,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "at": {
+        "owner": "border-outfall",
+        "mode": "flight",
+        "localM": [
+          -3.8,
+          -33.71,
+          1698.92
+        ],
+        "mainAltitudeKm": 1500,
+        "nearOpacity": 1,
+        "stageOpacity": 1,
+        "direct": 0.984375,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "after": {
+        "owner": "border-outfall",
+        "mode": "flight",
+        "localM": [
+          -3.8,
+          -33.28,
+          1340.16
+        ],
+        "mainAltitudeKm": 1500,
+        "nearOpacity": 1,
+        "stageOpacity": 1,
+        "direct": 0.984375,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 95
+    }
+  ],
+  "flight-outfall-city": [
+    {
+      "seconds": 21.46,
+      "change": 0.167,
+      "histogram": 0.325,
+      "before": {
+        "owner": "sideways-city",
+        "mode": "flight",
+        "localM": [
+          0,
+          -1650,
+          1500000
+        ],
+        "mainAltitudeKm": 11764664.3276,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "at": {
+        "owner": "sideways-city",
+        "mode": "flight",
+        "localM": [
+          0,
+          -1650,
+          1500000
+        ],
+        "mainAltitudeKm": 12059619.7575,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "after": {
+        "owner": "sideways-city",
+        "mode": "flight",
+        "localM": [
+          0,
+          -1650,
+          1500000
+        ],
+        "mainAltitudeKm": 12129585.9932,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 86
+    }
+  ],
+  "flight-outfall-industry": [
+    {
+      "seconds": 5.46,
+      "change": 0.213,
+      "histogram": 0.963,
+      "before": {
+        "owner": "border-outfall",
+        "mode": "flight",
+        "localM": [
+          -2.2,
+          -18,
+          997.09
+        ],
+        "mainAltitudeKm": 1500,
+        "nearOpacity": 1,
+        "stageOpacity": 1,
+        "direct": 0.984375,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "at": {
+        "owner": "border-outfall",
+        "mode": "flight",
+        "localM": [
+          -2.2,
+          -18,
+          1234.46
+        ],
+        "mainAltitudeKm": 1500,
+        "nearOpacity": 1,
+        "stageOpacity": 1,
+        "direct": 0.984375,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "after": {
+        "owner": "border-outfall",
+        "mode": "flight",
+        "localM": [
+          -2.2,
+          -18,
+          1814.15
+        ],
+        "mainAltitudeKm": 1500,
+        "nearOpacity": 1,
+        "stageOpacity": 1,
+        "direct": 0.984375,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 213
+    },
+    {
+      "seconds": 23.54,
+      "change": 0.233,
+      "histogram": 0.382,
+      "before": {
+        "owner": "infinite-industry",
+        "mode": "flight",
+        "localM": [
+          1402.96,
+          -810.0,
+          7750
+        ],
+        "mainAltitudeKm": 15094407.9423,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "at": {
+        "owner": "infinite-industry",
+        "mode": "flight",
+        "localM": [
+          1402.96,
+          -810.0,
+          7750
+        ],
+        "mainAltitudeKm": 15800896.2908,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "after": {
+        "owner": "infinite-industry",
+        "mode": "flight",
+        "localM": [
+          1402.96,
+          -810.0,
+          7750
+        ],
+        "mainAltitudeKm": 15959203.1901,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 40
+    }
+  ],
+  "flight-outfall-meadow": [
+    {
+      "seconds": 5.29,
+      "change": 0.214,
+      "histogram": 0.966,
+      "before": {
+        "owner": "border-outfall",
+        "mode": "flight",
+        "localM": [
+          -2.2,
+          -18,
+          1133.99
+        ],
+        "mainAltitudeKm": 1500,
+        "nearOpacity": 1,
+        "stageOpacity": 1,
+        "direct": 0.984375,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "at": {
+        "owner": "border-outfall",
+        "mode": "flight",
+        "localM": [
+          -2.2,
+          -18,
+          1183.61
+        ],
+        "mainAltitudeKm": 1500,
+        "nearOpacity": 1,
+        "stageOpacity": 1,
+        "direct": 0.984375,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "after": {
+        "owner": "border-outfall",
+        "mode": "flight",
+        "localM": [
+          -2.2,
+          -18,
+          1666.39
+        ],
+        "mainAltitudeKm": 1500,
+        "nearOpacity": 1,
+        "stageOpacity": 1,
+        "direct": 0.984375,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 92
+    }
+  ],
+  "free-city-reverse": [],
+  "free-industry-reverse": [],
+  "free-meadow-reverse": [],
+  "free-outfall-reverse": [],
+  "meadow-outfall-service-door": [],
+  "outfall-far-roof": [],
+  "outfall-near-roof": [],
+  "violet-crown-descent": [],
+  "walk-placed-main-6-sideways-city": [
+    {
+      "seconds": 2.79,
+      "change": 0.321,
+      "histogram": 0.96,
+      "before": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0086,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 1,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "at": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0086,
+        "nearOpacity": 1,
+        "stageOpacity": 0.065,
+        "direct": 1,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "after": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          44.45,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0086,
+        "nearOpacity": 1,
+        "stageOpacity": 1,
+        "direct": 1,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 5
+    },
+    {
+      "seconds": 14.0,
+      "change": 0.176,
+      "histogram": 0.554,
+      "before": {
+        "owner": "main",
+        "mode": "walk",
+        "localM": null,
+        "mainAltitudeKm": 0.0076,
+        "nearOpacity": 0,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "at": {
+        "owner": "main",
+        "mode": "walk",
+        "localM": null,
+        "mainAltitudeKm": 0.0076,
+        "nearOpacity": 0,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "after": {
+        "owner": "main",
+        "mode": "walk",
+        "localM": null,
+        "mainAltitudeKm": 0.0076,
+        "nearOpacity": 0,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 275
+    }
+  ],
+  "walk-placed-sideways-city-main-7": [
+    {
+      "seconds": 2.0,
+      "change": 0.338,
+      "histogram": 0.962,
+      "before": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0075,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 1,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "at": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0075,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 1,
+        "cloud": 0,
+        "crossingStatus": true
+      },
+      "after": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0075,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 1,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 453
+    }
+  ],
+  "walk-installed-infinite-industry-main-11": [
+    {
+      "seconds": 11.92,
+      "change": 0.208,
+      "histogram": 0.578,
+      "before": {
+        "owner": "main",
+        "mode": "walk",
+        "localM": null,
+        "mainAltitudeKm": 0.0077,
+        "nearOpacity": 0,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "at": {
+        "owner": "main",
+        "mode": "walk",
+        "localM": null,
+        "mainAltitudeKm": 0.0077,
+        "nearOpacity": 0,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "after": {
+        "owner": "main",
+        "mode": "walk",
+        "localM": null,
+        "mainAltitudeKm": 0.0077,
+        "nearOpacity": 0,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 160
+    }
+  ],
+  "walk-installed-infinite-meadow-main-8": [],
+  "walk-installed-main-10-main-7": [
+    {
+      "seconds": 3.5,
+      "change": 0.227,
+      "histogram": 0.813,
+      "before": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0081,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 0.984375,
+        "cloud": 0,
+        "crossingStatus": true
+      },
+      "at": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0081,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 0.984375,
+        "cloud": 0,
+        "crossingStatus": true
+      },
+      "after": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0081,
+        "nearOpacity": 1,
+        "stageOpacity": 0.007,
+        "direct": 0.984375,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 368
+    },
+    {
+      "seconds": 3.62,
+      "change": 0.181,
+      "histogram": 0.975,
+      "before": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0081,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 0.984375,
+        "cloud": 0,
+        "crossingStatus": true
+      },
+      "at": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0081,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 0.984375,
+        "cloud": 0,
+        "crossingStatus": true
+      },
+      "after": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0081,
+        "nearOpacity": 1,
+        "stageOpacity": 0.007,
+        "direct": 0.984375,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 488
+    },
+    {
+      "seconds": 14.5,
+      "change": 0.244,
+      "histogram": 0.62,
+      "before": {
+        "owner": "main",
+        "mode": "walk",
+        "localM": null,
+        "mainAltitudeKm": 0.0073,
+        "nearOpacity": 0,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "at": {
+        "owner": "main",
+        "mode": "walk",
+        "localM": null,
+        "mainAltitudeKm": 0.0073,
+        "nearOpacity": 0,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "after": {
+        "owner": "main",
+        "mode": "walk",
+        "localM": null,
+        "mainAltitudeKm": 0.0073,
+        "nearOpacity": 0,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 184
+    }
+  ],
+  "walk-installed-main-10-main-9": [
+    {
+      "seconds": 1.67,
+      "change": 0.217,
+      "histogram": 0.856,
+      "before": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0078,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 1,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "at": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0078,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 1,
+        "cloud": 0,
+        "crossingStatus": true
+      },
+      "after": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0078,
+        "nearOpacity": 1,
+        "stageOpacity": 0.117,
+        "direct": 1,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 371
+    },
+    {
+      "seconds": 13.33,
+      "change": 0.161,
+      "histogram": 0.621,
+      "before": {
+        "owner": "main",
+        "mode": "walk",
+        "localM": null,
+        "mainAltitudeKm": 0.008,
+        "nearOpacity": 0,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "at": {
+        "owner": "main",
+        "mode": "walk",
+        "localM": null,
+        "mainAltitudeKm": 0.008,
+        "nearOpacity": 0,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "after": {
+        "owner": "main",
+        "mode": "walk",
+        "localM": null,
+        "mainAltitudeKm": 0.008,
+        "nearOpacity": 0,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 207
+    }
+  ],
+  "walk-installed-main-11-main-4": [
+    {
+      "seconds": 1.54,
+      "change": 0.158,
+      "histogram": 0.723,
+      "before": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0081,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 1,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "at": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0081,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 1,
+        "cloud": 0,
+        "crossingStatus": true
+      },
+      "after": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0081,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 1,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 227
+    },
+    {
+      "seconds": 1.62,
+      "change": 0.254,
+      "histogram": 0.964,
+      "before": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0081,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 1,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "at": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0081,
+        "nearOpacity": 1,
+        "stageOpacity": 0.007,
+        "direct": 1,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "after": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          44.45,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0081,
+        "nearOpacity": 1,
+        "stageOpacity": 1,
+        "direct": 1,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 14
+    },
+    {
+      "seconds": 12.71,
+      "change": 0.235,
+      "histogram": 0.551,
+      "before": {
+        "owner": "main",
+        "mode": "walk",
+        "localM": null,
+        "mainAltitudeKm": 0.0081,
+        "nearOpacity": 0,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": true
+      },
+      "at": {
+        "owner": "main",
+        "mode": "walk",
+        "localM": null,
+        "mainAltitudeKm": 0.0089,
+        "nearOpacity": 0,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "after": {
+        "owner": "main",
+        "mode": "walk",
+        "localM": null,
+        "mainAltitudeKm": 0.0089,
+        "nearOpacity": 0,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 128
+    }
+  ],
+  "walk-installed-main-2-main-3": [],
+  "walk-installed-main-5-main-11": [
+    {
+      "seconds": 1.46,
+      "change": 0.18,
+      "histogram": 0.794,
+      "before": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0082,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 1,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "at": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0082,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 1,
+        "cloud": 0,
+        "crossingStatus": true
+      },
+      "after": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0082,
+        "nearOpacity": 1,
+        "stageOpacity": 0.065,
+        "direct": 1,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 276
+    },
+    {
+      "seconds": 1.58,
+      "change": 0.16,
+      "histogram": 0.971,
+      "before": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0082,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 1,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "at": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0082,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 1,
+        "cloud": 0,
+        "crossingStatus": true
+      },
+      "after": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0082,
+        "nearOpacity": 1,
+        "stageOpacity": 0.065,
+        "direct": 1,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 396
+    }
+  ],
+  "walk-installed-main-8-infinite-meadow": [
+    {
+      "seconds": 3.67,
+      "change": 0.313,
+      "histogram": 0.865,
+      "before": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0089,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 0.984375,
+        "cloud": 0,
+        "crossingStatus": true
+      },
+      "at": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0089,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 0.984375,
+        "cloud": 0,
+        "crossingStatus": true
+      },
+      "after": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0089,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 0.984375,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 458
+    }
+  ],
+  "walk-installed-main-0-main-10": [
+    {
+      "seconds": 17.38,
+      "change": 0.184,
+      "histogram": 0.49,
+      "before": {
+        "owner": "main",
+        "mode": "walk",
+        "localM": null,
+        "mainAltitudeKm": 0.0071,
+        "nearOpacity": 0,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": true
+      },
+      "at": {
+        "owner": "main",
+        "mode": "walk",
+        "localM": null,
+        "mainAltitudeKm": 0.0073,
+        "nearOpacity": 0,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "after": {
+        "owner": "main",
+        "mode": "walk",
+        "localM": null,
+        "mainAltitudeKm": 0.0073,
+        "nearOpacity": 0,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 429
+    }
+  ],
+  "walk-installed-main-1-main-12": [
+    {
+      "seconds": 13.21,
+      "change": 0.266,
+      "histogram": 0.6,
+      "before": {
+        "owner": "main",
+        "mode": "walk",
+        "localM": null,
+        "mainAltitudeKm": 0.0071,
+        "nearOpacity": 0,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "at": {
+        "owner": "main",
+        "mode": "walk",
+        "localM": null,
+        "mainAltitudeKm": 0.0071,
+        "nearOpacity": 0,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "after": {
+        "owner": "main",
+        "mode": "walk",
+        "localM": null,
+        "mainAltitudeKm": 0.0071,
+        "nearOpacity": 0,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 36
+    }
+  ],
+  "walk-installed-main-11-infinite-industry": [
+    {
+      "seconds": 10.58,
+      "change": 0.183,
+      "histogram": 0.586,
+      "before": {
+        "owner": "infinite-industry",
+        "mode": "walk",
+        "localM": [
+          -8564962514.76,
+          -2643967002.62,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0076,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "at": {
+        "owner": "infinite-industry",
+        "mode": "walk",
+        "localM": [
+          -8564962514.76,
+          -2643967002.62,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0076,
+        "nearOpacity": 1,
+        "stageOpacity": 0.007,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "after": {
+        "owner": "infinite-industry",
+        "mode": "walk",
+        "localM": [
+          -8564962514.76,
+          -2643967002.62,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0076,
+        "nearOpacity": 1,
+        "stageOpacity": 1,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 81
+    }
+  ],
+  "walk-installed-main-12-main-15": [
+    {
+      "seconds": 2.33,
+      "change": 0.208,
+      "histogram": 0.915,
+      "before": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0087,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 1,
+        "cloud": 0,
+        "crossingStatus": true
+      },
+      "at": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0087,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 1,
+        "cloud": 0,
+        "crossingStatus": true
+      },
+      "after": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0087,
+        "nearOpacity": 1,
+        "stageOpacity": 0.007,
+        "direct": 1,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 311
+    },
+    {
+      "seconds": 14.29,
+      "change": 0.215,
+      "histogram": 0.568,
+      "before": {
+        "owner": "main",
+        "mode": "walk",
+        "localM": null,
+        "mainAltitudeKm": 0.0078,
+        "nearOpacity": 0,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "at": {
+        "owner": "main",
+        "mode": "walk",
+        "localM": null,
+        "mainAltitudeKm": 0.0078,
+        "nearOpacity": 0,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "after": {
+        "owner": "main",
+        "mode": "walk",
+        "localM": null,
+        "mainAltitudeKm": 0.0078,
+        "nearOpacity": 0,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 24
+    }
+  ],
+  "walk-installed-main-12-main-5": [
+    {
+      "seconds": 3.71,
+      "change": 0.216,
+      "histogram": 0.918,
+      "before": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0069,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 0.984375,
+        "cloud": 0,
+        "crossingStatus": true
+      },
+      "at": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0069,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 0.984375,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "after": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0069,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 0.984375,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 176
+    }
+  ],
+  "walk-installed-main-15-main-10": [],
+  "walk-installed-main-6-sideways-city": [
+    {
+      "seconds": 9.42,
+      "change": 0.154,
+      "histogram": 0.57,
+      "before": {
+        "owner": "sideways-city",
+        "mode": "walk",
+        "localM": [
+          -6060995577.11,
+          -1123718156.64,
+          3.2
+        ],
+        "mainAltitudeKm": 0.0081,
+        "nearOpacity": 1,
+        "stageOpacity": 0.117,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "at": {
+        "owner": "sideways-city",
+        "mode": "walk",
+        "localM": [
+          -6060995577.11,
+          -1123718156.64,
+          3.2
+        ],
+        "mainAltitudeKm": 0.0081,
+        "nearOpacity": 1,
+        "stageOpacity": 0.83,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "after": {
+        "owner": "sideways-city",
+        "mode": "walk",
+        "localM": [
+          -6060995577.11,
+          -1123718156.64,
+          3.2
+        ],
+        "mainAltitudeKm": 0.0081,
+        "nearOpacity": 1,
+        "stageOpacity": 1,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 23
+    }
+  ],
+  "walk-installed-main-10-main-0": [
+    {
+      "seconds": 2.79,
+      "change": 0.223,
+      "histogram": 0.958,
+      "before": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0074,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 1,
+        "cloud": 0,
+        "crossingStatus": true
+      },
+      "at": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0074,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 1,
+        "cloud": 0,
+        "crossingStatus": true
+      },
+      "after": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0074,
+        "nearOpacity": 1,
+        "stageOpacity": 0.007,
+        "direct": 1,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 403
+    },
+    {
+      "seconds": 14.25,
+      "change": 0.217,
+      "histogram": 0.536,
+      "before": {
+        "owner": "main",
+        "mode": "walk",
+        "localM": null,
+        "mainAltitudeKm": 0.0075,
+        "nearOpacity": 0,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "at": {
+        "owner": "main",
+        "mode": "walk",
+        "localM": null,
+        "mainAltitudeKm": 0.0075,
+        "nearOpacity": 0,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "after": {
+        "owner": "main",
+        "mode": "walk",
+        "localM": null,
+        "mainAltitudeKm": 0.0075,
+        "nearOpacity": 0,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 252
+    }
+  ],
+  "walk-installed-main-11-main-1": [
+    {
+      "seconds": 13.04,
+      "change": 0.254,
+      "histogram": 0.763,
+      "before": {
+        "owner": "main",
+        "mode": "walk",
+        "localM": null,
+        "mainAltitudeKm": 0.0091,
+        "nearOpacity": 0,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": true
+      },
+      "at": {
+        "owner": "main",
+        "mode": "walk",
+        "localM": null,
+        "mainAltitudeKm": 0.008,
+        "nearOpacity": 0,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "after": {
+        "owner": "main",
+        "mode": "walk",
+        "localM": null,
+        "mainAltitudeKm": 0.008,
+        "nearOpacity": 0,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 398
+    }
+  ],
+  "walk-installed-main-3-main-2": [
+    {
+      "seconds": 2.54,
+      "change": 0.338,
+      "histogram": 0.96,
+      "before": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0146,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 1,
+        "cloud": 0,
+        "crossingStatus": true
+      },
+      "at": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0146,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 1,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "after": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0146,
+        "nearOpacity": 1,
+        "stageOpacity": 0.117,
+        "direct": 1,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 13
+    },
+    {
+      "seconds": 14.0,
+      "change": 0.156,
+      "histogram": 0.563,
+      "before": {
+        "owner": "main",
+        "mode": "walk",
+        "localM": null,
+        "mainAltitudeKm": 0.0142,
+        "nearOpacity": 0,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "at": {
+        "owner": "main",
+        "mode": "walk",
+        "localM": null,
+        "mainAltitudeKm": 0.0142,
+        "nearOpacity": 0,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "after": {
+        "owner": "main",
+        "mode": "walk",
+        "localM": null,
+        "mainAltitudeKm": 0.0142,
+        "nearOpacity": 0,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 26
+    }
+  ],
+  "walk-installed-main-4-main-8": [
+    {
+      "seconds": 1.88,
+      "change": 0.249,
+      "histogram": 0.944,
+      "before": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0067,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 0.953125,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "at": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0067,
+        "nearOpacity": 1,
+        "stageOpacity": 0.007,
+        "direct": 0.953125,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "after": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          44.45,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0067,
+        "nearOpacity": 1,
+        "stageOpacity": 1,
+        "direct": 0.953125,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 19
+    },
+    {
+      "seconds": 13.62,
+      "change": 0.244,
+      "histogram": 0.61,
+      "before": {
+        "owner": "main",
+        "mode": "walk",
+        "localM": null,
+        "mainAltitudeKm": 0.0067,
+        "nearOpacity": 0,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": true
+      },
+      "at": {
+        "owner": "main",
+        "mode": "walk",
+        "localM": null,
+        "mainAltitudeKm": 0.0084,
+        "nearOpacity": 0,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "after": {
+        "owner": "main",
+        "mode": "walk",
+        "localM": null,
+        "mainAltitudeKm": 0.0084,
+        "nearOpacity": 0,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 156
+    }
+  ],
+  "walk-installed-main-7-main-10": [
+    {
+      "seconds": 13.88,
+      "change": 0.182,
+      "histogram": 0.58,
+      "before": {
+        "owner": "main",
+        "mode": "walk",
+        "localM": null,
+        "mainAltitudeKm": 0.0085,
+        "nearOpacity": 0,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "at": {
+        "owner": "main",
+        "mode": "walk",
+        "localM": null,
+        "mainAltitudeKm": 0.0085,
+        "nearOpacity": 0,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "after": {
+        "owner": "main",
+        "mode": "walk",
+        "localM": null,
+        "mainAltitudeKm": 0.0085,
+        "nearOpacity": 0,
+        "stageOpacity": 0,
+        "direct": null,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 43
+    }
+  ],
+  "walk-installed-main-9-infinite-meadow": [
+    {
+      "seconds": 4.58,
+      "change": 0.314,
+      "histogram": 0.891,
+      "before": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0089,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 0.984375,
+        "cloud": 0,
+        "crossingStatus": true
+      },
+      "at": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0089,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 0.984375,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "after": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0089,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 0.984375,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 199
+    }
+  ],
+  "walk-installed-sideways-city-main-6": [
+    {
+      "seconds": 0.79,
+      "change": 0.173,
+      "histogram": 0.911,
+      "before": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0084,
+        "nearOpacity": 1,
+        "stageOpacity": 0,
+        "direct": 1,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "at": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0084,
+        "nearOpacity": 1,
+        "stageOpacity": 0.117,
+        "direct": 1,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "after": {
+        "owner": "border-outfall",
+        "mode": "walk",
+        "localM": [
+          -1,
+          43.5,
+          1.7
+        ],
+        "mainAltitudeKm": 0.0084,
+        "nearOpacity": 1,
+        "stageOpacity": 0.66,
+        "direct": 1,
+        "cloud": 0,
+        "crossingStatus": false
+      },
+      "cameraTimeErrorMs": 77
+    }
+  ]
+}
