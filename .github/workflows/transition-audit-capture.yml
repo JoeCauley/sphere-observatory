@@ -1,0 +1,52 @@
+name: Record the transition audit
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/transition-audit-capture.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  record:
+    if: github.event_name == 'workflow_dispatch' || github.head_ref == 'qa/transition-audit-20261120'
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    strategy:
+      fail-fast: false
+      max-parallel: 5
+      matrix:
+        include:
+          - { name: flights-meadow, script: flights, config: "", clips: "flight-meadow-outfall,flight-meadow-city,flight-meadow-industry" }
+          - { name: flights-city, script: flights, config: "", clips: "flight-city-meadow,flight-city-industry,flight-city-outfall" }
+          - { name: flights-industry, script: flights, config: "", clips: "flight-industry-meadow,flight-industry-city,flight-industry-outfall" }
+          - { name: flights-outfall, script: flights, config: "", clips: "flight-outfall-meadow,flight-outfall-city,flight-outfall-industry" }
+          - { name: walks-installed, script: walks, config: installed, clips: "" }
+          - { name: walks-empty, script: walks, config: empty, clips: "" }
+          - { name: walks-placed, script: walks, config: placed, clips: "" }
+          - { name: pilots, script: pilots, config: "", clips: "" }
+    env:
+      SPHERE_NATIVE_BROWSER: /usr/bin/google-chrome
+      SPHERE_CLIPS: ${{ matrix.clips }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version: "24"
+      - run: npm ci --no-audit --no-fund
+      - run: python -m pip install numpy opencv-python-headless Pillow imageio-ffmpeg
+      - name: Record continuous real-time routes
+        env:
+          SCRIPT: ${{ matrix.script }}
+          CONFIG: ${{ matrix.config }}
+        run: node "tools/capture-transition-$SCRIPT.cjs" "$RUNNER_TEMP/films" "$CONFIG"
+      - name: Decode the films and correlate camera traces
+        if: always()
+        run: python tools/analyze-transition-films.py "$RUNNER_TEMP/films"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: transition-${{ matrix.name }}
+          path: ${{ runner.temp }}/films
+          if-no-files-found: error
+          retention-days: 30
