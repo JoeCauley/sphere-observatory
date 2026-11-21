@@ -201,8 +201,8 @@
   "dependencies": [
     {
       "path": "../../kit/atmosphere.js",
-      "bytes": 4095,
-      "sha256": "8c796ce4c857da663b88ad8b740ffeb9f555876dd0466e0f9c55f72f499e0ed8"
+      "bytes": 3990,
+      "sha256": "944aaf2c5ae70d60bc16743feb4ac954304278a5e097f5d9e37c643a196db7eb"
     },
     {
       "path": "../../kit/veil.js",

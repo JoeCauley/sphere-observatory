@@ -112,6 +112,18 @@ function ascend({toAltitudeM=24000}={}){
   return new Promise(resolve=>{script={start,end:{...pose,mode:'flight',altitudeM:toAltitudeM,pitch:-1.49},elapsed:0,egress,resolve};});
 }
 function begin(){if(held){held=false;hudDirty=true;}return arrived;}
+const airRules=library?.pack(id)?.atmosphereRules,nearM=airRules?.nearM??18000,farM=airRules?.farM??24000;
+const nearMark=Math.log1p(nearM/6000),farMark=nearMark+1.25;
+function altitudeMark(h){
+  if(h<=nearM)return Math.log1p(Math.max(0,h)/6000);
+  if(h<farM)return nearMark+1.25*(h-nearM)/(farM-nearM);
+  return farMark+Math.log1p((h-farM)/110000);
+}
+function altitudeAt(mark){
+  if(mark<=nearMark)return 6000*Math.expm1(mark);
+  if(mark<farMark)return nearM+(farM-nearM)*(mark-nearMark)/1.25;
+  return farM+110000*Math.expm1(mark-farMark);
+}
 function updateScript(dt){
   if(!script||held)return;
   if(script.egress?.length){
@@ -125,9 +137,19 @@ function updateScript(dt){
       script.end={...pose,altitudeM:script.end.altitudeM,pitch:-1.49};}
     return;
   }
-  script.elapsed+=dt;const t=Math.min(1,script.elapsed/(script.arrival?2.5:2)),k=t*t*(3-2*t);
-  pose={...pose};
-  for(const field of ['eastM','northM','altitudeM','pitch','yaw'])pose[field]=script.start[field]+(script.end[field]-script.start[field])*k;
+  const {start,end}=script;
+  if(script.duration===undefined){
+    script.from=altitudeMark(start.altitudeM);script.to=altitudeMark(end.altitudeM);
+    script.duration=Math.max(2,Math.abs(script.to-script.from)*1.7);
+  }
+  script.elapsed+=dt;const t=Math.min(1,script.elapsed/script.duration),k=t*t*(3-2*t);
+  const h=t===1?end.altitudeM:altitudeAt(script.from+(script.to-script.from)*k);
+  // Look back at the station while it is still visible; reserve time for the regional overlap in both directions.
+  const span=Math.max(1,Math.min(9000,Math.abs(end.altitudeM-start.altitudeM)));
+  let turn=end.altitudeM>start.altitudeM?(h-start.altitudeM)/span:1-(h-end.altitudeM)/span;
+  turn=Math.max(0,Math.min(1,turn));turn=turn*turn*(3-2*turn);
+  pose={...pose,altitudeM:h,pitch:start.pitch+(end.pitch-start.pitch)*turn};
+  for(const field of ['eastM','northM','yaw'])pose[field]=start[field]+(end[field]-start[field])*k;
   if(t>=1)settle(script.arrival?'arrived':'revealed');
 }
 function renderHUD(now){

@@ -23,6 +23,16 @@ async function main(){
     assert.equal((await host.dispatch('/','GET',{'if-none-match':'"older"'})).status,200);
     const head=await host.dispatch('/','HEAD',{'if-none-match':'*'});assert.equal(head.status,304);assert.equal(head.body.length,0);
     const catalog=result(await host.dispatch('/packs/biome-library.json'));assert.equal(catalog.packs.length,5);assert.equal(catalog.packs.find(p=>p.id==='border-transport').version,'0.10.0');
+    for(const pack of catalog.packs){
+      const dir=path.resolve(__dirname,'..',path.dirname(pack.entry)),file=path.join(dir,'manifest.json');
+      if(!fs.existsSync(file))continue;
+      const manifest=JSON.parse(fs.readFileSync(file,'utf8'));
+      assert.equal(manifest.version,pack.version);
+      for(const asset of [...manifest.assets,...(manifest.dependencies??[])]){
+        const bytes=fs.readFileSync(path.resolve(dir,asset.path));
+        assert.equal(require('node:crypto').createHash('sha256').update(bytes).digest('hex'),asset.sha256,pack.id+' '+asset.path);
+      }
+    }
     assert.deepEqual(result(await send('GET')),{schema:1,worlds:{}});
     const a=item('infinite-meadow'),b=item('sideways-city');
     const [first,second]=await Promise.all([patch(key,params,[],[a]),patch(key,params,[],[b])]);

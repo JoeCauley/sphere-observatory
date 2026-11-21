@@ -39,7 +39,7 @@
     const pack = library()?.pack(item.packId);
     if (!pack) return null;
     // contract: the biome implements sphere-biome/1 and needs no special handling here.
-    return { name: pack.name, atmosphere: pack.atmosphere || 'clear', entry: pack.entry, saveKey: pack.saveKey, contract: pack.contract === 'sphere-biome/1', ascent: pack.travel?.ascent === 'guided-journey',
+    return { name: pack.name, atmosphere: pack.atmosphere || 'clear', atmosphereRules:pack.atmosphereRules, entry: pack.entry, saveKey: pack.saveKey, contract: pack.contract === 'sphere-biome/1', ascent: pack.travel?.ascent === 'guided-journey',
       glide: pack.travel?.glide === 'industry-approach', flightArrival: pack.travel?.flightArrival ?? '' };
   }
 
@@ -318,7 +318,12 @@
   let cloudLayer = null, cloudRecipe;
   const inBlind = scene => ['meadow-mist','works-vapour','city-smog'].includes(scene.atmosphere);
   const arrivalQuery = scene => '?arrival=air&hold=1&fromM='+(inBlind(scene)?'blind':HANDOFF_KM*1000);
-  function useAir(scene){cloudRecipe=optics.atmosphere(scene.atmosphere);}
+  function airOf(scene){
+    if(!scene.atmosphereRules)return optics.atmosphere(scene.atmosphere);
+    const {base,...rules}=scene.atmosphereRules;
+    return {...optics.atmosphere(base),...rules,id:scene.atmosphere};
+  }
+  function useAir(scene){cloudRecipe=airOf(scene);}
   function cloud() {
     if (cloudLayer) return cloudLayer;
     const canvas = document.createElement('canvas');
@@ -375,7 +380,7 @@
   }
   function enableRegional(c,scene){
     if(!c || !optics)return;
-    c.regional=optics.atmosphere(scene.atmosphere);
+    c.regional=airOf(scene);
     c.shell.style.background='transparent';
     const bar=c.shell.firstElementChild;
     Object.assign(bar.style,{position:'absolute',top:'0',left:'0',right:'0',zIndex:'2'});
@@ -1269,7 +1274,7 @@
     if(!item || !lib.matchesWorld(s))return;
     if(current.frame.surfaceEntry?.passage)return;
     const scene=sceneOf(item);
-    if(pose.mode==='flight' && !current.regional && optics && scene && pose.altitudeM>=optics.atmosphere(scene.atmosphere).nearM)enableRegional(current,scene);
+    if(pose.mode==='flight' && !current.regional && optics && scene && pose.altitudeM>=airOf(scene).nearM)enableRegional(current,scene);
     const climbed=pose.altitudeM>previous.pose.altitudeM && pose.altitudeM>=geography.leaveKm*1000;
     if(!climbed && (inspect.levelCruising || pose.altitudeM>=geography.leaveKm*1000))return;
     if(!climbed && item.transport && geography.outsideDistrict(item.transport,pose.eastM,pose.northM)<=(pose.mode==='walk'?14:650))return;

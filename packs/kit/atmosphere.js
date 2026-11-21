@@ -1,7 +1,6 @@
 // Pack recipes are evaluated at runtime. They contain no image URLs or volume textures.
 const recipes={
   clear:{nearM:18000,farM:24000,focal:1.19,tint:[.48,.65,.76],stretch:[1,1],drift:.04,density:0},
-  'builder-thin':{nearM:18000,farM:24000,focal:1.35,tint:[.32,.39,.40],stretch:[1,1],drift:0,density:0},
   'city-thin':{nearM:19000,farM:24000,focal:1.19,tint:[.71,.65,.58],stretch:[2.8,.55],drift:.025,density:.08},
   'outfall-salt':{nearM:18000,farM:24000,focal:1/.64,tint:[.59,.70,.70],stretch:[3.5,.65],drift:.08,density:.12},
   'meadow-mist':{nearM:20000,farM:24000,focal:1/.70020754,tint:[.73,.81,.70],stretch:[1.4,.85],drift:.07,density:.85},

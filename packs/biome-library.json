@@ -121,6 +121,7 @@
     {
       "id": "border-transport",
       "atmosphere": "builder-thin",
+      "atmosphereRules": {"base":"clear","nearM":18000,"farM":24000,"focal":1.35,"tint":[0.32,0.39,0.40],"drift":0},
       "name": "Border Biome",
       "version": "0.10.0",
       "description": "Builder freight halls beneath a 1.7 km roof. Four scales share an addressed transport district.",

@@ -38,7 +38,13 @@ async function main(){
       }
       const r=await record(page,output,id,async()=>{
         const toName=catalogue.find(p=>p.id===to).name;
-        await page.getByRole('button',{name:'Fly to '+toName,exact:true}).click();
+        const stage=page.locator('#stageFrame');
+        const shortcut=stage.getByRole('button',{name:'Fly to '+toName,exact:true});
+        if(await shortcut.count())await shortcut.click();
+        else{
+          await stage.getByRole('combobox',{name:'Destination biome'}).selectOption(to);
+          await stage.getByRole('button',{name:'Fly there',exact:true}).click();
+        }
         await page.waitForFunction(to=>{const s=SphereStageFrame;return !s.flying && s.lastArrival?.to===to && s.lastArrival.route==='fly';},to,{timeout:185000,polling:200});
         const result=await page.evaluate(()=>({arrival:SphereStageFrame.lastArrival,flight:SphereStageFrame.lastFlight,
           camera:document.querySelector('#stageFrame iframe')?.contentWindow?.SphereBiome?.pose()}));
