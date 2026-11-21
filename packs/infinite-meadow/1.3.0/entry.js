@@ -1,4 +1,4 @@
-import {PackHost} from '../../runtime/v1/host.js';
+import {AtlasHost as PackHost} from './atlas-lease.js';
 const base=new URL('.',import.meta.url);
 // A restored document has already released its scene resources on pagehide.
 window.onpageshow=e=>{if(e.persisted)location.reload();};

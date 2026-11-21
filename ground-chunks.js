@@ -3,6 +3,7 @@
  * are independent of the camera, heading and residency history. Units: km. */
 (function(root){
 'use strict';const M=root.SphereMath,W=root.SphereWorld,S=root.SphereSites,C=root.SphereCollection,A=root.SphereWorldAddress,T=root.SphereWorldTopology,G=root.SphereGeography;
+if(typeof module!=='undefined'&&module.exports&&!root.SphereVioletForest)require('./packs/violet-labyrinth/1.0.0/forest.js');
 const SIZE=1.024,FINE=64,COARSE=32,BUDGET=64*1048576,HYSTERESIS=1e-7,cache=new Map();let budget=BUDGET,bytes=0,active=null,buildMs=0,target=null,worker=null,pending=null,generation=0,waits=0,revision=0,rebase=null,rebaseReady=null,clock=0,cancelled=0,evictions=0;
 const enabled=s=>s.siteRevision===2&&s.siteAnchor&&/^(biome|port)-/.test(s.siteId)&&(s.walkMode||M.length(M.sub(s.position,M.mul(s.terrainAnchor||s.siteAnchor,s.radius)))<S.localRange(s));
 const protectedProvinceAt=(q,s)=>{if(!s?.provinceAnchor||!root.SphereWatershed?.enabled?.(s)||!root.SphereWatershed?.local)return false;const local=root.SphereWatershed.local(q,s),extent=(root.SphereWatershed.extentKm||640)/2;return Number.isFinite(local?.[0])&&Math.max(Math.abs(local[0]),Math.abs(local[1]))<extent;};
@@ -73,11 +74,45 @@ function build(s,cx,cz,cells=FINE,centre=[cx,cz],identity=null){const f=frame(s)
   // A fixed 3-D lattice gives each object one geographic owner even across
   // chart changes, poles, longitude wrap and a differently anchored revisit.
   const corners=[[loX,0,loZ],[loX+spanX,0,loZ],[loX,0,loZ+spanZ],[loX+spanX,0,loZ+spanZ]].map(p=>M.mul(M.norm(f.world(p)),s.radius)),pitch=.128,min=[0,1,2].map(i=>Math.floor(Math.min(...corners.map(p=>p[i]))/pitch)-1),max=[0,1,2].map(i=>Math.floor(Math.max(...corners.map(p=>p[i]))/pitch)+1),floor=S.packBVH(floorTriangles);
+  const forest=root.SphereVioletForest;
+  const centerQ=M.norm(f.world([loX+spanX*.5,0,loZ+spanZ*.5]));
+  const violet=forest&&(G?.query(centerQ,{state:s,representation:'walking'}).biome??W.sample(centerQ,s).biome)===9;
+  const grove=violet?forest.referenceGrove(s):null;
+  const nearGrove=grove && M.length(M.sub(centerQ,grove.anchor))*s.radius<3.5;
+  const inReference=q=>{
+    if(!nearGrove)return false;
+    const offset=M.sub(M.mul(q,s.radius),grove.origin);
+    return Math.max(Math.abs(M.dot(offset,grove.basis[0])),Math.abs(M.dot(offset,grove.basis[2])))<1.10;
+  };
+  function plant(q,spire){
+    const here=f.local(M.mul(q,s.radius)),x=here[0],z=here[2],r=spire.radius;
+    if(x<loX||x>=loX+spanX||z<loZ||z>=loZ+spanZ||C.missing(q,s))return;
+    if(clip && [[-r,-r],[r,-r],[-r,r],[r,r]].some(([dx,dz])=>clip.margin([x+dx,0,z+dz])<0))return;
+    const hit={},dist=S.rayBVH([x,10,z],[0,-1,0],floor,Infinity,hit);
+    if(!hit.normal)return;
+    const axes=S.shellFrame(q).map(axis=>f.basis.map(b=>M.dot(axis,b)));
+    forest.emit(mesh,[x,10-dist,z],axes,spire);
+    props.push(spire.id);
+  }
+  if(nearGrove)for(const spire of grove.spires)plant(spire.q,spire);
   for(let iz=min[2];iz<=max[2];iz++)for(let iy=min[1];iy<=max[1];iy++)for(let ix=min[0];ix<=max[0];ix++){
-   const world=[(ix+.5)*pitch,(iy+.5)*pitch,(iz+.5)*pitch];if(Math.abs(M.length(world)-s.radius)>.055||S.noise(ix,iy,s.seed+iz)>.28)continue;
+   const density=S.noise(ix,iy,s.seed+iz);
+   if(!violet && density>.28)continue;
+   const world=[(ix+.5)*pitch,(iy+.5)*pitch,(iz+.5)*pitch];if(Math.abs(M.length(world)-s.radius)>.055)continue;
    const q=M.norm(world),local=f.local(M.mul(q,s.radius)),x=local[0],z=local[2],province=root.SphereWatershed?.sample(q,s);if(x<loX||x>=loX+spanX||z<loZ||z>=loZ+spanZ||protectedProvinceAt(q,s)||province?.water?.river||province?.water?.basin||province?.route||C.missing(q,s))continue;
    const ecology=root.SphereMeadowEcology?.active?.(s)?root.SphereMeadowEcology.query(q,s):null;if(ecology?.treeSuppressed)continue;
-   const id=G?.query(q,{state:s,representation:'walking'}).biome??W.sample(q,s).biome,r=.0025,h=.003+S.noise(ix,iz,s.seed+iy)*.004,hit={},distance=S.rayBVH([x,10,z],[0,-1,0],floor,Infinity,hit);if(!hit.normal)continue;
+   const id=G?.query(q,{state:s,representation:'walking'}).biome??W.sample(q,s).biome;
+   if(id===9&&forest){
+     if(inReference(q))continue;
+     const seam=forest.cover(q,s);
+     if(seam<.04 || density>Math.min(.94,seam*2.7))continue;
+     const variation=S.noise(iz,ix,s.seed+iy+17);
+     plant(q,{id:['violet',s.seed,ix,iy,iz].join('/'),radius:.004+.011*variation,
+       height:.021+.091*S.noise(iy,iz,s.seed+ix+97),rotation:density*Math.PI,variation:.7+.5*variation});
+     continue;
+   }
+   if(density>.28)continue;
+   const r=.0025,h=.003+S.noise(ix,iz,s.seed+iy)*.004,hit={},distance=S.rayBVH([x,10,z],[0,-1,0],floor,Infinity,hit);if(!hit.normal)continue;
    if(clip&&[[x-r,0,z-r],[x+r,0,z-r],[x-r,0,z+r],[x+r,0,z+r]].some(p=>clip.margin(p)<0))continue;
    props.push([s.seed,ix,iy,iz].join(':'));
    // Object axes belong to its geographic point, not to the current chart.

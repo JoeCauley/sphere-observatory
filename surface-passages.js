@@ -4,8 +4,8 @@ import {tunnelLength} from './packs/border-outfall/1.0.0/border.js';
 
 export function ownerAt(q,state,items,atlas,world) {
   const at=world.coordinates(q,state), plot=atlas.plotAt(at.lat,at.lon);
-  const item=plot && items.find(value=>!value.edge && value.plot===plot.index);
-  if(item)return {id:item.id,name:item.name,pack:true,plot:plot.id};
+  const item=atlas.regionAt(items,at.lat,at.lon);
+  if(item)return {id:item.id,name:item.name,pack:item.detailInstalled!==false,plot:plot.id};
   const region=world.sample(q,state);
   return {id:'main-'+region.id,name:region.name,pack:false,plot:plot?.id??null};
 }

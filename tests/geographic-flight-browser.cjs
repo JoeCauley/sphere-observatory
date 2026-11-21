@@ -29,7 +29,7 @@ async function main() {
         const geo = await import('./geographic-flight.js'), kit = await import('./packs/kit/surface-route.js');
         const item = lib.entry(id), home = atlas.byId(item.edge?.near ?? item.plotId), s = SphereApp.getState();
         let g = {latitude:home.latitude+home.halfHeight*.23,longitude:home.longitude+Math.PI/home.columns*(external?1.32:.31)};
-        if(westEdge)g.longitude=home.longitude-Math.PI/home.columns+(atlas.BORDER_KM-.16)/(s.radius*Math.cos(g.latitude));
+        if(westEdge)g.longitude=home.longitude-Math.PI/home.columns-.16/(s.radius*Math.cos(g.latitude));
         if(item.edge){
           const gate=kit.chartFor(home,item.edge,s.radius);
           const p=kit.toMeadow({eastM:410,northM:-1500,altitudeM:0,yaw:0},gate,0);

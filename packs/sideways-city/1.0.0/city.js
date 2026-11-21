@@ -37,13 +37,13 @@ const REVEAL_M = 3000, MESH_BELOW_M = 600;
 // it is a few seconds of obscuring cloud. So it veils the eye only while the eye is inside it.
 // Every height here is PROPOSED for this prototype; no kilometre value is canon.
 const AIRS = {
-  thin: { haze: [{ baseM: 0, topM: 400, perKm: .5 }, { baseM: 0, topM: 4000, perKm: .08 }], blind: { baseM: 9000, topM: 10500, edgeM: 800 } },
-  thick: { haze: [{ baseM: 0, topM: 1500, perKm: .9 }, { baseM: 0, topM: 9000, perKm: .25 }], blind: { baseM: 11000, topM: 13000, edgeM: 1200 } }
+  thin: { profile:'city-thin', haze: [{ baseM: 0, topM: 400, perKm: .5 }, { baseM: 0, topM: 4000, perKm: .08 }], blind: null },
+  thick: { profile:'city-smog', haze: [{ baseM: 0, topM: 1500, perKm: .9 }, { baseM: 0, topM: 9000, perKm: .25 }], blind: { baseM: 11000, topM: 13000, edgeM: 1200 } }
 };
 const AIR = AIRS[new URLSearchParams(location.search).get('air')] ?? AIRS.thin;
 const HAZE = new Float32Array(AIR.haze.flatMap(l => [l.baseM, l.topM, l.perKm / 1000, 0]));
 const smooth = (a, b, x) => { const t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
-const veilAt = m => smooth(AIR.blind.baseM - AIR.blind.edgeM, AIR.blind.baseM, m) * (1 - smooth(AIR.blind.topM, AIR.blind.topM + AIR.blind.edgeM, m));
+const veilAt = m => !AIR.blind?0:smooth(AIR.blind.baseM - AIR.blind.edgeM, AIR.blind.baseM, m) * (1 - smooth(AIR.blind.topM, AIR.blind.topM + AIR.blind.edgeM, m));
 const FAR_ONLY = new URLSearchParams(location.search).get('far') === '1';   // test aid: trace everything, to compare with the meshes
 const $ = id => document.getElementById(id);
 const canvas = $('world');
@@ -111,7 +111,7 @@ uniform vec4 uHaze[2];uniform vec3 uBlind;uniform float uTime;
 float through(vec4 L,float dy,float t){float y=uAltitude,y1=y+dy*t,lo=min(y,y1),hi=max(y,y1);   // length of the ray inside one level layer
  return hi-lo<1e-3?(y>=L.x&&y<=L.y?t:0.):t*max(0.,min(hi,L.y)-max(lo,L.x))/(hi-lo);}
 float fogOf(float dist,float dy){float tau=0.;for(int i=0;i<2;i++)tau+=uHaze[i].z*through(uHaze[i],dy,dist);return 1.-exp(-tau);}
-vec3 veiled(vec3 col,vec3 d){float v=smoothstep(uBlind.x-uBlind.z,uBlind.x,uAltitude)*(1.-smoothstep(uBlind.y,uBlind.y+uBlind.z,uAltitude));if(v<=0.)return col;
+vec3 veiled(vec3 col,vec3 d){if(uBlind.z<=0.)return col;float v=smoothstep(uBlind.x-uBlind.z,uBlind.x,uAltitude)*(1.-smoothstep(uBlind.y,uBlind.y+uBlind.z,uAltitude));if(v<=0.)return col;
  vec3 q=d*3.+vec3(uTime*.05,uAltitude*.004,uTime*.03);float n=.5+.5*sin(q.x*2.1+sin(q.z*1.7+q.y))*sin(q.y*1.3+q.z*2.3);   // wisps that stream past as the eye climbs
  return mix(col,mix(vec3(.80,.78,.76),vec3(.95,.93,.90),n),smoothstep(0.,1.,v*1.5-.5*n));}`;
 const mesh = program(`#version 300 es
@@ -254,7 +254,7 @@ function draw() {
   if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
   gl.viewport(0, 0, w, h); gl.enable(gl.DEPTH_TEST); gl.depthFunc(gl.LEQUAL); gl.clear(gl.DEPTH_BUFFER_BIT);
   const f = forward(), right = [Math.cos(pose.yaw), 0, -Math.sin(pose.yaw)], up = [-Math.sin(pose.yaw) * Math.sin(pose.pitch), Math.cos(pose.pitch), -Math.cos(pose.yaw) * Math.sin(pose.pitch)];
-  const common = pr => { gl.useProgram(pr.p); gl.uniform3fv(pr.u.uRight, right); gl.uniform3fv(pr.u.uUp, up); gl.uniform3fv(pr.u.uForward, f); gl.uniform1f(pr.u.uAspect, w / h); gl.uniform1f(pr.u.uAltitude, pose.altitudeM); gl.uniform4fv(pr.u['uHaze[0]'], HAZE); gl.uniform3f(pr.u.uBlind, AIR.blind.baseM, AIR.blind.topM, AIR.blind.edgeM); gl.uniform1f(pr.u.uTime, performance.now() / 1000); };
+  const common = pr => { gl.useProgram(pr.p); gl.uniform3fv(pr.u.uRight, right); gl.uniform3fv(pr.u.uUp, up); gl.uniform3fv(pr.u.uForward, f); gl.uniform1f(pr.u.uAspect, w / h); gl.uniform1f(pr.u.uAltitude, pose.altitudeM); gl.uniform4fv(pr.u['uHaze[0]'], HAZE); gl.uniform3f(pr.u.uBlind, AIR.blind?.baseM??0, AIR.blind?.topM??0, AIR.blind?.edgeM??0); gl.uniform1f(pr.u.uTime, performance.now() / 1000); };
   // Near the eye: full meshes, nearest ring first. meshRing is the widest ring that is complete;
   // the ground shader traces everything outside it, so a cell is always drawn exactly once.
   const cx = index(pose.eastM), cz = index(pose.northM); let made = 0; meshRing = -1;
@@ -330,7 +330,7 @@ const geographic=window.frameElement?.surfaceEntry;
 if(geographic?.geographic){pose={...geographic.pose};const floor=ground(pose.eastM,pose.northM)+EYE;
   pose.altitudeM=pose.mode==='walk'?floor:Math.max(floor,pose.altitudeM);
   if(solid(pose.eastM,pose.northM,pose.altitudeM)){pose.mode='flight';while(solid(pose.eastM,pose.northM,pose.altitudeM))pose.altitudeM+=2;}}
-if (arrival === 'air') arriveFromAir(had ? { ...pose } : start(), query.get('fromM') === 'blind' ? (AIR.blind.baseM + AIR.blind.topM) / 2 : Number(query.get('fromM')) || 0, query.get('hold') === '1', query.get('fromM') === 'blind'); else resolveArrived('ground');
+if (arrival === 'air') arriveFromAir(had ? { ...pose } : start(), query.get('fromM') === 'blind' && AIR.blind ? (AIR.blind.baseM + AIR.blind.topM) / 2 : Number(query.get('fromM')) || 0, query.get('hold') === '1', query.get('fromM') === 'blind'); else resolveArrived('ground');
 // The arrival is read once: a reload of this page opens the saved place, not the arrival again.
 if (query.has('arrival')) { const address = new URL(location.href); for (const key of ['arrival', 'hold', 'fromM']) address.searchParams.delete(key); history.replaceState(null, '', address.href); }
 window.SphereBiome = { contract: 'sphere-biome/1', id: ID, version: VERSION, ready, arrived, pose: () => ({ ...pose }), ascend, begin, save, dispose, air: () => structuredClone(AIR), inspect: () => ({ veil: +veilAt(pose.altitudeM).toFixed(3), frames, cellsBuilt: built, buffers: buffers.size, cellsDrawn: drawn, meshRing, scripted: !!script, held: !!script?.held }) };

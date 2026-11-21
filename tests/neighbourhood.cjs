@@ -25,6 +25,21 @@ for(const anchor of [[0,1,0],[0,-1,0],M.axis(0,179.999),M.axis(0,-179.999)])for(
  assert.equal(N.sample(M.mul(anchor,-1),state),null);
 }
 assert.equal(P.sample(P.direction(1000,1000,legacy),legacy),null);assert(P.sample(P.direction(1000,1000,s),s));
+// A bank crosses the surveyed garden boundary on the same river in both directions.
+require('../sphere-atlas.js');
+const outlet=N.model(713).junctions.find(j=>j.source[0]===320);
+const last=P.model(713).segments.find(e=>e.reachId===outlet.reachId && e.b[0]===320);
+const dx=(last.b[0]-last.a[0])/last.length,dz=(last.b[1]-last.a[1])/last.length;
+const bankOffset=last.width+.035;
+// Find the bank's intersection with the actual x=320 survey line.
+const seamZ=last.b[1]+bankOffset/dx;
+const saved=SphereSessionCodec.decode(SphereSessionCodec.encode(s,{})).state;
+for(const state of [s,saved,{...saved,packAddress:{...saved.packAddress,artRevision:2}}]){
+ const samples=[-.02,.02,-.02].map(d=>SphereAtlas.waterwayAt(P.direction(320+d,seamZ+d*dz/dx,state),state));
+ assert.deepEqual(samples.map(v=>v?.region),['garden','receiving','garden']);
+ for(const v of samples){assert.equal(v.id,outlet.reachId);assert(v.bank && !v.water);assert.equal(v.flowCells,outlet.flow);assert.equal(v.downstream,samples[0].downstream);assert(Math.abs(v.halfWidthKm-last.width)<.001);assert(Math.abs(v.bedKm)<.00001);assert(Math.abs(v.waterLevelKm)<.00001);}
+}
+console.log('PASS Atlas bank in both directions across unequal Watershed regions, same saved reach, downstream link, water level and outlet flow');
 const graph=N.model(713),e=graph.edges.at(-1),q=P.direction(...e.points[6],s),f={...s,position:M.mul(q,s.radius-.12),forward:q,up:M.basis(q).u};assert.equal(SphereLanding.move(f,q,.1).landed,undefined,'Open regional river must retain flight');
 assert(N.info.addresses<=2);assert(N.info.graphBytes<=K.get('watershed').budget.graphKiB*1024);assert.equal(N.info.textureBytes,0);
 console.log(`PASS pack migration, exact core reuse, saved addresses, ${joins} original outlets, ${segments} graph edges, connected drainage/routes, polar and longitude addresses, deterministic eviction and water traversal`);

@@ -8,6 +8,27 @@ const {chromium}=require('playwright'),{session,executable}=require('./support/b
   const p=await ctx.newPage(),errors=[];p.on('pageerror',e=>errors.push(e.message));p.setDefaultTimeout(240000);
   await p.goto(host.origin,{waitUntil:'domcontentloaded'});
   await p.waitForFunction(()=>window.SphereLoading?.ready && window.SphereBiomeLibrary?.world);
+  const floorSamples=await p.evaluate(async()=>{
+    const {createRenderer}=await import('./packs/border-outfall/1.0.0/render.js');
+    const {initial}=await import('./packs/border-outfall/1.0.0/model.js');
+    const canvas=document.createElement('canvas');canvas.width=320;canvas.height=180;
+    const renderer=createRenderer(canvas),gl=canvas.getContext('webgl2'),s=initial(),samples=[];
+    try{
+      for(const northM of [500,500000,725000,900000,999500])for(const yaw of [0,Math.PI]){
+        Object.assign(s.pose,{eastM:-1,northM,altitudeM:1.7,pitch:-.19,yaw,mode:'walk'});
+        renderer.draw(s,0,0,{resize:false});
+        const rgb=new Uint8Array(4);
+        gl.readPixels(160,35,1,1,gl.RGBA,gl.UNSIGNED_BYTE,rgb);
+        samples.push({northM,yaw,rgba:[...rgb]});
+      }
+    }finally{renderer.dispose();}
+    return samples;
+  });
+  for(const sample of floorSamples){
+    const [r,g,b,a]=sample.rgba;
+    assert(a===255 && g>r && g<120 && b<120,'Expected a lit tunnel floor under the eye '+JSON.stringify(sample));
+  }
+  console.log('PASS rendered floor ahead and behind the walker at five tunnel stations',JSON.stringify(floorSamples));
   const uninstalled=await p.evaluate(async()=>{
     const state=SphereApp.getState(),items=SphereBiomeLibrary.installed();
     if(items.length)throw Error('Expected a fresh installation register');

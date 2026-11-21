@@ -5,14 +5,13 @@
  * repeated here as GLSL) and draws it:
  *   blank plot          Main's own ground, drained of colour: bare Builder structure, no collection declared;
  *   under construction  blank, with scaffold striping;
- *   installed biome     the pack's own colours and pattern;
+ *   placed biome        the pack's regional colours and pattern, with or without local detail;
  *   border              a dark strip along every plot edge;
  *   transport trunk     a bright line along the waist edges and six meridians;
  *   polar megalopolis   a lit radial grid beyond the last row.
  * Lighting, shades, wounds, atmosphere and depth stay exactly as Main computes them.
  *
- * Plot state is one 64 x 44 float texture: a texel per plot for colour and state,
- * and a second for accent and pattern. Borders and trunks narrower than a pixel
+ * Each plot uses three texels for base colour, accent and geographic bounds. Borders and trunks narrower than a pixel
  * are drawn at about a pixel, so the partition reads from any distance.
  */
 (function () {
@@ -31,11 +30,10 @@ uniform highp sampler2D uInstalledBiomes;
 uniform int uInstalledBiomesOn;
 uniform float uAtlasRadiusKm;
 uniform vec3 uAtlasAxis,uAtlasRight,uAtlasUp;
+uniform vec4 uBorderChart,uBorderSurvey;
 vec3 installedBiomeMaterial(vec3 original,vec3 q,float pixel,float distanceKm){
- // The atlas is an orbital map. Ground and shell share their geographic
- // material through the handoff to detailed terrain and the low-flight packs.
- float mapWeight=smoothstep(1000.,12000.,distanceKm);
- if(uInstalledBiomesOn==0 || mapWeight<=0.)return original;
+ if(uInstalledBiomesOn==0)return original;
+ float mapWeight=smoothstep(1000.,12000.,distanceKm),ownerWeight=mapWeight;
  const float ROW=${f(A.ROW)},LIMIT=${f(A.LIMIT)},ATLAS_TAU=6.283185307179586;
  float lat=asin(clamp(dot(q,uAtlasAxis),-1.,1.)),lon=atan(dot(q,uAtlasUp),dot(q,uAtlasRight));
  float grey=dot(original,vec3(.3333)),cosLat=max(.05,cos(lat));
@@ -51,22 +49,47 @@ vec3 installedBiomeMaterial(vec3 original,vec3 q,float pixel,float distanceKm){
   vec4 P=texelFetch(uInstalledBiomes,ivec2(int(colF),int(rowF)),0),A=texelFetch(uInstalledBiomes,ivec2(int(colF),int(rowF)+${A.ROWS}),0);
   float detail=clamp(ROW/(pixel*60.)-.2,0.,1.);
   col=mix(original,vec3(grey),.62)*.80;
-  if(P.a>1.5){
+  vec4 bounds=texelFetch(uInstalledBiomes,ivec2(int(colF),int(rowF)+${A.ROWS*2}),0);
+  vec2 offset=p/max(bounds.xy,vec2(.000001));
+  bool inside=bounds.z>.5 ? dot(offset,offset)<=1. : max(abs(offset.x),abs(offset.y))<=1.;
+  if(P.a>1.5 && inside){
+   ownerWeight=1.;
    vec3 look=P.rgb;
    if(A.a<.5){float w=sin(p.x*9.+sin(p.y*7.)*1.7)*sin(p.y*11.+sin(p.x*5.)*1.3);look=mix(P.rgb,A.rgb,smoothstep(-.2,.6,w));}
    else if(A.a<1.5){vec2 g=abs(fract(p*6.)-.5);look=mix(P.rgb,A.rgb,(1.-smoothstep(.03,.09,min(g.x,g.y)))*.8);}
    col=mix(P.rgb,look,detail);
-  }else if(P.a>.5){
+   // Atlas coordinates in kilometres keep the regional pattern fixed during banking and reversal.
+   vec2 km=p*vec2(ATLAS_TAU*.5/n*cos(mid),ROW*.5)*uAtlasRadiusKm;
+   float pixelKm=pixel*uAtlasRadiusKm;
+   float province=(sin(km.x/547.+.8*sin(km.y/806.))+sin(km.y/391.-km.x/1117.))*.5;
+   float district=sin(km.x/91.+sin(km.y/134.))*cos(km.y/76.-km.x/210.);
+   float modulation=.12*province*(1.-smoothstep(110.,550.,pixelKm))+.06*district*(1.-smoothstep(18.,92.,pixelKm));
+   col=clamp(col*(1.+modulation),0.,1.);
+  }else if(P.a>.5 && P.a<1.5){
    float stripe=abs(fract((p.x+p.y)*7.)-.5);
    col=mix(col,vec3(.62,.44,.12),.10+(1.-smoothstep(.12,.2,stripe))*.42*detail);
   }
   float edge=min(min(local.y,1.-local.y)*ROW,min(local.x,1.-local.x)*ATLAS_TAU/n*cosLat);
   float border=max(${f(A.BORDER_KM)}/uAtlasRadiusKm,pixel*1.1);
-  col=mix(col,vec3(.035,.04,.045),1.-smoothstep(border*.55,border,edge));
+  col=mix(col,vec3(.035,.04,.045),(1.-smoothstep(border*.55,border,edge))*mapWeight);
+ }
+ // Draw the surveyed rooftop between the two parcels, including in the middle-distance shell.
+ if(uBorderSurvey.z>0. && abs(lat-uBorderChart.x)<ROW){
+  float dl=lon-uBorderChart.y,c=cos(lat),sl=sin(lat),ch=cos(uBorderChart.x),sh=sin(uBorderChart.x);
+  vec2 en=vec2(c*sin(dl),ch*sl-sh*c*cos(dl));float h=length(en);
+  vec2 km=en*(atan(h,sh*sl+ch*c*cos(dl))*uAtlasRadiusKm/max(h,.0000001))-uBorderChart.zw;
+  float east=abs(dot(km,uBorderSurvey.xy)),north=dot(km,vec2(-uBorderSurvey.y,uBorderSurvey.x));
+  float outside=max(east-uBorderSurvey.z,max(-north,north-uBorderSurvey.w));
+  float aa=max(.01,pixel*uAtlasRadiusKm);
+  float roof=(1.-smoothstep(-aa,aa,outside))*min(1.,uBorderSurvey.w/aa);
+  if(roof>0.){
+   float bays=cos(east/86.)*cos(north/57.)*(1.-smoothstep(15.,80.,aa));
+   col=mix(col,vec3(.32,.37,.35)*(1.+.11*bays),roof);ownerWeight=max(ownerWeight,roof);
+  }
  }
  float trunk=min(abs(abs(lat)-3.*ROW),abs(fract(lon/ATLAS_TAU*${f(A.TRUNK_MERIDIANS)}+.5)-.5)*ATLAS_TAU/${f(A.TRUNK_MERIDIANS)}*cosLat);
  float wide=max(${f(A.TRUNK_KM)}/uAtlasRadiusKm,pixel*1.8);
- return mix(original,mix(col,vec3(.62,.55,.40),(1.-smoothstep(wide*.5,wide,trunk))*.85),mapWeight);
+ return mix(original,mix(col,vec3(.62,.55,.40),(1.-smoothstep(wide*.5,wide,trunk))*.85*mapWeight),ownerWeight);
 }
 `;
   }
@@ -81,9 +104,9 @@ vec3 installedBiomeMaterial(vec3 original,vec3 q,float pixel,float distanceKm){
     return fragment.replace('const float PI=', glsl(A) + '\nconst float PI=').replace(SLOT, 'installedBiomeMaterial(' + SLOT + ',q,footprint/uRadius,ts*uRadius)');
   }
 
-  // One texel per plot: [r, g, b, state] and, ROWS rows lower, [accent r, g, b, pattern].
+  // The final band stores normalized half-extents and the ellipse flag.
   function build(A, installed, lookOf, declared) {
-    const data = new Float32Array(WIDTH * A.ROWS * 2 * 4), byPlot = new Map(installed.map(item => [item.plot, item]));
+    const data = new Float32Array(WIDTH * A.ROWS * 3 * 4), byPlot = new Map(installed.map(item => [item.plot, item]));
     let construction = 0;
     for (let index = 0; index < A.TOTAL; index++) {
       const p = A.plot(index), at = (p.row * WIDTH + p.col) * 4, accent = ((p.row + A.ROWS) * WIDTH + p.col) * 4, item = byPlot.get(index);
@@ -91,10 +114,12 @@ vec3 installedBiomeMaterial(vec3 original,vec3 q,float pixel,float distanceKm){
         const look = lookOf(item) ?? {}, albedo = look.albedo ?? [0.4, 0.4, 0.4], second = look.accent ?? albedo;
         data.set([albedo[0], albedo[1], albedo[2], INSTALLED], at);
         data.set([second[0], second[1], second[2], PATTERNS[look.pattern] ?? PATTERNS.plain], accent);
+        const bounds=item.footprint;
+        data.set([bounds?.east??1,bounds?.north??1,bounds?.shape==='ellipse'?1:0,0],accent+WIDTH*A.ROWS*4);
       } else if (declared.has(index)) { data[at + 3] = CONSTRUCTION; construction++; }
       else data[at + 3] = BLANK;
     }
-    return { data, height: A.ROWS * 2, construction };
+    return { data, height: A.ROWS * 3, construction };
   }
 
   async function compile(gl, vertex, fragment) {
@@ -124,9 +149,17 @@ vec3 installedBiomeMaterial(vec3 original,vec3 q,float pixel,float distanceKm){
     const gl = renderer.gl;
     let compiled = null, texture = null, disposed = false, enabled = true;
 
+    const [{chartFor},{farEdgeM,halfLengthM}]=await Promise.all([import('./packs/kit/surface-route.js'),import('./packs/kit/border-profile.js')]);
+    let revision=0,borderChart=[0,0,0,0],borderSurvey=[0,0,0,0];
     function upload() {
-      const started = performance.now(), items = library.installed().filter(item => Number.isInteger(item.plot));
+      const started = performance.now(), items = library.placed().filter(item => Number.isInteger(item.plot));
       const built = build(A, items, item => library.pack(item.packId)?.overview, new Set(library.underConstruction()));
+      const edge=library.placed().find(i=>i.edge)?.edge,home=edge && A.byId(edge.near);
+      const gate=home && chartFor(home,edge,library.world.params.radius);
+      borderChart=gate?[home.latitude,home.longitude,gate.eastM/1000,gate.northM/1000]:[0,0,0,0];
+      borderSurvey=gate?[Math.cos(gate.angle),Math.sin(gate.angle),Math.min(gate.halfWidthM,halfLengthM)/1000,farEdgeM/1000]:[0,0,0,0];
+      api.mapData=()=>({data:built.data,width:WIDTH,height:built.height,revision,borderChart,borderSurvey});
+      revision++;
       const priorActive = gl.getParameter(gl.ACTIVE_TEXTURE);
       gl.activeTexture(gl.TEXTURE0 + UNIT);
       const priorBinding = gl.getParameter(gl.TEXTURE_BINDING_2D);
@@ -136,7 +169,7 @@ vec3 installedBiomeMaterial(vec3 original,vec3 q,float pixel,float distanceKm){
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
       gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA32F, WIDTH, built.height, 0, gl.RGBA, gl.FLOAT, built.data);
       gl.bindTexture(gl.TEXTURE_2D, priorBinding); gl.activeTexture(priorActive);
-      Object.assign(state, { plots: A.TOTAL, installed: items.length, construction: built.construction, textureBytes: built.data.byteLength, buildMs: +(performance.now() - started).toFixed(2) });
+      Object.assign(state, { plots: A.TOTAL, installed: library.installed().filter(i=>Number.isInteger(i.plot)).length, placed: items.length, construction: built.construction, textureBytes: built.data.byteLength, buildMs: +(performance.now() - started).toFixed(2) });
       window.SphereApp.draw();
     }
 
@@ -149,6 +182,7 @@ vec3 installedBiomeMaterial(vec3 original,vec3 q,float pixel,float distanceKm){
         const priorBinding = gl.getParameter(gl.TEXTURE_BINDING_2D);
         gl.bindTexture(gl.TEXTURE_2D, texture);
         gl.uniform1f(uniforms.uAtlasRadiusKm, core.radius);
+        gl.uniform4fv(uniforms.uBorderChart,borderChart);gl.uniform4fv(uniforms.uBorderSurvey,borderSurvey);
         gl.uniform1i(uniforms.uInstalledBiomes, UNIT); gl.uniform1i(uniforms.uInstalledBiomesOn, 1);
         gl.uniform3fv(uniforms.uAtlasAxis, frame.axis); gl.uniform3fv(uniforms.uAtlasRight, frame.right); gl.uniform3fv(uniforms.uAtlasUp, frame.up);
         try { draw(); } finally { gl.uniform1i(uniforms.uInstalledBiomesOn,0); gl.activeTexture(gl.TEXTURE0 + UNIT); gl.bindTexture(gl.TEXTURE_2D, priorBinding); gl.activeTexture(priorActive); state.frames++; }
@@ -182,7 +216,7 @@ vec3 installedBiomeMaterial(vec3 original,vec3 q,float pixel,float distanceKm){
     await refresh();
   }
 
-  const api = { inspect: () => ({ ...state }), build, assemble, glsl, show() {} };
+  const api = { inspect: () => ({ ...state }), build, assemble, glsl, mapData:()=>null, show() {} };
   window.SphereBiomeSurface = api;
   api.ready=start();
 })();

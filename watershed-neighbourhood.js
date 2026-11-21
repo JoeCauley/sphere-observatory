@@ -14,7 +14,7 @@ function model(seed=713){
  const outlets=core.segments.filter(e=>Math.max(...e.b.map(Math.abs))>=319.999);
  // Every original outlet is retained byte-for-byte. Four unequal receiving
  // reaches collect their flow outside the protected 640 km core.
- for(const old of outlets){const [x,z]=old.b,side=x>=319.99?0:z<=-319.99?1:x<=-319.99?2:3,g=gates[side],a=node(x,z,old.width),b=node(x*(side%2===0?1.8:1)+g.x*.08+(N.noise(x,z,seed)-.5)*80,z*(side%2?1.8:1)+g.z*.08+(N.noise(z,x,seed)-.5)*100,(old.width+g.width)*.45);a.tangent=[(old.b[0]-old.a[0])/old.length,(old.b[1]-old.a[1])/old.length];chain([a,b,g]);junctions.push({source:old.b,sourceWidth:old.width,node:a.id,gate:g.id,flow:old.flow});}
+ for(const old of outlets){const [x,z]=old.b,side=x>=319.99?0:z<=-319.99?1:x<=-319.99?2:3,g=gates[side],a=node(x,z,old.width),b=node(x*(side%2===0?1.8:1)+g.x*.08+(N.noise(x,z,seed)-.5)*80,z*(side%2?1.8:1)+g.z*.08+(N.noise(z,x,seed)-.5)*100,(old.width+g.width)*.45);a.tangent=[(old.b[0]-old.a[0])/old.length,(old.b[1]-old.a[1])/old.length];chain([a,b,g]);junctions.push({source:old.b,sourceWidth:old.width,node:a.id,gate:g.id,flow:old.flow,reachId:old.reachId});}
  const join=node(3500,2800,12),mid=node(9200,5900,58),lower=node(17500,2200,140),lake=node(29400,8800,310),out=node(48000,2200,460);
  chain([gates[0],node(1800,1000,6),join]);chain([gates[1],node(1300,-2300,5),node(4500,-800,8),join]);chain([gates[2],node(-2100,2400,5),node(-700,4100,8),join]);chain([gates[3],node(1300,2300,6),join]);chain([join,mid,lower,lake,out]);
  const catchments=[[-33500,-23000,15000,mid],[-18500,21500,12000,join],[4000,-33500,18000,lower],[21500,33500,15500,lake],[38000,-24000,17500,out],[-35000,6500,11000,join]];
@@ -25,6 +25,10 @@ function model(seed=713){
  const unit=(x,z)=>{const l=Math.hypot(x,z)||1;return [x/l,z/l];};
  for(const n of nodes){if(n.tangent)continue;const outgoing=edges.find(e=>e.from===n.id),incoming=edges.filter(e=>e.to===n.id).sort((a,b)=>b.widthA-a.widthA)[0],a=outgoing?unit(outgoing.b[0]-n.x,outgoing.b[1]-n.z):null,b=incoming?unit(n.x-incoming.a[0],n.z-incoming.a[1]):null;n.tangent=a&&b?unit(a[0]+b[0],a[1]+b[1]):a||b||[1,0];}
  for(const e of edges){const a=nodes[e.from],b=nodes[e.to],l=Math.hypot(b.x-a.x,b.z-a.z)*.32;e.c1=[a.x+a.tangent[0]*l,a.z+a.tangent[1]*l];e.c2=[b.x-b.tangent[0]*l,b.z-b.tangent[1]*l];e.points=Array.from({length:13},(_,i)=>{const t=i/12,u=1-t;return [u*u*u*a.x+3*u*u*t*e.c1[0]+3*u*t*t*e.c2[0]+t*t*t*b.x,u*u*u*a.z+3*u*u*t*e.c1[1]+3*u*t*t*e.c2[1]+t*t*t*b.z];});}
+ const sourceByNode=new Map(junctions.map(j=>[j.node,j]));
+ for(const e of edges)e.id=sourceByNode.get(e.from)?.reachId??['watershed',seed,'outer',e.from,e.to].join('/');
+ const byFrom=new Map(edges.map(e=>[e.from,e]));
+ for(const e of edges)e.downstream=byFrom.get(e.to)?.id??null;
  // Art 2 uses overlapping, river-oriented districts, never independently
  // rotated water or terrain tiles. The graph and revision-1 core stay exact.
  const compositions=[
@@ -52,10 +56,26 @@ function sampleLocal(x,z,seed=713){
  for(const e of p.edges)for(let i=1;i<e.points.length;i++){const a=e.points[i-1],b=e.points[i],dx=b[0]-a[0],dz=b[1]-a[1],v=M.clamp(((x-a[0])*dx+(z-a[1])*dz)/(dx*dx+dz*dz),0,1),u=(i-1+v)/12,w=e.widthA*(1-u)+e.widthB*u,d=Math.hypot(x-a[0]-v*dx,z-a[1]-v*dz);if(d-w<distance){distance=d-w;nearest=e;t=u;}routeDistance=Math.min(routeDistance,Math.abs(d-w-Math.max(.08,w*.16))-Math.max(.012,w*.015));}
  const lake=p.lake,basin=Math.hypot((x-lake.x)/lake.rx,(z-lake.z)/lake.rz)<1;
  let catchment=0,best=Infinity;for(const c of p.catchments){const d=Math.hypot(x-c.x,z-c.z)/c.r;if(d<best){best=d;catchment=c.id;}}
- return {coverage,river:distance<=0,basin,water:distance<=0||basin,distance,route:routeDistance<=0,routeDistance,catchment,edge:nearest?{from:nearest.from,to:nearest.to,t}:null,terrainKm:0};
+ return {coverage,river:distance<=0,basin,water:distance<=0||basin,distance,route:routeDistance<=0,routeDistance,catchment,edge:nearest?{from:nearest.from,to:nearest.to,id:nearest.id,downstream:nearest.downstream,halfWidthKm:nearest.widthA*(1-t)+nearest.widthB*t,t}:null,terrainKm:0};
 }
 function sample(q,s){if(!root.SpherePacks.enabled(s))return null;const [x,z]=P.local(q,s);if(!Number.isFinite(x))return null;const v=sampleLocal(x,z,s.provinceSeed);return v?{...v,x,z,revision:1,seed:s.provinceSeed,...(s.packAddress.artRevision===2?{compositionWeights:compositionWeights(x,z,s.provinceSeed)}:{})}:null;}
-root.SphereNeighbourhood={model,mask,view,compositionWeights,sampleLocal,sample,get info(){return {addresses:cache.size,segments:[...cache.values()].reduce((n,p)=>n+p.edges.length,0),graphBytes:[...cache.values()].reduce((n,p)=>n+p.edges.length*272+p.nodes.length*48+p.compositions.length*8*8,0),textureBytes:0};}};
+// Stable river and dry-bank addresses span the old garden and its larger receiving region.
+function featureAt(q,s){
+ if(!P.enabled(s))return null;
+ const [x,z]=P.local(q,s),inside=Math.max(Math.abs(x),Math.abs(z))<320;
+ if(!Number.isFinite(x)||(!inside&&!root.SpherePacks.enabled(s)))return null;
+ const seed=s.provinceSeed,g=model(seed);
+ if(inside){
+   const w=g.core.water(x,z);if(!w.reachId || w.distance>Math.max(.15,w.halfWidthKm*.55))return null;
+   const edge=g.edges.find(e=>e.id===w.reachId);
+   return {id:w.reachId,region:'garden',downstream:edge?.downstream??null,water:w.river,bank:!w.river,halfWidthKm:w.halfWidthKm,flowCells:w.flow,bedKm:g.core.height(x,z),waterLevelKm:g.core.level(x,z)};
+ }
+ const v=sampleLocal(x,z,seed),e=v?.edge;
+ if(!e || v.distance>Math.max(.15,e.halfWidthKm*.55))return null;
+ const outlet=g.junctions.find(j=>j.reachId===e.id);
+ return {id:e.id,region:'receiving',downstream:e.downstream,water:v.water,bank:!v.water,halfWidthKm:e.halfWidthKm,flowCells:outlet?.flow??null,bedKm:0,waterLevelKm:0};
+}
+root.SphereNeighbourhood={model,mask,featureAt,view,compositionWeights,sampleLocal,sample,get info(){return {addresses:cache.size,segments:[...cache.values()].reduce((n,p)=>n+p.edges.length,0),graphBytes:[...cache.values()].reduce((n,p)=>n+p.edges.length*272+p.nodes.length*48+p.compositions.length*8*8,0),textureBytes:0};}};
 const originalSample=P.sample;
 P.sample=(q,s)=>{const original=originalSample(q,s);if(original)return original;const v=sample(q,s);if(!v)return null;const region=root.SphereWorld.sample(q,s);return {revision:1,seed:s.provinceSeed,x:v.x,z:v.z,originalBiome:region.id,terrainKm:0,water:{river:v.river,basin:v.basin,distance:v.distance},route:v.route,service:null,damage:region.damage,missing:root.SphereCollection.missing(q,s)};};
 })(typeof window==='undefined'?globalThis:window);

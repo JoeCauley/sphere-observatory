@@ -2,7 +2,7 @@
 (function(root){
 'use strict';
 const patch=root.SphereShaderSections.section('violet-mineral-geography');
-const source=`// Intersecting mineral facets remain legible after the 2.5 km artwork reaches
+const source=`${root.SphereVioletForest?.glsl||''}// Intersecting mineral facets remain legible after the 2.5 km artwork reaches
 // its mean. Every wave has a period dividing the 64-unit CPU anchor.
 vec3 violetRock(vec3 col,vec3 delta,float footprint){
  float visible=1.-smoothstep(.65,4.,footprint);
@@ -17,6 +17,7 @@ vec3 violetRock(vec3 col,vec3 delta,float footprint){
  vec3 rock=col*mix(vec3(.83,.78,.94),vec3(1.13,1.07,1.10),.5+.5*peak);
  rock=mix(rock,vec3(.068,.027,.097),fracture*.70);
  rock+=vec3(.095,.068,.115)*quartz;
+ ${root.SphereVioletForest?'rock=mix(rock*.72,rock*vec3(1.16,.98,1.19),violetGrove(p));':''}
  return mix(col,rock,visible);
 }
 `;

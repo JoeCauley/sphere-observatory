@@ -1,4 +1,4 @@
-import {chartFor,course,toBorder,toMeadow,enterNorthM,inApproach} from '../../kit/surface-route.js';
+import {chartFor,course,toBorder,toMeadow,enterNorthM,inApproach,reachesBorder} from '../../kit/surface-route.js';
 import {borderUniforms} from '../../kit/meadow-border.js';
 import {createRenderer as createBorderStructures} from '../../border-outfall/1.0.0/render.js';
 import {clamp,address,toGlobal} from './coordinates.js';
@@ -33,6 +33,7 @@ try{const saved=host.storage.read();if(saved){state=parseState(JSON.stringify(sa
 const stageHost=window.frameElement?.dataset.worldKey ? parent.SphereStageFrame : null;
 const surfaceEntry=window.frameElement?.surfaceEntry;
 let borderStructures=null,chart=null,gateDatum=0,crossing=false,crossingFailed=false,lastCheckpoint=0;
+const hostRadiusM=()=>(stageHost?.surfaceAddress?.()?.radiusKm??149597870.7)*1000;
 function refreshChart(){
   const address=stageHost?.surfaceAddress?.();
   chart=address?chartFor(address.home,address.edge,address.radiusKm):null;
@@ -52,7 +53,7 @@ if(surfaceEntry?.geographic){
   state.pose.altitudeM=state.pose.mode==='walk'?floor:Math.max(floor,state.pose.altitudeM);
   state.skimEnabled=false;
 }
-let renderer;try{renderer=new Renderer(canvas);}catch(e){$('error').hidden=false;$('error').textContent='The meadow could not start.\n'+e.message;throw e;}
+let renderer;try{renderer=new Renderer(canvas,stageHost?{atlasShader:parent.SphereBiomeSurface.glsl(parent.SphereAtlas),backdrop:p=>stageHost.surfaceBackdrop(window,p)}:{});if(stageHost)renderer.lightAt=p=>stageHost.surfaceLight(window,{...p,altitudeM:p.altitudeM-GROUND_DATUM});}catch(e){$('error').hidden=false;$('error').textContent='The meadow could not start.\n'+e.message;throw e;}
 function resize(){const dpr=Math.min(1,window.devicePixelRatio||1);canvas.width=Math.round(innerWidth*dpr);canvas.height=Math.round(innerHeight*dpr);}
 resize();host.listen(window,'resize',resize);syncUI();
 // Contract state. A script moves the eye; `keep` is the place last stood in, which is what gets saved
@@ -60,9 +61,9 @@ resize();host.listen(window,'resize',resize);syncUI();
 // `zeroM`, a level at or below the meadow datum and below the eye at both ends, so they are never zero.
 const blindOf=s=>s.concealment?{baseM:s.blindHeightM*.9,topM:s.blindHeightM*1.1,edgeM:s.blindHeightM*.09}:null;
 const BLIND=blindOf({concealment:true,blindHeightM:100000}),above=p=>p.altitudeM-GROUND_DATUM,place=s=>({pose:{...s.pose},skimEnabled:s.skimEnabled});
-let script=null,held=null,drawn=0,resolveReady,resolveArrived;const ready=new Promise(r=>resolveReady=r),arrived=new Promise(r=>resolveArrived=r),veil=createVeil(document,BLIND);
+let script=null,held=null,drawn=0,resolveReady,resolveArrived;const ready=new Promise(r=>resolveReady=r),arrived=new Promise(r=>resolveArrived=r),veil=createVeil(document,BLIND,'meadow-mist');
 const kept=()=>{const k=script?.keep??held;return k?{...state,pose:{...k.pose},skimEnabled:k.skimEnabled}:state;};
-function drawVeil(t){const b=blindOf(state);if(b)Object.assign(BLIND,b);return veil.draw(b?above(state.pose):0,t);}
+function drawVeil(t){const b=blindOf(state);if(b)Object.assign(BLIND,b);return veil.draw(b?above(state.pose):0,t,renderer.light?.direct??1);}
 // False while an arrival holds the controls. Otherwise the saved place follows the eye again, and a lift-off is handed back.
 function takeOver(){if(script&&!script.interruptible)return false;held=null;if(script){const done=script.done;script=null;stage='Your meadow · explore freely';done('taken-over');}return true;}
 function stepScript(dt){const sc=script;if(sc.held)return;const {pos:e,alt:ea,done:over}=advance(sc,dt),p=state.pose;
@@ -259,7 +260,7 @@ function tick(t){
     borderPose=toBorder(p,chart,gateDatum);
     if(borderPose.northM<enterNorthM)crossingFailed=false;
     if(!crossing && !crossingFailed && !quiet && !script && !route && !lift && surfaceEntry?.active!==false &&
-        borderPose.northM>=enterNorthM && inApproach(borderPose,chart) && stageHost.canCrossSurface?.(window)){
+        reachesBorder(borderPose,chart) && stageHost.canCrossSurface?.(window)){
       const before=toBorder(lastPose,chart,gateDatum);
       if(before.northM<enterNorthM){
         // Sweep even a long frame to the first crossing, retaining lateral offset.
@@ -285,7 +286,7 @@ function tick(t){
   if(changed&&tracing&&demands.length<2048)demands.push({version:residency.version,frame,required:[...residency.required],hashes:[...residency.tiles.values()].map(v=>[v.key,v.contentHash])});
   if(!residency.ready){paused=true;status('Movement paused while detail is unavailable: '+residency.failure);}
   const m=renderer.draw(state,residency,{inspection:$('grassLayers').value});
-  if(drawBorder){borderStructures??=createBorderStructures(canvas);borderStructures.draw({pose:borderPose,levels:[1,1,1]},t*.001,1,{overMeadow:true,resize:false});}
+  if(drawBorder){borderStructures??=createBorderStructures(canvas);borderStructures.draw({pose:borderPose,levels:[1,1,1]},t*.001,1,{overMeadow:true,resize:false,daylight:renderer.light?.direct??1,radiusM:hostRadiusM()});}
   drawVeil(t);if(++drawn===3)resolveReady();if(completed)compareReturn(completed);
   const counts=residency.counters();const row={frame,rendererFrame:m.rendererFrame,stageVersion:residency.version,timestamp:t,intervalMs:rawDt*1000,prepareMs,renderCpuMs:m.renderCpuMs,gpuMs:m.gpuMs,gpuSampleFrame:m.gpuSampleFrame,gpuDisjoint:m.gpuDisjoint,gpuResolved:m.gpuResolved,drawCalls:m.drawCalls,uploadBytes:m.uploadBytes,descriptorBytes:m.descriptorBytes,gpuBufferBytes:m.gpuBytes,gpuTextureBytes:m.gpuTextureBytes,grassboxInstances:m.grassboxInstances,grassboxBlades:m.grassboxBlades,grassCenter:m.grassCenter,windTime:state.windTime,originId:m.originId,reveal:m.reveal,interiorDaylight:m.interiorDaylight,terrainAlpha:m.terrainAlpha,heroCenter:m.heroCenter,terrainRadiusM:m.terrainRadiusM,pose:{...state.pose},global:toGlobal(state.pose),address:address(state.pose),required:residency.required.length,ready:counts.ready,retainedTufts:counts.tufts,submittedTufts:m.instanceCount,collisionClearanceM:clearance(state.pose),speedMps:flightMotion.speedMps,skimming:state.skimEnabled,skimTargetClearanceM:state.skimClearanceM,movementM:Math.hypot(state.pose.eastM-lastPose.eastM,state.pose.northM-lastPose.northM,state.pose.altitudeM-lastPose.altitudeM),stage};
   row.levelCruising=!!flightMotion.level;row.levelHeadingRad=flightMotion.level?.headingRad??null;row.levelAltitudeM=flightMotion.level?.altitudeM??null;row.levelPhase=flightMotion.level?(flightMotion.level.elapsedS<flightMotion.level.entrySeconds?'climbing':'level'):null;row.groundEyeClearanceM=clearance(state.pose)+1.7;
@@ -305,11 +306,11 @@ function ascend(options){if(script||quiet)return Promise.resolve('taken-over');
 window.SphereBiome={contract:'sphere-biome/1',id:'infinite-meadow',version:'1.3.0',ready,arrived,
   pose:()=>({...state.pose,altitudeM:above(state.pose)}),   // height above the meadow datum
   ascend,begin(){if(script?.held)script.held=false;return arrived;},save(){try{persist();return true;}catch{return false;}},
-  dispose(){window.dispatchEvent(new Event('pagehide'));},air:()=>({haze:[],blind:blindOf(state)}),
-  inspect:()=>{const b=blindOf(state);return {veil:b?+veilAt(b,above(state.pose)).toFixed(3):0,reveal:+sceneLight(state).reveal.toFixed(3),frames:frame,surfaceEdge:chart?.edge??null,rangeM:chart?course(state.pose,chart).distanceM:null,levelCruising:!!flightMotion.level,scripted:!!script,held:!!script?.held,ready:residency.ready,drawCalls:metrics.at(-1)?.drawCalls??null};}};
+  dispose(){window.dispatchEvent(new Event('pagehide'));},air:()=>({profile:'meadow-mist',haze:[],blind:blindOf(state)}),
+  inspect:()=>{const b=blindOf(state);return {light:renderer.light,veil:b?+veilAt(b,above(state.pose)).toFixed(3):0,reveal:+sceneLight(state).reveal.toFixed(3),frames:frame,surfaceEdge:chart?.edge??null,rangeM:chart?course(state.pose,chart).distanceM:null,levelCruising:!!flightMotion.level,scripted:!!script,held:!!script?.held,ready:residency.ready,drawCalls:metrics.at(-1)?.drawCalls??null};}};
 host.frame(tick);status(script?'Arriving from the air · your place here is kept':'Walk the meadow, then lift off from wherever you stop');
 
 
 
-return {snapshot:()=>({state:JSON.parse(saveState(quiet?.original??kept())),bookmark:JSON.parse(saveState(bookmark))}),dispose(){borderStructures?.dispose();clearKeys();route=null;lift=null;quiet=null;script=null;veil.dispose();delete window.SphereBiome;if(recording){recording.ondataavailable=null;if(recording.state!=='inactive')recording.stop();for(const track of recording.stream.getTracks())track.stop();recording=null;}for(const id of ['recordingLink','evidenceLink']){const href=$(id).href;if(href.startsWith('blob:'))host.revokeURL(href);}residency.tiles.clear();residency.required.length=0;metrics.length=events.length=trace.length=demands.length=measurements.length=0;renderer.queries.length=0;}};
+return {snapshot:()=>({state:JSON.parse(saveState(quiet?.original??kept())),bookmark:JSON.parse(saveState(bookmark))}),dispose(){borderStructures?.dispose();renderer.dispose();clearKeys();route=null;lift=null;quiet=null;script=null;veil.dispose();delete window.SphereBiome;if(recording){recording.ondataavailable=null;if(recording.state!=='inactive')recording.stop();for(const track of recording.stream.getTracks())track.stop();recording=null;}for(const id of ['recordingLink','evidenceLink']){const href=$(id).href;if(href.startsWith('blob:'))host.revokeURL(href);}residency.tiles.clear();residency.required.length=0;metrics.length=events.length=trace.length=demands.length=measurements.length=0;renderer.queries.length=0;}};
 }

@@ -13,7 +13,7 @@ function plan(s,aspect=16/9){
 }
 function buildPlan(s,aspect){
  const M=root.SphereMath,B=root.SphereBiomes,W=root.SphereWorld,C=root.SphereCollection,sets=Object.fromEntries(Object.keys(managers).map(k=>[k,new Set()]));let nearest=Infinity;
- const add=(id,distance)=>{if(!Number.isInteger(id)||id<0)return;if(id<10){if(distance<2400)sets.heroes.add(id);if(distance<(s.layoutVersion===2?25:2400))sets.biomes.add(id);}else if(distance<6000)sets.worldTextures.add(id===15?4:Math.min(4,id-10));};
+ const add=(id,distance)=>{if(!Number.isInteger(id)||id<10)return;if(distance<6000)sets.worldTextures.add(id===15?4:Math.min(4,id-10));};
  const modern=s.collection&&s.layoutVersion===2,exterior=s.geometryDetail&&s.siteId?.startsWith('exterior-');
  if(s.textureDetail!==false){
   const b=M.basis(s.forward,s.up),nx=s.projection==='panorama'?16:5,ny=s.projection==='panorama'?9:5;
@@ -30,7 +30,7 @@ function buildPlan(s,aspect){
    if(hit.kind.startsWith('Shade')&&hit.distance<21000){sets.worldTextures.add(3);sets.worldTextures.add(4);}
    if(hit.kind==='Inner surface'&&hit.point&&hit.distance<6000){const q=M.norm(hit.point);if(modern&&s.biome<0){const r=W.sample(q,s);add(r.a,hit.distance);if(r.blend>.001)add(r.b,hit.distance);}else add(B.region(q,s),hit.distance);}
   }}
-  if(modern&&exterior){for(const id of [0,3,4,5,7])sets.heroes.add(id);sets.worldTextures.add(2);}
+  if(modern&&exterior)sets.worldTextures.add(2);
   if(modern&&s.era==='after'&&s.multipleWounds){const ctx=root.SphereEdges.rimContext(s);if(ctx){sets.worldTextures.add(2);for(const q of [M.norm(s.position),ctx.point,...[-500,500].map(k=>M.norm(M.add(ctx.point,M.mul(ctx.tangent,k/s.radius))))]){const r=W.sample(q,s);sets.woundTextures.add(W.edgeBiome(r.a));sets.woundTextures.add(W.edgeBiome(r.b));}}}
  }
  return {...Object.fromEntries(Object.entries(sets).map(([key,ids])=>[key,[...ids].filter(id=>Number.isInteger(id)&&id>=0).sort((a,b)=>a-b)])),finishes:modern&&s.richMaterials!==false&&(nearest<300||exterior||s.walkMode),province:!!(s.geometryDetail&&root.SphereWatershed?.visible(s))};

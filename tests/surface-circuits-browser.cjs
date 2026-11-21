@@ -51,6 +51,9 @@ const {chromium}=require('playwright'),{session,executable}=require('./support/b
       async function checkBlockedDoor(){
         if(lib.entry('sideways-city')?.plotId!==blockedCityDoor.plotId)return null;
         const {q,forward}=blockedCityDoor,before=along(q,forward,-.002/state.radius),after=along(q,forward,.002/state.radius);
+        const {ownerAt,passageAt}=await import('./surface-passages.js');
+        const far=passageAt(q,forward,state.radius).far.q;
+        if(ownerAt(far,state,items,env.atlas,env.world).id!=='sideways-city')return null;
         if(!await SphereStageFrame.walkGround(before)||!await SphereStageFrame.crossWalkingEdge(before.q,after.q,forward))throw Error('Blocked City portal did not open');
         const frame=document.querySelector('#stageFrame iframe'),gate=frame.surfaceEntry.passage;
         if(!gate.surveyOffsetM||gate.far.id!=='sideways-city')throw Error('The obstructed outlet was not surveyed');
@@ -111,7 +114,7 @@ const {chromium}=require('playwright'),{session,executable}=require('./support/b
     const results=[],report={...info,shard:part,results};console.log('ROUTES',info.labels.length,'shard',part);
     if(slot===0){
       report.blockedDoorOffsetM=await page.evaluate(()=>circuitChecks.checkBlockedDoor());
-      console.log('PASS previously blocked City portal delivered the walker to its surveyed outlet, offset',report.blockedDoorOffsetM,'m');
+      if(report.blockedDoorOffsetM!==null)console.log('PASS obstructed City outlet was surveyed',report.blockedDoorOffsetM,'m');
     }
     for(let i=slot;i<info.labels.length;i+=slots){
       const record=await page.evaluate(i=>circuitChecks.run(i),i);results.push(record);

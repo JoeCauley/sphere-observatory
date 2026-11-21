@@ -1,10 +1,11 @@
 import {eye} from './model.js';
+import {roofM,tunnelStartM,widthM} from '../../kit/border-profile.js';
 
 // Each interval is [west, east, bottom, top, front, back], in metres.
 // Rendering and movement both use these intervals, including the unbounded ends.
-export const wallHeight = 1400;
+export const wallHeight = roofM;
 // The cross-gallery opens into a straight through-passage. All dimensions are metres.
-export const tunnelStart = 43, tunnelLength = 1000000, tunnelEnd = tunnelStart+tunnelLength;
+export const tunnelStart = tunnelStartM, tunnelLength = widthM, tunnelEnd = tunnelStart+tunnelLength;
 export const tunnelHalfWidth = 3.5, tunnelHeight = 6.2;
 export const ribSpacing = 18;
 export const ribs = [[.725, 106, -1.05, 1.05], [.225, 34, -1.825, -.475]];
@@ -20,9 +21,9 @@ export const borderSolids = [
   [-6, -tunnelHalfWidth, 0, 8, tunnelStart, 73],
   [tunnelHalfWidth, 6, 0, 8, tunnelStart, 73],
   [-tunnelHalfWidth,tunnelHalfWidth,tunnelHeight,8,tunnelStart,73],
-  [-tunnelHalfWidth-1,-tunnelHalfWidth,0,8,73,tunnelEnd],
-  [tunnelHalfWidth,tunnelHalfWidth+1,0,8,73,tunnelEnd],
-  [-tunnelHalfWidth,tunnelHalfWidth,tunnelHeight,8,73,tunnelEnd]
+  [-Infinity,-tunnelHalfWidth,0,wallHeight,73,tunnelEnd],
+  [tunnelHalfWidth,Infinity,0,wallHeight,73,tunnelEnd],
+  [-tunnelHalfWidth,tunnelHalfWidth,tunnelHeight,wallHeight,73,tunnelEnd]
 ];
 
 const radius = .22, head = .10, tolerance = 1e-6;

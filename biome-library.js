@@ -133,7 +133,8 @@
 
   /* ---- Storage ---- */
 
-  const installedHere = () => store.worlds[world?.key]?.installed ?? [];
+  const placedHere = () => store.worlds[world?.key]?.installed ?? [];
+  const installedHere = () => placedHere().filter(item => item.detailInstalled!==false);
 
   function enqueue(operation) {
     const next = operations.then(operation);
@@ -254,21 +255,49 @@
 
   function record(p, found, state) {
     return { id: p.id, packId: p.id, name: p.name, version: p.version, plot: found.plot.index, plotId: found.plot.id, direction: found.direction,
-      radiusKm: state.radius * Math.max(found.plot.halfHeight, found.plot.halfWidth), relation: p.placement.relation, installedAt: new Date().toISOString() };
+      ...(p.placement.footprint ? {footprint:{...p.placement.footprint}} : {}),
+      radiusKm: state.radius * Math.max(found.plot.halfHeight*(p.placement.footprint?.north??1), found.plot.halfWidth*(p.placement.footprint?.east??1)), relation: p.placement.relation, installedAt: new Date().toISOString() };
   }
 
+  async function placeRegion(packId,options={}) {
+    const p=pack(packId), atlas=window.SphereAtlas;
+    if(!p || p.placement.relation==='border')throw Error('Select a surface biome to place.');
+    const footprint=options.footprint??p.placement.footprint;
+    if(footprint && (!['ellipse','rectangle'].includes(footprint.shape) || ![footprint.east,footprint.north].every(v=>Number.isFinite(v)&&v>0&&v<=1)))throw Error('Invalid region shape or extent.');
+    const state=window.SphereApp.getState(),target=await selectWorld(state);
+    const result=await enqueue(()=>updateWorld(target,list=>{
+      const existing=list.find(i=>i.packId===packId);
+      if(existing)return existing;
+      let found;
+      if(options.plotId){
+        const cell=atlas.byId(options.plotId);
+        if(!cell || list.some(i=>i.plot===cell.index) || construction.has(cell.index) || plotBlocked(cell,state) ||
+          (p.placement.relation==='within')!==(cell.zone==='waist'))throw Error('This plot cannot hold this biome.');
+        found={plot:cell,direction:window.SphereWorld.direction(cell.latitude,cell.longitude,state)};
+      }else found=place(p,state,list);
+      const item=record({...p,placement:{...p.placement,footprint}},found,state);
+      item.detailInstalled=false;list.push(item);return item;
+    }));
+    if(world?.key===target.key)changed();
+    return result;
+  }
   async function install(packId) {
     const p = pack(packId);
     if (!p) throw Error('Unknown biome');
     const state = window.SphereApp.getState(), target = await selectWorld(state);
     const item = await enqueue(() => updateWorld(target, list => {
       const existing = list.find(i => i.packId === packId);
-      if (existing) return existing;
+      if (existing) {
+        delete existing.detailInstalled;
+        if (p.placement.anchorPack) { const anchor=list.find(i=>i.packId===p.placement.anchorPack); if(anchor)delete anchor.detailInstalled; }
+        return existing;
+      }
       let item;
       if(p.placement.relation==='border'){
         const parent=pack(p.placement.anchorPack);
         let anchor=list.find(i=>i.packId===parent.id);
         if(!anchor){anchor=record(parent,place(parent,state,list),state);list.push(anchor);}
+        else delete anchor.detailInstalled;
         const edge=window.SphereAtlas.northEdge(anchor.plotId);
         if(!edge)throw Error('This Meadow has no northern Border site.');
         item={id:p.id,packId:p.id,name:p.name,version:p.version,edge,plotId:edge.id,relation:'border',
@@ -284,8 +313,11 @@
   async function remove(id) {
     const target = await selectWorld();
     await enqueue(() => updateWorld(target, list => {
-      const index = list.findIndex(i => i.id === id);
-      if (index >= 0) list.splice(index, 1);
+      const item=list.find(i=>i.id===id);
+      if (item) {
+        item.detailInstalled=false;
+        for(const dependent of list)if(pack(dependent.packId)?.placement.anchorPack===item.packId)dependent.detailInstalled=false;
+      }
     }));
     if (world?.key === target.key) changed();
   }
@@ -347,8 +379,12 @@
       button('Visit', 'secondary', () => window.SphereStageFrame?.visit(item.id)),
       button('View from above', 'quiet', () => attempt(() => { if (window.SphereStageFrame?.showMain() !== false) return travelTo(item.id); })),
       button('Remove', 'quiet', () => attempt(() => remove(item.id)))]);
-    for (const p of packs) if (!ids.has(p.id) && match(p.name)) row(p.name + ' · ' + p.version, p.description ?? '', [
-      button('Install', 'secondary', () => attempt(() => install(p.id)))]);
+    for (const p of packs) if (!ids.has(p.id) && match(p.name)) {
+      const location=placedHere().find(item=>item.packId===p.id);
+      const actions=[button('Install', 'secondary', () => attempt(() => install(p.id)))];
+      if(!location && p.placement.relation!=='border')actions.push(button('Place on Atlas','quiet',()=>attempt(()=>placeRegion(p.id))));
+      row(p.name + ' · ' + p.version, location?'Regional terrain available at '+location.plotId+'.':p.description ?? '', actions);
+    }
     panel.querySelector('#biomeLibraryFilter').hidden = packs.length < 8;
   }
 
@@ -377,8 +413,8 @@
 
   const ready = start();
   window.SphereBiomeLibrary = Object.freeze({
-    ready, packs: () => packs.map(p => ({ ...p })), pack, installed: () => installedHere().map(i => ({ ...i })), entry,
-    install, remove, travelTo, describe, locate, tracks, place, saveStorage, selectWorld,
+    ready, packs: () => packs.map(p => ({ ...p })), pack, placed: () => structuredClone(placedHere()), installed: () => installedHere().map(i => ({ ...i })), entry,
+    install, remove, placeRegion, travelTo, overviewPose, describe, locate, tracks, place, saveStorage, selectWorld,
     matchesWorld, underConstruction: () => [...construction],
     get persistence() { return persistence; }, get world() { return world ? { ...world } : null; }
   });

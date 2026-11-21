@@ -1,3 +1,4 @@
+import {onBorder,halfLengthM} from './border-profile.js';
 // The Meadow's local map preserves great-circle distance and bearing from its
 // arrival point. Work in double precision until positions are local to the gate.
 export function project(home, latitude, longitude, radiusM) {
@@ -46,5 +47,8 @@ export function toMeadow(p, chart, datum) {
 // stationary or freshly restored traveler from bouncing between renderers.
 export const enterNorthM = -2400, leaveNorthM = -2800;
 export function inApproach(p, chart) {
-  return Math.abs(p.eastM) < Math.min(chart.halfWidthM, 19999000) && p.altitudeM < 1600;
+  return Math.abs(p.eastM) < Math.min(chart.halfWidthM,halfLengthM) && p.altitudeM<20000;
+}
+export function reachesBorder(p,chart){
+  return inApproach(p,chart) && onBorder(p,chart.halfWidthM);
 }

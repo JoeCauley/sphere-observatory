@@ -22,6 +22,11 @@
 
 #travelCurtain{position:fixed;z-index:10020;display:grid;place-items:center;background:linear-gradient(135deg,#08151b33,#08151b85);pointer-events:none}
 #travelCurtain[hidden],#travelCurtain progress[hidden]{display:none}
+#travelCurtain.crossing-status{place-items:end start;background:transparent}
+.crossing-status .transit-card{display:block;width:auto;max-width:85%;margin:0 0 36px 12px;padding:7px 11px;border:0;border-left:2px solid #bca37b;border-radius:2px;box-shadow:none;pointer-events:none}
+.crossing-status .transit-mark,.crossing-status .transit-card h2{display:none}
+.crossing-status .transit-card p{margin:0;font:12px/1.4 system-ui,sans-serif}
+.crossing-status .transit-card progress{height:2px;margin-top:4px}
 .transit-card{display:grid;grid-template-columns:54px 1fr;gap:22px;align-items:start;box-sizing:border-box;width:min(450px,90%);padding:28px;background:#17272cf5;border:1px solid #a8c3bc66;border-top:2px solid #d4b47e;border-radius:8px;color:#f4f1e9;box-shadow:0 14px 52px #0007;pointer-events:auto}
 .transit-card h2{font:normal clamp(23px,2.1vw,31px)/1.13 Georgia,serif;margin:0 0 9px}
 .transit-card p{font:15px/1.5 system-ui,sans-serif;margin:0 0 14px;color:#c8d9d7}

@@ -14,7 +14,7 @@ import {ascentShape,arrivalShape,advance,heightAt} from '../../kit/flight.js';
 // shared-world adapters). The air it declares: heights are PROPOSED; no kilometre value is canon.
 // No haze layers are declared because this pack's renderer does not draw declared haze; the blind
 // is drawn by the kit veil.
-const AIR={haze:[],blind:{baseM:7000,topM:8500,edgeM:700}};
+const AIR={profile:'works-vapour',haze:[],blind:{baseM:7000,topM:8500,edgeM:700}};
 const quantile=(a,p)=>{const b=a.filter(Number.isFinite).sort((x,y)=>x-y);return b.length?b[Math.min(b.length-1,Math.floor(b.length*p))]:null;};
 const stats=values=>({median:quantile(values,.5),p95:quantile(values,.95),worst:values.filter(Number.isFinite).length?Math.max(...values.filter(Number.isFinite)):null});
 export function mountPack(host){
@@ -47,7 +47,7 @@ export function mountPack(host){
  let disposed=false,last=0,frame=0,hudTime=0,drag=null,tour=null,overview=null,liftTime=0,measurement=null,recording=null,recordingURL=null;
  // Contract state. A script moves the eye; `keep` is the place last stood in, which is what gets saved
  // while a script runs and afterwards until the controls are taken.
- let script=null,held=null,drawn=0,resolveReady,resolveArrived;const ready=new Promise(r=>resolveReady=r),arrived=new Promise(r=>resolveArrived=r),veil=createVeil(document,AIR.blind);
+ let script=null,held=null,drawn=0,resolveReady,resolveArrived;const ready=new Promise(r=>resolveReady=r),arrived=new Promise(r=>resolveArrived=r),veil=createVeil(document,AIR.blind,AIR.profile);
  const kept=()=>{const k=script?.keep??held;return k?{...state,pose:{...k}}:state;};
  function stepScript(dt){const sc=script;if(sc.held)return;const {pos:e,alt:ea,done:over}=advance(sc,dt),p=state.pose;
   for(const k of ['eastM','northM','yaw','pitch'])p[k]=sc.from[k]+(sc.to[k]-sc.from[k])*e;

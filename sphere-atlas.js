@@ -47,6 +47,19 @@
     const row = Math.min(ROWS - 1, Math.floor((latitude + LIMIT) / ROW)), n = columns(row);
     return make(row, Math.min(n - 1, Math.max(0, Math.floor((longitude + Math.PI) / (2 * Math.PI) * n))));
   }
+  // Local coordinates run from -1 to +1 across the index cell. Old places fill their cell.
+  function contains(item, cell, latitude, longitude) {
+    if (!cell || item.plot!==cell.index) return false;
+    const b=item.footprint;
+    if (!b) return true;
+    const dl=Math.atan2(Math.sin(longitude-cell.longitude),Math.cos(longitude-cell.longitude));
+    const x=dl*cell.columns/(Math.PI*b.east), y=(latitude-cell.latitude)/(cell.halfHeight*b.north);
+    return b.shape==='ellipse' ? x*x+y*y<=1 : Math.max(Math.abs(x),Math.abs(y))<=1;
+  }
+  function regionAt(items, latitude, longitude) {
+    const cell=plotAt(latitude,longitude);
+    return cell ? items.find(item=>!item.edge && contains(item,cell,latitude,longitude))??null : null;
+  }
   function byId(id) {
     const m = /^r(\d+)c(\d+)$/.exec(String(id));
     if (!m) return null;
@@ -66,7 +79,7 @@
     return {id:'north/'+near.id+'/'+far.id,near:near.id,far:far.id,latitude,longitude,onTrunk};
   }
 
-  const api = Object.freeze({ ROW, ROWS, LIMIT, TOTAL, EQUATOR_COLUMNS, MIN_COLUMNS, WAIST_FIRST, WAIST_LAST, BORDER_KM, TRUNK_KM, TRUNK_MERIDIANS, TRACKS, columns, plot, plotAt, byId, northEdge });
+  const api = Object.freeze({ ROW, ROWS, LIMIT, TOTAL, EQUATOR_COLUMNS, MIN_COLUMNS, WAIST_FIRST, WAIST_LAST, BORDER_KM, TRUNK_KM, TRUNK_MERIDIANS, TRACKS, columns, plot, plotAt, contains, regionAt, byId, northEdge, waterwayAt:(q,state)=>root.SphereNeighbourhood?.featureAt(q,state)??null });
   root.SphereAtlas = api;
   if (typeof module !== 'undefined') module.exports = api;
 })(typeof window === 'undefined' ? globalThis : window);

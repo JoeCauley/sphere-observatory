@@ -14,6 +14,7 @@ const smooth = u => u * u * (3 - 2 * u);
 // Lift-off into the blind: rise beneath the ordinary sky, then the last fifth of the time
 // climbing as the cloud gathers. Null if toM is not inside the blind or the eye is already above its edge.
 export function ascentShape(fromM, toM, blind) {
+  if(!blind)return null;
   const edge = blind.baseM - blind.edgeM;
   if (!(toM > edge && toM <= blind.topM)) return null;
   const span = Math.log(toM / fromM), f1 = Math.log(edge / fromM) / span;
@@ -25,6 +26,7 @@ export function ascentShape(fromM, toM, blind) {
 // Arrival out of the blind: a tenth of the time descending in cloud, a tenth while the
 // concealment falls away (view held straight down), then the descent and the turn to the approach.
 export function arrivalShape(fromM, toM, blind) {
+  if(!blind)return null;
   const span = Math.log(fromM / toM), f1 = Math.log(fromM / blind.baseM) / span, f2 = Math.log(fromM / (blind.baseM - blind.edgeM)) / span;
   if (!(f1 > 0)) return null;
   const fall = u => .15 * u + .85 * smooth(u);

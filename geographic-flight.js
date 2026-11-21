@@ -1,10 +1,12 @@
 // A pack chart is an azimuthal equidistant map in metres. The same map is
 // used for a hand-flown approach, departure, and the Meadow's northern gate.
 import {project,unproject,chartFor,toBorder,toMeadow} from './packs/kit/surface-route.js';
+import {farEdgeM,onBorder,rampRunM} from './packs/kit/border-profile.js';
 import {terrain} from './packs/infinite-meadow/1.3.0/landscape.js';
 const meadowDatum=terrain(0,0);
 function gateDatum(gate){return terrain(gate.eastM,gate.northM)-meadowDatum;}
 export const enterKm=20, leaveKm=24;
+export {onBorder};
 const length=v=>Math.hypot(...v),dot=(a,b)=>a.reduce((n,x,i)=>n+x*b[i],0);
 const norm=v=>{const d=length(v);return v.map(x=>x/d);};
 const cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
@@ -22,16 +24,11 @@ export function footprint(state,library,atlas,world){
   for(const item of items){
     if(!item.edge)continue;
     const home=atlas.byId(item.edge.near),gate=chartFor(home,item.edge,state.radius);
-    if(!gate || Math.abs(lat-item.edge.latitude)*state.radius>30)continue;
+    if(!gate || Math.abs(lat-item.edge.latitude)*state.radius>(farEdgeM+rampRunM)/1000+100)continue;
     const p=chartPoint(home,q,state,world),local=toBorder({...p,altitudeM:100,yaw:0},gate,0);
-    if(Math.abs(local.eastM)<Math.min(19999000,gate.halfWidthM) && local.northM>=-2800 && local.northM<=2800)return item;
+    if(onBorder(local,gate.halfWidthM))return item;
   }
-  const item=items.find(i=>i.plot===plot.index);
-  if(!item)return null;
-  const c=Math.max(.05,Math.cos(lat)),dl=Math.atan2(Math.sin(lon-plot.longitude),Math.cos(lon-plot.longitude));
-  const edge=Math.min(plot.halfHeight-Math.abs(lat-plot.latitude),(Math.PI/plot.columns-Math.abs(dl))*c);
-  const step=2*Math.PI/atlas.TRUNK_MERIDIANS, trunk=Math.min(Math.abs(Math.abs(lat)-3*atlas.ROW),Math.abs(lon-Math.round(lon/step)*step)*c);
-  return edge*state.radius>atlas.BORDER_KM && trunk*state.radius>atlas.TRUNK_KM?item:null;
+  return atlas.regionAt(items,lat,lon);
 }
 export function packPose(state,item,atlas,world){
   const id=item.id,chart=atlas.byId(item.edge?.near??item.plotId),q=norm(state.position);
@@ -46,6 +43,21 @@ export function packPose(state,item,atlas,world){
   if(!item.edge)return pose;
   const gate=chartFor(chart,item.edge,state.radius);
   return toBorder(pose,gate,gateDatum(gate));
+}
+// The pack chart is a map of a particular place in this world. Lighting and
+// navigation project the same local receiver onto the inner shell.
+export function worldPosition(state,item,pose,atlas,world){
+  const chart=atlas.byId(item.edge?.near??item.plotId);
+  const gate=item.edge?chartFor(chart,item.edge,state.radius):null;
+  const p=gate?toMeadow(pose,gate,gateDatum(gate)):pose;
+  const at=unproject(chart,p.eastM,p.northM,state.radius*1000);
+  return world.direction(at.latitude,at.longitude,state).map(v=>v*(state.radius-p.altitudeM/1000));
+}
+// Local floors can sit below the nominal geoid. From a surveyed interior
+// position the nominal shell must not shadow its own receiver.
+export function lightReceiver(state,item,pose,atlas,world){
+  const p=worldPosition(state,item,pose,atlas,world),r=length(p),inner=state.radius-.0001;
+  return r>inner?p.map(v=>v*inner/r):p;
 }
 export function mainPose(state,item,pose,atlas,world){
   const chart=atlas.byId(item.edge?.near??item.plotId),radius=state.radius*1000;

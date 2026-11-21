@@ -24,9 +24,9 @@ export function blindBands(state){
     startM:GROUND_DATUM+h*.9,endM:GROUND_DATUM+h*1.1,
     deckM:GROUND_DATUM+h*1.15,viewM:GROUND_DATUM+h*1.25};
 }
-export function sceneLight(state){
+export function sceneLight(state,direct=1){
   const b=blindBands(state),reveal=state.concealment?smooth((state.pose.altitudeM-b.startM)/(b.endM-b.startM)):1;
-  return {reveal,canopyDaylight:state.daylight,interiorDaylight:mix(state.daylight,1,reveal)};
+  return {reveal,canopyDaylight:state.daylight*direct,interiorDaylight:mix(state.daylight,1,reveal)*direct};
 }
 export const clearance=p=>p.altitudeM-terrain(p.eastM,p.northM)-EYE;
 export function home(){return {eastM:0,northM:0,altitudeM:GROUND_DATUM+EYE,yaw:0,pitch:-.07,mode:'walk'};}

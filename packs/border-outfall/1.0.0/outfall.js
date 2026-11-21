@@ -1,16 +1,17 @@
 import {entrance,eye,initial,restore,nearValve,waterStep} from './model.js';
+import {onBorder} from '../../kit/border-profile.js';
 import {leaveNorthM,chartFor,toMeadow} from '../../kit/surface-route.js';
 import {apronHeight,borderUniforms} from '../../kit/meadow-border.js';
 import {initialState as newMeadow,parseState as readMeadow,terrain} from '../../infinite-meadow/1.3.0/model.js';
 import '../../../sphere-atlas.js';
-import {supportAt,moveBody,resolvePose,tunnelStart,tunnelEnd,tunnelLength} from './border.js';
+import {supportAt,moveBody,resolvePose,tunnelStart,tunnelEnd,tunnelLength,tunnelHeight} from './border.js';
 import {createRenderer} from './render.js';
 import {veilAt,createVeil} from '../../kit/veil.js';
 import {ascentShape,arrivalShape,advance,heightAt} from '../../kit/flight.js';
 
 const id='border-outfall',version='1.0.0',key='sphere-biome:'+id+':'+version;
 const $=id=>document.getElementById(id),canvas=$('world'),say=text=>{$('status').textContent=text;};
-const air={haze:[],blind:{baseM:4000,topM:5200,edgeM:350}};
+const air={profile:'outfall-salt',haze:[{baseM:0,topM:1200,perKm:.12}],blind:null};
 const storage=window.frameElement?.dataset.worldKey ? parent.SphereBiomeLibrary.saveStorage(window.frameElement.dataset.worldKey) : localStorage;
 let state=initial(),hadSave=false,rejected=false;
 try{const raw=storage.getItem(key);if(raw){state=restore(JSON.parse(raw));hadSave=true;}}catch{rejected=true;say('The stored viewpoint could not be read. Your original save has been kept.');}
@@ -32,10 +33,11 @@ const address=stageHost?.surfaceAddress?.(),atlas=window.SphereAtlas;
 const home=address?.home||atlas.byId('r10c0'),edge=address?.edge||atlas.northEdge(home.id);
 const chart=chartFor(home,edge,address?.radiusKm||149597870.7),datum=terrain(chart.eastM,chart.northM);
 const floorAt=(east,north)=>apronHeight(chart,datum,east,north);
-let field=null,coverStage=null,meadow=newMeadow();
+let field=null,coverStage=null,meadow=newMeadow(),solar=null;
 try{const record=JSON.parse(storage.getItem('sphere-pack:infinite-meadow:1.3.0'));if(record?.state)meadow=readMeadow(JSON.stringify(record.state));}catch{}
 const drawApron=(p,elapsed)=>{
-  field??=new MeadowRenderer(canvas);coverStage??=new GrassStage({ground:terrain});
+  if(!field){field=new MeadowRenderer(canvas,stageHost?{atlasShader:parent.SphereBiomeSurface.glsl(parent.SphereAtlas),backdrop:p=>stageHost.surfaceBackdrop(window,p)}:{});field.lightAt=()=>stageHost?.surfaceLight(window,state.pose);}
+  coverStage??=new GrassStage({ground:terrain});
   meadow.pose=toMeadow(p,chart,datum);if(meadow.windPlaying && surfaceEntry?.active!==false)meadow.windTime+=Math.min(.1,elapsed);
   field.borderMap=borderUniforms(chart,p);field.gateDatum=datum;
   coverStage.update(meadow.pose,meadow.grassDensity,meadow.grassReach);
@@ -50,7 +52,7 @@ else if(surfaceEntry?.edge && stageHost?.surfaceAddress?.()?.edge.id===surfaceEn
   say('Approaching the Outfall along the Meadow surface.');
 }
 resolvePose(state.pose,renderer.colliders,floorAt);
-const veil=createVeil(document,air.blind);
+const veil=createVeil(document,air.blind,air.profile);
 const url=new URL(location.href),entry=url.searchParams.get('arrival'),hold=url.searchParams.get('hold')==='1',from=url.searchParams.get('fromM');
 if(entry){for(const k of ['arrival','hold','fromM'])url.searchParams.delete(k);history.replaceState(null,'',url);}
 let frame=0,raf=0,last=0,lastSave=0,turn=Number(state.open),disposed=false,drag=null,script=null,kept=null;
@@ -119,7 +121,7 @@ function ascent(options={}){
 if(entry==='air'){
   const target=hadSave?{...state.pose}:approach(), exit=exitAisle(target);
   const outside=exit.length?exit[exit.length-1]:target;
-  const height=from==='blind'?(air.blind.baseM+air.blind.topM)/2:Math.max(15,+from||1100);
+  const height=from==='blind'&&air.blind?(air.blind.baseM+air.blind.topM)/2:Math.max(15,+from||1100);
   const start={...outside,altitudeM:height,northM:outside.northM-Math.min(72,Math.max(0,-outside.northM)),pitch:-1.49};
   const steps=[segment(start,outside,8,arrivalShape(height,outside.altitudeM,air.blind))];
   if(exit.length){
@@ -129,7 +131,7 @@ if(entry==='air'){
   run(steps,{held:hold,result:'arrived',restoreMode:hadSave&&target.mode}).then(arrivedDone);
 }else{if(entry==='ground')state.pose=entrance();arrivedDone('ground');}
 function portalSide(before,p){
-  if(p.mode!=='walk'||crossing||Math.abs(p.eastM)>3.3)return null;
+  if(p.mode!=='walk'||crossing||Math.abs(p.eastM)>3.3||p.altitudeM>tunnelHeight)return null;
   if(p.northM>=tunnelEnd && before<tunnelEnd)return 'far';
   if(surfaceEntry?.passage && p.northM<=tunnelStart && before>tunnelStart)return 'near';
   return null;
@@ -178,14 +180,14 @@ function tick(t){
         approachCruise=null;say('Level cruise stopped at the wall. Q descends. Press F near a surface to land.');
       }
     }else{
-      const inTunnel=p.mode==='walk' && p.northM>=tunnelStart && p.northM<=tunnelEnd && Math.abs(p.eastM)<3.5;
+      const inTunnel=p.mode==='walk' && p.altitudeM<tunnelHeight && p.northM>=tunnelStart && p.northM<=tunnelEnd && Math.abs(p.eastM)<3.5;
       const clock=inTunnel?Number($('walkClock').value):1;
       const along=clock>1 ? Math.max(tunnelStart-p.northM-.01,Math.min(tunnelEnd-p.northM+.01,dn*clock)) : dn;
       moveBody(p,renderer.colliders,dx*clock,dy,along,floorAt);
     }
     const side=portalSide(wasNorth,p);
     if(side)void takePassage(side);
-    if(!surfaceEntry?.passage && !crossingFailed && p.northM<=leaveNorthM && p.northM<wasNorth && p.altitudeM<1600){
+    if(!surfaceEntry?.passage && !crossingFailed && p.northM<=leaveNorthM && !onBorder(p,chart.halfWidthM,2800) && p.northM<wasNorth && p.altitudeM<1600){
       const address=stageHost?.surfaceAddress?.();
       if(address && stageHost.canCrossSurface?.(window)){
         crossing=true;
@@ -198,11 +200,13 @@ function tick(t){
   }
   waterStep(state,dt);turn+=(Number(state.open)-turn)*(1-Math.exp(-dt*4));
   const apron=!surfaceEntry?.passage && (p.northM<0 || (p.northM<34 && Math.abs(p.eastM)<7));
+  solar=stageHost?.surfaceLight(window,p)??{direct:1};
   if(apron){renderer.resize();drawApron(p,elapsed);}
-  renderer.draw(state,t*.001,turn,{overMeadow:apron,resize:!apron,nearTint:tunnelGate?.near.tint,farTint:tunnelGate?.far.tint});veil.draw(p.altitudeM,t);if(++frame===3)readyDone(true);
+  renderer.draw(state,t*.001,turn,{daylight:solar.direct,radiusM:(address?.radiusKm??149597870.7)*1000,overMeadow:apron,resize:!apron,nearTint:tunnelGate?.near.tint,farTint:tunnelGate?.far.tint});veil.draw(p.altitudeM,t);if(++frame===3)readyDone(true);
   $('action').hidden=!!script||!nearValve(p);$('action').textContent=(state.open?'Close':'Open')+' bypass valve · E';$('mode').textContent=p.mode==='walk'?'ON FOOT':approachCruise?'LEVEL CRUISE':'FLIGHT';
-  $('walkClockField').hidden=p.mode!=='walk'||p.northM<tunnelStart-9||p.northM>tunnelEnd;
-  if(p.northM>=tunnelStart && p.northM<=tunnelEnd && !crossing){
+  const inPassage=Math.abs(p.eastM)<=3.5 && p.altitudeM<tunnelHeight && p.northM>=tunnelStart-9 && p.northM<=tunnelEnd;
+  $('walkClockField').hidden=p.mode!=='walk'||!inPassage;
+  if(inPassage && p.northM>=tunnelStart && !crossing){
     const km=Math.max(0,(tunnelEnd-p.northM)/1000).toFixed(1),label=km+' km to '+(tunnelGate?.far.name||'the far portal');
     if($('status').textContent!==label)say(label);
   }
@@ -211,6 +215,6 @@ function tick(t){
 function dispose(){if(disposed)return;disposed=true;save();cancelAnimationFrame(raf);keys.clear();veil.dispose();field?.dispose();renderer.dispose();}
 window.SphereBiome={id,version,contract:'sphere-biome/1',ready,arrived,pose:()=>({...state.pose}),air:()=>structuredClone(air),ascend:ascent,
   walkTunnel,begin:()=>{if(script?.held)script.held=false;return arrived;},save,dispose,
-  inspect:()=>({frames:frame,levelCruising:!!approachCruise,meadowTiles:coverStage?.tiles.size??0,meadowWind:meadow.windTime,held:!!script?.held,scripted:!!script,veil:veilAt(air.blind,state.pose.altitudeM),valveOpen:state.open,levels:[...state.levels]})};
+  inspect:()=>({frames:frame,light:solar,levelCruising:!!approachCruise,meadowTiles:coverStage?.tiles.size??0,meadowWind:meadow.windTime,held:!!script?.held,scripted:!!script,veil:veilAt(air.blind,state.pose.altitudeM),valveOpen:state.open,levels:[...state.levels]})};
 window.addEventListener('pagehide',dispose,{once:true});window.addEventListener('pageshow',e=>{if(e.persisted)location.reload();});
 raf=requestAnimationFrame(tick);

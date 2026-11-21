@@ -32,12 +32,33 @@ function cutsFor(circle,state,items,{world,atlas}) {
   const w=state.waistWidth*Math.PI/180;
   for(const lat of [-1.31,-w,-w/3,0,w/3,w,1.31])latitude(lat);
   for(let i=0;i<8;i++)longitude(i*turn/8-Math.PI);
+  const ellipses=[];
   for(const item of items){
     const plot=atlas.byId(item.plotId||item.edge?.near);if(!plot)continue;
-    latitude(plot.latitude-plot.halfHeight);latitude(plot.latitude+plot.halfHeight);
-    longitude(plot.longitude-Math.PI/plot.columns);longitude(plot.longitude+Math.PI/plot.columns);
+    const halfLat=plot.halfHeight*(item.footprint?.north??1),halfLon=Math.PI/plot.columns*(item.footprint?.east??1);
+    latitude(plot.latitude-halfLat);latitude(plot.latitude+halfLat);
+    longitude(plot.longitude-halfLon);longitude(plot.longitude+halfLon);
+    if(item.footprint?.shape==='ellipse')ellipses.push({plot,halfLat,halfLon});
   }
   for(const lon of world.habitatMeridians())longitude(lon);
+  const partitions=[...cuts].sort((a,b)=>a-b);
+  for(const {plot,halfLat,halfLon} of ellipses){
+    const point=angle=>world.coordinates(along(circle.origin,circle.forward,angle).q,state);
+    const xy=({lat,lon})=>[Math.atan2(Math.sin(lon-plot.longitude),Math.cos(lon-plot.longitude))/halfLon,(lat-plot.latitude)/halfLat];
+    // Within the bounding rectangle the unit-speed arc bounds both geographic derivatives.
+    const slope=Math.hypot(1/halfLat,1/(halfLon*Math.cos(Math.abs(plot.latitude)+halfLat)));
+    const visit=(a,b)=>{
+      const m=(a+b)/2,v=Math.hypot(...xy(point(m)))-1;
+      if(Math.abs(v)>slope*(b-a)/2){cuts.push(m);return;}
+      if((b-a)*state.radius*1000<.25){cuts.push(a,m,b);return;}
+      visit(a,m);visit(m,b);
+    };
+    for(let i=1;i<partitions.length;i++){
+      const a=partitions[i-1],b=partitions[i];if(b-a<=1e-12)continue;
+      const [x,y]=xy(point((a+b)/2));
+      if(Math.abs(x)<=1&&Math.abs(y)<=1)visit(a,b);
+    }
+  }
   return cuts.sort((a,b)=>a-b).filter((a,i,list)=>!i||a-list[i-1]>1e-12);
 }
 // Prove a whole great circle clears the damaged shell. Reject uncertain grazing courses.

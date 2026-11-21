@@ -111,6 +111,7 @@
   if(!localLocked()&&!window.SphereEnhancements?.measuring&&(state.autoSpeed===false?SphereInspection.level(state):SphereTravel.level(state,dt)))dirty=true;
   });
   integratingMovement=false;if(poseChanged){poseChanged=false;moved();if(!window.sphereStageCovered&&oldPosition.some((x,i)=>x!==state.position[i]))window.SphereStageFrame?.manualMovement?.(state,oldPosition);}
+  if(window.SphereStageFrame?.regionalFrame?.(now))return;
   if(!window.sphereStageCovered&&(dirty||renderer.needsFrame)&&window.SphereLoading?.needs(state)){SphereLoading.ensureCurrent();return;}
   if((dirty||renderer.needsFrame)&&!window.sphereStageCovered&&(now-lastPreviewDraw>=1000/previewFps-.8)){const rect=viewport.getBoundingClientRect(),requested=Math.min(devicePixelRatio||1,1.5)*state.quality,live=state.playing||keys.size||drag,adaptive=$('adaptivePreview')?.checked!==false&&live?previewQuality.update(renderer.gpuMs,1000/previewFps,now):1,scale=Math.min(requested*adaptive,Math.sqrt(3840*2160/Math.max(1,rect.width*rect.height)));const w=Math.max(1,Math.floor(rect.width*scale)),h=Math.max(1,Math.floor(rect.height*scale));const start=performance.now();renderer.draw(state,w,h,{adaptiveScale:adaptive});if(W.active(state))displayedWind={meadow:state.meadow,phase:W.phase(state)};frameCount++;lastPreviewDraw=SphereTiming.previewStamp(lastPreviewDraw,now,previewFps);renderCost=performance.now()-start;dirty=false;}
   if(now-hudTime>250){hudTime=now;hud();}

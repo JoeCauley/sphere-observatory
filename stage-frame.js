@@ -24,7 +24,7 @@
   const rootPath = base.pathname;
   const library = () => window.SphereBiomeLibrary;
 
-  let geography=null, walking=null, suppressedPlot=null, observedPlace=null, lastMouth=null, borderFailure=null;
+  let optics=null, geography=null, walking=null, suppressedPlot=null, observedPlace=null, lastMouth=null, borderFailure=null;
   const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
   const sound = (name, seconds) => { try { window.SphereStageSound?.play(name, seconds); } catch {} };   // stage-sound.js; silent if absent
   let current = null;   // { id, shell, frame, observer, where }
@@ -39,7 +39,7 @@
     const pack = library()?.pack(item.packId);
     if (!pack) return null;
     // contract: the biome implements sphere-biome/1 and needs no special handling here.
-    return { name: pack.name, entry: pack.entry, saveKey: pack.saveKey, contract: pack.contract === 'sphere-biome/1', ascent: pack.travel?.ascent === 'guided-journey',
+    return { name: pack.name, atmosphere: pack.atmosphere || 'clear', entry: pack.entry, saveKey: pack.saveKey, contract: pack.contract === 'sphere-biome/1', ascent: pack.travel?.ascent === 'guided-journey',
       glide: pack.travel?.glide === 'industry-approach', flightArrival: pack.travel?.flightArrival ?? '' };
   }
 
@@ -314,24 +314,16 @@
   // that cloud over the viewport, above whichever picture is showing, and the two pictures are
   // exchanged only while it is opaque. A contract biome stops and starts inside its own declared
   // blind, where its own picture is already cloud, so the host's cloud arrives over cloud.
-  let cloudLayer = null;
+  let cloudLayer = null, cloudRecipe;
+  const inBlind = scene => ['meadow-mist','works-vapour','city-smog'].includes(scene.atmosphere);
+  const arrivalQuery = scene => '?arrival=air&hold=1&fromM='+(inBlind(scene)?'blind':HANDOFF_KM*1000);
+  function useAir(scene){cloudRecipe=optics.atmosphere(scene.atmosphere);}
   function cloud() {
     if (cloudLayer) return cloudLayer;
     const canvas = document.createElement('canvas');
     Object.assign(canvas.style, { position: 'fixed', zIndex: '950', pointerEvents: 'none', display: 'none' });
     document.body.append(canvas);
-    const gl = canvas.getContext('webgl2', { alpha: true, premultipliedAlpha: true, antialias: false });
-    let program = null, u = {};
-    if (gl) try {
-      const make = (type, source) => { const sh = gl.createShader(type); gl.shaderSource(sh, source); gl.compileShader(sh); if (!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) throw Error(gl.getShaderInfoLog(sh)); return sh; };
-      program = gl.createProgram();
-      gl.attachShader(program, make(gl.VERTEX_SHADER, '#version 300 es\nout vec2 v;void main(){vec2 p=vec2(float((gl_VertexID<<1)&2),float(gl_VertexID&2))*2.-1.;v=p;gl_Position=vec4(p,0.,1.);}'));
-      // The same wisps and the same opacity law as a contract biome's own blind.
-      gl.attachShader(program, make(gl.FRAGMENT_SHADER, '#version 300 es\nprecision highp float;in vec2 v;out vec4 frag;uniform float uTime,uClimb,uAspect,uOpacity;void main(){vec3 d=normalize(vec3(v.x*uAspect/1.19,v.y/1.19-.9,.6));vec3 q=d*3.+vec3(uTime*.05,uClimb*.004,uTime*.03);float n=.5+.5*sin(q.x*2.1+sin(q.z*1.7+q.y))*sin(q.y*1.3+q.z*2.3);float a=smoothstep(0.,1.,uOpacity*1.5-.5*n);vec3 c=pow(mix(vec3(.80,.78,.76),vec3(.95,.93,.90),n),vec3(1./2.2));frag=vec4(c*a,a);}'));
-      gl.linkProgram(program);
-      if (!gl.getProgramParameter(program, gl.LINK_STATUS)) throw Error(gl.getProgramInfoLog(program));
-      for (const name of ['uTime', 'uClimb', 'uAspect', 'uOpacity']) u[name] = gl.getUniformLocation(program, name);
-    } catch (error) { console.warn('Stage frame: cloud shader unavailable, using a plain veil', error); program = null; }
+    const painter=optics.makeCloudPainter(canvas);
     let opacity = 0, goal = 0, perMs = 0, direction = 1, climb = 0, last = 0, running = false, waiting = [];
     function frame(now) {
       const dt = Math.min(250, last ? now - last : 0); last = now;
@@ -340,13 +332,7 @@
       const r = view()?.getBoundingClientRect();
       if (r) {
         Object.assign(canvas.style, { left: r.left + 'px', top: r.top + 'px', width: r.width + 'px', height: r.height + 'px', display: opacity > 0 || goal > 0 ? 'block' : 'none' });
-        const w = Math.max(1, Math.round(r.width / 2)), h = Math.max(1, Math.round(r.height / 2));
-        if (program) {
-          if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
-          gl.viewport(0, 0, w, h); gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT); gl.useProgram(program);
-          gl.uniform1f(u.uTime, now / 1000); gl.uniform1f(u.uClimb, climb); gl.uniform1f(u.uAspect, w / h); gl.uniform1f(u.uOpacity, opacity);
-          gl.drawArrays(gl.TRIANGLES, 0, 3);
-        } else { canvas.style.background = '#e2dfdb'; canvas.style.opacity = String(opacity); }
+        painter.draw(opacity,now,climb,cloudRecipe||optics.atmosphere('meadow-mist'),window.SphereApp.getState().seed,cloudLight());
       }
       if (opacity === goal) { for (const done of waiting.splice(0)) done(); if (goal === 0) { canvas.style.display = 'none'; running = false; last = 0; return; } }
       requestAnimationFrame(frame);
@@ -357,6 +343,42 @@
       get opacity() { return opacity; }
     };
     return cloudLayer;
+  }
+
+  function cloudLight(){
+    const s=window.SphereApp.getState(), source=current?.frame.contentWindow, p=source?.SphereBiome?.pose?.();
+    return (p && surfaceLight(source,p)?.direct) ?? (s.routeShades?SphereCollection.visibility(s.position,s,64):1);
+  }
+
+  // Project the regional image with the pack camera while it has the flight controls.
+  // Only the narrow overlap needs both levels of detail. A held camera reuses its pixels.
+  function regionalFrame(now){
+    const c=current;
+    if(!optics || !geography || !c?.regional || !c.shell.isConnected)return false;
+    const api=c.frame.contentWindow?.SphereBiome,p=api?.pose?.();
+    if(!p || p.mode!=='flight'){c.frame.style.opacity='1';return false;}
+    const recipe=c.regional, weight=optics.layerWeight(recipe.nearM,recipe.farM,p.altitudeM);
+    c.frame.style.opacity=String(weight);
+    if(weight>=1)return false;
+    const s=window.SphereApp.getState(), rect=c.frame.getBoundingClientRect();
+    if(rect.width<2 || rect.height<2)return false;
+    const key=[s.time,p.eastM,p.northM,p.altitudeM,p.yaw,p.pitch,rect.width,rect.height,s.routeShades,s.exposure].join('/');
+    if(c.regionalKey===key || now-(c.regionalStamp??-Infinity)<40)return true;
+    const item=library().entry(c.id);if(!item)return false;
+    const pose=geography.mainPose(s,item,p,SphereAtlas,SphereWorld);
+    const scale=Math.min(1,800/rect.width,480/rect.height);
+    pose.fov=2*Math.atan(rect.width/rect.height/recipe.focal)*180/Math.PI;
+    pose.geometryDetail=false;
+    window.SphereApp.renderer.draw(pose,Math.round(rect.width*scale),Math.round(rect.height*scale));
+    c.regionalKey=key;c.regionalStamp=now;return true;
+  }
+  function enableRegional(c,scene){
+    if(!c || !optics)return;
+    c.regional=optics.atmosphere(scene.atmosphere);
+    c.shell.style.background='transparent';
+    const bar=c.shell.firstElementChild;
+    Object.assign(bar.style,{position:'absolute',top:'0',left:'0',right:'0',zIndex:'2'});
+    regionalFrame(performance.now());
   }
 
   // A biome climbing into its own blind stops dead when its script ends, and its wisps stop with
@@ -561,7 +583,7 @@
     mountFrame(id, query, geographic);
     const opened = current;
     if (!opened) return;
-    const status=window.SphereTransitStatus.begin(scene.name,'Opening the biome and preparing its first frame.');
+    const status=(geographic?window.SphereTransitStatus.crossing:window.SphereTransitStatus.begin)(scene.name,'Opening the biome and preparing its first frame.');
     let result;
     try { result=await settled(opened,scene,45000); }
     finally { status.end(); }
@@ -570,7 +592,10 @@
       const fromAir = new URLSearchParams(query).get('arrival') === 'air';
       result = scene.contract ? await biomeArrival(opened, fromAir) : { status: 'arrived', phase: 'arrival' };
       if (current !== opened) return;
-      if (result.status === 'arrived' || result.status === 'taken-over') await dissolve(opened.shell, opened.frame, true, 700);
+      if (result.status === 'arrived' || result.status === 'taken-over') {
+        if(geographic){enableRegional(opened,scene);opened.shell.style.opacity='1';opened.shell.style.pointerEvents='';cover(true);}
+        else await dissolve(opened.shell, opened.frame, true, 700);
+      }
     }
     if(geographic && (result.status==='arrived'||result.status==='taken-over'))geographic.active=true;
     return finishArrival(opened, scene, route, null, result);
@@ -765,8 +790,8 @@
     }
     await Promise.race([sinking, sleep(Math.max(0, sinkMs - 1300))]);
     if (current !== opened) return;
-    sound('cloud', 3.2);
-    await cloud().to(1, 1200, -1);
+    const blind=opened.frame.contentWindow?.SphereBiome?.air?.().blind;
+    if(blind){useAir(scene);sound('cloud',3.2);await cloud().to(1,1200,-1);}
     await sinking;
     if (current !== opened) return;
     if (from) {
@@ -780,11 +805,12 @@
       setFlightView(withHeight(overview, floor));
     }
     if (current !== opened) return;
+    if(!blind)enableRegional(opened,scene);
     opened.shell.style.opacity = '1'; opened.shell.style.pointerEvents = '';
     opened.frame.contentWindow?.focus();
     const landing = scene.contract ? biomeArrival(opened, true)
       : glide ? glideIn(opened.frame, glide) : Promise.resolve({ status: 'arrived', phase: 'arrival' });
-    const reveal = sleep(500).then(() => cloud().to(0, 1200, -1)).then(() => { if (current === opened) cover(true); });
+    const reveal=(blind?sleep(500).then(()=>cloud().to(0,1200,-1)):Promise.resolve()).then(()=>{if(current===opened)cover(true);});
     const [result] = await Promise.all([landing, reveal]);
     if (current === opened) try { window.SphereSession?.flush(); } catch {}
     return finishArrival(opened, scene, route, from, result, overview);
@@ -806,7 +832,7 @@
       // Both overview poses come from the library; Main sits at A under the scene.
       label('Plotting a course to ' + target.scene.name);
       let A, B;
-      try { overB = await library().travelTo(target.item.id); B = flightPose(overB); A = flightPose(await library().travelTo(here.id)); }
+      try { const s=window.SphereApp.getState();overB=library().overviewPose(target.item,s);B=flightPose(overB);A=flightPose(library().overviewPose(library().entry(here.id),s)); }
       catch (error) { throw Error('Main could not plot that course. ' + error.message); }
       here.frame.contentWindow?.focus();
       // While this scene lifts off, Main rehearses the low views at both ends behind it.
@@ -820,6 +846,7 @@
         // A biome that declares a Duck Blind climbs into the middle of it and stops there, in cloud.
         let blind = null; try { blind = api?.air?.().blind ?? null; } catch {}
         flight.departInBlind = !!blind;
+        if(blind)useAir(scene);else enableRegional(here,scene);
         if (scene.contract && typeof api?.ascend !== 'function') throw Error('The departure pack could not start its ascent.');
         const lifting = scene.contract ? Promise.resolve(api.ascend({ toAltitudeM: blind ? (blind.baseM + blind.topM) / 2 : HANDOFF_KM * 1000, handoff: true })) : ascend(here.frame);
         if (api && blind) clouded = cloudOverAscent(api, lifting);
@@ -856,14 +883,14 @@
       })();
       // Into cloud; the pictures change places behind it; then the fast fall away.
       if (clouded) await clouded;
-      else { sound('cloud', 3.2); await cloud().to(1, low ? 500 : 1100, 1); }
+      else if(!scene.contract){useAir(scene);sound('cloud',3.2);await cloud().to(1,low?500:1100,1);}
       close({ toGround: true, inTransit: true, silent: true });
-      sleep(900).then(() => cloud().to(0, 1400, 1));
+      if(cloudLayer?.opacity)sleep(900).then(()=>cloud().to(0,1400,1));
       // The destination loads unseen during the crossing, so it is ready before it is wanted.
       let glide = null;
       if (target.scene.glide) try { glide = await prepareGlide(target.scene); } catch (error) { console.warn('Stage frame: glide unavailable', error); }
       const byContract = target.scene.contract;
-      mountFrame(target.item.id, glide ? '' : byContract ? '?arrival=air&hold=1&fromM=blind' : target.scene.flightArrival);
+      mountFrame(target.item.id, glide ? '' : byContract ? arrivalQuery(target.scene) : target.scene.flightArrival);
       const arriving = current;
       if (!arriving) throw Error('The destination frame could not be opened.');
       const loading = settled(arriving, target.scene, 20000);
@@ -894,7 +921,7 @@
       const B = flightPose(overview);
       try { window.SphereSession?.flush(); } catch {}
       setFlightView(B);
-      mountFrame(id, '?arrival=air&hold=1&fromM=blind');
+      mountFrame(id, arrivalQuery(scene));
       const arriving = current;
       if (!arriving) throw Error('The destination frame could not be opened.');
       const loading = settled(arriving, scene, 20000);
@@ -920,6 +947,7 @@
       let blind = null; try { blind = api.air().blind ?? null; } catch {}
       sound('lift', 16);
       const lifting = Promise.resolve(api.ascend({ toAltitudeM: blind ? (blind.baseM + blind.topM) / 2 : HANDOFF_KM * 1000, handoff: true }));
+      if(blind)useAir(scene);else enableRegional(leaving,scene);
       const clouded = blind ? cloudOverAscent(api, lifting) : null;
       const result = await lifting;
       if (current !== leaving) return true;
@@ -930,10 +958,8 @@
       setFlightView(withHeight(A, floor));
       const rising = floor < top ? sinkMain(A, floor, top, paceMs(top, floor), easeOut) : Promise.resolve();
       if (clouded) await clouded;
-      else { sound('cloud', 3.2); await cloud().to(1, 500, 1); }
       close({ toGround: true });
-      await sleep(900);
-      await cloud().to(0, 1400, 1);
+      if(clouded){await sleep(900);await cloud().to(0,1400,1);}
       await rising;
       try { window.SphereSession?.flush(); } catch {}
       return true;
@@ -946,19 +972,57 @@
     return {home:window.SphereAtlas.byId(meadow.plotId), edge:outfall.edge, radiusKm:lib.world.params.radius};
   }
 
+  // Outdoor renderers ask about their own position. Time, pause and Shade
+  // geometry belong to Main, including while the viewport is covered.
+  const lightSamples=new WeakMap();
+  function surfaceLight(source,pose) {
+    const scene=[current,parked].find(s=>s && s.frame.contentWindow===source);
+    if(!scene || !geography || scene.frame.surfaceEntry?.passage)return null;
+    const item=library()?.entry(scene.id);
+    if(!item || scene.worldKey!==library().world?.key)return null;
+    const now=performance.now(),last=lightSamples.get(source);
+    if(last && now-last.at<80 && Math.hypot(pose.eastM-last.east,pose.northM-last.north,pose.altitudeM-last.height)<1000)return last.light;
+    const s=window.SphereApp.getState();
+    const receiver=geography.lightReceiver(s,item,pose,SphereAtlas,SphereWorld);
+    const light={time:s.time,direct:SphereCollection.visibility(receiver,s,64)};
+    lightSamples.set(source,{at:now,east:pose.eastM,north:pose.northM,height:pose.altitudeM,light});
+    return light;
+  }
+  let nativeSky=null;
+  function surfaceBackdrop(source,pose) {
+    const scene=[current,parked].find(s=>s && s.frame.contentWindow===source);
+    const lib=library(),map=window.SphereBiomeSurface?.mapData(),home=lib?.entry('infinite-meadow');
+    if(!scene || scene.frame.surfaceEntry?.passage || !home || !map || !geography || scene.worldKey!==lib.world?.key)return null;
+    const s=window.SphereApp.getState(),axes=SphereWorld.frame(s);
+    if(nativeSky?.key!==scene.worldKey){
+      const width=128,height=64,data=new Uint8Array(width*height*4);
+      for(let y=0;y<height;y++)for(let x=0;x<width;x++){
+        const q=SphereWorld.direction(((y+.5)/height-.5)*Math.PI,((x+.5)/width-.5)*2*Math.PI,s);
+        const color=SphereWorld.sample(q,s).color;
+        data.set([...color.map(v=>Math.round(255*Math.max(0,Math.min(1,v)))),255],4*(y*width+x));
+      }
+      nativeSky={key:scene.worldKey,width,height,data};
+    }
+    // Both outdoor renderers pass Meadow chart coordinates, including the rotated Outfall apron.
+    const at=(e,n)=>norm(geography.worldPosition(s,home,{eastM:e,northM:n,altitudeM:0},SphereAtlas,SphereWorld));
+    const radial=at(pose.eastM,pose.northM),inAtlas=v=>[dot(v,axes.right),dot(v,axes.up),dot(v,axes.axis)];
+    const tangent=q=>norm(q.map((v,i)=>v-dot(q,radial)*radial[i]));
+    const east=tangent(at(pose.eastM+1000,pose.northM)),north=tangent(at(pose.eastM,pose.northM+1000));
+    return {map,native:nativeSky,radiusKm:s.radius,radial:inAtlas(radial),east:inAtlas(east),north:inAtlas(north)};
+  }
   function canCrossSurface(source) {
     return !!current && current.frame.contentWindow===source && !current.pending && !opening && !flying && !current.leaving;
   }
-  async function crossSurface(source, payload) {
+  async function crossSurface(source, payload, geographicTarget=null) {
     const here=current, address=surfaceAddress();
-    if (!address || !canCrossSurface(source) ||
-        payload.edge !== address.edge.id || !['infinite-meadow','border-outfall'].includes(here.id)) return false;
-    const id=here.id==='infinite-meadow'?'border-outfall':'infinite-meadow';
+    if (!canCrossSurface(source))return false;
+    if(!geographicTarget && (!address || payload.edge!==address.edge.id || !['infinite-meadow','border-outfall'].includes(here.id)))return false;
+    const id=geographicTarget?.id??(here.id==='infinite-meadow'?'border-outfall':'infinite-meadow');
     const arrival={...structuredClone(payload), active:false};
     opening=true;
     parked=here;
     let destination;
-    const status=window.SphereTransitStatus.begin(library().entry(id).name,'Opening the adjoining ground.');
+    const status=window.SphereTransitStatus.crossing(library().entry(id).name,'Opening the adjoining ground.');
     try {
       here.shell.inert=true;here.shell.id='departingStageFrame';
       current=null;
@@ -1009,10 +1073,10 @@
     finally{opening=false;}
   }
   function groundAt(q,state) {
-    return walking.ownerAt(q,state,library().installed(),SphereAtlas,SphereWorld);
+    return walking.ownerAt(q,state,library().placed(),SphereAtlas,SphereWorld);
   }
   function station(point,state,owner=groundAt(point.q,state)) {
-    const color=owner.pack ? library().pack(owner.id)?.overview?.albedo : SphereWorld.sample(point.q,state).color;
+    const color=library().pack(owner.id)?.overview?.albedo ?? SphereWorld.sample(point.q,state).color;
     return {...point,id:owner.id,name:owner.name,pack:owner.pack,tint:color||[.35,.38,.36]};
   }
   function shellView(state,station) {
@@ -1030,8 +1094,9 @@
       : named ? {id:named.id,name:named.name,pack:true} : groundAt(point.q,core);
     if(!passage && (SphereMath.inBreach(point.q,core)||SphereCollection.missing(point.q,core)))return false;
     const id=owner.id, here=current, worldKey=lib.world.key;
+    const threshold=!!(passage || here?.frame.surfaceEntry?.passage);
     clearRecovery();
-    const status=window.SphereTransitStatus.begin(owner.name,'Preparing the adjoining ground.');
+    const status=window.SphereTransitStatus.crossing(owner.name,'Preparing the adjoining ground.');
     opening=true;let destination;
     try {
       await window.SphereTransitStatus.paint();
@@ -1049,7 +1114,11 @@
         if(ready.status!=='ready'||current!==destination)throw Error(ready.detail ||
           (ready.status==='timeout'?'The neighbouring scene took too long to draw its first frame.':'The crossing was interrupted.'));
         if(destination.frame.contentWindow.SphereBiome.pose().mode!=='walk')throw Error('The doorway is obstructed.');
-        destination.pending=false;destination.shell.style.opacity='1';destination.shell.style.pointerEvents='';
+        status.end();
+        if(threshold){destination.shell.style.transition='opacity 280ms ease-in-out';destination.shell.getBoundingClientRect();}
+        destination.shell.style.opacity='1';
+        if(threshold){await sleep(280);if(current!==destination || lib.world.key!==worldKey)throw Error('The crossing was interrupted.');}
+        destination.pending=false;destination.shell.style.pointerEvents='';
         destination.frame.contentWindow.focus();entry.active=true;cover(true);
         remember({schema:2,id,...(passage?{passage,pose}:{})});
       } else {
@@ -1060,7 +1129,13 @@
           return next;
         }});
         if(result.state!=='arrived' || !window.SphereApp.getState().walkMode)throw Error(result.error||'Could not reach walkable ground.');
-        cover(false);remember(null);document.getElementById('viewport').focus({preventScroll:true});
+        status.end();cover(false);
+        if(here && threshold){
+          window.SphereApp.draw();await window.SphereTransitStatus.paint();
+          here.shell.style.transition='opacity 280ms ease-in-out';here.shell.style.opacity='0';await sleep(280);
+          if(parked!==here || lib.world.key!==worldKey)throw Error('The crossing was interrupted.');
+        }
+        remember(null);document.getElementById('viewport').focus({preventScroll:true});
       }
       if(here)retire(here);
       parked=null;observedPlace=null;
@@ -1068,7 +1143,7 @@
       say('On foot in '+owner.name+'.');return true;
     } catch(error) {
       if(destination && current===destination){current=null;retire(destination);}
-      if(parked===here && here){current=here;here.shell.inert=false;here.shell.id='stageFrame';cover(true);window.addEventListener('resize',onResize);}
+      if(parked===here && here){current=here;here.shell.inert=false;here.shell.id='stageFrame';here.shell.style.opacity='1';cover(true);window.addEventListener('resize',onResize);}
       parked=null;say('Surface crossing paused. '+error.message);
       if(lib.world?.key===worldKey)borderFailure=window.SphereTransitStatus.begin('Surface crossing paused',error.message,[
         ['Retry crossing',()=>walkGround(point,passage,entryPose)],['Stay here',clearRecovery]
@@ -1077,11 +1152,11 @@
     } finally {status.end();opening=false;}
   }
   async function clearGate(gate,retry){
-    if(!['infinite-industry','sideways-city'].includes(gate.far.id))return gate;
+    if(!gate.far.pack || !['infinite-industry','sideways-city'].includes(gate.far.id))return gate;
     if(opening||flying)return null;
     const lib=library(),key=lib.world?.key,source=current;
     opening=true;clearRecovery();
-    const status=window.SphereTransitStatus.begin(gate.far.name,'Finding clear ground for the tunnel exit.');
+    const status=window.SphereTransitStatus.crossing(gate.far.name,'Finding clear ground for the tunnel exit.');
     try{
       await window.SphereTransitStatus.paint();
       const {surveyGate}=await import(new URL('portal-landing.js',base));
@@ -1120,6 +1195,8 @@
     }
     const near=groundAt(old,state),far=groundAt(q,state);
     if(near.id===far.id)return false;
+    const bank=SphereAtlas.waterwayAt(q,state);
+    if(bank?.bank && SphereAtlas.waterwayAt(old,state)?.id===bank.id)return false;
     // Locate the edge between the two footfalls; a long stride can enter off-centre.
     let a=0,b=1;
     for(let i=0;i<24;i++){
@@ -1160,12 +1237,14 @@
   function manualMovement(state,previousPosition){
     const lib=library();
     if(!geography || !lib?.world || current || flying || opening || !window.SphereLoading?.ready || window.SphereJourney?.travel.active)return;
-    if(state.walkMode && previousPosition && crossedOnFoot(state,previousPosition))return;
+    if(state.walkMode){if(previousPosition)crossedOnFoot(state,previousPosition);return;}
     const altitude=state.radius-Math.hypot(...state.position);
     if(altitude>geography.leaveKm){suppressedPlot=null;return;}
-    if(altitude<0 || altitude>geography.enterKm)return;
+    if(altitude<0)return;
+    const descending=previousPosition && Math.hypot(...state.position)>Math.hypot(...previousPosition);
     const target=geography.footprint(state,lib,SphereAtlas,SphereWorld);
     if(!target){suppressedPlot=null;return;}
+    if(altitude>geography.enterKm && !descending)return;
     if(target.id!==suppressedPlot)void enterRegion(target.id,state);
   }
   function observeDeparture(){
@@ -1177,19 +1256,35 @@
     if(previous?.id!==current.id || (pose.altitudeM===previous.pose.altitudeM && pose.eastM===previous.pose.eastM && pose.northM===previous.pose.northM))return;
     const lib=library(),item=lib.entry(current.id),s=window.SphereApp.getState();
     if(!item || !lib.matchesWorld(s))return;
+    if(current.frame.surfaceEntry?.passage)return;
+    const scene=sceneOf(item);
+    if(pose.mode==='flight' && !current.regional && optics && scene && pose.altitudeM>=optics.atmosphere(scene.atmosphere).nearM)enableRegional(current,scene);
     const climbed=pose.altitudeM>previous.pose.altitudeM && pose.altitudeM>=geography.leaveKm*1000;
-    // Outfall owns the apron and the Meadow handoff. Moving through its doorway
-    // or along the gallery must never trigger a second regional transfer.
-    // Level cruise has its own swept Meadow-to-Outfall handoff.
-    if(!climbed && (item.edge || inspect.levelCruising || pose.altitudeM>=geography.leaveKm*1000))return;
+    if(!climbed && (inspect.levelCruising || pose.altitudeM>=geography.leaveKm*1000))return;
+    if(!climbed && item.edge){
+      const home=SphereAtlas.byId(item.edge.near);
+      if(geography.onBorder(pose,home.halfWidth*s.radius*1000,2800))return;
+    }
     const worldPose=geography.mainPose(s,item,pose,SphereAtlas,SphereWorld);
+    const target=climbed?null:geography.footprint(worldPose,lib,SphereAtlas,SphereWorld);
+    if(!climbed && target?.id===item.id)return;
+    if(!climbed && (item.edge || target?.edge)){
+      if(pose.mode==='walk' && !target?.edge){
+        const q=norm(worldPose.position);
+        void walkGround(station({q,forward:worldPose.forward},s));return;
+      }
+      if(target){
+        const entry={geographic:true,pose:geography.packPose(worldPose,target,SphereAtlas,SphereWorld)};
+        void crossSurface(current.frame.contentWindow,entry,target);return;
+      }
+    }
     if(pose.mode==='walk' && previous.pose.mode==='walk'){
       const old=geography.mainPose(s,item,previous.pose,SphereAtlas,SphereWorld);
       if(crossedOnFoot({...worldPose,walkMode:true},old.position))return;
     }
-    if(!climbed){
-      const g=SphereWorld.coordinates(SphereMath.norm(worldPose.position),s);
-      if(SphereAtlas.plotAt(g.lat,g.lon)?.index===item.plot)return;
+    if(!climbed && target){
+      const entry={geographic:true,pose:geography.packPose(worldPose,target,SphereAtlas,SphereWorld)};
+      void crossSurface(current.frame.contentWindow,entry,target);return;
     }
     const id=item.id;
     close({silent:true});suppressedPlot=id;setFlightView(worldPose);
@@ -1200,7 +1295,7 @@
     const deadline = performance.now() + 300000;
     while (!library() && performance.now() < deadline) await sleep(200);
     await library()?.ready;
-    [geography,walking]=await Promise.all(['geographic-flight.js','surface-passages.js'].map(path=>import(new URL(path,base))));
+    [geography,walking,optics]=await Promise.all(['geographic-flight.js','surface-passages.js','packs/kit/atmosphere.js'].map(path=>import(new URL(path,base))));
     window.setInterval(observeDeparture,200);
     // A biome removed while its scene is open closes the scene.
     window.addEventListener('sphere-biome-world-leaving', () => {
@@ -1239,7 +1334,7 @@
     if(!geography || current || height<0 || height>Math.min(s.radius*.4,4000000) || !library()?.world)return '';
     const item=geography.footprint(s,library(),SphereAtlas,SphereWorld);
     return item?' · '+item.name+' below · '+(height>geography.enterKm?'descend below '+geography.enterKm+' km to enter':'fly into its landscape'):'';
-  }, surfaceAddress, servicePassage, canCrossSurface, crossSurface, walkGround, leavePassage,
+  }, regionalFrame, surfaceAddress, surfaceLight, surfaceBackdrop, servicePassage, canCrossSurface, crossSurface, walkGround, leavePassage,
     savePassage(source,pose){const passage=current?.frame.surfaceEntry?.passage;
       if(passage && current.frame.contentWindow===source && !current.pending && current.frame.surfaceEntry.active)
         remember({schema:2,id:'border-outfall',passage,pose});},

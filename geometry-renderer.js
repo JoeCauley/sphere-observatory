@@ -44,7 +44,9 @@ void main(){vec3 p=uOriginRelative+position.x*uMeshX+position.y*uMeshY+position.
 `;
 function terrainFragment(){
   const fragment=SphereShaders.geometryFragment||SphereShaders.fragment,sharedBase=fragment.slice(0,fragment.lastIndexOf('void main(){')).replace('in vec2 vUV;',''),shared=sharedBase+(sharedBase.includes('uniform int uMeadowMaterialRevision;')?'':'\nuniform int uMeadowMaterialRevision;vec3 meadowGroundLighting(vec3 radiance,vec3 delta,float direct,vec3 fill){return radiance;}\nvec3 meadowGroundNormal(vec3 n,vec3 delta){return n;}float meadowGroundSpec(vec3 delta,vec3 n,vec3 v,float direct){return 0.;}\n');
-  return shared+`
+  const atlas=window.SphereBiomeSurface && window.SphereAtlas;
+  const regionSource=shared.includes('vec3 installedBiomeMaterial(')?'':atlas?SphereBiomeSurface.glsl(atlas):'vec3 installedBiomeMaterial(vec3 c,vec3 q,float p,float d){return c;}';
+  return shared+regionSource+`
 in vec3 vRelative,vNormal,vAlbedo,vLocal,vLocalNormal;flat in float vMaterial,vEmission;
 uniform float uSiteLight,uDetailFeature,uPixelFocal,uGroundPatchRadius;uniform int uMaterialPlate,uStructureMaterial,uConnectedGround;uniform vec3 uMaterialOffset,uMaterialX,uMaterialY,uMaterialZ;uniform vec3 uSiteFill;
 vec3 fieldGround(int id,vec3 p,float footprint){vec3 col=WORLD_ALBEDO[id];float n=noise(p*35.)*.60+noise(p*110.)*.4;
@@ -69,7 +71,7 @@ void main(){float distanceKm=length(vRelative);if(uDetailFeature>0.){float cover
  float geographicBlend=uConnectedGround==1&&vMaterial>=0.&&vMaterial<10.?1.:0.;
  if(uGroundPatchRadius>0.&&vMaterial>=0.&&vMaterial<20.)geographicBlend=smoothstep(uGroundPatchRadius*.733333333,uGroundPatchRadius,max(abs(vLocal.x),abs(vLocal.z)));
  if(vMaterial== -5.){float broad=noise(vLocal*.018)*.7+noise(vLocal*.061)*.3,groves=noise(vLocal*.9)*.6+noise(vLocal*2.7)*.4;col*=mix(.60,1.75,smoothstep(.30,.76,broad))*(.75+.5*groves);geographicBlend=smoothstep(250.,319.5,max(abs(vLocal.x),abs(vLocal.z)));if(geographicBlend<=.001)geographicBlend=0.;}
- if(geographicBlend>0.){float footprint=max(length(dFdx(delta)),length(dFdy(delta)));col=mix(col,surfaceMaterial(q,delta,footprint,distanceKm),geographicBlend);}
+ if(geographicBlend>0.){float footprint=max(length(dFdx(delta)),length(dFdy(delta)));vec3 ground=surfaceMaterial(q,delta,footprint,distanceKm);col=mix(col,installedBiomeMaterial(ground,q,footprint/uRadius,distanceKm),geographicBlend);}
  if(vMaterial== -5.&&uPackEnabled==1){float footprint=max(length(dFdx(delta)),length(dFdy(delta)));col=packMaterial(col,delta,footprint);}
  if(vMaterial== -5.&&distanceKm<.12&&uPackEnabled==0){float footprint=max(length(dFdx(vLocal)),length(dFdy(vLocal)));col=mix(col,fieldGround(int(worldRegion(q).x),vLocal,footprint),1.-smoothstep(.05,.12,distanceKm));}
  if(vMaterial== -7.){float fw=max(length(dFdx(vLocal)),length(dFdy(vLocal))),radial=length(vLocal.xz);float joint=constructionRib(radial,.012,fw);col*=1.-joint*.12;col*=.94+.12*noise(vLocal*320.);}
@@ -91,6 +93,7 @@ void main(){float distanceKm=length(vRelative);if(uDetailFeature>0.){float cover
  float micro=noise(vLocal*400.)*.6+noise(vLocal*1700.)*.4,footprint=max(length(dFdx(vLocal)),length(dFdy(vLocal)));if(uStructureMaterial==0)col*=mix(1.,.90+.20*micro,1.-smoothstep(.001,.005,footprint));
  if(uMeadowMaterialRevision>=2&&(vMaterial== -5.||(vMaterial>=0.&&vMaterial<10.)))n=meadowGroundNormal(n,delta);
  vec3 light=-q;float cosine=max(0.,dot(n,light)),shadow=structureShadow(vRelative,n);vec3 view=-normalize(vRelative),halfway=normalize(light+view);float spec=pow(max(0.,dot(n,halfway)),32.)*.018;if(uPackEnabled==1&&(vMaterial== -5.||(vMaterial>=0.&&vMaterial<10.)))spec=0.;
+ if(vMaterial== -8.){float rim=pow(1.-max(0.,dot(n,view)),3.);spec=pow(max(0.,dot(n,halfway)),60.)*.65+rim*.055;}
  vec3 radiance=col*(uSiteFill*(.45+.55*max(0.,dot(n,-uN)))+uSiteLight*uLuminosity/max(.01,dot(camera()+vRelative/uRadius,camera()+vRelative/uRadius))*cosine*shadow)+vec3(spec*uSiteLight*shadow)+col*vEmission;
  if(uMeadowMaterialRevision>=2&&(vMaterial== -5.||(vMaterial>=0.&&vMaterial<10.))){radiance=meadowGroundLighting(radiance,delta,uSiteLight*uLuminosity/max(.01,dot(camera()+vRelative/uRadius,camera()+vRelative/uRadius))*cosine*shadow,uSiteFill*(.45+.55*max(0.,dot(n,-uN))));radiance+=vec3(meadowGroundSpec(delta,n,view,uSiteLight*uLuminosity*shadow));}
  if(vMaterial== -6.&&(uPackEnabled==0||distanceKm<20.)){float fresnel=pow(1.-max(0.,dot(n,view)),5.);float ripple=noise(vLocal*18.)*.6+noise(vLocal*57.)*.4;vec3 reflected=mix(vec3(.11,.19,.19),uSiteFill*2.,.45);radiance=mix(radiance,reflected,.18+.65*fresnel)+vec3(pow(max(0.,dot(n,halfway)),180.)*.16*uSiteLight*shadow)*( .65+.35*ripple);}
@@ -132,15 +135,18 @@ class GeometryRenderer{
   SphereCollection.upload(gl,u,s,[0,0,0]); // Mesh lighting uses uSiteLight/uSiteFill below.
   gl.uniform3fv(u['uAnchor[0]'],[1000000,100000,10000,1000,100,10,1,.1,.01,.001].flatMap(scale=>n.map(x=>((x*s.radius/scale)%256+256)%256)));v('uHeroAnchor',SphereBiomes.heroAnchors(n,s.radius));gl.uniform3fv(u['uBiomeAnchor[0]'],SphereBiomes.anchors(n,s.radius));renderer.biomes?.bindFrame(u);renderer.heroes?.bindFrame(u);renderer.worldTextures?.bind(u);SphereWorld.upload(gl,u,s);
   renderer.woundTextures?.bind(u,true);renderer.finishes.bind(u,s);renderer.localShadows.bind(u,s);renderer.meadowGround?.bind(u,s);
+  if(u.uInstalledBiomes)gl.uniform1i(u.uInstalledBiomes,5);
   const lights=new Map(),lightSources=new Map(),lightKeys=new Map();
   // Keep each shared Wound/Shade sample at its original resident origin even
   // when that first section is outside the camera. Culling cannot move light.
   for(const mesh of groups){const point=M.add(mesh.origin,M.mul(mesh.basis[1],.01)),key=mesh.plate?'shade-'+mesh.plate.id:mesh.name.startsWith('Wound')?'rim':point.join(',');lightKeys.set(mesh,key);if(!lightSources.has(key))lightSources.set(key,point);}
-  let triangles=0,drawn=0;for(const mesh of groups){if(this.culling!==false&&!visible(mesh,s,b,width/height))continue;drawn++;const buffer=this.upload(mesh);gl.bindVertexArray(buffer.vao);gl.uniform3fv(u.uOriginRelative,M.sub(mesh.origin,s.position));gl.uniform3fv(u.uMeshX,mesh.basis[0]);gl.uniform3fv(u.uMeshY,mesh.basis[1]);gl.uniform3fv(u.uMeshZ,mesh.basis[2]);gl.uniform1i(u.uStructureMaterial,mesh.plate||mesh.name.startsWith('Wound')?1:0);
+  let triangles=0,drawn=0;
+  const drawGroups=()=>{for(const mesh of groups){if(this.culling!==false&&!visible(mesh,s,b,width/height))continue;drawn++;const buffer=this.upload(mesh);gl.bindVertexArray(buffer.vao);gl.uniform3fv(u.uOriginRelative,M.sub(mesh.origin,s.position));gl.uniform3fv(u.uMeshX,mesh.basis[0]);gl.uniform3fv(u.uMeshY,mesh.basis[1]);gl.uniform3fv(u.uMeshZ,mesh.basis[2]);gl.uniform1i(u.uStructureMaterial,mesh.plate||mesh.name.startsWith('Wound')?1:0);
    const lightKey=lightKeys.get(mesh);
    if(!lights.has(lightKey))lights.set(lightKey,SphereCollection.visibility(lightSources.get(lightKey),s,s.stationSamples||64,mesh.plate?.id??-1));const direct=lights.get(lightKey);
    gl.uniform1i(u.uConnectedGround,mesh.chunk?1:0);gl.uniform1f(u.uGroundPatchRadius,mesh.ground&&!mesh.chunk?SphereSites.SITE_RADIUS:0);gl.uniform1f(u.uDetailFeature,mesh.detailFeature||0);gl.uniform1f(u.uPixelFocal,SphereEdges.focal(s));const materialFrame=mesh.materialFrame||(mesh.plate?[mesh.plate.right,mesh.plate.normal,mesh.plate.up]:mesh.basis);gl.uniform3fv(u.uMaterialOffset,materialFrame.map(b=>((M.dot(s.position,b)%76.8)+76.8)%76.8));gl.uniform3fv(u.uMaterialX,materialFrame[0]);gl.uniform3fv(u.uMaterialY,materialFrame[1]);gl.uniform3fv(u.uMaterialZ,materialFrame[2]);gl.uniform1i(u.uMaterialPlate,mesh.plate?SphereCollection.plates(s).findIndex(p=>p.id===mesh.plate.id):-1);
-   gl.uniform1f(u.uSiteLight,direct);gl.uniform3fv(u.uSiteFill,renderer.frameFill.map(v=>v*(s.siteId.startsWith('exterior-')?.375:1)));gl.drawArrays(gl.TRIANGLES,0,mesh.count);triangles+=mesh.count/3;}
+   gl.uniform1f(u.uSiteLight,direct);gl.uniform3fv(u.uSiteFill,renderer.frameFill.map(v=>v*(s.siteId.startsWith('exterior-')?.375:1)));gl.drawArrays(gl.TRIANGLES,0,mesh.count);triangles+=mesh.count/3;}};
+  if(u.uInstalledBiomes && renderer.biomeOverview?.programFor(s))renderer.biomeOverview.withFrame(s,u,drawGroups);else drawGroups();
   gl.bindVertexArray(null);gl.activeTexture(gl.TEXTURE0);renderer.renderInfo.geometry={groups:drawn,residentGroups:groups.length,culledGroups:groups.length-drawn,lightSamples:lights.size,triangles,localShadow:renderer.localShadows.quality>0,materials:s.richMaterials!==false&&groups.some(m=>m.plate||m.name.startsWith('Wound'))?'roughness / metalness / normal':'simple'};
  }
  dispose(){const gl=this.gl;for(const b of this.meshes.values()){gl.deleteVertexArray(b.vao);gl.deleteBuffer(b.buffer);}gl.deleteProgram(this.main.p);}

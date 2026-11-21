@@ -72,8 +72,8 @@
   "assets": [
     {
       "path": "app.js",
-      "bytes": 25747,
-      "sha256": "b01e60e5a34be7448b98cc9469055e75c160a00dc44aaf36d506185063ab4464"
+      "bytes": 25782,
+      "sha256": "90f86ec7e856c181bf61d7540591ec0cc787a8e2567a989c98d05b815471b270"
     },
     {
       "path": "ascent.js",
@@ -249,13 +249,18 @@
     },
     {
       "path": "../../kit/veil.js",
-      "bytes": 3696,
-      "sha256": "4c7fb4427d695ea4791ca2567c610a433cf4bf47672fa0327593c4cc44861ddb"
+      "bytes": 1132,
+      "sha256": "beac2c93466951ec6004979586a8a8c7fa9549b93b6d6473a6569f95b34e53b1"
     },
     {
       "path": "../../kit/flight.js",
-      "bytes": 2538,
-      "sha256": "0641ba80ed17bef2d1565a39aabba5d227f500f0e90cce6fad921947275b721b"
+      "bytes": 2588,
+      "sha256": "88f8525f2f78ae345d46d332168bd0d7ce9f4123733d4afed07a58acc448112e"
+    },
+    {
+      "path": "../../kit/atmosphere.js",
+      "bytes": 3990,
+      "sha256": "944aaf2c5ae70d60bc16743feb4ac954304278a5e097f5d9e37c643a196db7eb"
     }
   ],
   "limits": [

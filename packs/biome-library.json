@@ -8,6 +8,7 @@
   "packs": [
     {
       "id": "infinite-meadow",
+      "atmosphere": "meadow-mist",
       "name": "Infinite Meadow",
       "version": "1.3.0",
       "description": "Rolling hills and tall grass in the wind, beneath a shade track. This version flies in and out through its own Duck Blind.",
@@ -37,6 +38,7 @@
     },
     {
       "id": "infinite-industry",
+      "atmosphere": "works-vapour",
       "name": "Infinite Industry",
       "version": "1.4.1",
       "description": "Pods of factories in open light outside the shade tracks: seven hexes each, hot, cold or ambient, making liquids or solids at their own scale. The water works is the core of the home pod.",
@@ -44,6 +46,7 @@
       "saveKey": "sphere-pack:infinite-industry:1.4.1",
       "placement": {
         "relation": "outside",
+        "footprint": {"shape":"rectangle","east":1,"north":0.76},
         "prefer": "Air and water works"
       },
       "overview": {
@@ -63,6 +66,7 @@
     },
     {
       "id": "sideways-city",
+      "atmosphere": "city-thin",
       "name": "The Sideways City",
       "version": "1.0.0",
       "description": "A city without end, built for people fifty feet across who walk sideways. Nobody is home.",
@@ -70,7 +74,8 @@
       "saveKey": "sphere-biome:sideways-city:1.0.0",
       "contract": "sphere-biome/1",
       "placement": {
-        "relation": "within"
+        "relation": "within",
+        "footprint": {"shape":"ellipse","east":0.72,"north":0.55}
       },
       "overview": {
         "albedo": [
@@ -88,6 +93,7 @@
     },
     {
       "id": "border-outfall",
+      "atmosphere": "outfall-salt",
       "name": "The Outfall",
       "version": "1.0.0",
       "description": "A dry strip in the wet grass leads to a service gallery in the Border. Its bypass still drains the channel. Installs with Meadow.",

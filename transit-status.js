@@ -25,6 +25,7 @@
     const item = [...owners].at(-1);
     panel.hidden = !item;
     if (!item) { actions.replaceChildren(); return; }
+    panel.classList.toggle('crossing-status',item.compact);
     if (title.textContent !== item.title) title.textContent = item.title;
     if (phase.textContent !== item.phase) phase.textContent = item.phase;
     progress.hidden = !!item.finished;
@@ -38,17 +39,24 @@
     }
   }
   let serial=0;
-  function begin(title,phase,buttons=[],finished=false) {
-    const item={title,phase,buttons,finished,number:++serial};
+  function begin(title,phase,buttons=[],finished=false,compact=false) {
+    const item={title,phase,buttons,finished,compact,number:++serial};
     owners.add(item);draw();positionPanel();
     return {update(phase,ready,total){Object.assign(item,{phase,ready,total});draw();},end(){owners.delete(item);draw();}};
+  }
+  // A ready neighbouring floor can arrive in one or two frames. Keep the
+  // current scene visible and show progress if the preparation outlasts it.
+  function crossing(title,phase,buttons=[]){
+    let active,progress;
+    const timer=setTimeout(()=>{active=begin(title,phase,buttons,false,true);if(progress)active.update(...progress);},450);
+    return {end(){clearTimeout(timer);active?.end();},update(...args){progress=args;active?.update(...args);}};
   }
   let trip,request;
   window.addEventListener('sphere-travel-status',({detail:s})=>{
     if (s.state==='preparing') {
       if (!trip || request!==s.id) {
         trip?.end();request=s.id;
-        trip=begin(s.title||'Preparing your destination',s.phase,s.stageTrip?[]:[['Cancel trip',()=>window.SphereJourney.travel.cancel()]]);
+        trip=(s.stageTrip?crossing:begin)(s.title||'Preparing your destination',s.phase,s.stageTrip?[]:[['Cancel trip',()=>window.SphereJourney.travel.cancel()]]);
       }
       trip.update(s.phase,s.ready,s.total);
     } else {
@@ -61,5 +69,5 @@
     }
   });
   window.addEventListener('sphere-biome-world-leaving',()=>{trip?.end();trip=null;});
-  window.SphereTransitStatus={begin,paint:()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))};
+  window.SphereTransitStatus={begin,crossing,paint:()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))};
 })();

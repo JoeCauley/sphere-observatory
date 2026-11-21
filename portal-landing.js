@@ -10,6 +10,7 @@ let industry;
 export function canStand(q,id,state,items,{atlas,world},marginM=0){
   if(id!=='sideways-city' && id!=='infinite-industry')return true;
   const item=items.find(item=>item.id===id),plot=item && atlas.byId(item.plotId);
+  if(item?.detailInstalled===false)return true;
   if(!plot)return false;
   const coord=world.coordinates(q,state),at=project(plot,coord.lat,coord.lon,state.radius*1000);
   function open(e,n){

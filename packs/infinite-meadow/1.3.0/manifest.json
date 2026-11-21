@@ -77,7 +77,7 @@
   "budgets": {
     "residentInstances": 1,
     "gpuBufferBytes": 8388608,
-    "gpuTextureBytes": 0,
+    "gpuTextureBytes": 100352,
     "stageCells": 81,
     "sourceBytes": 2097152
   },
@@ -85,8 +85,13 @@
   "assets": [
     {
       "path": "app.js",
-      "bytes": 44105,
-      "sha256": "fa8fef29a75e4895a0fb3db2abc2e649dfcaf31bc59ad490e80e75fda85a5e51"
+      "bytes": 44562,
+      "sha256": "5b54d39452fe1ecd2cf827ce363ae1eefcc3be7d2388c36761cefe4a2dc8fa1b"
+    },
+    {
+      "path": "atlas-lease.js",
+      "bytes": 1986,
+      "sha256": "852e214dceb53bb6ee9a942f0ffe9e675289fd43e2cf0c3a2467b334fee1b32b"
     },
     {
       "path": "coordinates.js",
@@ -95,8 +100,8 @@
     },
     {
       "path": "entry.js",
-      "bytes": 1116,
-      "sha256": "cdcb56527dc3b02f1a0adae24fce7c2076341d26d697ec2e396fb82c0638bc31"
+      "bytes": 1121,
+      "sha256": "f31de7f177fcd6835ff27e4eb23af18a09e9736ac349a1333f47e1cee3b7848d"
     },
     {
       "path": "grass-allocation.js",
@@ -150,8 +155,8 @@
     },
     {
       "path": "model.js",
-      "bytes": 18066,
-      "sha256": "f2b152d83f026d154154ec4891e4d21b636804a4a3760b96866503644360770f"
+      "bytes": 18089,
+      "sha256": "a38331ba4060c82d837d96d23294e704b4466ebc3533555c77cf8d803fe95123"
     },
     {
       "path": "pack.css",
@@ -165,8 +170,8 @@
     },
     {
       "path": "renderer.js",
-      "bytes": 29718,
-      "sha256": "45c93d8d14fedd0b0f444d4e7776b5d88e325d7e8a771393bcb58c461c14f86b"
+      "bytes": 32480,
+      "sha256": "6a4d1c8995b12c0a954e83bcb7160cfaa3f5916b465fd3b256b00c1910d42e74"
     },
     {
       "path": "style.css",
@@ -195,29 +200,39 @@
   ],
   "dependencies": [
     {
+      "path": "../../kit/atmosphere.js",
+      "bytes": 3990,
+      "sha256": "944aaf2c5ae70d60bc16743feb4ac954304278a5e097f5d9e37c643a196db7eb"
+    },
+    {
       "path": "../../kit/veil.js",
-      "bytes": 3696,
-      "sha256": "4c7fb4427d695ea4791ca2567c610a433cf4bf47672fa0327593c4cc44861ddb"
+      "bytes": 1132,
+      "sha256": "beac2c93466951ec6004979586a8a8c7fa9549b93b6d6473a6569f95b34e53b1"
     },
     {
       "path": "../../kit/flight.js",
-      "bytes": 2538,
-      "sha256": "0641ba80ed17bef2d1565a39aabba5d227f500f0e90cce6fad921947275b721b"
+      "bytes": 2588,
+      "sha256": "88f8525f2f78ae345d46d332168bd0d7ce9f4123733d4afed07a58acc448112e"
+    },
+    {
+      "path": "../../kit/border-profile.js",
+      "bytes": 854,
+      "sha256": "0f79f59fa07ab2687a8e1731fed39a33cbd6dd7f27c0a94fffc398343da3f18e"
     },
     {
       "path": "../../kit/surface-route.js",
-      "bytes": 2890,
-      "sha256": "3625e2a17240382017d5e8fe8bdb6013d385c96e83301ba304fed310aa0d4f2e"
+      "bytes": 3053,
+      "sha256": "259747d8057c7d4f9b786a63df7fc0bd747fd3eccfece41720d8ac5499f2e22d"
     },
     {
       "path": "../../kit/meadow-border.js",
-      "bytes": 476,
-      "sha256": "25b8199e58f92e776b3f3c997e550a1687a585c76b547deded72bd956907ca6e"
+      "bytes": 584,
+      "sha256": "0e6d0f7efc9e0215067aebb5e674b59f04fc381b46eb7e4d5a39f2ef169176f2"
     },
     {
       "path": "../../border-outfall/1.0.0/render.js",
-      "bytes": 9682,
-      "sha256": "07ab8dd1f8dfb18d5c0e64cfef8b9e3c0fbb18fdcbf0f8e1dab55b4899946cba"
+      "bytes": 10415,
+      "sha256": "7baa30296cde380801e27d274bb49832bfcf8ac1442db67fbee257f5d07e4454"
     },
     {
       "path": "../../border-outfall/1.0.0/geometry.js",
@@ -226,8 +241,8 @@
     },
     {
       "path": "../../border-outfall/1.0.0/border.js",
-      "bytes": 5256,
-      "sha256": "12de04307a2d5bfbd8d27cfd8c54202d40e452d25ca243ca40c595b5a2cce79a"
+      "bytes": 5346,
+      "sha256": "bb8b3ccea635ed47ddc0d5728d59872a5a58f5ae97e5b0b8a5860d51a5398dac"
     },
     {
       "path": "../../border-outfall/1.0.0/model.js",
@@ -236,8 +251,8 @@
     },
     {
       "path": "../../border-outfall/1.0.0/shell-mesh.js",
-      "bytes": 2195,
-      "sha256": "a46ac53044f047003d6a5d55ff8132728cb5f0b75feb88b426d0b021a20dbd09"
+      "bytes": 3334,
+      "sha256": "5e81765f147f6dbe71d7144be90f0c60bb4cafd714f28f8ea9eddb16b0620559"
     }
   ]
 }

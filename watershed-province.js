@@ -36,12 +36,13 @@ function model(seed=713){
   // segment normals leave triangular dry wedges between otherwise joined rivers.
   const banks=p.map((v,j)=>{const a=p[Math.max(0,j-1)],b=p[Math.min(p.length-1,j+1)],dx=b[0]-a[0],dz=b[1]-a[1],len=Math.hypot(dx,dz)||1,edge=p[Math.min(p.length-1,j+1)],ex=edge[0]-v[0],ez=edge[1]-v[1],el=Math.hypot(ex,ez)||1,miter=j===p.length-1?1:Math.min(1.8,1/Math.max(.55,(dx*ex+dz*ez)/len/el)),r=width*miter;return [[v[0]-dz/len*r,v[1]+dx/len*r],[v[0]+dz/len*r,v[1]-dx/len*r]];});
   for(const v of [p[0],p.at(-1)]){const key=v.join(':');if(!caps.has(key)||caps.get(key).width<width)caps.set(key,{point:v,width});}
-  for(let j=1;j<p.length;j++){const a=p[j-1],b=p[j],length=Math.hypot(b[0]-a[0],b[1]-a[1]);if(length<1e-8)continue;const seg={a,b,banks:[...banks[j-1],...banks[j]],width,flow:path.flow,length};segments.push(seg);
+  const reachId=['watershed',seed,'river',p[0].join(','),p.at(-1).join(',')].join('/');
+  for(let j=1;j<p.length;j++){const a=p[j-1],b=p[j],length=Math.hypot(b[0]-a[0],b[1]-a[1]);if(length<1e-8)continue;const seg={a,b,reachId,banks:[...banks[j-1],...banks[j]],width,flow:path.flow,length};segments.push(seg);
    for(let z=Math.floor((Math.min(a[1],b[1])-width)/16);z<=Math.floor((Math.max(a[1],b[1])+width)/16);z++)for(let x=Math.floor((Math.min(a[0],b[0])-width)/16);x<=Math.floor((Math.max(a[0],b[0])+width)/16);x++){const key=x+':'+z;if(!buckets.has(key))buckets.set(key,[]);buckets.get(key).push(seg);}
   }
  }
  function water(x,z){let distance=Infinity,river=null;for(const seg of buckets.get(Math.floor(x/16)+':'+Math.floor(z/16))||[]){const dx=seg.b[0]-seg.a[0],dz=seg.b[1]-seg.a[1],t=M.clamp(((x-seg.a[0])*dx+(z-seg.a[1])*dz)/(seg.length*seg.length),0,1),d=Math.hypot(x-seg.a[0]-t*dx,z-seg.a[1]-t*dz)-seg.width;if(d<distance){distance=d;river=seg;}}
-  return {river:distance<=0,basin:level(x,z)-height(x,z)>.006,distance,flow:river?.flow||0};
+  return {river:distance<=0,basin:level(x,z)-height(x,z)>.006,distance,flow:river?.flow||0,reachId:river?.reachId??null,halfWidthKm:river?.width??0};
  }
  const stations=[];
  for(const source of graph.sites){const x=source.u*EXTENT-320,z=source.v*EXTENT-320;let nearest=null,distance=Infinity;for(const seg of segments){const d=Math.hypot(seg.a[0]-x,seg.a[1]-z);if(d<distance&&Math.max(...seg.a.map(Math.abs))<260){distance=d;nearest=seg;}}if(!nearest)continue;

@@ -18,7 +18,7 @@ precision highp float;
 in vec2 screen;out vec4 frag;
 uniform vec3 uRight,uUp,uForward,uEast,uNorth,uRadial;
 uniform vec2 uResolution,uArc;uniform vec4 uBorder;
-uniform float uAltitude,uReveal,uDaylight,uInteriorLight;
+uniform float uAltitude,uReveal,uDaylight,uInteriorLight,uDirect;
 const float R=149597870700.,S=695700000.;
 float hash(vec3 p){p=fract(p*.1031);p+=dot(p,p.yzx+33.33);return fract((p.x+p.y)*p.z);}
 float noise(vec3 p){vec3 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);
@@ -47,12 +47,13 @@ vec3 world(vec3 q){
  col=mix(col,vec3(.34,.29,.14),lines*.22);
  return col;
 }
+/* hosted surface */
 void main(){
  vec3 ray=normalize(uForward+uRight*screen.x*(uResolution.x/uResolution.y)*.70020754+uUp*screen.y*.70020754);
- float h=max(.001,uAltitude),a=h/R,m=(1.-a)*ray.y,d=sqrt(m*m+a*(2.-a));
- float t=m<0.?h*(2.-a)/(d-m):R*(d+m);
- vec3 q=normalize(uRadial*(1.-a)+(uEast*ray.x-uRadial*ray.y+uNorth*ray.z)*(t/R));
- vec3 actual=world(q)*(.025+.975*uInteriorLight);
+ float radius=skyRadius(),h=max(.001,uAltitude),a=h/radius,m=(1.-a)*ray.y,d=sqrt(m*m+a*(2.-a));
+ float t=m<0.?h*(2.-a)/(d-m):radius*(d+m);
+ vec3 q=normalize(uRadial*(1.-a)+(uEast*ray.x-uRadial*ray.y+uNorth*ray.z)*(t/radius));
+ vec3 actual=regionalGround(q,t)*(.025+.975*uInteriorLight);
  vec2 ground=uArc+ray.xz*min(t,100000.);
  float footprint=max(length(dFdx(ground)),length(dFdy(ground)));
  float tex=mix(.5+.18*sin(ground.x*.18)*sin(ground.y*.21),.5,smoothstep(4.,15.,footprint));
@@ -94,17 +95,17 @@ void main(){
  // The installed border face rises through the haze on its real bearing.
  float toward=dot(ray.xz,uBorder.xy);
  if(uBorder.z>0. && toward>.00001){
-   float distanceM=uBorder.z/toward,y=uBorder.w+ray.y*distanceM;
+   float distanceM=uBorder.z/toward,y=uBorder.w+ray.y*distanceM-dot(ray.xz,ray.xz)*distanceM*distanceM/(2.*radius);
    float aa=max(.35,fwidth(y)),wall=smoothstep(-aa,aa,y)*(1.-smoothstep(1400.-aa,1400.+aa,y));
    vec3 concrete=mix(vec3(.12,.16,.15),vec3(.34,.40,.37),1.-exp(-distanceM/7000.));
-   col=mix(col,concrete*mix(.10,1.,daylight),wall*(1.-smoothstep(18000.,110000.,distanceM)));
+   col=mix(col,concrete*mix(.10,1.,daylight),wall*(1.-smoothstep(9500.,38000.,distanceM)));
  }
  // Actual central-star angle, with a separate restrained glare halo.
- float angle2=1.-ray.y*ray.y,star2=pow(S/(R-h),2.);
+ float angle2=1.-ray.y*ray.y,star2=pow(S/(radius-h),2.);
  if(ray.y>0.){float edge=max(fwidth(angle2),.0000001);
  float disk=1.-smoothstep(star2-edge,star2+edge,angle2);
  float halo=exp(-angle2/max(star2*9.,.00001))*.10;
- col=mix(col,vec3(1.,.94,.74),disk*uReveal)+vec3(.9,.75,.42)*halo*uReveal;}
+ col=mix(col,vec3(1.,.94,.74),disk*uReveal*uDirect)+vec3(.9,.75,.42)*halo*uReveal*uDirect;}
  frag=vec4(pow(max(col,vec3(0.)),vec3(1./2.2)),1.);
 }`;
 
@@ -192,10 +193,20 @@ function geom(){
   return {tri,quad,box,data:()=>new Float32Array(a)};
 }
 export class Renderer {
-  constructor(canvas){
+  constructor(canvas,{atlasShader='',backdrop=null}={}){
+    this.backdrop=backdrop;
+    const regional=atlasShader ? atlasShader+`
+uniform sampler2D uNativeGround;
+float skyRadius(){return uInstalledBiomesOn==1?uAtlasRadiusKm*1000.:R;}
+vec3 regionalGround(vec3 q,float t){
+ if(uInstalledBiomesOn==0)return world(q);
+ vec2 uv=vec2(atan(q.y,q.x)/6.283185307+.5,asin(clamp(q.z,-1.,1.))/3.141592654+.5);
+ vec3 nativeColor=texture(uNativeGround,uv).rgb;
+ return installedBiomeMaterial(nativeColor,q,max(length(dFdx(q)),length(dFdy(q))),t*.001);
+}` : 'float skyRadius(){return R;}vec3 regionalGround(vec3 q,float t){return world(q);}';
     this.canvas=canvas;const gl=canvas.getContext('webgl2',{alpha:false,antialias:true,powerPreference:'high-performance',preserveDrawingBuffer:true});if(!gl)throw Error('WebGL2 unavailable');this.gl=gl;
     const shaders=canopyShaders();
-    this.screen=compile(gl,VS_SCREEN,FS_SCREEN);this.mesh=compile(gl,VS_MESH,FS_MESH);this.grass=compile(gl,shaders.nearVS,shaders.nearFS);this.grassbox=compile(gl,shaders.boxVS,shaders.boxFS);this.terrainProgram=compile(gl,VS_TERRAIN,FS_MESH);this.uniforms=new Map;
+    this.screen=compile(gl,VS_SCREEN,FS_SCREEN.replace('/* hosted surface */',regional));this.mesh=compile(gl,VS_MESH,FS_MESH);this.grass=compile(gl,shaders.nearVS,shaders.nearFS);this.grassbox=compile(gl,shaders.boxVS,shaders.boxFS);this.terrainProgram=compile(gl,VS_TERRAIN,FS_MESH);this.uniforms=new Map;
     const ground=geom();
     for(let level=0;level<TERRAIN_GRID.levels;level++){const pitch=TERRAIN_GRID.basePitch*2**level;
       for(let z=-24;z<24;z++)for(let x=-24;x<24;x++){if(level>0&&x>=-12&&x<12&&z>=-12&&z<12)continue;
@@ -252,11 +263,35 @@ export class Renderer {
   }
   dispose(){
     const gl=this.gl;
+    for(const slot of [this.nativeTexture,this.placedTexture])if(slot)gl.deleteTexture(slot.texture);
     for(const mesh of [this.terrainMesh,this.landmarkMesh,this.latticeMesh,this.beltMesh]){gl.deleteBuffer(mesh.buffer);gl.deleteVertexArray(mesh.vao);}
     for(const buffer of [this.bladeBuffer,this.outerBuffer])gl.deleteBuffer(buffer);
     for(const vao of [this.grassVAO,this.outerVAO])gl.deleteVertexArray(vao);
     for(const program of [this.screen,this.mesh,this.grass,this.grassbox,this.terrainProgram])gl.deleteProgram(program);
     for(const item of this.queries)gl.deleteQuery(item.query);this.queries.length=0;
+  }
+  bindBackdrop(view){
+    if(!this.backdrop)return;
+    const gl=this.gl,uniform=(key,type,value)=>this.uniform(this.screen,key,type,value);
+    uniform('uInstalledBiomesOn','int',view?1:0);
+    if(!view)return;
+    const bind=(key,unit,source,stamp,float)=>{
+      gl.activeTexture(gl.TEXTURE0+unit);
+      const slot=this[key]??={texture:gl.createTexture()};
+      gl.bindTexture(gl.TEXTURE_2D,slot.texture);
+      if(slot.stamp!==stamp){
+        const filter=float?gl.NEAREST:gl.LINEAR;
+        gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,filter);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,filter);
+        gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,float?gl.CLAMP_TO_EDGE:gl.REPEAT);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);
+        gl.texImage2D(gl.TEXTURE_2D,0,float?gl.RGBA32F:gl.RGBA8,source.width,source.height,0,gl.RGBA,float?gl.FLOAT:gl.UNSIGNED_BYTE,source.data);
+        slot.stamp=stamp;
+      }
+    };
+    bind('placedTexture',0,view.map,view.map.revision,true);bind('nativeTexture',1,view.native,view.native.key,false);
+    gl.activeTexture(gl.TEXTURE0);uniform('uInstalledBiomes','int',0);uniform('uNativeGround','int',1);
+    uniform('uAtlasRight',3,[1,0,0]);uniform('uAtlasUp',3,[0,1,0]);uniform('uAtlasAxis',3,[0,0,1]);uniform('uAtlasRadiusKm',1,view.radiusKm);
+    uniform('uBorderChart',4,view.map.borderChart);uniform('uBorderSurvey',4,view.map.borderSurvey);
+    this.textureBytes=view.map.data.byteLength+view.native.data.byteLength;this.info.ownedGpuTextureBytes=this.textureBytes;
   }
   location(program,key){const gl=this.gl,id=program===this.screen?'s':program===this.mesh?'m':program===this.terrainProgram?'t':program===this.grassbox?'b':'g';let location=this.uniforms.get(id+key);if(location===undefined){location=gl.getUniformLocation(program,key);this.uniforms.set(id+key,location);}return location;}
   uniform(program,key,type,value){const gl=this.gl,location=this.location(program,key);if(type==='int')gl.uniform1i(location,value);else if(type==='uint2')gl.uniform2uiv(location,value);else if(type===1)gl.uniform1f(location,value);else if(type===2)gl.uniform2fv(location,value);else if(type===4)gl.uniform4fv(location,value);else gl.uniform3fv(location,value);}
@@ -279,11 +314,15 @@ export class Renderer {
     terrainGridOffsets(p.eastM,p.northM,this.terrainGridOffsets);
     if(residency.version!==this.version)this.upload(residency);
     let query=null;if(this.ext&&timing&&this.queries.length<8){query=gl.createQuery();gl.beginQuery(this.ext.TIME_ELAPSED_EXT,query);}
-    const {reveal,interiorDaylight}=sceneLight(state);
+    const incoming=this.lightAt?.(p);
+    const {reveal,canopyDaylight,interiorDaylight}=sceneLight(state,incoming?.direct??1);
+    this.light={time:incoming?.time??null,direct:incoming?.direct??1,canopyDaylight,interiorDaylight};
     gl.viewport(0,0,this.canvas.width,this.canvas.height);gl.disable(gl.DEPTH_TEST);gl.disable(gl.BLEND);gl.disable(gl.DITHER);gl.depthMask(true);gl.clearColor(0,0,0,1);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);this.common(this.screen,p);
-    const f=poseFrame(p);for(const [key,value] of [['uEast',f.east],['uNorth',f.north],['uRadial',f.radial]])this.uniform(this.screen,key,3,value);
+    const view=this.backdrop?.(p);this.bindBackdrop(view);
+    this.uniform(this.screen,'uDirect',1,incoming?.direct??1);
+    const f=view??poseFrame(p);for(const [key,value] of [['uEast',f.east],['uNorth',f.north],['uRadial',f.radial]])this.uniform(this.screen,key,3,value);
     this.uniform(this.screen,'uBorder',4,this.borderView||[0,0,0,0]);this.uniform(this.screen,'uResolution',2,[this.canvas.width,this.canvas.height]);this.uniform(this.screen,'uArc',2,[p.eastM,p.northM]);
-    for(const [key,value] of [['uAltitude',p.altitudeM],['uReveal',reveal],['uDaylight',state.daylight],['uInteriorLight',interiorDaylight]])this.uniform(this.screen,key,1,value);
+    for(const [key,value] of [['uAltitude',p.altitudeM],['uReveal',reveal],['uDaylight',canopyDaylight],['uInteriorLight',interiorDaylight]])this.uniform(this.screen,key,1,value);
     gl.bindVertexArray(null);gl.drawArrays(gl.TRIANGLES,0,3);
     let calls=1,triangles=1;gl.enable(gl.DEPTH_TEST);this.common(this.mesh,p);
     if(reveal>.001){
