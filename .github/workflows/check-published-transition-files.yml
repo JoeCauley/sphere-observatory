@@ -1,0 +1,72 @@
+name: Verify and publish the transition survey
+on:
+  push:
+    branches: [qa/triangle-transition-films]
+    paths: [.github/workflows/check-published-transition-files.yml]
+permissions:
+  contents: write
+jobs:
+  publication:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ github.token }}
+      SURVEY_TAG: transition-films-44875365674
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: fcc07c9a9843d02dc39c4e8c0ebb822929be8be2
+          fetch-depth: 0
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version: '24'
+      - name: Check the README, complete demos, terrain measurements and source fingerprint
+        run: node tools/verify-gallery.cjs
+      - name: Verify all full films and assemble the downloadable survey
+        run: |
+          gh release download "$SURVEY_TAG" -p Sphere-Transition-Films.zip -D "$RUNNER_TEMP/survey"
+          python - <<'PY'
+          import hashlib,json,os,pathlib,zipfile
+          root=pathlib.Path.cwd()
+          data=root/'examples/transitions'
+          out=pathlib.Path(os.environ['RUNNER_TEMP'])/'survey'
+          film=out/'Sphere-Transition-Survey.zip'
+          report=json.loads((data/'audit.json').read_bytes())
+          assert hashlib.sha256((out/'Sphere-Transition-Films.zip').read_bytes()).hexdigest()=='4861ed28af452909f2ff073bc88d1527fa1255185edc5ba88daa28baa028dbf8'
+          with zipfile.ZipFile(out/'Sphere-Transition-Films.zip') as raw,zipfile.ZipFile(film,'w') as survey:
+              expected={r['id']+'.mp4':r['sha256'] for r in report['films']}
+              assert len(expected)==48
+              copied=set()
+              for member in raw.infolist():
+                  name=member.filename
+                  if name in {'audit.json','SHA256SUMS.txt'}:continue
+                  b=raw.read(member)
+                  if name in expected:
+                      assert hashlib.sha256(b).hexdigest()==expected[name],name
+                      copied.add(name)
+                  survey.writestr(member,b)
+              assert copied==set(expected)
+              survey.write(data/'audit.json','audit.json',compress_type=zipfile.ZIP_DEFLATED)
+              for demo in report['demos']:
+                  file=data/demo['file']
+                  assert hashlib.sha256(file.read_bytes()).hexdigest()==demo['sha256']
+                  survey.write(file,'demos/'+demo['file'])
+              survey.write(data/'outlet-before-after.jpg','outlet-before-after.jpg')
+              md=(root/'docs/Transition-audit.md').read_text()
+              for demo in report['demos']:md=md.replace('../examples/transitions/'+demo['file'],'demos/'+demo['file'])
+              md=md.replace('../examples/transitions/','')
+              survey.writestr('Transition-audit.md',md,compress_type=zipfile.ZIP_DEFLATED)
+          with zipfile.ZipFile(film,'a') as full:
+              sums=''.join(hashlib.sha256(full.read(n)).hexdigest()+'  '+n+'\n' for n in sorted(full.namelist()) if not n.endswith('/'))
+              full.writestr('SHA256SUMS.txt',sums,compress_type=zipfile.ZIP_DEFLATED)
+          with zipfile.ZipFile(film) as full:
+              assert full.testzip() is None
+              assert len([n for n in full.namelist() if n.endswith('.mp4')])==51
+          digest=hashlib.sha256(film.read_bytes()).hexdigest()
+          (out/'Survey-SHA256.txt').write_text(digest+'  '+film.name+'\n')
+          print('FINAL_SURVEY_DOWNLOAD '+json.dumps(dict(bytes=film.stat().st_size,sha256=digest,films=len(expected),demos=3)),flush=True)
+          PY
+      - name: Save the complete collection with its checksum
+        run: |
+          gh release upload "$SURVEY_TAG" "$RUNNER_TEMP/survey/Sphere-Transition-Survey.zip" "$RUNNER_TEMP/survey/Survey-SHA256.txt" examples/transitions/outfall-to-industry.mp4 examples/transitions/meadow-service-door.mp4 examples/transitions/into-violet-labyrinth.mp4
+          gh release edit "$SURVEY_TAG" --notes "Download Sphere-Transition-Survey.zip for all 48 original films, the three README demos, camera traces, per-frame checks, a written audit and matched before-and-after views of the Ruin and Violet outlets. Survey-SHA256.txt verifies the download. The three MP4 demos are also available individually. Sphere-Transition-Films.zip and receipt.json preserve the original recording pass. The tag identifies the tested runtime."
