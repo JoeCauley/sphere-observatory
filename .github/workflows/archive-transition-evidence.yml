@@ -1,0 +1,30 @@
+name: Archive the complete transition survey
+on:
+  push:
+    branches: [qa/grounded-transition-films]
+    paths: [.github/workflows/archive-transition-evidence.yml]
+permissions:
+  actions: read
+  contents: write
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 160
+    env:
+      GH_TOKEN: ${{ github.token }}
+      RECORDING_RUN: "44873998209"
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version: "24"
+      - name: Wait for complete recordings
+        run: gh run watch "$RECORDING_RUN" --interval 20 --compact --exit-status
+      - name: Download all camera traces and films
+        run: gh run download "$RECORDING_RUN" -D "$RUNNER_TEMP/transitions"
+      - run: python -m pip install numpy opencv-python-headless Pillow imageio-ffmpeg
+      - name: Verify the routes, encode demonstrations and create the archive
+        run: python tools/assemble-transition-review.py "$RUNNER_TEMP/transitions" "$RUNNER_TEMP/edition"
+      - name: Publish the complete recording archive
+        run: |
+          gh release create "transition-films-$RECORDING_RUN" "$RUNNER_TEMP/edition/Sphere-Transition-Films.zip" "$RUNNER_TEMP/edition/receipt.json" --target 4b0fea53ee3a8459ffe1667aa1a8f10882277853 --title "The Sphere on foot and in flight" --notes "All 48 continuous compositor recordings, original camera traces, every detected frame change, first-step measurements at 28 tunnel outlets and file checksums. The runtime build is identified by the tag." --latest=false
