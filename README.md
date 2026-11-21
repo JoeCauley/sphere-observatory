@@ -6,6 +6,10 @@ Walk the inner surface of a Dyson sphere with a radius of one astronomical unit.
 
 The Atlas places the four optional packs on the same globe as the original habitats. You can cross a region on foot, lift off from the roof of the Outfall, or bank and turn back midway through an atmospheric handoff. [Transition tests and measurements](docs/Transition-audit.md)
 
+## Builder transport study
+
+Follow four different-sized travelers across one Border, or watch the same scheduled freight from a footbridge and a lane refuge. The study includes three station layouts and records each visited station in its Atlas. [Open the station in a running checkout](studies/border-crossing/index.html) · [Watch both views](examples/border-crossing/freight-views.mp4) · [Scale drawings and test results](docs/Builder-border-crossings.md)
+
 ## Watch the transitions
 
 | Demo | Length | What to watch |

@@ -1,0 +1,112 @@
+{
+  "station": {
+    "world": "sphere-0000000000000017",
+    "plots": [
+      "r10c0",
+      "r11c0"
+    ],
+    "bay": 0,
+    "generator": 2,
+    "layout": "Transfer yard"
+  },
+  "capture": {
+    "host": "ALPHA",
+    "renderer": "NVIDIA GeForce RTX 5080 / ANGLE D3D11",
+    "testViewport": [
+      990,
+      690
+    ],
+    "testScenePixels": [
+      931,
+      359
+    ],
+    "movie": "freight-views.mp4",
+    "moviePixels": [
+      864,
+      768
+    ],
+    "frames": 256,
+    "fps": 16,
+    "seconds": 16,
+    "worldSpeedMultiplier": 40,
+    "bytes": 788683
+  },
+  "source": "tests/border-stations-browser.cjs",
+  "definition": {
+    "fraction": "Visible freight pixels divided by all pixels of the 3D canvas",
+    "top": "Upward-facing freight pixels divided by visible freight pixels",
+    "underside": "Downward-facing freight pixels divided by visible freight pixels"
+  },
+  "firstBridgeMidpointFraction": 0.08570471144035975,
+  "samples": [
+    {
+      "worldTimeOffsetS": -200,
+      "bridge": {
+        "fraction": 0.11940914762034413,
+        "centroidX": 0.4235491725340125,
+        "top": 0.39862189927336505,
+        "underside": 0
+      },
+      "lane": {
+        "fraction": 0.2632446615942961,
+        "centroidX": 0.23777243260126,
+        "top": 0.002159483542462266,
+        "underside": 0.01461629387161302
+      }
+    },
+    {
+      "worldTimeOffsetS": 0,
+      "bridge": {
+        "fraction": 0.2026125799975466,
+        "centroidX": 0.5539838609947986,
+        "top": 0.3426069493052171,
+        "underside": 0
+      },
+      "lane": {
+        "fraction": 0.22410682496132892,
+        "centroidX": 0.3166503221000772,
+        "top": 0.003017235624741332,
+        "underside": 0.014939321522502437
+      }
+    },
+    {
+      "worldTimeOffsetS": 200,
+      "bridge": {
+        "fraction": 0.1600639082784558,
+        "centroidX": 0.7461079585415904,
+        "top": 0.29679614191184717,
+        "underside": 0
+      },
+      "lane": {
+        "fraction": 0.047581149451424026,
+        "centroidX": 0.5349735402456339,
+        "top": 0.0013833867823681066,
+        "underside": 0.005470665912092058
+      }
+    }
+  ],
+  "shaderRoof": {
+    "kilometresPerPixel": [
+      2,
+      96,
+      768,
+      12288
+    ],
+    "maximumChannelDifferenceFromGround8Bit": [
+      109,
+      107,
+      14,
+      1
+    ]
+  },
+  "routes": {
+    "stations": 96,
+    "worlds": 4,
+    "layouts": 3,
+    "directedClassCrossings": 768,
+    "extraFloorCrossings": 192,
+    "doorFitComparisons": 1536,
+    "maxGradePercent": 3.859,
+    "simultaneousDiscoverers": 16
+  }
+}

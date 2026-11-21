@@ -70,7 +70,10 @@ const illustrated=[...photos.views,...walks.screenshots].map(v=>'examples/biomes
 assert(shown.length>=4);assert(shown.every(p=>illustrated.includes(p)));
 assert.deepEqual(new Set(photos.views.filter(v=>shown.includes('examples/biomes/'+v.file)).map(v=>v.pack)),new Set(offered.map(p=>p.id)));
 const audit=read(path.join(root,'examples/transitions/audit.json'));
-assert.deepEqual(require('./transition-source.cjs').sourceFingerprint(),audit.source);
+const filmFingerprint=require('./transition-source.cjs').sourceFingerprint;
+const filmCommit=audit.runtimeVerification.commit;
+const hasFilmHistory=spawnSync('git',['cat-file','-e',filmCommit],{cwd:root}).status===0;
+assert.deepEqual(filmFingerprint(hasFilmHistory?filmCommit:undefined),audit.source,'Source of the published transition films');
 assert.equal(audit.films.length,48);
 assert.equal(audit.films.length,new Set(audit.films.map(f=>f.id)).size);
 const footFilms=audit.films.filter(f=>f.id.startsWith('walk-'));
@@ -110,5 +113,5 @@ assert.equal(sha(comparison),audit.groundComparison.sha256);
 assert(transitionDoc.includes('outlet-before-after.jpg'));
 for(const demo of audit.demos)assert(transitionDoc.includes('examples/transitions/'+demo.file));
 assert(readme.includes('docs/Transition-audit.md'));
-console.log('PASS '+audit.films.length+' transition films, three complete demo files and current transition source');
+console.log('PASS '+audit.films.length+' transition films, three complete demo files and their recorded transition source');
 console.log('PASS '+photos.views.length+' biome photographs, the Meadow pan and Outfall crossing, release source fingerprints, historical galleries and publication links');

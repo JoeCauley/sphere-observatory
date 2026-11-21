@@ -6,13 +6,13 @@
  *   blank plot          Main's own ground, drained of colour: bare Builder structure, no collection declared;
  *   under construction  blank, with scaffold striping;
  *   placed biome        the pack's regional colours and pattern, with or without local detail;
- *   border              a dark strip along every plot edge;
- *   transport trunk     a bright line along the waist edges and six meridians;
+ *   border              roof decks and longitudinal service strips;
+ *   transport trunk     wider roofed rights of way along the waist edges and six meridians;
  *   polar megalopolis   a lit radial grid beyond the last row.
  * Lighting, shades, wounds, atmosphere and depth stay exactly as Main computes them.
  *
- * Each plot uses three texels for base colour, accent and geographic bounds. Borders and trunks narrower than a pixel
- * are drawn at about a pixel, so the partition reads from any distance.
+ * Each plot uses three texels for base colour, accent and geographic bounds. Subpixel deck coverage
+ * depends on the projected footprint. Surveyed structures supply their own footprint.
  */
 (function () {
   'use strict';
@@ -31,6 +31,16 @@ uniform int uInstalledBiomesOn;
 uniform float uAtlasRadiusKm;
 uniform vec3 uAtlasAxis,uAtlasRight,uAtlasUp;
 uniform vec4 uBorderChart,uBorderSurvey;
+float transportCoverage(float d,float halfWidth,float pixelKm){
+ float halfPixel=max(.0001,pixelKm*.5);
+ return clamp((min(d+halfPixel,halfWidth)-max(d-halfPixel,-halfWidth))/(2.*halfPixel),0.,1.);
+}
+vec3 transportMaterial(float across,float along,float halfWidth,float pixelKm){
+ float ratio=across/halfWidth;
+ float service=transportCoverage(abs(ratio-.74)*halfWidth,halfWidth*.055,pixelKm);
+ float bays=cos(along*.0245437)*cos(across/max(halfWidth,1.)*2.8)*(1.-smoothstep(24.,120.,pixelKm));
+ return mix(vec3(.32,.37,.35)*(.96+.055*bays),vec3(.25,.28,.255),service);
+}
 vec3 installedBiomeMaterial(vec3 original,vec3 q,float pixel,float distanceKm){
  if(uInstalledBiomesOn==0)return original;
  float mapWeight=smoothstep(1000.,12000.,distanceKm),ownerWeight=mapWeight;
@@ -69,10 +79,35 @@ vec3 installedBiomeMaterial(vec3 original,vec3 q,float pixel,float distanceKm){
    float stripe=abs(fract((p.x+p.y)*7.)-.5);
    col=mix(col,vec3(.62,.44,.12),.10+(1.-smoothstep(.12,.2,stripe))*.42*detail);
   }
-  float edge=min(min(local.y,1.-local.y)*ROW,min(local.x,1.-local.x)*ATLAS_TAU/n*cosLat);
-  float border=max(${f(A.BORDER_KM)}/uAtlasRadiusKm,pixel*1.1);
-  col=mix(col,vec3(.035,.04,.045),(1.-smoothstep(border*.55,border,edge))*mapWeight);
+  // Coverage is composited after native material, so close flight can see the same decks.
  }
+ col=mix(original,col,ownerWeight);
+ // A global unit vector at one AU carries kilometre-scale error. Local meshes own finer joints.
+ float px=max(.001,max(pixel,1.e-7)*uAtlasRadiusKm),along=0.,edge=1e19;
+ vec3 eastT=-sin(lon)*uAtlasRight+cos(lon)*uAtlasUp;
+ vec3 northT=cos(lat)*uAtlasAxis-sin(lat)*(cos(lon)*uAtlasRight+sin(lon)*uAtlasUp);
+ vec3 dx=dFdx(q),dy=dFdy(q);
+ float eastPx=max(px,(abs(dot(dx,eastT))+abs(dot(dy,eastT)))*uAtlasRadiusKm);
+ float northPx=max(px,(abs(dot(dx,northT))+abs(dot(dy,northT)))*uAtlasRadiusKm),branchPx=px;
+ float halfWidth=${f(A.TRANSPORT_ROOF_KM.branch*.5)};
+ if(abs(lat)<LIMIT){
+  float rowCoord=(lat+LIMIT)/ROW,middle=(floor(rowCoord)+.5)*ROW-LIMIT;
+  float n=max(${f(A.MIN_COLUMNS)},floor(${f(A.EQUATOR_COLUMNS)}*cos(middle)+.5));
+  float east=abs(fract((lon/ATLAS_TAU+.5)*n+.5)-.5)*ATLAS_TAU/n*cosLat;
+  float north=abs(fract(rowCoord+.5)-.5)*ROW;
+  edge=min(east,north)*uAtlasRadiusKm;
+  branchPx=east<north?eastPx:northPx;
+  along=(east<north?lat:lon*cos(middle))*uAtlasRadiusKm;
+ }
+ float meridian=abs(fract(lon/ATLAS_TAU*${f(A.TRUNK_MERIDIANS)}+.5)-.5)*ATLAS_TAU/${f(A.TRUNK_MERIDIANS)}*cosLat;
+ float waist=abs(abs(lat)-3.*ROW);
+ float trunk=min(meridian,waist)*uAtlasRadiusKm,trunkHalf=${f(A.TRANSPORT_ROOF_KM.trunk*.5)};
+ float trunkPx=meridian<waist?eastPx:northPx;
+ float branchCover=transportCoverage(edge,halfWidth,branchPx),trunkCover=transportCoverage(trunk,trunkHalf,trunkPx);
+ if(trunkCover>0. && trunkCover>=branchCover){
+  along=(meridian<waist?lat:lon*cos(3.*ROW))*uAtlasRadiusKm;
+  col=mix(col,transportMaterial(trunk,along,trunkHalf,trunkPx),trunkCover);
+ }else if(branchCover>0.)col=mix(col,transportMaterial(edge,along,halfWidth,branchPx),branchCover);
  // Draw the surveyed rooftop between the two parcels, including in the middle-distance shell.
  if(uBorderSurvey.z>0. && abs(lat-uBorderChart.x)<ROW){
   float dl=lon-uBorderChart.y,c=cos(lat),sl=sin(lat),ch=cos(uBorderChart.x),sh=sin(uBorderChart.x);
@@ -84,12 +119,10 @@ vec3 installedBiomeMaterial(vec3 original,vec3 q,float pixel,float distanceKm){
   float roof=(1.-smoothstep(-aa,aa,outside))*min(1.,uBorderSurvey.w/aa);
   if(roof>0.){
    float bays=cos(east/86.)*cos(north/57.)*(1.-smoothstep(15.,80.,aa));
-   col=mix(col,vec3(.32,.37,.35)*(1.+.11*bays),roof);ownerWeight=max(ownerWeight,roof);
+   col=mix(col,vec3(.32,.37,.35)*(1.+.11*bays),roof);
   }
  }
- float trunk=min(abs(abs(lat)-3.*ROW),abs(fract(lon/ATLAS_TAU*${f(A.TRUNK_MERIDIANS)}+.5)-.5)*ATLAS_TAU/${f(A.TRUNK_MERIDIANS)}*cosLat);
- float wide=max(${f(A.TRUNK_KM)}/uAtlasRadiusKm,pixel*1.8);
- return mix(original,mix(col,vec3(.62,.55,.40),(1.-smoothstep(wide*.5,wide,trunk))*.85*mapWeight),ownerWeight);
+ return col;
 }
 `;
   }

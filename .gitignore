@@ -17,3 +17,4 @@ tests/artifacts/
 
 # The local server keeps this machine's installed biomes here.
 /installed-biomes.json
+/installed-biomes.json.border-atlas/

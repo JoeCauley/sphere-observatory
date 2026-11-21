@@ -23,6 +23,7 @@ jobs:
       - run: npm test
       - run: npm run test:pack && npm run test:industry && npm run test:pods
       - run: npm run test:surface
+      - run: node tests/border-stations.mjs
       - run: npm run test:gallery
 
   browser:
@@ -31,7 +32,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        suite: [test:http-restart, test:restart, test:outfall, test:surface:browser, test:industry:roof, test:industry:transfer, test:contract, test:stage-arrival, test:transit, test:border:browser]
+        suite: [test:http-restart, test:restart, test:outfall, test:surface:browser, test:industry:roof, test:industry:transfer, test:contract, test:stage-arrival, test:transit, test:border:browser, test:border:stations]
         include:
           - suite: test:walks:browser
             walk_shard: 1/3

@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Border crossing study · Sphere Observatory</title><link rel="stylesheet" href="study.css"></head>
+<body><main>
+<header><a href="/">Sphere Observatory</a><h1>Border crossing study</h1><p>Four clearances, one freight trunk. Inspect the geometry before committing a station to the study Atlas.</p></header>
+<form id="settings">
+<label>Station along the edge<select id="bay"><option value="-1">−200 km</option><option value="0" selected>Origin</option><option value="1">+200 km</option><option value="3">+600 km</option></select></label>
+<label>Crossing<select id="route"><option value="service">Service bridge</option><option value="lookout">Service bridge via lookout</option><option value="carrier">Carrier viaduct</option><option value="heavy">Heavy-haul underpass</option><option value="trunk">Monumental transfer</option><option value="floor-service">Service access to the lane</option></select></label>
+<label>View<select id="view"><option value="walk">From the crossing</option><option value="bridge">Bridge overlook</option><option value="lane">Lane refuge</option></select></label>
+<label>World clock<select id="rate"><option value="1">1×</option><option value="40">40×</option><option value="600">600×</option></select></label>
+</form>
+<div id="stage"><canvas id="scene" tabindex="0" aria-label="First-person engineering view. Drag to look. W and S move on the selected crossing."></canvas><output id="readout"></output></div>
+<div class="actions"><button id="enter">Enter and record station</button><button id="turn">Face the other way</button><button id="walk" aria-pressed="false">Walk forward</button><button id="pause" aria-pressed="false">Pause clock</button><button id="pass">Preview a freight passage</button></div>
+<label class="position">Inspection position <input id="distance" type="range" min="0" max="1000" value="0"></label>
+<p id="state" role="status"></p>
+<p class="help">Drag the view to look around. W and S move along the selected route. The position slider is an inspection control. The signal holds an at-grade crossing until the entire load can clear.</p>
+<p><a href="/docs/Builder-border-crossings.md">Scale envelopes, station plans and test results</a></p>
+</main><script type="module" src="study.mjs"></script></body></html>

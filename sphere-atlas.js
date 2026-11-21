@@ -25,6 +25,8 @@
   const ROW = (20 / 3) * Math.PI / 180, HALF_ROWS = 11, ROWS = HALF_ROWS * 2, LIMIT = HALF_ROWS * ROW;
   const EQUATOR_COLUMNS = 54, MIN_COLUMNS = 6, WAIST_FIRST = 8, WAIST_LAST = 13;
   const BORDER_KM = 20000, TRUNK_KM = 60000, TRUNK_MERIDIANS = 6;
+  // The reservation can contain many facilities. These are prototype roof widths in km.
+  const TRANSPORT_ROOF_KM = Object.freeze({branch:48, trunk:96});
   const TRACKS = ['Verdant track', 'Opaline track', 'Amber track'];
 
   const columns = row => Math.max(MIN_COLUMNS, Math.round(EQUATOR_COLUMNS * Math.cos((row + 0.5) * ROW - LIMIT)));
@@ -79,7 +81,7 @@
     return {id:'north/'+near.id+'/'+far.id,near:near.id,far:far.id,latitude,longitude,onTrunk};
   }
 
-  const api = Object.freeze({ ROW, ROWS, LIMIT, TOTAL, EQUATOR_COLUMNS, MIN_COLUMNS, WAIST_FIRST, WAIST_LAST, BORDER_KM, TRUNK_KM, TRUNK_MERIDIANS, TRACKS, columns, plot, plotAt, contains, regionAt, byId, northEdge, waterwayAt:(q,state)=>root.SphereNeighbourhood?.featureAt(q,state)??null });
+  const api = Object.freeze({ ROW, ROWS, LIMIT, TOTAL, EQUATOR_COLUMNS, MIN_COLUMNS, WAIST_FIRST, WAIST_LAST, BORDER_KM, TRUNK_KM, TRUNK_MERIDIANS, TRANSPORT_ROOF_KM, TRACKS, columns, plot, plotAt, contains, regionAt, byId, northEdge, waterwayAt:(q,state)=>root.SphereNeighbourhood?.featureAt(q,state)??null });
   root.SphereAtlas = api;
   if (typeof module !== 'undefined') module.exports = api;
 })(typeof window === 'undefined' ? globalThis : window);
