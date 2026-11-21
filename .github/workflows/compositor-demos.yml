@@ -1,0 +1,75 @@
+name: Record the three compositor demonstrations
+on:
+  push:
+    branches: [qa/transition-film-archive-44870610208]
+    paths: [.github/workflows/compositor-demos.yml]
+permissions:
+  contents: read
+jobs:
+  film:
+    runs-on: macos-15
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { id: flight-outfall-industry, script: flights, config: "" }
+          - { id: meadow-outfall-service-door, script: pilots, config: "" }
+          - { id: walk-installed-main-6-sideways-city, script: walks, config: installed }
+    env:
+      SPHERE_CLIPS: ${{ matrix.id }}
+      SPHERE_NATIVE_BROWSER: /Applications/Google Chrome.app/Contents/MacOS/Google Chrome
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version: "24"
+      - run: npm ci --no-audit --no-fund
+      - name: Install video tools
+        run: |
+          python3 -m venv "$RUNNER_TEMP/env"
+          "$RUNNER_TEMP/env/bin/python" -m pip install imageio-ffmpeg opencv-python-headless numpy Pillow
+          echo "$RUNNER_TEMP/env/bin" >> "$GITHUB_PATH"
+          echo "SPHERE_FFMPEG=$("$RUNNER_TEMP/env/bin/python" -c 'import imageio_ffmpeg;print(imageio_ffmpeg.get_ffmpeg_exe())')" >> "$GITHUB_ENV"
+      - name: Record and check the native compositor images
+        env:
+          SCRIPT: ${{ matrix.script }}
+          CONFIG: ${{ matrix.config }}
+        run: |
+          node --require ./tools/compositor-film.cjs "tools/capture-transition-$SCRIPT.cjs" "$RUNNER_TEMP/films" "$CONFIG"
+          python tools/analyze-transition-films.py "$RUNNER_TEMP/films"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: compositor-${{ matrix.id }}
+          path: ${{ runner.temp }}/films
+  package:
+    needs: film
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    permissions:
+      actions: read
+      contents: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: compositor-*
+          path: ${{ runner.temp }}/originals
+      - run: python -m pip install imageio-ffmpeg opencv-python-headless numpy Pillow
+      - run: python tools/publish-compositor-evidence.py "$RUNNER_TEMP/originals" "$RUNNER_TEMP/published"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: compositor-evidence
+          path: ${{ runner.temp }}/published
+      - name: Attach the original takes and traces to the complete survey
+        run: |
+          for i in $(seq 1 80); do
+            if gh release view transition-films-44871660792 >/dev/null 2>&1; then
+              gh release upload transition-films-44871660792 "$RUNNER_TEMP/published/Compositor-Demo-Recordings.zip"
+              exit 0
+            fi
+            sleep 20
+          done
+          exit 1
