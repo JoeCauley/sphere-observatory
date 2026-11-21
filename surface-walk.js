@@ -50,8 +50,7 @@ function enter(s,position,{activate:live=true,grounded=false}={}){
  const mesh=patch(s,position),p=mesh.local(position),up=mesh.basis[1];s.position=position;
  // A new local terrain sample can rise a few metres above the coarse shell.
  // Place the camera above its real support before starting the gentle descent.
- const supportY=S.ground(mesh,p[0],p[2])+EYE;
- p[1]=grounded?supportY+.00002:Math.max(p[1],supportY+.0005);
+ p[1]=Math.max(p[1],S.ground(mesh,p[0],p[2])+EYE+.0005);
  s.walkPosition=p;s.position=mesh.world(p);s.walkMode=true;s.walkSurface=true;s.walkVelocity=0;
  s.shadeAttachment=null;s.projection='perspective';s.surfaceLock=true;
  // A walker exiting a tunnel already has ground support and can take the next step immediately.
