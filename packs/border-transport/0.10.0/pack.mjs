@@ -186,8 +186,9 @@ function frame(now){
     direct=host?.SphereStageFrame?.surfaceLight(window,pose)?.direct??1;lightAt=now;
   }
   const width=canvas.clientWidth,height=canvas.clientHeight;
-  if(!paint || paint.pose!==pose || paint.time!==time || paint.direct!==direct || paint.station!==station ||
-      paint.width!==width || paint.height!==height || script || draws<2){
+  const visible=draws<2 || !frameElement || frameElement.style.opacity!=='0';
+  if(visible && (!paint || paint.pose!==pose || paint.time!==time || paint.direct!==direct || paint.station!==station ||
+      paint.width!==width || paint.height!==height || script || draws<2)){
     view.draw(station,[pose.eastM-site.x,pose.altitudeM,pose.northM+station.widthM/2],pose.yaw,pose.pitch,time,false,direct);
     draws++;paint={pose,time,direct,station,width,height};
   }

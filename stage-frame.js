@@ -374,7 +374,8 @@
     const pose=geography.mainPose(s,item,p,SphereAtlas,SphereWorld);
     const scale=Math.min(1,800/rect.width,480/rect.height);
     pose.fov=2*Math.atan(rect.width/rect.height/recipe.focal)*180/Math.PI;
-    pose.geometryDetail=false;
+    // The regional image is already filtered to the display size during the dissolve.
+    pose.geometryDetail=false;pose.antialias=Math.min(pose.antialias??0,1);
     window.SphereApp.renderer.draw(pose,Math.round(rect.width*scale),Math.round(rect.height*scale));
     c.regionalKey=key;c.regionalStamp=now;return true;
   }
@@ -852,7 +853,13 @@
         // A biome that declares a Duck Blind climbs into the middle of it and stops there, in cloud.
         let blind = null; try { blind = api?.air?.().blind ?? null; } catch {}
         flight.departInBlind = !!blind;
-        if(blind)useAir(scene);else enableRegional(here,scene);
+        if(blind)useAir(scene);
+        else{
+          // A clear guided departure needs Main's renderer for the live overlap. Finish preparing both ends first.
+          await rehearsal;
+          if(current!==here)return;
+          enableRegional(here,scene);
+        }
         if (scene.contract && typeof api?.ascend !== 'function') throw Error('The departure pack could not start its ascent.');
         const lifting = scene.contract ? Promise.resolve(api.ascend({ toAltitudeM: blind ? (blind.baseM + blind.topM) / 2 : HANDOFF_KM * 1000, handoff: true })) : ascend(here.frame);
         if (api && blind) clouded = cloudOverAscent(api, lifting);
@@ -951,6 +958,7 @@
       leaving.frame.contentWindow?.focus();
       const rehearsal = rehearse(A, HANDOFF_KM, 12000);   // behind the scene, while it lifts off
       let blind = null; try { blind = api.air().blind ?? null; } catch {}
+      if(!blind){await rehearsal;if(current!==leaving)return true;}
       sound('lift', 16);
       const lifting = Promise.resolve(api.ascend({ toAltitudeM: blind ? (blind.baseM + blind.topM) / 2 : HANDOFF_KM * 1000, handoff: true }));
       if(blind)useAir(scene);else enableRegional(leaving,scene);
