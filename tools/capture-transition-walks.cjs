@@ -5,6 +5,14 @@ const {record}=require('./transition-recorder.cjs');
 const directory=path.resolve(process.argv[2]||'work/transition-audit');
 const config=process.argv[3]||'installed';
 if(!['empty','installed','placed'].includes(config))throw Error('Expected empty, installed or placed');
+// Read the walking plane in metres so settling vertically cannot count as a footstep.
+function footPosition(){
+  const child=document.querySelector('#stageFrame iframe')?.contentWindow?.SphereBiome;
+  if(child){const p=child.pose();return {owner:child.id,point:[p.eastM,p.northM]};}
+  const state=SphereApp.getState(),p=state.walkPosition;
+  if(!state.walkMode||!p)throw Error('The destination has no supported walker');
+  return {owner:state.siteId,point:[p[0]*1000,p[2]*1000]};
+}
 async function main(){
   fs.mkdirSync(directory,{recursive:true});const host=await session(),browser=await chromium.launch({executablePath:executable(),headless:true,args:['--mute-audio']});
   try{
@@ -66,8 +74,15 @@ async function main(){
         assert.equal(end.owner,r.to);assert(end.walking&&end.slipM<.5,JSON.stringify(end));
         const target=page.locator('#stageFrame iframe');
         if(await target.count())await page.frameLocator('#stageFrame iframe').locator('#world').focus();else await page.locator('#viewport').focus();
-        await page.keyboard.down('KeyW');try{await page.waitForTimeout(900);}finally{await page.keyboard.up('KeyW');}
-        return {from:r.from,to:r.to,travel,end};
+        const before=await page.evaluate(footPosition);
+        await page.keyboard.down('KeyW');
+        let after;
+        try{await page.waitForTimeout(950);after=await page.evaluate(footPosition);}
+        finally{await page.keyboard.up('KeyW');}
+        assert.equal(after.owner,before.owner);
+        const firstStepM=Math.hypot(after.point[0]-before.point[0],after.point[1]-before.point[1]);
+        assert(firstStepM>.25,'Grounded forward input moved only '+firstStepM+' m at '+r.to);
+        return {from:r.from,to:r.to,travel,end:{...end,firstStepM}};
       });
       console.log('END',id,receipt.frames.length,receipt.failure||'arrived',receipt.errors);if(receipt.failure||receipt.errors.length)failed++;
     }

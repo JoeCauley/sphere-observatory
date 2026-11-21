@@ -46,13 +46,16 @@ function patch(s,position){
  s.siteAnchor=q;s.siteRevision=s.terrainRevision??1;s.terrainAnchor=s.siteRevision===2?q:null;s.siteElevation=province?.terrainKm||0;s.geometryDetail=true;
  return S.site(s);
 }
-function enter(s,position,{activate:live=true}={}){
+function enter(s,position,{activate:live=true,grounded=false}={}){
  const mesh=patch(s,position),p=mesh.local(position),up=mesh.basis[1];s.position=position;
  // A new local terrain sample can rise a few metres above the coarse shell.
  // Place the camera above its real support before starting the gentle descent.
- p[1]=Math.max(p[1],S.ground(mesh,p[0],p[2])+EYE+.0005);
+ const supportY=S.ground(mesh,p[0],p[2])+EYE;
+ p[1]=grounded?supportY+.00002:Math.max(p[1],supportY+.0005);
  s.walkPosition=p;s.position=mesh.world(p);s.walkMode=true;s.walkSurface=true;s.walkVelocity=0;
  s.shadeAttachment=null;s.projection='perspective';s.surfaceLock=true;
+ // A walker exiting a tunnel already has ground support and can take the next step immediately.
+ if(grounded){prepared.delete(s);if(live)activate(s);return s;}
  const b=M.basis(s.forward,s.up),tangent=M.sub(s.forward,M.mul(up,M.dot(s.forward,up)));
  const heading=M.length(tangent)>.03?M.norm(tangent):M.norm(M.cross(up,b.r)),forward=M.norm(M.add(heading,M.mul(up,-.055)));
  prepared.set(s,{anchor:s.siteAnchor.slice(),time:0,startY:p[1],startForward:s.forward.slice(),forward,lastForward:s.forward.slice()});if(live)activate(s);

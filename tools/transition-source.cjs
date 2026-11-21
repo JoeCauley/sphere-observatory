@@ -12,7 +12,7 @@ function sourceFingerprint(){
     }
   }
   scan('',false);scan('packs',true);
-  for(const file of ['analyze-transition-films.py','capture-transition-flights.cjs','capture-transition-pilots.cjs','capture-transition-walks.cjs','transition-recorder.cjs','transition-walk-plan.mjs'])files.add('tools/'+file);
+  for(const file of ['analyze-transition-films.py','compositor-film.cjs','capture-transition-flights.cjs','capture-transition-pilots.cjs','capture-transition-walks.cjs','transition-recorder.cjs','transition-walk-plan.mjs'])files.add('tools/'+file);
   for(const file of ['support/surface-circuits.mjs','support/biome-browser.cjs','surface-architecture-browser.cjs','surface-architecture.mjs','border-passage-browser.cjs'])files.add('tests/'+file);
   const hash=crypto.createHash('sha256');
   for(const name of [...files].sort())hash.update(name+'\0').update(fs.readFileSync(path.join(root,name)));

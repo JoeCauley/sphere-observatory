@@ -1130,7 +1130,7 @@
         const result=await window.SphereJourney.travel.request({type:'place',title:owner.name,stageTrip:true,resolve:s=>{
           const next=shellView(s,point);
           next.walkMode=false;
-          SphereLanding.enter(next,next.position,{activate:false});
+          SphereLanding.enter(next,next.position,{activate:false,grounded:true});
           return next;
         }});
         if(result.state!=='arrived' || !window.SphereApp.getState().walkMode)throw Error(result.error||'Could not reach walkable ground.');

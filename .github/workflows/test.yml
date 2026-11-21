@@ -51,3 +51,12 @@ jobs:
           node-version: '24'
       - run: npm ci --ignore-scripts --no-audit --no-fund
       - run: npm run ${{ matrix.suite }}
+      - name: Verify the Atlas, sky lighting, roof and crystal forest in WebGL
+        if: matrix.suite == 'test:outfall'
+        run: |
+          node tests/geographic-flight-browser.cjs
+          node tests/surface-architecture-browser.cjs
+          node tests/violet-flight-browser.cjs
+      - name: Visit two native habitats and recover the saved ground pose
+        if: matrix.suite == 'test:surface:browser'
+        run: node tests/asset-loading-browser.cjs
