@@ -1,0 +1,56 @@
+name: Record the transition survey on Metal
+on:
+  push:
+    branches: [qa/transition-film-archive-44870610208]
+    paths: [.github/workflows/record-metal-transitions.yml]
+permissions:
+  contents: read
+jobs:
+  record:
+    runs-on: macos-15
+    timeout-minutes: 55
+    strategy:
+      fail-fast: false
+      max-parallel: 5
+      matrix:
+        include:
+          - { name: flight-meadow, script: flights, config: "", clips: "flight-meadow-outfall,flight-meadow-city,flight-meadow-industry" }
+          - { name: flight-industry, script: flights, config: "", clips: "flight-industry-meadow,flight-industry-city,flight-industry-outfall" }
+          - { name: flight-city, script: flights, config: "", clips: "flight-city-meadow,flight-city-industry,flight-city-outfall" }
+          - { name: flight-outfall, script: flights, config: "", clips: "flight-outfall-meadow,flight-outfall-city,flight-outfall-industry" }
+          - { name: walks-1, script: walks, config: installed, clips: "walk-installed-main-8-infinite-meadow,walk-installed-main-11-main-4,walk-installed-main-5-main-11,walk-installed-main-2-main-3,walk-installed-main-10-main-7,walk-installed-main-10-main-9,walk-installed-infinite-industry-main-11,walk-installed-infinite-meadow-main-8" }
+          - { name: walks-2, script: walks, config: installed, clips: "walk-installed-main-0-main-10,walk-installed-main-12-main-5,walk-installed-main-1-main-12,walk-installed-main-6-sideways-city,walk-installed-main-15-main-10,walk-installed-main-12-main-15,walk-installed-main-11-infinite-industry" }
+          - { name: walks-3, script: walks, config: installed, clips: "walk-installed-main-10-main-0,walk-installed-main-3-main-2,walk-installed-main-4-main-8,walk-installed-sideways-city-main-6,walk-installed-main-7-main-10,walk-installed-main-9-infinite-meadow,walk-installed-main-11-main-1" }
+          - { name: empty, script: walks, config: empty, clips: "" }
+          - { name: placed, script: walks, config: placed, clips: "" }
+          - { name: pilots, script: pilots, config: "", clips: "" }
+    env:
+      SPHERE_NATIVE_BROWSER: /Applications/Google Chrome.app/Contents/MacOS/Google Chrome
+      SPHERE_CLIPS: ${{ matrix.clips }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version: "24"
+      - run: npm ci --no-audit --no-fund
+      - name: Set up video encoding and analysis
+        run: |
+          python3 -m venv "$RUNNER_TEMP/film-env"
+          "$RUNNER_TEMP/film-env/bin/python" -m pip install numpy opencv-python-headless Pillow imageio-ffmpeg
+          echo "$RUNNER_TEMP/film-env/bin" >> "$GITHUB_PATH"
+          echo "SPHERE_FFMPEG=$("$RUNNER_TEMP/film-env/bin/python" -c 'import imageio_ffmpeg;print(imageio_ffmpeg.get_ffmpeg_exe())')" >> "$GITHUB_ENV"
+      - name: Record the full routes
+        env:
+          SCRIPT: ${{ matrix.script }}
+          CONFIG: ${{ matrix.config }}
+        run: node "tools/capture-transition-$SCRIPT.cjs" "$RUNNER_TEMP/films" "$CONFIG"
+      - name: Decode and inspect all finished films
+        if: always()
+        run: python tools/analyze-transition-films.py "$RUNNER_TEMP/films"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: transition-${{ matrix.name }}
+          path: ${{ runner.temp }}/films
+          if-no-files-found: error
+          retention-days: 30
