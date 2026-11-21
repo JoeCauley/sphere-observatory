@@ -4,11 +4,11 @@ Walk the inner surface of a Dyson sphere with a radius of one astronomical unit.
 
 ![The Outfall service entrance at the end of the track through Infinite Meadow](examples/biomes/outfall-approach.jpg)
 
-The Atlas places the four optional packs on the same globe as the original habitats. You can cross a region on foot, lift off from the roof of the Outfall, or bank and turn back midway through an atmospheric handoff. [Transition tests and measurements](docs/Transition-audit.md)
+The Atlas places the five optional packs on the same globe as the original habitats. You can cross a region on foot, lift off from the roof of the Outfall, or bank and turn back midway through an atmospheric handoff. [Transition tests and measurements](docs/Transition-audit.md)
 
-## Builder transport study
+## Border Biome 0.10
 
-Follow four different-sized travelers across one Border, or watch the same scheduled freight from a footbridge and a lane refuge. The study includes three station layouts and records each visited station in its Atlas. [Open the station in a running checkout](studies/border-crossing/index.html) · [Watch both views](examples/border-crossing/freight-views.mp4) · [Scale drawings and test results](docs/Builder-border-crossings.md)
+In **Explore → Walkable biome packs**, install **Border Biome** and choose **Visit**. You arrive just outside a service door. Select **Walk** and press **W** to enter. On either apron, **Board** changes your scale and takes you to the matching doorway. The service footbridge overlooks the moving freight, the heavy route passes below it, and the monumental route crosses the lane at grade. Follow the covered trunk to another addressed hall. The Atlas records a hall on first entry and uses that record when you return. [Open the station in a running checkout](studies/border-crossing/index.html) · [Watch both views](examples/border-crossing/freight-views.mp4) · [Scale drawings and test results](docs/Builder-border-crossings.md)
 
 ## Watch the transitions
 
@@ -18,7 +18,7 @@ Follow four different-sized travelers across one Border, or watch the same sched
 | [Through the Meadow service door](examples/transitions/meadow-service-door.mp4) | 1:10 | Level cruise reaches the foot of the wall, the pilot lands, and the walker enters the pipe gallery and operates the valve. |
 | [Through the tunnel into Violet Labyrinth](examples/transitions/into-violet-labyrinth.mp4) | 0:19 | Walk the accelerated 1,000 km passage and emerge at eye height among the purple crystal spires. |
 
-The flight survey covers all twelve directed links between installed packs. The walking survey uses three sets of bearings across three installation states. [Download all 48 recordings and camera traces](https://github.com/JoeCauley/sphere-observatory/releases/download/transition-films-44875365674/Sphere-Transition-Survey.zip) · [Read the frame analysis](docs/Transition-audit.md) · [Compare the Ruin and Violet outlets before and after the repair](examples/transitions/outlet-before-after.jpg)
+The earlier four-pack flight survey covers all twelve directed links in that release. The walking survey uses three sets of bearings across three installation states. [Download all 48 recordings and camera traces](https://github.com/JoeCauley/sphere-observatory/releases/download/transition-films-44875365674/Sphere-Transition-Survey.zip) · [Read the frame analysis](docs/Transition-audit.md) · [Compare the Ruin and Violet outlets before and after the repair](examples/transitions/outlet-before-after.jpg)
 
 ## Run it locally
 
@@ -41,7 +41,7 @@ Open **[http://127.0.0.1:8766](http://127.0.0.1:8766)**. On Windows, you can als
 
 The short approach is available even when the Meadow's full **Level cruise to the Outfall** route would take years at ordinary speed. The recording shows the last 2.7 km and the walk through the door. [Watch the 70-second crossing](examples/biomes/meadow-outfall.webm)
 
-## Four places to explore
+## Photographs from the four earlier packs
 
 | Infinite Meadow · 1.3.0 | Infinite Industry · 1.4.1 |
 | --- | --- |

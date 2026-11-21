@@ -3,6 +3,7 @@ import {tunnelStart,moveBody,solidAt,supportAt} from './packs/border-outfall/1.0
 import {makeGallery} from './packs/border-outfall/1.0.0/geometry.js';
 import {eye} from './packs/border-outfall/1.0.0/model.js';
 import {canStand} from './portal-landing.js';
+import {hallHalfM} from './packs/border-transport/0.10.0/district.mjs';
 
 const turn=2*Math.PI, dot=(a,b)=>a.reduce((sum,x,i)=>sum+x*b[i],0);
 const cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
@@ -92,6 +93,14 @@ function intact(circle,state,{math,collection}) {
 }
 export function planWalk(circle,state,items,env) {
   if(!intact(circle,state,env))return null;
+  // A signed straight circuit cannot silently replace a fixed Builder hall with a 1,000 km Outfall passage.
+  // Exclude the small spherical cap around a surveyed district until this planner can certify its detours.
+  for(const {transport:d} of items){
+    if(!d)continue;
+    const q=env.world.direction(d.origin.latitude,d.origin.longitude,state);
+    const bound=Math.max(...d.sites.map(s=>Math.abs(s.x)+hallHalfM+s.widthM/2))/d.origin.radiusM;
+    if(Math.abs(dot(q,circle.normal))<=Math.sin(Math.min(Math.PI/2,bound)))return null;
+  }
   const at=a=>along(circle.origin,circle.forward,a);
   const ground=a=>ownerAt(at(a).q,state,items,env.atlas,env.world);
   const cuts=cutsFor(circle,state,items,env),regions=[];
@@ -115,7 +124,7 @@ export function planWalk(circle,state,items,env) {
     previous.end=next.start=(low+high)/2;
   }
   const angle=2*Math.asin(lengthKm/2/state.radius),legs=[];
-  const edges=items.filter(i=>i.edge).map(i=>({item:i,q:env.world.direction(i.edge.latitude,i.edge.longitude,state)}));
+  const edges=items.filter(i=>i.edge&&!i.transport).map(i=>({item:i,q:env.world.direction(i.edge.latitude,i.edge.longitude,state)}));
   for(let i=0;i<regions.length;i++){
     const region=regions[i],previous=regions[(i+regions.length-1)%regions.length];
     let a=region.start;

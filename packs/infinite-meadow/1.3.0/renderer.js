@@ -290,6 +290,7 @@ vec3 regionalGround(vec3 q,float t){
     bind('placedTexture',0,view.map,view.map.revision,true);bind('nativeTexture',1,view.native,view.native.key,false);
     gl.activeTexture(gl.TEXTURE0);uniform('uInstalledBiomes','int',0);uniform('uNativeGround','int',1);
     uniform('uAtlasRight',3,[1,0,0]);uniform('uAtlasUp',3,[0,1,0]);uniform('uAtlasAxis',3,[0,0,1]);uniform('uAtlasRadiusKm',1,view.radiusKm);
+    uniform('uTransportChart',4,view.map.transportChart);uniform('uTransportWidths',4,view.map.transportWidths);
     uniform('uBorderChart',4,view.map.borderChart);uniform('uBorderSurvey',4,view.map.borderSurvey);
     this.textureBytes=view.map.data.byteLength+view.native.data.byteLength;this.info.ownedGpuTextureBytes=this.textureBytes;
   }

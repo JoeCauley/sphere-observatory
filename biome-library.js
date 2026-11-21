@@ -98,7 +98,7 @@
     const A = window.SphereAtlas, relation = pack.placement.relation, taken = new Set(installed.map(i => i.plot));
     // An installed Border keeps its anchor address if the anchor is removed and later reinstalled.
     for (const item of installed) {
-      if (!item.edge) continue;
+      if (!item.edge || item.transport) continue;
       const near = A.byId(item.edge.near);
       if (!near) continue;
       const anchorId = packs.find(p => p.id === item.packId)?.placement.anchorPack;
@@ -285,6 +285,7 @@
     const p = pack(packId);
     if (!p) throw Error('Unknown biome');
     const state = window.SphereApp.getState(), target = await selectWorld(state);
+    const transportRules=p.placement.facility==='transport' ? await import('./packs/border-transport/0.10.0/survey.mjs') : null;
     const item = await enqueue(() => updateWorld(target, list => {
       const existing = list.find(i => i.packId === packId);
       if (existing) {
@@ -293,7 +294,25 @@
         return existing;
       }
       let item;
-      if(p.placement.relation==='border'){
+      if(transportRules){
+        // Prefer a shared edge beside an inhabited plot. A standalone installation needs no anchor pack.
+        const atlas=window.SphereAtlas, preferred=atlas.byId(list.find(i=>i.packId==='infinite-meadow')?.plotId);
+        const columns=atlas.columns(12),start=((state.seed%columns)+columns)%columns;
+        const candidates=[preferred,...Array.from({length:columns},(_,i)=>atlas.byId('r12c'+((start+i)%columns)))];
+        let edge,transport;
+        for(const near of candidates){
+          if(!near || construction.has(near.index)||plotBlocked(near,state))continue;
+          const far=atlas.byId('r'+near.row+'c'+((near.col+1)%near.columns));
+          if(construction.has(far.index)||plotBlocked(far,state))continue;
+          try{transport=transportRules.districtFor(target.key,near.id,far.id,state.radius*1000);}catch{continue;}
+          const [a,b]=transport.origin.plots;
+          edge={id:'transport/'+a+'/'+b,near:a,far:b,latitude:transport.origin.latitude,longitude:transport.origin.longitude};break;
+        }
+        if(!edge)throw Error('No shared Builder edge fits this world.');
+        item={id:p.id,packId:p.id,name:p.name,version:p.version,edge,transport,plotId:edge.id,relation:'border',
+          radiusKm:(Math.max(...transport.sites.map(s=>Math.abs(s.x)))+transportRules.hallHalfM)/1000,
+          direction:window.SphereWorld.direction(edge.latitude,edge.longitude,state),installedAt:new Date().toISOString()};
+      }else if(p.placement.relation==='border'){
         const parent=pack(p.placement.anchorPack);
         let anchor=list.find(i=>i.packId===parent.id);
         if(!anchor){anchor=record(parent,place(parent,state,list),state);list.push(anchor);}

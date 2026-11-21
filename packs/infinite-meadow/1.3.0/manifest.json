@@ -170,8 +170,8 @@
     },
     {
       "path": "renderer.js",
-      "bytes": 32480,
-      "sha256": "6a4d1c8995b12c0a954e83bcb7160cfaa3f5916b465fd3b256b00c1910d42e74"
+      "bytes": 32593,
+      "sha256": "0a7f28ac3e1fcdbeb45babf886e0be942fbe55e4933a3ec65c0c339557472261"
     },
     {
       "path": "style.css",
@@ -201,8 +201,8 @@
   "dependencies": [
     {
       "path": "../../kit/atmosphere.js",
-      "bytes": 3990,
-      "sha256": "944aaf2c5ae70d60bc16743feb4ac954304278a5e097f5d9e37c643a196db7eb"
+      "bytes": 4095,
+      "sha256": "8c796ce4c857da663b88ad8b740ffeb9f555876dd0466e0f9c55f72f499e0ed8"
     },
     {
       "path": "../../kit/veil.js",

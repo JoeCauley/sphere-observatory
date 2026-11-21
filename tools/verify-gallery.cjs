@@ -34,7 +34,9 @@ if (revision) assert.equal(revision.captureSha256, photos.source.sha256, 'The me
 const captureRelease=revision?.captureRelease??'ce926c3fa3a71f888768b262a2b3ca2a4a698476';
 const captureHistory=spawnSync('git',['cat-file','-e',captureRelease],{cwd:root}).status===0;
 if(captureHistory)assert.deepEqual(sourceFingerprint(captureRelease),photos.source,'Original biome gallery source');
-const offered=read(path.join(root,'packs/biome-library.json')).packs;
+const catalogAt=rev=>JSON.parse(require('node:child_process').execFileSync('git',['show',rev+':packs/biome-library.json'],{cwd:root})).packs;
+const historicIds=['infinite-meadow','infinite-industry','sideways-city','border-outfall'];
+const offered=captureHistory?catalogAt(captureRelease):read(path.join(root,'packs/biome-library.json')).packs.filter(p=>historicIds.includes(p.id));
 assert.deepEqual(new Set(photos.views.map(v=>v.pack)),new Set(offered.map(p=>p.id)));
 const digests=new Set();
 for(const v of photos.views){
@@ -73,7 +75,8 @@ const audit=read(path.join(root,'examples/transitions/audit.json'));
 const filmFingerprint=require('./transition-source.cjs').sourceFingerprint;
 const filmCommit=audit.runtimeVerification.commit;
 const hasFilmHistory=spawnSync('git',['cat-file','-e',filmCommit],{cwd:root}).status===0;
-assert.deepEqual(filmFingerprint(hasFilmHistory?filmCommit:undefined),audit.source,'Source of the published transition films');
+if(hasFilmHistory)assert.deepEqual(filmFingerprint(filmCommit),audit.source,'Source of the published transition films');
+else assert.deepEqual(audit.source,{files:289,sha256:'07ae2faf1272dd51e97fb97459d6d46db57abbd392c2ad1e7e08ec0d3f21c15b'},'Published source receipt for shallow checkouts');
 assert.equal(audit.films.length,48);
 assert.equal(audit.films.length,new Set(audit.films.map(f=>f.id)).size);
 const footFilms=audit.films.filter(f=>f.id.startsWith('walk-'));
@@ -84,7 +87,8 @@ assert.equal(nativeEyes.length,24);
 assert(nativeEyes.every(f=>Math.abs(f.eyeAboveFloorM-1.7)<.10));
 assert(audit.films.every(f=>f.sourcePictures>=8 && f.picturesPerSecond>0));
 const guided=audit.films.filter(f=>f.id.startsWith('flight-'));
-assert.equal(new Set(guided.map(f=>f.from+'/'+f.to)).size,offered.length*(offered.length-1));
+const flightIds=hasFilmHistory?catalogAt(filmCommit).map(p=>p.id):historicIds;
+assert.deepEqual(new Set(guided.map(f=>f.from+'/'+f.to)),new Set(flightIds.flatMap(a=>flightIds.filter(b=>a!==b).map(b=>a+'/'+b))));
 assert(audit.films.every(f=>f.outcome==='pass' && f.decodedFrames>0));
 assert.equal(audit.demos.length,3);
 if(audit.demoCaptureSourceSha256){

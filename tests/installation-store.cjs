@@ -8,7 +8,7 @@ async function main(){
   const dir=fs.mkdtempSync(path.join(os.tmpdir(),'observatory-register-')),storePath=path.join(dir,'installed.json');
   const transport=process.env.SPHERE_TEST_TRANSPORT||'http';let port=0,host;
   const key='sphere-0123456789abcdef',other='sphere-0011223344556677';
-  const params={seed:23},item=id=>({id,packId:id});
+  const params={seed:23,radius:24000},item=id=>({id,packId:id});
   const send=(method,data)=>host.dispatch('/api/installed-biomes',method,{'content-type':'application/json'},data?Buffer.from(JSON.stringify(data)):null);
   const patch=(world,parameters,before,installed)=>send('PATCH',{key:world,parameters,before,installed});
   const result=r=>JSON.parse(r.body);
@@ -22,7 +22,7 @@ async function main(){
     assert.equal(reused.status,304);assert.equal(reused.body.length,0);
     assert.equal((await host.dispatch('/','GET',{'if-none-match':'"older"'})).status,200);
     const head=await host.dispatch('/','HEAD',{'if-none-match':'*'});assert.equal(head.status,304);assert.equal(head.body.length,0);
-    const catalog=result(await host.dispatch('/packs/biome-library.json'));assert.equal(catalog.packs.length,4);
+    const catalog=result(await host.dispatch('/packs/biome-library.json'));assert.equal(catalog.packs.length,5);assert.equal(catalog.packs.find(p=>p.id==='border-transport').version,'0.10.0');
     assert.deepEqual(result(await send('GET')),{schema:1,worlds:{}});
     const a=item('infinite-meadow'),b=item('sideways-city');
     const [first,second]=await Promise.all([patch(key,params,[],[a]),patch(key,params,[],[b])]);
@@ -35,11 +35,16 @@ async function main(){
     const snapshot=result(await send('GET'));
     assert.equal(snapshot.worlds[key].installed.length,3);assert.equal(snapshot.worlds[other].installed.length,1);
     assert.deepEqual(JSON.parse(fs.readFileSync(storePath)),snapshot);
+    const query='/api/border-stations?world='+key+'&a=r10c0&b=r11c0&bay=0';
+    assert.equal(result(await host.dispatch(query)).locked,false);
+    const discovered=result(await host.dispatch(query,'POST'));
+    assert.equal(discovered.station.address.radiusM,params.radius*1000);assert.equal(discovered.locked,true);
     await host.close();host=null;
     host=await start({port,transport,storePath});assert.deepEqual(result(await send('GET')),snapshot);
+    assert.deepEqual(result(await host.dispatch(query)),discovered);
     assert.equal((await send('PATCH',{key:'invalid',parameters:params,before:[],installed:[]})).status,400);
     assert.deepEqual(result(await send('GET')),snapshot);
-    console.log('PASS '+transport+' server restart, four public entry points, concurrent world updates, conflict retry and disk round trip.');
+    console.log('PASS '+transport+' server restart, five catalog entries, concurrent world updates, conflict retry and the same station after restart.');
   }finally{if(host)await host.close();fs.rmSync(dir,{recursive:true,force:true});}
 }
 main().catch(e=>{console.error(e);process.exitCode=1;});

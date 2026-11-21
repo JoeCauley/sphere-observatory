@@ -30,7 +30,7 @@ uniform highp sampler2D uInstalledBiomes;
 uniform int uInstalledBiomesOn;
 uniform float uAtlasRadiusKm;
 uniform vec3 uAtlasAxis,uAtlasRight,uAtlasUp;
-uniform vec4 uBorderChart,uBorderSurvey;
+uniform vec4 uBorderChart,uBorderSurvey,uTransportChart,uTransportWidths;
 float transportCoverage(float d,float halfWidth,float pixelKm){
  float halfPixel=max(.0001,pixelKm*.5);
  return clamp((min(d+halfPixel,halfWidth)-max(d-halfPixel,-halfWidth))/(2.*halfPixel),0.,1.);
@@ -122,6 +122,18 @@ vec3 installedBiomeMaterial(vec3 original,vec3 q,float pixel,float distanceKm){
    col=mix(col,vec3(.32,.37,.35)*(1.+.11*bays),roof);
   }
  }
+ if(uTransportWidths.w>0. && abs(lat-uTransportChart.x)*uAtlasRadiusKm<240.){
+  float dl=atan(sin(lon-uTransportChart.y),cos(lon-uTransportChart.y));
+  vec2 km=vec2(dl*cos(uTransportChart.x),lat-uTransportChart.x)*uAtlasRadiusKm;
+  if(uTransportChart.z!=0.)km=vec2(km.y,km.x*uTransportChart.z);
+  float bay=clamp(floor(km.x/200.+.5),-1.,1.);
+  float width=bay<-.5?uTransportWidths.x:(bay>.5?uTransportWidths.z:uTransportWidths.y);
+  float hall=width>0.?max(abs(km.x-bay*200.)-16.,abs(km.y)-width):1.e10;
+  float link=max(max((uTransportWidths.x>0.?-200.:0.)-km.x,km.x-(uTransportWidths.z>0.?200.:0.)),abs(km.y)-1.9);
+  float aa=max(.015,pixel*uAtlasRadiusKm);
+  float roof=(1.-smoothstep(-aa,aa,min(hall,link)))*min(1.,max(width,1.9)/aa);
+  col=mix(col,transportMaterial(abs(km.y),km.x,max(width,1.9),aa),roof);
+ }
  return col;
 }
 `;
@@ -183,15 +195,18 @@ vec3 installedBiomeMaterial(vec3 original,vec3 q,float pixel,float distanceKm){
     let compiled = null, texture = null, disposed = false, enabled = true;
 
     const [{chartFor},{farEdgeM,halfLengthM}]=await Promise.all([import('./packs/kit/surface-route.js'),import('./packs/kit/border-profile.js')]);
-    let revision=0,borderChart=[0,0,0,0],borderSurvey=[0,0,0,0];
+    let revision=0,transportChart=[0,0,0,0],transportWidths=[0,0,0,0],borderChart=[0,0,0,0],borderSurvey=[0,0,0,0];
     function upload() {
       const started = performance.now(), items = library.placed().filter(item => Number.isInteger(item.plot));
       const built = build(A, items, item => library.pack(item.packId)?.overview, new Set(library.underConstruction()));
-      const edge=library.placed().find(i=>i.edge)?.edge,home=edge && A.byId(edge.near);
+      const d=library.placed().find(i=>i.transport)?.transport;
+      transportChart=d?[d.origin.latitude,d.origin.longitude,d.origin.axis==='meridian'?d.origin.acrossSign:0,0]:[0,0,0,0];
+      transportWidths=d?[-1,0,1].map(b=>(d.sites.find(s=>s.bay===b)?.widthM??0)/2000).concat(1):[0,0,0,0];
+      const edge=library.placed().find(i=>i.id==='border-outfall')?.edge,home=edge && A.byId(edge.near);
       const gate=home && chartFor(home,edge,library.world.params.radius);
       borderChart=gate?[home.latitude,home.longitude,gate.eastM/1000,gate.northM/1000]:[0,0,0,0];
       borderSurvey=gate?[Math.cos(gate.angle),Math.sin(gate.angle),Math.min(gate.halfWidthM,halfLengthM)/1000,farEdgeM/1000]:[0,0,0,0];
-      api.mapData=()=>({data:built.data,width:WIDTH,height:built.height,revision,borderChart,borderSurvey});
+      api.mapData=()=>({data:built.data,width:WIDTH,height:built.height,revision,borderChart,borderSurvey,transportChart,transportWidths});
       revision++;
       const priorActive = gl.getParameter(gl.ACTIVE_TEXTURE);
       gl.activeTexture(gl.TEXTURE0 + UNIT);
@@ -215,6 +230,7 @@ vec3 installedBiomeMaterial(vec3 original,vec3 q,float pixel,float distanceKm){
         const priorBinding = gl.getParameter(gl.TEXTURE_BINDING_2D);
         gl.bindTexture(gl.TEXTURE_2D, texture);
         gl.uniform1f(uniforms.uAtlasRadiusKm, core.radius);
+        gl.uniform4fv(uniforms.uTransportChart,transportChart);gl.uniform4fv(uniforms.uTransportWidths,transportWidths);
         gl.uniform4fv(uniforms.uBorderChart,borderChart);gl.uniform4fv(uniforms.uBorderSurvey,borderSurvey);
         gl.uniform1i(uniforms.uInstalledBiomes, UNIT); gl.uniform1i(uniforms.uInstalledBiomesOn, 1);
         gl.uniform3fv(uniforms.uAtlasAxis, frame.axis); gl.uniform3fv(uniforms.uAtlasRight, frame.right); gl.uniform3fv(uniforms.uAtlasUp, frame.up);

@@ -5,12 +5,17 @@ import {canStand,surveyGate} from '../portal-landing.js';
 import {passageAt,ownerAt} from '../surface-passages.js';
 import {circuits,runCircuit,blockedCityDoor} from './support/surface-circuits.mjs';
 import {circleThrough,planWalk} from '../surface-circuit.js';
+import {districtFor} from '../packs/border-transport/0.10.0/survey.mjs';
 const require=createRequire(import.meta.url),math=require('../math.js');
 for(const f of ['collection','biomes','world-palette','world'])require('../'+f+'.js');
 const env={math,collection:globalThis.SphereCollection,world:globalThis.SphereWorld,atlas};
 const state={...math.defaultState(),...env.world.defaults,collection:true,era:'after',multipleWounds:true};
 const catalogue=require('../packs/biome-library.json').packs;
 const items=catalogue.map(p=>{
+  if(p.placement.facility==='transport'){
+    const d=districtFor('sphere-0000000000000017','r12c35','r12c36',state.radius*1000);
+    return {id:p.id,name:p.name,edge:{near:d.origin.plots[0],far:d.origin.plots[1],...d.origin},transport:d};
+  }
   if(p.id==='border-outfall')return {id:p.id,name:p.name,edge:atlas.northEdge('r12c35')};
   const plot=atlas.byId({'infinite-meadow':'r12c35','sideways-city':'r10c20','infinite-industry':'r7c21'}[p.id]);
   return {id:p.id,name:p.name,plot:plot.index,plotId:plot.id};
@@ -27,8 +32,10 @@ const clear=surveyGate(gate,state,actual,env);assert(canStand(clear.far.q,clear.
 assert.deepEqual(clear.near.q,gate.near.q);assert(Math.abs(clear.surveyOffsetM)<=512&&clear.surveyOffsetM!==0);
 assert(Math.abs(state.radius*Math.hypot(...clear.far.q.map((v,i)=>v-clear.near.q[i]))-1000)<1e-6);
 console.log('PASS surveyed a blocked City outlet onto open ground at a lateral offset of',clear.surveyOffsetM,'m, preserving the 1,000 km straight tunnel.');
+const d=items.find(i=>i.transport).transport;
+assert.equal(planWalk(circleThrough(d.origin.latitude,d.origin.longitude,.9,state,env.world),state,items,env),null,'A Builder district requires its surveyed crossings');
 const routes=circuits(state,items,env,routeSeed);
 const results=routes.map(plan=>runCircuit(plan,state,items,env));
 const wound=env.collection.wounds[0],hit=env.world.coordinates(wound.axis,state);
 assert.equal(planWalk(circleThrough(hit.lat,hit.lon,.7,state,env.world),state,items,env),null);
-console.log('PASS',results.length,'complete great circles,',results.reduce((s,r)=>s+r.tunnel,0),'straight through-tunnels, all installed packs and Main surface regions, largest closure error',Math.max(...results.map(r=>r.closureM)).toFixed(6),'m. Wound crossing rejected.');
+console.log('PASS',results.length,'complete great circles,',results.reduce((s,r)=>s+r.tunnel,0),'straight through-tunnels, surveyed Outfall and plot packs alongside the new district, all Main surface regions, largest closure error',Math.max(...results.map(r=>r.closureM)).toFixed(6),'m. Wound crossing rejected.');

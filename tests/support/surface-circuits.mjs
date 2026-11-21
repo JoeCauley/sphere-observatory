@@ -15,7 +15,8 @@ function check(ok,why){if(!ok)throw Error(why);}
 
 export function circuits(state,items,env,routeSeed=seed){
   const roll=random(routeSeed),routes=[],covered=new Set();
-  const required=[...items.map(i=>i.id),...env.world.names.slice(0,13).map((_,i)=>'main-'+i),'main-15'];
+  const straightSites=items.filter(i=>!i.transport);
+  const required=[...straightSites.map(i=>i.id),...env.world.names.slice(0,13).map((_,i)=>'main-'+i),'main-15'];
   const record=plan=>{
     for(const leg of plan.legs){if(leg.owner)covered.add(leg.owner.id);if(leg.installation)covered.add(leg.installation);}
     routes.push(plan);
@@ -33,7 +34,7 @@ export function circuits(state,items,env,routeSeed=seed){
     throw Error('Could not find a complete supported course through '+label);
   }
   for(let i=0;i<3;i++)choose(null,'Random equatorial bearing '+(i+1));
-  for(const item of items){
+  for(const item of straightSites){
     const at=item.edge??env.atlas.byId(item.plotId);
     choose(at,item.name,item.id);
   }

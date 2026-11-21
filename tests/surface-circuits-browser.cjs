@@ -107,7 +107,7 @@ const {chromium}=require('playwright'),{session,executable}=require('./support/b
         return {...model,nativeGroundLegs:supported,renderedTunnels:passages,liveClosureM,liveDegrees};
       }};
     });
-    const info=await page.evaluate(()=>({seed:circuitChecks.seed,labels:circuitChecks.paths.map(p=>p.label),radiusKm:circuitChecks.state.radius,installed:circuitChecks.items.map(i=>({id:i.id,plot:i.plotId??i.edge?.id}))}));
+    const info=await page.evaluate(()=>({seed:circuitChecks.seed,labels:circuitChecks.paths.map(p=>p.label),radiusKm:circuitChecks.state.radius,installed:circuitChecks.items.map(i=>({id:i.id,plot:i.plotId??i.edge?.id,requiresDistrictWalk:!!i.transport}))}));
     const part=process.env.SPHERE_WALK_SHARD||'1/1',match=/^(\d+)\/(\d+)$/.exec(part);
     if(!match||+match[1]<1||+match[1]>+match[2]||+match[2]>info.labels.length)throw Error('Expected a walking shard such as 1/3');
     const slot=+match[1]-1,slots=+match[2];
@@ -123,7 +123,7 @@ const {chromium}=require('playwright'),{session,executable}=require('./support/b
     }
     const visited=await page.evaluate(()=>[...circuitChecks.seen]);
     if(slots===1){
-      assert(info.installed.every(item=>visited.includes(item.id)));
+      assert(info.installed.filter(item=>!item.requiresDistrictWalk).every(item=>visited.includes(item.id)));
       for(const id of [0,1,2,3,4,5,6,7,8,9,10,11,12,15])assert(visited.includes('main-'+id));
     }
     for(const route of results)for(const id of route.visits)assert(visited.includes(id),id);

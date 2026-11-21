@@ -3,7 +3,7 @@ const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypt
 const root=path.resolve(__dirname,'..');
 function sourceFingerprint(revision){
   const files=new Set();
-  const included=file=>/\.(js|css|html|json|glsl|vert|frag)$/.test(file);
+  const included=file=>/\.(m?js|css|html|json|glsl|vert|frag)$/.test(file);
   function scan(dir,deep){
     for(const entry of fs.readdirSync(path.join(root,dir),{withFileTypes:true})){
       if(entry.name.startsWith('.') || (!dir && entry.name.endsWith('.json')))continue;

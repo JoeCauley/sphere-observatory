@@ -68,8 +68,8 @@ function createHandler({root=__dirname, storePath=path.join(root,'installed-biom
       if(name==='/api/health')return reply(res,200,{service:'sphere-observatory',checkout,pid:process.pid});
       if(name==='/api/installed-biomes')return await installations(req,res);
       if(name==='/api/border-stations'){
-        const {stationEndpoint}=await import('./studies/border-crossing/station-store.mjs');
-        return await stationEndpoint(req,res,storePath,reply);
+        const {stationEndpoint}=await import('./biome-service/border-station-store.mjs');
+        return await stationEndpoint(req,res,storePath,reply,readStore);
       }
       if(name==='/build-info.json')return reply(res,200,await buildInfo());
       const file=path.resolve(root,'.'+((name==='/'||name==='/,')?'/index.html':name));

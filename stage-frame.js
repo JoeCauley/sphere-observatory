@@ -156,6 +156,7 @@
       // Hundreds of biomes: one picker, not hundreds of buttons.
       const pick = document.createElement('select'), fly = document.createElement('button');
       pick.setAttribute('aria-label', 'Destination biome');
+      Object.assign(pick.style,{width:'auto',maxWidth:'min(32vw,13rem)',minWidth:'0'});
       for (const other of others) { const option = document.createElement('option'); option.value = other.item.id; option.textContent = other.scene.name; pick.append(option); }
       fly.textContent = 'Fly there'; fly.className = 'secondary';
       fly.onclick = () => { const other = others.find(o => o.item.id === pick.value); if (other) flyTo(other); };
@@ -1099,7 +1100,7 @@
       : named ? {id:named.id,name:named.name,pack:true} : groundAt(point.q,core);
     if(!passage && (SphereMath.inBreach(point.q,core)||SphereCollection.missing(point.q,core)))return false;
     const id=owner.id, here=current, worldKey=lib.world.key;
-    const threshold=!!(passage || here?.frame.surfaceEntry?.passage);
+    const threshold=!!(passage || here?.frame.surfaceEntry?.passage || id==='border-transport' || here?.id==='border-transport');
     clearRecovery();
     const status=window.SphereTransitStatus.crossing(owner.name,'Preparing the adjoining ground.');
     opening=true;let destination;
@@ -1193,6 +1194,11 @@
     if(!walking || current?.frame.surfaceEntry?.passage)return false;
     const q=norm(state.position),old=norm(oldPosition),delta=q.map((x,i)=>x-old[i]);
     if(Math.hypot(...delta)<1e-15)return false;
+    const target=geography?.footprint(state,library(),SphereAtlas,SphereWorld);
+    if(target?.transport && current?.id!==target.id){
+      const f=bearing||state.forward,forward=norm(f.map((v,i)=>v-dot(f,q)*q[i]));
+      return walkGround(station({q,forward},state,{id:target.id,name:target.name,pack:true}));
+    }
     if(lastMouth){
       const {gate,side}=lastMouth, mouth=gate[side],d=q.map((x,i)=>(x-mouth.q[i])*state.radius*1000);
       const distance=Math.hypot(...d),direction=dot(delta,mouth.forward)*(side==='far'?-1:1);
@@ -1266,13 +1272,18 @@
     if(pose.mode==='flight' && !current.regional && optics && scene && pose.altitudeM>=optics.atmosphere(scene.atmosphere).nearM)enableRegional(current,scene);
     const climbed=pose.altitudeM>previous.pose.altitudeM && pose.altitudeM>=geography.leaveKm*1000;
     if(!climbed && (inspect.levelCruising || pose.altitudeM>=geography.leaveKm*1000))return;
-    if(!climbed && item.edge){
+    if(!climbed && item.transport && geography.outsideDistrict(item.transport,pose.eastM,pose.northM)<=(pose.mode==='walk'?14:650))return;
+    if(!climbed && item.edge && !item.transport){
       const home=SphereAtlas.byId(item.edge.near);
       if(geography.onBorder(pose,home.halfWidth*s.radius*1000,2800))return;
     }
     const worldPose=geography.mainPose(s,item,pose,SphereAtlas,SphereWorld);
-    const target=climbed?null:geography.footprint(worldPose,lib,SphereAtlas,SphereWorld);
+    const target=climbed?null:geography.footprint(pose.mode==='walk'?{...worldPose,walkMode:true}:worldPose,lib,SphereAtlas,SphereWorld);
     if(!climbed && target?.id===item.id)return;
+    if(!climbed && pose.mode==='walk' && target?.transport){
+      const q=norm(worldPose.position),owner={id:target.id,name:target.name,pack:true};
+      void walkGround(station({q,forward:worldPose.forward},s,owner));return;
+    }
     if(!climbed && (item.edge || target?.edge)){
       if(pose.mode==='walk' && !target?.edge){
         const q=norm(worldPose.position);

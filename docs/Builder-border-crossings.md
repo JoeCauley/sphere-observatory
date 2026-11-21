@@ -4,6 +4,18 @@ A walker who approaches a wall from the other biome should find the same doors. 
 
 [Watch the same freight passage from the bridge and lane](../examples/border-crossing/freight-views.mp4) · [Open the interactive study in a running checkout](../studies/border-crossing/index.html) · [Previous transition audit](Transition-audit.md)
 
+## Installed district in 0.10.0
+
+Install **Border Biome** in the Observatory’s **Explore** panel. **Visit** descends through clear air to the middle station’s service apron. Select **Walk**, then use W/S to advance or back out and A/D to move sideways. Drag or use arrow keys to look. **Fly** and R/F let you explore vertically. The roof underside is at 1,700 m and its walkable top is at 1,745 m. A flyer can land there from above. The station’s artificial lighting guides the traveler under a shaded sky.
+
+The pack selects an east–west plot pair, preferring a shared edge beside Meadow when it is already present. Either neighbor may remain native. Three surveyed halls have centers 200 km apart on a sufficiently long edge. A 3.8 km wide covered freight line connects them. Each hall is 32 km along the line and 40, 48 or 56 km across it. The Atlas uses the active sphere radius to fit the district to the available edge and can fit fewer halls on a smaller world. Main and the pack render the same roof footprint. Junctions with further edges and a planet-wide connected interior remain future work.
+
+On an apron, **Board** selects one of the four traveler envelopes and its marked portal. Travel pace accelerates the traveler. The freight follows the Observatory clock. Pausing Main holds the load in place while you can keep walking. The first physical entry or landing on a station roof records its layout. A flyover only reads the survey. The local Observatory keeps this journal beside its install register. Static hosting keeps it in the browser. A remembered viewpoint is separate from the shared station record.
+
+The production movement test crosses 144 routes using the collision solver, including all four scales from both sides, three layouts and two sphere radii. Twelve additional walks follow the freight line end to end at service eye height. Each of these walks covers 432 km and crosses both joins. The browser test installs from Explore, uses Visit, walks through the service door, backs out into the adjacent renderer and walks back to the same station. The older study remains available for synchronized freight observations, opposite-direction clearance tests and reproducing its film.
+
+The pack keeps one hall and one freight mesh resident. Assigning an Atlas record to an unchanged preview reuses both GPU buffers. Freight moves through a draw offset. A paused, stationary view reuses its last rendered frame. On ALPHA, five timed runs of 200,000 route length and position queries gave a median of 180 ms in the study and 15 ms with cached segment lengths. The summed positions agreed. This measurement covers CPU route queries.
+
 ## What we recovered
 
 The earlier Atlas proposal puts trunks along both edges of the habitat waist and six meridians. It reserves 20,000 km on either side of a plot edge and assigns 60,000 km to a trunk. Those numbers describe an early layout. The earlier transport discussion also included fixed links called Spans and rare multi-destination stations. I found no settled dimensions for the four object exits. [Earlier Atlas proposal](Observatory-Biome-Library-2026-11-12.md)
