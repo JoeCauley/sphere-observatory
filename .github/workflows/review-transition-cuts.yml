@@ -1,0 +1,29 @@
+name: Classify picture changes with camera and lighting traces
+on:
+  push:
+    branches: [qa/transition-film-archive-44870610208]
+    paths: [.github/workflows/review-transition-cuts.yml]
+permissions:
+  actions: read
+  contents: write
+jobs:
+  correlate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - name: Correlate all 48 scene recordings
+        run: |
+          gh run watch 44871660792 --interval 40 --compact
+          gh run download 44871660792 -D "$RUNNER_TEMP/films"
+          python tools/transition-cut-traces.py "$RUNNER_TEMP/films" "$RUNNER_TEMP/cuts.json"
+          python - <<'PY'
+          import base64,hashlib,json,os,pathlib,subprocess
+          p=pathlib.Path(os.environ['RUNNER_TEMP'])/'cuts.json'
+          b=p.read_bytes();rows=json.loads(b);assert len(rows)==48,len(rows)
+          inp=json.dumps({'content':base64.b64encode(b).decode(),'encoding':'base64'}).encode()
+          r=subprocess.run(['gh','api','repos/'+os.environ['GITHUB_REPOSITORY']+'/git/blobs','--input','-'],input=inp,capture_output=True,check=True)
+          print('CAMERA_CUTS_RECEIPT '+json.dumps({'blob':json.loads(r.stdout)['sha'],'bytes':len(b),'events':sum(len(x) for x in rows.values())}))
+          PY
