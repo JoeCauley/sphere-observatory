@@ -358,24 +358,26 @@
 
   // Project the regional image with the pack camera while it has the flight controls.
   // Only the narrow overlap needs both levels of detail. A held camera reuses its pixels.
-  function regionalFrame(now){
+  function regionalFrame(now,warm=false){
     const c=current;
     if(!optics || !geography || !c?.regional || !c.shell.isConnected)return false;
     const api=c.frame.contentWindow?.SphereBiome,p=api?.pose?.();
-    if(!p || p.mode!=='flight'){c.frame.style.opacity='1';return false;}
+    if(!p || (!warm && p.mode!=='flight')){c.frame.style.opacity='1';return false;}
     const recipe=c.regional, weight=optics.layerWeight(recipe.nearM,recipe.farM,p.altitudeM);
-    c.frame.style.opacity=String(weight);
-    if(weight>=1)return false;
+    if(!warm)c.frame.style.opacity=String(weight);
+    if(weight>=1 && !warm)return false;
+    const camera=warm?{...p,mode:'flight',altitudeM:(recipe.nearM+recipe.farM)/2,pitch:-1.49}:p;
     const s=window.SphereApp.getState(), rect=c.frame.getBoundingClientRect();
     if(rect.width<2 || rect.height<2)return false;
-    const key=[s.time,p.eastM,p.northM,p.altitudeM,p.yaw,p.pitch,rect.width,rect.height,s.routeShades,s.exposure].join('/');
+    const key=[s.time,camera.eastM,camera.northM,camera.altitudeM,camera.yaw,camera.pitch,rect.width,rect.height,s.routeShades,s.exposure].join('/');
     if(c.regionalKey===key || now-(c.regionalStamp??-Infinity)<40)return true;
     const item=library().entry(c.id);if(!item)return false;
-    const pose=geography.mainPose(s,item,p,SphereAtlas,SphereWorld);
-    const scale=Math.min(1,800/rect.width,480/rect.height);
+    const pose=geography.mainPose(s,item,camera,SphereAtlas,SphereWorld);
+    const scale=Math.min(1,640/rect.width,360/rect.height);
     pose.fov=2*Math.atan(rect.width/rect.height/recipe.focal)*180/Math.PI;
     // The regional image is already filtered to the display size during the dissolve.
     pose.geometryDetail=false;pose.antialias=Math.min(pose.antialias??0,1);
+    if(recipe.density===0){pose.clouds=false;pose.textureDetail=false;pose.richMaterials=false;}
     window.SphereApp.renderer.draw(pose,Math.round(rect.width*scale),Math.round(rect.height*scale));
     c.regionalKey=key;c.regionalStamp=now;return true;
   }
@@ -386,6 +388,21 @@
     const bar=c.shell.firstElementChild;
     Object.assign(bar.style,{position:'absolute',top:'0',left:'0',right:'0',zIndex:'2'});
     regionalFrame(performance.now());
+  }
+
+  // Prime the exact low-altitude shader while the apron still fills the viewport.
+  // A fence lets the compositor keep presenting while a cold GPU finishes compiling.
+  async function prepareClearDeparture(c,scene){
+    enableRegional(c,scene);
+    if((c.frame.contentWindow?.SphereBiome?.pose?.()?.altitudeM??Infinity)>c.regional?.nearM)return;
+    if(!regionalFrame(performance.now(),true))return;
+    const gl=window.SphereApp.renderer.gl,sync=gl.fenceSync(gl.SYNC_GPU_COMMANDS_COMPLETE,0);
+    if(!sync)return;
+    try{
+      gl.flush();
+      const end=performance.now()+4000;
+      while(current===c && performance.now()<end && gl.clientWaitSync(sync,0,0)===gl.TIMEOUT_EXPIRED)await sleep(16);
+    }finally{gl.deleteSync(sync);}
   }
 
   // A biome climbing into its own blind stops dead when its script ends, and its wisps stop with
@@ -858,7 +875,8 @@
           // A clear guided departure needs Main's renderer for the live overlap. Finish preparing both ends first.
           await rehearsal;
           if(current!==here)return;
-          enableRegional(here,scene);
+          await prepareClearDeparture(here,scene);
+          if(current!==here)return;
         }
         if (scene.contract && typeof api?.ascend !== 'function') throw Error('The departure pack could not start its ascent.');
         const lifting = scene.contract ? Promise.resolve(api.ascend({ toAltitudeM: blind ? (blind.baseM + blind.topM) / 2 : HANDOFF_KM * 1000, handoff: true })) : ascend(here.frame);
@@ -958,10 +976,10 @@
       leaving.frame.contentWindow?.focus();
       const rehearsal = rehearse(A, HANDOFF_KM, 12000);   // behind the scene, while it lifts off
       let blind = null; try { blind = api.air().blind ?? null; } catch {}
-      if(!blind){await rehearsal;if(current!==leaving)return true;}
+      if(!blind){await rehearsal;if(current!==leaving)return true;await prepareClearDeparture(leaving,scene);if(current!==leaving)return true;}
       sound('lift', 16);
       const lifting = Promise.resolve(api.ascend({ toAltitudeM: blind ? (blind.baseM + blind.topM) / 2 : HANDOFF_KM * 1000, handoff: true }));
-      if(blind)useAir(scene);else enableRegional(leaving,scene);
+      if(blind)useAir(scene);
       const clouded = blind ? cloudOverAscent(api, lifting) : null;
       const result = await lifting;
       if (current !== leaving) return true;
