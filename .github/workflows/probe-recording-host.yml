@@ -1,0 +1,27 @@
+name: Measure the recording hosts
+on:
+  push:
+    branches: [qa/transition-film-archive-44870610208]
+    paths: [.github/workflows/probe-recording-host.yml]
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 24
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { os: ubuntu-latest, driver: swiftshader, chrome: /usr/bin/google-chrome }
+          - { os: macos-15, driver: system, chrome: "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" }
+    env:
+      SPHERE_NATIVE_BROWSER: ${{ matrix.chrome }}
+      CI_RENDERER: ${{ matrix.driver }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version: "24"
+      - run: npm ci --no-audit --no-fund
+      - run: node tools/probe-recording-host.cjs
