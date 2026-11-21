@@ -1,0 +1,18 @@
+name: Encode the continuous on-foot reveal of Violet Labyrinth
+on:
+  push:
+    branches: [qa/triangle-transition-films]
+    paths: [.github/workflows/violet-walk-demo.yml]
+permissions:
+  actions: read
+  contents: write
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - run: gh run download 44875365674 -n transition-walks-1 -D "$RUNNER_TEMP/take"
+      - run: python -m pip install opencv-python-headless imageio-ffmpeg
+      - run: python tools/encode-violet-walk.py "$RUNNER_TEMP/take"
