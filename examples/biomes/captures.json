@@ -4,6 +4,18 @@
     "files": 85,
     "sha256": "d02e0a21601666d1850264be1dcce1bf11541560e90c6f8f346ceb76eaaf0d7a"
   },
+  "metadataRevision": {
+    "captureRelease": "ce926c3fa3a71f888768b262a2b3ca2a4a698476",
+    "captureSha256": "d02e0a21601666d1850264be1dcce1bf11541560e90c6f8f346ceb76eaaf0d7a",
+    "source": {
+      "files": 84,
+      "sha256": "026618d03ca88efa3274eefcba454ec3b34f0994b61d48ff11c63154ae073146"
+    },
+    "changes": [
+      "Removed the stale copy of accepted-source.json from Meadow 1.3.0.",
+      "Added the Outfall apron revision to the limits array in Meadow 1.3.0's manifest. All other fingerprinted files match the capture release byte for byte."
+    ]
+  },
   "browser": "157.0.8103.80",
   "views": [
     {

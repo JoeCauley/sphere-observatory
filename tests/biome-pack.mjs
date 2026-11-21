@@ -1,11 +1,37 @@
 import fs from 'node:fs';import path from 'node:path';import assert from 'node:assert/strict';import {createHash} from 'node:crypto';import {createRequire} from 'node:module';
+import {fileURLToPath} from 'node:url';
 import {validateManifest,validateAddress,createStore,verifyAssets} from '../packs/runtime/v1/contract.js';import {WorldStage} from '../packs/runtime/v1/stage.js';import {ResourceLease} from '../packs/runtime/v1/resources.js';import {PackHost} from '../packs/runtime/v1/host.js';
 import {initialState,saveState,parseState} from '../packs/infinite-meadow/1.0.0/model.js';
 const require=createRequire(import.meta.url),repo=new URL('../',import.meta.url),base=new URL('../packs/infinite-meadow/1.0.0/',import.meta.url),source=JSON.parse(fs.readFileSync(new URL('accepted-source.json',base))),m=validateManifest(JSON.parse(fs.readFileSync(new URL('manifest.json',base)))),results=[];
 const check=(name,detail={})=>results.push({name,...detail}),digest=async data=>createHash('sha256').update(new Uint8Array(data)).digest('hex'),fetcher=async url=>({ok:true,arrayBuffer:async()=>{const b=fs.readFileSync(url);return b.buffer.slice(b.byteOffset,b.byteOffset+b.byteLength);}});
 const assets=await verifyAssets(m,base,{fetcher,digest});assert.equal(assets.required,assets.ready);
-for(const f of source.byteExact)assert.equal(await digest(fs.readFileSync(new URL(f.path,base))),f.sha256);check('All assets verified; all fourteen accepted graphics files are byte exact',{assets:assets.ready,exactFiles:source.byteExact.length});
-for(const f of source.controlExact)assert.equal(await digest(fs.readFileSync(new URL(f.path,base))),f.sha256);check('The fully tested Study 13 control and terrain-bound model is byte exact',{controlFiles:source.controlExact.length});
+function* acceptedRecords(directory) {
+  for (const entry of fs.readdirSync(directory, {withFileTypes: true})) {
+    const filename = path.join(directory, entry.name);
+    if (entry.isDirectory()) yield* acceptedRecords(filename);
+    else if (entry.isFile() && entry.name === 'accepted-source.json') yield filename;
+  }
+}
+
+const packsRoot = fileURLToPath(new URL('../packs/', import.meta.url));
+const verifiedRecords = [];
+for (const filename of acceptedRecords(packsRoot)) {
+  const directory = path.dirname(filename);
+  const record = JSON.parse(fs.readFileSync(filename, 'utf8'));
+  const pins = [...record.byteExact, ...(record.controlExact ?? [])];
+  assert.ok(pins.length, `Empty accepted-source record: ${filename}`);
+  for (const pin of pins) {
+    assert.ok(!path.isAbsolute(pin.path) && !pin.path.split(/[\\/]/).includes('..'), pin.path);
+    const file = path.join(directory, pin.path);
+    assert.equal(await digest(fs.readFileSync(file)), pin.sha256, `Source hash mismatch: ${path.relative(packsRoot, file)}`);
+  }
+  verifiedRecords.push({pack: path.relative(packsRoot, directory), files: pins.length});
+}
+assert.equal(source.byteExact.length, 14);
+assert.equal(source.controlExact.length, 2);
+check('All assets verified; all fourteen accepted graphics files are byte exact',{assets:assets.ready,exactFiles:source.byteExact.length});
+check('The fully tested Study 13 control and terrain-bound model is byte exact',{controlFiles:source.controlExact.length});
+check('Every pack with an accepted-source record matches its own files', {records: verifiedRecords});
 for(const change of [{runtimeApi:2},{id:'../industry'},{version:'latest'},{storageKey:'sphere-session-v1'},{representations:[{id:'hero',anchor:'world',follows:'terrain'}]},{assets:[{path:'../app.js',bytes:1,sha256:'a'.repeat(64)}]}])assert.throws(()=>validateManifest({...m,...change}));check('Malformed versions, paths, identities and moving world anchors are rejected');
 const raw=JSON.parse(saveState(initialState())),memory=new Map([['sphere-session-v1','original-observatory'],['sphere-scale-study-v13','original-study']]),backend={getItem:k=>memory.get(k)??null,setItem:(k,v)=>memory.set(k,v)},store=createStore(m,backend);store.useValidator(s=>JSON.parse(saveState(parseState(JSON.stringify(s)))));
 const payload={state:raw,bookmark:structuredClone(raw)};payload.bookmark.windTime+=5;store.write(payload);assert.deepEqual(store.read(),payload);assert.equal(memory.get('sphere-session-v1'),'original-observatory');assert.equal(memory.get('sphere-scale-study-v13'),'original-study');check('Current view and distinct saved place round trip without touching legacy storage');

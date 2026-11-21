@@ -1,0 +1,184 @@
+{
+  "dateEastern": "2026-11-20",
+  "releaseBase": "ce926c3fa3a71f888768b262a2b3ca2a4a698476",
+  "browser": "157.0.8103.80",
+  "display": {
+    "device": "\\\\.\\DISPLAY1",
+    "gpu": "NVIDIA GeForce RTX 5080",
+    "mode": [
+      3840,
+      2160
+    ],
+    "refreshHz": 60,
+    "panels": [
+      "TCL2875"
+    ]
+  },
+  "webglDevice": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+  "industryPack": "1.4.1",
+  "industryView": "Inspect the hot bar transfer",
+  "packViewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "industryDrawingBuffer": [
+    1280,
+    720
+  ],
+  "industryPose": {
+    "eastM": -144.87083487540116,
+    "northM": 327.923646539116,
+    "yaw": -2.154346268990691,
+    "pitch": 0.19,
+    "mode": "walk",
+    "altitudeM": 1.7000000000000028
+  },
+  "durationPerViewMs": 30000,
+  "packWarmupFrames": 180,
+  "samples": [
+    {
+      "label": "blank",
+      "count": 1801,
+      "medianMs": 16.7,
+      "p95Ms": 16.8,
+      "focused": true,
+      "fallbackFrames": 0,
+      "elapsedMs": 30016.6,
+      "windowsForeground": {
+        "observations": 199,
+        "matched": 199,
+        "maxGapMs": 156,
+        "passed": true
+      },
+      "intervalHistogramMs": {
+        "16.4": 10,
+        "16.5": 105,
+        "16.6": 633,
+        "16.7": 805,
+        "16.8": 224,
+        "16.9": 24
+      }
+    },
+    {
+      "label": "standalone",
+      "count": 1801,
+      "medianMs": 16.7,
+      "p95Ms": 16.8,
+      "focused": true,
+      "fallbackFrames": 0,
+      "elapsedMs": 30016.4,
+      "windowsForeground": {
+        "observations": 199,
+        "matched": 199,
+        "maxGapMs": 152,
+        "passed": true
+      },
+      "intervalHistogramMs": {
+        "16.4": 3,
+        "16.5": 52,
+        "16.6": 668,
+        "16.7": 904,
+        "16.8": 170,
+        "16.9": 4
+      },
+      "recentPackIntervals": {
+        "count": 900,
+        "medianMs": 16.7,
+        "p95Ms": 16.8
+      },
+      "webglErrors": []
+    },
+    {
+      "label": "visit",
+      "count": 1801,
+      "medianMs": 16.7,
+      "p95Ms": 16.8,
+      "focused": true,
+      "fallbackFrames": 0,
+      "elapsedMs": 30016.5,
+      "windowsForeground": {
+        "observations": 199,
+        "matched": 199,
+        "maxGapMs": 151,
+        "passed": true
+      },
+      "intervalHistogramMs": {
+        "16.4": 8,
+        "16.5": 145,
+        "16.6": 594,
+        "16.7": 772,
+        "16.8": 258,
+        "16.9": 24
+      },
+      "recentPackIntervals": {
+        "count": 900,
+        "medianMs": 16.7,
+        "p95Ms": 16.8
+      },
+      "webglErrors": [],
+      "coveredMain": {
+        "frames": 1802,
+        "draws": 0,
+        "intervalCalls": 263,
+        "departurePolls": 151,
+        "covered": true
+      }
+    }
+  ],
+  "originalFiveStationMethod": {
+    "tool": "tools/measure-industry.cjs",
+    "transport": "http",
+    "results": [
+      {
+        "station": 1.7,
+        "frames": 1812,
+        "medianMs": 16.7,
+        "p95Ms": 16.8,
+        "medianDrawCalls": 150,
+        "unbroken": true,
+        "focused": true,
+        "visible": true
+      },
+      {
+        "station": 400,
+        "frames": 1825,
+        "medianMs": 16.7,
+        "p95Ms": 16.8,
+        "medianDrawCalls": 191,
+        "unbroken": true,
+        "focused": true,
+        "visible": true
+      },
+      {
+        "station": 2600,
+        "frames": 1812,
+        "medianMs": 16.7,
+        "p95Ms": 16.8,
+        "medianDrawCalls": 261,
+        "unbroken": true,
+        "focused": true,
+        "visible": true
+      },
+      {
+        "station": 3100,
+        "frames": 1819,
+        "medianMs": 16.7,
+        "p95Ms": 16.8,
+        "medianDrawCalls": 263,
+        "unbroken": true,
+        "focused": true,
+        "visible": true
+      },
+      {
+        "station": "transfer",
+        "frames": 1820,
+        "medianMs": 16.7,
+        "p95Ms": 16.8,
+        "medianDrawCalls": 140,
+        "unbroken": true,
+        "focused": true,
+        "visible": true
+      }
+    ]
+  }
+}

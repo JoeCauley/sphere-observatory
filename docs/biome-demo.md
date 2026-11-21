@@ -36,6 +36,20 @@ Both builds ran in focused Chrome 157 on an RTX 5080 at 1280 × 720. Each row re
 
 The p95 frame interval was 18.1 ms at every station in both versions. Every sampled interval exceeded the 16.7 ms reference for 60 Hz. Neither version recorded a hitch over 50 ms or a post-warm-up buffer upload in these stationary runs. Expanded coverage reduced high-altitude draw calls while keeping the measured cadence. The peak of 43.5 MiB stayed within the renderer's 192 MiB buffer budget. Timing on other browsers, moving viewpoints and GPUs can differ.
 
+### Foreground frame timing on 20 November 2026
+
+Windows identified the TCL2875 as the active display at 3840 × 2160 and 60 Hz. Chrome 157.0.8103.80 ran on the RTX 5080. The standalone and hosted Industry 1.4.1 scenes used the same hot-bar viewpoint and a 1280 × 720 drawing buffer. Each sample collected 30 seconds of animation-frame intervals. The hosted run used the ordinary Install and Visit controls.
+
+| View | Median interval | 95th percentile |
+| --- | ---: | ---: |
+| Blank Chrome page | 16.7 ms | 16.8 ms |
+| Standalone Industry | 16.7 ms | 16.8 ms |
+| Industry through Visit | 16.7 ms | 16.8 ms |
+
+Windows confirmed Chrome was in the foreground on the TCL in all 199 observations per view. Each view delivered 1,801 frame intervals. Under Industry, Main ran its animation callback 1,802 times and its departure poll 151 times. Main's renderer issued zero draws. A separate rerun of the original five-station measurement also returned 16.7 ms median and 16.8 ms at the 95th percentile at every station. These measurements track the display's 16.67 ms refresh period. The cause of the earlier 17.6–17.9 ms readings remains open.
+
+The Windows runner checks the foreground process and monitor independently of Chrome. It writes the browser intervals to the requested JSON file and its Windows observations to a sibling `.display.json` file. The cross-platform runner records browser focus and visibility. [Measurement record](../analysis/frame-cadence-2026-11-20.json)
+
 ## Reproduce
 
 From the repository root, install the development dependencies with `npm ci` and Chromium with `npx playwright install chromium`. Browser tests use isolated temporary state. `SPHERE_NATIVE_BROWSER` may point to another installed Chrome executable.
@@ -51,6 +65,8 @@ From the repository root, install the development dependencies with `npm ci` and
 | `npm run test:industry:roof` | Generated hall exit, rotated seam and save migration |
 | `npm run test:industry:transfer` | Moving product, walk across the seam and repeatable saved state |
 | `node tools/measure-industry.cjs 1.4.1 industry-samples.json` | Five fixed-camera, visible-browser samples with frame and buffer counters |
+| `python tools/measure-frame-cadence-windows.py cadence.json` | Blank, standalone, and Visit with independent Windows foreground and display checks |
+| `node tools/measure-frame-cadence.cjs cadence.json` | The same three views using Chrome's focus and visibility checks |
 | `npm run test:gallery` | Current gallery, media hashes, archived galleries and documentation links |
 
 [Back to the Observatory](../README.md)

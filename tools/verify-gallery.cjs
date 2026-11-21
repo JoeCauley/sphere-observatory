@@ -29,7 +29,9 @@ for(const [file,expected]of Object.entries(manifest.canonicalFiles)){let bytes=f
 for(const file of ['README.md','examples/observatory/README.md','docs/releases/v1.6.0.md']){const markdown=fs.readFileSync(path.join(root,file),'utf8');for(const [,target]of markdown.matchAll(/\]\(([^)]+)\)/g)){if(/^(https?:|#)/.test(target))continue;const destination=path.resolve(root,path.dirname(file),target.split('#')[0]);assert(fs.existsSync(destination),file+' has missing link '+target);}}
 const biomeDir=path.join(root,'examples/biomes'),photos=read(path.join(biomeDir,'captures.json'));
 const {sourceFingerprint}=require('./biome-gallery-source.cjs');
-assert.deepEqual(photos.source,sourceFingerprint(),'Offered renderer differs from the gallery capture');
+const revision = photos.metadataRevision;
+if (revision) assert.equal(revision.captureSha256, photos.source.sha256, 'The metadata revision must identify its original capture');
+assert.deepEqual(sourceFingerprint(), revision?.source ?? photos.source, 'Offered pack files differ from the verified gallery source');
 const offered=read(path.join(root,'packs/biome-library.json')).packs;
 assert.deepEqual(new Set(photos.views.map(v=>v.pack)),new Set(offered.map(p=>p.id)));
 const digests=new Set();
