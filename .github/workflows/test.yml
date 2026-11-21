@@ -26,7 +26,7 @@ jobs:
       - run: npm run test:gallery
 
   browser:
-    runs-on: ubuntu-latest
+    runs-on: macos-15
     timeout-minutes: 45
     strategy:
       fail-fast: false
@@ -41,7 +41,7 @@ jobs:
             walk_shard: 3/3
     env:
       SPHERE_WALK_SHARD: ${{ matrix.walk_shard }}
-      SPHERE_NATIVE_BROWSER: /usr/bin/google-chrome
+      SPHERE_NATIVE_BROWSER: /Applications/Google Chrome.app/Contents/MacOS/Google Chrome
       SPHERE_CONTRACT_HEADLESS: '1'
       SPHERE_CONTRACT_TIMEOUT_MS: '120000'
     steps:

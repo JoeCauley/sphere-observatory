@@ -1,16 +1,11 @@
 name: Record the transition audit
 on:
-  pull_request:
-    branches: [main]
-    paths:
-      - ".github/workflows/transition-audit-capture.yml"
   workflow_dispatch:
 permissions:
   contents: read
 jobs:
   record:
-    if: github.event_name == 'workflow_dispatch' || github.head_ref == 'qa/transition-audit-20261120'
-    runs-on: ubuntu-latest
+    runs-on: macos-15
     timeout-minutes: 100
     strategy:
       fail-fast: false
@@ -26,7 +21,7 @@ jobs:
           - { name: walks-placed, script: walks, config: placed, clips: "" }
           - { name: pilots, script: pilots, config: "", clips: "" }
     env:
-      SPHERE_NATIVE_BROWSER: /usr/bin/google-chrome
+      SPHERE_NATIVE_BROWSER: /Applications/Google Chrome.app/Contents/MacOS/Google Chrome
       SPHERE_CLIPS: ${{ matrix.clips }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
@@ -34,7 +29,12 @@ jobs:
         with:
           node-version: "24"
       - run: npm ci --no-audit --no-fund
-      - run: python -m pip install numpy opencv-python-headless Pillow imageio-ffmpeg
+      - name: Set up video encoding and analysis
+        run: |
+          python3 -m venv "$RUNNER_TEMP/film-env"
+          "$RUNNER_TEMP/film-env/bin/python" -m pip install numpy opencv-python-headless Pillow imageio-ffmpeg
+          echo "$RUNNER_TEMP/film-env/bin" >> "$GITHUB_PATH"
+          echo "SPHERE_FFMPEG=$("$RUNNER_TEMP/film-env/bin/python" -c 'import imageio_ffmpeg;print(imageio_ffmpeg.get_ffmpeg_exe())')" >> "$GITHUB_ENV"
       - name: Record continuous real-time routes
         env:
           SCRIPT: ${{ matrix.script }}

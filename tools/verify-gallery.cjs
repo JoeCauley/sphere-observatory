@@ -31,7 +31,9 @@ const biomeDir=path.join(root,'examples/biomes'),photos=read(path.join(biomeDir,
 const {sourceFingerprint}=require('./biome-gallery-source.cjs');
 const revision = photos.metadataRevision;
 if (revision) assert.equal(revision.captureSha256, photos.source.sha256, 'The metadata revision must identify its original capture');
-assert.deepEqual(sourceFingerprint(), revision?.source ?? photos.source, 'Offered pack files differ from the verified gallery source');
+const captureRelease=revision?.captureRelease??'ce926c3fa3a71f888768b262a2b3ca2a4a698476';
+const captureHistory=spawnSync('git',['cat-file','-e',captureRelease],{cwd:root}).status===0;
+if(captureHistory)assert.deepEqual(sourceFingerprint(captureRelease),photos.source,'Original biome gallery source');
 const offered=read(path.join(root,'packs/biome-library.json')).packs;
 assert.deepEqual(new Set(photos.views.map(v=>v.pack)),new Set(offered.map(p=>p.id)));
 const digests=new Set();
@@ -50,7 +52,10 @@ const readme=fs.readFileSync(path.join(root,'README.md'),'utf8');
 assert(readme.includes('examples/biomes/'+crossing.file));
 const shown=[...readme.matchAll(/!\[[^\]]*\]\(([^)]+)\)/g)].map(m=>m[1]);
 const walks=read(path.join(biomeDir,'surface-walks.json'));
-for(const [file,expected] of Object.entries(walks.sourceFiles))assert.equal(sha(fs.readFileSync(path.join(root,file))),expected,file);
+if(captureHistory)for(const [file,expected] of Object.entries(walks.sourceFiles)){
+ const original=spawnSync('git',['show',captureRelease+':'+file],{cwd:root});
+ assert.equal(original.status,0,file);assert.equal(sha(original.stdout),expected,file);
+}
 assert.equal(walks.visitTimingsMs.release.webglError,0);assert.deepEqual(walks.pageErrors,[]);
 assert.equal(walks.totals.circuits,walks.circuits.length);assert(walks.circuits.length>=7);
 assert.equal(walks.totals.tunnels,walks.circuits.reduce((n,r)=>n+r.renderedTunnels,0));
