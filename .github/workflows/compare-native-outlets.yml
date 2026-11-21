@@ -16,7 +16,9 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
       - run: |
           gh release download transition-films-44871660792 -p Sphere-Transition-Films.zip -D "$RUNNER_TEMP/before"
-          gh run watch 44875365674 --interval 20 --compact --exit-status
-          gh release download transition-films-44875365674 -p Sphere-Transition-Films.zip -D "$RUNNER_TEMP/after"
+          gh run download 44875365674 -n transition-walks-1 -D "$RUNNER_TEMP/compared"
+          mkdir -p "$RUNNER_TEMP/after"
+          cd "$RUNNER_TEMP/compared"
+          zip -q "$RUNNER_TEMP/after/Sphere-Transition-Films.zip" walk-installed-main-11-main-4.{json,mp4} walk-installed-main-10-main-9.{json,mp4} analysis/walk-installed-main-11-main-4.json analysis/walk-installed-main-10-main-9.json
       - run: python -m pip install opencv-python-headless Pillow
       - run: python tools/compare-ground-pictures.py "$RUNNER_TEMP"
