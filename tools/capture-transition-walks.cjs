@@ -61,7 +61,7 @@ async function main(){
           let q,walking;if(child){const g=await import('./geographic-flight.js');q=SphereMath.norm(g.mainPose(core,lib.entry(child.SphereBiome.id),child.SphereBiome.pose(),SphereAtlas,SphereWorld).position);walking=child.SphereBiome.pose().mode==='walk';}
           else{q=SphereMath.norm(core.position);walking=core.walkMode&&core.walkSurface;}
           const {ownerAt}=await import('./surface-passages.js');
-          return {owner:ownerAt(q,core,lib.placed(),SphereAtlas,SphereWorld).id,walking,slipM:Math.hypot(...gate.far.q.map((v,i)=>v-q[i]))*core.radius*1000};
+          return {owner:ownerAt(q,core,lib.placed(),SphereAtlas,SphereWorld).id,walking,exitDirect:SphereCollection.visibility(q.map(v=>v*(core.radius-.0017)),core,64),slipM:Math.hypot(...gate.far.q.map((v,i)=>v-q[i]))*core.radius*1000};
         },{gate:enter.gate,to:r.to});
         assert.equal(end.owner,r.to);assert(end.walking&&end.slipM<.5,JSON.stringify(end));
         const target=page.locator('#stageFrame iframe');

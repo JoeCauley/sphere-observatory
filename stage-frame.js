@@ -977,13 +977,18 @@
   const lightSamples=new WeakMap();
   function surfaceLight(source,pose) {
     const scene=[current,parked].find(s=>s && s.frame.contentWindow===source);
-    if(!scene || !geography || scene.frame.surfaceEntry?.passage)return null;
-    const item=library()?.entry(scene.id);
-    if(!item || scene.worldKey!==library().world?.key)return null;
+    if(!scene || !geography || scene.worldKey!==library()?.world?.key)return null;
+    const passage=scene.frame.surfaceEntry?.passage,item=library()?.entry(scene.id);
+    if(!passage && !item)return null;
     const now=performance.now(),last=lightSamples.get(source);
     if(last && now-last.at<80 && Math.hypot(pose.eastM-last.east,pose.northM-last.north,pose.altitudeM-last.height)<1000)return last.light;
     const s=window.SphereApp.getState();
-    const receiver=geography.lightReceiver(s,item,pose,SphereAtlas,SphereWorld);
+    let receiver;
+    if(passage){
+      const metres=Math.min(walking.tunnelLength,Math.max(0,pose.northM-walking.tunnelStart));
+      const radial=norm(walking.passagePoint(passage,metres,s.radius));
+      receiver=scale(radial,s.radius-Math.max(.0001,pose.altitudeM/1000));
+    }else receiver=geography.lightReceiver(s,item,pose,SphereAtlas,SphereWorld);
     const light={time:s.time,direct:SphereCollection.visibility(receiver,s,64)};
     lightSamples.set(source,{at:now,east:pose.eastM,north:pose.northM,height:pose.altitudeM,light});
     return light;
