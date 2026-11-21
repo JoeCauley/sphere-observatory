@@ -16,7 +16,9 @@ The production movement test crosses 144 routes using the collision solver, incl
 
 The pack keeps one hall and one freight mesh resident. Assigning an Atlas record to an unchanged preview reuses both GPU buffers. Freight moves through a draw offset. A paused, stationary view reuses its last rendered frame. On ALPHA, five timed runs of 200,000 route length and position queries gave a median of 180 ms in the study and 15 ms with cached segment lengths. The summed positions agreed. This measurement covers CPU route queries.
 
-On ALPHA the middle Transfer Yard opened onto Infinite Meadow. Walking back through its service door recovered the same discovery timestamp after restarting the server. In a fresh world, a separate flight entered above a different bay, landed at an eye height of 1,746.7 m and climbed back into Main. The eight pack files total 48,103 bytes. [Installation and traversal measurements](../examples/border-crossing/installed-0.10.json) · [Service entrance in the installed build](../examples/border-crossing/installed-service-door.png)
+On ALPHA the middle Transfer Yard opened onto Infinite Meadow. Walking back through its service door recovered the same discovery timestamp after restarting the server. In a fresh world, a separate flight entered above a different bay, landed at an eye height of 1,746.7 m and climbed back into Main. The eight pack files total 49,402 bytes. [Installation and traversal measurements](../examples/border-crossing/installed-0.10.json) · [Service entrance in the installed build](../examples/border-crossing/installed-service-door.png)
+
+The clear-air departure prepares the regional view while the camera is still on the apron. In the five-pack browser run, the first camera motion came at 6.35 seconds. The 18–24 km dissolve then produced 87 compositor pictures with a longest gap of 29 ms. Before warming the view, the same band produced three pictures with a 2,786 ms gap. The 48.25-second delivery contains 1,158 decoded frames. The analyzer flagged zero cuts, black frames or graphics-context losses. [Watch the Border-to-Meadow flight](../examples/border-crossing/border-to-meadow.mp4)
 
 ## What we recovered
 

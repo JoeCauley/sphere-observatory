@@ -71,6 +71,14 @@ assert(walks.circuits.every(w=>Math.abs(w.liveDegrees-360)<1e-8 && w.liveClosure
 const illustrated=[...photos.views,...walks.screenshots].map(v=>'examples/biomes/'+v.file);
 assert(shown.length>=4);assert(shown.every(p=>illustrated.includes(p)));
 assert.deepEqual(new Set(photos.views.filter(v=>shown.includes('examples/biomes/'+v.file)).map(v=>v.pack)),new Set(offered.map(p=>p.id)));
+const borderDir=path.join(root,'examples/border-crossing'),borderRecord=read(path.join(borderDir,'installed-0.10.json'));
+const borderFilm=borderRecord.guidedFlight,borderClip=fs.readFileSync(path.join(borderDir,borderFilm.file));
+assert.equal(borderClip.subarray(4,8).toString(),'ftyp');
+assert.equal(sha(borderClip),borderFilm.sha256);assert.equal(borderClip.length,borderFilm.bytes);
+assert(borderFilm.decodedFrames>0 && borderFilm.compositorPictures>0 && borderFilm.arrived);
+assert.equal(borderFilm.blackFrames,0);assert.equal(borderFilm.lostContext,false);assert.deepEqual(borderFilm.candidateCutsSeconds,[]);
+assert(readme.includes('examples/border-crossing/'+borderFilm.file));
+assert.equal(sha(fs.readFileSync(path.join(borderDir,borderRecord.frame.file))),borderRecord.frame.sha256);
 const audit=read(path.join(root,'examples/transitions/audit.json'));
 const filmFingerprint=require('./transition-source.cjs').sourceFingerprint;
 const filmCommit=audit.runtimeVerification.commit;

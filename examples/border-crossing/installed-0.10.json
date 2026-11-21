@@ -1,7 +1,8 @@
 {
   "pack": "border-transport",
   "version": "0.10.0",
-  "codeCommit": "354ea1ae8818d503e151c762196376ed6847b191",
+  "codeCommit": "6d93933659d6452dabcf0c82d0e416f929b57d1e",
+  "initialAcceptanceCommit": "354ea1ae8818d503e151c762196376ed6847b191",
   "browser": "Desktop Chrome on ALPHA",
   "installedWorlds": [
     {
@@ -163,10 +164,40 @@
     ],
     "summedZDifferenceM": 0
   },
-  "versionedPackBytes": 48103,
+  "versionedPackBytes": 49402,
   "frame": {
     "file": "installed-service-door.png",
     "sha256": "046f03e309da20bc9b1b76f22b5b3a77aba702135c4c9cbd9928ce69b0fa6f18"
   },
-  "pageErrors": []
+  "pageErrors": [],
+  "guidedFlight": {
+    "from": "border-transport",
+    "to": "infinite-meadow",
+    "arrived": true,
+    "file": "border-to-meadow.mp4",
+    "sha256": "d9ae68b1276036762dc7601f44efb57b986ec997cbffeb69b995dcabe8e30632",
+    "bytes": 1247012,
+    "durationSeconds": 48.25,
+    "decodedFrames": 1158,
+    "compositorPictures": 2191,
+    "blackFrames": 0,
+    "lostContext": false,
+    "candidateCutsSeconds": [],
+    "longestSimilarSeconds": 6.21,
+    "sourceSha256": "5ca29932a77ed7498d321708ecfed049fed3d7186a35085ee1abd7bbb534e3b7",
+    "firstCameraMotionSeconds": 6.352,
+    "departureOverlap": {
+      "nearM": 18000,
+      "farM": 24000,
+      "before": {
+        "pictures": 3,
+        "longestGapMs": 2786
+      },
+      "after": {
+        "pictures": 87,
+        "longestGapMs": 29
+      },
+      "method": "Compositor timestamps between the first two camera samples that crossed the near and far heights, including the two interval endpoints for maximum gap."
+    }
+  }
 }
