@@ -15,9 +15,10 @@ const {session,executable}=require('./support/biome-browser.cjs');
     await ready();
     const startup=await page.evaluate(()=>{const r=SphereApp.renderer;return [r.biomes.allocated,r.heroes.allocated,r.worldTextures.allocated,r.woundTextures.allocated,r.gl.getError()];});
     assert(startup.every(v=>!v));await page.locator('[data-category=biomes]').click();
-    await page.locator('[name=placeWeather][value=clear]').check();await page.locator('#placeAltitude').selectOption('ground');
     for(const id of ['biome-2','biome-3']){
-      await page.locator('#placeDestination').selectOption(id);await page.locator('#visitPlace').click();
+      await page.locator('#placeDestination').selectOption(id);
+      await page.locator('#placeAltitude').selectOption('ground');
+      await page.locator('#visitPlace').click();
       await page.waitForFunction(id=>SphereJourney.travel.status?.state==='arrived' && SphereApp.getState().siteId===id,id);
       await ready();
       const a=await page.evaluate(()=>({assets:SphereApp.renderer.renderInfo.assets,error:SphereApp.renderer.gl.getError()}));
