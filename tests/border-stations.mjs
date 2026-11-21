@@ -4,6 +4,7 @@ import os from 'node:os';
 import path from 'node:path';
 import {addressOf,generateStation,classes,atDistance,distanceOf,fits,freightAt,releaseIn,advanceWalker,surfaceAddress} from '../studies/border-crossing/station.mjs';
 import {resolveStation} from '../studies/border-crossing/station-store.mjs';
+import {createHash} from 'node:crypto';
 import {freightMesh} from '../studies/border-crossing/view.mjs';
 const atlas=globalThis.SphereAtlas,edge=atlas.northEdge('r10c0');
 const world=n=>'sphere-'+n.toString(16).padStart(16,'0');
@@ -101,6 +102,13 @@ try{
   assert.equal((await fs.readdir(dir)).length,1);
   const revisited=await resolveStation(dir,opposite,true,()=>{throw Error('Stored geometry must survive generator changes');});
   assert.deepEqual(revisited,results[0]);assert.deepEqual(revisited.station,preview.station);
-  assert.equal((await resolveStation(dir,make(713,0))).locked,false);
+  const oldSite=make(713,0);
+  assert.equal((await resolveStation(dir,oldSite)).locked,false);
+  const historic={station:generateStation(oldSite),discoveredAt:'2026-11-20T12:00:00.000Z'};
+  delete historic.station.address.radiusM;
+  const flat=createHash('sha256').update(oldSite.key).digest('hex')+'.json';
+  await fs.writeFile(path.join(dir,flat),JSON.stringify(historic));
+  const recovered=await resolveStation(dir,oldSite,true,()=>{throw Error('Historical station was regenerated');});
+  assert.deepEqual(recovered,{...historic,locked:true});
 }finally{await fs.rm(dir,{recursive:true,force:true});}
 console.log(JSON.stringify({stations:surveys,layouts:layouts.size,directedClassCrossings:routes,serviceFloorCrossings:floorRoutes,doorFitComparisons:clearances,maxGradePercent:+(100*maxGrade).toFixed(3),holdsObserved:waitingCases,concurrentDiscoverers:16}));

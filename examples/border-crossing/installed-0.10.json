@@ -1,0 +1,172 @@
+{
+  "pack": "border-transport",
+  "version": "0.10.0",
+  "codeCommit": "354ea1ae8818d503e151c762196376ed6847b191",
+  "browser": "Desktop Chrome on ALPHA",
+  "installedWorlds": [
+    {
+      "key": "sphere-e83dd55a461c3b54",
+      "edge": "transport/r12c35/r12c36",
+      "widthsKm": [
+        56,
+        56,
+        48
+      ]
+    },
+    {
+      "key": "sphere-ed6a59ab491a9a08",
+      "edge": "transport/r10c0/r10c1",
+      "widthsKm": [
+        48,
+        48,
+        56
+      ]
+    }
+  ],
+  "firstDiscovery": {
+    "station": "sphere-ed6a59ab491a9a08/r10c0/r10c1/0",
+    "layout": "Transfer yard",
+    "discoveredAt": "2026-11-21T19:00:16.277Z",
+    "previewWasLocked": false,
+    "apron": {
+      "eastM": -2600,
+      "northM": -24004.5,
+      "altitudeM": 3.699999999953434,
+      "yaw": 0,
+      "pitch": 0,
+      "mode": "flight"
+    },
+    "inside": {
+      "eastM": -2600,
+      "northM": -23995.70160000002,
+      "altitudeM": 1.7,
+      "yaw": 0,
+      "pitch": 0,
+      "mode": "walk"
+    },
+    "geometryUploads": 2,
+    "clockPaused": true,
+    "exit": {
+      "owner": "infinite-meadow",
+      "onFoot": true
+    },
+    "returnPose": {
+      "eastM": -2600.0000073997903,
+      "northM": -24007.871490049554,
+      "altitudeM": 1.7000436782836914,
+      "yaw": -3.060052150088886e-08,
+      "pitch": 2.741892873303654e-07,
+      "mode": "walk"
+    }
+  },
+  "afterServerRestart": {
+    "station": "sphere-ed6a59ab491a9a08/r10c0/r10c1/0",
+    "layout": "Transfer yard",
+    "discoveredAt": "2026-11-21T19:00:16.277Z",
+    "previewWasLocked": true,
+    "apron": {
+      "eastM": -2600,
+      "northM": -24004.5,
+      "altitudeM": 3.699999999953434,
+      "yaw": 0,
+      "pitch": 0,
+      "mode": "flight"
+    },
+    "inside": {
+      "eastM": -2600,
+      "northM": -23995.69920000002,
+      "altitudeM": 1.7,
+      "yaw": 0,
+      "pitch": 0,
+      "mode": "walk"
+    },
+    "geometryUploads": 2,
+    "clockPaused": true,
+    "exit": {
+      "owner": "infinite-meadow",
+      "onFoot": true
+    },
+    "returnPose": {
+      "eastM": -2600.0000073997903,
+      "northM": -24007.85835821377,
+      "altitudeM": 1.7000138759613037,
+      "yaw": 1.1268763770809134e-07,
+      "pitch": 5.268522792478935e-07,
+      "mode": "walk"
+    }
+  },
+  "disposableWorld": {
+    "walk": {
+      "station": "sphere-e83dd55a461c3b54/r12c23/r12c24/0",
+      "layout": "Viaduct and cut",
+      "discoveredAt": "2026-11-21T19:04:58.396Z",
+      "previewWasLocked": false,
+      "apron": {
+        "eastM": 2600,
+        "northM": -20004.5,
+        "altitudeM": 3.699999999953434,
+        "yaw": 0,
+        "pitch": 0,
+        "mode": "flight"
+      },
+      "inside": {
+        "eastM": 2600,
+        "northM": -19995.699200000017,
+        "altitudeM": 1.7,
+        "yaw": 0,
+        "pitch": 0,
+        "mode": "walk"
+      },
+      "geometryUploads": 2,
+      "clockPaused": true,
+      "exit": {
+        "owner": "Main",
+        "onFoot": true
+      },
+      "returnPose": {
+        "eastM": 2600.000001171524,
+        "northM": -20007.957612826904,
+        "altitudeM": 1.7000138759613037,
+        "yaw": -1.1796119687103295e-07,
+        "pitch": -5.551115123125783e-17,
+        "mode": "walk"
+      }
+    },
+    "flight": {
+      "bay": -1,
+      "approachM": 23999.998807907104,
+      "roofEyeM": 1746.7,
+      "returnedToMain": true
+    }
+  },
+  "productionMovement": {
+    "directedCrossings": 144,
+    "longitudinalWalks": 12,
+    "longitudinalDistanceKm": 432,
+    "chartProjectionChecks": 54
+  },
+  "routeQueryBenchmark": {
+    "queriesPerRun": 200000,
+    "studyMs": [
+      182,
+      187,
+      179,
+      177,
+      180
+    ],
+    "cachedMs": [
+      15,
+      15,
+      14,
+      15,
+      14
+    ],
+    "summedZDifferenceM": 0
+  },
+  "versionedPackBytes": 48103,
+  "frame": {
+    "file": "installed-service-door.png",
+    "sha256": "046f03e309da20bc9b1b76f22b5b3a77aba702135c4c9cbd9928ce69b0fa6f18"
+  },
+  "pageErrors": []
+}

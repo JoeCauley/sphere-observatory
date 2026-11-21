@@ -16,6 +16,8 @@ The production movement test crosses 144 routes using the collision solver, incl
 
 The pack keeps one hall and one freight mesh resident. Assigning an Atlas record to an unchanged preview reuses both GPU buffers. Freight moves through a draw offset. A paused, stationary view reuses its last rendered frame. On ALPHA, five timed runs of 200,000 route length and position queries gave a median of 180 ms in the study and 15 ms with cached segment lengths. The summed positions agreed. This measurement covers CPU route queries.
 
+On ALPHA the middle Transfer Yard opened onto Infinite Meadow. Walking back through its service door recovered the same discovery timestamp after restarting the server. In a fresh world, a separate flight entered above a different bay, landed at an eye height of 1,746.7 m and climbed back into Main. The eight pack files total 48,103 bytes. [Installation and traversal measurements](../examples/border-crossing/installed-0.10.json) · [Service entrance in the installed build](../examples/border-crossing/installed-service-door.png)
+
 ## What we recovered
 
 The earlier Atlas proposal puts trunks along both edges of the habitat waist and six meridians. It reserves 20,000 km on either side of a plot edge and assigns 60,000 km to a trunk. Those numbers describe an early layout. The earlier transport discussion also included fixed links called Spans and rare multi-destination stations. I found no settled dimensions for the four object exits. [Earlier Atlas proposal](Observatory-Biome-Library-2026-11-12.md)

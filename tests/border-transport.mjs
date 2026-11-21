@@ -55,5 +55,8 @@ for(const edge of [['r10c0','r11c0'],['r12c0','r12c1'],['r12c0','r12c'+(globalTh
     assert(outsideDistrict(d,d.sites.at(-1).x+hallHalfM+2,0)>0);
   }
 }
+const short=districtFor(world,'r12c0','r12c1',1e6);
+assert.deepEqual(short.sites.map(s=>s.bay),[0]);
+assert(outsideDistrict(short,200000,0)>0);
 assert.equal(layouts.size,3);
 console.log(JSON.stringify({walks,longitudinal,layouts:layouts.size,projections}));

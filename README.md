@@ -8,7 +8,7 @@ The Atlas places the five optional packs on the same globe as the original habit
 
 ## Border Biome 0.10
 
-In **Explore → Walkable biome packs**, install **Border Biome** and choose **Visit**. You arrive just outside a service door. Select **Walk** and press **W** to enter. On either apron, **Board** changes your scale and takes you to the matching doorway. The service footbridge overlooks the moving freight, the heavy route passes below it, and the monumental route crosses the lane at grade. Follow the covered trunk to another addressed hall. The Atlas records a hall on first entry and uses that record when you return. [Open the station in a running checkout](studies/border-crossing/index.html) · [Watch both views](examples/border-crossing/freight-views.mp4) · [Scale drawings and test results](docs/Builder-border-crossings.md)
+In **Explore → Walkable biome packs**, install **Border Biome** and choose **Visit**. You arrive just outside a service door. Select **Walk** and press **W** to enter. On either apron, **Board** changes your scale and takes you to the matching doorway. The service footbridge overlooks the moving freight, the heavy route passes below it, and the monumental route crosses the lane at grade. Follow the covered trunk to another addressed hall. The Atlas records a hall on first entry and uses that record when you return. [Open the engineering study](studies/border-crossing/index.html) · [Watch both views](examples/border-crossing/freight-views.mp4) · [Scale drawings and test results](docs/Builder-border-crossings.md)
 
 ## Watch the transitions
 
