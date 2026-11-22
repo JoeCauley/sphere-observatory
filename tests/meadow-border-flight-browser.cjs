@@ -51,9 +51,9 @@ async function main(){
     assert.equal(await page.evaluate(()=>window.regionalRoof),pad.station,'The regional roof must appear above the clear-air overlap');
     await frame.getByRole('button',{name:'Walk',exact:true}).click();
     await frame.locator('#pace').selectOption('16');await frame.locator('#scene').focus();
-    async function walk(key,until){
+    async function walk(key,until,arg=null){
       await page.keyboard.down(key);
-      try{await page.waitForFunction(until,null,{timeout:40000});}finally{await page.keyboard.up(key);}
+      try{await page.waitForFunction(until,arg,{timeout:40000});}finally{await page.keyboard.up(key);}
     }
     await walk('KeyW',()=>{const b=document.querySelector('#stageFrame iframe').contentWindow.SphereBiome;return b?.inspect().locked;});
     await walk('KeyS',()=>SphereStageFrame.current?.id==='infinite-meadow'&&!document.querySelector('#departingStageFrame'));
@@ -82,6 +82,11 @@ async function main(){
     await frame.locator('#world').focus();
     await walk('KeyW',()=>{const f=document.querySelector('#stageFrame iframe');return SphereStageFrame.current?.id==='border-transport'&&f.surfaceEntry?.active;});
     const back=await info();assert.equal(back.station,pad.station);assert(back.locked);assert(Math.abs(back.pose.altitudeM-1.7)<.015);
+    const wall=await page.evaluate(()=>-SphereBiomeLibrary.entry('border-transport').transport.sites.find(site=>site.bay===0).widthM/2);
+    await frame.locator('#scene').focus();
+    await walk('KeyW',wall=>{const b=document.querySelector('#stageFrame iframe').contentWindow.SphereBiome;
+      return b?.id==='border-transport'&&b.pose().northM>wall+8;},wall);
+    assert.equal((await info()).station,pad.station);
     await page.locator('#stageFrame').getByRole('button',{name:'Fly to Infinite Meadow',exact:true}).click();
     await page.waitForFunction(()=>SphereStageFrame.lastArrival?.to==='infinite-meadow'&&!SphereStageFrame.flying);
     const reverse=await page.evaluate(()=>({result:SphereStageFrame.lastArrival,flight:SphereStageFrame.lastFlight}));

@@ -1,0 +1,121 @@
+{
+  "schema": 1,
+  "film": "meadow-to-border.mp4",
+  "sourceCommit": "4439c26477df79c363799139d4287572b614f903",
+  "worldSeed": 713,
+  "station": "sphere-ed6a59ab491a9a08/r10c0/r10c1/0",
+  "control": "Destination biome / Fly there",
+  "recording": "Continuous ALPHA flight. The public demo uses the same 24 frames per second at a smaller display size.",
+  "video": {
+    "sha256": "79fc9eba12f0be702096b7ac051b5014cda966bd50f260e10925428d649f124b",
+    "bytes": 550500,
+    "seconds": 104.83,
+    "fps": 24.0,
+    "decodedFrames": 2516,
+    "cameraSamples": 984,
+    "candidateCuts": [],
+    "blackFrames": 0,
+    "lostContext": false,
+    "glErrors": [],
+    "errors": [],
+    "width": 512
+  },
+  "timestampsSeconds": {
+    "guidedDescent": 35.7,
+    "serviceApron": 53.08,
+    "meadowOwnsDoorwayView": 86.19,
+    "stationOwnsReturnView": 102.94
+  },
+  "flight": {
+    "largestClimbAfterDescentStartedM": 0,
+    "overlapSamples": 29,
+    "largestLayerOpacityError": 0.0
+  },
+  "onFoot": {
+    "01-apron": {
+      "renderer": "border-transport",
+      "alongM": -2600.0,
+      "acrossM": -24012.0,
+      "shellEyeM": 1.7
+    },
+    "02-walk-in": {
+      "renderer": "border-transport",
+      "alongM": -2600.0,
+      "acrossM": -23991.498,
+      "shellEyeM": 1.7
+    },
+    "03-just-outside": {
+      "renderer": "infinite-meadow",
+      "alongM": -2600.0,
+      "acrossM": -24014.302,
+      "shellEyeM": 1.7
+    },
+    "04-looking-back": {
+      "renderer": "infinite-meadow",
+      "alongM": -2600.0,
+      "acrossM": -24032.352,
+      "shellEyeM": 1.7
+    },
+    "05-return": {
+      "renderer": "border-transport",
+      "alongM": -2600.0,
+      "acrossM": -24007.859,
+      "shellEyeM": 1.7
+    }
+  },
+  "original": {
+    "sourceCommit": "5109c5291b8ce802c1c461122eb5a3c37821f862",
+    "flight": {
+      "largestClimbAfterDescentStartedM": 493292.3,
+      "overlapSamples": 14,
+      "largestLayerOpacityError": 0.0832
+    },
+    "onFoot": {
+      "01-apron": {
+        "renderer": "border-transport",
+        "alongM": -2600.0,
+        "acrossM": -24004.5,
+        "shellEyeM": 1.7
+      },
+      "02-walk-in": {
+        "renderer": "border-transport",
+        "alongM": -2600.0,
+        "acrossM": -23991.425,
+        "shellEyeM": 1.7
+      },
+      "03-just-outside": {
+        "renderer": "infinite-meadow",
+        "alongM": -2600.0,
+        "acrossM": -24014.05,
+        "shellEyeM": -3.349
+      },
+      "04-looking-back": {
+        "renderer": "infinite-meadow",
+        "alongM": -2600.0,
+        "acrossM": -24032.11,
+        "shellEyeM": -3.486
+      },
+      "05-return": {
+        "renderer": "border-transport",
+        "alongM": -2600.0,
+        "acrossM": -24007.657,
+        "shellEyeM": 1.7
+      }
+    }
+  },
+  "recordedCheckoutCommit": "eb8fce8af0acf4a186bbfea1f61293fa42a4268b",
+  "sourceTree": "c621262bbe9c776b284bc9d62da8be7490c63103",
+  "compositorRecording": {
+    "sha256": "e7795d3f56525f8af9c5681973ba8ff0aa5fd0e53ab5804301d454f1eec49f80",
+    "bytes": 6313216,
+    "seconds": 104.83,
+    "fps": 24.0,
+    "decodedFrames": 2516,
+    "cameraSamples": 984,
+    "candidateCuts": [],
+    "blackFrames": 0,
+    "lostContext": false,
+    "glErrors": [],
+    "errors": []
+  }
+}

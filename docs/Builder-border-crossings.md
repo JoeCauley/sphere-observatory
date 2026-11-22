@@ -20,6 +20,14 @@ On ALPHA the middle Transfer Yard opened onto Infinite Meadow. Walking back thro
 
 The clear-air departure prepares the regional view while the camera is still on the apron. In the five-pack browser run, the first camera motion came at 6.35 seconds. The 18–24 km dissolve then produced 87 compositor pictures with a longest gap of 29 ms. Before warming the view, the same band produced three pictures with a 2,786 ms gap. The 48.25-second delivery contains 1,158 decoded frames. The analyzer flagged zero cuts, black frames or graphics-context losses. [Watch the Border-to-Meadow flight](../examples/border-crossing/border-to-meadow.mp4)
 
+### Meadow approach and doorway
+
+From Infinite Meadow, choose **Border Biome** as the flight destination. The camera turns toward the surveyed service apron as it descends. Regional flight and the local station use the same bearing, lens and roof outline in the 18–24 km overlap. The final approach follows the marked pavement to a hover 12 m outside the opening. [Watch the full Meadow flight and doorway return](../examples/border-crossing/meadow-to-border.mp4) · [Read the before-and-after measurements](../examples/border-crossing/meadow-flight.json)
+
+The original flight reported success despite a climb from 1,000 to 1,500 km during descent. On foot, crossing 14 m outside the door gave control to Meadow, erased the station and lowered the eye by roughly 5 m on seed 713. Meadow now grades its ground to the station slab and draws the surveyed hall into its own depth buffer. The field, pavement and door share the same sightline when the walker changes biome.
+
+The browser regression measures descent height, checks that the projected roof appears above the local overlap, and samples the two amber jambs and adjacent concrete after Meadow takes control. It then walks forward into the same recorded station and flies back to Meadow. The separate native-ground test backs out on a world with only Border installed and checks that the station remains visible there as well.
+
 ## What we recovered
 
 The earlier Atlas proposal puts trunks along both edges of the habitat waist and six meridians. It reserves 20,000 km on either side of a plot edge and assigns 60,000 km to a trunk. Those numbers describe an early layout. The earlier transport discussion also included fixed links called Spans and rare multi-destination stations. I found no settled dimensions for the four object exits. [Earlier Atlas proposal](Observatory-Biome-Library-2026-11-12.md)
