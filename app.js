@@ -97,7 +97,8 @@
  }
  $('capture').onclick=capture;
  function hud(){const fpsNow=performance.now();if(fpsNow-fpsStart>=1000){measuredFps=frameCount*1000/(fpsNow-fpsStart);frameCount=0;fpsStart=fpsNow;}const starAngle=2*M.degrees(Math.asin(M.clamp(state.starRadius/M.length(state.position),0,1))),target=window.SphereSites?SphereSites.trace(state.position,state.forward,state,M.trace):M.trace(state.position,state.forward,state);const attached=SphereInspection.plate(state),ground=SphereInspection.surface(state);$('altitudeReadout').textContent=distance(attached?ground.altitude:SphereLanding.heightAboveGround(state));$('altitudeReadout').previousElementSibling.textContent=attached?'ALTITUDE · SHADE '+attached.id:'ALTITUDE';$('altitudeReadout').title=attached?'Distance above the inspected Shade; '+distance(state.radius-M.length(state.position))+' above the shell':'';$('starReadout').textContent=starAngle.toFixed(4)+'°';$('sunReadout').textContent=Math.round(M.sunVisibility(state.position,state,256)*100)+'%';$('speedReadout').textContent=state.walkMode?(keys.has('ShiftLeft')||keys.has('ShiftRight')?'6 m/s · run':'2.8 m/s · walk'):distance(state.autoSpeed===false?state.speed:(SphereTravel.estimate(state,state.forward)))+'/s'+(state.autoSpeed===false?'':' · auto');$('targetName').textContent=target.kind;$('targetDistance').textContent=distance(target.distance);$('timeReadout').textContent=timeLabel(state.time);window.dispatchEvent(new Event('sphere-telemetry'));if(document.activeElement!==$('timeSlider'))$('timeSlider').value=M.clamp(state.time,state.collection?-259200:-36000,state.collection?259200:36000);$('performance').textContent=canvas.width+' × '+canvas.height+' · '+(state.playing||keys.size?'LIVE':'IDLE')+(state.playing||keys.size?' '+Math.round(measuredFps)+' fps':'')+' · CPU '+(renderer.cpuMs||0).toFixed(1)+' ms'+(renderer.gpuMs!==null?' · GPU '+renderer.gpuMs.toFixed(1)+' ms':'')+(previewQuality.scale<1&&(state.playing||keys.size)?' · adaptive '+Math.round(previewQuality.scale*100)+'%':'');$('performance').title=renderer.device;}
- function frame(now){requestAnimationFrame(frame);const elapsed=(now-last)/1000,dt=Math.min(.05,elapsed);last=now;if(document.hidden||capturing||travelHold||window.spherePreviewSuspended)return;
+ function frame(now){requestAnimationFrame(frame);const elapsed=(now-last)/1000,dt=Math.min(.05,elapsed);last=now;if(document.hidden||capturing||travelHold)return;
+  if(window.spherePreviewSuspended){window.SphereStageFrame?.regionalFrame?.(now,false,state);return;}
   const oldPosition=state.position.slice();
   integratingMovement=true;
   SphereTiming.advance(state,elapsed,dt=>{if(state.playing)dirty=true;
@@ -111,7 +112,10 @@
   if(!localLocked()&&!window.SphereEnhancements?.measuring&&(state.autoSpeed===false?SphereInspection.level(state):SphereTravel.level(state,dt)))dirty=true;
   });
   integratingMovement=false;if(poseChanged){poseChanged=false;moved();if(!window.sphereStageCovered&&oldPosition.some((x,i)=>x!==state.position[i]))window.SphereStageFrame?.manualMovement?.(state,oldPosition);}
-  if(window.SphereStageFrame?.regionalFrame?.(now))return;
+  if(window.SphereStageFrame?.regionalFrame?.(now,false,state)){
+    if(!window.sphereStageCovered&&now-hudTime>250){hudTime=now;hud();}
+    return;
+  }
   if(!window.sphereStageCovered&&(dirty||renderer.needsFrame)&&window.SphereLoading?.needs(state)){SphereLoading.ensureCurrent();return;}
   if((dirty||renderer.needsFrame)&&!window.sphereStageCovered&&(now-lastPreviewDraw>=1000/previewFps-.8)){const rect=viewport.getBoundingClientRect(),requested=Math.min(devicePixelRatio||1,1.5)*state.quality,live=state.playing||keys.size||drag,adaptive=$('adaptivePreview')?.checked!==false&&live?previewQuality.update(renderer.gpuMs,1000/previewFps,now):1,scale=Math.min(requested*adaptive,Math.sqrt(3840*2160/Math.max(1,rect.width*rect.height)));const w=Math.max(1,Math.floor(rect.width*scale)),h=Math.max(1,Math.floor(rect.height*scale));const start=performance.now();renderer.draw(state,w,h,{adaptiveScale:adaptive});if(W.active(state))displayedWind={meadow:state.meadow,phase:W.phase(state)};frameCount++;lastPreviewDraw=SphereTiming.previewStamp(lastPreviewDraw,now,previewFps);renderCost=performance.now()-start;dirty=false;}
   if(now-hudTime>250){hudTime=now;hud();}

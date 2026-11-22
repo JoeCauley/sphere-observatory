@@ -3,7 +3,7 @@
 import {project,unproject,chartFor,toBorder,toMeadow} from './packs/kit/surface-route.js';
 import {farEdgeM,onBorder,rampRunM} from './packs/kit/border-profile.js';
 import {terrain} from './packs/infinite-meadow/1.3.0/landscape.js';
-import {districtPoint,districtLocation,outsideDistrict} from './packs/border-transport/0.10.0/district.mjs';
+import {districtPoint,districtLocation,outsideDistrict,hallHalfM} from './packs/border-transport/0.10.0/district.mjs';
 export {outsideDistrict};
 const meadowDatum=terrain(0,0);
 function gateDatum(gate){return terrain(gate.eastM,gate.northM)-meadowDatum;}
@@ -17,6 +17,20 @@ const cameraSign=id=>id==='sideways-city'?1:-1;
 function chartPoint(chart,q,state,world){
   const {lat,lon}=world.coordinates(q,state);
   return project(chart,lat,lon,state.radius*1000);
+}
+// Express each surveyed station in the adjoining chart once. Subtract the chart origin in
+// double precision before a metre-scale opening or a shader sees these coordinates.
+export function meadowStations(district,home){
+  if(!district || !home)return [];
+  const r=district.origin.radiusM;
+  const at=(x,z)=>{const p=districtLocation(district,x,z);return project(home,p.latitude,p.longitude,r);};
+  const locate=(east,north)=>{const p=unproject(home,east,north,r);return districtPoint(district,p.latitude,p.longitude);};
+  return district.sites.map(site=>{
+    const origin=at(site.x,0),along=at(site.x+1000,0),across=at(site.x,1000);
+    const ex=(along.eastM-origin.eastM)/1000,nx=(along.northM-origin.northM)/1000;
+    const ez=(across.eastM-origin.eastM)/1000,nz=(across.northM-origin.northM)/1000,det=ex*nz-ez*nx;
+    return {site,origin,locate,axes:[nz/det,-ez/det,-nx/det,ex/det],halfX:hallHalfM,halfZ:site.widthM/2+3500};
+  });
 }
 export function footprint(state,library,atlas,world){
   if(!state.collection||state.layoutVersion!==2||state.shadeAttachment!=null||!library.matchesWorld(state))return null;
@@ -38,6 +52,16 @@ export function footprint(state,library,atlas,world){
     if(onBorder(local,gate.halfWidthM))return item;
   }
   return atlas.regionAt(items,lat,lon);
+}
+// Transform the actual camera basis, including roll, into the survey chart.
+export function stationBasis(s,d,p,world){
+  const ray=(x,z)=>{const g=districtLocation(d,x,z);return world.direction(g.latitude,g.longitude,s);};
+  const q=ray(p.eastM,p.northM),up=q.map(n=>-n);
+  function tangent(v){return norm(v.map((n,i)=>n-dot(v,q)*q[i]));}
+  const x=tangent(ray(p.eastM+50,p.northM)),z0=tangent(ray(p.eastM,p.northM+50));
+  const z=norm(z0.map((n,i)=>n-dot(z0,x)*x[i])),right=norm(cross(s.forward,s.up));
+  const axes=v=>[dot(v,x),dot(v,up),dot(v,z)];
+  return {right:axes(right),up:axes(norm(cross(right,s.forward))),forward:axes(s.forward)};
 }
 export function packPose(state,item,atlas,world){
   const id=item.id,chart=atlas.byId(item.edge?.near??item.plotId),q=norm(state.position);

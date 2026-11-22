@@ -17,13 +17,32 @@ export function heightFromPhases(old,region,home,at=[0,0]){
  const varied=Math.max(.5,12+amplitude*relief+3.5*Math.sin(s)*(1-.82*plain));
  return familiar+(varied-familiar)*blend;
 }
-export function terrain(e,n){return heightFromPhases(terrainPhases(e,n),landscapePhases(e,n),[e,n]);}
+let stations=[],stationDatum=0;
+export function setStations(rows,datum){stations=rows;stationDatum=datum;}
+export function stationApron(e,n,range=96){
+  for(const row of stations){
+    const de=e-row.origin.eastM,dn=n-row.origin.northM;
+    if(Math.abs(de)+Math.abs(dn)>(row.halfX+row.halfZ+2*range)*1.6)continue;
+    const p=row.locate(e,n),x=p.eastM-row.site.x,z=p.northM;
+    const distance=Math.max(Math.abs(x)-row.halfX,Math.abs(z)-row.halfZ);
+    if(distance<=range)return {row,x,z,distance};
+  }
+  return null;
+}
+export function terrain(e,n){
+  const h=heightFromPhases(terrainPhases(e,n),landscapePhases(e,n),[e,n]);
+  const apron=stations.length && stationApron(e,n);
+  return apron?h+(stationDatum-h)*(1-smooth(0,96,apron.distance)):h;
+}
 // The graded service apron uses the same geographic terrain and blade mask in both scenes.
 export const BORDER_GLSL=`
 uniform vec4 uBorderMap;uniform float uGateDatum;
+uniform vec4 uApron,uApronAxes;uniform float uApronDatum;
+float apronDistance(vec2 at){vec2 p=uApron.xy+vec2(dot(uApronAxes.xy,at),dot(uApronAxes.zw,at));
+ return max(abs(p.x)-uApron.z,abs(p.y)-uApron.w);}
 bool byBorder(){return dot(uBorderMap.zw,uBorderMap.zw)>.5;}
 vec2 borderAt(vec2 at){return uBorderMap.xy+vec2(dot(at,-uBorderMap.wz),dot(at,vec2(-uBorderMap.z,uBorderMap.w)));}
-float meadowCover(vec2 at){if(!byBorder())return 1.;vec2 p=borderAt(at);
+float meadowCover(vec2 at){if(uApron.z>0.)return smoothstep(0.,7.,apronDistance(at));if(!byBorder())return 1.;vec2 p=borderAt(at);
   float verge=mix(1.,smoothstep(.95,1.8,abs(p.x+1.15+.024*p.y)),smoothstep(-52.,-30.,p.y));
   return verge*(1.-smoothstep(-.7,-.05,p.y));}
 `;
@@ -43,6 +62,6 @@ float ungradedGround(vec2 at){
  float amplitude=(.72+.86*(.5+.5*sin(r)))*(1.-.96*plain);
  return mix(familiar,max(.5,12.+amplitude*relief+3.5*sin(s)*(1.-.82*plain)),blend);
 }
-float coverGround(vec2 at){float h=ungradedGround(at);if(!byBorder())return h;
+float coverGround(vec2 at){float h=ungradedGround(at);if(uApron.z>0.)return mix(uApronDatum-.65,h,smoothstep(0.,96.,apronDistance(at)));if(!byBorder())return h;
  return mix(h,uGateDatum,smoothstep(-160.,-18.,borderAt(at).y));}
 `;

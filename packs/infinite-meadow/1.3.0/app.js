@@ -3,6 +3,7 @@ import {borderUniforms} from '../../kit/meadow-border.js';
 import {createRenderer as createBorderStructures} from '../../border-outfall/1.0.0/render.js';
 import {clamp,address,toGlobal} from './coordinates.js';
 import {initialState,saveState,parseState,terrain,clearance,move,takeoff,stepTakeoff,landOnFoot,startSkimming,flightSpeed,sceneLight,guidedRoute,finishRoute,meadowRoute,landscapeRoute,grassEdgeRoute,routePose,blindBands,GROUND_DATUM,COMFORT_TURN_RAD_S,EYE} from './model.js';
+import {setStations,stationApron} from './landscape.js';
 import {Renderer} from './renderer.js';
 import {GrassStage} from './grass-stage.js';
 import {startLevelCruise,stepLevelCruise,stopLevelCruise,LEVEL_MIN_ALTITUDE_M,TERRAIN_UPPER_BOUND_M} from './level-cruise.js';
@@ -33,8 +34,25 @@ try{const saved=host.storage.read();if(saved){state=parseState(JSON.stringify(sa
 const stageHost=window.frameElement?.dataset.worldKey ? parent.SphereStageFrame : null;
 const surfaceEntry=window.frameElement?.surfaceEntry;
 let borderStructures=null,chart=null,gateDatum=0,crossing=false,crossingFailed=false,lastCheckpoint=0;
+let survey=null,exterior=null,requested=null,retryExterior=0;
+function releaseExterior(){requested=null;exterior?.view.dispose();exterior=null;}
+function prepareExterior(row){
+  if(requested===row || performance.now()<retryExterior)return;
+  releaseExterior();requested=row;
+  stageHost.stationExterior(row.site.address,survey.fileBacked).then(({station,makeView})=>{
+    if(requested!==row)return;
+    const view=makeView(canvas,{shared:true,district:survey.district});view.load(station);
+    exterior={view,station};
+  }).catch(error=>{
+    if(requested!==row)return;
+    requested=null;retryExterior=performance.now()+3000;
+    if(surfaceEntry?.active===false)rejectReady(error);else status('Station exterior unavailable: '+error.message);
+  });
+}
 const hostRadiusM=()=>(stageHost?.surfaceAddress?.()?.radiusKm??149597870.7)*1000;
 function refreshChart(){
+  releaseExterior();retryExterior=0;
+  survey=stageHost?.transportAddress?.();setStations(survey?.rows??[],GROUND_DATUM);
   const address=stageHost?.surfaceAddress?.();
   chart=address?chartFor(address.home,address.edge,address.radiusKm):null;
   gateDatum=chart?terrain(chart.eastM,chart.northM):0;
@@ -61,7 +79,7 @@ resize();host.listen(window,'resize',resize);syncUI();
 // `zeroM`, a level at or below the meadow datum and below the eye at both ends, so they are never zero.
 const blindOf=s=>s.concealment?{baseM:s.blindHeightM*.9,topM:s.blindHeightM*1.1,edgeM:s.blindHeightM*.09}:null;
 const BLIND=blindOf({concealment:true,blindHeightM:100000}),above=p=>p.altitudeM-GROUND_DATUM,place=s=>({pose:{...s.pose},skimEnabled:s.skimEnabled});
-let script=null,held=null,drawn=0,resolveReady,resolveArrived;const ready=new Promise(r=>resolveReady=r),arrived=new Promise(r=>resolveArrived=r),veil=createVeil(document,BLIND,'meadow-mist');
+let script=null,held=null,drawn=0,resolveReady,rejectReady,resolveArrived;const ready=new Promise((r,j)=>{resolveReady=r;rejectReady=j;}),arrived=new Promise(r=>resolveArrived=r),veil=createVeil(document,BLIND,'meadow-mist');
 const kept=()=>{const k=script?.keep??held;return k?{...state,pose:{...k.pose},skimEnabled:k.skimEnabled}:state;};
 function drawVeil(t){const b=blindOf(state);if(b)Object.assign(BLIND,b);return veil.draw(b?above(state.pose):0,t,renderer.light?.direct??1);}
 // False while an arrival holds the controls. Otherwise the saved place follows the eye again, and a lift-off is handed back.
@@ -175,6 +193,7 @@ $('downloadSave').onclick=()=>download(new Blob([host.storage.encode({state:JSON
 $('importSave').onclick=()=>{if(quiet){status('Finish the current measurement before importing a save');return;}$('saveFile').click();};
 $('saveFile').onchange=async()=>{try{const file=$('saveFile').files[0];if(!file)return;if(file.size>1000000)throw Error('Save exceeds 1 MB');const imported=host.storage.decode(await file.text(),{allowLegacy:true});const s=parseState(JSON.stringify(imported.state)),nextBookmark=parseState(JSON.stringify(imported.bookmark));state=s;bookmark=nextBookmark;bookmarkCheck=null;returnCheck=null;route=null;lift=null;paused=false;tracing=false;flightMotion.speedMps=0;clearKeys();persist();syncUI();stage='Saved meadow · explore freely';event('explicit-scene-load');status('Saved meadow loaded');}catch(e){status('Import rejected: '+e.message);}finally{$('saveFile').value='';}};
 function panelHidden(hide){document.querySelector('.panel').hidden=hide;$('show').hidden=!hide;}
+if(surfaceEntry?.geographic && stationApron(state.pose.eastM,state.pose.northM,500))panelHidden(true);
 $('hide').onclick=()=>panelHidden(true);$('show').onclick=()=>panelHidden(false);
 function evidence(){return {schema:1,date:new Date().toISOString(),scope:'Infinite Meadow pack 1.3.0 in the browser Observatory; short observations are not production H1 certification',pack:host.inspect(),inspection:$('grassLayers').value,state:JSON.parse(saveState(state)),bookmark:JSON.parse(saveState(bookmark)),lighting:sceneLight(state),flight:{lifting:!!lift,speedMps:flightMotion.speedMps,skimming:state.skimEnabled,cruising:flightMotion.cruise,levelCruise:flightMotion.level?{...flightMotion.level}:null,levelMinimumAltitudeM:LEVEL_MIN_ALTITUDE_M,terrainUpperBoundM:TERRAIN_UPPER_BOUND_M},renderer:renderer.info,residency:residency.counters(),viewport:{width:canvas.width,height:canvas.height},blind:blindBands(state),frame,returnCheck,quietStats,measurements,events:[...events],demands:[...demands],frames:[...trace],missing:{wholeProcessGpuMemory:null,osPresentation:null,scientificOptics:'Visual study with stage magic and accelerated travel',productionCapacity:'Not certified'}};}
 $('export').onclick=()=>{const blob=new Blob([JSON.stringify(evidence(),null,2)],{type:'application/json'}),link=$('evidenceLink');if(link.href.startsWith('blob:'))host.revokeURL(link.href);link.href=host.objectURL(blob);link.hidden=false;status('Evidence ready · download the file below');};
@@ -285,9 +304,18 @@ function tick(t){
   const prepareStart=performance.now(),sharedFrame=host.stage.follow(state.pose,state.windTime),changed=residency.update(sharedFrame.eye,state.grassDensity,state.grassReach),prepareMs=performance.now()-prepareStart;
   if(changed&&tracing&&demands.length<2048)demands.push({version:residency.version,frame,required:[...residency.required],hashes:[...residency.tiles.values()].map(v=>[v.key,v.contentHash])});
   if(!residency.ready){paused=true;status('Movement paused while detail is unavailable: '+residency.failure);}
+  const p=state.pose,apron=survey&&p.altitudeM-GROUND_DATUM<30000?stationApron(p.eastM,p.northM,20000):null;
+  renderer.stationApron=apron;renderer.stationDatum=GROUND_DATUM;
+  if(apron)prepareExterior(apron.row);else if(requested)releaseExterior();
   const m=renderer.draw(state,residency,{inspection:$('grassLayers').value});
   if(drawBorder){borderStructures??=createBorderStructures(canvas);borderStructures.draw({pose:borderPose,levels:[1,1,1]},t*.001,1,{overMeadow:true,resize:false,daylight:renderer.light?.direct??1,radiusM:hostRadiusM()});}
-  drawVeil(t);if(++drawn===3)resolveReady();if(completed)compareReturn(completed);
+  if(apron && exterior){
+    const [a,b,c,d]=apron.row.axes,e=Math.sin(p.yaw),n=-Math.cos(p.yaw);
+    const yaw=Math.atan2(a*e+b*n,c*e+d*n);
+    exterior.view.draw(exterior.station,[apron.x,p.altitudeM-GROUND_DATUM,apron.z+exterior.station.widthM/2],yaw,p.pitch,
+      parent.SphereApp.sceneSeconds,false,renderer.light?.direct??1);
+  }
+  drawVeil(t);if(drawn<3 && (!apron||exterior) && ++drawn===3)resolveReady();if(completed)compareReturn(completed);
   const counts=residency.counters();const row={frame,rendererFrame:m.rendererFrame,stageVersion:residency.version,timestamp:t,intervalMs:rawDt*1000,prepareMs,renderCpuMs:m.renderCpuMs,gpuMs:m.gpuMs,gpuSampleFrame:m.gpuSampleFrame,gpuDisjoint:m.gpuDisjoint,gpuResolved:m.gpuResolved,drawCalls:m.drawCalls,uploadBytes:m.uploadBytes,descriptorBytes:m.descriptorBytes,gpuBufferBytes:m.gpuBytes,gpuTextureBytes:m.gpuTextureBytes,grassboxInstances:m.grassboxInstances,grassboxBlades:m.grassboxBlades,grassCenter:m.grassCenter,windTime:state.windTime,originId:m.originId,reveal:m.reveal,interiorDaylight:m.interiorDaylight,terrainAlpha:m.terrainAlpha,heroCenter:m.heroCenter,terrainRadiusM:m.terrainRadiusM,pose:{...state.pose},global:toGlobal(state.pose),address:address(state.pose),required:residency.required.length,ready:counts.ready,retainedTufts:counts.tufts,submittedTufts:m.instanceCount,collisionClearanceM:clearance(state.pose),speedMps:flightMotion.speedMps,skimming:state.skimEnabled,skimTargetClearanceM:state.skimClearanceM,movementM:Math.hypot(state.pose.eastM-lastPose.eastM,state.pose.northM-lastPose.northM,state.pose.altitudeM-lastPose.altitudeM),stage};
   row.levelCruising=!!flightMotion.level;row.levelHeadingRad=flightMotion.level?.headingRad??null;row.levelAltitudeM=flightMotion.level?.altitudeM??null;row.levelPhase=flightMotion.level?(flightMotion.level.elapsedS<flightMotion.level.entrySeconds?'climbing':'level'):null;row.groundEyeClearanceM=clearance(state.pose)+1.7;
   if(tracing&&trace.length<12000)trace.push(row);metrics.push(row);if(metrics.length>900)metrics.shift();if(quiet){quiet.rows.push(row);if(quiet.rows.length===900)finishQuiet();}lastPose={...state.pose};hud(t,m);
@@ -307,10 +335,10 @@ window.SphereBiome={contract:'sphere-biome/1',id:'infinite-meadow',version:'1.3.
   pose:()=>({...state.pose,altitudeM:above(state.pose)}),   // height above the meadow datum
   ascend,begin(){if(script?.held)script.held=false;return arrived;},save(){try{persist();return true;}catch{return false;}},
   dispose(){window.dispatchEvent(new Event('pagehide'));},air:()=>({profile:'meadow-mist',haze:[],blind:blindOf(state)}),
-  inspect:()=>{const b=blindOf(state);return {light:renderer.light,veil:b?+veilAt(b,above(state.pose)).toFixed(3):0,reveal:+sceneLight(state).reveal.toFixed(3),frames:frame,surfaceEdge:chart?.edge??null,rangeM:chart?course(state.pose,chart).distanceM:null,levelCruising:!!flightMotion.level,scripted:!!script,held:!!script?.held,ready:residency.ready,drawCalls:metrics.at(-1)?.drawCalls??null};}};
+  inspect:()=>{const b=blindOf(state);return {exteriorStation:exterior?.station.address.key??null,light:renderer.light,veil:b?+veilAt(b,above(state.pose)).toFixed(3):0,reveal:+sceneLight(state).reveal.toFixed(3),frames:frame,surfaceEdge:chart?.edge??null,rangeM:chart?course(state.pose,chart).distanceM:null,levelCruising:!!flightMotion.level,scripted:!!script,held:!!script?.held,ready:residency.ready,drawCalls:metrics.at(-1)?.drawCalls??null};}};
 host.frame(tick);status(script?'Arriving from the air · your place here is kept':'Walk the meadow, then lift off from wherever you stop');
 
 
 
-return {snapshot:()=>({state:JSON.parse(saveState(quiet?.original??kept())),bookmark:JSON.parse(saveState(bookmark))}),dispose(){borderStructures?.dispose();renderer.dispose();clearKeys();route=null;lift=null;quiet=null;script=null;veil.dispose();delete window.SphereBiome;if(recording){recording.ondataavailable=null;if(recording.state!=='inactive')recording.stop();for(const track of recording.stream.getTracks())track.stop();recording=null;}for(const id of ['recordingLink','evidenceLink']){const href=$(id).href;if(href.startsWith('blob:'))host.revokeURL(href);}residency.tiles.clear();residency.required.length=0;metrics.length=events.length=trace.length=demands.length=measurements.length=0;renderer.queries.length=0;}};
+return {snapshot:()=>({state:JSON.parse(saveState(quiet?.original??kept())),bookmark:JSON.parse(saveState(bookmark))}),dispose(){releaseExterior();setStations([],GROUND_DATUM);borderStructures?.dispose();renderer.dispose();clearKeys();route=null;lift=null;quiet=null;script=null;veil.dispose();delete window.SphereBiome;if(recording){recording.ondataavailable=null;if(recording.state!=='inactive')recording.stop();for(const track of recording.stream.getTracks())track.stop();recording=null;}for(const id of ['recordingLink','evidenceLink']){const href=$(id).href;if(href.startsWith('blob:'))host.revokeURL(href);}residency.tiles.clear();residency.required.length=0;metrics.length=events.length=trace.length=demands.length=measurements.length=0;renderer.queries.length=0;}};
 }

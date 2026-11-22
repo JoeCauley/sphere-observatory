@@ -12,7 +12,7 @@ const district=library?.entry(id)?.transport??districtFor('sphere-00000000000000
 const hand=rightSign(district);
 const storage=library?.saveStorage(world)??localStorage,fileBacked=library?.persistence==='file';
 const qs=new URLSearchParams(location.search),arrival=qs.get('arrival')==='air';
-const view=makeView(canvas,{capture:false,district}),keys=new Set(),events=new AbortController();
+const view=makeView(canvas,{capture:false,district,land:host?.SphereStageFrame?.stationLand?.(district)}),keys=new Set(),events=new AbortController();
 const signal=events.signal,previews=new Map();
 let station,record,site,group=classes[0],pose,manual,frames=0,raf=0,last=0,time=0,lastWorldTime=null,rate=1;
 let saved=null,script=null,held=arrival&&qs.get('hold')==='1',dead=false,writing=false,arrivalDone,firstDraw;
@@ -22,7 +22,7 @@ const ready=new Promise(r=>firstDraw=r),arrived=new Promise(r=>arrivalDone=r);
 const text=(s,v)=>{if(s.textContent!==v)s.textContent=v;};
 const finite=p=>p&&['eastM','northM','altitudeM','yaw','pitch'].every(k=>Number.isFinite(p[k]))&&['walk','flight'].includes(p.mode);
 try{saved=JSON.parse(storage.getItem(saveKey));if(saved?.schema!==1||!finite(saved.pose))saved=null;}catch{}
-if(saved&&!entry)group=classes.find(c=>c.id===saved.group)??classes[0];
+if(saved&&!entry&&!arrival)group=classes.find(c=>c.id===saved.group)??classes[0];
 for(const c of classes){const o=document.createElement('option');o.value=c.id;o.textContent=c.name;el('class').append(o);}
 el('class').value=group.id;
 function resident(s){
@@ -36,9 +36,10 @@ function resident(s){
 function adopt(s,r){
   site=s;record=r;station=r.station;view.load(station);hudDirty=true;
 }
+function checkpoint(p){manual={pose:{...p},group:group.id};}
 function save(){
   if(!manual || (entry && !entry.active))return false;
-  try{storage.setItem(saveKey,JSON.stringify({schema:1,pose:manual,group:group.id}));return true;}catch{return false;}
+  try{storage.setItem(saveKey,JSON.stringify({schema:1,...manual}));return true;}catch{return false;}
 }
 function active(){return !entry || entry.active;}
 function inHall(p){
@@ -52,18 +53,18 @@ async function lock(p){
     // Normally the winning Atlas record is identical to the preview. Retain the GPU buffers.
     if(JSON.stringify(r.station)===JSON.stringify(station))r.station=station;
     previews.set(site.address.key,Promise.resolve(r));adopt(site,r);issue='';lockedPending=null;
-    pose=p;manual={...p};save();
+    pose=p;checkpoint(p);save();
   }catch(e){issue=e.message;lockedPending=p;}finally{writing=false;hudDirty=true;}
 }
 function accept(p){
   if(dead || writing || issue)return;
   const next=nearestSite(district,p.eastM);
   if(next!==site){
-    writing=true;resident(next).then(r=>{if(!dead){adopt(next,r);pose=p;manual={...p};}}).catch(e=>{issue=e.message;}).finally(()=>{writing=false;hudDirty=true;});
+    writing=true;resident(next).then(r=>{if(!dead){adopt(next,r);pose=p;checkpoint(p);}}).catch(e=>{issue=e.message;}).finally(()=>{writing=false;hudDirty=true;});
     return;
   }
   if(!record.locked && active() && inHall(p)){void lock(p);return;}
-  pose=p;manual={...p};
+  pose=p;checkpoint(p);
 }
 function apron(){
   return Math.abs(pose.eastM-site.x)<hallHalfM && Math.abs(pose.northM)>=station.widthM/2+1 &&
@@ -72,7 +73,7 @@ function apron(){
 function board(){
   if(!apron()||script||held||writing)return;
   group=classes.find(c=>c.id===el('class').value)??group;
-  pose=boardingPose(station,group,pose.northM>0);manual={...pose};save();hudDirty=true;canvas.focus();
+  pose=boardingPose(station,group,pose.northM>0);checkpoint(pose);save();hudDirty=true;canvas.focus();
 }
 function toggleMode(){
   if(held||script||writing)return;
@@ -113,16 +114,20 @@ function ascend({toAltitudeM=24000}={}){
 }
 function begin(){if(held){held=false;hudDirty=true;}return arrived;}
 const airRules=library?.pack(id)?.atmosphereRules,nearM=airRules?.nearM??18000,farM=airRules?.farM??24000;
-const nearMark=Math.log1p(nearM/6000),farMark=nearMark+1.25;
+const nearScale=32,nearMark=Math.log1p(nearM/nearScale),farMark=nearMark+1.25;
 function altitudeMark(h){
-  if(h<=nearM)return Math.log1p(Math.max(0,h)/6000);
+  if(h<=nearM)return Math.log1p(Math.max(0,h)/nearScale);
   if(h<farM)return nearMark+1.25*(h-nearM)/(farM-nearM);
   return farMark+Math.log1p((h-farM)/110000);
 }
 function altitudeAt(mark){
-  if(mark<=nearMark)return 6000*Math.expm1(mark);
+  if(mark<=nearMark)return nearScale*Math.expm1(mark);
   if(mark<farMark)return nearM+(farM-nearM)*(mark-nearMark)/1.25;
   return farM+110000*Math.expm1(mark-farMark);
+}
+function approach(end,height){
+  const above=Math.max(0,height-end.altitudeM),run=6000*above/(above+1500);
+  return {...end,northM:end.northM-run,altitudeM:height,pitch:-Math.atan2(above,run+15)};
 }
 function updateScript(dt){
   if(!script||held)return;
@@ -150,6 +155,7 @@ function updateScript(dt){
   turn=Math.max(0,Math.min(1,turn));turn=turn*turn*(3-2*turn);
   pose={...pose,altitudeM:h,pitch:start.pitch+(end.pitch-start.pitch)*turn};
   for(const field of ['eastM','northM','yaw'])pose[field]=start[field]+(end[field]-start[field])*k;
+  if(script.arrival)pose=approach(end,h);
   if(t>=1)settle(script.arrival?'arrived':'revealed');
 }
 function renderHUD(now){
@@ -185,6 +191,8 @@ function frame(now){
   if(now-lightAt>=120){
     direct=host?.SphereStageFrame?.surfaceLight(window,pose)?.direct??1;lightAt=now;
   }
+  // The two layers sample this exact simulation tick even when Main is preparing terrain.
+  if(pose.mode==='flight' && pose.altitudeM>=nearM)host?.SphereStageFrame?.presentStation?.(window);
   const width=canvas.clientWidth,height=canvas.clientHeight;
   const visible=draws<2 || !frameElement || frameElement.style.opacity!=='0';
   if(visible && (!paint || paint.pose!==pose || paint.time!==time || paint.direct!==direct || paint.station!==station ||
@@ -205,7 +213,7 @@ addEventListener('blur',()=>{keys.clear();save();},{signal});
 canvas.addEventListener('pointerdown',e=>{if(held)return;canvas.focus();drag=[e.clientX,e.clientY];canvas.setPointerCapture(e.pointerId);},{signal});
 canvas.addEventListener('pointermove',e=>{if(!drag||script||held||writing||issue)return;
   pose={...pose,yaw:pose.yaw+(e.clientX-drag[0])*.004*hand,pitch:Math.max(-1.49,Math.min(1.49,pose.pitch-(e.clientY-drag[1])*.004))};
-  drag=[e.clientX,e.clientY];manual={...pose};
+  drag=[e.clientX,e.clientY];checkpoint(pose);
 },{signal});
 canvas.addEventListener('lostpointercapture',()=>{drag=null;},{signal});
 for(const button of document.querySelectorAll('[data-key]')){
@@ -221,11 +229,13 @@ window.SphereBiome={id,version,contract:'sphere-biome/1',ready,arrived,begin,asc
     group:group.id,time,uploads:view.uploads,blocked:message,error:issue})};
 async function start(){
   const initial=entry?.geographic&&finite(entry.pose)?entry.pose:saved?.pose;
-  const s=nearestSite(district,initial?.eastM??0);adopt(s,await resident(s));
-  pose=initial?{...initial}:boardingPose(station,group);manual={...pose};
+  const s=nearestSite(district,arrival?0:initial?.eastM??0);adopt(s,await resident(s));
+  pose=initial?{...initial}:boardingPose(station,group);checkpoint(pose);
+  if(arrival && saved)manual.group=saved.group??classes[0].id;
   if(arrival){
-    const end={...boardingPose(station,group),mode:'flight',altitudeM:group.eye+2,pitch:0};
-    const start={...end,pitch:-1.49,altitudeM:Number(qs.get('fromM'))||24000};
+    const pad=boardingPose(station,group);
+    const end={...pad,northM:pad.northM-7.5,mode:'flight',altitudeM:group.eye+2,pitch:0};
+    const start=approach(end,Number(qs.get('fromM'))||farM);
     pose={...start};script={start,end,elapsed:0,arrival:true};
   }else arrivalDone('arrived');
   raf=requestAnimationFrame(frame);

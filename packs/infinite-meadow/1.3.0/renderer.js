@@ -297,6 +297,9 @@ vec3 regionalGround(vec3 q,float t){
   location(program,key){const gl=this.gl,id=program===this.screen?'s':program===this.mesh?'m':program===this.terrainProgram?'t':program===this.grassbox?'b':'g';let location=this.uniforms.get(id+key);if(location===undefined){location=gl.getUniformLocation(program,key);this.uniforms.set(id+key,location);}return location;}
   uniform(program,key,type,value){const gl=this.gl,location=this.location(program,key);if(type==='int')gl.uniform1i(location,value);else if(type==='uint2')gl.uniform2uiv(location,value);else if(type===1)gl.uniform1f(location,value);else if(type===2)gl.uniform2fv(location,value);else if(type===4)gl.uniform4fv(location,value);else gl.uniform3fv(location,value);}
   common(program,p){this.gl.useProgram(program);
+    const a=this.stationApron;
+    this.uniform(program,'uApron',4,a?[a.x,a.z,a.row.halfX,a.row.halfZ]:[0,0,0,0]);
+    if(a){this.uniform(program,'uApronAxes',4,a.row.axes);this.uniform(program,'uApronDatum',1,this.stationDatum);}
     this.uniform(program,'uBorderMap',4,this.borderMap||[0,0,0,0]);this.uniform(program,'uGateDatum',1,this.gateDatum||0);const b=cameraBasis(p);for(const [key,value] of [['uRight',b.right],['uUp',b.up],['uForward',b.forward]])this.uniform(program,key,3,value);this.uniform(program,'uAspect',1,this.canvas.width/this.canvas.height);}
   upload(residency){
     this.sortedTiles=[...residency.tiles.values()].sort((a,b)=>a.key.localeCompare(b.key));this.tileSeeds.fill(0);

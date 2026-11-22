@@ -1,9 +1,11 @@
 import assert from 'node:assert/strict';
 import atlas from '../sphere-atlas.js';
-import {packPose,mainPose,footprint,enterKm,leaveKm} from '../geographic-flight.js';
+import {packPose,mainPose,footprint,enterKm,leaveKm,meadowStations,stationBasis} from '../geographic-flight.js';
 import {chartFor,project,unproject,toMeadow} from '../packs/kit/surface-route.js';
 import {apronHeight} from '../packs/kit/meadow-border.js';
-import {terrain} from '../packs/infinite-meadow/1.3.0/landscape.js';
+import {districtFor} from '../packs/border-transport/0.10.0/survey.mjs';
+import {districtLocation} from '../packs/border-transport/0.10.0/district.mjs';
+import {terrain,setStations,stationApron} from '../packs/infinite-meadow/1.3.0/landscape.js';
 
 const radius=149597870.7, close=(a,b,tol)=>assert(Math.abs(a-b)<tol,`${a} vs ${b}`);
 const world={
@@ -42,6 +44,25 @@ for(const x of [-27000,0,900000]){
   }
   close(apronHeight(chart,datum,x,-18),0,1e-8);
 }
+const level=terrain(0,0);
+for(const sphereRadius of [radius*1000,24000000])for(const far of ['r10c1','r11c0']){
+  const home=atlas.byId(meadow.plotId),district=districtFor('sphere-0000000000000017',home.id,far,sphereRadius);
+  setStations(meadowStations(district,home),level);
+  for(const bay of district.sites)for(const side of [-1,1])for(const outside of [8,14,32,3600]){
+    const x=-2600,z=side*(bay.widthM/2+outside),geo=districtLocation(district,bay.x+x,z);
+    const p=project(home,geo.latitude,geo.longitude,sphereRadius);
+    const apron=stationApron(p.eastM,p.northM,4000);
+    close(apron.x,x,.002);close(apron.z,z,.002);
+    if(outside<3500)close(terrain(p.eastM,p.northM),level,.001);
+    const local={eastM:bay.x+x,northM:z,altitudeM:24000,yaw:.72,pitch:-1.08,mode:'flight'};
+    const camera=mainPose({...state,radius:sphereRadius/1000},{id:'border-transport',edge:{near:home.id},transport:district},local,atlas,world);
+    const basis=stationBasis(camera,district,local,world);
+    close(basis.forward[0],Math.sin(local.yaw)*Math.cos(local.pitch),.0001);
+    close(basis.forward[1],Math.sin(local.pitch),.0001);
+    close(basis.forward[2],Math.cos(local.yaw)*Math.cos(local.pitch),.0001);
+  }
+}
+setStations([],level);
 assert.equal(footprint(view(Math.PI/2,0,1),lib,atlas,world),null);
 assert.equal(footprint(view(0,Math.PI,1),lib,atlas,world),null);
 assert.equal(footprint(view(.01,.02,1),{...lib,matchesWorld:()=>false},atlas,world),null);
