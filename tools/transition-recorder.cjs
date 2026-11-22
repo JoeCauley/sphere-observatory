@@ -75,4 +75,4 @@ async function record(page, directory, id, action, options={}) {
     return report;
   }finally{await session.detach();page.off('pageerror',onError);page.off('request',onRequest);}
 }
-module.exports={record,readCamera};
+module.exports={record,readCamera,ffmpeg};

@@ -10,6 +10,8 @@ The Atlas places the five optional packs on the same globe as the original habit
 
 In **Explore → Walkable biome packs**, install **Border Biome** and choose **Visit**. The guided flight lines up with the service door and stops 12 metres outside it. Select **Walk** and press **W** to enter. On either apron, **Board** changes your scale and takes you to the matching doorway. The service footbridge overlooks the moving freight, the heavy route passes below it, and the monumental route crosses the lane at grade. Follow the covered trunk to another addressed hall. The Atlas records a hall on first entry and uses that record when you return. [Open the engineering study](studies/border-crossing/index.html) · [Watch freight from the bridge and the lane](examples/border-crossing/freight-views.mp4) · [Fly from Meadow, walk through the door and look back](examples/border-crossing/meadow-to-border.mp4) · [Fly from the Border to Meadow](examples/border-crossing/border-to-meadow.mp4) · [Scale drawings and test results](docs/Builder-border-crossings.md)
 
+You can also approach from above. This flight starts on foot in Meadow, leaves the atmosphere under manual control, lands off-centre on a 48 km station, and crosses the far wall into native ground. The camera follows the walker off the concrete and up the adjoining terrain. [Watch the manual roof crossing](examples/border-crossing/manual-roof-crossing.mp4) · [Route and measurements](docs/Builder-border-crossings.md#manual-flight-over-the-roof)
+
 ## Watch the transitions
 
 | Demo | Length | What to watch |

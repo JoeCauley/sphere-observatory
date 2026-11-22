@@ -79,6 +79,14 @@ assert(borderFilm.decodedFrames>0 && borderFilm.compositorPictures>0 && borderFi
 assert.equal(borderFilm.blackFrames,0);assert.equal(borderFilm.lostContext,false);assert.deepEqual(borderFilm.candidateCutsSeconds,[]);
 assert(readme.includes('examples/border-crossing/'+borderFilm.file));
 assert.equal(sha(fs.readFileSync(path.join(borderDir,borderRecord.frame.file))),borderRecord.frame.sha256);
+const manual=read(path.join(borderDir,'manual-roof-crossing.json')),roofDemo=fs.readFileSync(path.join(borderDir,'manual-roof-crossing.mp4'));
+assert.equal(roofDemo.subarray(4,8).toString(),'ftyp');
+assert.equal(sha(roofDemo),manual.publicDemo.sha256);assert.equal(roofDemo.length,manual.publicDemo.bytes);
+assert.equal(manual.publicDemo.decodedFrames,manual.fullRecording.decodedFrames);
+assert(manual.evidence.roofWalkM>=220 && manual.evidence.walkBeyondPavingM>=96);
+assert(Math.abs(manual.evidence.nativeEyeClearanceM-1.72)<.03 && manual.evidence.returnSightlineDegrees>170);
+assert.equal(manual.evidence.returnSurvey,manual.station);
+assert(readme.includes('examples/border-crossing/manual-roof-crossing.mp4'));
 const audit=read(path.join(root,'examples/transitions/audit.json'));
 const filmFingerprint=require('./transition-source.cjs').sourceFingerprint;
 const filmCommit=audit.runtimeVerification.commit;
@@ -100,7 +108,10 @@ assert.deepEqual(new Set(guided.map(f=>f.from+'/'+f.to)),new Set(flightIds.flatM
 assert(audit.films.every(f=>f.outcome==='pass' && f.decodedFrames>0));
 assert.equal(audit.demos.length,3);
 if(audit.demoCaptureSourceSha256){
- assert.equal(sha(fs.readFileSync(path.join(root,'tools/compositor-film.cjs'))),audit.demoCaptureSourceSha256);
+ if(hasFilmHistory){
+  const captured=spawnSync('git',['show',filmCommit+':tools/compositor-film.cjs'],{cwd:root});
+  assert.equal(captured.status,0);assert.equal(sha(captured.stdout),audit.demoCaptureSourceSha256);
+ }else assert.equal(audit.demoCaptureSourceSha256,'085cd0d84ce9754e113b0f420acaf1915d3673938d210c824badfb01284193be');
 }
 const cutTraces=read(path.join(root,'examples/transitions/camera-cuts.json'));
 assert.equal(Object.values(cutTraces).flat().length,audit.totals.candidateCuts);

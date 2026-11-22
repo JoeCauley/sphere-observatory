@@ -48,9 +48,10 @@ async function main() {
           : !stage.current && !window.sphereStageCovered,
           leaving: !!document.querySelector('#departingStageFrame iframe'),
           x: p.eastM, z: p.northM, h: pose?.altitudeM ?? ((s.radius - Math.hypot(...s.position)) * 1000),
-          pitch: pose?.pitch ?? p.pitch, half: home.widthM / 2, mode: pose?.mode || (s.walkMode ? 'walk' : 'flight'),
+          yaw: p.yaw, pitch: pose?.pitch ?? p.pitch, half: home.widthM / 2, mode: pose?.mode || (s.walkMode ? 'walk' : 'flight'),
           groundM: !local && s.walkMode ? SphereLanding.heightAboveGround(s) * 1000 : null,
-          loading: SphereLoading.active, station: local?.inspect().station || null};
+          loading: SphereLoading.active, station: local?.inspect().station || null,
+          survey: document.querySelector('#viewport canvas[data-station]:not([hidden])')?.dataset.station};
       };
       return {seed, world: SphereBiomeLibrary.world.key, home, roofSlabM: geo.roofSlabM, edge: item.edge,
         build: (await fetch('/build-info.json').then(r => r.json())).commit};
@@ -133,7 +134,20 @@ async function main() {
       await focus('Main'); await hold(['ShiftLeft', 'KeyW'], s => s.z > s.half + 3610);
       const walked = await mark('11-far-walk');
       assert(walked.owner === 'Main' && Math.abs(walked.groundM - 1.72) < .03);
-      await sleep(900); return {meta, marks};
+      // Turn the camera back from the native side to check that the departed hall is still there.
+      for (let turn = 0; turn < 2; turn++) {
+        const x0 = r.x + .18 * r.width, y0 = r.y + .55 * r.height;
+        await page.mouse.move(x0, y0); await page.mouse.down();
+        for (let i = 1; i <= 50; i++) {
+          await page.mouse.move(x0 + i * Math.PI / (.003 * 100), y0 - i * .35);
+          await sleep(22);
+        }
+        await page.mouse.up();
+      }
+      await sleep(700); const back = await mark('12-look-back');
+      assert(back.survey === meta.home.address.key && Math.cos(back.yaw - walked.yaw) < -.97);
+      assert(Math.abs(back.z - walked.z) < .5 && back.owner === 'Main');
+      await sleep(1200); return {meta, marks};
     }, {sample});
     assert.ifError(film.failure); assert.deepEqual(film.errors, []);
   } finally { await browser.close(); await host.close(); }

@@ -6,6 +6,7 @@ const recorder=require('./transition-recorder.cjs');
 
 async function record(page,directory,id,action,options={}){
   if(!/^[a-z0-9-]+$/.test(id))throw Error('Invalid film name');
+  const ff=recorder.ffmpeg();
   const cdp=await page.context().newCDPSession(page),target=page.locator(options.standalone?'#world':'#viewport').first();
   const rect=await target.boundingBox(),viewport=page.viewportSize(),x=Math.ceil(rect.x),y=Math.ceil(rect.y);
   const width=2*Math.floor(Math.min(rect.width,viewport.width-x)/2),height=2*Math.floor(Math.min(rect.height,viewport.height-y)/2);
@@ -56,9 +57,8 @@ async function record(page,directory,id,action,options={}){
       entries.push('file '+pictures[next].filename);
     }
     fs.writeFileSync(path.join(raw,'timeline.txt'),entries.join('\n')+'\n');
-    const ff=process.env.SPHERE_FFMPEG||'ffmpeg';
     const encode=spawnSync(ff,['-v','error','-y','-r','24','-f','concat','-safe','1','-i','timeline.txt','-vf','crop='+[width,height,x,y].join(':')+',format=yuv420p','-an','-c:v','libx264','-threads','2','-preset','veryfast','-crf','22','-movflags','+faststart',film],{cwd:raw,encoding:'utf8'});
-    if(encode.status!==0)throw Error('Encoding failed '+encode.stderr);
+    if(encode.status!==0)throw Error('Encoding failed: '+(encode.error?.message||encode.stderr));
     const report={id,width,height,durationMs:duration,method:'CDP compositor, most recent actual picture at each 24 Hz presentation time',sourcePictures:pictures.map(p=>p.ms),frames,errors,requests:[...requests],result:result??null,failure:failure?.message??null};
     fs.writeFileSync(path.join(directory,id+'.json'),JSON.stringify(report)+'\n');
     return report;
