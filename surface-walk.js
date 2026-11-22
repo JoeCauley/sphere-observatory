@@ -74,7 +74,15 @@ function enter(s,position,{activate:live=true,grounded=false}={}){
 function move(s,d,distance){
  // Prepare a fixed geographic neighbourhood during the final approach, before
  // the 100 m handoff. Old terrain revisions keep their saved local patches.
- if(s.terrainRevision===2&&s.geometryDetail&&M.dot(s.position,d)>0&&s.siteRevision!==1&&!s.walkMode&&s.shadeAttachment===null&&s.radius-M.length(s.position)<5&&s.radius-M.length(s.position)>=0&&!M.inBreach(M.norm(s.position),s)){patch(s,s.position);root.SphereGround?.request(s);}
+ if(s.terrainRevision===2&&s.geometryDetail&&s.siteRevision!==1&&!s.walkMode&&s.shadeAttachment===null){
+  const altitude=s.radius-M.length(s.position);
+  if(altitude>=0&&altitude<5){
+   const q=M.norm(s.position);
+   if((M.dot(s.position,d)>0||root.SphereGround?.nearApron?.(q,s,5000))&&!M.inBreach(q,s)){
+    patch(s,s.position);root.SphereGround?.request(s);
+   }
+  }
+ }
  const start=s.position.slice(),result=F.move(s,d,distance);
  if(s.walkMode||s.autoWalk===false||s.layoutVersion!==2||!s.collection||!s.geometryDetail||s.shadeAttachment!==null)return result;
  // Test the original flight segment before collision adds a tangential glide.

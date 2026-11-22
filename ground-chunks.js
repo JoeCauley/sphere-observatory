@@ -7,7 +7,33 @@ if(typeof module!=='undefined'&&module.exports&&!root.SphereVioletForest)require
 const SIZE=1.024,FINE=64,COARSE=32,BUDGET=64*1048576,HYSTERESIS=1e-7,cache=new Map();let budget=BUDGET,bytes=0,active=null,buildMs=0,target=null,worker=null,pending=null,generation=0,waits=0,revision=0,rebase=null,rebaseReady=null,clock=0,cancelled=0,evictions=0;
 const enabled=s=>s.siteRevision===2&&s.siteAnchor&&/^(biome|port)-/.test(s.siteId)&&(s.walkMode||M.length(M.sub(s.position,M.mul(s.terrainAnchor||s.siteAnchor,s.radius)))<S.localRange(s));
 const protectedProvinceAt=(q,s)=>{if(!s?.provinceAnchor||!root.SphereWatershed?.enabled?.(s)||!root.SphereWatershed?.local)return false;const local=root.SphereWatershed.local(q,s),extent=(root.SphereWatershed.extentKm||640)/2;return Number.isFinite(local?.[0])&&Math.max(Math.abs(local[0]),Math.abs(local[1]))<extent;};
-function contentKey(s){return JSON.stringify([s.seed,s.radius,s.era,s.multipleWounds,s.shellThickness,s.terrainRevision,s.provinceRevision,s.provinceSeed,s.provinceAnchor,s.packAddress,s.layoutVersion,s.axisLat,s.axisLon,s.waistWidth,s.transitionKm]);}
+let apronSurvey=null;
+function setApronSurvey(record,rules){
+ if(!record){apronSurvey=null;return;}
+ const d=record.district,signature=JSON.stringify([d.origin,d.sites.map(site=>[site.x,site.widthM])]);
+ apronSurvey={record,rules,signature,params:Object.entries(record.parameters),anchors:new WeakMap()};
+}
+function apronOffset(survey,q,s){
+ const {lat,lon}=W.coordinates(q,s);
+ return survey.rules.apronDistance(survey.record.district,lat,lon);
+}
+function localSurvey(s){
+ const survey=apronSurvey,anchor=s.terrainAnchor||s.siteAnchor;
+ if(!survey||!anchor||!survey.params.every(([k,v])=>(s[k]??null)===v))return null;
+ if(!survey.anchors.has(anchor)){
+  // Includes the walking rebase radius and the outer 16 km terrain tiles in both directions.
+  survey.anchors.set(anchor,apronOffset(survey,anchor,s)<64000);
+ }
+ return survey.anchors.get(anchor)?survey:null;
+}
+function nearApron(q,s,margin){
+ return apronSurvey && apronSurvey.params.every(([k,v])=>(s[k]??null)===v) && apronOffset(apronSurvey,q,s)<margin;
+}
+function contentKey(s){
+ const key=JSON.stringify([s.seed,s.radius,s.era,s.multipleWounds,s.shellThickness,s.terrainRevision,s.provinceRevision,s.provinceSeed,s.provinceAnchor,s.packAddress,s.layoutVersion,s.axisLat,s.axisLon,s.waistWidth,s.transitionKm]);
+ const survey=localSurvey(s);
+ return survey?key+survey.signature:key;
+}
 function renderKey(s){return JSON.stringify([s.terrainAnchor||s.siteAnchor,contentKey(s)]);}
 function frame(s){const anchor=s.terrainAnchor||s.siteAnchor,basis=S.shellFrame(anchor);return new S.Mesh(M.mul(anchor,s.radius),basis,'Connected terrain');}
 function addressAt(s,f,x,z){
@@ -36,7 +62,11 @@ function geographic(q,s){const shared=G?.query(q,{state:s,representation:'walkin
  if(province?.enabled(s)){const [x,z]=province.local(q,s);return relief*W.smooth(320,322,Math.max(Math.abs(x),Math.abs(z)));}
  return relief;
 }
-function height(s,f,x,z){const q=M.norm(f.world([x,0,z])),h=geographic(q,s);return h+(x*x+z*z)/(s.radius+Math.sqrt(Math.max(0,s.radius*s.radius-x*x-z*z)));}
+function height(s,f,x,z,survey=localSurvey(s)){
+ const q=M.norm(f.world([x,0,z])),curvature=(x*x+z*z)/(s.radius+Math.sqrt(Math.max(0,s.radius*s.radius-x*x-z*z)));
+ const weight=survey?W.smooth(0,survey.rules.apronBlendM,apronOffset(survey,q,s)):1;
+ return curvature+(weight?weight*geographic(q,s):0);
+}
 function owner(x,z){return [Math.floor(x/SIZE),Math.floor(z/SIZE)];}
 function bounds(s){const f=frame(s),p=f.local(s.position);
  // AU-sized world coordinates lose a few micrometres when transformed back
@@ -55,7 +85,8 @@ function build(s,cx,cz,cells=FINE,centre=[cx,cz],identity=null){const f=frame(s)
  // A wholly missing section has neither triangles nor support. Do not sample
  // thousands of elevations/normals and props only to discard all of them.
  if(clip?.empty){mesh.finish();mesh.bvh=S.packBVH([]);delete mesh.triangles;mesh.ground.floor=mesh.bvh;mesh.ground.props=[];mesh.chunk={x:cx,z:cz,cells,revision:2,cellId:geography.cellId,key:meshKey,renderKey:renderKey(s)};return mesh;}
- const points=new Map(),sample=(x,z)=>{x=Math.round(x*1e9)/1e9;z=Math.round(z*1e9)/1e9;const id=x+','+z;if(!points.has(id)){const q=M.norm(f.world([x,0,z])),h=height(s,f,x,z),radial=(x*x+z*z)/(2*s.radius),r=Math.max(Math.abs(x-(centre[0]+.5)*SIZE),Math.abs(z-(centre[1]+.5)*SIZE)),fade=cells===COARSE?1-W.smooth(1.5*SIZE,1.5*SIZE+16,r):1;points.set(id,[x,radial+(h-radial)*fade,z]);}return points.get(id);};
+ const survey=localSurvey(s);
+ const points=new Map(),sample=(x,z)=>{x=Math.round(x*1e9)/1e9;z=Math.round(z*1e9)/1e9;const id=x+','+z;if(!points.has(id)){const h=height(s,f,x,z,survey),radial=(x*x+z*z)/(2*s.radius),r=Math.max(Math.abs(x-(centre[0]+.5)*SIZE),Math.abs(z-(centre[1]+.5)*SIZE)),fade=cells===COARSE?1-W.smooth(1.5*SIZE,1.5*SIZE+16,r):1;points.set(id,[x,radial+(h-radial)*fade,z]);}return points.get(id);};
  const triangle=(a,b,c)=>{const q=M.norm(f.world(M.mul(M.add(M.add(a,b),c),1/3)));if(root.SphereWatershed?.sample(q,s))return;const id=G?.query(q,{state:s,representation:'walking'}).biome??W.sample(q,s).biome;if(clip)clip.triangle(a,b,c,id);else mesh.tri(a,b,c,[1,1,1],id);};
  for(let j=0;j<cells;j++)for(let i=0;i<cells;i++){const x=loX+i*step,z=loZ+j*stepZ,a=sample(x,z),b=sample(x+step,z),c=sample(x+step,z+stepZ),d=sample(x,z+stepZ);
   if(cells===COARSE&&(i===0||j===0||i===cells-1||j===cells-1)){
@@ -85,6 +116,7 @@ function build(s,cx,cz,cells=FINE,centre=[cx,cz],identity=null){const f=frame(s)
     return Math.max(Math.abs(M.dot(offset,grove.basis[0])),Math.abs(M.dot(offset,grove.basis[2])))<1.10;
   };
   function plant(q,spire){
+    if(survey&&apronOffset(survey,q,s)<=spire.radius*1000)return;
     const here=f.local(M.mul(q,s.radius)),x=here[0],z=here[2],r=spire.radius;
     if(x<loX||x>=loX+spanX||z<loZ||z>=loZ+spanZ||C.missing(q,s))return;
     if(clip && [[-r,-r],[r,-r],[-r,r],[r,r]].some(([dx,dz])=>clip.margin([x+dx,0,z+dz])<0))return;
@@ -100,6 +132,7 @@ function build(s,cx,cz,cells=FINE,centre=[cx,cz],identity=null){const f=frame(s)
    if(!violet && density>.28)continue;
    const world=[(ix+.5)*pitch,(iy+.5)*pitch,(iz+.5)*pitch];if(Math.abs(M.length(world)-s.radius)>.055)continue;
    const q=M.norm(world),local=f.local(M.mul(q,s.radius)),x=local[0],z=local[2],province=root.SphereWatershed?.sample(q,s);if(x<loX||x>=loX+spanX||z<loZ||z>=loZ+spanZ||protectedProvinceAt(q,s)||province?.water?.river||province?.water?.basin||province?.route||C.missing(q,s))continue;
+   if(survey&&apronOffset(survey,q,s)<=survey.rules.apronBlendM)continue;
    const ecology=root.SphereMeadowEcology?.active?.(s)?root.SphereMeadowEcology.query(q,s):null;if(ecology?.treeSuppressed)continue;
    const id=G?.query(q,{state:s,representation:'walking'}).biome??W.sample(q,s).biome;
    if(id===9&&forest){
@@ -146,7 +179,7 @@ function request(s){if(!enabled(s))return;const b=bounds(s),id=renderKey(s),sign
  if(!worker){worker=new Worker('ground-worker.js');worker.onmessage=({data})=>{if(data.generation!==generation)return;if(data.error){target.error=data.error;return;}trim(sizeOf(data.mesh));if(bytes+sizeOf(data.mesh)>budget){target.error='Connected ground reservation exceeded';return;}pending=data;};worker.onerror=e=>{if(target)target.error=e.message;};}
  const basis=frame(s),walk=frame(s).local(M.add(s.position,M.mul(s.forward||basis.basis[0],.01))),dx=M.length([walk[0]-b.x,walk[2]-b.z])?M.norm([walk[0]-b.x,walk[2]-b.z]):[1,0];
  jobs.sort((a,c)=>{const sa=Math.hypot(a.x-b.x,a.z-b.z)-.7*((a.x-b.x)*dx[0]+(a.z-b.z)*dx[1]),sc=Math.hypot(c.x-b.x,c.z-b.z)-.7*((c.x-b.x)*dx[0]+(c.z-b.z)*dx[1]);return sa-sc;});
- worker.postMessage({generation,state:s,jobs});promote();
+ worker.postMessage({generation,state:s,jobs,apron:localSurvey(s)?.record});promote();
 }
 function promote(){if(target&&[...target.wanted].every(k=>cacheUsable(k,target.id))){const result={...target,groups:[...target.wanted].map(k=>cache.get(k).mesh)};if(rebase&&target.id===rebase.to)rebaseReady=result;else active=result;target=null;revision++;}}
 function rebaseWalking(s){if(!enabled(s)||!s.walkMode)return;
@@ -184,4 +217,6 @@ function suspend(){worker?.terminate();worker=null;pending=null;active=null;targ
 function setBudget(value){if(!Number.isFinite(value)||value<1)throw Error('Invalid ground budget');budget=value;trim(0);}
 function dispose(){suspend();cache.clear();bytes=0;waits=0;clock=0;cancelled=0;evictions=0;budget=BUDGET;}
 root.SphereGround={suspend,dispose,enabled,frame,geographic,height,owner,build,neighbourhood,geometry,rimCut,ground,surfaceSupport,controller,request,pump,rebaseWalking,addressAt,geographicCell,cacheKey,renderKey,setBudget,available(s){if(!enabled(s))return false;request(s);const p=frame(s).local(s.position);return active?.id===renderKey(s)&&active.groups.some(m=>m.chunk.cells===FINE&&p[0]>=m.ground.bounds[0]&&p[0]<m.ground.bounds[2]&&p[2]>=m.ground.bounds[1]&&p[2]<m.ground.bounds[3]);},SIZE,FINE,COARSE,support(s,x,z){request(s);const ok=active?.id===renderKey(s)&&active.groups.some(m=>m.chunk.cells===FINE&&x>=m.ground.bounds[0]&&x<m.ground.bounds[2]&&z>=m.ground.bounds[1]&&z<m.ground.bounds[3]);if(!ok)waits++;return ok;},ready(s){if(rebase&&renderKey(s)===rebase.from){if(!rebaseReady)return false;rebaseWalking(s);}request(s);return active?.signature===renderKey(s)+':'+bounds(s).x+':'+bounds(s).z;},has(mesh){return [...cache.values()].some(e=>e.mesh===mesh||e.mesh.ground.rim?.wall===mesh)||pending?.hydrated===mesh||pending?.hydrated?.ground.rim?.wall===mesh;},get revision(){return revision;},get needsFrame(){return !!target;},get info(){return {chunks:active?.groups.length||0,cache:cache.size,bytes:bytes+(pending?.mesh?sizeOf(pending.mesh):0),pendingBytes:pending?.mesh?sizeOf(pending.mesh):0,budget,buildMs,queue:target?[...target.wanted].filter(k=>!cacheUsable(k,target.id)).length:0,waits,cancelled,evictions,stableIdentity:true};}};
+root.SphereGround.setApronSurvey=setApronSurvey;
+root.SphereGround.nearApron=nearApron;
 })(typeof window==='undefined'?globalThis:window);

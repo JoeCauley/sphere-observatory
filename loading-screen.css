@@ -1,5 +1,10 @@
 #sceneLoading{position:absolute;inset:0;z-index:10000;display:grid;place-items:center;background:#10191df7;color:#dfe6e2;cursor:default}
 #sceneLoading[hidden]{display:none}
+#sceneLoading.station-landing{place-items:end start;background:transparent}
+.station-landing .loading-card{width:auto;max-width:85%;margin:0 0 36px 12px;padding:7px 11px;background:#10191ded;border-left:2px solid #bca37b;text-align:left}
+.station-landing .loading-orbit,.station-landing .eyebrow,.station-landing #loadingTitle{display:none}
+.station-landing #loadingStatus{min-height:0;margin:0;color:#dfe6e2}
+.station-landing #loadingProgress{height:2px;margin-top:4px}
 .loading-card{width:min(390px,calc(100vw - 52px));text-align:center;padding:32px 0}
 .loading-orbit{width:88px;height:88px;border:1px solid #c4a77c66;border-radius:50%;margin:0 auto 32px;position:relative;transform:rotate(-28deg)}
 .loading-orbit:before{content:'';position:absolute;inset:8px 28px;border:1px solid #c4a77c99;border-radius:50%}

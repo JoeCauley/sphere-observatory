@@ -422,19 +422,23 @@
     if(weight<=0){hideSurvey();return false;}
     const w=view().clientWidth,h=view().clientHeight;
     if(!w||!h){hideSurvey();return false;}
-    const transparent=s.walkMode || dot(s.forward,q)<-.1;
+    // Native ground takes over before landing. A shallow turn reveals the cavity ray by ray.
+    const groundWeight=s.walkMode?0:1-optics.layerWeight(.1,2,altitude);
     v.canvas.hidden=false;v.canvas.style.opacity=String(weight);
     const time=window.SphereApp.sceneSeconds;
-    const key=[...s.position,...s.up,...s.forward,s.fov,s.routeShades,s.time,time,w,h,transparent].join('/');
+    const key=[...s.position,...s.up,...s.forward,s.fov,s.routeShades,s.time,time,w,h,groundWeight].join('/');
     if(v.pose!==key && now-v.stamp>=32){
       const axes=geography.stationBasis(s,d,p,SphereWorld);
       const direct=s.routeShades?SphereCollection.visibility(scale(q,s.radius-Math.max(.0001,altitude)),s,64):1;
       const focal=w/h/Math.tan(s.fov*Math.PI/360);
       v.view.draw(v.station,[p.eastM-site.x,p.altitudeM,p.northM+v.station.widthM/2],p.yaw,p.pitch,time,false,direct,
-        {...axes,focal,transparent,maxWidth:altitude>15?720:undefined});
+        {...axes,focal,groundWeight,maxWidth:altitude>15?720:undefined});
+      // Upper bound for the vertical component of any normalized view ray. Only a fully opaque view can skip Main.
+      const aspect=w/h,top=axes.forward[1]+(Math.abs(axes.up[1])+aspect*Math.abs(axes.right[1]))/focal;
+      v.opaque=groundWeight===1 && top<=-.32*Math.hypot(1,1/focal,aspect/focal);
       v.stamp=now;v.pose=key;
     }
-    return !transparent && weight>=1 && !!v.pose;
+    return v.opaque && weight>=1;
   }
   function regionalFrame(now,warm=false,mainState=null){
     const c=current;
@@ -445,7 +449,17 @@
     }
     const api=c.frame.contentWindow?.SphereBiome,p=api?.pose?.();
     if(!p || (!warm && p.mode!=='flight')){c.frame.style.opacity='1';hideSurvey();return false;}
-    const recipe=c.regional, weight=optics.layerWeight(recipe.nearM,recipe.farM,p.altitudeM);
+    const item=library().entry(c.id);if(!item)return false;
+    const recipe=c.regional;
+    let weight=optics.layerWeight(recipe.nearM,recipe.farM,p.altitudeM);
+    if(item.transport && !warm && !flying && p.mode==='flight' && p.altitudeM<recipe.nearM){
+      const d=item.transport,site=geography.nearestSite(d,p.eastM);
+      // Above the roof the same station projects into Main. Reveal the cavity before crossing its facade.
+      const aboveRoof=1-optics.layerWeight(site.roofM+geography.roofSlabM,site.roofM+400,p.altitudeM);
+      const edge=geography.outsideDistrict(d,p.eastM,p.northM);
+      const belowOverlap=optics.layerWeight(recipe.nearM*.6,recipe.nearM,p.altitudeM);
+      weight=Math.min(weight,1-aboveRoof*belowOverlap*(1-optics.layerWeight(-4500,0,edge)));
+    }
     if(!warm){
       c.frame.style.opacity=String(weight);
       if(c.id==='border-transport' && p.altitudeM>=recipe.nearM){
@@ -459,20 +473,18 @@
     if(rect.width<2 || rect.height<2)return false;
     const key=[s.time,camera.eastM,camera.northM,camera.altitudeM,camera.yaw,camera.pitch,rect.width,rect.height,s.routeShades,s.exposure].join('/');
     if(c.regionalKey===key || now-(c.regionalStamp??-Infinity)<40)return true;
-    const item=library().entry(c.id);if(!item)return false;
     const pose=geography.mainPose(s,item,camera,SphereAtlas,SphereWorld);
     const scale=Math.min(1,640/rect.width,360/rect.height);
     pose.fov=2*Math.atan(rect.width/rect.height/recipe.focal)*180/Math.PI;
     // The regional image is already filtered to the display size during the dissolve.
     pose.geometryDetail=false;pose.antialias=Math.min(pose.antialias??0,1);
     if(recipe.density===0 && !item.transport){pose.clouds=false;pose.textureDetail=false;pose.richMaterials=false;}
-    const surveyed=item.transport && projectSurvey(now,pose);
-    if(!item.transport)hideSurvey();
+    const surveyed=projectSurvey(now,pose);
     if(!surveyed)window.SphereApp.renderer.draw(pose,Math.round(rect.width*scale),Math.round(rect.height*scale));
     c.regionalKey=key;c.regionalStamp=now;return true;
   }
   function enableRegional(c,scene){
-    if(!c || !optics)return;
+    if(!c || !scene || !optics)return;
     c.regional=airOf(scene);
     c.shell.style.background='transparent';
     if(scene.transport)c.shell.classList.add('transport-flight');
@@ -1129,6 +1141,10 @@
     return {district,rows:geography.meadowStations(district,SphereAtlas.byId(meadow.plotId)),fileBacked:lib.persistence==='file'};
   }
   async function stationExterior(address,fileBacked){
+    // A surveyed station can open onto native ground. Start linking its shared triangle program while the station is still visible.
+    const renderer=window.SphereApp.renderer;
+    if(!renderer.geometry&&!renderer.geometryPreparation && renderer.gl.getExtension('KHR_parallel_shader_compile'))
+      renderer.prepareGeometry().catch(error=>console.warn('Native ground preparation',error));
     const [{stationRecord},{makeView}]=await Promise.all([
       import(new URL('packs/border-transport/0.10.0/atlas.mjs',base)),
       import(new URL('packs/border-transport/0.10.0/view.mjs',base))]);
@@ -1212,6 +1228,7 @@
       if(current!==destination || parked!==here)return false;
       retire(here);parked=null;
       destination.pending=false;
+      if(geographicTarget)enableRegional(destination,sceneOf(geographicTarget));
       destination.shell.style.pointerEvents='';
       arrival.active=true;
       destination.frame.contentWindow.focus();
@@ -1438,7 +1455,7 @@
     if(!item || !lib.matchesWorld(s))return;
     if(current.frame.surfaceEntry?.passage)return;
     const scene=sceneOf(item);
-    if(pose.mode==='flight' && !current.regional && optics && scene && pose.altitudeM>=airOf(scene).nearM)enableRegional(current,scene);
+    if(pose.mode==='flight' && !current.regional && optics && scene)enableRegional(current,scene);
     const climbed=pose.altitudeM>previous.pose.altitudeM && pose.altitudeM>=geography.leaveKm*1000;
     if(!climbed && (inspect.levelCruising || pose.altitudeM>=geography.leaveKm*1000))return;
     if(!climbed && item.transport && geography.outsideDistrict(item.transport,pose.eastM,pose.northM)<=(pose.mode==='walk'?14:650))return;

@@ -1,5 +1,5 @@
 import {freightAt} from './station.mjs';
-import {hallHalfM,linkHalfM,roofSlabM,rightSign} from './district.mjs';
+import {hallHalfM,linkHalfM,roofSlabM,apronRunM,rightSign} from './district.mjs';
 
 const steel=[.27,.35,.36], lightSteel=[.50,.61,.60], concrete=[.38,.43,.42],
   amber=[.97,.62,.20], ballast=[.27,.30,.28], dark=[.15,.20,.22];
@@ -25,7 +25,7 @@ export function stationMesh(s,district=null) {
   const m=mesh(),mid=s.widthM/2,left=-hallHalfM,right=hallHalfM,heavy=s.routes[2];
   const trench=heavy.nearDoor[0],hw=heavy.door[0]/2+5;
   for(const [lo,hi] of [[left,trench-hw],[trench+hw,right]]){
-    m.box(lo,hi,-12,-.08,-3500,s.widthM+3500,ballast);
+    m.box(lo,hi,-12,-.08,-apronRunM,s.widthM+apronRunM,ballast);
     m.box(lo,hi,-.08,0,mid-s.laneHalfM,mid+s.laneHalfM,[.42,.44,.39]);
     for(const z of [-500,-325,325,500])m.box(lo,hi,0,.13,mid+z-2,mid+z+2,lightSteel);
   }
@@ -248,7 +248,7 @@ float haze=1.-exp(-distanceM/22000.);frag=vec4(mix(lit,vec3(.27,.34,.35)*max(wor
 const skyVertex=`#version 300 es
 out vec2 uv;void main(){uv=vec2(float((gl_VertexID<<1)&2),float(gl_VertexID&2))*2.-1.;gl_Position=vec4(uv,0.,1.);}`;
 const skyFragment=`#version 300 es
-precision highp float;in vec2 uv;uniform vec2 lens;uniform vec3 right,up,forward,eye,nearLand,farLand;uniform float direct,radius,mid;out vec4 frag;
+precision highp float;in vec2 uv;uniform vec2 lens;uniform vec3 right,up,forward,eye,nearLand,farLand;uniform float direct,radius,mid,regionalGround;out vec4 frag;
 void main(){
  vec3 ray=normalize(forward+right*uv.x/lens.x+up*uv.y/lens.y);float y=ray.y,h=max(.05,eye.y);
  float root=sqrt(y*y+2.*h/radius),distanceM=y<0.?2.*h/(root-y):radius*(root+y);
@@ -259,7 +259,10 @@ void main(){
  vec3 horizon=mix(vec3(.075,.093,.11),vec3(.46,.56,.59),direct);
  vec3 air=mix(vec3(.035,.045,.075),vec3(.27,.47,.62),direct);
  float haze=(1.-exp(-distanceM/42000.))*(1.-smoothstep(.035,.5,-y));
- frag=vec4(mix(mix(ground,horizon,haze),air,smoothstep(0.,.65,y)),1.);
+ vec3 color=mix(mix(ground,horizon,haze),air,smoothstep(0.,.65,y));
+ // Only downward rays in the regional image replace the distant ground. Keep the real cavity sky above them.
+ float alpha=regionalGround<0.?1.:regionalGround*(1.-smoothstep(-.32,-.03,y));
+ frag=vec4(color*alpha,alpha);
 }`;
 export function makeView(canvas,{capture=true,district=null,shared=false,composite=false,land=null}={}) {
   const hand=district?rightSign(district):1;
@@ -277,7 +280,7 @@ export function makeView(canvas,{capture=true,district=null,shared=false,composi
   const program=link(vertex,fragment),sky=shared?null:link(skyVertex,skyFragment);
   const locations=(p,names)=>Object.fromEntries(names.map(n=>[n,gl.getUniformLocation(p,n)]));
   const loc=locations(program,['eye','right','up','forward','offset','focal','clip','mask','direct','workLight','hall']);
-  const skyLoc=sky&&locations(sky,['lens','right','up','forward','eye','direct','radius','mid','nearLand','farLand']);
+  const skyLoc=sky&&locations(sky,['lens','right','up','forward','eye','direct','radius','mid','nearLand','farLand','regionalGround']);
   const vao=gl.createVertexArray();
   const attrs=['position','normal','tint'].map(n=>gl.getAttribLocation(program,n));
   const hallBuffer=gl.createBuffer(),cargoBuffer=gl.createBuffer();
@@ -309,12 +312,13 @@ export function makeView(canvas,{capture=true,district=null,shared=false,composi
       const co=Math.cos(yaw),si=Math.sin(yaw),cp=Math.cos(pitch),sp=Math.sin(pitch);
       const right=camera?.right??[hand*co,0,-hand*si],up=camera?.up??[-si*sp,cp,-co*sp],forward=camera?.forward??[si*cp,sp,co*cp];
       if(!shared){
-        gl.clearColor(0,0,0,camera?.transparent?0:1);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
-        if(!idPass && !camera?.transparent){
+        gl.clearColor(0,0,0,composite?0:1);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
+        if(!idPass && camera?.groundWeight!==0){
           gl.disable(gl.DEPTH_TEST);gl.useProgram(sky);gl.bindVertexArray(null);
           gl.uniform2f(skyLoc.lens,focal*h/w,focal);gl.uniform3fv(skyLoc.right,right);gl.uniform3fv(skyLoc.up,up);gl.uniform3fv(skyLoc.forward,forward);
           gl.uniform3fv(skyLoc.nearLand,land?.[0]??[.19,.33,.15]);gl.uniform3fv(skyLoc.farLand,land?.[1]??[.26,.29,.25]);
           gl.uniform1f(skyLoc.radius,district?.origin.radiusM??149597870700);gl.uniform1f(skyLoc.mid,s.widthM/2);
+          gl.uniform1f(skyLoc.regionalGround,camera?.groundWeight??-1);
           gl.uniform3fv(skyLoc.eye,eye);gl.uniform1f(skyLoc.direct,direct);gl.drawArrays(gl.TRIANGLES,0,3);
         }
       }

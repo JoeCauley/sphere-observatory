@@ -12,6 +12,7 @@ async function record(page,directory,id,action,options={}){
   fs.mkdirSync(directory,{recursive:true});
   const raw=fs.mkdtempSync(path.join(directory,'.compositor-'+id+'-'));
   const film=path.resolve(directory,id+'.mp4'),frames=[],pictures=[],errors=[],requests=new Set();
+  const sample=options.sample??(()=>page.evaluate(recorder.readCamera));
   const onError=e=>{if(!errors.includes(e.message))errors.push(e.message);};
   const onRequest=r=>{const u=new URL(r.url()).pathname;if(u.includes('/assets/'))requests.add(u);};
   page.on('pageerror',onError);page.on('request',onRequest);
@@ -31,13 +32,13 @@ async function record(page,directory,id,action,options={}){
   }
   try{
     const initial=await cdp.send('Page.captureScreenshot',{format:'jpeg',quality:86,fromSurface:true,captureBeyondViewport:false});
-    const first=await page.evaluate(recorder.readCamera);base=Date.now();keep(initial.data,0);frames.push({ms:0,...first});
+    const first=await sample();base=Date.now();keep(initial.data,0);frames.push({ms:0,...first});
     cdp.on('Page.screencastFrame',onPicture);
     await cdp.send('Page.startScreencast',{format:'jpeg',quality:82,everyNthFrame:1});
     const sampling=(async()=>{
       try{
         while(active){
-          const start=Date.now();const camera=await page.evaluate(recorder.readCamera);
+          const start=Date.now();const camera=await sample();
           frames.push({ms:Date.now()-base,...camera});await sleep(Math.max(0,100-(Date.now()-start)));
         }
       }catch(error){captureError=error;active=false;}

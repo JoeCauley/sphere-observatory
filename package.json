@@ -10,7 +10,7 @@
     "test:walks:browser": "node tests/surface-circuits-browser.cjs",
     "test:border": "node tests/border-passage.mjs",
     "test:border:browser": "node tests/border-passage-browser.cjs",
-    "test:border:stations": "node tests/border-stations.mjs && node tests/border-transport.mjs && node tests/border-stations-browser.cjs && node tests/border-transport-browser.cjs && node tests/meadow-border-flight-browser.cjs",
+    "test:border:stations": "node tests/border-stations.mjs && node tests/border-transport.mjs && node tests/border-stations-browser.cjs && node tests/border-transport-browser.cjs && node tests/meadow-border-flight-browser.cjs && node tests/border-horizon-browser.cjs",
     "test:transit": "node tests/transit-status-browser.cjs",
     "test:pack": "node tests/biome-pack.mjs",
     "test:contract": "node tests/biome-contract-browser.cjs",

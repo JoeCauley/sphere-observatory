@@ -3,8 +3,8 @@
 import {project,unproject,chartFor,toBorder,toMeadow} from './packs/kit/surface-route.js';
 import {farEdgeM,onBorder,rampRunM} from './packs/kit/border-profile.js';
 import {terrain} from './packs/infinite-meadow/1.3.0/landscape.js';
-import {districtPoint,districtLocation,outsideDistrict,hallHalfM} from './packs/border-transport/0.10.0/district.mjs';
-export {outsideDistrict};
+import {districtPoint,districtLocation,outsideDistrict,hallHalfM,apronRunM} from './packs/border-transport/0.10.0/district.mjs';
+export {outsideDistrict,nearestSite,roofSlabM} from './packs/border-transport/0.10.0/district.mjs';
 const meadowDatum=terrain(0,0);
 function gateDatum(gate){return terrain(gate.eastM,gate.northM)-meadowDatum;}
 export const enterKm=20, leaveKm=24;
@@ -29,7 +29,7 @@ export function meadowStations(district,home){
     const origin=at(site.x,0),along=at(site.x+1000,0),across=at(site.x,1000);
     const ex=(along.eastM-origin.eastM)/1000,nx=(along.northM-origin.northM)/1000;
     const ez=(across.eastM-origin.eastM)/1000,nz=(across.northM-origin.northM)/1000,det=ex*nz-ez*nx;
-    return {site,origin,locate,axes:[nz/det,-ez/det,-nx/det,ex/det],halfX:hallHalfM,halfZ:site.widthM/2+3500};
+    return {site,origin,locate,axes:[nz/det,-ez/det,-nx/det,ex/det],halfX:hallHalfM,halfZ:site.widthM/2+apronRunM};
   });
 }
 export function footprint(state,library,atlas,world){

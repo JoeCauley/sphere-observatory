@@ -9,6 +9,11 @@ function show(){if(overlay.hidden)priorFocus=document.activeElement;overlay.hidd
 function progress({phase,ready,total}){$('loadingStatus').textContent=phase+(total?' · '+ready+' of '+total+' ready':'');if(total){$('loadingProgress').max=total;$('loadingProgress').value=ready;}else $('loadingProgress').removeAttribute('value');}
 async function ensureCurrent({initial=false,force=false}={}){
  if((window.sphereStageCovered&&!initial)||A.travelHeld||window.SphereJourney?.travel.active)return;if(!started&&!initial)return;if(A.busy&&!active&&!initial)return;if(!force&&!initial&&!needs(A.getState()))return;
+ const arrival=A.getState();
+ const stationLanding=started&&!initial&&arrival.walkMode&&arrival.siteRevision===2
+   && window.SphereGround?.nearApron?.(SphereMath.norm(arrival.position),arrival,0)
+   && document.querySelector('#viewport canvas[data-station]:not([hidden])');
+ overlay.classList.toggle('station-landing',!!stationLanding);
  controller?.abort();controller=new AbortController();const signal=controller.signal,id=++ticket;active=true;lastError=null;A.setBusy(true,{keepKeys:true});show();
  promise=(async()=>{try{
   await paint();const s=A.getState(),ratio=aspect(),plan=await R.prepare(s,{aspect:ratio,signal,onProgress:data=>{if(id===ticket)progress(data);}});
@@ -21,7 +26,7 @@ async function ensureCurrent({initial=false,force=false}={}){
   await paint();if(signal.aborted||id!==ticket)return;
   started=true;active=false;overlay.hidden=true;overlay.setAttribute('aria-busy','false');A.setBusy(false,{keepKeys:true});A.draw();
   if(overlay.contains(document.activeElement))priorFocus?.isConnected?priorFocus.focus({preventScroll:true}):$('viewport').focus({preventScroll:true});window.dispatchEvent(new Event('sphere-view-ready'));
- }catch(error){if(signal.aborted||id!==ticket||error.name==='AbortError')return;lastError=error;$('loadingTitle').textContent='Your view needs a moment';$('loadingStatus').textContent=error.message;$('loadingProgress').hidden=true;$('loadingActions').hidden=false;$('loadingFallback').hidden=!error.artwork;overlay.setAttribute('aria-busy','false');$('loadingRetry').focus({preventScroll:true});}
+ }catch(error){if(signal.aborted||id!==ticket||error.name==='AbortError')return;overlay.classList.remove('station-landing');lastError=error;$('loadingTitle').textContent='Your view needs a moment';$('loadingStatus').textContent=error.message;$('loadingProgress').hidden=true;$('loadingActions').hidden=false;$('loadingFallback').hidden=!error.artwork;overlay.setAttribute('aria-busy','false');$('loadingRetry').focus({preventScroll:true});}
  })();return promise;
 }
 function schedule(){if(queued||!started)return;queued=true;queueMicrotask(()=>{queued=false;if(active||!A.busy)ensureCurrent({force:active});});}

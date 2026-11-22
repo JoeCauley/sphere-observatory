@@ -194,12 +194,13 @@ vec3 installedBiomeMaterial(vec3 original,vec3 q,float pixel,float distanceKm){
     const gl = renderer.gl;
     let compiled = null, texture = null, disposed = false, enabled = true;
 
-    const [{chartFor},{farEdgeM,halfLengthM}]=await Promise.all([import('./packs/kit/surface-route.js'),import('./packs/kit/border-profile.js')]);
+    const [{chartFor},{farEdgeM,halfLengthM},apronRules]=await Promise.all([import('./packs/kit/surface-route.js'),import('./packs/kit/border-profile.js'),import('./packs/border-transport/0.10.0/district.mjs')]);
     let revision=0,transportChart=[0,0,0,0],transportWidths=[0,0,0,0],borderChart=[0,0,0,0],borderSurvey=[0,0,0,0];
     function upload() {
       const started = performance.now(), items = library.placed().filter(item => Number.isInteger(item.plot));
       const built = build(A, items, item => library.pack(item.packId)?.overview, new Set(library.underConstruction()));
       const d=library.placed().find(i=>i.transport)?.transport;
+      window.SphereGround?.setApronSurvey(d?{district:d,parameters:library.world.params}:null,apronRules);
       transportChart=d?[d.origin.latitude,d.origin.longitude,d.origin.axis==='meridian'?d.origin.acrossSign:0,0]:[0,0,0,0];
       transportWidths=d?[-1,0,1].map(b=>(d.sites.find(s=>s.bay===b)?.widthM??0)/2000).concat(1):[0,0,0,0];
       const edge=library.placed().find(i=>i.id==='border-outfall')?.edge,home=edge && A.byId(edge.near);

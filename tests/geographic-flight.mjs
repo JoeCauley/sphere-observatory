@@ -4,7 +4,13 @@ import {packPose,mainPose,footprint,enterKm,leaveKm,meadowStations,stationBasis}
 import {chartFor,project,unproject,toMeadow} from '../packs/kit/surface-route.js';
 import {apronHeight} from '../packs/kit/meadow-border.js';
 import {districtFor} from '../packs/border-transport/0.10.0/survey.mjs';
-import {districtLocation} from '../packs/border-transport/0.10.0/district.mjs';
+import * as districtRules from '../packs/border-transport/0.10.0/district.mjs';
+import M from '../math.js';
+import '../collection.js';
+import '../biomes.js';
+import '../world-palette.js';
+import '../world.js';
+import '../field-sites.js';
 import {terrain,setStations,stationApron} from '../packs/infinite-meadow/1.3.0/landscape.js';
 
 const radius=149597870.7, close=(a,b,tol)=>assert(Math.abs(a-b)<tol,`${a} vs ${b}`);
@@ -49,7 +55,7 @@ for(const sphereRadius of [radius*1000,24000000])for(const far of ['r10c1','r11c
   const home=atlas.byId(meadow.plotId),district=districtFor('sphere-0000000000000017',home.id,far,sphereRadius);
   setStations(meadowStations(district,home),level);
   for(const bay of district.sites)for(const side of [-1,1])for(const outside of [8,14,32,3600]){
-    const x=-2600,z=side*(bay.widthM/2+outside),geo=districtLocation(district,bay.x+x,z);
+    const x=-2600,z=side*(bay.widthM/2+outside),geo=districtRules.districtLocation(district,bay.x+x,z);
     const p=project(home,geo.latitude,geo.longitude,sphereRadius);
     const apron=stationApron(p.eastM,p.northM,4000);
     close(apron.x,x,.002);close(apron.z,z,.002);
@@ -63,6 +69,34 @@ for(const sphereRadius of [radius*1000,24000000])for(const far of ['r10c1','r11c
   }
 }
 setStations([],level);
+// A station grades native ground on either side and in either Atlas orientation.
+const ground=globalThis.SphereGround,nativeWorld=globalThis.SphereWorld;
+const native={...M.defaultState(),siteId:'biome-2',siteRevision:2,terrainRevision:2};
+for(const far of ['r10c1','r11c0']){
+  const district=districtFor('sphere-0000000000000017','r10c0',far,native.radius*1000);
+  const survey={district,parameters:{seed:native.seed}};
+  for(const site of district.sites)for(const side of [-1,1])for(const lateral of [false,true]){
+    for(const offset of [-40,0,48,120]){
+      const x=site.x+(lateral?side*(districtRules.hallHalfM+offset):1300);
+      const z=lateral?160:side*(site.widthM/2+districtRules.apronRunM+offset);
+      const {latitude,longitude}=districtRules.districtLocation(district,x,z);
+      close(districtRules.apronDistance(district,latitude,longitude),offset,.001);
+      native.siteAnchor=nativeWorld.direction(latitude,longitude,native);
+      const f=ground.frame(native),original=ground.geographic(native.siteAnchor,native);
+      ground.setApronSurvey(null);
+      const nativeKey=ground.renderKey(native);
+      ground.setApronSurvey(survey,districtRules);
+      const expected=original*nativeWorld.smooth(0,districtRules.apronBlendM,offset);
+      close(ground.height(native,f,0,0),expected,1e-7);
+      assert.notEqual(ground.renderKey(native),nativeKey);
+      const foreign={...native,seed:native.seed+1};
+      close(ground.height(foreign,f,0,0),ground.geographic(native.siteAnchor,foreign),1e-7);
+      ground.setApronSurvey(null);
+      assert.equal(ground.renderKey(native),nativeKey);
+      close(ground.height(native,f,0,0),original,1e-7);
+    }
+  }
+}
 assert.equal(footprint(view(Math.PI/2,0,1),lib,atlas,world),null);
 assert.equal(footprint(view(0,Math.PI,1),lib,atlas,world),null);
 assert.equal(footprint(view(.01,.02,1),{...lib,matchesWorld:()=>false},atlas,world),null);

@@ -4,6 +4,7 @@ import {project,unproject} from '../../kit/surface-route.js';
 export const spacingM=200000;
 
 export const hallHalfM=16000, linkHalfM=1900, roofSlabM=45;
+export const apronRunM=3500, apronBlendM=96;
 export const stationBays=[-1,0,1];
 
 // The inward-facing shell reverses left and right on some canonical edges.
@@ -27,6 +28,11 @@ export function districtLocation(d,x,z){
     return {latitude:a.latitude+z/r,longitude:Math.atan2(Math.sin(lon),Math.cos(lon))};
   }
   return unproject(a,z*a.acrossSign,x,r);
+}
+// Signed distance from the paving. Both terrain and obstruction generation use the same surveyed rectangle.
+export function apronDistance(d,lat,lon){
+  const p=districtPoint(d,lat,lon),site=nearestSite(d,p.eastM);
+  return Math.max(Math.abs(p.eastM-site.x)-hallHalfM,Math.abs(p.northM)-site.widthM/2-apronRunM);
 }
 // Negative distances are inside the union. Real adjoining aprons provide an overlap for ownership.
 export function outsideDistrict(d,x,z){
