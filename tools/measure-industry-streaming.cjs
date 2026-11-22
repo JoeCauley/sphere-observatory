@@ -32,11 +32,16 @@ async function main(){
         const colors=new OffscreenCanvas(128,72).getContext('2d',{willReadFrequently:true});
         const samples=[];let previous,seen=0;
         window.industryStrip=samples;
+        window.firstTimes={};
         function sample(){
           const api=window.SphereBiome;
           const frame=api?.inspect().frames??0;
           if(frame && frame!==seen){
             const canvas=document.getElementById('world');seen=frame;
+            if(!window.firstTimes.pictureMs){
+              window.firstTimes.pictureMs=performance.now();
+              api.ready.then(()=>window.firstTimes.controlsMs=performance.now());
+            }
             colors.drawImage(canvas,0,0,128,72);
             const next=colors.getImageData(0,0,128,72).data;
             let changed=0,sum=0;
@@ -57,8 +62,8 @@ async function main(){
         const model=SphereIndustry.inspect(), samples=window.industryStrip;
         const indices=new Set(samples.map(s=>s.frame));
         const frames=model.metrics.filter(f=>indices.has(f.frame));
-        return {samples,frames:frames.map(({frame,renderCpuMs,intervalMs,uploadBytes,gpuBufferBytes,drawCalls})=>
-          ({frame,renderCpuMs,intervalMs,uploadBytes,gpuBufferBytes,drawCalls})),
+        return {samples,times:window.firstTimes,frames:frames.map(({frame,renderCpuMs,intervalMs,uploadBytes,gpuBufferBytes,drawCalls,triangles,gpuResolved})=>
+          ({frame,renderCpuMs,intervalMs,uploadBytes,gpuBufferBytes,drawCalls,triangles,gpuMs:gpuResolved.filter(r=>!r.disjoint).map(r=>r.ms)})),
           errors:model.webglErrors,depth:model.renderer.depth};
       });
       await page.locator('#world').screenshot({path:path.join(directory,'industry-'+height+'m.png')});

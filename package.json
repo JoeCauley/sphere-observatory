@@ -55,6 +55,7 @@
     "test:geographic:browser": "node tests/geographic-flight-browser.cjs",
     "test:surface:browser": "node tests/outfall-surface-browser.cjs",
     "test:outfall": "node tests/outfall-browser.cjs",
+    "test:industry:field": "node tests/industry-field-browser.cjs",
     "test:industry:roof": "node tests/industry-roof-browser.cjs",
     "test:industry:transfer": "node tests/industry-transfer-browser.cjs",
     "test:gallery": "node tools/verify-gallery.cjs",

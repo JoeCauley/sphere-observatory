@@ -32,7 +32,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        suite: [test:http-restart, test:restart, test:outfall, test:surface:browser, test:industry:roof, test:industry:transfer, test:contract, test:stage-arrival, test:transit, test:border:browser, test:border:stations]
+        suite: [test:http-restart, test:restart, test:outfall, test:surface:browser, test:industry:field, test:industry:roof, test:industry:transfer, test:contract, test:stage-arrival, test:transit, test:border:browser, test:border:stations]
         include:
           - suite: test:walks:browser
             walk_shard: 1/3

@@ -12,23 +12,9 @@ import {hash32} from '../../infinite-meadow/1.0.0/coordinates.js';
 import {LANE_HALF_M,LANE_MARGIN_M,CARRY_M,HEX_M,locate} from './pod.js';
 export const DATUM_M=48;
 
-export const PALETTES={
- ambient:{ground:[.43,.40,.34],body:[.76,.74,.65],steel:[.055,.11,.12],pipe:[.16,.28,.27],trim:[.43,.28,.105],dark:[.045,.055,.055],liquid:[.045,.30,.32],solid:[.55,.50,.42]},
- hot:{ground:[.30,.27,.24],body:[.21,.18,.16],steel:[.10,.09,.09],pipe:[.42,.18,.08],trim:[.86,.42,.10],dark:[.05,.04,.04],liquid:[.72,.30,.08],solid:[.78,.36,.12]},
- cold:{ground:[.50,.54,.57],body:[.86,.90,.93],steel:[.16,.22,.28],pipe:[.30,.48,.62],trim:[.55,.80,.92],dark:[.06,.08,.10],liquid:[.35,.62,.80],solid:[.80,.88,.92]}
-};
+import {PALETTES,sectorKeys,cornerKey,placeWorks} from './works.js';
+export {PALETTES} from './works.js';
 const SIZE={small:.7,medium:1,large:1.35};
-// What fills the six sectors, by role. 'flow' is a pipe rack or a belt, 'store' vessels or stock, by phase.
-const SECTORS={
- intake:['receive','flow','store','yard','receive','flow'],
- process:['hall','flow','hall','towers','store','flow'],
- forming:['hall','store','flow','store','hall','flow'],
- conditioning:['towers','flow','towers','store','towers','yard'],
- storage:['store','store','flow','store','store','yard'],
- dispatch:['dock','store','flow','dock','yard','flow'],
- core:['hall','store','hall','store','hall','store']
-};
-
 // The ground of one hex and nothing else: the cheapest account of a pod, for the far distance. No solids are made.
 export function carpet(hex,shift=[0,0]){
  const c=PALETTES[hex.pod.temperature].ground,R=(HEX_M/Math.sqrt(3))*hex.pod.scale,cr=Math.cos(hex.rot??0),sr=Math.sin(hex.rot??0),out=[];
@@ -61,55 +47,85 @@ export function plant(hex){
   yard(F){for(const v of [-12,0,12]){F.cyl(48,v,0,.3,1.1,c.steel);F.tor(48,v,1.1,.34,.07,c.trim,{soft:true});}F.box(50,0,.04,10,.04,16,c.dark,{soft:true});},
   flow(F){ // a rack out along the sector: pipes for liquids, a belt for solids, both carried overhead
    for(let u=22;u<=62;u+=8)for(const v of [-1.6,1.6])F.cyl(u,v,0,.18,CARRY_M,c.steel);
-   if(liquid){for(const v of [-.9,.9])F.pipe([20,v,CARRY_M],[64,v,CARRY_M],.55,c.pipe);for(let u=26;u<64;u+=12)F.tor(u,.9,CARRY_M,.62,.1,c.trim,{soft:true,upright:F.a});}
-   else{F.box(42,0,CARRY_M,22,.14,1.1,c.steel);for(let u=24;u<62;u+=9)piece(F,u,0,CARRY_M+.14,.42*f);}
+   if(liquid){for(let u=26;u<64;u+=12)F.tor(u,.9,CARRY_M,.62,.1,c.trim,{soft:true,upright:F.a});}
+   else{for(let u=24;u<62;u+=9)piece(F,u,0,CARRY_M+.14,.42*f);}
    F.box(42,0,.04,22,.04,2.2,c.dark,{soft:true});},
   store(F){ if(liquid){
-    if(p.shape==='column'){const r=Math.min(6,4.4*f),h=(hot?19:13)*f;for(const v of [-13,0,13]){F.cyl(50,v,0,r+.6,.8,c.dark);F.cyl(50,v,.8,r,h,c.body);F.cyl(50,v,.8+h,r*.8,.9,c.steel);if(cold)for(const y of [.3,.6,.9])F.tor(50,v,.8+h*y,r+.05,.22,c.trim,{soft:true});}}
-    else if(p.shape==='sphere'){const r=Math.min(8.4,6.6*f);for(const v of [-11,11]){legs(F,50,v,r*.55,r*.55,r+1.2);F.sph(50,v,r+2,r,c.body);F.tor(50,v,r+2,r+.05,.2,cold?c.trim:c.steel,{soft:true});}}
-    else{const r=Math.min(3.6,2.9*f);for(const v of [-12,0,12]){for(const u of [43,57])F.box(u,v,(r+.8)*.5,.5,(r+.8)*.5,r*.9,c.dark);F.pipe([39,v,r+1.6],[61,v,r+1.6],r,c.body);if(cold)for(const u of [44,50,56])F.tor(u,v,r+1.6,r+.05,.2,c.trim,{soft:true,upright:F.a});}}
+    if(p.shape==='column'){const r=Math.min(6,4.4*f),h=(hot?19:13)*f;for(const v of [-13,0,13]){F.cyl(50,v,0,r+.6,.8,c.dark);if(cold)for(const y of [.3,.6,.9])F.tor(50,v,.8+h*y,r+.05,.22,c.trim,{soft:true});}}
+    else if(p.shape==='sphere'){const r=Math.min(8.4,6.6*f);for(const v of [-11,11]){legs(F,50,v,r*.55,r*.55,r+1.2);F.tor(50,v,r+2,r+.05,.2,cold?c.trim:c.steel,{soft:true});}}
+    else{const r=Math.min(3.6,2.9*f);for(const v of [-12,0,12]){for(const u of [43,57])F.box(u,v,(r+.8)*.5,.5,(r+.8)*.5,r*.9,c.dark);if(cold)for(const u of [44,50,56])F.tor(u,v,r+1.6,r+.05,.2,c.trim,{soft:true,upright:F.a});}}
     F.pipe([38,-13,CARRY_M],[38,13,CARRY_M],.5,c.pipe);for(const v of [-13,13])F.cyl(38,v,0,.18,CARRY_M,c.steel);}
    else{ // stock: the product, stacked the way its shape allows
     for(const u of [45,53,61])for(const v of [-11.5,0,11.5]){const n=p.shape==='sphere'?1:2+pick(`stack:${F.a.toFixed(2)}:${u}:${v}`,p.shape==='slab'?5:3);
      if(p.shape==='sphere'){F.tor(u,v,.35,1.3*f,.35,c.steel);piece(F,u,v,.3,1.7);}   // one sphere to a cradle
      else for(let i=0;i<n;i++)piece(F,u,v,.15+i*rise*f);
      F.box(u,v,.075,3.2*f,.075,p.shape==='bar'?4.4*f:3.2*f,c.dark,{soft:true});}}},
-  receive(F){ if(liquid){for(const v of [-10.5,10.5]){F.cyl(50,v,0,9,.9,c.dark);F.cyl(50,v,.9,8.5,2.6,c.body);F.cyl(50,v,3.4,8,.06,product,{soft:true});F.tor(50,v,3.5,8.5,.2,c.trim,{soft:true});}F.pipe([40,-10.5,CARRY_M],[40,10.5,CARRY_M],.5,c.pipe);for(const v of [-10.5,10.5])F.cyl(40,v,0,.18,CARRY_M,c.steel);}
-   else for(const v of [-13,0,13]){legs(F,50,v,3.2,3.2,6);F.box(50,v,8,4,2,4,c.body);F.box(50,v,5.2,1.6,.9,1.6,c.steel);F.box(50,v,10.2,4.3,.2,4.3,c.trim,{soft:true});piece(F,50,v,.15,.5*f);}},
-  hall(F){const h=hot?16:12;for(const [u,w] of [[41,15],[51,19],[62,19]])for(const v of [-w,w])F.cyl(u,v,0,.45,h,c.steel);F.box(51,0,h+.5,12,.5,20,c.body,{roof:true});F.box(51,0,h+1.6,2,.6,18,c.steel,{soft:true});
+  receive(F){ if(liquid){for(const v of [-10.5,10.5]){F.cyl(50,v,0,9,.9,c.dark);F.cyl(50,v,3.4,8,.06,product,{soft:true});F.tor(50,v,3.5,8.5,.2,c.trim,{soft:true});}F.pipe([40,-10.5,CARRY_M],[40,10.5,CARRY_M],.5,c.pipe);for(const v of [-10.5,10.5])F.cyl(40,v,0,.18,CARRY_M,c.steel);}
+   else for(const v of [-13,0,13]){legs(F,50,v,3.2,3.2,6);F.box(50,v,10.2,4.3,.2,4.3,c.trim,{soft:true});piece(F,50,v,.15,.5*f);}},
+  hall(F){const h=hot?16:12;for(const [u,w] of [[41,15],[51,19],[62,19]])for(const v of [-w,w])F.cyl(u,v,0,.45,h,c.steel);
    if(liquid)for(const v of [-11,0,11]){F.cyl(51,v,0,2.9,.6,c.dark);F.cyl(51,v,.6,2.4,8,c.body);F.cyl(51,v,8.6,1.4,.8,c.trim);F.pipe([51,v,4],[45,v,4],.35,c.pipe);}
-   else for(const v of [-10,10]){F.box(51,v,4,3.2,4,3.2,c.body);F.box(51,v,8.4,3.5,.4,3.5,c.steel);F.box(47.6,v,2,.25,1.2,1.6,c.trim,{soft:true});piece(F,44,v,1.2,.5*f);F.box(44,v,.6,2,.6,2,c.dark);}
-   if(hot)for(const v of [-9,9]){F.cyl(64,v,0,1.9,2,c.dark);F.cyl(64,v,2,1.3,32,c.body);F.tor(64,v,34,1.4,.25,c.trim,{soft:true});}
+   else for(const v of [-10,10]){
+    // Four posts carry a hydraulic press over a visible die and feed table.
+    F.box(51,v,.65,3.5,.65,3.45,c.dark);F.box(51,v,1.48,2.9,.19,2.72,c.steel);
+    for(const u of [48.3,53.7])for(const side of [-1,1]){
+     F.cyl(u,v+side*2.65,1.3,.35,5.75,c.steel);
+     F.cyl(u,v+side*2.65,1.3,.52,.35,c.trim);
+    }
+    F.box(51,v,7.2,3.5,.68,3.4,c.body);F.cyl(51,v,7.85,1.3,1.9,c.pipe);
+    F.cyl(51,v,4.2,.78,2.36,c.steel);F.box(51,v,4.12,2.2,.23,2,c.body);
+    F.box(51,v,1.82,1.9,.16,1.4,c.trim);
+    F.pipe([54.3,v-2,2],[54.3,v-2,7.8],.17,c.pipe);
+    F.box(47.35,v+2.6,2.7,.38,.7,.52,c.steel);F.box(46.94,v+2.6,2.9,.06,.15,.32,c.glass,{soft:true,fine:true});
+    piece(F,44,v,1.2,.5*f);F.box(44,v,.6,2,.6,2,c.dark);
+   }
+   if(hot)for(const v of [-9,9]){F.cyl(64,v,0,1.9,2,c.dark);F.tor(64,v,34,1.4,.25,c.trim,{soft:true});}
    if(cold){F.box(64,0,11,2.6,11,2.6,c.body);for(const y of [5,11,17])F.box(64,0,y,2.75,.25,2.75,c.trim,{soft:true});}},
-  towers(F){ if(hot)for(const v of [-10.5,10.5]){F.cyl(50,v,0,8.4,1,c.dark);F.cyl(50,v,1,7.6,6,c.body);F.cyl(50,v,7,6.2,9,c.body);F.tor(50,v,16,6.3,.35,c.trim,{soft:true});}
-   else if(cold)for(const u of [43,51,59]){F.box(u,0,2.3,2.2,2.3,14.5,c.body);for(const v of [-11,-5.5,0,5.5,11])F.cyl(u,v,4.6,1.5,.9,c.steel);F.box(u,0,5.7,2.4,.12,14.9,c.trim,{soft:true});}
-   else{for(const u of [42,61])for(const v of [-15,15])F.cyl(u,v,0,.4,7,c.steel);F.box(51,0,7.3,11,.3,19,c.body,{roof:true});for(const v of [-10,0,10])F.box(51,v,1.4,7,1.4,2.2,c.body);}},
-  dock(F){for(const u of [43,60])for(const v of [-15,15])F.cyl(u,v,0,.5,13,c.steel);for(const u of [43,60])F.box(u,0,13.4,.6,.5,16,c.steel);F.box(51,0,12.4,9.6,.4,1.2,c.trim,{soft:true});F.box(51,0,10.6,1.4,1.2,1.4,c.body,{soft:true});
-   for(const v of [-10,10]){F.box(51,v,.3,5,.3,5,c.dark);if(liquid){F.pipe([47,v,2.3],[55,v,2.3],1.7,c.body);}else{piece(F,51,v,.6,.8*f);piece(F,51,v,.6+rise*.8*f,.8*f);}}}
+  towers(F){ if(hot)for(const v of [-10.5,10.5]){F.cyl(50,v,0,8.4,1,c.dark);F.tor(50,v,16,6.3,.35,c.trim,{soft:true});}
+   else if(cold)for(const u of [43,51,59]){for(const v of [-5,5])F.box(u,v,4.7,2.25,.12,1.4,c.trim,{soft:true});}
+   else{for(const v of [-10,0,10])F.box(51,v,1.4,7,1.4,2.2,c.body);}},
+  dock(F){for(const v of [-10,10]){F.box(51,v,.3,5,.3,5,c.dark);if(liquid){F.pipe([47,v,2.3],[55,v,2.3],1.7,c.body);}else{piece(F,51,v,.6,.8*f);piece(F,51,v,.6+rise*.8*f,.8*f);}}}
  };
  // Slim tall things for the two outer corners of a sector: the skyline.
  const tall={
-  tower(F,u,v){const n=3+pick(`lv:${u}:${v}:${F.a.toFixed(2)}`,3),H=6.5;for(const du of [-2.6,2.6])for(const dv of [-2.6,2.6])F.cyl(u+du,v+dv,0,.28,n*H+1.2,c.steel);F.cyl(u,v,.5,1.7,n*H-2,c.body);F.cyl(u,v,n*H-1.5,1.1,2.4,c.trim);
-   for(let i=1;i<=n;i++){F.box(u,v,i*H,3.1,.12,3.1,c.steel,{soft:true});for(const [du,dv,hu,hv] of [[0,-3,3,.05],[0,3,3,.05],[-3,0,.05,3],[3,0,.05,3]])F.box(u+du,v+dv,i*H+.6,hu,.05,hv,c.trim,{soft:true,fine:true});
+  tower(F,u,v){const n=3+pick(`lv:${u}:${v}:${F.a.toFixed(2)}`,3),H=6.5;for(const du of [-2.6,2.6])for(const dv of [-2.6,2.6])F.cyl(u+du,v+dv,0,.28,n*H+1.2,c.steel);
+   for(let i=1;i<=n;i++){if(i<n)F.box(u,v,i*H,3.1,.12,3.1,c.steel,{soft:true});for(const [du,dv,hu,hv] of [[0,-3,3,.05],[0,3,3,.05],[-3,0,.05,3],[3,0,.05,3]])F.box(u+du,v+dv,i*H+.6,hu,.05,hv,c.trim,{soft:true,fine:true});
     for(const side of [-1,1]){F.pipe([u-2.6,v+2.6*side,(i-1)*H],[u+2.6,v+2.6*side,i*H],.09,c.steel,{soft:true,fine:true});F.pipe([u+2.6*side,v-2.6,(i-1)*H],[u+2.6*side,v+2.6,i*H],.09,c.steel,{soft:true,fine:true});}}
-   F.box(u+3.3,v,n*H*.5,.25,n*H*.5,.4,c.dark,{soft:true,fine:true});},
-  silos(F,u,v){const h=20+pick(`sh:${u}:${v}:${F.a.toFixed(2)}`,3)*5;for(const dv of [-2.5,2.5]){F.cyl(u,v+dv,0,.5,3,c.steel);F.cyl(u,v+dv,3,2.2,h,c.body);F.cyl(u,v+dv,3+h,1.2,1.4,c.steel);}F.box(u,v,3+h+1.6,.7,.1,3.6,c.trim,{soft:true});},
-  flare(F,u,v){F.cyl(u,v,0,1.5,2.5,c.dark);F.cyl(u,v,2.5,.75,44,c.body);F.tor(u,v,30,1.9,.18,c.steel,{soft:true});F.box(u,v,30,1.9,.08,1.9,c.steel,{soft:true});F.cyl(u,v,46.5,1.05,1.6,c.trim);},
-  mast(F,u,v){F.cyl(u,v,0,.3,22,c.steel);F.box(u,v,22,.2,.2,3,c.steel,{soft:true});for(const dv of [-2.6,2.6])F.box(u,v+dv,21.6,.5,.25,.5,c.trim,{soft:true});},
-  coldbox(F,u,v){F.box(u,v,13,2.4,13,2.4,c.body);for(const y of [6,13,20])F.box(u,v,y,2.55,.25,2.55,c.trim,{soft:true});F.cyl(u,v,26,.5,4,c.steel);}
+   for(const side of [-1,1])F.box(u+3.3,v+side*.52,n*H*.5,.065,n*H*.5,.065,c.steel,{soft:true,fine:true});
+   for(let y=.8;y<n*H;y+=1.15)F.box(u+3.3,v,y,.08,.055,.53,c.trim,{soft:true,fine:true});},
+  silos(F,u,v){const h=20+pick(`sh:${u}:${v}:${F.a.toFixed(2)}`,3)*5;for(const dv of [-2.5,2.5]){F.cyl(u,v+dv,0,.5,3,c.steel);}F.box(u,v,3+h+1.6,.7,.1,3.6,c.trim,{soft:true});},
+  flare(F,u,v){F.cyl(u,v,0,1.5,2.5,c.dark);F.tor(u,v,30,1.9,.18,c.steel,{soft:true});F.box(u,v,30,1.9,.08,1.9,c.steel,{soft:true});},
+  mast(F,u,v){for(const dv of [-2.6,2.6])F.box(u,v+dv,21.6,.5,.25,.5,c.trim,{soft:true});},
+  coldbox(F,u,v){for(const y of [6,13,20])F.box(u,v,y,2.55,.25,2.55,c.trim,{soft:true});}
  };
  // Small plant for the inner end of a sector, by the plaza.
  const inner={
   skid(F){F.box(27,0,.25,3.4,.25,2,c.dark);for(const v of [-.9,.9]){F.cyl(26,v,.5,.55,1.1,c.steel);F.pipe([27,v,1.1],[29.6,v,1.1],.28,c.pipe);}F.pipe([29.6,-.9,1.1],[29.6,.9,1.1],.28,c.pipe,{soft:true});},
-  cabin(F){F.box(27,0,1.5,2.4,1.5,1.8,c.body);F.box(27,0,3.1,2.8,.1,2.2,c.steel,{soft:true});F.cyl(28.6,1.2,3.2,.08,4,c.steel,{soft:true,fine:true});F.box(24.55,0,1.7,.05,.6,.9,c.trim,{soft:true,fine:true});},
+  cabin(F){
+   F.box(27,0,1.5,2.4,1.5,1.8,c.body);F.box(27,0,3.1,2.8,.1,2.2,c.steel,{soft:true});
+   F.cyl(28.6,1.2,3.2,.08,4,c.steel,{soft:true,fine:true});
+   F.box(24.55,.75,1.36,.065,1.36,.66,c.steel,{soft:true});
+   F.box(24.46,.75,1.81,.04,.45,.47,c.glass,{soft:true});F.box(24.46,-.89,1.9,.04,.48,.61,c.glass,{soft:true});
+   F.box(24.40,-.89,2.45,.15,.06,.76,c.trim,{soft:true});
+   F.box(24.41,.27,1.15,.065,.045,.14,c.trim,{soft:true,fine:true});
+   for(const u of [26,28])for(const side of [-1,1]){
+    F.box(u,side*1.82,1.69,.65,.66,.04,c.steel,{soft:true});
+    for(let y=1.19;y<2.25;y+=.26)F.box(u,side*1.91,y,.61,.055,.09,c.pipe,{soft:true,fine:true});
+   }
+  },
   drums(F){for(const [du,dv] of [[-1.6,-1.2],[1.6,-1.2],[0,1.4]]){F.cyl(27+du,dv,0,1.25,3.6,c.body);F.cyl(27+du,dv,3.6,.8,.3,c.steel);}},
   transformers(F){for(const dv of [-2.2,2.2]){F.box(27,dv,1.1,1.5,1.1,1.1,c.steel);for(const du of [-1,0,1])F.box(27+du,dv,2.5,.12,.3,.9,c.trim,{soft:true,fine:true});}}
  };
- const kinds=SECTORS[hex.role],turn=hex.role==='core'?0:pick('turn',6);
- for(let k=0;k<6;k++){const F=frame(k),kind=kinds[(k+turn)%6];unit[kind](F);F.cyl(15,0,0,.4,3.2+2.2*(k%2),c.trim);   // a ring of pylons marks the plaza
+ const keys=sectorKeys(hex);
+ for(let k=0;k<6;k++){const F=frame(k),key=keys[k],form=key.split('/')[1].split('-')[0];
+  const kind=['column','sphere','bullet','stock'].includes(form)?'store':form;
+  for(const o of placeWorks(key,F.a,s))add(o);
+  unit[kind](F);F.cyl(15,0,0,.4,3.2+2.2*(k%2),c.trim);   // a ring of pylons marks the plaza
   if(kind!=='flow'&&kind!=='yard')inner[['skid','cabin','drums','transformers'][pick('inner'+k,4)]](F);
-  const menu=kind==='yard'?['mast']:hot?['flare','tower','silos','mast']:cold?['coldbox','tower','silos','mast']:['tower','silos','mast','silos'];
-  for(const side of [-1,1])tall[menu[pick('tall'+k+':'+side,menu.length)]](F,69,21*side);
+  for(const side of [-1,1]){
+   const corner=cornerKey(hex,k,key,side),style=corner.split('-')[1].replace(/[0-9]/g,'');
+   for(const o of placeWorks(corner,F.a,s,69,21*side))add(o);
+   tall[style](F,69,21*side);
+  }
   // A bridge over the lane to the next sector, so the six sectors read as one works around the plaza.
   const p1=F.at(33,11),p2=frame((k+1)%6).at(33,-11),y=8.4*s;for(const q of [p1,p2])add({k:'cyl',x:q[0],y:0,z:q[1],r:.25*s,h:y,c:c.steel});
   if(liquid)add({k:'pipe',a:[p1[0],y,p1[1]],b:[p2[0],y,p2[1]],r:.5*s,c:c.pipe});
@@ -137,11 +153,16 @@ export function plant(hex){
  // Height of the highest thing overhead that would stop a climb (a roof), or Infinity under open sky.
  const cover=(x,z)=>{let low=Infinity;for(const o of solids)if(o.roof){const dx=x-o.x,dz=z-o.z,cr=Math.cos(o.rot),sr=Math.sin(o.rot);if(Math.abs(dx*cr+dz*sr)<o.hx&&Math.abs(-dx*sr+dz*cr)<o.hz)low=Math.min(low,o.y-o.hy);}return low;};
 
+ const vertices=(lod='near',shift=[0,0])=>solidVertices(solids,lod,hex.rot,s,c,shift,true);
+ return {hex,scale:s,palette:c,solids,blocked,cover,vertices,circumradiusM:R};
+}
+
  // The mesh: nine floats a vertex (place relative to the hex centre with y above the shell datum, colour, normal), as geometry.js.
  // lod: near, middle, far, then skyline and horizon (the ground and the 28 or 8 largest solids as plain boxes, for pods seen from a long way off).
  // The hex's angle is baked in; shift moves the whole plant, so the seven plants of a pod can share one buffer.
- function vertices(lod='near',shift=[0,0]){
-  const near=lod==='near',horizon=lod==='horizon'||lod==='skyline',far=lod==='far'||horizon,sides=horizon?4:far?5:near?14:8,least=(horizon?9:far?2.2:near?0:.6)*s,out=[],cr0=Math.cos(hex.rot??0),sr0=Math.sin(hex.rot??0);
+export function solidVertices(solids,lod,rotation,s,c,shift=[0,0],ground=false){
+  const R=HEX_M/Math.sqrt(3)*s;
+  const near=lod==='near',horizon=lod==='horizon'||lod==='skyline',far=lod==='far'||horizon,sides=horizon?4:far?5:near?14:8,least=(horizon?9:far?2.2:near?0:.6)*s,out=[],cr0=Math.cos(rotation),sr0=Math.sin(rotation);
   const V=(q,col,n)=>out.push(q[0]*cr0-q[2]*sr0+shift[0],q[1]+DATUM_M,q[0]*sr0+q[2]*cr0+shift[1],col[0],col[1],col[2],n[0]*cr0-n[2]*sr0,n[1],n[0]*sr0+n[2]*cr0);
   const tri=(a,b,d,col,n)=>{if(!n){const u=[b[0]-a[0],b[1]-a[1],b[2]-a[2]],v=[d[0]-a[0],d[1]-a[1],d[2]-a[2]];n=[u[1]*v[2]-u[2]*v[1],u[2]*v[0]-u[0]*v[2],u[0]*v[1]-u[1]*v[0]];const l=Math.hypot(...n)||1;n=n.map(x=>x/l);}V(a,col,n);V(b,col,n);V(d,col,n);};
   const quad=(a,b,d,e,col,n)=>{tri(a,b,d,col,n);tri(a,d,e,col,n);};
@@ -152,7 +173,7 @@ export function plant(hex){
   // The ground of a hex lies just above the open ground beneath it. The further off it is drawn from, the higher it is lifted,
   // so that a depth buffer of any precision keeps it on top.
   const GY=lod==='horizon'?1.2:lod==='skyline'?.6:far?.2:near?.015:.05;
-  for(let i=0;i<6;i++){const a=(i+.5)*Math.PI/3,b=(i+1.5)*Math.PI/3;tri([0,GY,0],[R*Math.cos(b),GY,R*Math.sin(b)],[R*Math.cos(a),GY,R*Math.sin(a)],c.ground);if(!far)tube([R*Math.cos(a),.12,R*Math.sin(a)],[R*Math.cos(b),.12,R*Math.sin(b)],.16*s,c.trim,4);
+  if(ground)for(let i=0;i<6;i++){const a=(i+.5)*Math.PI/3,b=(i+1.5)*Math.PI/3;tri([0,GY,0],[R*Math.cos(b),GY,R*Math.sin(b)],[R*Math.cos(a),GY,R*Math.sin(a)],c.ground);if(!far)tube([R*Math.cos(a),.12,R*Math.sin(a)],[R*Math.cos(b),.12,R*Math.sin(b)],.16*s,c.trim,4);
    if(near){const e=i*Math.PI/3,ce=Math.cos(e),se=Math.sin(e),L=HEX_M/2*s,w=LANE_HALF_M*s;for(const side of [-1,1]){const o=side*w,t=.12*s;quad([-se*(o-t),.03,ce*(o-t)],[ce*L-se*(o-t),.03,se*L+ce*(o-t)],[ce*L-se*(o+t),.03,se*L+ce*(o+t)],[-se*(o+t),.03,ce*(o+t)],c.dark,[0,1,0]);}}}
   if(horizon){   // the largest solids, as plain boxes
    const big=[];for(const o of solids){if(o.soft&&!o.roof)continue;const q=o.k==='box'?{x:o.x,y:o.y,z:o.z,hx:o.hx,hy:o.hy,hz:o.hz,rot:o.rot,c:o.c}:o.k==='cyl'?{x:o.x,y:o.y+o.h/2,z:o.z,hx:o.r*.85,hy:o.h/2,hz:o.r*.85,rot:0,c:o.c}:o.k==='sph'?{x:o.x,y:o.y,z:o.z,hx:o.r*.8,hy:o.r*.8,hz:o.r*.8,rot:0,c:o.c}:null;if(q){q.size=q.hx*q.hy*q.hz;big.push(q);}}
@@ -174,8 +195,6 @@ export function plant(hex){
   }
   return new Float32Array(out);
  }
- return {hex,scale:s,palette:c,solids,blocked,cover,vertices,circumradiusM:R};
-}
 
 // Shared by the live walker and the survey that locates an unobstructed portal mouth.
 export function walkingContent(facility){
