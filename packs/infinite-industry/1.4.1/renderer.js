@@ -124,11 +124,17 @@ export class IndustryRenderer extends Renderer {
     if(distance>=pitch*1.25){const b=whole(q,distance<pitch*3?'skyline':distance<3600?'horizon':'carpet');if(b)show(b,q.center);continue;}
     const ready=[];let all=true;
     for(const h of hexes(q)){if(h.waterWorks)continue;wanted.add(h.id);
-     const d=Math.hypot(p.eastM-h.center[0],p.northM-h.center[1],high),lod=d<q.hexM*1.3?'near':d<q.hexM*3?'middle':'far';
-     let b=this.plantBatches.get(h.id+'|'+lod);
+     const d=Math.hypot(p.eastM-h.center[0],p.northM-h.center[1],high);
+     // A walker turning around at one distance must not rebuild the same factory
+     // on every crossing. Use the normal entry thresholds for a cold plant.
+     const near=this.plantBatches.get(h.id+'|near'),middle=this.plantBatches.get(h.id+'|middle'),farPlant=this.plantBatches.get(h.id+'|far');
+     const nearLimit=q.hexM*1.3*(near?1.08:(middle||farPlant)? .92:1);
+     const middleLimit=q.hexM*3*((near||middle)?1.08:farPlant? .92:1);
+     const lod=d<nearLimit?'near':d<middleLimit?'middle':'far';
+     let b=lod==='near'?near:lod==='middle'?middle:farPlant;
      if(!b&&builds<2){builds+=2;const t=performance.now();b=new Batch(gl,plant(h).vertices(lod),h.center);this.plantBatches.set(h.id+'|'+lod,b);uploads+=b.bytes;uploadMs+=performance.now()-t;}
      if(b){for(const other of ['near','middle'])if(other!==lod){const old=this.plantBatches.get(h.id+'|'+other);if(old){old.dispose();this.plantBatches.delete(h.id+'|'+other);}}}
-     else b=this.plantBatches.get(h.id+'|far')??this.plantBatches.get(h.id+'|middle')??this.plantBatches.get(h.id+'|near');
+     else b=farPlant??middle??near;
      if(b)ready.push([b,h.center]);else all=false;}
     if(all)for(const [b,anchor] of ready)show(b,anchor);else{const b=whole(q,'skyline');if(b)show(b,q.center);}}
    for(const [key,b] of this.plantBatches)if(!wanted.has(key.slice(0,key.lastIndexOf('|')))){b.dispose();this.plantBatches.delete(key);}

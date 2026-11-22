@@ -1,16 +1,29 @@
 import {freightAt} from './station.mjs';
-import {hallHalfM,linkHalfM,roofSlabM,apronRunM,rightSign} from './district.mjs';
+import {hallHalfM,linkHalfM,roofSlabM,apronRunM,rightSign,facadeRib} from './district.mjs';
+import {ribSpacing,ribs,surfaceNoise,outfallMaterials} from '../../kit/outfall-wall.mjs';
+import {galleryBoxes,galleryTubes} from '../../kit/outfall-gallery.mjs';
 
 const steel=[.27,.35,.36], lightSteel=[.50,.61,.60], concrete=[.38,.43,.42],
   amber=[.97,.62,.20], ballast=[.27,.30,.28], dark=[.15,.20,.22];
-function mesh() {
-  const data=[];
-  const quad=(a,b,c,d,col)=>{
-    const u=b.map((x,i)=>x-a[i]),v=c.map((x,i)=>x-a[i]);
-    const n=[u[1]*v[2]-u[2]*v[1],u[2]*v[0]-u[0]*v[2],u[0]*v[1]-u[1]*v[0]];
-    const length=Math.hypot(...n)||1;
-    for(const p of [a,b,c,a,c,d])data.push(...p,...n.map(x=>x/length),...col);
+// Store a face's four corners, normal and tint once. The first six floats in
+// each GPU mesh select the two triangles, including on shared WebGL contexts.
+const faceCorners=[0,1,2,0,2,3], faceFloats=18;
+function mesh(packedFaces) {
+  const data=packedFaces?[...faceCorners]:[];
+  const face=(a,b,c,d,col)=>{
+    const ux=b[0]-a[0],uy=b[1]-a[1],uz=b[2]-a[2],vx=c[0]-a[0],vy=c[1]-a[1],vz=c[2]-a[2];
+    let nx=uy*vz-uz*vy,ny=uz*vx-ux*vz,nz=ux*vy-uy*vx;
+    const length=Math.hypot(nx,ny,nz)||1;
+    nx/=length;ny/=length;nz/=length;
+    if(packedFaces){
+      const last=d??c;
+      data.push(a[0],a[1],a[2],b[0],b[1],b[2],c[0],c[1],c[2],last[0],last[1],last[2],nx,ny,nz,col[0],col[1],col[2]);
+    }else{
+      for(const p of d?[a,b,c,a,c,d]:[a,b,c])data.push(p[0],p[1],p[2],nx,ny,nz,col[0],col[1],col[2]);
+    }
   };
+  const quad=face;
+  const tri=(a,b,c,col)=>face(a,b,c,null,col);
   const box=(x0,x1,y0,y1,z0,z1,col)=>{
     if(x1<=x0||y1<=y0||z1<=z0)return;
     const a=[x0,y0,z0],b=[x1,y0,z0],c=[x1,y0,z1],d=[x0,y0,z1],
@@ -18,11 +31,11 @@ function mesh() {
     quad(a,e,f,b,col);quad(b,f,g,c,col);quad(c,g,h,d,col);quad(d,h,e,a,col);
     quad(e,h,g,f,col);quad(a,b,c,d,col);
   };
-  return {data,quad,box};
+  return {data,quad,tri,box};
 }
 
-export function stationMesh(s,district=null) {
-  const m=mesh(),mid=s.widthM/2,left=-hallHalfM,right=hallHalfM,heavy=s.routes[2];
+export function stationMesh(s,district=null,packedFaces=false) {
+  const m=mesh(packedFaces),mid=s.widthM/2,left=-hallHalfM,right=hallHalfM,heavy=s.routes[2];
   const trench=heavy.nearDoor[0],hw=heavy.door[0]/2+5;
   for(const [lo,hi] of [[left,trench-hw],[trench+hw,right]]){
     m.box(lo,hi,-12,-.08,-apronRunM,s.widthM+apronRunM,ballast);
@@ -127,6 +140,31 @@ export function stationMesh(s,district=null) {
       m.box(x-w,x+w,r.door[1],s.roofM,z-1,z+1,concrete);last=x+w;
     }
     m.box(last,right,0,s.roofM,z-1,z+1,concrete);
+    if(district){
+      const face=z===0?-1:1;
+      const door=s.routes[0].nearDoor[0];
+      const place=([x,y,depth])=>[door-face*x,y,z-face*(2+depth)];
+      for(const [x,y,depth,w,h,d,tint,kind] of galleryBoxes){
+        const [cx,cy,cz]=place([x,y,depth]);
+        m.box(cx-w/2,cx+w/2,cy-h/2,cy+h/2,cz-d/2,cz+d/2,kind===3?[1,.88,.57]:tint);
+      }
+      for(const [[x,y,start],[,,end],radius,tint] of galleryTubes){
+        const rim=(k,depth)=>place([x+radius*Math.cos(k*Math.PI/7),y+radius*Math.sin(k*Math.PI/7),depth]);
+        for(let k=0;k<14;k++){
+          m.quad(rim(k,start),rim(k+1,start),rim(k+1,end),rim(k,end),tint);
+          m.tri(place([x,y,start]),rim(k+1,start),rim(k,start),tint);
+          m.tri(place([x,y,end]),rim(k,end),rim(k+1,end),tint);
+        }
+      }
+      for(let i=Math.ceil(left/ribSpacing);i<=Math.floor(right/ribSpacing);i++){
+        if(!facadeRib(s,i))continue;
+        const x=i*ribSpacing;
+        for(const [w,h,front,back] of ribs){
+          const a=z+face*(1-front),b=z+face*(1-back);
+          m.box(x-w,x+w,0,h,Math.min(a,b),Math.max(a,b),[.32,.37,.35]);
+        }
+      }
+    }
   }
   const fx=s.floorRoute.points[2][0];
   for(const sign of [-1,1]){
@@ -177,8 +215,8 @@ export function stationMesh(s,district=null) {
   return m.data;
 }
 
-export function freightMesh(t) {
-  const m=mesh(),l=t.lengthM/2,w=t.widthM/2;
+export function freightMesh(t,packedFaces=false) {
+  const m=mesh(packedFaces),l=t.lengthM/2,w=t.widthM/2;
   m.box(-l,l,12,52,-w,w,dark);m.box(-l+6,l-6,48,63,-w,w,amber);
   const paint=[.35,.45,.46];
   for(let i=0;i<6;i++){
@@ -210,22 +248,68 @@ export function freightMesh(t) {
 }
 
 const vertex=`#version 300 es
-in vec3 position,normal,tint;
+layout(location=0) in float corner;
+in vec3 cornerA,cornerB,cornerC,cornerD,normal,tint;
 uniform vec3 eye,right,up,forward,offset; uniform vec2 focal,clip;
-out vec3 color;out vec3 materialPoint;out float distanceM;out float surfaceY;
+out vec3 color;out vec3 materialPoint;out float surfaceY;flat out float fixtureLight,sideNormal;
 void main(){
+ vec3 position=corner<.5?cornerA:corner<1.5?cornerB:corner<2.5?cornerC:cornerD;
  vec3 d=position+offset-eye;float z=dot(d,forward);
  gl_Position=vec4(dot(d,right)*focal.x,dot(d,up)*focal.y,z*clip.x-clip.y,z);
  float lighting=.52+.28*max(normal.y,0.)+.15*abs(normal.x)+.07*max(-normal.z,0.);
- color=tint*lighting;materialPoint=position;distanceM=length(d);surfaceY=normal.y;
+ color=tint*lighting;materialPoint=position;surfaceY=normal.y;
+ fixtureLight=step(.94,tint.r)*step(.78,tint.g);
+ sideNormal=abs(normal.x);
 }`;
 const fragment=`#version 300 es
-precision highp float;in vec3 color,materialPoint;in float distanceM,surfaceY;uniform int mask;uniform float direct,workLight;uniform vec3 hall;out vec4 frag;
+precision highp float;in vec3 color,materialPoint;in float surfaceY;flat in float fixtureLight,sideNormal;uniform int mask;uniform bool structure;
+uniform float direct,workLight;uniform vec3 hall,eye,offset;out vec4 frag;
+${surfaceNoise}
+${outfallMaterials}
+float ruledLine(float d,float halfWidth,float pixel){
+ return (1.-smoothstep(halfWidth,halfWidth+max(.02,pixel),d))*halfWidth/max(halfWidth,pixel);
+}
 void main(){if(mask!=0){frag=mask==2?vec4(1.,step(.65,surfaceY),step(.65,-surfaceY),1.):vec4(0.,0.,0.,1.);return;}
-vec2 cell=materialPoint.xz/vec2(1.8,3.6),pixel=max(fwidth(cell),vec2(.001));
-vec2 line=smoothstep(vec2(0.),min(vec2(.45),pixel+.012),abs(fract(cell+.5)-.5));
-float joint=(1.-min(line.x,line.y))*(1.-smoothstep(.12,.65,max(pixel.x,pixel.y)))*max(surfaceY,0.);
+float distanceM=length(materialPoint+offset-eye);
+float outside=max(-materialPoint.z,materialPoint.z-hall.x),across=abs(materialPoint.x-hall.z);
+float amberPaint=0.,lamp=0.;
+vec2 cell=materialPoint.xz/vec2(1.8,3.6),cellPixel=max(fwidth(cell),vec2(.001));
+vec2 line=smoothstep(vec2(0.),min(vec2(.45),cellPixel+.012),abs(fract(cell+.5)-.5));
+float joint=(1.-min(line.x,line.y))*(1.-smoothstep(.12,.65,max(cellPixel.x,cellPixel.y)))*max(surfaceY,0.);
 vec3 finish=color;
+// Keep the tactile Outfall finish at walking distance. At long range the
+// individual pours and grate teeth average into broad, stable weathering.
+bool facade=structure && abs(surfaceY)<.15 && abs(outside)<3.1 && color.r<color.g*1.23;
+bool walkingSurface=structure && surfaceY>.9 && color.r<color.g*1.23;
+bool galleryWall=structure && outside<0. && outside>-38. && across<7. && materialPoint.y<8. && abs(surfaceY)<.15;
+vec2 uv=abs(surfaceY)>.65?materialPoint.xz:(sideNormal>.7?materialPoint.zy:materialPoint.xy);
+vec2 footprint=max(fwidth(uv),vec2(.002));
+float pixel=max(footprint.x,footprint.y);
+if(facade || walkingSurface || galleryWall){
+ float close=1.-smoothstep(.28,1.5,pixel);
+ float weather=1.-smoothstep(22.,95.,pixel);
+ float streak=noise2(uv*vec2(.026,facade?.0015:.018));
+ finish*=1.+(.39*(streak-.5))*weather;
+ if(close>0.)finish*=mix(1.,outfallConcrete(uv),close);
+ if(walkingSurface && across<2. && materialPoint.y<hall.y && pixel<.5)
+   finish*=mix(1.,outfallGrate(uv,footprint.x),1.-smoothstep(.09,.5,pixel));
+}
+if(structure && walkingSurface && materialPoint.y<.2 && outside>0. && outside<3500.){
+ // Painted service lanes taper to the four-metre socket. Transverse bands let a
+ // walker gauge motion on the apron even when the distant facade hardly moves.
+ float guide=2.6+outside*.026;
+ float edge=ruledLine(abs(across-guide),.18+outside*.00085,pixel);
+ float stripe=abs(mod(outside+12.,24.)-12.);
+ float tick=ruledLine(stripe,.32,footprint.y)*(1.-smoothstep(2.,4.,abs(across-guide)));
+ amberPaint=max(edge*.8,tick);
+}
+if(structure && outside<=0. && across<2.25 && materialPoint.y<hall.y){
+ // Service guides follow the existing deck and rails up and over the freight.
+ float rail=ruledLine(abs(across-1.93),.065,footprint.x);
+ float interval=abs(mod(materialPoint.z+8.,16.)-8.);
+ float enamel=1.-smoothstep(.48,.85+footprint.y,interval);
+ lamp=max(lamp,rail*(.16+.84*enamel)*(1.-smoothstep(.3,1.4,footprint.y)));
+}
 if(surfaceY>.9 && materialPoint.y>hall.y){
  vec2 seam=abs(fract(materialPoint.xz/vec2(7200.,3200.)+.5)-.5)*vec2(7200.,3200.);
  vec2 aa=max(fwidth(materialPoint.xz),vec2(.2));
@@ -233,15 +317,32 @@ if(surfaceY>.9 && materialPoint.y>hall.y){
  finish=mix(finish,vec3(.43,.53,.51),strip*(1.-smoothstep(600.,3000.,aa.x)));
  finish*=1.-.27*band*(1.-smoothstep(400.,1300.,aa.y));
 }
-if(abs(surfaceY)<.1 && min(abs(materialPoint.z),abs(materialPoint.z-hall.x))<1.01 && materialPoint.y>5.){
+if(facade && materialPoint.y>5.){
  vec2 m=materialPoint.xy,aa=max(fwidth(m),vec2(.05));
  vec2 joint=abs(fract(m/vec2(125.,55.)+.5)-.5)*vec2(125.,55.);
  finish*=1.-.25*(1.-smoothstep(0.,1.6+min(aa.x,aa.y),min(joint.x,joint.y)))*(1.-smoothstep(5.,45.,max(aa.x,aa.y)));
  float chevron=abs(abs(m.x-hall.z)-.38*(m.y-7.));
  float stripe=(1.-smoothstep(1.6,2.6+max(aa.x,aa.y),chevron))*smoothstep(6.,12.,m.y)*(1.-smoothstep(110.,125.,m.y));
- finish=mix(finish,vec3(.73,.48,.16),stripe);
+ amberPaint=max(amberPaint,stripe);
+ // The high service mark is visible across the apron. The two inset bands
+ // lead the eye to the jamb and remain lit under a Shade.
+ float y=m.y,markWidth=6.+.30*max(y-12.,0.);
+ float mark=ruledLine(abs(across-markWidth),2.4,aa.x+.3*aa.y)
+     *smoothstep(9.,18.,y)*(1.-smoothstep(156.,174.,y));
+ lamp=max(lamp,mark);
 }
+finish=mix(finish,vec3(.72,.49,.22),amberPaint);
 vec3 lit=finish*(1.-.24*joint)*max(workLight,.48+.52*direct);
+if(structure){
+ float portalGlow=exp(-across/14.-abs(outside)/21.-abs(materialPoint.y-3.)/12.);
+ lit+=finish*vec3(.74,.45,.19)*portalGlow+lamp*vec3(.60,.36,.14);
+ float gallery=smoothstep(0.,3.,-outside)*(1.-smoothstep(34.,43.,-outside))*
+   (1.-smoothstep(5.9,7.,across))*(1.-smoothstep(7.5,9.,materialPoint.y));
+ float bay=abs(mod(-outside-3.+1.9,3.8)-1.9);
+ float pool=exp(-.35*abs(across-5.1)-.21*abs(5.-materialPoint.y)-.23*bay);
+ lit+=gallery*finish*(vec3(.28,.52,.50)+vec3(1.55,.83,.31)*pool);
+ lit=mix(lit,vec3(1.,.78,.46),fixtureLight);
+}
 float haze=1.-exp(-distanceM/22000.);frag=vec4(mix(lit,vec3(.27,.34,.35)*max(workLight,.48+.52*direct),haze),1.);}`;
 
 // Only the native pack paints the surrounding horizon. Meadow already has its own sky and terrain.
@@ -279,24 +380,26 @@ export function makeView(canvas,{capture=true,district=null,shared=false,composi
   }
   const program=link(vertex,fragment),sky=shared?null:link(skyVertex,skyFragment);
   const locations=(p,names)=>Object.fromEntries(names.map(n=>[n,gl.getUniformLocation(p,n)]));
-  const loc=locations(program,['eye','right','up','forward','offset','focal','clip','mask','direct','workLight','hall']);
+  const loc=locations(program,['eye','right','up','forward','offset','focal','clip','mask','direct','workLight','hall','structure']);
   const skyLoc=sky&&locations(sky,['lens','right','up','forward','eye','direct','radius','mid','nearLand','farLand','regionalGround']);
   const vao=gl.createVertexArray();
-  const attrs=['position','normal','tint'].map(n=>gl.getAttribLocation(program,n));
+  const attrs=['cornerA','cornerB','cornerC','cornerD','normal','tint'].map(n=>gl.getAttribLocation(program,n));
   const hallBuffer=gl.createBuffer(),cargoBuffer=gl.createBuffer();
   const bind=buffer=>{
     gl.bindVertexArray(vao);gl.bindBuffer(gl.ARRAY_BUFFER,buffer);
-    attrs.forEach((a,i)=>{gl.enableVertexAttribArray(a);gl.vertexAttribPointer(a,3,gl.FLOAT,false,36,i*12);});
+    gl.enableVertexAttribArray(0);gl.vertexAttribPointer(0,1,gl.FLOAT,false,4,0);gl.vertexAttribDivisor(0,0);
+    attrs.forEach((a,i)=>{gl.enableVertexAttribArray(a);gl.vertexAttribPointer(a,3,gl.FLOAT,false,faceFloats*4,faceCorners.length*4+i*12);gl.vertexAttribDivisor(a,1);});
   };
   let fixed=0,freight=0,loaded=null,cargoKey='',uploads=0;
   return {
     get uploads(){return uploads;},
+    get geometryBytes(){return (fixed+freight)*faceFloats*4+(Number(fixed>0)+Number(freight>0))*faceCorners.length*4;},
     load(s){
       if(loaded===s)return;
-      const hall=stationMesh(s,district);fixed=hall.length/9;bind(hallBuffer);
+      const hall=stationMesh(s,district,true);fixed=(hall.length-faceCorners.length)/faceFloats;bind(hallBuffer);
       gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(hall),gl.STATIC_DRAW);uploads++;
       const key=[s.traffic.lengthM,s.traffic.widthM,s.traffic.heightM].join('/');
-      if(key!==cargoKey){const car=freightMesh(s.traffic);freight=car.length/9;bind(cargoBuffer);
+      if(key!==cargoKey){const car=freightMesh(s.traffic,true);freight=(car.length-faceCorners.length)/faceFloats;bind(cargoBuffer);
         gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(car),gl.STATIC_DRAW);cargoKey=key;uploads++;}
       gl.bindVertexArray(null);loaded=s;
     },
@@ -329,13 +432,13 @@ export function makeView(canvas,{capture=true,district=null,shared=false,composi
       gl.uniform3f(loc.hall,s.widthM,s.roofM,s.routes[0].nearDoor[0]);gl.uniform3fv(loc.eye,eye);gl.uniform3fv(loc.right,right);gl.uniform3fv(loc.up,up);
       gl.uniform3fv(loc.forward,forward);gl.uniform2f(loc.focal,focal*h/w,focal);
       const inside=Math.min(1,Math.max(0,(s.roofM-eye[1])/12))*Math.min(1,Math.max(0,Math.min(eye[2]+15,s.widthM+15-eye[2])/30));
-      gl.uniform1f(loc.workLight,.48+.50*inside);bind(hallBuffer);gl.uniform1f(loc.direct,direct);gl.uniform1i(loc.mask,idPass?1:0);gl.uniform3f(loc.offset,0,0,0);gl.drawArrays(gl.TRIANGLES,0,fixed);
+      gl.uniform1f(loc.workLight,.48+.50*inside);bind(hallBuffer);gl.uniform1f(loc.direct,direct);gl.uniform1i(loc.mask,idPass?1:0);gl.uniform1i(loc.structure,1);gl.uniform3f(loc.offset,0,0,0);gl.drawArraysInstanced(gl.TRIANGLES,0,6,fixed);
       const car=freightAt(s,time);
-      bind(cargoBuffer);gl.uniform1i(loc.mask,idPass?2:0);
+      bind(cargoBuffer);gl.uniform1i(loc.structure,0);gl.uniform1i(loc.mask,idPass?2:0);
       const nearest=car.x+Math.round((eye[0]-car.x)/car.spacingM)*car.spacingM;
       // Draw nearby periodic neighbors too. Changing the nearest index leaves the visible scene continuous.
       for(const shift of [-car.spacingM,0,car.spacingM]){
-        gl.uniform3f(loc.offset,nearest+shift,0,car.z);gl.drawArrays(gl.TRIANGLES,0,freight);
+        gl.uniform3f(loc.offset,nearest+shift,0,car.z);gl.drawArraysInstanced(gl.TRIANGLES,0,6,freight);
       }
       gl.bindVertexArray(null);
     }

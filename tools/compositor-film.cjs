@@ -18,6 +18,20 @@ async function record(page,directory,id,action,options={}){
   const onRequest=r=>{const u=new URL(r.url()).pathname;if(u.includes('/assets/'))requests.add(u);};
   page.on('pageerror',onError);page.on('request',onRequest);
   let active=true,base,result,failure,captureError;
+  const playback=[];
+  function filmTime(sourceMs){
+    if(!options.playbackRate)return sourceMs;
+    const rate=options.playbackRate();
+    if(!(rate>=1 && Number.isFinite(rate)))throw Error('Invalid film playback rate');
+    if(!playback.length)playback.push({sourceMs:0,filmMs:0,rate});
+    const prior=playback.at(-1);
+    if(prior.rate!==rate){
+      const at=Math.max(prior.sourceMs,Date.now()-base);
+      playback.push({sourceMs:at,filmMs:prior.filmMs+(at-prior.sourceMs)/prior.rate,rate});
+    }
+    const part=playback.findLast(s=>s.sourceMs<=sourceMs)??playback[0];
+    return part.filmMs+(sourceMs-part.sourceMs)/part.rate;
+  }
   function keep(data,ms){
     const filename=String(pictures.length).padStart(6,'0')+'.jpg';
     fs.writeFileSync(path.join(raw,filename),Buffer.from(data,'base64'));
@@ -28,19 +42,22 @@ async function record(page,directory,id,action,options={}){
     if(!active)return;
     try{
       const observed=Date.now()-base,stamp=e.metadata.timestamp*1000-base;
-      keep(e.data,Number.isFinite(stamp)?Math.max(0,Math.min(stamp,observed)):observed);
+      const at=filmTime(Number.isFinite(stamp)?Math.max(0,Math.min(stamp,observed)):observed);
+      if(!options.playbackRate || at-(pictures.at(-1)?.ms??-100)>=1000/30)keep(e.data,at);
     }catch(error){captureError=error;active=false;}
   }
   try{
     const initial=await cdp.send('Page.captureScreenshot',{format:'jpeg',quality:86,fromSurface:true,captureBeyondViewport:false});
-    const first=await sample();base=Date.now();keep(initial.data,0);frames.push({ms:0,...first});
+    const first=await sample();base=Date.now();keep(initial.data,filmTime(0));frames.push({ms:0,...first});
     cdp.on('Page.screencastFrame',onPicture);
     await cdp.send('Page.startScreencast',{format:'jpeg',quality:82,everyNthFrame:1});
     const sampling=(async()=>{
       try{
         while(active){
           const start=Date.now();const camera=await sample();
-          frames.push({ms:Date.now()-base,...camera});await sleep(Math.max(0,100-(Date.now()-start)));
+          const elapsedMs=Date.now()-base;
+          frames.push({ms:filmTime(elapsedMs),...(options.playbackRate?{elapsedMs}:{}),...camera});
+          await sleep(Math.max(0,(options.playbackRate?Math.min(1000,100*options.playbackRate()):100)-(Date.now()-start)));
         }
       }catch(error){captureError=error;active=false;}
     })();
@@ -48,7 +65,7 @@ async function record(page,directory,id,action,options={}){
     finally{active=false;await sampling;await cdp.send('Page.stopScreencast');}
     if(captureError)throw captureError;
     const last=await cdp.send('Page.captureScreenshot',{format:'jpeg',quality:86,fromSurface:true,captureBeyondViewport:false});
-    const duration=Date.now()-base;keep(last.data,duration);
+    const elapsedMs=Date.now()-base,duration=filmTime(elapsedMs);keep(last.data,duration);
     if(pictures.length<8)throw Error('The compositor supplied only '+pictures.length+' pictures');
     const count=Math.max(1,Math.round(duration*.024)),entries=[];let next=0;
     for(let i=0;i<count;i++){
@@ -59,7 +76,7 @@ async function record(page,directory,id,action,options={}){
     fs.writeFileSync(path.join(raw,'timeline.txt'),entries.join('\n')+'\n');
     const encode=spawnSync(ff,['-v','error','-y','-r','24','-f','concat','-safe','1','-i','timeline.txt','-vf','crop='+[width,height,x,y].join(':')+',format=yuv420p','-an','-c:v','libx264','-threads','2','-preset','veryfast','-crf','22','-movflags','+faststart',film],{cwd:raw,encoding:'utf8'});
     if(encode.status!==0)throw Error('Encoding failed: '+(encode.error?.message||encode.stderr));
-    const report={id,width,height,durationMs:duration,method:'CDP compositor, most recent actual picture at each 24 Hz presentation time',sourcePictures:pictures.map(p=>p.ms),frames,errors,requests:[...requests],result:result??null,failure:failure?.message??null};
+    const report={id,width,height,durationMs:duration,...(options.playbackRate?{elapsedMs,playback}:{}),method:'CDP compositor, most recent actual picture at each 24 Hz presentation time',sourcePictures:pictures.map(p=>p.ms),frames,errors,requests:[...requests],result:result??null,failure:failure?.message??null};
     fs.writeFileSync(path.join(directory,id+'.json'),JSON.stringify(report)+'\n');
     return report;
   }finally{

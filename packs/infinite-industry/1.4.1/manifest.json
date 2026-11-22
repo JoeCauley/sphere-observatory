@@ -127,8 +127,8 @@
     },
     {
       "path": "renderer.js",
-      "bytes": 16037,
-      "sha256": "b04c51954325f69546158e7f525dafba15e041ed96b30c9f397c52f1e1667f1b"
+      "bytes": 16419,
+      "sha256": "25ab39fcc83c8bf4249d98de51d1240fc54957f0c0b18051c3088c78606cf8b1"
     },
     {
       "path": "style.css",

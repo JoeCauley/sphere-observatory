@@ -41,7 +41,8 @@ function prepareExterior(row){
   releaseExterior();requested=row;
   stageHost.stationExterior(row.site.address,survey.fileBacked).then(({station,makeView})=>{
     if(requested!==row)return;
-    const view=makeView(canvas,{shared:true,district:survey.district});view.load(station);
+    const view=makeView(canvas,{shared:true,district:survey.district});
+    try{view.load(station);}catch(error){view.dispose();throw error;}
     exterior={view,station};
   }).catch(error=>{
     if(requested!==row)return;

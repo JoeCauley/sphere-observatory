@@ -1,5 +1,10 @@
 import {classes,freightAt,fits,releaseIn} from './station.mjs';
-import {hallHalfM,linkHalfM,outsideDistrict,roofSlabM} from './district.mjs';
+import {hallHalfM,linkHalfM,outsideDistrict,roofSlabM,facadeRib} from './district.mjs';
+import {ribSpacing,ribs} from '../../kit/outfall-wall.mjs';
+import {galleryBoxes,galleryTubes} from '../../kit/outfall-gallery.mjs';
+
+const gallerySolids=galleryBoxes.filter(p=>p[8]).map(([x,y,z,w,h,d])=>[x-w/2,x+w/2,y-h/2,y+h/2,z-d/2,z+d/2]);
+for(const [[x,y,start],[,,end],r] of galleryTubes)gallerySolids.push([x-r,x+r,y-r,y+r,start,end]);
 
 export function boardingPose(s,group=classes[0],far=false){
   const r=s.routes.find(r=>r.id===group.id),side=far?1:-1;
@@ -32,6 +37,24 @@ function allowed(s,d,p,next,group,time){
   if(foot>=s.roofM+roofSlabM-.01)return true;
   if(Math.abs(x)<=hallHalfM+hw){
     for(const wall of [0,s.widthM]){
+      const face=wall===0?-1:1;
+      const out=face*(z-wall),oldOut=face*(oz-wall);
+      const doorX=s.routes[0].nearDoor[0],gx=-face*(x-doorX),oldGX=-face*(ox-doorX);
+      if(foot<8 && intersects(oldOut,out,-38-hl,hl) && intersects(oldGX,gx,-7-hw,7+hw)){
+        for(const [lo,hi,bottom,top,front,back] of gallerySolids)
+          if(foot<top && head>bottom && intersects(oldGX,gx,lo-hw,hi+hw) &&
+             intersects(-oldOut-2,-out-2,front-hl,back+hl))return false;
+      }
+      if(foot<ribs[0][1] && intersects(oldOut,out,-hl,3+hl)){
+        const first=Math.ceil((Math.min(ox,x)-hw-ribs[0][0])/ribSpacing);
+        const last=Math.floor((Math.max(ox,x)+hw+ribs[0][0])/ribSpacing);
+        for(let i=first;i<=last;i++){
+          if(!facadeRib(s,i))continue;
+          for(const [w,h,front,back] of ribs)
+            if(foot<h && head>0 && intersects(ox,x,i*ribSpacing-w-hw,i*ribSpacing+w+hw) &&
+               intersects(oldOut,out,1-back-hl,1-front+hl))return false;
+        }
+      }
       if(!intersects(oz,z,wall-hl-1,wall+hl+1))continue;
       const door=s.routes.find(r=>Math.abs(x-r.nearDoor[0])+hw<=r.door[0]/2+.001 && fits(r,group.body[0],group.body[1]) && head<=r.door[1]+.01 && foot>=-.2);
       if(!door)return false;

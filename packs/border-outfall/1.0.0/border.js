@@ -1,5 +1,7 @@
 import {eye} from './model.js';
 import {roofM,tunnelStartM,widthM} from '../../kit/border-profile.js';
+import {ribSpacing,ribs} from '../../kit/outfall-wall.mjs';
+export {ribSpacing,ribs};
 
 // Each interval is [west, east, bottom, top, front, back], in metres.
 // Rendering and movement both use these intervals, including the unbounded ends.
@@ -7,8 +9,6 @@ export const wallHeight = roofM;
 // The cross-gallery opens into a straight through-passage. All dimensions are metres.
 export const tunnelStart = tunnelStartM, tunnelLength = widthM, tunnelEnd = tunnelStart+tunnelLength;
 export const tunnelHalfWidth = 3.5, tunnelHeight = 6.2;
-export const ribSpacing = 18;
-export const ribs = [[.725, 106, -1.05, 1.05], [.225, 34, -1.825, -.475]];
 export const pipes = [3.8, 5.8];
 export const borderSolids = [
   [-Infinity, -6, 0, wallHeight, 0, 34],

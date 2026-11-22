@@ -1,5 +1,6 @@
 import {valve} from './model.js';
 import {borderSolids,pipes} from './border.js';
+import {galleryBoxes,galleryTubes} from '../../kit/outfall-gallery.mjs';
 
 export function makeGallery(){
   const vertices=[],colliders=[];
@@ -26,7 +27,7 @@ export function makeGallery(){
   }
   // The two outer wall volumes leave one service aperture. The transverse trunk
   // passes through the gap behind them and continues in both directions.
-  for(const side of [-1,1])box(side*6.02,3.9,17,1.05,7.8,34,iron,2,true);
+  for(const part of galleryBoxes)box(...part);
   // The dry centre aisle runs through the back of the gallery into the Border.
   // A sunken channel to the right of the walking grate.
   for(let j=0;j<3;j++){
@@ -34,23 +35,12 @@ export function makeGallery(){
     box(3.85,.62,z,2.20,.045,7.85,[.12,.42,.40],10+j);
     for(const x of [2.64,5.06])box(x,.33,z,.18,.68,8.04,stone,0,true);
   }
-  for(let z=1;z<34;z+=3.8){
-    for(const s of [-1,1]){box(s*5.47,3.65,z,.30,7.3,.42,edge,0,true);
-      box(s*5.25,4.95,z,.25,.75,.4,iron,2);box(s*5.08,4.99,z,.09,.42,.23,light,3);}
-    box(0,7.33,z,11.2,.44,.55,edge,0,true);
-    box(-1.22,.014,z,2.55,.028,.075,iron,2);
-  }
   for(const s of [-1,1]){
     box(s*6.35,3.7,-.48,.92,7.4,1.22,edge,0,true);
     box(s*6.0,3.3,-1.14,.11,5.9,.1,light,3);
   }
   box(0,7.9,-.55,13.9,.95,1.7,edge,0,true);
-  for(let z=1;z<35;z+=2.5){
-    tube([-4.7,2.2,z-.09],[-4.7,2.2,z+.09],.79,brass);
-    for(const x of [-4.15,-3.43])tube([x,6.45,z-.10],[x,6.45,z+.1],.38,brass);
-  }
-  tube([-4.7,2.2,-1.8],[-4.7,2.2,35],.66,iron);
-  for(const x of [-4.15,-3.43])tube([x,6.45,-1],[x,6.45,35],.29,[.30,.39,.36]);
+  for(const part of galleryTubes)tube(...part);
   for(const y of pipes)colliders.push([-Infinity,Infinity,y-.93,y+.93,40.57,42.43]);
   for(let z=-29;z<.3;z+=1.2){box(-.95,.024,z,1.36,.04,.09,[.31,.34,.25],5);}
   // A capillary sight tube and a handwheel stand beside the bypass.

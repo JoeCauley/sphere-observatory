@@ -2,13 +2,9 @@ import {shellMesh} from './shell-mesh.js';
 import {makeGallery} from './geometry.js';
 import {valve} from './model.js';
 import {tunnelStart,tunnelEnd,tunnelHalfWidth,tunnelHeight} from './border.js';
+import {surfaceNoise as noise,outfallMaterials} from '../../kit/outfall-wall.mjs';
 const skyVertex=`#version 300 es
 out vec2 uv;void main(){uv=vec2(float((gl_VertexID<<1)&2),float(gl_VertexID&2))*2.-1.;gl_Position=vec4(uv,0.,1.);}`;
-const noise=`
-float hash(vec2 p){return fract(sin(dot(mod(p,1231.),vec2(127.1,311.7)))*43758.5453);}
-float noise2(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(hash(i),hash(i+vec2(1,0)),f.x),mix(hash(i+vec2(0,1)),hash(i+1.),f.x),f.y);}
-float clouds(vec2 p){return .55*noise2(p)+.29*noise2(p*2.13+19.)+.16*noise2(p*4.4-5.);}
-`;
 const skyFragment=`#version 300 es
 precision highp float;in vec2 uv;out vec4 frag;uniform vec3 forwardDir,rightDir,upDir;uniform float aspect,daylight;${noise}
 void main(){vec3 v=normalize(forwardDir+rightDir*uv.x*aspect*.64+upDir*uv.y*.64);
@@ -34,7 +30,7 @@ void main(){pos=point;norm=normal;mat=int(kind+.5);color=tint;
  gl_Position=vec4(dot(d,rightDir)*focal/aspect,dot(d,upDir)*focal,mix(depth-.12*pointW,depth*1.00000002-.10*pointW,meadowPass),depth);}`;
 const fragment=`#version 300 es
 precision highp float;in vec3 positionH,norm,color;in float positionW;flat in int mat;in float depth;
-uniform vec3 cameraPos,level,nearTint,farTint;uniform float clock,originX,meadowPass,daylight;out vec4 frag;${noise}
+uniform vec3 cameraPos,level,nearTint,farTint;uniform float clock,originX,meadowPass,daylight;out vec4 frag;${noise}${outfallMaterials}
 void main(){float w=max(positionW,1.e-8);vec3 pos=positionH/w;vec3 n=normalize(norm),v=normalize(cameraPos-pos);
  if(meadowPass>.5 && mat==1 && pos.z<0.)discard;
  float east=pos.x+originX;
@@ -47,15 +43,12 @@ void main(){float w=max(positionW,1.e-8);vec3 pos=positionH/w;vec3 n=normalize(n
  if(material==15){material=2;c=mix(c,vec3(.57,.35,.17),1.-smoothstep(.12,.19,abs(mod(pos.x+3.5,7.)-3.5)));}
  if(inTunnel && mat==1){material=5;c=vec3(.31,.33,.30);}
  float dist=distance(pos,cameraPos);vec2 uv=abs(n.y)>.65?pos.xz:(abs(n.x)>.7?pos.zy:pos.xy);
- if(material==0){float grain=clouds(uv*.48),drip=noise2(vec2(uv.x*1.3,uv.y*.012));
- vec2 joints=abs(fract((uv+vec2(0.,floor(uv.y/3.8)*2.4))/vec2(8.,3.8))-.5);
- float cut=1.-smoothstep(.005,.019,min(.5-joints.x,.5-joints.y));
- c*=.82+.32*grain+.20*drip-.22*cut;}
+ if(material==0)c*=outfallConcrete(uv);
  if(material==1){float turf=clouds(pos.xz*.5);float dry=1.-smoothstep(.9,1.75,abs(east+1.15+.024*pos.z));
  c=mix(c*(.7+.6*turf),vec3(.32,.34,.245)*(.76+.37*turf),dry);
  c+=vec3(.08,.11,.105)*(1.-dry)*smoothstep(.55,.70,turf);}
  if(material==2||material==14){c*=.86+.26*clouds(uv*1.5);c+=pow(max(dot(reflect(-normalize(vec3(-.4,.6,-.2)),n),v),0.),16.)*.19;}
- if(material==5){float a=max(.06,fwidth(uv.x)*2.);float grid=smoothstep(.24-a,.38+a,abs(fract(uv.x*4.8)-.5))*smoothstep(.18,.36,abs(fract(uv.y*1.65)-.5));c*=.80+.2*grid;}
+ if(material==5)c*=outfallGrate(uv,fwidth(uv.x));
  vec3 outside=c*(.09+daylight*(.49+.57*direct))*vec3(.96,1.01,.98);
  float ceiling=max(0.,n.y)*.13,period=abs(mod(pos.z-1.+1.9,3.8)-1.9);
  float nearLamp=exp(-.35*abs(abs(east)-5.1)-.21*abs(5.-pos.y)-.23*period);

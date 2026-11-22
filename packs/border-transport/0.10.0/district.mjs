@@ -1,11 +1,24 @@
 // The installation is an addressed stretch of one shared Atlas edge. Coordinates
 // are metres along and across the trunk, centered on the middle station.
 import {project,unproject} from '../../kit/surface-route.js';
+import {ribSpacing} from '../../kit/outfall-wall.mjs';
 export const spacingM=200000;
 
 export const hallHalfM=16000, linkHalfM=1900, roofSlabM=45;
 export const apronRunM=3500, apronBlendM=96;
 export const stationBays=[-1,0,1];
+
+// A deep buttress marks each tenth Outfall bay. At the doors all the human-scale
+// ribs resolve, with an uninterrupted opening for the surveyed traveler envelope.
+export function facadeRib(station,index){
+  const x=index*ribSpacing;
+  if(Math.abs(x)>hallHalfM-2)return false;
+  let clearance=Infinity;
+  for(const route of station.routes){
+    clearance=Math.min(clearance,Math.abs(x-route.nearDoor[0])-route.door[0]/2);
+  }
+  return clearance>3 && (index%10===0 || clearance<126);
+}
 
 // The inward-facing shell reverses left and right on some canonical edges.
 export const rightSign=d=>d.origin.axis==='meridian'?d.origin.acrossSign:-1;

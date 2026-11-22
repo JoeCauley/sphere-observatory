@@ -85,8 +85,8 @@
   "assets": [
     {
       "path": "app.js",
-      "bytes": 46347,
-      "sha256": "99ba6c90405b7f924c392bb4dc6acf9fe023387577e21a84b1012dab1143acb7"
+      "bytes": 46398,
+      "sha256": "a7ff6f6f85aa249325a1dddff8d66783b914c8497703da718adb5d06af83dbe4"
     },
     {
       "path": "atlas-lease.js",
@@ -231,18 +231,18 @@
     },
     {
       "path": "../../border-outfall/1.0.0/render.js",
-      "bytes": 10415,
-      "sha256": "7baa30296cde380801e27d274bb49832bfcf8ac1442db67fbee257f5d07e4454"
+      "bytes": 9827,
+      "sha256": "07a7d39b5dd1fc37be1b7f08c2ff3f0086951d33e7e9ce42334c5a7171c219e2"
     },
     {
       "path": "../../border-outfall/1.0.0/geometry.js",
-      "bytes": 4194,
-      "sha256": "71cd1467dd2209c4d59e44e18fe2b0b56c39f2690c9c024cdd5b6c19d4937aee"
+      "bytes": 3718,
+      "sha256": "9559e81f5579167c311b3cfdc2afccb275da95e70123de90d1ea2f2df33c05b1"
     },
     {
       "path": "../../border-outfall/1.0.0/border.js",
-      "bytes": 5346,
-      "sha256": "bb8b3ccea635ed47ddc0d5728d59872a5a58f5ae97e5b0b8a5860d51a5398dac"
+      "bytes": 5327,
+      "sha256": "2f34a44bce0da238fe3d915aac5797bfa3498fc109e31839d4aea20da1a489f1"
     },
     {
       "path": "../../border-outfall/1.0.0/model.js",
@@ -253,6 +253,16 @@
       "path": "../../border-outfall/1.0.0/shell-mesh.js",
       "bytes": 3334,
       "sha256": "5e81765f147f6dbe71d7144be90f0c60bb4cafd714f28f8ea9eddb16b0620559"
+    },
+    {
+      "path": "../../kit/outfall-wall.mjs",
+      "bytes": 1259,
+      "sha256": "5bebaa64133269b700a916bf26a2a42e1b446f9e66584d827a5b2ae3e49cd821"
+    },
+    {
+      "path": "../../kit/outfall-gallery.mjs",
+      "bytes": 1032,
+      "sha256": "587d280a0c647e50b9f28f8aef788ebce25778cf06f78b7b6a82d0a13bb2ec07"
     }
   ]
 }

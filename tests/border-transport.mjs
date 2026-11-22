@@ -42,6 +42,16 @@ for(const edge of [['r10c0','r11c0'],['r12c0','r12c1'],['r12c0','r12c'+(globalTh
         assert(Math.abs(p.altitudeM-c.eye)<.05);walks++;
       }
       const c=classes[0],p=boardingPose(s,c),offset={...p,eastM:p.eastM+50};
+      for(const face of [-1,1]){
+        const outside={...p,eastM:site.x-12600,northM:face*(s.widthM/2+5)};
+        const panel={...outside,eastM:outside.eastM+4};
+        assert.equal(move(s,d,outside,c,0,-face*.85,0,0,0).blocked,'Clearance limit','The projecting Outfall rib blocks the walker');
+        assert.equal(move(s,d,panel,c,0,-face*.85,0,0,0).blocked,'','The panel lips sit behind the ribs');
+        const gallery={...p,northM:face*(s.widthM/2-21)};
+        const clear=move(s,d,gallery,c,face*2,0,0,0,0);
+        assert.equal(clear.blocked,'');
+        assert.equal(move(s,d,clear.pose,c,face*1.5,0,0,0,0).blocked,'Clearance limit','The low gallery pipe has the same handedness as the picture');
+      }
       assert.equal(move(s,d,offset,c,0,18,0,0,0).blocked,'Clearance limit');
       const tooLarge={...boardingPose(s,classes[1]),eastM:p.eastM};
       assert.equal(move(s,d,tooLarge,classes[1],0,60,0,0,0).blocked,'Clearance limit');
