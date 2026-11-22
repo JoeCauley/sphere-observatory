@@ -85,6 +85,20 @@ The low-contrast sections still deserve attention. From about 1:07 to 1:26 the w
 
 To reproduce the film, run `node tools/film-border-roof.cjs films/manual-roof 713`, then `python tools/analyze-transition-films.py films/manual-roof`. The recorder creates a disposable world by default. To record an installed world, set `SPHERE_URL` to its running Observatory and supply its seed. That world needs Meadow beside Border, with native terrain beyond the far apron. The compact demo preserves the full ALPHA timeline. The browser suite also measures a 0.23° turn in both directions, checks the visible service-door jambs and walks from the paving onto supported ground in a second world. [Browser regression](../tests/border-horizon-browser.cjs)
 
+## On foot from Super Jungle to Meadow
+
+The return begins at the last camera position in the manual roof film, on the native ground of seed 713. The service entrance is 3,610 m ahead of the walker and 1,500 m to the side. The station's wide openings are visible first. The amber service marker leads onto the paved approach, where the vertical ribs, form joints, wet streaks and steel grating resolve at walking distance. Both service vestibules use the Outfall's lamp bays, pipe collars and roof crossmembers. The ribs, sidewalls and low pipe stop a walker in the same places they occupy in the picture.
+
+![Matched views looking toward the service door and down the gallery, before and after fitting the Outfall structure](../examples/border-crossing/outfall-service-comparison.jpg)
+
+After restoring the starting viewpoint, the recorder runs the ordinary movement controls. The far-apron run is at 6 m/s. Inside, the 128× survey pace takes the walker along the full 48 km service route. At the centre of the Transfer Yard the eye reaches 721.7 m above the freight slab. The camera turns toward the freight lane, then the walker continues through the opposite door and 22 m out onto Meadow's apron. A final turn from Meadow looks back through the near entrance. Both doorways are shown at real-time playback. The captions identify the accelerated stretches. [Watch the return](../examples/border-crossing/outfall-return.mp4) · [Camera positions and performance measurements](../examples/border-crossing/outfall-return.json)
+
+To record the walk in a disposable local world, run `node tools/film-border-return.cjs <output-directory>`. The recorder needs Playwright, Chrome or Chromium and FFmpeg. Set `SPHERE_FFMPEG` to the executable if needed. [Industry streaming, Super Jungle and renderer experiments](Surface-renderer-plan.md)
+
+The film uses a disposable install with the original seed and station address. We compared the generated station field by field with both the saved record used for the outward film and the record in ALPHA's installed Atlas. All three station models matched. The two saved journals also agreed on the original discovery time.
+
+The compositor recorded 15 minutes 51 seconds of travel and camera movement. The published film plays for 2 minutes 2 seconds. Both editions decoded all 2,928 frames, with zero black frames, detected cuts or lost graphics contexts. The final turn measured 179.9° at a fixed position 22.03 m beyond the Meadow-side wall.
+
 ## The next connected-world pass
 
 1. Turn each continuous, supported patch of habitat into a node for each movement class. Connect nodes only through fitted physical sockets. Add longitudinal segments, corners, unequal-row junctions, roof access and surveyed detours around breaches. A local service dead end is fine when its habitat still connects to the through network. Compare forward and reverse reachability for the whole graph. Include timed access and a bounded wait wherever a moving load controls a crossing.
