@@ -14,6 +14,12 @@ You can also approach from above. This flight starts on foot in Meadow, leaves t
 
 The return film begins at that last frame in **Super Jungle**. Cross the far apron toward the amber V, pass between Outfall's ribbed concrete walls and pipework, then follow the service bridge over the freight lane. The last turn looks back through the opposite door from Meadow. Captions show the travel pace and playback speed. [Walk the 48 km station from Super Jungle to Meadow](examples/border-crossing/outfall-return.mp4) · [Compare the service doorway before and after](docs/Builder-border-crossings.md#on-foot-from-super-jungle-to-meadow) · [Industry streaming and the Super Jungle renderer plan](docs/Surface-renderer-plan.md)
 
+## Infinite Industry
+
+Descend 4.2 km into the hot bar district, turn back at 85 m, then land on the service lane and walk under the feed line. The shafts and roofs visible on approach are the same structures you reach on foot. At the presses you can see through the four posts to the die. Select **Infinite Industry** in **Walkable biome packs** to visit. [Watch the 52-second flight and walk](examples/industry-field/skyline-to-service-lane.mp4) · [Compare the two builds on ALPHA](docs/Surface-renderer-plan.md#industry-from-skyline-to-service-lane)
+
+![The hot bar district at 85 metres, with cold storage spheres and ambient works beyond it](examples/industry-field/approach.jpg)
+
 ## Watch the transitions
 
 | Demo | Length | What to watch |

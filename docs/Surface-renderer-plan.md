@@ -2,11 +2,11 @@
 
 The far side of the seed 713 Border station gives us three places to compare at a known scale. Super Jungle supplies the ground under the walker, Border draws a 48 km building with a 4 m service door, and Meadow draws the same building beside its grass. Industry provides a fourth test in which thousands of distant structures compete for the same frame. [Return walk](../examples/border-crossing/outfall-return.mp4) · [Measurements](../examples/border-crossing/outfall-return.json)
 
-## What the current build costs
+## Measurements from the Outfall return build
 
 These measurements used Chrome and WebGL 2 on ALPHA's RTX 5080. The Industry camera was fixed, the process clock was paused and the 960 × 540 canvas was sampled at 128 × 72. A pixel counted as changed when its mean absolute RGB difference exceeded 12 on the 0–255 scale. This lets us count scenery arriving even when the player stands still.
 
-| Experiment | Previous build | This build |
+| Experiment | Previous build | Outfall return build |
 | --- | ---: | ---: |
 | 85 m over Industry, first 180 frames with more than 1% of pixels changing | 2 | 2 |
 | 1,400 m over Industry, same test | 7 | 7 |
@@ -24,13 +24,37 @@ The first version with both pipe galleries could exhaust Meadow's 8 MiB buffer b
 
 We alternated the old and new worktrees across three trials each. The table reports medians of the per-trial medians. Each trial included ten warm assemblies. Draw timings include browser and driver overhead and synchronize each group of eight draws with a one-pixel readback. Whole-game frame intervals, integrated GPUs and native clients need their own measurements.
 
-## First experiment — keep an Industry skyline in sight
+## Industry from skyline to service lane
 
-The current streamer draws just the ground in distant districts. Within 3.6 km it requests factory silhouettes, then individual plants. Detailed builds share a two-unit budget per frame. A changed distant district can also release its old ground batch while it waits for a replacement. Both paths can change the picture under a stationary or slowly moving camera.
+The 52-second capture starts 1,400 m above the works. The route descends across 4.2 km, turns back at 85 m, lands in the hot bar district and continues 63 m on foot. Watch the silos beside the service lane as the camera approaches. The last turn looks back beneath the feed line. The capture uses the ordinary flight and walking controls at real speed. [Watch the film](../examples/industry-field/skyline-to-service-lane.mp4) · [Camera trace, hashes and measurements](../examples/industry-field/field-run.json)
 
-Use one addressed set of major roofs, towers and tanks as the first visible picture of each incoming district. Build that coarse mesh ahead of the flight path and keep it visible until the replacement can draw. Make each buffer swap atomic. Cars, pipework and moving product can resolve nearer the eye. Record a cold entry, a sustained descent, a sharp reversal and the same trip after the cache warms. Keep the existing roof, conveyor and walking tests alongside them.
+| ALPHA, Chrome and WebGL 2 at 960 × 540 | Outfall return build | Industry field build |
+| --- | ---: | ---: |
+| Stationary at 1,400 m, frames changing over 1% of samples | 7 of 180 | 0 of 180 |
+| Largest stationary change at 1,400 m | 817 of 9,216 | 0 of 9,216 |
+| Largest stationary change at 85 m | 145 of 9,216 | 6 of 9,216 |
+| Settled draw calls at 1,400 m | 315 | 86 |
+| Settled tracked buffers at 1,400 m | 30.64 MB | 3.30 MB |
+| First picture, median of three fresh launches | 1.513 s | 1.442 s |
+| Controls ready, same launches | 1.529 s | 1.459 s |
+| First 4.2 km descent, bytes uploaded | 160.82 MB | 6.10 MB |
+| First descent, peak tracked buffers | 51.68 MB | 4.92 MB |
+| First descent, 95th-percentile render CPU time | 3.60 ms | 0.50 ms |
+| First descent, 95th-percentile GPU time | 4.04 ms | 4.40 ms |
+| First descent, 95th-percentile frame interval | 16.8 ms | 16.8 ms |
+| Six short reversals across the legacy 195 m threshold | 0 upload bytes | 0 upload bytes |
 
-The first comparison should at least halve the largest cold-frame change at 1,400 m and preserve the zero-upload result on the short reversal. Record time to first navigable picture, 95th-percentile frame interval, bytes uploaded and peak resident memory alongside the pictures. Waiting behind a loading screen would otherwise make the cold-frame score look better.
+At a fixed camera, each sampled pixel counts once when its mean RGB difference from the previous frame exceeds 12 on the 0–255 scale. Machinery was paused for these measurements. The film runs the machinery. The separate timing route retraced the descent in reverse, repeated it, then flew low, landed, walked and restored the saved position. It uploaded 6.11 MB on the second descent, down from 132.85 MB. GPU figures use non-disjoint timer queries on ALPHA's RTX 5080. MB are decimal and cover tracked WebGL buffers. Measurements on other GPUs remain open.
+
+### What stays in view
+
+A district's scale, angle, pod temperature and six clear service lanes determine its floor at every distance. The GPU draws slab joints, lane markings, paired drains and the boulevard from that address. A test sampled 168 hex centres in six districts, including one tens of billions of metres from home. All 168 matched the CPU reference exactly. A separate first-frame view found 1,729 visible machinery pixels on a 129 × 129 patch of floor.
+
+The same metre-scale solids define a hall roof, tank, flare stack or gantry for distant drawing and local collision. The field renderer batches copies of each design. It selects a wider area than the visible cone to cover camera motion between updates. Major structures feather into the distant field between 2.95 and 4.20 km. Local fittings resolve between 360 and 215 m. The floor continues through the haze beyond them. A near view adds hydraulic presses with exposed dies, inspection windows, louvres, tower ladders and projected shadows. The material shaders reuse the Outfall's poured concrete and steel grate. [See the press floor on foot](../examples/industry-field/process-lane.jpg)
+
+The WebGL module reads the factory solids, camera pose and metre coordinates. The world still owns collision, routing, process time and saved addresses. Another renderer can replay the recorded camera samples against the same geometry. The current client still shares Meadow's sky and shell. The small increase in GPU time on the descent gives a replacement renderer a concrete comparison.
+
+Run `node tools/measure-industry-streaming.cjs <output-directory>` for the fixed cameras and short reversal. Run `node tools/measure-industry-approach.cjs <output-directory>` for the measured flight, return and walk. Add `--startup` for an individual cold launch or `--film` for the 720p capture. Both tools operate on the current working directory, so the same scripts can measure the earlier checkout. The comparison uses `9236a53` and the renderer in `36cf33a`. `npm run test:industry:field` checks floor colours, visible solids, resource release and agreement with a full sky draw.
 
 ## First Super Jungle walk
 
@@ -44,7 +68,7 @@ Use a 500 m walk starting at the last outward-film position and heading away fro
 
 ## What a replacement renderer must consume
 
-The station already supplies a practical starting point. Its Atlas address generates the surveyed model, its movement solver owns support and clearance, and its view has load, draw and dispose operations. Main uses that view on a regional canvas, Border uses it indoors, and Meadow draws it into the depth buffer of its own scene. Industry is more tightly coupled. It subclasses Meadow's WebGL renderer and edits the compiled program's shader source to implement its own depth convention.
+The station already supplies a practical starting point. Its Atlas address generates the surveyed model, its movement solver owns support and clearance, and its view has load, draw and dispose operations. Main uses that view on a regional canvas, Border uses it indoors, and Meadow draws it into the depth buffer of its own scene. Industry shares Meadow's shell and sky. Its field renderer owns the local projection, logarithmic depth, buffers and shaders, and consumes the same addressed solids as the walking model.
 
 | Owned by the world and simulation | Supplied by each rendering module |
 | --- | --- |

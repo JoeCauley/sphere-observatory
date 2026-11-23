@@ -55,7 +55,7 @@ async function main(){
      const code=dy>0?'ArrowDown':'ArrowUp';window.dispatchEvent(new KeyboardEvent('keydown',{code}));await frames(Math.abs(dy)/3);
      window.dispatchEvent(new KeyboardEvent('keyup',{code}));
     }
-    await frames(42);const limited=read();gl.scissor=()=>scissor.call(gl,0,0,w,h);await frames(3);
+    await new Promise(resolve=>setTimeout(resolve,800));await frames(2);const limited=read();gl.scissor=()=>scissor.call(gl,0,0,w,h);await frames(3);
     const full=read();gl.scissor=scissor;let changed=0;
     for(let i=0;i<full.length;i+=4)if(Math.max(Math.abs(full[i]-limited[i]),Math.abs(full[i+1]-limited[i+1]),Math.abs(full[i+2]-limited[i+2]))>2)changed++;
     results.push({pitch:SphereBiome.pose().pitch,changed});

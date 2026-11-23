@@ -69,6 +69,18 @@ for(const shot of walks.screenshots){
 }
 assert(walks.circuits.every(w=>Math.abs(w.liveDegrees-360)<1e-8 && w.liveClosureM<.5));
 const illustrated=[...photos.views,...walks.screenshots].map(v=>'examples/biomes/'+v.file);
+const industryDir=path.join(root,'examples/industry-field'),industry=read(path.join(industryDir,'field-run.json'));
+const industryMovie='skyline-to-service-lane.mp4',industryClip=fs.readFileSync(path.join(industryDir,industryMovie));
+assert.equal(industryClip.subarray(4,8).toString(),'ftyp');
+assert.equal(industryClip.length,industry.film.publicClip.bytes);assert.equal(sha(industryClip),industry.film.publicClip.sha256);
+assert(readme.includes('examples/industry-field/'+industryMovie));assert.deepEqual(industry.film.errors,[]);
+assert(industry.film.cameraSamples.length>100 && industry.film.cameraSamples.at(-1).at(-1)==='walk');
+assert.equal(industry.runs.field.fixedCameras.find(v=>v.altitudeM===1400).largestChangedPixelCount,0);
+assert.equal(industry.runs.field.sixShortReversals.uploadBytes,0);
+for(const [name,record] of Object.entries(industry.film.pictures)){
+ const bytes=fs.readFileSync(path.join(industryDir,name));assert.equal(bytes.readUInt16BE(0),0xffd8);
+ assert.equal(bytes.length,record.bytes);assert.equal(sha(bytes),record.sha256);illustrated.push('examples/industry-field/'+name);
+}
 assert(shown.length>=4);assert(shown.every(p=>illustrated.includes(p)));
 assert.deepEqual(new Set(photos.views.filter(v=>shown.includes('examples/biomes/'+v.file)).map(v=>v.pack)),new Set(offered.map(p=>p.id)));
 const borderDir=path.join(root,'examples/border-crossing'),borderRecord=read(path.join(borderDir,'installed-0.10.json'));

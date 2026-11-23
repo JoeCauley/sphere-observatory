@@ -55,7 +55,16 @@ async function main(){
   await page.keyboard.press('KeyH');await page.locator('#world').focus();
   if(film)await page.addStyleTag({content:'header,#show,footer,#status,.toast {visibility:hidden!important} #industryCaption {position:fixed;bottom:6%;left:4%;z-index:50;background:#112124e8;color:#f0eee4;border-left:3px solid #d8a257;padding:9px 15px;font:500 18px system-ui;pointer-events:none}'});
   const pose=()=>page.evaluate(()=>({pose:SphereBiome.pose(),frame:SphereBiome.inspect().frames}));
-  const caption=async s=>{if(film)await page.evaluate(s=>{const el=document.querySelector('#industryCaption')||document.body.appendChild(document.createElement('div'));el.id='industryCaption';el.textContent=s;},s);};
+  const caption=async s=>{
+   if(film)await page.evaluate(s=>{
+    const el=document.querySelector('#industryCaption')||document.body.appendChild(document.createElement('div'));
+    el.id='industryCaption';clearInterval(window.altitudeCaption);
+    if(s==='altitude'){
+     const show=()=>{el.textContent='Infinite Industry   ·   '+Math.round(SphereBiome.pose().altitudeM).toLocaleString('en-US')+' m above the works';};
+     show();window.altitudeCaption=setInterval(show,140);
+    }else el.textContent=s;
+   },s);
+  };
   const waitFrames=async n=>{const a=await pose();await page.waitForFunction(f=>SphereBiome.inspect().frames>=f,a.frame+n,{polling:'raf'});};
   const marks=[];
   const mark=async name=>{const row={name,...await pose()};marks.push(row);return row;};
@@ -67,7 +76,14 @@ async function main(){
   const look=async(yaw,pitch)=>{
    const p=(await pose()).pose,dx=((yaw-p.yaw+3*Math.PI)%(2*Math.PI)-Math.PI)/.004,dy=(p.pitch-pitch)/.004;
    const n=Math.max(1,Math.ceil(Math.abs(dx)/320),Math.ceil(Math.abs(dy)/190));
-   for(let i=0;i<n;i++){await page.mouse.move(580,320);await page.mouse.down();await page.mouse.move(580+dx/n,320+dy/n,{steps:film?12:2});await page.mouse.up();}
+   for(let i=0;i<n;i++){
+    await page.mouse.move(580,320);await page.mouse.down();
+    if(film){
+     const steps=Math.max(2,Math.ceil(Math.max(Math.abs(dx),Math.abs(dy))*.004*27/n));
+     for(let j=1;j<=steps;j++){await page.mouse.move(580+dx*j/(n*steps),320+dy*j/(n*steps));await page.waitForTimeout(30);}
+    }else await page.mouse.move(580+dx/n,320+dy/n,{steps:2});
+    await page.mouse.up();
+   }
   };
   // Observe additional scenery drawing after arrival, with all motion released.
   const settle=async()=>page.evaluate(async()=>{
@@ -83,7 +99,7 @@ async function main(){
   });
   const settled=[];
   const route=async()=>{
-   await caption('Infinite Industry   ·   1,400 m above the works');await mark('depart');
+   await caption('altitude');await mark('depart');
    if(film)await waitFrames(65);
    await fly(['KeyW','ShiftLeft'],'eastM',land,1);await mark('first arrival');
    settled.push(await settle());await page.locator('#world').screenshot({path:path.join(directory,'arrival.jpg'),type:'jpeg',quality:91});
@@ -101,7 +117,7 @@ async function main(){
    await mark('landed');await look(Math.PI/2,.09);
    await caption('On foot   ·   the process floor');await fly(['KeyW','ShiftLeft'],'eastM',land+62,1);await mark('walked');
    await look(2.55,.18);await waitFrames(42);await page.locator('#world').screenshot({path:path.join(directory,'walk.jpg'),type:'jpeg',quality:92});
-   if(film){await caption('Looking back across the works');await look(-1.40,.11);await waitFrames(65);}
+   if(film){await caption('Looking back across the works');await look(-1.40,.11);await waitFrames(145);}
   };
   if(film){
    require(path.resolve('tools/compositor-film.cjs'));
