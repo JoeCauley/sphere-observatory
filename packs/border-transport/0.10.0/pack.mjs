@@ -4,6 +4,7 @@ import {nearestSite,outsideDistrict,hallHalfM,roofSlabM,rightSign} from './distr
 import {stationRecord} from './atlas.mjs';
 import {boardingPose,support,move} from './motion.mjs';
 import {makeView} from './view.mjs';
+import {inFreightOpening,freightObstruction} from './freight-bay.mjs';
 
 const id='border-transport',version='0.10.0',saveKey='sphere-biome:border-transport:0.10';
 const el=s=>document.getElementById(s),canvas=el('scene'),host=window.parent===window?null:window.parent;
@@ -80,7 +81,8 @@ function toggleMode(){
   if(pose.mode==='walk')accept({...pose,mode:'flight'});
   else{
     const x=pose.eastM-site.x,z=pose.northM+station.widthM/2,foot=pose.altitudeM-group.eye;
-    const top=station.roofM+roofSlabM,roof=outsideDistrict(district,pose.eastM,pose.northM)<=0 && foot>=top-.05;
+    const top=station.roofM+roofSlabM,roof=outsideDistrict(district,pose.eastM,pose.northM)<=0 &&
+      !inFreightOpening(x,pose.northM,group.body[0]/2,group.body[2]/2) && foot>=top-.05;
     const floor=roof?top:support(station,x,z,foot,group,5);
     if(Math.abs(foot-floor)<5)accept({...pose,mode:'walk',altitudeM:floor+group.eye});
     else message='Descend to within 5 m of a floor to walk';
@@ -97,7 +99,11 @@ function ascend({toAltitudeM=24000}={}){
   if(script)settle('taken-over');
   if(Math.abs(pose.altitudeM-toAltitudeM)<.1 && pose.pitch<=-1.4)return Promise.resolve('revealed');
   const start={...pose},egress=[];
-  if(outsideDistrict(district,pose.eastM,pose.northM)<0 && pose.altitudeM<station.roofM){
+  const open=inFreightOpening(pose.eastM-site.x,pose.northM,group.body[0]/2,group.body[2]/2);
+  if(open && freightObstruction(station,pose,{...pose,altitudeM:toAltitudeM},group)){
+    message='Move clear of the crane bridge for lift-off.';hudDirty=true;return Promise.resolve('taken-over');
+  }
+  if(!open && outsideDistrict(district,pose.eastM,pose.northM)<0 && pose.altitudeM<station.roofM){
     const x=pose.eastM-site.x,z=pose.northM+station.widthM/2,foot=pose.altitudeM-group.eye;
     const look=station.lookout;
     const onLookout=look&&x>=look.west-1&&x<=look.east+1&&z>=look.near&&z<=look.far&&Math.abs(foot-look.y)<2;
@@ -197,7 +203,9 @@ function frame(now){
   const visible=draws<2 || !frameElement || frameElement.style.opacity!=='0';
   if(visible && (!paint || paint.pose!==pose || paint.time!==time || paint.direct!==direct || paint.station!==station ||
       paint.width!==width || paint.height!==height || script || draws<2)){
-    view.draw(station,[pose.eastM-site.x,pose.altitudeM,pose.northM+station.widthM/2],pose.yaw,pose.pitch,time,false,direct);
+    // Preserve Main's horizontal lens through a hand-flown geographic entry, including resizes.
+    const camera=entry?.horizontalFov && height>0 ? {focal:width/height/Math.tan(entry.horizontalFov*Math.PI/360)} : null;
+    view.draw(station,[pose.eastM-site.x,pose.altitudeM,pose.northM+station.widthM/2],pose.yaw,pose.pitch,time,false,direct,camera);
     draws++;paint={pose,time,direct,station,width,height};
   }
   renderHUD(now);frames++;if(frames===1)firstDraw();raf=requestAnimationFrame(frame);
@@ -230,7 +238,10 @@ window.SphereBiome={id,version,contract:'sphere-biome/1',ready,arrived,begin,asc
 async function start(){
   const initial=entry?.geographic&&finite(entry.pose)?entry.pose:saved?.pose;
   const s=nearestSite(district,arrival?0:initial?.eastM??0);adopt(s,await resident(s));
-  pose=initial?{...initial}:boardingPose(station,group);checkpoint(pose);
+  pose=initial?{...initial}:boardingPose(station,group);
+  if(pose.mode==='walk' && pose.altitudeM>=station.roofM+roofSlabM+group.eye-.1 &&
+     inFreightOpening(pose.eastM-site.x,pose.northM,group.body[0]/2,group.body[2]/2))pose.mode='flight';
+  checkpoint(pose);
   if(arrival && saved)manual.group=saved.group??classes[0].id;
   if(arrival){
     const pad=boardingPose(station,group);

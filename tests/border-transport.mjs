@@ -3,6 +3,7 @@ import {addressOf,classes,generateStation} from '../packs/border-transport/0.10.
 import {districtFor} from '../packs/border-transport/0.10.0/survey.mjs';
 import {districtPoint,districtLocation,outsideDistrict,hallHalfM,linkHalfM,nearestSite,rightSign} from '../packs/border-transport/0.10.0/district.mjs';
 import {boardingPose,move} from '../packs/border-transport/0.10.0/motion.mjs';
+import {bayStart,portals,quayZ} from '../packs/border-transport/0.10.0/freight-bay.mjs';
 const world='sphere-0000000000000017',radius=149597870700;
 const layouts=new Set();let walks=0,projections=0,longitudinal=0;
 for(const edge of [['r10c0','r11c0'],['r12c0','r12c1'],['r12c0','r12c'+(globalThis.SphereAtlas.columns(12)-1)]]){
@@ -42,6 +43,11 @@ for(const edge of [['r10c0','r11c0'],['r12c0','r12c1'],['r12c0','r12c'+(globalTh
         assert(Math.abs(p.altitudeM-c.eye)<.05);walks++;
       }
       const c=classes[0],p=boardingPose(s,c),offset={...p,eastM:p.eastM+50};
+      for(const end of [-1,1]){
+        const approach={...p,eastM:site.x+end*(hallHalfM-12),northM:linkHalfM+45};
+        assert.equal(move(s,d,approach,c,end*24,0,0,0,0).blocked,'Clearance limit');
+        assert.equal(move(s,d,{...approach,northM:linkHalfM-45},c,end*24,0,0,0,0).blocked,'');
+      }
       for(const face of [-1,1]){
         const outside={...p,eastM:site.x-12600,northM:face*(s.widthM/2+5)};
         const panel={...outside,eastM:outside.eastM+4};
@@ -58,6 +64,18 @@ for(const edge of [['r10c0','r11c0'],['r12c0','r12c1'],['r12c0','r12c'+(globalTh
       const roof=s.roofM+45+c.eye;
       const top={...p,northM:0,altitudeM:roof+150,mode:'flight'};
       assert.equal(move(s,d,top,c,0,0,-300,0,0).pose.altitudeM,roof);
+      const quay={...top,eastM:site.x+7010,northM:quayZ-40,altitudeM:4000};
+      const landing=move(s,d,quay,c,0,0,-5000,0,0);
+      assert.equal(landing.blocked,'');assert.equal(landing.pose.altitudeM,c.eye);
+      const walk=move(s,d,{...landing.pose,mode:'walk'},c,160,0,0,0,0);
+      assert.equal(walk.blocked,'');assert.equal(walk.pose.altitudeM,c.eye);
+      const openRoof={...quay,eastM:site.x+bayStart-8,mode:'walk',altitudeM:roof};
+      assert.equal(move(s,d,openRoof,c,24,0,0,0,0).pose.mode,'flight');
+      const besidePier={...walk.pose,eastM:site.x+portals[1]-170,northM:-1150};
+      assert.equal(move(s,d,besidePier,c,400,0,0,0,0).blocked,'Clearance limit');
+      const girder={...quay,eastM:site.x+portals[1]-84,northM:0};
+      const hit=move(s,d,girder,c,0,0,-1800,0,0);
+      assert.equal(hit.blocked,'Clearance limit');assert(hit.pose.altitudeM>s.roofM+1000);
       const inside={...p,northM:9000,eastM:site.x+7000,altitudeM:1500,mode:'flight'};
       assert(move(s,d,inside,c,0,0,600,0,0).pose.altitudeM<s.roofM);
     }

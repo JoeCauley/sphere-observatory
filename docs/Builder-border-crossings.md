@@ -113,3 +113,23 @@ The release criterion for anywhere-to-anywhere walking is a supported path betwe
 Start this checkout with `node serve.cjs 8792` and open `http://127.0.0.1:8792/studies/border-crossing/index.html`. **Enter and record station** freezes its layout. Choose a class and use W or S, or **Walk forward**. The inspection slider moves the observer to either end. The bridge and lane views share the same clock. **Preview a freight passage** selects an observation time in the existing timetable. The rate control advances passengers and freight together.
 
 `npm run test:border:stations` runs the numerical and browser checks. `node tools/film-border-trunk.cjs` records the synchronized film and its matched frame. The recorder accepts `SPHERE_FFMPEG` for an FFmpeg executable outside PATH.
+
+## Judging the clear-day roof approach
+
+Watch the uncut round trip once before reading the camera trace. Follow the far corner of the middle station. Watch whether its edge holds its bearing, what occupies the sky behind it, and whether the ground gives a convincing sense of closing distance.
+
+Run `node tools/film-clear-day-border.cjs films/clear-day` in a checkout with Playwright, Chrome and FFmpeg. The recorder creates a disposable seed-713 world, installs Meadow and Border, and chooses a sunlit Sphere time with the Shades active. Clouds and cavity haze are both off. The camera starts 100 km above the floor, aimed 23 degrees down. Forward flight lands on the roof. After standing on it, the pilot flies backwards along the same bearing until Main reaches the starting altitude. The high-altitude stretches use the developer speed boost. Playback stays at real time. Navigation labels are hidden during the take.
+
+`python tools/analyze-transition-films.py films/clear-day` decodes the film and lists possible cuts. `python tools/check-clear-day-border.py films/clear-day` measures the off-center roof edge in both directions and samples the low horizon from 6 km down to 2 km. These checks cover the standard camera path. The footage also exposes the distant grass, atmosphere and surface detail that a successful handoff can still leave unconvincing.
+
+## Fly the freight quay
+
+On Windows, double-click `Launch-Freight-Quay.cmd` for the along-track flight. The launcher keeps the review world's install journal in its own temporary folder. You can also start this checkout with `node serve.cjs 8793`. The two links open the ordinary Observatory 36 km above seed 713 in clear daylight. Each selects the same station and the same passing load on the Sphere clock. [Fly along the freight line](http://127.0.0.1:8793/?freight=along) · [Fly across the freight line](http://127.0.0.1:8793/?freight=across)
+
+Hold **W** on the initial bearing. Watch for three oxide-orange bridges around an 8 km opening in the station roof. The middle crane is the tallest. Release **W** at about **4.5 km altitude**. Drag to look toward the middle crane and hold **F** to descend vertically through the opening. At ground contact, choose **Walk** and follow the row of inspection lamps beside the track. Look up along the cables to find the crane you saw on approach. The 1.8 km load travels at 4 m/s and responds to the same clock as the rest of the Observatory.
+
+The packing hall, freight slab and route beneath the opening use the existing station address. Main, the Border and Meadow's station exterior draw the same crane members. Their solids also govern flight and walking clearance in the Border. The regional grassland varies in fixed district coordinates so its swales stay in place as the observer travels.
+
+To record the two uncut trips, run `node tools/film-clear-day-border.cjs films/freight along` and repeat with `across`. The films keep real-time playback. On the quay the operator uses the existing 16× survey walking pace for the first 135 m, then switches to walking speed to watch the load pass. Run `python tools/analyze-transition-films.py films/freight` to decode both films and match them to the travel traces.
+
+On ALPHA on November 23, the along-track film ran 1:33 and the cross-track film ran 1:16. Both gave local control at 23,993 m and ended after a 146 m walk at a 1.70 m eye height. During the final stationary observation the freight advanced 19 m in each take. All 4,047 frames decoded at 1280 × 720. The analyzer found zero candidate cuts, black frames or graphics-context losses. In the cross-track film, the clearest view of the crane from the ground comes about 54 seconds in. From the 36 km starting point, the roof still dominates the silhouette.

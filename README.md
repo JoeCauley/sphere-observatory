@@ -2,6 +2,14 @@
 
 Walk the inner surface of a Dyson sphere with a radius of one astronomical unit. Follow a track through windblown grass to a service door in a 1,400-metre wall. Inside, a handwheel still controls the water. Beyond it, a straight tunnel runs 1,000 km to the next landscape.
 
+## 1.8.1 tester preview: the Builder freight quay
+
+Fly from 36 km above a clear-day Border station to a loading quay beside a moving 1.8 km load. Follow the middle orange crane through the roof opening and look back up at it from the ground. [Watch four moments from the flight (20 seconds)](examples/border-crossing/freight-quay-preview.mp4).
+
+With Node.js 20+ installed, double-click **Launch-Freight-Quay.cmd** on Windows. On other platforms, run `node serve.cjs 8793` in the checkout. Choose [along the freight line](http://127.0.0.1:8793/?freight=along) or [across the freight line](http://127.0.0.1:8793/?freight=across). Hold **W** to about **4.5 km altitude**, release it, and hold **F** to descend through the opening. At ground contact select **Walk**. [Route and controls](docs/Builder-border-crossings.md#fly-the-freight-quay).
+
+**When could you first tell where you were going to land, and could you still recognize that place on foot?** Surface flicker remains under investigation. If you see it, report seed **713**, your bearing, the surface, and the timestamp in your recording.
+
 ![The Outfall service entrance at the end of the track through Infinite Meadow](examples/biomes/outfall-approach.jpg)
 
 The Atlas places the five optional packs on the same globe as the original habitats. You can cross a region on foot, lift off from the roof of the Outfall, or bank and turn back midway through an atmospheric handoff. [Transition tests and measurements](docs/Transition-audit.md)

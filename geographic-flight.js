@@ -4,7 +4,7 @@ import {project,unproject,chartFor,toBorder,toMeadow} from './packs/kit/surface-
 import {farEdgeM,onBorder,rampRunM} from './packs/kit/border-profile.js';
 import {terrain} from './packs/infinite-meadow/1.3.0/landscape.js';
 import {districtPoint,districtLocation,outsideDistrict,hallHalfM,apronRunM} from './packs/border-transport/0.10.0/district.mjs';
-export {outsideDistrict,nearestSite,roofSlabM} from './packs/border-transport/0.10.0/district.mjs';
+export {outsideDistrict,nearestSite,roofSlabM,apronRunM} from './packs/border-transport/0.10.0/district.mjs';
 const meadowDatum=terrain(0,0);
 function gateDatum(gate){return terrain(gate.eastM,gate.northM)-meadowDatum;}
 export const enterKm=20, leaveKm=24;

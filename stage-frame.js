@@ -383,21 +383,31 @@
     return plots.map(plot=>{const item=lib.placed().find(x=>!x.edge && x.plotId===plot);
       return lib.pack(item?.packId)?.overview?.albedo??[.26,.29,.25];});
   }
-  function prepareSurvey(site,district){
+  function prepareSurvey(site,item){
+    const district=item.transport;
     const key=site.address.key;
     if(surveyLoad===key || performance.now()<surveyRetry)return;
-    retireSurvey();surveyLoad=key;
+    surveyLoad=key;
     stationExterior(site.address,library().persistence==='file').then(({station,makeView})=>{
       if(surveyLoad!==key)return;
+      // The resident mesh already includes the neighboring roofs. Keep it on screen
+      // while the next detailed station is being read, then reuse the same canvas.
+      if(surveyView){
+        surveyView.view.load(station);
+        Object.assign(surveyView,{station,key,pose:null,stamp:-Infinity});
+        surveyView.canvas.dataset.station=key;
+        return;
+      }
       const canvas=document.createElement('canvas');canvas.setAttribute('aria-hidden','true');canvas.dataset.station=key;canvas.hidden=true;
       Object.assign(canvas.style,{position:'absolute',inset:'0',width:'100%',height:'100%',pointerEvents:'none'});
       view().after(canvas);
       try{
         const renderer=makeView(canvas,{capture:false,composite:true,district,land:stationLand(district)});
-        renderer.load(station);surveyView={canvas,view:renderer,station,key,stamp:-Infinity};
+        renderer.load(station);surveyView={canvas,view:renderer,station,key,districtKey:district.origin.key,
+          nearM:airOf(sceneOf(item)).nearM,stamp:-Infinity};
       }catch(error){canvas.remove();throw error;}
     }).catch(error=>{
-      if(surveyLoad!==key)return;surveyLoad=null;surveyRetry=performance.now()+3000;
+      if(surveyLoad!==key)return;surveyLoad=surveyView?.key??null;surveyRetry=performance.now()+3000;
       console.warn('Station preview unavailable',error);
     });
   }
@@ -413,17 +423,26 @@
     const q=norm(s.position),ll=SphereWorld.coordinates(q,s);
     if(Math.abs(ll.lat-d.origin.latitude)*s.radius>1500){if(surveyLoad)retireSurvey();return false;}
     const p=geography.packPose(s,item,SphereAtlas,SphereWorld);
-    const range=Math.hypot(Math.max(0,altitude),Math.max(0,geography.outsideDistrict(d,p.eastM,p.northM))*.001);
+    const edge=geography.outsideDistrict(d,p.eastM,p.northM);
+    const range=Math.hypot(Math.max(0,altitude),Math.max(0,edge)*.001);
     const extent=Math.max(...d.sites.map(site=>site.widthM))*.001;
     if(range>extent*(surveyLoad?25:22)){if(surveyLoad)retireSurvey();return false;}
     const site=d.sites.reduce((a,b)=>Math.abs(a.x-p.eastM)<=Math.abs(b.x-p.eastM)?a:b);
-    if(surveyView?.key!==site.address.key){prepareSurvey(site,d);return false;}
+    if(surveyView && surveyView.districtKey!==d.origin.key)retireSurvey();
+    if(surveyView?.key===site.address.key)surveyLoad=site.address.key;
+    else prepareSurvey(site,item);
+    if(!surveyView)return false;
     const weight=optics.layerWeight(extent*3,extent*16,range),v=surveyView;
     if(weight<=0){hideSurvey();return false;}
     const w=view().clientWidth,h=view().clientHeight;
     if(!w||!h){hideSurvey();return false;}
     // Native ground takes over before landing. A shallow turn reveals the cavity ray by ray.
     const groundWeight=s.walkMode?0:1-optics.layerWeight(.1,2,altitude);
+    // Over the roof both renderers are looking through the same lower air.
+    // Keep the native ground reveal independent from the rays that show the horizon.
+    const airWeight=optics.layerWeight(v.nearM*.6,v.nearM,p.altitudeM)
+      *optics.layerWeight(0,geography.apronRunM,edge)
+      *(1-optics.layerWeight(site.roofM,site.roofM+geography.roofSlabM,p.altitudeM));
     v.canvas.hidden=false;v.canvas.style.opacity=String(weight);
     const time=window.SphereApp.sceneSeconds;
     const key=[...s.position,...s.up,...s.forward,s.fov,s.routeShades,s.time,time,w,h,groundWeight].join('/');
@@ -431,11 +450,11 @@
       const axes=geography.stationBasis(s,d,p,SphereWorld);
       const direct=s.routeShades?SphereCollection.visibility(scale(q,s.radius-Math.max(.0001,altitude)),s,64):1;
       const focal=w/h/Math.tan(s.fov*Math.PI/360);
-      v.view.draw(v.station,[p.eastM-site.x,p.altitudeM,p.northM+v.station.widthM/2],p.yaw,p.pitch,time,false,direct,
-        {...axes,focal,groundWeight,maxWidth:altitude>15?720:undefined});
+      v.view.draw(v.station,[p.eastM-v.station.address.chainageM,p.altitudeM,p.northM+v.station.widthM/2],p.yaw,p.pitch,time,false,direct,
+        {...axes,focal,groundWeight,airWeight,maxWidth:altitude>15?720:undefined});
       // Upper bound for the vertical component of any normalized view ray. Only a fully opaque view can skip Main.
       const aspect=w/h,top=axes.forward[1]+(Math.abs(axes.up[1])+aspect*Math.abs(axes.right[1]))/focal;
-      v.opaque=groundWeight===1 && top<=-.32*Math.hypot(1,1/focal,aspect/focal);
+      v.opaque=groundWeight===1 && (airWeight===1 || top<=-.32*Math.hypot(1,1/focal,aspect/focal));
       v.stamp=now;v.pose=key;
     }
     return v.opaque && weight>=1;
@@ -475,7 +494,7 @@
     if(c.regionalKey===key || now-(c.regionalStamp??-Infinity)<40)return true;
     const pose=geography.mainPose(s,item,camera,SphereAtlas,SphereWorld);
     const scale=Math.min(1,640/rect.width,360/rect.height);
-    pose.fov=2*Math.atan(rect.width/rect.height/recipe.focal)*180/Math.PI;
+    pose.fov=c.frame.surfaceEntry?.horizontalFov??2*Math.atan(rect.width/rect.height/recipe.focal)*180/Math.PI;
     // The regional image is already filtered to the display size during the dissolve.
     pose.geometryDetail=false;pose.antialias=Math.min(pose.antialias??0,1);
     if(recipe.density===0 && !item.transport){pose.clouds=false;pose.textureDetail=false;pose.richMaterials=false;}
@@ -1256,6 +1275,7 @@
     if(here?.id!==id)return;
     opening=true;suppressedPlot=id;clearRecovery();lastArrival=null;
     const camera={geographic:true,pose:geography.packPose(state,item,SphereAtlas,SphereWorld),active:false};
+    if(item.transport && camera.pose.mode==='flight')camera.horizontalFov=state.fov;
     try{
       window.SphereApp.clearNavigation?.();
       say('Entering '+item.name+' at your flight position.');

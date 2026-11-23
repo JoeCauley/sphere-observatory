@@ -30,9 +30,16 @@ try{
  await loadGroup(scripts.slice(split));
  if(!window.SphereApp||!window.SphereLoading)throw Error(document.getElementById('error').textContent||'The renderer did not finish opening.');
  document.getElementById('loadingStatus').textContent='Preparing your viewpoint.';
- await window.SphereWatershedJourney?.openLink();
+ const bearing=new URLSearchParams(location.search).get('freight');
+ const freightTrip=bearing==='along' || bearing==='across';
+ if(freightTrip){
+  document.getElementById('loadingStatus').textContent='Preparing the clear-day approach to the freight quay.';
+  const {freightDeparture,prepareClearFlight}=await import(new URL('studies/border-crossing/clear-day-flight.mjs',scriptBase));
+  await prepareClearFlight(freightDeparture(bearing));
+ }else await window.SphereWatershedJourney?.openLink();
  if(window.SphereApp.renderer.modernUniforms?.uInstalledBiomes)await window.SphereBiomeSurface?.ready;
  await window.SphereLoading.start();
+ if(freightTrip){window.SphereApp.setPlaying(true);document.getElementById('viewport').focus();}
 }catch(error){
  document.getElementById('controlStatus').textContent='Opening interrupted. The view has details and a Retry button.';document.getElementById('loadingTitle').textContent='Opening interrupted';document.getElementById('loadingStatus').textContent=error.message;document.getElementById('loadingProgress').hidden=true;document.getElementById('loadingActions').hidden=false;document.getElementById('loadingFallback').hidden=true;document.getElementById('loadingRetry').onclick=()=>location.reload();
 }

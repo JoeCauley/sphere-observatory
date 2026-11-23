@@ -1,7 +1,8 @@
 import {freightAt} from './station.mjs';
-import {hallHalfM,linkHalfM,roofSlabM,apronRunM,rightSign,facadeRib} from './district.mjs';
+import {hallHalfM,linkHalfM,roofSlabM,apronRunM,rightSign,facadeRib,spacingM} from './district.mjs';
 import {ribSpacing,ribs,surfaceNoise,outfallMaterials} from '../../kit/outfall-wall.mjs';
 import {galleryBoxes,galleryTubes} from '../../kit/outfall-gallery.mjs';
+import {bayStart,bayEnd,bayHalf,quayZ,freightBay,inFreightOpening} from './freight-bay.mjs';
 
 const steel=[.27,.35,.36], lightSteel=[.50,.61,.60], concrete=[.38,.43,.42],
   amber=[.97,.62,.20], ballast=[.27,.30,.28], dark=[.15,.20,.22];
@@ -34,28 +35,66 @@ function mesh(packedFaces) {
   return {data,quad,tri,box};
 }
 
+function yardRoof(m,x,mid,half,roof) {
+  m.box(x-hallHalfM,x+bayStart,roof,roof+roofSlabM,mid-half,mid+half,steel);
+  m.box(x+bayEnd,x+hallHalfM,roof,roof+roofSlabM,mid-half,mid+half,steel);
+  m.box(x+bayStart,x+bayEnd,roof,roof+roofSlabM,mid-half,mid-bayHalf,steel);
+  m.box(x+bayStart,x+bayEnd,roof,roof+roofSlabM,mid+bayHalf,mid+half,steel);
+}
+
+function yardMachinery(m,offset,mid,roof,distant=false) {
+  for(const p of freightBay(roof)) {
+    if(distant && p.x1-p.x0<6)continue;
+    const x0=offset+p.x0,x1=offset+p.x1,z0=mid+p.z0,z1=mid+p.z1;
+    if(!p.rise){m.box(x0,x1,p.y0,p.y1,z0,z1,p.color);continue;}
+    const a=[x0,p.y0,z0],b=[x1,p.y0,z0],c=[x1,p.y0+p.rise,z1],d=[x0,p.y0+p.rise,z1];
+    const e=[x0,p.y1,z0],f=[x1,p.y1,z0],g=[x1,p.y1+p.rise,z1],h=[x0,p.y1+p.rise,z1];
+    m.quad(a,e,f,b,p.color);m.quad(b,f,g,c,p.color);m.quad(c,g,h,d,p.color);
+    m.quad(d,h,e,a,p.color);m.quad(e,h,g,f,p.color);m.quad(a,b,c,d,p.color);
+  }
+}
+
+function endWalls(m,x,mid,half,roof){
+  for(const wall of [x-hallHalfM,x+hallHalfM]){
+    m.box(wall-1,wall+1,0,roof,mid-half,mid-linkHalfM,concrete);
+    m.box(wall-1,wall+1,0,roof,mid+linkHalfM,mid+half,concrete);
+  }
+}
+
 export function stationMesh(s,district=null,packedFaces=false) {
   const m=mesh(packedFaces),mid=s.widthM/2,left=-hallHalfM,right=hallHalfM,heavy=s.routes[2];
   const trench=heavy.nearDoor[0],hw=heavy.door[0]/2+5;
   for(const [lo,hi] of [[left,trench-hw],[trench+hw,right]]){
-    m.box(lo,hi,-12,-.08,-apronRunM,s.widthM+apronRunM,ballast);
-    m.box(lo,hi,-.08,0,mid-s.laneHalfM,mid+s.laneHalfM,[.42,.44,.39]);
+    m.box(lo,hi,-12,-.08,-apronRunM,mid-s.laneHalfM,ballast);
+    m.box(lo,hi,-12,0,mid-s.laneHalfM,mid+s.laneHalfM,[.42,.44,.39]);
+    m.box(lo,hi,-12,-.08,mid+s.laneHalfM,s.widthM+apronRunM,ballast);
     for(const z of [-500,-325,325,500])m.box(lo,hi,0,.13,mid+z-2,mid+z+2,lightSteel);
   }
   // The deck above the underground route carries the same longitudinal freight slab.
   m.box(trench-hw,trench+hw,-24,0,mid-s.laneHalfM,mid+s.laneHalfM,concrete);
-  m.box(left,right,s.roofM,s.roofM+45,0,s.widthM,steel);
+  if(district){
+    yardRoof(m,0,mid,mid,s.roofM);
+    endWalls(m,0,mid,mid,s.roofM);
+    yardMachinery(m,0,mid,s.roofM);
+  }else m.box(left,right,s.roofM,s.roofM+roofSlabM,0,s.widthM,steel);
   for(let x=left;x<=right;x+=800){
-    m.box(x-5,x+5,s.roofM-18,s.roofM,0,s.widthM,lightSteel);
+    if(district && x>bayStart && x<bayEnd){
+      m.box(x-5,x+5,s.roofM-18,s.roofM,0,mid-bayHalf,lightSteel);
+      m.box(x-5,x+5,s.roofM-18,s.roofM,mid+bayHalf,s.widthM,lightSteel);
+    }else m.box(x-5,x+5,s.roofM-18,s.roofM,0,s.widthM,lightSteel);
     for(const z of [mid-s.laneHalfM-420,mid+s.laneHalfM+420]){
+      if(district && inFreightOpening(x,z-mid))continue;
       if(s.routes.some(r=>Math.abs(r.nearDoor[0]-x)<r.deckWidthM/2+50))continue;
       m.box(x-18,x+18,0,s.roofM,z-18,z+18,concrete);
       m.box(x-20,x+20,45,49,z-20,z+20,amber);
     }
   }
   for(let z=450;z<s.widthM;z+=700){
-    m.box(left,right,s.roofM-12,s.roofM,z-5,z+5,lightSteel);
-    m.box(left,right,s.roofM-13,s.roofM-12,z-1,z+1,[1,.8,.45]);
+    const spans=district && Math.abs(z-mid)<bayHalf ? [[left,bayStart],[bayEnd,right]] : [[left,right]];
+    for(const [lo,hi] of spans){
+      m.box(lo,hi,s.roofM-12,s.roofM,z-5,z+5,lightSteel);
+      m.box(lo,hi,s.roofM-13,s.roofM-12,z-1,z+1,[1,.8,.45]);
+    }
   }
   for(const r of s.routes){
     const width=r.deckWidthM/2,x=r.nearDoor[0];
@@ -174,9 +213,9 @@ export function stationMesh(s,district=null,packedFaces=false) {
     m.box(fx+8,fx+9,0,4.5,z-10,z+10,lightSteel);
   }
   if(district){
-    const first=district.sites[0].x-s.address.chainageM,last=district.sites.at(-1).x-s.address.chainageM;
-    for(const [start,end] of [[first,left],[right,last]]){
-      if(end<=start)continue;
+    for(let i=1;i<district.sites.length;i++){
+      const start=district.sites[i-1].x+hallHalfM-s.address.chainageM;
+      const end=district.sites[i].x-hallHalfM-s.address.chainageM;
       m.box(start,end,-10,0,mid-linkHalfM,mid+linkHalfM,concrete);
       m.box(start,end,s.roofM,s.roofM+roofSlabM,mid-linkHalfM,mid+linkHalfM,steel);
       for(const side of [-1,1]){
@@ -189,8 +228,13 @@ export function stationMesh(s,district=null,packedFaces=false) {
     for(const bay of district.sites){
       if(bay.address.key===s.address.key)continue;
       const x=bay.x-s.address.chainageM,front=mid-bay.widthM/2,back=mid+bay.widthM/2;
-      m.box(x-hallHalfM,x+hallHalfM,0,bay.roofM,front,back,concrete);
-      m.box(x-hallHalfM,x+hallHalfM,bay.roofM,bay.roofM+roofSlabM,front,back,steel);
+      m.box(x-hallHalfM,x+hallHalfM,-10,0,front,back,concrete);
+      m.box(x-hallHalfM,x+hallHalfM,0,bay.roofM,front,front+2,concrete);
+      m.box(x-hallHalfM,x+hallHalfM,0,bay.roofM,back-2,back,concrete);
+      // End walls stop at the through freight line.
+      endWalls(m,x,mid,bay.widthM/2,bay.roofM);
+      yardRoof(m,x,mid,bay.widthM/2,bay.roofM);
+      yardMachinery(m,x,mid,bay.roofM,true);
     }
     // The paved approach converges on the same opening in the adjoining plot.
     for(const r of s.routes.slice(0,2)){
@@ -217,7 +261,7 @@ export function stationMesh(s,district=null,packedFaces=false) {
 
 export function freightMesh(t,packedFaces=false) {
   const m=mesh(packedFaces),l=t.lengthM/2,w=t.widthM/2;
-  m.box(-l,l,12,52,-w,w,dark);m.box(-l+6,l-6,48,63,-w,w,amber);
+  m.box(-l,l,12,52,-w+10,w-10,dark);m.box(-l+6,l-6,48,63,-w,w,amber);
   const paint=[.35,.45,.46];
   for(let i=0;i<6;i++){
     const a=-l+24+i*(t.lengthM-48)/6,b=a+(t.lengthM-48)/6-10;
@@ -243,6 +287,19 @@ export function freightMesh(t,packedFaces=false) {
       for(const side of [-1,1])m.box(x-12,x+12,0,15,side*(w-7)-7,side*(w-7)+7,dark);
     }
     for(const side of [-1,1])m.box(a+14,b-14,129,133,side*(w-25)-1,side*(w-25)+1,amber);
+    // Access galleries and traction housings repeat with the car, in its own metres.
+    for(const side of [-1,1]){
+      const z=side*(w-6);
+      for(const x of [a+36,b-36]){
+        m.box(x-23,x+23,6,25,z-5,z+5,steel);
+        m.box(x-18,x+18,15,19,z-6,z+6,lightSteel);
+        m.box(x-12,x+12,20,23,z-6,z+6,dark);
+      }
+      for(let x=a+30;x<b-18;x+=48){
+        m.box(x-6,x+6,31,40,z-4,z+4,dark);
+        m.box(x-4,x+4,36,37,z-4.5,z+4.5,[1,.84,.59]);
+      }
+    }
   }
   return m.data;
 }
@@ -251,19 +308,19 @@ const vertex=`#version 300 es
 layout(location=0) in float corner;
 in vec3 cornerA,cornerB,cornerC,cornerD,normal,tint;
 uniform vec3 eye,right,up,forward,offset; uniform vec2 focal,clip;
-out vec3 color;out vec3 materialPoint;out float surfaceY;flat out float fixtureLight,sideNormal;
+out vec3 color;out vec3 materialPoint;out float surfaceY;flat out vec3 faceNormal;flat out float fixtureLight,sideNormal;
 void main(){
  vec3 position=corner<.5?cornerA:corner<1.5?cornerB:corner<2.5?cornerC:cornerD;
  vec3 d=position+offset-eye;float z=dot(d,forward);
  gl_Position=vec4(dot(d,right)*focal.x,dot(d,up)*focal.y,z*clip.x-clip.y,z);
  float lighting=.52+.28*max(normal.y,0.)+.15*abs(normal.x)+.07*max(-normal.z,0.);
- color=tint*lighting;materialPoint=position;surfaceY=normal.y;
+ color=tint*lighting;materialPoint=position;surfaceY=normal.y;faceNormal=normal;
  fixtureLight=step(.94,tint.r)*step(.78,tint.g);
  sideNormal=abs(normal.x);
 }`;
 const fragment=`#version 300 es
-precision highp float;in vec3 color,materialPoint;in float surfaceY;flat in float fixtureLight,sideNormal;uniform int mask;uniform bool structure;
-uniform float direct,workLight;uniform vec3 hall,eye,offset;out vec4 frag;
+precision highp float;in vec3 color,materialPoint;in float surfaceY;flat in vec3 faceNormal;flat in float fixtureLight,sideNormal;uniform int mask;uniform bool structure;
+uniform float direct,workLight;uniform bool yard;uniform vec3 hall,eye,offset,loadFootprint;out vec4 frag;
 ${surfaceNoise}
 ${outfallMaterials}
 float ruledLine(float d,float halfWidth,float pixel){
@@ -277,6 +334,9 @@ vec2 cell=materialPoint.xz/vec2(1.8,3.6),cellPixel=max(fwidth(cell),vec2(.001));
 vec2 line=smoothstep(vec2(0.),min(vec2(.45),cellPixel+.012),abs(fract(cell+.5)-.5));
 float joint=(1.-min(line.x,line.y))*(1.-smoothstep(.12,.65,max(cellPixel.x,cellPixel.y)))*max(surfaceY,0.);
 vec3 finish=color;
+float yardZ=materialPoint.z-hall.x*.5;
+bool quay=yard && structure && surfaceY>.9 && materialPoint.y<.25 &&
+  materialPoint.x>${bayStart}. && materialPoint.x<${bayEnd}. && abs(yardZ)<${bayHalf}.;
 // Keep the tactile Outfall finish at walking distance. At long range the
 // individual pours and grate teeth average into broad, stable weathering.
 bool facade=structure && abs(surfaceY)<.15 && abs(outside)<3.1 && color.r<color.g*1.23;
@@ -285,6 +345,29 @@ bool galleryWall=structure && outside<0. && outside>-38. && across<7. && materia
 vec2 uv=abs(surfaceY)>.65?materialPoint.xz:(sideNormal>.7?materialPoint.zy:materialPoint.xy);
 vec2 footprint=max(fwidth(uv),vec2(.002));
 float pixel=max(footprint.x,footprint.y);
+bool machine=yard && (!structure || (materialPoint.x>${bayStart}. && materialPoint.x<${bayEnd}. &&
+ abs(yardZ)<${bayHalf}. && materialPoint.y>.25));
+if(machine){
+ // Build the finish in the part's own coordinates so the plates, bolts and streaks
+ // travel with a load. Remove each spatial frequency when it falls below a pixel.
+ vec2 pitch=vec2(12.,7.5), cellId=floor(uv/pitch);
+ vec2 panel=abs(fract(uv/pitch+.5)-.5)*pitch;
+ float rim=min(panel.x,panel.y),plate=1.-smoothstep(.06,.16+pixel,rim);
+ float wear=(noise2(uv*vec2(.052,.008))-.5)*.36;
+ float close=1.-smoothstep(.7,3.2,pixel);
+ finish*=1.+(.23*(hash(cellId)-.5)-.60*plate)*close+wear*(1.-smoothstep(12.,50.,pixel));
+ vec2 bolt=abs(panel-vec2(.36,.33));
+ float stud=ruledLine(length(bolt),.095,pixel);
+ finish+=vec3(.24,.21,.14)*stud*close;
+ if(!structure && abs(surfaceY)<.65){
+   vec2 inset=abs(mod(uv,vec2(48.,30.))-vec2(24.,15.));
+   float hatch=(1.-smoothstep(4.,4.6+pixel,inset.x))*(1.-smoothstep(2.,2.4+pixel,inset.y));
+   float slat=ruledLine(abs(mod(uv.y+.24,.48)-.24),.095,footprint.y);
+   finish*=1.-hatch*(.38+.42*slat)*(1.-smoothstep(1.,4.,pixel));
+ }
+ vec3 halfVector=normalize(normalize(eye-materialPoint-offset)+normalize(vec3(-.48,.81,-.33)));
+ finish+=vec3(.18,.21,.21)*pow(max(0.,dot(faceNormal,halfVector)),22.)*direct;
+}
 if(facade || walkingSurface || galleryWall){
  float close=1.-smoothstep(.28,1.5,pixel);
  float weather=1.-smoothstep(22.,95.,pixel);
@@ -310,12 +393,37 @@ if(structure && outside<=0. && across<2.25 && materialPoint.y<hall.y){
  float enamel=1.-smoothstep(.48,.85+footprint.y,interval);
  lamp=max(lamp,rail*(.16+.84*enamel)*(1.-smoothstep(.3,1.4,footprint.y)));
 }
-if(surfaceY>.9 && materialPoint.y>hall.y){
+if(quay){
+ float walk=1.-smoothstep(10.,10.6+pixel,abs(yardZ-(${quayZ}.-10.)));
+ finish=mix(finish,vec3(.30,.37,.36)*(1.+.20*(noise2(uv*.08)-.5)),walk*.75);
+ float margin=ruledLine(abs(yardZ-(${quayZ}.)),.21,footprint.y);
+ float warning=1.-smoothstep(1.1,1.3+footprint.x,abs(mod(materialPoint.x+.8*yardZ,7.)-3.5));
+ amberPaint=max(amberPaint,max(margin,warning*(1.-smoothstep(1.4,1.6+footprint.y,abs(yardZ-(${quayZ}.+2.5))))));
+ // Two paired running rails follow the existing wheel gauge through the transfer bay.
+ float gauge=abs(abs(yardZ)-323.);
+ finish=mix(finish,vec3(.16,.20,.21),ruledLine(gauge,5.,footprint.y)*.85);
+ finish=mix(finish,vec3(.52,.56,.54),ruledLine(gauge,1.1,footprint.y));
+ vec2 toLoad=abs(vec2(materialPoint.x-loadFootprint.x,yardZ))-loadFootprint.yz;
+ float shadow=1.-smoothstep(0.,37.,max(toLoad.x,toLoad.y));
+ finish*=1.-.44*shadow*direct;
+}
+if(structure && surfaceY>.9 && materialPoint.y>hall.y && materialPoint.y<=hall.y+${roofSlabM}.+.1){
  vec2 seam=abs(fract(materialPoint.xz/vec2(7200.,3200.)+.5)-.5)*vec2(7200.,3200.);
  vec2 aa=max(fwidth(materialPoint.xz),vec2(.2));
  float strip=1.-smoothstep(45.,110.+aa.x,seam.x),band=1.-smoothstep(12.,25.+aa.y,seam.y);
  finish=mix(finish,vec3(.43,.53,.51),strip*(1.-smoothstep(600.,3000.,aa.x)));
  finish*=1.-.27*band*(1.-smoothstep(400.,1300.,aa.y));
+ if(yard){
+   float along=mod(materialPoint.x+${spacingM/2}.,${spacingM}.)-${spacingM/2}.;
+   vec2 lip=abs(vec2(along-${(bayStart+bayEnd)/2}.,yardZ))-vec2(${(bayEnd-bayStart)/2}.,${bayHalf}.);
+   float rim=length(max(lip,0.))+min(max(lip.x,lip.y),0.);
+   float apron=(1.-smoothstep(100.,220.+pixel,rim))*(1.-smoothstep(160.,400.,pixel));
+   finish=mix(finish,vec3(.49,.42,.29),.69*apron);
+   finish*=1.-.38*ruledLine(abs(rim-62.),17.,pixel);
+   float skin=1.-smoothstep(35.,145.,pixel);
+   vec2 section=vec2(along,yardZ)/vec2(680.,320.);
+   finish*=1.+.22*(hash(floor(section))-.5)*skin;
+ }
 }
 if(facade && materialPoint.y>5.){
  vec2 m=materialPoint.xy,aa=max(fwidth(m),vec2(.05));
@@ -342,14 +450,16 @@ if(structure){
  float pool=exp(-.35*abs(across-5.1)-.21*abs(5.-materialPoint.y)-.23*bay);
  lit+=gallery*finish*(vec3(.28,.52,.50)+vec3(1.55,.83,.31)*pool);
  lit=mix(lit,vec3(1.,.78,.46),fixtureLight);
-}
-float haze=1.-exp(-distanceM/22000.);frag=vec4(mix(lit,vec3(.27,.34,.35)*max(workLight,.48+.52*direct),haze),1.);}`;
+}else if(machine){lit=mix(lit,vec3(1.,.78,.46),fixtureLight);}
+float rangeM=yard && structure && materialPoint.y>hall.y+48.?42000.:22000.;
+float haze=1.-exp(-distanceM/rangeM);frag=vec4(mix(lit,vec3(.27,.34,.35)*max(workLight,.48+.52*direct),haze),1.);}`;
 
 // Only the native pack paints the surrounding horizon. Meadow already has its own sky and terrain.
 const skyVertex=`#version 300 es
 out vec2 uv;void main(){uv=vec2(float((gl_VertexID<<1)&2),float(gl_VertexID&2))*2.-1.;gl_Position=vec4(uv,0.,1.);}`;
 const skyFragment=`#version 300 es
-precision highp float;in vec2 uv;uniform vec2 lens;uniform vec3 right,up,forward,eye,nearLand,farLand;uniform float direct,radius,mid,regionalGround;out vec4 frag;
+precision highp float;in vec2 uv;uniform vec2 lens,landOrigin;uniform vec3 right,up,forward,eye,nearLand,farLand;uniform bool surveyed;uniform float direct,radius,mid,regionalGround,regionalAir;out vec4 frag;
+${surfaceNoise}
 void main(){
  vec3 ray=normalize(forward+right*uv.x/lens.x+up*uv.y/lens.y);float y=ray.y,h=max(.05,eye.y);
  float root=sqrt(y*y+2.*h/radius),distanceM=y<0.?2.*h/(root-y):radius*(root+y);
@@ -360,9 +470,28 @@ void main(){
  vec3 horizon=mix(vec3(.075,.093,.11),vec3(.46,.56,.59),direct);
  vec3 air=mix(vec3(.035,.045,.075),vec3(.27,.47,.62),direct);
  float haze=(1.-exp(-distanceM/42000.))*(1.-smoothstep(.035,.5,-y));
+ if(surveyed){
+   // Use the fixed district chart. Switching to the next station must not
+   // restart a sweep of grassland or move a swale across the flight path.
+   vec2 land=km+landOrigin-vec2(0.,mid*.001);
+   float footprint=max(length(dFdx(land)),length(dFdy(land)));
+   vec2 bend=vec2(noise2(land*.044),noise2(land*.044+32.));
+   float drainage=noise2(land*vec2(.082,.19)+bend*1.9);
+   float sward=clouds(land*vec2(.36,.13)+bend*3.7);
+   float cover=1.-smoothstep(.27,2.4,footprint);
+   float low=1.-smoothstep(.045,.19,abs(drainage-.50));
+   float dry=smoothstep(.53,.79,sward);
+   float edge=smoothstep(-5.8,5.8,km.y-mid*.001+(bend.y-.5)*3.);
+   soil=mix(nearLand,farLand,edge);
+   soil=mix(soil,vec3(.26,.29,.175),(.18+.44*dry)*cover);
+   soil=mix(soil,vec3(.105,.19,.14),low*.34*cover);
+   ground=soil*(.72+.34*(mix(.5,sward,cover)))*(.44+.56*direct);
+   // Clear air still scatters over tens of kilometres of shallow sightline.
+   haze=max(haze,.43*(1.-exp(-distanceM/34000.)));
+ }
  vec3 color=mix(mix(ground,horizon,haze),air,smoothstep(0.,.65,y));
- // Only downward rays in the regional image replace the distant ground. Keep the real cavity sky above them.
- float alpha=regionalGround<0.?1.:regionalGround*(1.-smoothstep(-.32,-.03,y));
+ // Distant sightlines share the station's clear air below the approach band.
+ float alpha=regionalGround<0.?1.:mix(regionalGround,regionalAir,smoothstep(-.32,-.03,y));
  frag=vec4(color*alpha,alpha);
 }`;
 export function makeView(canvas,{capture=true,district=null,shared=false,composite=false,land=null}={}) {
@@ -380,8 +509,8 @@ export function makeView(canvas,{capture=true,district=null,shared=false,composi
   }
   const program=link(vertex,fragment),sky=shared?null:link(skyVertex,skyFragment);
   const locations=(p,names)=>Object.fromEntries(names.map(n=>[n,gl.getUniformLocation(p,n)]));
-  const loc=locations(program,['eye','right','up','forward','offset','focal','clip','mask','direct','workLight','hall','structure']);
-  const skyLoc=sky&&locations(sky,['lens','right','up','forward','eye','direct','radius','mid','nearLand','farLand','regionalGround']);
+  const loc=locations(program,['eye','right','up','forward','offset','focal','clip','mask','direct','workLight','hall','structure','yard','loadFootprint']);
+  const skyLoc=sky&&locations(sky,['lens','right','up','forward','eye','direct','radius','mid','nearLand','farLand','regionalGround','regionalAir','surveyed','landOrigin']);
   const vao=gl.createVertexArray();
   const attrs=['cornerA','cornerB','cornerC','cornerD','normal','tint'].map(n=>gl.getAttribLocation(program,n));
   const hallBuffer=gl.createBuffer(),cargoBuffer=gl.createBuffer();
@@ -416,12 +545,15 @@ export function makeView(canvas,{capture=true,district=null,shared=false,composi
       const right=camera?.right??[hand*co,0,-hand*si],up=camera?.up??[-si*sp,cp,-co*sp],forward=camera?.forward??[si*cp,sp,co*cp];
       if(!shared){
         gl.clearColor(0,0,0,composite?0:1);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
-        if(!idPass && camera?.groundWeight!==0){
+        if(!idPass && (camera?.groundWeight!==0 || camera?.airWeight>0)){
           gl.disable(gl.DEPTH_TEST);gl.useProgram(sky);gl.bindVertexArray(null);
           gl.uniform2f(skyLoc.lens,focal*h/w,focal);gl.uniform3fv(skyLoc.right,right);gl.uniform3fv(skyLoc.up,up);gl.uniform3fv(skyLoc.forward,forward);
           gl.uniform3fv(skyLoc.nearLand,land?.[0]??[.19,.33,.15]);gl.uniform3fv(skyLoc.farLand,land?.[1]??[.26,.29,.25]);
           gl.uniform1f(skyLoc.radius,district?.origin.radiusM??149597870700);gl.uniform1f(skyLoc.mid,s.widthM/2);
+          gl.uniform1i(skyLoc.surveyed,!!district);
+          gl.uniform2f(skyLoc.landOrigin,s.address.chainageM*.001,0);
           gl.uniform1f(skyLoc.regionalGround,camera?.groundWeight??-1);
+          gl.uniform1f(skyLoc.regionalAir,camera?.airWeight??0);
           gl.uniform3fv(skyLoc.eye,eye);gl.uniform1f(skyLoc.direct,direct);gl.drawArrays(gl.TRIANGLES,0,3);
         }
       }
@@ -430,12 +562,14 @@ export function makeView(canvas,{capture=true,district=null,shared=false,composi
       const near=shared ? .05 : Math.max(.25,(eye[1]-s.roofM)*.015);
       gl.uniform2f(loc.clip,shared?1.00000002:1+2*near/2000000,2*near);
       gl.uniform3f(loc.hall,s.widthM,s.roofM,s.routes[0].nearDoor[0]);gl.uniform3fv(loc.eye,eye);gl.uniform3fv(loc.right,right);gl.uniform3fv(loc.up,up);
+      gl.uniform1i(loc.yard,district?1:0);
       gl.uniform3fv(loc.forward,forward);gl.uniform2f(loc.focal,focal*h/w,focal);
+      const car=freightAt(s,time);
+      const nearest=car.x+Math.round((eye[0]-car.x)/car.spacingM)*car.spacingM;
+      gl.uniform3f(loc.loadFootprint,nearest,car.lengthM/2,car.widthM/2);
       const inside=Math.min(1,Math.max(0,(s.roofM-eye[1])/12))*Math.min(1,Math.max(0,Math.min(eye[2]+15,s.widthM+15-eye[2])/30));
       gl.uniform1f(loc.workLight,.48+.50*inside);bind(hallBuffer);gl.uniform1f(loc.direct,direct);gl.uniform1i(loc.mask,idPass?1:0);gl.uniform1i(loc.structure,1);gl.uniform3f(loc.offset,0,0,0);gl.drawArraysInstanced(gl.TRIANGLES,0,6,fixed);
-      const car=freightAt(s,time);
       bind(cargoBuffer);gl.uniform1i(loc.structure,0);gl.uniform1i(loc.mask,idPass?2:0);
-      const nearest=car.x+Math.round((eye[0]-car.x)/car.spacingM)*car.spacingM;
       // Draw nearby periodic neighbors too. Changing the nearest index leaves the visible scene continuous.
       for(const shift of [-car.spacingM,0,car.spacingM]){
         gl.uniform3f(loc.offset,nearest+shift,0,car.z);gl.drawArraysInstanced(gl.TRIANGLES,0,6,freight);

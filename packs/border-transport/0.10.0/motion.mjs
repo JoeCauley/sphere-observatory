@@ -2,6 +2,7 @@ import {classes,freightAt,fits,releaseIn} from './station.mjs';
 import {hallHalfM,linkHalfM,outsideDistrict,roofSlabM,facadeRib} from './district.mjs';
 import {ribSpacing,ribs} from '../../kit/outfall-wall.mjs';
 import {galleryBoxes,galleryTubes} from '../../kit/outfall-gallery.mjs';
+import {inFreightOpening,freightObstruction} from './freight-bay.mjs';
 
 const gallerySolids=galleryBoxes.filter(p=>p[8]).map(([x,y,z,w,h,d])=>[x-w/2,x+w/2,y-h/2,y+h/2,z-d/2,z+d/2]);
 for(const [[x,y,start],[,,end],r] of galleryTubes)gallerySolids.push([x-r,x+r,y-r,y+r,start,end]);
@@ -34,7 +35,12 @@ function allowed(s,d,p,next,group,time){
   const cx=s.address.chainageM,half=s.widthM/2;
   const x=next.eastM-cx,z=next.northM+half,ox=p.eastM-cx,oz=p.northM+half;
   const foot=next.altitudeM-group.eye,head=foot+group.body[1],hw=group.body[0]/2,hl=group.body[2]/2;
+  if(freightObstruction(s,p,next,group))return false;
   if(foot>=s.roofM+roofSlabM-.01)return true;
+  if(head>0 && intersects(Math.abs(oz-half),Math.abs(z-half),linkHalfM-hl,half+hl)){
+    for(const wall of [-hallHalfM,hallHalfM])
+      if(intersects(ox,x,wall-1-hw,wall+1+hw))return false;
+  }
   if(Math.abs(x)<=hallHalfM+hw){
     for(const wall of [0,s.widthM]){
       const face=wall===0?-1:1;
@@ -63,10 +69,12 @@ function allowed(s,d,p,next,group,time){
   if(Math.abs(x)>hallHalfM && next.eastM>d.sites[0].x && next.eastM<d.sites.at(-1).x){
     for(const side of [-1,1])if(intersects(p.northM,next.northM,side*linkHalfM-hl-1,side*linkHalfM+hl+1))return false;
   }
-  if(outsideDistrict(d,next.eastM,next.northM)<=0 && head>s.roofM && foot<s.roofM+roofSlabM-.01)return false;
+  if(outsideDistrict(d,next.eastM,next.northM)<=0 && !inFreightOpening(x,next.northM,hw,hl) &&
+     head>s.roofM && foot<s.roofM+roofSlabM-.01)return false;
   if(foot< s.roofM && Math.abs(x)<hallHalfM){
     const rib=Math.round(x/800)*800;
-    if(!s.routes.some(r=>Math.abs(r.nearDoor[0]-rib)<r.deckWidthM/2+50) && Math.abs(x-rib)<18+hw &&
+    if(!inFreightOpening(rib,Math.sign(next.northM)*(s.laneHalfM+420)) &&
+      !s.routes.some(r=>Math.abs(r.nearDoor[0]-rib)<r.deckWidthM/2+50) && Math.abs(x-rib)<18+hw &&
       Math.abs(Math.abs(next.northM)-(s.laneHalfM+420))<18+hl)return false;
     for(const r of s.routes.slice(0,2)){
       const k=r.id==='service'?1:3,edge=Math.abs(x-r.nearDoor[0]),near=Math.min(z,s.widthM-z);
@@ -92,14 +100,17 @@ export function move(s,d,pose,group,dx,dz,dy,time,rate=1){
     group={...group,body:[w*along+l*across,h,l*along+w*across]};
   }
   const roof=s.roofM+roofSlabM+group.eye;
-  if(pose.mode==='flight' && Math.min(pose.altitudeM,pose.altitudeM+dy)>roof)
-    return {pose:{...pose,eastM:pose.eastM+dx,northM:pose.northM+dz,altitudeM:pose.altitudeM+dy},blocked:''};
+  if(pose.mode==='flight' && Math.min(pose.altitudeM,pose.altitudeM+dy)>roof){
+    const end={...pose,eastM:pose.eastM+dx,northM:pose.northM+dz,altitudeM:pose.altitudeM+dy};
+    if(!freightObstruction(s,pose,end,group))return {pose:end,blocked:''};
+  }
   const steps=Math.max(1,Math.ceil(Math.max(Math.abs(dx),Math.abs(dz),Math.abs(dy))/12));
   let p=pose,blocked='';
   for(let i=0;i<steps;i++){
     const next={...p,eastM:p.eastM+dx/steps,northM:p.northM+dz/steps,altitudeM:p.altitudeM+dy/steps};
     const x=next.eastM-s.address.chainageM,z=next.northM+s.widthM/2,foot=p.altitudeM-group.eye;
-    const interior=outsideDistrict(d,next.eastM,next.northM)<=0,top=s.roofM+roofSlabM;
+    const interior=outsideDistrict(d,next.eastM,next.northM)<=0 &&
+      !inFreightOpening(x,next.northM,group.body[0]/2,group.body[2]/2),top=s.roofM+roofSlabM;
     const ground=support(s,x,z,foot,group,1+Math.hypot(dx,dz)/steps*.055);
     if(p.mode==='walk'){
       if(foot>=top-.1){if(!interior)next.mode='flight';else next.altitudeM=top+group.eye;}
