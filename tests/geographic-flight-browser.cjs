@@ -10,6 +10,16 @@ async function main() {
   try {
     const context = await browser.newContext({ viewport: { width: 1040, height: 680 } });
     await host.attach(context);
+    await context.addInitScript(() => {
+      // Held movement resumes on this event. A later driver poll can see a pilot
+      // who has already flown several metres beyond the transferred camera.
+      window.addEventListener('keydown', event => {
+        const entry = window.frameElement?.surfaceEntry;
+        if (!entry?.geographic || !entry.active || !window.SphereBiome || window.firstGeographicInput) return;
+        if (event.code !== 'KeyW' && event.code !== 'KeyQ') return;
+        window.firstGeographicInput = { key: event.code, pose: window.SphereBiome.pose(), entered: { ...entry.pose } };
+      }, true);
+    });
     page = await context.newPage();
     page.setDefaultTimeout(240000);
     page.on('pageerror', e => { errors.push(e.message); console.error(e.message); });
@@ -77,10 +87,12 @@ async function main() {
         await page.waitForFunction(id => {
           const stage=SphereStageFrame;
           if(stage.lastArrival?.status==='failed'||document.querySelector('#stageRecovery')) throw Error(document.getElementById('biomeLibraryStatus').textContent);
-          return stage.lastArrival?.route==='geographic' && stage.current?.id===id && document.querySelector('#stageFrame iframe')?.surfaceEntry?.active;
+          return stage.lastArrival?.route==='geographic' && stage.current?.id===id && document.querySelector('#stageFrame iframe')?.contentWindow?.firstGeographicInput;
         },id,{polling:100,timeout:90000});
       } finally { await page.keyboard.up(key); }
-      const {pose,entered} = await page.evaluate(() => {const f=document.querySelector('#stageFrame iframe');return {pose:f.contentWindow.SphereBiome.pose(),entered:f.surfaceEntry.pose};});
+      const first = await page.evaluate(() => document.querySelector('#stageFrame iframe').contentWindow.firstGeographicInput);
+      const {pose,entered} = first;
+      assert.equal(first.key,key,id+' resumed the held flight control');
       const slip = Math.hypot(initial.expected.eastM-pose.eastM,initial.expected.northM-pose.northM);
       assert(slip < 950, id+' lateral position differed by '+slip+' m');
       assert(Math.abs(entered.altitudeM-initial.expected.altitudeM)<950,id+' Main approach altitude '+entered.altitudeM);
