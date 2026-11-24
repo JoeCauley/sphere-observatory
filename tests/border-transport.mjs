@@ -2,6 +2,8 @@ import assert from 'node:assert/strict';
 import {addressOf,classes,generateStation} from '../packs/border-transport/0.10.0/station.mjs';
 import {districtFor} from '../packs/border-transport/0.10.0/survey.mjs';
 import {districtPoint,districtLocation,outsideDistrict,hallHalfM,linkHalfM,nearestSite,rightSign} from '../packs/border-transport/0.10.0/district.mjs';
+import {borderEnvironment} from '../packs/border-transport/0.10.0/environment.mjs';
+import {roofSlabM} from '../packs/border-transport/0.10.0/district.mjs';
 import {boardingPose,move} from '../packs/border-transport/0.10.0/motion.mjs';
 import {bayStart,portals,quayZ} from '../packs/border-transport/0.10.0/freight-bay.mjs';
 const world='sphere-0000000000000017',radius=149597870700;
@@ -27,6 +29,18 @@ for(const edge of [['r10c0','r11c0'],['r12c0','r12c1'],['r12c0','r12c'+(globalTh
       assert.equal(visited.size,d.sites.length);longitudinal++;
     }
     for(const site of d.sites){
+      const hall=generateStation(site.address);
+      const zone=(x,z,y)=>borderEnvironment(d,hall,{eastM:site.x+x,northM:z,altitudeM:y});
+      for(const side of [-1,1]){
+        const plot=site.address.plots[side<0?0:1];
+        assert.deepEqual(zone(0,side*(hall.widthM/2+1),1.7),{zone:'biome',air:plot,blind:plot});
+        assert.equal(zone(0,side*(hall.widthM/2-1),1.7).air,'station');
+      }
+      assert.equal(zone(0,0,hall.roofM+roofSlabM).air,'vacuum');
+      assert.equal(zone(bayStart+1,0,1.7).zone,'freight well');
+      assert.equal(zone(bayStart,0,1.7).zone,'interior');
+      assert.equal(zone(hallHalfM+1,linkHalfM+1,1.7).zone,'biome');
+      if(site===d.sites.at(-1))assert.equal(zone(hallHalfM+1,0,1.7).zone,'biome');
       const s=generateStation(site.address);layouts.add(s.layout);
       assert.equal(s.widthM,site.widthM);assert.equal(s.address.radiusM,r);
       for(const c of classes)for(const far of [false,true]){

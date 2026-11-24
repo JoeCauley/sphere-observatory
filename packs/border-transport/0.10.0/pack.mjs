@@ -1,3 +1,4 @@
+import {borderEnvironment} from './environment.mjs';
 import {classes} from './station.mjs';
 import {districtFor} from './survey.mjs';
 import {nearestSite,outsideDistrict,hallHalfM,roofSlabM,rightSign} from './district.mjs';
@@ -13,7 +14,7 @@ const district=library?.entry(id)?.transport??districtFor('sphere-00000000000000
 const hand=rightSign(district);
 const storage=library?.saveStorage(world)??localStorage,fileBacked=library?.persistence==='file';
 const qs=new URLSearchParams(location.search),arrival=qs.get('arrival')==='air';
-const view=makeView(canvas,{capture:false,district,land:host?.SphereStageFrame?.stationLand?.(district)}),keys=new Set(),events=new AbortController();
+const view=makeView(canvas,{capture:false,cavityBackdrop:!!host,district,land:host?.SphereStageFrame?.stationLand?.(district)}),keys=new Set(),events=new AbortController();
 const signal=events.signal,previews=new Map();
 let station,record,site,group=classes[0],pose,manual,frames=0,raf=0,last=0,time=0,lastWorldTime=null,rate=1;
 let saved=null,script=null,held=arrival&&qs.get('hold')==='1',dead=false,writing=false,arrivalDone,firstDraw;
@@ -170,7 +171,9 @@ function renderHUD(now){
   const state=issue?'Atlas unavailable · '+issue:writing?'Recording or loading station':message|| (record.locked?'Atlas recorded':'Survey preview');
   const distanceKm=Math.abs(pose.eastM-site.x)/1000;
   const onLink=distanceKm*1000>hallHalfM && outsideDistrict(district,pose.eastM,pose.northM)<=0;
-  const label=onLink?'Border maintenance wall · '+(pose.eastM/1000).toFixed(1)+' km along edge · nearest station '+distanceKm.toFixed(1)+' km':station.layout+' · bay '+site.bay+' · '+group.name+' · '+pose.altitudeM.toFixed(1)+' m · '+state;
+  const environment=borderEnvironment(district,station,pose);
+  const location=onLink?'Border maintenance wall · '+(pose.eastM/1000).toFixed(1)+' km along edge · nearest station '+distanceKm.toFixed(1)+' km':station.layout+' · bay '+site.bay+' · '+group.name+' · '+pose.altitudeM.toFixed(1)+' m · '+state;
+  const label=location+' · '+environment.zone+' · '+environment.air;
   if(label!==previousText){text(el('readout'),label);previousText=label;}
   el('class').disabled=held||!!script||!apron()||writing;el('class').value=group.id;
   text(el('mode'),pose.mode==='walk'?'Fly':'Walk');el('retry').hidden=!issue;
@@ -200,14 +203,16 @@ function frame(now){
     direct=host?.SphereStageFrame?.surfaceLight(window,pose)?.direct??1;lightAt=now;
   }
   // The two layers sample this exact simulation tick even when Main is preparing terrain.
-  if(pose.mode==='flight' && pose.altitudeM>=nearM)host?.SphereStageFrame?.presentStation?.(window);
+  const environment=borderEnvironment(district,station,pose);
+  const exposed=!!host && environment.air==='vacuum' && pose.altitudeM<nearM;
+  if(exposed || (pose.mode==='flight' && pose.altitudeM>=nearM))host?.SphereStageFrame?.presentStation?.(window);
   const width=canvas.clientWidth,height=canvas.clientHeight;
   const visible=draws<2 || !frameElement || frameElement.style.opacity!=='0';
   if(visible && (!paint || paint.pose!==pose || paint.time!==time || paint.direct!==direct || paint.station!==station ||
       paint.width!==width || paint.height!==height || script || draws<2)){
     // Preserve Main's horizontal lens through a hand-flown geographic entry, including resizes.
     const camera=entry?.horizontalFov && height>0 ? {focal:width/height/Math.tan(entry.horizontalFov*Math.PI/360)} : null;
-    view.draw(station,[pose.eastM-site.x,pose.altitudeM,pose.northM+station.widthM/2],pose.yaw,pose.pitch,time,false,direct,camera);
+    view.draw(station,[pose.eastM-site.x,pose.altitudeM,pose.northM+station.widthM/2],pose.yaw,pose.pitch,time,false,direct,exposed?{...camera,groundWeight:1,airWeight:0,vacuum:true}:camera);
     draws++;paint={pose,time,direct,station,width,height};
   }
   renderHUD(now);frames++;if(frames===1)firstDraw();raf=requestAnimationFrame(frame);
@@ -235,6 +240,7 @@ el('retry').onclick=()=>{issue='';hudDirty=true;if(lockedPending)void lock(locke
 function dispose(){if(dead)return;save();dead=true;cancelAnimationFrame(raf);if(script)settle('taken-over');events.abort();view.dispose();}
 addEventListener('pagehide',dispose,{once:true,signal});
 window.SphereBiome={id,version,contract:'sphere-biome/1',ready,arrived,begin,ascend,save,dispose,pose:()=>({...pose}),air:()=>({haze:[],blind:null}),
+  environment:()=>pose && station?borderEnvironment(district,station,pose):null,
   inspect:()=>({frames,draws,veil:0,scripted:!!script,held,station:station?.address.key,layout:station?.layout,locked:record?.locked??false,
     group:group.id,time,uploads:view.uploads,blocked:message,error:issue})};
 async function start(){

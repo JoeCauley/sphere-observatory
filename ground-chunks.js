@@ -107,7 +107,8 @@ function build(s,cx,cz,cells=FINE,centre=[cx,cz],identity=null){const f=frame(s)
   const corners=[[loX,0,loZ],[loX+spanX,0,loZ],[loX,0,loZ+spanZ],[loX+spanX,0,loZ+spanZ]].map(p=>M.mul(M.norm(f.world(p)),s.radius)),pitch=.128,min=[0,1,2].map(i=>Math.floor(Math.min(...corners.map(p=>p[i]))/pitch)-1),max=[0,1,2].map(i=>Math.floor(Math.max(...corners.map(p=>p[i]))/pitch)+1),floor=S.packBVH(floorTriangles);
   const forest=root.SphereVioletForest;
   const centerQ=M.norm(f.world([loX+spanX*.5,0,loZ+spanZ*.5]));
-  const violet=forest&&(G?.query(centerQ,{state:s,representation:'walking'}).biome??W.sample(centerQ,s).biome)===9;
+  const centerBiome=G?.query(centerQ,{state:s,representation:'walking'}).biome??W.sample(centerQ,s).biome;
+  const violet=forest&&centerBiome===9;
   const grove=violet?forest.referenceGrove(s):null;
   const nearGrove=grove && M.length(M.sub(centerQ,grove.anchor))*s.radius<3.5;
   const inReference=q=>{
@@ -129,7 +130,7 @@ function build(s,cx,cz,cells=FINE,centre=[cx,cz],identity=null){const f=frame(s)
   if(nearGrove)for(const spire of grove.spires)plant(spire.q,spire);
   for(let iz=min[2];iz<=max[2];iz++)for(let iy=min[1];iy<=max[1];iy++)for(let ix=min[0];ix<=max[0];ix++){
    const density=S.noise(ix,iy,s.seed+iz);
-   if(!violet && density>.28)continue;
+   if(!violet && centerBiome!==1 && density>.28)continue;
    const world=[(ix+.5)*pitch,(iy+.5)*pitch,(iz+.5)*pitch];if(Math.abs(M.length(world)-s.radius)>.055)continue;
    const q=M.norm(world),local=f.local(M.mul(q,s.radius)),x=local[0],z=local[2],province=root.SphereWatershed?.sample(q,s);if(x<loX||x>=loX+spanX||z<loZ||z>=loZ+spanZ||protectedProvinceAt(q,s)||province?.water?.river||province?.water?.basin||province?.route||C.missing(q,s))continue;
    if(survey&&apronOffset(survey,q,s)<=survey.rules.apronBlendM)continue;
@@ -144,12 +145,37 @@ function build(s,cx,cz,cells=FINE,centre=[cx,cz],identity=null){const f=frame(s)
        height:.021+.091*S.noise(iy,iz,s.seed+ix+97),rotation:density*Math.PI,variation:.7+.5*variation});
      continue;
    }
-   if(density>.28)continue;
-   const r=.0025,h=.003+S.noise(ix,iz,s.seed+iy)*.004,hit={},distance=S.rayBVH([x,10,z],[0,-1,0],floor,Infinity,hit);if(!hit.normal)continue;
+   if(density>(id===1 ? .64 : .28))continue;
+   const variation=S.noise(ix,iz,s.seed+iy),jungle=id===1;
+   const r=jungle ? .013+.012*variation : .0025,h=jungle ? .025+.031*density : .003+variation*.004,hit={},distance=S.rayBVH([x,10,z],[0,-1,0],floor,Infinity,hit);if(!hit.normal)continue;
    if(clip&&[[x-r,0,z-r],[x+r,0,z-r],[x-r,0,z+r],[x+r,0,z+r]].some(p=>clip.margin(p)<0))continue;
    props.push([s.seed,ix,iy,iz].join(':'));
    // Object axes belong to its geographic point, not to the current chart.
    const axes=S.shellFrame(q).map(axis=>f.basis.map(b=>M.dot(axis,b))),base=[x,10-distance,z],vertex=(angle,radius,y)=>M.add(base,M.add(M.mul(axes[1],y),M.add(M.mul(axes[0],Math.cos(angle)*radius),M.mul(axes[2],Math.sin(angle)*radius))));
+   if(jungle){
+    // Interlocking, offset crowns leave irregular windows of sky between trees.
+    const phase=variation*6.283, fractions=[.59,.74,.90];
+    for(let k=0;k<3;k++){
+     const bearing=phase+k*2.40,reach=k===2 ? r*.13 : r*(.60+.14*k);
+     const center=vertex(bearing,reach,h*fractions[k]);
+     const crownRadius=r*(.62+.32*S.noise(ix+k,iz,s.seed+iy+49));
+     const point=(angle,spread,rise)=>M.add(center,M.sub(vertex(angle,crownRadius*spread,rise),base));
+     const tint=.72+.38*S.noise(iy+k,ix,s.seed+iz);
+     const leaf=[.057*tint,.18*tint,.064*tint];
+     for(let side=0;side<5;side++){
+      const a=bearing+side*2*Math.PI/5,b=a+2*Math.PI/5;
+      const rim=angle=>point(angle,1+.13*Math.cos(3*angle+phase),h*.046*Math.sin(2*angle));
+      mesh.tri(point(0,0,-h*.12),rim(a),rim(b),leaf);
+      mesh.tri(rim(b),rim(a),point(0,.19,h*.16),leaf);
+     }
+    }
+    for(let side=0;side<5;side++){
+     const a=phase+side*2*Math.PI/5,b=a+2*Math.PI/5;
+     mesh.quad(vertex(a,r*.13,0),vertex(b,r*.13,0),vertex(b,r*.065,h*.92),vertex(a,r*.065,h*.92),[.12,.08,.046]);
+     mesh.tri(vertex(a,r*.11,h*.24),vertex(a+.28,r*.36,0),vertex(b,r*.12,0),[.14,.098,.055]);
+    }
+    continue;
+   }
    for(let side=0;side<5;side++){const a=side*2*Math.PI/5,b=(side+1)*2*Math.PI/5;mesh.quad(vertex(a,r,0),vertex(b,r,0),vertex(b,r*.25,h),vertex(a,r*.25,h),W.palette[id]);}
   }
  }

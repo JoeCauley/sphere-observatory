@@ -86,6 +86,18 @@ class Atmosphere{
   f('weatherTime',s.time);gl.uniform1i(u.precipitation,['precipitation','storm'].includes(s.placeWeather)?1:0);gl.uniform1i(u.storm,s.placeWeather==='storm'?1:0);
   v('phase',s.position.map((v,i)=>((v/p.scale+s.time*(i===0?.002:i===2?.0007:0)/p.scale)%32+32)%32));gl.uniform1i(u.panorama,s.projection==='panorama'?1:0);gl.uniform1i(u.clouds,s.clouds?1:0);gl.uniform1i(u.spores,id===8?1:0);gl.drawArrays(gl.TRIANGLES,0,3);
   gl.bindFramebuffer(gl.FRAMEBUFFER,this.fbo);gl.viewport(0,0,width,height);gl.useProgram(this.composite.p);const c=this.composite.u;
+  // At eye level the projected sky obscures the far shell. Local weather remains in front.
+  const zone=renderer.renderInfo.borderEnvironment;
+  const blind=s.walkMode && s.projection==='perspective' && air && !rim && !SphereCollection.missing(n,s) && (!zone || zone.zone==='biome');
+  gl.uniform1f(c.blindRange,blind?Math.log2(1+4*s.radius):0);
+  if(blind){
+   const inward=M.mul(n,-1),lens=Math.tan(M.radians(s.fov)*.5);
+   gl.uniform3fv(c.blindAxis,[b.f,b.r,b.u].map(axis=>M.dot(axis,inward)));
+   gl.uniform2f(c.blindLens,lens,lens*renderer.renderInfo.height/renderer.renderInfo.width);
+   const sun=Math.min(1,Math.max(0,renderer.atmosphereCache.value??1)),level=.24+.76*sun;
+   gl.uniform3fv(c.blindHorizon,[.50,.65,.68].map(x=>x*level));
+   gl.uniform3fv(c.blindZenith,[.19,.42,.66].map(x=>x*level));
+  }
   for(const [unit,texture,name] of [[1,renderer.lightTexture,'source'],[6,renderer.depthTexture,'sceneDepth'],[11,this.volumeLight,'volumeLight'],[12,this.volumeTrans,'volumeTrans']]){gl.activeTexture(gl.TEXTURE0+unit);gl.bindTexture(gl.TEXTURE_2D,texture);gl.uniform1i(c[name],unit);}gl.uniform2f(c.volumeSize,vw,vh);gl.drawArrays(gl.TRIANGLES,0,3);gl.activeTexture(gl.TEXTURE0);
   renderer.renderInfo.weather=air?(local?p.name:'Layered distant weather'):'Cavity dust';renderer.renderInfo.volume={steps,width:vw,height:vh,depthAware:true,cavityHaze:s.cavityHaze??.28,weatherLayers:air?3:0};return this.texture;
  }
