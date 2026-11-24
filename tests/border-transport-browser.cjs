@@ -71,10 +71,7 @@ async function main(){
     finally{await page.keyboard.up('KeyS');}
     const exit=await page.evaluate(()=>({owner:SphereStageFrame.current?.id??'Main',onFoot:document.querySelector('#stageFrame iframe')?.contentWindow?.SphereBiome?.pose().mode==='walk'||SphereApp.getState().walkMode}));
     assert(exit.onFoot);
-    if(exit.owner==='Main')await page.waitForFunction(key=>{
-      const roof=document.querySelector('#viewport canvas[data-station]');
-      return roof?.dataset.station===key&&!roof.hidden&&+roof.style.opacity>.99;
-    },addr.key);
+    if(exit.owner==='Main')await page.waitForFunction(key=>SphereApp.renderer.renderInfo.walkingStation===key,addr.key);
     // We backed out facing the door. Walk forward from the adjoining renderer.
     const trace=()=>page.evaluate(async()=>{
       const s=SphereApp.getState(),g=await import('./geographic-flight.js'),item=SphereBiomeLibrary.entry('border-transport');

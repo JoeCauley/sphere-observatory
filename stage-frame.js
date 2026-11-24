@@ -372,11 +372,11 @@
   // Only the narrow overlap needs both levels of detail. A held camera reuses its pixels.
   let surveyView=null,surveyLoad=null,surveyRetry=0;
   function hideSurvey(){
-    if(surveyView)surveyView.canvas.hidden=true;
+    if(surveyView){surveyView.canvas.hidden=true;surveyView.nativeState=null;}
   }
   function retireSurvey(){
     surveyLoad=null;surveyRetry=0;
-    if(surveyView){surveyView.view.dispose();surveyView.canvas.remove();surveyView=null;}
+    if(surveyView){surveyView.nativeView?.dispose();surveyView.view.dispose();surveyView.canvas.remove();surveyView=null;}
   }
   function stationLand(district){
     const lib=library(),plots=district.origin.plots;
@@ -403,7 +403,7 @@
       view().after(canvas);
       try{
         const renderer=makeView(canvas,{capture:false,composite:true,district,land:stationLand(district)});
-        renderer.load(station);surveyView={canvas,view:renderer,station,key,districtKey:district.origin.key,
+        renderer.load(station);surveyView={canvas,view:renderer,makeView,station,key,districtKey:district.origin.key,
           nearM:airOf(sceneOf(item)).nearM,stamp:-Infinity};
       }catch(error){canvas.remove();throw error;}
     }).catch(error=>{
@@ -443,6 +443,14 @@
     const airWeight=optics.layerWeight(v.nearM*.6,v.nearM,p.altitudeM)
       *optics.layerWeight(0,geography.apronRunM,edge)
       *(1-optics.layerWeight(site.roofM,site.roofM+geography.roofSlabM,p.altitudeM));
+    if(s.walkMode && !current && weight===1){
+      hideSurvey();
+      v.nativeState=s;
+      v.nativeView??=v.makeView(window.SphereApp.renderer.canvas,{shared:true,mainDepth:true,district:d});
+      v.nativeView.load(v.station);
+      return false;
+    }
+    v.nativeState=null;
     v.canvas.hidden=false;v.canvas.style.opacity=String(weight);
     const time=window.SphereApp.sceneSeconds;
     const key=[...s.position,...s.up,...s.forward,s.fov,s.routeShades,s.time,time,w,h,groundWeight].join('/');
@@ -1556,8 +1564,23 @@
     const height=altitudeOf(s);
     if(!geography || current || height<0 || height>Math.min(s.radius*.4,4000000) || !library()?.world)return '';
     const item=geography.footprint(s,library(),SphereAtlas,SphereWorld);
-    return item?' · '+item.name+' below · '+(height>geography.enterKm?'descend below '+geography.enterKm+' km to enter':'fly into its landscape'):'';
-  }, regionalFrame, presentStation(source){
+    let name=item?.name;
+    if(item?.transport){
+      const p=geography.packPose(s,item,SphereAtlas,SphereWorld);
+      const site=geography.nearestSite(item.transport,p.eastM);
+      if(Math.abs(p.eastM-site.x)>geography.hallHalfM)name='Border maintenance wall';
+    }
+    return item?' · '+name+' below · '+(height>geography.enterKm?'descend below '+geography.enterKm+' km to enter':'fly into its landscape'):'';
+  }, regionalFrame, drawWalkingStation(s,width,height,linear){
+    const v=surveyView;
+    if(v?.nativeState!==s || !s.walkMode || s.projection!=='perspective')return null;
+    const item=library().entry('border-transport'),p=geography.packPose(s,item,SphereAtlas,SphereWorld);
+    const axes=geography.stationBasis(s,item.transport,p,SphereWorld);
+    const direct=s.routeShades?SphereCollection.visibility(s.position,s,64):1;
+    v.nativeView.draw(v.station,[p.eastM-v.station.address.chainageM,p.altitudeM,p.northM+v.station.widthM/2],p.yaw,p.pitch,window.SphereApp.sceneSeconds,false,direct,
+      {...axes,width,height,radiusKm:s.radius,linear,focal:width/height/Math.tan(s.fov*Math.PI/360)});
+    return v.key;
+  }, presentStation(source){
     if(current?.regional && current.frame.contentWindow===source)regionalFrame(performance.now());
   }, stationLand, transportAddress, stationExterior, surfaceAddress, surfaceLight, surfaceBackdrop, servicePassage, canCrossSurface, crossSurface, walkGround, leavePassage,
     savePassage(source,pose){const passage=current?.frame.surfaceEntry?.passage;

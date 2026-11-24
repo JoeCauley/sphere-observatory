@@ -2,6 +2,7 @@
 'use strict';
 const assert = require('node:assert/strict');
 const {chromium} = require('playwright');
+const path = require('node:path'), fs = require('node:fs');
 const {session, executable} = require('./support/biome-browser.cjs');
 
 async function screenDeltas(page, samples) {
@@ -123,6 +124,10 @@ async function main() {
       await page.keyboard.up('KeyW');
       await page.keyboard.up('ShiftLeft');
     }
+    if(process.env.SPHERE_BORDER_OUTPUT){
+      fs.mkdirSync(process.env.SPHERE_BORDER_OUTPUT,{recursive:true});
+      await page.locator('#viewport').screenshot({path:path.join(process.env.SPHERE_BORDER_OUTPUT,'legacy-apron.png')});
+    }
     const walked = await page.evaluate(() => window.apronReading());
     assert(walked.walking && !walked.owner && walked.world === landed.world);
     assert(Math.abs(walked.clearance - 1.72) < .03, 'The walker lost the support of the native mesh');
@@ -131,6 +136,7 @@ async function main() {
     await page.waitForFunction(() => !SphereLoading.active && !SphereStageFrame.current &&
       document.querySelector('#viewport canvas[data-station]:not([hidden])'));
     await page.waitForTimeout(400);
+    if(process.env.SPHERE_BORDER_OUTPUT)await page.locator('#viewport').screenshot({path:path.join(process.env.SPHERE_BORDER_OUTPUT,'aerial-roof.png')});
     const before = await page.screenshot({clip});
     await page.locator('#viewport').focus();
     await page.keyboard.down('KeyQ');

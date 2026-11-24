@@ -168,7 +168,9 @@ function renderHUD(now){
   if(!hudDirty && now-lastHUD<220)return;
   hudDirty=false;lastHUD=now;
   const state=issue?'Atlas unavailable · '+issue:writing?'Recording or loading station':message|| (record.locked?'Atlas recorded':'Survey preview');
-  const label=station.layout+' · bay '+site.bay+' · '+group.name+' · '+pose.altitudeM.toFixed(1)+' m · '+state;
+  const distanceKm=Math.abs(pose.eastM-site.x)/1000;
+  const onLink=distanceKm*1000>hallHalfM && outsideDistrict(district,pose.eastM,pose.northM)<=0;
+  const label=onLink?'Border maintenance wall · '+(pose.eastM/1000).toFixed(1)+' km along edge · nearest station '+distanceKm.toFixed(1)+' km':station.layout+' · bay '+site.bay+' · '+group.name+' · '+pose.altitudeM.toFixed(1)+' m · '+state;
   if(label!==previousText){text(el('readout'),label);previousText=label;}
   el('class').disabled=held||!!script||!apron()||writing;el('class').value=group.id;
   text(el('mode'),pose.mode==='walk'?'Fly':'Walk');el('retry').hidden=!issue;

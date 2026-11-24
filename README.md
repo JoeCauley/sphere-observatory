@@ -1,18 +1,46 @@
 # The Sphere Observatory
 
-Walk the inner surface of a Dyson sphere with a radius of one astronomical unit. Follow a track through windblown grass to a service door in a 1,400-metre wall. Inside, a handwheel still controls the water. Beyond it, a straight tunnel runs 1,000 km to the next landscape.
+Fly inside a Dyson sphere one astronomical unit in radius. From the cavity you can see the inhabited inner surface curve overhead. Descend until the artificial sky takes over, land in the grass, and walk up to a door you could see from kilometres away. The Observatory is a browser-based experiment in making that journey feel like one continuous place.
 
-## 1.8.1 tester preview: the Builder freight quay
+![Infinite Industry seen on approach, with the freight works below](examples/industry-field/approach.jpg)
 
-Fly from 36 km above a clear-day Border station to a loading quay beside a moving 1.8 km load. Follow the middle orange crane through the roof opening and look back up at it from the ground. [Watch four moments from the flight (20 seconds)](examples/border-crossing/freight-quay-preview.mp4).
+## Run it locally
 
-With Node.js 20+ installed, double-click **Launch-Freight-Quay.cmd** on Windows. On other platforms, run `node serve.cjs 8793` in the checkout. Choose [along the freight line](http://127.0.0.1:8793/?freight=along) or [across the freight line](http://127.0.0.1:8793/?freight=across). Hold **W** to about **4.5 km altitude**, release it, and hold **F** to descend through the opening. At ground contact select **Walk**. [Route and controls](docs/Builder-border-crossings.md#fly-the-freight-quay).
+Use Git, Node.js 20 or newer, and a desktop browser with WebGL 2. The demo runs directly from a clone.
 
-**When could you first tell where you were going to land, and could you still recognize that place on foot?** Surface flicker remains under investigation. If you see it, report seed **713**, your bearing, the surface, and the timestamp in your recording.
+```sh
+git clone https://github.com/JoeCauley/sphere-observatory.git
+cd sphere-observatory
+npm start
+```
 
-![The Outfall service entrance at the end of the track through Infinite Meadow](examples/biomes/outfall-approach.jpg)
+Open **[http://127.0.0.1:8766](http://127.0.0.1:8766)**. On Windows, you can also double-click **Launch Observatory.cmd** in the checkout. The first opening prepares graphics. When you choose a destination, a card over the scene names the place and shows which phase is running.
 
-The Atlas places the five optional packs on the same globe as the original habitats. You can cross a region on foot, lift off from the roof of the Outfall, or bank and turn back midway through an atmospheric handoff. [Transition tests and measurements](docs/Transition-audit.md)
+## New in 1.8.3 · A Border between stations
+
+Try **Fly the seed 713 wall approach** in the installed Border Biome row, or open the link below after starting the server. This reproducible trip selects seed 713 and installs Meadow and Border there. It starts in clear air, 36 km above the surface, aimed obliquely along a maintenance trunk. Its intended landing point is 94 km from the central station. The three stations in this district are spaced 200 km apart.
+
+1. Hold **W** in Main. Watch the roof resolve and the HUD identify the maintenance wall as you descend.
+2. Once the Border controls appear, keep flying forward or change your bearing. Use **F** to lower yourself onto the roof, then choose **Walk**. The readout gives your distance along the edge and to the nearest station.
+3. Look along the roof. This reach carries freight between halls. Landing here leaves the station discovery record untouched.
+
+[Start the wall flight on localhost](http://127.0.0.1:8766/?border=wall) · [Try the earlier freight-quay approach](http://127.0.0.1:8766/?freight=along)
+
+The surveyed roof, local geometry and flight-entry check use the narrow trunk between the wider halls. The rest of the Atlas shows a much larger transport network. Detailed free-flight encounters currently cover the installed district. This build also includes Meadow apron depth corrections, legacy terrain occlusion, distance fog on the walls, a condensation effect during humid handoffs, and a separate walkable spiral-interchange design study.
+
+## What you can explore
+
+| Experience | What to try |
+| --- | --- |
+| The shell | Fly the cavity, inspect moving Shades, survey Wounds and polar entries, or mark a point and fly to it. Measure a curved surface area and adjust illumination, weather or simulation time. |
+| Original habitats | Visit the Atlas regions, walk on local terrain, follow watershed banks and explore the Violet Labyrinth. |
+| Infinite Meadow | Walk among procedural grass, lift off, skim the terrain or cruise toward the Border. |
+| Infinite Industry | Follow a working hot-bar transfer across two factory districts, walk under the feed line and pause the machinery. |
+| The Sideways City | Follow broad streets and low doorways through a city built for inhabitants with different proportions. |
+| The Outfall and Border Biome | Operate the gallery handwheel, cross the long tunnel, enter a freight hall through its service door, or land between stations. |
+| Journey and capture | Return to saved viewpoints, revisit a station by address, export a scene, photograph a panorama or record a short 4K clip. |
+
+![The Outfall entrance from the grass](examples/biomes/outfall-approach.jpg)
 
 ## Border Biome 0.10
 
@@ -37,18 +65,6 @@ Descend 4.2 km into the hot bar district, turn back at 85 m, then land on the se
 | [Through the tunnel into Violet Labyrinth](examples/transitions/into-violet-labyrinth.mp4) | 0:19 | Walk the accelerated 1,000 km passage and emerge at eye height among the purple crystal spires. |
 
 The earlier four-pack flight survey covers all twelve directed links in that release. The walking survey uses three sets of bearings across three installation states. [Download all 48 recordings and camera traces](https://github.com/JoeCauley/sphere-observatory/releases/download/transition-films-44875365674/Sphere-Transition-Survey.zip) · [Read the frame analysis](docs/Transition-audit.md) · [Compare the Ruin and Violet outlets before and after the repair](examples/transitions/outlet-before-after.jpg)
-
-## Run it locally
-
-Use Git, Node.js 20 or newer, and a desktop browser with WebGL 2. The demo runs directly from a clone.
-
-```sh
-git clone https://github.com/JoeCauley/sphere-observatory.git
-cd sphere-observatory
-npm start
-```
-
-Open **[http://127.0.0.1:8766](http://127.0.0.1:8766)**. On Windows, you can also double-click **Launch Observatory.cmd** in the checkout. The first opening prepares graphics. When you choose a destination, a card over the scene names the place and shows which phase is running.
 
 ## A first trip from Meadow to Outfall
 
