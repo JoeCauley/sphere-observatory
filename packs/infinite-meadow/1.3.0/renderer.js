@@ -146,8 +146,13 @@ void main(){
    col*=.91+.18*mix(.5,texture,detailWeight);
    if(uCover>.5){vec3 canopy=meadowCanopy(position.xz,n,light,uCoverHeight,normalize(uCamera-position),uDaylight);
      col=mix(col,canopy,(1.-smoothstep(6000.,22000.,distanceM))*.92);}
+   if(uApron.z>0.){
+     float rim=apronDistance(position.xz);
+     float pavement=(1.-smoothstep(0.,7.,rim))*step(0.,rim);
+     col=mix(col,vec3(.37,.36,.33)*lit*(.96+.08*mix(.5,texture,detailWeight)),pavement);
+   }
    if(byBorder()){vec2 b=borderAt(position.xz);if(b.y>=0. && b.y<=73.)discard;
-     col=mix(vec3(.22,.19,.103)*(.85+.22*texture),col,meadowCover(position.xz));}
+     col=mix(vec3(.37,.36,.33)*lit*(.96+.08*mix(.5,texture,detailWeight)),col,meadowCover(position.xz));}
    vec2 at=position.xz+uSiteOffset;
    float shade=shadow(at,vec2(6,-5),3.8,1.2)+shadow(at,vec2(-8,-27),2.6,1.5)+shadow(at,vec2(12,-42),8.,.65);
    col*=1.-min(.7,shade)*uDaylight;

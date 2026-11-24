@@ -16,7 +16,19 @@ npm start
 
 Open **[http://127.0.0.1:8766](http://127.0.0.1:8766)**. On Windows, you can also double-click **Launch Observatory.cmd** in the checkout. The first opening prepares graphics. When you choose a destination, a card over the scene names the place and shows which phase is running.
 
-## New in 1.8.3 · A Border between stations
+## New in 1.8.4 · Follow the wall into Meadow
+
+Fly off the Meadow side of the ordinary freight roof. You can descend to the grass at that same point along the line and look back at the structure. Meadow reuses the surveyed wall mesh between stations. At the station apron, a concrete verge meets the grass. From an original habitat such as Mycelium Sea, the wall now receives Main’s depth-aware atmosphere without a second layer of station fog.
+
+At The Outfall, distant concrete now fades into the terrain and sky along the same line of sight. These captures use the same camera 2.65 km above the apron.
+
+| Earlier build | 1.8.4 |
+| --- | --- |
+| ![Earlier pale roof against the horizon](examples/border-frontage/outfall-before.png) | ![The roof fades into Meadow at distance](examples/border-frontage/outfall-after.png) |
+
+[View back from the grass after leaving the interstation roof](examples/border-frontage/meadow-landing.jpg)
+
+### Try the interstation approach
 
 Try **Fly the seed 713 wall approach** in the installed Border Biome row, or open the link below after starting the server. This reproducible trip selects seed 713 and installs Meadow and Border there. It starts in clear air, 36 km above the surface, aimed obliquely along a maintenance trunk. Its intended landing point is 94 km from the central station. The three stations in this district are spaced 200 km apart.
 

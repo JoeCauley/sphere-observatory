@@ -465,7 +465,8 @@ if(structure){
  lit=mix(lit,vec3(1.,.78,.46),fixtureLight);
 }else if(machine){lit=mix(lit,vec3(1.,.78,.46),fixtureLight);}
 float rangeM=yard && structure && materialPoint.y>hall.y+48.?42000.:22000.;
-float haze=1.-exp(-distanceM/rangeM);frag=vec4(mix(lit,airColor,haze),1.);
+// Main integrates the atmosphere from this fragment's depth in its weather pass.
+float haze=${mainDepth?'0.':'1.-exp(-distanceM/rangeM)'};frag=vec4(mix(lit,airColor,haze),1.);
 ${mainDepth?'if(linearOutput)frag.rgb=pow(frag.rgb,vec3(2.2));':''}
 }`;
 

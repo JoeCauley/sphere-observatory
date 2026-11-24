@@ -85,8 +85,8 @@
   "assets": [
     {
       "path": "app.js",
-      "bytes": 46567,
-      "sha256": "57f2f1a061740680b103fa3df0c5bd32c735910daec5d4e4a076a6c5e5a7e026"
+      "bytes": 47062,
+      "sha256": "8ae204b82322411f06dbac6c4fe54f12a2d8be1b3adf1c7b6de7080a0162c358"
     },
     {
       "path": "atlas-lease.js",
@@ -170,8 +170,8 @@
     },
     {
       "path": "renderer.js",
-      "bytes": 33367,
-      "sha256": "d3837a89258c503b000eb3db27092f4f0322289de717d2334068ec7b663fea9a"
+      "bytes": 33609,
+      "sha256": "6f42734368ddc8658412ad53db3927547a3dc4d26559fb16c97623b753e146d3"
     },
     {
       "path": "style.css",
@@ -231,8 +231,8 @@
     },
     {
       "path": "../../border-outfall/1.0.0/render.js",
-      "bytes": 9827,
-      "sha256": "07a7d39b5dd1fc37be1b7f08c2ff3f0086951d33e7e9ce42334c5a7171c219e2"
+      "bytes": 10424,
+      "sha256": "ee90dee4562fa9a6e81835274fc9c00c008694315f59709968e89bb83c7fc82d"
     },
     {
       "path": "../../border-outfall/1.0.0/geometry.js",

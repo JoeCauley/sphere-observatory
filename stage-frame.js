@@ -1499,12 +1499,12 @@
       void walkGround(station({q,forward:worldPose.forward},s,owner));return;
     }
     if(!climbed && (item.edge || target?.edge)){
-      if(pose.mode==='walk' && !target?.edge){
+      if(pose.mode==='walk' && !target){
         const q=norm(worldPose.position);
         void walkGround(station({q,forward:worldPose.forward},s));return;
       }
       if(target){
-        const entry={geographic:true,pose:geography.packPose(worldPose,target,SphereAtlas,SphereWorld)};
+        const entry={geographic:true,pose:geography.packPose({...worldPose,walkMode:pose.mode==='walk'},target,SphereAtlas,SphereWorld)};
         void crossSurface(current.frame.contentWindow,entry,target);return;
       }
     }
