@@ -16,6 +16,22 @@ npm start
 
 Open **[http://127.0.0.1:8766](http://127.0.0.1:8766)**. On Windows, you can also double-click **Launch Observatory.cmd** in the checkout. The first opening prepares graphics. When you choose a destination, a card over the scene names the place and shows which phase is running.
 
+## At the Border · 1.8.5
+
+A Border has two addresses for the neighbouring habitats and a station between them. At a surveyed hall or connecting wall, the same cross-section determines which side owns the air and projected sky.
+
+| Where you stand | Air | What you can see overhead |
+| --- | --- | --- |
+| Outside either facing wall | The adjoining habitat's air | Its Duck Blind sky |
+| Inside the enclosed station | Station air | The structure above you |
+| On the roof or inside the open freight well | Vacuum | The real cavity through the opening |
+
+Try approaching a station at eye level from an original habitat, then visit the roof. On foot the native renderer blends distant surfaces into the projected sky using their distance from your eye. Nearby architecture retains its contrast and the local weather passes in front. The surveyed station and its adjoining wall are the implemented cross-section. Corners and unsurveyed edges remain future work.
+
+Super Jungle now grows broad, staggered crowns on the original terrain. Each tree belongs to a fixed geographic cell and shares the resident terrain mesh. The image below is an eye-height capture from a native jungle clearing. The canopy and forest floor are an initial art pass.
+
+![Super Jungle at walking height, with layered crowns under the projected sky](examples/border-frontage/jungle-ground.png)
+
 ## New in 1.8.4 · Follow the wall into Meadow
 
 Fly off the Meadow side of the ordinary freight roof. You can descend to the grass at that same point along the line and look back at the structure. Meadow reuses the surveyed wall mesh between stations. At the station apron, a concrete verge meets the grass. From an original habitat such as Mycelium Sea, the wall now receives Main’s depth-aware atmosphere without a second layer of station fog.

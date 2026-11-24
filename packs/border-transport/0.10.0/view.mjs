@@ -320,7 +320,7 @@ void main(){
 }`;
 const fragment=mainDepth=>`#version 300 es
 precision highp float;in vec3 color,materialPoint;in float surfaceY;flat in vec3 faceNormal;flat in float fixtureLight,sideNormal;uniform int mask;uniform bool structure;
-uniform float direct,workLight; uniform vec3 airColor;uniform bool yard;uniform vec3 hall,eye,offset,loadFootprint;out vec4 frag;
+uniform float direct,workLight; uniform vec3 airColor;uniform bool yard,vacuum;uniform vec3 hall,eye,offset,loadFootprint;out vec4 frag;
 ${surfaceNoise}
 ${outfallMaterials}
 float ruledLine(float d,float halfWidth,float pixel){
@@ -466,7 +466,7 @@ if(structure){
 }else if(machine){lit=mix(lit,vec3(1.,.78,.46),fixtureLight);}
 float rangeM=yard && structure && materialPoint.y>hall.y+48.?42000.:22000.;
 // Main integrates the atmosphere from this fragment's depth in its weather pass.
-float haze=${mainDepth?'0.':'1.-exp(-distanceM/rangeM)'};frag=vec4(mix(lit,airColor,haze),1.);
+float haze=${mainDepth?'0.':'(vacuum?0.:1.-exp(-distanceM/rangeM))'};frag=vec4(mix(lit,airColor,haze),1.);
 ${mainDepth?'if(linearOutput)frag.rgb=pow(frag.rgb,vec3(2.2));':''}
 }`;
 
@@ -510,9 +510,9 @@ void main(){
  float alpha=regionalGround<0.?1.:mix(regionalGround,regionalAir,smoothstep(-.32,-.03,y));
  frag=vec4(color*alpha,alpha);
 }`;
-export function makeView(canvas,{capture=true,district=null,shared=false,composite=false,land=null,mainDepth=false,buildHall=stationMesh}={}) {
+export function makeView(canvas,{capture=true,cavityBackdrop=false,district=null,shared=false,composite=false,land=null,mainDepth=false,buildHall=stationMesh}={}) {
   const hand=district?rightSign(district):1;
-  const gl=canvas.getContext('webgl2',{antialias:true,alpha:composite,preserveDrawingBuffer:capture});
+  const gl=canvas.getContext('webgl2',{antialias:true,alpha:composite||cavityBackdrop,preserveDrawingBuffer:capture});
   if(!gl)throw Error('The crossing view requires WebGL 2.');
   function link(v,f){
     const p=gl.createProgram();
@@ -525,7 +525,7 @@ export function makeView(canvas,{capture=true,district=null,shared=false,composi
   }
   const program=link(vertex,fragment(mainDepth)),sky=shared?null:link(skyVertex,skyFragment);
   const locations=(p,names)=>Object.fromEntries(names.map(n=>[n,gl.getUniformLocation(p,n)]));
-  const loc=locations(program,['eye','right','up','forward','offset','focal','clip','mask','direct','workLight','hall','structure','yard','loadFootprint','airColor','logRange','linearOutput']);
+  const loc=locations(program,['eye','right','up','forward','offset','focal','clip','mask','direct','workLight','hall','structure','yard','loadFootprint','vacuum','airColor','logRange','linearOutput']);
   const skyLoc=sky&&locations(sky,['lens','right','up','forward','eye','direct','radius','mid','nearLand','farLand','regionalGround','regionalAir','surveyed','landOrigin']);
   const vao=gl.createVertexArray();
   const attrs=['cornerA','cornerB','cornerC','cornerD','normal','tint'].map(n=>gl.getAttribLocation(program,n));
@@ -560,7 +560,7 @@ export function makeView(canvas,{capture=true,district=null,shared=false,composi
       const co=Math.cos(yaw),si=Math.sin(yaw),cp=Math.cos(pitch),sp=Math.sin(pitch);
       const right=camera?.right??[hand*co,0,-hand*si],up=camera?.up??[-si*sp,cp,-co*sp],forward=camera?.forward??[si*cp,sp,co*cp];
       if(!shared){
-        gl.clearColor(0,0,0,composite?0:1);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
+        gl.clearColor(0,0,0,composite||camera?.vacuum?0:1);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
         if(!idPass && (camera?.groundWeight!==0 || camera?.airWeight>0)){
           gl.disable(gl.DEPTH_TEST);gl.useProgram(sky);gl.bindVertexArray(null);
           gl.uniform2f(skyLoc.lens,focal*h/w,focal);gl.uniform3fv(skyLoc.right,right);gl.uniform3fv(skyLoc.up,up);gl.uniform3fv(skyLoc.forward,forward);
@@ -578,6 +578,7 @@ export function makeView(canvas,{capture=true,district=null,shared=false,composi
       const near=shared ? (camera?.near??.05) : Math.max(.25,(eye[1]-s.roofM)*.015);
       const daylight=Math.min(1,Math.max(0,direct));
       const horizon=shared && !mainDepth?[[.10,.13,.18],[.69,.80,.84]]:[[.075,.093,.11],[.46,.56,.59]];
+      gl.uniform1i(loc.vacuum,camera?.vacuum?1:0);
       gl.uniform3fv(loc.airColor,horizon[0].map((v,i)=>v+(horizon[1][i]-v)*daylight));
       if(mainDepth){
         gl.depthFunc(gl.LEQUAL);gl.disable(gl.CULL_FACE);

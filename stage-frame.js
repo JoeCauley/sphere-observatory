@@ -475,11 +475,12 @@
       hideSurvey();return false;
     }
     const api=c.frame.contentWindow?.SphereBiome,p=api?.pose?.();
-    if(!p || (!warm && p.mode!=='flight')){c.frame.style.opacity='1';hideSurvey();return false;}
+    const exposed=!warm && p && c.id==='border-transport' && p.altitudeM<c.regional.nearM && api.environment?.()?.air==='vacuum';
+    if(!p || (!warm && !exposed && p.mode!=='flight')){c.frame.style.opacity='1';hideSurvey();return false;}
     const item=library().entry(c.id);if(!item)return false;
     const recipe=c.regional;
     let weight=optics.layerWeight(recipe.nearM,recipe.farM,p.altitudeM);
-    if(item.transport && !warm && !flying && p.mode==='flight' && p.altitudeM<recipe.nearM){
+    if(item.transport && !exposed && !warm && !flying && p.mode==='flight' && p.altitudeM<recipe.nearM){
       const d=item.transport,site=geography.nearestSite(d,p.eastM);
       // Above the roof the same station projects into Main. Reveal the cavity before crossing its facade.
       const aboveRoof=1-optics.layerWeight(site.roofM+geography.roofSlabM,site.roofM+400,p.altitudeM);
@@ -494,11 +495,11 @@
         if(c.where.textContent!==label)c.where.textContent=label;c.altitudeLabel=true;
       }else if(c.altitudeLabel){c.where.textContent=library().describe(library().entry(c.id));c.altitudeLabel=false;}
     }
-    if(weight>=1 && !warm){hideSurvey();return false;}
+    if(weight>=1 && !warm && !exposed){hideSurvey();return false;}
     const camera=warm?{...p,mode:'flight',altitudeM:(recipe.nearM+recipe.farM)/2,pitch:-1.49}:p;
     const s=window.SphereApp.getState(), rect=c.frame.getBoundingClientRect();
     if(rect.width<2 || rect.height<2)return false;
-    const key=[s.time,camera.eastM,camera.northM,camera.altitudeM,camera.yaw,camera.pitch,rect.width,rect.height,s.routeShades,s.exposure].join('/');
+    const key=[exposed,s.time,camera.eastM,camera.northM,camera.altitudeM,camera.yaw,camera.pitch,rect.width,rect.height,s.routeShades,s.exposure].join('/');
     if(c.regionalKey===key || now-(c.regionalStamp??-Infinity)<40)return true;
     const pose=geography.mainPose(s,item,camera,SphereAtlas,SphereWorld);
     const scale=Math.min(1,640/rect.width,360/rect.height);
@@ -506,7 +507,8 @@
     // The regional image is already filtered to the display size during the dissolve.
     pose.geometryDetail=false;pose.antialias=Math.min(pose.antialias??0,1);
     if(recipe.density===0 && !item.transport){pose.clouds=false;pose.textureDetail=false;pose.richMaterials=false;}
-    const surveyed=projectSurvey(now,pose);
+    if(exposed){hideSurvey();pose.atmosphere=0;pose.cavityHaze=0;pose.clouds=false;}
+    const surveyed=!exposed && projectSurvey(now,pose);
     if(!surveyed)window.SphereApp.renderer.draw(pose,Math.round(rect.width*scale),Math.round(rect.height*scale));
     c.regionalKey=key;c.regionalStamp=now;return true;
   }
@@ -514,7 +516,10 @@
     if(!c || !scene || !optics)return;
     c.regional=airOf(scene);
     c.shell.style.background='transparent';
-    if(scene.transport)c.shell.classList.add('transport-flight');
+    if(scene.transport){
+      c.shell.classList.add('transport-flight');c.frame.style.background='transparent';
+      const doc=c.frame.contentDocument;if(doc?.body){doc.documentElement.style.background='transparent';doc.body.style.background='transparent';}
+    }
     const bar=c.shell.firstElementChild;
     Object.assign(bar.style,{position:'absolute',top:'0',left:'0',right:'0',zIndex:'2'});
     regionalFrame(performance.now());
@@ -1483,7 +1488,7 @@
     if(!item || !lib.matchesWorld(s))return;
     if(current.frame.surfaceEntry?.passage)return;
     const scene=sceneOf(item);
-    if(pose.mode==='flight' && !current.regional && optics && scene)enableRegional(current,scene);
+    if((pose.mode==='flight' || api.environment?.()?.air==='vacuum') && !current.regional && optics && scene)enableRegional(current,scene);
     const climbed=pose.altitudeM>previous.pose.altitudeM && pose.altitudeM>=geography.leaveKm*1000;
     if(!climbed && (inspect.levelCruising || pose.altitudeM>=geography.leaveKm*1000))return;
     if(!climbed && item.transport && geography.outsideDistrict(item.transport,pose.eastM,pose.northM)<=(pose.mode==='walk'?14:650))return;
@@ -1571,10 +1576,11 @@
       if(Math.abs(p.eastM-site.x)>geography.hallHalfM)name='Border maintenance wall';
     }
     return item?' · '+name+' below · '+(height>geography.enterKm?'descend below '+geography.enterKm+' km to enter':'fly into its landscape'):'';
-  }, regionalFrame, drawWalkingStation(s,width,height,linear){
+  }, regionalFrame, drawWalkingStation(s,width,height,linear,renderInfo){
     const v=surveyView;
     if(v?.nativeState!==s || !s.walkMode || s.projection!=='perspective')return null;
     const item=library().entry('border-transport'),p=geography.packPose(s,item,SphereAtlas,SphereWorld);
+    if(renderInfo)renderInfo.borderEnvironment=geography.borderEnvironment(item.transport,v.station,p);
     const axes=geography.stationBasis(s,item.transport,p,SphereWorld);
     const direct=s.routeShades?SphereCollection.visibility(s.position,s,64):1;
     v.nativeView.draw(v.station,[p.eastM-v.station.address.chainageM,p.altitudeM,p.northM+v.station.widthM/2],p.yaw,p.pitch,window.SphereApp.sceneSeconds,false,direct,
