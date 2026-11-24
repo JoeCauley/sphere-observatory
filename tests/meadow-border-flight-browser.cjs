@@ -20,8 +20,9 @@ async function main(){
       await page.waitForFunction(id=>!!SphereBiomeLibrary.entry(id),id);
     }
     await page.evaluate(id=>SphereStageFrame.open(id),meadow);
-    await page.evaluate(()=>{
+    await page.evaluate(async()=>{
       const heights=window.descentHeights=[],overlap=window.overlapErrors=[];
+      const observations=window.roofFrames=[],geo=await import('./geographic-flight.js');
       function sample(){
         const f=document.querySelector('#stageFrame iframe');
         if(SphereStageFrame.current?.id==='border-transport' && document.getElementById('biomeLibraryStatus').textContent==='Descending toward Border Biome'){
@@ -32,6 +33,10 @@ async function main(){
             const u=(24-km)/6;overlap.push(Math.abs(+f.style.opacity-u*u*(3-2*u)));
           }
           const roof=document.querySelector('#viewport canvas[data-station]');
+          if(km>25 && km<140){
+            const item=SphereBiomeLibrary.entry('border-transport'),p=geo.packPose(core,item,SphereAtlas,SphereWorld);
+            observations.push([Math.round(km),Math.round(p.eastM),Math.round(p.northM),roof?.hidden,roof?.style.opacity]);
+          }
           if(km>25 && km<140 && roof && !roof.hidden && +roof.style.opacity>.95)window.regionalRoof=roof.dataset.station;
         }
         if(!SphereStageFrame.lastArrival || SphereStageFrame.lastArrival.to!=='border-transport')requestAnimationFrame(sample);
@@ -48,7 +53,8 @@ async function main(){
     const frame=page.frameLocator('#stageFrame iframe');
     const info=()=>frame.locator('canvas').first().evaluate(()=>({pose:SphereBiome.pose(),...SphereBiome.inspect()}));
     const pad=await info();
-    assert.equal(await page.evaluate(()=>window.regionalRoof),pad.station,'The regional roof must appear above the clear-air overlap');
+    const regional=await page.evaluate(()=>({roof:window.regionalRoof,first:roofFrames[0],last:roofFrames.at(-1),count:roofFrames.length}));
+    assert.equal(regional.roof,pad.station,'The regional roof must appear above the clear-air overlap '+JSON.stringify(regional));
     await frame.getByRole('button',{name:'Walk',exact:true}).click();
     await frame.locator('#pace').selectOption('16');await frame.locator('#scene').focus();
     async function walk(key,until,arg=null){
@@ -56,13 +62,19 @@ async function main(){
       try{await page.waitForFunction(until,arg,{timeout:40000});}finally{await page.keyboard.up(key);}
     }
     await walk('KeyW',()=>{const b=document.querySelector('#stageFrame iframe').contentWindow.SphereBiome;return b?.inspect().locked;});
-    await walk('KeyS',()=>SphereStageFrame.current?.id==='infinite-meadow'&&!document.querySelector('#departingStageFrame'));
+    await walk('KeyS',()=>{
+      const f=document.querySelector('#stageFrame iframe');
+      if(SphereStageFrame.current?.id!=='infinite-meadow' || !f?.surfaceEntry?.active)return false;
+      const p=f.contentWindow.SphereBiome.pose(),row=SphereStageFrame.transportAddress().rows.find(r=>r.site.bay===0);
+      return row.locate(p.eastM,p.northM).northM+row.site.widthM/2 < -18;
+    });
     const witness=await frame.locator('#world').evaluate(async canvas=>{
       const p=SphereBiome.pose(),table=parent.SphereStageFrame.transportAddress();
       const g=await import('./landscape.js'),a=g.stationApron(p.eastM,p.northM);
       const data=await parent.SphereStageFrame.stationExterior(a.row.site.address,table.fileBacked);
       const s=data.station,route=s.routes[0],x=route.nearDoor[0],eyeZ=a.z+s.widthM/2;
-      const gl=canvas.getContext('webgl2'),w=canvas.width,h=canvas.height,f=1.428148;
+      const gl=canvas.getContext('webgl2'),w=canvas.width,h=canvas.height,fov=frameElement.surfaceEntry?.horizontalFov;
+      const f=fov?w/h/Math.tan(fov*Math.PI/360):1.428148;
       const ax=a.row.axes,e=Math.sin(p.yaw),n=-Math.cos(p.yaw),yaw=Math.atan2(ax[0]*e+ax[1]*n,ax[2]*e+ax[3]*n);
       const hand=table.district.origin.axis==='meridian'?table.district.origin.acrossSign:-1;
       function pixel(xOffset){

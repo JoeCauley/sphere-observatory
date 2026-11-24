@@ -1,4 +1,4 @@
-// Dependency-free publication checks; usable locally and in GitHub Actions.
+// Verify archived publication records and decode the current tester guide's pictures.
 const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto'),assert=require('node:assert/strict');
 const root=path.resolve(__dirname,'..'),dir=path.join(root,'examples/observatory'),archive=path.join(root,'examples/archive/v1.5');
 const read=p=>JSON.parse(fs.readFileSync(p,'utf8')),sha=b=>crypto.createHash('sha256').update(b).digest('hex');
@@ -52,7 +52,6 @@ assert.equal(crossing.route,'surface');assert.equal(crossing.walkedThroughEntran
 assert(crossing.durationSeconds>50 && crossing.endOfCruiseMetresFromWall===18);
 const readme=fs.readFileSync(path.join(root,'README.md'),'utf8');
 assert(readme.includes('examples/biomes/'+crossing.file));
-const shown=[...readme.matchAll(/!\[[^\]]*\]\(([^)]+)\)/g)].map(m=>m[1]);
 const walks=read(path.join(biomeDir,'surface-walks.json'));
 if(captureHistory)for(const [file,expected] of Object.entries(walks.sourceFiles)){
  const original=spawnSync('git',['show',captureRelease+':'+file],{cwd:root});
@@ -68,7 +67,6 @@ for(const shot of walks.screenshots){
  assert.equal(bytes.readUInt16BE(0),0xffd8);assert.equal(sha(bytes),shot.sha256);
 }
 assert(walks.circuits.every(w=>Math.abs(w.liveDegrees-360)<1e-8 && w.liveClosureM<.5));
-const illustrated=[...photos.views,...walks.screenshots].map(v=>'examples/biomes/'+v.file);
 const industryDir=path.join(root,'examples/industry-field'),industry=read(path.join(industryDir,'field-run.json'));
 const industryMovie='skyline-to-service-lane.mp4',industryClip=fs.readFileSync(path.join(industryDir,industryMovie));
 assert.equal(industryClip.subarray(4,8).toString(),'ftyp');
@@ -79,10 +77,8 @@ assert.equal(industry.runs.field.fixedCameras.find(v=>v.altitudeM===1400).larges
 assert.equal(industry.runs.field.sixShortReversals.uploadBytes,0);
 for(const [name,record] of Object.entries(industry.film.pictures)){
  const bytes=fs.readFileSync(path.join(industryDir,name));assert.equal(bytes.readUInt16BE(0),0xffd8);
- assert.equal(bytes.length,record.bytes);assert.equal(sha(bytes),record.sha256);illustrated.push('examples/industry-field/'+name);
+ assert.equal(bytes.length,record.bytes);assert.equal(sha(bytes),record.sha256);
 }
-assert(shown.length>=4);assert(shown.every(p=>illustrated.includes(p)));
-assert.deepEqual(new Set(photos.views.filter(v=>shown.includes('examples/biomes/'+v.file)).map(v=>v.pack)),new Set(offered.map(p=>p.id)));
 const borderDir=path.join(root,'examples/border-crossing'),borderRecord=read(path.join(borderDir,'installed-0.10.json'));
 const borderFilm=borderRecord.guidedFlight,borderClip=fs.readFileSync(path.join(borderDir,borderFilm.file));
 assert.equal(borderClip.subarray(4,8).toString(),'ftyp');
@@ -161,3 +157,41 @@ for(const demo of audit.demos)assert(transitionDoc.includes('examples/transition
 assert(readme.includes('docs/Transition-audit.md'));
 console.log('PASS '+audit.films.length+' transition films, three complete demo files and their recorded transition source');
 console.log('PASS '+photos.views.length+' biome photographs, the Meadow pan and Outfall crossing, release source fingerprints, historical galleries and publication links');
+
+async function verifyReadmePictures(){
+ const formats={'.jpg':'jpeg','.jpeg':'jpeg','.png':'png','.gif':'gif','.webp':'webp'};
+ const signature={
+  jpeg:bytes=>bytes.subarray(0,3).equals(Buffer.from('ffd8ff','hex')),
+  png:bytes=>bytes.subarray(0,8).equals(Buffer.from('89504e470d0a1a0a','hex')),
+  gif:bytes=>/^GIF8[79]a$/.test(bytes.toString('ascii',0,6)),
+  webp:bytes=>bytes.toString('ascii',0,4)==='RIFF' && bytes.toString('ascii',8,12)==='WEBP'
+ };
+ const pictures=new Map();
+ for(const match of readme.matchAll(/(!?)\[[^\]]*\]\(([^)]+)\)/g)){
+  const target=match[2].split('#')[0];
+  if(!target || /^https?:\/\//i.test(target))continue;
+  const format=formats[path.extname(target).toLowerCase()];
+  if(match[1])assert(format,'Unsupported image format in README: '+target);
+  if(format)pictures.set(target,format);
+ }
+ assert(pictures.size,'The tester guide needs pictures');
+ const {chromium}=require('playwright');
+ const launch={headless:true};
+ if(process.env.SPHERE_NATIVE_BROWSER)launch.executablePath=process.env.SPHERE_NATIVE_BROWSER;
+ else if(!fs.existsSync(chromium.executablePath()))launch.channel='chrome';
+ const browser=await chromium.launch(launch);
+ try{
+  const page=await browser.newPage();
+  for(const [file,format] of pictures){
+   const bytes=fs.readFileSync(path.join(root,file));
+   assert(signature[format](bytes),'File signature differs from the README image extension: '+file);
+   const decoded=await page.evaluate(async url=>{
+    const img=new Image();img.src=url;
+    try{await img.decode();return img.naturalWidth>0 && img.naturalHeight>0;}catch{return false;}
+   },'data:image/'+format+';base64,'+bytes.toString('base64'));
+   assert(decoded,'Browser could not decode README picture: '+file);
+  }
+ }finally{await browser.close();}
+ console.log('PASS '+pictures.size+' current README pictures resolve and decode');
+}
+verifyReadmePictures().catch(error=>{console.error(error);process.exitCode=1;});

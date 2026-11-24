@@ -13,7 +13,7 @@ vec3 c=mix(vec3(.57,.63,.60),vec3(.22,.34,.39),smoothstep(0.,.7,h))+(n-.5)*.22+s
 const vertex=`#version 300 es
 precision highp float;layout(location=0) in vec3 point;layout(location=1) in vec3 normal;layout(location=2) in vec3 tint;layout(location=3) in float kind;
 layout(location=4) in float pointW;out float positionW;
-uniform float meadowPass,shellRadiusM;uniform vec3 cameraPos,rightDir,upDir,forwardDir,level;uniform vec3 wheelCenter;uniform float aspect,clock,turn;
+uniform float meadowPass,shellRadiusM,meadowFocal;uniform vec3 cameraPos,rightDir,upDir,forwardDir,level;uniform vec3 wheelCenter;uniform float aspect,clock,turn;
 out vec3 positionH,norm,color;vec3 pos;flat out int mat;out float depth;
 void main(){pos=point;norm=normal;mat=int(kind+.5);color=tint;
  if(mat>=10&&mat<=12){pos.y+=level[mat-10]*.48-.50;}
@@ -26,7 +26,7 @@ void main(){pos=point;norm=normal;mat=int(kind+.5);color=tint;
    d.y+=dot(d.xz,d.xz)/(2.*shellRadiusM);
  }
  depth=dot(d,forwardDir);
- float focal=mix(1./.64,1.428148,meadowPass);
+ float focal=mix(1./.64,meadowFocal,meadowPass);
  gl_Position=vec4(dot(d,rightDir)*focal/aspect,dot(d,upDir)*focal,mix(depth-.12*pointW,depth*1.00000002-.10*pointW,meadowPass),depth);}`;
 const fragment=`#version 300 es
 precision highp float;in vec3 positionH,norm,color;in float positionW;flat in int mat;in float depth;
@@ -96,13 +96,13 @@ export function createRenderer(canvas){
   const scale=Math.min(1.5,Math.max(devicePixelRatio,sampleScale)),w=Math.max(1,Math.round(canvas.clientWidth*scale)),h=Math.max(1,Math.round(canvas.clientHeight*scale));
   if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;}
  }
- function draw(state,time,turn,{overMeadow=false,resize=true,daylight=1,radiusM=149597870700,nearTint=[.16,.42,.15],farTint=[.38,.42,.38]}={}){
+ function draw(state,time,turn,{overMeadow=false,resize=true,daylight=1,focal=1.428148,radiusM=149597870700,nearTint=[.16,.42,.15],farTint=[.38,.42,.38]}={}){
   const p=state.pose;if(resize)resizeCanvas();gl.viewport(0,0,canvas.width,canvas.height);
   const cy=Math.cos(p.yaw),sy=Math.sin(p.yaw),cp=Math.cos(p.pitch),sp=Math.sin(p.pitch);
   function view(pr){gl.useProgram(pr.p);gl.uniform3f(pr.u.rightDir,cy,0,-sy);gl.uniform3f(pr.u.upDir,-sy*sp,cp,-cy*sp);gl.uniform3f(pr.u.forwardDir,sy*cp,sp,cy*cp);gl.uniform1f(pr.u.aspect,canvas.width/canvas.height);}
   gl.disable(gl.BLEND);gl.depthMask(true);gl.depthFunc(gl.LESS);
   if(!overMeadow){gl.disable(gl.DEPTH_TEST);gl.clear(gl.DEPTH_BUFFER_BIT);view(sky);gl.uniform1f(sky.u.daylight,daylight);gl.drawArrays(gl.TRIANGLES,0,3);}
-  gl.enable(gl.DEPTH_TEST);view(surface);const u=surface.u;gl.uniform1f(u.shellRadiusM,radiusM);gl.uniform1f(u.daylight,daylight);gl.uniform1f(u.meadowPass,Number(overMeadow));gl.uniform3f(u.cameraPos,p.eastM,p.altitudeM,p.northM);gl.uniform3fv(u.level,state.levels);gl.uniform3fv(u.nearTint,nearTint);gl.uniform3fv(u.farTint,farTint);
+  gl.enable(gl.DEPTH_TEST);view(surface);const u=surface.u;gl.uniform1f(u.shellRadiusM,radiusM);gl.uniform1f(u.daylight,daylight);gl.uniform1f(u.meadowPass,Number(overMeadow));gl.uniform1f(u.meadowFocal,focal);gl.uniform3f(u.cameraPos,p.eastM,p.altitudeM,p.northM);gl.uniform3fv(u.level,state.levels);gl.uniform3fv(u.nearTint,nearTint);gl.uniform3fv(u.farTint,farTint);
   gl.uniform3f(u.wheelCenter,valve.eastM,valve.heightM,valve.northM);gl.uniform1f(u.turn,turn);gl.uniform1f(u.clock,time);
   const origin=Math.round(p.eastM/504)*504, northOrigin=Math.round(p.northM/2000)*2000;
   gl.bindVertexArray(borderVAO);

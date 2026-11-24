@@ -9,7 +9,7 @@ scripts.splice(scripts.indexOf('places'),0,'pack-library');
 if(new URLSearchParams(location.search).has('service'))scripts.push('biome-service/main-install-bootstrap.v12','main-install-ui');
 const paint=()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
 try{
- window.SphereBuild={version:'1.8.6',status:'unverified-local',release:false};
+ window.SphereBuild={version:'1.8.8',status:'unverified-local',release:false};
  const build = fetch(new URL('build-info.json',scriptBase))
   .then(async response=>{if(response.ok)window.SphereBuild=await response.json();}).catch(()=>{});
  // Ordered classic scripts may download together. Only app construction needs the linked program.
@@ -31,16 +31,20 @@ try{
  if(!window.SphereApp||!window.SphereLoading)throw Error(document.getElementById('error').textContent||'The renderer did not finish opening.');
  document.getElementById('loadingStatus').textContent='Preparing your viewpoint.';
  const bearing=new URLSearchParams(location.search).get('freight');
- const wallTrip=new URLSearchParams(location.search).get('border')==='wall';
+ const borderRoute=new URLSearchParams(location.search).get('border');
+ const wallTrip=borderRoute==='wall', doorTrip=borderRoute==='doors';
  const freightTrip=bearing==='along' || bearing==='across';
- if(freightTrip||wallTrip){
-  document.getElementById('loadingStatus').textContent=wallTrip?'Preparing a clear-day descent between Border stations.':'Preparing the clear-day approach to the freight quay.';
+ let enterServiceApproach;
+ if(freightTrip||wallTrip||doorTrip){
+  document.getElementById('loadingStatus').textContent=doorTrip?'Finding the Meadow service door.':wallTrip?'Preparing a clear-day descent between Border stations.':'Preparing the clear-day approach to the freight quay.';
   const {freightDeparture,wallDeparture,prepareClearFlight}=await import(new URL('studies/border-crossing/clear-day-flight.mjs',scriptBase));
-  await prepareClearFlight(wallTrip?wallDeparture():freightDeparture(bearing));
+  const trip=await prepareClearFlight(doorTrip?{...wallDeparture(),serviceDoor:true}:wallTrip?wallDeparture():freightDeparture(bearing));
+  enterServiceApproach=trip.enterServiceApproach;
  }else await window.SphereWatershedJourney?.openLink();
  if(window.SphereApp.renderer.modernUniforms?.uInstalledBiomes)await window.SphereBiomeSurface?.ready;
  await window.SphereLoading.start();
- if(freightTrip||wallTrip){window.SphereApp.setPlaying(true);document.getElementById('viewport').focus();}
+ if(enterServiceApproach)await enterServiceApproach();
+ else if(freightTrip||wallTrip){window.SphereApp.setPlaying(true);document.getElementById('viewport').focus();}
 }catch(error){
  document.getElementById('controlStatus').textContent='Opening interrupted. The view has details and a Retry button.';document.getElementById('loadingTitle').textContent='Opening interrupted';document.getElementById('loadingStatus').textContent=error.message;document.getElementById('loadingProgress').hidden=true;document.getElementById('loadingActions').hidden=false;document.getElementById('loadingFallback').hidden=true;document.getElementById('loadingRetry').onclick=()=>location.reload();
 }

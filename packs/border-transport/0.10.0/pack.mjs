@@ -4,7 +4,7 @@ import {classes} from './station.mjs';
 import {districtFor} from './survey.mjs';
 import {nearestSite,outsideDistrict,hallHalfM,roofSlabM,rightSign} from './district.mjs';
 import {stationRecord} from './atlas.mjs';
-import {boardingPose,support,move} from './motion.mjs';
+import {boardingPose,support,move,walker} from './motion.mjs';
 import {makeView} from './view.mjs';
 import {inFreightOpening,freightObstruction} from './freight-bay.mjs';
 
@@ -15,9 +15,9 @@ const district=library?.entry(id)?.transport??districtFor('sphere-00000000000000
 const hand=rightSign(district);
 const storage=library?.saveStorage(world)??localStorage,fileBacked=library?.persistence==='file';
 const qs=new URLSearchParams(location.search),arrival=qs.get('arrival')==='air';
-const view=makeView(canvas,{capture:false,cavityBackdrop:!!host,district,land:host?.SphereStageFrame?.stationLand?.(district)}),keys=new Set(),events=new AbortController();
+const view=makeView(canvas,{capture:false,cavityBackdrop:!!host,district,land:host?.SphereStageFrame?.stationLand?.(district),habitats:s=>host?.SphereStageFrame?.stationHabitats?.(district,s)}),keys=new Set(),events=new AbortController();
 const signal=events.signal,previews=new Map();
-let station,record,site,group=classes[0],pose,manual,frames=0,raf=0,last=0,time=0,lastWorldTime=null,rate=1;
+let station,record,site,group=walker,pose,manual,frames=0,raf=0,last=0,time=0,lastWorldTime=null,rate=1;
 let saved=null,script=null,held=arrival&&qs.get('hold')==='1',dead=false,writing=false,arrivalDone,firstDraw;
 let draws=0,paint=null,direct=1,lightAt=-Infinity;
 let issue='',message='',previousText='',lastHUD=0,drag=null,hudDirty=true,lockedPending=null;
@@ -25,14 +25,21 @@ const ready=new Promise(r=>firstDraw=r),arrived=new Promise(r=>arrivalDone=r);
 const text=(s,v)=>{if(s.textContent!==v)s.textContent=v;};
 const finite=p=>p&&['eastM','northM','altitudeM','yaw','pitch'].every(k=>Number.isFinite(p[k]))&&['walk','flight'].includes(p.mode);
 try{saved=JSON.parse(storage.getItem(saveKey));if(saved?.schema!==1||!finite(saved.pose))saved=null;}catch{}
-if(saved&&!entry&&!arrival)group=classes.find(c=>c.id===saved.group)??classes[0];
+const traveler=id=>id==='service'?walker:classes.find(c=>c.id===id)??walker;
+if(saved&&!entry&&!arrival)group=traveler(saved.group);
 for(const c of classes){const o=document.createElement('option');o.value=c.id;o.textContent=c.name;el('class').append(o);}
 el('class').value=group.id;
+const stage=host?.SphereStageFrame;
+if(stage)el('pace').value=String(stage.surfacePace??1);
+el('pace').onchange=()=>stage?.setSurfacePace?.(Number(el('pace').value));
 function resident(s){
   const key=s.address.key;
   if(!previews.has(key)){
     const request=stationRecord(s.address,false,fileBacked).catch(e=>{previews.delete(key);throw e;});
     previews.set(key,request);
+    // Atlas owns durable discovery. Retain only the active survey and its
+    // incoming neighbour, independent of the number of stations visited.
+    for(const other of previews.keys())if(other!==key && other!==site?.address.key)previews.delete(other);
   }
   return previews.get(key);
 }
@@ -75,7 +82,7 @@ function apron(){
 }
 function board(){
   if(!apron()||script||held||writing)return;
-  group=classes.find(c=>c.id===el('class').value)??group;
+  group=traveler(el('class').value);
   pose=boardingPose(station,group,pose.northM>0);checkpoint(pose);save();hudDirty=true;canvas.focus();
 }
 function toggleMode(){
@@ -188,15 +195,19 @@ function frame(now){
   lastWorldTime=time;
   if(script)updateScript(dt);
   else if(!held&&!writing&&!issue && active()){
-    let yaw=pose.yaw+(Number(keys.has('ArrowRight')||keys.has('KeyX'))-Number(keys.has('ArrowLeft')||keys.has('KeyZ')))*hand*dt*1.35;
+    let yaw=pose.yaw+(Number(keys.has('ArrowRight')||keys.has('KeyX'))-Number(keys.has('ArrowLeft')||keys.has('KeyZ')))*hand*dt*Math.PI/4;
     const pitch=Math.max(-1.49,Math.min(1.49,pose.pitch+((+keys.has('ArrowUp'))-(+keys.has('ArrowDown')))*dt));
     const p={...pose,yaw,pitch},f=(+keys.has('KeyW'))-(+keys.has('KeyS')),s=hand*((+keys.has('KeyD'))-(+keys.has('KeyA')));
     const v=pose.mode==='flight'?(+keys.has('KeyE'))-(+keys.has('KeyQ')):0;
     if(f||s||v){
-      const pace=Number(el('pace').value)*(keys.has('ShiftLeft')||keys.has('ShiftRight')?4:1),speed=(p.mode==='walk'?group.speed:Math.min(1800,30+Math.abs(p.altitudeM)*.15))*pace;
-      const amt=speed*dt/Math.max(1,Math.hypot(f,s,v)),yaw=p.yaw,cp=p.mode==='flight'?Math.cos(pitch):1;
+      const boost=keys.has('ShiftLeft')||keys.has('ShiftRight'),pace=Number(el('pace').value);
+      const walkSpeed=group.id==='service'?(boost?6:2.8):group.speed*(boost?4:1);
+      const base=p.mode==='walk'?walkSpeed:Math.min(1800,30+Math.abs(p.altitudeM)*.15)*(boost?4:1);
+      const speed=stage?.movementSpeed?.(base,dt)??base*pace;
+      const yaw=p.yaw,cp=p.mode==='flight'?Math.cos(pitch):1;
+      const amt=speed*dt/Math.max(1,Math.hypot(f*cp,s,v+(p.mode==='flight'?f*Math.sin(pitch):0)));
       const result=move(station,district,p,group,(f*cp*Math.sin(yaw)+s*Math.cos(yaw))*amt,
-        (f*cp*Math.cos(yaw)-s*Math.sin(yaw))*amt,(v+(p.mode==='flight'?f*Math.sin(pitch):0))*amt,time,rate/pace);
+        (f*cp*Math.cos(yaw)-s*Math.sin(yaw))*amt,(v+(p.mode==='flight'?f*Math.sin(pitch):0))*amt,time,rate*group.speed/speed);
       message=result.blocked;accept(result.pose);
     }else if(yaw!==pose.yaw||pitch!==pose.pitch || (!record.locked&&inHall(p)))accept(p);
   }
@@ -205,7 +216,7 @@ function frame(now){
   }
   // The two layers sample this exact simulation tick even when Main is preparing terrain.
   const environment=borderEnvironment(district,station,pose);
-  const exposed=host && environment.air==='vacuum' ? layerWeight(nearM*.65,nearM,pose.altitudeM) : 0;
+  const exposed=host && environment.air==='vacuum' ? layerWeight(nearM*.65,nearM,pose.altitudeM)*(environment.zone==='freight well'?1:layerWeight(-400,0,outsideDistrict(district,pose.eastM,pose.northM))) : 0;
   if(exposed || (pose.mode==='flight' && pose.altitudeM>=nearM))host?.SphereStageFrame?.presentStation?.(window);
   const width=canvas.clientWidth,height=canvas.clientHeight;
   const visible=draws<2 || !frameElement || frameElement.style.opacity!=='0';
@@ -244,7 +255,7 @@ addEventListener('pagehide',dispose,{once:true,signal});
 window.SphereBiome={id,version,contract:'sphere-biome/1',ready,arrived,begin,ascend,save,dispose,pose:()=>({...pose}),air:()=>({haze:[],blind:null}),
   environment:()=>pose && station?borderEnvironment(district,station,pose):null,
   inspect:()=>({frames,draws,veil:0,scripted:!!script,held,station:station?.address.key,layout:station?.layout,locked:record?.locked??false,
-    group:group.id,time,uploads:view.uploads,blocked:message,error:issue})};
+    group:group.id,time,uploads:view.uploads,residentStations:previews.size,pace:Number(el('pace').value),blocked:message,error:issue})};
 async function start(){
   const initial=entry?.geographic&&finite(entry.pose)?entry.pose:saved?.pose;
   const s=nearestSite(district,arrival?0:initial?.eastM??0);adopt(s,await resident(s));

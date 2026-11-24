@@ -101,7 +101,8 @@ export function move(state,keys,dt,motion=null){
   const cp=walking||skimming?1:Math.cos(p.pitch),sp=walking||skimming?0:Math.sin(p.pitch);
   let vx=dx*Math.cos(p.yaw)-dz*Math.sin(p.yaw)*cp,vz=dx*Math.sin(p.yaw)+dz*Math.cos(p.yaw)*cp,vy=dy-dz*sp;
   const length=Math.hypot(vx,vz,vy)||1;vx/=length;vz/=length;vy/=length;
-  const x=vx*speed*dt,z=vz*speed*dt,y=vy*speed*dt;
+  const applied=(dx||dz||dy)?(motion?.resolveSpeed?.(speed,dt)??speed):speed;
+  const x=vx*applied*dt,z=vz*applied*dt,y=vy*applied*dt;
   const steps=walking?Math.max(1,Math.ceil(Math.hypot(x,z)/.2)):clearance(p)<140?Math.max(1,Math.ceil(Math.hypot(x,z))):1;
   let colliding=false,landed=false;
   for(let i=0;i<steps;i++){

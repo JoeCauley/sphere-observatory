@@ -5,6 +5,7 @@ import {galleryBoxes,galleryTubes} from '../../kit/outfall-gallery.mjs';
 import {inFreightOpening,freightObstruction} from './freight-bay.mjs';
 
 const gallerySolids=galleryBoxes.filter(p=>p[8]).map(([x,y,z,w,h,d])=>[x-w/2,x+w/2,y-h/2,y+h/2,z-d/2,z+d/2]);
+export const walker={...classes[0],body:[.56,1.85,.56],speed:2.8};
 for(const [[x,y,start],[,,end],r] of galleryTubes)gallerySolids.push([x-r,x+r,y-r,y+r,start,end]);
 
 export function boardingPose(s,group=classes[0],far=false){
@@ -31,18 +32,75 @@ export function support(s,x,z,foot,group,step){
   return 0;
 }
 function intersects(a,b,lo,hi){return Math.min(a,b)<=hi && Math.max(a,b)>=lo;}
+// Reprojecting through the one-AU shell can put a contact a few hundredths
+// of a millimetre inside its plane. Only inward motion enters the slab.
+function entersSlab(a,b,center,half){
+  const side=a<center?-1:1;
+  const advance=(a-b)*side,end=(b-center)*side;
+  return advance>0 && (end<half-.0002 || (advance>.0001 && end<half));
+}
+function entersBox(x,y,z,nx,ny,nz,left,right,floor,ceiling,near,far){
+  let enter=0,exit=1;
+  function clip(a,b,lo,hi){
+    // Treat sub-millimetre chart roundoff at a face as contact, allowing
+    // tangential movement while rejecting any driven penetration.
+    if(Math.abs(a-lo)<.0002)a=lo;
+    if(Math.abs(a-hi)<.0002)a=hi;
+    if(Math.abs(b-lo)<.0002)b=lo;
+    if(Math.abs(b-hi)<.0002)b=hi;
+    if(a===b)return a>lo && a<hi;
+    const start=(lo-a)/(b-a),end=(hi-a)/(b-a);
+    enter=Math.max(enter,Math.min(start,end));exit=Math.min(exit,Math.max(start,end));
+    return enter<exit;
+  }
+  return clip(x,nx,left,right) && clip(y,ny,floor,ceiling) && clip(z,nz,near,far);
+}
 export function exteriorMoveAllowed(station,district,from,to){
-  return allowed(station,district,from,to,classes[0],0);
+  const dx=to.eastM-from.eastM,dz=to.northM-from.northM,dy=to.altitudeM-from.altitudeM;
+  const distance=Math.hypot(dx,dz,dy);
+  if(!distance)return true;
+  let travelled=0,p=from;
+  while(travelled<distance){
+    // Distance to the hall/link union bounds the next possible wall contact.
+    // In open country even a long flight step therefore needs a single check.
+    const gap=outsideDistrict(district,p.eastM,p.northM)-6;
+    if(gap>distance-travelled)return true;
+    travelled=Math.min(distance,travelled+Math.max(8,gap));
+    const t=travelled/distance;
+    const next=travelled===distance?to:{eastM:from.eastM+dx*t,northM:from.northM+dz*t,altitudeM:from.altitudeM+dy*t};
+    if(!allowed(station,district,p,next,walker,0))return false;
+    p=next;
+  }
+  return true;
+}
+export function constrainExterior(station,district,from,to){
+  if(exteriorMoveAllowed(station,district,from,to))return to;
+  let lo=0,hi=1,safe={...from};
+  // Travel as far as clearance allows, then spend any remaining displacement
+  // along the wall. This keeps a diagonal approach from pinning the walker.
+  for(let i=0;i<15;i++){
+    const t=(lo+hi)/2,p={};
+    for(const axis of ['eastM','northM','altitudeM'])p[axis]=from[axis]+(to[axis]-from[axis])*t;
+    if(exteriorMoveAllowed(station,district,from,p)){lo=t;safe=p;}else hi=t;
+  }
+  for(const axis of ['eastM','northM','altitudeM']){
+    const p={...safe,[axis]:to[axis]};
+    if(exteriorMoveAllowed(station,district,safe,p))safe=p;
+  }
+  return safe;
 }
 function allowed(s,d,p,next,group,time){
   const cx=s.address.chainageM,half=s.widthM/2;
   const x=next.eastM-cx,z=next.northM+half,ox=p.eastM-cx,oz=p.northM+half;
   const foot=next.altitudeM-group.eye,head=foot+group.body[1],hw=group.body[0]/2,hl=group.body[2]/2;
+  const oldFoot=p.altitudeM-group.eye,h=group.body[1];
   if(freightObstruction(s,p,next,group))return false;
   if(foot>=s.roofM+roofSlabM-.01)return true;
   if(head>0 && intersects(Math.abs(oz-half),Math.abs(z-half),linkHalfM-hl,half+hl)){
-    for(const wall of [-hallHalfM,hallHalfM])
-      if(intersects(ox,x,wall-1-hw,wall+1+hw))return false;
+    for(const wall of [-hallHalfM,hallHalfM])for(const side of [-1,1]){
+      const end=half+side*half,trunk=half+side*linkHalfM;
+      if(entersBox(ox,oldFoot,oz,x,foot,z,wall-1-hw,wall+1+hw,-h,s.roofM,Math.min(end,trunk)-hl,Math.max(end,trunk)+hl))return false;
+    }
   }
   if(Math.abs(x)<=hallHalfM+hw){
     for(const wall of [0,s.widthM]){
@@ -51,26 +109,27 @@ function allowed(s,d,p,next,group,time){
       const doorX=s.routes[0].nearDoor[0],gx=-face*(x-doorX),oldGX=-face*(ox-doorX);
       if(foot<8 && intersects(oldOut,out,-38-hl,hl) && intersects(oldGX,gx,-7-hw,7+hw)){
         for(const [lo,hi,bottom,top,front,back] of gallerySolids)
-          if(foot<top && head>bottom && intersects(oldGX,gx,lo-hw,hi+hw) &&
-             intersects(-oldOut-2,-out-2,front-hl,back+hl))return false;
+          if(entersBox(oldGX,oldFoot,-oldOut-2,gx,foot,-out-2,lo-hw,hi+hw,bottom-h,top,front-hl,back+hl))return false;
       }
       if(foot<ribs[0][1] && intersects(oldOut,out,-hl,3+hl)){
         const first=Math.ceil((Math.min(ox,x)-hw-ribs[0][0])/ribSpacing);
         const last=Math.floor((Math.max(ox,x)+hw+ribs[0][0])/ribSpacing);
         for(let i=first;i<=last;i++){
           if(!facadeRib(s,i))continue;
-          for(const [w,h,front,back] of ribs)
-            if(foot<h && head>0 && intersects(ox,x,i*ribSpacing-w-hw,i*ribSpacing+w+hw) &&
-               intersects(oldOut,out,1-back-hl,1-front+hl))return false;
+          for(const [w,height,front,back] of ribs)
+            if(entersBox(ox,oldFoot,oldOut,x,foot,out,i*ribSpacing-w-hw,i*ribSpacing+w+hw,-h,height,1-back-hl,1-front+hl))return false;
         }
       }
       if(!intersects(oz,z,wall-hl-1,wall+hl+1))continue;
       const door=s.routes.find(r=>Math.abs(x-r.nearDoor[0])+hw<=r.door[0]/2+.001 && fits(r,group.body[0],group.body[1]) && head<=r.door[1]+.01 && foot>=-.2);
-      if(!door)return false;
+      if(!door && (entersSlab(oz,z,wall,hl+1) || Math.abs(oz-wall)<hl+1-.0002))return false;
     }
   }
   if(Math.abs(x)>hallHalfM && next.eastM>d.sites[0].x && next.eastM<d.sites.at(-1).x){
-    for(const side of [-1,1])if(intersects(p.northM,next.northM,side*linkHalfM-hl-1,side*linkHalfM+hl+1))return false;
+    for(const side of [-1,1]){
+      const wall=side*linkHalfM;
+      if(intersects(p.northM,next.northM,wall-hl-1,wall+hl+1) && entersSlab(p.northM,next.northM,wall,hl+1))return false;
+    }
   }
   if(outsideDistrict(d,next.eastM,next.northM)<=0 && !inFreightOpening(x,next.northM,hw,hl) &&
      head>s.roofM && foot<s.roofM+roofSlabM-.01)return false;

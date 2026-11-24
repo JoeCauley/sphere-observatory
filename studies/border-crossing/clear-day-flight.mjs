@@ -1,4 +1,4 @@
-import {mainPose,roofSlabM} from '../../geographic-flight.js';
+import {mainPose,packPose,roofSlabM} from '../../geographic-flight.js';
 import {rightSign} from '../../packs/border-transport/0.10.0/district.mjs';
 import {stationRecord} from '../../packs/border-transport/0.10.0/atlas.mjs';
 import {portals,quayZ} from '../../packs/border-transport/0.10.0/freight-bay.mjs';
@@ -17,7 +17,7 @@ export function freightDeparture(bearing) {
 
 // Install and place the observer before the trip. After this point the ordinary
 // Main and Border controls own every metre of travel, including the handoff.
-export async function prepareClearFlight({seed,startHeight,approachDegrees,freightBearing=null,ordinaryWall=false}) {
+export async function prepareClearFlight({seed,startHeight,approachDegrees,freightBearing=null,ordinaryWall=false,serviceDoor=false}) {
   const library=window.SphereBiomeLibrary, app=window.SphereApp;
   await library.ready;
   app.setPlaying(false);
@@ -58,5 +58,23 @@ export async function prepareClearFlight({seed,startHeight,approachDegrees,freig
   app.draw();
   departure={item,site,model,meta:{seed,world:library.world.key,address:site.address.key,center,landmark,start,day,
     rules,freightBearing,ordinaryWall,hand:rightSign(item.transport)}};
+  if(serviceDoor){
+    const meadow=library.entry('infinite-meadow');
+    const side=site.address.plots.indexOf(meadow.plotId);
+    if(side<0)throw Error('The selected station has no Meadow frontage.');
+    const {station}=await stationRecord(site.address,false,library.persistence==='file');
+    const door=side===0?station.routes[0].nearDoor:station.routes[0].farDoor;
+    const sign=side===0?-1:1;
+    const view=at({eastM:site.x+door[0],northM:sign*(site.widthM/2+24),altitudeM:1.7,
+      yaw:side===0?0:Math.PI,pitch:.015,mode:'walk'});
+    app.setState({...view,time:day.time,playing:false});
+    departure.enterServiceApproach=async()=>{
+      const pose=packPose({...view,walkMode:true},meadow,SphereAtlas,SphereWorld);
+      const q=SphereMath.norm(view.position);
+      if(!await SphereStageFrame.walkGround({q,forward:view.forward,id:meadow.id,pack:true},null,pose))
+        throw Error('The Meadow service approach could not be opened.');
+      app.setPlaying(true);
+    };
+  }
   return departure;
 }

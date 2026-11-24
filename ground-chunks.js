@@ -17,12 +17,24 @@ function apronOffset(survey,q,s){
  const {lat,lon}=W.coordinates(q,s);
  return survey.rules.apronDistance(survey.record.district,lat,lon);
 }
+function plantingOffset(survey,q,s){
+ const {lat,lon}=W.coordinates(q,s);
+ return survey.rules.plantingDistance(survey.record.district,lat,lon);
+}
+function nearFrontage(q,s,margin){
+ const survey=apronSurvey;
+ if(!survey || !survey.params.every(([k,v])=>(s[k]??null)===v))return false;
+ const {lat,lon}=W.coordinates(q,s),d=survey.record.district,rules=survey.rules;
+ if(rules.apronDistance(d,lat,lon)<margin)return true;
+ const p=rules.districtPoint(d,lat,lon);
+ return rules.outsideDistrict(d,p.eastM,p.northM)<margin;
+}
 function localSurvey(s){
  const survey=apronSurvey,anchor=s.terrainAnchor||s.siteAnchor;
  if(!survey||!anchor||!survey.params.every(([k,v])=>(s[k]??null)===v))return null;
  if(!survey.anchors.has(anchor)){
   // Includes the walking rebase radius and the outer 16 km terrain tiles in both directions.
-  survey.anchors.set(anchor,apronOffset(survey,anchor,s)<64000);
+  survey.anchors.set(anchor,nearFrontage(anchor,s,64000));
  }
  return survey.anchors.get(anchor)?survey:null;
 }
@@ -76,7 +88,7 @@ function bounds(s){const f=frame(s),p=f.local(s.position);
  // uploaded vertices, collision and geographic addresses remain exact.
  const centre=v=>{const q=v/SIZE,n=Math.round(q);return Math.abs(q-n)<HYSTERESIS?n:Math.floor(q);};
  return {x:centre(p[0]),z:centre(p[2]),f};}
-function build(s,cx,cz,cells=FINE,centre=[cx,cz],identity=null){const f=frame(s),geometry=jobGeometry(s,cx,cz,cells,centre),geography=identity?.geography||geometry.geography,meshKey=identity?.key||cacheKey(s,{geography,cells}),mesh=new S.Mesh(f.origin,f.basis,'Connected terrain · '+cx+','+cz),{loX,loZ,spanX,spanZ}=geometry,step=spanX/cells,stepZ=spanZ/cells;
+function build(s,cx,cz,cells=FINE,centre=[cx,cz],identity=null){const f=frame(s),geometry=jobGeometry(s,cx,cz,cells,centre),geography=identity?.geography||geometry.geography,meshKey=identity?.key||cacheKey(s,{geography,cells}),mesh=new S.Mesh(f.origin,f.basis,'Connected terrain Ãƒâ€šÃ‚Â· '+cx+','+cz),{loX,loZ,spanX,spanZ}=geometry,step=spanX/cells,stepZ=spanZ/cells;
  // The authored province already supplies connected land, water and gardens.
  // Its residency cells carry support ownership, never duplicate that mesh or
  // resample every river segment to generate a second invisible height field.
@@ -117,7 +129,7 @@ function build(s,cx,cz,cells=FINE,centre=[cx,cz],identity=null){const f=frame(s)
     return Math.max(Math.abs(M.dot(offset,grove.basis[0])),Math.abs(M.dot(offset,grove.basis[2])))<1.10;
   };
   function plant(q,spire){
-    if(survey&&apronOffset(survey,q,s)<=spire.radius*1000)return;
+    if(survey&&plantingOffset(survey,q,s)<=spire.radius*1000)return;
     const here=f.local(M.mul(q,s.radius)),x=here[0],z=here[2],r=spire.radius;
     if(x<loX||x>=loX+spanX||z<loZ||z>=loZ+spanZ||C.missing(q,s))return;
     if(clip && [[-r,-r],[r,-r],[-r,r],[r,r]].some(([dx,dz])=>clip.margin([x+dx,0,z+dz])<0))return;
@@ -133,7 +145,7 @@ function build(s,cx,cz,cells=FINE,centre=[cx,cz],identity=null){const f=frame(s)
    if(!violet && centerBiome!==1 && density>.28)continue;
    const world=[(ix+.5)*pitch,(iy+.5)*pitch,(iz+.5)*pitch];if(Math.abs(M.length(world)-s.radius)>.055)continue;
    const q=M.norm(world),local=f.local(M.mul(q,s.radius)),x=local[0],z=local[2],province=root.SphereWatershed?.sample(q,s);if(x<loX||x>=loX+spanX||z<loZ||z>=loZ+spanZ||protectedProvinceAt(q,s)||province?.water?.river||province?.water?.basin||province?.route||C.missing(q,s))continue;
-   if(survey&&apronOffset(survey,q,s)<=survey.rules.apronBlendM)continue;
+   if(survey&&plantingOffset(survey,q,s)<=3)continue;
    const ecology=root.SphereMeadowEcology?.active?.(s)?root.SphereMeadowEcology.query(q,s):null;if(ecology?.treeSuppressed)continue;
    const id=G?.query(q,{state:s,representation:'walking'}).biome??W.sample(q,s).biome;
    if(id===9&&forest){
@@ -245,4 +257,5 @@ function dispose(){suspend();cache.clear();bytes=0;waits=0;clock=0;cancelled=0;e
 root.SphereGround={suspend,dispose,enabled,frame,geographic,height,owner,build,neighbourhood,geometry,rimCut,ground,surfaceSupport,controller,request,pump,rebaseWalking,addressAt,geographicCell,cacheKey,renderKey,setBudget,available(s){if(!enabled(s))return false;request(s);const p=frame(s).local(s.position);return active?.id===renderKey(s)&&active.groups.some(m=>m.chunk.cells===FINE&&p[0]>=m.ground.bounds[0]&&p[0]<m.ground.bounds[2]&&p[2]>=m.ground.bounds[1]&&p[2]<m.ground.bounds[3]);},SIZE,FINE,COARSE,support(s,x,z){request(s);const ok=active?.id===renderKey(s)&&active.groups.some(m=>m.chunk.cells===FINE&&x>=m.ground.bounds[0]&&x<m.ground.bounds[2]&&z>=m.ground.bounds[1]&&z<m.ground.bounds[3]);if(!ok)waits++;return ok;},ready(s){if(rebase&&renderKey(s)===rebase.from){if(!rebaseReady)return false;rebaseWalking(s);}request(s);return active?.signature===renderKey(s)+':'+bounds(s).x+':'+bounds(s).z;},has(mesh){return [...cache.values()].some(e=>e.mesh===mesh||e.mesh.ground.rim?.wall===mesh)||pending?.hydrated===mesh||pending?.hydrated?.ground.rim?.wall===mesh;},get revision(){return revision;},get needsFrame(){return !!target;},get info(){return {chunks:active?.groups.length||0,cache:cache.size,bytes:bytes+(pending?.mesh?sizeOf(pending.mesh):0),pendingBytes:pending?.mesh?sizeOf(pending.mesh):0,budget,buildMs,queue:target?[...target.wanted].filter(k=>!cacheUsable(k,target.id)).length:0,waits,cancelled,evictions,stableIdentity:true};}};
 root.SphereGround.setApronSurvey=setApronSurvey;
 root.SphereGround.nearApron=nearApron;
+root.SphereGround.nearFrontage=nearFrontage;
 })(typeof window==='undefined'?globalThis:window);

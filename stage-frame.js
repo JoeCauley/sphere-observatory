@@ -34,6 +34,58 @@
   let lastFlight = null;   // what the last flight found, for inspection
   let lastArrival = null;
 
+  // A physical key stays down while the keyboard's document changes. Release
+  // it in the departing scene, then replay only keys still held on arrival.
+  const heldNavigation=new Set(), travelCodes=new Set(['KeyW','KeyA','KeyS','KeyD','KeyQ','KeyE','KeyZ','KeyX','ArrowUp','ArrowDown','ArrowLeft','ArrowRight','ShiftLeft','ShiftRight']);
+  let surfacePace=1, lastSpeed=0, entrySpeed=null, controlHold=false;
+  let resetPace=null;
+  function paceControl(){
+    const visible=surfacePace!==1 && current?.id!=='border-transport';
+    if(visible && !resetPace){
+      resetPace=document.createElement('button');
+      resetPace.className='secondary';resetPace.title='Return to normal walking and flight speed';
+      Object.assign(resetPace.style,{position:'fixed',right:'1rem',bottom:'3.6rem',zIndex:'910',width:'auto'});
+      resetPace.onclick=()=>{
+        surfacePace=1;entrySpeed=null;paceControl();
+        if(current)current.frame.contentWindow.focus();else document.getElementById('viewport').focus();
+      };
+      document.body.append(resetPace);
+    }
+    if(resetPace){resetPace.hidden=!visible;resetPace.textContent=surfacePace+'× travel · Resume 1×';}
+  }
+  function watchKeys(target){
+    target.addEventListener('keydown',e=>{
+      if(!e.isTrusted || !travelCodes.has(e.code) || /INPUT|SELECT|TEXTAREA/.test(e.target?.tagName))return;
+      heldNavigation.add(e.code);
+      if(controlHold){e.stopImmediatePropagation();e.preventDefault();}
+    },true);
+    target.addEventListener('keyup',e=>{if(e.isTrusted)heldNavigation.delete(e.code);},true);
+    target.addEventListener('blur',()=>setTimeout(()=>{if(!document.hasFocus())heldNavigation.clear();},0));
+  }
+  watchKeys(window);
+  document.addEventListener('visibilitychange',()=>{if(document.hidden)heldNavigation.clear();});
+  function handKeys(target,type){
+    for(const code of heldNavigation)target.dispatchEvent(new target.KeyboardEvent(type,{code,bubbles:true,cancelable:true}));
+  }
+  function holdMovement(target){
+    const moving=['KeyW','KeyA','KeyS','KeyD','KeyE','KeyQ'].some(code=>heldNavigation.has(code));
+    controlHold=true;entrySpeed=moving && lastSpeed>0?lastSpeed:null;
+    handKeys(target,'keyup');
+  }
+  function resumeMovement(target){
+    controlHold=false;
+    if(target)handKeys(target,'keydown');
+  }
+  function movementSpeed(base,dt){
+    const target=base*surfacePace;
+    if(entrySpeed!==null){
+      lastSpeed=entrySpeed;
+      entrySpeed=target+(entrySpeed-target)*Math.exp(-dt*5);
+      if(Math.abs(entrySpeed-target)<Math.max(.05,target*.003))entrySpeed=null;
+    }else lastSpeed=target;
+    return lastSpeed;
+  }
+
   // A biome's scene, in the shape the rest of this file uses.
   function sceneOf(item) {
     const pack = library()?.pack(item.packId);
@@ -116,6 +168,7 @@
     }
     // The iframe's initial window can be replaced when its real document loads.
     window.SphereFrameFallback?.install(child);
+    watchKeys(child);
     child.document.addEventListener('click', event => {
       const target = event.target.closest?.('#leavePack, a[href]');
       if (!target) return;
@@ -240,11 +293,12 @@
   // While covered, or in flight, Main's "Preparing your view" card is kept out of sight:
   // Main still prepares, but behind the scene, or as a held frame, never as a card.
   const quietStyle = document.createElement('style');
-  quietStyle.textContent = 'body.stage-quiet #sceneLoading{opacity:0!important;pointer-events:none!important} body:has(.transport-flight) #viewport :is(.view-top,.view-bottom,.reticle,.target-readout,#surfaceLegend){visibility:hidden} #viewport:has(canvas[data-station]:not([hidden])) .target-readout{visibility:hidden}';
+  quietStyle.textContent = 'body.stage-quiet #sceneLoading{opacity:0!important;pointer-events:none!important} body:has(.transport-flight) #viewport :is(.view-top,.view-bottom,.reticle,.target-readout,#surfaceLegend,#locationStrip){visibility:hidden} #viewport:has(canvas[data-station]:not([hidden])) .target-readout{visibility:hidden}';
   document.head.append(quietStyle);
   function quiet() { document.body.classList.toggle('stage-quiet', flying || window.sphereStageCovered === true); }
   function cover(on) {
     window.sphereStageCovered = on === true; quiet();
+    paceControl();
     const name=current?.frame.surfaceEntry?.passage?'Outfall passage':library()?.entry(current?.id)?.name;
     window.dispatchEvent(new CustomEvent('sphere-visible-biome',{detail:on&&current?name:null}));
   }
@@ -383,12 +437,25 @@
     return plots.map(plot=>{const item=lib.placed().find(x=>!x.edge && x.plotId===plot);
       return lib.pack(item?.packId)?.overview?.albedo??[.26,.29,.25];});
   }
+  function stationHabitats(district,station=district.sites.find(site=>site.bay===0)){
+    const lib=library(),s=window.SphereApp.getState(),item=lib.entry('border-transport');
+    const doorX=station.routes?.[0].nearDoor[0]??0;
+    return station.address.plots.map((plot,index)=>{
+      const placed=lib.placed().find(item=>!item.edge && item.plotId===plot);
+      if(placed)return placed.packId==='infinite-meadow'?1:0;
+      // A native biome can change inside one Atlas plot. Sample the actual frontage
+      // when a different station becomes resident, once for each side.
+      const eye={eastM:station.address.chainageM+doorX,northM:(index?1:-1)*(station.widthM/2+4),altitudeM:1.7};
+      const q=norm(geography.worldPosition(s,item,eye,SphereAtlas,SphereWorld));
+      return SphereBiomes.region(q,s)===1?2:0;
+    });
+  }
   function prepareSurvey(site,item){
     const district=item.transport;
     const key=site.address.key;
     if(surveyLoad===key || performance.now()<surveyRetry)return;
     surveyLoad=key;
-    stationExterior(site.address,library().persistence==='file').then(({station,makeView})=>{
+    stationExterior(site.address,library().persistence==='file').then(({station,makeView,constrainExterior})=>{
       if(surveyLoad!==key)return;
       // The resident mesh already includes the neighboring roofs. Keep it on screen
       // while the next detailed station is being read, then reuse the same canvas.
@@ -402,8 +469,8 @@
       Object.assign(canvas.style,{position:'absolute',inset:'0',width:'100%',height:'100%',pointerEvents:'none'});
       view().after(canvas);
       try{
-        const renderer=makeView(canvas,{capture:false,composite:true,district,land:stationLand(district)});
-        renderer.load(station);surveyView={canvas,view:renderer,makeView,station,key,districtKey:district.origin.key,
+        const renderer=makeView(canvas,{capture:false,composite:true,district,land:stationLand(district),habitats:s=>stationHabitats(district,s)});
+        renderer.load(station);surveyView={canvas,view:renderer,makeView,constrainExterior,station,key,districtKey:district.origin.key,
           nearM:airOf(sceneOf(item)).nearM,stamp:-Infinity};
       }catch(error){canvas.remove();throw error;}
     }).catch(error=>{
@@ -413,6 +480,7 @@
   }
   // Near one AU, global shader coordinates cannot distinguish the sides of a 32 km hall.
   // Draw the surveyed footprint in the camera chart before individual decks become visible.
+  const surveyExtents=new WeakMap();
   function projectSurvey(now,s){
     const altitude=s.radius-Math.hypot(...s.position);
     if(altitude>1200 || altitude<-.2 || !s.collection){if(surveyLoad)retireSurvey();return false;}
@@ -421,18 +489,22 @@
       if(surveyLoad)retireSurvey();return false;
     }
     const q=norm(s.position),ll=SphereWorld.coordinates(q,s);
-    if(Math.abs(ll.lat-d.origin.latitude)*s.radius>1500){if(surveyLoad)retireSurvey();return false;}
+    if(geography.latitudeGap(d,ll.lat)>1500){if(surveyLoad)retireSurvey();return false;}
     const p=geography.packPose(s,item,SphereAtlas,SphereWorld);
     const edge=geography.outsideDistrict(d,p.eastM,p.northM);
     const range=Math.hypot(Math.max(0,altitude),Math.max(0,edge)*.001);
-    const extent=Math.max(...d.sites.map(site=>site.widthM))*.001;
+    const site=geography.nearestSite(d,p.eastM);
+    // The adjacent halls share a silhouette. Its broad-phase range stays
+    // fixed across an address change and can warm ahead of a guided descent.
+    if(!surveyExtents.has(d))surveyExtents.set(d,d.sites.reduce((extent,bay)=>Math.max(extent,bay.widthM*.001),0));
+    const extent=surveyExtents.get(d);
     if(range>extent*(surveyLoad?25:22)){if(surveyLoad)retireSurvey();return false;}
-    const site=d.sites.reduce((a,b)=>Math.abs(a.x-p.eastM)<=Math.abs(b.x-p.eastM)?a:b);
     if(surveyView && surveyView.districtKey!==d.origin.key)retireSurvey();
     if(surveyView?.key===site.address.key)surveyLoad=site.address.key;
     else prepareSurvey(site,item);
     if(!surveyView)return false;
     const weight=optics.layerWeight(extent*3,extent*16,range),v=surveyView;
+    v.chartState=s;v.environment=geography.borderEnvironment(d,v.station,p);
     if(weight<=0){hideSurvey();return false;}
     const w=view().clientWidth,h=view().clientHeight;
     if(!w||!h){hideSurvey();return false;}
@@ -443,10 +515,10 @@
     const airWeight=optics.layerWeight(v.nearM*.6,v.nearM,p.altitudeM)
       *optics.layerWeight(0,geography.apronRunM,edge)
       *(1-optics.layerWeight(site.roofM,site.roofM+geography.roofSlabM,p.altitudeM));
-    if(s.walkMode && !current && weight===1){
+    if((s.walkMode || altitude<.1) && !current && weight===1){
       hideSurvey();
       v.nativeState=s;
-      v.nativeView??=v.makeView(window.SphereApp.renderer.canvas,{shared:true,mainDepth:true,district:d});
+      v.nativeView??=v.makeView(window.SphereApp.renderer.canvas,{shared:true,mainDepth:true,district:d,habitats:s=>stationHabitats(d,s)});
       v.nativeView.load(v.station);
       return false;
     }
@@ -509,7 +581,7 @@
     if(recipe.density===0 && !item.transport){pose.clouds=false;pose.textureDetail=false;pose.richMaterials=false;}
     if(exposed){
       hideSurvey();const blend=optics.layerWeight(recipe.nearM*.65,recipe.nearM,p.altitudeM);
-      pose.atmosphere*=1-blend;pose.cavityHaze*=1-blend;if(blend===1)pose.clouds=false;
+      pose.borderVacuum=blend;pose.atmosphere*=1-blend;pose.cavityHaze*=1-blend;if(blend===1)pose.clouds=false;
     }
     const surveyed=!exposed && projectSurvey(now,pose);
     if(!surveyed)window.SphereApp.renderer.draw(pose,Math.round(rect.width*scale),Math.round(rect.height*scale));
@@ -521,7 +593,14 @@
     c.shell.style.background='transparent';
     if(scene.transport){
       c.shell.classList.add('transport-flight');c.frame.style.background='transparent';
-      const doc=c.frame.contentDocument;if(doc?.body){doc.documentElement.style.background='transparent';doc.body.style.background='transparent';}
+      const doc=c.frame.contentDocument;
+      if(doc?.body){
+        // Chromium backs a light iframe with opaque white inside a dark page.
+        // The vacuum opening must composite onto the live Sphere underneath.
+        doc.documentElement.style.colorScheme=getComputedStyle(c.frame).colorScheme;
+        doc.documentElement.style.background='transparent';
+        doc.body.style.background='transparent';
+      }
     }
     const bar=c.shell.firstElementChild;
     Object.assign(bar.style,{position:'absolute',top:'0',left:'0',right:'0',zIndex:'2'});
@@ -1180,12 +1259,12 @@
     const renderer=window.SphereApp.renderer;
     if(!renderer.geometry&&!renderer.geometryPreparation && renderer.gl.getExtension('KHR_parallel_shader_compile'))
       renderer.prepareGeometry().catch(error=>console.warn('Native ground preparation',error));
-    const [{stationRecord},{makeView},{exteriorMoveAllowed}]=await Promise.all([
+    const [{stationRecord},{makeView},{exteriorMoveAllowed,constrainExterior}]=await Promise.all([
       import(new URL('packs/border-transport/0.10.0/atlas.mjs',base)),
       import(new URL('packs/border-transport/0.10.0/view.mjs',base)),
       import(new URL('packs/border-transport/0.10.0/motion.mjs',base))]);
     const {station}=await stationRecord(address,false,fileBacked);
-    return {station,makeView,exteriorMoveAllowed};
+    return {station,makeView,exteriorMoveAllowed,constrainExterior};
   }
   function surfaceAddress() {
     const lib=library(), meadow=lib?.entry('infinite-meadow'), outfall=lib?.entry('border-outfall');
@@ -1245,7 +1324,9 @@
     if(!geographicTarget && (!address || payload.edge!==address.edge.id || !['infinite-meadow','border-outfall'].includes(here.id)))return false;
     const id=geographicTarget?.id??(here.id==='infinite-meadow'?'border-outfall':'infinite-meadow');
     const arrival={...structuredClone(payload), active:false};
+    if(geographicTarget && (here.id==='border-transport'||id==='border-transport'))arrival.horizontalFov=outgoingFov(here,window.SphereApp.getState());
     opening=true;
+    holdMovement(source);
     parked=here;
     let destination;
     const status=window.SphereTransitStatus.crossing(library().entry(id).name,'Opening the adjoining ground.');
@@ -1258,13 +1339,15 @@
       const result=await settled(destination,sceneOf(library().entry(id)),45000);
       if(current!==destination || parked!==here)return false;
       if(result.status!=='ready')throw Error(result.message || 'The adjoining view did not finish opening.');
+      // Paint the receiving sky with the arrival camera while the departing
+      // frame still covers it. Transparent vacuum pixels need a ready backdrop.
+      if(geographicTarget)enableRegional(destination,sceneOf(geographicTarget));
       destination.shell.style.transition='opacity 350ms linear';
       destination.shell.style.opacity='1';
       await sleep(350);
       if(current!==destination || parked!==here)return false;
       retire(here);parked=null;
       destination.pending=false;
-      if(geographicTarget)enableRegional(destination,sceneOf(geographicTarget));
       destination.shell.style.pointerEvents='';
       arrival.active=true;
       destination.frame.contentWindow.focus();
@@ -1280,7 +1363,7 @@
         say('Surface crossing paused. '+error.message);
       }
       return false;
-    } finally {status.end();opening=false;}
+    } finally {status.end();opening=false;resumeMovement(current?.frame.contentWindow);}
   }
 
   /* ---- Startup: add buttons, and reopen the scene you were in ---- */
@@ -1292,13 +1375,14 @@
     if(here?.id!==id)return;
     opening=true;suppressedPlot=id;clearRecovery();lastArrival=null;
     const camera={geographic:true,pose:geography.packPose(state,item,SphereAtlas,SphereWorld),active:false};
-    if(item.transport && camera.pose.mode==='flight')camera.horizontalFov=state.fov;
+    if(item.transport || item.id==='infinite-meadow')camera.horizontalFov=state.fov;
     try{
+      holdMovement(window);
       window.SphereApp.clearNavigation?.();
       say('Entering '+item.name+' at your flight position.');
       await show(id,'geographic','',camera);
     }catch(error){recover(id,'geographic',null,issue('load-failure','ready',error));}
-    finally{opening=false;}
+    finally{opening=false;resumeMovement(current?.frame.contentWindow??window);}
   }
   function groundAt(q,state) {
     return walking.ownerAt(q,state,library().placed(),SphereAtlas,SphereWorld);
@@ -1308,10 +1392,16 @@
     return {...point,id:owner.id,name:owner.name,pack:owner.pack,tint:color||[.35,.38,.36]};
   }
   function shellView(state,station) {
-    const q=station.q,up=q.map(n=>-n);
+    const q=station.q,up=SphereMath.basis(station.forward,q.map(n=>-n)).u;
     return {...state,position:q.map(n=>n*(state.radius-.0017)),forward:station.forward.slice(),up,
       siteId:'',siteAnchor:null,terrainAnchor:null,siteRevision:0,siteElevation:0,
       walkPosition:null,walkVelocity:0,walkMode:true,walkSurface:true,shadeAttachment:null,geometryDetail:true};
+  }
+  function outgoingFov(source,state){
+    if(!source)return state.fov;
+    if(source.frame.surfaceEntry?.horizontalFov)return source.frame.surfaceEntry.horizontalFov;
+    const rect=source.frame.getBoundingClientRect();
+    return rect.height?2*Math.atan(rect.width/rect.height/1.428148)*180/Math.PI:state.fov;
   }
   // Keep the departure frame and its save until the adjoining scene can actually support a walker.
   async function walkGround(point,passage=null,entryPose=null) {
@@ -1322,11 +1412,12 @@
       : named ? {id:named.id,name:named.name,pack:true} : groundAt(point.q,core);
     if(!passage && (SphereMath.inBreach(point.q,core)||SphereCollection.missing(point.q,core)))return false;
     const id=owner.id, here=current, worldKey=lib.world.key;
-    const sharedStation=here && [id,here.id].includes('border-transport') && [id,here.id].includes('infinite-meadow');
+    const sharedStation=id==='border-transport'||here?.id==='border-transport';
     const threshold=!sharedStation && !!(passage || here?.frame.surfaceEntry?.passage || id==='border-transport' || here?.id==='border-transport');
     clearRecovery();
     const status=window.SphereTransitStatus.crossing(owner.name,'Preparing the adjoining ground.');
     opening=true;let destination;
+    holdMovement(here?.frame.contentWindow??window);
     try {
       await window.SphereTransitStatus.paint();
       if(lib.world?.key!==worldKey || current!==here)throw Error('The active world changed.');
@@ -1336,6 +1427,7 @@
         const view=shellView(core,point);
         const pose=entryPose||geography.packPose(view,lib.entry(id),SphereAtlas,SphereWorld);
         const entry={geographic:true,pose,passage,reverse:!!passage && pose.yaw===Math.PI,active:false};
+        if(sharedStation)entry.horizontalFov=outgoingFov(here,core);
         mountFrame(id,'',entry);destination=current;
         if(!destination)throw Error('The neighbouring scene is unavailable.');
         const scene=passage?{contract:true}:sceneOf(lib.entry(id));
@@ -1353,6 +1445,7 @@
       } else {
         const result=await window.SphereJourney.travel.request({type:'place',title:owner.name,stageTrip:true,resolve:s=>{
           const next=shellView(s,point);
+          if(sharedStation)next.fov=outgoingFov(here,s);
           next.walkMode=false;
           SphereLanding.enter(next,next.position,{activate:false,grounded:true});
           return next;
@@ -1378,7 +1471,7 @@
         ['Retry crossing',()=>walkGround(point,passage,entryPose)],['Stay here',clearRecovery]
       ],true);
       return false;
-    } finally {status.end();opening=false;}
+    } finally {status.end();opening=false;resumeMovement(current?.frame.contentWindow??window);}
   }
   async function clearGate(gate,retry){
     if(!gate.far.pack || !['infinite-industry','sideways-city'].includes(gate.far.id))return gate;
@@ -1419,8 +1512,9 @@
     if(Math.hypot(...delta)<1e-15)return false;
     const target=geography?.footprint(state,library(),SphereAtlas,SphereWorld);
     if(target?.transport && current?.id!==target.id){
-      const f=bearing||state.forward,forward=norm(f.map((v,i)=>v-dot(f,q)*q[i]));
-      return walkGround(station({q,forward},state,{id:target.id,name:target.name,pack:true}));
+      const forward=bearing||state.forward;
+      const entryPose=geography.packPose({...state,forward,walkMode:true},target,SphereAtlas,SphereWorld);
+      return walkGround(station({q,forward},state,{id:target.id,name:target.name,pack:true}),null,entryPose);
     }
     if(lastMouth){
       const {gate,side}=lastMouth, mouth=gate[side],d=q.map((x,i)=>(x-mouth.q[i])*state.radius*1000);
@@ -1468,9 +1562,27 @@
     return arrived;
   }
 
+  function constrainNativeStation(state,previousPosition,border){
+    if(!previousPosition || !border?.transport || altitudeOf(state)>4)return false;
+    const d=border.transport,ll=SphereWorld.coordinates(norm(state.position),state);
+    if(geography.latitudeGap(d,ll.lat)>220)return false;
+    const p=geography.packPose(state,border,SphereAtlas,SphereWorld),site=geography.nearestSite(d,p.eastM);
+    if(p.altitudeM>site.roofM+1352+5)return false;
+    const old=geography.packPose({...state,position:previousPosition},border,SphereAtlas,SphereWorld);
+    const gap=point=>geography.outsideDistrict(d,point.eastM,point.northM);
+    let safe=p;
+    if(surveyView?.key===site.address.key)safe=surveyView.constrainExterior(surveyView.station,d,old,p);
+    // The first crossing waits for the surveyed collision geometry to arrive.
+    else if(p.altitudeM<site.roofM+geography.roofSlabM+1.7 && gap(old)>0 && gap(p)<=0)safe=old;
+    if(safe===p)return false;
+    state.position=geography.worldPosition(state,border,safe,SphereAtlas,SphereWorld);
+    if(state.walkMode && state.walkPosition)state.walkPosition=SphereSites.site(state).local(state.position);
+    return true;
+  }
   function manualMovement(state,previousPosition){
     const lib=library();
     if(!geography || !lib?.world || current || flying || opening || !window.SphereLoading?.ready || window.SphereJourney?.travel.active)return;
+    if(constrainNativeStation(state,previousPosition,lib.entry('border-transport')))return;
     if(state.walkMode){if(previousPosition)crossedOnFoot(state,previousPosition);return;}
     const altitude=state.radius-Math.hypot(...state.position);
     if(altitude>geography.leaveKm){suppressedPlot=null;return;}
@@ -1496,11 +1608,11 @@
     const climbed=pose.altitudeM>previous.pose.altitudeM && pose.altitudeM>=geography.leaveKm*1000;
     if(!climbed && (inspect.levelCruising || pose.altitudeM>=geography.leaveKm*1000))return;
     if(!climbed && item.transport){
-      const distance=p=>geography.outsideDistrict(item.transport,p.eastM,p.northM);
+      const distance=p=>geography.outsideStationScene(item.transport,p.eastM,p.northM,p.altitudeM);
       const edge=distance(pose);
       if(edge<=.05)return;
       // Visit sets down on the marked service apron. Keep its controls during the last steps into the doorway.
-      if(!current.frame.surfaceEntry?.geographic && edge<=14 && edge<=distance(previous.pose))return;
+      if(!current.frame.surfaceEntry?.geographic && edge<=geography.serviceGalleryDepthM+14 && edge<=distance(previous.pose))return;
     }
     if(!climbed && item.edge && !item.transport){
       const home=SphereAtlas.byId(item.edge.near);
@@ -1533,9 +1645,12 @@
       void crossSurface(current.frame.contentWindow,entry,target);return;
     }
     const id=item.id;
+    if(item.transport)worldPose.fov=outgoingFov(current,s);
+    holdMovement(current.frame.contentWindow);
     close({silent:true});suppressedPlot=id;setFlightView(worldPose);
     say('Back in Sphere free flight above '+item.name+'.');
     document.getElementById('viewport')?.focus({preventScroll:true});
+    resumeMovement(window);
   }
   async function start() {
     const deadline = performance.now() + 300000;
@@ -1560,6 +1675,9 @@
       }
       if(current && !current.frame.surfaceEntry?.passage && !library().entry(current.id) && !flying)close();
     });
+    // A route link selects its own starting address even when the previous visit saved a different biome.
+    const link=new URLSearchParams(location.search);
+    if(['wall','doors'].includes(link.get('border'))||['along','across'].includes(link.get('freight')))return;
     const saved = remembered();
     if (!saved) return;
     while (!window.SphereLoading?.ready && performance.now() < deadline) await sleep(250);
@@ -1572,7 +1690,9 @@
     else remember(null);
   }
 
-  window.SphereStageFrame = Object.freeze({ visit, manualMovement,
+  window.SphereStageFrame = Object.freeze({ visit, manualMovement, movementSpeed,
+    get surfacePace(){return surfacePace;},
+    setSurfacePace(value){if([1,16,128].includes(value)){surfacePace=value;entrySpeed=null;paceControl();}},
     crossWalkingEdge(from,to,bearing){
       const core=window.SphereApp.getState();
       return crossedOnFoot({...core,position:to},from,bearing);
@@ -1589,17 +1709,21 @@
     return item?' · '+name+' below · '+(height>geography.enterKm?'descend below '+geography.enterKm+' km to enter':'fly into its landscape'):'';
   }, regionalFrame, drawWalkingStation(s,width,height,linear,renderInfo){
     const v=surveyView;
-    if(v?.nativeState!==s || !s.walkMode || s.projection!=='perspective')return null;
+    if(!v || s.projection!=='perspective')return null;
+    if(v.nativeState!==s){
+      if(renderInfo && v.chartState===s)renderInfo.borderEnvironment=v.environment;
+      return null;
+    }
     const item=library().entry('border-transport'),p=geography.packPose(s,item,SphereAtlas,SphereWorld);
     if(renderInfo)renderInfo.borderEnvironment=geography.borderEnvironment(item.transport,v.station,p);
     const axes=geography.stationBasis(s,item.transport,p,SphereWorld);
     const direct=s.routeShades?SphereCollection.visibility(s.position,s,64):1;
     v.nativeView.draw(v.station,[p.eastM-v.station.address.chainageM,p.altitudeM,p.northM+v.station.widthM/2],p.yaw,p.pitch,window.SphereApp.sceneSeconds,false,direct,
-      {...axes,width,height,radiusKm:s.radius,linear,jungleFace:renderInfo?.borderEnvironment?.zone==='biome' && SphereBiomes.region(norm(s.position),s)===1?Math.sign(p.northM):0,focal:width/height/Math.tan(s.fov*Math.PI/360)});
+      {...axes,width,height,radiusKm:s.radius,linear,vacuum:renderInfo?.borderEnvironment?.air==='vacuum',jungleFace:renderInfo?.borderEnvironment?.zone==='biome' && SphereBiomes.region(norm(s.position),s)===1?Math.sign(p.northM):0,focal:width/height/Math.tan(s.fov*Math.PI/360)});
     return v.key;
   }, presentStation(source){
     if(current?.regional && current.frame.contentWindow===source)regionalFrame(performance.now());
-  }, stationLand, transportAddress, stationExterior, surfaceAddress, surfaceLight, surfaceBackdrop, servicePassage, canCrossSurface, crossSurface, walkGround, leavePassage,
+  }, stationLand, stationHabitats, transportAddress, stationExterior, surfaceAddress, surfaceLight, surfaceBackdrop, servicePassage, canCrossSurface, crossSurface, walkGround, leavePassage,
     savePassage(source,pose){const passage=current?.frame.surfaceEntry?.passage;
       if(passage && current.frame.contentWindow===source && !current.pending && current.frame.surfaceEntry.active)
         remember({schema:2,id:'border-outfall',passage,pose});},
