@@ -105,15 +105,15 @@ async function main(){
       catch(error){console.error('Off-centre approach',await trace());throw error;}
       finally{await page.keyboard.up('KeyQ');}
       const airborne=await seen();assert.equal(airborne.locked,false);assert(Math.abs(airborne.pose.eastM-item.transport.sites[0].x-5200)<40);
-      await frame.locator('#pace').selectOption('128');await frame.locator('canvas').focus();await page.keyboard.down('KeyF');
+      await frame.locator('#pace').selectOption('128');await frame.locator('canvas').focus();await page.keyboard.down('KeyQ');
       try{await page.waitForFunction(()=>{const b=document.querySelector('#stageFrame iframe')?.contentWindow?.SphereBiome;return b?.inspect().locked&&Math.abs(b.pose().altitudeM-1746.7)<.05;});}
-      finally{await page.keyboard.up('KeyF');}
+      finally{await page.keyboard.up('KeyQ');}
       await frame.getByRole('button',{name:'Walk',exact:true}).click();const top=await seen();
       assert.equal(top.pose.mode,'walk');assert(Math.abs(top.pose.altitudeM-1746.7)<.05);
       if(output)await frame.locator('canvas').screenshot({path:path.join(output,'roof-landing.png')});
-      await frame.getByRole('button',{name:'Fly',exact:true}).click();await frame.locator('canvas').focus();await page.keyboard.down('KeyR');
+      await frame.getByRole('button',{name:'Fly',exact:true}).click();await frame.locator('canvas').focus();await page.keyboard.down('KeyE');
       try{await page.waitForFunction(()=>!SphereStageFrame.current&&!window.sphereStageCovered&&SphereApp.getState().radius-Math.hypot(...SphereApp.getState().position)>24);}
-      finally{await page.keyboard.up('KeyR');}
+      finally{await page.keyboard.up('KeyE');}
       roof={bay:item.transport.sites[0].bay,approachM:airborne.pose.altitudeM,roofEyeM:top.pose.altitudeM,returnedToMain:true};
     }
     assert.deepEqual(errors,[]);

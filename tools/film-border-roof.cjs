@@ -114,14 +114,14 @@ async function main() {
       await page.mouse.up(); await focus('Main'); await sleep(700); await mark('05-approach');
       await hold(['KeyQ'], s => s.owner === border && s.ready); await mark('06-border-entry');
       await pace(1); const roofEye = meta.home.roofM + meta.roofSlabM + 1.7;
-      await hold(['KeyF'], s => Math.abs(s.h - roofEye) < .02);
+      await hold(['KeyQ'], s => Math.abs(s.h - roofEye) < .02);
       await frame.getByRole('button', {name: 'Walk', exact: true}).click(); await until(s => s.mode === 'walk');
       const roof = await mark('07-roof-landed'); await focus(border);
       if (roof.pitch < -.16) await hold(['ArrowUp'], s => s.pitch >= -.13);
       await pace(128); await hold(['KeyW'], s => s.z >= roof.z + 220);
       assert(Math.abs((await mark('08-roof-walked')).h - roofEye) < .02);
       await frame.getByRole('button', {name: 'Fly', exact: true}).click();
-      await pace(16); await hold(['KeyR'], s => s.h >= 2450);
+      await pace(16); await hold(['KeyE'], s => s.h >= 2450);
       if ((await state()).pitch < -.055) await hold(['ArrowUp'], s => s.pitch >= -.055);
       await hold(['KeyW'], s => s.owner !== border && s.ready && !s.leaving && s.z > s.half + 550);
       assert.equal((await mark('09-far-side')).owner, 'Main');

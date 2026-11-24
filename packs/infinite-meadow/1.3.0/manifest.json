@@ -85,8 +85,8 @@
   "assets": [
     {
       "path": "app.js",
-      "bytes": 47062,
-      "sha256": "8ae204b82322411f06dbac6c4fe54f12a2d8be1b3adf1c7b6de7080a0162c358"
+      "bytes": 47631,
+      "sha256": "e1493a2c68dd7f5ebab7217b60d4307007b0d866cc63c2ab8bedc8cc75890b67"
     },
     {
       "path": "atlas-lease.js",
@@ -135,8 +135,8 @@
     },
     {
       "path": "landscape.js",
-      "bytes": 4373,
-      "sha256": "2192aab270ea438d83a0117677efeab616385c0d7002b7a2b5545fd36f43a737"
+      "bytes": 4762,
+      "sha256": "f33c2bf1504a3e4672f6139c454958c78b6438f9ed7bb30056f182775fa0635e"
     },
     {
       "path": "level-cruise.js",
@@ -170,8 +170,8 @@
     },
     {
       "path": "renderer.js",
-      "bytes": 33609,
-      "sha256": "6f42734368ddc8658412ad53db3927547a3dc4d26559fb16c97623b753e146d3"
+      "bytes": 33906,
+      "sha256": "acc8c6e1f6d97699708fd25a9ec25a541e316a031a7505a9509066766e62f931"
     },
     {
       "path": "style.css",

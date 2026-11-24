@@ -43,7 +43,7 @@ export function footprint(state,library,atlas,world){
       const d=item.transport;
       if(Math.abs(lat-d.origin.latitude)*state.radius>220)continue;
       const p=districtPoint(d,lat,lon);
-      if(outsideDistrict(d,p.eastM,p.northM)<=(state.walkMode?8:450))return item;
+      if(outsideDistrict(d,p.eastM,p.northM)<=0)return item;
       continue;
     }
     if(!item.edge)continue;

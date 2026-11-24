@@ -507,7 +507,10 @@
     // The regional image is already filtered to the display size during the dissolve.
     pose.geometryDetail=false;pose.antialias=Math.min(pose.antialias??0,1);
     if(recipe.density===0 && !item.transport){pose.clouds=false;pose.textureDetail=false;pose.richMaterials=false;}
-    if(exposed){hideSurvey();pose.atmosphere=0;pose.cavityHaze=0;pose.clouds=false;}
+    if(exposed){
+      hideSurvey();const blend=optics.layerWeight(recipe.nearM*.65,recipe.nearM,p.altitudeM);
+      pose.atmosphere*=1-blend;pose.cavityHaze*=1-blend;if(blend===1)pose.clouds=false;
+    }
     const surveyed=!exposed && projectSurvey(now,pose);
     if(!surveyed)window.SphereApp.renderer.draw(pose,Math.round(rect.width*scale),Math.round(rect.height*scale));
     c.regionalKey=key;c.regionalStamp=now;return true;
@@ -1177,11 +1180,12 @@
     const renderer=window.SphereApp.renderer;
     if(!renderer.geometry&&!renderer.geometryPreparation && renderer.gl.getExtension('KHR_parallel_shader_compile'))
       renderer.prepareGeometry().catch(error=>console.warn('Native ground preparation',error));
-    const [{stationRecord},{makeView}]=await Promise.all([
+    const [{stationRecord},{makeView},{exteriorMoveAllowed}]=await Promise.all([
       import(new URL('packs/border-transport/0.10.0/atlas.mjs',base)),
-      import(new URL('packs/border-transport/0.10.0/view.mjs',base))]);
+      import(new URL('packs/border-transport/0.10.0/view.mjs',base)),
+      import(new URL('packs/border-transport/0.10.0/motion.mjs',base))]);
     const {station}=await stationRecord(address,false,fileBacked);
-    return {station,makeView};
+    return {station,makeView,exteriorMoveAllowed};
   }
   function surfaceAddress() {
     const lib=library(), meadow=lib?.entry('infinite-meadow'), outfall=lib?.entry('border-outfall');
@@ -1491,7 +1495,13 @@
     if((pose.mode==='flight' || api.environment?.()?.air==='vacuum') && !current.regional && optics && scene)enableRegional(current,scene);
     const climbed=pose.altitudeM>previous.pose.altitudeM && pose.altitudeM>=geography.leaveKm*1000;
     if(!climbed && (inspect.levelCruising || pose.altitudeM>=geography.leaveKm*1000))return;
-    if(!climbed && item.transport && geography.outsideDistrict(item.transport,pose.eastM,pose.northM)<=(pose.mode==='walk'?14:650))return;
+    if(!climbed && item.transport){
+      const distance=p=>geography.outsideDistrict(item.transport,p.eastM,p.northM);
+      const edge=distance(pose);
+      if(edge<=.05)return;
+      // Visit sets down on the marked service apron. Keep its controls during the last steps into the doorway.
+      if(!current.frame.surfaceEntry?.geographic && edge<=14 && edge<=distance(previous.pose))return;
+    }
     if(!climbed && item.edge && !item.transport){
       const home=SphereAtlas.byId(item.edge.near);
       if(geography.onBorder(pose,home.halfWidth*s.radius*1000,2800))return;
@@ -1501,7 +1511,8 @@
     if(!climbed && target?.id===item.id)return;
     if(!climbed && pose.mode==='walk' && target?.transport){
       const q=norm(worldPose.position),owner={id:target.id,name:target.name,pack:true};
-      void walkGround(station({q,forward:worldPose.forward},s,owner));return;
+      const entryPose=geography.packPose({...worldPose,walkMode:true},target,SphereAtlas,SphereWorld);
+      void walkGround(station({q,forward:worldPose.forward},s,owner),null,entryPose);return;
     }
     if(!climbed && (item.edge || target?.edge)){
       if(pose.mode==='walk' && !target){
@@ -1584,7 +1595,7 @@
     const axes=geography.stationBasis(s,item.transport,p,SphereWorld);
     const direct=s.routeShades?SphereCollection.visibility(s.position,s,64):1;
     v.nativeView.draw(v.station,[p.eastM-v.station.address.chainageM,p.altitudeM,p.northM+v.station.widthM/2],p.yaw,p.pitch,window.SphereApp.sceneSeconds,false,direct,
-      {...axes,width,height,radiusKm:s.radius,linear,focal:width/height/Math.tan(s.fov*Math.PI/360)});
+      {...axes,width,height,radiusKm:s.radius,linear,jungleFace:renderInfo?.borderEnvironment?.zone==='biome' && SphereBiomes.region(norm(s.position),s)===1?Math.sign(p.northM):0,focal:width/height/Math.tan(s.fov*Math.PI/360)});
     return v.key;
   }, presentStation(source){
     if(current?.regional && current.frame.contentWindow===source)regionalFrame(performance.now());

@@ -9,7 +9,7 @@ scripts.splice(scripts.indexOf('places'),0,'pack-library');
 if(new URLSearchParams(location.search).has('service'))scripts.push('biome-service/main-install-bootstrap.v12','main-install-ui');
 const paint=()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
 try{
- window.SphereBuild={version:'1.8.5',status:'unverified-local',release:false};
+ window.SphereBuild={version:'1.8.6',status:'unverified-local',release:false};
  const build = fetch(new URL('build-info.json',scriptBase))
   .then(async response=>{if(response.ok)window.SphereBuild=await response.json();}).catch(()=>{});
  // Ordered classic scripts may download together. Only app construction needs the linked program.

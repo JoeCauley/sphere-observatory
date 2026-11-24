@@ -65,10 +65,16 @@ export function stationMesh(s,district=null,packedFaces=false) {
   const m=mesh(packedFaces),mid=s.widthM/2,left=-hallHalfM,right=hallHalfM,heavy=s.routes[2];
   const trench=heavy.nearDoor[0],hw=heavy.door[0]/2+5;
   for(const [lo,hi] of [[left,trench-hw],[trench+hw,right]]){
-    m.box(lo,hi,-12,-.08,-apronRunM,mid-s.laneHalfM,ballast);
+    m.box(lo,hi,-12,-.08,0,mid-s.laneHalfM,ballast);
     m.box(lo,hi,-12,0,mid-s.laneHalfM,mid+s.laneHalfM,[.42,.44,.39]);
-    m.box(lo,hi,-12,-.08,mid+s.laneHalfM,s.widthM+apronRunM,ballast);
+    m.box(lo,hi,-12,-.08,mid+s.laneHalfM,s.widthM,ballast);
     for(const z of [-500,-325,325,500])m.box(lo,hi,0,.13,mid+z-2,mid+z+2,lightSteel);
+  }
+  for(const route of s.routes){
+    const center=route.nearDoor[0],half=route.door[0]/2+5;
+    if(route===heavy)continue;
+    for(const [start,end] of [[-apronRunM,0],[s.widthM,s.widthM+apronRunM]])
+      m.box(center-half,center+half,-12,-.08,start,end,ballast);
   }
   // The deck above the underground route carries the same longitudinal freight slab.
   m.box(trench-hw,trench+hw,-24,0,mid-s.laneHalfM,mid+s.laneHalfM,concrete);
@@ -320,7 +326,7 @@ void main(){
 }`;
 const fragment=mainDepth=>`#version 300 es
 precision highp float;in vec3 color,materialPoint;in float surfaceY;flat in vec3 faceNormal;flat in float fixtureLight,sideNormal;uniform int mask;uniform bool structure;
-uniform float direct,workLight; uniform vec3 airColor;uniform bool yard,vacuum;uniform vec3 hall,eye,offset,loadFootprint;out vec4 frag;
+uniform float direct,workLight; uniform vec3 airColor;uniform bool yard;uniform float vacuum,jungleFace;uniform vec3 hall,eye,offset,loadFootprint;out vec4 frag;
 ${surfaceNoise}
 ${outfallMaterials}
 float ruledLine(float d,float halfWidth,float pixel){
@@ -452,6 +458,16 @@ if(facade && materialPoint.y>5.){
      *smoothstep(9.,18.,y)*(1.-smoothstep(156.,174.,y));
  lamp=max(lamp,mark);
 }
+if(jungleFace*faceNormal.z>.5 && structure && materialPoint.y>=0. && materialPoint.y<85. &&
+   (abs(outside)<3.1 || abs(abs(yardZ)-${linkHalfM}.)<3.1) && across>16.){
+ vec2 wall=materialPoint.xy;
+ float root=noise2(vec2(wall.x*.033,7.));
+ float reach=4.+72.*root*root;
+ float stem=abs(sin(wall.x*.53+1.7*sin(wall.y*.18)+noise2(wall*.12)*1.7));
+ float leaves=smoothstep(.44,.79,noise2(wall*vec2(2.3,1.5)));
+ float cover=(1.-smoothstep(reach*.48,reach,wall.y))*(1.-smoothstep(.17,.76,stem))*(.37+.63*leaves);
+ finish=mix(finish,mix(vec3(.075,.13,.065),vec3(.15,.32,.105),leaves),cover*(1.-smoothstep(.35,2.,fwidth(wall.x))));
+}
 finish=mix(finish,vec3(.72,.49,.22),amberPaint);
 vec3 lit=finish*(1.-.24*joint)*max(workLight,.48+.52*direct);
 if(structure){
@@ -466,7 +482,7 @@ if(structure){
 }else if(machine){lit=mix(lit,vec3(1.,.78,.46),fixtureLight);}
 float rangeM=yard && structure && materialPoint.y>hall.y+48.?42000.:22000.;
 // Main integrates the atmosphere from this fragment's depth in its weather pass.
-float haze=${mainDepth?'0.':'(vacuum?0.:1.-exp(-distanceM/rangeM))'};frag=vec4(mix(lit,airColor,haze),1.);
+float haze=${mainDepth?'0.':'((1.-vacuum)*(1.-exp(-distanceM/rangeM)))'};frag=vec4(mix(lit,airColor,haze),1.);
 ${mainDepth?'if(linearOutput)frag.rgb=pow(frag.rgb,vec3(2.2));':''}
 }`;
 
@@ -525,7 +541,7 @@ export function makeView(canvas,{capture=true,cavityBackdrop=false,district=null
   }
   const program=link(vertex,fragment(mainDepth)),sky=shared?null:link(skyVertex,skyFragment);
   const locations=(p,names)=>Object.fromEntries(names.map(n=>[n,gl.getUniformLocation(p,n)]));
-  const loc=locations(program,['eye','right','up','forward','offset','focal','clip','mask','direct','workLight','hall','structure','yard','loadFootprint','vacuum','airColor','logRange','linearOutput']);
+  const loc=locations(program,['eye','right','up','forward','offset','focal','clip','mask','direct','workLight','hall','structure','yard','loadFootprint','vacuum','jungleFace','airColor','logRange','linearOutput']);
   const skyLoc=sky&&locations(sky,['lens','right','up','forward','eye','direct','radius','mid','nearLand','farLand','regionalGround','regionalAir','surveyed','landOrigin']);
   const vao=gl.createVertexArray();
   const attrs=['cornerA','cornerB','cornerC','cornerD','normal','tint'].map(n=>gl.getAttribLocation(program,n));
@@ -578,7 +594,8 @@ export function makeView(canvas,{capture=true,cavityBackdrop=false,district=null
       const near=shared ? (camera?.near??.05) : Math.max(.25,(eye[1]-s.roofM)*.015);
       const daylight=Math.min(1,Math.max(0,direct));
       const horizon=shared && !mainDepth?[[.10,.13,.18],[.69,.80,.84]]:[[.075,.093,.11],[.46,.56,.59]];
-      gl.uniform1i(loc.vacuum,camera?.vacuum?1:0);
+      gl.uniform1f(loc.jungleFace,camera?.jungleFace??0);
+      gl.uniform1f(loc.vacuum,Number(camera?.vacuum??0));
       gl.uniform3fv(loc.airColor,horizon[0].map((v,i)=>v+(horizon[1][i]-v)*daylight));
       if(mainDepth){
         gl.depthFunc(gl.LEQUAL);gl.disable(gl.CULL_FACE);
