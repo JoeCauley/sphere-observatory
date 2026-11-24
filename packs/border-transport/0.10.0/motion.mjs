@@ -31,6 +31,9 @@ export function support(s,x,z,foot,group,step){
   return 0;
 }
 function intersects(a,b,lo,hi){return Math.min(a,b)<=hi && Math.max(a,b)>=lo;}
+export function exteriorMoveAllowed(station,district,from,to){
+  return allowed(station,district,from,to,classes[0],0);
+}
 function allowed(s,d,p,next,group,time){
   const cx=s.address.chainageM,half=s.widthM/2;
   const x=next.eastM-cx,z=next.northM+half,ox=p.eastM-cx,oz=p.northM+half;

@@ -14,18 +14,31 @@ const {session,executable}=require('./support/biome-browser.cjs');
   try{await page.waitForFunction(()=>document.querySelector('#stageFrame iframe')?.surfaceEntry?.active);}
   finally{await page.keyboard.up('KeyW');}
   const frame=page.frameLocator('#stageFrame iframe'),scene=frame.locator('#scene');
+  // Bracket the reported sky change on the same ordinary roof at a fixed bearing.
+  await scene.focus();
+  for(const altitude of [18400,17800]){
+    await page.keyboard.down('KeyQ');
+    try{await page.waitForFunction(h=>document.querySelector('#stageFrame iframe').contentWindow.SphereBiome.pose().altitudeM<=h,altitude);}
+    finally{await page.keyboard.up('KeyQ');}
+    if(process.env.SPHERE_DESCENT_OUTPUT){
+      const box=await scene.boundingBox();
+      await page.screenshot({path:path.join(process.env.SPHERE_DESCENT_OUTPUT,'border-'+altitude+'.jpg'),type:'jpeg',quality:85,
+        clip:{x:box.x,y:box.y+44,width:box.width,height:box.height-48}});
+    }
+  }
   await frame.locator('#pace').selectOption('16');await scene.focus();await page.keyboard.down('KeyW');
   try{await page.waitForFunction(()=>document.querySelector('#stageFrame iframe').contentWindow.SphereBiome.pose().altitudeM<3000);}
   finally{await page.keyboard.up('KeyW');}
   const roof=await page.evaluate(async()=>{const {departure}=await import('./studies/border-crossing/clear-day-flight.mjs');return departure.meta.center.altitudeM;});
-  await page.keyboard.down('KeyF');
+  await page.keyboard.down('KeyQ');
   try{await page.waitForFunction(h=>document.querySelector('#stageFrame iframe').contentWindow.SphereBiome.pose().altitudeM<h+1,roof);}
-  finally{await page.keyboard.up('KeyF');}
-  await frame.getByRole('button',{name:'Walk',exact:true}).click();
+  finally{await page.keyboard.up('KeyQ');}
+  await scene.focus();await page.keyboard.press('KeyF');
   const result=await scene.evaluate(canvas=>{const api=window.SphereBiome;return {pose:api.pose(),locked:api.inspect().locked,label:document.querySelector('#readout').textContent,error:canvas.getContext('webgl2').getError()};});
   assert.equal(result.pose.mode,'walk');assert(!result.locked && result.label.includes('maintenance wall'));assert(Math.abs(result.pose.eastM)>70000);assert.equal(result.error,0);assert.deepEqual(errors,[]);
   if(process.env.SPHERE_WALL_IMAGE)await scene.screenshot({path:path.resolve(process.env.SPHERE_WALL_IMAGE)});
-  await frame.getByRole('button',{name:'Fly',exact:true}).click();
+  await page.keyboard.down('Space');await page.keyboard.press('KeyE');await page.keyboard.up('Space');
+  assert.equal(await scene.evaluate(()=>SphereBiome.pose().mode),'flight');
   await scene.focus();
   const key=await page.evaluate(async()=>{
     const {mainPose,footprint}=await import('./geographic-flight.js');

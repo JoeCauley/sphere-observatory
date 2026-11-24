@@ -16,6 +16,16 @@ npm start
 
 Open **[http://127.0.0.1:8766](http://127.0.0.1:8766)**. On Windows, you can also double-click **Launch Observatory.cmd** in the checkout. The first opening prepares graphics. When you choose a destination, a card over the scene names the place and shows which phase is running.
 
+## 1.8.6 · From the roof to the grass
+
+During a manual descent over the Border, the sky and distant steel change together through the approach. From Meadow, the habitat reaches the exterior face. Walk up to a solid panel or enter through a door with sufficient clearance. Grass grows between the paved service approaches. On the native Super Jungle side, patches of climbing vegetation follow the lower concrete.
+
+The Border now uses the familiar biome controls: **WASD** to travel, **Q / E** to descend or climb, **Shift** for speed, **Space + E** to lift off, and **F** to land near a supporting surface. Drag or use the arrows to look. The station travel-pace selector still supports long journeys.
+
+| Descent at 18.4 km | Same approach at 17.8 km |
+| --- | --- |
+| ![Roof and horizon above the former sky change](examples/border-frontage/border-18400.jpg) | ![Roof and horizon below the former sky change](examples/border-frontage/border-17800.jpg) |
+
 ## At the Border · 1.8.5
 
 A Border has two addresses for the neighbouring habitats and a station between them. At a surveyed hall or connecting wall, the same cross-section determines which side owns the air and projected sky.

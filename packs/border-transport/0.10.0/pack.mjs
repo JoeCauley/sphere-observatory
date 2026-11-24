@@ -1,4 +1,5 @@
 import {borderEnvironment} from './environment.mjs';
+import {layerWeight} from '../../kit/atmosphere.js';
 import {classes} from './station.mjs';
 import {districtFor} from './survey.mjs';
 import {nearestSite,outsideDistrict,hallHalfM,roofSlabM,rightSign} from './district.mjs';
@@ -187,12 +188,12 @@ function frame(now){
   lastWorldTime=time;
   if(script)updateScript(dt);
   else if(!held&&!writing&&!issue && active()){
-    let yaw=pose.yaw+((+keys.has('ArrowRight'))-(+keys.has('ArrowLeft')))*hand*dt*1.35;
+    let yaw=pose.yaw+(Number(keys.has('ArrowRight')||keys.has('KeyX'))-Number(keys.has('ArrowLeft')||keys.has('KeyZ')))*hand*dt*1.35;
     const pitch=Math.max(-1.49,Math.min(1.49,pose.pitch+((+keys.has('ArrowUp'))-(+keys.has('ArrowDown')))*dt));
     const p={...pose,yaw,pitch},f=(+keys.has('KeyW'))-(+keys.has('KeyS')),s=hand*((+keys.has('KeyD'))-(+keys.has('KeyA')));
-    const v=pose.mode==='flight'?(+keys.has('KeyR'))-(+keys.has('KeyF')):0;
+    const v=pose.mode==='flight'?(+keys.has('KeyE'))-(+keys.has('KeyQ')):0;
     if(f||s||v){
-      const pace=Number(el('pace').value),speed=(p.mode==='walk'?group.speed:Math.min(1800,30+Math.abs(p.altitudeM)*.15))*pace;
+      const pace=Number(el('pace').value)*(keys.has('ShiftLeft')||keys.has('ShiftRight')?4:1),speed=(p.mode==='walk'?group.speed:Math.min(1800,30+Math.abs(p.altitudeM)*.15))*pace;
       const amt=speed*dt/Math.max(1,Math.hypot(f,s,v)),yaw=p.yaw,cp=p.mode==='flight'?Math.cos(pitch):1;
       const result=move(station,district,p,group,(f*cp*Math.sin(yaw)+s*Math.cos(yaw))*amt,
         (f*cp*Math.cos(yaw)-s*Math.sin(yaw))*amt,(v+(p.mode==='flight'?f*Math.sin(pitch):0))*amt,time,rate/pace);
@@ -204,7 +205,7 @@ function frame(now){
   }
   // The two layers sample this exact simulation tick even when Main is preparing terrain.
   const environment=borderEnvironment(district,station,pose);
-  const exposed=!!host && environment.air==='vacuum' && pose.altitudeM<nearM;
+  const exposed=host && environment.air==='vacuum' ? layerWeight(nearM*.65,nearM,pose.altitudeM) : 0;
   if(exposed || (pose.mode==='flight' && pose.altitudeM>=nearM))host?.SphereStageFrame?.presentStation?.(window);
   const width=canvas.clientWidth,height=canvas.clientHeight;
   const visible=draws<2 || !frameElement || frameElement.style.opacity!=='0';
@@ -212,16 +213,17 @@ function frame(now){
       paint.width!==width || paint.height!==height || script || draws<2)){
     // Preserve Main's horizontal lens through a hand-flown geographic entry, including resizes.
     const camera=entry?.horizontalFov && height>0 ? {focal:width/height/Math.tan(entry.horizontalFov*Math.PI/360)} : null;
-    view.draw(station,[pose.eastM-site.x,pose.altitudeM,pose.northM+station.widthM/2],pose.yaw,pose.pitch,time,false,direct,exposed?{...camera,groundWeight:1,airWeight:0,vacuum:true}:camera);
+    view.draw(station,[pose.eastM-site.x,pose.altitudeM,pose.northM+station.widthM/2],pose.yaw,pose.pitch,time,false,direct,exposed?{...camera,groundWeight:1,airWeight:1-exposed,vacuum:exposed}:camera);
     draws++;paint={pose,time,direct,station,width,height};
   }
   renderHUD(now);frames++;if(frames===1)firstDraw();raf=requestAnimationFrame(frame);
 }
-const movement=new Set(['KeyW','KeyA','KeyS','KeyD','KeyR','KeyF','ArrowLeft','ArrowRight','ArrowUp','ArrowDown']);
+const movement=new Set(['KeyW','KeyA','KeyS','KeyD','KeyQ','KeyE','KeyF','Space','ShiftLeft','ShiftRight','KeyZ','KeyX','ArrowLeft','ArrowRight','ArrowUp','ArrowDown']);
 addEventListener('keydown',e=>{
   if(!movement.has(e.code)||e.target.tagName==='SELECT')return;
   e.preventDefault();if(held)return;
   if(script)settle('taken-over');keys.add(e.code);
+  if(!e.repeat && pose && ((e.code==='KeyF' && pose.mode==='flight') || (pose.mode==='walk' && ['Space','KeyE'].includes(e.code) && keys.has('Space') && keys.has('KeyE'))))toggleMode();
 },{signal});
 addEventListener('keyup',e=>keys.delete(e.code),{signal});
 addEventListener('blur',()=>{keys.clear();save();},{signal});

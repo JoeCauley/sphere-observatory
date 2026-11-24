@@ -54,6 +54,13 @@ const level=terrain(0,0);
 for(const sphereRadius of [radius*1000,24000000])for(const far of ['r10c1','r11c0']){
   const home=atlas.byId(meadow.plotId),district=districtFor('sphere-0000000000000017',home.id,far,sphereRadius);
   setStations(meadowStations(district,home),level);
+  const stationItem={id:'border-transport',edge:{near:home.id},transport:district};
+  const library={...lib,installed:()=>[stationItem,meadow]};
+  for(const walkMode of [false,true])for(const side of [-1,1])for(const gap of [-.25,.25,6,400]){
+    const site=district.sites[0], location=districtRules.districtLocation(district,site.x,side*(site.widthM/2+gap));
+    const s={...view(location.latitude,location.longitude,.1),radius:sphereRadius/1000,walkMode};
+    assert.equal(footprint(s,library,atlas,world)?.id===stationItem.id,gap<0);
+  }
   for(const bay of district.sites)for(const side of [-1,1])for(const outside of [8,14,32,3600]){
     const x=-2600,z=side*(bay.widthM/2+outside),geo=districtRules.districtLocation(district,bay.x+x,z);
     const p=project(home,geo.latitude,geo.longitude,sphereRadius);

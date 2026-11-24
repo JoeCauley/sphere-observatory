@@ -137,11 +137,11 @@ async function main() {
       // Fly the final descent looking at the machinery. The quay lies between the cranes.
       const yaw=Math.atan2(meta.landmark.x-over.p.eastM,meta.landmark.z-over.p.northM);
       await look(yaw,-.76);
-      await hold(['KeyF'],border,s=>s.p.altitudeM<=1950);
+      await hold(['KeyQ'],border,s=>s.p.altitudeM<=1950);
       await look(yaw,.48);await sleep(1100);
-      await hold(['KeyF'],border,s=>s.p.altitudeM<=175);
+      await hold(['KeyQ'],border,s=>s.p.altitudeM<=175);
       await look(yaw,.045);
-      await hold(['KeyF'],border,s=>s.p.altitudeM<=1.72);
+      await hold(['KeyQ'],border,s=>s.p.altitudeM<=1.72);
       await changeMode('walk');
       const landed=await mark('quay-contact');
       assert.equal(landed.station,meta.address);assert.equal(landed.p.mode,'walk');

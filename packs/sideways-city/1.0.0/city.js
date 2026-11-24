@@ -234,6 +234,9 @@ function step(dt) {
   if (script) { if (script.held) return; const { pos: e, alt: ea, done: over } = advance(script, dt); for (const k of ['eastM', 'northM', 'yaw', 'pitch']) pose[k] = script.from[k] + (script.to[k] - script.from[k]) * e;
     pose.altitudeM = heightAt(script.from.altitudeM, script.to.altitudeM, ea); pose.mode = 'flight';
     if (over) { const done = script.done; held = script.keep; script = null; done('revealed'); } return; }
+  const turn = .95 * dt;
+  pose.yaw += (Number(keys.has('ArrowRight') || keys.has('KeyX')) - Number(keys.has('ArrowLeft') || keys.has('KeyZ'))) * turn;
+  pose.pitch = Math.max(-1.5, Math.min(1.5, pose.pitch + (Number(keys.has('ArrowUp')) - Number(keys.has('ArrowDown'))) * turn));
   const fx = (keys.has('KeyD') ? 1 : 0) - (keys.has('KeyA') ? 1 : 0), fz = (keys.has('KeyW') ? 1 : 0) - (keys.has('KeyS') ? 1 : 0), fy = (keys.has('KeyE') ? 1 : 0) - (keys.has('KeyQ') ? 1 : 0), fast = keys.has('ShiftLeft') || keys.has('ShiftRight');
   if (pose.mode === 'walk') {
     const speed = (fast ? 7 : 3) * dt, dx = (Math.sin(pose.yaw) * fz + Math.cos(pose.yaw) * fx) * speed, dz = (Math.cos(pose.yaw) * fz - Math.sin(pose.yaw) * fx) * speed;
@@ -338,7 +341,7 @@ window.SphereBiome = { contract: 'sphere-biome/1', id: ID, version: VERSION, rea
 canvas.addEventListener('pointerdown', e => { drag = [e.clientX, e.clientY]; canvas.setPointerCapture(e.pointerId); canvas.focus(); });
 canvas.addEventListener('pointermove', e => { if (!drag || script) return; held = null; pose.yaw += (e.clientX - drag[0]) * .004; pose.pitch = Math.max(-1.5, Math.min(1.5, pose.pitch - (e.clientY - drag[1]) * .004)); drag = [e.clientX, e.clientY]; });
 canvas.addEventListener('pointerup', () => { drag = null; });
-window.addEventListener('keydown', e => { if (['KeyW', 'KeyA', 'KeyS', 'KeyD', 'KeyQ', 'KeyE', 'Space', 'ShiftLeft', 'ShiftRight'].includes(e.code)) { e.preventDefault(); interrupt(); } if (e.code === 'Space' && !e.repeat) lift(); if (e.code === 'KeyF' && !e.repeat) land(); keys.add(e.code); });
+window.addEventListener('keydown', e => { if (['KeyW', 'KeyA', 'KeyS', 'KeyD', 'KeyQ', 'KeyE', 'Space', 'ShiftLeft', 'ShiftRight', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'KeyZ', 'KeyX'].includes(e.code)) { e.preventDefault(); interrupt(); } if (e.code === 'Space' && !e.repeat) lift(); if (e.code === 'KeyF' && !e.repeat) land(); keys.add(e.code); });
 window.addEventListener('keyup', e => keys.delete(e.code));
 window.addEventListener('blur', () => keys.clear());
 window.addEventListener('pagehide', dispose);

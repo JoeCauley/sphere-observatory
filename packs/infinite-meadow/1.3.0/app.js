@@ -39,11 +39,11 @@ function releaseExterior(){requested=null;exterior?.view.dispose();exterior=null
 function prepareExterior(row){
   if(requested===row || performance.now()<retryExterior)return;
   releaseExterior();requested=row;
-  stageHost.stationExterior(row.site.address,survey.fileBacked).then(({station,makeView})=>{
+  stageHost.stationExterior(row.site.address,survey.fileBacked).then(({station,makeView,exteriorMoveAllowed})=>{
     if(requested!==row)return;
     const view=makeView(canvas,{shared:true,district:survey.district});
     try{view.load(station);}catch(error){view.dispose();throw error;}
-    exterior={view,station};
+    exterior={view,station,exteriorMoveAllowed};
   }).catch(error=>{
     if(requested!==row)return;
     requested=null;retryExterior=performance.now()+3000;
@@ -274,6 +274,16 @@ function tick(t){
     if((next.complete&&direction>0)||(routeTime===0&&direction<0)){completed=route.bookmark;state=structuredClone(completed);route=null;event('journey-complete',{exactState:saveState(state)===saveState(completed)});persist();syncUI();status('Back at the same place, with the same light and grass');}
   }else if(!route){const turn=(state.comfortMotion&&state.pose.altitudeM>blindBands(state).startM?COMFORT_TURN_RAD_S:Math.PI/4)*dt;state.pose.yaw+=((frameKeys.has('ArrowRight')||frameKeys.has('KeyX')?1:0)-(frameKeys.has('ArrowLeft')||frameKeys.has('KeyZ')?1:0))*turn;state.pose.pitch=clamp(state.pose.pitch+((frameKeys.has('ArrowUp')?1:0)-(frameKeys.has('ArrowDown')?1:0))*turn,-1.5,1.5);const moved=flightMotion.level?stepLevelCruise(state,flightMotion,frameKeys,Math.max(0,rawDt)):move(state,frameKeys,dt,flightMotion);if(flightMotion.level)stage=moved.phase==='climbing'?'Climbing above the highest hills':'Level cruise · straight course';if(moved.phase==='envelope-limit'){stage='Level cruise stopped at the study boundary';status('Study coordinate limit reached · take control to turn back');event('level-envelope-stop');}if(moved.landed){stage='On foot · your meadow';status('Landed here · WASD walks · Space + E lifts off');event('free-land');}}}
   if(quiet&&quiet.kind!=='stationary'){quiet.elapsed+=dt;if(state.windPlaying)state.windTime+=dt;state.pose.yaw=quiet.original.pose.yaw+.20*Math.sin(quiet.elapsed*.35);if(quiet.kind==='level')stepLevelCruise(state,flightMotion,new Set(),dt);else move(state,new Set(quiet.kind==='skimming'?['KeyW','ShiftLeft']:['KeyW']),dt,flightMotion);if(quiet.kind==='flying')state.pose.altitudeM=terrain(state.pose.eastM,state.pose.northM)+31.7;stage=quiet.kind==='walking'?'Measuring meadow walk':quiet.kind==='level'?'Measuring level cruise':quiet.kind==='skimming'?'Measuring fast grass skim':'Measuring low flight';}
+  if(exterior && requested && !script && !route && !quiet && state.pose!==null){
+    const p=state.pose, row=requested;
+    if((lastPose.eastM!==p.eastM || lastPose.northM!==p.northM) &&
+       Math.hypot(p.eastM-lastPose.eastM,p.northM-lastPose.northM)<2000){
+      const local=q=>({...row.locate(q.eastM,q.northM),altitudeM:q.altitudeM-GROUND_DATUM});
+      if(!exterior.exteriorMoveAllowed(exterior.station,survey.district,local(lastPose),local(p))){
+        p.eastM=lastPose.eastM;p.northM=lastPose.northM;
+      }
+    }
+  }
   let borderPose=null;
   if(chart){
     const p=state.pose;

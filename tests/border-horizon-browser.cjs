@@ -146,6 +146,21 @@ async function main() {
     const after = await page.screenshot({clip});
     const [lensDelta] = await screenDeltas(page, [before,after].map(p => p.toString('base64')));
     assert(lensDelta<.025, 'The same roof changed its framing across the geographic handoff: '+lensDelta);
+    // The Main/pack exchange at 20 km and the roof-sky change at 18 km are different transitions.
+    const scene=page.frameLocator('#stageFrame iframe').locator('#scene');
+    const skyClip={x:Math.ceil(rect.x+rect.width*.25),y:Math.ceil(rect.y+rect.height*.18),
+      width:Math.floor(rect.width*.50),height:Math.floor(rect.height*.23)};
+    const skies=[];
+    for(const altitude of [18400,17800]){
+      await scene.focus();await page.keyboard.down('KeyQ');
+      try{await page.waitForFunction(h=>document.querySelector('#stageFrame iframe').contentWindow.SphereBiome.pose().altitudeM<=h,altitude);}
+      finally{await page.keyboard.up('KeyQ');}
+      await page.waitForTimeout(150);
+      skies.push((await page.screenshot({clip:skyClip})).toString('base64'));
+    }
+    const [roofSkyDelta]=await screenDeltas(page,skies);
+    console.log('Roof sky change across the 18 km boundary',roofSkyDelta);
+    assert(roofSkyDelta<.065,'Abrupt sky change during descent: '+roofSkyDelta);
     console.log('Missing survey frames and matched-lens image change', {missed,lensDelta});
     assert.deepEqual(errors, []);
     console.log('Walked from the native apron over its graded edge', {landed, walked});

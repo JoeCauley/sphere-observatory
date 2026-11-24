@@ -83,7 +83,7 @@ $('leavePack').onclick=()=>{if(window===top)location.href='../../../';};
 canvas.addEventListener('pointerdown',e=>{if(!manual())return;drag=[e.clientX,e.clientY];canvas.setPointerCapture(e.pointerId);canvas.focus();});
 canvas.addEventListener('pointermove',e=>{if(!drag)return;state.pose.yaw+=(e.clientX-drag[0])*.003;state.pose.pitch=Math.max(-1.5,Math.min(1.5,state.pose.pitch-(e.clientY-drag[1])*.003));drag=[e.clientX,e.clientY];});
 canvas.addEventListener('pointerup',()=>drag=null);canvas.addEventListener('lostpointercapture',()=>drag=null);
-const movement=new Set(['KeyW','KeyA','KeyS','KeyD','KeyQ','KeyE','KeyL','KeyF','KeyZ','KeyX','Space','ShiftLeft','ShiftRight']);
+const movement=new Set(['KeyW','KeyA','KeyS','KeyD','KeyQ','KeyE','KeyL','KeyF','KeyZ','KeyX','ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Space','ShiftLeft','ShiftRight']);
 window.addEventListener('keydown',e=>{
   if(!movement.has(e.code)||e.target?.closest?.('button,input,select')&&e.code==='Space')return;
   e.preventDefault();if(!manual())return;keys.add(e.code);if(e.repeat)return;
@@ -161,7 +161,8 @@ function tick(t){
     if(f.done){Object.assign(p,seg.to,{mode:'flight'});script.steps.shift();if(!script.steps.length){const ended=script;kept=ended.keep;script=null;if(ended.restoreMode)p.mode=ended.restoreMode;ended.done(ended.result);}}
   }else if(!script && !crossing && surfaceEntry?.active!==false){
     const dir=(a,b)=>Number(keys.has(a))-Number(keys.has(b)),fast=keys.has('ShiftLeft')||keys.has('ShiftRight');
-    p.yaw+=dir('KeyX','KeyZ')*dt*.95;
+    p.yaw+=(Number(keys.has('KeyX')||keys.has('ArrowRight'))-Number(keys.has('KeyZ')||keys.has('ArrowLeft')))*dt*.95;
+    p.pitch=Math.max(-1.5,Math.min(1.5,p.pitch+dir('ArrowUp','ArrowDown')*dt*.95));
     const speed=(p.mode==='walk'?(fast?7:3.3):(fast?22:8)*Math.max(1,p.altitudeM/55))*dt;
     let x=dir('KeyD','KeyA'),z=dir('KeyW','KeyS');const len=Math.max(1,Math.hypot(x,z));x/=len;z/=len;
     const c=Math.cos(p.yaw),s=Math.sin(p.yaw),fly=p.mode==='flight',dz=z*(fly?Math.cos(p.pitch):1);

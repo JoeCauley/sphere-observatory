@@ -140,7 +140,7 @@ void main(){
  if(uGround<.5)col+=vec3(.12,.052,.009)*step(.30,color.r)*step(color.g*1.10,color.r)*(1.-uDaylight);
  if(uGround>.5){
    vec2 apronPoint=uApron.xy+vec2(dot(uApronAxes.xy,position.xz),dot(uApronAxes.zw,position.xz));
-   if(uPaved && apronDistance(position.xz)<0. && abs(apronPoint.x-uTrench.x)>uTrench.y)discard;
+   if(uPaved && stationCover(position.xz)<.01 && apronDistance(position.xz)<0. && abs(apronPoint.x-uTrench.x)>uTrench.y)discard;
    float texture=.5+.20*sin(position.x*1.7+uTexturePhase.x)*sin(position.z*1.3+uTexturePhase.y)+.10*sin(position.x*7.+position.z*3.+uTexturePhase.z);
    float detailWeight=1.-smoothstep(.8,3.,max(length(dFdx(position.xz)),length(dFdy(position.xz))));
    col*=.91+.18*mix(.5,texture,detailWeight);
@@ -148,7 +148,7 @@ void main(){
      col=mix(col,canopy,(1.-smoothstep(6000.,22000.,distanceM))*.92);}
    if(uApron.z>0.){
      float rim=apronDistance(position.xz);
-     float pavement=(1.-smoothstep(0.,7.,rim))*step(0.,rim);
+     float pavement=(1.-smoothstep(0.,7.,rim))*step(0.,rim)*(1.-stationCover(position.xz));
      col=mix(col,vec3(.37,.36,.33)*lit*(.96+.08*mix(.5,texture,detailWeight)),pavement);
    }
    if(byBorder()){vec2 b=borderAt(position.xz);if(b.y>=0. && b.y<=73.)discard;
@@ -308,6 +308,11 @@ vec3 regionalGround(vec3 q,float t){
     this.uniform(program,'uNear2',1,this.near2??.10);
     this.uniform(program,'uPaved','int',this.exteriorStation?1:0);
     const trench=this.exteriorStation?.routes[2];
+    if(this.exteriorStation){
+      const routes=this.exteriorStation.routes;
+      this.uniform(program,'uDoorCenters',4,routes.map(r=>r.nearDoor[0]));
+      this.uniform(program,'uDoorWidths',4,routes.map(r=>r.door[0]/2+5));
+    }
     if(trench)this.uniform(program,'uTrench',2,[trench.nearDoor[0],trench.door[0]/2+5]);
     this.uniform(program,'uApron',4,a?[a.x,a.z,a.row.halfX,a.row.halfZ]:[0,0,0,0]);
     if(a){this.uniform(program,'uApronAxes',4,a.row.axes);this.uniform(program,'uApronDatum',1,this.stationDatum);}
