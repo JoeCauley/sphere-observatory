@@ -19,14 +19,14 @@ const root=path.resolve(__dirname,'..'),url=process.env.SPHERE_URL||'http://127.
   page.on('response',r=>{if(r.status()>=400)errors.push(r.status()+' '+r.url());});
   const response=await page.goto(url,{waitUntil:'domcontentloaded'});assert.equal(response.status(),200);
   await page.waitForFunction(()=>window.SphereLoading?.ready&&window.SphereSession&&window.SphereEvolution);
-  await page.evaluate(()=>SphereApp.setBusy(true));
+
   const version=await page.evaluate(async()=>{const r=await fetch('package.json');return (await r.json()).version;});
   assert.equal(version,JSON.parse(fs.readFileSync(path.join(root,'package.json'),'utf8')).version);
   console.log('Release booted:',version);
   const captures=[];
   for(const id of ['rim','shade-0','biome-0','port-0','exterior-0']){
    const result=await page.evaluate(async id=>{
-    const A=SphereApp,R=A.renderer;SphereEvolution.visit(id,{walk:id==='biome-0'});
+    const A=SphereApp,R=A.renderer;await SphereEvolution.visit(id,{walk:id==='biome-0'});
     const s=A.getState();await R.prepare(s);
     for(let i=0;i<2;i++)R.draw(s,800,500,{exportFrame:true});
     const pixels=new Uint8Array(800*500*4);R.gl.readPixels(0,0,800,500,R.gl.RGBA,R.gl.UNSIGNED_BYTE,pixels);

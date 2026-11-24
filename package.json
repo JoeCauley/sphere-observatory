@@ -1,6 +1,6 @@
 {
   "name": "sphere-observatory",
-  "version": "1.8.1",
+  "version": "1.8.3",
   "private": true,
   "description": "Explore the inside of a Dyson sphere and visit its five walkable WebGL biomes",
   "license": "UNLICENSED",

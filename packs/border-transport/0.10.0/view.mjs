@@ -9,7 +9,7 @@ const steel=[.27,.35,.36], lightSteel=[.50,.61,.60], concrete=[.38,.43,.42],
 // Store a face's four corners, normal and tint once. The first six floats in
 // each GPU mesh select the two triangles, including on shared WebGL contexts.
 const faceCorners=[0,1,2,0,2,3], faceFloats=18;
-function mesh(packedFaces) {
+export function mesh(packedFaces) {
   const data=packedFaces?[...faceCorners]:[];
   const face=(a,b,c,d,col)=>{
     const ux=b[0]-a[0],uy=b[1]-a[1],uz=b[2]-a[2],vx=c[0]-a[0],vy=c[1]-a[1],vz=c[2]-a[2];
@@ -318,15 +318,18 @@ void main(){
  fixtureLight=step(.94,tint.r)*step(.78,tint.g);
  sideNormal=abs(normal.x);
 }`;
-const fragment=`#version 300 es
+const fragment=mainDepth=>`#version 300 es
 precision highp float;in vec3 color,materialPoint;in float surfaceY;flat in vec3 faceNormal;flat in float fixtureLight,sideNormal;uniform int mask;uniform bool structure;
-uniform float direct,workLight;uniform bool yard;uniform vec3 hall,eye,offset,loadFootprint;out vec4 frag;
+uniform float direct,workLight; uniform vec3 airColor;uniform bool yard;uniform vec3 hall,eye,offset,loadFootprint;out vec4 frag;
 ${surfaceNoise}
 ${outfallMaterials}
 float ruledLine(float d,float halfWidth,float pixel){
  return (1.-smoothstep(halfWidth,halfWidth+max(.02,pixel),d))*halfWidth/max(halfWidth,pixel);
 }
-void main(){if(mask!=0){frag=mask==2?vec4(1.,step(.65,surfaceY),step(.65,-surfaceY),1.):vec4(0.,0.,0.,1.);return;}
+${mainDepth?'uniform float logRange;uniform bool linearOutput;':''}
+void main(){
+${mainDepth?'gl_FragDepth=log2(1.+length(materialPoint+offset-eye)*.001)/logRange;':''}
+if(mask!=0){frag=mask==2?vec4(1.,step(.65,surfaceY),step(.65,-surfaceY),1.):vec4(0.,0.,0.,1.);return;}
 float distanceM=length(materialPoint+offset-eye);
 float outside=max(-materialPoint.z,materialPoint.z-hall.x),across=abs(materialPoint.x-hall.z);
 float amberPaint=0.,lamp=0.;
@@ -425,6 +428,16 @@ if(structure && surfaceY>.9 && materialPoint.y>hall.y && materialPoint.y<=hall.y
    finish*=1.+.22*(hash(floor(section))-.5)*skin;
  }
 }
+// Cast joints and amber inspection marks repeat in the material along ordinary wall runs.
+if(yard && structure && abs(surfaceY)<.15 && abs(abs(yardZ)-${linkHalfM}.)<2.){
+ float along=mod(materialPoint.x+${spacingM/2}.,${spacingM}.)-${spacingM/2}.;
+ if(abs(along)>${hallHalfM}.){
+   float seam=abs(mod(materialPoint.x+160.,320.)-160.);
+   finish*=1.-.23*ruledLine(seam,1.2,footprint.x);
+   float mark=ruledLine(abs(mod(materialPoint.x+500.,1000.)-500.),2.4,footprint.x);
+   amberPaint=max(amberPaint,mark*(1.-smoothstep(1.,2.5+footprint.y,abs(materialPoint.y-8.))));
+ }
+}
 if(facade && materialPoint.y>5.){
  vec2 m=materialPoint.xy,aa=max(fwidth(m),vec2(.05));
  vec2 joint=abs(fract(m/vec2(125.,55.)+.5)-.5)*vec2(125.,55.);
@@ -452,7 +465,9 @@ if(structure){
  lit=mix(lit,vec3(1.,.78,.46),fixtureLight);
 }else if(machine){lit=mix(lit,vec3(1.,.78,.46),fixtureLight);}
 float rangeM=yard && structure && materialPoint.y>hall.y+48.?42000.:22000.;
-float haze=1.-exp(-distanceM/rangeM);frag=vec4(mix(lit,vec3(.27,.34,.35)*max(workLight,.48+.52*direct),haze),1.);}`;
+float haze=1.-exp(-distanceM/rangeM);frag=vec4(mix(lit,airColor,haze),1.);
+${mainDepth?'if(linearOutput)frag.rgb=pow(frag.rgb,vec3(2.2));':''}
+}`;
 
 // Only the native pack paints the surrounding horizon. Meadow already has its own sky and terrain.
 const skyVertex=`#version 300 es
@@ -494,7 +509,7 @@ void main(){
  float alpha=regionalGround<0.?1.:mix(regionalGround,regionalAir,smoothstep(-.32,-.03,y));
  frag=vec4(color*alpha,alpha);
 }`;
-export function makeView(canvas,{capture=true,district=null,shared=false,composite=false,land=null}={}) {
+export function makeView(canvas,{capture=true,district=null,shared=false,composite=false,land=null,mainDepth=false,buildHall=stationMesh}={}) {
   const hand=district?rightSign(district):1;
   const gl=canvas.getContext('webgl2',{antialias:true,alpha:composite,preserveDrawingBuffer:capture});
   if(!gl)throw Error('The crossing view requires WebGL 2.');
@@ -507,9 +522,9 @@ export function makeView(canvas,{capture=true,district=null,shared=false,composi
     }
     gl.linkProgram(p);if(!gl.getProgramParameter(p,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(p));return p;
   }
-  const program=link(vertex,fragment),sky=shared?null:link(skyVertex,skyFragment);
+  const program=link(vertex,fragment(mainDepth)),sky=shared?null:link(skyVertex,skyFragment);
   const locations=(p,names)=>Object.fromEntries(names.map(n=>[n,gl.getUniformLocation(p,n)]));
-  const loc=locations(program,['eye','right','up','forward','offset','focal','clip','mask','direct','workLight','hall','structure','yard','loadFootprint']);
+  const loc=locations(program,['eye','right','up','forward','offset','focal','clip','mask','direct','workLight','hall','structure','yard','loadFootprint','airColor','logRange','linearOutput']);
   const skyLoc=sky&&locations(sky,['lens','right','up','forward','eye','direct','radius','mid','nearLand','farLand','regionalGround','regionalAir','surveyed','landOrigin']);
   const vao=gl.createVertexArray();
   const attrs=['cornerA','cornerB','cornerC','cornerD','normal','tint'].map(n=>gl.getAttribLocation(program,n));
@@ -525,7 +540,7 @@ export function makeView(canvas,{capture=true,district=null,shared=false,composi
     get geometryBytes(){return (fixed+freight)*faceFloats*4+(Number(fixed>0)+Number(freight>0))*faceCorners.length*4;},
     load(s){
       if(loaded===s)return;
-      const hall=stationMesh(s,district,true);fixed=(hall.length-faceCorners.length)/faceFloats;bind(hallBuffer);
+      const hall=buildHall(s,district,true);fixed=(hall.length-faceCorners.length)/faceFloats;bind(hallBuffer);
       gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(hall),gl.STATIC_DRAW);uploads++;
       const key=[s.traffic.lengthM,s.traffic.widthM,s.traffic.heightM].join('/');
       if(key!==cargoKey){const car=freightMesh(s.traffic,true);freight=(car.length-faceCorners.length)/faceFloats;bind(cargoBuffer);
@@ -539,7 +554,7 @@ export function makeView(canvas,{capture=true,district=null,shared=false,composi
         const scale=Math.min(1.5,window.devicePixelRatio||1,camera?.maxWidth?camera.maxWidth/Math.max(1,canvas.clientWidth):Infinity),w=Math.max(1,Math.round(canvas.clientWidth*scale)),h=Math.max(1,Math.round(canvas.clientHeight*scale));
         if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;}
       }
-      const w=canvas.width,h=canvas.height,focal=camera?.focal??1.428148;
+      const w=camera?.width??canvas.width,h=camera?.height??canvas.height,focal=camera?.focal??1.428148;
       gl.viewport(0,0,w,h);gl.disable(gl.BLEND);gl.depthMask(true);
       const co=Math.cos(yaw),si=Math.sin(yaw),cp=Math.cos(pitch),sp=Math.sin(pitch);
       const right=camera?.right??[hand*co,0,-hand*si],up=camera?.up??[-si*sp,cp,-co*sp],forward=camera?.forward??[si*cp,sp,co*cp];
@@ -559,7 +574,15 @@ export function makeView(canvas,{capture=true,district=null,shared=false,composi
       }
       gl.enable(gl.DEPTH_TEST);gl.useProgram(program);
       // The adjoining terrain and the station must depth-test in the same projection.
-      const near=shared ? .05 : Math.max(.25,(eye[1]-s.roofM)*.015);
+      const near=shared ? (camera?.near??.05) : Math.max(.25,(eye[1]-s.roofM)*.015);
+      const daylight=Math.min(1,Math.max(0,direct));
+      const horizon=shared && !mainDepth?[[.10,.13,.18],[.69,.80,.84]]:[[.075,.093,.11],[.46,.56,.59]];
+      gl.uniform3fv(loc.airColor,horizon[0].map((v,i)=>v+(horizon[1][i]-v)*daylight));
+      if(mainDepth){
+        gl.depthFunc(gl.LEQUAL);gl.disable(gl.CULL_FACE);
+        gl.uniform1f(loc.logRange,Math.log2(1+4*camera.radiusKm));
+        gl.uniform1i(loc.linearOutput,camera.linear?1:0);
+      }
       gl.uniform2f(loc.clip,shared?1.00000002:1+2*near/2000000,2*near);
       gl.uniform3f(loc.hall,s.widthM,s.roofM,s.routes[0].nearDoor[0]);gl.uniform3fv(loc.eye,eye);gl.uniform3fv(loc.right,right);gl.uniform3fv(loc.up,up);
       gl.uniform1i(loc.yard,district?1:0);

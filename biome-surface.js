@@ -63,10 +63,15 @@ vec3 installedBiomeMaterial(vec3 original,vec3 q,float pixel,float distanceKm){
   vec2 offset=p/max(bounds.xy,vec2(.000001));
   bool inside=bounds.z>.5 ? dot(offset,offset)<=1. : max(abs(offset.x),abs(offset.y))<=1.;
   if(P.a>1.5 && inside){
+   float footprintRadius=bounds.z>.5?length(offset):max(abs(offset.x),abs(offset.y));
+   float regionCover=1.-smoothstep(.82,1.,footprintRadius);
+   vec3 surrounding=mix(original,col,mapWeight);
    ownerWeight=1.;
    vec3 look=P.rgb;
    if(A.a<.5){float w=sin(p.x*9.+sin(p.y*7.)*1.7)*sin(p.y*11.+sin(p.x*5.)*1.3);look=mix(P.rgb,A.rgb,smoothstep(-.2,.6,w));}
-   else if(A.a<1.5){vec2 g=abs(fract(p*6.)-.5);look=mix(P.rgb,A.rgb,(1.-smoothstep(.03,.09,min(g.x,g.y)))*.8);}
+   else if(A.a<1.5){vec2 g=abs(fract(p*6.)-.5);
+    float works=1.-smoothstep(.03,.09,min(g.x,g.y));
+    look=mix(P.rgb,A.rgb,works*.32);}
    col=mix(P.rgb,look,detail);
    // Atlas coordinates in kilometres keep the regional pattern fixed during banking and reversal.
    vec2 km=p*vec2(ATLAS_TAU*.5/n*cos(mid),ROW*.5)*uAtlasRadiusKm;
@@ -74,7 +79,9 @@ vec3 installedBiomeMaterial(vec3 original,vec3 q,float pixel,float distanceKm){
    float province=(sin(km.x/547.+.8*sin(km.y/806.))+sin(km.y/391.-km.x/1117.))*.5;
    float district=sin(km.x/91.+sin(km.y/134.))*cos(km.y/76.-km.x/210.);
    float modulation=.12*province*(1.-smoothstep(110.,550.,pixelKm))+.06*district*(1.-smoothstep(18.,92.,pixelKm));
-   col=clamp(col*(1.+modulation),0.,1.);
+   float orbital=smoothstep(20000.,500000.,distanceKm);
+   vec3 localColor=clamp(col*(1.+modulation),0.,1.);
+   col=mix(surrounding,mix(localColor,surrounding,.40*orbital),regionCover);
   }else if(P.a>.5 && P.a<1.5){
    float stripe=abs(fract((p.x+p.y)*7.)-.5);
    col=mix(col,vec3(.62,.44,.12),.10+(1.-smoothstep(.12,.2,stripe))*.42*detail);
@@ -103,6 +110,7 @@ vec3 installedBiomeMaterial(vec3 original,vec3 q,float pixel,float distanceKm){
  float waist=abs(abs(lat)-3.*ROW);
  float trunk=min(meridian,waist)*uAtlasRadiusKm,trunkHalf=${f(A.TRANSPORT_ROOF_KM.trunk*.5)};
  float trunkPx=meridian<waist?eastPx:northPx;
+ vec3 groundBeforeRoutes=col;
  float branchCover=transportCoverage(edge,halfWidth,branchPx),trunkCover=transportCoverage(trunk,trunkHalf,trunkPx);
  if(trunkCover>0. && trunkCover>=branchCover){
   along=(meridian<waist?lat:lon*cos(3.*ROW))*uAtlasRadiusKm;
@@ -131,6 +139,11 @@ vec3 installedBiomeMaterial(vec3 original,vec3 q,float pixel,float distanceKm){
   float hall=width>0.?max(abs(km.x-bay*200.)-16.,abs(km.y)-width):1.e10;
   float link=max(max((uTransportWidths.x>0.?-200.:0.)-km.x,km.x-(uTransportWidths.z>0.?200.:0.)),abs(km.y)-1.9);
   float aa=max(.015,pixel*uAtlasRadiusKm);
+  // Resolve the surveyed reach to its actual footprint as the camera descends.
+  float start=uTransportWidths.x>0.?-200.:0.,end=uTransportWidths.z>0.?200.:0.;
+  float interior=smoothstep(start-16.,start,km.x)*(1.-smoothstep(end,end+16.,km.x));
+  float localSurvey=interior*(1.-smoothstep(40.,90.,abs(km.y)))*(1.-smoothstep(2.,12.,aa));
+  col=mix(col,groundBeforeRoutes,localSurvey);
   float roof=(1.-smoothstep(-aa,aa,min(hall,link)))*min(1.,max(width,1.9)/aa);
   col=mix(col,transportMaterial(abs(km.y),km.x,max(width,1.9),aa),roof);
  }

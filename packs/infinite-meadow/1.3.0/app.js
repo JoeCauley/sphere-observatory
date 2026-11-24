@@ -308,13 +308,15 @@ function tick(t){
   const p=state.pose,apron=survey&&p.altitudeM-GROUND_DATUM<30000?stationApron(p.eastM,p.northM,20000):null;
   renderer.stationApron=apron;renderer.stationDatum=GROUND_DATUM;
   if(apron)prepareExterior(apron.row);else if(requested)releaseExterior();
+  renderer.exteriorStation=exterior?.station;
+  renderer.near2=exterior?Math.max(.10,(p.altitudeM-GROUND_DATUM-exterior.station.roofM)*.03):.10;
   const m=renderer.draw(state,residency,{inspection:$('grassLayers').value});
   if(drawBorder){borderStructures??=createBorderStructures(canvas);borderStructures.draw({pose:borderPose,levels:[1,1,1]},t*.001,1,{overMeadow:true,resize:false,daylight:renderer.light?.direct??1,radiusM:hostRadiusM()});}
   if(apron && exterior){
     const [a,b,c,d]=apron.row.axes,e=Math.sin(p.yaw),n=-Math.cos(p.yaw);
     const yaw=Math.atan2(a*e+b*n,c*e+d*n);
     exterior.view.draw(exterior.station,[apron.x,p.altitudeM-GROUND_DATUM,apron.z+exterior.station.widthM/2],yaw,p.pitch,
-      parent.SphereApp.sceneSeconds,false,renderer.light?.direct??1);
+      parent.SphereApp.sceneSeconds,false,renderer.light?.direct??1,{near:renderer.near2/2});
   }
   drawVeil(t);if(drawn<3 && (!apron||exterior) && ++drawn===3)resolveReady();if(completed)compareReturn(completed);
   const counts=residency.counters();const row={frame,rendererFrame:m.rendererFrame,stageVersion:residency.version,timestamp:t,intervalMs:rawDt*1000,prepareMs,renderCpuMs:m.renderCpuMs,gpuMs:m.gpuMs,gpuSampleFrame:m.gpuSampleFrame,gpuDisjoint:m.gpuDisjoint,gpuResolved:m.gpuResolved,drawCalls:m.drawCalls,uploadBytes:m.uploadBytes,descriptorBytes:m.descriptorBytes,gpuBufferBytes:m.gpuBytes,gpuTextureBytes:m.gpuTextureBytes,grassboxInstances:m.grassboxInstances,grassboxBlades:m.grassboxBlades,grassCenter:m.grassCenter,windTime:state.windTime,originId:m.originId,reveal:m.reveal,interiorDaylight:m.interiorDaylight,terrainAlpha:m.terrainAlpha,heroCenter:m.heroCenter,terrainRadiusM:m.terrainRadiusM,pose:{...state.pose},global:toGlobal(state.pose),address:address(state.pose),required:residency.required.length,ready:counts.ready,retainedTufts:counts.tufts,submittedTufts:m.instanceCount,collisionClearanceM:clearance(state.pose),speedMps:flightMotion.speedMps,skimming:state.skimEnabled,skimTargetClearanceM:state.skimClearanceM,movementM:Math.hypot(state.pose.eastM-lastPose.eastM,state.pose.northM-lastPose.northM,state.pose.altitudeM-lastPose.altitudeM),stage};

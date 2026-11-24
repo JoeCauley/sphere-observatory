@@ -397,6 +397,7 @@
     for (const item of installed) if (match(item.name)) row(item.name + ' · ' + item.version, 'Installed ' + describe(item) + '.', [
       button('Visit', 'secondary', () => window.SphereStageFrame?.visit(item.id)),
       button('View from above', 'quiet', () => attempt(() => { if (window.SphereStageFrame?.showMain() !== false) return travelTo(item.id); })),
+      ...(item.transport?[button('Fly the seed 713 wall approach','quiet',()=>location.assign('?border=wall'))]:[]),
       button('Remove', 'quiet', () => attempt(() => remove(item.id)))]);
     for (const p of packs) if (!ids.has(p.id) && match(p.name)) {
       const location=placedHere().find(item=>item.packId===p.id);

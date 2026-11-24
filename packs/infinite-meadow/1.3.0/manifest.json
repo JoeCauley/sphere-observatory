@@ -85,8 +85,8 @@
   "assets": [
     {
       "path": "app.js",
-      "bytes": 46398,
-      "sha256": "a7ff6f6f85aa249325a1dddff8d66783b914c8497703da718adb5d06af83dbe4"
+      "bytes": 46567,
+      "sha256": "57f2f1a061740680b103fa3df0c5bd32c735910daec5d4e4a076a6c5e5a7e026"
     },
     {
       "path": "atlas-lease.js",
@@ -120,8 +120,8 @@
     },
     {
       "path": "grass-shaders.js",
-      "bytes": 11229,
-      "sha256": "5f3ae3a590561e4c783a98806342f0cf22517ce974cd9570e70a2d54aa6d78f2"
+      "bytes": 11239,
+      "sha256": "6208e89240da8a9f161825fcc6645b23f5211b43a46a02eb82765bb568962314"
     },
     {
       "path": "grass-stage.js",
@@ -170,8 +170,8 @@
     },
     {
       "path": "renderer.js",
-      "bytes": 32824,
-      "sha256": "2d8739515e038e248ff62d64cee14ce7cfbd5295aa805a191de2fe77a95b5fc1"
+      "bytes": 33367,
+      "sha256": "d3837a89258c503b000eb3db27092f4f0322289de717d2334068ec7b663fea9a"
     },
     {
       "path": "style.css",
@@ -201,8 +201,8 @@
   "dependencies": [
     {
       "path": "../../kit/atmosphere.js",
-      "bytes": 3990,
-      "sha256": "944aaf2c5ae70d60bc16743feb4ac954304278a5e097f5d9e37c643a196db7eb"
+      "bytes": 4249,
+      "sha256": "8724ba72b6db077ea2ee96c69f6eabd129fa2fdc083f318c386a904a8bd0ffed"
     },
     {
       "path": "../../kit/veil.js",

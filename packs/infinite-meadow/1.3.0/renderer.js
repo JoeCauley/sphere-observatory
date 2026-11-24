@@ -112,16 +112,16 @@ void main(){
 const VS_MESH=`#version 300 es
 precision highp float;
 layout(location=0)in vec3 aPos;layout(location=1)in vec3 aColor;layout(location=5)in vec3 aNormal;
-uniform vec3 uCamera,uRight,uUp,uForward;uniform float uAspect,uScale,uOffsetY,uNormalized;
+uniform vec3 uCamera,uRight,uUp,uForward;uniform float uNear2;uniform float uAspect,uScale,uOffsetY,uNormalized;
 out vec3 color,normal,position;out float distanceM,edgeAlpha;
 void main(){vec3 at=aPos*uScale+vec3(0,uOffsetY,0),p=at-uCamera;float z=dot(p,uForward);
- gl_Position=vec4(dot(p,uRight)*1.428148/uAspect,dot(p,uUp)*1.428148,z*1.00000002-mix(.10,.00002,uNormalized),z);
+ gl_Position=vec4(dot(p,uRight)*1.428148/uAspect,dot(p,uUp)*1.428148,z*1.00000002-mix(uNear2,.00002,uNormalized),z);
  color=aColor;normal=aNormal;position=at;distanceM=length(p)*mix(1.,149597870700.,uNormalized);edgeAlpha=1.;}`;
 const FS_MESH=`#version 300 es
 precision highp float;
 precision highp int;
 in vec3 color,normal,position;in float distanceM,edgeAlpha;out vec4 frag;
-uniform float uDaylight,uAlpha,uGround,uReveal;uniform vec3 uTexturePhase;uniform vec2 uSiteOffset;
+uniform float uDaylight,uAlpha,uGround,uReveal;uniform bool uPaved;uniform vec2 uTrench;uniform vec3 uTexturePhase;uniform vec2 uSiteOffset;
 uniform vec3 uCamera;
 uniform float uCover,uCoverHeight;uniform vec2 uCoverOrigin;
 ${BORDER_GLSL}
@@ -139,6 +139,8 @@ void main(){
  vec3 col=color*lit;
  if(uGround<.5)col+=vec3(.12,.052,.009)*step(.30,color.r)*step(color.g*1.10,color.r)*(1.-uDaylight);
  if(uGround>.5){
+   vec2 apronPoint=uApron.xy+vec2(dot(uApronAxes.xy,position.xz),dot(uApronAxes.zw,position.xz));
+   if(uPaved && apronDistance(position.xz)<0. && abs(apronPoint.x-uTrench.x)>uTrench.y)discard;
    float texture=.5+.20*sin(position.x*1.7+uTexturePhase.x)*sin(position.z*1.3+uTexturePhase.y)+.10*sin(position.x*7.+position.z*3.+uTexturePhase.z);
    float detailWeight=1.-smoothstep(.8,3.,max(length(dFdx(position.xz)),length(dFdy(position.xz))));
    col*=.91+.18*mix(.5,texture,detailWeight);
@@ -158,7 +160,7 @@ void main(){
 const VS_TERRAIN=`#version 300 es
 precision highp float;
 layout(location=0)in vec3 aPos;
-uniform vec3 uCamera,uRight,uUp,uForward;uniform float uAspect;
+uniform vec3 uCamera,uRight,uUp,uForward;uniform float uNear2;uniform float uAspect;
 out vec3 color,normal,position;out float distanceM,edgeAlpha;
 ${TERRAIN_GLSL}
 ${TERRAIN_GRID_GLSL}
@@ -170,7 +172,7 @@ void main(){
  float detail=1.-smoothstep(1024.,8192.,r);
  h=mix(12.,h,detail)+r*r*.00000000000334229;
  vec3 p=vec3(x,h,z)-uCamera;float depth=dot(p,uForward);
- gl_Position=vec4(dot(p,uRight)*1.428148/uAspect,dot(p,uUp)*1.428148,depth*1.00000002-.10,depth);
+ gl_Position=vec4(dot(p,uRight)*1.428148/uAspect,dot(p,uUp)*1.428148,depth*1.00000002-uNear2,depth);
  color=vec3(.095,.158,.027);normal=normalize(vec3(-dx*detail,1.,-dz*detail));position=vec3(x,h,z);distanceM=length(p);
  edgeAlpha=1.-smoothstep(28000.,65536.,r);
 }`;
@@ -298,6 +300,10 @@ vec3 regionalGround(vec3 q,float t){
   uniform(program,key,type,value){const gl=this.gl,location=this.location(program,key);if(type==='int')gl.uniform1i(location,value);else if(type==='uint2')gl.uniform2uiv(location,value);else if(type===1)gl.uniform1f(location,value);else if(type===2)gl.uniform2fv(location,value);else if(type===4)gl.uniform4fv(location,value);else gl.uniform3fv(location,value);}
   common(program,p){this.gl.useProgram(program);
     const a=this.stationApron;
+    this.uniform(program,'uNear2',1,this.near2??.10);
+    this.uniform(program,'uPaved','int',this.exteriorStation?1:0);
+    const trench=this.exteriorStation?.routes[2];
+    if(trench)this.uniform(program,'uTrench',2,[trench.nearDoor[0],trench.door[0]/2+5]);
     this.uniform(program,'uApron',4,a?[a.x,a.z,a.row.halfX,a.row.halfZ]:[0,0,0,0]);
     if(a){this.uniform(program,'uApronAxes',4,a.row.axes);this.uniform(program,'uApronDatum',1,this.stationDatum);}
     this.uniform(program,'uBorderMap',4,this.borderMap||[0,0,0,0]);this.uniform(program,'uGateDatum',1,this.gateDatum||0);const b=cameraBasis(p);for(const [key,value] of [['uRight',b.right],['uUp',b.up],['uForward',b.forward]])this.uniform(program,key,3,value);this.uniform(program,'uAspect',1,this.canvas.width/this.canvas.height);}

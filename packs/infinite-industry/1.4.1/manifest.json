@@ -96,6 +96,16 @@
       "sha256": "79858ed044925b74bda91cf990c686f09d55b22ffcde7b23478141940313b39d"
     },
     {
+      "path": "field-shaders.js",
+      "bytes": 9125,
+      "sha256": "90c4765ed1bea841d0ef652f2ff7ecbf76e81778d107d7e3af4b83f86be37f2b"
+    },
+    {
+      "path": "field-view.js",
+      "bytes": 16723,
+      "sha256": "a74399bc794928ec6821db7e59165a3275ac08e1f1d838c8520845ed9a6a48f4"
+    },
+    {
       "path": "geometry.js",
       "bytes": 10721,
       "sha256": "6dc26f016d1ae927abe76bf6b77f2186aa1034509630a716c34b8423c4ed4c25"
@@ -144,16 +154,6 @@
       "path": "works.js",
       "bytes": 7418,
       "sha256": "28c9213bb4510daf3aed77d9499aad808da91dab9542d2595ae6a80ba4eae282"
-    },
-    {
-      "path": "field-view.js",
-      "bytes": 16723,
-      "sha256": "a74399bc794928ec6821db7e59165a3275ac08e1f1d838c8520845ed9a6a48f4"
-    },
-    {
-      "path": "field-shaders.js",
-      "bytes": 9125,
-      "sha256": "90c4765ed1bea841d0ef652f2ff7ecbf76e81778d107d7e3af4b83f86be37f2b"
     }
   ],
   "dependencies": [
@@ -274,8 +274,8 @@
     },
     {
       "path": "../../kit/atmosphere.js",
-      "bytes": 3990,
-      "sha256": "944aaf2c5ae70d60bc16743feb4ac954304278a5e097f5d9e37c643a196db7eb"
+      "bytes": 4249,
+      "sha256": "8724ba72b6db077ea2ee96c69f6eabd129fa2fdc083f318c386a904a8bd0ffed"
     },
     {
       "path": "../../kit/outfall-wall.mjs",

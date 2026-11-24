@@ -22,7 +22,10 @@ void main(){
  float t=mod(uTime,2048.),z=mod(uHeight*.00035,64.)+uSeed;
  float billow=.5+.5*sin(p.x*2.6+z+sin(p.y*3.1+t*.8))*sin(p.y*2.2-.67*z+t);
  float grain=.5+.5*sin(p.x*6.7-p.y*5.3+.48*z+2.*billow-t);
- float density=mix(billow,grain,.26);
+ // A moving peripheral condensation band develops only inside a humid exchange.
+ float radius=length(vec2(v.x*uAspect,v.y));
+ float ring=exp(-7.*abs(radius-(.38+.75*uOpacity+.08*(billow-.5))));
+ float density=clamp(mix(billow,grain,.26)+.25*ring*min(uDensity,1.)*sin(3.14159265*uOpacity),0.,1.);
  float a=smoothstep(0.,1.,uOpacity+(density-.5)*.45*uDensity*sin(3.14159265*uOpacity));
  vec3 c=mix(uTint*.66,mix(uTint,vec3(1.),.55),density)*(.13+.87*uLight);
  frag=vec4(pow(c,vec3(1./2.2))*a,a);
