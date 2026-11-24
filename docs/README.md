@@ -1,3 +1,11 @@
+## Current Observatory field guide
+
+The Observatory offers five installable packs. Infinite Meadow, Infinite Industry and The Sideways City are destinations. The Outfall and Border Biome provide physical crossings. Super Jungle is one of the Atlas habitats. In seed 713, its terrain meets the far door of a 48 km freight station.
+
+[Run the Observatory and walk through the station](../README.md#first-trip--meadow-to-super-jungle) · [Replay the four doorway crossings](../examples/station-round-trip/doorways.mp4) · [Check the recorded camera positions](../examples/station-round-trip/verification.json)
+
+## Earlier engineering records
+
 > **Current Observatory work · 2 November 2026.** Joe's finish line is installing Meadow and Industry in Main, visiting their assigned places, and returning after reopening the browser. Start with Track Meadow installation, persistent placement and duplicate-install handling. The formal P05 gate remains open. See the [four-milestone delivery plan](Observatory-Biome-Pack-Main-Delivery.md) and [first implementation prompt](Observatory-Track-Meadow-Install-Prompt.md).
 
 > Current pricing attempt, 25 October 2026: complete finite Root/consumer prices remain open. The generic parent interface has no finite body/capture bound; real prospective R/Q and module-floor replays refuse under unchanged limits. A private WeakSet.has native check is corrected (35 audit cases); 10 bind and 9 State port controls pass. Replacement and all21 service failures remain unwaived. Walking is unchanged; native Main and acceptance remain open. [Pricing refusal, exact source and required producer](Observatory-Main-Pricing-Refusal-2026-10-25.md). Earlier records retain their original scopes.
