@@ -6,10 +6,10 @@ import {LINEAGE_GLSL} from './grass-handoff.js';
 import {ALLOCATION_GLSL} from './grass-allocation.js';
 export {TERRAIN_GLSL} from './landscape.js';
 const CAMERA_GLSL=`
-uniform vec3 uRight,uUp,uForward;uniform float uAspect,uEyeAltitude,uNear2;
+uniform vec3 uRight,uUp,uForward;uniform float uAspect,uEyeAltitude,uNear2,uFocal;
 // All local geometry must share the terrain's depth mapping: even a small
 // near-plane mismatch buries upright grass when viewed from flight.
-vec4 coverProject(vec3 p){float z=dot(p,uForward);return vec4(dot(p,uRight)*1.428148/uAspect,dot(p,uUp)*1.428148,z*1.00000002-uNear2,z);}
+vec4 coverProject(vec3 p){float z=dot(p,uForward);return vec4(dot(p,uRight)*uFocal/uAspect,dot(p,uUp)*uFocal,z*1.00000002-uNear2,z);}
 `;
 export const NEAR_GRASS_VS=`#version 300 es
 precision highp float;precision highp int;

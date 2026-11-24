@@ -1,12 +1,12 @@
 # The Sphere Observatory
 
-Fly inside a Dyson sphere one astronomical unit in radius. From the cavity you can see the inhabited inner surface curve overhead. Descend until the artificial sky takes over, land in the grass, and walk up to a door you could see from kilometres away. The Observatory is a browser-based experiment in making that journey feel like one continuous place.
+The Sphere is a walkable world on the inside of a Dyson sphere one astronomical unit in radius. From the open cavity, the inhabited surface curves overhead. On the ground, a projected sky called the Duck Blind hides the shell. You can fly down to the wall you saw from space, land in the grass, and find the door to the next habitat.
 
-![Infinite Industry seen on approach, with the freight works below](examples/industry-field/approach.jpg)
+![The seed 713 maintenance wall seen from the grass, 3.45 kilometres away](examples/station-round-trip/meadow-wall.jpg)
 
-## Run it locally
+## Run the Observatory
 
-Use Git, Node.js 20 or newer, and a desktop browser with WebGL 2. The demo runs directly from a clone.
+Use Git, Node.js 20 or newer and a desktop browser with WebGL 2. The Observatory runs directly from a clone.
 
 ```sh
 git clone https://github.com/JoeCauley/sphere-observatory.git
@@ -14,7 +14,55 @@ cd sphere-observatory
 npm start
 ```
 
-Open **[http://127.0.0.1:8766](http://127.0.0.1:8766)**. On Windows, you can also double-click **Launch Observatory.cmd** in the checkout. The first opening prepares graphics. When you choose a destination, a card over the scene names the place and shows which phase is running.
+Open [the Observatory](http://127.0.0.1:8766). On Windows, you can also double-click **Launch Observatory.cmd**. The first opening prepares the graphics. When picking a destination, the card over the scene shows the current phase.
+
+## First trip · Meadow to Super Jungle
+
+The seed 713 service route starts on foot, 24 metres outside the Meadow entrance. The amber jamb frames the opening in a 48 km station. The two photographs face out from the same distance inside opposite doors. [Start the service-door trip](http://127.0.0.1:8766/?border=doors)
+
+| Toward Meadow | Toward Super Jungle |
+| --- | --- |
+| ![Meadow grassland and sky through the station entrance](examples/station-round-trip/meadow-through-door.jpg) | ![Native jungle through the opposite service entrance](examples/station-round-trip/jungle-through-door.jpg) |
+
+1. Walk toward the orange opening with **W**. Stop beside a jamb, turn to keep it in sight, then use **A** or **D** to step across. Your feet stay at the same door and the landscape stays visible through it.
+2. Face into the station and follow the straight service deck. It climbs to a bridge 720 m above the freight slab. Choose **128×** under **Travel pace** and hold **Shift** for the long interior. Watch the freight from the bridge, then continue down the far ramp. Set the pace back to **1×** for the last approach.
+3. Walk through the opposite jamb into Super Jungle. Turn around, return through that door, and retrace the bridge to Meadow. In the separate compact interchange study you can take either two-turn spiral directly onto its 3.5 km bridge. [Open the walkable spiral study](studies/maintenance-interchange/index.html)
+
+[Watch the four doorway crossings](examples/station-round-trip/doorways.mp4) · [Look down from the service bridge](examples/station-round-trip/service-bridge.mp4) · [Read the camera and input measurements](examples/station-round-trip/verification.json)
+
+## Two more ways to meet the Border
+
+**From the air.** The seed 713 wall approach starts 36 km up, aimed between stations. Hold **W** along the approach and use **Q** to descend. Press **F** when close to the roof to land. Use **Space + E** to lift off again. The roof and the open freight well are exposed to vacuum. Along the habitat side the projected sky stays overhead. [Fly the wall approach](http://127.0.0.1:8766/?border=wall) · [Watch the flight over the roof](examples/station-round-trip/roof-crossing.mp4)
+
+**From the grass.** Try a diagonal approach to an ordinary wall panel, strafe while touching it, then lift and fly parallel to the concrete. Meadow owns the grass and the camera up to its facing wall. On the jungle side, leaf clusters appear close to the lower wall. Stations in this surveyed district are 200 km apart. [Watch the walk and flight beside the solid wall](examples/station-round-trip/ordinary-wall.mp4)
+
+| Over the exposed roof | Over Super Jungle at 14.3 km |
+| --- | --- |
+| ![The freight roof under the open cavity during the wall flight](examples/station-round-trip/roof-after.jpg) | ![The jungle horizon at the former vertical terrain split](examples/station-round-trip/14km-composite.png) |
+
+The recorded jungle flight descended from 17.8 km to 10.6 km and climbed back through the former split. At the same 14.3 km camera, the brightness step across that boundary fell from 115.3 to 0.22 on a 255-point scale. [Watch the descent and ascent](examples/station-round-trip/jungle-descent-ascent.mp4) · [Camera and rendering measurements](examples/station-round-trip/jungle-measurements.json)
+
+## What changed in 1.8.8
+
+The facing habitat now renders the first 35 m inside each entrance. At the jamb you can see the adjoining sky, ground and vegetation move with your sightline. The interior renderer takes over farther along the gallery. The player's heading, movement mode, held controls and travel pace carry across the exchange.
+
+The seed 713 browser run crossed both doors in both directions using normal controls. At the four renderer exchanges, the horizontal distance between the last and first sampled positions ranged from less than a millimetre to 20 cm. The longest interval between ready camera samples was 2.41 seconds on the outward jungle leg and 0.22 seconds at the corresponding return exchange. Distant openings can still change brightness as the renderers exchange. Seed 714 put the door on the other side of the station centre and passed a separate entry-and-return check.
+
+To reproduce the long browser regression locally, install the development dependencies with `npm ci`, then run `node tools/verify-station-round-trip.cjs work/door-verification --film`. Recording uses Chrome or Playwright Chromium and FFmpeg. The ordinary test suite runs with `npm test`.
+
+## What you can explore
+
+| Experience | What to try |
+| --- | --- |
+| The shell | Fly the cavity, inspect moving Shades, survey Wounds and polar entries, or mark a point and fly to it. Measure a curved surface area and adjust illumination, weather or simulation time. |
+| Original habitats | Visit the Atlas regions, walk on local terrain, follow watershed banks and explore the Violet Labyrinth. |
+| Infinite Meadow | Walk among procedural grass, lift off, skim the terrain or cruise toward the Border. |
+| Infinite Industry | Follow a working hot-bar transfer across two factory districts, walk under the feed line and pause the machinery. |
+| The Sideways City | Follow broad streets and low doorways through a city built for inhabitants with different proportions. |
+| The Outfall and Border Biome | Operate the gallery handwheel, cross the long tunnel, enter a freight hall through its service door, or land between stations. |
+| Journey and capture | Return to saved viewpoints, revisit a station by address, export a scene, photograph a panorama or record a short 4K clip. |
+
+![The Outfall entrance from the grass](examples/biomes/outfall-approach.jpg)
 
 ## 1.8.6 · From the roof to the grass
 
@@ -59,26 +107,12 @@ At The Outfall, distant concrete now fades into the terrain and sky along the sa
 Try **Fly the seed 713 wall approach** in the installed Border Biome row, or open the link below after starting the server. This reproducible trip selects seed 713 and installs Meadow and Border there. It starts in clear air, 36 km above the surface, aimed obliquely along a maintenance trunk. Its intended landing point is 94 km from the central station. The three stations in this district are spaced 200 km apart.
 
 1. Hold **W** in Main. Watch the roof resolve and the HUD identify the maintenance wall as you descend.
-2. Once the Border controls appear, keep flying forward or change your bearing. Use **F** to lower yourself onto the roof, then choose **Walk**. The readout gives your distance along the edge and to the nearest station.
+2. Once the Border controls appear, keep flying forward or change your bearing. Hold **Q** to descend, then press **F** close to the roof to land. The readout gives your distance along the edge and to the nearest station.
 3. Look along the roof. This reach carries freight between halls. Landing here leaves the station discovery record untouched.
 
 [Start the wall flight on localhost](http://127.0.0.1:8766/?border=wall) · [Try the earlier freight-quay approach](http://127.0.0.1:8766/?freight=along)
 
 The surveyed roof, local geometry and flight-entry check use the narrow trunk between the wider halls. The rest of the Atlas shows a much larger transport network. Detailed free-flight encounters currently cover the installed district. This build also includes Meadow apron depth corrections, legacy terrain occlusion, distance fog on the walls, a condensation effect during humid handoffs, and a separate walkable spiral-interchange design study.
-
-## What you can explore
-
-| Experience | What to try |
-| --- | --- |
-| The shell | Fly the cavity, inspect moving Shades, survey Wounds and polar entries, or mark a point and fly to it. Measure a curved surface area and adjust illumination, weather or simulation time. |
-| Original habitats | Visit the Atlas regions, walk on local terrain, follow watershed banks and explore the Violet Labyrinth. |
-| Infinite Meadow | Walk among procedural grass, lift off, skim the terrain or cruise toward the Border. |
-| Infinite Industry | Follow a working hot-bar transfer across two factory districts, walk under the feed line and pause the machinery. |
-| The Sideways City | Follow broad streets and low doorways through a city built for inhabitants with different proportions. |
-| The Outfall and Border Biome | Operate the gallery handwheel, cross the long tunnel, enter a freight hall through its service door, or land between stations. |
-| Journey and capture | Return to saved viewpoints, revisit a station by address, export a scene, photograph a panorama or record a short 4K clip. |
-
-![The Outfall entrance from the grass](examples/biomes/outfall-approach.jpg)
 
 ## Border Biome 0.10
 

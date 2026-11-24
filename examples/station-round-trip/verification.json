@@ -1,0 +1,567 @@
+{
+  "version": "1.8.8",
+  "sourceTreeAtCapture": "2156db1b22b875b1b9c89363217f5e6970d2197c",
+  "sourceSha256": "c65e8476e2484326a3278382fda09edb0d04ba90151bf10c23bfbb122d2f3fa6",
+  "device": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5080 (0x00002C02) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+  "route": "/?border=doors",
+  "seed": 713,
+  "station": "sphere-ed6a59ab491a9a08/r10c0/r10c1/0",
+  "doorEastM": -2600,
+  "widthM": 48000,
+  "clockSeconds": 44101.062,
+  "walk": {
+    "passed": true,
+    "clock": "paused during verification",
+    "pace": "1x through both doors, selectable 128x travel pace and Shift on the long bridge",
+    "cameraMarks": 24,
+    "positionSamples": 439,
+    "pageErrors": [],
+    "glErrorsAtMarks": [],
+    "handoffs": [
+      {
+        "from": "infinite-meadow",
+        "to": "border-transport",
+        "heldControls": [
+          "KeyW"
+        ],
+        "horizontalDistanceM": 0.05011999999987954,
+        "eyeHeightChangeM": -1.3875961303755346e-05
+      },
+      {
+        "from": "border-transport",
+        "to": "Main",
+        "heldControls": [
+          "KeyW"
+        ],
+        "horizontalDistanceM": 6.996150324685759e-06,
+        "eyeHeightChangeM": 0.02001123428344731
+      },
+      {
+        "from": "Main",
+        "to": "border-transport",
+        "heldControls": [
+          "KeyW"
+        ],
+        "horizontalDistanceM": 0.050120005427912416,
+        "eyeHeightChangeM": -0.02001123428344731
+      },
+      {
+        "from": "border-transport",
+        "to": "infinite-meadow",
+        "heldControls": [
+          "KeyW"
+        ],
+        "horizontalDistanceM": 0.19603193369792604,
+        "eyeHeightChangeM": 1.3875961303755346e-05
+      }
+    ],
+    "compositedExchangeMeasurements": [
+      {
+        "route": "outbound-meadow",
+        "from": "infinite-meadow",
+        "to": "border-transport",
+        "readyIntervalMs": 208,
+        "centralRgbChange": 0.04647373706427015,
+        "centralRgbChangeAfter250ms": 0.04892769607843137
+      },
+      {
+        "route": "outbound-native",
+        "from": "border-transport",
+        "to": "Main",
+        "readyIntervalMs": 2411,
+        "centralRgbChange": 0.02779352192265795,
+        "centralRgbChangeAfter250ms": 0.10193291292211329
+      },
+      {
+        "route": "return-native",
+        "from": "Main",
+        "to": "border-transport",
+        "readyIntervalMs": 218,
+        "centralRgbChange": 0.012045760144335511,
+        "centralRgbChangeAfter250ms": 0.014823750680827887
+      },
+      {
+        "route": "return-meadow",
+        "from": "border-transport",
+        "to": "infinite-meadow",
+        "readyIntervalMs": 881,
+        "centralRgbChange": 0.03387054908769063,
+        "centralRgbChangeAfter250ms": 0.08342077716503268
+      }
+    ],
+    "marks": [
+      {
+        "name": "outbound-meadow-approach",
+        "owner": "infinite-meadow",
+        "eastM": -2600.000004285659,
+        "northM": -24023.99997096859,
+        "altitudeM": 1.7,
+        "yaw": -1.4025082300202777e-07,
+        "pitch": 0.015000021672982864,
+        "mode": "walk",
+        "pace": 1,
+        "time": 44101.062
+      },
+      {
+        "name": "outbound-meadow-facing-door",
+        "owner": "infinite-meadow",
+        "eastM": -2600.00000739979,
+        "northM": -24006.37897069334,
+        "altitudeM": 1.7000138759613037,
+        "yaw": -3.421259504462944e-08,
+        "pitch": 0.01499959399709433,
+        "mode": "walk",
+        "pace": 1,
+        "time": 44101.062
+      },
+      {
+        "name": "outbound-meadow-before-jamb",
+        "owner": "infinite-meadow",
+        "eastM": -2599.9983133123856,
+        "northM": -24000.75012203173,
+        "altitudeM": 1.7000138759613037,
+        "yaw": 1.5719988563767855,
+        "pitch": 0.09100053529610305,
+        "mode": "walk",
+        "pace": 1,
+        "time": 44101.062
+      },
+      {
+        "name": "outbound-meadow-after-jamb",
+        "owner": "infinite-meadow",
+        "eastM": -2599.9963763227424,
+        "northM": -23999.142665951207,
+        "altitudeM": 1.7,
+        "yaw": 1.5719985401967993,
+        "pitch": 0.0909996093719122,
+        "mode": "walk",
+        "pace": 1,
+        "time": 44101.062
+      },
+      {
+        "name": "outbound-meadow-departure",
+        "owner": "border-transport",
+        "eastM": -2599.9963769152127,
+        "northM": -23960.915324466027,
+        "altitudeM": 1.7,
+        "yaw": -1.572530271501895e-07,
+        "pitch": 0.015000390530441795,
+        "mode": "walk",
+        "pace": 1,
+        "time": 44101.062
+      },
+      {
+        "name": "outbound-bridge",
+        "owner": "border-transport",
+        "eastM": -2600.0001299741616,
+        "northM": -94.54732446566427,
+        "altitudeM": 721.7,
+        "yaw": -1.572530271501895e-07,
+        "pitch": 0.015000390530441795,
+        "mode": "walk",
+        "pace": 128,
+        "time": 44101.062
+      },
+      {
+        "name": "service-bridge-lookout",
+        "owner": "border-transport",
+        "eastM": -2600.0001306136546,
+        "northM": -90.4806044656645,
+        "altitudeM": 721.7,
+        "yaw": 1.7919998427469728,
+        "pitch": -0.40099960946955826,
+        "mode": "walk",
+        "pace": 1,
+        "time": 44101.062
+      },
+      {
+        "name": "outbound-native-approach",
+        "owner": "border-transport",
+        "eastM": -2600.0039102559654,
+        "northM": 23944.93571553491,
+        "altitudeM": 1.7,
+        "yaw": -1.5725302698887944e-07,
+        "pitch": 0.015000390530441776,
+        "mode": "walk",
+        "pace": 1,
+        "time": 44101.062
+      },
+      {
+        "name": "outbound-native-facing-door",
+        "owner": "Main",
+        "eastM": -2600.00391563452,
+        "northM": 23993.541473731544,
+        "altitudeM": 1.7200112342834473,
+        "yaw": -3.1894745009404437e-07,
+        "pitch": 0.015000877348977277,
+        "mode": "walk",
+        "pace": 1,
+        "time": 44101.062
+      },
+      {
+        "name": "outbound-native-before-jamb",
+        "owner": "Main",
+        "eastM": -2600.0031599386684,
+        "northM": 23999.264102270965,
+        "altitudeM": 1.720041036605835,
+        "yaw": 1.571286440591561,
+        "pitch": 0.09005186322091624,
+        "mode": "walk",
+        "pace": 1,
+        "time": 44101.062
+      },
+      {
+        "name": "outbound-native-after-jamb",
+        "owner": "Main",
+        "eastM": -2600.002402166728,
+        "northM": 24000.809414259937,
+        "altitudeM": 1.7200112342834473,
+        "yaw": 1.57128644059113,
+        "pitch": 0.09005186322091624,
+        "mode": "walk",
+        "pace": 1,
+        "time": 44101.062
+      },
+      {
+        "name": "outbound-native-departure",
+        "owner": "Main",
+        "eastM": -2600.006578216747,
+        "northM": 24007.09571690207,
+        "altitudeM": 1.7199814319610596,
+        "yaw": -0.0006641082420715066,
+        "pitch": 0.014547405923700612,
+        "mode": "walk",
+        "pace": 1,
+        "time": 44101.062
+      },
+      {
+        "name": "native-frontage",
+        "owner": "Main",
+        "eastM": -2600.006578216747,
+        "northM": 24007.09571690207,
+        "altitudeM": 1.7199814319610596,
+        "yaw": 1.411404643761226,
+        "pitch": 0.060073984698884746,
+        "mode": "walk",
+        "pace": 1,
+        "time": 44101.062
+      },
+      {
+        "name": "return-native-approach",
+        "owner": "Main",
+        "eastM": -2600.006586521097,
+        "northM": 24007.095716902066,
+        "altitudeM": 1.720041036605835,
+        "yaw": -3.1404981707489887,
+        "pitch": 0.015119934724017677,
+        "mode": "walk",
+        "pace": 1,
+        "time": 44101.062
+      },
+      {
+        "name": "return-native-facing-door",
+        "owner": "Main",
+        "eastM": -2600.0072311462673,
+        "northM": 24006.498152051387,
+        "altitudeM": 1.720041036605835,
+        "yaw": -3.1404981707441357,
+        "pitch": 0.015119934720023471,
+        "mode": "walk",
+        "pace": 1,
+        "time": 44101.062
+      },
+      {
+        "name": "return-native-before-jamb",
+        "owner": "Main",
+        "eastM": -2600.0123227508766,
+        "northM": 24000.673320688973,
+        "altitudeM": 1.7200112342834473,
+        "yaw": 1.5710248829086455,
+        "pitch": 0.08911724026146269,
+        "mode": "walk",
+        "pace": 1,
+        "time": 44101.062
+      },
+      {
+        "name": "return-native-after-jamb",
+        "owner": "Main",
+        "eastM": -2600.0126756857526,
+        "northM": 23999.123830388613,
+        "altitudeM": 1.7200112342834473,
+        "yaw": 1.5710248829090572,
+        "pitch": 0.08911724026146266,
+        "mode": "walk",
+        "pace": 1,
+        "time": 44101.062
+      },
+      {
+        "name": "return-native-departure",
+        "owner": "border-transport",
+        "eastM": -2599.9643309700414,
+        "northM": 23960.94442346411,
+        "altitudeM": 1.7,
+        "yaw": 3.140326473630107,
+        "pitch": 0.013894474110609754,
+        "mode": "walk",
+        "pace": 1,
+        "time": 44101.062
+      },
+      {
+        "name": "return-bridge",
+        "owner": "border-transport",
+        "eastM": -2599.932484980061,
+        "northM": 58.43902119718838,
+        "altitudeM": 721.7,
+        "yaw": 3.1443264736301066,
+        "pitch": 0.013894474110609754,
+        "mode": "walk",
+        "pace": 128,
+        "time": 44101.062
+      },
+      {
+        "name": "return-meadow-approach",
+        "owner": "border-transport",
+        "eastM": -2599.883171348117,
+        "northM": -23947.092168451774,
+        "altitudeM": 1.7,
+        "yaw": 3.1443264736301066,
+        "pitch": 0.013894474110609754,
+        "mode": "walk",
+        "pace": 1,
+        "time": 44101.062
+      },
+      {
+        "name": "return-meadow-facing-door",
+        "owner": "infinite-meadow",
+        "eastM": -2600.010179190526,
+        "northM": -23993.55414131045,
+        "altitudeM": 1.7000436782836914,
+        "yaw": -3.138859004048387,
+        "pitch": 0.013894419732920495,
+        "mode": "walk",
+        "pace": 1,
+        "time": 44101.062
+      },
+      {
+        "name": "return-meadow-before-jamb",
+        "owner": "infinite-meadow",
+        "eastM": -2600.0241097376925,
+        "northM": -23999.341168903007,
+        "altitudeM": 1.7000138759613037,
+        "yaw": 1.5723265781602915,
+        "pitch": 0.08989441919887367,
+        "mode": "walk",
+        "pace": 1,
+        "time": 44101.062
+      },
+      {
+        "name": "return-meadow-after-jamb",
+        "owner": "infinite-meadow",
+        "eastM": -2600.02637163503,
+        "northM": -24000.822081838684,
+        "altitudeM": 1.7000138759613037,
+        "yaw": 1.5723264579821685,
+        "pitch": 0.08989447709558666,
+        "mode": "walk",
+        "pace": 1,
+        "time": 44101.062
+      },
+      {
+        "name": "return-meadow-departure",
+        "owner": "infinite-meadow",
+        "eastM": -2600.018377660088,
+        "northM": -24007.14731573146,
+        "altitudeM": 1.7000138759613037,
+        "yaw": 3.140328585892873,
+        "pitch": 0.013894935111810277,
+        "mode": "walk",
+        "pace": 1,
+        "time": 44101.062
+      }
+    ]
+  },
+  "ordinaryWall": {
+    "seed": 713,
+    "clockSeconds": 46416.32400000007,
+    "marks": [
+      {
+        "name": "solid-meadow-benchmark",
+        "owner": "infinite-meadow",
+        "eastM": 87195.11461812386,
+        "northM": -5350.00001946946,
+        "altitudeM": 1.7,
+        "yaw": 0.9000000647822856,
+        "pitch": 0.15500120536974027,
+        "mode": "walk"
+      },
+      {
+        "name": "solid-approach",
+        "owner": "infinite-meadow",
+        "eastM": 87195.11462331406,
+        "northM": -1908.0000292823747,
+        "altitudeM": 3.390401601791382,
+        "yaw": 1.4932500255527534e-07,
+        "pitch": 2.3129252330056567e-07,
+        "mode": "walk"
+      },
+      {
+        "name": "solid-diagonal-contact",
+        "owner": "infinite-meadow",
+        "eastM": 87198.73367358725,
+        "northM": -1901.2797789253782,
+        "altitudeM": 3.6063194274902344,
+        "yaw": 0.31983241024975645,
+        "pitch": 0.08000005919800411,
+        "mode": "walk"
+      },
+      {
+        "name": "solid-touch",
+        "owner": "infinite-meadow",
+        "eastM": 87198.73366943507,
+        "northM": -1901.279778925378,
+        "altitudeM": 3.6063194274902344,
+        "yaw": 1.64697287050505e-07,
+        "pitch": 0.0360005417655992,
+        "mode": "walk"
+      },
+      {
+        "name": "solid-walk-along",
+        "owner": "infinite-meadow",
+        "eastM": 87206.34327961245,
+        "northM": -1901.2797789310116,
+        "altitudeM": 3.8213729858398438,
+        "yaw": 1.339872405472959,
+        "pitch": 0.024000698644760208,
+        "mode": "walk"
+      },
+      {
+        "name": "solid-strafe",
+        "owner": "infinite-meadow",
+        "eastM": 87213.053618992,
+        "northM": -1901.2797789359784,
+        "altitudeM": 4.105061292648315,
+        "yaw": 6.041670560948996e-08,
+        "pitch": 0.039998872508066226,
+        "mode": "walk"
+      },
+      {
+        "name": "solid-walk-away",
+        "owner": "infinite-meadow",
+        "eastM": 87213.05813033014,
+        "northM": -1904.1153933736928,
+        "altitudeM": 4.043459892272949,
+        "yaw": 3.1400009511897067,
+        "pitch": 0.04000086887989048,
+        "mode": "walk"
+      },
+      {
+        "name": "solid-back-at-wall",
+        "owner": "infinite-meadow",
+        "eastM": 87213.06145518426,
+        "northM": -1901.2797789359838,
+        "altitudeM": 4.105359315872192,
+        "yaw": 0.0008143335896226603,
+        "pitch": 0.04000038163546787,
+        "mode": "walk"
+      },
+      {
+        "name": "solid-liftoff",
+        "owner": "infinite-meadow",
+        "eastM": 87213.06145518426,
+        "northM": -1901.2797789359838,
+        "altitudeM": 10.242938995361328,
+        "yaw": 0.0008143339134698665,
+        "pitch": 0.0666708964680682,
+        "mode": "flight"
+      },
+      {
+        "name": "solid-fly-parallel",
+        "owner": "infinite-meadow",
+        "eastM": 87273.84402306186,
+        "northM": -1901.2797789809767,
+        "altitudeM": 54.17746305465698,
+        "yaw": 1.5688123355058812,
+        "pitch": 0.059544265085384046,
+        "mode": "flight"
+      },
+      {
+        "name": "solid-fly-diagonal",
+        "owner": "infinite-meadow",
+        "eastM": 87300.47428607845,
+        "northM": -1901.279779000689,
+        "altitudeM": 54.15418744087219,
+        "yaw": 0.5485638470200068,
+        "pitch": -0.00045459806396388113,
+        "mode": "flight"
+      },
+      {
+        "name": "solid-turn-away",
+        "owner": "infinite-meadow",
+        "eastM": 87300.50536407037,
+        "northM": -1941.2601187076514,
+        "altitudeM": 54.1360080242157,
+        "yaw": 3.1408152382164602,
+        "pitch": -0.000454823502556666,
+        "mode": "flight"
+      }
+    ],
+    "pageErrors": []
+  },
+  "secondSeed": {
+    "seed": 714,
+    "station": "sphere-4848ff08ae0aa2c7/r10c0/r10c1/0",
+    "widthM": 40000,
+    "doorEastM": 2600,
+    "clockSeconds": 44100,
+    "marks": [
+      {
+        "name": "second-seed-meadow",
+        "owner": "infinite-meadow",
+        "eastM": 2600.000007399786,
+        "northM": -20006.00002026908,
+        "altitudeM": 1.7000138759613037,
+        "mode": "walk"
+      },
+      {
+        "name": "second-seed-inside",
+        "owner": "border-transport",
+        "eastM": 2600.0000126514246,
+        "northM": -19961.84927571186,
+        "altitudeM": 1.7,
+        "mode": "walk"
+      },
+      {
+        "name": "second-seed-back-outside",
+        "owner": "infinite-meadow",
+        "eastM": 2600.0000073997867,
+        "northM": -20005.11859553196,
+        "altitudeM": 1.7,
+        "mode": "walk"
+      }
+    ],
+    "pageErrors": []
+  },
+  "media": {
+    "doorways.mp4": {
+      "seconds": 22.5,
+      "width": 960,
+      "height": 750,
+      "fps": 24.0,
+      "sha256": "cdefca8888d2964aa0b53c86a7315fe0e852a8c972c13bfd3b4819fa454b4bd3"
+    },
+    "ordinary-wall.mp4": {
+      "seconds": 15.875,
+      "width": 960,
+      "height": 852,
+      "fps": 24.0,
+      "sha256": "2e2407f3a8f3212d1cfbef02af32a3f2bdba05f5e21b5af1566b49496ec0d819"
+    },
+    "service-bridge.mp4": {
+      "seconds": 4.917,
+      "width": 1024,
+      "height": 754,
+      "fps": 24.0,
+      "sha256": "5d582ea1f408babce406e0f150fd65356226c9bcc6ef1eee2677ad79d91ba8bd"
+    }
+  }
+}

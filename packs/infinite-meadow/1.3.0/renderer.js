@@ -17,7 +17,7 @@ const FS_SCREEN=`#version 300 es
 precision highp float;
 in vec2 screen;out vec4 frag;
 uniform vec3 uRight,uUp,uForward,uEast,uNorth,uRadial;
-uniform vec2 uResolution,uArc;uniform vec4 uBorder;
+uniform float uFocal;uniform vec2 uResolution,uArc;uniform vec4 uBorder;
 uniform float uAltitude,uReveal,uDaylight,uInteriorLight,uDirect;
 const float R=149597870700.,S=695700000.;
 float hash(vec3 p){p=fract(p*.1031);p+=dot(p,p.yzx+33.33);return fract((p.x+p.y)*p.z);}
@@ -49,7 +49,7 @@ vec3 world(vec3 q){
 }
 /* hosted surface */
 void main(){
- vec3 ray=normalize(uForward+uRight*screen.x*(uResolution.x/uResolution.y)*.70020754+uUp*screen.y*.70020754);
+ vec3 ray=normalize(uForward+uRight*screen.x*(uResolution.x/uResolution.y)/uFocal+uUp*screen.y/uFocal);
  float radius=skyRadius(),h=max(.001,uAltitude),a=h/radius,m=(1.-a)*ray.y,d=sqrt(m*m+a*(2.-a));
  float t=m<0.?h*(2.-a)/(d-m):radius*(d+m);
  vec3 q=normalize(uRadial*(1.-a)+(uEast*ray.x-uRadial*ray.y+uNorth*ray.z)*(t/radius));
@@ -112,10 +112,10 @@ void main(){
 const VS_MESH=`#version 300 es
 precision highp float;
 layout(location=0)in vec3 aPos;layout(location=1)in vec3 aColor;layout(location=5)in vec3 aNormal;
-uniform vec3 uCamera,uRight,uUp,uForward;uniform float uNear2;uniform float uAspect,uScale,uOffsetY,uNormalized;
+uniform vec3 uCamera,uRight,uUp,uForward;uniform float uNear2,uFocal;uniform float uAspect,uScale,uOffsetY,uNormalized;
 out vec3 color,normal,position;out float distanceM,edgeAlpha;
 void main(){vec3 at=aPos*uScale+vec3(0,uOffsetY,0),p=at-uCamera;float z=dot(p,uForward);
- gl_Position=vec4(dot(p,uRight)*1.428148/uAspect,dot(p,uUp)*1.428148,z*1.00000002-mix(uNear2,.00002,uNormalized),z);
+ gl_Position=vec4(dot(p,uRight)*uFocal/uAspect,dot(p,uUp)*uFocal,z*1.00000002-mix(uNear2,.00002,uNormalized),z);
  color=aColor;normal=aNormal;position=at;distanceM=length(p)*mix(1.,149597870700.,uNormalized);edgeAlpha=1.;}`;
 const FS_MESH=`#version 300 es
 precision highp float;
@@ -165,7 +165,7 @@ void main(){
 const VS_TERRAIN=`#version 300 es
 precision highp float;
 layout(location=0)in vec3 aPos;
-uniform vec3 uCamera,uRight,uUp,uForward;uniform float uNear2;uniform float uAspect;
+uniform vec3 uCamera,uRight,uUp,uForward;uniform float uNear2,uFocal;uniform float uAspect;
 out vec3 color,normal,position;out float distanceM,edgeAlpha;
 ${TERRAIN_GLSL}
 ${TERRAIN_GRID_GLSL}
@@ -177,7 +177,7 @@ void main(){
  float detail=1.-smoothstep(1024.,8192.,r);
  h=mix(12.,h,detail)+r*r*.00000000000334229;
  vec3 p=vec3(x,h,z)-uCamera;float depth=dot(p,uForward);
- gl_Position=vec4(dot(p,uRight)*1.428148/uAspect,dot(p,uUp)*1.428148,depth*1.00000002-uNear2,depth);
+ gl_Position=vec4(dot(p,uRight)*uFocal/uAspect,dot(p,uUp)*uFocal,depth*1.00000002-uNear2,depth);
  color=vec3(.095,.158,.027);normal=normalize(vec3(-dx*detail,1.,-dz*detail));position=vec3(x,h,z);distanceM=length(p);
  edgeAlpha=1.-smoothstep(28000.,65536.,r);
 }`;
@@ -200,7 +200,8 @@ function geom(){
   return {tri,quad,box,data:()=>new Float32Array(a)};
 }
 export class Renderer {
-  constructor(canvas,{atlasShader='',backdrop=null}={}){
+  constructor(canvas,{atlasShader='',backdrop=null,horizontalFov=null}={}){
+    this.horizontalFov=horizontalFov;
     this.backdrop=backdrop;
     const regional=atlasShader ? atlasShader+`
 uniform sampler2D uNativeGround;
@@ -305,7 +306,7 @@ vec3 regionalGround(vec3 q,float t){
   uniform(program,key,type,value){const gl=this.gl,location=this.location(program,key);if(type==='int')gl.uniform1i(location,value);else if(type==='uint2')gl.uniform2uiv(location,value);else if(type===1)gl.uniform1f(location,value);else if(type===2)gl.uniform2fv(location,value);else if(type===4)gl.uniform4fv(location,value);else gl.uniform3fv(location,value);}
   common(program,p){this.gl.useProgram(program);
     const a=this.stationApron;
-    this.uniform(program,'uNear2',1,this.near2??.10);
+    this.uniform(program,'uNear2',1,this.near2??.10);this.uniform(program,'uFocal',1,this.focal);
     this.uniform(program,'uPaved','int',this.exteriorStation?1:0);
     const trench=this.exteriorStation?.routes[2];
     if(this.exteriorStation){
@@ -331,6 +332,7 @@ vec3 regionalGround(vec3 q,float t){
     this.uniform(program,'uDisturbance',3,state.disturbance?[state.disturbance.eastM-p.eastM,state.disturbance.northM-p.northM,3]:[0,0,0]);}
   draw(state,residency,{timing=true,inspection='all'}={}){
     const gl=this.gl,p=state.pose,start=performance.now(),origin=renderOrigin(p);this.frame++;this.uploadBytes=0;
+    this.focal=this.horizontalFov?this.canvas.width/this.canvas.height/Math.tan(this.horizontalFov*Math.PI/360):1.428148;
     terrainGridOffsets(p.eastM,p.northM,this.terrainGridOffsets);
     if(residency.version!==this.version)this.upload(residency);
     let query=null;if(this.ext&&timing&&this.queries.length<8){query=gl.createQuery();gl.beginQuery(this.ext.TIME_ELAPSED_EXT,query);}

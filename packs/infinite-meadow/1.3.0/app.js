@@ -32,6 +32,7 @@ function persist(){if(surfaceEntry?.active===false)return;host.storage.write({st
 host.storage.useValidator(s=>JSON.parse(saveState(parseState(JSON.stringify(s)))));
 try{const saved=host.storage.read();if(saved){state=parseState(JSON.stringify(saved.state));bookmark=parseState(JSON.stringify(saved.bookmark));stage='Saved meadow restored';}}catch(e){status('Save rejected: '+e.message);}
 const stageHost=window.frameElement?.dataset.worldKey ? parent.SphereStageFrame : null;
+flightMotion.resolveSpeed=stageHost?.movementSpeed;
 const surfaceEntry=window.frameElement?.surfaceEntry;
 let borderStructures=null,chart=null,gateDatum=0,crossing=false,crossingFailed=false,lastCheckpoint=0;
 let survey=null,exterior=null,requested=null,retryExterior=0;
@@ -39,11 +40,11 @@ function releaseExterior(){requested=null;exterior?.view.dispose();exterior=null
 function prepareExterior(row){
   if(requested===row || performance.now()<retryExterior)return;
   releaseExterior();requested=row;
-  stageHost.stationExterior(row.site.address,survey.fileBacked).then(({station,makeView,exteriorMoveAllowed})=>{
+  stageHost.stationExterior(row.site.address,survey.fileBacked).then(({station,makeView,constrainExterior})=>{
     if(requested!==row)return;
     const view=makeView(canvas,{shared:true,district:survey.district});
     try{view.load(station);}catch(error){view.dispose();throw error;}
-    exterior={view,station,exteriorMoveAllowed};
+    exterior={view,station,constrainExterior};
   }).catch(error=>{
     if(requested!==row)return;
     requested=null;retryExterior=performance.now()+3000;
@@ -72,7 +73,7 @@ if(surfaceEntry?.geographic){
   state.pose.altitudeM=state.pose.mode==='walk'?floor:Math.max(floor,state.pose.altitudeM);
   state.skimEnabled=false;
 }
-let renderer;try{renderer=new Renderer(canvas,stageHost?{atlasShader:parent.SphereBiomeSurface.glsl(parent.SphereAtlas),backdrop:p=>stageHost.surfaceBackdrop(window,p)}:{});if(stageHost)renderer.lightAt=p=>stageHost.surfaceLight(window,{...p,altitudeM:p.altitudeM-GROUND_DATUM});}catch(e){$('error').hidden=false;$('error').textContent='The meadow could not start.\n'+e.message;throw e;}
+let renderer;try{renderer=new Renderer(canvas,stageHost?{horizontalFov:surfaceEntry?.horizontalFov,atlasShader:parent.SphereBiomeSurface.glsl(parent.SphereAtlas),backdrop:p=>stageHost.surfaceBackdrop(window,p)}:{});if(stageHost)renderer.lightAt=p=>stageHost.surfaceLight(window,{...p,altitudeM:p.altitudeM-GROUND_DATUM});}catch(e){$('error').hidden=false;$('error').textContent='The meadow could not start.\n'+e.message;throw e;}
 function resize(){const dpr=Math.min(1,window.devicePixelRatio||1);canvas.width=Math.round(innerWidth*dpr);canvas.height=Math.round(innerHeight*dpr);}
 resize();host.listen(window,'resize',resize);syncUI();
 // Contract state. A script moves the eye; `keep` is the place last stood in, which is what gets saved
@@ -276,11 +277,12 @@ function tick(t){
   if(quiet&&quiet.kind!=='stationary'){quiet.elapsed+=dt;if(state.windPlaying)state.windTime+=dt;state.pose.yaw=quiet.original.pose.yaw+.20*Math.sin(quiet.elapsed*.35);if(quiet.kind==='level')stepLevelCruise(state,flightMotion,new Set(),dt);else move(state,new Set(quiet.kind==='skimming'?['KeyW','ShiftLeft']:['KeyW']),dt,flightMotion);if(quiet.kind==='flying')state.pose.altitudeM=terrain(state.pose.eastM,state.pose.northM)+31.7;stage=quiet.kind==='walking'?'Measuring meadow walk':quiet.kind==='level'?'Measuring level cruise':quiet.kind==='skimming'?'Measuring fast grass skim':'Measuring low flight';}
   if(exterior && requested && !script && !route && !quiet && state.pose!==null){
     const p=state.pose, row=requested;
-    if((lastPose.eastM!==p.eastM || lastPose.northM!==p.northM) &&
-       Math.hypot(p.eastM-lastPose.eastM,p.northM-lastPose.northM)<2000){
+    if(lastPose.eastM!==p.eastM || lastPose.northM!==p.northM || lastPose.altitudeM!==p.altitudeM){
       const local=q=>({...row.locate(q.eastM,q.northM),altitudeM:q.altitudeM-GROUND_DATUM});
-      if(!exterior.exteriorMoveAllowed(exterior.station,survey.district,local(lastPose),local(p))){
-        p.eastM=lastPose.eastM;p.northM=lastPose.northM;
+      const to=local(p),safe=exterior.constrainExterior(exterior.station,survey.district,local(lastPose),to);
+      if(safe!==to){
+        Object.assign(p,row.at(safe.eastM,safe.northM));
+        p.altitudeM=p.mode==='walk'?terrain(p.eastM,p.northM)+EYE:safe.altitudeM+GROUND_DATUM;
       }
     }
   }
@@ -329,12 +331,12 @@ function tick(t){
   renderer.exteriorStation=exterior?.station;
   renderer.near2=exterior?Math.max(.10,(p.altitudeM-GROUND_DATUM-exterior.station.roofM)*.03):.10;
   const m=renderer.draw(state,residency,{inspection:$('grassLayers').value});
-  if(drawBorder){borderStructures??=createBorderStructures(canvas);borderStructures.draw({pose:borderPose,levels:[1,1,1]},t*.001,1,{overMeadow:true,resize:false,daylight:renderer.light?.direct??1,radiusM:hostRadiusM()});}
+  if(drawBorder){borderStructures??=createBorderStructures(canvas);borderStructures.draw({pose:borderPose,levels:[1,1,1]},t*.001,1,{overMeadow:true,resize:false,focal:renderer.focal,daylight:renderer.light?.direct??1,radiusM:hostRadiusM()});}
   if(visibleWall && exterior){
     const [a,b,c,d]=visibleWall.row.axes,e=Math.sin(p.yaw),n=-Math.cos(p.yaw);
     const yaw=Math.atan2(a*e+b*n,c*e+d*n);
     exterior.view.draw(exterior.station,[visibleWall.x,p.altitudeM-GROUND_DATUM,visibleWall.z+exterior.station.widthM/2],yaw,p.pitch,
-      parent.SphereApp.sceneSeconds,false,renderer.light?.direct??1,{near:renderer.near2/2});
+      parent.SphereApp.sceneSeconds,false,renderer.light?.direct??1,{near:renderer.near2/2,focal:renderer.focal});
   }
   drawVeil(t);if(drawn<3 && (!visibleWall||exterior) && ++drawn===3)resolveReady();if(completed)compareReturn(completed);
   const counts=residency.counters();const row={frame,rendererFrame:m.rendererFrame,stageVersion:residency.version,timestamp:t,intervalMs:rawDt*1000,prepareMs,renderCpuMs:m.renderCpuMs,gpuMs:m.gpuMs,gpuSampleFrame:m.gpuSampleFrame,gpuDisjoint:m.gpuDisjoint,gpuResolved:m.gpuResolved,drawCalls:m.drawCalls,uploadBytes:m.uploadBytes,descriptorBytes:m.descriptorBytes,gpuBufferBytes:m.gpuBytes,gpuTextureBytes:m.gpuTextureBytes,grassboxInstances:m.grassboxInstances,grassboxBlades:m.grassboxBlades,grassCenter:m.grassCenter,windTime:state.windTime,originId:m.originId,reveal:m.reveal,interiorDaylight:m.interiorDaylight,terrainAlpha:m.terrainAlpha,heroCenter:m.heroCenter,terrainRadiusM:m.terrainRadiusM,pose:{...state.pose},global:toGlobal(state.pose),address:address(state.pose),required:residency.required.length,ready:counts.ready,retainedTufts:counts.tufts,submittedTufts:m.instanceCount,collisionClearanceM:clearance(state.pose),speedMps:flightMotion.speedMps,skimming:state.skimEnabled,skimTargetClearanceM:state.skimClearanceM,movementM:Math.hypot(state.pose.eastM-lastPose.eastM,state.pose.northM-lastPose.northM,state.pose.altitudeM-lastPose.altitudeM),stage};

@@ -27,15 +27,22 @@ async function main(){
       },prior?.parameters??null);
       assert.equal(await page.evaluate(()=>SphereBiomeLibrary.world.key),key);
       const exists=await page.evaluate(id=>!!SphereBiomeLibrary.entry(id),id);
-      if(!exists)await row.getByRole('button',{name:'Install',exact:true}).click();
-      await page.waitForFunction(id=>SphereBiomeLibrary.entry(id)?.version==='0.10.0',id);
+      if(!exists){
+        const install=row.getByRole('button',{name:'Install',exact:true});
+        await install.waitFor({state:'visible'});await install.press('Enter');
+      }
+      await page.waitForFunction(id=>{
+        const status=document.getElementById('biomeLibraryStatus').textContent;
+        if(/failed|could not|unavailable|changed:|no shared/i.test(status))throw Error(status);
+        return SphereBiomeLibrary.entry(id)?.version==='0.10.0';
+      },id);
       const item=await page.evaluate(id=>SphereBiomeLibrary.entry(id),id);assert.equal(item.transport.sites.length,3);
       const after=(await register()).worlds[key].installed;
       assert.deepEqual(after.filter(i=>i.id!==id),(prior?.installed??[]).filter(i=>i.id!==id));
       installed.push({key,edge:item.edge.id,widthsKm:item.transport.sites.map(s=>s.widthM/1000)});
       console.log('Installed and reread',key,item.edge.id);
     }
-    await row.getByRole('button',{name:'Visit',exact:true}).click();
+    await row.getByRole('button',{name:'Visit',exact:true}).press('Enter');
     await page.waitForFunction(id=>{
       const stage=SphereStageFrame,b=document.querySelector('#stageFrame iframe')?.contentWindow?.SphereBiome;
       if(stage.lastArrival?.status==='failed')throw Error(document.getElementById('biomeLibraryStatus').textContent);
@@ -56,7 +63,7 @@ async function main(){
       const b=document.querySelector('#stageFrame iframe')?.contentWindow?.SphereBiome;
       if(b?.id==='border-transport'&&b.inspect().error)throw Error(b.inspect().error);
       return b?.id==='border-transport'&&b.inspect().locked&&b.pose().northM>z+2;
-    },first.pose.northM+6,{timeout:18000});}
+    },-home.widthM/2+36,{timeout:30000});}
     catch(error){console.error('Service doorway',first,await page.evaluate(()=>{const f=document.querySelector('#stageFrame iframe'),b=f?.contentWindow?.SphereBiome;
       return {current:SphereStageFrame.current,pose:b?.pose(),inspect:b?.inspect(),active:f?.surfaceEntry?.active,message:document.getElementById('biomeLibraryStatus').textContent};}));throw error;}
     finally{await page.keyboard.up('KeyW');}
@@ -66,6 +73,11 @@ async function main(){
     assert.equal(inside.time,first.time,'Freight must observe the paused Main clock');
     if(output){fs.mkdirSync(output,{recursive:true});await frame.locator('canvas').screenshot({path:path.join(output,'service-door.png')});}
     await frame.locator('canvas').evaluate(()=>SphereBiome.save());
+    await frame.locator('canvas').focus();
+    await page.keyboard.down('ArrowUp');
+    try{await page.waitForFunction(()=>document.querySelector('#stageFrame iframe').contentWindow.SphereBiome.pose().pitch>.16);}
+    finally{await page.keyboard.up('ArrowUp');}
+    const atDoor=await seen();
     await page.keyboard.down('KeyS');
     try{await page.waitForFunction(()=>SphereStageFrame.current?.id!=='border-transport'&&!SphereStageFrame.flying && !document.querySelector('#departingStageFrame'));}
     finally{await page.keyboard.up('KeyS');}
@@ -74,21 +86,28 @@ async function main(){
     if(exit.owner==='Main')await page.waitForFunction(key=>SphereApp.renderer.renderInfo.walkingStation===key,addr.key);
     // We backed out facing the door. Walk forward from the adjoining renderer.
     const trace=()=>page.evaluate(async()=>{
-      const s=SphereApp.getState(),g=await import('./geographic-flight.js'),item=SphereBiomeLibrary.entry('border-transport');
+      let s=SphereApp.getState();const g=await import('./geographic-flight.js'),item=SphereBiomeLibrary.entry('border-transport');
+      const frame=document.querySelector('#stageFrame iframe'),pack=frame?.contentWindow?.SphereBiome;
+      if(pack)s=g.mainPose(s,SphereBiomeLibrary.entry(pack.id),pack.pose(),SphereAtlas,SphereWorld);
       return {local:g.packPose(s,item,SphereAtlas,SphereWorld),footprint:g.footprint(s,SphereBiomeLibrary,SphereAtlas,SphereWorld)?.id,
         covered:window.sphereStageCovered&&true,travel:SphereJourney.travel.active,site:s.siteId,stage:SphereStageFrame.current,
         message:document.getElementById('biomeLibraryStatus').textContent};
     });
     const atExit=await trace();
+    assert(Math.abs(atExit.local.pitch-atDoor.pose.pitch)<.01,'Backing out keeps the player sightline');
+    assert(Math.abs(atExit.local.eastM-atDoor.pose.eastM)<.25,'Backing out stays beside the same jamb');
     assert(Math.abs(atExit.local.northM)-home.widthM/2<55,'Walking must hand off at the apron, within one stride interval of the 14 m exit margin');
     const destination=page.frameLocator('#stageFrame iframe').locator('canvas').first();
     if(exit.owner==='Main')await page.locator('#viewport').focus();else await destination.focus();
     await page.keyboard.down('KeyW');
     try{await page.waitForFunction(()=>{const f=document.querySelector('#stageFrame iframe');
-      return SphereStageFrame.current?.id==='border-transport' && f?.surfaceEntry?.active && f.contentWindow.SphereBiome.pose().mode==='walk';},null,{timeout:27000});}
+      const p=f?.contentWindow?.SphereBiome?.pose?.();
+      return SphereStageFrame.current?.id==='border-transport' && f?.surfaceEntry?.active && p?.mode==='walk' && p.northM>f.surfaceEntry.pose.northM+1;
+    },null,{timeout:45000});}
     catch(error){console.error('Doorway return',atExit,await trace());throw error;}
     finally{await page.keyboard.up('KeyW');}
     const returned=await seen();
+    assert(Math.abs(returned.pose.pitch-atDoor.pose.pitch)<.01 && await frame.locator('#pace').inputValue()==='16','Walking back preserves pitch and pace');
     assert.equal(returned.station,inside.station);assert(returned.locked);assert.equal((await atlas()).discoveredAt,locked.discoveredAt);
     let roof=null;
     if(!live){

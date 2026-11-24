@@ -64,11 +64,29 @@
  canvas.addEventListener('pointermove',e=>{if(!drag)return;const dx=e.clientX-drag.x,dy=e.clientY-drag.y;drag.x=e.clientX;drag.y=e.clientY;if(dx||dy)navigationIntent();if(travelHold||localLocked()){if(localLocked())localNotice();return;}const b=M.basis(state.forward,state.up),yaw=-dx*.003,pitch=-dy*.003;let f=M.rotate(b.f,b.u,yaw),r=M.norm(M.cross(f,b.u));f=M.rotate(f,r,pitch);state.up=M.norm(M.rotate(b.u,r,pitch));state.forward=M.norm(f);moved();dirty=true;});
  canvas.addEventListener('pointerup',()=>drag=null);canvas.addEventListener('lostpointercapture',()=>drag=null);
  viewport.addEventListener('wheel',e=>{if(e.target!==canvas)return;e.preventDefault();state.autoSpeed=false;state.speed=M.clamp(state.speed*Math.exp(-e.deltaY*.0015),state.layoutVersion===2?.001:1,3e7);sync();},{passive:false});
+ function keyboardLook(dt){
+  const yaw=(Number(keys.has('KeyZ')||keys.has('ArrowLeft'))-Number(keys.has('KeyX')||keys.has('ArrowRight')))*dt*Math.PI/4;
+  const pitch=(Number(keys.has('ArrowUp'))-Number(keys.has('ArrowDown')))*dt;
+  if(!yaw&&!pitch)return;
+  const b=M.basis(state.forward,state.up),normal=state.walkMode?SphereInspection.surface(state).up:b.u;
+  const ahead=M.rotate(b.f,normal,yaw),right=M.rotate(b.r,normal,yaw);
+  const limit=1.49-Math.abs(Math.asin(M.clamp(M.dot(ahead,normal),-1,1)));
+  const angle=pitch*M.dot(ahead,normal)>0?Math.sign(pitch)*Math.min(Math.max(0,limit),Math.abs(pitch)):pitch;
+  setLook(M.rotate(ahead,right,angle),M.rotate(M.rotate(b.u,normal,yaw),right,angle));moved();
+ }
  function takeoff(){if(SphereTravel.takeoff(state)){verticalFlight=SphereInspection.surface(state).up;keys.delete('Space');dirty=true;sync();$('viewTitle').textContent='Lifting off';toast('Lifting off. E climbs; W flies forward.');return true;}return false;}
  window.addEventListener('keydown',e=>{if($('guide').open||/INPUT|SELECT|TEXTAREA|BUTTON/.test(e.target.tagName))return;
   if(['KeyW','KeyA','KeyS','KeyD','KeyQ','KeyE','KeyZ','KeyX'].includes(e.code)||(e.code==='Space'&&state.walkMode)){navigationIntent();if(travelHold||localLocked()){if(localLocked())localNotice();return;}}
+  if(e.code==='KeyF'&&!e.repeat&&!state.walkMode&&state.layoutVersion===2&&state.collection&&state.geometryDetail){
+   e.preventDefault();if(travelHold||localLocked()||window.sphereStageCovered)return;
+   const height=SphereLanding.heightAboveGround(state),q=M.norm(state.position);
+   if(height>=0&&height<=.005&&state.shadeAttachment===null&&!M.inBreach(q,state)&&!SphereCollection.missing(q,state)){
+    SphereLanding.enter(state,state.position,{grounded:true});dirty=true;sync();moved();
+   }else toast('Descend to within 5 m of the ground to walk.');
+   return;
+  }
   if((e.code==='KeyE'||e.code==='KeyQ')&&!keys.has('KeyE')&&!keys.has('KeyQ')){const axis=SphereInspection.surface(state).up;verticalFlight=M.length(axis)>.5?axis:state.up.slice();}
-  if(['KeyW','KeyA','KeyS','KeyD','KeyQ','KeyE','KeyZ','KeyX','ShiftLeft','ShiftRight','Space'].includes(e.code)){keys.add(e.code);e.preventDefault();}
+  if(['KeyW','KeyA','KeyS','KeyD','KeyQ','KeyE','KeyZ','KeyX','ShiftLeft','ShiftRight','Space','ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.code)){keys.add(e.code);e.preventDefault();}
   if((e.code==='KeyE'||e.code==='Space')&&keys.has('KeyE')&&keys.has('Space')){takeoff();return;}
   if(e.code==='KeyH')document.body.classList.toggle('clean');
   if(e.code==='Space'&&!state.walkMode&&!SphereTravel.lifting&&!e.repeat)setPlaying(!state.playing);
@@ -104,10 +122,10 @@
   SphereTiming.advance(state,elapsed,dt=>{if(state.playing)dirty=true;
   if(window.SphereEnhancements?.measuring){}
   else if(SphereTravel.stepTakeoff(state,dt)){dirty=true;}
-  else if(state.walkMode){if(SphereSites.step(state,keys,dt)){dirty=true;moved();}}
+  else if(state.walkMode){keyboardLook(dt);if(SphereSites.step(state,keys,dt)){dirty=true;moved();}}
   else if(keys.size){const b=M.basis(state.forward,state.up),vertical=verticalFlight||SphereInspection.surface(state).up;let move=[0,0,0];for(const [key,vec] of [['KeyW',b.f],['KeyS',M.mul(b.f,-1)],['KeyD',b.r],['KeyA',M.mul(b.r,-1)],['KeyE',vertical],['KeyQ',M.mul(vertical,-1)]])if(keys.has(key))move=M.add(move,vec);
-   const turn=(keys.has('KeyZ')?1:0)+(keys.has('KeyX')?-1:0);if(turn){const angle=turn*dt*M.radians(45);setLook(M.rotate(b.f,b.u,angle),M.rotate(b.u,b.u,angle));moved();}
-   if(M.length(move)>0){const dir=M.norm(move);let step=SphereTravel.speed(state,dir,dt,keys.has('ShiftLeft')||keys.has('ShiftRight'))*dt;if(state.layoutVersion!==2){const star=M.sphereDistance(state.position,dir,[0,0,0],state.starRadius*1.02);if(star<step)step=Math.max(0,star-1);}const travel=window.SphereLanding?SphereLanding.move(state,dir,step):window.SphereFlight?SphereFlight.move(state,dir,step):{position:M.add(state.position,M.mul(dir,step))};let p=travel.position;const r=M.length(p);const limit=state.layoutVersion===2?state.radius*1.999:state.radius-1;if(r>=limit)p=M.mul(M.norm(p),limit);if(state.layoutVersion!==2&&r<=state.starRadius*1.02)p=M.mul(M.norm(p),state.starRadius*1.02);const crossed=state.radius-M.length(state.position)>1000&&state.radius-r<=1000;state.position=p;if(crossed&&state.autoSpeed===false)autoLevelIfNearSurface();moved();if(travel.landed){sync();$('viewTitle').textContent='Arriving on foot';toast('Landing here. Drag to look; W A S D to walk, Shift to run, Space to jump.');}dirty=true;}
+   keyboardLook(dt);
+   if(M.length(move)>0){const dir=M.norm(move);const base=1000*SphereTravel.speed(state,dir,dt,keys.has('ShiftLeft')||keys.has('ShiftRight'));let step=(window.SphereStageFrame?.movementSpeed?.(base,dt)??base)*dt*.001;if(state.layoutVersion!==2){const star=M.sphereDistance(state.position,dir,[0,0,0],state.starRadius*1.02);if(star<step)step=Math.max(0,star-1);}const travel=window.SphereLanding?SphereLanding.move(state,dir,step):window.SphereFlight?SphereFlight.move(state,dir,step):{position:M.add(state.position,M.mul(dir,step))};let p=travel.position;const r=M.length(p);const limit=state.layoutVersion===2?state.radius*1.999:state.radius-1;if(r>=limit)p=M.mul(M.norm(p),limit);if(state.layoutVersion!==2&&r<=state.starRadius*1.02)p=M.mul(M.norm(p),state.starRadius*1.02);const crossed=state.radius-M.length(state.position)>1000&&state.radius-r<=1000;state.position=p;if(crossed&&state.autoSpeed===false)autoLevelIfNearSurface();moved();if(travel.landed){sync();$('viewTitle').textContent='Arriving on foot';toast('Landing here. Drag to look; W A S D to walk, Shift to run, Space to jump.');}dirty=true;}
   }
   if(!localLocked()&&!window.SphereEnhancements?.measuring&&(state.autoSpeed===false?SphereInspection.level(state):SphereTravel.level(state,dt)))dirty=true;
   });

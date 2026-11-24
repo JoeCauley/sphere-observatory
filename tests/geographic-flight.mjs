@@ -82,6 +82,13 @@ const native={...M.defaultState(),siteId:'biome-2',siteRevision:2,terrainRevisio
 for(const far of ['r10c1','r11c0']){
   const district=districtFor('sphere-0000000000000017','r10c0',far,native.radius*1000);
   const survey={district,parameters:{seed:native.seed}};
+  ground.setApronSurvey(survey,districtRules);
+  const ordinary=districtRules.districtLocation(district,94000,districtRules.linkHalfM+4);
+  const frontage=nativeWorld.direction(ordinary.latitude,ordinary.longitude,native);
+  assert(!ground.nearApron(frontage,native,5000),'The ordinary wall has no station apron');
+  assert(ground.nearFrontage(frontage,native,5),'Horizontal flight near the ordinary wall needs local terrain');
+  assert(!ground.nearFrontage(frontage,{...native,seed:native.seed+1},5));
+  ground.setApronSurvey(null);
   for(const site of district.sites)for(const side of [-1,1])for(const lateral of [false,true]){
     for(const offset of [-40,0,48,120]){
       const x=site.x+(lateral?side*(districtRules.hallHalfM+offset):1300);

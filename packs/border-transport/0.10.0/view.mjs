@@ -1,7 +1,8 @@
 import {freightAt} from './station.mjs';
-import {hallHalfM,linkHalfM,roofSlabM,apronRunM,rightSign,facadeRib,spacingM} from './district.mjs';
+import {hallHalfM,linkHalfM,roofSlabM,apronRunM,rightSign,facadeRib,spacingM,nearestSiteIndex} from './district.mjs';
 import {ribSpacing,ribs,surfaceNoise,outfallMaterials} from '../../kit/outfall-wall.mjs';
 import {galleryBoxes,galleryTubes} from '../../kit/outfall-gallery.mjs';
+import {plantPatch,growWallPlants} from './wall-plants.mjs';
 import {bayStart,bayEnd,bayHalf,quayZ,freightBay,inFreightOpening} from './freight-bay.mjs';
 
 const steel=[.27,.35,.36], lightSteel=[.50,.61,.60], concrete=[.38,.43,.42],
@@ -65,16 +66,19 @@ export function stationMesh(s,district=null,packedFaces=false) {
   const m=mesh(packedFaces),mid=s.widthM/2,left=-hallHalfM,right=hallHalfM,heavy=s.routes[2];
   const trench=heavy.nearDoor[0],hw=heavy.door[0]/2+5;
   for(const [lo,hi] of [[left,trench-hw],[trench+hw,right]]){
-    m.box(lo,hi,-12,-.08,0,mid-s.laneHalfM,ballast);
+    // The finished floor must sit above the supported native terrain in the
+    // shared galleries. The access deck and its guides rise from this surface.
+    m.box(lo,hi,-12,.02,0,mid-s.laneHalfM,ballast);
     m.box(lo,hi,-12,0,mid-s.laneHalfM,mid+s.laneHalfM,[.42,.44,.39]);
-    m.box(lo,hi,-12,-.08,mid+s.laneHalfM,s.widthM,ballast);
+    m.box(lo,hi,-12,.02,mid+s.laneHalfM,s.widthM,ballast);
     for(const z of [-500,-325,325,500])m.box(lo,hi,0,.13,mid+z-2,mid+z+2,lightSteel);
   }
   for(const route of s.routes){
     const center=route.nearDoor[0],half=route.door[0]/2+5;
     if(route===heavy)continue;
     for(const [start,end] of [[-apronRunM,0],[s.widthM,s.widthM+apronRunM]])
-      m.box(center-half,center+half,-12,-.08,start,end,ballast);
+      // Main's adjoining graded terrain is at datum. The paved road is its wearing course.
+      m.box(center-half,center+half,-12,.04,start,end,ballast);
   }
   // The deck above the underground route carries the same longitudinal freight slab.
   m.box(trench-hw,trench+hw,-24,0,mid-s.laneHalfM,mid+s.laneHalfM,concrete);
@@ -85,9 +89,9 @@ export function stationMesh(s,district=null,packedFaces=false) {
   }else m.box(left,right,s.roofM,s.roofM+roofSlabM,0,s.widthM,steel);
   for(let x=left;x<=right;x+=800){
     if(district && x>bayStart && x<bayEnd){
-      m.box(x-5,x+5,s.roofM-18,s.roofM,0,mid-bayHalf,lightSteel);
-      m.box(x-5,x+5,s.roofM-18,s.roofM,mid+bayHalf,s.widthM,lightSteel);
-    }else m.box(x-5,x+5,s.roofM-18,s.roofM,0,s.widthM,lightSteel);
+      m.box(x-5,x+5,s.roofM-18,s.roofM-.15,0,mid-bayHalf,lightSteel);
+      m.box(x-5,x+5,s.roofM-18,s.roofM-.15,mid+bayHalf,s.widthM,lightSteel);
+    }else m.box(x-5,x+5,s.roofM-18,s.roofM-.15,0,s.widthM,lightSteel);
     for(const z of [mid-s.laneHalfM-420,mid+s.laneHalfM+420]){
       if(district && inFreightOpening(x,z-mid))continue;
       if(s.routes.some(r=>Math.abs(r.nearDoor[0]-x)<r.deckWidthM/2+50))continue;
@@ -98,7 +102,7 @@ export function stationMesh(s,district=null,packedFaces=false) {
   for(let z=450;z<s.widthM;z+=700){
     const spans=district && Math.abs(z-mid)<bayHalf ? [[left,bayStart],[bayEnd,right]] : [[left,right]];
     for(const [lo,hi] of spans){
-      m.box(lo,hi,s.roofM-12,s.roofM,z-5,z+5,lightSteel);
+      m.box(lo,hi,s.roofM-12,s.roofM-.15,z-5,z+5,lightSteel);
       m.box(lo,hi,s.roofM-13,s.roofM-12,z-1,z+1,[1,.8,.45]);
     }
   }
@@ -141,7 +145,7 @@ export function stationMesh(s,district=null,packedFaces=false) {
         const edge=x+side*w/2;
         m.box(edge+(side<0?-.48:0),edge+(side<0?0:.48),0,h,z-1.22,z+1.22,amber);
       }
-      m.box(x-w/2,x+w/2,h,h+1,z-2,z+2,amber);
+      m.box(x-w/2-.48,x+w/2+.48,h,h+1,z-2,z+2,amber);
     }
     if(r.id==='service'||r.id==='carrier'){
       const top=r.points[2][1];
@@ -180,9 +184,11 @@ export function stationMesh(s,district=null,packedFaces=false) {
   for(const z of [0,s.widthM]){
     let last=left;
     for(const r of [...s.routes].sort((a,b)=>a.nearDoor[0]-b.nearDoor[0])){
-      const x=r.nearDoor[0],w=r.door[0]/2;
-      m.box(last,x-w,0,s.roofM,z-1,z+1,concrete);
-      m.box(x-w,x+w,r.door[1],s.roofM,z-1,z+1,concrete);last=x+w;
+      // Cut the concrete back to the outside of the frame. Coincident reveals
+      // previously alternated orange and grey when looking along a jamb.
+      const x=r.nearDoor[0],rough=r.door[0]/2+.48;
+      m.box(last,x-rough,0,s.roofM,z-1,z+1,concrete);
+      m.box(x-rough,x+rough,r.door[1]+1,s.roofM,z-1,z+1,concrete);last=x+rough;
     }
     m.box(last,right,0,s.roofM,z-1,z+1,concrete);
     if(district){
@@ -219,7 +225,11 @@ export function stationMesh(s,district=null,packedFaces=false) {
     m.box(fx+8,fx+9,0,4.5,z-10,z+10,lightSteel);
   }
   if(district){
-    for(let i=1;i<district.sites.length;i++){
+    // Only the current hall and its two adjoining reaches can be occupied
+    // before the next handoff. Distant stations never enter this mesh.
+    const here=nearestSiteIndex(district,s.address.chainageM);
+    const first=Math.max(0,here-1),last=Math.min(district.sites.length-1,here+1);
+    for(let i=first+1;i<=last;i++){
       const start=district.sites[i-1].x+hallHalfM-s.address.chainageM;
       const end=district.sites[i].x-hallHalfM-s.address.chainageM;
       m.box(start,end,-10,0,mid-linkHalfM,mid+linkHalfM,concrete);
@@ -231,8 +241,9 @@ export function stationMesh(s,district=null,packedFaces=false) {
       }
       for(const z of [-500,-325,325,500])m.box(start,end,0,.13,mid+z-2,mid+z+2,lightSteel);
     }
-    for(const bay of district.sites){
-      if(bay.address.key===s.address.key)continue;
+    for(let i=first;i<=last;i++){
+      if(i===here)continue;
+      const bay=district.sites[i];
       const x=bay.x-s.address.chainageM,front=mid-bay.widthM/2,back=mid+bay.widthM/2;
       m.box(x-hallHalfM,x+hallHalfM,-10,0,front,back,concrete);
       m.box(x-hallHalfM,x+hallHalfM,0,bay.roofM,front,front+2,concrete);
@@ -249,7 +260,7 @@ export function stationMesh(s,district=null,packedFaces=false) {
         const wall=far?s.widthM:0,sign=far?1:-1;
         for(const side of [-1,1]){
           const edge=x+side*(w/2+.8*k);
-          m.box(edge-.12*k,edge+.12*k,-.06,.015,wall+(far?0:-115*k),wall+(far?115*k:0),amber);
+          m.box(edge-.12*k,edge+.12*k,.04,.055,wall+(far?0:-115*k),wall+(far?115*k:0),amber);
           for(const dist of [6,18,40,74,112]){
             const z=wall+sign*dist*k,pole=edge+side*.8*k;
             m.box(pole-.11*k,pole+.11*k,0,1.75*k,z-.14*k,z+.14*k,steel);
@@ -313,10 +324,11 @@ export function freightMesh(t,packedFaces=false) {
 const vertex=`#version 300 es
 layout(location=0) in float corner;
 in vec3 cornerA,cornerB,cornerC,cornerD,normal,tint;
-uniform vec3 eye,right,up,forward,offset; uniform vec2 focal,clip;
+uniform vec3 eye,right,up,forward,offset; uniform vec2 focal,clip;uniform bool foliage;
 out vec3 color;out vec3 materialPoint;out float surfaceY;flat out vec3 faceNormal;flat out float fixtureLight,sideNormal;
 void main(){
  vec3 position=corner<.5?cornerA:corner<1.5?cornerB:corner<2.5?cornerC:cornerD;
+ if(foliage)position=mix(position,cornerA,smoothstep(64.,92.,length(cornerA-eye)));
  vec3 d=position+offset-eye;float z=dot(d,forward);
  gl_Position=vec4(dot(d,right)*focal.x,dot(d,up)*focal.y,z*clip.x-clip.y,z);
  float lighting=.52+.28*max(normal.y,0.)+.15*abs(normal.x)+.07*max(-normal.z,0.);
@@ -324,19 +336,38 @@ void main(){
  fixtureLight=step(.94,tint.r)*step(.78,tint.g);
  sideNormal=abs(normal.x);
 }`;
-const fragment=mainDepth=>`#version 300 es
+const fragment=(mainDepth,localDepth)=>`#version 300 es
 precision highp float;in vec3 color,materialPoint;in float surfaceY;flat in vec3 faceNormal;flat in float fixtureLight,sideNormal;uniform int mask;uniform bool structure;
+uniform bool foliage;
 uniform float direct,workLight; uniform vec3 airColor;uniform bool yard;uniform float vacuum,jungleFace;uniform vec3 hall,eye,offset,loadFootprint;out vec4 frag;
 ${surfaceNoise}
 ${outfallMaterials}
 float ruledLine(float d,float halfWidth,float pixel){
  return (1.-smoothstep(halfWidth,halfWidth+max(.02,pixel),d))*halfWidth/max(halfWidth,pixel);
 }
+// Integrate the occupied length in a periodic strip. At grazing angles the
+// two grate directions and concrete joints have very different pixel widths.
+vec2 stripArea(vec2 p,vec2 duty){return floor(p)*duty+min(fract(p),duty);}
+vec2 filteredStrips(vec2 cycles,vec2 pixel,vec2 duty){
+ vec2 width=max(pixel,vec2(.015)),centre=fract(cycles)+duty*.5;
+ return clamp((stripArea(centre+width*.5,duty)-stripArea(centre-width*.5,duty))/width,0.,1.);
+}
 ${mainDepth?'uniform float logRange;uniform bool linearOutput;':''}
+vec3 frameColor(vec3 authored){
+ ${mainDepth?`if(linearOutput){
+  // Station swatches are display colours at Observatory's default +0.2 EV.
+  // Convert to scene radiance before Main applies its weather and filmic curve.
+  vec3 target=pow(clamp(authored,0.,1.),vec3(2.2));
+  vec3 a=2.51-2.43*target,b=.03-.59*target;
+  return (sqrt(b*b+.56*a*target)-b)/(2.*a)*exp2(-.2);
+ }`:''}
+ return authored;
+}
 void main(){
-${mainDepth?'gl_FragDepth=log2(1.+length(materialPoint+offset-eye)*.001)/logRange;':''}
-if(mask!=0){frag=mask==2?vec4(1.,step(.65,surfaceY),step(.65,-surfaceY),1.):vec4(0.,0.,0.,1.);return;}
 float distanceM=length(materialPoint+offset-eye);
+${mainDepth?'gl_FragDepth=log2(1.+distanceM*.001)/logRange;':localDepth?'gl_FragDepth=log2(1.+distanceM)/log2(2000001.);':''}
+if(mask!=0){frag=mask==2?vec4(1.,step(.65,surfaceY),step(.65,-surfaceY),1.):vec4(0.,0.,0.,1.);return;}
+if(foliage){frag=vec4(frameColor(color*(.35+.65*direct)),1.);return;}
 float outside=max(-materialPoint.z,materialPoint.z-hall.x),across=abs(materialPoint.x-hall.z);
 float amberPaint=0.,lamp=0.;
 vec2 cell=materialPoint.xz/vec2(1.8,3.6),cellPixel=max(fwidth(cell),vec2(.001));
@@ -378,13 +409,15 @@ if(machine){
  finish+=vec3(.18,.21,.21)*pow(max(0.,dot(faceNormal,halfVector)),22.)*direct;
 }
 if(facade || walkingSurface || galleryWall){
- float close=1.-smoothstep(.28,1.5,pixel);
+ float close=1.-smoothstep(.035,.35,pixel);
  float weather=1.-smoothstep(22.,95.,pixel);
  float streak=noise2(uv*vec2(.026,facade?.0015:.018));
  finish*=1.+(.39*(streak-.5))*weather;
  if(close>0.)finish*=mix(1.,outfallConcrete(uv),close);
- if(walkingSurface && across<2. && materialPoint.y<hall.y && pixel<.5)
-   finish*=mix(1.,outfallGrate(uv,footprint.x),1.-smoothstep(.09,.5,pixel));
+ if(walkingSurface && across<2. && materialPoint.y<hall.y && pixel<.5){
+   vec2 pitch=vec2(4.8,1.65),bars=filteredStrips(uv*pitch,max(footprint*pitch,vec2(.13,.18)),vec2(.38,.46));
+   finish*=mix(1.,.80+.20*bars.x*bars.y,1.-smoothstep(.09,.5,pixel));
+ }
 }
 if(structure && walkingSurface && materialPoint.y<.2 && outside>0. && outside<3500.){
  // Painted service lanes taper to the four-metre socket. Transverse bands let a
@@ -446,8 +479,8 @@ if(yard && structure && abs(surfaceY)<.15 && abs(abs(yardZ)-${linkHalfM}.)<2.){
 }
 if(facade && materialPoint.y>5.){
  vec2 m=materialPoint.xy,aa=max(fwidth(m),vec2(.05));
- vec2 joint=abs(fract(m/vec2(125.,55.)+.5)-.5)*vec2(125.,55.);
- finish*=1.-.25*(1.-smoothstep(0.,1.6+min(aa.x,aa.y),min(joint.x,joint.y)))*(1.-smoothstep(5.,45.,max(aa.x,aa.y)));
+ vec2 slab=vec2(125.,55.),joints=filteredStrips(m/slab,max(aa,vec2(1.6))/slab,1.6/slab);
+ finish*=1.-.25*max(joints.x,joints.y);
  float chevron=abs(abs(m.x-hall.z)-.38*(m.y-7.));
  float stripe=(1.-smoothstep(1.6,2.6+max(aa.x,aa.y),chevron))*smoothstep(6.,12.,m.y)*(1.-smoothstep(110.,125.,m.y));
  amberPaint=max(amberPaint,stripe);
@@ -464,9 +497,10 @@ if(jungleFace*faceNormal.z>.5 && structure && materialPoint.y>=0. && materialPoi
  float root=noise2(vec2(wall.x*.033,7.));
  float reach=4.+72.*root*root;
  float stem=abs(sin(wall.x*.53+1.7*sin(wall.y*.18)+noise2(wall*.12)*1.7));
- float leaves=smoothstep(.44,.79,noise2(wall*vec2(2.3,1.5)));
+ float wallPixel=max(footprint.x,footprint.y);
+ float leaves=mix(smoothstep(.44,.79,noise2(wall*vec2(2.3,1.5))),.5,smoothstep(.10,.52,wallPixel));
  float cover=(1.-smoothstep(reach*.48,reach,wall.y))*(1.-smoothstep(.17,.76,stem))*(.37+.63*leaves);
- finish=mix(finish,mix(vec3(.075,.13,.065),vec3(.15,.32,.105),leaves),cover*(1.-smoothstep(.35,2.,fwidth(wall.x))));
+ finish=mix(finish,mix(vec3(.075,.13,.065),vec3(.15,.32,.105),leaves),cover*(1.-smoothstep(.35,2.,wallPixel)));
 }
 finish=mix(finish,vec3(.72,.49,.22),amberPaint);
 vec3 lit=finish*(1.-.24*joint)*max(workLight,.48+.52*direct);
@@ -481,24 +515,46 @@ if(structure){
  lit=mix(lit,vec3(1.,.78,.46),fixtureLight);
 }else if(machine){lit=mix(lit,vec3(1.,.78,.46),fixtureLight);}
 float rangeM=yard && structure && materialPoint.y>hall.y+48.?42000.:22000.;
-// Main integrates the atmosphere from this fragment's depth in its weather pass.
-float haze=${mainDepth?'0.':'((1.-vacuum)*(1.-exp(-distanceM/rangeM)))'};frag=vec4(mix(lit,airColor,haze),1.);
-${mainDepth?'if(linearOutput)frag.rgb=pow(frag.rgb,vec3(2.2));':''}
+float haze=(1.-vacuum)*(1.-exp(-distanceM/rangeM)),airTag=1.;
+${mainDepth?`
+ // Only the part of the sightline before entering the hall is outdoors.
+ // The near doorway may be metres away while the lit ceiling is 48 km away.
+ vec3 hit=materialPoint+offset;
+ vec2 centre=vec2(0.,hall.x*.5),extent=vec2(${hallHalfM}.,hall.x*.5);
+ bool enclosed=all(lessThanEqual(abs(hit.xz-centre),extent+vec2(.025))) &&
+               hit.y<=hall.y+.025 && eye.y<hall.y && vacuum<.001;
+ haze=0.;
+ if(enclosed){
+   vec2 entry=clamp((abs(eye.xz-centre)-extent)/max(abs(hit.xz-eye.xz),vec2(.001)),0.,1.);
+   float outdoors=max(entry.x,entry.y);
+   haze=1.-exp(-distanceM*(1.-outdoors)/rangeM);
+   // Negative alpha in the RGBA16F light target identifies already-shaded
+   // station air. Preserve the ordinary depth value for geometry behind it.
+   if(linearOutput)airTag=-1.-outdoors;
+ }`:''}
+frag=vec4(frameColor(mix(lit,airColor,haze)),airTag);
 }`;
 
 // Only the native pack paints the surrounding horizon. Meadow already has its own sky and terrain.
 const skyVertex=`#version 300 es
 out vec2 uv;void main(){uv=vec2(float((gl_VertexID<<1)&2),float(gl_VertexID&2))*2.-1.;gl_Position=vec4(uv,0.,1.);}`;
 const skyFragment=`#version 300 es
-precision highp float;in vec2 uv;uniform vec2 lens,landOrigin;uniform vec3 right,up,forward,eye,nearLand,farLand;uniform bool surveyed;uniform float direct,radius,mid,regionalGround,regionalAir;out vec4 frag;
+precision highp float;in vec2 uv;uniform vec2 lens,landOrigin,habitat;uniform vec3 right,up,forward,eye,nearLand,farLand;uniform bool surveyed,inHall;uniform float direct,radius,mid,regionalGround,regionalAir,doorView;out vec4 frag;
 ${surfaceNoise}
+float hash(vec3 p){p=fract(p*.1031);p+=dot(p,p.yzx+33.33);return fract((p.x+p.y)*p.z);}
+float noise(vec3 p){vec3 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);
+ return mix(mix(mix(hash(i),hash(i+vec3(1,0,0)),f.x),mix(hash(i+vec3(0,1,0)),hash(i+vec3(1,1,0)),f.x),f.y),
+ mix(mix(hash(i+vec3(0,0,1)),hash(i+vec3(1,0,1)),f.x),mix(hash(i+vec3(0,1,1)),hash(i+vec3(1)),f.x),f.y),f.z);}
+float field(vec3 p){float sum=0.,amp=.5;for(int i=0;i<6;i++){
+ float footprint=max(length(dFdx(p)),length(dFdy(p)));
+ sum+=amp*mix(noise(p),.5,smoothstep(.35,1.3,footprint));p=p*2.07+vec3(17.1,3.8,8.4);amp*=.5;}return sum;}
 void main(){
  vec3 ray=normalize(forward+right*uv.x/lens.x+up*uv.y/lens.y);float y=ray.y,h=max(.05,eye.y);
  float root=sqrt(y*y+2.*h/radius),distanceM=y<0.?2.*h/(root-y):radius*(root+y);
  vec2 km=(eye.xz+ray.xz*min(distanceM,2000000.))*.001;
- float field=.5+.24*sin(km.x*.032+sin(km.y*.021))+.16*cos(km.y*.06+km.x*.013);
+ float patches=.5+.24*sin(km.x*.032+sin(km.y*.021))+.16*cos(km.y*.06+km.x*.013);
  vec3 soil=mix(nearLand,farLand,smoothstep(mid*.001-1.9,mid*.001+1.9,km.y));
- vec3 ground=soil*(.72+.32*field)*(.44+.56*direct);
+ vec3 ground=soil*(.72+.32*patches)*(.44+.56*direct);
  vec3 horizon=mix(vec3(.075,.093,.11),vec3(.46,.56,.59),direct);
  vec3 air=mix(vec3(.035,.045,.075),vec3(.27,.47,.62),direct);
  float haze=(1.-exp(-distanceM/42000.))*(1.-smoothstep(.035,.5,-y));
@@ -522,11 +578,35 @@ void main(){
    haze=max(haze,.43*(1.-exp(-distanceM/34000.)));
  }
  vec3 color=mix(mix(ground,horizon,haze),air,smoothstep(0.,.65,y));
+ // The shell occludes this directional view, so each opening frames its own plot.
+ // Inside the enclosure, either opening can be visible. Outside it the
+ // observer's own face supplies the sky even while looking along the wall.
+ float side=inHall ? ray.z : eye.z-mid;
+ float kind=doorView>0. ? (side<0.?habitat.x:habitat.y) : 0.;
+ vec3 regional=color;
+ if(kind==1.){
+   float skyV=clamp(y*.6+.45,0.,1.);
+   vec3 sky=mix(vec3(.64,.75,.72),vec3(.18,.40,.65),skyV);
+   float cloud=field(ray*7.+vec3(7,1,3));
+   sky=mix(sky,vec3(.81,.84,.75),smoothstep(.53,.68,cloud)*smoothstep(-.05,.2,y)*.74);
+   sky=mix(vec3(.008,.012,.021),sky,smoothstep(.015,.8,direct));
+   vec3 turf=mix(vec3(.075,.13,.018),vec3(.15,.22,.046),.5)*(.03+.97*direct);
+   color=pow(mix(turf,sky,smoothstep(6500.,80000.,distanceM)),vec3(1./2.2));
+ }
+ if(kind==2.){
+   vec3 jungleSky=mix(vec3(.68,.80,.83),vec3(.38,.65,.78),smoothstep(0.,.85,y));
+   float heading=atan(ray.z,ray.x);
+   float canopy=.006+.018*noise2(vec2(cos(heading),sin(heading))*135.);
+   vec3 treeLine=mix(vec3(.09,.16,.07),vec3(.21,.32,.17),noise2(km*.5));
+   vec3 jungleGround=mix(vec3(.17,.26,.12),treeLine,smoothstep(100.,2400.,distanceM));
+   color=mix(jungleGround,jungleSky,smoothstep(canopy-.003,canopy+.003,y))*(.4+.6*direct);
+ }
+ color=mix(regional,color,doorView);
  // Distant sightlines share the station's clear air below the approach band.
  float alpha=regionalGround<0.?1.:mix(regionalGround,regionalAir,smoothstep(-.32,-.03,y));
  frag=vec4(color*alpha,alpha);
 }`;
-export function makeView(canvas,{capture=true,cavityBackdrop=false,district=null,shared=false,composite=false,land=null,mainDepth=false,buildHall=stationMesh}={}) {
+export function makeView(canvas,{capture=true,cavityBackdrop=false,district=null,shared=false,composite=false,land=null,habitats=null,mainDepth=false,buildHall=stationMesh}={}) {
   const hand=district?rightSign(district):1;
   const gl=canvas.getContext('webgl2',{antialias:true,alpha:composite||cavityBackdrop,preserveDrawingBuffer:capture});
   if(!gl)throw Error('The crossing view requires WebGL 2.');
@@ -539,10 +619,11 @@ export function makeView(canvas,{capture=true,cavityBackdrop=false,district=null
     }
     gl.linkProgram(p);if(!gl.getProgramParameter(p,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(p));return p;
   }
-  const program=link(vertex,fragment(mainDepth)),sky=shared?null:link(skyVertex,skyFragment);
+  // A stand-alone station owns its depth buffer. Shared views keep their host's projection.
+  const program=link(vertex,fragment(mainDepth,!shared)),sky=shared?null:link(skyVertex,skyFragment);
   const locations=(p,names)=>Object.fromEntries(names.map(n=>[n,gl.getUniformLocation(p,n)]));
-  const loc=locations(program,['eye','right','up','forward','offset','focal','clip','mask','direct','workLight','hall','structure','yard','loadFootprint','vacuum','jungleFace','airColor','logRange','linearOutput']);
-  const skyLoc=sky&&locations(sky,['lens','right','up','forward','eye','direct','radius','mid','nearLand','farLand','regionalGround','regionalAir','surveyed','landOrigin']);
+  const loc=locations(program,['eye','right','up','forward','offset','focal','clip','mask','direct','workLight','hall','structure','yard','loadFootprint','vacuum','jungleFace','airColor','logRange','linearOutput','foliage']);
+  const skyLoc=sky&&locations(sky,['lens','habitat','right','up','forward','eye','direct','radius','mid','nearLand','farLand','regionalGround','regionalAir','surveyed','landOrigin','doorView','inHall']);
   const vao=gl.createVertexArray();
   const attrs=['cornerA','cornerB','cornerC','cornerD','normal','tint'].map(n=>gl.getAttribLocation(program,n));
   const hallBuffer=gl.createBuffer(),cargoBuffer=gl.createBuffer();
@@ -551,12 +632,18 @@ export function makeView(canvas,{capture=true,cavityBackdrop=false,district=null
     gl.enableVertexAttribArray(0);gl.vertexAttribPointer(0,1,gl.FLOAT,false,4,0);gl.vertexAttribDivisor(0,0);
     attrs.forEach((a,i)=>{gl.enableVertexAttribArray(a);gl.vertexAttribPointer(a,3,gl.FLOAT,false,faceFloats*4,faceCorners.length*4+i*12);gl.vertexAttribDivisor(a,1);});
   };
-  let fixed=0,freight=0,loaded=null,cargoKey='',uploads=0;
+  let fixed=0,freight=0,loaded=null,cargoKey='',uploads=0,faces=[0,0];
+  let plantBuffer=null,plantKey=null,plantFaces=0;
+  function releasePlants(){
+    if(plantBuffer)gl.deleteBuffer(plantBuffer);
+    plantBuffer=null;plantKey=null;plantFaces=0;
+  }
   return {
     get uploads(){return uploads;},
-    get geometryBytes(){return (fixed+freight)*faceFloats*4+(Number(fixed>0)+Number(freight>0))*faceCorners.length*4;},
+    get geometryBytes(){return (fixed+freight+plantFaces)*faceFloats*4+(Number(fixed>0)+Number(freight>0)+Number(!!plantBuffer))*faceCorners.length*4;},
     load(s){
       if(loaded===s)return;
+      faces=(typeof habitats==='function'?habitats(s):habitats)??[0,0];
       const hall=buildHall(s,district,true);fixed=(hall.length-faceCorners.length)/faceFloats;bind(hallBuffer);
       gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(hall),gl.STATIC_DRAW);uploads++;
       const key=[s.traffic.lengthM,s.traffic.widthM,s.traffic.heightM].join('/');
@@ -564,7 +651,7 @@ export function makeView(canvas,{capture=true,cavityBackdrop=false,district=null
         gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(car),gl.STATIC_DRAW);cargoKey=key;uploads++;}
       gl.bindVertexArray(null);loaded=s;
     },
-    dispose(){gl.deleteBuffer(hallBuffer);gl.deleteBuffer(cargoBuffer);gl.deleteVertexArray(vao);gl.deleteProgram(program);if(sky)gl.deleteProgram(sky);
+    dispose(){releasePlants();gl.deleteBuffer(hallBuffer);gl.deleteBuffer(cargoBuffer);gl.deleteVertexArray(vao);gl.deleteProgram(program);if(sky)gl.deleteProgram(sky);
       if(composite)gl.getExtension('WEBGL_lose_context')?.loseContext();},
     draw(s,eye,yaw,pitch,time,idPass=false,direct=1,camera=null){
       if(!shared){
@@ -579,9 +666,12 @@ export function makeView(canvas,{capture=true,cavityBackdrop=false,district=null
         gl.clearColor(0,0,0,composite||camera?.vacuum?0:1);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
         if(!idPass && (camera?.groundWeight!==0 || camera?.airWeight>0)){
           gl.disable(gl.DEPTH_TEST);gl.useProgram(sky);gl.bindVertexArray(null);
-          gl.uniform2f(skyLoc.lens,focal*h/w,focal);gl.uniform3fv(skyLoc.right,right);gl.uniform3fv(skyLoc.up,up);gl.uniform3fv(skyLoc.forward,forward);
+          gl.uniform2fv(skyLoc.habitat,faces);gl.uniform2f(skyLoc.lens,focal*h/w,focal);gl.uniform3fv(skyLoc.right,right);gl.uniform3fv(skyLoc.up,up);gl.uniform3fv(skyLoc.forward,forward);
           gl.uniform3fv(skyLoc.nearLand,land?.[0]??[.19,.33,.15]);gl.uniform3fv(skyLoc.farLand,land?.[1]??[.26,.29,.25]);
           gl.uniform1f(skyLoc.radius,district?.origin.radiusM??149597870700);gl.uniform1f(skyLoc.mid,s.widthM/2);
+          gl.uniform1i(skyLoc.inHall,Math.abs(eye[0])<hallHalfM && eye[1]<s.roofM && eye[2]>0 && eye[2]<s.widthM);
+          const t=Math.max(0,Math.min(1,(eye[1]-s.roofM)/s.roofM));
+          gl.uniform1f(skyLoc.doorView,1-t*t*(3-2*t));
           gl.uniform1i(skyLoc.surveyed,!!district);
           gl.uniform2f(skyLoc.landOrigin,s.address.chainageM*.001,0);
           gl.uniform1f(skyLoc.regionalGround,camera?.groundWeight??-1);
@@ -590,11 +680,12 @@ export function makeView(canvas,{capture=true,cavityBackdrop=false,district=null
         }
       }
       gl.enable(gl.DEPTH_TEST);gl.useProgram(program);
+      gl.uniform1i(loc.foliage,0);
       // The adjoining terrain and the station must depth-test in the same projection.
       const near=shared ? (camera?.near??.05) : Math.max(.25,(eye[1]-s.roofM)*.015);
       const daylight=Math.min(1,Math.max(0,direct));
       const horizon=shared && !mainDepth?[[.10,.13,.18],[.69,.80,.84]]:[[.075,.093,.11],[.46,.56,.59]];
-      gl.uniform1f(loc.jungleFace,camera?.jungleFace??0);
+      gl.uniform1f(loc.jungleFace,camera?.jungleFace || (faces[0]===2?-1:faces[1]===2?1:0));
       gl.uniform1f(loc.vacuum,Number(camera?.vacuum??0));
       gl.uniform3fv(loc.airColor,horizon[0].map((v,i)=>v+(horizon[1][i]-v)*daylight));
       if(mainDepth){
@@ -615,6 +706,20 @@ export function makeView(canvas,{capture=true,cavityBackdrop=false,district=null
       // Draw nearby periodic neighbors too. Changing the nearest index leaves the visible scene continuous.
       for(const shift of [-car.spacingM,0,car.spacingM]){
         gl.uniform3f(loc.offset,nearest+shift,0,car.z);gl.drawArraysInstanced(gl.TRIANGLES,0,6,freight);
+      }
+      const patch=!idPass && plantPatch(s,district,eye,faces);
+      if(!patch){if(plantBuffer)releasePlants();}
+      else{
+        if(patch.key!==plantKey){
+          const plants=mesh(true);growWallPlants(plants,s,district,patch);
+          plantBuffer??=gl.createBuffer();bind(plantBuffer);
+          gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(plants.data),gl.DYNAMIC_DRAW);
+          plantFaces=(plants.data.length-faceCorners.length)/faceFloats;plantKey=patch.key;uploads++;
+        }
+        if(plantFaces){
+          bind(plantBuffer);gl.uniform1i(loc.mask,0);gl.uniform1i(loc.foliage,1);gl.uniform3f(loc.offset,0,0,0);
+          gl.drawArraysInstanced(gl.TRIANGLES,0,6,plantFaces);
+        }
       }
       gl.bindVertexArray(null);
     }

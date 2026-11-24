@@ -1,16 +1,16 @@
 // A station is identified by the two Atlas plots and an integer along their shared edge.
 // Local metres use x along the trunk, z across the Border and y above the freight slab.
-import {spacingM} from './district.mjs';
+import {spacingM,stationHash as hash,doorOffset,doorSizes} from './district.mjs';
 if(!globalThis.SphereAtlas)await import('../../../sphere-atlas.js');
 
 const atlas = globalThis.SphereAtlas;
 export const radiusM = 149597870700;
 export {spacingM};
 export const classes = [
-  {id:'service', name:'Service', body:[2.4,3,3], door:[4,4], eye:1.7, maxGrade:.05, speed:1.5, turnM:2},
-  {id:'carrier', name:'Carrier', body:[12,10,24], door:[18,14], eye:5, maxGrade:.05, speed:8, turnM:25},
-  {id:'heavy', name:'Heavy haul', body:[80,56,150], door:[120,80], eye:28, maxGrade:.025, speed:5, turnM:180},
-  {id:'trunk', name:'Monumental', body:[720,480,1200], door:[1000,680], eye:230, maxGrade:.012, speed:3, turnM:1500}
+  {id:'service', name:'Service', body:[2.4,3,3], door:doorSizes[0], eye:1.7, maxGrade:.05, speed:1.5, turnM:2},
+  {id:'carrier', name:'Carrier', body:[12,10,24], door:doorSizes[1], eye:5, maxGrade:.05, speed:8, turnM:25},
+  {id:'heavy', name:'Heavy haul', body:[80,56,150], door:doorSizes[2], eye:28, maxGrade:.025, speed:5, turnM:180},
+  {id:'trunk', name:'Monumental', body:[720,480,1200], door:doorSizes[3], eye:230, maxGrade:.012, speed:3, turnM:1500}
 ];
 const layouts = [
   {name:'Viaduct and cut', widthM:40000, laneHalfM:830, shoulderM:1800, bridgeM:630, carrierM:606, underpassM:-112, landingM:350},
@@ -19,11 +19,7 @@ const layouts = [
 ];
 const halfAngle=p=>Math.PI/p.columns;
 const wrap=a=>Math.atan2(Math.sin(a),Math.cos(a));
-const hash=text=>{
-  let value=2166136261;
-  for(const c of text)value=Math.imul(value^c.charCodeAt(0),16777619);
-  return value>>>0;
-};
+
 
 export function addressOf(world, sideA, sideB, bay, shellRadiusM=radiusM) {
   if(!(shellRadiusM>0)||!Number.isFinite(shellRadiusM))throw Error('Invalid shell radius');
@@ -70,9 +66,9 @@ export function surfaceAddress(station,[x,y,z]){
 export function stationDimensions(address){return {widthM:layouts[hash(address.key)%layouts.length].widthM,roofM:1700};}
 export function generateStation(address) {
   const seed=hash(address.key), plan=layouts[seed%layouts.length], mid=plan.widthM/2;
-  const sign=(seed&4)?1:-1;
+
   const routes=classes.map((group,i)=>{
-    const x=sign*[-2600,-1820,-800,1050][i];
+    const x=doorOffset(seed,i);
     const y=[plan.bridgeM,plan.carrierM,plan.underpassM,0][i];
     const clear=group.door.slice(), deckWidth=clear[0], deckDepth=[10,28,25,0][i];
     const shoulder=plan.laneHalfM+plan.shoulderM;

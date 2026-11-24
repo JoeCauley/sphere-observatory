@@ -78,7 +78,7 @@ function move(s,d,distance){
   const altitude=s.radius-M.length(s.position);
   if(altitude>=0&&altitude<5){
    const q=M.norm(s.position);
-   if((M.dot(s.position,d)>0||root.SphereGround?.nearApron?.(q,s,5000))&&!M.inBreach(q,s)){
+   if((M.dot(s.position,d)>0||root.SphereGround?.nearFrontage?.(q,s,5000))&&!M.inBreach(q,s)){
     patch(s,s.position);root.SphereGround?.request(s);
    }
   }
@@ -127,7 +127,8 @@ function step(s,keys,dt){
  }else{
   const projected=M.sub(s.forward,M.mul(up,M.dot(s.forward,up))),f=M.length(projected)>.001?M.norm(projected):mesh.basis[2],right=M.norm(M.cross(f,up));let v=[0,0,0];
   for(const [key,dir]of [['KeyW',f],['KeyS',M.mul(f,-1)],['KeyA',M.mul(right,-1)],['KeyD',right]])if(keys.has(key))v=M.add(v,dir);
-  if(M.length(v)>0){v=M.mul(M.norm(v),(keys.has('ShiftLeft')||keys.has('ShiftRight')?.006:.0028)*dt);
+  if(M.length(v)>0){const base=keys.has('ShiftLeft')||keys.has('ShiftRight')?6:2.8;
+   const speed=root.SphereStageFrame?.movementSpeed?.(base,dt)??base;v=M.mul(M.norm(v),speed*.001*dt);
    for(const axis of [0,2]){const next=p.slice(),offset=M.dot(v,mesh.basis[axis]);next[axis]=s.siteRevision===2?next[axis]+offset:M.clamp(next[axis]+offset,-1.08,1.08);if(s.siteRevision===2&&!root.SphereGround.support(s,next[0],next[2]))continue;const floor=floorAt(s,mesh,next),delta=M.mul(mesh.basis[axis],next[axis]-p[axis]);
     const drop=!Number.isFinite(floor)&&(mesh.ground.rim||s.siteRevision===2)&&M.inBreach(M.norm(mesh.world(next)),s);
     if((drop||(Number.isFinite(floor)&&floor<=p[1]+STEP+.00003))&&!obstructed(s,mesh,p,delta)){p[axis]=next[axis];if(floor>p[1])p[1]=floor;changed=true;}

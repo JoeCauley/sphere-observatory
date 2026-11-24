@@ -1,0 +1,227 @@
+{
+  "prep": {
+    "build": {
+      "version": "1.8.8",
+      "commit": "3d519303b91e20f3910bb9886b068e314f285e61",
+      "sourceSha256": "c65e8476e2484326a3278382fda09edb0d04ba90151bf10c23bfbb122d2f3fa6",
+      "status": "local-modified",
+      "release": false,
+      "assets": [
+        {
+          "path": "assets/wound-edges/manifest.json",
+          "sha256": "ea2c769ce86b82699e2bb745d521678a716ed106bdab755e726f11e2c32a03fe"
+        }
+      ],
+      "assetSetSha256": "45f67a383ac6ec295844b3bc6ddc40e9a1d661f354d7f406bf82e6519410a91d",
+      "assetCount": 45
+    },
+    "site": {
+      "bay": 0,
+      "x": 0,
+      "widthM": 48000,
+      "roofM": 1700,
+      "address": {
+        "world": "sphere-ed6a59ab491a9a08",
+        "radiusM": 149597870700,
+        "plots": [
+          "r10c0",
+          "r10c1"
+        ],
+        "bay": 0,
+        "axis": "meridian",
+        "acrossSign": 1,
+        "latitude": -0.058177641733144325,
+        "longitude": -3.025237370123505,
+        "chainageM": 0,
+        "key": "sphere-ed6a59ab491a9a08/r10c0/r10c1/0"
+      }
+    },
+    "meta": {
+      "seed": 713,
+      "world": "sphere-ed6a59ab491a9a08",
+      "address": "sphere-ed6a59ab491a9a08/r10c0/r10c1/0",
+      "center": {
+        "eastM": 94000,
+        "northM": 680,
+        "altitudeM": 1746.7
+      },
+      "landmark": {
+        "x": -16000,
+        "z": -24000,
+        "h": 1745
+      },
+      "start": {
+        "eastM": 39195.11461833288,
+        "northM": -459.90464248440844,
+        "altitudeM": 36000,
+        "yaw": 1.55,
+        "pitch": -0.5585053606381855,
+        "mode": "flight"
+      },
+      "day": {
+        "time": 44100,
+        "direct": 0.984375
+      },
+      "rules": {
+        "base": "clear",
+        "nearM": 18000,
+        "farM": 24000,
+        "focal": 1.428148,
+        "tint": [
+          0.32,
+          0.39,
+          0.4
+        ],
+        "drift": 0
+      },
+      "freightBearing": null,
+      "ordinaryWall": true,
+      "hand": 1
+    },
+    "habitats": [
+      1,
+      2
+    ]
+  },
+  "clip": {
+    "x": 338,
+    "y": 146,
+    "width": 780,
+    "height": 541
+  },
+  "stats": [
+    {
+      "label": "14km-composite",
+      "width": 780,
+      "height": 541,
+      "verticalEdgeDelta": 11.858024691358025,
+      "edgeX": 496,
+      "mean": 164.67942635511952,
+      "survey": true,
+      "time": 44100,
+      "playing": false,
+      "cpu": 0.6000000014901161,
+      "gpu": 17.51648,
+      "error": 0,
+      "drawStage": {
+        "zone": "biome",
+        "air": "r10c1",
+        "blind": "r10c1"
+      }
+    },
+    {
+      "label": "14km-native-only",
+      "width": 780,
+      "height": 541,
+      "verticalEdgeDelta": 12.117283950617283,
+      "edgeX": 496,
+      "mean": 161.4601963758156,
+      "survey": false,
+      "time": 44100,
+      "playing": false,
+      "cpu": 0.3999999985098839,
+      "gpu": 5.464064,
+      "error": 0,
+      "drawStage": {
+        "zone": "biome",
+        "air": "r10c1",
+        "blind": "r10c1"
+      }
+    },
+    {
+      "label": "sweep-2-17800",
+      "width": 780,
+      "height": 541,
+      "verticalEdgeDelta": 12.194444444444445,
+      "edgeX": 496,
+      "mean": 165.4809185269444,
+      "survey": true,
+      "time": 44100,
+      "playing": false,
+      "cpu": 0.3999999985098839,
+      "gpu": 4.798272,
+      "error": 0,
+      "drawStage": {
+        "zone": "biome",
+        "air": "r10c1",
+        "blind": "r10c1"
+      }
+    },
+    {
+      "label": "sweep-3-14300",
+      "width": 780,
+      "height": 541,
+      "verticalEdgeDelta": 11.858024691358025,
+      "edgeX": 496,
+      "mean": 164.67942635511952,
+      "survey": true,
+      "time": 44100,
+      "playing": false,
+      "cpu": 0.3999999985098839,
+      "gpu": 4.120064,
+      "error": 0,
+      "drawStage": {
+        "zone": "biome",
+        "air": "r10c1",
+        "blind": "r10c1"
+      }
+    },
+    {
+      "label": "sweep-4-10500",
+      "width": 780,
+      "height": 541,
+      "verticalEdgeDelta": 12.228395061728396,
+      "edgeX": 496,
+      "mean": 163.93353081504654,
+      "survey": true,
+      "time": 44100,
+      "playing": false,
+      "cpu": 0.3999999985098839,
+      "gpu": 4.161984,
+      "error": 0,
+      "drawStage": {
+        "zone": "biome",
+        "air": "r10c1",
+        "blind": "r10c1"
+      }
+    },
+    {
+      "label": "sweep-5-14300",
+      "width": 780,
+      "height": 541,
+      "verticalEdgeDelta": 11.858024691358025,
+      "edgeX": 496,
+      "mean": 164.67942635511952,
+      "survey": true,
+      "time": 44100,
+      "playing": false,
+      "cpu": 0.3999999985098839,
+      "gpu": 3.96016,
+      "error": 0,
+      "drawStage": {
+        "zone": "biome",
+        "air": "r10c1",
+        "blind": "r10c1"
+      }
+    },
+    {
+      "label": "sweep-6-17800",
+      "width": 780,
+      "height": 541,
+      "verticalEdgeDelta": 12.194444444444445,
+      "edgeX": 496,
+      "mean": 165.4809185269444,
+      "survey": true,
+      "time": 44100,
+      "playing": false,
+      "cpu": 0.3999999985098839,
+      "gpu": 3.98112,
+      "error": 0,
+      "drawStage": {
+        "zone": "biome",
+        "air": "r10c1",
+        "blind": "r10c1"
+      }
+    }
+  ]
+}

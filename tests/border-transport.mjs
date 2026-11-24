@@ -4,8 +4,11 @@ import {districtFor} from '../packs/border-transport/0.10.0/survey.mjs';
 import {districtPoint,districtLocation,outsideDistrict,hallHalfM,linkHalfM,nearestSite,rightSign} from '../packs/border-transport/0.10.0/district.mjs';
 import {borderEnvironment} from '../packs/border-transport/0.10.0/environment.mjs';
 import {roofSlabM} from '../packs/border-transport/0.10.0/district.mjs';
-import {boardingPose,move} from '../packs/border-transport/0.10.0/motion.mjs';
+import {boardingPose,move,constrainExterior,walker} from '../packs/border-transport/0.10.0/motion.mjs';
+import {outsideStationScene,serviceGalleryDepthM} from '../packs/border-transport/0.10.0/district.mjs';
 import {bayStart,portals,quayZ} from '../packs/border-transport/0.10.0/freight-bay.mjs';
+import {plantPatch,growWallPlants} from '../packs/border-transport/0.10.0/wall-plants.mjs';
+import {stationMesh} from '../packs/border-transport/0.10.0/view.mjs';
 const world='sphere-0000000000000017',radius=149597870700;
 const layouts=new Set();let walks=0,projections=0,longitudinal=0;
 for(const edge of [['r10c0','r11c0'],['r12c0','r12c1'],['r12c0','r12c'+(globalThis.SphereAtlas.columns(12)-1)]]){
@@ -30,6 +33,16 @@ for(const edge of [['r10c0','r11c0'],['r12c0','r12c1'],['r12c0','r12c'+(globalTh
     }
     for(const site of d.sites){
       const hall=generateStation(site.address);
+      const eye=[220,12,hall.widthM+8],near=plantPatch(hall,d,eye,[1,2]);
+      assert(near && !plantPatch(hall,d,eye,[2,1]) && !plantPatch(hall,d,[220,12,hall.widthM+120],[1,2]));
+      const leaves=patch=>{
+        const rows=[];growWallPlants({quad:(...p)=>rows.push(p)},hall,d,patch);return rows;
+      };
+      const foliage=leaves(near);
+      assert(foliage.length>0 && foliage.length<4500);
+      const overlap=faces=>faces.filter(([root])=>root[0]>215 && root[0]<230);
+      const adjacent=plantPatch(hall,d,[eye[0]+24,eye[1],eye[2]],[1,2]);
+      assert.deepEqual(overlap(foliage),overlap(leaves(adjacent)),'Shared cells must retain the same stems and leaves while strafing');
       const zone=(x,z,y)=>borderEnvironment(d,hall,{eastM:site.x+x,northM:z,altitudeM:y});
       for(const side of [-1,1]){
         const plot=site.address.plots[side<0?0:1];
@@ -63,6 +76,43 @@ for(const edge of [['r10c0','r11c0'],['r12c0','r12c1'],['r12c0','r12c'+(globalTh
         assert.equal(move(s,d,{...approach,northM:linkHalfM-45},c,end*24,0,0,0,0).blocked,'');
       }
       for(const face of [-1,1]){
+        const serviceX=site.x+s.routes[0].nearDoor[0],faceZ=face*s.widthM/2;
+        const distance=(depth,height=1.7)=>outsideStationScene(d,serviceX,faceZ-face*depth,height);
+        assert(distance(-2)>0 && distance(2)>0 && distance(serviceGalleryDepthM+1)<0);
+        for(const depth of [-12,-2,-.25,0,.25,2,30])
+          assert.equal(distance(depth),serviceGalleryDepthM-depth,'Approaching the inner threshold is monotone across the outer jamb');
+        assert(distance(2,s.roofM+46)<0,'The roof has its own handoff at the facade');
+        for(const route of s.routes){
+          const x=site.x+route.nearDoor[0]+route.door[0]*.35;
+          const threshold=(depth,height)=>outsideStationScene(d,x,faceZ-face*depth,height);
+          assert(threshold(2,route.door[1]*.5)>0);
+          assert(threshold(serviceGalleryDepthM+1,route.door[1]*.5)<0);
+          assert(threshold(2,route.door[1]+8)<0);
+        }
+        const start={eastM:serviceX,northM:faceZ+face*10,altitudeM:1.7};
+        const inside={...start,northM:faceZ-face*37};
+        assert.equal(constrainExterior(s,d,start,inside),inside,'The service opening admits a walker from either biome');
+        const ordinaryX=site.x===d.sites.at(-1).x?site.x-80000:site.x+80000;
+        const distant={eastM:ordinaryX,northM:face*(linkHalfM+4500),altitudeM:17};
+        const diagonal={...distant,eastM:ordinaryX+30,northM:face*(linkHalfM-200)};
+        const stopped=constrainExterior(s,d,distant,diagonal);
+        assert(Math.abs(stopped.northM)>linkHalfM && Math.abs(stopped.northM)<linkHalfM+3);
+        assert.equal(stopped.eastM,diagonal.eastM,'A blocked diagonal retains its travel along the wall');
+        const parallel={...stopped,eastM:stopped.eastM+200};
+        assert.equal(constrainExterior(s,d,stopped,parallel),parallel);
+        const contact={...stopped,northM:face*(linkHalfM+1+walker.body[2]/2-.000025)};
+        for(const motion of [{eastM:contact.eastM-25},{altitudeM:contact.altitudeM+7},{northM:contact.northM+face*12}]){
+          const to={...contact,...motion};
+          assert.equal(constrainExterior(s,d,contact,to),to,'Chart roundoff cannot pin a walker to a wall');
+        }
+        // A shallow diagonal can finish against either the concrete face or a projecting rib.
+        for(const x of [site.x-12600,site.x-12596]){
+          const from={eastM:x,northM:faceZ+face*8,altitudeM:1.7};
+          const stopped=constrainExterior(s,d,from,{...from,northM:faceZ-face*5});
+          const touching={...stopped,northM:stopped.northM-face*.000025};
+          for(const to of [{...touching,altitudeM:touching.altitudeM+3},{...touching,northM:touching.northM+face*5}])
+            assert.equal(constrainExterior(s,d,touching,to),to,'The walker can lift or back away from the actual cladding');
+        }
         const outside={...p,eastM:site.x-12600,northM:face*(s.widthM/2+5)};
         const panel={...outside,eastM:outside.eastM+4};
         assert.equal(move(s,d,outside,c,0,-face*.85,0,0,0).blocked,'Clearance limit','The projecting Outfall rib blocks the walker');
@@ -100,5 +150,13 @@ for(const edge of [['r10c0','r11c0'],['r12c0','r12c1'],['r12c0','r12c'+(globalTh
 const short=districtFor(world,'r12c0','r12c1',1e6);
 assert.deepEqual(short.sites.map(s=>s.bay),[0]);
 assert(outsideDistrict(short,200000,0)>0);
+const widelySpaced={sites:[{x:-2300000},{x:0},{x:1260000},{x:4920000}]};
+for(const [x,winner] of [[-10000000,0],[-1000000,1],[600000,1],[630000,2],[3000000,2],[3700000,3]])
+  assert.equal(nearestSite(widelySpaced,x),widelySpaced.sites[winner]);
+const local=districtFor(world,'r12c0','r12c1',radius);
+const center=generateStation(local.sites[1].address);
+const distant=Array.from({length:2048},(_,i)=>({x:local.sites[2].x+(i+1)*1000000}));
+assert.equal(stationMesh(center,{...local,sites:[...local.sites,...distant]},true).length,
+  stationMesh(center,local,true).length,'Distant stations and reaches cost no render geometry');
 assert.equal(layouts.size,3);
 console.log(JSON.stringify({walks,longitudinal,layouts:layouts.size,projections}));

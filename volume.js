@@ -138,20 +138,30 @@ void main(){vec3 d=ray();float depth=texture(sceneDepth,vUV).r,hit=depth>=.99999
 const composite=`#version 300 es
 precision highp float;in vec2 vUV;out vec4 fragColor;
 uniform sampler2D source,sceneDepth,volumeLight,volumeTrans;uniform vec2 volumeSize;
-uniform float blindRange;uniform vec3 blindAxis;uniform vec2 blindLens;uniform vec3 blindHorizon,blindZenith;
+uniform float blindRange,blindStrength;uniform vec3 blindAxis;uniform vec2 blindLens;uniform vec3 blindHorizon,blindZenith;
 void main(){float depth=texture(sceneDepth,vUV).r;vec2 p=vUV*volumeSize-.5,base=floor(p),f=fract(p);vec3 light=vec3(0.),tr=vec3(0.);float total=0.,best=1e20;vec3 nearestLight=vec3(0.),nearestTr=vec3(1.);
  for(int y=0;y<2;y++)for(int x=0;x<2;x++){vec2 uv=(base+vec2(x,y)+.5)/volumeSize;vec4 t=texture(volumeTrans,uv);vec3 l=texture(volumeLight,uv).rgb;float error=abs(t.a-depth);
   float weight=(x==0?1.-f.x:f.x)*(y==0?1.-f.y:f.y)*exp(-error*900.);light+=l*weight;tr+=t.rgb*weight;total+=weight;
   if(error<best){best=error;nearestLight=l;nearestTr=t.rgb;}
  }
  if(total<.00001){light=nearestLight;tr=nearestTr;}else{light/=total;tr/=total;}
- vec3 scene=texture(source,vUV).rgb;
+ vec4 surface=texture(source,vUV);
+ vec3 scene=surface.rgb;
+ // An enclosed station draws its own industrial air. Its HDR alpha stores
+ // the fraction of this ray spent outdoors before entering the doorway.
+ float outdoors=surface.a<0.?clamp(-1.-surface.a,0.,1.):1.;
+ if(outdoors==0.){fragColor=vec4(scene,1.);return;}
+ if(outdoors<1.){
+  vec3 entryTrans=pow(max(tr,vec3(.00001)),vec3(outdoors));
+  light*=mix(vec3(outdoors),(1.-entryTrans)/max(1.-tr,vec3(.00001)),step(vec3(.0001),1.-tr));
+  tr=entryTrans;
+ }
  if(blindRange>0.){
   vec2 xy=(vUV*2.-1.)*blindLens;
   float elevation=dot(normalize(vec3(1.,xy)),blindAxis);
-  float km=exp2(depth*blindRange)-1.;
+  float km=(exp2(depth*blindRange)-1.)*outdoors;
   vec3 sky=mix(blindHorizon,blindZenith,smoothstep(0.,.8,elevation));
-  scene=mix(scene,sky,1.-exp(-km/16.));
+  scene=mix(scene,sky,blindStrength*(1.-exp(-km/16.))*smoothstep(-.25,-.10,elevation));
  }
  fragColor=vec4(scene*tr+light,1.);
 }`;

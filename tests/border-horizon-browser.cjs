@@ -161,6 +161,26 @@ async function main() {
     const [roofSkyDelta]=await screenDeltas(page,skies);
     console.log('Roof sky change across the 18 km boundary',roofSkyDelta);
     assert(roofSkyDelta<.065,'Abrupt sky change during descent: '+roofSkyDelta);
+    // In open vacuum the transparent upper part of the station document must
+    // show the actual Main framebuffer underneath, including the distant shell.
+    await scene.focus();await page.keyboard.down('KeyQ');
+    try{await page.waitForFunction(()=>document.querySelector('#stageFrame iframe').contentWindow.SphereBiome.pose().altitudeM<10000);}
+    finally{await page.keyboard.up('KeyQ');}
+    await page.keyboard.down('ArrowUp');
+    try{await page.waitForFunction(()=>document.querySelector('#stageFrame iframe').contentWindow.SphereBiome.pose().pitch>.35);}
+    finally{await page.keyboard.up('ArrowUp');}
+    const stationFrame=page.locator('#stageFrame iframe');
+    const environment=await scene.evaluate(()=>SphereBiome.environment());
+    assert.equal(environment.air,'vacuum');
+    await page.waitForTimeout(160);
+    const composite=await page.screenshot({clip:skyClip});
+    await stationFrame.evaluate(f=>{f.style.visibility='hidden';});
+    let native;
+    try{native=await page.screenshot({clip:skyClip});}
+    finally{await stationFrame.evaluate(f=>{f.style.visibility='';});}
+    const [cavityDelta]=await screenDeltas(page,[composite,native].map(data=>data.toString('base64')));
+    assert(cavityDelta<.015,'The vacuum opening covered the actual Sphere: '+cavityDelta);
+    console.log('Roof vacuum sky versus underlying native view',cavityDelta);
     console.log('Missing survey frames and matched-lens image change', {missed,lensDelta});
     assert.deepEqual(errors, []);
     console.log('Walked from the native apron over its graded edge', {landed, walked});

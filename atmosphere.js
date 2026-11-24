@@ -88,7 +88,11 @@ class Atmosphere{
   gl.bindFramebuffer(gl.FRAMEBUFFER,this.fbo);gl.viewport(0,0,width,height);gl.useProgram(this.composite.p);const c=this.composite.u;
   // At eye level the projected sky obscures the far shell. Local weather remains in front.
   const zone=renderer.renderInfo.borderEnvironment;
-  const blind=s.walkMode && s.projection==='perspective' && air && !rim && !SphereCollection.missing(n,s) && (!zone || zone.zone==='biome');
+  // Native terrain remains visible through the short entrance gallery. Its
+  // depth-tested walls and ceiling occlude the projected sky on interior rays.
+  const blind=altitude<100 && s.projection==='perspective' && air && !rim && !SphereCollection.missing(n,s) && zone?.air!=='vacuum';
+  const layer=Math.min(1,Math.max(0,(100-altitude)/20));
+  gl.uniform1f(c.blindStrength,layer*layer*(3-2*layer)*(1-(s.borderVacuum??0)));
   gl.uniform1f(c.blindRange,blind?Math.log2(1+4*s.radius):0);
   if(blind){
    const inward=M.mul(n,-1),lens=Math.tan(M.radians(s.fov)*.5);

@@ -3,9 +3,10 @@
 import {project,unproject,chartFor,toBorder,toMeadow} from './packs/kit/surface-route.js';
 import {farEdgeM,onBorder,rampRunM} from './packs/kit/border-profile.js';
 import {terrain} from './packs/infinite-meadow/1.3.0/landscape.js';
-import {districtPoint,districtLocation,outsideDistrict,hallHalfM,apronRunM} from './packs/border-transport/0.10.0/district.mjs';
+import {districtPoint,districtLocation,outsideStationScene,latitudeGap,hallHalfM,apronRunM} from './packs/border-transport/0.10.0/district.mjs';
 export {borderEnvironment} from './packs/border-transport/0.10.0/environment.mjs';
-export {outsideDistrict,nearestSite,roofSlabM,apronRunM,hallHalfM} from './packs/border-transport/0.10.0/district.mjs';
+export {latitudeGap};
+export {outsideDistrict,outsideStationScene,serviceGalleryDepthM,nearestSite,roofSlabM,apronRunM,hallHalfM} from './packs/border-transport/0.10.0/district.mjs';
 const meadowDatum=terrain(0,0);
 function gateDatum(gate){return terrain(gate.eastM,gate.northM)-meadowDatum;}
 export const enterKm=20, leaveKm=24;
@@ -30,7 +31,7 @@ export function meadowStations(district,home){
     const origin=at(site.x,0),along=at(site.x+1000,0),across=at(site.x,1000);
     const ex=(along.eastM-origin.eastM)/1000,nx=(along.northM-origin.northM)/1000;
     const ez=(across.eastM-origin.eastM)/1000,nz=(across.northM-origin.northM)/1000,det=ex*nz-ez*nx;
-    return {site,origin,locate,axes:[nz/det,-ez/det,-nx/det,ex/det],halfX:hallHalfM,halfZ:site.widthM/2+apronRunM};
+    return {site,origin,locate,at,axes:[nz/det,-ez/det,-nx/det,ex/det],halfX:hallHalfM,halfZ:site.widthM/2+apronRunM};
   });
 }
 export function footprint(state,library,atlas,world){
@@ -41,9 +42,10 @@ export function footprint(state,library,atlas,world){
   for(const item of items){
     if(item.transport){
       const d=item.transport;
-      if(Math.abs(lat-d.origin.latitude)*state.radius>220)continue;
+      if(latitudeGap(d,lat)>220)continue;
       const p=districtPoint(d,lat,lon);
-      if(outsideDistrict(d,p.eastM,p.northM)<=0)return item;
+      const height=(state.radius-length(state.position))*1000;
+      if(outsideStationScene(d,p.eastM,p.northM,height)<=0)return item;
       continue;
     }
     if(!item.edge)continue;
