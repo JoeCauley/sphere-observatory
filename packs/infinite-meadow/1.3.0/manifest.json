@@ -231,8 +231,8 @@
     },
     {
       "path": "../../border-outfall/1.0.0/render.js",
-      "bytes": 9827,
-      "sha256": "07a7d39b5dd1fc37be1b7f08c2ff3f0086951d33e7e9ce42334c5a7171c219e2"
+      "bytes": 10424,
+      "sha256": "ee90dee4562fa9a6e81835274fc9c00c008694315f59709968e89bb83c7fc82d"
     },
     {
       "path": "../../border-outfall/1.0.0/geometry.js",

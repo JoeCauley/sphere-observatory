@@ -30,9 +30,14 @@ void main(){pos=point;norm=normal;mat=int(kind+.5);color=tint;
  gl_Position=vec4(dot(d,rightDir)*focal/aspect,dot(d,upDir)*focal,mix(depth-.12*pointW,depth*1.00000002-.10*pointW,meadowPass),depth);}`;
 const fragment=`#version 300 es
 precision highp float;in vec3 positionH,norm,color;in float positionW;flat in int mat;in float depth;
-uniform vec3 cameraPos,level,nearTint,farTint;uniform float clock,originX,meadowPass,daylight;out vec4 frag;${noise}${outfallMaterials}
+uniform bool apronDepthOnly;uniform vec3 cameraPos,level,nearTint,farTint;uniform float clock,originX,meadowPass,daylight;out vec4 frag;${noise}${outfallMaterials}
 void main(){float w=max(positionW,1.e-8);vec3 pos=positionH/w;vec3 n=normalize(norm),v=normalize(cameraPos-pos);
  if(meadowPass>.5 && mat==1 && pos.z<0.)discard;
+ gl_FragDepth=meadowPass>.5?gl_FragCoord.z:min(.9999999,log2(1.+max(0.,depth/w))/21.);
+ float dist=distance(pos,cameraPos);
+ float visibility=meadowPass>.5?exp(-dist/9000.)*(1.-smoothstep(22000.,38000.,dist)):1.;
+ if(visibility<.001)discard;
+ if(apronDepthOnly){frag=vec4(0.);return;}
  float east=pos.x+originX;
  bool inTunnel=pos.z>=${tunnelStart.toFixed(1)} && pos.z<=${tunnelEnd.toFixed(1)} && abs(east)<=${(tunnelHalfWidth+.1).toFixed(1)} && pos.y<${(tunnelHeight+.1).toFixed(1)};
  float indoors=smoothstep(-.4,3.,pos.z)*float(pos.y<9. && (abs(east)<6.2 || abs(pos.z-39.)<5.1));
@@ -42,7 +47,7 @@ void main(){float w=max(positionW,1.e-8);vec3 pos=positionH/w;vec3 n=normalize(n
  if(material==1&&pos.z>=0.&&pos.z<=73.){material=5;c=vec3(.29,.33,.29);}
  if(material==15){material=2;c=mix(c,vec3(.57,.35,.17),1.-smoothstep(.12,.19,abs(mod(pos.x+3.5,7.)-3.5)));}
  if(inTunnel && mat==1){material=5;c=vec3(.31,.33,.30);}
- float dist=distance(pos,cameraPos);vec2 uv=abs(n.y)>.65?pos.xz:(abs(n.x)>.7?pos.zy:pos.xy);
+ vec2 uv=abs(n.y)>.65?pos.xz:(abs(n.x)>.7?pos.zy:pos.xy);
  if(material==0)c*=outfallConcrete(uv);
  if(material==1){float turf=clouds(pos.xz*.5);float dry=1.-smoothstep(.9,1.75,abs(east+1.15+.024*pos.z));
  c=mix(c*(.7+.6*turf),vec3(.32,.34,.245)*(.76+.37*turf),dry);
@@ -64,12 +69,9 @@ void main(){float w=max(positionW,1.e-8);vec3 pos=positionH/w;vec3 n=normalize(n
  if(material==3)lit=vec3(1.28,.84,.43);
  if(material==13)lit=vec3(.35,.87,.81);
  if(material>=10&&material<=12){float wave=sin(pos.z*7.+clock*2.+sin(pos.x*3.))*.5+.5;lit=mix(vec3(.052,.18,.19),vec3(.29,.59,.51),pow(wave,6.)*.55+.20+.25*max(n.y,0.));}
- float fog=1.-exp(-dist*mix(.0036,.010,indoors));lit=mix(lit,mix(vec3(.60,.66,.63)*(.12+.88*daylight),vec3(.145,.215,.21),indoors),min(.94,fog));
- if(meadowPass>.5 && positionW>.0 && dist>9500.){
-  float haze=smoothstep(9500.,38000.,dist);
-  if(fract(dot(floor(gl_FragCoord.xy),vec2(.75487767,.5698403)))<haze)discard;
- }
- frag=vec4(pow(max(lit,0.),vec3(.87)),1.);gl_FragDepth=meadowPass>.5?gl_FragCoord.z:min(.9999999,log2(1.+max(0.,depth/w))/21.);}`;
+ float fog=1.-exp(-dist*mix(meadowPass>.5?.00009:.0036,.010,indoors));
+ lit=mix(lit,mix(vec3(.60,.66,.63)*(.12+.88*daylight),vec3(.145,.215,.21),indoors),min(.94,fog));
+ frag=vec4(pow(max(lit,0.),vec3(.87)),visibility);}`;
 function program(gl,vs,fs){
  const shaders=[[gl.VERTEX_SHADER,vs],[gl.FRAGMENT_SHADER,fs]].map(([type,source])=>{const sh=gl.createShader(type);gl.shaderSource(sh,source);gl.compileShader(sh);if(!gl.getShaderParameter(sh,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(sh));return sh;});
  const p=gl.createProgram();for(const sh of shaders)gl.attachShader(p,sh);gl.linkProgram(p);for(const sh of shaders)gl.deleteShader(sh);
@@ -105,9 +107,20 @@ export function createRenderer(canvas){
   const origin=Math.round(p.eastM/504)*504, northOrigin=Math.round(p.northM/2000)*2000;
   gl.bindVertexArray(borderVAO);
   if(origin!==originX || northOrigin!==originZ){originZ=northOrigin;const data=shellMesh(origin,northOrigin);gl.bindBuffer(gl.ARRAY_BUFFER,borderBuffer);gl.bufferData(gl.ARRAY_BUFFER,data,gl.DYNAMIC_DRAW);borderCount=data.length/11;originX=origin;}
-  gl.uniform1f(u.originX,origin);gl.uniform3f(u.cameraPos,p.eastM-origin,p.altitudeM,p.northM);gl.drawArrays(gl.TRIANGLES,0,borderCount);
-  gl.uniform1f(u.originX,0);gl.uniform3f(u.cameraPos,p.eastM,p.altitudeM,p.northM);
-  gl.bindVertexArray(vao);gl.drawArrays(gl.TRIANGLES,0,count);gl.bindVertexArray(null);
+  function drawStructures(){
+    gl.bindVertexArray(borderVAO);gl.uniform1f(u.originX,origin);
+    gl.uniform3f(u.cameraPos,p.eastM-origin,p.altitudeM,p.northM);gl.drawArrays(gl.TRIANGLES,0,borderCount);
+    gl.bindVertexArray(vao);gl.uniform1f(u.originX,0);
+    gl.uniform3f(u.cameraPos,p.eastM,p.altitudeM,p.northM);gl.drawArrays(gl.TRIANGLES,0,count);
+  }
+  if(overMeadow){
+    // Resolve only the nearest face against the Meadow already painted on this ray.
+    gl.colorMask(false,false,false,false);gl.uniform1i(u.apronDepthOnly,1);drawStructures();
+    gl.colorMask(true,true,true,true);gl.depthFunc(gl.EQUAL);gl.depthMask(false);
+    gl.enable(gl.BLEND);gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA);
+  }
+  gl.uniform1i(u.apronDepthOnly,0);drawStructures();
+  gl.disable(gl.BLEND);gl.depthMask(true);gl.depthFunc(gl.LESS);gl.bindVertexArray(null);
  }
  return {draw,resize:resizeCanvas,colliders:mesh.colliders,dispose(){gl.deleteBuffer(borderBuffer);gl.deleteVertexArray(borderVAO);gl.deleteBuffer(buffer);gl.deleteVertexArray(vao);gl.deleteProgram(surface.p);gl.deleteProgram(sky.p);}};
 }
