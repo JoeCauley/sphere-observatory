@@ -22,7 +22,10 @@ async function main(){
     assert.equal(reused.status,304);assert.equal(reused.body.length,0);
     assert.equal((await host.dispatch('/','GET',{'if-none-match':'"older"'})).status,200);
     const head=await host.dispatch('/','HEAD',{'if-none-match':'*'});assert.equal(head.status,304);assert.equal(head.body.length,0);
-    const catalog=result(await host.dispatch('/packs/biome-library.json'));assert.deepEqual(catalog.packs.map(p=>p.id).sort(),['border-transport','infinite-industry','infinite-meadow','sideways-city','super-jungle','violet-labyrinth']);assert.equal(catalog.packs.find(p=>p.id==='border-transport').version,'0.10.0');
+    const catalog=result(await host.dispatch('/packs/biome-library.json'));
+    const expectedPacks=['border-transport','infinite-industry','infinite-meadow','infinite-new-york','sideways-city','super-jungle','violet-labyrinth'];
+    assert.deepEqual(catalog.packs.map(p=>p.id).sort(),expectedPacks);
+    assert.equal(catalog.packs.find(p=>p.id==='border-transport').version,'0.10.0');
     for(const pack of catalog.packs){
       const dir=path.resolve(__dirname,'..',path.dirname(pack.entry)),file=path.join(dir,'manifest.json');
       if(!fs.existsSync(file))continue;
@@ -47,10 +50,12 @@ async function main(){
     const marked=await send('PATCH',{key,parameters:params,before:[],marks:[mark]});
     assert.equal(marked.status,200);
     const prior=result(marked).worlds[key].installed;
-    assert.equal((await patch(key,params,prior,[...prior,item('border-transport'),item('super-jungle'),item('violet-labyrinth')])).status,200);
+    const remaining=expectedPacks.filter(id=>!prior.some(p=>p.id===id)).map(item);
+    assert.equal((await patch(key,params,prior,[...prior,...remaining])).status,200);
     assert.equal((await send('PATCH',{key,parameters:params,before:[],marks:[]})).status,409);
     const snapshot=result(await send('GET'));assert.deepEqual(snapshot.worlds[key].marks,[mark]);
-    assert.equal(snapshot.worlds[key].installed.length,catalog.packs.length);assert.equal(snapshot.worlds[other].installed.length,1);
+    assert.deepEqual(snapshot.worlds[key].installed.map(p=>p.id).sort(),expectedPacks);
+    assert.equal(snapshot.worlds[other].installed.length,1);
     assert.deepEqual(JSON.parse(fs.readFileSync(storePath)),snapshot);
     const query='/api/border-stations?world='+key+'&a=r10c0&b=r11c0&bay=0';
     assert.equal(result(await host.dispatch(query)).locked,false);
