@@ -65,7 +65,7 @@ void main(){vec3 center=mapped(texture(source,vUV).rgb);if(edgeAA==0){fragColor=
    gl.linkProgram(this.resolve);if(!gl.getProgramParameter(this.resolve,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(this.resolve));
    this.resolveSource=gl.getUniformLocation(this.resolve,'source');this.resolveExposure=gl.getUniformLocation(this.resolve,'exposure');this.resolveEdge=gl.getUniformLocation(this.resolve,'edgeAA');
    const debug=gl.getExtension('WEBGL_debug_renderer_info');this.device=debug?gl.getParameter(debug.UNMASKED_RENDERER_WEBGL):gl.getParameter(gl.RENDERER);
-    this.preparedViews=new Set();this.geometry=null;this.environment=window.SphereInstancedEnvironment?new SphereInstancedEnvironment.InstancedEnvironmentPass(gl):null;this.grass=window.SphereGrass?new SphereGrass.GrassStreamManager():null;this.meadow=window.SphereMeadow?new SphereMeadow.EndlessMeadow():null;this.meadowGround=window.SphereMeadowCanopy?new SphereMeadowCanopy.GroundField(gl):null;this.finishes=new SphereSurfaceFinishes(gl);this.localShadows=new SphereLocalShadows(gl);this.weather=window.SphereAtmosphere?new SphereAtmosphere(gl):null;
+    this.preparedViews=new Set();this.geometry=null;this.environment=window.SphereInstancedEnvironment?new SphereInstancedEnvironment.InstancedEnvironmentPass(gl):null;this.grass=window.SphereGrass?new SphereGrass.GrassStreamManager():null;this.meadow=window.SphereMeadow?new SphereMeadow.EndlessMeadow():null;this.meadowGround=window.SphereMeadowCanopy?new SphereMeadowCanopy.GroundField(gl,this.texture):null;this.finishes=new SphereSurfaceFinishes(gl);this.localShadows=new SphereLocalShadows(gl);this.weather=window.SphereAtmosphere?new SphereAtmosphere(gl):null;
    }catch(error){try{this.dispose();}catch(cleanupError){error.cleanupError=cleanupError;error.renderer=this;}throw error;}
   }
   // Service/slot lifetimes stay outside saved scenes and worker state clones.
@@ -104,7 +104,7 @@ void main(){vec3 center=mapped(texture(source,vUV).rgb);if(edgeAA==0){fragColor=
      this.heroes.upload();this.heroes.bind(this.uniforms,exportFrame);
     }
    }
-   const atmKey=[n.join(','),s.time,s.radius,s.starRadius,s.collection,s.shadeEnabled,s.shadeAltitude,s.shadeDiameter,s.shadeOffset,s.shadeDamage,s.shadeSpeed,s.era,s.routeShades,s.starStation,s.cycleScale,s.shadeShape,s.shadeTrim,s.stationSamples,s.layoutVersion,s.axisLat,s.axisLon,s.waistWidth].join('|');
+   const atmKey=[n.join(','),s.time,s.radius,s.starRadius,s.collection,s.shadeEnabled,s.shadeAltitude,s.shadeDiameter,s.shadeOffset,s.shadeDamage,s.shadeSpeed,s.era,s.routeShades,s.starStation,s.cycleScale,s.shadeShape,s.shadeTrim,s.shadeFractureRevision,s.seed,s.stationSamples,s.layoutVersion,s.axisLat,s.axisLon,s.waistWidth].join('|');
    if(s.atmosphere>0&&s.radius-radius<160){if(this.atmosphereCache.key!==atmKey){this.atmosphereCache={key:atmKey,value:M.sunVisibility(M.mul(n,s.radius),s,s.stationSamples||64)};}f('uAtmosphereLight',this.atmosphereCache.value);}else f('uAtmosphereLight',1);
    const indirect=s.collection&&s.shineField?(exportFrame||!this.previewLight?SphereCollection.cavity(s):this.previewLight.sample(s)):[0,0,0];this.frameFill=s.shineField?indirect.map(v=>v*s.shellshine*4):[s.shellshine,s.shellshine,s.shellshine];
    gl.uniform2f(this.uniforms.uResolution,width,height);gl.uniform2f(this.uniforms.uRasterSize,rw,rh);i('uSilhouetteSamples',silhouettes?8:0);i('uAAPass',0);i('uAAMask',13);gl.uniform2f(this.uniforms.uAAOffset,0,0);v('uN',n);v('uForward',b.f);v('uRight',b.r);v('uUp',b.u);
@@ -115,14 +115,8 @@ void main(){vec3 center=mapped(texture(source,vUV).rgb);if(edgeAA==0){fragColor=
    v('uPlateRelative',M.mul(M.sub(plate.center,s.position),1/s.radius));v('uPlateWorld',M.mul(plate.center,1/s.radius));f('uPlateRadius',plate.radius/s.radius);f('uDamage',s.shadeDamage);i('uShade',+s.shadeEnabled);
    i('uGrid',+s.grid);i('uMode',s.viewMode==='geographyid'?6:s.viewMode==='surfaceLight'?5:s.viewMode==='coverageid'?4:s.viewMode==='lightid'?3:s.viewMode==='objectid'?2:s.viewMode==='distance'?1:0);i('uPanorama',s.projection==='panorama'?1:0);i('uStars',+s.starfield);i('uStarTex',0);
    if(window.SphereCollection)SphereCollection.upload(gl,this.uniforms,s,indirect);
+   window.SphereVioletForest?.bindFork?.(gl,this.uniforms,s,n);
    if(window.SphereWorld)SphereWorld.upload(gl,this.uniforms,s);this.meadowGround?.bind(this.uniforms,s);this.renderInfo.meadowGround=this.meadowGround?.info;
-   // The inactive sampler still belongs to the complete linked Main program.
-   // Reuse Main's existing complete 2D texture; no additional image allocation.
-   const descriptorActive=gl.getParameter(gl.ACTIVE_TEXTURE);gl.activeTexture(gl.TEXTURE15);
-   if(!gl.getParameter(gl.TEXTURE_BINDING_2D)){
-    const revision=this.uniforms.uMeadowMaterialRevision==null?0:gl.getUniform(this.program,this.uniforms.uMeadowMaterialRevision);
-    if(revision!==0)throw Error('The active Meadow descriptor texture is unavailable.');gl.bindTexture(gl.TEXTURE_2D,this.texture);
-   }gl.activeTexture(descriptorActive);
    if(this.worldTextures){this.worldTextures.upload();this.worldTextures.bind(this.uniforms);}
    if(this.woundTextures){this.woundTextures.upload();this.woundTextures.bind(this.uniforms,exportFrame);}
   }
@@ -141,6 +135,7 @@ void main(){vec3 center=mapped(texture(source,vUV).rgb);if(edgeAA==0){fragColor=
   }
   draw(s,width,height,{exportFrame=false,adaptiveScale=1,facePass=false}={}){
    if(this.disposalStarted)throw Error('The renderer is being disposed.');
+   if(this.gl.isContextLost())throw Error('The graphics context was interrupted. Reload the page to restore the view.');
    if(this.uniformFrameLock||this.biomeLocal?.holdsMainFrame?.())return this.renderInfo;
    if(this.biomeLocal?.isActive()){
     const layout=this.frameLayout(s,width,height,{exportFrame,adaptiveScale,facePass});
@@ -214,7 +209,7 @@ void main(){vec3 center=mapped(texture(source,vUV).rgb);if(edgeAA==0){fragColor=
     if(this.environment&&s.instancedEnvironment?.enabled!==false&&meadowResidentPopulation){this.environment.draw(s,meadowResidentPopulation,rw,rh,{linear,exportFrame,measureGpu:false,renderer:this});if(meadowResidentPopulation.coordinateSpace==='resident-chart')this.meadow.commitResident(this.environment.diagnostics.committedTargetSignature);const meadowInfo=meadowResidentPopulation.service?.info;this.renderInfo.meadow=meadowInfo?{...meadowInfo,fixedBlades:meadowInfo.retainedDetailedRecords,fixedBytes:meadowInfo.retainedBackingBytes,fixedCells:meadowResidentPopulation.service.allocations.size,queue:meadowInfo.queue+meadowInfo.workers,diagnostic:meadowConfig.diagnostic||null}:{...this.meadow.info,diagnostic:meadowConfig.diagnostic||null};this.renderInfo.instancedEnvironment={...this.environment.diagnostics};if(environmentFrameDiagnostics){for(const field of ['drawCalls','instances','triangles','frameUploadedBytes','frameInstanceUploadBytes','framePrototypeUploadBytes','frameReferenceUploadBytes'])this.renderInfo.instancedEnvironment[field]=(this.renderInfo.instancedEnvironment[field]||0)+(environmentFrameDiagnostics[field]||0);}}
     }
    this.renderInfo.borderEnvironment=null;
-   this.renderInfo.walkingStation=!facePass?window.SphereStageFrame?.drawWalkingStation?.(stationState,rw,rh,linear,this.renderInfo):null;
+   this.renderInfo.walkingStation=!facePass?window.SphereStageFrame?.drawWalkingStation?.(stationState,rw,rh,linear,this.renderInfo,linear?this.lightBuffer:smooth?this.aaBuffer:null):null;
    gl.disable(gl.DEPTH_TEST);
    if(linear){const image=this.weather?this.weather.draw(s,this,rw,rh):this.lightTexture;gl.bindFramebuffer(gl.FRAMEBUFFER,null);gl.viewport(0,0,width,height);gl.useProgram(this.resolve);gl.activeTexture(gl.TEXTURE1);gl.bindTexture(gl.TEXTURE_2D,image);gl.uniform1i(this.resolveSource,1);gl.uniform1f(this.resolveExposure,s.exposure);gl.uniform1i(this.resolveEdge,s.antialias===3?1:0);gl.drawArrays(gl.TRIANGLES,0,3);gl.activeTexture(gl.TEXTURE0);}
    else if(smooth){gl.bindFramebuffer(gl.READ_FRAMEBUFFER,this.aaBuffer);gl.bindFramebuffer(gl.DRAW_FRAMEBUFFER,null);gl.blitFramebuffer(0,0,rw,rh,0,0,width,height,gl.COLOR_BUFFER_BIT,gl.LINEAR);gl.bindFramebuffer(gl.FRAMEBUFFER,null);}
@@ -228,18 +223,19 @@ void main(){vec3 center=mapped(texture(source,vUV).rgb);if(edgeAA==0){fragColor=
    if(this.heroes)this.renderInfo.heroTextures={ready:this.heroes.status.filter(x=>x==='ready').length,total:10,gpuMiB:this.heroes.allocated?79.96:0,tileKm:SphereBiomes.heroScale};
    if(this.woundTextures)this.renderInfo.woundTextures=this.woundTextures.info;
     this.renderInfo.assets=SphereAssets.status(this,assetPlan);this.preparedViews.add(SphereAssets.pipelineKey(s,assetPlan));
+    this.presentedDetailRevision=this.detailRevision;
    if(this.biomes)this.renderInfo.textures={ready:this.biomes.status.filter(x=>x==='ready').length,total:10,gpuMiB:this.biomes.allocated?40:0,scalesKm:SphereBiomes.scales};
   }finally{
    if(timerQuery){try{gl.endQuery(this.timer.TIME_ELAPSED_EXT);}catch{}gl.deleteQuery(timerQuery);timerQuery=null;}
   }
   }
   pollTimers(){const gl=this.gl;this.environment?.poll();this.gpuTimerSamples=[];if(!this.timer)return;const disjoint=gl.getParameter(this.timer.GPU_DISJOINT_EXT);this.gpuTimerDisjoint=disjoint;
-   while(this.queries.length){const q=this.queries[0];if(!disjoint&&!gl.getQueryParameter(q,gl.QUERY_RESULT_AVAILABLE))break;this.queries.shift();const sample={frameId:this.timerFrameIds?.get(q)??null,valid:!disjoint,ms:disjoint?null:gl.getQueryParameter(q,gl.QUERY_RESULT)/1e6};this.gpuTimerSamples.push(sample);if(sample.valid)this.gpuMs=sample.ms;gl.deleteQuery(q);}
+   while(this.queries.length){const q=this.queries[0];if(!disjoint&&!gl.getQueryParameter(q,gl.QUERY_RESULT_AVAILABLE))break;this.queries.shift();const sample={frameId:this.timerFrameIds?.get(q)??null,valid:!disjoint,ms:disjoint?null:gl.getQueryParameter(q,gl.QUERY_RESULT)/1e6};this.gpuTimerSamples.push(sample);if(sample.valid){this.gpuMs=sample.ms;this.lastGpuFrame=sample.frameId;}gl.deleteQuery(q);}
    if(disjoint)this.gpuMs=null;
   }
   dispose(){
    if(this.disposalComplete)return;
-   this.disposalStarted=true;for(const controller of this.prepareControllers||[])controller.abort();const gl=this.gl;this.disposedChildren??=new WeakSet();
+   this.disposalStarted=true;window.SphereStageFrame?.releaseRendererSurvey?.(this);for(const controller of this.prepareControllers||[])controller.abort();const gl=this.gl;this.disposedChildren??=new WeakSet();
    const child=value=>{if(value?.dispose&&!this.disposedChildren.has(value)){value.dispose();this.disposedChildren.add(value);}};
    if(this.biomeLocal?.isActive())this.biomeLocal.deactivate();child(this.biomeLocal);if(this.biomeLocal)window.SphereMainSurfaceSlot?.clear(this.biomeLocal);
    child(this.biomeOverview);child(this.vegetationPopulation?.lifecycle);for(const name of ['previewLight','biomes','heroes','worldTextures','woundTextures','finishes','localShadows','geometry','environment','meadowGround','grass','meadow'])child(this[name]);child(window.SphereEdgeStreaming);child(window.SphereGround);child(this.weather);child(this.panorama);
@@ -264,10 +260,17 @@ void main(){vec3 center=mapped(texture(source,vUV).rgb);if(edgeAA==0){fragColor=
    }
    return this.geometryPreparation;
   }
-  async prepare(s,{aspect=this.canvas.clientWidth/Math.max(1,this.canvas.clientHeight)||16/9,onProgress,signal}={}){
+  get preparingView(){return !!this.prepareControllers?.size;}
+  async prepare(s,{aspect=this.canvas.clientWidth/Math.max(1,this.canvas.clientHeight)||16/9,onProgress,signal,preview=false}={}){
    if(this.disposalStarted)throw Error('The renderer is being disposed.');
    if(this.uniformFrameLock)throw Error('The current Main material frame is held for verification.');
-   const controller=new AbortController();this.prepareControllers??=new Set();this.prepareControllers.add(controller);signal=signal?AbortSignal.any([signal,controller.signal]):controller.signal;
+   // The connected-ground worker has one destination. A doorway view must yield
+   // it before a player visit can request a different set of terrain tiles.
+   if(!preview)this.previewPreparation?.abort();
+   const controller=new AbortController();
+   if(preview)this.previewPreparation=controller;
+   this.prepareControllers??=new Set();this.prepareControllers.add(controller);
+   signal=signal?AbortSignal.any([signal,controller.signal]):controller.signal;
    const check=()=>{if(this.disposalStarted||signal.aborted)throw new DOMException('View changed','AbortError');};
    try{
    check();
@@ -297,9 +300,16 @@ void main(){vec3 center=mapped(texture(source,vUV).rgb);if(edgeAA==0){fragColor=
    const failure=results.find(r=>r.status==='rejected');if(failure){failure.reason.artwork=true;throw failure.reason;}
    check();
    if(plan.finishes)this.finishes.prepare();check();return plan;
-   }finally{this.prepareControllers.delete(controller);}
+   }finally{
+    this.prepareControllers.delete(controller);
+    if(this.previewPreparation===controller)this.previewPreparation=null;
+   }
   }
-  get needsFrame(){return !!(window.SphereEdgeStreaming?.needsFrame||this.meadowGround?.pending||this.meadowGround?.worker||this.grass?.info.queue||this.meadow?.info.queue||this.environment?.needsFrame||this.biomes&&(this.biomes.fading||this.biomes.pending.length||this.heroes?.fading||this.heroes?.pending.length)||this.woundTextures?.fading||this.woundTextures?.pending.length);}
+  // A worker may finish its last cell between two frames. An empty queue
+  // still needs one presentation if the completed contents changed.
+  get detailRevision(){return [window.SphereGround?.revision??0,window.SphereEdgeStreaming?.revision??0,
+   this.grass?.uploaded??0,this.meadow?.grass?.uploaded??0,this.meadow?.fixedGrass?.uploaded??0].join('/');}
+  get needsFrame(){return !!(this.presentedDetailRevision!==this.detailRevision||window.SphereEdgeStreaming?.needsFrame||this.meadowGround?.pending||this.meadowGround?.worker||this.grass?.queue.length||this.meadow?.info.queue||this.environment?.needsFrame||this.biomes&&(this.biomes.fading||this.biomes.pending.length||this.heroes?.fading||this.heroes?.pending.length)||this.woundTextures?.fading||this.woundTextures?.pending.length);}
   error(){return this.gl.getError();}
  }
  window.SphereRenderer=Renderer;

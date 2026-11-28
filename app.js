@@ -5,6 +5,23 @@
  const snapshot=()=>W.snapshot(state,displayedPhase());
  let lastPreviewDraw=-Infinity,previewFps=60,frameCount=0,fpsStart=performance.now(),measuredFps=0;
  let state=M.defaultState(),renderer,dirty=true,capturing=!!$('sceneLoading'),last=performance.now(),hudTime=0,renderCost=0,toastTimer,keys=new Set(),drag=null,verticalFlight=null;
+ let viewRevision=0;
+ function requestDraw(){dirty=true;viewRevision++;}
+ const speedKey='sphere-flight-speed-v1';
+ let speedChoice=null;
+ try{
+  const saved=JSON.parse(localStorage.getItem(speedKey));
+  if(typeof saved?.autoSpeed==='boolean' && Number.isFinite(saved.speed) && saved.speed>=.001 && saved.speed<=3e7)
+   speedChoice={autoSpeed:saved.autoSpeed,speed:saved.speed};
+ }catch{}
+ function preferredSpeed(next){return Object.assign(next,speedChoice);}
+ function chooseFlightSpeed(autoSpeed,speed=state.speed){
+  if(!Number.isFinite(speed)||speed<.001||speed>3e7)return;
+  speedChoice={autoSpeed,speed};preferredSpeed(state);
+  try{localStorage.setItem(speedKey,JSON.stringify(speedChoice));}catch{}
+  SphereTravel.reset();sync();
+ }
+ preferredSpeed(state);
  const viewport=$('viewport'),canvas=$('view'),previewQuality=new SpherePreviewQuality();
  let travelHold=false,localInspection=null;
  const localLocked=()=>!!localInspection?.isActive();
@@ -21,18 +38,36 @@
  const transforms={radius:1e6,breachDiameter:1e6};
  const fields=['radius','starRadius','luminosity','breachEnabled','breachDiameter','breachLat','breachLon','breachRoughness','surfaceStyle','shadeEnabled','shadeAltitude','shadeDiameter','shadeOffset','shadeDamage','shadeSpeed','shellshine','atmosphere','seed','starfield','fov','speed','projection','viewMode','grid','exposure','timeRate','quality'];
  function updateOutput(){$('starScale').textContent=new Intl.NumberFormat('en-US',{maximumFractionDigits:1}).format(state.starRadius)+' km radius = '+new Intl.NumberFormat('en-US',{maximumFractionDigits:1}).format(state.starRadius*2)+' km across';for(const k of ['fov','exposure','shellshine','atmosphere','shadeOffset','shadeDamage','breachRoughness']){const el=$(k+'Value');if(!el)continue;el.textContent=k==='fov'?state.fov+'°':k==='exposure'?state.exposure.toFixed(1)+' stops':k==='shadeOffset'?state.shadeOffset.toFixed(2)+' radii':Math.round(state[k]*100)+'%';}}
- function syncCameraFields(){const ll=M.latlon(state.position);$('cameraLat').value=ll[0].toFixed(5);$('cameraLon').value=ll[1].toFixed(5);$('cameraAltitude').value=(state.radius-M.length(state.position)).toFixed(3);$('cameraAltitude').max=state.layoutVersion===2?state.radius:state.radius-state.starRadius*1.02;}
+ const addressFields=['cameraLat','cameraLon','cameraAltitude'];
+ let addressDraft=false,lastAddress='';
+ function resumeAddress(){addressDraft=false;lastAddress='';syncCameraFields();}
+ for(const id of addressFields)$(id).addEventListener('input',()=>{addressDraft=true;});
+ const atlasCoordinates=s=>s.layoutVersion===2 && s.collection && !!window.SphereWorld;
+ function syncCameraFields(){
+  if(addressDraft)return;
+  const local=window.SphereStageFrame?.livePosition(state),p=local??state.position;
+  const atlas=atlasCoordinates(state)?SphereWorld.coordinates(M.norm(p),state):null;
+  const ll=atlas?[M.degrees(atlas.lat),M.degrees(atlas.lon)]:M.latlon(p);
+  const values=[ll[0].toFixed(atlas?12:7),ll[1].toFixed(atlas?12:7),(state.radius-M.length(p)).toFixed(atlas?6:3)];
+  const key=values.join('/')+'/'+state.radius;
+  if(key===lastAddress)return;lastAddress=key;
+  addressFields.forEach((id,i)=>{$(id).value=values[i];});
+  if(atlas)$('cameraAltitude').removeAttribute('min');
+  else $('cameraAltitude').min=state.layoutVersion===2?.001:1;
+  $('cameraAltitude').max=state.layoutVersion===2?state.radius:state.radius-state.starRadius*1.02;
+ }
  function sync(){for(const k of fields){const el=$(k);if(el.type==='checkbox')el.checked=state[k];else {const value=String(state[k]/(transforms[k]||1));if(el.tagName==='SELECT'){const str=typeof state[k]==='string'?state[k]:value;if(![...el.options].some(o=>o.value===str)){const op=document.createElement('option');op.value=str;op.textContent=str+' · custom';el.append(op);}el.value=str;}else el.value=value;}}
-  syncCameraFields();updateOutput();$('timeSlider').value=M.clamp(state.time,state.collection?-259200:-36000,state.collection?259200:36000);$('play').textContent=state.playing?'Ⅱ':'▶';$('stateIndicator').textContent=state.playing?'RUNNING':'PAUSED';$('wholeArea').textContent=(state.radius/M.AU).toFixed(3)+' AU radius';document.querySelector('.panel-foot span').textContent=(Math.pow(state.radius/6371,2)/1e6).toFixed(1)+' million Earth surfaces';dirty=true;hudTime=0;window.dispatchEvent(new Event('sphere-state-synced'));
+  syncCameraFields();updateOutput();$('timeSlider').value=M.clamp(state.time,state.collection?-259200:-36000,state.collection?259200:36000);$('play').textContent=state.playing?'Ⅱ':'▶';$('stateIndicator').textContent=state.playing?'RUNNING':'PAUSED';$('wholeArea').textContent=(state.radius/M.AU).toFixed(3)+' AU radius';document.querySelector('.panel-foot span').textContent=(Math.pow(state.radius/6371,2)/1e6).toFixed(1)+' million Earth surfaces';requestDraw();hudTime=0;window.dispatchEvent(new Event('sphere-state-synced'));
  }
  window.addEventListener('sphere-control-tab',e=>{if(e.detail==='camera')syncCameraFields();});
  for(const k of fields){const el=$(k);el.addEventListener(el.type==='range'?'input':'change',()=>{
   if(localLocked()){localNotice();sync();return;}const before=structuredClone(state);let value=el.type==='checkbox'?el.checked:el.tagName==='SELECT'&&['projection','viewMode','surfaceStyle'].includes(k)?el.value:Number(el.value)*(transforms[k]||1);
-  if(k==='timeRate')W.rate(state,value);else state[k]=value;if(k==='speed')state.autoSpeed=false;
+  if(k==='speed'){chooseFlightSpeed(false,value);return;}
+  if(k==='timeRate')W.rate(state,value);else state[k]=value;
   if(k==='radius')state.position=M.mul(before.position,value/before.radius);
   try {const wasPlaying=state.playing;state=M.validate(state);state.playing=wasPlaying;if(displayedWind)displayedWind.meadow=state.meadow;}
   catch(e){state=before;sync();toast(e.message);return;}
-  updateOutput();dirty=true;window.dispatchEvent(new Event('sphere-world-changed'));if(k==='radius'||k==='speed')sync();if(k==='projection')toast(value==='panorama'?'360° panorama: poles stretch in this flat projection.':'Photographic perspective restored.');
+  updateOutput();requestDraw();window.dispatchEvent(new Event('sphere-world-changed'));if(k==='radius'||k==='speed')sync();if(k==='projection')toast(value==='panorama'?'360° panorama: poles stretch in this flat projection.':'Photographic perspective restored.');
  });}
  document.querySelectorAll('summary .toggle').forEach(el=>el.addEventListener('click',e=>e.stopPropagation()));
  function setLook(f,up=[0,1,0]){if(localLocked()){localNotice();return;}const b=M.basis(f,up);state.forward=b.f;state.up=b.u;dirty=true;}
@@ -53,17 +88,28 @@
  $('levelCamera').onclick=()=>{if(capturing)return;const up=SphereInspection.surface(state).up;if(Math.abs(M.dot(up,state.forward))>.999){toast('Looking almost straight up or down: use Roll to choose an orientation.');return;}setLook(state.forward,up);moved();};
  $('faceSurface').onclick=()=>{setLook(M.norm(state.position));moved();};$('faceStar').onclick=()=>{setLook(M.mul(M.norm(state.position),-1));moved();};
  $('inspectBelow').onclick=()=>{setLook(M.norm(state.position));moved();toast('Looking toward the nearby surface. Detail follows the distance to what you see.');};
- $('moveCamera').onclick=()=>{const lat=Number($('cameraLat').value),lon=Number($('cameraLon').value),alt=Number($('cameraAltitude').value);if(![lat,lon,alt].every(Number.isFinite)||Math.abs(lat)>90||Math.abs(lon)>180||alt<.001||alt>state.radius){toast('Choose valid latitude, longitude and altitude inside the shell.');return;}SphereJourney.travel.request({type:'place',title:'Exact shell address',resolve:input=>({...input,position:M.mul(M.axis(lat,lon),input.radius-alt),walkMode:false,walkSurface:false,walkPosition:null,siteId:'',siteAnchor:null,shadeAttachment:null})});};
+ $('moveCamera').onclick=async()=>{
+  const [lat,lon,alt]=addressFields.map(id=>$(id).valueAsNumber);
+  if(![lat,lon,alt].every(Number.isFinite)||Math.abs(lat)>90||Math.abs(lon)>180||(!atlasCoordinates(state)&&alt<.001)||alt>state.radius){toast('Choose a valid latitude, longitude and shell-relative altitude.');return;}
+  const target=s=>M.mul(atlasCoordinates(s)?SphereWorld.direction(M.radians(lat),M.radians(lon),s):M.axis(lat,lon),s.radius-alt);
+  if(atlasCoordinates(state)&&alt<.0017&&!window.SphereStageFrame?.supportsLowAddress({...state,position:target(state)})){
+   toast('That altitude is below the accessible surface at these coordinates.');return;
+  }
+  if(window.SphereStageFrame?.showMain()===false)return;
+  addressDraft=false;lastAddress='';
+  await SphereJourney.travel.request({type:'place',title:'Exact shell address',resolve:input=>({...input,position:target(input),walkMode:false,walkSurface:false,walkPosition:null,siteId:'',siteAnchor:null,shadeAttachment:null})});
+  if(M.length(M.sub(state.position,target(state)))<.0001)await window.SphereStageFrame?.enterAtAddress(state);
+ };
  function setPlaying(value){if(value&&localLocked()){localNotice();return;}W.playback(state,value,displayedPhase());sync();}
  $('play').onclick=()=>setPlaying(!state.playing);$('resetTime').onclick=()=>{if(localLocked()){localNotice();return;}SphereInspection.setTime(state,0);W.scrub(state);displayedWind=null;sync();};
  $('timeSlider').oninput=e=>{if(localLocked()){localNotice();sync();return;}SphereInspection.setTime(state,Number(e.target.value));W.scrub(state);displayedWind=null;sync();};
  $('togglePanel').onclick=()=>{document.body.classList.toggle('panel-hidden');dirty=true;};
- $('fullscreen').onclick=async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else await viewport.requestFullscreen();}catch{toast('This browser did not allow full-screen mode.');}dirty=true;};
+
  $('helpButton').addEventListener('click',clearFlightKeys);
  viewport.addEventListener('pointerdown',e=>{if(e.target!==canvas)return;viewport.focus({preventScroll:true});drag={x:e.clientX,y:e.clientY,id:e.pointerId};canvas.setPointerCapture(e.pointerId);});
  canvas.addEventListener('pointermove',e=>{if(!drag)return;const dx=e.clientX-drag.x,dy=e.clientY-drag.y;drag.x=e.clientX;drag.y=e.clientY;if(dx||dy)navigationIntent();if(travelHold||localLocked()){if(localLocked())localNotice();return;}const b=M.basis(state.forward,state.up),yaw=-dx*.003,pitch=-dy*.003;let f=M.rotate(b.f,b.u,yaw),r=M.norm(M.cross(f,b.u));f=M.rotate(f,r,pitch);state.up=M.norm(M.rotate(b.u,r,pitch));state.forward=M.norm(f);moved();dirty=true;});
  canvas.addEventListener('pointerup',()=>drag=null);canvas.addEventListener('lostpointercapture',()=>drag=null);
- viewport.addEventListener('wheel',e=>{if(e.target!==canvas)return;e.preventDefault();state.autoSpeed=false;state.speed=M.clamp(state.speed*Math.exp(-e.deltaY*.0015),state.layoutVersion===2?.001:1,3e7);sync();},{passive:false});
+ viewport.addEventListener('wheel',e=>{if(e.target!==canvas)return;e.preventDefault();chooseFlightSpeed(false,M.clamp(state.speed*Math.exp(-e.deltaY*.0015), .001,3e7));},{passive:false});
  function keyboardLook(dt){
   const yaw=(Number(keys.has('KeyZ')||keys.has('ArrowLeft'))-Number(keys.has('KeyX')||keys.has('ArrowRight')))*dt*Math.PI/4;
   const pitch=(Number(keys.has('ArrowUp'))-Number(keys.has('ArrowDown')))*dt;
@@ -93,7 +139,7 @@
  });
  window.addEventListener('keyup',e=>{keys.delete(e.code);if(!keys.has('KeyE')&&!keys.has('KeyQ'))verticalFlight=null;});window.addEventListener('blur',()=>{clearFlightKeys();drag=null;});document.addEventListener('visibilitychange',()=>{clearFlightKeys();last=performance.now();dirty=true;});
  new ResizeObserver(()=>dirty=true).observe(viewport);
- window.addEventListener('sphere-light-ready',()=>dirty=true);window.addEventListener('sphere-texture-ready',()=>dirty=true);window.addEventListener('pagehide',()=>renderer.dispose());
+ window.addEventListener('sphere-light-ready',requestDraw);window.addEventListener('sphere-texture-ready',requestDraw);window.addEventListener('pagehide',()=>renderer.dispose());
  let bookmarks=[];try{const stored=JSON.parse(localStorage.getItem('sphere-bookmarks-v1')||'[]');if(Array.isArray(stored))bookmarks=stored.filter(x=>typeof x.name==='string'&&x.state).slice(0,50);}catch{}
  function storeBookmarks(){try{localStorage.setItem('sphere-bookmarks-v1',JSON.stringify(bookmarks));}catch{toast('Browser storage is unavailable. Export a scene file to keep this view.');}}
  function showBookmarks(){const box=$('bookmarks');box.replaceChildren();for(let i=0;i<bookmarks.length;i++){const row=document.createElement('div');row.className='bookmark-row';const go=document.createElement('button');go.className='secondary';go.textContent=bookmarks[i].name;go.onclick=()=>SphereJourney.visit(bookmarks[i].state,bookmarks[i].name);const del=document.createElement('button');del.className='quiet';del.textContent='×';del.setAttribute('aria-label','Delete '+bookmarks[i].name);del.onclick=()=>{bookmarks.splice(i,1);storeBookmarks();showBookmarks();};row.append(go,del);box.append(row);}}
@@ -115,35 +161,65 @@
  }
  $('capture').onclick=capture;
  function hud(){const fpsNow=performance.now();if(fpsNow-fpsStart>=1000){measuredFps=frameCount*1000/(fpsNow-fpsStart);frameCount=0;fpsStart=fpsNow;}const starAngle=2*M.degrees(Math.asin(M.clamp(state.starRadius/M.length(state.position),0,1))),target=window.SphereSites?SphereSites.trace(state.position,state.forward,state,M.trace):M.trace(state.position,state.forward,state);const attached=SphereInspection.plate(state),ground=SphereInspection.surface(state);$('altitudeReadout').textContent=distance(attached?ground.altitude:SphereLanding.heightAboveGround(state));$('altitudeReadout').previousElementSibling.textContent=attached?'ALTITUDE · SHADE '+attached.id:'ALTITUDE';$('altitudeReadout').title=attached?'Distance above the inspected Shade; '+distance(state.radius-M.length(state.position))+' above the shell':'';$('starReadout').textContent=starAngle.toFixed(4)+'°';$('sunReadout').textContent=Math.round(M.sunVisibility(state.position,state,256)*100)+'%';$('speedReadout').textContent=state.walkMode?(keys.has('ShiftLeft')||keys.has('ShiftRight')?'6 m/s · run':'2.8 m/s · walk'):distance(state.autoSpeed===false?state.speed:(SphereTravel.estimate(state,state.forward)))+'/s'+(state.autoSpeed===false?'':' · auto');$('targetName').textContent=target.kind;$('targetDistance').textContent=distance(target.distance);$('timeReadout').textContent=timeLabel(state.time);window.dispatchEvent(new Event('sphere-telemetry'));if(document.activeElement!==$('timeSlider'))$('timeSlider').value=M.clamp(state.time,state.collection?-259200:-36000,state.collection?259200:36000);$('performance').textContent=canvas.width+' × '+canvas.height+' · '+(state.playing||keys.size?'LIVE':'IDLE')+(state.playing||keys.size?' '+Math.round(measuredFps)+' fps':'')+' · CPU '+(renderer.cpuMs||0).toFixed(1)+' ms'+(renderer.gpuMs!==null?' · GPU '+renderer.gpuMs.toFixed(1)+' ms':'')+(previewQuality.scale<1&&(state.playing||keys.size)?' · adaptive '+Math.round(previewQuality.scale*100)+'%':'');$('performance').title=renderer.device;}
+ function previewViewport(rect,now,live){
+  const fieldSize=window.SphereFieldCamera?.size(rect);
+  if(fieldSize)return fieldSize;
+  const requested=Math.min(devicePixelRatio||1,1.5)*state.quality;
+  const adaptiveScale=$('adaptivePreview')?.checked!==false && live ? previewQuality.update(renderer.gpuMs,1000/previewFps,now,renderer.lastGpuFrame) : 1;
+  const scale=Math.min(requested*adaptiveScale,Math.sqrt(3840*2160/Math.max(1,rect.width*rect.height)));
+  return {width:Math.max(1,Math.floor(rect.width*scale)),height:Math.max(1,Math.floor(rect.height*scale)),adaptiveScale};
+ }
  function frame(now){requestAnimationFrame(frame);const elapsed=(now-last)/1000,dt=Math.min(.05,elapsed);last=now;if(document.hidden||capturing||travelHold)return;
   if(window.spherePreviewSuspended){window.SphereStageFrame?.regionalFrame?.(now,false,state);return;}
+  const mainOwnsGround=!window.sphereStageCovered && !window.SphereStageFrame?.surfaceGroundHeld;
   const oldPosition=state.position.slice();
   integratingMovement=true;
   SphereTiming.advance(state,elapsed,dt=>{if(state.playing)dirty=true;
+  // The foreground pack owns motion and terrain requests. The shared clock
+  // keeps ticking while Main's last grounded camera is parked behind it.
+  if(!mainOwnsGround)return;
   if(window.SphereEnhancements?.measuring){}
   else if(SphereTravel.stepTakeoff(state,dt)){dirty=true;}
   else if(state.walkMode){keyboardLook(dt);if(SphereSites.step(state,keys,dt)){dirty=true;moved();}}
   else if(keys.size){const b=M.basis(state.forward,state.up),vertical=verticalFlight||SphereInspection.surface(state).up;let move=[0,0,0];for(const [key,vec] of [['KeyW',b.f],['KeyS',M.mul(b.f,-1)],['KeyD',b.r],['KeyA',M.mul(b.r,-1)],['KeyE',vertical],['KeyQ',M.mul(vertical,-1)]])if(keys.has(key))move=M.add(move,vec);
    keyboardLook(dt);
-   if(M.length(move)>0){const dir=M.norm(move);const base=1000*SphereTravel.speed(state,dir,dt,keys.has('ShiftLeft')||keys.has('ShiftRight'));let step=(window.SphereStageFrame?.movementSpeed?.(base,dt)??base)*dt*.001;if(state.layoutVersion!==2){const star=M.sphereDistance(state.position,dir,[0,0,0],state.starRadius*1.02);if(star<step)step=Math.max(0,star-1);}const travel=window.SphereLanding?SphereLanding.move(state,dir,step):window.SphereFlight?SphereFlight.move(state,dir,step):{position:M.add(state.position,M.mul(dir,step))};let p=travel.position;const r=M.length(p);const limit=state.layoutVersion===2?state.radius*1.999:state.radius-1;if(r>=limit)p=M.mul(M.norm(p),limit);if(state.layoutVersion!==2&&r<=state.starRadius*1.02)p=M.mul(M.norm(p),state.starRadius*1.02);const crossed=state.radius-M.length(state.position)>1000&&state.radius-r<=1000;state.position=p;if(crossed&&state.autoSpeed===false)autoLevelIfNearSurface();moved();if(travel.landed){sync();$('viewTitle').textContent='Arriving on foot';toast('Landing here. Drag to look; W A S D to walk, Shift to run, Space to jump.');}dirty=true;}
+   if(M.length(move)>0){const dir=M.norm(move);const base=1000*SphereTravel.speed(state,dir,dt,keys.has('ShiftLeft')||keys.has('ShiftRight'));let step=(window.SphereStageFrame?.movementSpeed?.(base,dt,state.walkMode?null:{boost:keys.has('ShiftLeft')||keys.has('ShiftRight')})??base)*dt*.001;if(state.layoutVersion!==2){const star=M.sphereDistance(state.position,dir,[0,0,0],state.starRadius*1.02);if(star<step)step=Math.max(0,star-1);}const travel=window.SphereLanding?SphereLanding.move(state,dir,step):window.SphereFlight?SphereFlight.move(state,dir,step):{position:M.add(state.position,M.mul(dir,step))};let p=travel.position;const r=M.length(p);const limit=state.layoutVersion===2?state.radius*1.999:state.radius-1;if(r>=limit)p=M.mul(M.norm(p),limit);if(state.layoutVersion!==2&&r<=state.starRadius*1.02)p=M.mul(M.norm(p),state.starRadius*1.02);const crossed=state.radius-M.length(state.position)>1000&&state.radius-r<=1000;state.position=p;if(crossed&&state.autoSpeed===false)autoLevelIfNearSurface();moved();if(travel.landed){sync();$('viewTitle').textContent='Arriving on foot';toast('Landing here. Drag to look; W A S D to walk, Shift to run, Space to jump.');}dirty=true;}
   }
   if(!localLocked()&&!window.SphereEnhancements?.measuring&&(state.autoSpeed===false?SphereInspection.level(state):SphereTravel.level(state,dt)))dirty=true;
   });
-  integratingMovement=false;if(poseChanged){poseChanged=false;moved();if(!window.sphereStageCovered&&oldPosition.some((x,i)=>x!==state.position[i]))window.SphereStageFrame?.manualMovement?.(state,oldPosition);}
+ integratingMovement=false;
+ const translated=poseChanged&&Math.hypot(...oldPosition.map((v,i)=>v-state.position[i]))>1e-7;
+ if(poseChanged){poseChanged=false;moved();}
+ if(mainOwnsGround){
+  if(translated)window.SphereStageFrame?.manualMovement?.(state,oldPosition);
+  else window.SphereStageFrame?.settleApproach?.(state);
+ }
   if(window.SphereStageFrame?.regionalFrame?.(now,false,state)){
-    if(!window.sphereStageCovered&&now-hudTime>250){hudTime=now;hud();}
+    if(mainOwnsGround&&now-hudTime>250){hudTime=now;hud();}
     return;
   }
-  if(!window.sphereStageCovered&&(dirty||renderer.needsFrame)&&window.SphereLoading?.needs(state)){SphereLoading.ensureCurrent();return;}
-  if((dirty||renderer.needsFrame)&&!window.sphereStageCovered&&(now-lastPreviewDraw>=1000/previewFps-.8)){const rect=viewport.getBoundingClientRect(),requested=Math.min(devicePixelRatio||1,1.5)*state.quality,live=state.playing||keys.size||drag,adaptive=$('adaptivePreview')?.checked!==false&&live?previewQuality.update(renderer.gpuMs,1000/previewFps,now):1,scale=Math.min(requested*adaptive,Math.sqrt(3840*2160/Math.max(1,rect.width*rect.height)));const w=Math.max(1,Math.floor(rect.width*scale)),h=Math.max(1,Math.floor(rect.height*scale));const start=performance.now();renderer.draw(state,w,h,{adaptiveScale:adaptive});if(W.active(state))displayedWind={meadow:state.meadow,phase:W.phase(state)};frameCount++;lastPreviewDraw=SphereTiming.previewStamp(lastPreviewDraw,now,previewFps);renderCost=performance.now()-start;dirty=false;}
-  if(now-hudTime>250){hudTime=now;hud();}
+  if(mainOwnsGround&&(dirty||renderer.needsFrame)&&window.SphereLoading?.needs(state)){SphereLoading.ensureCurrent();return;}
+  if((dirty||renderer.needsFrame)&&mainOwnsGround&&(now-lastPreviewDraw>=1000/previewFps-.8)){
+   const {width,height,adaptiveScale}=previewViewport(viewport.getBoundingClientRect(),now,state.playing||keys.size||drag);
+   const start=performance.now();renderer.draw(state,width,height,{adaptiveScale});
+   window.SphereFieldCamera?.submit(canvas);
+   window.SphereCameraLocator?.present(viewport,state);
+   if(W.active(state))displayedWind={meadow:state.meadow,phase:W.phase(state)};
+   frameCount++;lastPreviewDraw=SphereTiming.previewStamp(lastPreviewDraw,now,previewFps);renderCost=performance.now()-start;dirty=false;
+  }
+  if(mainOwnsGround && now-hudTime>250){hudTime=now;hud();}
  }
  canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();$('error').hidden=false;$('error').textContent='The graphics context was interrupted. Reload this page to restore the renderer. Exported scenes and saved viewpoints are safe.';capturing=true;clearFlightKeys();});
  // Diagnostics used by local verification. No network or remote control interface.
- window.SphereApp={clearNavigation:clearFlightKeys,setLocalInspection:owner=>{if(owner!==null&&(!window.SphereBiomeMainLocalSupportV6?.isOwner(owner)||!owner.usesRenderer(renderer)))throw Error('Actual Main local inspection owner required');localInspection=owner;clearFlightKeys();},get travelHeld(){return travelHold;},setTravelHold:v=>{travelHold=v;clearFlightKeys();dirty=true;last=performance.now();},commitTravel:(next,candidate)=>{if(localInspection&&(!localInspection.ready(next)||next.playing!==false))throw Error('The exact prepared paused native scene is required at commit');const clean=localInspection?structuredClone(next):M.validate(next);if(!localInspection)W.playback(clean,state.playing);displayedWind=null;SphereLanding.activate(candidate,clean);SphereTravel.reset();verticalFlight=null;state=clean;sync();},get busy(){return capturing;},get sceneSeconds(){return state.time;},getState:()=>structuredClone(state),snapshot,get displayedWindPhase(){return displayedPhase();},takeoff,setPlaying,setState:s=>{if(localLocked()){localNotice();sync();return;}const next=M.validate(s);if(W.active(next)&&s.time!==state.time&&s.meadow?.windAnchorSceneTime===state.meadow?.windAnchorSceneTime)W.scrub(next);W.playback(next,state.playing);displayedWind=null;
+ window.SphereApp={resumeAddress,refreshAddress:()=>{if($('exactPosition')?.open)syncCameraFields();},chooseFlightSpeed,get manualFlightMps(){return state.autoSpeed===false?state.speed*1000:null;},previewViewport,clearNavigation:clearFlightKeys,setLocalInspection:owner=>{if(owner!==null&&(!window.SphereBiomeMainLocalSupportV6?.isOwner(owner)||!owner.usesRenderer(renderer)))throw Error('Actual Main local inspection owner required');localInspection=owner;clearFlightKeys();},get travelHeld(){return travelHold;},setTravelHold:v=>{travelHold=v;clearFlightKeys();dirty=true;last=performance.now();},commitTravel:(next,candidate)=>{if(localInspection&&(!localInspection.ready(next)||next.playing!==false))throw Error('The exact prepared paused native scene is required at commit');const clean=localInspection?structuredClone(next):M.validate(next);if(!localInspection)W.playback(clean,state.playing);displayedWind=null;SphereLanding.activate(candidate,clean);SphereTravel.reset();verticalFlight=null;state=preferredSpeed(clean);resumeAddress();sync();},get busy(){return capturing;},get sceneSeconds(){return state.time;},get playing(){return state.playing;},getState:()=>structuredClone(state),snapshot,get displayedWindPhase(){return displayedPhase();},takeoff,setPlaying,setState:s=>{if(localLocked()){localNotice();sync();return;}const next=M.validate(s);if(W.active(next)&&s.time!==state.time&&s.meadow?.windAnchorSceneTime===state.meadow?.windAnchorSceneTime)W.scrub(next);W.playback(next,state.playing);displayedWind=null;
   const samePose=['position','forward','up'].every(k=>Array.isArray(s[k])&&s[k].every((v,i)=>v===state[k][i]));
   if(next.shadeAttachment!==null&&next.shadeAttachment===state.shadeAttachment&&samePose)SphereInspection.transport(state,next);
-  if(!samePose){SphereTravel.reset();verticalFlight=null;}state=next;SphereInspection.level(state);sync();},preset,buildPreset,autoLevelIfNearSurface,renderer,draw:()=>{dirty=true;},refreshTelemetry:()=>{hudTime=0;},setBusy:(v,{keepKeys=false}={})=>{capturing=v;if(!keepKeys)clearFlightKeys();dirty=true;last=performance.now();},capture,cancelCapture:()=>captureController?.abort(),record,assumptions,toast,download,get renderCost(){return renderCost;}};
+  if(!samePose){SphereTravel.reset();verticalFlight=null;}state=preferredSpeed(next);SphereInspection.level(state);sync();},preset,buildPreset,autoLevelIfNearSurface,renderer,draw:requestDraw,get viewRevision(){return viewRevision;},refreshTelemetry:()=>{hudTime=0;},setBusy:(v,{keepKeys=false}={})=>{capturing=v;if(!keepKeys)clearFlightKeys();dirty=true;last=performance.now();},capture,cancelCapture:()=>captureController?.abort(),record,assumptions,toast,download,get renderCost(){return renderCost;}};
+ // The optional pilot recorder needs a camera sample without cloning the entire world on each frame.
+ window.SphereApp.cameraSample=()=>({position:[...state.position],forward:[...state.forward],up:[...state.up],
+  fov:state.fov,time:state.time,mode:state.walkMode?'walk':'flight',playing:state.playing,
+  walkPosition:state.walkPosition?.slice()??null,walkSurface:state.walkSurface,siteId:state.siteId,
+  siteAnchor:state.siteAnchor,terrainAnchor:state.terrainAnchor});
  sync();showBookmarks();if(innerWidth<760)document.body.classList.add('panel-hidden');
  // The loading screen paints the first prepared frame. An earlier preview
  // races it and can compile the weather synchronously while controls are live.

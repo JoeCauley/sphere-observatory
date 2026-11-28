@@ -21,6 +21,7 @@ jobs:
           node-version: '24'
       - run: npm ci --ignore-scripts --no-audit --no-fund
       - run: npm test
+      - run: npm run test:apartment:model && npm run test:industry:mill
       - run: npm run test:pack && npm run test:industry && npm run test:pods
       - run: npm run test:surface
       - run: node tests/border-stations.mjs
@@ -34,6 +35,9 @@ jobs:
       matrix:
         suite: [test:http-restart, test:restart, test:outfall, test:surface:browser, test:industry:field, test:industry:roof, test:industry:transfer, test:contract, test:stage-arrival, test:transit, test:border:browser, test:border:stations]
         include:
+          - suite: test:apartment:date-line
+          - suite: test:industry:mill:browser
+          - suite: test:walks:default
           - suite: test:walks:browser
             walk_shard: 1/3
           - suite: test:walks:browser

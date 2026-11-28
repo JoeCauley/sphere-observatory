@@ -96,15 +96,12 @@
 
   function place(pack, state, installed) {
     const A = window.SphereAtlas, relation = pack.placement.relation, taken = new Set(installed.map(i => i.plot));
-    // An installed Border keeps its anchor address if the anchor is removed and later reinstalled.
+    // Reserve the surveyed home plot so a later Meadow install reaches the same gate.
     for (const item of installed) {
-      if (!item.edge || item.transport) continue;
-      const near = A.byId(item.edge.near);
-      if (!near) continue;
-      const anchorId = packs.find(p => p.id === item.packId)?.placement.anchorPack;
-      if (anchorId === pack.id && !taken.has(near.index))
-        return {plot:near, direction:window.SphereWorld.direction(near.latitude,near.longitude,state)};
-      taken.add(near.index);
+      const home=A.byId(item.outfall?.edge.near);
+      if (!home || taken.has(home.index)) continue;
+      if (pack.id==='infinite-meadow') return {plot:home,direction:window.SphereWorld.direction(home.latitude,home.longitude,state)};
+      taken.add(home.index);
     }
     const preferred = [], near = [], far = [], prefer = pack.placement.prefer;
     const preferredPlot=pack.placement.preferredPlot;
@@ -160,8 +157,12 @@
     }
     if (cached?.schema === 1) {
       for (const [key, prior] of Object.entries(cached.worlds ?? {})) {
+        const target={key,params:prior.parameters};
         if (!store.worlds[key] && prior.installed?.length)
-          await updateWorld({key, params:prior.parameters}, list => { if(!list.length)list.push(...prior.installed); });
+          await updateWorld(target,list=>{if(!list.length)list.push(...prior.installed);});
+        if(prior.marks?.length)await updateWorld(target,list=>{
+          for(const mark of prior.marks)if(!list.some(saved=>saved.id===mark.id))list.push(mark);
+        },'marks');
       }
       if (persistence === 'file') try { localStorage.removeItem(CACHE_KEY); } catch {}
     }
@@ -169,16 +170,16 @@
 
   // Each edit closes over its initiating world. Compare and retry the one affected list
   // if a second browser wins a write. Other worlds are merged by the server on disk.
-  async function updateWorld(target, edit) {
+  async function updateWorld(target, edit, field='installed') {
     for (let attempt = 0; attempt < 4; attempt++) {
-      const before = store.worlds[target.key]?.installed ?? [];
-      const installed = structuredClone(before);
-      const result = edit(installed);
-      if (JSON.stringify(before) === JSON.stringify(installed)) return result;
-      const entry = {parameters:target.params, installed};
+      const before = store.worlds[target.key]?.[field] ?? [];
+      const values = structuredClone(before);
+      const result = await edit(values);
+      if (JSON.stringify(before) === JSON.stringify(values)) return result;
+      const entry = {installed:[],...store.worlds[target.key],parameters:target.params,[field]:values};
       let next = {...store, worlds:{...store.worlds, [target.key]:entry}};
       if (persistence === 'file') {
-        const payload = patchSupported ? {key:target.key, parameters:target.params, before, installed} : next;
+        const payload = patchSupported ? {key:target.key, parameters:target.params, before, [field]:values} : next;
         let response;
         try { response = await fetch(STORE_URL, {method:patchSupported ? 'PATCH' : 'PUT',
           headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)}); } catch {}
@@ -194,6 +195,14 @@
     throw Error('The installed world changed during saving. Please try again.');
   }
 
+  const marks=()=>structuredClone(store.worlds[world?.key]?.marks??[]);
+  async function saveMark(place,name){
+    const target=world;
+    if(!target || place.world!==target.key)throw Error('The active Atlas changed before the place was saved.');
+    const mark={...place,id:crypto.randomUUID(),name:name.trim().slice(0,70)||place.label};
+    await enqueue(()=>updateWorld(target,list=>{if(!list.some(m=>m.id===mark.id))list.push(mark);},'marks'));
+    window.dispatchEvent(new Event('sphere-atlas-marks'));return mark;
+  }
   function saveStorage(key = world?.key) {
     if (!key || key === legacyWorld) return localStorage;
     const prefix = 'sphere-place:' + key + ':';
@@ -212,7 +221,8 @@
       changed();
     }
     selection = identify(params).then(async target => {
-      await enqueue(() => updateWorld(target, list => {
+      await enqueue(() => updateWorld(target, async list => {
+        await mergeBorder(list,state,target);
         const placed = list.filter(item => Number.isInteger(item.plot));
         for (const item of list) {
           const offered = pack(item.packId);
@@ -241,7 +251,27 @@
   /* ---- Operations ---- */
 
   const pack = id => packs.find(p => p.id === id) ?? null;
-  const entry = id => installedHere().find(i => i.id === id) ?? null;
+  // Install records belong to packs. A facility is a navigable address inside its owner's record.
+  const locations = () => installedHere().flatMap(i => i.transport ? [i,...(i.outfall?[i.outfall]:[]),...(i.districts??[])] : [i]);
+  const entry = id => locations().find(i => i.id === id) ?? null;
+  function sceneInfo(id) {
+    const item=entry(id);
+    if(item?.transport && item.id!==item.packId){
+      const owner=pack(item.packId);
+      return {...owner,name:item.name,saveKey:owner.saveKey+'/'+item.edge.id};
+    }
+    if(item?.occurrence && item.id!==item.packId){
+      const base=pack(item.packId);
+      return base?{...base,name:item.name,saveKey:base.saveKey+':'+item.occurrence.id}:null;
+    }
+    const owner=pack(id);
+    if (owner) return owner;
+    for (const p of packs) {
+      const site=Object.values(p.facilities??{}).find(site=>site.id===id);
+      if (site) return {...site,packId:p.id,contract:p.contract,version:p.version};
+    }
+    return null;
+  }
 
   function describe(item) {
     const state = window.SphereApp.getState(), at = locate(item.direction, state);
@@ -253,10 +283,86 @@
     return `plot ${item.plotId} · ${where}${province ? ' · ' + province : ''} · ${Math.abs(deg(at.latitude)).toFixed(1)}° ${at.latitude >= 0 ? 'N' : 'S'}, ${Math.abs(deg(at.longitude)).toFixed(1)}° ${at.longitude >= 0 ? 'E' : 'W'}`;
   }
 
+  async function habitatSurvey(p,state,list,plotId){
+    let found;
+    if(p.placement.habitat===9){
+      const {surveyViolet}=await import('./packs/violet-labyrinth/1.0.0/survey.mjs');
+      found=surveyViolet(state,window);
+    }else{
+      const {surveyJungle,surveyJungleGrove}=await import('./packs/super-jungle/1.0.0/survey.mjs');
+      const d=list.find(i=>i.transport&&i.detailInstalled!==false)?.transport;
+      found=surveyJungle(state,d,list.find(i=>i.packId==='infinite-meadow')?.plotId,window);
+      // On a world without a Jungle frontage, install at a surveyed native grove.
+      // The separate reference grove keeps its own tree and persistent address.
+      if(!found)found=surveyJungleGrove(state,window,d,{eastM:-8000,northM:12000});
+    }
+    if(!found || (plotId && plotId!==found.plot.id))throw Error('No surveyed '+p.name+' occurrence at this address.'+(p.placement.habitat===1?' Install Border Biome beside a Jungle occurrence.':''));
+    if(list.some(item=>item.plot===found.plot.index && !item.occurrence && window.SphereAtlas.contains(item,found.plot,found.occurrence.latitude,found.occurrence.longitude)))
+      throw Error('An installed site occupies the surveyed '+p.name+' address.');
+    return found;
+  }
+
   function record(p, found, state) {
     return { id: p.id, packId: p.id, name: p.name, version: p.version, plot: found.plot.index, plotId: found.plot.id, direction: found.direction,
+      ...(found.occurrence ? {occurrence:found.occurrence} : {}),
       ...(p.placement.footprint ? {footprint:{...p.placement.footprint}} : {}),
-      radiusKm: state.radius * Math.max(found.plot.halfHeight*(p.placement.footprint?.north??1), found.plot.halfWidth*(p.placement.footprint?.east??1)), relation: p.placement.relation, installedAt: new Date().toISOString() };
+      radiusKm: state.radius * (found.occurrence?.angularRadius??Math.max(found.plot.halfHeight*(p.placement.footprint?.north??1), found.plot.halfWidth*(p.placement.footprint?.east??1))), relation: p.placement.relation, installedAt: new Date().toISOString() };
+  }
+
+  function borderRecord(p,state,target,list,transportRules) {
+    // Prefer a shared edge beside an inhabited plot. A standalone installation needs no anchor pack.
+    const atlas=window.SphereAtlas, preferred=atlas.byId(list.find(i=>i.packId==='infinite-meadow')?.plotId);
+    const columns=atlas.columns(12),start=((state.seed%columns)+columns)%columns;
+    const candidates=[preferred,...Array.from({length:columns},(_,i)=>atlas.byId('r12c'+((start+i)%columns)))];
+    let edge,transport;
+    for(const near of candidates){
+      if(!near || construction.has(near.index)||plotBlocked(near,state))continue;
+      const far=atlas.byId('r'+near.row+'c'+((near.col+1)%near.columns));
+      if(construction.has(far.index)||plotBlocked(far,state))continue;
+      try{transport=transportRules.districtFor(target.key,near.id,far.id,state.radius*1000);}catch{continue;}
+      const [a,b]=transport.origin.plots;
+      edge={id:'transport/'+a+'/'+b,near:a,far:b,latitude:transport.origin.latitude,longitude:transport.origin.longitude};break;
+    }
+    if(!edge)throw Error('No shared Builder edge fits this world.');
+    transport.mineralFrontage=transportRules.mineralFrontage(state,window.SphereWorld);
+    return {id:p.id,packId:p.id,name:p.name,version:p.version,edge,transport,plotId:edge.id,relation:'border',
+      radiusKm:(Math.max(...transport.sites.map(s=>Math.abs(s.x)))+transportRules.hallHalfM)/1000,
+      direction:window.SphereWorld.direction(edge.latitude,edge.longitude,state),installedAt:new Date().toISOString()};
+  }
+
+  function outfallRecord(border,state,list,prior) {
+    const facility=border.facilities.outfall;
+    const meadow=list.find(i=>i.packId==='infinite-meadow');
+    const home=window.SphereAtlas.byId(prior?.edge?.near ?? meadow?.plotId) ?? place(pack('infinite-meadow'),state,list).plot;
+    const edge=prior?.edge ?? window.SphereAtlas.northEdge(home.id);
+    if (!edge) throw Error('The service gallery needs a surveyed northern edge.');
+    return {id:facility.id,packId:border.id,facility:'outfall',name:facility.name,version:border.version,
+      edge,plotId:edge.id,relation:'border',direction:prior?.direction ?? window.SphereWorld.direction(edge.latitude,edge.longitude,state),
+      radiusKm:prior?.radiusKm ?? state.radius*Math.max(home.halfWidth,home.halfHeight),
+      ...(prior?.installedAt ? {installedAt:prior.installedAt} : {})};
+  }
+
+  async function mergeBorder(list,state,target) {
+    const prior=list.find(i=>i.packId==='border-outfall');
+    let border=list.find(i=>i.packId==='border-transport');
+    if (!prior && !border) return;
+    const offered=pack('border-transport');
+    if (!border) {
+      const survey=await import('./packs/border-transport/0.10.0/survey.mjs');
+      border=borderRecord(offered,state,target,list,survey);
+      if(prior.installedAt)border.installedAt=prior.installedAt;
+      if(prior.detailInstalled===false)border.detailInstalled=false;
+      list.push(border);
+    }
+    if(border.transport && border.transport.mineralFrontage===undefined){
+      const survey=await import('./packs/border-transport/0.10.0/survey.mjs');
+      border.transport.mineralFrontage=survey.mineralFrontage(state,window.SphereWorld);
+    }
+    if (!border.outfall || prior) border.outfall=outfallRecord(offered,state,list,prior??border.outfall);
+    if (prior) {
+      if(prior.detailInstalled!==false)delete border.detailInstalled;
+      list.splice(list.indexOf(prior),1);
+    }
   }
 
   async function placeRegion(packId,options={}) {
@@ -265,12 +371,15 @@
     const footprint=options.footprint??p.placement.footprint;
     if(footprint && (!['ellipse','rectangle'].includes(footprint.shape) || ![footprint.east,footprint.north].every(v=>Number.isFinite(v)&&v>0&&v<=1)))throw Error('Invalid region shape or extent.');
     const state=window.SphereApp.getState(),target=await selectWorld(state);
-    const result=await enqueue(()=>updateWorld(target,list=>{
-      const existing=list.find(i=>i.packId===packId);
+    const result=await enqueue(()=>updateWorld(target,async list=>{
+      const existing=list.find(i=>i.id===packId);
       if(existing)return existing;
       let found;
-      if(options.plotId){
+      if(p.placement.habitat!=null)found=await habitatSurvey(p,state,list,options.plotId);
+      else if(options.plotId){
         const cell=atlas.byId(options.plotId);
+        if (packId !== 'infinite-meadow' && list.some(item => item.outfall?.edge.near === options.plotId))
+          throw Error('This plot is reserved for Meadow at the surveyed Outfall entrance.');
         if(!cell || list.some(i=>i.plot===cell.index) || construction.has(cell.index) || plotBlocked(cell,state) ||
           (p.placement.relation==='within')!==(cell.zone==='waist'))throw Error('This plot cannot hold this biome.');
         found={plot:cell,direction:window.SphereWorld.direction(cell.latitude,cell.longitude,state)};
@@ -281,47 +390,57 @@
     if(world?.key===target.key)changed();
     return result;
   }
+  async function installGrove(){
+    const p=pack('super-jungle'),id='super-jungle-reference',s=window.SphereApp.getState(),target=await selectWorld(s);
+    const {surveyJungleGrove}=await import('./packs/super-jungle/1.0.0/survey.mjs');
+    const result=await enqueue(()=>updateWorld(target,async list=>{
+      const existing=list.find(i=>i.id===id);
+      if(existing){delete existing.detailInstalled;return existing;}
+      const found=surveyJungleGrove(s,window,list.find(i=>i.transport&&i.detailInstalled!==false)?.transport);
+      if(!found)throw Error('No suitable trees were found at the native Jungle reference grove.');
+      const {plot,occurrence:o}=found;
+      if(list.some(i=>i.id!==id&&!i.edge&&window.SphereAtlas.contains(i,plot,o.latitude,o.longitude)))
+        throw Error('An installed site already occupies the reference grove.');
+      const item={...record(p,found,s),id,name:'Super Jungle · Reference Grove'};
+      list.push(item);return item;
+    }));
+    if(world?.key===target.key)changed();
+    return result;
+  }
+  async function commissionDistrict(plots,name){
+    const state=window.SphereApp.getState(),target=await selectWorld(state);
+    const {districtFor,hallHalfM}=await import('./packs/border-transport/0.10.0/survey.mjs');
+    const district=districtFor(target.key,plots[0],plots[1],state.radius*1000,undefined,[0]);
+    const [near,far]=district.origin.plots,id='transport/'+near+'/'+far;
+    const result=await enqueue(()=>updateWorld(target,list=>{
+      const border=list.find(i=>i.transport && i.detailInstalled!==false);
+      if(!border)throw Error('Install Border Biome before opening a surveyed station.');
+      const prior=[border,...(border.districts??[])].find(i=>i.edge.id===id);
+      if(prior)return prior;
+      const {latitude,longitude}=district.origin;
+      const item={id:border.packId+'/'+near+'/'+far,packId:border.packId,name:name||id,version:border.version,
+        edge:{id,near,far,latitude,longitude},transport:district,plotId:id,relation:'border',
+        radiusKm:hallHalfM/1000,direction:window.SphereWorld.direction(latitude,longitude,state)};
+      (border.districts??=[]).push(item);
+      return item;
+    }));
+    if(world?.key===target.key)changed();
+    return result;
+  }
   async function install(packId) {
     const p = pack(packId);
     if (!p) throw Error('Unknown biome');
     const state = window.SphereApp.getState(), target = await selectWorld(state);
     const transportRules=p.placement.facility==='transport' ? await import('./packs/border-transport/0.10.0/survey.mjs') : null;
-    const item = await enqueue(() => updateWorld(target, list => {
-      const existing = list.find(i => i.packId === packId);
+    const item = await enqueue(() => updateWorld(target, async list => {
+      const existing = list.find(i => i.id === packId);
       if (existing) {
         delete existing.detailInstalled;
         if (p.placement.anchorPack) { const anchor=list.find(i=>i.packId===p.placement.anchorPack); if(anchor)delete anchor.detailInstalled; }
         return existing;
       }
-      let item;
-      if(transportRules){
-        // Prefer a shared edge beside an inhabited plot. A standalone installation needs no anchor pack.
-        const atlas=window.SphereAtlas, preferred=atlas.byId(list.find(i=>i.packId==='infinite-meadow')?.plotId);
-        const columns=atlas.columns(12),start=((state.seed%columns)+columns)%columns;
-        const candidates=[preferred,...Array.from({length:columns},(_,i)=>atlas.byId('r12c'+((start+i)%columns)))];
-        let edge,transport;
-        for(const near of candidates){
-          if(!near || construction.has(near.index)||plotBlocked(near,state))continue;
-          const far=atlas.byId('r'+near.row+'c'+((near.col+1)%near.columns));
-          if(construction.has(far.index)||plotBlocked(far,state))continue;
-          try{transport=transportRules.districtFor(target.key,near.id,far.id,state.radius*1000);}catch{continue;}
-          const [a,b]=transport.origin.plots;
-          edge={id:'transport/'+a+'/'+b,near:a,far:b,latitude:transport.origin.latitude,longitude:transport.origin.longitude};break;
-        }
-        if(!edge)throw Error('No shared Builder edge fits this world.');
-        item={id:p.id,packId:p.id,name:p.name,version:p.version,edge,transport,plotId:edge.id,relation:'border',
-          radiusKm:(Math.max(...transport.sites.map(s=>Math.abs(s.x)))+transportRules.hallHalfM)/1000,
-          direction:window.SphereWorld.direction(edge.latitude,edge.longitude,state),installedAt:new Date().toISOString()};
-      }else if(p.placement.relation==='border'){
-        const parent=pack(p.placement.anchorPack);
-        let anchor=list.find(i=>i.packId===parent.id);
-        if(!anchor){anchor=record(parent,place(parent,state,list),state);list.push(anchor);}
-        else delete anchor.detailInstalled;
-        const edge=window.SphereAtlas.northEdge(anchor.plotId);
-        if(!edge)throw Error('This Meadow has no northern Border site.');
-        item={id:p.id,packId:p.id,name:p.name,version:p.version,edge,plotId:edge.id,relation:'border',
-          radiusKm:anchor.radiusKm,direction:window.SphereWorld.direction(edge.latitude,edge.longitude,state),installedAt:new Date().toISOString()};
-      }else item=record(p, place(p, state, list), state);
+      const item=transportRules ? borderRecord(p,state,target,list,transportRules) : record(p,p.placement.habitat!=null?await habitatSurvey(p,state,list):place(p,state,list),state);
+      if (item.transport) item.outfall=outfallRecord(p,state,list);
       list.push(item);
       return item;
     }));
@@ -382,25 +501,39 @@
   function changed() { render(); window.dispatchEvent(new CustomEvent('sphere-biomes-changed')); }
   function button(text, kind, action) { const b = document.createElement('button'); b.textContent = text; b.className = kind; b.onclick = action; return b; }
   async function attempt(work) { try { message = ''; await work(); } catch (error) { message = error.message; render(); } }
+  function overviewButton(label, id) {
+    return button(label, 'quiet', () => attempt(() => {
+      if (window.SphereStageFrame?.showMain() !== false) return travelTo(id);
+    }));
+  }
 
   function render() {
     if (!panel) return;
-    const installed = installedHere(), ids = new Set(installed.map(i => i.packId));
+    const installed = installedHere(), ids = new Set(installed.map(i => i.id));
+    document.getElementById('apartmentDestination').hidden=!ids.has('infinite-new-york');
     const match = text => !filter || text.toLowerCase().includes(filter);
     const status = panel.querySelector('#biomeLibraryStatus');
-    status.textContent = message || `${installed.length} of ${packs.length} biomes installed on ${window.SphereAtlas.TOTAL} plots · ` + (persistence === 'file' ? 'saved beside the app' : 'saved in this browser only; restart the Observatory server to keep installs on disk');
+    status.textContent = message || `${new Set(installed.map(i=>i.packId)).size} of ${packs.length} biomes installed on ${window.SphereAtlas.TOTAL} plots · ` + (persistence === 'file' ? 'saved beside the app' : 'saved in this browser only; restart the Observatory server to keep installs on disk');
     const list = panel.querySelector('#biomeLibraryList'); list.replaceChildren();
     const row = (title, detail, buttons) => {
       const article = document.createElement('article'), h = document.createElement('h4'), p = document.createElement('p');
       h.textContent = title; p.className = 'micro'; p.textContent = detail; article.append(h, p, ...buttons); list.append(article);
     };
-    for (const item of installed) if (match(item.name)) row(item.name + ' · ' + item.version, 'Installed ' + describe(item) + '.', [
+    for (const item of installed) if (match(item.name) || (item.outfall && match(item.outfall.name))) row(item.name + ' · ' + item.version, 'Installed ' + describe(item) + '.', [
       button('Visit', 'secondary', () => window.SphereStageFrame?.visit(item.id)),
-      button('View from above', 'quiet', () => attempt(() => { if (window.SphereStageFrame?.showMain() !== false) return travelTo(item.id); })),
-      ...(item.transport?[button('Fly the seed 713 wall approach','quiet',()=>location.assign('?border=wall'))]:[]),
+      overviewButton('View from above',item.id),
+      ...(item.id==='super-jungle'&&!placedHere().some(i=>i.id==='super-jungle-reference')?
+        [button('Install reference grove','quiet',()=>attempt(installGrove))]:[]),
+      ...(item.outfall?[button('Visit The Outfall','secondary',()=>window.SphereStageFrame?.visit(item.outfall.id)),
+        overviewButton('View The Outfall from above',item.outfall.id)]:[]),
+      ...(item.transport?[button('Fly the seed 713 wall approach','quiet',()=>location.assign('?border=wall')),
+        ...(pack(item.packId).placement.districts??[]).filter(d=>d.seed===world.params.seed).map(d=>
+          button('Visit '+d.name,'secondary',()=>attempt(async()=>window.SphereStageFrame.visit((await commissionDistrict(d.plots,d.name)).id))))]:[]),
       button('Remove', 'quiet', () => attempt(() => remove(item.id)))]);
+    const grove=placedHere().find(i=>i.id==='super-jungle-reference'&&i.detailInstalled===false);
+    if(grove&&match(grove.name))row(grove.name,'Native grove at '+grove.plotId+'.',[button('Install','secondary',()=>attempt(installGrove))]);
     for (const p of packs) if (!ids.has(p.id) && match(p.name)) {
-      const location=placedHere().find(item=>item.packId===p.id);
+      const location=placedHere().find(item=>item.id===p.id);
       const actions=[button('Install', 'secondary', () => attempt(() => install(p.id)))];
       if(!location && p.placement.relation!=='border')actions.push(button('Place on Atlas','quiet',()=>attempt(()=>placeRegion(p.id))));
       row(p.name + ' · ' + p.version, location?'Regional terrain available at '+location.plotId+'.':p.description ?? '', actions);
@@ -423,6 +556,12 @@
     await selectWorld();
     panel = document.createElement('section'); panel.id = 'biomeLibrary';
     panel.innerHTML = '<h3>Walkable biome packs</h3><p class="micro">Install a pack to place it on the atlas. Descend below 20 km over its plot or service opening to fly in. Visit takes you straight there.</p><input id="biomeLibraryFilter" type="search" placeholder="Filter biomes" aria-label="Filter biomes" hidden><p id="biomeLibraryStatus" class="micro" role="status" aria-live="polite"></p><div id="biomeLibraryList"></div>';
+    const apartment=button('Apartment 1A','secondary',()=>attempt(async()=>{
+      const {apartmentRoomPlace}=await import('./studies/new-york-first-apartment.mjs');
+      await window.SphereStageFrame.returnToPlace(apartmentRoomPlace(window.SphereBiomeLibrary));
+    }));
+    apartment.id='apartmentDestination';apartment.hidden=true;
+    document.querySelector('#places .travel-actions').append(apartment);
     const style = document.createElement('style');
     style.textContent = '#biomeLibrary{padding:14px 0;border-top:1px solid #ffffff22;border-bottom:1px solid #ffffff22;margin:16px 0}#biomeLibrary h4{margin:12px 0 4px}#biomeLibrary button{margin:6px 6px 2px 0}#biomeLibraryList{max-height:60vh;overflow:auto}#biomeLibraryFilter{width:100%;margin:6px 0}';
     document.head.append(style);
@@ -434,7 +573,7 @@
   const ready = start();
   window.SphereBiomeLibrary = Object.freeze({
     ready, packs: () => packs.map(p => ({ ...p })), pack, placed: () => structuredClone(placedHere()), installed: () => installedHere().map(i => ({ ...i })), entry,
-    install, remove, placeRegion, travelTo, overviewPose, describe, locate, tracks, place, saveStorage, selectWorld,
+    locations, sceneInfo, marks, saveMark, install, remove, placeRegion, commissionDistrict, travelTo, overviewPose, describe, locate, tracks, place, saveStorage, selectWorld,
     matchesWorld, underConstruction: () => [...construction],
     get persistence() { return persistence; }, get world() { return world ? { ...world } : null; }
   });

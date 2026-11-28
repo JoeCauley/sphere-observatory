@@ -29,6 +29,11 @@
 import { ascentShape, arrivalShape, advance, heightAt } from '../../kit/flight.js';   // shared pacing; the kit is not a pack
 const ID = 'sideways-city', VERSION = '1.0.0', SAVE_KEY = 'sphere-biome:' + ID + ':' + VERSION;
 import {CELL, PLINTH, CURB, EYE, RAMP, RAMP_HALF, hash, cell, local, index, ground, solid} from './ground.js';
+import {COMMON,cityPlaneShaders,lightUniforms} from './streets.mjs';
+import {lightFor,REFERENCE_LIGHT} from '../../kit/destination-light.mjs';
+import {linkProgram} from '../../kit/parallel-program.mjs';
+import {trialSettings} from '../../kit/doorway-trial.mjs';
+import {surveyUniforms} from './exterior.mjs';
 const RADIUS=8;
 const REVEAL_M = 3000, MESH_BELOW_M = 600;
 // The air, declared rather than built in, so that biomes can differ: thin, thick, layered.
@@ -47,6 +52,16 @@ const veilAt = m => !AIR.blind?0:smooth(AIR.blind.baseM - AIR.blind.edgeM, AIR.b
 const FAR_ONLY = new URLSearchParams(location.search).get('far') === '1';   // test aid: trace everything, to compare with the meshes
 const $ = id => document.getElementById(id);
 const canvas = $('world');
+const hosted=!!frameElement?.dataset.worldKey,hand=hosted?-1:1;
+const graphicsLifetime = new AbortController();
+const linkedPrograms = new Set();
+const exterior = hosted ? await import('../../kit/station-exterior.mjs') : null;
+const facade = exterior && frameElement?.isConnected ? exterior.packStationExterior(parent, canvas,
+  parent.SphereBiomeLibrary.entry(frameElement.dataset.locationId), {logDepthFarM:400000}) : null;
+const reserved=(x,z)=>facade?.occupies(index(x)*CELL,index(z)*CELL,PLINTH);
+const walkHeight=(x,z)=>reserved(x,z)?0:ground(x,z);
+const obstruction=(x,z,h)=>!reserved(x,z)&&solid(x,z,h);
+const lens=(w,h)=>frameElement?.surfaceEntry?.horizontalFov?w/h/Math.tan(frameElement.surfaceEntry.horizontalFov*Math.PI/360):1.19;
 
 /* ---- geometry for one cell: position, colour, normal ---- */
 function build(ix, iz) {
@@ -97,111 +112,27 @@ function build(ix, iz) {
 
 /* ---- renderer ---- */
 const gl = canvas.getContext('webgl2', { antialias: true, alpha: false });
-function program(vs, fs) {
-  const make = (type, src) => { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) throw Error(gl.getShaderInfoLog(s)); return s; };
-  const p = gl.createProgram(); gl.attachShader(p, make(gl.VERTEX_SHADER, vs)); gl.attachShader(p, make(gl.FRAGMENT_SHADER, fs)); gl.linkProgram(p);
-  if (!gl.getProgramParameter(p, gl.LINK_STATUS)) throw Error(gl.getProgramInfoLog(p));
+async function program(vs, fs) {
+  const p = await linkProgram(gl, vs, fs, graphicsLifetime.signal);
+  linkedPrograms.add(p);
   const u = {}; for (let i = 0; i < gl.getProgramParameter(p, gl.ACTIVE_UNIFORMS); i++) { const info = gl.getActiveUniform(p, i); u[info.name] = gl.getUniformLocation(p, info.name); }
   return { p, u };
 }
-const COMMON = `uniform vec3 uRight,uUp,uForward;uniform float uAspect,uAltitude;
-const vec3 SUN=vec3(.46,.78,.42);
-vec3 sky(vec3 d){float t=clamp(d.y*.5+.5,0.,1.);vec3 c=mix(vec3(.86,.72,.60),vec3(.36,.52,.70),smoothstep(.45,.95,t));return c+vec3(1.,.85,.6)*pow(max(dot(normalize(d),SUN),0.),90.)*.5;}
-uniform vec4 uHaze[2];uniform vec3 uBlind;uniform float uTime;
-float through(vec4 L,float dy,float t){float y=uAltitude,y1=y+dy*t,lo=min(y,y1),hi=max(y,y1);   // length of the ray inside one level layer
- return hi-lo<1e-3?(y>=L.x&&y<=L.y?t:0.):t*max(0.,min(hi,L.y)-max(lo,L.x))/(hi-lo);}
-float fogOf(float dist,float dy){float tau=0.;for(int i=0;i<2;i++)tau+=uHaze[i].z*through(uHaze[i],dy,dist);return 1.-exp(-tau);}
-vec3 veiled(vec3 col,vec3 d){if(uBlind.z<=0.)return col;float v=smoothstep(uBlind.x-uBlind.z,uBlind.x,uAltitude)*(1.-smoothstep(uBlind.y,uBlind.y+uBlind.z,uAltitude));if(v<=0.)return col;
- vec3 q=d*3.+vec3(uTime*.05,uAltitude*.004,uTime*.03);float n=.5+.5*sin(q.x*2.1+sin(q.z*1.7+q.y))*sin(q.y*1.3+q.z*2.3);   // wisps that stream past as the eye climbs
- return mix(col,mix(vec3(.80,.78,.76),vec3(.95,.93,.90),n),smoothstep(0.,1.,v*1.5-.5*n));}`;
-const mesh = program(`#version 300 es
+const meshReady = program(`#version 300 es
 precision highp float;layout(location=0)in vec3 aPos;layout(location=1)in vec3 aCol;layout(location=2)in vec3 aNor;
 uniform vec3 uOffset;${COMMON}
 out vec3 vCol,vNor,vRel;
-void main(){vec3 p=aPos+uOffset;float z=dot(p,uForward);gl_Position=vec4(dot(p,uRight)*1.19/uAspect,dot(p,uUp)*1.19,z-.2,z);vCol=aCol;vNor=aNor;vRel=p;}`,
+void main(){vec3 p=aPos+uOffset;float z=dot(p,uForward);gl_Position=vec4(dot(p,uRight)*uFocal/uAspect,dot(p,uUp)*uFocal,z-.2,z);vCol=aCol;vNor=aNor;vRel=p;}`,
 `#version 300 es
 precision highp float;in vec3 vCol,vNor,vRel;out vec4 frag;uniform float uFade;${COMMON}
-void main(){float dist=length(vRel);vec3 n=normalize(vNor);if(dot(n,vRel)>0.)n=-n;float lit=.34+.66*max(dot(n,SUN),0.)+.10*max(n.y,0.);
+void main(){float dist=length(vRel);vec3 n=normalize(vNor);if(dot(n,vRel)>0.)n=-n;float lit=uLight.x+uLight.y*max(dot(n,SUN),0.)+.10*max(n.y,0.);
  vec3 col=veiled(mix(vCol*lit,sky(vRel/dist*vec3(1.,.15,1.)),fogOf(dist,vRel.y/dist)),vRel/dist);
  gl_FragDepth=clamp(log2(1.+dist)/log2(1.+400000.),0.,1.);frag=vec4(pow(col,vec3(1./2.2)),uFade);}`);
-// The far field. Not a painting of the city: the city itself, traced per pixel from the
-// same function that builds the meshes (same hash, same plinths, tiers, doors, towers).
-// A ray is stepped through the street grid; each cell it crosses is rebuilt and intersected.
-// Because near and far are one function there is nowhere for a building to pop in. Where a
-// building would be smaller than a pixel it fades into the average of its block.
-const plane = program(`#version 300 es
-precision highp float;${COMMON}
-out vec2 vNdc;void main(){vec2 p=vec2(float((gl_VertexID<<1)&2),float(gl_VertexID&2))*2.-1.;vNdc=p;gl_Position=vec4(p,0.,1.);}`,
-`#version 300 es
-precision highp float;precision highp int;in vec2 vNdc;out vec4 frag;
-uniform ivec2 uCell;uniform vec2 uLocal;uniform int uMesh;uniform float uPix;${COMMON}
-const float CELL=${CELL}.,PL=${PLINTH}.,CURB=${CURB},HMAX=262.;
-const vec3 STONE[4]=vec3[4](vec3(.78,.62,.52),vec3(.72,.56,.50),vec3(.80,.70,.58),vec3(.66,.58,.55));
-const vec3 ROOF[3]=vec3[3](vec3(.34,.52,.50),vec3(.42,.36,.44),vec3(.55,.40,.30));
-const vec3 DARK=vec3(.06,.05,.06),WATER=vec3(.10,.36,.40),STREET=vec3(.50,.44,.40),FLAT=vec3(.70,.57,.50),MEAN=vec3(.65,.56,.50);
-float hsh(ivec2 c,int k){uint h=uint(c.x)*374761393u^uint(c.y)*668265263u^uint(k)*2246822519u;h=(h^(h>>13u))*1274126177u;h^=h>>16u;return min(float(h)/4294967296.,.9999999);}
-float bt;vec3 bn,bc;   // nearest hit so far: distance, normal, colour
-void tryBox(vec3 o,vec3 d,vec3 inv,vec3 lo,vec3 hi,vec3 side,vec3 top){
- vec3 a=(lo-o)*inv,b=(hi-o)*inv,t0=min(a,b),t1=max(a,b);float tn=max(max(t0.x,t0.y),t0.z),tf=min(min(t1.x,t1.y),t1.z);
- if(tn>tf||tn<0.||tn>=bt)return;
- bt=tn;if(tn==t0.y){bn=vec3(0.,-sign(d.y),0.);bc=d.y<0.?top:side;}else if(tn==t0.x){bn=vec3(-sign(d.x),0.,0.);bc=side;}else{bn=vec3(0.,0.,-sign(d.z));bc=side;}
-}
-void cellHit(ivec2 ij,vec3 o,vec3 d,vec3 inv){   // o is measured from this cell's centre
- ivec2 c=uCell+ij;float k=hsh(c,1);
- vec3 stone=STONE[int(hsh(c,13)*4.)],roof=ROOF[int(hsh(c,14)*3.)],shade=stone*.86;
- if(k>=.10&&k<.19){   // plaza: resting rails and a marker
-  for(int i=-1;i<=1;i++){float x=float(i)*46.;tryBox(o,d,inv,vec3(x-14.,0.,-1.2),vec3(x-12.,7.,1.2),shade,shade);tryBox(o,d,inv,vec3(x+12.,0.,-1.2),vec3(x+14.,7.,1.2),shade,shade);tryBox(o,d,inv,vec3(x-15.,7.,-1.6),vec3(x+15.,8.2,1.6),roof,roof);}
-  tryBox(o,d,inv,vec3(-4.,0.,34.),vec3(4.,22.,42.),stone,roof);return;}
- bool pool=k<.10;float was=bt;
- tryBox(o,d,inv,vec3(-PL,0.,-PL),vec3(PL,CURB,PL),shade,pool?shade:stone);
- if(pool&&bt<was&&bn.y>.5){vec3 p=o+d*bt;if(abs(p.x)<PL-6.&&abs(p.z)<PL-6.)bc=WATER;}
- for(int m=0;m<4;m++){   // the four ramps
-  float sg=m<2?1.:-1.;bool ax=(m&1)==0;float ou=ax?o.x:o.z,du=ax?d.x:d.z,ov=ax?o.z:o.x,dv=ax?d.z:d.x,den=d.y+sg*CURB*du/9.;
-  if(abs(den)<1e-9)continue;float t=(CURB*(PL+9.-sg*ou)/9.-o.y)/den;if(t<=0.||t>=bt)continue;
-  float u=sg*(ou+du*t),v=ov+dv*t;if(u<PL||u>PL+9.||abs(v)>10.)continue;
-  bt=t;bn=normalize(ax?vec3(sg*CURB/9.,1.,0.):vec3(0.,1.,sg*CURB/9.));bc=stone*.94;}
- if(pool)return;
- float w=34.+hsh(c,2)*24.,dd=26.+hsh(c,3)*30.,h=14.+hsh(c,4)*16.;
- float cx=(hsh(c,5)-.5)*(PL-w)*1.2,cz=(hsh(c,6)-.5)*(PL-dd)*1.2;int tiers=1+int(hsh(c,7)*3.);
- float x0=cx-w,x1=cx+w,z0=cz-dd,z1=cz+dd,y=CURB;
- for(int t=0;t<3;t++){if(t>=tiers)break;float th=h/float(t+1);was=bt;
-  tryBox(o,d,inv,vec3(x0,y,z0),vec3(x1,y+th,z1),t==1?shade:stone,roof);
-  if(t==0&&bt<was&&bn.y==0.){vec3 p=o+d*bt;   // doors: wider than tall
-   if(p.y-y<min(9.,th-2.)){if(bn.z!=0.){if(abs(p.x-(x0+x1)*.5)<min(11.,(x1-x0)*.5-3.))bc=DARK;}else if(abs(p.z-(z0+z1)*.5)<min(11.,(z1-z0)*.5-3.))bc=DARK;}}
-  y+=th;float inset=min(x1-x0,z1-z0)*.16;x0+=inset;x1-=inset;z0+=inset;z1-=inset;}
- if(hsh(c,8)<.22){   // tower: a shaft and a cap
-  float r=13.+hsh(c,9)*7.,tx=(hsh(c,10)<.5?-1.:1.)*(PL-r-3.),tz=(hsh(c,11)<.5?-1.:1.)*(PL-r-3.),top=CURB+80.+hsh(c,12)*90.;
-  vec2 q=o.xz-vec2(tx,tz);float a=dot(d.xz,d.xz),b=dot(q,d.xz),disc=b*b-a*(dot(q,q)-r*r);
-  if(disc>0.){float t=(-b-sqrt(disc))/a,py=o.y+d.y*t;if(t>0.&&t<bt&&py>=CURB&&py<=top){vec2 p=q+d.xz*t;float ang=atan(p.y,p.x);if(ang<0.)ang+=6.2831853;float i=floor(ang/.5235988),mid=(i+.5)*.5235988;bt=t;bn=vec3(cos(mid),0.,sin(mid));bc=mod(i,2.)>.5?stone:shade;}}
-  vec3 qa=o-vec3(tx,top+r*.5,tz);float ca=a-4.*d.y*d.y,cb=dot(qa.xz,d.xz)-4.*qa.y*d.y,cd=cb*cb-ca*(dot(qa.xz,qa.xz)-4.*qa.y*qa.y);
-  if(cd>0.&&abs(ca)>1e-9){float sq=sqrt(cd);for(int m=0;m<2;m++){float t=(-cb+(m==0?-sq:sq))/ca,yy=qa.y+d.y*t;if(t>0.&&t<bt&&yy<=0.&&yy>=-r*.5){vec3 p=qa+d*t;bt=t;bn=normalize(vec3(p.x,-4.*p.y,p.z));bc=roof;}}}
- }
-}
-void main(){vec3 d=normalize(uForward+uRight*vNdc.x*uAspect/1.19+uUp*vNdc.y/1.19);
- if(abs(d.x)<1e-6)d.x=1e-6;if(abs(d.z)<1e-6)d.z=1e-6;if(abs(d.y)<1e-6)d.y=-1e-6;
- vec3 inv=1./d,o=vec3(uLocal.x,uAltitude,uLocal.y);
- float tG=d.y<0.?uAltitude/-d.y:1e12;                                  // where the ray meets the street
- float tIn=o.y>HMAX?(d.y<0.?(o.y-HMAX)/-d.y:1e12):0.;                  // where it enters the layer that holds buildings
- float tOut=d.y>0.?(o.y<HMAX?(HMAX-o.y)/d.y:0.):tG,tLim=30./uPix;      // beyond tLim a pixel is wider than a block
- bt=1e12;
- if(tIn<tOut&&tIn<tLim){
-  vec3 p=o+d*tIn;vec2 cf=floor((p.xz+100.)/CELL),stp=sign(d.xz);ivec2 ij=ivec2(cf),si=ivec2(stp);
-  vec2 tMax=((cf+max(stp,0.))*CELL-100.-o.xz)*inv.xz,tDelta=CELL*abs(inv.xz);
-  for(int n=0;n<96;n++){
-   if(max(abs(ij.x),abs(ij.y))>uMesh){cellHit(ij,o-vec3(float(ij.x)*CELL,0.,float(ij.y)*CELL),d,inv);if(bt<1e11)break;}
-   float tNext=min(tMax.x,tMax.y);if(tNext>tOut||tNext>tLim)break;
-   if(tMax.x<tMax.y){tMax.x+=tDelta.x;ij.x+=si.x;}else{tMax.y+=tDelta.y;ij.y+=si.y;}
-  }
- }
- if(bt>1e11&&d.y>-.0005){frag=vec4(pow(veiled(sky(d),d),vec3(1./2.2)),1.);gl_FragDepth=1.;return;}
- float up1=.34+.66*SUN.y+.10,t=bt<1e11?bt:tG;vec3 col;
- if(bt<1e11)col=bc*(.34+.66*max(dot(bn,SUN),0.)+.10*max(bn.y,0.));
- else{vec2 g=d.xz*tG+uLocal,l=abs(fract(g/CELL+.5)-.5)*CELL;float k=hsh(uCell+ivec2(floor(g/CELL+.5)),1);col=(k>=.10&&k<.19&&max(l.x,l.y)<PL?FLAT:STREET)*up1;}
- if(d.y<0.){   // too small to draw honestly: become the average of the block
-  vec2 g=d.xz*tG+uLocal,l=abs(fract(g/CELL+.5)-.5)*CELL;float width=tG*uPix+.5,block=1.-smoothstep(PL-width,PL+width,max(l.x,l.y));
-  col=mix(col,mix(STREET,MEAN,block)*up1,smoothstep(6.,30.,t*uPix));}
- col=veiled(mix(col,sky(d*vec3(1.,.15,1.)),fogOf(t,d.y)),d);
- gl_FragDepth=clamp(log2(1.+t)/log2(1.+400000.),0.,1.);frag=vec4(pow(col,vec3(1./2.2)),1.);}`);
+const planeReady = program(...cityPlaneShaders);
+const programsReady = Promise.all([meshReady, planeReady]).then(
+  programs => ({programs}), error => ({error})
+);
+let mesh, plane;
 const buffers = new Map();
 function buffer(ix, iz) {
   const key = ix + ',' + iz; let b = buffers.get(key);
@@ -229,35 +160,54 @@ const keys = new Set(); let drag = null, last = 0;
 const forward = () => [Math.sin(pose.yaw) * Math.cos(pose.pitch), Math.sin(pose.pitch), Math.cos(pose.yaw) * Math.cos(pose.pitch)];
 function interrupt() { held = null; if (script?.interruptible) { const done = script.done; script = null; done('taken-over'); status('You have the controls.'); } }
 function lift() { if (pose.mode === 'walk') { pose.mode = 'flight'; pose.altitudeM += 12; status('Flying · W goes where you look · Q down, E up · F lands'); } }
-function land() { const g = ground(pose.eastM, pose.northM); if (pose.mode === 'flight' && pose.altitudeM - g < 14 && !solid(pose.eastM, pose.northM, 0)) { pose.mode = 'walk'; pose.altitudeM = g + EYE; pose.pitch = Math.max(-1, Math.min(1, pose.pitch)); status('On foot · WASD walks · Space lifts off'); } else status('Come down close to open ground to land.'); }
+function land() { const g = walkHeight(pose.eastM, pose.northM); if (pose.mode === 'flight' && pose.altitudeM - g < 14 && !obstruction(pose.eastM, pose.northM, 0)) { pose.mode = 'walk'; pose.altitudeM = g + EYE; pose.pitch = Math.max(-1, Math.min(1, pose.pitch)); status('On foot · WASD walks · Space lifts off'); } else status('Come down close to open ground to land.'); }
 function step(dt) {
   if (script) { if (script.held) return; const { pos: e, alt: ea, done: over } = advance(script, dt); for (const k of ['eastM', 'northM', 'yaw', 'pitch']) pose[k] = script.from[k] + (script.to[k] - script.from[k]) * e;
     pose.altitudeM = heightAt(script.from.altitudeM, script.to.altitudeM, ea); pose.mode = 'flight';
     if (over) { const done = script.done; held = script.keep; script = null; done('revealed'); } return; }
-  const turn = .95 * dt;
+  const turn = hand * .95 * dt;
   pose.yaw += (Number(keys.has('ArrowRight') || keys.has('KeyX')) - Number(keys.has('ArrowLeft') || keys.has('KeyZ'))) * turn;
   pose.pitch = Math.max(-1.5, Math.min(1.5, pose.pitch + (Number(keys.has('ArrowUp')) - Number(keys.has('ArrowDown'))) * turn));
-  const fx = (keys.has('KeyD') ? 1 : 0) - (keys.has('KeyA') ? 1 : 0), fz = (keys.has('KeyW') ? 1 : 0) - (keys.has('KeyS') ? 1 : 0), fy = (keys.has('KeyE') ? 1 : 0) - (keys.has('KeyQ') ? 1 : 0), fast = keys.has('ShiftLeft') || keys.has('ShiftRight');
+  const fx = hand*((keys.has('KeyD') ? 1 : 0) - (keys.has('KeyA') ? 1 : 0)), fz = (keys.has('KeyW') ? 1 : 0) - (keys.has('KeyS') ? 1 : 0), fy = (keys.has('KeyE') ? 1 : 0) - (keys.has('KeyQ') ? 1 : 0), fast = keys.has('ShiftLeft') || keys.has('ShiftRight');
   if (pose.mode === 'walk') {
     const speed = (fast ? 7 : 3) * dt, dx = (Math.sin(pose.yaw) * fz + Math.cos(pose.yaw) * fx) * speed, dz = (Math.cos(pose.yaw) * fz - Math.sin(pose.yaw) * fx) * speed;
-    const here = ground(pose.eastM, pose.northM), attempt = (x, z) => !solid(x, z, here + EYE) && Math.abs(ground(x, z) - here) <= .45;
+    const here = walkHeight(pose.eastM, pose.northM), attempt = (x, z) => !obstruction(x, z, here + EYE) && Math.abs(walkHeight(x, z) - here) <= .45;
     if (attempt(pose.eastM + dx, pose.northM)) pose.eastM += dx; if (attempt(pose.eastM, pose.northM + dz)) pose.northM += dz;
-    pose.altitudeM = ground(pose.eastM, pose.northM) + EYE;
+    pose.altitudeM = walkHeight(pose.eastM, pose.northM) + EYE;
   } else {
-    const g = ground(pose.eastM, pose.northM), clear = Math.max(0, pose.altitudeM - g), speed = (8 + clear * .9) * (fast ? 2 : 1) * dt, f = forward();
-    const nx = pose.eastM + (f[0] * fz + Math.cos(pose.yaw) * fx) * speed, nz = pose.northM + (f[2] * fz - Math.sin(pose.yaw) * fx) * speed, ny = Math.max(pose.altitudeM + (f[1] * fz + fy) * speed, ground(nx, nz) + EYE);
-    if (!solid(nx, nz, ny)) { pose.eastM = nx; pose.northM = nz; pose.altitudeM = Math.min(ny, 4e6); }
+    const g = walkHeight(pose.eastM, pose.northM), clear = Math.max(0, pose.altitudeM - g), base = (8 + clear * .9) * (fast ? 2 : 1), f = forward();
+    const stage=window.frameElement?.dataset.worldKey?parent.SphereStageFrame:null;
+    const rate=(fx||fz||fy)?stage?.movementSpeed(base,dt,{boost:fast})??base:base;
+    const speed=rate*dt/Math.max(1,Math.hypot(fx,fz*Math.cos(pose.pitch),fz*f[1]+fy));
+    const nx = pose.eastM + (f[0] * fz + Math.cos(pose.yaw) * fx) * speed, nz = pose.northM + (f[2] * fz - Math.sin(pose.yaw) * fx) * speed, ny = Math.max(pose.altitudeM + (f[1] * fz + fy) * speed, walkHeight(nx, nz) + EYE);
+    if (!obstruction(nx, nz, ny)) { pose.eastM = nx; pose.northM = nz; pose.altitudeM = Math.min(ny, 4e6); }
   }
 }
 
+/* ---- light ---- */
+// The same destinationLight() the doorway uses, sampled for this pose at the shared Sphere time.
+let cityLight=REFERENCE_LIGHT,lightSampled=-Infinity;
+function currentLight(){
+  const now=performance.now();if(now-lightSampled<250)return cityLight;lightSampled=now;
+  const host=window.frameElement?.dataset.worldKey?parent:null;
+  if(!host){cityLight=REFERENCE_LIGHT;return cityLight;}
+  const settings=trialSettings(host),sample=host.SphereStageFrame?.surfaceLight?.(window,pose);
+  cityLight=lightFor(settings,sample?.direct??1,host.SphereApp?.getState?.().shellshine);
+  return cityLight;
+}
+
 /* ---- frame ---- */
-let resolveReady; const ready = new Promise(r => { resolveReady = r; });
+let resolveReady,rejectReady; const ready = new Promise((r,j) => { resolveReady = r;rejectReady=j; });
 function draw() {
-  const w = Math.max(1, Math.floor(canvas.clientWidth * Math.min(devicePixelRatio, 2))), h = Math.max(1, Math.floor(canvas.clientHeight * Math.min(devicePixelRatio, 2)));
+  const fieldSize=hosted && parent.SphereFieldCamera?.need(canvas) && parent.SphereFieldCamera.size(canvas.getBoundingClientRect());
+  const w=fieldSize?.width??Math.max(1,Math.floor(canvas.clientWidth*Math.min(devicePixelRatio,2)));
+  const h=fieldSize?.height??Math.max(1,Math.floor(canvas.clientHeight*Math.min(devicePixelRatio,2)));
   if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
   gl.viewport(0, 0, w, h); gl.enable(gl.DEPTH_TEST); gl.depthFunc(gl.LEQUAL); gl.clear(gl.DEPTH_BUFFER_BIT);
-  const f = forward(), right = [Math.cos(pose.yaw), 0, -Math.sin(pose.yaw)], up = [-Math.sin(pose.yaw) * Math.sin(pose.pitch), Math.cos(pose.pitch), -Math.cos(pose.yaw) * Math.sin(pose.pitch)];
-  const common = pr => { gl.useProgram(pr.p); gl.uniform3fv(pr.u.uRight, right); gl.uniform3fv(pr.u.uUp, up); gl.uniform3fv(pr.u.uForward, f); gl.uniform1f(pr.u.uAspect, w / h); gl.uniform1f(pr.u.uAltitude, pose.altitudeM); gl.uniform4fv(pr.u['uHaze[0]'], HAZE); gl.uniform3f(pr.u.uBlind, AIR.blind?.baseM??0, AIR.blind?.topM??0, AIR.blind?.edgeM??0); gl.uniform1f(pr.u.uTime, performance.now() / 1000); };
+  const focal=lens(w,h),field=facade?.sync(pose);
+  const f = forward(), right = [hand*Math.cos(pose.yaw), 0, -hand*Math.sin(pose.yaw)], up = [-Math.sin(pose.yaw) * Math.sin(pose.pitch), Math.cos(pose.pitch), -Math.cos(pose.yaw) * Math.sin(pose.pitch)];
+  const light=currentLight();
+  const common = pr => { gl.useProgram(pr.p); lightUniforms(gl,pr.u,light); gl.uniform3fv(pr.u.uRight, right); gl.uniform3fv(pr.u.uUp, up); gl.uniform3fv(pr.u.uForward, f); gl.uniform1f(pr.u.uAspect, w / h); gl.uniform1f(pr.u.uFocal,focal); gl.uniform1f(pr.u.uAltitude, pose.altitudeM); gl.uniform4fv(pr.u['uHaze[0]'], HAZE); gl.uniform3f(pr.u.uBlind, AIR.blind?.baseM??0, AIR.blind?.topM??0, AIR.blind?.edgeM??0); gl.uniform1f(pr.u.uTime, performance.now() / 1000); };
   // Near the eye: full meshes, nearest ring first. meshRing is the widest ring that is complete;
   // the ground shader traces everything outside it, so a cell is always drawn exactly once.
   const cx = index(pose.eastM), cz = index(pose.northM); let made = 0; meshRing = -1;
@@ -276,25 +226,38 @@ function draw() {
     const tx = index(script.to.eastM), tz = index(script.to.northM);
     for (let dz = -RADIUS; dz <= RADIUS && made < 24; dz++) for (let dx = -RADIUS; dx <= RADIUS && made < 24; dx++) if (!buffers.has((tx + dx) + ',' + (tz + dz))) { buffer(tx + dx, tz + dz); made++; built++; }
   }
-  common(plane); gl.uniform2i(plane.u.uCell, cx, cz); gl.uniform2f(plane.u.uLocal, local(pose.eastM), local(pose.northM)); gl.uniform1i(plane.u.uMesh, meshRing); gl.uniform1f(plane.u.uPix, 2 / (1.19 * h));
+  common(plane); gl.uniform2i(plane.u.uCell, cx, cz); gl.uniform2f(plane.u.uLocal, local(pose.eastM), local(pose.northM)); gl.uniform1i(plane.u.uMesh, meshRing); gl.uniform1f(plane.u.uPix, 2 / (focal * h)); surveyUniforms(gl,plane.u,field);
   gl.bindVertexArray(blank); gl.drawArrays(gl.TRIANGLES, 0, 3);
   common(mesh); gl.uniform1f(mesh.u.uFade, 1); drawn = 0;
   for (let dz = -meshRing; dz <= meshRing; dz++) for (let dx = -meshRing; dx <= meshRing; dx++) {
     const b = buffers.get((cx + dx) + ',' + (cz + dz)), ox = (cx + dx) * CELL - pose.eastM, oz = (cz + dz) * CELL - pose.northM;
-    if (!b || ox * f[0] - pose.altitudeM * f[1] + oz * f[2] < -260) continue;   // wholly behind the eye
+    if (!b || facade?.occupies((cx+dx)*CELL,(cz+dz)*CELL,PLINTH) || ox * f[0] - pose.altitudeM * f[1] + oz * f[2] < -260) continue;   // wholly behind the eye
     gl.uniform3f(mesh.u.uOffset, ox, -pose.altitudeM, oz); gl.bindVertexArray(b.vao); gl.drawArrays(gl.TRIANGLES, 0, b.count); drawn++;
   }
-  frames++; if (frames === 3) resolveReady();
+  facade?.draw(pose,w,h,focal);
+  if(hosted)parent.SphereFieldCamera?.submit(canvas);
+  frames++; if (resolveReady && frames>=3 && !facade?.pending) {
+    if(facade?.error)rejectReady(facade.error);else resolveReady();
+    resolveReady=null;
+  }
 }
 function hud() {
   $('mode').textContent = script ? 'JOURNEY' : pose.mode === 'walk' ? 'WALK' : 'FLIGHT';
-  const g = ground(pose.eastM, pose.northM), up2 = pose.altitudeM - g;
+  const g = walkHeight(pose.eastM, pose.northM), up2 = pose.altitudeM - g;
   $('where').textContent = `E ${pose.eastM.toFixed(0)} m · N ${pose.northM.toFixed(0)} m · ${up2 < 1000 ? up2.toFixed(1) + ' m' : (up2 / 1000).toFixed(2) + ' km'} above the street`;
 }
 function frame(t) {
   if (disposed) return;
   const dt = Math.min(.25, last ? (t - last) / 1000 : 0); last = t;
-  try { step(dt); draw(); if (frames % 6 === 0) hud(); } catch (error) { $('error').textContent = error.message; disposed = true; return; }
+  if (frameElement?.surfaceEntry?.standby && frames >= 3 && !resolveReady) {
+    requestAnimationFrame(frame);
+    return;
+  }
+  try { const prev=facade?{...pose}:null;step(dt);
+    if (facade)pose=facade.constrain(prev,pose);
+    draw();
+    if(frameElement?.dataset.worldKey)parent.SphereStageFrame?.presentCamera?.(window,pose,canvas.width/canvas.height,lens(canvas.width,canvas.height));
+    if (frames % 6 === 0) hud(); } catch (error) { $('error').textContent = error.message; rejectReady(error); dispose(); return; }
   requestAnimationFrame(frame);
 }
 
@@ -325,26 +288,49 @@ function arriveFromAir(keep, fromM, hold, viaBlind) {
   script = { from, to, keep, t: 0, seconds: shape ? 15 : high ? 13.5 : 13, shape, held: hold, ease: high ? t => 1 - (1 - t) ** 3 : null, interruptible: false, done: () => { status('Arrived above the city · Q descends · F lands'); resolveArrived('arrived'); } };
 }
 function begin() { if (script?.held) script.held = false; return arrived; }
-function dispose() { if (disposed) return; save(); disposed = true; for (const b of buffers.values()) { gl.deleteBuffer(b.vbo); gl.deleteVertexArray(b.vao); } buffers.clear(); gl.deleteProgram(mesh.p); gl.deleteProgram(plane.p); }
+function dispose() {
+  if (disposed) return;
+  if (frames > 0) save();
+  disposed = true;
+  graphicsLifetime.abort();
+  facade?.dispose();
+  gl.deleteVertexArray(blank);
+  for (const b of buffers.values()) { gl.deleteBuffer(b.vbo); gl.deleteVertexArray(b.vao); }
+  buffers.clear();
+  for (const program of linkedPrograms) gl.deleteProgram(program);
+  linkedPrograms.clear();
+}
+
+// The station exterior can still be linking when the walker turns back.
+window.addEventListener('pagehide', dispose, {once:true});
 
 const query = new URLSearchParams(location.search), arrival = query.get('arrival') ?? 'saved', had = load();
 if (arrival === 'ground' || (arrival === 'saved' && !had)) pose = start();
 const geographic=window.frameElement?.surfaceEntry;
-if(geographic?.geographic){pose={...geographic.pose};const floor=ground(pose.eastM,pose.northM)+EYE;
+if(geographic?.geographic) document.getElementById('panel').open=false;
+function enterPrepared(next) {
+  pose={...next};
+  facade?.sync(pose);
+  const floor=walkHeight(pose.eastM,pose.northM)+EYE;
   pose.altitudeM=pose.mode==='walk'?floor:Math.max(floor,pose.altitudeM);
-  if(solid(pose.eastM,pose.northM,pose.altitudeM)){pose.mode='flight';while(solid(pose.eastM,pose.northM,pose.altitudeM))pose.altitudeM+=2;}}
+  if(obstruction(pose.eastM,pose.northM,pose.altitudeM)){pose.mode='flight';while(obstruction(pose.eastM,pose.northM,pose.altitudeM))pose.altitudeM+=2;}
+  lightSampled=-Infinity;
+}
+if(geographic?.geographic){
+  facade?.sync(geographic.pose);if(facade?.pending)await facade.pending;
+  if (!disposed) enterPrepared(geographic.pose);
+}
 if (arrival === 'air') arriveFromAir(had ? { ...pose } : start(), query.get('fromM') === 'blind' && AIR.blind ? (AIR.blind.baseM + AIR.blind.topM) / 2 : Number(query.get('fromM')) || 0, query.get('hold') === '1', query.get('fromM') === 'blind'); else resolveArrived('ground');
 // The arrival is read once: a reload of this page opens the saved place, not the arrival again.
 if (query.has('arrival')) { const address = new URL(location.href); for (const key of ['arrival', 'hold', 'fromM']) address.searchParams.delete(key); history.replaceState(null, '', address.href); }
-window.SphereBiome = { contract: 'sphere-biome/1', id: ID, version: VERSION, ready, arrived, pose: () => ({ ...pose }), ascend, begin, save, dispose, air: () => structuredClone(AIR), inspect: () => ({ veil: +veilAt(pose.altitudeM).toFixed(3), frames, cellsBuilt: built, buffers: buffers.size, cellsDrawn: drawn, meshRing, scripted: !!script, held: !!script?.held }) };
+window.SphereBiome = { contract: 'sphere-biome/1', id: ID, version: VERSION, ready, arrived, enterPrepared(next) { enterPrepared(next); if (mesh && plane) draw(); }, pose: () => ({ ...pose }), ascend, begin, save, dispose, air: () => structuredClone(AIR), inspect: () => ({ veil: +veilAt(pose.altitudeM).toFixed(3), frames, cellsBuilt: built, buffers: buffers.size, cellsDrawn: drawn, meshRing, exteriorStation:facade?.station, scripted: !!script, held: !!script?.held }) };
 
 canvas.addEventListener('pointerdown', e => { drag = [e.clientX, e.clientY]; canvas.setPointerCapture(e.pointerId); canvas.focus(); });
-canvas.addEventListener('pointermove', e => { if (!drag || script) return; held = null; pose.yaw += (e.clientX - drag[0]) * .004; pose.pitch = Math.max(-1.5, Math.min(1.5, pose.pitch - (e.clientY - drag[1]) * .004)); drag = [e.clientX, e.clientY]; });
+canvas.addEventListener('pointermove', e => { if (!drag || script) return; held = null; pose.yaw += hand*(e.clientX - drag[0]) * .004; pose.pitch = Math.max(-1.5, Math.min(1.5, pose.pitch - (e.clientY - drag[1]) * .004)); drag = [e.clientX, e.clientY]; });
 canvas.addEventListener('pointerup', () => { drag = null; });
 window.addEventListener('keydown', e => { if (['KeyW', 'KeyA', 'KeyS', 'KeyD', 'KeyQ', 'KeyE', 'Space', 'ShiftLeft', 'ShiftRight', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'KeyZ', 'KeyX'].includes(e.code)) { e.preventDefault(); interrupt(); } if (e.code === 'Space' && !e.repeat) lift(); if (e.code === 'KeyF' && !e.repeat) land(); keys.add(e.code); });
 window.addEventListener('keyup', e => keys.delete(e.code));
 window.addEventListener('blur', () => keys.clear());
-window.addEventListener('pagehide', dispose);
 $('lift').onclick = () => { interrupt(); lift(); canvas.focus(); };
 $('land').onclick = () => { land(); canvas.focus(); };
 $('save').onclick = () => { bookmark = { ...pose }; status(save() ? 'Place saved.' : 'This browser would not keep the save.'); };
@@ -352,4 +338,14 @@ $('back').onclick = () => { if (!script) { pose = { ...bookmark }; status('Back 
 $('leavePack').onclick = () => { dispose(); location.assign(new URL('../../../index.html', import.meta.url).href); };
 setInterval(() => { if (!disposed) save(); }, 5000);
 status(pose.mode === 'walk' ? 'On foot · WASD walks · drag to look · Space lifts off' : 'Flying · W goes where you look');
-requestAnimationFrame(frame);
+const result = await programsReady;
+if (!disposed) {
+  if (result.error) {
+    $('error').textContent = result.error.message;
+    rejectReady(result.error);
+    dispose();
+  } else {
+    [mesh, plane] = result.programs;
+    requestAnimationFrame(frame);
+  }
+}

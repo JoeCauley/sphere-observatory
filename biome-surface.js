@@ -30,10 +30,18 @@ uniform highp sampler2D uInstalledBiomes;
 uniform int uInstalledBiomesOn;
 uniform float uAtlasRadiusKm;
 uniform vec3 uAtlasAxis,uAtlasRight,uAtlasUp;
-uniform vec4 uBorderChart,uBorderSurvey,uTransportChart,uTransportWidths;
+uniform vec4 uBorderChart,uBorderSurvey,uTransportChart,uTransportWidths,uMineralFrontage;
+uniform vec4 uAtlasLocalEast,uAtlasLocalNorth,uAtlasLocalGrid;
+uniform vec2 uAtlasObserverLatitude,uAtlasLocalHalls,uAtlasLocalMineral;uniform float uAtlasSteelReach;uniform vec4 uSurveyPaving;uniform vec3 uSurveyDoors,uSurveyHalfWidths;
 float transportCoverage(float d,float halfWidth,float pixelKm){
  float halfPixel=max(.0001,pixelKm*.5);
  return clamp((min(d+halfPixel,halfWidth)-max(d-halfPixel,-halfWidth))/(2.*halfPixel),0.,1.);
+}
+// All slopes in the camera chart are small. This odd atan expansion keeps a
+// metre-scale difference near zero instead of subtracting two rounded longitudes.
+vec2 chartAtan(vec2 slope){
+ vec2 t=slope*slope;
+ return slope*(1.+t*(-1./3.+t*(1./5.+t*(-1./7.+t/9.))));
 }
 vec3 transportMaterial(float across,float along,float halfWidth,float pixelKm){
  float ratio=across/halfWidth;
@@ -41,7 +49,7 @@ vec3 transportMaterial(float across,float along,float halfWidth,float pixelKm){
  float bays=cos(along*.0245437)*cos(across/max(halfWidth,1.)*2.8)*(1.-smoothstep(24.,120.,pixelKm));
  return mix(vec3(.32,.37,.35)*(.96+.055*bays),vec3(.25,.28,.255),service);
 }
-vec3 installedBiomeMaterial(vec3 original,vec3 q,float pixel,float distanceKm){
+vec3 installedBiomeMaterial(vec3 original,vec3 q,vec3 delta,float pixel,float distanceKm){
  if(uInstalledBiomesOn==0)return original;
  float mapWeight=smoothstep(1000.,12000.,distanceKm),ownerWeight=mapWeight;
  const float ROW=${f(A.ROW)},LIMIT=${f(A.LIMIT)},ATLAS_TAU=6.283185307179586;
@@ -110,8 +118,67 @@ vec3 installedBiomeMaterial(vec3 original,vec3 q,float pixel,float distanceKm){
  float waist=abs(abs(lat)-3.*ROW);
  float trunk=min(meridian,waist)*uAtlasRadiusKm,trunkHalf=${f(A.TRANSPORT_ROOF_KM.trunk*.5)};
  float trunkPx=meridian<waist?eastPx:northPx;
- vec3 groundBeforeRoutes=col;
+ // The observer's sub-kilometre address is evaluated in double precision on the CPU.
+ // Ray offsets remain accurate even where adding one small hall to a unit normal would round it away.
+ vec2 en=vec2(dot(delta,uAtlasLocalEast.xyz),dot(delta,uAtlasLocalNorth.xyz));
+ vec2 localPx=max(fwidth(en),vec2(.001));
+ bool local=uAtlasLocalGrid.w>0. && distanceKm<uAtlasLocalGrid.w;
  float branchCover=transportCoverage(edge,halfWidth,branchPx),trunkCover=transportCoverage(trunk,trunkHalf,trunkPx);
+ // The detailed hall chart has its own extent. A narrow roof can remain visible
+ // far beyond it. Measure angular displacement from the observer in local metres,
+ // including the curvature of parallels, until the wide-view samples take over.
+ float chartWeight=1.-smoothstep(.022,.040,distanceKm/uAtlasRadiusKm);
+ bool cameraGrid=uAtlasObserverLatitude.y>.12 && uAtlasLocalGrid.w>0.;
+ if((cameraGrid && chartWeight>0.) || local){
+  vec2 gridEN=en;
+  float longitudeScale=1.;
+  if(cameraGrid){
+   float sl=uAtlasObserverLatitude.x,cl=uAtlasObserverLatitude.y;
+   vec2 t=en/uAtlasRadiusKm;
+   float radial=sqrt(max(0.,1.-dot(t,t)));
+   float horizontal=radial*cl-t.y*sl,parallelRadius=length(vec2(horizontal,t.x));
+   float correction=t.x*t.x/max(.001,parallelRadius+horizontal);
+   gridEN=chartAtan(vec2(t.x/max(.001,horizontal),(t.y-sl*correction)/(radial+cl*correction)))*vec2(cl,1.)*uAtlasRadiusKm;
+   longitudeScale=parallelRadius/cl;
+  }
+  float weight=cameraGrid?chartWeight:1.;
+  float byNorth=uAtlasLocalGrid.x+gridEN.y;
+  float byEast=((byNorth<0.?uAtlasLocalGrid.y:uAtlasLocalGrid.z)+gridEN.x)*longitudeScale;
+  if(abs(lat)<LIMIT){
+   float d=min(abs(byEast),abs(byNorth)),fp=abs(byEast)<abs(byNorth)?localPx.x:localPx.y;
+   branchCover=mix(branchCover,transportCoverage(d,halfWidth,fp),weight);
+   edge=mix(edge,d,weight);branchPx=mix(branchPx,fp,weight);
+  }
+  vec2 trunkEN=abs(vec2(uAtlasLocalEast.w,uAtlasLocalNorth.w)+gridEN)*vec2(longitudeScale,1.);
+  float d=min(trunkEN.x,trunkEN.y),fp=trunkEN.x<trunkEN.y?localPx.x:localPx.y;
+  trunkCover=mix(trunkCover,transportCoverage(d,trunkHalf,fp),weight);
+  trunk=mix(trunk,d,weight);trunkPx=mix(trunkPx,fp,weight);
+ }
+ // In the detailed survey window the roof has physical height. Painting its footprint
+ // on the land as well produces a second wall on an oblique approach.
+ bool meshOwns=local && distanceKm<uAtlasSteelReach;
+ if(meshOwns && uSurveyPaving.w>0.){
+  vec2 localKm=uAtlasLocalHalls+en;
+  if(uTransportChart.z!=0.)localKm=vec2(localKm.y,localKm.x*uTransportChart.z);
+  float x=localKm.x-uSurveyPaving.x,reserve=min(.01,max(localPx.x,localPx.y)*.75+.0002);
+  float outsideKm=abs(localKm.y)-uSurveyPaving.y;
+  vec3 shoulder=abs(vec3(x)-uSurveyDoors)-uSurveyHalfWidths;
+  float pavement=min(max(abs(x)-uSurveyPaving.w,outsideKm),max(min(shoulder.x,min(shoulder.y,shoulder.z)),outsideKm-uSurveyPaving.z));
+  if(pavement < -reserve)discard;
+ }
+ if(meshOwns)branchCover=0.;
+ if(uMineralFrontage.w>0.){
+  float dl=atan(sin(lon-uMineralFrontage.y),cos(lon-uMineralFrontage.y));
+  vec2 km=vec2(dl*cos(uMineralFrontage.x),lat-uMineralFrontage.x)*uAtlasRadiusKm;
+  if(local)km=uAtlasLocalMineral+en;
+  if(abs(uMineralFrontage.z)>1.5)km=km.yx;
+  if(max(abs(km.x),abs(km.y))<20.){
+   float shoulder=-uMineralFrontage.w+.5*max(0.,abs(km.x)-uMineralFrontage.w);
+   float clear=clamp(.5+(sign(uMineralFrontage.z)*km.y-shoulder)/branchPx,0.,1.);
+   // At orbital scale the whole recess occupies only a fraction of a pixel.
+   branchCover*=1.-clear*min(1.,2.*uMineralFrontage.w/branchPx);
+  }
+ }
  if(trunkCover>0. && trunkCover>=branchCover){
   along=(meridian<waist?lat:lon*cos(3.*ROW))*uAtlasRadiusKm;
   col=mix(col,transportMaterial(trunk,along,trunkHalf,trunkPx),trunkCover);
@@ -130,24 +197,25 @@ vec3 installedBiomeMaterial(vec3 original,vec3 q,float pixel,float distanceKm){
    col=mix(col,vec3(.32,.37,.35)*(1.+.11*bays),roof);
   }
  }
- if(uTransportWidths.w>0. && abs(lat-uTransportChart.x)*uAtlasRadiusKm<240.){
+ if(!meshOwns && uTransportWidths.w>0. && (local?abs(uAtlasLocalHalls.y+en.y):abs(lat-uTransportChart.x)*uAtlasRadiusKm)<240.){
   float dl=atan(sin(lon-uTransportChart.y),cos(lon-uTransportChart.y));
   vec2 km=vec2(dl*cos(uTransportChart.x),lat-uTransportChart.x)*uAtlasRadiusKm;
+  if(local)km=uAtlasLocalHalls+en;
   if(uTransportChart.z!=0.)km=vec2(km.y,km.x*uTransportChart.z);
   float bay=clamp(floor(km.x/200.+.5),-1.,1.);
   float width=bay<-.5?uTransportWidths.x:(bay>.5?uTransportWidths.z:uTransportWidths.y);
   float hall=width>0.?max(abs(km.x-bay*200.)-16.,abs(km.y)-width):1.e10;
-  float link=max(max((uTransportWidths.x>0.?-200.:0.)-km.x,km.x-(uTransportWidths.z>0.?200.:0.)),abs(km.y)-1.9);
-  float aa=max(.015,pixel*uAtlasRadiusKm);
-  // Resolve the surveyed reach to its actual footprint as the camera descends.
-  float start=uTransportWidths.x>0.?-200.:0.,end=uTransportWidths.z>0.?200.:0.;
-  float interior=smoothstep(start-16.,start,km.x)*(1.-smoothstep(end,end+16.,km.x));
-  float localSurvey=interior*(1.-smoothstep(40.,90.,abs(km.y)))*(1.-smoothstep(2.,12.,aa));
-  col=mix(col,groundBeforeRoutes,localSurvey);
-  float roof=(1.-smoothstep(-aa,aa,min(hall,link)))*min(1.,max(width,1.9)/aa);
-  col=mix(col,transportMaterial(abs(km.y),km.x,max(width,1.9),aa),roof);
+  // The geographic grid already carries the through wall. Stations add
+  // their wider roofs only over their actual surveyed footprint.
+  float aa=local?max(.015,max(localPx.x,localPx.y)):max(.015,pixel*uAtlasRadiusKm);
+  float roof=(1.-smoothstep(-aa,aa,hall))*min(1.,width/aa);
+  col=mix(col,transportMaterial(abs(km.y),km.x,width,aa),roof);
  }
  return col;
+}
+// Wide views in standalone pack skies do not have a camera-relative shell ray.
+vec3 installedBiomeMaterial(vec3 original,vec3 q,float pixel,float distanceKm){
+ return installedBiomeMaterial(original,q,vec3(0.),pixel,distanceKm);
 }
 `;
   }
@@ -159,7 +227,37 @@ vec3 installedBiomeMaterial(vec3 original,vec3 q,float pixel,float distanceKm){
     fragment=fragment.replaceAll('for(int i=0;i<18;i++){if(i>=uPlateCount)break;','for(int i=0;i<min(uPlateCount,18);i++){')
       .replaceAll('for(int k=0;k<256;k++){if(k>=count)break;','for(int k=0;k<min(count,256);k++){')
       .replaceAll('for(int i=0;i<128;i++){if(i>=uPackEdges)break;','for(int i=0;i<min(uPackEdges,128);i++){');
-    return fragment.replace('const float PI=', glsl(A) + '\nconst float PI=').replace(SLOT, 'installedBiomeMaterial(' + SLOT + ',q,footprint/uRadius,ts*uRadius)');
+    // ANGLE inlines the finite-star ray integrator at every call site. A pixel
+    // has only one receiver. Select it once for the ground, Shade or eclipse
+    // view, preserving the inspected face's self-shadow exclusion.
+    if(fragment.includes('float structuralShadeMargin(')){
+      const select=`
+float visibleReceiverLight(int kind,vec3 d,vec3 q,float depth,int diskIndex){
+ if(uMode==2||uMode==4)return 0.;
+ vec3 receiver=q;int exclude=-1;
+ if(uMode==5){if(kind!=0)return 0.;receiver=normalize(camera()+d*depth);}
+ else if(uCollection!=1)return 0.;
+ else if(kind==1){
+  receiver=camera()+d*depth;
+  vec3 radial=normalize(receiver),normal=uShadeShape>=2?radial:uDiskNormals[diskIndex].xyz;
+  if(dot(d,normal)<=0.||dot(normal,radial)<=0.)return 0.;
+  exclude=diskIndex;
+ }else if(kind!=0)return 0.;
+ return collectionLightExcept(receiver,exclude);
+}
+`;
+      const diagnostic='if(uMode==5){fragColor=vec4(vec3(kind==0?collectionLight(normalize(camera()+d*obj)):0.),1.);return;}';
+      const ground='uCollection==1?collectionLight(q):lightFraction(q)';
+      const shade='float sunlight=cosine>0.?collectionLightExcept(hit,diskIndex):0.;';
+      for(const slot of [diagnostic,ground,shade]){
+        if(fragment.split(slot).length!==2)throw Error('The Main stellar receiver slot changed.');
+      }
+      fragment=fragment.replace('void main(){',select+'void main(){')
+        .replace(diagnostic,'float receiverLight=visibleReceiverLight(kind,d,q,obj,diskIndex);if(uMode==5){fragColor=vec4(vec3(receiverLight),1.);return;}')
+        .replace(ground,'uCollection==1?receiverLight:lightFraction(q)')
+        .replace(shade,'float sunlight=receiverLight;');
+    }
+    return fragment.replace('const float PI=', glsl(A) + '\nconst float PI=').replace(SLOT, 'installedBiomeMaterial(' + SLOT + ',q,delta,footprint/uRadius,ts*uRadius)');
   }
 
   // The final band stores normalized half-extents and the ellipse flag.
@@ -207,20 +305,37 @@ vec3 installedBiomeMaterial(vec3 original,vec3 q,float pixel,float distanceKm){
     const gl = renderer.gl;
     let compiled = null, texture = null, disposed = false, enabled = true;
 
-    const [{chartFor},{farEdgeM,halfLengthM},apronRules]=await Promise.all([import('./packs/kit/surface-route.js'),import('./packs/kit/border-profile.js'),import('./packs/border-transport/0.10.0/district.mjs')]);
-    let revision=0,transportChart=[0,0,0,0],transportWidths=[0,0,0,0],borderChart=[0,0,0,0],borderSurvey=[0,0,0,0];
+    const [{chartFor},{farEdgeM,halfLengthM},apronRules,{surveyForestWalk}]=await Promise.all([import('./packs/kit/surface-route.js'),import('./packs/kit/border-profile.js'),import('./packs/border-transport/0.10.0/district.mjs'),import('./packs/super-jungle/1.0.0/forest-walk.mjs')]);
+    let revision=0,mineralFrontage=[0,0,0,0],transportChart=[0,0,0,0],transportWidths=[0,0,0,0],borderChart=[0,0,0,0],borderSurvey=[0,0,0,0];
+    let border=null;
+    const districtUniforms=new WeakMap();
+    function surveyUniforms(d){
+      let result=districtUniforms.get(d);
+      if(!result){
+        result={chart:[d.origin.latitude,d.origin.longitude,d.origin.axis==='meridian'?d.origin.acrossSign:0,0],
+          widths:[-1,0,1].map(b=>(d.sites.find(s=>s.bay===b)?.widthM??0)/2000).concat(1)};
+        districtUniforms.set(d,result);
+      }
+      return result;
+    }
     function upload() {
-      const started = performance.now(), items = library.placed().filter(item => Number.isInteger(item.plot));
+      const started = performance.now(), items = library.placed().filter(item => Number.isInteger(item.plot) && !item.occurrence);
       const built = build(A, items, item => library.pack(item.packId)?.overview, new Set(library.underConstruction()));
-      const d=library.placed().find(i=>i.transport)?.transport;
-      window.SphereGround?.setApronSurvey(d?{district:d,parameters:library.world.params}:null,apronRules);
-      transportChart=d?[d.origin.latitude,d.origin.longitude,d.origin.axis==='meridian'?d.origin.acrossSign:0,0]:[0,0,0,0];
-      transportWidths=d?[-1,0,1].map(b=>(d.sites.find(s=>s.bay===b)?.widthM??0)/2000).concat(1):[0,0,0,0];
-      const edge=library.placed().find(i=>i.id==='border-outfall')?.edge,home=edge && A.byId(edge.near);
+      const placed=library.placed();border=placed.find(i=>i.transport);
+      const d=border?.transport;
+      const forestItems=placed.filter(i=>i.occurrence?.biome===1&&i.occurrence.tree&&i.detailInstalled!==false);
+      window.SphereGround?.setForestAtlas(forestItems,library.world?.params??{},
+        item=>surveyForestWalk(window.SphereApp.getState(),item.occurrence,window,d));
+      window.SphereGround?.setApronSurvey(d?{border,district:d,parameters:library.world.params}:null,apronRules);
+      transportChart=d?surveyUniforms(d).chart:[0,0,0,0];
+      const field=d?.mineralFrontage;
+      mineralFrontage=field?[field.latitude,field.longitude,field.side*(field.edge.axis==='parallel'?1:2*field.edge.acrossSign),field.halfM/1000]:[0,0,0,0];
+      transportWidths=d?surveyUniforms(d).widths:[0,0,0,0];
+      const edge=library.placed().find(i=>i.outfall)?.outfall.edge,home=edge && A.byId(edge.near);
       const gate=home && chartFor(home,edge,library.world.params.radius);
       borderChart=gate?[home.latitude,home.longitude,gate.eastM/1000,gate.northM/1000]:[0,0,0,0];
       borderSurvey=gate?[Math.cos(gate.angle),Math.sin(gate.angle),Math.min(gate.halfWidthM,halfLengthM)/1000,farEdgeM/1000]:[0,0,0,0];
-      api.mapData=()=>({data:built.data,width:WIDTH,height:built.height,revision,borderChart,borderSurvey,transportChart,transportWidths});
+      api.mapData=()=>({data:built.data,width:WIDTH,height:built.height,revision,mineralFrontage,borderChart,borderSurvey,transportChart,transportWidths});
       revision++;
       const priorActive = gl.getParameter(gl.ACTIVE_TEXTURE);
       gl.activeTexture(gl.TEXTURE0 + UNIT);
@@ -243,8 +358,33 @@ vec3 installedBiomeMaterial(vec3 original,vec3 q,float pixel,float distanceKm){
         gl.activeTexture(gl.TEXTURE0 + UNIT);
         const priorBinding = gl.getParameter(gl.TEXTURE_BINDING_2D);
         gl.bindTexture(gl.TEXTURE_2D, texture);
+        const M=window.SphereMath,q=M.norm(core.position),lat=Math.asin(Math.max(-1,Math.min(1,M.dot(q,frame.axis)))),
+          lon=Math.atan2(M.dot(q,frame.up),M.dot(q,frame.right)),c=Math.cos(lat),r=core.radius,tau=2*Math.PI;
+        const east=M.sub(M.mul(frame.up,Math.cos(lon)),M.mul(frame.right,Math.sin(lon)));
+        const north=M.sub(M.mul(frame.axis,c),M.mul(M.add(M.mul(frame.right,Math.cos(lon)),M.mul(frame.up,Math.sin(lon))),Math.sin(lat)));
+        const row=Math.round((lat+A.LIMIT)/A.ROW);
+        const longitudeGap=(step,origin=0)=>{const n=(lon-origin)/step;return (n-Math.round(n))*step*c*r;};
+        const rowGap=i=>longitudeGap(tau/A.columns(Math.max(0,Math.min(A.ROWS-1,i))),-Math.PI);
+        const siteOrigin=center=>[Math.atan2(Math.sin(lon-center[1]),Math.cos(lon-center[1]))*Math.cos(center[0])*r,(lat-center[0])*r];
+        gl.uniform2f(uniforms.uAtlasObserverLatitude,Math.sin(lat),c);
+        gl.uniform4f(uniforms.uAtlasLocalEast,...east,longitudeGap(tau/A.TRUNK_MERIDIANS));
+        gl.uniform4f(uniforms.uAtlasLocalNorth,...north,(lat-(lat<0?-3:3)*A.ROW)*r);
+        gl.uniform4f(uniforms.uAtlasLocalGrid,(lat+A.LIMIT-row*A.ROW)*r,rowGap(row-1),rowGap(row),Math.min(8000,r*.003));
+        const localDistrict=border?.districts?.length?surveyUniforms(apronRules.borderAt(border,lat,lon).transport):null;
+        const halls=localDistrict?.chart??transportChart;
+        gl.uniform2fv(uniforms.uAtlasLocalHalls,siteOrigin(halls));
+        gl.uniform2fv(uniforms.uAtlasLocalMineral,siteOrigin(mineralFrontage));
+        const stage=window.SphereStageFrame,paving=stage?.surveyPaving?.(core);
+        gl.uniform1f(uniforms.uAtlasSteelReach,stage?.surveySteelReach?.(core)??0);
+        gl.uniform4f(uniforms.uSurveyPaving,(paving?.address.chainageM??0)*.001,(paving?.widthM??0)*.0005,apronRules.apronRunM*.001,paving?apronRules.hallHalfM*.001:0);
+        if(paving){
+          const half=apronRules.apronHalfWidthsM;
+          gl.uniform3f(uniforms.uSurveyHalfWidths,half[0]*.001,half[1]*.001,half[3]*.001);
+          gl.uniform3f(uniforms.uSurveyDoors,paving.routes[0].nearDoor[0]*.001,paving.routes[1].nearDoor[0]*.001,paving.routes[3].nearDoor[0]*.001);
+        }
         gl.uniform1f(uniforms.uAtlasRadiusKm, core.radius);
-        gl.uniform4fv(uniforms.uTransportChart,transportChart);gl.uniform4fv(uniforms.uTransportWidths,transportWidths);
+        gl.uniform4fv(uniforms.uMineralFrontage,mineralFrontage);
+        gl.uniform4fv(uniforms.uTransportChart,halls);gl.uniform4fv(uniforms.uTransportWidths,localDistrict?.widths??transportWidths);
         gl.uniform4fv(uniforms.uBorderChart,borderChart);gl.uniform4fv(uniforms.uBorderSurvey,borderSurvey);
         gl.uniform1i(uniforms.uInstalledBiomes, UNIT); gl.uniform1i(uniforms.uInstalledBiomesOn, 1);
         gl.uniform3fv(uniforms.uAtlasAxis, frame.axis); gl.uniform3fv(uniforms.uAtlasRight, frame.right); gl.uniform3fv(uniforms.uAtlasUp, frame.up);

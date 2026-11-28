@@ -8,6 +8,7 @@
 // Each sector is filled by one unit, chosen by the hex's role and the pod's product. Units are
 // written in the sector's own frame: u outward along the sector's middle, v across it.
 import {addTransferSolids} from './transfer.js';
+import {addMillSolids} from './mill-site.js';
 import {hash32} from '../../infinite-meadow/1.0.0/coordinates.js';
 import {LANE_HALF_M,LANE_MARGIN_M,CARRY_M,HEX_M,locate} from './pod.js';
 export const DATUM_M=48;
@@ -140,6 +141,7 @@ export function plant(hex){
   for(let d=14;d<half;d+=10){const q=at(d,o,0);add({k:'cyl',x:q[0],y:0,z:q[2],r:.2*s,h:CARRY_M*s,c:c.steel});}}
 
  addTransferSolids(hex,add,c);
+ addMillSolids(hex,add);
  const R=(HEX_M/Math.sqrt(3))*s;
  // Does anything stop a body here? eye is the eye's height above the datum; the body is 1.7 m below it and 30 cm wide.
  function blocked(x,z,eye){const feet=eye-1.7,head=feet+1.65,pad=.3;

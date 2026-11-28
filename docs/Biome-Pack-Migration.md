@@ -1,5 +1,7 @@
 # Bringing the ten original habitats into the walkable Sphere
 
+Pack authors can use the shared edge and frontage rules to connect their installation at a surveyed door. [Biome Pack to Border Biome Contract](Builder-border-crossings.md#biome-pack-to-border-biome-contract)
+
 The original Observatory gives each habitat a name, a geographic distribution, a palette and a surface study. An installable pack adds somewhere you can actually land, walk and return to. The first conversion should be **Violet Labyrinth**. Joe’s flight at 11.4 km exposes the distance where a mineral province must still read as connected terrain. The same place should make sense from 200 km, from either side of a streamed ground tile, and from the bottom of a canyon.
 
 ## The flight that exposed the gap

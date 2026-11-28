@@ -216,6 +216,7 @@ vec2 weatherField(vec3 p,float footprint,int layer,float remoteness){
  float opening=smoothstep(.23,.69,front.b*.60+mask*.40);
  return vec2(mass+(mask-.5)*.07,opening);
 }
+${root.SphereWorld.shadeFracture.globalGLSL}
 float weatherSun(vec3 q,float footprint){
  float visible=1.;
  for(int i=0;i<18;i++){if(i>=weatherShadeCount)break;
@@ -225,7 +226,12 @@ float weatherSun(vec3 q,float footprint){
   float edge=weatherShadeShape==1?1.-max(abs(uv.x),abs(uv.y)):1.-length(uv);
   if(weatherShadeShape==3)edge=min(edge,weatherShadeTrim-abs(uv.x));
   float cover=smoothstep(-blur,blur,edge);
-  if(weatherShadeNormal[i].w>.5){
+  if(cover<=0.)continue;
+  if(weatherShadeNormal[i].w>1.5){
+   // The same surviving structure that eclipses the star shades the cloud deck.
+   // The angular star diameter and the cloud pixel footprint soften its shadow.
+   cover*=smoothstep(-blur,blur,structuralShadeMargin(uv,int(weatherShadeRight[i].w)));
+  }else if(weatherShadeNormal[i].w>.5){
    // Resolve the authored fracture families, but filter subpixel cracks rather
    // than scattering bright holes over distant clouds.
    int family=int(weatherShadeRight[i].w)%3;float opening;

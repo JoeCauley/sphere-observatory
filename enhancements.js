@@ -25,7 +25,6 @@
   const km=hit.distance,w=canvas.width;let fp=Infinity;if(hit.kind==='Inner surface'){const b=M.basis(s.forward,s.up),aspect=w/canvas.height;fp=Math.max(...[[2/w,0],[0,2/canvas.height]].map(([x,y])=>{const d=M.ray(x,y,aspect,s.fov,b,s.projection==='panorama'),t=M.shellDistance(s.position,d,s.radius);return M.length(M.sub(M.add(s.position,M.mul(d,t)),hit.point));}));}
   let context=hit.kind==='Inner surface'?(km>alt*3?'Across the cavity':'Nearby inner surface')+' · '+(fp>=1000?(fp/1000).toFixed(1)+' thousand km':fp>=1?fp.toFixed(1)+' km':(fp*1000).toFixed(1)+' m')+' per pixel near centre':hit.kind==='Shade'?'Shade in foreground · distant shell behind':hit.kind==='Open space'?'Through a breach into external space':hit.kind==='Stellar station'?'Stellar service structure · prescribed geometry':'Central star';
   $('viewContext').textContent=context;$('surfaceLegend').hidden=s.collection||s.surfaceStyle==='legacy'||s.viewMode!=='material';
-  if(!$('camera').hidden&&!['cameraLat','cameraLon','cameraAltitude'].includes(document.activeElement.id)){const ll=M.latlon(s.position);$('cameraLat').value=ll[0].toFixed(5);$('cameraLon').value=ll[1].toFixed(5);$('cameraAltitude').value=alt.toFixed(3);}
  },600);
  function shot(name,start,t){const s=structuredClone(start);
   if(name==='dawn'){s.time=0;s.shadeOffset=.985+.030*t;s.forward=M.norm([.24+.05*(t-.5),.07,-1]);}

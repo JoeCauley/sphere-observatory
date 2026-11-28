@@ -11,6 +11,7 @@ vec4 project(vec3 d){
  float z=dot(d,uForward);
  return vec4(dot(d,uRight)*1.428148/uAspect,dot(d,uUp)*1.428148,z*1.00000002-.10,z);
 }`;
+export {view as viewProjection};
 const depth=`gl_FragDepth=clamp(log2(1.+length(delta))/log2(1000001.),0.,1.);`;
 const air=`vec3 air(vec3 c,float d){
  return mix(c,vec3(.47,.55,.54),1.-exp(-d/6400.));
@@ -110,12 +111,14 @@ float mark(float x,float halfW,float aa){return 1.-smoothstep(halfW,halfW+aa,abs
 void main(){
  float d=length(delta),s=district.x,w=${HEX_M}.*s;
  vec2 qr=cell(local,w),off=local-centre(qr,w);
- int slot=int(mod(qr.x-2.*qr.y,7.)+.5);
+ // These are integer addresses. Floating mod can return nearly 7 for a negative multiple.
+ int lattice=int(qr.x)-2*int(qr.y),slot=abs(lattice)%7;
+ if(lattice<0)slot=(7-slot)%7;
  const vec2 ring[7]=vec2[7](vec2(0),vec2(1,0),vec2(0,-1),vec2(1,-1),vec2(-1,1),vec2(0,1),vec2(-1,0));
  vec2 core=qr-ring[slot],c=centre(core,w);
  vec2 oriented=mat2(angle.x,angle.y,-angle.y,angle.x)*c;
  bool built=extent(oriented)<=${DISTRICT_M/2-BOULEVARD_M/2}.-w*(1.+.57735026919);
- int heat=int(mod(round((4.*core.x-core.y)/7.)+district.y+300.,3.)+.5);
+ int heat=((4*int(core.x)-int(core.y))/7+int(district.y)+300)%3;
  vec3 concrete=vec3(.35,.35,.308);
  if(built && !(district.z>.5 && all(equal(qr,vec2(0))))){
   concrete=heat==0?${vec(PALETTES.ambient.ground)}:heat==1?${vec(PALETTES.hot.ground)}:${vec(PALETTES.cold.ground)};

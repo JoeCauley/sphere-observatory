@@ -7,6 +7,7 @@
  html,body{margin:0;height:100%;background:#0b0d10;color:#efe6d8;font:14px/1.4 system-ui,sans-serif;overflow:hidden}
  canvas{position:fixed;inset:0;width:100%;height:100%;display:block;outline:0}
  #panel{position:fixed;left:16px;top:16px;max-width:300px;background:#141a20e6;border:1px solid #ffffff22;border-radius:10px;padding:14px 16px}
+ #panel summary{cursor:pointer;font-weight:650} #panel:not([open]){top:48px;padding:5px 9px} #panel[open]{top:48px;max-height:calc(100% - 120px);overflow:auto}
  #panel h1{font:600 20px/1.2 Georgia,serif;margin:2px 0 6px} #panel p{margin:6px 0;opacity:.85}
  .eyebrow{font-size:11px;letter-spacing:.14em;opacity:.6}
  button{background:#22303a;color:inherit;border:1px solid #ffffff2e;border-radius:6px;padding:6px 10px;margin:4px 4px 0 0;cursor:pointer}
@@ -17,7 +18,7 @@
 </head>
 <body>
 <canvas id="world" tabindex="0" aria-label="The Sideways City. WASD walks, drag to look."></canvas>
-<section id="panel">
+<details id="panel" open><summary>City controls</summary>
  <div class="eyebrow">SPHERE · BIOME</div>
  <h1>The Sideways City</h1>
  <p>A city without end, built for people fifty feet across who walk sideways. Nobody is home. Their curbs are your walls; their ramps are your roads.</p>
@@ -26,7 +27,7 @@
  <button id="save">Save this place</button><button id="back">Return to saved</button><br>
  <button id="leavePack">Return to Observatory</button>
  <p id="error"></p>
-</section>
+</details>
 <div id="foot"><span id="mode">WALK</span><span id="status">Starting…</span><span id="perf"></span></div>
 <script type="module" src="city.js"></script>
 </body>

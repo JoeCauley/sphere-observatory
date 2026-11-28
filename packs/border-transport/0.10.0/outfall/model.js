@@ -1,3 +1,4 @@
+import {channelLevels} from '../maintenance.mjs';
 export const valve={eastM:1.30,northM:12.0,heightM:1.48};
 export const eye=1.7;
 export const entrance=()=>({eastM:-2.2,northM:-18,altitudeM:eye,yaw:.11,pitch:.025,mode:'walk'});
@@ -11,8 +12,5 @@ export function restore(raw){
 }
 export function nearValve(p){return p.mode==='walk'&&Math.abs(p.altitudeM-valve.heightM)<2&&Math.hypot(p.eastM-valve.eastM,p.northM-valve.northM)<2.7;}
 export function waterStep(state,dt){
-  // A local bypass feeds three successive channel sections. A downstream section
-  // keeps draining from its upstream neighbour after the supply valve closes.
-  for(let i=2;i>=0;i--){const input=i?state.levels[i-1]:Number(state.open);
-    state.levels[i]+=(input-state.levels[i])*(1-Math.exp(-dt/(i?2.4:1.15)));}
+  state.levels=channelLevels(state.open,state.levels,dt);
 }

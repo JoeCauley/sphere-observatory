@@ -1,6 +1,6 @@
 import {valve} from './model.js';
 import {borderSolids,pipes} from './border.js';
-import {galleryBoxes,galleryTubes} from '../../kit/outfall-gallery.mjs';
+import {galleryBoxes,galleryTubes} from '../../../kit/outfall-gallery.mjs';
 
 export function makeGallery(){
   const vertices=[],colliders=[];

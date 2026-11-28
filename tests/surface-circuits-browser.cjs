@@ -14,14 +14,31 @@ const {chromium}=require('playwright'),{session,executable}=require('./support/b
       if(!Number.isSafeInteger(override))throw Error('SPHERE_WALK_SEED must be an integer');
       await page.evaluate(seed=>window.walkSeed=seed,override);
     }
-    await page.evaluate(async()=>{
+    const defaultWorld=process.argv.includes('--default-world');
+    await page.evaluate(async defaultWorld=>{
       const lib=SphereBiomeLibrary;
-      for(const info of lib.packs())await lib.install(info.id);
+      const {circuitWorld,circuitPlots,blockedWallCourse}=await import('./tests/support/surface-circuits.mjs');
+      const {footprint}=await import('./geographic-flight.js');
+      const {planWalk,groundFootfalls}=await import('./surface-circuit.js');
+      // Qualify the ordinary wall on the default world before surveying a
+      // second fully installed world with traversable habitat boundaries.
+      if(defaultWorld)for(const info of lib.packs())await lib.install(info.id);
+      else{await lib.install('infinite-meadow');await lib.install('border-transport');}
+      const original=SphereApp.getState(),worldEnv={math:SphereMath,world:SphereWorld,collection:SphereCollection,atlas:SphereAtlas};
+      const eye={...original,position:blockedWallCourse.mouth.map(v=>v*(original.radius-.0017))};
+      if(!footprint(eye,lib,SphereAtlas,SphereWorld)?.transport ||
+          planWalk(blockedWallCourse,original,lib.locations(),worldEnv))throw Error('The default interstation wall must block the old through-tunnel');
+      if(!defaultWorld){
+        SphereApp.setPlaying(false);SphereApp.setState({...original,...circuitWorld});
+        await lib.selectWorld();
+        for(const [id,placement] of Object.entries(circuitPlots))await lib.placeRegion(id,placement);
+        for(const info of lib.packs())await lib.install(info.id);
+      }
       const state=SphereApp.getState();if(!state.collection||state.era!=='after')throw Error('Expected the live damaged Sphere');
-      const env={math:SphereMath,world:SphereWorld,collection:SphereCollection,atlas:SphereAtlas},items=lib.installed();
-      const {circuits,runCircuit,seed:defaultSeed,blockedCityDoor}=await import('./tests/support/surface-circuits.mjs');
+      const env={math:SphereMath,world:SphereWorld,collection:SphereCollection,atlas:SphereAtlas},items=lib.locations();
+      const {circuits,defaultCircuit,runCircuit,seed:defaultSeed,blockedCityDoor}=await import('./tests/support/surface-circuits.mjs');
       const seed=window.walkSeed??defaultSeed;
-      const paths=circuits(state,items,env,seed),along=(await import('./surface-passages.js')).along;
+      const paths=defaultWorld?[defaultCircuit(state,items,env)]:circuits(state,items,env,seed),along=(await import('./surface-passages.js')).along;
       const geo=await import('./geographic-flight.js');
       const seen=new Set();
       const witness=()=>{
@@ -30,7 +47,8 @@ const {chromium}=require('playwright'),{session,executable}=require('./support/b
           const api=child.SphereBiome,p=api.pose(),item=lib.entry(api.id);
           if(p.mode!=='walk'||api.inspect().frames<1)throw Error('Missing walking support in '+api.id);
           const q=SphereMath.norm(geo.mainPose(core,item,p,SphereAtlas,SphereWorld).position);
-          if(child.document.querySelector('canvas')?.getContext('webgl2')?.getError())throw Error('Pack WebGL error: '+api.id);
+          const gl=api.nativeView?SphereApp.renderer.gl:child.document.querySelector('canvas')?.getContext('webgl2');
+          if(gl?.getError()||gl?.isContextLost())throw Error('Pack WebGL error: '+api.id);
           return {id:api.id,q};
         }
         if(!core.walkMode||!core.walkSurface)throw Error('Main left walking mode');
@@ -65,7 +83,7 @@ const {chromium}=require('playwright'),{session,executable}=require('./support/b
       window.circuitChecks={paths,seed,state,items,seen,witness,env,checkBlockedDoor,run:async function(i){
         const plan=paths[i],model=runCircuit(plan,state,items,env),at=angle=>along(plan.circle.origin,plan.circle.forward,angle);
         const atStart=await ground(at(0),plan.legs[0].owner?.id??plan.legs[0].gate.near.id);
-        let passages=0,supported=0,swept=0,here=atStart;
+        let passages=0,supported=0,swept=0,here=atStart,groundOffsetKm=0;
         const tangent=q=>SphereMath.norm(SphereMath.cross(plan.circle.normal,q));
         const accept=next=>{
           const delta=Math.atan2(SphereMath.dot(plan.circle.normal,SphereMath.cross(here.q,next.q)),SphereMath.dot(here.q,next.q));
@@ -76,11 +94,14 @@ const {chromium}=require('playwright'),{session,executable}=require('./support/b
         const step=(km)=>along(here.q,tangent(here.q),km/state.radius);
         for(const [index,leg] of plan.legs.entries()){
           if(leg.kind==='ground'){
-            const nextIsMouth=plan.legs[index+1]?.kind==='tunnel';
-            for(const km of [leg.km/2,leg.km/2-(nextIsMouth ? .001 : 0)]){
-              const landing=step(km);accept(await ground(landing,leg.owner.id));
+            for(const stop of groundFootfalls(plan.legs,index)){
+              const landing=step(stop.km-groundOffsetKm);
+              accept(await ground(landing,stop.owner.id));
+              if(dist(here.q,at(leg.start+stop.km/state.radius).q)>.25)throw Error('Stride drifted off the route');
+              groundOffsetKm=stop.km;
             }
-            if(dist(here.q,at(leg.end-(nextIsMouth ? .001 : 0)/state.radius).q)>.25)throw Error('Stride drifted off the route');
+            // A shared edge has already been crossed on foot into the next leg.
+            groundOffsetKm=Math.max(0,groundOffsetKm-leg.km);
             supported++;continue;
           }
           const before=here.q,after=step(.002);
@@ -89,7 +110,10 @@ const {chromium}=require('playwright'),{session,executable}=require('./support/b
             throw Error(plan.label+' edge '+index+' from '+here.id+' ('+owner(before)+' to '+owner(after.q)+'): '+document.querySelector('#biomeLibraryStatus').textContent);
           }
           const f=document.querySelector('#stageFrame iframe'),api=f.contentWindow.SphereBiome,gate=f.surfaceEntry?.passage;
-          if(!gate||dist(gate.near.q,leg.gate.near.q)>.25||gate.near.id!==leg.gate.near.id||gate.far.id!==leg.gate.far.id)throw Error('Unexpected portal or neighbouring biome');
+          if(!gate||dist(gate.near.q,leg.gate.near.q)>.25||gate.near.id!==leg.gate.near.id||gate.far.id!==leg.gate.far.id){
+            const actual=gate?gate.near.id+' to '+gate.far.id+' at '+dist(gate.near.q,leg.gate.near.q).toFixed(3)+' m':f?.dataset.locationId;
+            throw Error(plan.label+' leg '+index+' expected '+leg.gate.near.id+' to '+leg.gate.far.id+', reached '+actual);
+          }
           if(api.pose().mode!=='walk'||api.inspect().frames<1)throw Error('Missing Outfall floor');
           const toMid=500043-api.pose().northM;
           if(!await api.walkTunnel(toMid/3.3)||Math.abs(api.pose().northM-500043)>.001)throw Error('Tunnel midpoint was skipped');
@@ -106,7 +130,7 @@ const {chromium}=require('playwright'),{session,executable}=require('./support/b
         if(here.id!==atStart.id||liveClosureM>=.5||Math.abs(liveDegrees-360)>1e-8)throw Error('Native walk did not close: '+here.id+' '+liveClosureM+' m '+liveDegrees+' degrees');
         return {...model,nativeGroundLegs:supported,renderedTunnels:passages,liveClosureM,liveDegrees};
       }};
-    });
+    },defaultWorld);
     const info=await page.evaluate(()=>({seed:circuitChecks.seed,labels:circuitChecks.paths.map(p=>p.label),radiusKm:circuitChecks.state.radius,installed:circuitChecks.items.map(i=>({id:i.id,plot:i.plotId??i.edge?.id,requiresDistrictWalk:!!i.transport}))}));
     const part=process.env.SPHERE_WALK_SHARD||'1/1',match=/^(\d+)\/(\d+)$/.exec(part);
     if(!match||+match[1]<1||+match[1]>+match[2]||+match[2]>info.labels.length)throw Error('Expected a walking shard such as 1/3');
@@ -122,7 +146,11 @@ const {chromium}=require('playwright'),{session,executable}=require('./support/b
       if(process.env.SPHERE_CIRCUIT_REPORT)fs.writeFileSync(process.env.SPHERE_CIRCUIT_REPORT,JSON.stringify(report,null,2)+'\n');
     }
     const visited=await page.evaluate(()=>[...circuitChecks.seen]);
-    if(slots===1){
+    if(defaultWorld){
+      assert.equal(info.installed.length,8,'Seven catalogue packs and the Outfall must be installed');
+      assert.equal(results.length,1);assert.equal(results[0].renderedTunnels,10);
+      for(let id=0;id<10;id++)assert(visited.includes('main-'+id));
+    }else if(slots===1){
       assert(info.installed.filter(item=>!item.requiresDistrictWalk).every(item=>visited.includes(item.id)));
       for(const id of [0,1,2,3,4,5,6,7,8,9,10,11,12,15])assert(visited.includes('main-'+id));
     }

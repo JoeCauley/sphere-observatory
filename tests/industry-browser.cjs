@@ -12,12 +12,29 @@ const stat=(a,q)=>{const s=a.filter(Number.isFinite).sort((x,y)=>x-y);return s.l
  const ready=()=>page.waitForFunction(()=>window.SphereIndustryHost?.status==='ready');
  const screenshot=async name=>{await page.screenshot({path:path.join(root,name+'.png')});shots.push(name+'.png');};
  const canvasHash=()=>page.evaluate(()=>{const c=document.getElementById('world'),gl=c.getContext('webgl2'),p=new Uint8Array(c.width*c.height*4);gl.readPixels(0,0,c.width,c.height,gl.RGBA,gl.UNSIGNED_BYTE,p);let h=2166136261;for(const b of p)h=Math.imul(h^b,16777619);return {hash:(h>>>0).toString(16),webglError:gl.getError()};});
- const visit=async(arrival='saved')=>{await page.locator('[data-tab=camera]').click();await page.locator('[data-category=packs]').click();await page.locator('#placeDestination').selectOption('pack-infinite-industry');await page.locator('#placeAltitude').selectOption(arrival);const start=Date.now();await page.locator('#visitPlace').click();await ready();visits.push({arrival,loadMs:Date.now()-start});await page.waitForFunction(()=>SphereIndustry.inspect().preparation.pending===null&&SphereIndustry.inspect().preparation.residentZones===4);};
+ const sharedVisit=async(id,label,arrival)=>{
+  await page.locator('[data-tab=camera]').click();await page.locator('[data-category=packs]').click();
+  await page.locator('#placeDestination').selectOption('pack-'+id);await page.locator('#placeAltitude').selectOption(arrival);
+  await page.locator('#visitPlace').click();
+  await page.waitForFunction(label=>{
+   const loading=document.querySelector('#loading')?.textContent||'';if(loading.startsWith('Could not open'))throw Error(loading);
+   return !!window.SphereSharedWorld&&document.querySelector('#currentPack')?.textContent===label;
+  },label);
+ };
+ const visit=async(arrival='saved')=>{
+  const entry=await page.evaluate(async()=>{await SphereBiomeLibrary.ready;return SphereBiomeLibrary.pack('infinite-industry').entry;});
+  const target=new URL(entry,url);if(arrival!=='saved')target.searchParams.set('arrival',arrival);
+  const start=Date.now();await page.goto(target.href);await ready();visits.push({arrival,entry,loadMs:Date.now()-start});
+  await page.waitForFunction(()=>SphereIndustry.inspect().preparation.pending===null&&SphereIndustry.inspect().preparation.residentZones===4);
+ };
  const quiet=async label=>{await inspection();const before=(await read()).measurements.length;await page.locator('#measure').click();await page.waitForFunction(n=>SphereIndustry.inspect().measurements.length>n,before);const r=(await read()).measurements.at(-1);r.label=label;check('900-frame quiet timing '+label,{frameTimeMs:r.frameTimeMs,gpuMs:r.gpuMs,geometryBytes:r.peakGeometryBytes});return r;};
  try{
   await page.goto(url,{waitUntil:'domcontentloaded'});await page.bringToFront();await page.waitForFunction(()=>window.SphereLoading?.ready);await page.evaluate(()=>SphereSession.flush());
   const originalSession=await page.evaluate(()=>JSON.parse(localStorage.getItem('sphere-session-v1')));assert(originalSession?.state);await screenshot('00-observatory');
-  await visit('ground');check('Actual Observatory Explore / Biome Packs / Infinite Industry / Visit');await screenshot('01-exterior');
+  await sharedVisit('infinite-industry','Infinite Industry','ground');
+  check('Explore opens the shared landscape at its Industry entrance');
+  await page.locator('#leave').click();await page.waitForFunction(()=>window.SphereLoading?.ready);
+  await visit('ground');check('The installed catalogue entry opens the native Industry waterworks');await screenshot('01-exterior');
   const cold=await quiet('cold exterior · 1440 × 900');await showPanel();await page.locator('#hide').click();await screenshot('02-ground-approach');await showPanel();
   await inspection();await page.locator('#record').click();await page.locator('#tour').click();
   const stops=['approach','hall','control','elevated','boundary','intake-boundary','returned'];let beforePixels,afterPixels,bookmarkState;
@@ -34,7 +51,7 @@ const stat=(a,q)=>{const s=a.filter(Number.isFinite).sort((x,y)=>x-y);return s.l
   await showPanel();await page.locator('#overview').click();await page.waitForFunction(()=>SphereIndustry.inspect().events.some(e=>e.type==='facility-overview-ready'));await page.waitForFunction(()=>SphereIndustry.inspect().preparation.residentZones===0);await page.locator('#hide').click();await screenshot('11-distant-overview');assert.equal((await read()).metrics.at(-1).lod,'far');check('Flight and distant geometry retain the same facility identity; near zones unload');
   const distant=await quiet('distant flight · 1440 × 900');await showPanel();await page.locator('#returnSaved').click();assert.deepEqual((await read()).state,bookmarkState);check('Return restores the exact distinct saved view and routing');
   await inspection();await page.locator('#pauseProcess').check();await page.waitForFunction(()=>SphereIndustry.inspect().preparation.pending===null&&SphereIndustry.inspect().preparation.residentZones===4);const pinnedState=(await read()).state,warmPixels=await canvasHash();
-  const [save]=await Promise.all([page.waitForEvent('download'),page.locator('#downloadSave').click()]);await save.saveAs(path.join(root,'portable-save.json'));await page.reload();await ready();await page.waitForFunction(()=>SphereIndustry.inspect().preparation.pending===null&&SphereIndustry.inspect().preparation.residentZones===4);assert.deepEqual((await read()).state,pinnedState);assert.deepEqual(await canvasHash(),warmPixels);check('Reload keeps an exact facility, supported position, process state and rendered pixels');
+  const [save]=await Promise.all([page.waitForEvent('download'),page.locator('#downloadSave').click()]);await save.saveAs(path.join(root,'portable-save.json'));await page.reload();await ready();await page.waitForFunction(()=>SphereIndustry.inspect().preparation.pending===null&&SphereIndustry.inspect().preparation.residentZones===4);assert.deepEqual((await read()).state,pinnedState);await page.waitForTimeout(900);assert.deepEqual(await canvasHash(),warmPixels);check('Reload keeps an exact facility, supported position, process state and rendered pixels');
   const warm=await quiet('warm hall · 1440 × 900');await page.setViewportSize({width:1280,height:720});const primary=await quiet('warm hall · 1280 × 720');
   for(const size of [{width:390,height:844},{width:844,height:390}]){await page.setViewportSize(size);await page.waitForTimeout(150);assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);await screenshot(`responsive-${size.width}x${size.height}`);}await page.setViewportSize({width:1440,height:900});
   // Safe import restores the distinct bookmark and current state from actual file UI.
@@ -46,7 +63,9 @@ const stat=(a,q)=>{const s=a.filter(Number.isFinite).sort((x,y)=>x-y);return s.l
   await showPanel();await page.locator('#leavePack').click();await page.waitForFunction(()=>window.SphereLoading?.ready);await visit('flight');assert.equal((await read()).state.pose.mode,'flight');await page.locator('#world').focus();await page.keyboard.down('q');await page.waitForFunction(()=>SphereIndustry.inspect().state.pose.mode==='walk');await page.keyboard.up('q');check('Public flight arrival descends with ordinary Q and lands on the shared ground support');
   await showPanel();await page.locator('#leavePack').click();await page.waitForFunction(()=>window.SphereLoading?.ready);
   // The Meadow route is exercised from the same public library, then preserved.
-  await page.locator('[data-tab=camera]').click();await page.locator('[data-category=packs]').click();await page.locator('#placeDestination').selectOption('pack-infinite-meadow');await page.locator('#placeAltitude').selectOption('saved');await page.locator('#visitPlace').click();await page.waitForFunction(()=>document.getElementById('packLoading').hidden);await screenshot('12-meadow-regression');assert.match(await page.locator('#stage').textContent(),/Meadow|meadow/);await page.locator('#leavePack').click();await page.waitForFunction(()=>window.SphereLoading?.ready);check('Infinite Meadow remains reachable and running through its unchanged versioned adapter');
+  await sharedVisit('infinite-meadow','Infinite Meadow','ground');await screenshot('12-meadow-regression');
+  await page.locator('#leave').click();await page.waitForFunction(()=>window.SphereLoading?.ready);
+  check('Infinite Meadow remains reachable through the shared-world Explore entrance');
   assert.deepEqual(errors,[]);final={schema:1,milestone:'II-001',date:new Date().toISOString(),pass:true,checks,visits,shots,performance:[cold,distant,warm,primary],walking:{frames:routeEvidence.trace.length,frameTimeMs:{median:stat(routeEvidence.trace.map(r=>r.intervalMs),.5),p95:stat(routeEvidence.trace.map(r=>r.intervalMs),.95),worst:Math.max(...routeEvidence.trace.map(r=>r.intervalMs))},peakGeometryBytes:Math.max(...routeEvidence.trace.map(r=>r.gpuBufferBytes)),collisionP95Ms:stat(routeEvidence.trace.map(r=>r.collisionMs),.95),origins:[...new Set(routeEvidence.trace.map(r=>JSON.stringify(r.origin)))].length,recording:'walking-route.webm'},interaction:{beforePixels,afterPixels},errors};
   fs.writeFileSync(path.join(root,'browser-results.json'),JSON.stringify(final,null,2));console.log(JSON.stringify({pass:true,checks:checks.length,evidence:root,performance:final.performance.map(r=>({label:r.label,frameTimeMs:r.frameTimeMs,gpuMs:r.gpuMs,geometryBytes:r.peakGeometryBytes}))}));
  }catch(e){try{await page.screenshot({path:path.join(root,'failure.png')});const data=await page.evaluate(()=>window.SphereIndustry?.inspect?.()??{loading:document.getElementById('packLoadingStatus')?.textContent});fs.writeFileSync(path.join(root,'failure.json'),JSON.stringify({error:e.stack,errors,checks,data},null,2));}catch{}throw e;}

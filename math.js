@@ -100,11 +100,11 @@
     grid:false,viewMode:'material',projection:'perspective',speed:1000000,
     quality:1,seed:23,starfield:true
   };}
-  const numeric={radius:[1e7,1e9],starRadius:[10000,2e6],luminosity:[.001,100],fov:[10,150],breachLat:[-90,90],breachLon:[-180,180],breachDiameter:[1000,1.5e8],breachRoughness:[0,1],shadeAltitude:[1000,1e7],shadeDiameter:[100,2e7],shadeOffset:[-20,20],shadeSpeed:[-100,100],shadeDamage:[0,1],time:[-1e9,1e9],timeRate:[.1,3600],exposure:[-10,12],shellshine:[0,.5],atmosphere:[0,1],speed:[1,3e7],quality:[.35,1],seed:[0,1000]};
+  const numeric={radius:[1e7,1e9],starRadius:[10000,2e6],luminosity:[.001,100],fov:[10,150],breachLat:[-90,90],breachLon:[-180,180],breachDiameter:[1000,1.5e8],breachRoughness:[0,1],shadeAltitude:[1000,1e7],shadeDiameter:[100,2e7],shadeOffset:[-20,20],shadeSpeed:[-100,100],shadeDamage:[0,1],time:[-1e9,1e9],timeRate:[.1,3600],exposure:[-10,12],shellshine:[0,.5],atmosphere:[0,1],speed:[.001,3e7],quality:[.35,1],seed:[0,1000]};
   function validate(input) {
     if(!input||typeof input!=='object'||Array.isArray(input))throw Error('This is not a Sphere scene file.');
     const s=defaultState();
-    for(const [k,[lo,hi]] of Object.entries(numeric))if(k in input){if(!Number.isFinite(input[k])||input[k]<(k==='speed'&&input.layoutVersion===2?.001:lo)||input[k]>hi)throw Error('Invalid value for '+k);s[k]=input[k];}
+    for(const [k,[lo,hi]] of Object.entries(numeric))if(k in input){if(!Number.isFinite(input[k])||input[k]<lo||input[k]>hi)throw Error('Invalid value for '+k);s[k]=input[k];}
     for(const k of ['position','forward','up'])if(k in input){if(!Array.isArray(input[k])||input[k].length!==3||!input[k].every(Number.isFinite))throw Error('Invalid camera '+k);s[k]=[...input[k]];}
     if(length(s.position)>=(input.layoutVersion===2?s.radius*2:s.radius-0.5)||(input.layoutVersion!==2&&length(s.position)<=s.starRadius*1.01))throw Error(input.layoutVersion===2?'Camera must remain within two shell radii.':'Camera must be inside the shell and outside the star.');
     if(s.shadeAltitude>=s.radius-s.starRadius)throw Error('Shade altitude places it inside the star.');

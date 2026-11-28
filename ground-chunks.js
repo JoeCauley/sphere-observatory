@@ -4,14 +4,41 @@
 (function(root){
 'use strict';const M=root.SphereMath,W=root.SphereWorld,S=root.SphereSites,C=root.SphereCollection,A=root.SphereWorldAddress,T=root.SphereWorldTopology,G=root.SphereGeography;
 if(typeof module!=='undefined'&&module.exports&&!root.SphereVioletForest)require('./packs/violet-labyrinth/1.0.0/forest.js');
+if(typeof module!=='undefined'&&module.exports&&!root.SphereJungleStand)require('./packs/super-jungle/1.0.0/stand-geometry.js');
+let forestAtlas=null;
+function setForestAtlas(records,parameters,resolve){
+ forestAtlas={records,parameters,resolve,byAnchor:new WeakMap(),byId:new Map()};
+}
+function localStand(s){
+ if(s.jungleStand)return s.jungleStand;
+ const atlas=forestAtlas,anchor=s.terrainAnchor||s.siteAnchor;
+ if(!atlas||!anchor||!atlas.records.length||s.seed!==atlas.parameters.seed||s.radius!==atlas.parameters.radius)return null;
+ if(!atlas.byAnchor.has(anchor)){
+  const item=atlas.records.find(i=>M.length(M.sub(i.direction,anchor))*s.radius<20);
+  if(item&&!atlas.byId.has(item.id))atlas.byId.set(item.id,atlas.resolve(item));
+  atlas.byAnchor.set(anchor,item?atlas.byId.get(item.id):null);
+ }
+ return atlas.byAnchor.get(anchor);
+}
 const SIZE=1.024,FINE=64,COARSE=32,BUDGET=64*1048576,HYSTERESIS=1e-7,cache=new Map();let budget=BUDGET,bytes=0,active=null,buildMs=0,target=null,worker=null,pending=null,generation=0,waits=0,revision=0,rebase=null,rebaseReady=null,clock=0,cancelled=0,evictions=0;
 const enabled=s=>s.siteRevision===2&&s.siteAnchor&&/^(biome|port)-/.test(s.siteId)&&(s.walkMode||M.length(M.sub(s.position,M.mul(s.terrainAnchor||s.siteAnchor,s.radius)))<S.localRange(s));
 const protectedProvinceAt=(q,s)=>{if(!s?.provinceAnchor||!root.SphereWatershed?.enabled?.(s)||!root.SphereWatershed?.local)return false;const local=root.SphereWatershed.local(q,s),extent=(root.SphereWatershed.extentKm||640)/2;return Number.isFinite(local?.[0])&&Math.max(Math.abs(local[0]),Math.abs(local[1]))<extent;};
 let apronSurvey=null;
 function setApronSurvey(record,rules){
  if(!record){apronSurvey=null;return;}
- const d=record.district,signature=JSON.stringify([d.origin,d.sites.map(site=>[site.x,site.widthM])]);
- apronSurvey={record,rules,signature,params:Object.entries(record.parameters),anchors:new WeakMap()};
+ const primary=record.border??{transport:record.district},params=Object.entries(record.parameters);
+ const surveys=new Map();
+ for(const item of [primary,...(primary.districts??[])]){
+  const d=item.transport,signature=JSON.stringify([d.origin,d.sites.map(site=>[site.x,site.widthM]),d.mineralFrontage]);
+  surveys.set(d,{record:{district:d,parameters:record.parameters},rules,signature,params});
+ }
+ apronSurvey={primary,surveys,rules,params,anchors:new WeakMap()};
+}
+function apronAt(q,s){
+ const {primary,surveys,rules}=apronSurvey;
+ if(!primary.districts?.length)return surveys.get(primary.transport);
+ const {lat,lon}=W.coordinates(q,s);
+ return surveys.get(rules.borderAt(primary,lat,lon).transport);
 }
 function apronOffset(survey,q,s){
  const {lat,lon}=W.coordinates(q,s);
@@ -22,8 +49,8 @@ function plantingOffset(survey,q,s){
  return survey.rules.plantingDistance(survey.record.district,lat,lon);
 }
 function nearFrontage(q,s,margin){
- const survey=apronSurvey;
- if(!survey || !survey.params.every(([k,v])=>(s[k]??null)===v))return false;
+ if(!apronSurvey || !apronSurvey.params.every(([k,v])=>(s[k]??null)===v))return false;
+ const survey=apronAt(q,s);
  const {lat,lon}=W.coordinates(q,s),d=survey.record.district,rules=survey.rules;
  if(rules.apronDistance(d,lat,lon)<margin)return true;
  const p=rules.districtPoint(d,lat,lon);
@@ -34,17 +61,18 @@ function localSurvey(s){
  if(!survey||!anchor||!survey.params.every(([k,v])=>(s[k]??null)===v))return null;
  if(!survey.anchors.has(anchor)){
   // Includes the walking rebase radius and the outer 16 km terrain tiles in both directions.
-  survey.anchors.set(anchor,nearFrontage(anchor,s,64000));
+  survey.anchors.set(anchor,nearFrontage(anchor,s,64000)?apronAt(anchor,s):null);
  }
- return survey.anchors.get(anchor)?survey:null;
+ return survey.anchors.get(anchor);
 }
 function nearApron(q,s,margin){
- return apronSurvey && apronSurvey.params.every(([k,v])=>(s[k]??null)===v) && apronOffset(apronSurvey,q,s)<margin;
+ return apronSurvey && apronSurvey.params.every(([k,v])=>(s[k]??null)===v) && apronOffset(apronAt(q,s),q,s)<margin;
 }
 function contentKey(s){
  const key=JSON.stringify([s.seed,s.radius,s.era,s.multipleWounds,s.shellThickness,s.terrainRevision,s.provinceRevision,s.provinceSeed,s.provinceAnchor,s.packAddress,s.layoutVersion,s.axisLat,s.axisLon,s.waistWidth,s.transitionKm]);
  const survey=localSurvey(s);
- return survey?key+survey.signature:key;
+ const stand=localStand(s);
+ return key+(survey?survey.signature:'')+(stand?'/'+stand.id:'');
 }
 function renderKey(s){return JSON.stringify([s.terrainAnchor||s.siteAnchor,contentKey(s)]);}
 function frame(s){const anchor=s.terrainAnchor||s.siteAnchor,basis=S.shellFrame(anchor);return new S.Mesh(M.mul(anchor,s.radius),basis,'Connected terrain');}
@@ -76,7 +104,8 @@ function geographic(q,s){const shared=G?.query(q,{state:s,representation:'walkin
 }
 function height(s,f,x,z,survey=localSurvey(s)){
  const q=M.norm(f.world([x,0,z])),curvature=(x*x+z*z)/(s.radius+Math.sqrt(Math.max(0,s.radius*s.radius-x*x-z*z)));
- const weight=survey?W.smooth(0,survey.rules.apronBlendM,apronOffset(survey,q,s)):1;
+ const weight=survey?W.smooth(0,survey.rules.apronBlendM,
+   Math.min(apronOffset(survey,q,s),plantingOffset(survey,q,s))):1;
  return curvature+(weight?weight*geographic(q,s):0);
 }
 function owner(x,z){return [Math.floor(x/SIZE),Math.floor(z/SIZE)];}
@@ -88,7 +117,7 @@ function bounds(s){const f=frame(s),p=f.local(s.position);
  // uploaded vertices, collision and geographic addresses remain exact.
  const centre=v=>{const q=v/SIZE,n=Math.round(q);return Math.abs(q-n)<HYSTERESIS?n:Math.floor(q);};
  return {x:centre(p[0]),z:centre(p[2]),f};}
-function build(s,cx,cz,cells=FINE,centre=[cx,cz],identity=null){const f=frame(s),geometry=jobGeometry(s,cx,cz,cells,centre),geography=identity?.geography||geometry.geography,meshKey=identity?.key||cacheKey(s,{geography,cells}),mesh=new S.Mesh(f.origin,f.basis,'Connected terrain Ãƒâ€šÃ‚Â· '+cx+','+cz),{loX,loZ,spanX,spanZ}=geometry,step=spanX/cells,stepZ=spanZ/cells;
+function build(s,cx,cz,cells=FINE,centre=[cx,cz],identity=null){const f=frame(s),geometry=jobGeometry(s,cx,cz,cells,centre),geography=identity?.geography||geometry.geography,meshKey=identity?.key||cacheKey(s,{geography,cells}),mesh=new S.Mesh(f.origin,f.basis,'Connected terrain · '+cx+','+cz),{loX,loZ,spanX,spanZ}=geometry,step=spanX/cells,stepZ=spanZ/cells;
  // The authored province already supplies connected land, water and gardens.
  // Its residency cells carry support ownership, never duplicate that mesh or
  // resample every river segment to generate a second invisible height field.
@@ -139,6 +168,7 @@ function build(s,cx,cz,cells=FINE,centre=[cx,cz],identity=null){const f=frame(s)
     forest.emit(mesh,[x,10-dist,z],axes,spire);
     props.push(spire.id);
   }
+  if(violet)forest.emitFork(mesh,f,s,floor,[loX,loZ,loX+spanX,loZ+spanZ],props);
   if(nearGrove)for(const spire of grove.spires)plant(spire.q,spire);
   for(let iz=min[2];iz<=max[2];iz++)for(let iy=min[1];iy<=max[1];iy++)for(let ix=min[0];ix<=max[0];ix++){
    const density=S.noise(ix,iy,s.seed+iz);
@@ -160,38 +190,133 @@ function build(s,cx,cz,cells=FINE,centre=[cx,cz],identity=null){const f=frame(s)
    if(density>(id===1 ? .64 : .28))continue;
    const variation=S.noise(ix,iz,s.seed+iy),jungle=id===1;
    const r=jungle ? .013+.012*variation : .0025,h=jungle ? .025+.031*density : .003+variation*.004,hit={},distance=S.rayBVH([x,10,z],[0,-1,0],floor,Infinity,hit);if(!hit.normal)continue;
-   if(clip&&[[x-r,0,z-r],[x+r,0,z-r],[x-r,0,z+r],[x+r,0,z+r]].some(p=>clip.margin(p)<0))continue;
+   const crown=id===6?r*1.72:r;
+   if(id===6&&survey&&plantingOffset(survey,q,s)<=crown*1000)continue;
+   if(clip&&[[x-crown,0,z-crown],[x+crown,0,z-crown],[x-crown,0,z+crown],[x+crown,0,z+crown]].some(p=>clip.margin(p)<0))continue;
    props.push([s.seed,ix,iy,iz].join(':'));
    // Object axes belong to its geographic point, not to the current chart.
    const axes=S.shellFrame(q).map(axis=>f.basis.map(b=>M.dot(axis,b))),base=[x,10-distance,z],vertex=(angle,radius,y)=>M.add(base,M.add(M.mul(axes[1],y),M.add(M.mul(axes[0],Math.cos(angle)*radius),M.mul(axes[2],Math.sin(angle)*radius))));
    if(jungle){
-    // Interlocking, offset crowns leave irregular windows of sky between trees.
-    const phase=variation*6.283, fractions=[.59,.74,.90];
+    // Crown lobes have lit mantles, hanging skirts and open space between limbs.
+    // Their anchor and radius are the same survey used by the approach and the walker.
+    const phase=variation*2*Math.PI, fractions=[.60,.75,.90];
     for(let k=0;k<3;k++){
-     const bearing=phase+k*2.40,reach=k===2 ? r*.13 : r*(.60+.14*k);
+     const bearing=phase+k*2.40,reach=k===2?r*.16:r*(.60+.14*k);
      const center=vertex(bearing,reach,h*fractions[k]);
-     const crownRadius=r*(.62+.32*S.noise(ix+k,iz,s.seed+iy+49));
+     const crownRadius=r*(.63+.28*S.noise(ix+k,iz,s.seed+iy+49));
      const point=(angle,spread,rise)=>M.add(center,M.sub(vertex(angle,crownRadius*spread,rise),base));
-     const tint=.72+.38*S.noise(iy+k,ix,s.seed+iz);
-     const leaf=[.057*tint,.18*tint,.064*tint];
-     for(let side=0;side<5;side++){
-      const a=bearing+side*2*Math.PI/5,b=a+2*Math.PI/5;
-      const rim=angle=>point(angle,1+.13*Math.cos(3*angle+phase),h*.046*Math.sin(2*angle));
-      mesh.tri(point(0,0,-h*.12),rim(a),rim(b),leaf);
-      mesh.tri(rim(b),rim(a),point(0,.19,h*.16),leaf);
+     const tint=.82+.26*S.noise(iy+k,ix,s.seed+iz);
+     const mantle=[(.072+.017*k)*tint,(.198+.028*k)*tint,.073*tint];
+     const skirt=[.045*tint,.121*tint,.061*tint],limb=[.23,.17,.10];
+     const fork=vertex(bearing,r*.075,h*(fractions[k]-.24));
+     const spread=.068*r, tip=point(bearing,.48,.01*h);
+     const branch=sgn=>vertex(bearing+sgn*.42,r*.16,h*(fractions[k]-.23)+sgn*spread);
+     mesh.tri(fork,branch(-1),tip,limb,-16);mesh.tri(branch(1),fork,tip,limb,-16);mesh.tri(branch(-1),branch(1),tip,limb,-16);
+     const crownTop=point(bearing,.16,.143*h);
+     const lower=point(bearing+Math.PI,.14,-.104*h);
+     const rim=[],shoulder=[];
+     for(let side=0;side<8;side++){
+      const angle=bearing+side*Math.PI/4,clump=S.noise(ix+side+k*13,iz,s.seed+iy+28);
+      const spread=side%2?.72+.17*clump:.96+.12*clump;
+      rim.push(point(angle,spread,-h*(.014+.045*clump)));
+      shoulder.push(point(angle,spread*.80,h*(.043+.047*clump)));
+     }
+     for(let side=0;side<8;side++){
+      const next=(side+1)%8;
+      mesh.tri(lower,rim[side],rim[next],skirt,-17);
+      mesh.quad(rim[next],rim[side],shoulder[side],shoulder[next],mantle,-17);
+      mesh.tri(shoulder[next],shoulder[side],crownTop,mantle,-17);
+     }
+    }
+    // Fans of young broadleaves catch the light below the canopy. Their anchors
+    // use the parent tree's geographic axes, so turning the camera cannot reseed a clump.
+    for(let k=0;k<2;k++){
+     const turn=phase+2.94*k+1.13,reach=r*(.68+.36*S.noise(ix+k,iz,s.seed+iy+71));
+     const stem=vertex(turn,reach,0),sq=M.norm(f.world(stem));
+     if((survey&&plantingOffset(survey,sq,s)<3.5) || (clip&&clip.margin(stem)<.0035))continue;
+     const groundHit={},t=S.rayBVH([stem[0],10,stem[2]],[0,-1,0],floor,Infinity,groundHit);
+     // The deterministic relief also supplies the neighbouring tile when the parent
+     // tree owns a fan just across a mesh boundary.
+     stem[1]=groundHit.normal?10-t:height(s,f,stem[0],stem[2],survey);
+     const scale=.0018+.0016*S.noise(iy+k,iz,s.seed+ix+31);
+     const firstSoft=mesh.triangles.length;
+     for(let blade=0;blade<6;blade++){
+      const angle=phase+blade*2.40,span=scale*(.7+.22*(blade%3));
+      const at=(a,reach,rise)=>M.add(stem,M.sub(vertex(a,reach,rise),base));
+      const mid=at(angle,span*.54,scale*.96),tip=at(angle,span,scale*(.55+.13*(blade%3)));
+      const left=at(angle-.20,span*.6,scale*.77),right=at(angle+.20,span*.6,scale*.77);
+      mesh.quad(stem,left,tip,mid,[.094,.29,.093],-17);
+      mesh.quad(stem,mid,tip,right,[.063,.205,.078],-17);
+     }
+     // Flexible fronds contribute colour and silhouettes; the ground and woody
+     // buttress continue to supply the walker's collision triangles.
+     mesh.triangles.length=firstSoft;
+    }
+    // A bromeliad rosette attaches to the shaded side of a mature buttress.
+    // Each folded blade is opaque. Seven blades add no alpha sorting or texture upload.
+    if(h>.036){
+     const host=vertex(phase+.46,r*.14,h*.12);
+     for(let k=0;k<7;k++){
+      const a=phase+k*2.40,len=r*(.09+.065*(k%3)),lift=h*(.035+.016*(k%3));
+      const blade=(angle,spread,y)=>M.add(host,M.sub(vertex(angle,spread,y),base));
+      const left=blade(a-.22,len*.57,lift*.8),right=blade(a+.22,len*.57,lift*.8);
+      const spine=blade(a,len*.53,lift),tip=blade(a,len,lift*.65);
+      mesh.tri(host,left,spine,[.070,.21,.095],-17);mesh.tri(spine,left,tip,[.092,.29,.105],-17);
+      mesh.tri(host,spine,right,[.095,.27,.092],-17);mesh.tri(spine,tip,right,[.15,.34,.105],-17);
      }
     }
     for(let side=0;side<5;side++){
      const a=phase+side*2*Math.PI/5,b=a+2*Math.PI/5;
-     mesh.quad(vertex(a,r*.13,0),vertex(b,r*.13,0),vertex(b,r*.065,h*.92),vertex(a,r*.065,h*.92),[.12,.08,.046]);
-     mesh.tri(vertex(a,r*.11,h*.24),vertex(a+.28,r*.36,0),vertex(b,r*.12,0),[.14,.098,.055]);
+     const mid=(a+b)/2,grain=.86+.25*S.noise(ix+side,iz,s.seed+iy+13);
+     const bark=[.34*grain,.23*grain,.14*grain],fold=[.27*grain,.19*grain,.12*grain];
+     const foot=(angle,spread)=>{
+      const point=vertex(angle,spread,0),contact={},dist=S.rayBVH([point[0],10,point[2]],[0,-1,0],floor,Infinity,contact);
+      if(contact.normal)point[1]=10-dist-.00002;return point;
+     };
+     const left=vertex(a,r*.13,0),right=vertex(b,r*.13,0),rib=vertex(mid,r*.146,h*.30);
+     const topA=vertex(a,r*.065,h*.92),topB=vertex(b,r*.065,h*.92);
+     mesh.tri(left,right,rib,bark,-16);mesh.tri(rib,right,topB,fold,-16);
+     mesh.tri(rib,topB,topA,bark,-16);mesh.tri(left,rib,topA,fold,-16);
+     // Each buttress is a solid fold tapering into surveyed ground. Its
+     // two ridges share the trunk and the same BVH used by the walker.
+     const baseA=foot(mid-.32,r*.20),baseB=foot(mid+.32,r*.20),tip=foot(mid+.08,r*.36);
+     const spine=vertex(mid+.03,r*.244,h*.092);
+     mesh.tri(rib,baseA,spine,fold,-16);mesh.tri(rib,spine,baseB,bark,-16);
+     mesh.tri(spine,baseA,tip,[.29*grain,.25*grain,.14*grain],-16);mesh.tri(spine,tip,baseB,fold,-16);
     }
+    continue;
+   }
+   if(id===6){
+    // Weathered snag and reed heads share the native marsh cell's persistent address.
+    const phase=variation*6.283185,top=h*2.15;
+    const limb=(start,end,baseRadius,tipRadius)=>{
+     const rim=(center,angle,width)=>M.add(center,M.sub(vertex(angle,width,0),base));
+     for(let k=0;k<5;k++){
+      const a=phase+k*2*Math.PI/5,b=a+2*Math.PI/5;
+      const wood=k%2?[.28,.16,.087]:[.35,.22,.125];
+      mesh.quad(rim(start,a,baseRadius),rim(start,b,baseRadius),rim(end,b,tipRadius),rim(end,a,tipRadius),wood,-16);
+     }
+    };
+    const fork=vertex(phase,r*.38,top*.55);
+    limb(base,fork,r*.75,r*.35);
+    limb(fork,vertex(phase+.2,r*1.35,top),r*.35,r*.09);
+    limb(fork,vertex(phase+2.8,r*1.65,top*.82),r*.29,r*.065);
+    const solidEnd=mesh.triangles.length;
+    for(let k=0;k<7;k++){
+     const a=phase+k*2.4,foot=vertex(a,r*.68,0),tip=vertex(a+.17,r*1.62,h*(.48+.09*(k%3)));
+     mesh.tri(foot,vertex(a-.2,r*1.12,h*.37),tip,[.30,.25,.10],-17);
+     mesh.tri(foot,tip,vertex(a+.23,r*1.08,h*.32),[.34,.31,.12],-17);
+    }
+    mesh.triangles.length=solidEnd;
     continue;
    }
    for(let side=0;side<5;side++){const a=side*2*Math.PI/5,b=(side+1)*2*Math.PI/5;mesh.quad(vertex(a,r,0),vertex(b,r,0),vertex(b,r*.25,h),vertex(a,r*.25,h),W.palette[id]);}
   }
  }
 
+ const stand=localStand(s);
+ if(stand)root.SphereJungleStand.emit(mesh,f,s,stand,[loX,loZ,loX+spanX,loZ+spanZ],cells===FINE,
+   (x,z)=>height(s,f,x,z,survey),props);
  mesh.finish({deferBVH:true});mesh.bvh=S.packBVH(mesh.triangles);delete mesh.triangles;mesh.ground.floor=mesh.bvh;if(mesh.ground.rim)delete mesh.ground.rim.floor;delete mesh.ground.solid;mesh.ground.props=props;mesh.chunk={x:cx,z:cz,cells,revision:2,cellId:geography.cellId,key:meshKey,renderKey:renderKey(s)};mesh.ground.rim&&(mesh.ground.rim.key=meshKey);return mesh;
 }
 function sizeOf(mesh){const tree=t=>t?.packedTriangles?t.packedTriangles.byteLength+t.nodes.byteLength:0,wall=mesh.ground.rim?.wall;return mesh.vertices.byteLength+tree(mesh.bvh)+(mesh.ground.floor===mesh.bvh?0:tree(mesh.ground.floor))+(wall?wall.vertices.byteLength+tree(wall.bvh):0);}
@@ -206,7 +331,16 @@ function retain(k,mesh,meta={}){
  const basePriority=meta.basePriority??(mesh.chunk?.cells===FINE?100:25);cache.set(k,{mesh,size,renderKey:meta.renderKey??mesh.chunk?.renderKey,basePriority,supportPriority:meta.supportPriority??basePriority,lastUsed:++clock});bytes+=size;return mesh;
 }
 function cancelPending(s,notify=true){if(!target&&!pending)return;target=null;pending=null;generation++;cancelled++;if(notify)worker?.postMessage({generation,state:s,jobs:[]});}
-function request(s){if(!enabled(s))return;const b=bounds(s),id=renderKey(s),signature=id+':'+b.x+':'+b.z;if(rebase&&!s.walkMode){rebase=null;rebaseReady=null;}if(rebase&&id===rebase.from)return;if(active?.signature===signature){cancelPending(s);return;}if(target?.signature===signature)return;
+function request(s,{releaseDeparture=false}={}){
+ if(!enabled(s))return;
+ const b=bounds(s),id=renderKey(s),signature=id+':'+b.x+':'+b.z;
+ if(rebase&&(!s.walkMode||releaseDeparture)){rebase=null;rebaseReady=null;}
+ if(rebase&&id===rebase.from)return;
+ if(active?.signature===signature){cancelPending(s);return;}
+ // A parked camera retains its complete image. Its tiles can be evicted as
+ // the new camera fills its reservation, including within the same chart.
+ if(releaseDeparture)active=null;
+ if(target?.signature===signature)return;
  if(!s.walkMode&&(active?.id!==id||Math.max(Math.abs((active?.b.x||0)-b.x),Math.abs((active?.b.z||0)-b.z))>3))active=null;
  if(target||pending)cancelPending(s,false);
  const wanted=new Set(),jobs=[];for(let z=b.z-2;z<=b.z+2;z++)for(let x=b.x-2;x<=b.x+2;x++){
@@ -217,7 +351,7 @@ function request(s){if(!enabled(s))return;const b=bounds(s),id=renderKey(s),sign
  if(!worker){worker=new Worker('ground-worker.js');worker.onmessage=({data})=>{if(data.generation!==generation)return;if(data.error){target.error=data.error;return;}trim(sizeOf(data.mesh));if(bytes+sizeOf(data.mesh)>budget){target.error='Connected ground reservation exceeded';return;}pending=data;};worker.onerror=e=>{if(target)target.error=e.message;};}
  const basis=frame(s),walk=frame(s).local(M.add(s.position,M.mul(s.forward||basis.basis[0],.01))),dx=M.length([walk[0]-b.x,walk[2]-b.z])?M.norm([walk[0]-b.x,walk[2]-b.z]):[1,0];
  jobs.sort((a,c)=>{const sa=Math.hypot(a.x-b.x,a.z-b.z)-.7*((a.x-b.x)*dx[0]+(a.z-b.z)*dx[1]),sc=Math.hypot(c.x-b.x,c.z-b.z)-.7*((c.x-b.x)*dx[0]+(c.z-b.z)*dx[1]);return sa-sc;});
- worker.postMessage({generation,state:s,jobs,apron:localSurvey(s)?.record});promote();
+ worker.postMessage({generation,state:{...s,jungleStand:localStand(s)},jobs,apron:localSurvey(s)?.record});promote();
 }
 function promote(){if(target&&[...target.wanted].every(k=>cacheUsable(k,target.id))){const result={...target,groups:[...target.wanted].map(k=>cache.get(k).mesh)};if(rebase&&target.id===rebase.to)rebaseReady=result;else active=result;target=null;revision++;}}
 function rebaseWalking(s){if(!enabled(s)||!s.walkMode)return;
@@ -255,6 +389,8 @@ function suspend(){worker?.terminate();worker=null;pending=null;active=null;targ
 function setBudget(value){if(!Number.isFinite(value)||value<1)throw Error('Invalid ground budget');budget=value;trim(0);}
 function dispose(){suspend();cache.clear();bytes=0;waits=0;clock=0;cancelled=0;evictions=0;budget=BUDGET;}
 root.SphereGround={suspend,dispose,enabled,frame,geographic,height,owner,build,neighbourhood,geometry,rimCut,ground,surfaceSupport,controller,request,pump,rebaseWalking,addressAt,geographicCell,cacheKey,renderKey,setBudget,available(s){if(!enabled(s))return false;request(s);const p=frame(s).local(s.position);return active?.id===renderKey(s)&&active.groups.some(m=>m.chunk.cells===FINE&&p[0]>=m.ground.bounds[0]&&p[0]<m.ground.bounds[2]&&p[2]>=m.ground.bounds[1]&&p[2]<m.ground.bounds[3]);},SIZE,FINE,COARSE,support(s,x,z){request(s);const ok=active?.id===renderKey(s)&&active.groups.some(m=>m.chunk.cells===FINE&&x>=m.ground.bounds[0]&&x<m.ground.bounds[2]&&z>=m.ground.bounds[1]&&z<m.ground.bounds[3]);if(!ok)waits++;return ok;},ready(s){if(rebase&&renderKey(s)===rebase.from){if(!rebaseReady)return false;rebaseWalking(s);}request(s);return active?.signature===renderKey(s)+':'+bounds(s).x+':'+bounds(s).z;},has(mesh){return [...cache.values()].some(e=>e.mesh===mesh||e.mesh.ground.rim?.wall===mesh)||pending?.hydrated===mesh||pending?.hydrated?.ground.rim?.wall===mesh;},get revision(){return revision;},get needsFrame(){return !!target;},get info(){return {chunks:active?.groups.length||0,cache:cache.size,bytes:bytes+(pending?.mesh?sizeOf(pending.mesh):0),pendingBytes:pending?.mesh?sizeOf(pending.mesh):0,budget,buildMs,queue:target?[...target.wanted].filter(k=>!cacheUsable(k,target.id)).length:0,waits,cancelled,evictions,stableIdentity:true};}};
+root.SphereGround.setForestAtlas=setForestAtlas;
+root.SphereGround.forestStand=localStand;
 root.SphereGround.setApronSurvey=setApronSurvey;
 root.SphereGround.nearApron=nearApron;
 root.SphereGround.nearFrontage=nearFrontage;

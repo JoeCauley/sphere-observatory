@@ -4,8 +4,9 @@ import {profileFor,STAGE,windUniforms,WIND_GLSL,TRANSITION_GLSL,transitionPhases
 import {canopyShaders} from './grass-shaders.js';
 import {landscapePhases,TERRAIN_GLSL,BORDER_GLSL} from './landscape.js';
 import {surfaceAnchor,SURFACE_GLSL} from './meadow-surface.js';
-import {TERRAIN_GRID,terrainGridOffsets,TERRAIN_GRID_GLSL} from './terrain-grid.js';
+import {terrainGridGeometry,terrainGridOffsets,TERRAIN_GRID_GLSL} from './terrain-grid.js';
 import {lineageAnchor} from './grass-handoff.js';
+import {createVergeView} from './verge-view.js';
 import {heroAllocation} from './grass-allocation.js';
 
 const VS_SCREEN=`#version 300 es
@@ -17,7 +18,7 @@ const FS_SCREEN=`#version 300 es
 precision highp float;
 in vec2 screen;out vec4 frag;
 uniform vec3 uRight,uUp,uForward,uEast,uNorth,uRadial;
-uniform float uFocal;uniform vec2 uResolution,uArc;uniform vec4 uBorder;
+uniform float uFocal;uniform vec2 uResolution,uArc;uniform vec4 uBorder;uniform float uWallMeshReach;
 uniform float uAltitude,uReveal,uDaylight,uInteriorLight,uDirect;
 const float R=149597870700.,S=695700000.;
 float hash(vec3 p){p=fract(p*.1031);p+=dot(p,p.yzx+33.33);return fract((p.x+p.y)*p.z);}
@@ -90,15 +91,20 @@ void main(){
  stars*=pow(1.-daylight,2.)*smoothstep(.01,.16,ray.y)*(1.-smoothstep(.55,.69,cloud)*.9);
  sky+=vec3(.62,.69,.82)*stars;
  }
- float skyMask=smoothstep(6500.,80000.,t);
+ // After the local terrain mesh fades, the same shell ray still reaches
+ // hazy ground. Only the longer optical path merges into the blind sky.
+ vec3 groundAir=mix(vec3(.008,.012,.023),vec3(.58,.68,.62),daylight);
+ vec3 lowGround=mix(meadow,groundAir,.82*(1.-exp(-t/14000.)));
+ actual=mix(lowGround,actual,uReveal);
+ float skyMask=smoothstep(175000.,420000.,t);
  vec3 col=mix(actual,sky,skyMask*(1.-uReveal));
  // The installed border face rises through the haze on its real bearing.
  float toward=dot(ray.xz,uBorder.xy);
  if(uBorder.z>0. && toward>.00001){
    float distanceM=uBorder.z/toward,y=uBorder.w+ray.y*distanceM-dot(ray.xz,ray.xz)*distanceM*distanceM/(2.*radius);
    float aa=max(.35,fwidth(y)),wall=smoothstep(-aa,aa,y)*(1.-smoothstep(1400.-aa,1400.+aa,y));
-   vec3 concrete=mix(vec3(.12,.16,.15),vec3(.34,.40,.37),1.-exp(-distanceM/7000.));
-   col=mix(col,concrete*mix(.10,1.,daylight),wall*(1.-smoothstep(9500.,38000.,distanceM)));
+   vec3 material=mix(vec3(.20,.25,.22)*(.09+.91*uDirect),vec3(.60,.66,.63)*(.12+.88*uDirect),1.-exp(-distanceM*.00009));
+   if(distanceM<t && distanceM>uWallMeshReach)col=mix(col,pow(material,vec3(.87*2.2)),wall);
  }
  // Actual central-star angle, with a separate restrained glare halo.
  float angle2=1.-ray.y*ray.y,star2=pow(S/(radius-h),2.);
@@ -175,21 +181,71 @@ void main(){
  float dx=(coverGround(at+vec2(.25,0))-coverGround(at-vec2(.25,0)))*2.;
  float dz=(coverGround(at+vec2(0,.25))-coverGround(at-vec2(0,.25)))*2.;
  float detail=1.-smoothstep(1024.,8192.,r);
- h=mix(12.,h,detail)+r*r*.00000000000334229;
+ float farHeight=12.;
+ if(detail<1. && uApron.z>0.){
+   // A coarse triangle can straddle the road end. Keep its outer vertices
+   // at the surveyed grade before blending back into the landscape.
+   float diagonal=1.414214*gridPitch(level);
+   float skirt=smoothstep(diagonal,diagonal+max(diagonal,96.),apronDistance(at));
+   farHeight=mix(stationGround(at),farHeight,skirt);
+ }
+ h=mix(farHeight,h,detail)+r*r*.00000000000334229;
  vec3 p=vec3(x,h,z)-uCamera;float depth=dot(p,uForward);
  gl_Position=vec4(dot(p,uRight)*uFocal/uAspect,dot(p,uUp)*uFocal,depth*1.00000002-uNear2,depth);
  color=vec3(.095,.158,.027);normal=normalize(vec3(-dx*detail,1.,-dz*detail));position=vec3(x,h,z);distanceM=length(p);
  edgeAlpha=1.-smoothstep(28000.,65536.,r);
 }`;
-function compile(gl,vs,fs){
-  function shader(type,source){const s=gl.createShader(type);gl.shaderSource(s,source);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(s));return s;}
-  const v=shader(gl.VERTEX_SHADER,vs),f=shader(gl.FRAGMENT_SHADER,fs),p=gl.createProgram();gl.attachShader(p,v);gl.attachShader(p,f);gl.linkProgram(p);gl.deleteShader(v);gl.deleteShader(f);
-  if(!gl.getProgramParameter(p,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(p));return p;
+export function compile(gl,vs,fs){
+  const program=gl.createProgram();
+  try{
+    for(const [type,source] of [[gl.VERTEX_SHADER,vs],[gl.FRAGMENT_SHADER,fs]]){
+      const shader=gl.createShader(type);
+      try{
+        gl.shaderSource(shader,source);gl.compileShader(shader);
+        if(!gl.getShaderParameter(shader,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(shader));
+        gl.attachShader(program,shader);
+      }finally{gl.deleteShader(shader);}
+    }
+    gl.linkProgram(program);
+    if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(program));
+    return program;
+  }catch(error){gl.deleteProgram(program);throw error;}
 }
 class Mesh {
-  constructor(gl,data){this.gl=gl;this.count=data.length/9;this.bytes=data.byteLength;this.vao=gl.createVertexArray();this.buffer=gl.createBuffer();gl.bindVertexArray(this.vao);gl.bindBuffer(gl.ARRAY_BUFFER,this.buffer);gl.bufferData(gl.ARRAY_BUFFER,data,gl.STATIC_DRAW);
-    for(const [attribute,offset] of [[0,0],[1,12],[5,24]]){gl.enableVertexAttribArray(attribute);gl.vertexAttribPointer(attribute,3,gl.FLOAT,false,36,offset);}gl.bindVertexArray(null);}
-  draw(){this.gl.bindVertexArray(this.vao);this.gl.drawArrays(this.gl.TRIANGLES,0,this.count);}
+  constructor(gl,vertices,attributes=[0,1,5],indices=null){
+    this.gl=gl;
+    const stride=attributes.length*3*Float32Array.BYTES_PER_ELEMENT;
+    this.count=indices?.length??vertices.byteLength/stride;
+    this.bytes=vertices.byteLength+(indices?.byteLength??0);
+    this.vao=gl.createVertexArray();
+    this.buffer=gl.createBuffer();
+    gl.bindVertexArray(this.vao);
+    gl.bindBuffer(gl.ARRAY_BUFFER,this.buffer);
+    gl.bufferData(gl.ARRAY_BUFFER,vertices,gl.STATIC_DRAW);
+    attributes.forEach((location,i)=>{
+      gl.enableVertexAttribArray(location);
+      gl.vertexAttribPointer(location,3,gl.FLOAT,false,stride,i*12);
+    });
+    if(indices){
+      this.indexBuffer=gl.createBuffer();
+      this.indexType=indices instanceof Uint16Array?gl.UNSIGNED_SHORT:gl.UNSIGNED_INT;
+      gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,this.indexBuffer);
+      gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,indices,gl.STATIC_DRAW);
+    }
+    gl.bindVertexArray(null);
+  }
+  draw(){
+    const gl=this.gl;
+    gl.bindVertexArray(this.vao);
+    if(this.indexBuffer)gl.drawElements(gl.TRIANGLES,this.count,this.indexType,0);
+    else gl.drawArrays(gl.TRIANGLES,0,this.count);
+  }
+  dispose(){
+    const gl=this.gl;
+    gl.deleteVertexArray(this.vao);
+    if(this.indexBuffer)gl.deleteBuffer(this.indexBuffer);
+    gl.deleteBuffer(this.buffer);
+  }
 }
 function geom(){
   const a=[];
@@ -199,11 +255,24 @@ function geom(){
   const box=(x,y,z,hx,hy,hz,c)=>{const p=(a,b,d)=>[x+a*hx,y+b*hy,z+d*hz];for(const f of [[[-1,-1,1],[1,-1,1],[1,1,1],[-1,1,1]],[[1,-1,-1],[-1,-1,-1],[-1,1,-1],[1,1,-1]],[[-1,-1,-1],[-1,-1,1],[-1,1,1],[-1,1,-1]],[[1,-1,1],[1,-1,-1],[1,1,-1],[1,1,1]],[[-1,1,1],[1,1,1],[1,1,-1],[-1,1,-1]],[[-1,-1,-1],[1,-1,-1],[1,-1,1],[-1,-1,1]]])quad(...f.map(v=>p(...v)),c);};
   return {tri,quad,box,data:()=>new Float32Array(a)};
 }
-export class Renderer {
-  constructor(canvas,{atlasShader='',backdrop=null,horizontalFov=null}={}){
-    this.horizontalFov=horizontalFov;
-    this.backdrop=backdrop;
-    const regional=atlasShader ? atlasShader+`
+export function createBladeGeometry(gl){
+  const geometry={};
+  const blades=[];
+  for(let b=0;b<5;b++)for(let i=0;i<3;i++){
+    const y0=i/3,y1=(i+1)/3,widths=[.45,1,.55,0],w0=widths[i],w1=widths[i+1];
+    blades.push(-w0,y0,b,w0,y0,b,w1,y1,b,-w0,y0,b,w1,y1,b,-w1,y1,b);
+  }
+  geometry.bladeVertices=blades.length/3;geometry.grassVAO=gl.createVertexArray();gl.bindVertexArray(geometry.grassVAO);
+  geometry.bladeBuffer=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,geometry.bladeBuffer);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(blades),gl.STATIC_DRAW);gl.enableVertexAttribArray(0);gl.vertexAttribPointer(0,3,gl.FLOAT,false,12,0);
+  const outer=[];for(let b=0;b<5;b++)outer.push(-.45,0,b,.45,0,b,0,1,b);
+  geometry.outerVertices=outer.length/3;geometry.outerVAO=gl.createVertexArray();gl.bindVertexArray(geometry.outerVAO);geometry.outerBuffer=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,geometry.outerBuffer);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(outer),gl.STATIC_DRAW);gl.enableVertexAttribArray(0);gl.vertexAttribPointer(0,3,gl.FLOAT,false,12,0);
+  gl.bindVertexArray(null);
+  geometry.bytes=(blades.length+outer.length)*4;
+  return geometry;
+}
+
+export function meadowSkyFragment(atlasShader=''){
+  const regional=atlasShader ? atlasShader+`
 uniform sampler2D uNativeGround;
 float skyRadius(){return uInstalledBiomesOn==1?uAtlasRadiusKm*1000.:R;}
 vec3 regionalGround(vec3 q,float t){
@@ -212,14 +281,44 @@ vec3 regionalGround(vec3 q,float t){
  vec3 nativeColor=texture(uNativeGround,uv).rgb;
  return installedBiomeMaterial(nativeColor,q,max(length(dFdx(q)),length(dFdy(q))),t*.001);
 }` : 'float skyRadius(){return R;}vec3 regionalGround(vec3 q,float t){return world(q);}';
+  return FS_SCREEN.replace('/* hosted surface */',regional);
+}
+
+export function bindMeadowBackdrop(gl,uniform,textures,view){
+  uniform('uInstalledBiomesOn','int',view?1:0);
+  if(!view)return 0;
+  const bind=(key,unit,source,stamp,float)=>{
+    gl.activeTexture(gl.TEXTURE0+unit);
+    const slot=textures[key]??={texture:gl.createTexture()};
+    gl.bindTexture(gl.TEXTURE_2D,slot.texture);
+    if(slot.stamp!==stamp){
+      const filter=float?gl.NEAREST:gl.LINEAR;
+      gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,filter);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,filter);
+      gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,float?gl.CLAMP_TO_EDGE:gl.REPEAT);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);
+      gl.texImage2D(gl.TEXTURE_2D,0,float?gl.RGBA32F:gl.RGBA8,source.width,source.height,0,gl.RGBA,float?gl.FLOAT:gl.UNSIGNED_BYTE,source.data);
+      slot.stamp=stamp;
+    }
+  };
+  bind('placedTexture',0,view.map,view.map.revision,true);bind('nativeTexture',1,view.native,view.native.key,false);
+  gl.activeTexture(gl.TEXTURE0);uniform('uInstalledBiomes','int',0);uniform('uNativeGround','int',1);
+  uniform('uAtlasRight',3,[1,0,0]);uniform('uAtlasUp',3,[0,1,0]);uniform('uAtlasAxis',3,[0,0,1]);uniform('uAtlasRadiusKm',1,view.radiusKm);
+  uniform('uMineralFrontage',4,view.map.mineralFrontage??[0,0,0,0]);uniform('uTransportChart',4,view.map.transportChart);uniform('uTransportWidths',4,view.map.transportWidths);
+  uniform('uBorderChart',4,view.map.borderChart);uniform('uBorderSurvey',4,view.map.borderSurvey);
+  return view.map.data.byteLength+view.native.data.byteLength;
+}
+
+export const meadowShaders={skyVS:VS_SCREEN,skyFS:FS_SCREEN,terrainVS:VS_TERRAIN,groundFS:FS_MESH};
+export class Renderer {
+  constructor(canvas,{atlasShader='',backdrop=null,horizontalFov=null}={}){
+    this.horizontalFov=horizontalFov;this.vergeView=null;
+    this.backdrop=backdrop;
+
     this.canvas=canvas;const gl=canvas.getContext('webgl2',{alpha:false,antialias:true,powerPreference:'high-performance',preserveDrawingBuffer:true});if(!gl)throw Error('WebGL2 unavailable');this.gl=gl;
     const shaders=canopyShaders();
-    this.screen=compile(gl,VS_SCREEN,FS_SCREEN.replace('/* hosted surface */',regional));this.mesh=compile(gl,VS_MESH,FS_MESH);this.grass=compile(gl,shaders.nearVS,shaders.nearFS);this.grassbox=compile(gl,shaders.boxVS,shaders.boxFS);this.terrainProgram=compile(gl,VS_TERRAIN,FS_MESH);this.uniforms=new Map;
-    const ground=geom();
-    for(let level=0;level<TERRAIN_GRID.levels;level++){const pitch=TERRAIN_GRID.basePitch*2**level;
-      for(let z=-24;z<24;z++)for(let x=-24;x<24;x++){if(level>0&&x>=-12&&x<12&&z>=-12&&z<12)continue;
-        const point=(x,z)=>[x*pitch,level,z*pitch];ground.quad(point(x,z),point(x,z+1),point(x+1,z+1),point(x+1,z),[.095,.158,.027]);}}
-    this.terrainMesh=new Mesh(gl,ground.data());this.terrainGridOffsets=new Float32Array(24);
+    this.screen=compile(gl,VS_SCREEN,meadowSkyFragment(atlasShader));this.mesh=compile(gl,VS_MESH,FS_MESH);this.grass=compile(gl,shaders.nearVS,shaders.nearFS);this.grassbox=compile(gl,shaders.boxVS,shaders.boxFS);this.terrainProgram=compile(gl,VS_TERRAIN,FS_MESH);this.uniforms=new Map;
+    const ground=terrainGridGeometry();
+    this.terrainMesh=new Mesh(gl,ground.positions,[0],ground.indices);
+    this.terrainGridOffsets=new Float32Array(24);
     const structures=geom();
     for(const o of landmarks){const base=terrain(o.eastM,o.northM),r=o.radiusM;
       structures.box(o.eastM,base+.20,o.northM,r*.88,.20,r*.88,[.19,.20,.16]);
@@ -250,18 +349,11 @@ vec3 regionalGround(vec3 q,float t){
         belt.quad(point(a,radius-.000035,-width),point(b,radius-.000035,-width),point(b,radius-.000035,width),point(a,radius-.000035,width),[.15,.19,.16]);
       }
     }this.beltMesh=new Mesh(gl,belt.data());
-    const blades=[];
-    for(let b=0;b<5;b++)for(let i=0;i<3;i++){
-      const y0=i/3,y1=(i+1)/3,widths=[.45,1,.55,0],w0=widths[i],w1=widths[i+1];
-      blades.push(-w0,y0,b,w0,y0,b,w1,y1,b,-w0,y0,b,w1,y1,b,-w1,y1,b);
-    }
-    this.bladeVertices=blades.length/3;this.grassVAO=gl.createVertexArray();gl.bindVertexArray(this.grassVAO);
-    this.bladeBuffer=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,this.bladeBuffer);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(blades),gl.STATIC_DRAW);gl.enableVertexAttribArray(0);gl.vertexAttribPointer(0,3,gl.FLOAT,false,12,0);
-    const outer=[];for(let b=0;b<5;b++)outer.push(-.45,0,b,.45,0,b,0,1,b);
-    this.outerVertices=outer.length/3;this.outerVAO=gl.createVertexArray();gl.bindVertexArray(this.outerVAO);this.outerBuffer=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,this.outerBuffer);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(outer),gl.STATIC_DRAW);gl.enableVertexAttribArray(0);gl.vertexAttribPointer(0,3,gl.FLOAT,false,12,0);
-    gl.bindVertexArray(null);this.tileOffsets=new Float32Array(162);this.tileSeeds=new Uint32Array(81);this.coreOffsets=new Float32Array(50);this.coreSeeds=new Uint32Array(25);this.sortedTiles=[];this.coreTiles=[];
-    this.atlasCanvas=createGrassAtlas();this.textureBytes=0;
-    this.gpuBytes=[this.terrainMesh,this.landmarkMesh,this.latticeMesh,this.beltMesh].reduce((n,m)=>n+m.bytes,0)+(blades.length+outer.length)*4;
+    const blades=createBladeGeometry(gl);
+    Object.assign(this,{bladeBuffer:blades.bladeBuffer,grassVAO:blades.grassVAO,bladeVertices:blades.bladeVertices,outerBuffer:blades.outerBuffer,outerVAO:blades.outerVAO,outerVertices:blades.outerVertices});
+    this.tileOffsets=new Float32Array(162);this.tileSeeds=new Uint32Array(81);this.coreOffsets=new Float32Array(50);this.coreSeeds=new Uint32Array(25);this.sortedTiles=[];this.coreTiles=[];
+    this.atlasPreview=null;this.textureBytes=0;
+    this.gpuBytes=[this.terrainMesh,this.landmarkMesh,this.latticeMesh,this.beltMesh].reduce((n,m)=>n+m.bytes,0)+blades.bytes;
     this.instanceCount=0;this.version=-1;this.origin=null;this.uploadBytes=0;
     this.ext=gl.getExtension('EXT_disjoint_timer_query_webgl2');this.queries=[];this.gpuSamples=[];this.frame=0;
     const debug=gl.getExtension('WEBGL_debug_renderer_info');
@@ -269,10 +361,13 @@ vec3 regionalGround(vec3 q,float t){
       coverage:'Eye-centered 81-cell stage; stable canonical root subsets and wind; 64 m geometry reach; continuous filtered canopy; geographic terrain grids and attached distant clumps',ownedGpuBufferBytes:this.gpuBytes,ownedGpuTextureBytes:this.textureBytes,
       lighting:'Directional shading, transmission, root occlusion; one shared geographic wind field for near grass, grassbox and distant cover'};
   }
+  get atlasCanvas(){return this.atlasPreview??=createGrassAtlas();}
   dispose(){
     const gl=this.gl;
+    if(this.atlasPreview){this.atlasPreview.width=0;this.atlasPreview.height=0;this.atlasPreview=null;}
     for(const slot of [this.nativeTexture,this.placedTexture])if(slot)gl.deleteTexture(slot.texture);
-    for(const mesh of [this.terrainMesh,this.landmarkMesh,this.latticeMesh,this.beltMesh]){gl.deleteBuffer(mesh.buffer);gl.deleteVertexArray(mesh.vao);}
+    this.vergeView?.dispose();
+    for(const mesh of [this.terrainMesh,this.landmarkMesh,this.latticeMesh,this.beltMesh])mesh.dispose();
     for(const buffer of [this.bladeBuffer,this.outerBuffer])gl.deleteBuffer(buffer);
     for(const vao of [this.grassVAO,this.outerVAO])gl.deleteVertexArray(vao);
     for(const program of [this.screen,this.mesh,this.grass,this.grassbox,this.terrainProgram])gl.deleteProgram(program);
@@ -281,26 +376,8 @@ vec3 regionalGround(vec3 q,float t){
   bindBackdrop(view){
     if(!this.backdrop)return;
     const gl=this.gl,uniform=(key,type,value)=>this.uniform(this.screen,key,type,value);
-    uniform('uInstalledBiomesOn','int',view?1:0);
-    if(!view)return;
-    const bind=(key,unit,source,stamp,float)=>{
-      gl.activeTexture(gl.TEXTURE0+unit);
-      const slot=this[key]??={texture:gl.createTexture()};
-      gl.bindTexture(gl.TEXTURE_2D,slot.texture);
-      if(slot.stamp!==stamp){
-        const filter=float?gl.NEAREST:gl.LINEAR;
-        gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,filter);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,filter);
-        gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,float?gl.CLAMP_TO_EDGE:gl.REPEAT);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);
-        gl.texImage2D(gl.TEXTURE_2D,0,float?gl.RGBA32F:gl.RGBA8,source.width,source.height,0,gl.RGBA,float?gl.FLOAT:gl.UNSIGNED_BYTE,source.data);
-        slot.stamp=stamp;
-      }
-    };
-    bind('placedTexture',0,view.map,view.map.revision,true);bind('nativeTexture',1,view.native,view.native.key,false);
-    gl.activeTexture(gl.TEXTURE0);uniform('uInstalledBiomes','int',0);uniform('uNativeGround','int',1);
-    uniform('uAtlasRight',3,[1,0,0]);uniform('uAtlasUp',3,[0,1,0]);uniform('uAtlasAxis',3,[0,0,1]);uniform('uAtlasRadiusKm',1,view.radiusKm);
-    uniform('uTransportChart',4,view.map.transportChart);uniform('uTransportWidths',4,view.map.transportWidths);
-    uniform('uBorderChart',4,view.map.borderChart);uniform('uBorderSurvey',4,view.map.borderSurvey);
-    this.textureBytes=view.map.data.byteLength+view.native.data.byteLength;this.info.ownedGpuTextureBytes=this.textureBytes;
+    this.textureBytes=bindMeadowBackdrop(gl,uniform,this,view);
+    this.info.ownedGpuTextureBytes=this.textureBytes;
   }
   location(program,key){const gl=this.gl,id=program===this.screen?'s':program===this.mesh?'m':program===this.terrainProgram?'t':program===this.grassbox?'b':'g';let location=this.uniforms.get(id+key);if(location===undefined){location=gl.getUniformLocation(program,key);this.uniforms.set(id+key,location);}return location;}
   uniform(program,key,type,value){const gl=this.gl,location=this.location(program,key);if(type==='int')gl.uniform1i(location,value);else if(type==='uint2')gl.uniform2uiv(location,value);else if(type===1)gl.uniform1f(location,value);else if(type===2)gl.uniform2fv(location,value);else if(type===4)gl.uniform4fv(location,value);else gl.uniform3fv(location,value);}
@@ -343,7 +420,7 @@ vec3 regionalGround(vec3 q,float t){
     const view=this.backdrop?.(p);this.bindBackdrop(view);
     this.uniform(this.screen,'uDirect',1,incoming?.direct??1);
     const f=view??poseFrame(p);for(const [key,value] of [['uEast',f.east],['uNorth',f.north],['uRadial',f.radial]])this.uniform(this.screen,key,3,value);
-    this.uniform(this.screen,'uBorder',4,this.borderView||[0,0,0,0]);this.uniform(this.screen,'uResolution',2,[this.canvas.width,this.canvas.height]);this.uniform(this.screen,'uArc',2,[p.eastM,p.northM]);
+    this.uniform(this.screen,'uBorder',4,this.borderView||[0,0,0,0]);this.uniform(this.screen,'uWallMeshReach',1,this.borderMap?85000:0);this.uniform(this.screen,'uResolution',2,[this.canvas.width,this.canvas.height]);this.uniform(this.screen,'uArc',2,[p.eastM,p.northM]);
     for(const [key,value] of [['uAltitude',p.altitudeM],['uReveal',reveal],['uDaylight',canopyDaylight],['uInteriorLight',interiorDaylight]])this.uniform(this.screen,key,1,value);
     gl.bindVertexArray(null);gl.drawArrays(gl.TRIANGLES,0,3);
     let calls=1,triangles=1;gl.enable(gl.DEPTH_TEST);this.common(this.mesh,p);
@@ -365,6 +442,12 @@ vec3 regionalGround(vec3 q,float t){
       this.uniform(program,'uTransitionPhase',4,transitionPhases(p.eastM,p.northM));
       const surface=surfaceAnchor(p.eastM,p.northM);this.uniform(program,'uSurfaceOrigin',2,surface.origin);this.uniform(program,'uSurfaceBlockLow','uint2',surface.low);this.uniform(program,'uSurfaceBlockHigh','uint2',surface.high);
       gl.enable(gl.BLEND);gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA);this.terrainMesh.draw();gl.disable(gl.BLEND);calls++;triangles+=this.terrainMesh.count/3;
+    }
+    const verge=this.stationApron?.row.verge;
+    if(verge){
+      this.vergeView??=createVergeView(gl,compile);
+      calls+=this.vergeView.draw(verge,p,cameraBasis(p),{fx:this.focal*this.canvas.height/this.canvas.width,fy:this.focal,
+        near2:this.near2??.10,ground:this.stationDatum,light:interiorDaylight,clock:state.windTime});
     }
     if(p.altitudeM<40000&&Math.hypot(p.eastM,p.northM)<50000){this.common(this.mesh,p);this.uniform(this.mesh,'uGround',1,0);this.landmarkMesh.draw();calls++;triangles+=this.landmarkMesh.count/3;}
     if(reveal>.001&&p.altitudeM<state.blindHeightM*8&&Math.hypot(p.eastM,p.northM)<state.blindHeightM*10){

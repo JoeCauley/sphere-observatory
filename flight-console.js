@@ -36,7 +36,9 @@ function focus(){view.focus({preventScroll:true});}
 function toggle(open=panel.hidden){panel.hidden=!open;button.setAttribute('aria-expanded',String(open));if(open)$('consolePlay').focus();else focus();}
 button.onclick=()=>toggle();$('closeFlightConsole').onclick=()=>toggle(false);
 panel.addEventListener('keydown',e=>{if(e.key==='Escape'){e.stopPropagation();toggle(false);}});
-function update(key,value){const s=A.getState();s[key]=value;if(key==='speed')s.autoSpeed=false;A.setState(s);}
+function update(key,value){if(key==='speed')return A.chooseFlightSpeed(false,value);
+ if(key==='autoSpeed')return A.chooseFlightSpeed(value);
+ const s=A.getState();s[key]=value;A.setState(s);}
 $('consolePlay').onclick=()=>{A.setPlaying(!A.getState().playing);focus();};
 $('consoleReset').onclick=()=>{const s=A.getState();s.time=0;A.setState(s);focus();};
 $('consoleScrub').oninput=e=>{const s=A.getState();s.time=Number(e.target.value);A.setState(s);};

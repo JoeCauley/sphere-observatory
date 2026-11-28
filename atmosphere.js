@@ -81,18 +81,18 @@ class Atmosphere{
   gl.uniform2fv(u['cloudEvolution[0]'],[43200,68400,108000].flatMap((period,j)=>{const angle=((s.time%period)/period+j*.27)*Math.PI*2;return [Math.cos(angle),Math.sin(angle)];}));
   gl.uniform1i(u.climateMap,7);gl.uniform1i(u.regionalTint,s.biomeAtmosphere?1:0);const worldFrame=SphereWorld.frame(s);v('climateAxis',worldFrame.axis);v('climateRight',worldFrame.right);v('climateUp',worldFrame.up);
   const plates=SphereCollection.plates(s),shadeNormals=new Float32Array(72),shadeRights=new Float32Array(72),shadeSizes=new Float32Array(72);
+  if(air&&s.shadeFractureRevision===2&&s.era==='after')SphereWorld.shadeFracture.upload(gl,u);
   plates.forEach((plate,i)=>{shadeNormals.set([...plate.normal,plate.damage],i*4);shadeRights.set([...plate.right,plate.id],i*4);const radius=M.length(plate.center);shadeSizes.set([plate.size*plate.across/radius,plate.size/radius,radius,0],i*4);});
   gl.uniform1i(u.weatherShadeCount,plates.length);gl.uniform4fv(u['weatherShadeNormal[0]'],shadeNormals);gl.uniform4fv(u['weatherShadeRight[0]'],shadeRights);gl.uniform4fv(u['weatherShadeSize[0]'],shadeSizes);gl.uniform1i(u.weatherShadeShape,['disk','square','cap','trimmed'].indexOf(s.shadeShape));f('weatherShadeTrim',s.shadeTrim);f('weatherStarAngle',s.starRadius/s.radius);
   f('weatherTime',s.time);gl.uniform1i(u.precipitation,['precipitation','storm'].includes(s.placeWeather)?1:0);gl.uniform1i(u.storm,s.placeWeather==='storm'?1:0);
   v('phase',s.position.map((v,i)=>((v/p.scale+s.time*(i===0?.002:i===2?.0007:0)/p.scale)%32+32)%32));gl.uniform1i(u.panorama,s.projection==='panorama'?1:0);gl.uniform1i(u.clouds,s.clouds?1:0);gl.uniform1i(u.spores,id===8?1:0);gl.drawArrays(gl.TRIANGLES,0,3);
   gl.bindFramebuffer(gl.FRAMEBUFFER,this.fbo);gl.viewport(0,0,width,height);gl.useProgram(this.composite.p);const c=this.composite.u;
   // At eye level the projected sky obscures the far shell. Local weather remains in front.
-  const zone=renderer.renderInfo.borderEnvironment;
   // Native terrain remains visible through the short entrance gallery. Its
   // depth-tested walls and ceiling occlude the projected sky on interior rays.
-  const blind=altitude<100 && s.projection==='perspective' && air && !rim && !SphereCollection.missing(n,s) && zone?.air!=='vacuum';
+  const blind=altitude<100 && s.projection==='perspective' && air && !rim && !SphereCollection.missing(n,s);
   const layer=Math.min(1,Math.max(0,(100-altitude)/20));
-  gl.uniform1f(c.blindStrength,layer*layer*(3-2*layer)*(1-(s.borderVacuum??0)));
+  gl.uniform1f(c.blindStrength,layer*layer*(3-2*layer));
   gl.uniform1f(c.blindRange,blind?Math.log2(1+4*s.radius):0);
   if(blind){
    const inward=M.mul(n,-1),lens=Math.tan(M.radians(s.fov)*.5);

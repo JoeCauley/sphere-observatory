@@ -22,7 +22,10 @@ async function main(){
     assert.equal(reused.status,304);assert.equal(reused.body.length,0);
     assert.equal((await host.dispatch('/','GET',{'if-none-match':'"older"'})).status,200);
     const head=await host.dispatch('/','HEAD',{'if-none-match':'*'});assert.equal(head.status,304);assert.equal(head.body.length,0);
-    const catalog=result(await host.dispatch('/packs/biome-library.json'));assert.equal(catalog.packs.length,5);assert.equal(catalog.packs.find(p=>p.id==='border-transport').version,'0.10.0');
+    const catalog=result(await host.dispatch('/packs/biome-library.json'));
+    const expectedPacks=['border-transport','infinite-industry','infinite-meadow','infinite-new-york','sideways-city','super-jungle','violet-labyrinth'];
+    assert.deepEqual(catalog.packs.map(p=>p.id).sort(),expectedPacks);
+    assert.equal(catalog.packs.find(p=>p.id==='border-transport').version,'0.10.0');
     for(const pack of catalog.packs){
       const dir=path.resolve(__dirname,'..',path.dirname(pack.entry)),file=path.join(dir,'manifest.json');
       if(!fs.existsSync(file))continue;
@@ -30,6 +33,7 @@ async function main(){
       assert.equal(manifest.version,pack.version);
       for(const asset of [...manifest.assets,...(manifest.dependencies??[])]){
         const bytes=fs.readFileSync(path.resolve(dir,asset.path));
+        assert.equal(asset.bytes,bytes.length,pack.id+' '+asset.path+' byte count');
         assert.equal(require('node:crypto').createHash('sha256').update(bytes).digest('hex'),asset.sha256,pack.id+' '+asset.path);
       }
     }
@@ -42,8 +46,16 @@ async function main(){
     assert.equal((await patch(key,params,seen,[...seen,missing])).status,200);
     const [left,right]=await Promise.all([patch(other,{seed:24},[],[b]),patch(key,params,[...seen,missing],[...seen,missing,item('infinite-industry')])]);
     assert.equal(left.status,200);assert.equal(right.status,200);
-    const snapshot=result(await send('GET'));
-    assert.equal(snapshot.worlds[key].installed.length,3);assert.equal(snapshot.worlds[other].installed.length,1);
+    const mark={id:'survey-walk',name:'Freight hall',sceneId:'border-transport',world:key};
+    const marked=await send('PATCH',{key,parameters:params,before:[],marks:[mark]});
+    assert.equal(marked.status,200);
+    const prior=result(marked).worlds[key].installed;
+    const remaining=expectedPacks.filter(id=>!prior.some(p=>p.id===id)).map(item);
+    assert.equal((await patch(key,params,prior,[...prior,...remaining])).status,200);
+    assert.equal((await send('PATCH',{key,parameters:params,before:[],marks:[]})).status,409);
+    const snapshot=result(await send('GET'));assert.deepEqual(snapshot.worlds[key].marks,[mark]);
+    assert.deepEqual(snapshot.worlds[key].installed.map(p=>p.id).sort(),expectedPacks);
+    assert.equal(snapshot.worlds[other].installed.length,1);
     assert.deepEqual(JSON.parse(fs.readFileSync(storePath)),snapshot);
     const query='/api/border-stations?world='+key+'&a=r10c0&b=r11c0&bay=0';
     assert.equal(result(await host.dispatch(query)).locked,false);
@@ -54,7 +66,7 @@ async function main(){
     assert.deepEqual(result(await host.dispatch(query)),discovered);
     assert.equal((await send('PATCH',{key:'invalid',parameters:params,before:[],installed:[]})).status,400);
     assert.deepEqual(result(await send('GET')),snapshot);
-    console.log('PASS '+transport+' server restart, five catalog entries, concurrent world updates, conflict retry and the same station after restart.');
+    console.log('PASS '+transport+' server restart, '+catalog.packs.length+' catalog entries, concurrent world updates, conflict retry and the same station after restart.');
   }finally{if(host)await host.close();fs.rmSync(dir,{recursive:true,force:true});}
 }
 main().catch(e=>{console.error(e);process.exitCode=1;});

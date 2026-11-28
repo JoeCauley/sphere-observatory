@@ -29,15 +29,16 @@ function routeFrame(s,band,angle){const r=routes[band];if(s.layoutVersion!==2||!
  // leave a margin at both ribbon edges, including at the longitudinal corners.
  return {normal,right:M.norm(M.sub(f.axis,M.mul(normal,sl))),across:Math.min(1,Math.tan(M.radians(s.waistWidth)/3*.88)/Math.tan(Math.PI/(2*r.count))),latitude};
 }
-function plates(s){const key=[s.radius,s.shadeGeometryRevision,s.time,s.cycleScale,s.era,s.routeShades,s.shadeShape,s.shadeTrim,s.biome,s.layoutVersion,s.axisLat,s.axisLon,s.waistWidth].join('|');if(key===cachedKey)return cachedPlates;cachedKey=key;cachedPlates=[];if(!s.routeShades)return cachedPlates;
+function plates(s){const key=[s.radius,s.shadeGeometryRevision,s.shadeFractureRevision,s.time,s.cycleScale,s.era,s.routeShades,s.shadeShape,s.shadeTrim,s.biome,s.layoutVersion,s.axisLat,s.axisLon,s.waistWidth].join('|');if(key===cachedKey)return cachedPlates;cachedKey=key;cachedPlates=[];if(!s.routeShades)return cachedPlates;
  routes.forEach((r,b)=>{for(let j=0;j<r.count;j++){
   const destroyed=s.era==='after'&&(j===b+1||j===r.count-2);const fragmented=s.era==='after'&&(j===0||j===r.count-1);
   const a=TAU*(j/r.count+s.time/(r.hours*3600*r.count*s.cycleScale)+r.phase);
   const frame=routeFrame(s,b,a),n=frame.normal,center=M.mul(n,r.radius),size=r.radius*Math.tan(Math.PI/(2*r.count));
-  if(!destroyed)cachedPlates.push({center,normal:n,right:frame.right,up:M.cross(n,frame.right),across:frame.across,latitude:frame.latitude,size,thickness:s.layoutVersion===2&&s.shadeGeometryRevision>=3?.18/s.radius:0,damage:fragmented?1:0,id:b*8+j,band:b,shape:s.shadeShape||'disk',trim:s.shadeTrim??.65,layoutVersion:s.layoutVersion||1});
+  if(!destroyed)cachedPlates.push({center,normal:n,right:frame.right,up:M.cross(n,frame.right),across:frame.across,latitude:frame.latitude,size,thickness:s.layoutVersion===2&&s.shadeGeometryRevision>=3?.18/s.radius:0,damage:fragmented?(s.layoutVersion===2&&s.shadeGeometryRevision>=3&&s.shadeFractureRevision===2?2:1):0,fractureRevision:s.shadeFractureRevision??1,id:b*8+j,band:b,shape:s.shadeShape||'disk',trim:s.shadeTrim??.65,layoutVersion:s.layoutVersion||1});
  }});return cachedPlates;
 }
 function diskContains(x,y,p){x/=p.across||1;if(p.shape==='trimmed'&&Math.abs(x)>p.size*p.trim)return false;if(p.shape==='square'?Math.max(Math.abs(x),Math.abs(y))>p.size:x*x+y*y>p.size*p.size)return false;if(!p.damage)return true;const u=x/p.size,v=y/p.size;
+ if(p.damage===2)return root.SphereWorld.shadeFracture.margin(u,v,p.id)>=0;
  if(p.layoutVersion===2&&root.SphereWorld)return root.SphereWorld.shadeSolid(u,v,p.id);
  return !(u>.12&&v>-.2)&&Math.abs(u+.3+.16*Math.sin(v*9))>.018&&Math.abs(v+.18+.11*Math.sin(u*10))>.012;
 }

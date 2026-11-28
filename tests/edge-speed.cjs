@@ -23,10 +23,16 @@ for(const shape of ['disk','square','cap','trimmed'])for(const era of ['before',
  for(const p of C.plates(s))for(const side of [-1,1]){
   // Discover a boundary from the independent solid/void predicate used by
   // collision; the test does not reproduce the speed helper's curve formulae.
-  const v=p.damage?.2:0,solid=u=>C.diskContains(u*p.size*p.across,v*p.size,p);let interval=null;
-  if(p.damage){for(let i=1;i<=256;i++){const a=-.6+(i-1)*1.2/256,b=-.6+i*1.2/256;if(solid(a)&&!solid(b))interval=[a,b];}}
-  else interval=[0,1.1];assert(interval,'A solid-to-void fixture bank must exist');
-  let [a,b]=interval;for(let i=0;i<50;i++){const mid=(a+b)/2;if(solid(mid))a=mid;else b=mid;}const uv=[(a+b)/2,v];
+  let uv;
+  if(p.damage===2){
+   uv=SphereShadeEdges.arrivalFrame(s,p).uv;
+  }else{
+   const v=p.damage?.2:0,solid=u=>C.diskContains(u*p.size*p.across,v*p.size,p);let interval=null;
+   if(p.damage){for(let i=1;i<=256;i++){const a=-.6+(i-1)*1.2/256,b=-.6+i*1.2/256;if(solid(a)&&!solid(b))interval=[a,b];}}
+   else interval=[0,1.1];
+   assert(interval,'A solid-to-void fixture bank must exist');
+   let [a,b]=interval;for(let i=0;i<50;i++){const mid=(a+b)/2;if(solid(mid))a=mid;else b=mid;}uv=[(a+b)/2,v];
+  }
   const at=E.plateVector(E.canonicalPoint(s,p,...uv),p),n=shape==='cap'||shape==='trimmed'?M.norm(at):p.normal;
   const tangent=M.norm(M.sub(p.right,M.mul(n,M.dot(p.right,n))));const values=[];for(const offset of [-.02,0,.02]){s.position=M.add(M.add(at,M.mul(n,side*.04+(side>0?(p.thickness||0)*s.radius:0))),M.mul(tangent,offset));const hit=T.shadeClearance(s,p);assert(hit.distance>=.03999&&hit.distance<.06,JSON.stringify({shape,era,id:p.id,side,offset,hit}));values.push(hit.distance);shadeProbes++;}
   assert(Math.max(...values)-Math.min(...values)<.006,'Crossing a bank keeps the perpendicular gradient');
@@ -40,6 +46,45 @@ for(const shape of ['disk','square','cap','trimmed']){const s={...base,routeShad
  if(solid){assert(Math.abs(hit.distance-.04)<.000002);solidSamples++;}else{assert(hit.distance>.041);voidSamples++;}
 }}
 assert(voidSamples>200&&solidSamples>200);
+// Plot the flight path across the section shared by the two tear pieces and
+// the part of the mouth buried in the released bay. Both are open connections.
+let openCrossings=0,realBanks=0;
+for(const shape of ['disk','square','cap','trimmed']){
+ const s={...base,routeShades:true,shadeShape:shape,era:'after'};
+ for(const p of C.plates(s).filter(p=>p.damage===2)){
+  const mouth=W.shadeFracture.regions(p.id).find(r=>r.id==='seam-mouth').points;
+  const chartScale=p.size*s.radius*Math.min(p.across,1);
+  for(const [a,b] of [[mouth[2],mouth[3]],[mouth[0],mouth[1]]]){
+   const du=b[0]-a[0],dv=b[1]-a[1],length=Math.hypot(du,dv);
+   // Find an internal edge crossing with a known disk of open space around
+   // it. The fractional position differs with the oblique load on each parent.
+   const radius=.001;
+   let centre;
+   for(const t of [.5,.4,.6,.3,.7,.2,.8]){
+    const u=a[0]+du*t,v=a[1]+dv*t;
+    const clearance=Array.from({length:32},(_,i)=>{
+     const angle=i*Math.PI/16;
+     return W.shadeFracture.margin(u+radius*Math.cos(angle),v+radius*Math.sin(angle),p.id);
+    });
+    if(clearance.every(value=>value<0)){centre=[u,v];break;}
+   }
+   assert(centre,'A traversable internal joint must exist');
+   for(const step of [-.2,0,.2]){
+    const u=centre[0]-step*radius*dv/length,v=centre[1]+step*radius*du/length;
+    s.position=E.plateVector(E.canonicalPoint(s,p,u,v),p);
+    const distance=T.shadeClearance(s,p).distance;
+    assert(distance>radius*chartScale*.5,JSON.stringify({shape,id:p.id,step,distance}));
+    openCrossings++;
+   }
+  }
+  const frame=SphereShadeEdges.arrivalFrame(s,p);
+  const bank=E.plateVector(frame.origin,p),inward=E.plateVector(frame.inward,p);
+  s.position=M.sub(bank,M.mul(inward,.5));
+  const distance=T.shadeClearance(s,p).distance;
+  assert(distance>.36&&distance<.501,'A real bank half a kilometre away must still govern braking');
+  realBanks++;
+ }
+}
 // Real varying lip: leaving the visible support must not lose its closest
 // triangle. This also measures the warm query cost without generating new LODs.
 const f=W.rimFrame(base,0,.7),up=M.mul(f.point,-1),s={...base,siteId:'biome-2',siteRevision:1,siteAnchor:M.norm(M.add(M.mul(f.point,base.radius),M.mul(f.inland,.02))),position:M.mul(f.point,base.radius-.04),forward:f.tangent,up};const field=S.site(s),rim=field.ground.rim,edge=rim.segments[Math.floor(rim.segments.length/2)],top=M.mul(M.add(edge.a,edge.b),.5),points=[];
@@ -48,4 +93,4 @@ const times=[];for(let i=0;i<120;i++){const start=performance.now();S.nearestBVH
 // Even if all geometry disappears, eased acceleration is relative to the old
 // speed; approaching a surface still brakes immediately. Manual remains exact.
 const q=W.locateBiome(2,base),near={...base,position:M.mul(q,base.radius-.01)},far={...base,position:[0,0,0]};T.reset();const slow=T.speed(near,M.mul(q,-1),1/60),next=T.speed(far,q,1/60);assert(next<=slow*Math.exp(.05)+1e-12);assert(T.speed(near,q,1/60)<=T.curve(.011)*1.2);assert.equal(T.speed({...near,autoSpeed:false,speed:123},q,1/60),123);
-console.log(JSON.stringify({status:'PASS',woundProbes,shadeProbes,voidSamples,solidSamples,lipTriangleDistances:points,warmNearestMs:{median:times[60],p95:times[114],max:times[119]}}));
+console.log(JSON.stringify({status:'PASS',woundProbes,shadeProbes,voidSamples,solidSamples,openCrossings,realBanks,lipTriangleDistances:points,warmNearestMs:{median:times[60],p95:times[114],max:times[119]}}));

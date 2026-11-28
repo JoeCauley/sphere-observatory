@@ -52,6 +52,13 @@ async function main() {
         SphereApp.draw();
       };
       window.surveyPitch = pitch => cameraAt(site.widthM / 4, 36000, pitch);
+      window.parallelWall = (heading,step) => {
+        const from=item.transport.sites.find(s=>s.bay===-heading),target=item.transport.sites.find(s=>s.bay===heading);
+        if(!from || !target)return null;
+        const x=(site.x+from.x)/2+heading*step;
+        cameraAt(0,61200,-Math.atan2(61200-target.roofM,Math.abs(target.x-x)),x,heading*Math.PI/2,80);
+        return geo.nearestSite(item.transport,x).address.key;
+      };
       window.aboveRoof = () => cameraAt(site.widthM*.39, 24025, -.42, site.x+10500, -2.56, 67);
       window.changeSurveyBay = async () => {
         const next = item.transport.sites.find(s => s.bay !== 0);
@@ -106,6 +113,21 @@ async function main() {
     const missed = await page.evaluate(() => window.changeSurveyBay());
     assert(missed===null || missed===0, 'The station vanished while the next survey was loading');
     await page.unroute('**/api/border-stations?*');
+    for(const heading of [-1,1]){
+      const frames=[];
+      for(const step of [-3,3]){
+        const station=await page.evaluate(([h,x])=>window.parallelWall(h,x),[heading,step]);
+        if(!station)break;
+        await page.waitForFunction(key=>document.querySelector('canvas[data-station]:not([hidden])')?.dataset.station===key,station);
+        await page.waitForTimeout(350);
+        frames.push((await page.screenshot({clip:{x:Math.ceil(rect.x+.40*rect.width),y:Math.ceil(rect.y+.44*rect.height),
+          width:Math.floor(.2*rect.width),height:Math.floor(.12*rect.height)}})).toString('base64'));
+      }
+      if(frames.length){
+        const [delta]=await screenDeltas(page,frames);
+        assert(delta<.008,'Six metres of parallel flight changed the distant station: '+delta);
+      }
+    }
     await page.evaluate(() => window.aboveApron());
     await page.locator('#viewport').focus();
     await page.keyboard.down('KeyQ');
@@ -172,6 +194,18 @@ async function main() {
     const stationFrame=page.locator('#stageFrame iframe');
     const environment=await scene.evaluate(()=>SphereBiome.environment());
     assert.equal(environment.air,'vacuum');
+    // With adaptation disabled the exposed Sphere should resolve to the selected
+    // preview detail, including after a change made while the camera is still.
+    await page.locator('#adaptivePreview').evaluate(input=>{input.checked=false;});
+    for(const quality of [.5,1]){
+      await page.evaluate(quality=>SphereApp.setState({...SphereApp.getState(),quality}),quality);
+      await page.waitForFunction(quality=>{
+        const rect=document.querySelector('#stageFrame iframe').getBoundingClientRect();
+        const scale=Math.min(Math.min(devicePixelRatio,1.5)*quality,Math.sqrt(3840*2160/(rect.width*rect.height)));
+        const canvas=document.getElementById('view');
+        return canvas.width===Math.floor(rect.width*scale) && canvas.height===Math.floor(rect.height*scale);
+      },quality,{timeout:10000});
+    }
     await page.waitForTimeout(160);
     const composite=await page.screenshot({clip:skyClip});
     await stationFrame.evaluate(f=>{f.style.visibility='hidden';});

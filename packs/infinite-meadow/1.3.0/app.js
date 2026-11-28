@@ -1,9 +1,10 @@
 import {chartFor,course,toBorder,toMeadow,enterNorthM,inApproach,reachesBorder} from '../../kit/surface-route.js';
 import {borderUniforms} from '../../kit/meadow-border.js';
-import {createRenderer as createBorderStructures} from '../../border-outfall/1.0.0/render.js';
+import {createRenderer as createBorderStructures} from '../../border-transport/0.10.0/outfall/render.js';
 import {clamp,address,toGlobal} from './coordinates.js';
 import {initialState,saveState,parseState,terrain,clearance,move,takeoff,stepTakeoff,landOnFoot,startSkimming,flightSpeed,sceneLight,guidedRoute,finishRoute,meadowRoute,landscapeRoute,grassEdgeRoute,routePose,blindBands,GROUND_DATUM,COMFORT_TURN_RAD_S,EYE} from './model.js';
 import {setStations,stationApron} from './landscape.js';
+import {meadowStationVisibility} from '../../border-transport/0.10.0/district.mjs';
 import {Renderer} from './renderer.js';
 import {GrassStage} from './grass-stage.js';
 import {startLevelCruise,stepLevelCruise,stopLevelCruise,LEVEL_MIN_ALTITUDE_M,TERRAIN_UPPER_BOUND_M} from './level-cruise.js';
@@ -17,7 +18,7 @@ import {ascentShape,arrivalShape,advance,heightAt} from '../../kit/flight.js';
 // kit veil is laid over the same band. No haze layers are declared.
 export function mountPack(host){
 const $=id=>document.getElementById(id),canvas=$('world');
-const lease=host.trackContext(canvas.getContext('webgl2',{alpha:false,antialias:true,powerPreference:'high-performance',preserveDrawingBuffer:true}));
+const lease=host.trackContext(canvas.getContext('webgl2',{alpha:false,antialias:true,stencil:!!window.frameElement?.dataset.worldKey,powerPreference:'high-performance',preserveDrawingBuffer:true}));
 let state=initialState(),bookmark=structuredClone(state),route=null,routeTime=0,direction=1,paused=false,stage='Meadow ready · walk freely';
 const keys=new Set(),tappedKeys=new Set(),residency=new GrassStage({ground:terrain}),metrics=[],events=[],trace=[],demands=[];
 const measurements=[];
@@ -33,25 +34,44 @@ host.storage.useValidator(s=>JSON.parse(saveState(parseState(JSON.stringify(s)))
 try{const saved=host.storage.read();if(saved){state=parseState(JSON.stringify(saved.state));bookmark=parseState(JSON.stringify(saved.bookmark));stage='Saved meadow restored';}}catch(e){status('Save rejected: '+e.message);}
 const stageHost=window.frameElement?.dataset.worldKey ? parent.SphereStageFrame : null;
 flightMotion.resolveSpeed=stageHost?.movementSpeed;
+function publishWind(){
+  stageHost?.setMeadowWind?.({time:state.windTime,playing:state.windPlaying});
+}
+function bridgeSettings(){
+  const {daylight,windPlaying,grassbox,grassReach,grassDensity,grassHeightScale,grassWidthScale,disturbance,concealment,blindHeightM}=state;
+  return {daylight,windPlaying,grassbox,grassReach,grassDensity,grassHeightScale,grassWidthScale,disturbance:disturbance&&{...disturbance},concealment,blindHeightM};
+}
 const surfaceEntry=window.frameElement?.surfaceEntry;
+let incomingWind=false;
 let borderStructures=null,chart=null,gateDatum=0,crossing=false,crossingFailed=false,lastCheckpoint=0;
-let survey=null,exterior=null,requested=null,retryExterior=0;
-function releaseExterior(){requested=null;exterior?.view.dispose();exterior=null;}
+let survey=null,exterior=null,requested=null,retryExterior=0,exteriorOnly=false;
+let exteriorRequest=0,lastWallOpacity=0;
+function releaseExterior(){exteriorRequest++;requested=null;lastWallOpacity=0;exterior?.view.dispose();exterior=null;}
 function prepareExterior(row){
   if(requested===row || performance.now()<retryExterior)return;
-  releaseExterior();requested=row;
+  requested=row;
+  const generation=++exteriorRequest;
+  if(exterior?.row===row)return;
   stageHost.stationExterior(row.site.address,survey.fileBacked).then(({station,makeView,constrainExterior})=>{
-    if(requested!==row)return;
-    const view=makeView(canvas,{shared:true,district:survey.district});
-    try{view.load(station);}catch(error){view.dispose();throw error;}
-    exterior={view,station,constrainExterior};
+    if(exteriorRequest!==generation)return;
+    // Keep the current hall on screen until its successor can replace the same GPU buffers.
+    const view=exterior?.view??makeView(canvas,{shared:true,district:survey.district,
+      habitats:s=>stageHost.stationHabitats?.(survey.district,s)});
+    try{view.load(station,exteriorOnly);}catch(error){if(!exterior)view.dispose();throw error;}
+    // An initial arrival waits behind the previous scene. During active flight
+    // a late first response may arrive after the hull should already be visible.
+    const reveal=exterior?.reveal??(drawn>=3 && lastWallOpacity>0?0:1);
+    exterior={view,station,constrainExterior,row,reveal};
   }).catch(error=>{
-    if(requested!==row)return;
+    if(exteriorRequest!==generation)return;
     requested=null;retryExterior=performance.now()+3000;
     if(surfaceEntry?.active===false)rejectReady(error);else status('Station exterior unavailable: '+error.message);
   });
 }
 const hostRadiusM=()=>(stageHost?.surfaceAddress?.()?.radiusKm??149597870.7)*1000;
+function outfallExterior(p){
+  return p && inApproach(p,chart) && p.northM<0 && p.northM>-12000;
+}
 function refreshChart(){
   releaseExterior();retryExterior=0;
   survey=stageHost?.transportAddress?.();setStations(survey?.rows??[],GROUND_DATUM);
@@ -68,13 +88,13 @@ if(surfaceEntry?.geographic){
   state.skimEnabled=false;
 }else if(chart && surfaceEntry?.edge===chart.edge){
   state.pose=toMeadow(surfaceEntry.pose,chart,gateDatum);
-  if(Number.isFinite(surfaceEntry.windTime))state.windTime=surfaceEntry.windTime;
+  if(Number.isFinite(surfaceEntry.windTime)){state.windTime=surfaceEntry.windTime;incomingWind=true;}
   const floor=terrain(state.pose.eastM,state.pose.northM)+EYE;
   state.pose.altitudeM=state.pose.mode==='walk'?floor:Math.max(floor,state.pose.altitudeM);
   state.skimEnabled=false;
 }
 let renderer;try{renderer=new Renderer(canvas,stageHost?{horizontalFov:surfaceEntry?.horizontalFov,atlasShader:parent.SphereBiomeSurface.glsl(parent.SphereAtlas),backdrop:p=>stageHost.surfaceBackdrop(window,p)}:{});if(stageHost)renderer.lightAt=p=>stageHost.surfaceLight(window,{...p,altitudeM:p.altitudeM-GROUND_DATUM});}catch(e){$('error').hidden=false;$('error').textContent='The meadow could not start.\n'+e.message;throw e;}
-function resize(){const dpr=Math.min(1,window.devicePixelRatio||1);canvas.width=Math.round(innerWidth*dpr);canvas.height=Math.round(innerHeight*dpr);}
+function resize(){const dpr=window.frameElement?.dataset.worldKey && parent.SphereFieldCamera?.need(canvas) ? devicePixelRatio : Math.min(1,devicePixelRatio||1);canvas.width=Math.round(innerWidth*dpr);canvas.height=Math.round(innerHeight*dpr);}
 resize();host.listen(window,'resize',resize);syncUI();
 // Contract state. A script moves the eye; `keep` is the place last stood in, which is what gets saved
 // while a script runs and afterwards until the controls are taken. Script heights are measured from
@@ -175,10 +195,10 @@ $('pause').onclick=()=>{paused=!paused;$('pause').textContent=paused?'Resume jou
 $('reverse').onclick=()=>{if(route){direction*=-1;paused=false;$('pause').textContent='Pause journey';event('reverse',{direction});status('Reversing continuously from this point');}else status('Start a journey to reverse its path');};
 $('save').onclick=async()=>{bookmark=structuredClone(state);persist();await captureBookmark();status('This place and its light are saved');event('save');};
 $('return').onclick=returnSaved;
-$('home').onclick=()=>{if(quiet){status('Finish the current measurement before returning home');return;}state=initialState();bookmark=structuredClone(state);route=null;lift=null;flightMotion.speedMps=0;paused=false;clearKeys();tracing=false;syncUI();stage='Starting meadow · ready to walk';status('Starting study meadow restored');};
+$('home').onclick=()=>{if(quiet){status('Finish the current measurement before returning home');return;}state=initialState();publishWind();bookmark=structuredClone(state);route=null;lift=null;flightMotion.speedMps=0;paused=false;clearKeys();tracing=false;syncUI();stage='Starting meadow · ready to walk';status('Starting study meadow restored');};
 $('plain').onclick=()=>{if(quiet){status('Finish the current measurement before visiting the plain');return;}manual();state.pose={...state.pose,eastM:400,northM:-112,altitudeM:terrain(400,-112)+1.7,yaw:0,pitch:-.07,mode:'walk'};bookmark=structuredClone(state);bookmarkCheck=null;returnCheck=null;syncUI();stage='Open plain · ready to walk';event('visit-open-plain');status('Open plain · walk here, or lift off to explore the surrounding hills');};
 $('grassbox').onchange=()=>{state.grassbox=$('grassbox').checked;event('grassbox',{value:state.grassbox});};
-$('wind').onchange=()=>{state.windPlaying=$('wind').checked;event('wind-play',{value:state.windPlaying});};
+$('wind').onchange=()=>{state.windPlaying=$('wind').checked;publishWind();event('wind-play',{value:state.windPlaying});};
 $('grassHeight').oninput=()=>{state.grassHeightScale=Number($('grassHeight').value);event('grass-height',{value:state.grassHeightScale});};
 $('grassWidth').oninput=()=>{state.grassWidthScale=Number($('grassWidth').value);event('grass-width',{value:state.grassWidthScale});};
 $('reach').onchange=()=>{state.grassReach=$('reach').value;event('grass-reach',{value:state.grassReach});};
@@ -193,7 +213,7 @@ $('blindHeight').onchange=()=>{if(route){syncUI();status('Change the height betw
 $('trample').onclick=()=>{if(clearance(state.pose)<2){state.disturbance={eastM:state.pose.eastM,northM:state.pose.northM,radiusM:3};event('disturbance');status('A 3 m patch of grass is flattened and will persist on return');}else status('Trample while on the ground');};
 $('downloadSave').onclick=()=>download(new Blob([host.storage.encode({state:JSON.parse(saveState(state)),bookmark:JSON.parse(saveState(bookmark))})],{type:'application/json'}),'sphere-infinite-meadow-1.3.0-save.json');
 $('importSave').onclick=()=>{if(quiet){status('Finish the current measurement before importing a save');return;}$('saveFile').click();};
-$('saveFile').onchange=async()=>{try{const file=$('saveFile').files[0];if(!file)return;if(file.size>1000000)throw Error('Save exceeds 1 MB');const imported=host.storage.decode(await file.text(),{allowLegacy:true});const s=parseState(JSON.stringify(imported.state)),nextBookmark=parseState(JSON.stringify(imported.bookmark));state=s;bookmark=nextBookmark;bookmarkCheck=null;returnCheck=null;route=null;lift=null;paused=false;tracing=false;flightMotion.speedMps=0;clearKeys();persist();syncUI();stage='Saved meadow · explore freely';event('explicit-scene-load');status('Saved meadow loaded');}catch(e){status('Import rejected: '+e.message);}finally{$('saveFile').value='';}};
+$('saveFile').onchange=async()=>{try{const file=$('saveFile').files[0];if(!file)return;if(file.size>1000000)throw Error('Save exceeds 1 MB');const imported=host.storage.decode(await file.text(),{allowLegacy:true});const s=parseState(JSON.stringify(imported.state)),nextBookmark=parseState(JSON.stringify(imported.bookmark));state=s;publishWind();bookmark=nextBookmark;bookmarkCheck=null;returnCheck=null;route=null;lift=null;paused=false;tracing=false;flightMotion.speedMps=0;clearKeys();persist();syncUI();stage='Saved meadow · explore freely';event('explicit-scene-load');status('Saved meadow loaded');}catch(e){status('Import rejected: '+e.message);}finally{$('saveFile').value='';}};
 function panelHidden(hide){document.querySelector('.panel').hidden=hide;$('show').hidden=!hide;}
 if(surfaceEntry?.geographic && stationApron(state.pose.eastM,state.pose.northM,500))panelHidden(true);
 $('hide').onclick=()=>panelHidden(true);$('show').onclick=()=>panelHidden(false);
@@ -214,7 +234,7 @@ $('levelSample').onclick=()=>startMeasurement('level');
 function finishQuiet(){
   const rows=quiet.rows,seen=new Set(),valid=rows.flatMap(r=>r.gpuResolved).filter(r=>{if(r.ms===null||r.disjoint||r.frame<=quiet.rendererStart||r.frame>rows.at(-1).rendererFrame||seen.has(r.frame))return false;seen.add(r.frame);return true;}),p95=values=>{const v=values.sort((a,b)=>a-b);return v.length?v[Math.floor((v.length-1)*.95)]:null;};
   quietStats={scope:'Local Biome Pack observation without recording; not production H1',kind:quiet.kind,viewport:{width:canvas.width,height:canvas.height},sampleState:JSON.parse(quiet.pose),frames:rows.length,elapsedMs:performance.now()-quiet.start,drawsPerSecond:1000*(rows.length-1)/rows.slice(1).reduce((s,r)=>s+r.intervalMs,0),prepareP95Ms:p95(rows.map(r=>r.prepareMs)),prepareMaxMs:Math.max(...rows.map(r=>r.prepareMs)),renderCpuP95Ms:p95(rows.map(r=>r.renderCpuMs)),gpuP95Ms:p95(valid.map(r=>r.ms)),gpuSamples:valid.length,uploadBytes:rows.reduce((s,r)=>s+r.uploadBytes,0),descriptorBytes:rows.reduce((s,r)=>s+r.descriptorBytes,0),completeFrames:rows.filter(r=>r.ready===r.required).length,stageEyeErrorMaxM:Math.max(...rows.map(r=>Math.hypot(r.grassCenter.eastM-r.pose.eastM,r.grassCenter.northM-r.pose.northM,r.heroCenter.eastM-r.pose.eastM,r.heroCenter.northM-r.pose.northM))),distanceM:rows.reduce((s,r,i)=>s+(i?r.movementM:0),0),cellChanges:rows.filter((r,i)=>i&&r.stageVersion!==rows[i-1].stageVersion).length,savedPoseUnchanged:saveState(state)===quiet.pose,rows};
-  const original=quiet.original;quiet=null;state=original;stopLevelCruise(flightMotion);flightMotion.speedMps=0;syncUI();quietStats.restoredStateExact=saveState(state)===saveState(original);measurements.push(quietStats);if(measurements.length>6)measurements.shift();
+  const original=quiet.original;quiet=null;state=original;publishWind();stopLevelCruise(flightMotion);flightMotion.speedMps=0;syncUI();quietStats.restoredStateExact=saveState(state)===saveState(original);measurements.push(quietStats);if(measurements.length>6)measurements.shift();
   status(`Sample complete · ${quietStats.drawsPerSecond.toFixed(1)} draws/s · ${quietStats.gpuP95Ms?.toFixed(2)??'—'} ms GPU p95`);event('measurement-complete',{kind:quietStats.kind});
 }
 async function startRecording(){
@@ -270,26 +290,34 @@ async function compareReturn(saved){const before=bookmarkCheck;if(!before)return
   returnCheck={...match,pixelsMatch:after.hash===before.snapshot.hash,beforePixels:before.snapshot.hash,afterPixels:after.hash,pixelDifference:match.sameViewport?{changedPixels,maxChannelDifference,meanChannelDifference:totalDifference/after.bytes.length}:null};event('return-comparison',returnCheck);}
 function tick(t){
   host.frame(tick);const start=performance.now(),rawDt=last?(t-last)/1000:1/60,dt=Math.min(.1,rawDt);last=t;frame++;let completed=null;const frameKeys=new Set([...keys,...tappedKeys]);tappedKeys.clear();if(state.skimEnabled&&flightMotion.cruise)frameKeys.add('KeyW');
-  if(!quiet&&!crossing&&surfaceEntry?.active!==false){if(state.windPlaying)state.windTime+=dt;if(script)stepScript(dt);else if(lift){if(!stepTakeoff(state,lift,dt)){lift=null;stage='Free flight · skim the hills';event('free-lift-complete');}}
+  if(stageHost?.stationFrameHeld?.(window))return;
+  if(incomingWind&&surfaceEntry.active!==false){publishWind();incomingWind=false;}
+  if(!quiet&&!crossing&&!incomingWind&&stageHost?.meadowWindTime){state.windTime=stageHost.meadowWindTime();}
+  if(!quiet&&!crossing&&surfaceEntry?.active!==false){if(state.windPlaying&&!stageHost?.meadowWindTime)state.windTime+=dt;if(script)stepScript(dt);else if(lift){if(!stepTakeoff(state,lift,dt)){lift=null;stage='Free flight · skim the hills';event('free-lift-complete');}}
   else if(route&&!paused){routeTime=clamp(routeTime+dt*direction,0,route.duration);const next=routePose(route,routeTime);state.pose=next.pose;stage=next.stage;
-    if((next.complete&&direction>0)||(routeTime===0&&direction<0)){completed=route.bookmark;state=structuredClone(completed);route=null;event('journey-complete',{exactState:saveState(state)===saveState(completed)});persist();syncUI();status('Back at the same place, with the same light and grass');}
+    if((next.complete&&direction>0)||(routeTime===0&&direction<0)){completed=route.bookmark;state=structuredClone(completed);publishWind();route=null;event('journey-complete',{exactState:saveState(state)===saveState(completed)});persist();syncUI();status('Back at the same place, with the same light and grass');}
   }else if(!route){const turn=(state.comfortMotion&&state.pose.altitudeM>blindBands(state).startM?COMFORT_TURN_RAD_S:Math.PI/4)*dt;state.pose.yaw+=((frameKeys.has('ArrowRight')||frameKeys.has('KeyX')?1:0)-(frameKeys.has('ArrowLeft')||frameKeys.has('KeyZ')?1:0))*turn;state.pose.pitch=clamp(state.pose.pitch+((frameKeys.has('ArrowUp')?1:0)-(frameKeys.has('ArrowDown')?1:0))*turn,-1.5,1.5);const moved=flightMotion.level?stepLevelCruise(state,flightMotion,frameKeys,Math.max(0,rawDt)):move(state,frameKeys,dt,flightMotion);if(flightMotion.level)stage=moved.phase==='climbing'?'Climbing above the highest hills':'Level cruise · straight course';if(moved.phase==='envelope-limit'){stage='Level cruise stopped at the study boundary';status('Study coordinate limit reached · take control to turn back');event('level-envelope-stop');}if(moved.landed){stage='On foot · your meadow';status('Landed here · WASD walks · Space + E lifts off');event('free-land');}}}
   if(quiet&&quiet.kind!=='stationary'){quiet.elapsed+=dt;if(state.windPlaying)state.windTime+=dt;state.pose.yaw=quiet.original.pose.yaw+.20*Math.sin(quiet.elapsed*.35);if(quiet.kind==='level')stepLevelCruise(state,flightMotion,new Set(),dt);else move(state,new Set(quiet.kind==='skimming'?['KeyW','ShiftLeft']:['KeyW']),dt,flightMotion);if(quiet.kind==='flying')state.pose.altitudeM=terrain(state.pose.eastM,state.pose.northM)+31.7;stage=quiet.kind==='walking'?'Measuring meadow walk':quiet.kind==='level'?'Measuring level cruise':quiet.kind==='skimming'?'Measuring fast grass skim':'Measuring low flight';}
-  if(exterior && requested && !script && !route && !quiet && state.pose!==null){
-    const p=state.pose, row=requested;
+  let borderPose=chart?toBorder(state.pose,chart,gateDatum):null;
+  // The Outfall supplies the physical facade on its approach, including the service opening.
+  // Release the generic Atlas wall before collision or drawing can cover that opening.
+  if(outfallExterior(borderPose) && (requested || exterior))releaseExterior();
+  if(exterior && !script && !route && !quiet && state.pose!==null){
+    const p=state.pose, row=exterior.row;
     if(lastPose.eastM!==p.eastM || lastPose.northM!==p.northM || lastPose.altitudeM!==p.altitudeM){
       const local=q=>({...row.locate(q.eastM,q.northM),altitudeM:q.altitudeM-GROUND_DATUM});
-      const to=local(p),safe=exterior.constrainExterior(exterior.station,survey.district,local(lastPose),to);
+      const from=local(lastPose),to=local(p),safe=exterior.constrainExterior(exterior.station,survey.district,from,to);
       if(safe!==to){
         Object.assign(p,row.at(safe.eastM,safe.northM));
         p.altitudeM=p.mode==='walk'?terrain(p.eastM,p.northM)+EYE:safe.altitudeM+GROUND_DATUM;
+        if(chart)borderPose=toBorder(p,chart,gateDatum);
       }
+      stageHost?.observeStationStep?.(window,{...lastPose,altitudeM:from.altitudeM},from,safe,exterior.station);
+      if(stageHost?.stationFrameHeld?.(window))return;
     }
   }
-  let borderPose=null;
-  if(chart){
+  if(borderPose){
     const p=state.pose;
-    borderPose=toBorder(p,chart,gateDatum);
     if(borderPose.northM<enterNorthM)crossingFailed=false;
     if(!crossing && !crossingFailed && !quiet && !script && !route && !lift && surfaceEntry?.active!==false &&
         reachesBorder(borderPose,chart) && stageHost.canCrossSurface?.(window)){
@@ -310,35 +338,45 @@ function tick(t){
     }
     if(flightMotion.level && !crossing && t-lastCheckpoint>30000){persist();lastCheckpoint=t;}
   }
-  const drawBorder=borderPose && inApproach(borderPose,chart) && borderPose.northM<0 && borderPose.northM>-12000;
+  const drawBorder=outfallExterior(borderPose);
+  if(!drawBorder && borderStructures){borderStructures.dispose();borderStructures=null;}
   renderer.borderMap=drawBorder?borderUniforms(chart,borderPose):null;renderer.gateDatum=gateDatum;
-  renderer.borderView=!drawBorder && borderPose && inApproach(borderPose,chart) && borderPose.northM<0 && borderPose.northM>-120000 ?
+  renderer.borderView=borderPose && inApproach(borderPose,chart) && borderPose.northM<0 ?
     [-Math.sin(chart.angle),Math.cos(chart.angle),-borderPose.northM,borderPose.altitudeM]:null;
   const prepareStart=performance.now(),sharedFrame=host.stage.follow(state.pose,state.windTime),changed=residency.update(sharedFrame.eye,state.grassDensity,state.grassReach),prepareMs=performance.now()-prepareStart;
   if(changed&&tracing&&demands.length<2048)demands.push({version:residency.version,frame,required:[...residency.required],hashes:[...residency.tiles.values()].map(v=>[v.key,v.contentHash])});
   if(!residency.ready){paused=true;status('Movement paused while detail is unavailable: '+residency.failure);}
   const p=state.pose,apron=survey&&p.altitudeM-GROUND_DATUM<30000?stationApron(p.eastM,p.northM,20000):null;
   renderer.stationApron=apron;renderer.stationDatum=GROUND_DATUM;
-  let visibleWall=apron;
-  if(!visibleWall && survey?.rows.length && p.altitudeM-GROUND_DATUM<30000){
-    const rows=survey.rows, local=rows[0].locate(p.eastM,p.northM);
-    if(local.eastM>=rows[0].site.x && local.eastM<=rows.at(-1).site.x && Math.abs(local.northM)<20000){
-      const row=rows.reduce((a,b)=>Math.abs(a.site.x-local.eastM)<=Math.abs(b.site.x-local.eastM)?a:b);
-      visibleWall={row,x:local.eastM-row.site.x,z:local.northM};
-    }
-  }
-  if(visibleWall)prepareExterior(visibleWall.row);else if(requested)releaseExterior();
-  renderer.exteriorStation=exterior?.station;
-  renderer.near2=exterior?Math.max(.10,(p.altitudeM-GROUND_DATUM-exterior.station.roofM)*.03):.10;
+  const rows=survey?.rows,local=rows?.length?rows[0].locate(p.eastM,p.northM):null;
+  const wall=!drawBorder && local && meadowStationVisibility(survey.district,local.eastM,local.northM,p.altitudeM-GROUND_DATUM);
+  if(wall && wall.range<(requested?210000:185000)){
+    // Keep one station's GPU buffers. Reversing at a detail boundary reuses
+    // the current mesh until the player travels well into the other range.
+    exteriorOnly=wall.range>(exterior && !exteriorOnly?52000:44000);
+    prepareExterior(rows[wall.index]);
+    if(exterior)exterior.view.load(exterior.station,exteriorOnly);
+  }else if(requested || exterior)releaseExterior();
+  renderer.exteriorStation=exterior?.reveal===1?exterior.station:null;
+  // Async residency must not change the projection of Meadow's own terrain.
+  renderer.near2=wall?Math.max(.10,(p.altitudeM-GROUND_DATUM-rows[wall.index].site.roofM)*.03*wall.opacity):.10;
   const m=renderer.draw(state,residency,{inspection:$('grassLayers').value});
   if(drawBorder){borderStructures??=createBorderStructures(canvas);borderStructures.draw({pose:borderPose,levels:[1,1,1]},t*.001,1,{overMeadow:true,resize:false,focal:renderer.focal,daylight:renderer.light?.direct??1,radiusM:hostRadiusM()});}
-  if(visibleWall && exterior){
-    const [a,b,c,d]=visibleWall.row.axes,e=Math.sin(p.yaw),n=-Math.cos(p.yaw);
+  lastWallOpacity=wall?.opacity??0;
+  if(lastWallOpacity>0 && exterior){
+    const row=exterior.row;
+    const [a,b,c,d]=row.axes,e=Math.sin(p.yaw),n=-Math.cos(p.yaw);
     const yaw=Math.atan2(a*e+b*n,c*e+d*n);
-    exterior.view.draw(exterior.station,[visibleWall.x,p.altitudeM-GROUND_DATUM,visibleWall.z+exterior.station.widthM/2],yaw,p.pitch,
-      parent.SphereApp.sceneSeconds,false,renderer.light?.direct??1,{near:renderer.near2/2,focal:renderer.focal});
+    const r=exterior.reveal,opacity=lastWallOpacity*r*r*(3-2*r);
+    if(opacity>0)exterior.view.draw(exterior.station,[local.eastM-row.site.x,p.altitudeM-GROUND_DATUM,local.northM+exterior.station.widthM/2],yaw,p.pitch,
+      parent.SphereApp.sceneSeconds,false,renderer.light?.direct??1,{near:renderer.near2/2,focal:renderer.focal,opacity});
+    // Advance on presented frames so a compile stall or a background tab
+    // cannot consume the entire reveal before the next image.
+    exterior.reveal=Math.min(1,r+Math.min(.05,Math.max(0,rawDt))/.65);
   }
-  drawVeil(t);if(drawn<3 && (!visibleWall||exterior) && ++drawn===3)resolveReady();if(completed)compareReturn(completed);
+  stageHost?.presentCamera?.(window,window.SphereBiome.pose(),canvas.width/canvas.height,renderer.focal);
+  if(stageHost)parent.SphereFieldCamera?.submit(canvas);
+  drawVeil(t);if(drawn<3 && (!wall?.opacity||exterior) && ++drawn===3)resolveReady();if(completed)compareReturn(completed);
   const counts=residency.counters();const row={frame,rendererFrame:m.rendererFrame,stageVersion:residency.version,timestamp:t,intervalMs:rawDt*1000,prepareMs,renderCpuMs:m.renderCpuMs,gpuMs:m.gpuMs,gpuSampleFrame:m.gpuSampleFrame,gpuDisjoint:m.gpuDisjoint,gpuResolved:m.gpuResolved,drawCalls:m.drawCalls,uploadBytes:m.uploadBytes,descriptorBytes:m.descriptorBytes,gpuBufferBytes:m.gpuBytes,gpuTextureBytes:m.gpuTextureBytes,grassboxInstances:m.grassboxInstances,grassboxBlades:m.grassboxBlades,grassCenter:m.grassCenter,windTime:state.windTime,originId:m.originId,reveal:m.reveal,interiorDaylight:m.interiorDaylight,terrainAlpha:m.terrainAlpha,heroCenter:m.heroCenter,terrainRadiusM:m.terrainRadiusM,pose:{...state.pose},global:toGlobal(state.pose),address:address(state.pose),required:residency.required.length,ready:counts.ready,retainedTufts:counts.tufts,submittedTufts:m.instanceCount,collisionClearanceM:clearance(state.pose),speedMps:flightMotion.speedMps,skimming:state.skimEnabled,skimTargetClearanceM:state.skimClearanceM,movementM:Math.hypot(state.pose.eastM-lastPose.eastM,state.pose.northM-lastPose.northM,state.pose.altitudeM-lastPose.altitudeM),stage};
   row.levelCruising=!!flightMotion.level;row.levelHeadingRad=flightMotion.level?.headingRad??null;row.levelAltitudeM=flightMotion.level?.altitudeM??null;row.levelPhase=flightMotion.level?(flightMotion.level.elapsedS<flightMotion.level.entrySeconds?'climbing':'level'):null;row.groundEyeClearanceM=clearance(state.pose)+1.7;
   if(tracing&&trace.length<12000)trace.push(row);metrics.push(row);if(metrics.length>900)metrics.shift();if(quiet){quiet.rows.push(row);if(quiet.rows.length===900)finishQuiet();}lastPose={...state.pose};hud(t,m);
@@ -355,10 +393,10 @@ function ascend(options){if(script||quiet)return Promise.resolve('taken-over');
   stage='Lifting off · your place here is kept';status('Lifting off · your place here is kept');event('contract-ascent',{toM:top});
   return new Promise(done=>{script={from,to,keep,zeroM,t:0,seconds:16,done,result:'revealed',interruptible:true,shape:handoff&&blind?ascentShape(from.altitudeM-zeroM,top,blind):null};});}
 window.SphereBiome={contract:'sphere-biome/1',id:'infinite-meadow',version:'1.3.0',ready,arrived,
-  pose:()=>({...state.pose,altitudeM:above(state.pose)}),   // height above the meadow datum
+  bridgeSettings,pose:()=>({...state.pose,altitudeM:above(state.pose)}),   // height above the meadow datum
   ascend,begin(){if(script?.held)script.held=false;return arrived;},save(){try{persist();return true;}catch{return false;}},
   dispose(){window.dispatchEvent(new Event('pagehide'));},air:()=>({profile:'meadow-mist',haze:[],blind:blindOf(state)}),
-  inspect:()=>{const b=blindOf(state);return {exteriorStation:exterior?.station.address.key??null,light:renderer.light,veil:b?+veilAt(b,above(state.pose)).toFixed(3):0,reveal:+sceneLight(state).reveal.toFixed(3),frames:frame,surfaceEdge:chart?.edge??null,rangeM:chart?course(state.pose,chart).distanceM:null,levelCruising:!!flightMotion.level,scripted:!!script,held:!!script?.held,ready:residency.ready,drawCalls:metrics.at(-1)?.drawCalls??null};}};
+  inspect:()=>{const b=blindOf(state);return {verge:renderer.stationApron?.row.verge?.home.id??null,exteriorStation:exterior?.station.address.key??null,light:renderer.light,veil:b?+veilAt(b,above(state.pose)).toFixed(3):0,reveal:+sceneLight(state).reveal.toFixed(3),frames:frame,surfaceEdge:chart?.edge??null,rangeM:chart?course(state.pose,chart).distanceM:null,levelCruising:!!flightMotion.level,scripted:!!script,held:!!script?.held,ready:residency.ready,drawCalls:metrics.at(-1)?.drawCalls??null};}};
 host.frame(tick);status(script?'Arriving from the air · your place here is kept':'Walk the meadow, then lift off from wherever you stop');
 
 

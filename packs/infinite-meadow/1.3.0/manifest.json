@@ -85,8 +85,8 @@
   "assets": [
     {
       "path": "app.js",
-      "bytes": 47848,
-      "sha256": "5a7bde1ccdde3f8d30ef0ee98df1c32a1285ebd8a340f9a17df94bd73839ce64"
+      "bytes": 50916,
+      "sha256": "7c188de4ccbac8436203ac22bdebc5af16695804438527bea2285bb17bb2150d"
     },
     {
       "path": "atlas-lease.js",
@@ -135,13 +135,13 @@
     },
     {
       "path": "landscape.js",
-      "bytes": 4762,
-      "sha256": "f33c2bf1504a3e4672f6139c454958c78b6438f9ed7bb30056f182775fa0635e"
+      "bytes": 4998,
+      "sha256": "90e8888960802db719b198c00f4f96b2eb9394fe17a17c7f5c0f1cae4f5f240d"
     },
     {
       "path": "level-cruise.js",
-      "bytes": 3147,
-      "sha256": "2ad5947433f66ab3424b67264a613a98655f3dc0c98a457a45350a0102d0c6c9"
+      "bytes": 3255,
+      "sha256": "010924d94579e2918db04e676e79897d32d76262800c210f363387eb4ec908c5"
     },
     {
       "path": "meadow-surface.js",
@@ -155,8 +155,8 @@
     },
     {
       "path": "model.js",
-      "bytes": 18173,
-      "sha256": "d49a4f7a48c448bef7dd991b576f5e275307fc0dc26f0e8c7c776c32eb440653"
+      "bytes": 18355,
+      "sha256": "24ed8f90969239cc392beec666f8f68376faf76f09e542be63ccc1448b083a25"
     },
     {
       "path": "pack.css",
@@ -170,8 +170,8 @@
     },
     {
       "path": "renderer.js",
-      "bytes": 34150,
-      "sha256": "ab11232a1c1322c88868e1bfc0ff32bcffd0263f05363151d091e3ea822b4949"
+      "bytes": 36933,
+      "sha256": "4104c8dd4a540bafc90da9728e5508284773f8712d2640a52440f91ec5469346"
     },
     {
       "path": "style.css",
@@ -180,13 +180,23 @@
     },
     {
       "path": "terrain-grid.js",
-      "bytes": 5533,
-      "sha256": "dd838ac932b7319d7f608a2a2bcd7cf30af31774c16266f9808abea7bfbd7f6f"
+      "bytes": 6725,
+      "sha256": "1316624799d61544755952ba16e32623ec7affd139bbd774f6ba24afbdf58984"
     },
     {
       "path": "vendor/world-address.js",
       "bytes": 9929,
       "sha256": "b614e3f9e9492674c180ac9ebc72aec2345e5428bdfe98984cb4cd5c224b77f1"
+    },
+    {
+      "path": "verge-view.js",
+      "bytes": 6609,
+      "sha256": "dca140845fcff2562642694c562f359274af0a44ffba6aa92916334bb9fa741c"
+    },
+    {
+      "path": "verge.mjs",
+      "bytes": 2427,
+      "sha256": "f9f3cf829760b7a16e9fee9af0297398df649ce55f7387d4cc6503b1c140b705"
     }
   ],
   "limits": [
@@ -199,6 +209,11 @@
     "Revised in place on 2026-11-20 (Observatory 1.8.0): grass-shaders.js, landscape.js and renderer.js mask grass on the Outfall apron. The accepted reference remains 1.0.0."
   ],
   "dependencies": [
+    {
+      "path": "../../border-transport/0.10.0/maintenance.mjs",
+      "bytes": 5028,
+      "sha256": "a26d3d44b61867ab8c366a02fe4c8eff8a51d3ea753e7ffde36be691917f03dc"
+    },
     {
       "path": "../../kit/atmosphere.js",
       "bytes": 4249,
@@ -230,39 +245,54 @@
       "sha256": "0e6d0f7efc9e0215067aebb5e674b59f04fc381b46eb7e4d5a39f2ef169176f2"
     },
     {
-      "path": "../../border-outfall/1.0.0/render.js",
-      "bytes": 10488,
-      "sha256": "75ef253cf523b95c3dee509fafbe7002ec428e5a3c54b8f5c168a610af203554"
+      "path": "../../border-transport/0.10.0/outfall/render.js",
+      "bytes": 10321,
+      "sha256": "3ef2e3f60f49ced86dc93df6be9c146b052ceb7ff2fd963ee5c51633c4a34d38"
     },
     {
-      "path": "../../border-outfall/1.0.0/geometry.js",
-      "bytes": 3718,
-      "sha256": "9559e81f5579167c311b3cfdc2afccb275da95e70123de90d1ea2f2df33c05b1"
+      "path": "../../border-transport/0.10.0/outfall/geometry.js",
+      "bytes": 3721,
+      "sha256": "88c81943121df29a6a8e1e52c518545ceca5b4f6b6915a14940030c547c177d4"
     },
     {
-      "path": "../../border-outfall/1.0.0/border.js",
-      "bytes": 5327,
-      "sha256": "2f34a44bce0da238fe3d915aac5797bfa3498fc109e31839d4aea20da1a489f1"
+      "path": "../../border-transport/0.10.0/outfall/border.js",
+      "bytes": 5333,
+      "sha256": "ae66ad42db6970446056e2b7b78d5eaf5ba88253dbbdb40aa646c5f6e7ac4c17"
     },
     {
-      "path": "../../border-outfall/1.0.0/model.js",
-      "bytes": 1416,
-      "sha256": "a32bcadb4a41e7f2f69d88c6ea0bec2885e40cfa27028d858c00414aaf80e29f"
+      "path": "../../border-transport/0.10.0/outfall/model.js",
+      "bytes": 1209,
+      "sha256": "f89b374a1ed9863d0d9b15000ef6f9fd1589a334743a2311220612ab37db5aad"
     },
     {
-      "path": "../../border-outfall/1.0.0/shell-mesh.js",
-      "bytes": 3334,
-      "sha256": "5e81765f147f6dbe71d7144be90f0c60bb4cafd714f28f8ea9eddb16b0620559"
+      "path": "../../border-transport/0.10.0/outfall/shell-mesh.js",
+      "bytes": 3337,
+      "sha256": "d01636cb04cdea2f545c0777a8c3188a3e37679223476a2338899132a7cd23c6"
     },
     {
       "path": "../../kit/outfall-wall.mjs",
-      "bytes": 1259,
-      "sha256": "5bebaa64133269b700a916bf26a2a42e1b446f9e66584d827a5b2ae3e49cd821"
+      "bytes": 1937,
+      "sha256": "07f4943567d1ea37743518fbe6fee9355fdf30c74fe3f76b5e08e82c8d05f4a1"
+    },
+    {
+      "path": "../../kit/freight-floor.mjs",
+      "bytes": 4732,
+      "sha256": "b24df1f85b3db219c73a802804b941b051fb51894b7973f2cdbc65d39c714150"
     },
     {
       "path": "../../kit/outfall-gallery.mjs",
-      "bytes": 1032,
-      "sha256": "587d280a0c647e50b9f28f8aef788ebce25778cf06f78b7b6a82d0a13bb2ec07"
+      "bytes": 1013,
+      "sha256": "87d3d19a9fb6dd9131ba8558ad86cf95c833368f1830e254e8964adb0871acbb"
+    },
+    {
+      "path": "../../border-transport/0.10.0/district.mjs",
+      "bytes": 10914,
+      "sha256": "0c83bd74277e2989837903077302f689fba904ed920e981712a05546482b3f0e"
+    },
+    {
+      "path": "../../border-transport/0.10.0/edges.mjs",
+      "bytes": 5516,
+      "sha256": "84481ca8cf4d3a83360357dc62bb4e5d45a19b8f4e3deeafb09744b2ab2254e7"
     }
   ]
 }

@@ -1,0 +1,9 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>27 Orchard Street · Infinite New York</title><link rel="stylesheet" href="street.css"></head>
+<body><canvas id="street" tabindex="0" aria-label="Orchard Street. Walk with WASD and drag to look."></canvas>
+<div id="controls"><span id="mode">On foot</span><span id="guide">WASD walk · Drag to look · Shift hurry</span>
+<details id="camera"><summary>Camera &amp; travel</summary><div><button id="save">Save camera</button><button id="recall">Restore camera</button>
+<button id="mobility">Lift off · Space</button><button id="leavePack">Return to Observatory</button></div></details></div>
+<section id="chairAction" aria-label="Chair placement" hidden><span id="chairHint"></span><button id="chairButton">Pick up chair · E</button><button id="cancelChair" hidden>Cancel · Esc</button></section>
+<output id="notice" role="status"></output><script type="module" src="street.mjs"></script></body></html>

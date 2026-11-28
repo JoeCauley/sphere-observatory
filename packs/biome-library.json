@@ -9,6 +9,7 @@
     {
       "id": "infinite-meadow",
       "atmosphere": "meadow-mist",
+      "border": {"profile":"meadow"},
       "name": "Infinite Meadow",
       "version": "1.3.0",
       "description": "Rolling hills and tall grass in the wind, beneath a shade track. This version flies in and out through its own Duck Blind.",
@@ -66,6 +67,7 @@
     },
     {
       "id": "sideways-city",
+      "border": {"exterior":"./exterior.mjs"},
       "atmosphere": "city-thin",
       "name": "The Sideways City",
       "version": "1.0.0",
@@ -92,31 +94,43 @@
       }
     },
     {
-      "id": "border-outfall",
-      "atmosphere": "outfall-salt",
-      "name": "The Outfall",
+      "id": "super-jungle",
+      "border": {"profile":"jungle"},
+      "name": "Super Jungle",
       "version": "1.0.0",
-      "description": "A dry strip in the wet grass leads to a service gallery in the Border. Its bypass still drains the channel. Installs with Meadow.",
-      "entry": "packs/border-outfall/1.0.0/index.html",
-      "saveKey": "sphere-biome:border-outfall:1.0.0",
+      "description": "Follow the service road into the native canopy at Bay 0. A clearing opens beside a mature buttressed tree.",
+      "entry": "packs/super-jungle/1.0.0/index.html",
+      "saveKey": "sphere-biome:super-jungle:1.0.0",
       "contract": "sphere-biome/1",
-      "placement": {
-        "relation": "border",
-        "anchorPack": "infinite-meadow"
-      },
-      "overview": {
-        "pattern": "works",
-        "albedo": [
-          0.19,
-          0.3,
-          0.29
-        ],
-        "accent": [
-          0.76,
-          0.51,
-          0.22
-        ]
-      }
+      "placement": {"relation":"within","habitat":1},
+      "atmosphere": "clear",
+      "atmosphereRules": {"base":"clear","nearM":18000,"farM":24000,"focal":1.428148,"tint":[0.32,0.45,0.34],"drift":0},
+      "overview": {"pattern":"field","albedo":[0.13,0.28,0.14],"accent":[0.24,0.39,0.19]}
+    },
+    {
+      "id": "violet-labyrinth",
+      "name": "Violet Labyrinth",
+      "version": "1.0.0",
+      "description": "Fly from the reference spire grove to a branching quartz seam. Three walkable arms run between fractured mineral faces.",
+      "entry": "packs/violet-labyrinth/1.0.0/index.html",
+      "saveKey": "sphere-biome:violet-labyrinth:1.0.0",
+      "contract": "sphere-biome/1",
+      "placement": {"relation":"within","habitat":9},
+      "atmosphere": "clear",
+      "atmosphereRules": {"base":"clear","nearM":18000,"farM":24000,"focal":1.428148,"tint":[0.43,0.35,0.51],"drift":0},
+      "overview": {"pattern":"field","albedo":[0.27,0.18,0.35],"accent":[0.56,0.41,0.65]}
+    },
+    {
+      "id": "infinite-new-york",
+      "name": "Infinite New York",
+      "version": "0.1.0",
+      "description": "Find the brass number at 27 Orchard Street, walk into 1A and pull the dining chair up to the window.",
+      "entry": "packs/infinite-new-york/0.1.0/index.html",
+      "saveKey": "sphere-biome:infinite-new-york:0.1.0",
+      "contract": "sphere-biome/1",
+      "placement": {"relation":"outside"},
+      "atmosphere": "city-thin",
+      "overview": {"pattern":"works","albedo":[0.48,0.33,0.26],"accent":[0.24,0.36,0.34]}
     },
     {
       "id": "border-transport",
@@ -124,13 +138,25 @@
       "atmosphereRules": {"base":"clear","nearM":18000,"farM":24000,"focal":1.428148,"tint":[0.32,0.39,0.40],"drift":0},
       "name": "Border Biome",
       "version": "0.10.0",
-      "description": "Builder freight halls beneath a 1.7 km roof. Four scales share an addressed transport district.",
+      "description": "Freight halls, service galleries and water works. Walk in from either apron to operate the station drainage bypass, or visit The Outfall and follow its dry aisle to the through-tunnel.",
+      "facilities": {
+        "outfall": {
+          "id": "border-transport/outfall",
+          "name": "The Outfall",
+          "entry": "packs/border-transport/0.10.0/outfall/index.html",
+          "atmosphere": "outfall-salt",
+          "saveKey": "sphere-biome:border-outfall:1.0.0"
+        }
+      },
       "entry": "packs/border-transport/0.10.0/index.html",
       "saveKey": "sphere-biome:border-transport:0.10",
       "contract": "sphere-biome/1",
       "placement": {
         "relation": "border",
-        "facility": "transport"
+          "facility": "transport",
+          "districts": [
+            {"key":"city-marsh","name":"Date Line Exchange","seed":713,"plots":["r13c0","r13c51"]}
+          ]
       },
       "overview": {
         "pattern": "works",

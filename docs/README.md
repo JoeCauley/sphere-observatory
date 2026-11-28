@@ -1,6 +1,6 @@
 ## Current Observatory field guide
 
-The Observatory offers five installable packs. Infinite Meadow, Infinite Industry and The Sideways City are destinations. The Outfall and Border Biome provide physical crossings. Super Jungle is one of the Atlas habitats. In seed 713, its terrain meets the far door of a 48 km freight station.
+The Observatory offers four installable packs. Infinite Meadow, Infinite Industry and The Sideways City occupy surface plots. Border Biome owns the freight stations, their service galleries, and The Outfall. Super Jungle is one of the Atlas habitats. In seed 713, its terrain meets the far door of a 48 km freight station.
 
 [Run the Observatory and walk through the station](../README.md#first-trip--meadow-to-super-jungle) · [Replay the four doorway crossings](../examples/station-round-trip/doorways.mp4) · [Check the recorded camera positions](../examples/station-round-trip/verification.json)
 

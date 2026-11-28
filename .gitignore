@@ -5,6 +5,7 @@ tests/artifacts/
 .env
 .env.*
 .observatory-server.pid
+.observatory-server-*.port
 # Local studies, scratch scripts, archived working images and packaged downloads.
 /work/
 
@@ -18,3 +19,5 @@ tests/artifacts/
 # The local server keeps this machine's installed biomes here.
 /installed-biomes.json
 /installed-biomes.json.border-atlas/
+
+/Screenshots/

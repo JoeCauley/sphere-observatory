@@ -53,6 +53,26 @@ async function main(){
  const owned=setup(),og=owned.hw.gl;og.activeTexture(999);og.bindTexture(og.TEXTURE_2D,owned.renderer.texture);og.bindFramebuffer(og.DRAW_FRAMEBUFFER,owned.renderer.lightBuffer);og.bindFramebuffer(og.READ_FRAMEBUFFER,owned.renderer.aaBuffer);og.bindRenderbuffer(og.RENDERBUFFER,owned.renderer.aaDepth);owned.renderer.dispose();assert.equal(og.getParameter(og.ACTIVE_TEXTURE),999);assert.equal(og.getParameter(og.TEXTURE_BINDING_2D),null);assert.equal(og.getParameter(og.DRAW_FRAMEBUFFER_BINDING),null);assert.equal(og.getParameter(og.READ_FRAMEBUFFER_BINDING),null);assert.equal(og.getParameter(og.RENDERBUFFER_BINDING),null);assert.equal(owned.hw.count(),0);groups.push({name:'instrumented native delete semantics detach owned current texture framebuffer and renderbuffer bindings',status:'PASS'});
  const child=setup();child.childFault.name='localShadows';child.childFault.remaining=1;assert.throws(()=>child.renderer.dispose(),/child disposal fault/);assert.equal(child.hw.deleted.length,0);assert.equal(child.children.find(value=>value.name==='finishes').calls,1);child.renderer.dispose();assert.equal(child.hw.count(),0);assert.equal(child.children.find(value=>value.name==='finishes').calls,1);assert.equal(child.children.find(value=>value.name==='localShadows').calls,2);groups.push({name:'completed child managers are not repeated after a later child failure',status:'PASS'});
  const loss=setup();loss.hw.faults.method='deleteTexture';loss.hw.faults.kind='throw';loss.hw.faults.remaining=1;assert.throws(()=>loss.renderer.dispose(),/fault/);const beforeLoss=loss.hw.deleted.length;loss.hw.lose();loss.renderer.dispose();assert.equal(loss.hw.count(),0);assert.equal(loss.hw.deleted.length,beforeLoss);assert.equal(loss.renderer.disposalComplete,true);assert.equal(loss.renderer.texture,null);assert.equal(loss.renderer.queries.length,0);groups.push({name:'authentic context loss invalidates retained raw objects without native deletion retries',status:'PASS'});
+ {
+  const h=setup(),preview={...h.state},player={...h.state},requests=[];
+  h.context.SphereGround.enabled=()=>true;
+  h.context.SphereGround.request=state=>requests.push(state);
+  h.context.SphereGround.ready=state=>state===player;
+  h.context.SphereGround.neighbourhood=()=>{};
+  h.context.SphereEdgeStreaming.pump=()=>{};
+  h.renderer.geometry={dispose(){}};
+  const unfinished=h.renderer.prepare(preview,{preview:true});
+  const yielded=assert.rejects(unfinished,error=>error.name==='AbortError');
+  await new Promise(setImmediate);
+  assert.equal(h.raf.length,1);
+  await h.renderer.prepare(player);
+  for(const frame of h.raf.splice(0))frame();
+  await yielded;
+  assert.deepEqual(requests,[preview,player]);
+  assert.equal(h.renderer.preparingView,false);
+  h.renderer.dispose();
+  groups.push({name:'a player destination preempts pending native doorway terrain'});
+ }
  for(const branch of ['ground-raf','watershed-await','geometry-creation-raf','geometry-stage-raf','asset-await']){
   const h=setup();let release;const gate=new Promise(resolve=>release=resolve),seen={geometry:0,stage:0,finishes:0,signal:null};
   h.context.SphereAssets.plan=()=>({province:branch.startsWith('watershed')||branch.startsWith('geometry'),finishes:true});h.renderer.finishes.prepare=()=>{seen.finishes++;};

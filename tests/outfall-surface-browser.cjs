@@ -43,7 +43,7 @@ async function main(){
       await SphereBiomeLibrary.selectWorld();
     });
     await page.waitForFunction(()=>SphereLoading.ready && SphereBiomeLibrary.world?.params.seed===713,null,{polling:100});
-    await page.evaluate(()=>SphereBiomeLibrary.install('border-outfall'));
+    await page.evaluate(async()=>{await SphereBiomeLibrary.install('infinite-meadow');await SphereBiomeLibrary.install('border-transport');});
     await page.waitForFunction(()=>!!SphereStageFrame.surfaceAddress());
     observations.approach=await page.evaluate(async()=>{
       const pack=SphereBiomeLibrary.pack('infinite-meadow'),base=new URL('.',new URL(pack.entry,location.href));
@@ -62,7 +62,7 @@ async function main(){
     await page.evaluate(()=>SphereStageFrame.open('infinite-meadow'));
     await capture('beforeCourse');
     await page.frameLocator('#stageFrame iframe').locator('#outfallCourse').click();
-    await waitPose(()=>SphereStageFrame.lastArrival?.route==='surface' && SphereStageFrame.current?.id==='border-outfall');
+    await waitPose(()=>SphereStageFrame.lastArrival?.route==='surface' && SphereStageFrame.current?.id==='border-transport/outfall');
     await capture('crossed');assert(observations.crossed.state.levelCruising);assert(Math.abs(observations.crossed.pose.eastM)<.02);
     console.log('PASS normal-speed Level Cruise crossed at the installed edge',observations.approach.edge);
     await page.waitForFunction(()=>{const a=document.querySelector('#stageFrame iframe').contentWindow.SphereBiome;
@@ -88,19 +88,20 @@ async function main(){
     assert.equal(result.state,'arrived',JSON.stringify(result));
     assert.match(await page.locator('#locationName').textContent(),/Thermal routing/i);
     console.log('PASS walked through the entrance, operated the valve and visited Thermal routing from the sidebar');
-    const saved=await page.evaluate(()=>JSON.parse(SphereBiomeLibrary.saveStorage().getItem(SphereBiomeLibrary.pack('border-outfall').saveKey)));
+    const saved=await page.evaluate(()=>JSON.parse(SphereBiomeLibrary.saveStorage().getItem(SphereBiomeLibrary.sceneInfo('border-transport/outfall').saveKey)));
     assert.equal(saved.open,false);assert.equal(saved.bookmark.mode,'walk');
-    await page.evaluate(()=>SphereStageFrame.open('border-outfall'));
+    await page.evaluate(()=>SphereStageFrame.open('border-transport/outfall'));
     await capture('restored');assert.deepEqual(observations.restored.pose,observations.atValve.pose);assert.equal(observations.restored.state.valveOpen,false);
-    await page.locator('#biomeLibraryList article').filter({has:page.getByRole('heading',{name:/^The Outfall /})}).getByRole('button',{name:'View from above'}).click();
-    await page.waitForFunction(()=>!SphereStageFrame.current && !SphereJourney.travel.active);
+    await page.locator('#biomeLibraryList article').filter({has:page.getByRole('heading',{name:/^Border Biome /})}).getByRole('button',{name:'View The Outfall from above',exact:true}).click();
+    await page.waitForFunction(()=>!SphereStageFrame.current && !SphereJourney.travel.active &&
+      SphereMath.dot(SphereMath.norm(SphereApp.getState().position),SphereBiomeLibrary.entry('border-transport/outfall').direction)>1-1e-9);
     // Walk the old end of the gallery and fly the exterior at both signs of x.
     // Use the ordinary save reader for these poses so no live explorers are moved.
     async function placeAt(pose){
       await page.evaluate(p=>{
-        const store=SphereBiomeLibrary.saveStorage(),key=SphereBiomeLibrary.pack('border-outfall').saveKey;
+        const store=SphereBiomeLibrary.saveStorage(),key=SphereBiomeLibrary.sceneInfo('border-transport/outfall').saveKey;
         const record=JSON.parse(store.getItem(key));record.pose=p;store.setItem(key,JSON.stringify(record));
-        return SphereStageFrame.open('border-outfall');
+        return SphereStageFrame.open('border-transport/outfall');
       },pose);
     }
     for(const [name,x,z,y,pitch] of [['gallery-east',1004,38,1.7,-.08],['wall-west',-12000,-4,1.7,.04],['wall-east',1500000,-16,8,.10]]){

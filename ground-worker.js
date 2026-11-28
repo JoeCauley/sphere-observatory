@@ -1,6 +1,6 @@
 /* Ground reservation uses the edge manager's upload admission and backpressure. */
 'use strict';
-importScripts('world-address.js','world-topology.js','math.js','collection.js','biomes.js','world-palette.js','biome-packs.js','world.js','watershed-network.js','field-sites.js','legacy-role-adapter.js','edge-stream.js','shade-edges.js','watershed-province.js','world-geography.js','watershed-neighbourhood.js','meadow-ecology.js','packs/violet-labyrinth/1.0.0/forest.js','ground-chunks.js');
+importScripts('world-address.js','world-topology.js','math.js','collection.js','biomes.js','world-palette.js','biome-packs.js','world.js','watershed-network.js','field-sites.js','legacy-role-adapter.js','edge-stream.js','shade-edges.js','watershed-province.js','world-geography.js','watershed-neighbourhood.js','meadow-ecology.js','packs/super-jungle/1.0.0/stand-geometry.js','packs/violet-labyrinth/1.0.0/forest.js','ground-chunks.js');
 let jobs=[],generation=0,state=null,apronRules;
 onmessage=async ({data})=>{
  try{

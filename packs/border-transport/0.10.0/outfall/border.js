@@ -1,6 +1,6 @@
 import {eye} from './model.js';
-import {roofM,tunnelStartM,widthM} from '../../kit/border-profile.js';
-import {ribSpacing,ribs} from '../../kit/outfall-wall.mjs';
+import {roofM,tunnelStartM,widthM} from '../../../kit/border-profile.js';
+import {ribSpacing,ribs} from '../../../kit/outfall-wall.mjs';
 export {ribSpacing,ribs};
 
 // Each interval is [west, east, bottom, top, front, back], in metres.

@@ -36,7 +36,7 @@ const captureHistory=spawnSync('git',['cat-file','-e',captureRelease],{cwd:root}
 if(captureHistory)assert.deepEqual(sourceFingerprint(captureRelease),photos.source,'Original biome gallery source');
 const catalogAt=rev=>JSON.parse(require('node:child_process').execFileSync('git',['show',rev+':packs/biome-library.json'],{cwd:root})).packs;
 const historicIds=['infinite-meadow','infinite-industry','sideways-city','border-outfall'];
-const offered=captureHistory?catalogAt(captureRelease):read(path.join(root,'packs/biome-library.json')).packs.filter(p=>historicIds.includes(p.id));
+const offered=captureHistory?catalogAt(captureRelease):read(path.join(root,'packs/biome-library.json')).packs.filter(p=>historicIds.includes(p.id)).concat({id:'border-outfall',version:'1.0.0'});
 assert.deepEqual(new Set(photos.views.map(v=>v.pack)),new Set(offered.map(p=>p.id)));
 const digests=new Set();
 for(const v of photos.views){

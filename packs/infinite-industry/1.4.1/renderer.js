@@ -7,6 +7,8 @@ import {DATUM_M} from './facility.js';
 import {PALETTES} from './works.js';
 import {Batch,FieldView} from './field-view.js';
 import {transfer,barAt,barVertices} from './transfer.js';
+import {MillView} from './mill-view.js';
+import {origin as millOrigin} from './mill-site.js';
 
 export class IndustryRenderer extends Renderer {
  constructor(canvas,facility,preparation,lease){
@@ -50,7 +52,7 @@ export class IndustryRenderer extends Renderer {
   gl.drawArrays=(mode,first,count)=>{this.actualDrawCalls++;if(mode===gl.TRIANGLES)this.actualTriangles+=count/3;return this.originalDrawArrays.call(gl,mode,first,count);};
   gl.drawArraysInstanced=(mode,first,count,instances)=>{this.actualDrawCalls++;if(mode===gl.TRIANGLES)this.actualTriangles+=count*instances/3;return this.originalDrawInstanced.call(gl,mode,first,count,instances);};
  }
- drawIndustry(state,sharedFrame){
+ drawIndustry(state,sharedFrame,mill){
   const started=performance.now(),p=state.pose,field=this.field,gl=this.gl;
   this.actualDrawCalls=0;this.actualTriangles=0;
   let motionPreparationMs=0;this.frameUploads=0;this.uploadCpuMs=0;
@@ -96,6 +98,9 @@ export class IndustryRenderer extends Renderer {
    for(let i=0;i<3;i++){field.camera(u,barAt(state.processTime,i).position);this.transferBars.draw();}
   }else if(this.transferBars){this.transferBars.dispose();this.transferBars=null;}
   field.close(started);
+  if(mill && Math.hypot(p.eastM-millOrigin[0],p.northM-millOrigin[1],p.altitudeM-DATUM_M)<215){
+   const view=mill();if(view.ready){this.millView??=new MillView(gl);this.millView.draw(field,view);}
+  }else if(this.millView){this.millView.dispose();this.millView=null;}
   this.trianglesPeak=Math.max(this.trianglesPeak,this.actualTriangles);
   this.info.plants=field.sectors.length+' instanced factory types, '+(field.shown??0)+' detailed hexes in view';
   this.info.ownedGpuBufferBytes=this.lease.inspect().bufferBytes;
@@ -105,7 +110,7 @@ export class IndustryRenderer extends Renderer {
    residentZones:this.batchNear.size,origin:sharedFrame.origin};
  }
  dispose(){
-  this.transferBars?.dispose();this.field.dispose();
+  this.millView?.dispose();this.transferBars?.dispose();this.field.dispose();
   for(const map of [this.batchNear,this.batchMiddle,this.batchFar]){for(const b of map.values())b.dispose();map.clear();}
   this.groundBatch.dispose();this.motionBatch.dispose();this.emptyStage.tiles.clear();this.queries.length=0;
   for(const [name,original] of Object.entries(this.bufferMethods))this.gl[name]=original;

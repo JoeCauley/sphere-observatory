@@ -18,5 +18,10 @@ assert.deepEqual(B.weights(2000),[0,0,0]);assert.deepEqual(B.weights(1),[1,1,1])
 const q=M.norm([.3,.4,.5]),r=M.AU,target=M.mul(q,r);let previous;
 for(const offset of [0,.001,.01]){const n=M.norm(M.add(target,[offset,0,0])),anchor=B.anchors(n,r),delta=M.sub(target,M.mul(n,r)),uv=anchor.map((a,i)=>((a+delta[i%3]/B.scales[Math.floor(i/3)])%2+2)%2);if(previous)assert(uv.every((v,i)=>Math.min(Math.abs(v-previous[i]),2-Math.abs(v-previous[i]))<1e-7));previous=uv;}
 const controller=new SpherePreviewQuality();for(let i=0;i<100;i++)controller.update(40,16.67,i*20);assert(controller.scale<1&&controller.scale>=.5);for(let i=0;i<600;i++)controller.update(2,16.67,3000+i*20);assert.equal(controller.scale,1);
+const sampled=new SpherePreviewQuality();
+for(let i=0;i<60;i++)sampled.update(40,16.67,i*20,1);
+assert.equal(sampled.scale,1,'One slow frame counts once even when several views request a size');
+for(let i=2;i<=8;i++)sampled.update(40,16.67,2000+i*20,i);
+assert(sampled.scale<1,'Eight independent slow frames lower the render budget');
 for(const f of [[1,0,0],[0,1,0],[0,0,1]]){const b=M.basis(f,f);assert(Math.abs(M.length(b.u)-1)<1e-12);assert(Math.abs(M.dot(b.u,b.f))<1e-12);}
 console.log('PASS ten biome states, input validation, continuous distance/footprint LOD, metre-stable anchors, adaptive recovery and vertical bases');

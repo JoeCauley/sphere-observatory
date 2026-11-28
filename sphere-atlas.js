@@ -26,7 +26,7 @@
   const EQUATOR_COLUMNS = 54, MIN_COLUMNS = 6, WAIST_FIRST = 8, WAIST_LAST = 13;
   const BORDER_KM = 20000, TRUNK_KM = 60000, TRUNK_MERIDIANS = 6;
   // The reservation can contain many facilities. These are prototype roof widths in km.
-  const TRANSPORT_ROOF_KM = Object.freeze({branch:48, trunk:96});
+  const TRANSPORT_ROOF_KM = Object.freeze({branch:3.8, trunk:96});
   const TRACKS = ['Verdant track', 'Opaline track', 'Amber track'];
 
   const columns = row => Math.max(MIN_COLUMNS, Math.round(EQUATOR_COLUMNS * Math.cos((row + 0.5) * ROW - LIMIT)));
@@ -51,16 +51,25 @@
   }
   // Local coordinates run from -1 to +1 across the index cell. Old places fill their cell.
   function contains(item, cell, latitude, longitude) {
-    if (!cell || item.plot!==cell.index) return false;
+    if (!cell) return false;
+    const o=item.occurrence;
+    if(o){
+      const hav=Math.sin((latitude-o.latitude)/2)**2+Math.cos(latitude)*Math.cos(o.latitude)*Math.sin((longitude-o.longitude)/2)**2;
+      return hav<=Math.sin(o.angularRadius/2)**2;
+    }
+    if(item.plot!==cell.index)return false;
     const b=item.footprint;
     if (!b) return true;
     const dl=Math.atan2(Math.sin(longitude-cell.longitude),Math.cos(longitude-cell.longitude));
     const x=dl*cell.columns/(Math.PI*b.east), y=(latitude-cell.latitude)/(cell.halfHeight*b.north);
     return b.shape==='ellipse' ? x*x+y*y<=1 : Math.max(Math.abs(x),Math.abs(y))<=1;
   }
-  function regionAt(items, latitude, longitude) {
+  function regionAt(items, latitude, longitude, habitatAt) {
     const cell=plotAt(latitude,longitude);
-    return cell ? items.find(item=>!item.edge && contains(item,cell,latitude,longitude))??null : null;
+    if(!cell)return null;
+    return items.find(item=>!item.edge && !item.occurrence && contains(item,cell,latitude,longitude)) ??
+      items.find(item=>item.occurrence && item.detailInstalled!==false && contains(item,cell,latitude,longitude) &&
+        (!habitatAt || habitatAt()===item.occurrence.biome)) ?? null;
   }
   function byId(id) {
     const m = /^r(\d+)c(\d+)$/.exec(String(id));

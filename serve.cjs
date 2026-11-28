@@ -17,9 +17,13 @@ function reply(res, code, value, type='application/json', extra={}) {
   res.end(typeof value === 'string' || Buffer.isBuffer(value) ? value : JSON.stringify(value));
 }
 function createHandler({root=__dirname, storePath=path.join(root,'installed-biomes.json')}={}) {
-  let writes = Promise.resolve(), fingerprint;
+  let writes = Promise.resolve(), fingerprint, production, furnishings;
+  const fieldKeys=process.platform==='win32' && process.env.SPHERE_FIELD_KEYS==='1'
+    ? require('./scripts/native-field-keys.cjs').nativeFieldKeys(root) : null;
   const canonicalRoot=process.platform==='win32'?path.resolve(root).toUpperCase():path.resolve(root);
   const checkout=createHash('sha256').update(canonicalRoot).digest('hex');
+  const registerPath=path.resolve(storePath);
+  const register=createHash('sha256').update(process.platform==='win32'?registerPath.toUpperCase():registerPath).digest('hex');
   // A full source and asset fingerprint must never block the local HTTP listener.
   function buildInfo() {
     if (!fingerprint) fingerprint = new Promise((resolve,reject)=>{
@@ -45,13 +49,14 @@ function createHandler({root=__dirname, storePath=path.join(root,'installed-biom
     let input;
     try { input=JSON.parse(Buffer.concat(chunks).toString('utf8')); } catch { return reply(res,400,{error:'Invalid JSON'}); }
     const patch=req.method==='PATCH';
-    if (patch ? !(/^sphere-[0-9a-f]{16}$/.test(input?.key) && input?.parameters && Array.isArray(input?.before) && Array.isArray(input?.installed)) : !validStore(input)) return reply(res,400,{error:'Invalid installation update'});
+    const field=Array.isArray(input?.marks)?'marks':'installed';
+    if (patch ? !(/^sphere-[0-9a-f]{16}$/.test(input?.key) && input?.parameters && Array.isArray(input?.before) && Array.isArray(input?.[field])) : !validStore(input)) return reply(res,400,{error:'Invalid installation update'});
     const write=async()=>{
       let next=input;
       if(patch) {
         next=await readStore();
-        if(JSON.stringify(next.worlds[input.key]?.installed ?? [])!==JSON.stringify(input.before)) return reply(res,409,next);
-        next.worlds[input.key]={parameters:input.parameters,installed:input.installed};
+        if(JSON.stringify(next.worlds[input.key]?.[field] ?? [])!==JSON.stringify(input.before)) return reply(res,409,next);
+        next.worlds[input.key]={installed:[],...next.worlds[input.key],parameters:input.parameters,[field]:input[field]};
       }
       const data=JSON.stringify(next,null,1)+'\n';
       if(Buffer.byteLength(data)>storeLimit)return reply(res,413,{error:'Store is full'});
@@ -65,8 +70,18 @@ function createHandler({root=__dirname, storePath=path.join(root,'installed-biom
     let name;
     try { name=decodeURIComponent(new URL(req.url,'http://localhost').pathname); } catch { return reply(res,400,'Invalid path','text/plain'); }
     try {
-      if(name==='/api/health')return reply(res,200,{service:'sphere-observatory',checkout,pid:process.pid});
+      if(name==='/api/health')return reply(res,200,{service:'sphere-observatory',checkout,register,pid:process.pid,...(fieldKeys?{fieldKeys:fieldKeys.scope}:{})});
+      if(name==='/api/field-keys' && fieldKeys)return fieldKeys.connect(req,res);
+      if(name==='/api/screenshots')return await require('./scripts/screenshot-store.cjs').saveScreenshot(req,res,root,reply);
       if(name==='/api/installed-biomes')return await installations(req,res);
+      if(name==='/api/furnishings'){
+        furnishings ??= import('./biome-service/apartment-store.mjs').then(m=>m.apartmentEndpoint(storePath,readStore,reply));
+        return await (await furnishings)(req,res);
+      }
+      if(name==='/api/industry-mills'){
+        production ??= import('./biome-service/industry-mill-store.mjs').then(m=>m.millEndpoint(storePath,readStore,reply));
+        return await (await production)(req,res);
+      }
       if(name==='/api/border-stations'){
         const {stationEndpoint}=await import('./biome-service/border-station-store.mjs');
         return await stationEndpoint(req,res,storePath,reply,readStore);

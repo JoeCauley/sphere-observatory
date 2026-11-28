@@ -4,11 +4,60 @@ A walker who approaches a wall from the other biome should find the same doors. 
 
 [Watch the same freight passage from the bridge and lane](../examples/border-crossing/freight-views.mp4) · [Open the interactive study in a running checkout](../studies/border-crossing/index.html) · [Previous transition audit](Transition-audit.md)
 
+## Biome Pack to Border Biome Contract
+
+The Atlas places a biome on the inner shell. Each shared plot edge has one physical border. The same edge can have a meadow on one side and native ground, a mineral field or another installed pack on the other. A station widens an interval of that edge and supplies its surveyed openings.
+
+Each opening samples the placement just outside its own physical socket. That sample supplies both its view and its walking destination. A walker can enter through service, traverse the hall floor and leave through carrier on the same face. The exterior changes only if the surveyed footprint actually changes along that face.
+
+An exterior provider can call the host's `invalidate()` when a streamed asset arrives or a machine changes state. That refreshes its picture even with the camera and world clock paused. A provider that draws visible motion can return `{animated:true}` from `draw`. When the projected opening is large enough to show the motion, its distant picture can refresh at up to four updates per simulated second.
+
+From inside the hall, the host clips the exterior to the four corners of the opening. Within 65 m the camera position supplies live parallax. Farther down the hall the host reuses the picture while the eye displacement would shift its projection by less than 0.4 pixel. An uncovered corner, a significant lighting change or newly streamed native detail triggers a fresh capture. One authored or native opening gets a detailed view. The host ranks openings by their size on screen and gives extra weight to the doorway the player is approaching. Other openings keep their regional view. Meadow also supplies wind-aware doorway views.
+
+| What the pack author supplies | What the host computes |
+| --- | --- |
+| A catalogue placement and optional rectangular, elliptical or native habitat footprint | The world, plot and instance that own an exact point outside the wall |
+| Regional colour in `overview.albedo` and an optional `border.profile` | The ground colour and supported wall treatment at each station face |
+| A pose from `sphere-biome/1`, with east, north and height in metres and yaw and pitch in radians | The same position and viewing direction in Sphere coordinates for arrival, departure and development captures |
+| A surface that supports walking at the receiving coordinates | A return through the same mouth with the existing movement and clearance checks |
+
+For example, this fragment gives a new pack the existing meadow treatment at a station face. Its installation ID can be any valid pack ID.
+
+```json
+{
+  "placement": {"relation":"within","footprint":{"shape":"rectangle","east":1,"north":0.76}},
+  "overview": {"pattern":"field","albedo":[0.19,0.33,0.15],"accent":[0.34,0.46,0.20]},
+  "border": {"profile":"meadow"}
+}
+```
+
+`borderFrontage(edge, side, alongM, setbackM, items, pack, nativeAt)` is the executable rule. The canonical edge ID comes from its two plots. Side 0 or 1 indexes that pair, including at the date line and polar caps. Chainage is measured in metres from the edge midpoint, east on a parallel and north on a meridian. For each route, the host samples four metres past the centre of its opening on each face. Station-wide colour and habitat defaults use the service route. A pack owns a frontage where its footprint covers the sampled point. Each result includes the coordinates, plot and pack instance, whether its detail can open, the profile and colour. Native ground supplies the fallback.
+
+The current wall renderer understands `plain`, `meadow` and `jungle`. Unknown profiles take the plain finish. An omitted profile uses plain for placed packs and the sampled habitat for native ground. Colour can identify a pack from the air after its walkable detail is removed. A traveller then remains with the host. Door geometry, load clearance, the far outlet and the roof belong to the border. Declaring a profile grants no hole in a solid wall. Bay 0's live Meadow view is an optional drawing of a particular installed scene.
+
+A pack can report its presented frame with `SphereStageFrame.presentCamera(window, pose, aspect, focal)`. Use the same local pose and vertical focal length as the renderer. Native habitats that render through Main already report their world-space camera. The on-screen X, Y and Z values use kilometres from the Sphere centre. Aim and Up are unit vectors in those same axes. HFOV is horizontal. A screen capture with the seed and these readings identifies a view to metre precision. [Frontage calculation](../packs/kit/border-frontage.mjs) · [Shared edge geometry](../packs/border-transport/0.10.0/edges.mjs)
+
+### Drawing a live exterior through a station opening
+
+A catalogue entry may set `"border": {"exterior": "./exterior.mjs"}`. Resolve this path relative to the pack entry page. The module exports `createExterior({gl, link, instance, signal, invalidate})`. Return an object with `draw({pose, width, height, focal, field, time})` and `dispose()`. `link(vertex, fragment)` returns a linked WebGL2 program. The pack owns and releases the programs and buffers it creates. Finish the draw with depth writes enabled. The host draws the surveyed station over the exterior.
+
+The host supplies the installed instance, the camera in that instance's chart, the viewport in pixels, the vertical focal length in half-frame units, and the shared scene clock in seconds. Positions are metres and angles are radians. A feature in the doorway should have the same chart address, bearing and silhouette as it has in the walkable scene. Sideways City uses its existing street shader for both. A native frontage uses the same ground tiles on both sides of the threshold.
+
+`frontageFrame` and `occupiedLot` expose the wall and its paved approaches for scenery clearance. A neighboring pack can attach the surveyed structure and its collision to its own renderer with `packStationExterior`. Keep its depth convention compatible with the scene. The host drops the live view when the camera leaves the mouth, the placement changes, or the pack is disposed. A regional placement keeps its catalogue appearance when detail is unloaded. Removing that placement exposes native ground.
+
+On a cold visit the station can present its regional view while the neighbor prepares detail. The live view replaces it when ready. A failed optional renderer leaves the station usable. The world, canonical pair of plots and bay identify the persistent station. Date Line Exchange shares its address in either travel direction. Its City and Marsh ends are two doors of the same 48 km station.
+
+## Drainage and freight
+
+**The Outfall** is a named Border facility. Its historic northern edge, handwheel, channel levels, saved viewpoints and 1,000 km through-tunnel keep their original addresses. The same Border installation also owns the freight district. In Explore, **Visit** takes you to the freight apron and **Visit The Outfall** takes you to the old gallery. You can also follow the surveyed approach from Meadow.
+
+At either service entrance, walk 42 m in from the wall. The copper handwheel taps the large pipe beside the aisle. Press **R** within reach or use the bypass button. The three sight glasses and the three open channel sections respond in order. Follow the pipe farther down the gallery to see the waterline drop. Each station face has its own valve. The last operation and its time are enough to reconstruct the flow when you return. Freight keeps its timetable while the crew isolates a local bypass.
+
 ## Installed district in 0.10.0
 
 Install **Border Biome** in the Observatory’s **Explore** panel. **Visit** descends through clear air to the middle station’s service apron. Select **Walk**, then use W/S to advance or back out and A/D to move sideways. Drag or use arrow keys to look. **Fly** and R/F let you explore vertically. The roof underside is at 1,700 m and its walkable top is at 1,745 m. A flyer can land there from above. The station’s artificial lighting guides the traveler under a shaded sky.
 
-The pack selects an east–west plot pair, preferring a shared edge beside Meadow when it is already present. Either neighbor may remain native. Three surveyed halls have centers 200 km apart on a sufficiently long edge. A 3.8 km wide covered freight line connects them. Each hall is 32 km along the line and 40, 48 or 56 km across it. The Atlas uses the active sphere radius to fit the district to the available edge and can fit fewer halls on a smaller world. Main and the pack render the same roof footprint. Junctions with further edges and a planet-wide connected interior remain future work.
+The pack selects an east–west plot pair, preferring a shared edge beside Meadow when it is already present. Either neighbor may remain native. Three surveyed halls have centers 200 km apart on a sufficiently long edge. A 3.8 km wide covered freight line connects them. Each hall is 32 km along the line and 40, 48 or 56 km across it. The Atlas uses the active sphere radius to fit the district to the available edge and can fit fewer halls on a smaller world. Main and the pack render the same roof footprint. The physical roof continues through Atlas junctions. Detailed freight interiors currently follow the surveyed district.
 
 On an apron, **Board** selects one of the four traveler envelopes and its marked portal. Travel pace accelerates the traveler. The freight follows the Observatory clock. Pausing Main holds the load in place while you can keep walking. The first physical entry or landing on a station roof records its layout. A flyover only reads the survey. The local Observatory keeps this journal beside its install register. Static hosting keeps it in the browser. A remembered viewpoint is separate from the shared station record.
 
@@ -61,7 +110,7 @@ The production walking controller currently creates many ordinary passages at th
 
 ## What Main shows from the cavity
 
-On this branch, the inner surface shader draws a roof deck with longitudinal service strips. Its branch and trunk trial widths are 48 and 96 km. A surveyed roof, including the existing Outfall footprint, overlays the regional material. The old right-of-way widths remain available to the Atlas. A subpixel roof contributes its projected fraction to a pixel. Oblique viewing, resolution and field of view all affect this fraction. The covered freight lane has no visible traffic stripe on the roof. No new texture images are required. The detailed station bulges and junctions still need to be published to Main as surveyed structures. [Main surface material](../biome-surface.js)
+On this branch, the inner surface shader draws a roof deck with longitudinal service strips. The ordinary roof is 3.8 km wide. The six trunk meridians and two waist lines use a 96 km regional footprint. A surveyed roof, including the existing Outfall footprint, overlays the regional material. The old right-of-way widths remain available to the Atlas. A subpixel roof contributes its projected fraction to a pixel. Oblique viewing, resolution and field of view all affect this fraction. The covered freight lane has no visible traffic stripe on the roof. No new texture images are required. Main renders surveyed hall footprints and follows Atlas grid junctions beyond the resident mesh. [Main surface material](../biome-surface.js)
 
 ## What the second camera caught
 
@@ -109,6 +158,8 @@ The compositor recorded 15 minutes 51 seconds of travel and camera movement. The
 The release criterion for anywhere-to-anywhere walking is a supported path between every pair of reachable walking surfaces in the declared world, with the permitted detours and return journeys. The traveler must be able to find and follow that path through ordinary controls. The last audit showed why destination coordinates, screenshots, and time-series measurements all belong in that proof.
 
 ## Try the study
+
+Use `Launch-City-Marsh.cmd wall` for the seed-713 Meadow wall approach and `Launch-City-Marsh.cmd` for Date Line Exchange. The station HUD names the opening and the exterior it serves. Run `npm run test:border:approach` for the stopped camera and both same-face walks. Run `npm run test:frontage` for author placement, near-door parallax, and a detail update with the clock paused.
 
 Start this checkout with `node serve.cjs 8792` and open `http://127.0.0.1:8792/studies/border-crossing/index.html`. **Enter and record station** freezes its layout. Choose a class and use W or S, or **Walk forward**. The inspection slider moves the observer to either end. The bridge and lane views share the same clock. **Preview a freight passage** selects an observation time in the existing timetable. The rate control advances passengers and freight together.
 

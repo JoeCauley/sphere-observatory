@@ -1,4 +1,28 @@
 export const TERRAIN_GRID=Object.freeze({cells:48,half:24,inner:12,levels:12,basePitch:2,maxRadiusM:98304});
+// Each ring shares its grid corners. The terrain shader derives colour and normal from position.
+export function terrainGridGeometry(){
+  const {cells,half,inner,levels,basePitch}=TERRAIN_GRID;
+  const side=cells+1,verticesPerLevel=side*side;
+  const positions=new Float32Array(levels*verticesPerLevel*3);
+  const cellCount=levels*cells*cells-(levels-1)*(2*inner)**2;
+  const Index=levels*verticesPerLevel<65536?Uint16Array:Uint32Array;
+  const indices=new Index(cellCount*6);
+  let vertex=0,index=0;
+  for(let level=0;level<levels;level++){
+    const pitch=basePitch*2**level;
+    for(let z=-half;z<=half;z++)for(let x=-half;x<=half;x++){
+      const corner=vertex/3;
+      positions[vertex++]=x*pitch;
+      positions[vertex++]=level;
+      positions[vertex++]=z*pitch;
+      if(x===half || z===half || (level>0 && x>=-inner && x<inner && z>=-inner && z<inner))continue;
+      // Keep the same diagonal used by renderedSupport and the grass roots.
+      indices[index++]=corner;        indices[index++]=corner+side;   indices[index++]=corner+side+1;
+      indices[index++]=corner;        indices[index++]=corner+side+1; indices[index++]=corner+1;
+    }
+  }
+  return {positions,indices};
+}
 export function terrainGridOffsets(east,north,out=new Float32Array(24)){for(let i=0;i<12;i++){const p=2*2**i;out[i*2]=Math.floor(east/p)*p-east;out[i*2+1]=Math.floor(north/p)*p-north;}return out;}
 const smooth=(a,b,v)=>{const t=Math.max(0,Math.min(1,(v-a)/(b-a)));return t*t*(3-2*t);};
 export function gridPoint(point,level,eye){const offsets=terrainGridOffsets(...eye),pitch=2*2**level,w=level?1-smooth(12*pitch,13*pitch,Math.max(...point.map(Math.abs))):0;return point.map((v,j)=>v+offsets[level*2+j]+(level?(offsets[(level-1)*2+j]-offsets[level*2+j])*w:0));}

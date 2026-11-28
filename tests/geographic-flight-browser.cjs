@@ -30,16 +30,18 @@ async function main() {
       s.seed = 713; s.playing = false;
       SphereApp.setState(s);
       await SphereBiomeLibrary.selectWorld();
-      for (const id of ['border-outfall','sideways-city','infinite-industry']) await SphereBiomeLibrary.install(id);
+      for (const id of ['infinite-meadow','border-transport','sideways-city','infinite-industry']) await SphereBiomeLibrary.install(id);
     });
     await page.waitForFunction(() => SphereStageFrame.surfaceAddress() && SphereLoading.ready);
-    async function place(id, altitudeKm, external = false, westEdge = false) {
-      return page.evaluate(async ({ id, altitudeKm, external, westEdge }) => {
+    async function place(id, altitudeKm, external = false, southEdge = false) {
+      return page.evaluate(async ({ id, altitudeKm, external, southEdge }) => {
         const lib = SphereBiomeLibrary, atlas = SphereAtlas, world = SphereWorld;
         const geo = await import('./geographic-flight.js'), kit = await import('./packs/kit/surface-route.js');
         const item = lib.entry(id), home = atlas.byId(item.edge?.near ?? item.plotId), s = SphereApp.getState();
         let g = {latitude:home.latitude+home.halfHeight*.23,longitude:home.longitude+Math.PI/home.columns*(external?1.32:.31)};
-        if(westEdge)g.longitude=home.longitude-Math.PI/home.columns-.16/(s.radius*Math.cos(g.latitude));
+        // The western plot line carries the Atlas wall. Industry's southern
+        // footprint ends inside the plot, where a pilot can fly in from Main.
+        if(southEdge)g.latitude=home.latitude-home.halfHeight*item.footprint.north-.16/s.radius;
         if(item.edge){
           const gate=kit.chartFor(home,item.edge,s.radius);
           const p=kit.toMeadow({eastM:410,northM:-1500,altitudeM:0,yaw:0},gate,0);
@@ -48,8 +50,8 @@ async function main() {
         const direction = world.direction(g.latitude,g.longitude,s);
         s.position = SphereMath.mul(direction,s.radius-altitudeKm);
         s.forward = SphereSites.shellFrame(direction)[0]; s.up = SphereMath.mul(direction,-1);
-        if(westEdge){
-          const ahead=world.direction(g.latitude,g.longitude+1e-7,s);
+        if(southEdge){
+          const ahead=world.direction(g.latitude+1e-7,g.longitude,s);
           s.forward=SphereMath.norm(SphereMath.sub(ahead,SphereMath.mul(direction,SphereMath.dot(ahead,direction))));
         }
         s.walkMode=false; s.walkSurface=false; s.walkPosition=null; s.walkVelocity=0;
@@ -59,7 +61,7 @@ async function main() {
         await SphereLoading.ensureCurrent();
         const start = SphereApp.getState();
         return {expected:geo.packPose(start,item,atlas,world), footprint:geo.footprint(start,lib,atlas,world)?.id, label:SphereStageFrame.approachLabel(start)};
-      }, {id,altitudeKm,external,westEdge});
+      }, {id,altitudeKm,external,southEdge});
     }
     async function move(key='KeyW') {
       await page.locator('#viewport').focus();
@@ -78,7 +80,7 @@ async function main() {
     assert.equal(blank.footprint,undefined);
     await noEntry();
     console.log('PASS orbit and the adjacent uninstalled plot remain in Main');
-    for (const id of ['infinite-meadow','infinite-industry','sideways-city','border-outfall']) {
+    for (const id of ['infinite-meadow','infinite-industry','sideways-city','border-transport/outfall']) {
       const descends=id==='infinite-meadow', crossesEdge=id==='infinite-industry', key=descends?'KeyQ':'KeyW';
       const initial = await place(id,descends?20.15:19.9,false,crossesEdge);
       assert.equal(initial.footprint,crossesEdge?undefined:id);
@@ -109,7 +111,7 @@ async function main() {
       } else {
         await page.evaluate(()=>SphereStageFrame.showMain());
       }
-      console.log('PASS free flight into '+id+(descends?' by descending through 20 km':crossesEdge?' by flying across its western border at 19.9 km':' at 19.9 km')+' with the original position and bearing'+(id==='sideways-city'?', then climbed back to the Sphere':''));
+      console.log('PASS free flight into '+id+(descends?' by descending through 20 km':crossesEdge?' by flying across its southern footprint at 19.9 km':' at 19.9 km')+' with the original position and bearing'+(id==='sideways-city'?', then climbed back to the Sphere':''));
     }
     assert.deepEqual(errors,[]);
   } catch(e) {

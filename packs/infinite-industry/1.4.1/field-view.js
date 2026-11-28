@@ -9,7 +9,7 @@ import {meshVertex,detailVertex,materialFragment,floorVertex,floorFragment,shado
 
 // Link the field programs together. Chrome can compile the independent shaders
 // concurrently, and the ordinary and instanced fittings share one fragment shader.
-function programs(gl,recipes){
+export function programs(gl,recipes){
  const compiled=new Map(),pending=[];
  function shader(type,source){
   if(compiled.has(source))return compiled.get(source);

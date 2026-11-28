@@ -19,7 +19,7 @@ function catalogue(s){return [
  ...(root.SpherePackLibrary?.catalogue()||[]),
  ...['Thermal routing','Air & water exchange','Fabrication fields'].map((name,i)=>({id:'works-'+i,name,category:'machinery',description:['Quiet ceramic heat fields, woven channels and long service aisles.','Condensation works and branching air and water networks.','An immense fabric of assembly districts and service structures.'][i],biome:5,walk:true})),
  ...['A','B'].map((name,i)=>({id:'port-'+i,name:'Polar entry '+name,category:'poles',description:'A monumental gateway at the end of the shell axis, surrounded by service courts.',biome:5,walk:true})),
- ...root.SphereCollection.plates({...s,routeShades:true}).map(p=>({id:'shade-'+p.id,name:'Shade '+p.id+' · '+(p.damage?'broken edge':s.shadeGeometryRevision>=3?'intact edge':'service skin'),category:'shades',description:p.damage?'A fractured sunshade. Long through-openings expose its layered body and service structure. Close flight follows its motion.':'A moving sunshade with a continuous body and a finished perimeter. Close flight follows its motion.',biome:5,walk:false})),
+ ...root.SphereCollection.plates({...s,routeShades:true}).map(p=>({id:'shade-'+p.id,name:'Shade '+p.id+' · '+(p.damage?'broken edge':s.shadeGeometryRevision>=3?'intact edge':'service skin'),category:'shades',description:p.damage===2?'A failed outer support opened the panel seams. Fly along a torn edge to see the buckled braces inside the 180 m body.':p.damage?'A fractured sunshade. Long through-openings expose its layered body and service structure. Close flight follows its motion.':'A moving sunshade with a continuous body and a finished perimeter. Close flight follows its motion.',biome:5,walk:false})),
  ...root.SphereCollection.wounds.map((w,i)=>({id:'wound-'+i,name:'Wound '+(i+1)+' · Breach spill',category:'wounds',description:'Pass through the opening into a field of torn shell remnants. The nearby spill is anchored to this Wound.',biome:4,walk:false}))
  ];}
 function cloudAltitude(biome){const p=root.SphereWeatherProfiles[biome];return Math.max(.012,p.low-Math.min(.12,p.low*.28));}
@@ -94,7 +94,7 @@ async function destination(input,id,altitude='ground',scene,weather,options={}){
   s.position=mesh.world([-.3,height,.75]);s.forward=M.norm(M.sub(mesh.world([.5,0,0]),s.position));s.up=mesh.basis[1];return finish(s);
  }else if(id.startsWith('port-'))q=M.mul(W.frame(s).axis,id==='port-0'?1:-1);
  else if(id.startsWith('works-'))q=worksAnchor(Number(id.slice(6)),s);
- else {q=W.locateBiome(entry.biome,s);if(root.SphereWatershed?.sample(q,s))q=root.SphereWatershed.direction(s.packAddress?80000:500,0,s);}
+ else {q=W.locateBiome(entry.biome,s,{sunlit:entry.biome!==9});if(root.SphereWatershed?.sample(q,s))q=root.SphereWatershed.direction(s.packAddress?80000:500,0,s);}
  ground=Math.max(ground,root.SphereWatershed?.sample(q,s)?.terrainKm||0);
  const height=altitude==='atmosphere'?Math.min(atmosphereKm,s.radius-s.starRadius*1.03):altitude==='clouds'?cloudAltitude(entry.biome)+ground:ground+.08;
  s.position=M.mul(q,s.radius-height);const frame=S.shellFrame(q);

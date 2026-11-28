@@ -9,7 +9,7 @@ for(const shape of ['disk','square','cap','trimmed'])for(const era of ['before',
  // Every authored curve must either separate the combined solid/void region,
  // or be suppressed where another cut removed both sides.
  for(const c of boundaries)for(const fraction of [.1,.5,.9]){const t=c.lo+(c.hi-c.lo)*fraction,f=B.frame(s,p,c,t);if(!f)continue;assert(f.inward.every(Number.isFinite));}
- for(const c of boundaries.filter(c=>['perimeter','east','east-trim','long-1','cross-1','loss-bank'].includes(c.id))){let t=null;for(let i=1;i<20;i++){const v=c.lo+(c.hi-c.lo)*i/20;if(B.frame(s,p,c,v)){t=v;break;}}if(t===null)continue;
+ for(const c of boundaries.filter(c=>['perimeter','east','east-trim','long-1','cross-1','loss-bank','released-bay-8','arrested-tear-0','branch-1'].includes(c.id))){let t=null;for(let i=1;i<20;i++){const v=c.lo+(c.hi-c.lo)*i/20;if(B.frame(s,p,c,v)){t=v;break;}}if(t===null)continue;
   const f=B.frame(s,p,c,t),at=E.plateVector(f.origin,p),up=E.plateVector(f.up,p),inward=E.plateVector(f.inward,p);
   for(const side of [-1,1]){s.position=M.add(M.add(at,M.mul(up,side*.04)),M.mul(inward,-.1));s.forward=inward;s.up=up;E.setView(640,{deterministic:true});const start=performance.now(),meshes=E.shadeMeshes(s);times.push(performance.now()-start);assert(meshes.length,'Unselected boundary is discovered from either face');assert(meshes.every(m=>m.parentId===p.id&&m.vertices.every(Number.isFinite)));
    const rayStart=M.add(at,M.mul(up,-.08)),origin=M.add(rayStart,M.mul(inward,-.1)),hit=SphereFlight.contact({...s,position:origin},origin,inward,.2);assert(Number.isFinite(hit.distance),'Visible side wall blocks a lateral approach');assert(hit.distance<.15,'Broken openings expose the recessed 45 m backing or braces');

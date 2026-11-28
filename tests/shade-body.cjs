@@ -32,7 +32,7 @@ for(const shape of ['disk','square','cap','trimmed'])for(const era of ['before',
  coldEdges++;stream.dispose();
 }
 // Damage openings remain through-open on both continuous faces.
-for(const shape of ['disk','square','cap','trimmed']){const s={...M.defaultState(),collection:true,shadeShape:shape},p=C.plates(s)[0],at=E.plateVector(E.canonicalPoint(s,p,-.27,0),p),n=shape==='cap'||shape==='trimmed'?M.norm(at):p.normal;for(const side of [-1,1])assert.equal(C.diskDistance(M.mul(M.add(at,M.mul(n,side<0?-.035:.215)),1/s.radius),M.mul(n,-side),p),Infinity);}
+for(const shape of ['disk','square','cap','trimmed']){const s={...M.defaultState(),collection:true,shadeShape:shape,shadeFractureRevision:1},p=C.plates(s)[0],at=E.plateVector(E.canonicalPoint(s,p,-.27,0),p),n=shape==='cap'||shape==='trimmed'?M.norm(at):p.normal;for(const side of [-1,1])assert.equal(C.diskDistance(M.mul(M.add(at,M.mul(n,side<0?-.035:.215)),1/s.radius),M.mul(n,-side),p),Infinity);}
 const old={...M.defaultState(),collection:true,shadeGeometryRevision:1},codec=SphereSessionCodec;
 const untrimmed={...M.defaultState(),collection:true,shadeShape:'trimmed',shadeTrim:1,era:'before'},uncut=C.plates(untrimmed).find(p=>p.id===4);
 assert.deepEqual(B.curves(uncut).map(c=>c.id),['perimeter'],'Full-width trimmed caps have one closed curve, not collapsed side cuts');assert(B.arrivalFrame(untrimmed,uncut).origin.every(Number.isFinite));

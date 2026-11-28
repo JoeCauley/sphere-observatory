@@ -6,10 +6,17 @@
 <div class="process"><span>01 &nbsp; Intake</span><i>↓</i><span>02 &nbsp; Treatment</span><i>↓</i><span id="outputStage">03 &nbsp; Storage → distribution</span></div>
 <button id="tour" class="primary">Walk the process</button><button id="pauseTour" hidden>Pause inspection</button><p id="tourStage" class="note">An operating place. No inhabitants.</p>
 <div class="row"><button id="lift">Lift off · Space + E</button><button id="land">Land · F</button></div><button id="overview">View the whole facility</button><button id="transfer">Inspect the hot bar transfer</button>
-<div class="rule"></div><p class="controls">WASD travel · Shift faster<br>Drag / arrows look · Q / E descend / climb<br>R operates the nearby routing valve</p>
+<div class="rule"></div><p class="controls">WASD travel · Shift faster<br>Drag / arrows look · Q / E descend / climb<br>R operates the valve or feeds the mill · T dispatches a coil</p>
 <div class="row"><button id="save">Save this place</button><button id="returnSaved">Return to saved</button></div><button id="leavePack">Return to Observatory</button>
 <details><summary>Place &amp; inspection</summary><p id="packIdentity">Infinite Industry · 1.4.1</p><p id="packLifecycle" role="status">Preparing the water works…</p><p id="address">—</p><p id="readiness">—</p><label><input id="pauseProcess" type="checkbox"> Pause machinery</label><div class="row"><button id="downloadSave">Download save</button><button id="importSave">Import save</button></div><input id="saveFile" type="file" accept="application/json,.json" hidden><button id="measure">Measure 900 frames</button><button id="record">Record walking route</button><a id="recordingLink" hidden download="infinite-industry-walking.webm">Download walking route</a><button id="exportEvidence">Download inspection evidence</button><pre id="measurement" hidden></pre><p class="note">Six lanes connect each seven-hex pod. Follow the hot bars from the process outlet into forming.</p></details>
 </main><button id="show" hidden>Show controls · H</button><aside id="context" hidden><span>WATER ROUTING</span><button id="operate">Divert to recovery · R</button><p id="consequence">Treated water continues to the storage vessels.</p></aside>
+<aside id="millPanel" aria-label="Rolling mill controls" hidden>
+ <div class="millTitle"><b>R1</b><span>Forming bay</span></div>
+ <strong id="millPhase">Ready to feed</strong><p id="millCounts"></p>
+ <div class="row"><button id="millFeed">Feed slab · R</button><button id="millDispatch">Dispatch · T</button></div>
+ <div class="row millClocks"><button id="millWorld">Run world</button><button id="millMachinery">Pause machinery</button></div>
+ <p id="millNotice" role="status" hidden></p>
+</aside>
 <div id="status" role="status">Opening the facility…</div><footer><b id="mode">WALK</b><span id="performance">—</span><span class="motto">THE WORLD SHOULD REWARD INVESTIGATION</span></footer>
 <div id="packLoading" role="status"><h2>Opening the water works.</h2><p id="packLoadingStatus">Checking this place…</p><button id="packRetry" hidden>Try again</button><a href="../../../index.html">Return to Observatory</a></div>
 <script type="module" src="entry.js"></script></body></html>

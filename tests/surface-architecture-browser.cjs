@@ -15,7 +15,7 @@ async function main(){
     await page.waitForFunction(()=>window.SphereLoading?.ready && window.SphereBiomeLibrary?.world);
     await page.evaluate(async()=>{
       const s=SphereApp.getState();s.seed=23;s.playing=false;s.time=0;s.routeShades=true;
-      SphereApp.setState(s);await SphereBiomeLibrary.selectWorld();await SphereBiomeLibrary.install('border-outfall');
+      SphereApp.setState(s);await SphereBiomeLibrary.selectWorld();await SphereBiomeLibrary.install('infinite-meadow');await SphereBiomeLibrary.install('border-transport');
     });
     await page.waitForFunction(()=>SphereBiomeSurface.inspect().status==='ready' && SphereLoading.ready);
     const colors=await page.evaluate(()=>{
@@ -74,18 +74,18 @@ async function main(){
     console.log('PASS hosted clear, penumbra, umbra, Shades off and play/pause',JSON.stringify([full,partial,dark,off]));
     await page.evaluate(()=>SphereStageFrame.showMain());
     const far=await page.evaluate(async()=>{
-      const lib=SphereBiomeLibrary,cell=lib.entry('border-outfall').edge.far;
+      const lib=SphereBiomeLibrary,cell=lib.entry('border-transport/outfall').edge.far;
       const item=await lib.placeRegion('sideways-city',{plotId:cell,footprint:{shape:'rectangle',east:1,north:1}});
       return [cell,item.plotId,lib.entry(item.id),item.detailInstalled];
     });
     assert.equal(far[0],far[1]);assert.deepEqual(far.slice(2),[null,false]);
-    const border='border-outfall',city='sideways-city';
+    const border='border-transport/outfall',city='sideways-city';
     async function roof(){
       await page.evaluate(async()=>{
-        const lib=SphereBiomeLibrary,model=await import('./packs/border-outfall/1.0.0/model.js'),profile=await import('./packs/kit/border-profile.js');
+        const lib=SphereBiomeLibrary,model=await import('./packs/border-transport/0.10.0/outfall/model.js'),profile=await import('./packs/kit/border-profile.js');
         const r=model.initial();r.pose={eastM:410,northM:profile.farEdgeM-3,altitudeM:1401.7,mode:'walk',yaw:0,pitch:0};r.bookmark={...r.pose};
-        lib.saveStorage().setItem(lib.pack('border-outfall').saveKey,JSON.stringify({schema:1,...r}));
-        await SphereStageFrame.open('border-outfall');
+        lib.saveStorage().setItem(lib.sceneInfo('border-transport/outfall').saveKey,JSON.stringify({schema:1,...r}));
+        await SphereStageFrame.open('border-transport/outfall');
       });
       await frame.locator('#world').focus();
     }

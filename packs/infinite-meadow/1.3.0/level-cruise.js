@@ -37,7 +37,8 @@ export function stepLevelCruise(state,motion,keys,dt){
   // Integrate the exponential acceleration exactly: frame rate changes do not
   // alter the route or the distance travelled over the same elapsed time.
   const old=motion.speedMps,decay=Math.exp(-dt*2.5);
-  const distance=Math.max(0,target*dt+(old-target)*(-Math.expm1(-dt*2.5))/2.5);
+  const integrated=Math.max(0,target*dt+(old-target)*(-Math.expm1(-dt*2.5))/2.5);
+  const distance=dt>0 && motion.resolveSpeed?motion.resolveSpeed(integrated/dt,dt,{boost})*dt:integrated;
   motion.speedMps=target+(old-target)*decay;
   const vx=Math.sin(l.headingRad),vz=-Math.cos(l.headingRad);
   const limits=[vx>0?(Math.PI*R-l.originEastM)/vx:vx<0?(-Math.PI*R-l.originEastM)/vx:Infinity,

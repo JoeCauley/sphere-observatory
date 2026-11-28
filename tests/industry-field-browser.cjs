@@ -19,19 +19,25 @@ async function main(){
    }
    function pixel(){const rgb=new Uint8Array(4);gl.readPixels(64,64,1,1,gl.RGBA,gl.UNSIGNED_BYTE,rgb);return Array.from(rgb).slice(0,3);}
    const cases=[];
+   function checkGround(e,n,at){
+     draw(e,n);
+     const tint=!at||at.waterWorks?[.35,.35,.308]:PALETTES[at.pod.temperature].ground.map(v=>v*.81);
+     const fog=1-Math.exp(-220/6400),air=[.47,.55,.54];
+     const expected=tint.map((v,k)=>Math.round(255*((v*.86*(1-fog)+air[k]*fog)**.53)));
+     const actual=pixel();cases.push({id:at?.id??[e,n],error:Math.max(...actual.map((x,k)=>Math.abs(x-expected[k])))});
+   }
    for(const [i,j] of [[0,0],[1,-1],[-3,2],[7,5],[-45,21],[9000000,-3000000]]){
     const district=pods.district(i,j);
     for(const [a,b] of [[0,0],[1,0],[0,1],[-1,0]]){
      const pod=pods.pod(district,a,b);
      for(const h of pods.hexes(pod)){
-      const [e,n]=h.center,at=pods.locate(e,n).hex;draw(e,n);
-      const tint=at.waterWorks?[.35,.35,.308]:PALETTES[at.pod.temperature].ground.map(v=>v*.81);
-      const fog=1-Math.exp(-220/6400),air=[.47,.55,.54];
-      const expected=tint.map((v,k)=>Math.round(255*((v*.86*(1-fog)+air[k]*fog)**.53)));
-      const actual=pixel();cases.push({id:at.id,error:Math.max(...actual.map((x,k)=>Math.abs(x-expected[k])))});
+      const [e,n]=h.center;checkGround(e,n,pods.locate(e,n).hex);
      }
     }
    }
+   // Negative multiples of seven used to map to a nonexistent eighth GPU slot.
+   for(const [e,n] of [[-30993.611550524947,-15701.367956152728],[-27997.783524195216,-14727.964423871646]])
+     checkGround(e,n,pods.locate(e,n).hex);
    const centre=pods.pod(pods.district(0,0),-1,1).center;draw(...centre);
    const pixels=()=>{const p=new Uint8Array(129*129*4);gl.readPixels(0,0,129,129,gl.RGBA,gl.UNSIGNED_BYTE,p);return p;};
    const slab=pixels();field.skyline();const first=pixels();let solidPixels=0;

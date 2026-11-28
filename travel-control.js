@@ -14,6 +14,51 @@ function regionScale(s){
  if(root.SphereWatershed?.sample(q,s))return .75;
  const id=root.SphereWorld?.sample(q,s).biome;return [0,1,4,8,9].includes(id)?.75:id===2?1.2:1;
 }
+// A tear is a union of polygons. The section shared at a hinge, and parts of
+// its mouth inside an already released bay, are entirely open to flight.
+const fractureBanks=new WeakMap();
+function exposedBanks(fracture,id){
+ const regions=fracture.regions(id);
+ if(fractureBanks.has(regions))return fractureBanks.get(regions);
+ const edges=[],eps=64*Number.EPSILON;
+ for(const {points} of regions){
+  let a=points[points.length-1];
+  for(const b of points){
+   const dx=b[0]-a[0],dy=b[1]-a[1],length=Math.hypot(dx,dy);
+   if(length)edges.push({x:a[0],y:a[1],dx,dy,length,cuts:[0,1]});
+   a=b;
+  }
+ }
+ // Split at crossings and at endpoints of collinear overlaps. Occupancy on
+ // either side of a straight segment is constant between successive cuts.
+ const addCut=(edge,t)=>{if(t>eps&&t<1-eps)edge.cuts.push(t);};
+ const project=(edge,x,y)=>(x*edge.dx+y*edge.dy)/(edge.length*edge.length);
+ for(let i=0;i<edges.length;i++)for(let j=i+1;j<edges.length;j++){
+  const a=edges[i],b=edges[j],x=b.x-a.x,y=b.y-a.y;
+  const det=a.dx*b.dy-a.dy*b.dx;
+  if(Math.abs(det)>eps*a.length*b.length){
+   const t=(x*b.dy-y*b.dx)/det,u=(x*a.dy-y*a.dx)/det;
+   if(t>=-eps&&t<=1+eps&&u>=-eps&&u<=1+eps){addCut(a,t);addCut(b,u);}
+  }else if(Math.abs(x*a.dy-y*a.dx)<=eps*a.length){
+   addCut(a,project(a,x,y));addCut(a,project(a,x+b.dx,y+b.dy));
+   addCut(b,project(b,-x,-y));addCut(b,project(b,a.dx-x,a.dy-y));
+  }
+ }
+ const banks=[];
+ for(const {x,y,dx,dy,length,cuts} of edges){
+  cuts.sort((a,b)=>a-b);
+  for(let k=1;k<cuts.length;k++){
+   const lo=cuts[k-1],hi=cuts[k],span=hi-lo;
+   if(span<=eps)continue;
+   const t=(lo+hi)/2,mx=x+dx*t,my=y+dy*t,probe=Math.min(1e-10/length,span*.01);
+   const left=fracture.margin(mx-dy*probe,my+dx*probe,id)>=0;
+   const right=fracture.margin(mx+dy*probe,my-dx*probe,id)>=0;
+   if(left!==right)banks.push({x:x+dx*lo,y:y+dy*lo,dx:dx*span,dy:dy*span});
+  }
+ }
+ fractureBanks.set(regions,banks);
+ return banks;
+}
 // A continuous, conservative distance to the authored Shade footprint, including
 // cracks and holes. Implicit curves use their maximum slope, so this assistance
 // may brake early on a curved bank; collision still uses the authoritative skin.
@@ -24,7 +69,20 @@ function shadeClearance(s,p){
  const a=Math.abs(u),b=Math.abs(v),small=Math.min(ax,ay);
  let gap=p.shape==='square'?Math.hypot(Math.max(0,a-1)*ax,Math.max(0,b-1)*ay):Math.max(0,Math.hypot(u,v)-1)*small;
  if(p.shape==='trimmed')gap=Math.max(gap,Math.max(0,a-p.trim)*ax);
- if(p.damage){
+ if(p.damage===2){
+  const fracture=root.SphereWorld.shadeFracture;
+  if(fracture.margin(u,v,p.id)<0){
+   // Bank endpoints live in the plate chart. Measure in kilometres so a
+   // narrow cross-track panel cannot brake the pilot at voids from the old model.
+   let nearestSquared=Infinity;
+   for(const bank of exposedBanks(fracture,p.id)){
+    const x=(u-bank.x)*ax,y=(v-bank.y)*ay,dx=bank.dx*ax,dy=bank.dy*ay;
+    const t=M.clamp((x*dx+y*dy)/(dx*dx+dy*dy),0,1);
+    nearestSquared=Math.min(nearestSquared,(x-t*dx)**2+(y-t*dy)**2);
+   }
+   gap=Math.max(gap,Math.sqrt(nearestSquared));
+  }
+ }else if(p.damage){
   const slope=(x,y)=>Math.hypot(x/ax,y/ay),edge=.09+.055*Math.sin(v*17)+.017*Math.sin(v*53),family=p.id%3;
   if(p.layoutVersion===2){
    if(family===0&&u>edge&&v>-.31)gap=Math.max(gap,Math.min((u-edge)/slope(1,1.836),(v+.31)*ay));

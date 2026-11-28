@@ -17,8 +17,9 @@ export function moveOnSupport(state,keys,dt,content,motion={speedMps:0}){
  motion.speedMps=speed;const cp=walking?1:Math.cos(p.pitch),sp=walking?0:Math.sin(p.pitch);
  let vx=dx*Math.cos(p.yaw)-dz*Math.sin(p.yaw)*cp,vz=dx*Math.sin(p.yaw)+dz*Math.cos(p.yaw)*cp,vy=dy-dz*sp;
  const length=Math.hypot(vx,vz,vy)||1;vx/=length;vz/=length;vy/=length;
- const x=vx*speed*dt,z=vz*speed*dt,y=vy*speed*dt;
- const steps=walking?Math.max(1,Math.ceil(Math.hypot(x,z)/.2)):clearance<140?Math.max(1,Math.ceil(Math.hypot(x,z,y)/.2)):1;
+ const applied=!walking && (dx||dz||dy) && motion.resolveSpeed?motion.resolveSpeed(speed,dt,{boost}):speed;
+ const x=vx*applied*dt,z=vz*applied*dt,y=vy*applied*dt;
+ const steps=walking?Math.max(1,Math.ceil(Math.hypot(x,z)/.2)):clearance<140?Math.min(4096,Math.max(1,Math.ceil(Math.hypot(x,z,y)/.2))):1;
  let colliding=false,landed=false;
  for(let i=0;i<steps;i++){
   const attempt=(nx,nz)=>{const floor=content.support(nx,nz,p.altitudeM-EYE_M);if(content.blocked(nx,nz,p.altitudeM,walking)||walking&&floor>p.altitudeM-EYE_M+.23){colliding=true;return false;}return true;};
@@ -29,5 +30,5 @@ export function moveOnSupport(state,keys,dt,content,motion={speedMps:0}){
   if(!walking&&content.blocked(p.eastM,p.northM,next,false)){colliding=true;}else p.altitudeM=walking?floor:clamp(next,floor,R*.8);
  }
  if(landed){p.mode='walk';p.altitudeM=content.support(p.eastM,p.northM,p.altitudeM-EYE_M)+EYE_M;motion.speedMps=0;}
- return {speedMps:speed,colliding,landed,steps,clearanceM:p.altitudeM-content.support(p.eastM,p.northM,p.altitudeM-EYE_M)-EYE_M};
+ return {speedMps:applied,colliding,landed,steps,clearanceM:p.altitudeM-content.support(p.eastM,p.northM,p.altitudeM-EYE_M)-EYE_M};
 }

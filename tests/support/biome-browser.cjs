@@ -23,4 +23,19 @@ async function session() {
     }
   };
 }
-module.exports = { session, executable };
+async function saveAtlasMark(page, name) {
+  const previousId = await page.evaluate(label => SphereBiomeLibrary.marks().findLast(mark => mark.name === label)?.id ?? null, name);
+  await page.locator('#atlasPlaceName').fill(name);
+  await page.locator('#atlasMarkHere').click();
+  const saved = await page.waitForFunction(({name, previousId}) => {
+    const mark = SphereBiomeLibrary.marks().findLast(item => item.name === name);
+    return mark && mark.id !== previousId ? mark : null;
+  }, {name, previousId});
+  try {
+    return await saved.jsonValue();
+  } finally {
+    await saved.dispose();
+  }
+}
+
+module.exports = { session, executable, saveAtlasMark };

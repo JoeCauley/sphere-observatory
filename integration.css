@@ -8,4 +8,11 @@
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
 
 #viewport{isolation:isolate}
+body:has(#stageFrame) #openMeadowPack{visibility:hidden}
 @media(max-width:760px),(max-height:500px){#controls{z-index:910}#stageFrame>div:first-child{flex-wrap:wrap;gap:4px!important}#stageFrame>div:first-child>span{min-width:90px!important}}
+
+.camera-locator{position:absolute;z-index:7;right:12px;top:clamp(90px,10vh,110px);display:flex;align-items:center;gap:7px;max-width:calc(100% - 16px);padding:5px 8px;color:#dce6e7;background:rgba(16,26,30,.84);border:1px solid rgba(190,213,215,.26);border-radius:4px;pointer-events:none;user-select:none;font:clamp(12px,.74vw,16px)/1.24 ui-monospace,Consolas,monospace;font-variant-numeric:tabular-nums}
+/* Meadow posts flight and error messages at the upper right. Keep its capture coordinates above the footer. */
+[data-scene="infinite-meadow"]>.camera-locator{top:auto;bottom:42px}
+.camera-locator svg{color:#789097;flex:none}.camera-columns{display:grid;grid-template-columns:16ch 9ch 9ch;white-space:nowrap}.camera-columns b,.camera-columns i{font:inherit}.camera-columns span{text-align:right}.camera-columns:first-child,.camera-lens{color:#a8bdc1}.camera-lens{font-size:.92em;margin-top:2px}.camera-locator[hidden],body.clean .camera-locator{display:none}
+@media(max-width:600px),(max-height:470px){.camera-locator{right:5px;top:74px;padding:3px 5px;gap:3px;font-size:10px}.camera-locator svg{width:30px;height:30px}.camera-lens{font-size:9px}}

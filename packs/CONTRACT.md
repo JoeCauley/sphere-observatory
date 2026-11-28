@@ -1,5 +1,7 @@
 # The Sphere biome contract
 
+Pack authors can attach a placed biome to a surveyed station using the [Biome Pack to Border Biome Contract](../docs/Builder-border-crossings.md#biome-pack-to-border-biome-contract).
+
 The host opens each catalogued scene as a same-origin iframe. The pack advertises `sphere-biome/1` in its catalogue entry and exposes `window.SphereBiome` inside its own document. A pack can use its own renderer, coordinate convention and local save format. [Catalogue](biome-library.json)
 
 | Member | Host expectation |
@@ -21,6 +23,6 @@ Standalone pages use the catalogue save key in local storage. In Main, read the 
 
 ## Adding a destination
 
-Give the pack a versioned entry page, a unique ID and save key, a placement rule and an overview material in the catalogue. Plot placement supports `within`, `outside` and `anywhere`. Border sites use `relation: "border"` and `anchorPack`. The Outfall uses its Meadow’s northern atlas edge and keeps both adjoining plot IDs.
+Give the pack a versioned entry page, a unique ID and save key, a placement rule and an overview material in the catalogue. Plot placement supports `within`, `outside` and `anywhere`. Border Biome owns an addressed freight district and the Outfall maintenance facility. Each facility keeps its own scene entry, save key and Atlas address under the parent installation. The Outfall retains both plots of its surveyed northern edge.
 
 The offered Meadow and Industry also verify versioned asset manifests. Regenerate the relevant manifest after changing a published pack candidate. Run `npm run test:contract` to exercise each offered scene and `npm run test:stage-arrival` to exercise normal and failed handoffs in Main.

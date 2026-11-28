@@ -5,15 +5,27 @@ const key='sphere-session-v1',M=root.SphereMath;
 function decode(raw){if(typeof raw!=='string'||raw.length>1000000)throw Error('Invalid saved session');const record=JSON.parse(raw);
  if(!record||record.format!=='sphere-session'||![1,2].includes(record.version))throw Error('Unsupported saved session');
  const state=M.validate(record.state);
- // Upgrade the resumable exploration once. Portable scene imports still keep
- // their explicit geometry revision; subsequent saved choices are respected.
- if(record.shadeBodyVersion!==3&&state.shadeGeometryRevision<3&&state.layoutVersion===2&&state.collection){state.shadeGeometryRevision=3;
-  // A shell-facing camera in an old zero-thickness scene may now be inside the
-  // body. Preserve its old clearance by moving only that trapped camera out.
-  for(const p of root.SphereCollection.plates(state)){const radius=M.length(p.center)*state.radius,curved=p.shape==='cap'||p.shape==='trimmed',along=M.dot(state.position,p.normal),height=curved?M.length(state.position)-radius:along-radius;
-   if(height<=0||height>=.182||along<=0)continue;const factor=curved?radius/along:1;
-   if(!root.SphereCollection.diskContains(M.dot(state.position,p.right)*factor/state.radius,M.dot(state.position,p.up)*factor/state.radius,p))continue;
-   state.position=M.add(state.position,M.mul(curved?M.norm(state.position):p.normal,.18));break;
+ // Resume existing explorations with the current fracture model. Portable
+ // scenes and any saved session which specifies a model replay that model.
+ const updateFracture=record.state.shadeFractureRevision===undefined && state.layoutVersion===2;
+ if(updateFracture)state.shadeFractureRevision=2;
+ const updateBody=record.shadeBodyVersion!==3 && state.shadeGeometryRevision<3 && state.layoutVersion===2 && state.collection;
+ if(updateBody)state.shadeGeometryRevision=3;
+ if(state.collection && (updateBody || updateFracture)){
+  // A saved camera in a former through-opening can now be inside the plate.
+  // Preserve the view and give it clearance on the nearest exposed face.
+  for(const p of root.SphereCollection.plates(state)){
+   if(!p.thickness || (!updateBody && !p.damage))continue;
+   const radius=M.length(p.center)*state.radius,depth=p.thickness*state.radius;
+   const curved=p.shape==='cap'||p.shape==='trimmed',along=M.dot(state.position,p.normal);
+   const height=(curved?M.length(state.position):along)-radius;
+   if(height<=0 || height>=depth || along<=0)continue;
+   const scale=(curved?radius/along:1)/state.radius;
+   const x=M.dot(state.position,p.right)*scale,y=M.dot(state.position,p.up)*scale;
+   if(!root.SphereCollection.diskContains(x,y,p))continue;
+   if(!updateBody && root.SphereCollection.diskContains(x,y,{...p,damage:1,fractureRevision:1}))continue;
+   const shift=updateBody?depth:height<depth*.5?-.002-height:depth+.002-height;
+   state.position=M.add(state.position,M.mul(curved?M.norm(state.position):p.normal,shift));break;
   }
  }
  state.playing=false;state.walkVelocity=0;
@@ -22,7 +34,11 @@ function decode(raw){if(typeof raw!=='string'||raw.length>1000000)throw Error('I
  else if(record.version===2&&record.journey)skipped.push('Unsupported journey version');
  return {state,history,skipped,ui:record.ui&&typeof record.ui==='object'&&!Array.isArray(record.ui)?record.ui:{}};
 }
-function encode(state,ui={},entries=[]){const clean=M.validate(root.SphereMeadowWind.snapshot(state));clean.playing=false;clean.walkVelocity=0;const raw=JSON.stringify({format:'sphere-session',version:2,shadeBodyVersion:3,state:clean,ui,journey:{version:1,entries:entries.slice(-24)}});if(raw.length>1000000)throw Error('Saved session exceeds 1 MB');return raw;}
+function encode(state,ui={},entries=[]){const clean=M.validate(root.SphereMeadowWind.snapshot(state));
+ // An imported, unversioned portable scene runs the original model. Pin it
+ // in the autosave so a subsequent resume does not migrate the imported view.
+ if(clean.layoutVersion===2 && clean.shadeFractureRevision===undefined)clean.shadeFractureRevision=1;
+ clean.playing=false;clean.walkVelocity=0;const raw=JSON.stringify({format:'sphere-session',version:2,shadeBodyVersion:3,state:clean,ui,journey:{version:1,entries:entries.slice(-24)}});if(raw.length>1000000)throw Error('Saved session exceeds 1 MB');return raw;}
 root.SphereSessionCodec={key,decode,encode};
 if(!root.document||!root.SphereApp)return;
 const A=root.SphereApp,$=id=>document.getElementById(id),preferences=['previewFps','adaptivePreview','exportSize','clipShot','biomeDestination','biomeAltitude','fieldDestination','rotationStep','placeCategory','placeDestination','placeAltitude'];

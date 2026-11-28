@@ -2,10 +2,13 @@
 (function(root){
 'use strict';const STEP=1/60,BUDGET=.25;let dropped=0,frames=[];
 function advance(s,elapsed,move){
+ const initialTime=s.time;
  elapsed=Math.max(0,Number.isFinite(elapsed)?elapsed:0);let remaining=Math.min(elapsed,BUDGET),steps=0;
  while(remaining>1e-10){const dt=Math.min(STEP,remaining);if(s.playing)root.SphereInspection.setTime(s,root.SphereMath.clamp(s.time+dt*s.timeRate,-1e9,1e9));move(dt);remaining-=dt;steps++;}
  const excess=Math.max(0,elapsed-BUDGET);dropped+=excess;
  if(excess&&s.playing)root.SphereInspection.setTime(s,root.SphereMath.clamp(s.time+excess*s.timeRate,-1e9,1e9));
+ // Credit only positive time integrated by the host. Scrubbing between calls earns no production.
+ root.SphereProduction?.advance(Math.max(0,s.time-initialTime),s.playing&&s.timeRate>0);
  frames.push(elapsed*1000);if(frames.length>600)frames.shift();return {steps,droppedSeconds:excess};
 }
 function previewStamp(previous,now,fps){
