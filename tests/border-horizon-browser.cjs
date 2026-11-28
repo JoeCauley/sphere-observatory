@@ -196,16 +196,16 @@ async function main() {
     assert.equal(environment.air,'vacuum');
     // With adaptation disabled the exposed Sphere should resolve to the selected
     // preview detail, including after a change made while the camera is still.
-    await page.evaluate(()=>{
-      const adaptive=document.getElementById('adaptivePreview');
-      if(adaptive)adaptive.checked=false;
-      SphereApp.setState({...SphereApp.getState(),quality:1});
-    });
-    await page.waitForFunction(()=>{
-      const rect=document.querySelector('#stageFrame iframe').getBoundingClientRect();
-      const canvas=document.getElementById('view');
-      return Math.abs(canvas.width-rect.width)<=1 && Math.abs(canvas.height-rect.height)<=1;
-    },null,{timeout:10000});
+    await page.locator('#adaptivePreview').evaluate(input=>{input.checked=false;});
+    for(const quality of [.5,1]){
+      await page.evaluate(quality=>SphereApp.setState({...SphereApp.getState(),quality}),quality);
+      await page.waitForFunction(quality=>{
+        const rect=document.querySelector('#stageFrame iframe').getBoundingClientRect();
+        const scale=Math.min(Math.min(devicePixelRatio,1.5)*quality,Math.sqrt(3840*2160/(rect.width*rect.height)));
+        const canvas=document.getElementById('view');
+        return canvas.width===Math.floor(rect.width*scale) && canvas.height===Math.floor(rect.height*scale);
+      },quality,{timeout:10000});
+    }
     await page.waitForTimeout(160);
     const composite=await page.screenshot({clip:skyClip});
     await stationFrame.evaluate(f=>{f.style.visibility='hidden';});

@@ -728,19 +728,26 @@
         if(c.where.textContent!==label)c.where.textContent=label;c.altitudeLabel=true;
       }else if(c.altitudeLabel){c.where.textContent=library().describe(library().entry(c.id));c.altitudeLabel=false;}
     }
-    if(weight>=1 && !warm){hideSurvey();return false;}
+    if(weight>=1 && !warm && !lowVacuum){hideSurvey();return false;}
     const camera=warm?departureSurveyCamera(p,recipe):p;
     const app=window.SphereApp,s=app.getState(),rect=c.frame.getBoundingClientRect();
     if(rect.width<2 || rect.height<2)return false;
     const size=app.previewViewport(rect,now,s.playing||heldNavigation.size>0);
-    const key=[size.width,size.height,app.viewRevision,s.time,camera.eastM,camera.northM,camera.altitudeM,camera.yaw,camera.pitch,rect.width,rect.height,s.routeShades,s.exposure,
+    const key=[lowVacuum,size.width,size.height,app.viewRevision,s.time,camera.eastM,camera.northM,camera.altitudeM,camera.yaw,camera.pitch,rect.width,rect.height,s.routeShades,s.exposure,
       camera.mode,s.playing,s.quality,devicePixelRatio,document.getElementById('adaptivePreview')?.checked].join('/');
     if(c.regionalKey===key || now-(c.regionalStamp??-Infinity)<40)return true;
     const pose=geography.mainPose(s,item,camera,SphereAtlas,SphereWorld);
     pose.fov=c.frame.surfaceEntry?.horizontalFov??2*Math.atan(rect.width/rect.height/recipe.focal)*180/Math.PI;
     pose.geometryDetail=false;pose.antialias=Math.min(pose.antialias??0,1);
     if(recipe.density===0 && !item.transport){pose.clouds=false;pose.textureDetail=false;pose.richMaterials=false;}
-    if(!projectSurvey(now,pose)){
+    if(lowVacuum){
+      // The station paints the roof and open well. Its transparent sky needs Main at the same lens and resolution.
+      hideSurvey();
+      const vacuum=optics.layerWeight(recipe.nearM*.65,recipe.nearM,p.altitudeM);
+      pose.atmosphere*=1-vacuum;pose.cavityHaze*=1-vacuum;
+      if(vacuum===1)pose.clouds=false;
+    }
+    if(lowVacuum || !projectSurvey(now,pose)){
       app.renderer.draw(pose,size.width,size.height,{adaptiveScale:size.adaptiveScale});
     }
     if(!warm && weight===0)window.SphereCameraLocator.present(c.shell,pose);
