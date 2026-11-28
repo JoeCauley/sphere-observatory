@@ -4,15 +4,20 @@ const coverageOnly=process.env.SPHERE_COVERAGE_ONLY==='1';
 const {chromium}=require(process.env.SPHERE_PLAYWRIGHT||'playwright'),assert=require('node:assert/strict'),fs=require('node:fs');
 (async()=>{const browser=await chromium.launch({headless:true,executablePath:process.env.SPHERE_BROWSER});try{
  const page=await browser.newPage({viewport:{width:1280,height:960}}),errors=[],records=[],dir=coverageOnly?'work/screenshots/shade-body-coverage':'work/screenshots/shade-boundary-01';fs.mkdirSync(dir,{recursive:true});page.setDefaultTimeout(240000);page.on('pageerror',e=>errors.push(e.message));
- await page.goto(process.env.SPHERE_URL||'http://127.0.0.1:8766/');await page.waitForFunction(()=>window.SphereLoading?.ready);await page.evaluate(()=>SphereApp.setBusy(true));
+ await page.goto(process.env.SPHERE_URL||'http://127.0.0.1:8766/');
+ await page.waitForFunction(()=>window.SphereLoading?.ready||document.getElementById('loadingTitle')?.textContent==='Opening interrupted');
+ await page.evaluate(()=>{if(!window.SphereLoading?.ready)throw Error(document.getElementById('loadingStatus').textContent);SphereApp.setBusy(true);});
  const fixtures=['disk','square','cap','trimmed'].flatMap(shape=>[9,0,7,8].flatMap(id=>[1,-1].map(side=>({shape,id,side}))));
  for(const shape of ['disk','square','cap','trimmed'])for(const side of [1,-1])fixtures.push({shape,id:7,side,boundary:'hole'});
  fixtures.push({shape:'cap',id:7,side:1,boundary:'long-1'});
- for(const {shape,id,side,boundary}of fixtures){
-  const result=await page.evaluate(async({shape,id,side,boundary,coverageOnly})=>{
+ for(const [shape,id,family]of [['disk',0,'released-bay'],['square',7,'seam-mouth'],['cap',8,'arrested-tear'],['trimmed',16,'branch']])
+  for(const side of [1,-1]) fixtures.push({shape,id,side,boundary:family,revision:2});
+ for(const {shape,id,side,boundary,revision=1}of fixtures){
+  const result=await page.evaluate(async({shape,id,side,boundary,revision,coverageOnly})=>{
    const M=SphereMath,C=SphereCollection,E=SphereEdges,B=SphereShadeEdges,R=SphereApp.renderer,gl=R.gl;
-   const s={...M.defaultState(),collection:true,era:id===9?'before':'after',shadeShape:shape,time:91451,playing:false,siteId:'',siteAnchor:null,shadeAttachment:null,atmosphere:0,cavityHaze:0,clouds:false,fov:78,antialias:0,localShadows:0,geometryDetail:false};
-   const p=C.plates(s).find(p=>p.id===id),requested=boundary||(id===9?(shape==='square'?'east':shape==='trimmed'?'east-trim':'perimeter'):id===0?'long-1':id===7?'loss-bank':'cross-1'),curve=B.curves(p).find(c=>requested==='hole'?c.id.startsWith('hole-')&&B.frame(s,p,c,.5):c.id===requested),name=curve?.id;
+   const s={...M.defaultState(),collection:true,era:id===9?'before':'after',shadeShape:shape,shadeFractureRevision:revision,time:91451,playing:false,siteId:'',siteAnchor:null,shadeAttachment:null,atmosphere:0,cavityHaze:0,clouds:false,fov:78,antialias:0,localShadows:0,geometryDetail:false};
+   const p=C.plates(s).find(p=>p.id===id),requested=boundary||(id===9?(shape==='square'?'east':shape==='trimmed'?'east-trim':'perimeter'):id===0?'long-1':id===7?'loss-bank':'cross-1');
+   const curve=B.curves(p).find(c=>revision===2?c.id.startsWith(requested+'-')&&B.frame(s,p,c,(c.lo+c.hi)/2):requested==='hole'?c.id.startsWith('hole-')&&B.frame(s,p,c,.5):c.id===requested),name=curve?.id;
    let f;for(let i=1;i<40&&!f;i++)f=B.frame(s,p,curve,curve.lo+(curve.hi-curve.lo)*i/40);if(!f)throw Error('Missing boundary fixture '+name);
    const at=E.plateVector(f.origin,p),up=E.plateVector(f.up,p),inside=E.plateVector(f.inward,p),along=E.plateVector(f.tangent,p);
    s.position=M.add(M.add(at,M.mul(up,side*5.2)),M.mul(inside,6));s.forward=M.norm(M.add(M.add(along,M.mul(inside,-.7)),M.mul(up,-side*.16)));s.up=M.basis(s.forward,M.mul(up,side)).u;
@@ -25,7 +30,7 @@ const {chromium}=require(process.env.SPHERE_PLAYWRIGHT||'playwright'),assert=req
     if(!repeat){const samples=[];for(const url of [image,repeated]){const img=new Image();img.src=url;await img.decode();const c=document.createElement('canvas');c.width=1280;c.height=960;const ctx=c.getContext('2d');ctx.drawImage(img,0,0);samples.push(ctx.getImageData(0,0,1280,960).data);}let changed=0,max=0;const bounds=[1280,960,0,0];for(let i=0;i<samples[0].length;i+=4){let hit=false;for(let c=0;c<3;c++){const d=Math.abs(samples[0][i+c]-samples[1][i+c]);hit||=d>0;max=Math.max(max,d);}if(hit){changed++;const x=i/4%1280,y=Math.floor(i/4/1280);bounds[0]=Math.min(bounds[0],x);bounds[1]=Math.min(bounds[1],y);bounds[2]=Math.max(bounds[2],x);bounds[3]=Math.max(bounds[3],y);}}difference={changed,max,bounds};}
    }
    return {shape,id,side,name,mismatch,interior,shadePixels,pixels:w*h,repeat,image,repeated,difference,error:R.error(),state:s};
-  },{shape,id,side,boundary,coverageOnly});
+  },{shape,id,side,boundary,revision,coverageOnly});
   const stem=dir+'/'+shape+'-'+id+'-'+side+'-'+result.name;
   if(result.image){fs.writeFileSync(stem+'.png',Buffer.from(result.image.split(',')[1],'base64'));delete result.image;}
   if(result.repeated){fs.writeFileSync(stem+'-repeat.png',Buffer.from(result.repeated.split(',')[1],'base64'));delete result.repeated;}

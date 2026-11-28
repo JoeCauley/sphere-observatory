@@ -20,14 +20,14 @@ const shots = [
   {file:'industry-transfer',id:'infinite-industry',pose:camera(-157,316,3.5,Math.atan2(-6,-25),.15)},
   {file:'city-tower',id:'sideways-city',pose:camera(308,-555,19,-.52,.24)},
   {file:'sideways-city',id:'sideways-city',pose:camera(-21,-109,44,.43,-.06)},
-  {file:'outfall-approach',id:'border-outfall',pose:camera(-7,-24,1.7,.27,.15,'walk')},
-  {file:'outfall-wall',id:'border-outfall',pose:camera(-12000,-4,1.7,1.49,.04,'walk')},
-  {file:'outfall-cross-gallery',id:'border-outfall',pose:camera(1004,38,1.7,1.55,.02,'walk')},
-  {file:'outfall-gallery',id:'border-outfall',pose:camera(-1.1,7.9,1.7,.30,.025,'walk')}
+  {file:'outfall-approach',id:'border-transport/outfall',pose:camera(-7,-24,1.7,.27,.15,'walk')},
+  {file:'outfall-wall',id:'border-transport/outfall',pose:camera(-12000,-4,1.7,1.49,.04,'walk')},
+  {file:'outfall-cross-gallery',id:'border-transport/outfall',pose:camera(1004,38,1.7,1.55,.02,'walk')},
+  {file:'outfall-gallery',id:'border-transport/outfall',pose:camera(-1.1,7.9,1.7,.30,.025,'walk')}
 ];
 async function saved(pack, shot) {
   const base = path.posix.dirname(pack.entry) + '/';
-  if (pack.id === 'sideways-city' || pack.id === 'border-outfall') {
+  if (pack.id === 'sideways-city' || pack.id === 'border-transport/outfall') {
     return JSON.stringify({schema:1, pose:shot.pose, bookmark:shot.pose, open:true, levels:[1,1,1]});
   }
   const m = await readModule(base+'model.js'), c = await readModule('packs/runtime/v1/contract.js');
@@ -76,7 +76,7 @@ async function main() {
   const browser = await chromium.launch({headless:process.env.SPHERE_CAPTURE_HEADLESS==='1',executablePath:executable(),args:['--mute-audio','--window-size=1650,990']});
   try {
     for (const shot of shots) {
-      const pack = packs.find(p => p.id===shot.id);
+      const pack = packs.flatMap(p=>[p,...Object.values(p.facilities??{}).map(f=>({...f,version:p.version}))]).find(p=>p.id===shot.id);
       const context = await browser.newContext({viewport:{width:1440,height:810},deviceScaleFactor:1});
       try {
         await host.attach(context);

@@ -16,6 +16,10 @@
 #loadingProgress::-webkit-progress-bar{background:#334245}
 #loadingProgress::-webkit-progress-value{background:#c4a77c}
 #loadingProgress:indeterminate{opacity:.7}
+#sceneLoading:not([data-opening]) #openingEstimate{display:none}
+#sceneLoading[data-opening] #loadingProgress{height:6px}
+#sceneLoading[data-opening] #loadingProgress::-webkit-progress-value{transition:width .2s ease}
+@media(prefers-reduced-motion:reduce){#sceneLoading[data-opening] #loadingProgress::-webkit-progress-value{transition:none}}
 .loading-note{font-size:11px;line-height:1.65;color:#778e91;margin:20px 0}
 #loadingActions{display:flex;justify-content:center;gap:10px;margin-top:24px}
 #loadingActions[hidden]{display:none}

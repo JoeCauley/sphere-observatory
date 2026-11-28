@@ -10,20 +10,24 @@ const descriptorA=F.buildDescriptor(a),descriptorB=F.buildDescriptor(b),descript
 assert.notEqual(descriptorA.key,descriptorB.key);assert.notEqual(descriptorB.key,descriptorC.key);
 const OriginalWorker=global.Worker;
 global.Worker=class{constructor(url){this.url=url;workers.push(this);}postMessage(message){this.message=message;}terminate(){this.terminated=true;}reply(descriptor){this.onmessage({data:{generation:this.message.generation,descriptor,prepareMs:1}});}};
+const fallback={id:'main-sky'};
 let bound=null,allocations=0;
 const gl={TEXTURE0:0,TEXTURE15:15,TEXTURE_2D:3553,RGBA8:32856,RGBA:6408,UNSIGNED_BYTE:5121,TEXTURE_MIN_FILTER:10241,TEXTURE_MAG_FILTER:10240,TEXTURE_WRAP_S:10242,TEXTURE_WRAP_T:10243,LINEAR_MIPMAP_LINEAR:9987,LINEAR:9729,CLAMP_TO_EDGE:33071,activeTexture(){},bindTexture(target,texture){bound=texture;},createTexture(){return {id:++allocations};},texImage2D(...args){uploads.push({texture:bound,data:args[8],bytes:args[8].byteLength});},generateMipmap(){},texParameteri(){},uniform1i(){},uniform3fv(){},uniform2fv(){},uniform1f(){},deleteTexture(texture){deleted.push(texture);}};
-const u={uMeadowDescriptor:1,uMeadowMaterialRevision:2,uMeadowChartX:3,uMeadowChartZ:4,uMeadowChartCamera:5,uMeadowCanopyPalette:6,uMeadowWetPalette:7,uMeadowRoughness:8,uMeadowWindTime:9,uMeadowWindStrength:10},field=new F.GroundField(gl);
+const u={uMeadowDescriptor:1,uMeadowMaterialRevision:2,uMeadowChartX:3,uMeadowChartZ:4,uMeadowChartCamera:5,uMeadowCanopyPalette:6,uMeadowWetPalette:7,uMeadowRoughness:8,uMeadowWindTime:9,uMeadowWindStrength:10},field=new F.GroundField(gl,fallback);
 try{
  field.request(a);workers[0].reply(descriptorA);assert.equal(field.pending,descriptorA);
  field.request(b);assert.equal(field.pending,null,'an accepted obsolete descriptor must be discarded before binding new geography');field.bind(u,b);assert.equal(uploads.length,0,'obsolete A must never upload');assert.equal(allocations,0);assert.equal(field.info.ready,false);
  workers[0].reply(descriptorA);assert.equal(field.pending,null,'late old-generation replies must remain discarded');assert.equal(field.info.stale,2);
  workers[1].reply(descriptorB);field.bind(u,b);assert.equal(uploads.length,1);assert.equal(uploads[0].data,descriptorB.data);assert.equal(uploads[0].bytes,16384);assert.equal(allocations,1);assert.equal(field.readyKey,descriptorB.key);assert.equal(field.info.residentBytes,21846);assert.equal(field.info.frameUploadedBytes,16384);
  const retained=field.texture;
+ assert.equal(bound,retained,'The active Meadow must bind its own descriptor');
  for(let i=0;i<12;i++){field.request({...b,time:b.time+i,forward:i%2?[0,1,0]:b.forward});field.bind(u,b);assert.equal(field.texture,retained);assert.equal(field.info.frameUploadedBytes,0);}
  assert.equal(workers.length,2);assert.equal(uploads.length,1);assert.equal(allocations,1,'settled light/rotation changes retain the descriptor texture');
  const inactive={...c,meadow:{...c.meadow,enabled:false}};
  field.request(c);workers[2].reply(descriptorC);assert.equal(field.pending,descriptorC);field.request(inactive);field.bind(u,inactive);assert.equal(field.pending,null,'disabling meadow discards an accepted pending descriptor');assert.equal(uploads.length,1,'inactive rendering cannot upload the former meadow descriptor');assert.equal(field.info.ready,false);assert.equal(field.key,'');assert.equal(field.readyKey,'');
  workers[2].reply(descriptorC);assert.equal(field.pending,null,'inactive generation rejects a queued worker reply');
+ assert.equal(bound,fallback,'Main must rebind a complete borrowed texture when the Meadow is inactive');
+ bound=null;field.bind(u,inactive);assert.equal(bound,fallback,'A cleared sampler must recover without allocation');
  const inactiveGeneration=field.generation;for(let i=0;i<12;i++){field.request(inactive);field.bind(u,inactive);}assert.equal(field.generation,inactiveGeneration,'settled inactive frames do not churn generations');assert.equal(workers.length,3);assert.equal(uploads.length,1);
  field.request(c);assert.equal(workers.length,4,'reactivation of the same geographic key must start a valid descriptor request');workers[3].reply(descriptorC);field.bind(u,c);assert.equal(uploads.length,2);assert.equal(uploads[1].data,descriptorC.data);assert.equal(field.texture,retained);assert.equal(allocations,1,'reactivation reuses the retained GPU texture');assert.equal(field.readyKey,descriptorC.key);
  field.request(a);const canceledByInactive=workers[4];field.request(inactive);assert(canceledByInactive.terminated,'inactive arrival cancels an in-flight descriptor worker');canceledByInactive.reply(descriptorA);field.bind(u,inactive);assert.equal(field.pending,null);assert.equal(uploads.length,2);

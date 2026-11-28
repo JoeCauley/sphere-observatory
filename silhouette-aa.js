@@ -15,6 +15,7 @@ float shadeBoundaryMargin(vec2 p,int i,float footprint){
  if(uShadeShape==3)margin=max(margin,abs(p.x)-uShadeTrim);
  if(uDiskNormals[i].w<.5)return margin;
  if(margin>footprint)return margin;
+ if(uDiskNormals[i].w>1.5)return max(margin,-structuralShadeMargin(p,int(uDiskRights[i].w)));
  if(footprint*18.>.14)return 0.; // Unresolved service holes need coverage samples throughout the plate.
  int id=int(uDiskRights[i].w),family=id%3;float u=p.x,v=p.y;
  if(family==0)margin=max(margin,min((u-.09-.055*sin(v*17.)-.017*sin(v*53.))/3.,v+.31));

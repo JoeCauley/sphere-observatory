@@ -16,8 +16,49 @@ const panel=document.createElement('section');panel.id='places';panel.innerHTML=
  <p id="placeVisitStatus" class="micro" role="status" aria-live="polite">Ready.</p></div>`;
 camera.prepend(panel);panel.querySelector('.travel-actions').prepend($('placeTargetSummary'));
 const packReceipt=SpherePackLibrary.releaseReceipt();if(packReceipt){const notice=document.createElement('p');notice.id='packReturnNotice';notice.className='micro';notice.textContent=(packReceipt.sharedWorld?(packReceipt.saved===true?'Your shared Meadow and water works are saved.':'The shared scene closed. Your place could not be saved.'):packReceipt.identity.id==='infinite-industry'?'Your water works are saved.':'Your Meadow is saved.')+' Your Observatory viewpoint is restored.';panel.append(notice);const details=document.createElement('details');details.innerHTML='<summary>Pack return details</summary>';const text=document.createElement('pre');text.id='packReleaseEvidence';text.textContent=JSON.stringify(packReceipt,null,2);details.append(text);panel.append(details);}
-const exact=document.createElement('details');exact.id='exactPosition';exact.innerHTML='<summary>Exact address, lens & speed</summary><label class="field">Speed control<select id="speedMode"><option value="auto">Automatic · eases near surfaces</option><option value="manual">Manual · use my chosen speed</option></select></label><p class="micro">Latitude/longitude in degrees; altitude in kilometres above the shell. Shade marks retain kilometres relative to their moving parent.</p>';
+const exact=document.createElement('details');exact.id='exactPosition';exact.innerHTML='<summary>Exact address, lens & speed</summary><label class="field">Speed control<select id="speedMode"><option value="auto">Automatic · eases near surfaces</option><option value="manual">Manual · use my chosen speed</option></select></label><p class="micro">Atlas latitude and longitude follow your current position. Altitude is in kilometres relative to the inner shell.</p>';
 exact.append(basics,...[...coordinates.children].filter(el=>el.tagName!=='SUMMARY'),rotation,lens,walk);camera.append(exact);
+const atlasPanel=document.createElement('details');
+atlasPanel.id='atlasPlaces';
+atlasPanel.innerHTML='<summary>Atlas places</summary><label class="field">Place name<input id="atlasPlaceName" maxlength="70" placeholder="e.g. Freight hall overlook"></label><button id="atlasMarkHere" type="button">Mark this place</button><div id="atlasPlaceList" class="bookmarks"></div><p id="atlasPlaceStatus" class="micro" role="status"></p>';
+exact.before(atlasPanel);
+atlasPanel.insertAdjacentHTML('beforeend','<button id="pilotTrace" class="secondary" type="button">Record flight or walk</button><p id="pilotTraceStatus" class="micro" role="status">Save camera poses and scene changes for replay.</p>');
+$('pilotTrace').onclick=async()=>{
+ const button=$('pilotTrace'),status=$('pilotTraceStatus');
+ button.disabled=true;
+ try{const {toggleTrace}=await import('./pilot-trace.mjs');toggleTrace(button,status);}
+ catch(error){status.textContent=error.message;}
+ finally{button.disabled=false;}
+};
+atlasPanel.insertAdjacentHTML('beforeend','<label class="check"><input id="freightSurvey" type="checkbox" aria-controls="freightReadout"> Freight survey instrument</label><p id="freightReadout" class="micro" hidden></p>');
+$('freightSurvey').onchange=e=>{
+  $('freightReadout').hidden=!e.target.checked;
+  $('freightReadout').textContent=e.target.checked?'Acquiring ground track.':'';
+};
+function showAtlasPlaces(){
+ const list=$('atlasPlaceList'),lib=window.SphereBiomeLibrary;list.replaceChildren();
+ for(const place of lib?.marks()??[]){
+  const row=document.createElement('div'),go=document.createElement('button');row.className='bookmark-row';
+  go.type='button';go.className='secondary';go.textContent=place.name;go.title=place.label;
+  go.onclick=async()=>{
+    const status=$('atlasPlaceStatus');go.disabled=true;status.textContent='Returning to '+place.name+'…';
+    try{await SphereStageFrame.returnToPlace(place);status.textContent='Returned to '+place.name+'.';}
+    catch(e){status.textContent=e.message;}
+    finally{go.disabled=false;}
+  };
+  row.append(go);list.append(row);
+ }
+}
+$('atlasMarkHere').onclick=async()=>{
+ const button=$('atlasMarkHere');button.disabled=true;
+ try{
+  const place=SphereStageFrame.capturePlace(),lib=SphereBiomeLibrary;
+  const mark=await lib.saveMark(place,$('atlasPlaceName').value);$('atlasPlaceName').value='';
+  $('atlasPlaceStatus').textContent=mark.name+(lib.persistence==='file'?' saved to this world’s Atlas.':' saved in this browser.');
+ }catch(e){$('atlasPlaceStatus').textContent=e.message;}finally{button.disabled=false;}
+};
+for(const event of ['sphere-atlas-marks','sphere-biomes-changed'])window.addEventListener(event,showAtlasPlaces);
+atlasPanel.addEventListener('toggle',()=>{if(atlasPanel.open)showAtlasPlaces();});
 for(const category of P.categories){const b=document.createElement('button');b.type='button';b.dataset.category=category.id;b.textContent=category.name;b.onclick=()=>{$('placeCategory').value=category.id;populate();};$('placeCategories').append(b);}
 function populate(keep=false){const category=$('placeCategory').value,previous=$('placeDestination').value,options=P.catalogue(A.getState()).filter(p=>p.category===category);$('placeDestination').replaceChildren(...options.map(p=>new Option(p.name,p.id)));if(keep&&options.some(p=>p.id===previous))$('placeDestination').value=previous;for(const b of $('placeCategories').children)b.setAttribute('aria-pressed',String(b.dataset.category===category));describe();}
 function describe(){const s=A.getState(),id=$('placeDestination').value,entry=P.catalogue(s).find(p=>p.id===id),previous=$('placeAltitude').value;
@@ -33,7 +74,7 @@ async function visit(){const id=$('placeDestination').value,arrival=$('placeAlti
 // A coordinate or lens change made in Explore applies to the visible Main view.
 for(const type of ['input','change','click']){
  exact.addEventListener(type,e=>{
-   if(!e.target.closest('input,select,button') || !window.SphereStageFrame?.current)return;
+   if(!e.target.closest('input,select,button') || e.target.closest('#speedMode,#speed,#cameraLat,#cameraLon,#cameraAltitude,#moveCamera') || !window.SphereStageFrame?.current)return;
    if(!SphereStageFrame.showMain()){e.preventDefault();e.stopImmediatePropagation();}
  },true);
 }
@@ -45,7 +86,7 @@ window.addEventListener('sphere-visible-biome',e=>{
  else if($('placeVisitStatus').textContent.startsWith('Exploring '))$('placeVisitStatus').textContent='Ready.';
  availability();
 });
-$('speedMode').onchange=()=>{const s=A.getState();s.autoSpeed=$('speedMode').value==='auto';SphereTravel.reset();A.setState(s);};
+$('speedMode').onchange=()=>{A.chooseFlightSpeed($('speedMode').value==='auto');};
 // The mark is a world address. Its screen projection is disposable.
 let pointer=null,hover=null,press=null,picked=null,markedWorld=null;
 const aim=document.createElement('div');aim.className='pointer-aim';aim.hidden=true;$('viewport').append(aim);

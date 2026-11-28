@@ -3,14 +3,38 @@ import {addressOf,classes,generateStation} from '../packs/border-transport/0.10.
 import {districtFor} from '../packs/border-transport/0.10.0/survey.mjs';
 import {districtPoint,districtLocation,outsideDistrict,hallHalfM,linkHalfM,nearestSite,rightSign} from '../packs/border-transport/0.10.0/district.mjs';
 import {borderEnvironment} from '../packs/border-transport/0.10.0/environment.mjs';
-import {roofSlabM} from '../packs/border-transport/0.10.0/district.mjs';
+import {roofSlabM,freightSlabDepthM,meadowStationVisibility} from '../packs/border-transport/0.10.0/district.mjs';
 import {boardingPose,move,constrainExterior,walker} from '../packs/border-transport/0.10.0/motion.mjs';
 import {outsideStationScene,serviceGalleryDepthM} from '../packs/border-transport/0.10.0/district.mjs';
 import {bayStart,portals,quayZ} from '../packs/border-transport/0.10.0/freight-bay.mjs';
 import {plantPatch,growWallPlants} from '../packs/border-transport/0.10.0/wall-plants.mjs';
 import {stationMesh} from '../packs/border-transport/0.10.0/view.mjs';
+import {plantSolids,plantBoxes} from '../packs/border-transport/0.10.0/maintenance.mjs';
+import {freightCourse,freightReadout} from '../freight-course.mjs';
 const world='sphere-0000000000000017',radius=149597870700;
 const layouts=new Set();let walks=0,projections=0,longitudinal=0;
+for(const [near,far,back] of [['r10c0','r10c1','south'],['r10c0','r11c0','west']]){
+  const district=districtFor(world,near,far,radius);
+  const sample=(x,z,vx,vz,dt=.2)=>freightCourse(district,{eastM:x,northM:z},{eastM:x-vx*dt,northM:z-vz*dt},dt);
+  for(const side of [-1,1]){
+    const front=sample(167000,side*4800,1000,0);
+    assert.equal(front.next.bay,1);assert.equal(front.distanceM,17000);assert.equal(front.seconds,17);
+    const half=district.sites.at(-1).widthM/2;
+    const oblique=sample(183900,side*(half+400),10,-side*20);
+    assert.equal(oblique.next.bay,1);assert.equal(oblique.seconds,20);
+    assert(Math.abs(oblique.distanceM-Math.hypot(10,20)*20)<.001);
+    assert.equal(sample(200000,side*(half+100),0,-side*20).seconds,5);
+    assert.equal(sample(167000,side*(half+100),1000,0).next,null);
+  }
+  const outward=sample(224000,12000,100,0),inward=sample(224000,12000,-100,0);
+  assert.equal(outward.next,null);assert(freightReadout(district,outward).endsWith(back+'.'));
+  assert.equal(inward.next.bay,1);assert.equal(inward.distanceM,8000);assert.equal(inward.seconds,80);
+  const towardCenter=sample(200000,12000,-1000,0);
+  assert.equal(towardCenter.next.bay,0);assert(freightReadout(district,towardCenter).endsWith(back+'.'));
+  assert.equal(sample(-224000,-12000,100,0).next.bay,-1);
+  assert.equal(sample(167000,4800,0,0).next,null);
+  assert.equal(sample(167000,4800,1000,0,10).next,null);
+}
 for(const edge of [['r10c0','r11c0'],['r12c0','r12c1'],['r12c0','r12c'+(globalThis.SphereAtlas.columns(12)-1)]]){
   for(const r of [radius,2.4e7]){
     const d=districtFor(world,...edge,r);
@@ -53,9 +77,23 @@ for(const edge of [['r10c0','r11c0'],['r12c0','r12c1'],['r12c0','r12c'+(globalTh
       assert.equal(zone(bayStart+1,0,1.7).zone,'freight well');
       assert.equal(zone(bayStart,0,1.7).zone,'interior');
       assert.equal(zone(hallHalfM+1,linkHalfM+1,1.7).zone,'biome');
-      if(site===d.sites.at(-1))assert.equal(zone(hallHalfM+1,0,1.7).zone,'biome');
+      if(site===d.sites.at(-1))assert.equal(zone(hallHalfM+1,0,1.7).zone,'interior');
       const s=generateStation(site.address);layouts.add(s.layout);
       assert.equal(s.widthM,site.widthM);assert.equal(s.address.radiusM,r);
+      const heavy=s.routes[2],cutX=site.x+heavy.nearDoor[0],cutFloor=heavy.points[2][1];
+      const openCut={eastM:cutX,northM:s.laneHalfM+500,altitudeM:25,mode:'flight',yaw:0,pitch:0};
+      const descend=p=>move(s,d,p,walker,0,0,-230,0,0).pose;
+      const bottom=descend(openCut);
+      assert.equal(bottom.altitudeM,cutFloor+walker.eye,'The open cut admits a descent from above');
+      assert.equal(descend({...openCut,eastM:cutX+heavy.deckWidthM/2+1}).altitudeM,walker.eye,'The shoulder is solid');
+      const track={...openCut,northM:s.laneHalfM-80};
+      assert.equal(descend(track).altitudeM,walker.eye,'The freight slab covers the middle of the cut');
+      const subway=move(s,d,{...bottom,mode:'walk'},walker,0,-580,0,0,0);
+      assert.equal(subway.blocked,'');assert.equal(subway.pose.altitudeM,bottom.altitudeM);
+      const up=move(s,d,{...subway.pose,mode:'flight'},walker,0,0,230,0,0);
+      assert.equal(up.pose.altitudeM,-freightSlabDepthM-walker.body[1]+walker.eye,'The slab underside stops ascent');
+      assert.equal(move(s,d,{...openCut,altitudeM:-8},walker,0,-580,0,0,0).blocked,'Clearance limit');
+      assert.equal(move(s,d,bottom,walker,heavy.deckWidthM,0,0,0,0).blocked,'Clearance limit','The retaining wall blocks sideways flight');
       for(const c of classes)for(const far of [false,true]){
         const sign=far?-1:1,start=boardingPose(s,c,far);
         let p=start;const target=-start.northM;
@@ -128,6 +166,17 @@ for(const edge of [['r10c0','r11c0'],['r12c0','r12c1'],['r12c0','r12c'+(globalTh
       const roof=s.roofM+45+c.eye;
       const top={...p,northM:0,altitudeM:roof+150,mode:'flight'};
       assert.equal(move(s,d,top,c,0,0,-300,0,0).pose.altitudeM,roof);
+      for(const side of [-1,1]){
+        const corner={...top,eastM:site.x+hallHalfM-1,northM:side*(s.widthM/2-1),altitudeM:roof,mode:'walk'};
+        for(const [dx,dz] of [[3,0],[0,side*3],[3,side*3]]){
+          const outward=move(s,d,corner,c,dx,dz,0,0,0);
+          assert.equal(outward.blocked,'');assert.equal(outward.pose.mode,'flight');
+          assert.equal(outward.pose.altitudeM,roof,'Leaving the physical corner releases flight at the supported eye height');
+          const inward=move(s,d,outward.pose,c,-dx,-dz,0,0,0);
+          assert.equal(inward.blocked,'');assert.equal(inward.pose.mode,'flight');
+          assert.equal(inward.pose.altitudeM,roof,'The roof supports returning flight until the pilot elects to land');
+        }
+      }
       const quay={...top,eastM:site.x+7010,northM:quayZ-40,altitudeM:4000};
       const landing=move(s,d,quay,c,0,0,-5000,0,0);
       assert.equal(landing.blocked,'');assert.equal(landing.pose.altitudeM,c.eye);
@@ -137,6 +186,9 @@ for(const edge of [['r10c0','r11c0'],['r12c0','r12c1'],['r12c0','r12c'+(globalTh
       assert.equal(move(s,d,openRoof,c,24,0,0,0,0).pose.mode,'flight');
       const besidePier={...walk.pose,eastM:site.x+portals[1]-170,northM:-1150};
       assert.equal(move(s,d,besidePier,c,400,0,0,0,0).blocked,'Clearance limit');
+      // Fly just outside the column and rise into the projecting orange collar.
+      const belowCollar={...quay,eastM:site.x+portals[1]+109,northM:-1150,altitudeM:315};
+      assert.equal(move(s,d,belowCollar,c,0,0,11,0,0).blocked,'Clearance limit');
       const girder={...quay,eastM:site.x+portals[1]-84,northM:0};
       const hit=move(s,d,girder,c,0,0,-1800,0,0);
       assert.equal(hit.blocked,'Clearance limit');assert(hit.pose.altitudeM>s.roofM+1000);
@@ -144,7 +196,7 @@ for(const edge of [['r10c0','r11c0'],['r12c0','r12c1'],['r12c0','r12c'+(globalTh
       assert(move(s,d,inside,c,0,0,600,0,0).pose.altitudeM<s.roofM);
     }
     assert(outsideDistrict(d,90000,linkHalfM-1)<0);assert(outsideDistrict(d,90000,linkHalfM+2)>0);
-    assert(outsideDistrict(d,d.sites.at(-1).x+hallHalfM+2,0)>0);
+    assert(outsideDistrict(d,d.sites.at(-1).x+hallHalfM+2,0)<0);
   }
 }
 const short=districtFor(world,'r12c0','r12c1',1e6);
@@ -154,7 +206,34 @@ const widelySpaced={sites:[{x:-2300000},{x:0},{x:1260000},{x:4920000}]};
 for(const [x,winner] of [[-10000000,0],[-1000000,1],[600000,1],[630000,2],[3000000,2],[3700000,3]])
   assert.equal(nearestSite(widelySpaced,x),widelySpaced.sites[winner]);
 const local=districtFor(world,'r12c0','r12c1',radius);
+// A kilometre approaching a connector, a hall end, or a roof crosses the same
+// optical interval. None of the former flat range/height gates drop a wall.
+const middle=local.sites[1],end=local.sites.at(-1),roof=middle.roofM+roofSlabM;
+for(const range of [0,18100,23500,30000-roof,64000,112000,160000,185000,210000]){
+  const frontage=meadowStationVisibility(local,0,middle.widthM/2+range,1.7);
+  const above=meadowStationVisibility(local,0,0,roof+range);
+  const beyond=meadowStationVisibility(local,end.x+hallHalfM+range,0,1.7);
+  assert.equal(beyond.range,0);assert.equal(beyond.opacity,1);
+  for(const sight of [frontage,above]){
+    assert.equal(sight.range,range);
+    assert.equal(sight.opacity,range<=64000?1:range===112000?.5:0);
+  }
+}
+const link=meadowStationVisibility(local,(middle.x+end.x)/2,20000,1.7);
+assert.equal(link.range,20000-linkHalfM);
+assert.equal(link.opacity,1);
 const center=generateStation(local.sites[1].address);
+// Coincident outward faces on the valve bracket and tray ends used to alternate
+// between bronze and black as the camera moved. Butt joints share an edge only.
+for(let i=0;i<plantBoxes.length;i++)for(let j=i+1;j<plantBoxes.length;j++){
+  const a=plantSolids[i],b=plantSolids[j];
+  const overlap=[0,1,2].map(k=>Math.min(a[k*2+1],b[k*2+1])-Math.max(a[k*2],b[k*2]));
+  for(let axis=0;axis<3;axis++){
+    if(overlap[(axis+1)%3]<1e-6 || overlap[(axis+2)%3]<1e-6)continue;
+    for(const face of [2*axis,2*axis+1])
+      assert(Math.abs(a[face]-b[face])>1e-6,`Maintenance boxes ${i} and ${j} overlap on face ${face}`);
+  }
+}
 const distant=Array.from({length:2048},(_,i)=>({x:local.sites[2].x+(i+1)*1000000}));
 assert.equal(stationMesh(center,{...local,sites:[...local.sites,...distant]},true).length,
   stationMesh(center,local,true).length,'Distant stations and reaches cost no render geometry');

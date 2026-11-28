@@ -17,10 +17,13 @@ console.log('PASS station optimization preserves all other shader bytes and samp
 
 const surveyed={fragment:c.SphereShaders.fragment,geometryFragment:c.SphereShaders.geometryFragment,legacy:c.SphereLegacyShaders.fragment};
 vm.runInContext(fs.readFileSync('violet-landscape.js','utf8'),c,{filename:'violet-landscape.js'});
+const violet=c.SphereShaderSections.inventory.find(section=>section.name==='violet-mineral-geography');
 for(const name of ['fragment','geometryFragment']){
- const shader=c.SphereShaders[name],start=shader.indexOf('// Intersecting mineral facets'),end=shader.indexOf('vec3 worldDetail(',start);
- assert(start>=0 && end>start);
- assert.equal((shader.slice(0,start)+shader.slice(end)).replace(' if(id==9)col=violetRock(col,delta,footprint);\n',''),surveyed[name]);
+ const shader=c.SphereShaders[name],slot='vec3 worldDetail(',start=surveyed[name].indexOf(slot);
+ assert(start>=0);
+ const end=shader.indexOf(slot,start);
+ assert.equal(end-start,violet.characters);
+ assert.equal((shader.slice(0,start)+shader.slice(end)).replace(' if(id==9)col=violetRock(col,delta,footprint,distanceKm);\n',''),surveyed[name]);
 }
 assert.equal(c.SphereLegacyShaders.fragment,surveyed.legacy);
 console.log('PASS Violet geography is shared by both current ground passes and the historic shader remains exact');

@@ -2,11 +2,31 @@ import assert from 'node:assert/strict';
 import atlas from '../sphere-atlas.js';
 import {chartFor,course,toBorder,toMeadow,enterNorthM} from '../packs/kit/surface-route.js';
 import {initialState} from '../packs/infinite-meadow/1.3.0/model.js';
+import {TERRAIN_GRID,terrainGridGeometry} from '../packs/infinite-meadow/1.3.0/terrain-grid.js';
 import {startLevelCruise,stepLevelCruise} from '../packs/infinite-meadow/1.3.0/level-cruise.js';
-import {makeGallery} from '../packs/border-outfall/1.0.0/geometry.js';
-import {solidAt,moveBody,supportAt,resolvePose,wallHeight} from '../packs/border-outfall/1.0.0/border.js';
-import {entrance,eye,nearValve} from '../packs/border-outfall/1.0.0/model.js';
+import {makeGallery} from '../packs/border-transport/0.10.0/outfall/geometry.js';
+import {solidAt,moveBody,supportAt,resolvePose,wallHeight} from '../packs/border-transport/0.10.0/outfall/border.js';
+import {entrance,eye,nearValve} from '../packs/border-transport/0.10.0/outfall/model.js';
 
+// The Meadow approach must draw the same terrain triangles on both sides of a detail ring
+// while its pack also owns the Outfall geometry.
+{
+  const {half,inner,levels,basePitch}=TERRAIN_GRID;
+  const {positions,indices}=terrainGridGeometry(),corners=[[0,0],[0,1],[1,1],[0,0],[1,1],[1,0]];
+  let i=0;
+  for(let level=0;level<levels;level++)for(let z=-half;z<half;z++)for(let x=-half;x<half;x++){
+    if(level && x>=-inner && x<inner && z>=-inner && z<inner)continue;
+    const pitch=basePitch*2**level;
+    for(const [dx,dz] of corners){
+      const v=indices[i++]*3;
+      assert.equal(positions[v],(x+dx)*pitch);
+      assert.equal(positions[v+1],level);
+      assert.equal(positions[v+2],(z+dz)*pitch);
+    }
+  }
+  assert.equal(i,indices.length);
+  assert.ok(positions.byteLength+indices.byteLength<indices.length*36/2);
+}
 const radius=149597870.7;
 const close=(a,b,tol=.0001)=>assert(Math.abs(a-b)<tol,`${a} vs ${b}`);
 for(const homeId of ['r10c0','r12c35','r9c52']){

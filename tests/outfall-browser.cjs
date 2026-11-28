@@ -22,26 +22,45 @@ async function main(){
     await page.waitForFunction(()=>window.SphereBiomeLibrary?.world&&document.querySelector('#biomeLibraryList article'));
   }
   async function quit(){if(context){await context.close();context=null;}if(host){await host.close();host=null;}}
-  const row=()=>page.locator('#biomeLibraryList article').filter({has:page.getByRole('heading',{name:/^The Outfall /})});
+  const row=()=>page.locator('#biomeLibraryList article').filter({has:page.getByRole('heading',{name:/^Border Biome /})});
   async function settled(){
-    await page.waitForFunction(()=>SphereStageFrame.lastArrival?.to==='border-outfall'&&SphereStageFrame.lastArrival.status==='arrived'&&!SphereStageFrame.flying
+    await page.waitForFunction(()=>SphereStageFrame.lastArrival?.to==='border-transport/outfall'&&SphereStageFrame.lastArrival.status==='arrived'&&!SphereStageFrame.flying
       &&document.querySelector('#stageFrame iframe')?.contentWindow?.SphereBiome?.inspect().scripted===false).catch(async error=>{
       const detail=await page.evaluate(()=>({arrival:SphereStageFrame.lastArrival,scene:SphereStageFrame.current,
         status:document.getElementById('biomeLibraryStatus')?.textContent,travel:SphereJourney.travel.status,pack:document.querySelector('#stageFrame iframe')?.contentWindow?.SphereBiome?.inspect()}));
       throw Error(error.message+' '+JSON.stringify(detail));
     });
   }
-  async function visit(){await row().getByRole('button',{name:'Visit',exact:true}).click();await settled();}
+  async function visit(){await row().getByRole('button',{name:'Visit The Outfall',exact:true}).click();await settled();}
   async function leave(){await page.getByRole('button',{name:'Return to the Sphere',exact:true}).click();await page.waitForFunction(()=>!SphereStageFrame.current&&!SphereStageFrame.flying);}
   try{
-    await launch();await row().getByRole('button',{name:'Install',exact:true}).click();
-    await page.waitForFunction(()=>!!SphereBiomeLibrary.entry('border-outfall'));
+    await launch();await page.evaluate(()=>SphereBiomeLibrary.install('infinite-meadow'));await row().getByRole('button',{name:'Install',exact:true}).click();
+    await page.waitForFunction(()=>!!SphereBiomeLibrary.entry('border-transport/outfall'));
     const assignments=await page.evaluate(()=>SphereBiomeLibrary.installed());
-    assert.deepEqual(assignments.map(i=>i.id),['infinite-meadow','border-outfall']);
-    const edge=assignments[1].edge;
+    assert.deepEqual(assignments.map(i=>i.id),['infinite-meadow','border-transport']);
+    const edge=assignments[1].outfall.edge;
     assert.equal(edge.near,'r12c35');assert.equal(edge.far,'r13c34');
     assert(Math.abs(edge.longitude*180/Math.PI-60)<1e-8);
-    note('One install placed Meadow and its adjoining Border edge',{anchor:assignments[0].plotId,edge});
+    note('One Border owns the freight district and the adjoining Meadow Outfall',{anchor:assignments[0].plotId,edge});
+    const samples=await page.evaluate(async()=>{
+      const lib=SphereBiomeLibrary,site=lib.sceneInfo('border-transport/outfall');
+      const {createRenderer}=await import(new URL('render.js',new URL(site.entry,location.href)));
+      const c=document.createElement('canvas');c.width=800;c.height=500;const renderer=createRenderer(c),gl=c.getContext('webgl2');
+      const read=y=>{const rgba=new Uint8Array(4);gl.readPixels(400,y,1,1,gl.RGBA,gl.UNSIGNED_BYTE,rgba);return [...rgba];};
+      try{return [2500,12000,30000,60000].map(distance=>{
+        const pose={eastM:1500,northM:-distance,altitudeM:100,yaw:0,pitch:Math.atan2(600,distance),mode:'flight'};
+        const samples=[[.03,.12,.25],[.98,.87,.69]].map(color=>{
+          gl.clearColor(...color,1);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
+          renderer.draw({pose,levels:[1,1,1]},0,1,{overMeadow:true,resize:false});
+          return {wall:read(250),sky:read(490)};
+        });
+        return {distance,samples,error:gl.getError()};
+      });}finally{renderer.dispose();}
+    });
+    for(const {distance,samples:[a,b],error} of samples){
+      assert.deepEqual(a.wall,b.wall,'Background leaked through concrete at '+distance+' m');
+      assert(Math.abs(a.sky[0]-b.sky[0])>220);assert.equal(error,0);
+    }
     await visit();const frame=page.frameLocator('#stageFrame iframe');
     await frame.locator('#world').focus();await page.keyboard.press('KeyF');
     await page.keyboard.down('ShiftLeft');await page.keyboard.down('KeyW');

@@ -16,7 +16,7 @@ async function main(){
     await page.waitForFunction(()=>window.SphereLoading?.ready && window.SphereBiomeLibrary?.world,null,{polling:200});
     await page.evaluate(async()=>{
       const s=SphereApp.getState();s.seed=713;s.playing=false;SphereApp.setState(s);
-      await SphereBiomeLibrary.selectWorld();await SphereBiomeLibrary.install('border-outfall');
+      await SphereBiomeLibrary.selectWorld();await SphereBiomeLibrary.install('infinite-meadow');await SphereBiomeLibrary.install('border-transport');
     });
     await page.waitForFunction(()=>SphereBiomeSurface.inspect().status==='ready' && SphereLoading.ready,null,{polling:200});
     const result=await page.evaluate(async()=>{

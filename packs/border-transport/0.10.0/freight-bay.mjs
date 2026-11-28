@@ -29,8 +29,9 @@ export function freightBay(roofM) {
         member(x+dx-29,x+dx+29,92,crown+30,z-56,z+56,blueSteel);
         member(x+dx-34,x+dx+34,crown-390,crown-324,z-63,z+63,enamel);
       }
+      // The collar wraps both columns. Its exposed faces sit proud on all four sides.
       for (let y=320; y<crown-235; y+=370)
-        member(x-107,x+107,y,y+37,z-62,z+62,oxide);
+        member(x-110,x+110,y,y+37,z-62,z+62,oxide);
       // The stepped haunch transfers the bridge load into the two columns.
       const lo = Math.min(sign*680,z), hi = Math.max(sign*680,z);
       member(x-85,x+85,crown-(sign>0?75:435),crown-(sign>0?10:370),lo,hi,oxide,-sign*360);

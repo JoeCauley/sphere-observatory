@@ -1,0 +1,39 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Frontage author fixture</title>
+<style>html,body,canvas{width:100%;height:100%;margin:0;display:block}</style>
+<canvas tabindex="0" aria-label="Fixture ground"></canvas><script type="module">
+import {createExterior} from './frontage-marker.mjs';
+import {packStationExterior} from '/packs/kit/station-exterior.mjs';
+const host=parent,id=frameElement.dataset.locationId,item=host.SphereBiomeLibrary.entry(id);
+const pose={...frameElement.surfaceEntry.pose},canvas=document.querySelector('canvas'),gl=canvas.getContext('webgl2');
+const boundary=packStationExterior(host,canvas,item),held=new Set();
+function link(v,f){
+  const p=gl.createProgram();
+  for(const [type,src] of [[gl.VERTEX_SHADER,v],[gl.FRAGMENT_SHADER,f]]){
+    const sh=gl.createShader(type);gl.shaderSource(sh,src);gl.compileShader(sh);gl.attachShader(p,sh);gl.deleteShader(sh);
+  }
+  gl.linkProgram(p);if(!gl.getProgramParameter(p,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(p));return p;
+}
+const exterior=createExterior({gl,link,instance:item});let frames=0,previous=0,raf=0,dead=false,done;
+const ready=new Promise(resolve=>{done=resolve;});
+function draw(now){
+  if(dead)return;
+  const dt=Math.min(.1,(now-previous)/1000);previous=now;
+  const step=(Number(held.has('KeyW'))-Number(held.has('KeyS')))*dt*2.8;
+  const p=boundary.constrain(pose,{...pose,eastM:pose.eastM+Math.sin(pose.yaw)*step,northM:pose.northM-Math.cos(pose.yaw)*step});
+  Object.assign(pose,p);
+  const field=boundary.sync(pose),w=canvas.clientWidth,h=canvas.clientHeight;
+  if(field&&w>0&&h>0){
+    if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;}
+    const focal=w/h/Math.tan((frameElement.surfaceEntry.horizontalFov||75)*Math.PI/360);
+    gl.viewport(0,0,w,h);gl.depthMask(true);gl.clear(gl.DEPTH_BUFFER_BIT);
+    exterior.draw({pose,width:w,height:h,focal,field});boundary.draw(pose,w,h,focal);frames++;done();
+  }
+  raf=requestAnimationFrame(draw);
+}
+function dispose(){if(dead)return;dead=true;cancelAnimationFrame(raf);boundary.dispose();exterior.dispose();}
+addEventListener('keydown',e=>held.add(e.code));addEventListener('keyup',e=>held.delete(e.code));
+addEventListener('pagehide',dispose,{once:true});
+window.SphereBiome={id,version:'1.0.0',contract:'sphere-biome/1',pose:()=>({...pose}),ready,arrived:Promise.resolve('ground'),
+  begin(){},save(){},dispose,inspect:()=>({frames,scripted:false,held:false}),air:()=>({haze:[],blind:null})};
+raf=requestAnimationFrame(draw);
+</script></html>

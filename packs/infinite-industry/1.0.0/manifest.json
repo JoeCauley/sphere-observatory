@@ -208,8 +208,8 @@
     },
     {
       "path": "../../runtime/v1/navigation.js",
-      "bytes": 2931,
-      "sha256": "5d8287ef62dfe5f3da63b33b6fbc5e930cc465dc88a38563b7b907b076122007"
+      "bytes": 3062,
+      "sha256": "8c0979720bae2506027bc41591791dee4246f360a86aa5bf2da8a5bc2df55fe7"
     },
     {
       "path": "../../runtime/v1/preparation.js",

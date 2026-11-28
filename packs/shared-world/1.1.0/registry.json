@@ -125,6 +125,11 @@
       "sha256": "31d782b7919049ee1bd6cf3f9cb8f558b4d7a901a23747bcc8a684e1d57a1c35"
     },
     {
+      "path": "../../catalogue.v1.json",
+      "bytes": 988,
+      "sha256": "c8b258c223fc57de312d8dbcbda66a506cdc7e8d10b992b9f3c110d3fa04026f"
+    },
+    {
       "path": "../../infinite-industry/1.0.0/app.js",
       "bytes": 19037,
       "sha256": "16e61c9eef7ce8916b5ab524001e76d7fb6b4717a12d335d5e4c2c3204ba69fc"
@@ -157,7 +162,7 @@
     {
       "path": "../../infinite-industry/1.0.0/manifest.json",
       "bytes": 6749,
-      "sha256": "5b4d13812d225d9f85b5b4fb1e738c13801fd7733d794838558e175c8b1d5e53"
+      "sha256": "574e040b93ed5b8ac166396ee18d7d3d4c0b35649feee0c94498b18817983d93"
     },
     {
       "path": "../../infinite-industry/1.0.0/model.js",
@@ -311,8 +316,8 @@
     },
     {
       "path": "../../README.md",
-      "bytes": 1920,
-      "sha256": "aee91fe1df8843d7fe7c9d65cc3bb3646e06819bed95a01efdb23ca3d664d6ed"
+      "bytes": 796,
+      "sha256": "62d3dc64cb422ffcb10b003cc969b9db38ca7f31a787773b1b7dd60d548240c6"
     },
     {
       "path": "../../runtime/v1/contract.js",
@@ -326,8 +331,8 @@
     },
     {
       "path": "../../runtime/v1/navigation.js",
-      "bytes": 2931,
-      "sha256": "5d8287ef62dfe5f3da63b33b6fbc5e930cc465dc88a38563b7b907b076122007"
+      "bytes": 3062,
+      "sha256": "8c0979720bae2506027bc41591791dee4246f360a86aa5bf2da8a5bc2df55fe7"
     },
     {
       "path": "../../runtime/v1/package.json",

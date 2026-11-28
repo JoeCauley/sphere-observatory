@@ -1,9 +1,10 @@
-import {along,ownerAt,passageAt,passagePoint,tunnelLength} from './surface-passages.js';
-import {tunnelStart,moveBody,solidAt,supportAt} from './packs/border-outfall/1.0.0/border.js';
-import {makeGallery} from './packs/border-outfall/1.0.0/geometry.js';
-import {eye} from './packs/border-outfall/1.0.0/model.js';
+import {along,continuousHabitat,ownerAt,passageAt,passagePoint,tunnelLength} from './surface-passages.js';
+import {tunnelStart,moveBody,solidAt,supportAt} from './packs/border-transport/0.10.0/outfall/border.js';
+import {makeGallery} from './packs/border-transport/0.10.0/outfall/geometry.js';
+import {eye} from './packs/border-transport/0.10.0/outfall/model.js';
 import {canStand} from './portal-landing.js';
-import {hallHalfM} from './packs/border-transport/0.10.0/district.mjs';
+import {footprint} from './geographic-flight.js';
+import {districtLocation,hallHalfM,linkHalfM} from './packs/border-transport/0.10.0/district.mjs';
 
 const turn=2*Math.PI, dot=(a,b)=>a.reduce((sum,x,i)=>sum+x*b[i],0);
 const cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
@@ -35,6 +36,15 @@ function cutsFor(circle,state,items,{world,atlas}) {
   for(let i=0;i<8;i++)longitude(i*turn/8-Math.PI);
   const ellipses=[];
   for(const item of items){
+    if(item.occurrence){
+      const o=item.occurrence,q=world.direction(o.latitude,o.longitude,state),n=dot(q,circle.normal),r=Math.sin(o.angularRadius);
+      if(Math.abs(n)<r){
+        const center=Math.atan2(dot(q,circle.forward),dot(q,circle.origin));
+        const half=Math.asin(Math.sqrt((r*r-n*n)/(1-n*n)));
+        cuts.push(wrap(center-half),wrap(center),wrap(center+half));
+      }
+      continue;
+    }
     const plot=atlas.byId(item.plotId||item.edge?.near);if(!plot)continue;
     const halfLat=plot.halfHeight*(item.footprint?.north??1),halfLon=Math.PI/plot.columns*(item.footprint?.east??1);
     latitude(plot.latitude-halfLat);latitude(plot.latitude+halfLat);
@@ -91,15 +101,52 @@ function intact(circle,state,{math,collection}) {
   }
   return true;
 }
+// Certify that a great circle clears the actual halls and their connecting trunk.
+// A district-wide cap also contains walkable ground beside the service entrances.
+export function clearsDistrict(circle,d,state,world) {
+  const radius=d.origin.radiusM;
+  // A parallel chart scales longitude at the origin latitude. The azimuthal
+  // chart used on meridians never stretches ground distance beyond chart distance.
+  const eastScale=d.origin.axis==='parallel'?1/Math.cos(d.origin.latitude):1;
+  function clearsBox(x,z,halfX,halfZ){
+    const at=districtLocation(d,x,z);
+    const signed=dot(world.direction(at.latitude,at.longitude,state),circle.normal);
+    const distance=radius*Math.asin(Math.min(1,Math.abs(signed)));
+    const reach=Math.hypot(halfX*eastScale,halfZ);
+    if(distance>reach+.25)return true;
+    // Keep a conservative quarter-metre margin. An unresolved grazing cell
+    // is rejected, as is a circle through the center of an occupied cell.
+    if(distance<=.25||reach<=1)return false;
+    if(halfX*eastScale>halfZ){
+      const half=halfX/2;
+      return clearsBox(x-half,z,half,halfZ)&&clearsBox(x+half,z,half,halfZ);
+    }
+    const half=halfZ/2;
+    return clearsBox(x,z-half,halfX,half)&&clearsBox(x,z+half,halfX,half);
+  }
+  for(const [i,site] of d.sites.entries()){
+    if(!clearsBox(site.x,0,hallHalfM,site.widthM/2))return false;
+    if(i){
+      const left=d.sites[i-1].x+hallHalfM,right=site.x-hallHalfM;
+      if(right>left&&!clearsBox((left+right)/2,0,(right-left)/2,linkHalfM))return false;
+    }
+  }
+  return true;
+}
+// Measure both sides of a continuous habitat boundary. At a one-AU radius
+// the final rounding of a camera coordinate can place the exact seam on either side.
+export function groundFootfalls(legs,index) {
+  const leg=legs[index],next=legs[index+1],half=leg.km/2;
+  const shared=next?.kind==='ground';
+  const margin=shared ? Math.min(.001,leg.km/4,next.km/4) : (next ? .001 : 0);
+  const stops=[{km:half,owner:leg.owner},{km:leg.km-margin,owner:leg.owner}];
+  if(shared)stops.push({km:leg.km+margin,owner:next.owner});
+  return stops;
+}
 export function planWalk(circle,state,items,env) {
   if(!intact(circle,state,env))return null;
-  // A signed straight circuit cannot silently replace a fixed Builder hall with a 1,000 km Outfall passage.
-  // Exclude the small spherical cap around a surveyed district until this planner can certify its detours.
-  for(const {transport:d} of items){
-    if(!d)continue;
-    const q=env.world.direction(d.origin.latitude,d.origin.longitude,state);
-    const bound=Math.max(...d.sites.map(s=>Math.abs(s.x)+hallHalfM+s.widthM/2))/d.origin.radiusM;
-    if(Math.abs(dot(q,circle.normal))<=Math.sin(Math.min(Math.PI/2,bound)))return null;
+  for(const {transport} of items){
+    if(transport&&!clearsDistrict(circle,transport,state,env.world))return null;
   }
   const at=a=>along(circle.origin,circle.forward,a);
   const ground=a=>ownerAt(at(a).q,state,items,env.atlas,env.world);
@@ -128,7 +175,7 @@ export function planWalk(circle,state,items,env) {
   for(let i=0;i<regions.length;i++){
     const region=regions[i],previous=regions[(i+regions.length-1)%regions.length];
     let a=region.start;
-    if(previous.owner.id!==region.owner.id){
+    if(previous.owner.id!==region.owner.id&&!continuousHabitat(previous.owner,region.owner)){
       if(region.end-a<=angle)return null;
       const p=at(a),gate=passageAt(p.q,p.forward,state.radius);
       gate.near={...gate.near,...previous.owner};gate.far={...gate.far,...region.owner};
@@ -140,13 +187,23 @@ export function planWalk(circle,state,items,env) {
   }
   // A certified great circle cannot turn to avoid a building. Demand clear
   // native support at each accelerated footfall and at every fixed portal.
+  const library=items.some(i=>i.transport)?{matchesWorld:()=>true,locations:()=>items}:null;
+  function wallAtEye(q){
+    if(!library)return false;
+    const eye={...state,position:q.map(v=>v*(state.radius-.0017))};
+    return !!footprint(eye,library,env.atlas,env.world)?.transport;
+  }
   for(const [index,leg] of legs.entries()){
     if(leg.kind==='tunnel'){
+      // A habitat boundary can coincide with an interstation Atlas wall. A
+      // boundary supplies neither a doorway in a wall nor a place to emerge.
+      if(wallAtEye(leg.gate.near.q)||wallAtEye(leg.gate.far.q))return null;
       if(!canStand(leg.gate.far.q,leg.gate.far.id,state,items,env,.8))return null;
-    }else if(leg.owner.pack){
-      const end=leg.end-(legs[index+1]?.kind==='tunnel' ? .001/state.radius : 0);
-      for(const angle of [leg.start,(leg.start+leg.end)/2,end]){
-        if(!canStand(at(angle).q,leg.owner.id,state,items,env,.8))return null;
+    }else{
+      const stops=[{km:0,owner:leg.owner},...groundFootfalls(legs,index)];
+      for(const stop of stops){
+        const q=at(leg.start+stop.km/state.radius).q;
+        if(wallAtEye(q)||!canStand(q,stop.owner.id,state,items,env,.8))return null;
       }
     }
   }

@@ -1,5 +1,5 @@
 // The Builder service gallery in metres. Water works, valves and process state
-// belong to the Outfall. These structural bays can also line a transport doorway.
+// are fitted to these structural bays by each Border facility.
 const edge=[.44,.51,.47], iron=[.12,.205,.21], brass=[.57,.35,.17], light=[1,.64,.28];
 export const galleryBoxes=[], galleryTubes=[];
 for(const side of [-1,1])galleryBoxes.push([side*6.02,3.9,17,1.05,7.8,34,iron,2,true]);

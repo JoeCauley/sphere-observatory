@@ -32,7 +32,11 @@ const results = [];
     args: ['--mute-audio', '--disable-background-timer-throttling', '--disable-renderer-backgrounding', '--disable-backgrounding-occluded-windows', '--disable-features=CalculateNativeWinOcclusion', ...(process.env.SPHERE_CONTRACT_ARGS || '').split(' ').filter(Boolean)]
   });
   const library = JSON.parse((await server.dispatch(url + 'packs/biome-library.json')).body);
-  const packs = library.packs.filter(p => p.contract === 'sphere-biome/1' && (!only.length || only.includes(p.id)));
+  const packs = library.packs.filter(p => p.contract === 'sphere-biome/1').flatMap(owner => [
+    { ...owner, ownerId: owner.id },
+    ...Object.entries(owner.facilities ?? {}).map(([facility, site]) =>
+      ({ ...site, ownerId: owner.id, version: owner.version, facility }))
+  ]).filter(site => !only.length || only.includes(site.id) || only.includes(site.ownerId));
   if (!packs.length) throw Error('No contract biomes to test');
 
   for (const pack of packs) {
@@ -64,8 +68,10 @@ const results = [];
       {
         const { context, page, errors, drew } = await open('');
         check('ready resolves after the scene has drawn', drew);
-        const said = await page.evaluate(() => { const b = window.SphereBiome, air = b.air(), pose = b.pose(), seen = b.inspect(); return { id: b.id, version: b.version, members: ['ready', 'arrived', 'pose', 'ascend', 'begin', 'save', 'dispose', 'air', 'inspect'].filter(k => b[k] === undefined), air, pose, seen }; });
-        check('id and version match the library entry', said.id === pack.id && said.version === pack.version, { id: said.id, version: said.version });
+        const said = await page.evaluate(() => { const b = window.SphereBiome, air = b.air(), pose = b.pose(), seen = b.inspect(); return { id: b.id, facility: b.facility, version: b.version, members: ['ready', 'arrived', 'pose', 'ascend', 'begin', 'save', 'dispose', 'air', 'inspect'].filter(k => b[k] === undefined), air, pose, seen }; });
+        check('owner, facility and version match the library entry',
+          said.id === pack.ownerId && said.facility === pack.facility && said.version === pack.version,
+          { id: said.id, facility: said.facility, version: said.version });
         check('every contract member is present', said.members.length === 0, said.members);
         check('pose() has place, heading and mode', ['eastM', 'northM', 'altitudeM', 'yaw', 'pitch'].every(k => Number.isFinite(said.pose[k])) && ['walk', 'flight'].includes(said.pose.mode), said.pose);
         check('inspect() reports veil, frames, scripted and held', Number.isFinite(said.seen.veil) && Number.isFinite(said.seen.frames) && said.seen.scripted === false && said.seen.held === false, said.seen);

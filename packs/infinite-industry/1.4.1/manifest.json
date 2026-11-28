@@ -72,8 +72,8 @@
   "assets": [
     {
       "path": "app.js",
-      "bytes": 25782,
-      "sha256": "90f86ec7e856c181bf61d7540591ec0cc787a8e2567a989c98d05b815471b270"
+      "bytes": 26989,
+      "sha256": "a4e053fb6fff3d7e8f3b703699bd5408bda701d13597a4d6623b99bff3876077"
     },
     {
       "path": "ascent.js",
@@ -97,13 +97,13 @@
     },
     {
       "path": "field-shaders.js",
-      "bytes": 9125,
-      "sha256": "90c4765ed1bea841d0ef652f2ff7ecbf76e81778d107d7e3af4b83f86be37f2b"
+      "bytes": 9289,
+      "sha256": "8d212f90a492ece9f7013b9d98e15fee31305af67304d2e5057da2165009c4aa"
     },
     {
       "path": "field-view.js",
-      "bytes": 16723,
-      "sha256": "a74399bc794928ec6821db7e59165a3275ac08e1f1d838c8520845ed9a6a48f4"
+      "bytes": 16730,
+      "sha256": "8e5d8326d59abbd20dbe2d79d69aa65d42721afc91e602d159f66694121894b5"
     },
     {
       "path": "geometry.js",
@@ -112,8 +112,23 @@
     },
     {
       "path": "index.html",
-      "bytes": 3305,
-      "sha256": "12d09f716263416bc90743c7ce3871151b89f16febb1f1a2b5a0b730668e2b30"
+      "bytes": 3831,
+      "sha256": "b685b7dc0d345c86983d04adb2cf9894cfbdb4c8a0253c47c002fb9af5d4cd39"
+    },
+    {
+      "path": "mill-panel.js",
+      "bytes": 3556,
+      "sha256": "963fa3b8cb15a1116f86f6f0c81687d400f72df83a1b058fb48f9223bc8c8a8b"
+    },
+    {
+      "path": "mill-site.js",
+      "bytes": 5494,
+      "sha256": "0792487edab0d2d18d520dd228f2dac8bfbcd861239e3d77bf0d2364e1c3ca72"
+    },
+    {
+      "path": "mill-view.js",
+      "bytes": 3501,
+      "sha256": "aacfb66100dbae2959c75402b53b61c34892541e0252a55b1f3d29d8892c1aee"
     },
     {
       "path": "model.js",
@@ -122,8 +137,8 @@
     },
     {
       "path": "plant.js",
-      "bytes": 20122,
-      "sha256": "874c41c309f751ed75baf1f6b393db9534e9d5dcdaff77792960f152f8c20408"
+      "bytes": 20193,
+      "sha256": "45ae07a64770d1d3c73906b22f36c749c98a16102cd57af80589784e5f3e1c7a"
     },
     {
       "path": "pod.js",
@@ -137,13 +152,13 @@
     },
     {
       "path": "renderer.js",
-      "bytes": 7303,
-      "sha256": "d30770977fb4d287e66e3e6b514cbc1c20b56fd6aaf72ec048552e968de34b66"
+      "bytes": 7696,
+      "sha256": "17b41dc0a41cae62c10d770872fa20cc58e209894a9c32c438112f5b3f634eb8"
     },
     {
       "path": "style.css",
-      "bytes": 3711,
-      "sha256": "47a2c042a30fe241697c958f5aa0fff931e92a84d448d20b0fbeaab6a5bcd060"
+      "bytes": 4785,
+      "sha256": "6615dca6c61c0e4b774b723315dc624287b49054a4c499ddb4b7153ed6cffb0a"
     },
     {
       "path": "transfer.js",
@@ -244,8 +259,8 @@
     },
     {
       "path": "../../runtime/v1/navigation.js",
-      "bytes": 2931,
-      "sha256": "5d8287ef62dfe5f3da63b33b6fbc5e930cc465dc88a38563b7b907b076122007"
+      "bytes": 3062,
+      "sha256": "8c0979720bae2506027bc41591791dee4246f360a86aa5bf2da8a5bc2df55fe7"
     },
     {
       "path": "../../runtime/v1/preparation.js",
@@ -279,8 +294,23 @@
     },
     {
       "path": "../../kit/outfall-wall.mjs",
-      "bytes": 1259,
-      "sha256": "5bebaa64133269b700a916bf26a2a42e1b446f9e66584d827a5b2ae3e49cd821"
+      "bytes": 1937,
+      "sha256": "07f4943567d1ea37743518fbe6fee9355fdf30c74fe3f76b5e08e82c8d05f4a1"
+    },
+    {
+      "path": "../../kit/rolling-mill.mjs",
+      "bytes": 3269,
+      "sha256": "8e1fa6a265a79f1a773eb329edb220425ebd1462462a381d5ed71e33f31dd71b"
+    },
+    {
+      "path": "../../kit/mill-clock.mjs",
+      "bytes": 5113,
+      "sha256": "7849826878d1bab8eb6dfbfb6cfdb11d9fb46570c8a876493cee20d0007545de"
+    },
+    {
+      "path": "../../kit/mill-transaction.mjs",
+      "bytes": 902,
+      "sha256": "f63e5695014bc1505579438ce1d53baa203cae261ed0dd24325a89fcd7d3ef12"
     }
   ],
   "limits": [

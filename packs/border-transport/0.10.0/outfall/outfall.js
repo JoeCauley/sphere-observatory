@@ -1,37 +1,39 @@
 import {entrance,eye,initial,restore,nearValve,waterStep} from './model.js';
-import {onBorder} from '../../kit/border-profile.js';
-import {leaveNorthM,chartFor,toMeadow} from '../../kit/surface-route.js';
-import {apronHeight,borderUniforms} from '../../kit/meadow-border.js';
-import {initialState as newMeadow,parseState as readMeadow,terrain} from '../../infinite-meadow/1.3.0/model.js';
-import '../../../sphere-atlas.js';
+import {onBorder,roofM,farEdgeM,halfLengthM} from '../../../kit/border-profile.js';
+import {leaveNorthM,chartFor,toMeadow} from '../../../kit/surface-route.js';
+import {apronHeight,borderUniforms} from '../../../kit/meadow-border.js';
+import {initialState as newMeadow,parseState as readMeadow,terrain} from '../../../infinite-meadow/1.3.0/model.js';
+import '../../../../sphere-atlas.js';
 import {supportAt,moveBody,resolvePose,tunnelStart,tunnelEnd,tunnelLength,tunnelHeight} from './border.js';
 import {createRenderer} from './render.js';
-import {veilAt,createVeil} from '../../kit/veil.js';
-import {ascentShape,arrivalShape,advance,heightAt} from '../../kit/flight.js';
+import {veilAt,createVeil} from '../../../kit/veil.js';
+import {ascentShape,arrivalShape,advance,heightAt} from '../../../kit/flight.js';
 
-const id='border-outfall',version='1.0.0',key='sphere-biome:'+id+':'+version;
+const id='border-transport',version='0.10.0',key='sphere-biome:border-outfall:1.0.0';
 const $=id=>document.getElementById(id),canvas=$('world'),say=text=>{$('status').textContent=text;};
 const air={profile:'outfall-salt',haze:[{baseM:0,topM:1200,perKm:.12}],blind:null};
 const storage=window.frameElement?.dataset.worldKey ? parent.SphereBiomeLibrary.saveStorage(window.frameElement.dataset.worldKey) : localStorage;
 let state=initial(),hadSave=false,rejected=false;
 try{const raw=storage.getItem(key);if(raw){state=restore(JSON.parse(raw));hadSave=true;}}catch{rejected=true;say('The stored viewpoint could not be read. Your original save has been kept.');}
-let renderer;
-try{renderer=createRenderer(canvas);}catch(error){$('error').textContent=error.message;throw error;}
 const stageHost=window.frameElement?.dataset.worldKey?parent.SphereStageFrame:null;
+let renderer;
+try{renderer=createRenderer(canvas,{cavityBackdrop:!!stageHost});}catch(error){$('error').textContent=error.message;throw error;}
 const surfaceEntry=window.frameElement?.surfaceEntry;
 const tunnelGate=surfaceEntry?.passage||stageHost?.servicePassage?.(window);
 // Only the service installation exposes the grassy apron. An enclosed passage
 // can draw its first frame without fetching the Meadow renderer and grass workers.
 let MeadowRenderer,GrassStage;
-if(!surfaceEntry?.passage){
+if(!surfaceEntry?.passage && (!stageHost || stageHost.surfaceAddress())){
   const [fieldModule,grassModule]=await Promise.all([
-    import('../../infinite-meadow/1.3.0/renderer.js'),import('../../infinite-meadow/1.3.0/grass-stage.js')
+    import('../../../infinite-meadow/1.3.0/renderer.js'),import('../../../infinite-meadow/1.3.0/grass-stage.js')
   ]);
   MeadowRenderer=fieldModule.Renderer;GrassStage=grassModule.GrassStage;
 }
-const address=stageHost?.surfaceAddress?.(),atlas=window.SphereAtlas;
+const address=stageHost?.outfallAddress?.(),atlas=window.SphereAtlas;
+const meadowFront=!stageHost || !!stageHost.surfaceAddress();
 const home=address?.home||atlas.byId('r10c0'),edge=address?.edge||atlas.northEdge(home.id);
 const chart=chartFor(home,edge,address?.radiusKm||149597870.7),datum=terrain(chart.eastM,chart.northM);
+const aboveRoof=p=>p.altitudeM>=roofM && p.northM>=0 && p.northM<=farEdgeM && Math.abs(p.eastM)<=Math.min(halfLengthM,chart.halfWidthM);
 const floorAt=(east,north)=>apronHeight(chart,datum,east,north);
 let field=null,coverStage=null,meadow=newMeadow(),solar=null;
 try{const record=JSON.parse(storage.getItem('sphere-pack:infinite-meadow:1.3.0'));if(record?.state)meadow=readMeadow(JSON.stringify(record.state));}catch{}
@@ -40,6 +42,7 @@ const drawApron=(p,elapsed)=>{
   coverStage??=new GrassStage({ground:terrain});
   meadow.pose=toMeadow(p,chart,datum);if(meadow.windPlaying && surfaceEntry?.active!==false)meadow.windTime+=Math.min(.1,elapsed);
   field.borderMap=borderUniforms(chart,p);field.gateDatum=datum;
+  field.borderView=p.northM<0?[-Math.sin(chart.angle),Math.cos(chart.angle),-p.northM,p.altitudeM]:null;
   coverStage.update(meadow.pose,meadow.grassDensity,meadow.grassReach);
   field.draw(meadow,coverStage,{timing:false});
 };
@@ -79,7 +82,7 @@ $('save').onclick=()=>{state.bookmark=manualPose();if(save())say('Viewpoint and 
 $('back').onclick=()=>{if(manual()){state.pose={...state.bookmark};resolvePose(state.pose,renderer.colliders,floorAt);approachCruise=null;say('Back at your saved viewpoint.');}canvas.focus();};
 $('hide').onclick=()=>{$('panel').hidden=true;$('show').hidden=false;canvas.focus();};
 $('show').onclick=()=>{$('panel').hidden=false;$('show').hidden=true;canvas.focus();};
-$('leavePack').onclick=()=>{if(window===top)location.href='../../../';};
+$('leavePack').onclick=()=>{if(window===top)location.href='../../../../';};
 canvas.addEventListener('pointerdown',e=>{if(!manual())return;drag=[e.clientX,e.clientY];canvas.setPointerCapture(e.pointerId);canvas.focus();});
 canvas.addEventListener('pointermove',e=>{if(!drag)return;state.pose.yaw+=(e.clientX-drag[0])*.003;state.pose.pitch=Math.max(-1.5,Math.min(1.5,state.pose.pitch-(e.clientY-drag[1])*.003));drag=[e.clientX,e.clientY];});
 canvas.addEventListener('pointerup',()=>drag=null);canvas.addEventListener('lostpointercapture',()=>drag=null);
@@ -163,13 +166,18 @@ function tick(t){
     const dir=(a,b)=>Number(keys.has(a))-Number(keys.has(b)),fast=keys.has('ShiftLeft')||keys.has('ShiftRight');
     p.yaw+=(Number(keys.has('KeyX')||keys.has('ArrowRight'))-Number(keys.has('KeyZ')||keys.has('ArrowLeft')))*dt*.95;
     p.pitch=Math.max(-1.5,Math.min(1.5,p.pitch+dir('ArrowUp','ArrowDown')*dt*.95));
-    const speed=(p.mode==='walk'?(fast?7:3.3):(fast?22:8)*Math.max(1,p.altitudeM/55))*dt;
+
     let x=dir('KeyD','KeyA'),z=dir('KeyW','KeyS');const len=Math.max(1,Math.hypot(x,z));x/=len;z/=len;
     const c=Math.cos(p.yaw),s=Math.sin(p.yaw),fly=p.mode==='flight',dz=z*(fly?Math.cos(p.pitch):1);
-    const dx=(x*c+dz*s)*speed,dn=(-x*s+dz*c)*speed,dy=fly?(dir('KeyE','KeyQ')+z*Math.sin(p.pitch))*speed:0;
+    const vertical=fly?dir('KeyE','KeyQ'):0;
+    const clearanceM=fly && (x||z||vertical)?Math.max(0,p.altitudeM-supportAt(renderer.colliders,p,floorAt)):0;
+    const base=fly?(fast?22:8)*Math.max(1,clearanceM/55):(fast?7:3.3);
+    const rate=fly && (x||z||vertical)?stageHost?.movementSpeed(base,dt,{boost:fast,clearanceM})??base:base;
+    const speed=rate*dt/Math.max(1,Math.hypot(x,dz,vertical+(fly?z*Math.sin(p.pitch):0)));
+    const dx=(x*c+dz*s)*speed,dn=(-x*s+dz*c)*speed,dy=fly?(vertical+z*Math.sin(p.pitch))*speed:0;
     const wasNorth=p.northM;
     if(approachCruise){
-      const heading=approachCruise.heading, rate=approachCruise.baseMps*(fast?1.5:1);
+      const heading=approachCruise.heading, cruise=approachCruise.baseMps*(fast?1.5:1),rate=stageHost?.movementSpeed(cruise,dt,{boost:fast})??cruise;
       const east=Math.sin(heading),north=Math.cos(heading);
       let travel=rate*elapsed;
       // The level course aimed at the door ends over its approach path.
@@ -200,10 +208,18 @@ function tick(t){
     if(p.northM>leaveNorthM)crossingFailed=false;
   }
   waterStep(state,dt);turn+=(Number(state.open)-turn)*(1-Math.exp(-dt*4));
-  const apron=!surfaceEntry?.passage && (p.northM<0 || (p.northM<34 && Math.abs(p.eastM)<7));
+  const cavity=!!stageHost && !surfaceEntry?.passage && aboveRoof(p);
+  if(cavity)stageHost.presentStation(window);
+  const apron=!cavity && meadowFront && !surfaceEntry?.passage && (p.northM<0 || (p.northM<34 && Math.abs(p.eastM)<7));
   solar=stageHost?.surfaceLight(window,p)??{direct:1};
-  if(apron){renderer.resize();drawApron(p,elapsed);}
-  renderer.draw(state,t*.001,turn,{daylight:solar.direct,radiusM:(address?.radiusKm??149597870.7)*1000,overMeadow:apron,resize:!apron,nearTint:tunnelGate?.near.tint,farTint:tunnelGate?.far.tint});veil.draw(p.altitudeM,t);if(++frame===3)readyDone(true);
+  const camera=stageHost?parent.SphereFieldCamera:null;
+  const captureSize=camera?.need(canvas)?camera.size(canvas.getBoundingClientRect()):null;
+  renderer.resize(captureSize);
+  if(apron)drawApron(p,elapsed);
+  renderer.draw(state,t*.001,turn,{daylight:solar.direct,radiusM:(address?.radiusKm??149597870.7)*1000,overMeadow:apron,cavity,resize:false,nearTint:tunnelGate?.near.tint,farTint:tunnelGate?.far.tint});veil.draw(p.altitudeM,t);
+  camera?.submit(canvas);
+  stageHost?.presentCamera?.(window,p,canvas.width/canvas.height,apron?1.428148:1/.64);
+  if(++frame===3)readyDone(true);
   $('action').hidden=!!script||!nearValve(p);$('action').textContent=(state.open?'Close':'Open')+' bypass valve · E';$('mode').textContent=p.mode==='walk'?'ON FOOT':approachCruise?'LEVEL CRUISE':'FLIGHT';
   const inPassage=Math.abs(p.eastM)<=3.5 && p.altitudeM<tunnelHeight && p.northM>=tunnelStart-9 && p.northM<=tunnelEnd;
   $('walkClockField').hidden=p.mode!=='walk'||!inPassage;
@@ -214,7 +230,7 @@ function tick(t){
   if(surfaceEntry?.active!==false && t-lastSave>2500){save();lastSave=t;}raf=requestAnimationFrame(tick);
 }
 function dispose(){if(disposed)return;disposed=true;save();cancelAnimationFrame(raf);keys.clear();veil.dispose();field?.dispose();renderer.dispose();}
-window.SphereBiome={id,version,contract:'sphere-biome/1',ready,arrived,pose:()=>({...state.pose}),air:()=>structuredClone(air),ascend:ascent,
+window.SphereBiome={id,version,facility:'outfall',contract:'sphere-biome/1',ready,arrived,environment:()=>aboveRoof(state.pose)?{zone:'roof',air:'vacuum'}:{zone:'outfall',air:air.profile},pose:()=>({...state.pose}),air:()=>structuredClone(air),ascend:ascent,
   walkTunnel,begin:()=>{if(script?.held)script.held=false;return arrived;},save,dispose,
   inspect:()=>({frames:frame,light:solar,levelCruising:!!approachCruise,meadowTiles:coverStage?.tiles.size??0,meadowWind:meadow.windTime,held:!!script?.held,scripted:!!script,veil:veilAt(air.blind,state.pose.altitudeM),valveOpen:state.open,levels:[...state.levels]})};
 window.addEventListener('pagehide',dispose,{once:true});window.addEventListener('pageshow',e=>{if(e.persisted)location.reload();});

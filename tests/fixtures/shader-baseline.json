@@ -1,7 +1,8 @@
 {
-  "commit": "5cdb0985691a99b2068ce4c01e7157b6cab7677a",
+  "structuralShadeFractureRevision": 2,
+  "legacyAndVertexCommit": "5cdb0985691a99b2068ce4c01e7157b6cab7677a",
   "vertex": "11711e1a247697bb28159903edbab828306690379a79690c87dbb3cd3a74a226",
-  "fragment": "fdfdaae0f56f236bb245b3e8bc2f39bb057de7f5b1ebbbab54b134a7641a5d4d",
-  "geometryFragment": "63999a2da14cfbb4493d162d7f106201c1ee754598170f000d7ec45c203ba0f2",
+  "fragment": "c03b39ef7035e2ef2f72386c8215dd3a4988187ccddf60c769831117284fa3fe",
+  "geometryFragment": "b4fd12be0c8b33f50e2b2190b50695190b51819c59788bb2765384780428b3cb",
   "legacy": "c121731b12323819533d641d159ed6fc101da5df3d43a83958da6e40c4e7c66f"
 }

@@ -219,8 +219,8 @@
     },
     {
       "path": "../../runtime/v1/navigation.js",
-      "bytes": 2931,
-      "sha256": "5d8287ef62dfe5f3da63b33b6fbc5e930cc465dc88a38563b7b907b076122007"
+      "bytes": 3062,
+      "sha256": "8c0979720bae2506027bc41591791dee4246f360a86aa5bf2da8a5bc2df55fe7"
     },
     {
       "path": "../../runtime/v1/preparation.js",
@@ -239,13 +239,13 @@
     },
     {
       "path": "../../kit/veil.js",
-      "bytes": 3696,
-      "sha256": "4c7fb4427d695ea4791ca2567c610a433cf4bf47672fa0327593c4cc44861ddb"
+      "bytes": 1132,
+      "sha256": "beac2c93466951ec6004979586a8a8c7fa9549b93b6d6473a6569f95b34e53b1"
     },
     {
       "path": "../../kit/flight.js",
-      "bytes": 2538,
-      "sha256": "0641ba80ed17bef2d1565a39aabba5d227f500f0e90cce6fad921947275b721b"
+      "bytes": 2588,
+      "sha256": "88f8525f2f78ae345d46d332168bd0d7ce9f4123733d4afed07a58acc448112e"
     }
   ],
   "limits": [

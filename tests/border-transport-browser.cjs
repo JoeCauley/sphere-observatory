@@ -55,7 +55,10 @@ async function main(){
     const atlas=async()=>JSON.parse((await server.dispatch(server.origin+'/api/border-stations?'+q)).body);
     const preview=await atlas();assert.equal(first.locked,preview.locked);
     if(!live)assert.equal(preview.locked,false,'Looking from the apron must not discover the station');
-    assert.equal(first.uploads,2);assert.equal(first.pose.mode,'flight');
+    assert.equal(first.pose.mode,'flight');
+    assert(first.wall.faces>0 && first.wall.hallFaces>0 && first.wall.freightFaces>0,
+      'The apron must draw the Atlas wall, station hall and freight');
+    if(!live)assert.equal(first.uploads,3,'The fresh apron uploads each mesh once');
     await frame.getByRole('button',{name:'Walk',exact:true}).click();
     await frame.locator('#pace').selectOption('16');await frame.locator('canvas').focus();
     await page.keyboard.down('KeyW');
@@ -69,7 +72,7 @@ async function main(){
     finally{await page.keyboard.up('KeyW');}
     const inside=await seen(),locked=await atlas();
     assert(locked.locked&&locked.discoveredAt);assert(inside.pose.altitudeM>1 && inside.pose.mode==='walk');
-    assert.equal(inside.uploads,2,'Publishing an unchanged survey must reuse geometry');
+    assert.equal(inside.uploads,first.uploads,'Publishing an unchanged survey must reuse geometry');
     assert.equal(inside.time,first.time,'Freight must observe the paused Main clock');
     if(output){fs.mkdirSync(output,{recursive:true});await frame.locator('canvas').screenshot({path:path.join(output,'service-door.png')});}
     await frame.locator('canvas').evaluate(()=>SphereBiome.save());

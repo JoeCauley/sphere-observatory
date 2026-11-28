@@ -1,5 +1,5 @@
 import {R,clamp,mix,smooth,address,fromAddress,unitHash,canonicalShell} from './coordinates.js';
-import {terrain,terrainPhases} from './landscape.js';
+import {terrain,terrainPhases,vergeTrees} from './landscape.js';
 import {LEVEL_MIN_ALTITUDE_M} from './level-cruise.js';
 export {terrain,terrainPhases} from './landscape.js';
 
@@ -39,7 +39,7 @@ export function parseState(text){
   if(Math.abs(p.eastM)>Math.PI*R||Math.abs(p.northM)>Math.PI*.5*R||p.altitudeM<0||p.altitudeM>R*.8)throw Error('Position outside study envelope');
   if(!Number.isFinite(s.pose.yaw)||!Number.isFinite(s.pose.pitch)||Math.abs(s.pose.yaw)>1e4||Math.abs(s.pose.pitch)>1.55||!['walk','flight'].includes(s.pose.mode))throw Error('Invalid orientation or mode');
   if(!['aggregate','sparse-clumps'].includes(s.variant)||typeof s.concealment!=='boolean'||!Number.isFinite(s.daylight)||s.daylight<0||s.daylight>1||s.exposure!==1||s.sceneTime!==SCENE_TIME||!Number.isFinite(s.windTime)||s.windTime<0||s.windTime>1e9||s.weather!=='frozen-clear')throw Error('Invalid study environment');
-  if(!Number.isFinite(s.blindHeightM)||s.blindHeightM<20000||s.blindHeightM>200000)throw Error('Blind study height must be 20–200 km');
+  if(!Number.isFinite(s.blindHeightM)||s.blindHeightM<20000||s.blindHeightM>200000)throw Error('Blind study height must be 20â€“200 km');
   if(!['full','dense','lush'].includes(s.grassDensity))throw Error('Unknown grass density');
   for(const [key,value] of Object.entries({vegetationRevision:'grass-stage-v12',windPlaying:true,grassbox:true,grassReach:'wide',grassHeightScale:1,grassWidthScale:1.15,skimEnabled:false,skimSpeedMps:50,skimClearanceM:2}))if(s[key]===undefined)s[key]=value;
   if(['grass-stage-v05','grass-stage-v06','grass-stage-v07','grass-stage-v08','grass-stage-v09','grass-stage-v10','grass-stage-v11'].includes(s.vegetationRevision))s.vegetationRevision='grass-stage-v12';
@@ -56,7 +56,7 @@ export function parseState(text){
   return s;
 }
 export function supported(p){return {...p,altitudeM:Math.max(p.altitudeM,terrain(p.eastM,p.northM)+EYE)};}
-const blocked=(x,z)=>landmarks.some(l=>Math.hypot(x-l.eastM,z-l.northM)<l.radiusM+.3);
+const blocked=(x,z)=>[...landmarks,...vergeTrees(x,z)].some(l=>Math.hypot(x-l.eastM,z-l.northM)<l.radiusM+.3);
 // Observatory travel-control.js curve, converted from kilometres to metres.
 const flightKnots=[[0,8],[20,18],[100,75],[1000,800],[10000,9000],[100000,110000],[1000000,1400000],[10000000,18000000],[100000000,240000000],[1000000000,2700000000],[10000000000,10000000000]];
 export function flightSpeed(p,boost=false,state=null){
@@ -101,29 +101,30 @@ export function move(state,keys,dt,motion=null){
   const cp=walking||skimming?1:Math.cos(p.pitch),sp=walking||skimming?0:Math.sin(p.pitch);
   let vx=dx*Math.cos(p.yaw)-dz*Math.sin(p.yaw)*cp,vz=dx*Math.sin(p.yaw)+dz*Math.cos(p.yaw)*cp,vy=dy-dz*sp;
   const length=Math.hypot(vx,vz,vy)||1;vx/=length;vz/=length;vy/=length;
-  const applied=(dx||dz||dy)?(motion?.resolveSpeed?.(speed,dt)??speed):speed;
+  const applied=(dx||dz||dy)?(motion?.resolveSpeed?.(speed,dt,walking?null:{boost})??speed):speed;
   const x=vx*applied*dt,z=vz*applied*dt,y=vy*applied*dt;
-  const steps=walking?Math.max(1,Math.ceil(Math.hypot(x,z)/.2)):clearance(p)<140?Math.max(1,Math.ceil(Math.hypot(x,z))):1;
+  const steps=walking?Math.max(1,Math.ceil(Math.hypot(x,z)/.2)):clearance(p)<140?Math.min(4096,Math.max(1,Math.ceil(Math.hypot(x,z)))):1;
   let colliding=false,landed=false;
+  const trees=vergeTrees(p.eastM,p.northM),obstacles=trees.length?landmarks.concat(trees):landmarks;
   for(let i=0;i<steps;i++){
     const nx=clamp(p.eastM+x/steps,-Math.PI*R,Math.PI*R),nz=clamp(p.northM+z/steps,-Math.PI*R*.5,Math.PI*R*.5);
-    const obstacle=(east,north)=>landmarks.some(l=>Math.hypot(east-l.eastM,north-l.northM)<l.radiusM+.3&&(walking||p.altitudeM<terrain(l.eastM,l.northM)+l.heightM+EYE));
+    const obstacle=(east,north)=>obstacles.some(l=>Math.hypot(east-l.eastM,north-l.northM)<l.radiusM+.3&&(walking||p.altitudeM<terrain(l.eastM,l.northM)+l.heightM+EYE));
     if(!obstacle(nx,p.northM))p.eastM=nx;else colliding=true;
     if(!obstacle(p.eastM,nz))p.northM=nz;else colliding=true;
     const groundFloor=terrain(p.eastM,p.northM)+EYE;
-    const floor=walking?groundFloor:landmarks.reduce((height,l)=>Math.hypot(p.eastM-l.eastM,p.northM-l.northM)<l.radiusM+.3?Math.max(height,terrain(l.eastM,l.northM)+l.heightM+EYE):height,groundFloor);
+    const floor=walking?groundFloor:obstacles.reduce((height,l)=>Math.hypot(p.eastM-l.eastM,p.northM-l.northM)<l.radiusM+.3?Math.max(height,terrain(l.eastM,l.northM)+l.heightM+EYE):height,groundFloor);
     if(!walking&&p.altitudeM+y/steps<=floor&&vy<0){if(floor===groundFloor)landed=true;else colliding=true;}
     p.altitudeM=walking?floor:skimming?Math.max(floor,groundFloor+state.skimClearanceM):clamp(p.altitudeM+y/steps,floor,R*.8);
   }
   if(landed){p.mode='walk';state.skimEnabled=false;p.altitudeM=terrain(p.eastM,p.northM)+EYE;if(motion)motion.speedMps=0;}
-  return {speedMps:speed,colliding,landed,clearanceM:clearance(p)};
+  return {speedMps:applied,colliding,landed,clearanceM:clearance(p)};
 }
 export function tuftTile(tx,tz,density='dense'){
   const count=density==='dense'?TUFTS_PER_TILE:BASE_TUFTS_PER_TILE;
   const key=`study-v03:713:${density}:16m:${tx}:${tz}`,seedKey=`study-v02:713:16m:${tx}:${tz}`,data=new Float64Array(count*7);
   for(let i=0;i<count;i++){
     const extra=i>=BASE_TUFTS_PER_TILE,j=extra?i-BASE_TUFTS_PER_TILE:i;
-    // The original 48×48 roots remain unchanged; dense mode adds a second seed set.
+    // The original 48Ã—48 roots remain unchanged; dense mode adds a second seed set.
     const id=extra?`${seedKey}:extra:${j}`:`${seedKey}:${j}`;
     const x=tx*16+(extra?((j%43)+.15+.7*unitHash(id+'x'))*16/43:((j%48)+.15+.7*unitHash(id+'x'))/3);
     const z=tz*16+(extra?(Math.floor(j/43)+.15+.7*unitHash(id+'z'))*16/43:(Math.floor(j/48)+.15+.7*unitHash(id+'z'))/3);

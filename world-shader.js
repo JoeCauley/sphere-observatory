@@ -92,6 +92,7 @@ bool primaryShadeSolid(vec2 uv,int i,vec3 local){
  vec2 p=uInspectBase.xy+vec2(du,dv);
  if(uShadeShape==3&&abs(p.x)>uShadeTrim)return false;
  if(uShadeShape==1?max(abs(p.x),abs(p.y))>1.:dot(p,p)>1.)return false;
+ if(uDiskNormals[i].w>1.5)return structuralShadeMargin(p,int(uDiskRights[i].w))>=0.;
  float v=uInspectBase.y,margin=du+.13*cos(v*11.+dv*5.5)*worldSinDelta(dv*5.5)+.036*cos(v*41.+dv*20.5)*worldSinDelta(dv*20.5);
  return (margin>=0.||margin<=-.026)&&detailedShadeRest(p.x,p.y,int(uDiskRights[i].w));
 }
@@ -100,10 +101,8 @@ bool primaryShadeSolid(vec2 uv,int i,vec3 local){
 // CPU margins retain small residuals; only small ray increments reach the GPU.
 float preciseShadeMargin=1e20;
 float shadeSinIncrement(float phase,float delta){float h=delta*.5;return 2.*worldSinDelta(h)*cos(phase+h);}
-bool cameraShadeSolid(vec2 fallback,int i,vec3 relative){
- preciseShadeMargin=1e20;
- if(i!=uPreciseShade)return primaryShadeSolid(fallback,i,relative-uInspectRelative);
- vec3 n=uDiskNormals[i].xyz,right=uDiskRights[i].xyz,up=cross(n,right);vec2 base=uFootprintOrigin.xy,change;
+bool shadeFootprintChange(int i,vec3 relative,out vec2 change){
+ vec3 n=uDiskNormals[i].xyz,right=uDiskRights[i].xyz,up=cross(n,right);vec2 base=uFootprintOrigin.xy;
  float sx=uDisks[i].w*uRadius*uDiskAcross[i],sy=uDisks[i].w*uRadius;
  if(uShadeShape>=2){float dn=dot(relative,n),den=uFootprintOrigin.z+dn,r=uDiskPrecision[i].x*uRadius;
   if(den<=0.)return false;
@@ -111,14 +110,25 @@ bool cameraShadeSolid(vec2 fallback,int i,vec3 relative){
  }else change=vec2(dot(relative,right)/sx,dot(relative,up)/sy);
  // Beyond this local angular neighbourhood the ordinary footprint has ample
  // output-pixel precision. A neighbouring hole cannot enter within this bound.
- if(max(abs(change.x),abs(change.y))>.004)return diskSolid(fallback,i);
+ return max(abs(change.x),abs(change.y))<=${W.shadeFracture.localRadiusUV};
+}
+bool cameraShadeSolid(vec2 fallback,int i,vec3 relative){
+ preciseShadeMargin=1e20;
+ if(i!=uPreciseShade)return primaryShadeSolid(fallback,i,relative-uInspectRelative);
+ vec2 change,base=uFootprintOrigin.xy;
+ if(!shadeFootprintChange(i,relative,change))return diskSolid(fallback,i);
  float du=change.x,dv=change.y;
  vec4 bounds=uFootprintBounds+vec4(-du,du,-dv,dv);
  if(uShadeShape==1){preciseShadeMargin=min(min(abs(bounds.x),abs(bounds.y)),min(abs(bounds.z),abs(bounds.w)));if(any(lessThan(bounds,vec4(0.))))return false;}
  else{float circle=uFootprintShape.x-2.*dot(base,change)-dot(change,change);preciseShadeMargin=abs(circle)/(1.+length(base+change));if(circle<0.)return false;}
  if(uShadeShape==3){float a=uFootprintShape.y-du,b=uFootprintShape.z+du;preciseShadeMargin=min(preciseShadeMargin,min(abs(a),abs(b)));if(a<0.||b<0.)return false;}
  if(uDiskNormals[i].w<.5)return true;
- int id=int(uDiskRights[i].w),family=id%3;float bank=uFootprintLoss.x;
+ int id=int(uDiskRights[i].w);
+ if(uDiskNormals[i].w>1.5){
+  float bank=localStructuralShadeMargin(change,id);
+  preciseShadeMargin=min(preciseShadeMargin,abs(bank));return bank>=0.;
+ }
+ int family=id%3;float bank=uFootprintLoss.x;
  if(family==0){bank+=du-.055*shadeSinIncrement(base.y*17.,dv*17.)-.017*shadeSinIncrement(base.y*53.,dv*53.);preciseShadeMargin=min(preciseShadeMargin,min(abs(bank)/3.,abs(uFootprintLoss.y+dv)));if(bank>0.&&uFootprintLoss.y+dv>0.)return false;}
  if(family==1){bank+=dv-.10*shadeSinIncrement(base.x*12.,du*12.);preciseShadeMargin=min(preciseShadeMargin,min(abs(bank)/2.3,abs(uFootprintLoss.z+du)));if(bank>0.&&uFootprintLoss.z+du>0.)return false;}
  if(family==2){bank+=du+.36*dv-.04*shadeSinIncrement(base.y*31.,dv*31.);preciseShadeMargin=min(preciseShadeMargin,abs(bank)/2.7);if(bank>0.)return false;}
@@ -142,7 +152,12 @@ float primaryDiskLayerHit(vec3 d,int i,float depth){if(uLayout!=2)return diskHit
  for(int k=0;k<2;k++){if(k>=count)break;float t=times[k];if(t<=1e-13||t>1e19)continue;vec3 hit=camera()+d*t;vec2 uv;if(uShadeShape>=2){vec3 q=hit/r;float f=dot(q,n);if(f<=0.)continue;uv=vec2(dot(q,right),dot(q,up))*r/(f*uDisks[i].w);}else{vec3 off=hit-uDisks[i].xyz;uv=vec2(dot(off,right),dot(off,up))/uDisks[i].w;}
   if(cameraShadeSolid(uv,i,d*(t*uRadius)))return t;
  }return 1e20;}
-float primaryDiskHit(vec3 d,int i){float front=primaryDiskLayerHit(d,i,0.);return uDiskPrecision[i].w>0.?min(front,primaryDiskLayerHit(d,i,uDiskPrecision[i].w)):front;}
+float primaryDiskHit(vec3 d,int i){
+ float depth=uDiskPrecision[i].w,hit=1e20;
+ int faces=depth>0.?2:1;
+ for(int face=0;face<faces;face++)hit=min(hit,primaryDiskLayerHit(d,i,float(face)*depth));
+ return hit;
+}
 vec3 worldRegion(vec3 q){
  if(uBiomeOverride>=0)return vec3(float(uBiomeOverride),float(uBiomeOverride),0.);
  float lat=worldAsin(dot(q,uWorldAxis)),lon=worldAtan2(dot(q,uWorldUp),dot(q,uWorldRight)),latitude=abs(lat),u=fract(lon/(2.*PI)+.5);
@@ -256,12 +271,29 @@ vec3 shadeSkinGrad(vec2 uv,int layer,float distanceKm,vec2 gx,vec2 gy){
  return col;
 }
 vec3 shadeSkin(vec2 uv,int layer,float distanceKm){return shadeSkinGrad(uv,layer,distanceKm,dFdx(uv),dFdy(uv));}
+vec3 fracturedShadeSkin(vec3 col,vec3 relative,int index,int layer,float fw){
+ // A torn face sheet exposes the laminate immediately beside the free edge.
+ // Widths are in kilometres, tied to the 180 m body. Once that strip falls
+ // below a pixel its contribution vanishes into the undisturbed optical skin.
+ if(index==uPreciseShade&&uDiskNormals[index].w>1.5&&fw<.18){
+  vec2 change;
+  if(shadeFootprintChange(index,relative,change)){
+   float bank=localStructuralShadeMargin(change,int(uDiskRights[index].w));
+   float bankKm=max(0.,bank)*uDisks[index].w*uRadius*min(1.,uDiskAcross[index]);
+   float width=layer==3?.07:.12;
+   float exposed=(1.-smoothstep(width*.25,width,bankKm))*(1.-smoothstep(width*.4,.18,fw));
+   col=mix(col,layer==3?vec3(.13,.125,.111):vec3(.11,.128,.134),.72*exposed);
+  }
+ }
+ return col;
+}
 vec3 shadeSurface(vec3 hit,vec3 d,int index,float distanceKm){
  vec3 n=uShadeShape>=2?normalize(hit):uDiskNormals[index].xyz;int layer=dot(d,n)>0.?3:4;
  vec2 uv,gx,gy;shadeUVFootprint(d,n,distanceKm,index,uv,gx,gy);
  vec3 col=shadeSkinGrad(uv,layer,distanceKm,gx,gy);vec2 km=shadeCoordinates(hit,index);
  vec2 dx=shadeKilometreDelta(hit,shadeSurfaceDelta(d,n,distanceKm,shadeRayDx),index),dy=shadeKilometreDelta(hit,shadeSurfaceDelta(d,n,distanceKm,shadeRayDy),index);
  float fw=max(length(dx),length(dy));float districts=.86+.26*shadeDistrict(km,dx,dy,index);
+ col=fracturedShadeSkin(col,d*distanceKm,index,layer,fw);
  float seams=max(constructionRib(km.x,100000.,fw),constructionRib(km.y,10000.,fw));
  return col*mix(1.,districts*(1.-seams*.28),smoothstep(1500.,5000.,distanceKm));
 }
@@ -284,10 +316,10 @@ let src=SphereShaders.fragment;
 // boundaries. Native ANGLE asin/atan can shift a thin opening by a whole pixel.
 src=patch(src,'float a=atan(dot(q,tanv),dot(q,axis)),b=asin(clamp(dot(q,cross(axis,tanv)),-1.,1.));','float a=worldAtan2(dot(q,tanv),dot(q,axis)),b=worldAsin(dot(q,cross(axis,tanv)));');
 const damageGLSL=W.shadeSolidBody.replace('const family=id%3;','int family=id%3;').replace('const edge=','float edge=').replaceAll('===','==').replaceAll('Math.sin','sin').replaceAll('Math.abs','abs').replaceAll('Math.floor','floor').replace('const x=','float x=').replace(/,y=/g,',y=').replace('(x*13+y*7+id*11)%37','mod(x*13.+y*7.+float(id)*11.,37.)').replaceAll('*18','*18.').replaceAll('*17','*17.').replaceAll('*53','*53.').replaceAll('*12','*12.').replaceAll('*31','*31.').replaceAll('*11','*11.').replaceAll('*41','*41.').replaceAll('*57','*57.').replaceAll('(u+1)','(u+1.)').replaceAll('(v+1)','(v+1.)').replace('==0&&','==0.&&');
-src=patch(src,'bool diskSolid(vec2 p,int i){','bool detailedShadeSolid(float u,float v,int id){'+damageGLSL.replace('family==0.','family==0').replaceAll('11..','11.').replace('37.)==0','37.)==0.')+'}\nbool diskSolid(vec2 p,int i){');
+src=patch(src,'bool diskSolid(vec2 p,int i){',W.shadeFracture.glsl+'\nbool detailedShadeSolid(float u,float v,int id){'+damageGLSL.replace('family==0.','family==0').replaceAll('11..','11.').replace('37.)==0','37.)==0.')+'}\nbool diskSolid(vec2 p,int i){');
 const restGLSL=damageGLSL.replace(/if\(abs\(u\+\.27[^\n]+\n/,'');
 src=patch(src,'bool diskSolid(vec2 p,int i){','bool detailedShadeRest(float u,float v,int id){'+restGLSL.replace('family==0.','family==0').replaceAll('11..','11.').replace('37.)==0','37.)==0.')+'}\nbool diskSolid(vec2 p,int i){');
-src=patch(src,'if(uDiskNormals[i].w<.5)return true;','if(uDiskNormals[i].w<.5)return true;if(uLayout==2)return detailedShadeSolid(p.x,p.y,int(uDiskRights[i].w));');
+src=patch(src,'if(uDiskNormals[i].w<.5)return true;','if(uDiskNormals[i].w<.5)return true;if(uDiskNormals[i].w>1.5)return structuralShadeMargin(p,int(uDiskRights[i].w))>=0.;if(uLayout==2)return detailedShadeSolid(p.x,p.y,int(uDiskRights[i].w));');
 src=patch(src,'const float PI=',constants+'\nconst float PI=');
 src=patch(src,'vec3 biomeRegion(vec3 q){','vec3 legacyBiomeRegion(vec3 q){');
 src=patch(src,/vec3 biomeHaze\(vec3 q\)\{[^}]+\}/,'');
@@ -327,8 +359,23 @@ W.upload=function(gl,u,s){const f=W.frame(s);gl.uniform1i(u.uLayout,s.collection
  }
  while(anchors.length<36)anchors.push(0);while(right.length<54)right.push(0);while(up.length<54)up.push(0);gl.uniform2fv(u['uShadeUVAnchor[0]'],anchors);gl.uniform3fv(u['uShadeUVRight[0]'],right);gl.uniform3fv(u['uShadeUVUp[0]'],up);while(precision.length<72)precision.push(0);gl.uniform4fv(u['uDiskPrecision[0]'],precision);gl.uniform1i(u.uInspectDisk,-1);
  gl.uniform1i(u.uPreciseShade,footprint?.index??-1);
- if(footprint){const {x,y,z,plate}=footprint,bank=plate.id%3===0?x-.09-.055*Math.sin(y*17)-.017*Math.sin(y*53):plate.id%3===1?y-.13-.10*Math.sin(x*12):x+.36*y-.20-.04*Math.sin(y*31),long=x+.27+.065*Math.sin(y*11)+.018*Math.sin(y*41),cross=y+.28+.052*Math.sin(x*17)+.011*Math.sin(x*57),cx=Math.floor((x+1)*18),cy=Math.floor((y+1)*18),hx=(x+1)*18-cx,hy=(y+1)*18-cy;
-  gl.uniform3fv(u.uFootprintOrigin,[x,y,z]);gl.uniform4fv(u.uFootprintBounds,[1-x,1+x,1-y,1+y]);gl.uniform4fv(u.uFootprintShape,[1-x*x-y*y,plate.trim-x,plate.trim+x,0]);gl.uniform4fv(u.uFootprintLoss,[bank,y+.31,x+.43,0]);gl.uniform4fv(u.uFootprintCracks,[.013-long,.013+long,.009-cross,.009+cross]);gl.uniform4fv(u.uFootprintHoles,[hx-.21,hx-.79,hy-.16,hy-.84]);gl.uniform2fv(u.uFootprintCell,[cx,cy]);
+ if(footprint){
+  const {x,y,z,plate}=footprint;
+  gl.uniform3fv(u.uFootprintOrigin,[x,y,z]);
+  gl.uniform4fv(u.uFootprintBounds,[1-x,1+x,1-y,1+y]);
+  gl.uniform4fv(u.uFootprintShape,[1-x*x-y*y,plate.trim-x,plate.trim+x,0]);
+  if(plate.damage===2){
+   const planes=u['uFracturePlanes[0]'];
+   if(planes!=null)gl.uniform4fv(planes,W.shadeFracture.offsets(x,y,plate.id));
+  }else if(plate.damage){
+   const bank=plate.id%3===0?x-.09-.055*Math.sin(y*17)-.017*Math.sin(y*53):plate.id%3===1?y-.13-.10*Math.sin(x*12):x+.36*y-.20-.04*Math.sin(y*31);
+   const longitudinal=x+.27+.065*Math.sin(y*11)+.018*Math.sin(y*41),cross=y+.28+.052*Math.sin(x*17)+.011*Math.sin(x*57);
+   const cx=Math.floor((x+1)*18),cy=Math.floor((y+1)*18),hx=(x+1)*18-cx,hy=(y+1)*18-cy;
+   gl.uniform4fv(u.uFootprintLoss,[bank,y+.31,x+.43,0]);
+   gl.uniform4fv(u.uFootprintCracks,[.013-longitudinal,.013+longitudinal,.009-cross,.009+cross]);
+   gl.uniform4fv(u.uFootprintHoles,[hx-.21,hx-.79,hy-.16,hy-.84]);
+   gl.uniform2fv(u.uFootprintCell,[cx,cy]);
+  }
  }
  const inspect=window.SphereEdges?.shadeContext(s);
  if(inspect){gl.uniform1i(u.uInspectDisk,SphereCollection.plates(s).findIndex(p=>p.id===inspect.plate.id));gl.uniform3fv(u.uInspectRelative,M.sub(inspect.origin,s.position));gl.uniform4fv(u.uInspectBase,[inspect.u,inspect.v,0,0]);gl.uniform3fv(u.uInspectCanonical,inspect.canonicalOrigin);}

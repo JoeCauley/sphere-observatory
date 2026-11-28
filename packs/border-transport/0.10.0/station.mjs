@@ -1,9 +1,7 @@
 // A station is identified by the two Atlas plots and an integer along their shared edge.
 // Local metres use x along the trunk, z across the Border and y above the freight slab.
 import {spacingM,stationHash as hash,doorOffset,doorSizes} from './district.mjs';
-if(!globalThis.SphereAtlas)await import('../../../sphere-atlas.js');
-
-const atlas = globalThis.SphereAtlas;
+import {sharedEdge,pointOnEdge} from './edges.mjs';
 export const radiusM = 149597870700;
 export {spacingM};
 export const classes = [
@@ -17,38 +15,17 @@ const layouts = [
   {name:'Transfer yard', widthM:48000, laneHalfM:940, shoulderM:2800, bridgeM:720, carrierM:670, underpassM:-138, landingM:1000},
   {name:'Double gallery', widthM:56000, laneHalfM:1080, shoulderM:3500, bridgeM:765, carrierM:630, underpassM:-148, landingM:1500}
 ];
-const halfAngle=p=>Math.PI/p.columns;
 const wrap=a=>Math.atan2(Math.sin(a),Math.cos(a));
 
 
 export function addressOf(world, sideA, sideB, bay, shellRadiusM=radiusM) {
   if(!(shellRadiusM>0)||!Number.isFinite(shellRadiusM))throw Error('Invalid shell radius');
   if (!/^sphere-[a-f0-9]{16}$/.test(world) || !Number.isSafeInteger(bay)) throw Error('Invalid world or station index');
-  const pair=[atlas.byId(sideA),atlas.byId(sideB)].sort((a,b)=>(a?.index??-1)-(b?.index??-1));
-  if(pair.some(p=>!p)||pair[0].id===pair[1].id)throw Error('Two adjacent Atlas plots are required');
-  const [a,b]=pair;
-  let lat,lon,edgeLengthM,axis,acrossSign=1;
-  if(a.row===b.row) {
-    const steps=(b.col-a.col+a.columns)%a.columns;
-    if(steps!==1 && steps!==a.columns-1)throw Error('Plots do not share an edge');
-    acrossSign=steps===1?1:-1;
-    lat=a.latitude;lon=wrap(a.longitude+acrossSign*halfAngle(a));
-    axis='meridian';edgeLengthM=atlas.ROW*shellRadiusM;
-  } else {
-    if(b.row!==a.row+1)throw Error('Plots do not share an edge');
-    const relative=wrap(b.longitude-a.longitude);
-    const lo=Math.max(-halfAngle(a),relative-halfAngle(b));
-    const hi=Math.min(halfAngle(a),relative+halfAngle(b));
-    if(hi-lo<1e-10)throw Error('Plots do not share a traversable edge');
-    lat=a.latitude+a.halfHeight;lon=wrap(a.longitude+(lo+hi)/2);
-    axis='parallel';edgeLengthM=(hi-lo)*Math.cos(lat)*shellRadiusM;
-  }
-  const chainageM=bay*spacingM;
-  if(Math.abs(chainageM)+16000>=edgeLengthM/2)throw Error('Station lies beyond the shared edge');
-  if(axis==='parallel')lon=wrap(lon+chainageM/(shellRadiusM*Math.cos(lat)));
-  else lat+=chainageM/shellRadiusM;
-  return {world,radiusM:shellRadiusM,plots:[a.id,b.id],bay,axis,acrossSign,latitude:lat,longitude:lon,chainageM,
-    key:world+'/'+a.id+'/'+b.id+'/'+bay};
+  const edge=sharedEdge(sideA,sideB,shellRadiusM),chainageM=bay*spacingM;
+  if(Math.abs(chainageM)+16000>=edge.lengthM/2)throw Error('Station lies beyond the shared edge');
+  const {plots,axis,acrossSign}=edge;
+  return {world,radiusM:shellRadiusM,plots,bay,axis,acrossSign,...pointOnEdge(edge,chainageM),chainageM,
+    key:world+'/'+edge.id+'/'+bay};
 }
 
 // Exponential map in the Atlas latitude/longitude frame. Positive height points into the cavity.

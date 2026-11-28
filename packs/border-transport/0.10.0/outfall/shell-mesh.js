@@ -1,6 +1,6 @@
 import {borderSolids,ribs,ribSpacing,pipes} from './border.js';
 
-import {farEdgeM,roofM,rampEastM,rampHalfM,rampRunM,rampLandingM} from '../../kit/border-profile.js';
+import {farEdgeM,roofM,rampEastM,rampHalfM,rampRunM,rampLandingM} from '../../../kit/border-profile.js';
 
 // The outdoor horizon is drawn by the ground renderer. Subdivide physical walls
 // on both axes so their distant profiles meet that same surface.

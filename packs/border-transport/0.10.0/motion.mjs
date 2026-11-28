@@ -1,12 +1,16 @@
-import {classes,freightAt,fits,releaseIn} from './station.mjs';
-import {hallHalfM,linkHalfM,outsideDistrict,roofSlabM,facadeRib} from './district.mjs';
+import {classes,freightAt,fits,releaseIn,generateStation} from './station.mjs';
+import {unproject,project} from '../../kit/surface-route.js';
+import {hallHalfM,linkHalfM,nearestSite,districtPoint,districtLocation,wallDistance,outsideDistrict,roofSlabM,freightSlabDepthM,facadeRib} from './district.mjs';
 import {ribSpacing,ribs} from '../../kit/outfall-wall.mjs';
 import {galleryBoxes,galleryTubes} from '../../kit/outfall-gallery.mjs';
+import {feedPipe,plantSolids} from './maintenance.mjs';
 import {inFreightOpening,freightObstruction} from './freight-bay.mjs';
 
 const gallerySolids=galleryBoxes.filter(p=>p[8]).map(([x,y,z,w,h,d])=>[x-w/2,x+w/2,y-h/2,y+h/2,z-d/2,z+d/2]);
+gallerySolids.push(...plantSolids);
 export const walker={...classes[0],body:[.56,1.85,.56],speed:2.8};
-for(const [[x,y,start],[,,end],r] of galleryTubes)gallerySolids.push([x-r,x+r,y-r,y+r,start,end]);
+for(const [[x,y,start],[,,end],r] of [...galleryTubes,feedPipe])gallerySolids.push([x-r,x+r,y-r,y+r,start,end]);
+const galleryEnd=2+Math.max(...gallerySolids.map(solid=>solid[5]));
 
 export function boardingPose(s,group=classes[0],far=false){
   const r=s.routes.find(r=>r.id===group.id),side=far?1:-1;
@@ -27,6 +31,12 @@ export function support(s,x,z,foot,group,step){
   for(const r of s.routes){
     if(Math.abs(x-r.nearDoor[0])+group.body[0]/2>r.deckWidthM/2+.001)continue;
     const h=deckAt(r,z);
+    if(r.id==='heavy' && h<0){
+      // The ramp replaces the ground wherever it is cut. The freight track
+      // covers only the middle portion, with a traversable tunnel underneath.
+      const underTrack=Math.abs(z-s.widthM/2)<s.laneHalfM+group.body[2]/2;
+      return underTrack && foot+group.body[1]>-freightSlabDepthM+.001 ? 0 : h;
+    }
     if(Math.abs(foot-h)<=step)return h;
   }
   return 0;
@@ -55,6 +65,50 @@ function entersBox(x,y,z,nx,ny,nz,left,right,floor,ceiling,near,far){
   }
   return clip(x,nx,left,right) && clip(y,ny,floor,ceiling) && clip(z,nz,near,far);
 }
+// A handoff can arrive from above or from a real station doorway. An ordinary
+// link has no exterior entrance. Older native saves could be underneath its roof.
+export function recoverWallPose(d,p,group=walker,habitatPlot=null,verifiedPassage=false){
+  const site=nearestSite(d,p.eastM);
+  if(!site || p.altitudeM>=site.roofM+roofSlabM+group.eye-.01)return p;
+  const x=p.eastM-site.x,half=site.widthM/2,pad=Math.max(group.body[0],group.body[2])/2;
+  if(Math.abs(x)<=hallHalfM+pad+1 && Math.abs(p.northM)<=half+pad+1){
+    const foot=p.altitudeM-group.eye,head=foot+group.body[1];
+    if(head>site.roofM && !inFreightOpening(x,p.northM,pad,pad))return {...p,altitudeM:site.roofM+roofSlabM+group.eye};
+    if(Math.abs(x)>=hallHalfM-pad-1 && Math.abs(p.northM)>linkHalfM+pad && head>0.)
+      return {...p,eastM:site.x+Math.sign(x)*(hallHalfM+pad+2)};
+    if(Math.abs(p.northM)>=half-pad-1 && head>0.){
+      const station=generateStation(site.address);
+      if(!allowed(station,d,p,p,group,0))return {...p,northM:Math.sign(p.northM)*(half+pad+3)};
+    }
+    return p;
+  }
+  if(wallDistance(d,p.eastM,p.northM)>=-.002)return p;
+  if(!habitatPlot){
+    const onStaffedLink=p.eastM>=d.sites[0].x && p.eastM<=d.sites[d.sites.length-1].x && Math.abs(p.northM)<linkHalfM;
+    // A verified traveler may occupy the open passage below the slab.
+    if((verifiedPassage || onStaffedLink) && p.altitudeM-group.eye+group.body[1]<=site.roofM)return p;
+    return {...p,altitudeM:site.roofM+roofSlabM+group.eye};
+  }
+  const g=districtLocation(d,p.eastM,p.northM),r=d.origin.radiusM;
+  const clearance=Math.max(group.body[0],group.body[2])/2+2;
+  let closest=null,best=Infinity,homeSide=false;
+  // Use physical metres in the local tangent plane. At a junction the diagonals
+  // can reach open habitat when a cardinal direction follows another wall.
+  for(let bearing=0;bearing<8;bearing++){
+    const angle=bearing*Math.PI/4,dx=Math.sin(angle),dz=Math.cos(angle);
+    const point=m=>{const ll=unproject(g,dx*m,dz*m,r);return districtPoint(d,ll.latitude,ll.longitude);};
+    const free=m=>{const c=point(m);return outsideDistrict(d,c.eastM,c.northM)>clearance;};
+    let hi=linkHalfM*1.5;
+    while(hi<linkHalfM*12 && !free(hi))hi*=2;
+    if(!free(hi))continue;
+    let lo=0;
+    for(let i=0;i<20;i++){const mid=(lo+hi)/2;if(free(mid))hi=mid;else lo=mid;}
+    const ll=unproject(g,dx*hi,dz*hi,r),home=globalThis.SphereAtlas.plotAt(ll.latitude,ll.longitude)?.id===habitatPlot;
+    if((home && !homeSide) || (home===homeSide && hi<best)){closest=point(hi);best=hi;homeSide=home;}
+  }
+  return closest?{...p,...closest}:{...p,altitudeM:site.roofM+roofSlabM+group.eye};
+}
+
 export function exteriorMoveAllowed(station,district,from,to){
   const dx=to.eastM-from.eastM,dz=to.northM-from.northM,dy=to.altitudeM-from.altitudeM;
   const distance=Math.hypot(dx,dz,dy);
@@ -63,6 +117,7 @@ export function exteriorMoveAllowed(station,district,from,to){
   while(travelled<distance){
     // Distance to the hall/link union bounds the next possible wall contact.
     // In open country even a long flight step therefore needs a single check.
+    if(Math.min(p.altitudeM,to.altitudeM)>station.roofM+roofSlabM+walker.eye && !freightObstruction(station,p,to,walker))return true;
     const gap=outsideDistrict(district,p.eastM,p.northM)-6;
     if(gap>distance-travelled)return true;
     travelled=Math.min(distance,travelled+Math.max(8,gap));
@@ -82,6 +137,24 @@ export function constrainExterior(station,district,from,to){
     const t=(lo+hi)/2,p={};
     for(const axis of ['eastM','northM','altitudeM'])p[axis]=from[axis]+(to[axis]-from[axis])*t;
     if(exteriorMoveAllowed(station,district,from,p)){lo=t;safe=p;}else hi=t;
+  }
+  // On a remote wall the two Bay 0 coordinate axes are oblique. Sliding along
+  // either axis alone moves a pilot sideways even on a head-on impact.
+  const withinDistrict=safe.eastM>=district.sites[0].x-hallHalfM && safe.eastM<=district.sites.at(-1).x+hallHalfM
+    && Math.abs(safe.northM)<=station.widthM;
+  if(!withinDistrict && Math.hypot(safe.eastM,safe.northM)>district.origin.radiusM*.0001){
+    const g=districtLocation(district,safe.eastM,safe.northM),r=district.origin.radiusM;
+    const local=(e,n)=>{const ll=unproject(g,e,n,r);return districtPoint(district,ll.latitude,ll.longitude);};
+    const gap=(e,n)=>{const q=local(e,n);return wallDistance(district,q.eastM,q.northM);};
+    const nx=gap(3,0)-gap(-3,0),nz=gap(0,3)-gap(0,-3),squared=nx*nx+nz*nz;
+    if(squared>1.){
+      const end=districtLocation(district,to.eastM,to.northM),v=project(g,end.latitude,end.longitude,r);
+      const normal=(v.eastM*nx+v.northM*nz)/squared;
+      const slide={...safe,...local(v.eastM-normal*nx,v.northM-normal*nz)};
+      if(exteriorMoveAllowed(station,district,safe,slide))safe=slide;
+      const rise={...safe,altitudeM:to.altitudeM};
+      return exteriorMoveAllowed(station,district,safe,rise)?rise:safe;
+    }
   }
   for(const axis of ['eastM','northM','altitudeM']){
     const p={...safe,[axis]:to[axis]};
@@ -107,7 +180,7 @@ function allowed(s,d,p,next,group,time){
       const face=wall===0?-1:1;
       const out=face*(z-wall),oldOut=face*(oz-wall);
       const doorX=s.routes[0].nearDoor[0],gx=-face*(x-doorX),oldGX=-face*(ox-doorX);
-      if(foot<8 && intersects(oldOut,out,-38-hl,hl) && intersects(oldGX,gx,-7-hw,7+hw)){
+      if(foot<8 && intersects(oldOut,out,-galleryEnd-hl,hl) && intersects(oldGX,gx,-7-hw,7+hw)){
         for(const [lo,hi,bottom,top,front,back] of gallerySolids)
           if(entersBox(oldGX,oldFoot,-oldOut-2,gx,foot,-out-2,lo-hw,hi+hw,bottom-h,top,front-hl,back+hl))return false;
       }
@@ -125,15 +198,26 @@ function allowed(s,d,p,next,group,time){
       if(!door && (entersSlab(oz,z,wall,hl+1) || Math.abs(oz-wall)<hl+1-.0002))return false;
     }
   }
-  if(Math.abs(x)>hallHalfM && next.eastM>d.sites[0].x && next.eastM<d.sites.at(-1).x){
-    for(const side of [-1,1]){
-      const wall=side*linkHalfM;
-      if(intersects(p.northM,next.northM,wall-hl-1,wall+hl+1) && entersSlab(p.northM,next.northM,wall,hl+1))return false;
-    }
+  if((Math.abs(x)>hallHalfM || Math.abs(next.northM)>half+Math.max(hl,hw)+16) && head>0){
+    const oldGap=wallDistance(d,p.eastM,p.northM),gap=wallDistance(d,next.eastM,next.northM);
+    const pad=Math.max(hl,hw)+1;
+    if((oldGap>=0 && gap<pad-.0002 && gap<oldGap-.000001) ||
+       (oldGap<0 && gap>-pad+.0002 && gap>oldGap+.000001))return false;
   }
   if(outsideDistrict(d,next.eastM,next.northM)<=0 && !inFreightOpening(x,next.northM,hw,hl) &&
      head>s.roofM && foot<s.roofM+roofSlabM-.01)return false;
   if(foot< s.roofM && Math.abs(x)<hallHalfM){
+    const cut=s.routes[2],centre=cut.nearDoor[0],halfWidth=cut.deckWidthM/2;
+    if(Math.min(ox,x)-hw<centre+halfWidth && Math.max(ox,x)+hw>centre-halfWidth &&
+       intersects(oz,z,-hl,s.widthM+hl)){
+      const oldY=deckAt(cut,oz),newY=deckAt(cut,z);
+      for(const edge of [centre-halfWidth,centre+halfWidth]){
+        // The cut's retaining wall reaches both the rim of the trench and
+        // the top of the route's side barrier. Both follow the surveyed ramp.
+        const hit=(fromY,toY,bottom,top)=>entersBox(ox,fromY,oz,x,toY,z,edge-hw,edge+hw,bottom,top,-hl,s.widthM+hl);
+        if(hit(oldFoot-oldY,foot-newY,-cut.deckDepthM-h,cut.door[1]) || hit(oldFoot,foot,-Infinity,0))return false;
+      }
+    }
     const rib=Math.round(x/800)*800;
     if(!inFreightOpening(rib,Math.sign(next.northM)*(s.laneHalfM+420)) &&
       !s.routes.some(r=>Math.abs(r.nearDoor[0]-rib)<r.deckWidthM/2+50) && Math.abs(x-rib)<18+hw &&
@@ -147,8 +231,8 @@ function allowed(s,d,p,next,group,time){
       if(onDeck && Math.abs(Math.abs(next.northM)-(s.laneHalfM+80))<6+hl && foot<r.points[2][1]-r.deckDepthM)return false;
     }
   }
-  if(foot<0 && Math.abs(next.northM)<s.laneHalfM && head>-24 && foot<-.1)return false;
-  if(foot< s.traffic.heightM && head>0 && Math.abs(next.northM)<s.traffic.widthM/2+hl){
+  if(Math.abs(next.northM)<s.laneHalfM+hl && head>-freightSlabDepthM+.001 && foot<-.001)return false;
+  if(Math.abs(x)<=hallHalfM+60000 && foot<s.traffic.heightM && head>0 && Math.abs(next.northM)<s.traffic.widthM/2+hl){
     const cargo=freightAt(s,time),center=cargo.x+Math.round((x-cargo.x)/cargo.spacingM)*cargo.spacingM;
     if(intersects(ox,x,center-(cargo.lengthM/2+hw),center+(cargo.lengthM/2+hw)))return false;
   }
@@ -173,10 +257,15 @@ export function move(s,d,pose,group,dx,dz,dy,time,rate=1){
     const x=next.eastM-s.address.chainageM,z=next.northM+s.widthM/2,foot=p.altitudeM-group.eye;
     const interior=outsideDistrict(d,next.eastM,next.northM)<=0 &&
       !inFreightOpening(x,next.northM,group.body[0]/2,group.body[2]/2),top=s.roofM+roofSlabM;
+    // Test entry into the exposed edge of the freight slab before assigning
+    // support. A flier halfway up the cut cannot slide onto the track above.
+    const trackEdge=s.laneHalfM+group.body[2]/2;
+    if(Math.abs(p.northM)>=trackEdge && Math.abs(next.northM)<trackEdge &&
+       foot<-.001 && foot+group.body[1]>-freightSlabDepthM+.001){blocked='Clearance limit';break;}
     const ground=support(s,x,z,foot,group,1+Math.hypot(dx,dz)/steps*.055);
     if(p.mode==='walk'){
       if(foot>=top-.1){if(!interior)next.mode='flight';else next.altitudeM=top+group.eye;}
-      else if(foot>ground+2 && ground===0){blocked='Deck edge';break;}
+      else if(foot>ground+2 && ground<=0){blocked='Deck edge';break;}
       else next.altitudeM=ground+group.eye;
       const stop=s.laneHalfM+group.body[2]/2+50;
       if(rate>0 && Math.abs(p.northM)>=stop && Math.abs(next.northM)<stop && ground>=0 && ground<1){
@@ -187,6 +276,8 @@ export function move(s,d,pose,group,dx,dz,dy,time,rate=1){
     }else{
       if(interior && foot>=top-.1 && next.altitudeM<top+group.eye)next.altitudeM=top+group.eye;
       else if(interior && foot<top && next.altitudeM>p.altitudeM)next.altitudeM=Math.min(next.altitudeM,s.roofM-group.body[1]+group.eye-.01);
+      if(Math.abs(next.northM)<s.laneHalfM+group.body[2]/2 && foot+group.body[1]<=-freightSlabDepthM+.001)
+        next.altitudeM=Math.min(next.altitudeM,-freightSlabDepthM-group.body[1]+group.eye);
       if(next.altitudeM<p.altitudeM){
         for(const r of s.routes){
           if(z<0 || z>s.widthM || Math.abs(x-r.nearDoor[0])+group.body[0]/2>r.deckWidthM/2)continue;
@@ -197,7 +288,10 @@ export function move(s,d,pose,group,dx,dz,dy,time,rate=1){
       next.altitudeM=Math.max(next.altitudeM,ground+group.eye);
     }
     if(!allowed(s,d,p,next,group,time)){blocked='Clearance limit';break;}
+    if(next.eastM===p.eastM && next.northM===p.northM && next.altitudeM===p.altitudeM)break;
     p=next;
+    if(steps>64 && pose.mode==='flight' && (nearestSite(d,p.eastM).address.key!==s.address.key ||
+        outsideDistrict(d,p.eastM,p.northM)>3500 || p.altitudeM>24000))break;
   }
   return {pose:p,blocked};
 }

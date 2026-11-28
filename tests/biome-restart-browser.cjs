@@ -8,7 +8,7 @@ const {chromium} = require('playwright');
 const {start} = require('./support/observatory-server.cjs');
 const {executable} = require('./support/biome-browser.cjs');
 const packs = require('../packs/biome-library.json').packs;
-const [meadow,industry,city,outfall] = ['infinite-meadow','infinite-industry','sideways-city','border-outfall'];
+const [meadow,industry,city,border] = ['infinite-meadow','infinite-industry','sideways-city','border-transport'];
 const name = id => packs.find(p=>p.id===id).name;
 const transport=process.env.SPHERE_TEST_TRANSPORT || 'http';
 const output=process.env.SPHERE_RESTART_OUTPUT;
@@ -126,13 +126,13 @@ async function main() {
     await page.route('**/api/installed-biomes',async route=>{
       if(route.request().method()==='PATCH'){intercept();await gate;}await route.fallback();
     });
-    await row(outfall).getByRole('button',{name:'Install',exact:true}).click();
+    await row(border).getByRole('button',{name:'Install',exact:true}).click();
     await delayed;await changeSeed(23,false);release();
     await page.waitForFunction(n=>SphereBiomeLibrary.world?.params.seed===n,23);
     await page.unroute('**/api/installed-biomes');
     await page.waitForFunction(()=>SphereBiomeSurface.inspect().installed===3);
     assert.deepEqual(await installed(),initial);
-    assert.deepEqual(disk().worlds[other.key].installed.map(i=>i.id),[meadow,outfall]);
+    assert.deepEqual(disk().worlds[other.key].installed.map(i=>i.id),[border]);
     assert.deepEqual(disk().worlds[original.key].installed,initial);
     record('Pending install stayed in seed 24 while panel and atlas returned to 23',{originKey:original.key,otherKey:other.key,other:disk().worlds[other.key].installed});
     await close();await launch('visitor');

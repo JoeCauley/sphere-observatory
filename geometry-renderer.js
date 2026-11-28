@@ -17,6 +17,8 @@ function uniforms(gl,p){
 function program(gl,vs,fs){const p=link(gl,vs,fs);try{return uniforms(gl,p);}catch(error){gl.deleteProgram(p);throw error;}}
 program.prepare=async function(gl,vs,fs,isDisposed){
  const p=link(gl,vs,fs),parallel=gl.getExtension('KHR_parallel_shader_compile');
+  // A station window can prepare this program while Main has no frame to present.
+  if(parallel)gl.flush();
  try{
   while(parallel&&!gl.getProgramParameter(p,parallel.COMPLETION_STATUS_KHR)){
    if(isDisposed()||gl.isContextLost())throw Error('The graphics context closed while preparing the scene.');
@@ -45,7 +47,7 @@ void main(){vec3 p=uOriginRelative+position.x*uMeshX+position.y*uMeshY+position.
 function terrainFragment(){
   const fragment=SphereShaders.geometryFragment||SphereShaders.fragment,sharedBase=fragment.slice(0,fragment.lastIndexOf('void main(){')).replace('in vec2 vUV;',''),shared=sharedBase+(sharedBase.includes('uniform int uMeadowMaterialRevision;')?'':'\nuniform int uMeadowMaterialRevision;vec3 meadowGroundLighting(vec3 radiance,vec3 delta,float direct,vec3 fill){return radiance;}\nvec3 meadowGroundNormal(vec3 n,vec3 delta){return n;}float meadowGroundSpec(vec3 delta,vec3 n,vec3 v,float direct){return 0.;}\n');
   const atlas=window.SphereBiomeSurface && window.SphereAtlas;
-  const regionSource=shared.includes('vec3 installedBiomeMaterial(')?'':atlas?SphereBiomeSurface.glsl(atlas):'vec3 installedBiomeMaterial(vec3 c,vec3 q,float p,float d){return c;}';
+  const regionSource=shared.includes('vec3 installedBiomeMaterial(')?'':atlas?SphereBiomeSurface.glsl(atlas):'vec3 installedBiomeMaterial(vec3 c,vec3 q,vec3 delta,float p,float d){return c;}';
   return shared+regionSource+`
 in vec3 vRelative,vNormal,vAlbedo,vLocal,vLocalNormal;flat in float vMaterial,vEmission;
 uniform float uSiteLight,uDetailFeature,uPixelFocal,uGroundPatchRadius;uniform int uMaterialPlate,uStructureMaterial,uConnectedGround;uniform vec3 uMaterialOffset,uMaterialX,uMaterialY,uMaterialZ;uniform vec3 uSiteFill;
@@ -57,13 +59,44 @@ vec3 fieldGround(int id,vec3 p,float footprint){vec3 col=WORLD_ALBEDO[id];float 
  if(id==5){vec2 tile=p.xz/.012;float seams=panelLine(tile,max(.0001,footprint/.012));col*=1.-seams*.65;}
  if(id==8||id==9){float veins=pow(1.-abs(noise(p*400.)*2.-1.),16.);col+=WORLD_ALBEDO[id]*veins*.5*small;}
  return col;}
+// Local metres retain bark and fallen-leaf scale on an AU-sized shell after a rebase.
+vec3 jungleFinish(vec3 albedo,vec3 delta,float material,float footprint){
+ vec3 m=uAnchor[9]+delta*1000.;
+ float close=1.-smoothstep(.00012,.00065,footprint);
+ if(material== -16.){
+  float height=-dot(uN,delta)*1000.;
+  vec3 bark=m+uN*(height*.96);
+  float warp=tnoise(bark+vec3(11.,23.,3.));
+  float fissure=1.-smoothstep(.06,.22,abs(tnoise(bark*4.+warp*1.65)-.47));
+  float fine=tnoise(bark*16.+warp*2.);
+  return albedo*(1.+(.13*(warp-.5)-.48*fissure+.20*(fine-.5))*close);
+ }
+ if(material== -17.){
+  float scale=1.-smoothstep(.00012,.0009,footprint);
+  float leaf=tnoise(m*4.),spray=tnoise(m+vec3(11.,2.,7.));
+  return albedo*vec3(1.+.18*(spray-.5),1.,.94)*(1.+scale*(.33*(spray-.5)+.44*(leaf-.5)));
+ }
+ // A curled fallen leaf casts a narrow dark edge across patches of moist litter.
+ vec3 up=abs(uN);vec2 uv=(up.x>up.y&&up.x>up.z)?m.yz:(up.y>up.z?m.xz:m.xy);
+ vec2 cell=floor(uv*4.),p=fract(uv*4.)-.5;
+ float seed=thash(vec3(cell,7.)),angle=6.28318*seed;
+ p-=vec2(seed-.5,thash(vec3(cell,17.))-.5)*.30;
+ vec2 d=vec2(dot(p,vec2(cos(angle),sin(angle))),dot(p,vec2(-sin(angle),cos(angle))));
+ float taper=max(0.,1.-abs(d.x)*4.);
+ float leaf=(1.-smoothstep(.045,.09,abs(d.y-.045*sin(8.*d.x))/max(.001,taper)))*step(abs(d.x),.25);
+ float litter=smoothstep(.32,.71,tnoise(uAnchor[8]+delta*100.));
+ vec3 soil=mix(albedo*.81,vec3(.088,.063,.030),litter*.74);
+ return mix(albedo,mix(soil,vec3(.17+.09*seed,.115+.035*seed,.046),leaf*litter*.88),close);
+}
 // Province heights already meet the shell at 320 km. Keep one opaque depth
 // owner through the material blend; stippled holes expose a different depth
 // and break both collision agreement and the weather's receiving surface.
 void main(){float distanceKm=length(vRelative);if(uDetailFeature>0.){float coverage=smoothstep(.45,1.2,uDetailFeature*uPixelFocal/max(.00001,distanceKm));if(fract(dot(gl_FragCoord.xy,vec2(.754877666,.569840296)))>coverage)discard;}gl_FragDepth=clamp(log2(1.+distanceKm)/log2(1.+4.*uRadius),0.,1.);if(uMode==2){fragColor=vec4(0.,.75,0.,1.);return;}if(uMode==4||uMode==5){fragColor=vec4(0,0,0,1);return;}vec3 n=normalize(vNormal);if(dot(n,vRelative)>0.)n=-n;vec3 q=normalize(camera()+vRelative/uRadius),delta=vRelative-uN*(uH*uRadius),col=vAlbedo;
  if(vMaterial>=20.){int id=int(vMaterial)-20;if(uTextureDetail==1&&uHeroReady[id]>.001){vec3 tri=pow(abs(vLocalNormal),vec3(8.));tri/=max(.00001,tri.x+tri.y+tri.z);col=mix(col,sampleSurface(uHeroTex,float(id),vLocal/2.5,tri,dFdx(vLocal)/2.5,dFdy(vLocal)/2.5,false),uHeroReady[id]);}}
  else if(vMaterial== -4.){float fw=max(length(dFdx(vLocal)),length(dFdy(vLocal)));vec3 weights=pow(abs(vLocalNormal),vec3(8.));weights/=max(.00001,weights.x+weights.y+weights.z);float seams=weights.x*panelLine(vLocal.yz/.12,fw/.12)+weights.y*panelLine(vLocal.xz/.12,fw/.12)+weights.z*panelLine(vLocal.xy/.12,fw/.12);col*=.72+.48*noise(vLocal*2.);col*=1.-seams*.55;float fine=weights.x*panelLine(vLocal.yz/.008,fw/.008)+weights.y*panelLine(vLocal.xz/.008,fw/.008)+weights.z*panelLine(vLocal.xy/.008,fw/.008);col*=1.-fine*.2;}
- else if(vMaterial>=13.&&vMaterial<=14.&&uMaterialPlate>=0){vec2 uv=uShadeUVAnchor[uMaterialPlate]+vec2(dot(vRelative,uShadeUVRight[uMaterialPlate]),dot(vRelative,uShadeUVUp[uMaterialPlate]))/1.2;col=shadeSkin(uv,int(vMaterial)-10,distanceKm);}
+ else if(vMaterial>=13.&&vMaterial<=14.&&uMaterialPlate>=0){vec2 uv=uShadeUVAnchor[uMaterialPlate]+vec2(dot(vRelative,uShadeUVRight[uMaterialPlate]),dot(vRelative,uShadeUVUp[uMaterialPlate]))/1.2;int layer=int(vMaterial)-10;
+  vec2 gx=dFdx(uv),gy=dFdy(uv);col=shadeSkinGrad(uv,layer,distanceKm,gx,gy);
+  col=fracturedShadeSkin(col,vRelative,uMaterialPlate,layer,shadeFilterWidth(uv,gx,gy)*1.2);}
  else if(vMaterial>=13.&&uWorldTexturesReady==1&&uTextureDetail==1){vec3 tri=pow(abs(vLocalNormal),vec3(8.));tri/=max(.00001,tri.x+tri.y+tri.z);int layer=vMaterial==15.?4:int(vMaterial)-10;col=mix(col,sampleSurface(uEngineering,float(layer),vLocal/6.,tri,dFdx(vLocal)/6.,dFdy(vLocal)/6.,false),uEngineeringReady[layer]);}
  else if(vMaterial>=0.&&!(uConnectedGround==1&&vMaterial<10.)){float footprint=max(length(dFdx(delta)),length(dFdy(delta)));col=worldDetail(int(vMaterial),q,delta,footprint,distanceKm);if(uPackEnabled==1)col=packMaterial(col,delta,footprint);if(vMaterial<10.&&distanceKm<.12&&uPackEnabled==0)col=mix(col,fieldGround(int(vMaterial),vLocal,footprint),1.-smoothstep(.05,.12,distanceKm));}
  // Evaluate the geographic material once for all transition owners. Repeating
@@ -71,7 +104,11 @@ void main(){float distanceKm=length(vRelative);if(uDetailFeature>0.){float cover
  float geographicBlend=uConnectedGround==1&&vMaterial>=0.&&vMaterial<10.?1.:0.;
  if(uGroundPatchRadius>0.&&vMaterial>=0.&&vMaterial<20.)geographicBlend=smoothstep(uGroundPatchRadius*.733333333,uGroundPatchRadius,max(abs(vLocal.x),abs(vLocal.z)));
  if(vMaterial== -5.){float broad=noise(vLocal*.018)*.7+noise(vLocal*.061)*.3,groves=noise(vLocal*.9)*.6+noise(vLocal*2.7)*.4;col*=mix(.60,1.75,smoothstep(.30,.76,broad))*(.75+.5*groves);geographicBlend=smoothstep(250.,319.5,max(abs(vLocal.x),abs(vLocal.z)));if(geographicBlend<=.001)geographicBlend=0.;}
- if(geographicBlend>0.){float footprint=max(length(dFdx(delta)),length(dFdy(delta)));vec3 ground=surfaceMaterial(q,delta,footprint,distanceKm);col=mix(col,installedBiomeMaterial(ground,q,footprint/uRadius,distanceKm),geographicBlend);}
+ if(geographicBlend>0.){float footprint=max(length(dFdx(delta)),length(dFdy(delta)));vec3 ground=surfaceMaterial(q,delta,footprint,distanceKm);col=mix(col,installedBiomeMaterial(ground,q,delta,footprint/uRadius,distanceKm),geographicBlend);}
+ if(uTextureDetail==1 && distanceKm<1.5 && (vMaterial== -16. || vMaterial== -17. || (vMaterial==1. && uConnectedGround==1))){
+  float plantPixel=max(length(dFdx(delta)),length(dFdy(delta)));
+  if(plantPixel<.001)col=jungleFinish(col,delta,vMaterial,plantPixel);
+ }
  if(vMaterial== -5.&&uPackEnabled==1){float footprint=max(length(dFdx(delta)),length(dFdy(delta)));col=packMaterial(col,delta,footprint);}
  if(vMaterial== -5.&&distanceKm<.12&&uPackEnabled==0){float footprint=max(length(dFdx(vLocal)),length(dFdy(vLocal)));col=mix(col,fieldGround(int(worldRegion(q).x),vLocal,footprint),1.-smoothstep(.05,.12,distanceKm));}
  if(vMaterial== -7.){float fw=max(length(dFdx(vLocal)),length(dFdy(vLocal))),radial=length(vLocal.xz);float joint=constructionRib(radial,.012,fw);col*=1.-joint*.12;col*=.94+.12*noise(vLocal*320.);}
@@ -95,6 +132,10 @@ void main(){float distanceKm=length(vRelative);if(uDetailFeature>0.){float cover
  vec3 light=-q;float cosine=max(0.,dot(n,light)),shadow=structureShadow(vRelative,n);vec3 view=-normalize(vRelative),halfway=normalize(light+view);float spec=pow(max(0.,dot(n,halfway)),32.)*.018;if(uPackEnabled==1&&(vMaterial== -5.||(vMaterial>=0.&&vMaterial<10.)))spec=0.;
  if(vMaterial== -8.){float rim=pow(1.-max(0.,dot(n,view)),3.);spec=pow(max(0.,dot(n,halfway)),60.)*.65+rim*.055;}
  vec3 radiance=col*(uSiteFill*(.45+.55*max(0.,dot(n,-uN)))+uSiteLight*uLuminosity/max(.01,dot(camera()+vRelative/uRadius,camera()+vRelative/uRadius))*cosine*shadow)+vec3(spec*uSiteLight*shadow)+col*vEmission;
+ // Direct light transmits through a crown and reflects from foliage onto its trunk.
+ // Weight both by daylight so the same tree still darkens under a passing Shade.
+ if(vMaterial== -17.)radiance+=col*vec3(.18,.27,.11)*uSiteLight*(1.-.55*cosine)*(.48+.52*shadow);
+ if(vMaterial== -16.)radiance+=col*vec3(.085,.105,.055)*uSiteLight;
  if(uMeadowMaterialRevision>=2&&(vMaterial== -5.||(vMaterial>=0.&&vMaterial<10.))){radiance=meadowGroundLighting(radiance,delta,uSiteLight*uLuminosity/max(.01,dot(camera()+vRelative/uRadius,camera()+vRelative/uRadius))*cosine*shadow,uSiteFill*(.45+.55*max(0.,dot(n,-uN))));radiance+=vec3(meadowGroundSpec(delta,n,view,uSiteLight*uLuminosity*shadow));}
  if(vMaterial== -6.&&(uPackEnabled==0||distanceKm<20.)){float fresnel=pow(1.-max(0.,dot(n,view)),5.);float ripple=noise(vLocal*18.)*.6+noise(vLocal*57.)*.4;vec3 reflected=mix(vec3(.11,.19,.19),uSiteFill*2.,.45);radiance=mix(radiance,reflected,.18+.65*fresnel)+vec3(pow(max(0.,dot(n,halfway)),180.)*.16*uSiteLight*shadow)*( .65+.35*ripple);}
  if(uStructureMaterial==1&&uRichMaterials==1){
@@ -134,6 +175,7 @@ class GeometryRenderer{
   i('uBiomeOverride',s.biome??-1);i('uGrid',+s.grid);
   SphereCollection.upload(gl,u,s,[0,0,0]); // Mesh lighting uses uSiteLight/uSiteFill below.
   gl.uniform3fv(u['uAnchor[0]'],[1000000,100000,10000,1000,100,10,1,.1,.01,.001].flatMap(scale=>n.map(x=>((x*s.radius/scale)%256+256)%256)));v('uHeroAnchor',SphereBiomes.heroAnchors(n,s.radius));gl.uniform3fv(u['uBiomeAnchor[0]'],SphereBiomes.anchors(n,s.radius));renderer.biomes?.bindFrame(u);renderer.heroes?.bindFrame(u);renderer.worldTextures?.bind(u);SphereWorld.upload(gl,u,s);
+  globalThis.SphereVioletForest?.bindFork?.(gl,u,s,n);
   renderer.woundTextures?.bind(u,true);renderer.finishes.bind(u,s);renderer.localShadows.bind(u,s);renderer.meadowGround?.bind(u,s);
   if(u.uInstalledBiomes)gl.uniform1i(u.uInstalledBiomes,5);
   const lights=new Map(),lightSources=new Map(),lightKeys=new Map();
@@ -149,7 +191,7 @@ class GeometryRenderer{
   if(u.uInstalledBiomes && renderer.biomeOverview?.programFor(s))renderer.biomeOverview.withFrame(s,u,drawGroups);else drawGroups();
   gl.bindVertexArray(null);gl.activeTexture(gl.TEXTURE0);renderer.renderInfo.geometry={groups:drawn,residentGroups:groups.length,culledGroups:groups.length-drawn,lightSamples:lights.size,triangles,localShadow:renderer.localShadows.quality>0,materials:s.richMaterials!==false&&groups.some(m=>m.plate||m.name.startsWith('Wound'))?'roughness / metalness / normal':'simple'};
  }
- dispose(){const gl=this.gl;for(const b of this.meshes.values()){gl.deleteVertexArray(b.vao);gl.deleteBuffer(b.buffer);}gl.deleteProgram(this.main.p);}
+ dispose(){const gl=this.gl;for(const b of this.meshes.values()){gl.deleteVertexArray(b.vao);gl.deleteBuffer(b.buffer);}this.meshes.clear();gl.deleteProgram(this.main.p);}
 }
 window.SphereGeometryVisible=visible;window.SphereGeometryRenderer=GeometryRenderer;window.SphereGLProgram=program;
 })();

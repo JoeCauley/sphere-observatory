@@ -9,8 +9,8 @@ const {chromium}=require('playwright'),{session,executable}=require('./support/b
   await p.goto(host.origin,{waitUntil:'domcontentloaded'});
   await p.waitForFunction(()=>window.SphereLoading?.ready && window.SphereBiomeLibrary?.world);
   const floorSamples=await p.evaluate(async()=>{
-    const {createRenderer}=await import('./packs/border-outfall/1.0.0/render.js');
-    const {initial}=await import('./packs/border-outfall/1.0.0/model.js');
+    const {createRenderer}=await import('./packs/border-transport/0.10.0/outfall/render.js');
+    const {initial}=await import('./packs/border-transport/0.10.0/outfall/model.js');
     const canvas=document.createElement('canvas');canvas.width=320;canvas.height=180;
     const renderer=createRenderer(canvas),gl=canvas.getContext('webgl2'),s=initial(),samples=[];
     try{
@@ -45,13 +45,13 @@ const {chromium}=require('playwright'),{session,executable}=require('./support/b
   });
   assert(uninstalled.floor);assert.equal(uninstalled.owner,uninstalled.expected);assert.equal(uninstalled.installed,0);
   console.log('PASS crossed a Main habitat boundary with an empty installation register.');
-  await p.evaluate(()=>SphereBiomeLibrary.install('border-outfall'));
+  await p.evaluate(async()=>{await SphereBiomeLibrary.install('infinite-meadow');await SphereBiomeLibrary.install('border-transport');});
   const open=await p.evaluate(async()=>{
-   const api=await import('./surface-passages.js'),geo=await import('./geographic-flight.js'),s=SphereApp.getState(),lib=SphereBiomeLibrary,item=lib.entry('border-outfall');
+   const api=await import('./surface-passages.js'),geo=await import('./geographic-flight.js'),s=SphereApp.getState(),lib=SphereBiomeLibrary,item=lib.entry('border-transport/outfall');
    const origin=geo.mainPose(s,item,{eastM:-1,northM:api.tunnelStart,altitudeM:1.7,yaw:0,pitch:0,mode:'walk'},SphereAtlas,SphereWorld);
    const q=SphereMath.norm(origin.position),gate=api.passageAt(q,origin.forward,s.radius);
    const name=q=>api.ownerAt(q,s,lib.installed(),SphereAtlas,SphereWorld);
-   Object.assign(gate.near,{id:'border-outfall',name:item.name,pack:true,tint:[.16,.42,.15]});
+   Object.assign(gate.near,{id:'border-transport/outfall',name:item.name,pack:true,tint:[.16,.42,.15]});
    Object.assign(gate.far,name(gate.far.q),{tint:SphereWorld.sample(gate.far.q,s).color});
    const pose={eastM:-1,northM:api.tunnelStart+.5,altitudeM:1.7,yaw:0,pitch:0,mode:'walk'};
    window.walkGate=gate;
@@ -90,7 +90,13 @@ const {chromium}=require('playwright'),{session,executable}=require('./support/b
   try{await p.waitForFunction(()=>document.querySelector('#stageFrame iframe')?.surfaceEntry?.active,null,{timeout:15000});}
   finally{await p.keyboard.up('KeyS');}
   const back=await inspect();assert(back.pose.northM>1000038);assert.equal(back.pose.mode,'walk');
-  assert(await p.evaluate(()=>document.querySelector('#stageFrame iframe').contentWindow.SphereBiome.walkTunnel(1000001/3.3,-1)));
+  const returned=await p.evaluate(async()=>{
+    const frame=document.querySelector('#stageFrame iframe'),api=frame.contentWindow.SphereBiome;
+    const ok=await api.walkTunnel(1000001/3.3,-1);
+    return {ok,pose:api.pose(),frame:frame.dataset.locationId,passage:!!frame.surfaceEntry?.passage,
+      status:document.querySelector('#biomeLibraryStatus').textContent,detail:document.querySelector('#transitDetail')?.textContent};
+  });
+  assert(returned.ok,'Return through the saved mouth failed: '+JSON.stringify({before:back.pose,...returned}));
   const near=await inspect();assert.equal(near.pose.mode,'walk');assert(Math.abs(near.pose.northM-43)<.02);
   assert(await p.evaluate(()=>document.querySelector('#stageFrame iframe').contentWindow.SphereBiome.walkTunnel(2/3.3)));
   await p.waitForFunction(()=>{

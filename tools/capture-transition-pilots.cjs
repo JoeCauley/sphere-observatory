@@ -22,12 +22,12 @@ async function main(){
       if(fast)await p.keyboard.down('ShiftLeft');await p.keyboard.down(key);
       try{await p.waitForFunction(until,arg,{polling:40,timeout:limit});}finally{await p.keyboard.up(key);if(fast)await p.keyboard.up('ShiftLeft');}
     }
-    for(const [which,short] of [['sideways-city','city'],['infinite-meadow','meadow'],['infinite-industry','industry'],['border-outfall','outfall']]){
+    for(const [which,short] of [['sideways-city','city'],['infinite-meadow','meadow'],['infinite-industry','industry'],['border-transport/outfall','outfall']]){
       const id='free-'+short+'-reverse';if(!wanted(id))continue;
       await p.evaluate(async which=>{
         SphereStageFrame.showMain();
         const g=await import('./geographic-flight.js'),s=SphereApp.getState(),item=SphereBiomeLibrary.entry(which);
-        const camera={eastM:which==='border-outfall'?410:700,northM:which==='border-outfall'?-300:200,altitudeM:24600,yaw:.37,pitch:-.77,mode:'flight'};
+        const camera={eastM:which==='border-transport/outfall'?410:700,northM:which==='border-transport/outfall'?-300:200,altitudeM:24600,yaw:.37,pitch:-.77,mode:'flight'};
         const view=g.mainPose(s,item,camera,SphereAtlas,SphereWorld);
         view.autoSpeed=false;view.speed=4;view.playing=false;SphereApp.setState(view);await SphereLoading.ensureCurrent();
       },which);
@@ -55,12 +55,12 @@ async function main(){
     for(const side of ['near','far']){
       const id='outfall-'+side+'-roof';if(!wanted(id))continue;
       await p.evaluate(async side=>{
-        SphereStageFrame.showMain();const lib=SphereBiomeLibrary,geo=await import('./geographic-flight.js'),model=await import('./packs/border-outfall/1.0.0/model.js');
+        SphereStageFrame.showMain();const lib=SphereBiomeLibrary,geo=await import('./geographic-flight.js'),model=await import('./packs/border-transport/0.10.0/outfall/model.js');
         const {farEdgeM,rampEastM,rampAt}=await import('./packs/kit/border-profile.js'),toward=side==='near'?1:-1;
         const northM=side==='near'?-7:farEdgeM+7;
         const pose={eastM:rampEastM,northM,altitudeM:rampAt(rampEastM,northM)+1.7,yaw:toward===1?0:Math.PI,pitch:-.22,mode:'walk'};
-        const s=model.initial();s.pose=pose;s.bookmark={...pose};lib.saveStorage().setItem(lib.pack('border-outfall').saveKey,JSON.stringify({schema:1,...s}));
-        await SphereStageFrame.open('border-outfall');
+        const s=model.initial();s.pose=pose;s.bookmark={...pose};lib.saveStorage().setItem(lib.sceneInfo('border-transport/outfall').saveKey,JSON.stringify({schema:1,...s}));
+        await SphereStageFrame.open('border-transport/outfall');
       },side);
       await shoot(id,async()=>{
         await child().locator('#world').focus();
@@ -87,7 +87,7 @@ async function main(){
       });
       await shoot(service,async()=>{
         await child().locator('#outfallCourse').click();
-        await p.waitForFunction(()=>SphereStageFrame.lastArrival?.route==='surface' && SphereStageFrame.current?.id==='border-outfall');
+        await p.waitForFunction(()=>SphereStageFrame.lastArrival?.route==='surface' && SphereStageFrame.current?.id==='border-transport/outfall');
         await p.waitForFunction(()=>{const a=document.querySelector('#stageFrame iframe')?.contentWindow.SphereBiome;return a&&!a.inspect().levelCruising&&a.pose().northM>-19;},null,{timeout:145000});
         const wall=await child().locator('body').evaluate(()=>SphereBiome.pose());
         assert(Math.abs(wall.northM+18)<.05);

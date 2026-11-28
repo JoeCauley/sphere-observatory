@@ -7,13 +7,23 @@
 const {add,sub,mul,dot,norm,length:len}=M,cache=new Map();
 const solid=(p,u,v)=>C.diskContains(u*p.size*(p.across||1),v*p.size,p);
 function curves(p){
- const key=[p.shape,p.trim,p.damage,p.id].join('|');if(cache.has(key))return cache.get(key);const out=[];
+ const key=[p.shape,p.trim,p.damage,p.id,p.across].join('|');if(cache.has(key))return cache.get(key);const out=[];
  const line=(id,a,b,kind='intact')=>out.push({id,kind,lo:0,hi:1,line:[a,b],at:t=>[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t]});
  const curve=(id,lo,hi,at,kind='broken')=>out.push({id,lo,hi,at,kind});
  if(p.shape==='square'){line('south',[-1,-1],[1,-1]);line('east',[1,-1],[1,1]);line('north',[1,1],[-1,1]);line('west',[-1,1],[-1,-1]);}
  else if(p.shape==='trimmed'&&p.trim<1){const angle=Math.acos(p.trim),z=Math.sqrt(1-p.trim*p.trim);curve('north-arc',angle,Math.PI-angle,t=>[Math.cos(t),Math.sin(t)],'intact');curve('south-arc',Math.PI+angle,2*Math.PI-angle,t=>[Math.cos(t),Math.sin(t)],'intact');line('east-trim',[p.trim,-z],[p.trim,z]);line('west-trim',[-p.trim,z],[-p.trim,-z]);}
  else curve('perimeter',0,2*Math.PI,t=>t===0||t===2*Math.PI?[1,0]:[Math.cos(t),Math.sin(t)],'intact');
- if(p.damage){
+ if(p.damage===2){
+  for(const region of W.shadeFracture.regions(p.id)){
+   for(let i=0;i<region.points.length;i++){
+    const a=region.points[i],b=region.points[(i+1)%region.points.length],dx=b[0]-a[0],dy=b[1]-a[1];
+    // Parameterize straight ribs in plate radii so streamed sections stay
+    // 3.2 km long on narrow cap segments and short splices alike.
+    const hi=Math.hypot(dx*(p.across||1),dy);
+    out.push({id:region.id+'-'+i,kind:'broken',lo:0,hi,line:[a,b],at:t=>[a[0]+dx*t/hi,a[1]+dy*t/hi]});
+   }
+  }
+ }else if(p.damage){
   const edge=v=>.09+.055*Math.sin(v*17)+.017*Math.sin(v*53),top=u=>.13+.10*Math.sin(u*12);
   if(p.id%3===0){curve('loss-bank',-.31,1,v=>[edge(v),v]);line('loss-end',[edge(-.31),-.31],[1,-.31],'broken');}
   if(p.id%3===1){curve('loss-bank',-.43,1,u=>[u,top(u)]);line('loss-end',[-.43,top(-.43)],[-.43,1],'broken');}
@@ -27,7 +37,7 @@ function uvAt(s,p,position){const pos=[dot(position,p.right),dot(position,p.norm
 function nearest(curve,uv,across=1){
  // Most boundaries are straight sides of holes. Their exact weighted segment
  // projection replaces 65 search samples and 80 refinement evaluations.
- if(curve.line){const [a,b]=curve.line,dx=(b[0]-a[0])*across,dy=b[1]-a[1],den=dx*dx+dy*dy;return den?M.clamp(((uv[0]-a[0])*across*dx+(uv[1]-a[1])*dy)/den,0,1):0;}
+ if(curve.line){const [a,b]=curve.line,dx=(b[0]-a[0])*across,dy=b[1]-a[1],den=dx*dx+dy*dy;return den?curve.hi*M.clamp(((uv[0]-a[0])*across*dx+(uv[1]-a[1])*dy)/den,0,1):0;}
  let best=Infinity,t=curve.lo;const distance=t=>{const q=curve.at(t);return ((q[0]-uv[0])*across)**2+(q[1]-uv[1])**2;},step=(curve.hi-curve.lo)/64;
  for(let i=0;i<=64;i++){const u=curve.lo+i*step,d=distance(u);if(d<best){best=d;t=u;}}
  let lo=Math.max(curve.lo,t-step),hi=Math.min(curve.hi,t+step);for(let i=0;i<40;i++){const a=lo+(hi-lo)/3,b=hi-(hi-lo)/3;if(distance(a)<distance(b))hi=b;else lo=a;}return (lo+hi)/2;
@@ -44,7 +54,16 @@ function candidates(s,range){if(!s.collection||s.layoutVersion!==2)return [];con
 }
 // Intact visits use an actual perimeter. The historic strip followed a phantom
 // fracture through the middle even when the parent had no damage at all.
-function arrivalFrame(s,p){const preferred=p.damage?'long-1':p.shape==='square'?'east':p.shape==='trimmed'&&p.trim<1?'east-trim':'perimeter',c=curves(p).find(c=>c.id===preferred);
+function arrivalFrame(s,p){
+ if(p.damage===2){
+  const exposed=curves(p).filter(c=>c.kind==='broken').sort((a,b)=>Number(b.id.startsWith('arrested-tear'))-Number(a.id.startsWith('arrested-tear')));
+  for(const c of exposed)for(let n=0;n<63;n++){
+   const t=c.hi*(.5+Math.ceil(n/2)*(n%2?-1:1)/64),f=frame(s,p,c,t);
+   if(f)return {...f,basis:[f.inward,f.up,norm(M.cross(f.inward,f.up))]};
+  }
+  throw Error('No surviving Shade fracture boundary');
+ }
+ const preferred=p.damage?'long-1':p.shape==='square'?'east':p.shape==='trimmed'&&p.trim<1?'east-trim':'perimeter',c=curves(p).find(c=>c.id===preferred);
  const middle=preferred==='perimeter'?0:(c.lo+c.hi)/2;
  let f=frame(s,p,c,middle);for(let i=1;!f&&i<64;i++)f=frame(s,p,c,c.lo+(c.hi-c.lo)*i/64);
  if(!f)throw Error('No surviving Shade arrival boundary');
@@ -86,7 +105,24 @@ function meshes(s,options={}){const out=[],modern=s.shadeGeometryRevision>=3,ran
      const sealed=t=>modern&&((!closed&&(Math.abs(t-c.lo)<1e-13||Math.abs(t-c.hi)<1e-13))||!frame(s,p,c,t-1e-11)||!frame(s,p,c,t+1e-11))?0:1;
      const sa=sealed(lo),sb=sealed(hi),offset=k=>c.kind==='intact'?(modern?[0,0,.008,.008,0,0][k]:0):[0,0,.018,.01,0][k];
      for(let k=1;k<strata.length;k++){if(c.kind==='broken'&&(k===2||k===3))continue;const colour=c.kind==='intact'?(modern?[.09+k*.008,.11+k*.008,.13+k*.006]:[.12,.14,.15]):[.065+k*.008,.073+k*.008,.078+k*.008];mesh.quad(vertex(fa,offset(k-1)*sa,strata[k-1]),vertex(fb,offset(k-1)*sb,strata[k-1]),vertex(fb,offset(k)*sb,strata[k]),vertex(fa,offset(k)*sa,strata[k]),colour,-4);}
-     if(c.kind==='broken'){mesh.quad(vertex(fa,.045*sa,-.025),vertex(fb,.045*sb,-.025),vertex(fb,.045*sb,-.145),vertex(fa,.045*sa,-.145),[.035,.042,.048],-4);if(modern){mesh.quad(vertex(fa,0,-.025),vertex(fb,0,-.025),vertex(fb,.045*sb,-.025),vertex(fa,.045*sa,-.025),[.07,.075,.08],-4);mesh.quad(vertex(fa,.045*sa,-.145),vertex(fb,.045*sb,-.145),vertex(fb,.01*sb,-.145),vertex(fa,.01*sa,-.145),[.055,.06,.065],-4);}if(fine){mesh.beam(vertex(fa,.012,-.026),vertex(fb,.012,-.145),.008,[.15,.13,.095]);mesh.beam(vertex(fa,.012,-.145),vertex(fb,.012,-.026),.008,[.12,.14,.15]);}}
+     if(c.kind==='broken'){mesh.quad(vertex(fa,.045*sa,-.025),vertex(fb,.045*sb,-.025),vertex(fb,.045*sb,-.145),vertex(fa,.045*sa,-.145),[.035,.042,.048],-4);if(modern){mesh.quad(vertex(fa,0,-.025),vertex(fb,0,-.025),vertex(fb,.045*sb,-.025),vertex(fa,.045*sa,-.025),[.07,.075,.08],-4);mesh.quad(vertex(fa,.045*sa,-.145),vertex(fb,.045*sb,-.145),vertex(fb,.01*sb,-.145),vertex(fa,.01*sa,-.145),[.055,.06,.065],-4);}if(fine){
+       if(p.damage===2){
+        const topA=vertex(fa,.012,-.029),bottomB=vertex(fb,.012,-.141),bottomA=vertex(fa,.012,-.141),topB=vertex(fb,.012,-.029);
+        // The face sheets have separated. One diagonal pulled out of its
+        // connection, while its compression partner folded into the open web.
+        // Index the damage by structural bay so revisits reproduce the tear.
+        const bay=j*n+i,phase=((Math.imul(bay+1,1597334677)^Math.imul(p.id+1,381201581))>>>0)/4294967296;
+        const between=(a,b,t)=>add(a,mul(sub(b,a),t));
+        const pullout=.20+.32*phase,tearGap=.14+.13*phase;
+        mesh.beam(topA,between(topA,bottomB,pullout),.008,[.17,.15,.12]);
+        mesh.beam(between(topA,bottomB,pullout+tearGap),bottomB,.008,[.14,.13,.11]);
+        const fold=add(between(bottomA,topB,.38+.22*phase),mul(fa.inward,.014+.011*phase));
+        mesh.beam(bottomA,fold,.009,[.11,.13,.14]);mesh.beam(fold,topB,.009,[.14,.15,.16]);
+       }else{
+        mesh.beam(vertex(fa,.012,-.026),vertex(fb,.012,-.145),.008,[.15,.13,.095]);
+        mesh.beam(vertex(fa,.012,-.145),vertex(fb,.012,-.026),.008,[.12,.14,.15]);
+       }
+      }}
      if(modern&&c.kind==='intact'&&fine){
       // Recessed expansion joints and vertical frame members, entirely inside
       // the perimeter envelope. Both analytic faces meet the full-depth cap.

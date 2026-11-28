@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import {passageAt,passagePoint,tunnelStart,tunnelEnd,tunnelLength} from '../surface-passages.js';
-import {makeGallery} from '../packs/border-outfall/1.0.0/geometry.js';
-import {solidAt,moveBody,supportAt} from '../packs/border-outfall/1.0.0/border.js';
-import {entrance,eye} from '../packs/border-outfall/1.0.0/model.js';
+import {makeGallery} from '../packs/border-transport/0.10.0/outfall/geometry.js';
+import {solidAt,moveBody,supportAt} from '../packs/border-transport/0.10.0/outfall/border.js';
+import {entrance,eye} from '../packs/border-transport/0.10.0/outfall/model.js';
 const {colliders}=makeGallery();
 const near=(a,b,tol=1e-6)=>assert(Math.abs(a-b)<tol,`${a} vs ${b}`);
 for(const radius of [1e6,149597870.7,300000000]){

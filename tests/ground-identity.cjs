@@ -21,3 +21,18 @@ const farAnchor=M.norm(first.world([8.4,0,.4])),farFrame=G.frame({...base,terrai
 const restored=G.neighbourhood(base);assert.equal(propHash(base),before,'Teleport away/back preserves object identity');assert.equal(G.info.queue,0);assert.equal(G.info.waits,0);assert.equal(G.info.stableIdentity,true);
 console.log('PASS stable cell/cache identity across rebase, reversal, teleport and forced recency/support eviction',JSON.stringify({cache:G.info.cache,bytes:G.info.bytes,budget:G.info.budget,evictions:G.info.evictions}));
 G.dispose();
+
+// Two complete views may not fit at once. The held departure can be restored
+// from its original geographic cells after a neighbouring camera takes over.
+const nearby={...base,position:first.world([2.4,.1,1.4])};
+G.neighbourhood(nearby);const nearbyBytes=G.info.bytes;G.dispose();
+G.neighbourhood(base);const oneViewBudget=Math.max(G.info.bytes,nearbyBytes);
+G.setBudget(oneViewBudget);
+for(const s of [nearby,base]){
+ G.request(s,{releaseDeparture:true});
+ assert.equal(G.neighbourhood(s).length,25);
+ assert.equal(G.info.queue,0);assert(G.info.bytes<=oneViewBudget);
+}
+assert(G.info.evictions>0);assert.equal(propHash(base),before);
+console.log('PASS held neighbouring ground views share a one-view budget and restore their original objects');
+G.dispose();

@@ -29,6 +29,10 @@ export function stationApron(e,n,range=96){
   }
   return null;
 }
+export function vergeTrees(e,n){
+  const apron=stationApron(e,n,0),verge=apron?.row.verge;
+  return verge&&Math.hypot(e-verge.home.eastM,n-verge.home.northM)<450?verge.trees:[];
+}
 export function terrain(e,n){
   const h=heightFromPhases(terrainPhases(e,n),landscapePhases(e,n),[e,n]);
   const apron=stations.length && stationApron(e,n);
@@ -69,6 +73,7 @@ float ungradedGround(vec2 at){
  float amplitude=(.72+.86*(.5+.5*sin(r)))*(1.-.96*plain);
  return mix(familiar,max(.5,12.+amplitude*relief+3.5*sin(s)*(1.-.82*plain)),blend);
 }
-float coverGround(vec2 at){float h=ungradedGround(at);if(uApron.z>0.)return mix(uApronDatum-.65*(1.-stationCover(at)),h,smoothstep(0.,96.,apronDistance(at)));if(!byBorder())return h;
+float stationGround(vec2 at){return uApronDatum-.65*(1.-stationCover(at));}
+float coverGround(vec2 at){float h=ungradedGround(at);if(uApron.z>0.)return mix(stationGround(at),h,smoothstep(0.,96.,apronDistance(at)));if(!byBorder())return h;
  return mix(h,uGateDatum,smoothstep(-160.,-18.,borderAt(at).y));}
 `;

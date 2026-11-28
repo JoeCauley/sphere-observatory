@@ -6,10 +6,19 @@ const original=" // A resolved image tends to its own measured linear mean at pl
 const terrain=` // Seeded habitat structure shares its phase across the shell and the connected ground.
  vec3 p=uBiomeAnchor[1]+delta/16.+vec3(uSeed*.03125);
  float habitatWeight=1.-smoothstep(.2,4.,footprint);
- if(id<10 && uTextureDetail==1 && habitatWeight>0.){
+ // Violet supplies its own mineral material at these scales.
+ if(id<9 && uTextureDetail==1 && habitatWeight>0.){
   float ridge=sin(6.2831853*(p.x+.5*p.z)+.8*sin(6.2831853*p.y)),crossing=sin(6.2831853*(p.y-p.z*.25));
   float field=tnoise(p*4.),pattern=ridge*crossing;
-  if(id<=1)col*=1.+habitatWeight*(.24*field+.20*pattern-.12);
+  if(id<=1){
+   // Uneven belts of canopy and sheltered glades have no preferred grid direction.
+   // The phase wraps at the same period as tnoise and the camera-relative anchor.
+   vec3 stand=uAnchor[5]+delta/10.+vec3(3.,5.,11.)+vec3(uSeed*.03125);
+   float shade=tnoise(stand),gap=smoothstep(.56,.76,shade);
+   float clusters=tnoise(p*16.+vec3(7.,3.,13.))-.5;
+   float clusterWeight=1.-smoothstep(.09,.65,footprint);
+   col*=1.+habitatWeight*(.16*(field-.5)+.22*(gap-.25)+.095*clusters*clusterWeight);
+  }
   else if(id==2||id==3)col*=1.+habitatWeight*(.26*ridge+.16*field);
   else if(id==4||id==5)col*=1.-habitatWeight*.4*(1.-smoothstep(.035,.15,min(abs(ridge),abs(crossing))));
   else col=mix(col,col*vec3(.60,.76,.92),habitatWeight*.45*pow(1.-abs(pattern),6.));
